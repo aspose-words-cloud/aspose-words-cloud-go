@@ -1,0 +1,50 @@
+# Font
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**Link** | [***WordsApiLink**](WordsApiLink.md) | Gets or sets link to the document. | [optional] [default to null]
+**AllCaps** | **bool** | Gets or sets true if the font is formatted as all capital letters.              | [optional] [default to null]
+**Bidi** | **bool** | Gets or sets specifies whether the contents of this run shall have right-to-left characteristics.              | [optional] [default to null]
+**Bold** | **bool** | Gets or sets true if the font is formatted as bold.              | [optional] [default to null]
+**BoldBi** | **bool** | Gets or sets true if the right-to-left text is formatted as bold.              | [optional] [default to null]
+**Border** | [***Border**](Border.md) | Gets or sets border object that specifies border for the font. | [optional] [default to null]
+**Color** | [***XmlColor**](XmlColor.md) | Gets or sets the color of the font.              | [optional] [default to null]
+**ComplexScript** | **bool** | Gets or sets specifies whether the contents of this run shall be treated as complex script text regardless of their Unicode character values when determining the formatting for this run.              | [optional] [default to null]
+**DoubleStrikeThrough** | **bool** | Gets or sets true if the font is formatted as double strikethrough text.              | [optional] [default to null]
+**Emboss** | **bool** | Gets or sets true if the font is formatted as embossed.              | [optional] [default to null]
+**Engrave** | **bool** | Gets or sets true if the font is formatted as engraved.              | [optional] [default to null]
+**Hidden** | **bool** | Gets or sets true if the font is formatted as hidden text.              | [optional] [default to null]
+**HighlightColor** | [***XmlColor**](XmlColor.md) | Gets or sets the highlight (marker) color.              | [optional] [default to null]
+**Italic** | **bool** | Gets or sets true if the font is formatted as italic.              | [optional] [default to null]
+**ItalicBi** | **bool** | Gets or sets true if the right-to-left text is formatted as italic.              | [optional] [default to null]
+**Kerning** | **float64** | Gets or sets the font size at which kerning starts.              | [optional] [default to null]
+**LocaleId** | **int32** | Gets or sets the locale identifier (language) of the formatted characters.              | [optional] [default to null]
+**LocaleIdBi** | **int32** | Gets or sets the locale identifier (language) of the formatted right-to-left characters.              | [optional] [default to null]
+**LocaleIdFarEast** | **int32** | Gets or sets the locale identifier (language) of the formatted Asian characters.              | [optional] [default to null]
+**Name** | **string** | Gets or sets the name of the font.              | [optional] [default to null]
+**NameAscii** | **string** | Gets or sets returns or sets the font used for Latin text (characters with character codes from 0 (zero) through 127).              | [optional] [default to null]
+**NameBi** | **string** | Gets or sets returns or sets the name of the font in a right-to-left language document.              | [optional] [default to null]
+**NameFarEast** | **string** | Gets or sets returns or sets an East Asian font name.              | [optional] [default to null]
+**NameOther** | **string** | Gets or sets returns or sets the font used for characters with character codes from 128 through 255.              | [optional] [default to null]
+**NoProofing** | **bool** | Gets or sets true when the formatted characters are not to be spell checked. | [optional] [default to null]
+**Outline** | **bool** | Gets or sets true if the font is formatted as outline.              | [optional] [default to null]
+**Position** | **float64** | Gets or sets the position of text (in points) relative to the base line. A positive number raises the text, and a negative number lowers it.              | [optional] [default to null]
+**Scaling** | **int32** | Gets or sets character width scaling in percent.              | [optional] [default to null]
+**Shadow** | **bool** | Gets or sets true if the font is formatted as shadowed.              | [optional] [default to null]
+**Size** | **float64** | Gets or sets the font size in points.              | [optional] [default to null]
+**SizeBi** | **float64** | Gets or sets the font size in points used in a right-to-left document.              | [optional] [default to null]
+**SmallCaps** | **bool** | Gets or sets true if the font is formatted as small capital letters.              | [optional] [default to null]
+**Spacing** | **float64** | Gets or sets returns or sets the spacing (in points) between characters.              | [optional] [default to null]
+**StrikeThrough** | **bool** | Gets or sets true if the font is formatted as strikethrough text.              | [optional] [default to null]
+**StyleIdentifier** | **string** | Gets or sets the locale independent style identifier of the character style applied to this formatting. | [optional] [default to null]
+**StyleName** | **string** | Gets or sets the name of the character style applied to this formatting.              | [optional] [default to null]
+**Subscript** | **bool** | Gets or sets true if the font is formatted as subscript.              | [optional] [default to null]
+**Superscript** | **bool** | Gets or sets true if the font is formatted as superscript.              | [optional] [default to null]
+**TextEffect** | **string** | Gets or sets the font animation effect. | [optional] [default to null]
+**Underline** | **string** | Gets or sets the type of underline applied to the font. | [optional] [default to null]
+**UnderlineColor** | [***XmlColor**](XmlColor.md) | Gets or sets the color of the underline applied to the font. | [optional] [default to null]
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+
