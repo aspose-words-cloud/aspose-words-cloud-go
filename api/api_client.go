@@ -16,10 +16,12 @@ import (
 	"encoding/xml"
 	"errors"
 	"fmt"
-	"golang.org/x/oauth2"
 	"io"
+	"io/ioutil"
+	"log"
 	"mime/multipart"
 	"net/http"
+	"net/http/httputil"
 	"net/url"
 	"os"
 	"path/filepath"
@@ -29,21 +31,23 @@ import (
 	"strings"
 	"time"
 	"unicode/utf8"
+
+	"golang.org/x/oauth2"
 )
 
 var (
 	jsonCheck = regexp.MustCompile("(?i:[application|text]/json)")
-	xmlCheck = regexp.MustCompile("(?i:[application|text]/xml)")
+	xmlCheck  = regexp.MustCompile("(?i:[application|text]/xml)")
 )
 
 // APIClient manages communication with the Aspose.Words Cloud API Reference API v19.11.0
 // In most cases there should be only one, shared, APIClient.
 type APIClient struct {
-	cfg 	*Configuration
-	common 	service 		// Reuse a single struct instead of allocating one for each service on the heap.
+	cfg    *Configuration
+	common service // Reuse a single struct instead of allocating one for each service on the heap.
 
-	 // API Services
-	WordsApi	*WordsApiService
+	// API Services
+	WordsApi *WordsApiService
 }
 
 type service struct {
@@ -52,9 +56,23 @@ type service struct {
 
 // NewAPIClient creates a new API client. Requires a userAgent string describing your application.
 // optionally a custom http.Client to allow for advanced features such as caching.
-func NewAPIClient(cfg *Configuration) *APIClient {
-	if cfg.HTTPClient == nil {
-		cfg.HTTPClient = http.DefaultClient
+func NewAPIClient(cfg *Configuration) (client *APIClient, err error) {
+	if cfg.HttpClient == nil {
+		cfg.HttpClient = http.DefaultClient
+	}
+
+	if cfg.AppKey == "" {
+		return nil, errors.New("AppKey must be non-empty string")
+	}
+
+	if cfg.AppSid == "" {
+		return nil, errors.New("AppSid must be non-empty string")
+	}
+
+	_, urlErr := url.ParseRequestURI(cfg.BaseUrl)
+
+	if urlErr != nil {
+		return nil, errors.New("BaseUrl must be valid URL")
 	}
 
 	c := &APIClient{}
@@ -64,13 +82,12 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	// API Services
 	c.WordsApi = (*WordsApiService)(&c.common)
 
-	return c
+	return c, nil
 }
 
 func atoi(in string) (int, error) {
 	return strconv.Atoi(in)
 }
-
 
 // selectHeaderContentType select a content type from the available list.
 func selectHeaderContentType(contentTypes []string) string {
@@ -142,18 +159,91 @@ func parameterToString(obj interface{}, collectionFormat string) string {
 	return fmt.Sprintf("%v", obj)
 }
 
-// callAPI do the request. 
-func (c *APIClient) callAPI(request *http.Request) (*http.Response, error) {
-	 return c.cfg.HTTPClient.Do(request)
+// callAPI do the request.
+func (c *APIClient) callAPI(request *http.Request) (resp *http.Response, err error) {
+
+	// log request
+	if c.cfg.DebugMode {
+		dumpRequest, err := httputil.DumpRequest(request, true)
+		if err != nil {
+			return nil, err
+		}
+
+		log.Print(string(dumpRequest))
+	}
+
+	response, err := c.cfg.HttpClient.Do(request)
+
+	if err != nil {
+		return response, err
+	}
+
+	if c.cfg.DebugMode {
+		dumpResponse, err := httputil.DumpResponse(response, true)
+		if err != nil {
+			return nil, err
+		}
+
+		log.Print(string(dumpResponse))
+	}
+
+	return response, err
 }
 
 // Change base path to allow switching to mocks
-func (c *APIClient) ChangeBasePath (path string) {
-	c.cfg.BasePath = path
+func (c *APIClient) ChangeBasePath(path string) {
+	c.cfg.BaseUrl = path
+}
+
+// create context with token
+func (c *APIClient) NewContextWithToken(ctx context.Context) (ctxWithToken context.Context, err error) {
+
+	type authResponse struct {
+		AccessToken  string `json:"access_token"`
+		RefreshToken string `json:"refresh_token"`
+	}
+
+	if ctx == nil {
+		ctx = context.Background()
+	}
+
+	tokenUrl, _ := url.Parse(c.cfg.BaseUrl)
+	tokenUrl.Path = "/connect/token"
+
+	response, err := http.PostForm(tokenUrl.String(), url.Values{
+		"grant_type":    {"client_credentials"},
+		"client_id":     {c.cfg.AppSid},
+		"client_secret": {c.cfg.AppKey},
+	})
+
+	// http error
+	if err != nil {
+		return nil, err
+	}
+
+	if response.StatusCode != 200 {
+		return nil, errors.New(fmt.Sprintf("Get a token request failed: %s returned %d status", tokenUrl.String(), response.StatusCode))
+	}
+
+	defer response.Body.Close()
+	jsonData, err := ioutil.ReadAll(response.Body)
+
+	if err != nil {
+		return nil, err
+	}
+
+	var result authResponse
+	parseErr := json.Unmarshal(jsonData, &result)
+
+	if parseErr != nil {
+		return nil, err
+	}
+
+	return context.WithValue(ctx, ContextAccessToken, result.AccessToken), nil
 }
 
 // prepareRequest build the request
-func (c *APIClient) prepareRequest (
+func (c *APIClient) prepareRequest(
 	ctx context.Context,
 	path string, method string,
 	postBody interface{},
@@ -198,7 +288,7 @@ func (c *APIClient) prepareRequest (
 				}
 			}
 		}
-		
+
 		for fileName, fileBytes := range files {
 			if len(fileBytes) > 0 && fileName != "" {
 				w.Boundary()
@@ -214,7 +304,7 @@ func (c *APIClient) prepareRequest (
 				headerParams["Content-Type"] = w.FormDataContentType()
 			}
 		}
-		
+
 		// Set Content-Length
 		headerParams["Content-Length"] = fmt.Sprintf("%d", body.Len())
 		w.Close()
@@ -256,15 +346,6 @@ func (c *APIClient) prepareRequest (
 		localVarRequest.Header = headers
 	}
 
-	// Override request host, if applicable
-	if c.cfg.Host != "" {
-		localVarRequest.Host = c.cfg.Host
-	}
-	
-	// Add the user agent to the request.
-	localVarRequest.Header.Add("User-Agent", c.cfg.UserAgent)
-	
-
 	if ctx != nil {
 		// add context to the request
 		localVarRequest = localVarRequest.WithContext(ctx)
@@ -289,17 +370,16 @@ func (c *APIClient) prepareRequest (
 
 		// AccessToken Authentication
 		if auth, ok := ctx.Value(ContextAccessToken).(string); ok {
-			localVarRequest.Header.Add("Authorization", "Bearer " + auth)
+			localVarRequest.Header.Add("Authorization", "Bearer "+auth)
 		}
 	}
 
 	for header, value := range c.cfg.DefaultHeader {
 		localVarRequest.Header.Add(header, value)
 	}
-	
+
 	return localVarRequest, nil
 }
-
 
 // Add a file to the multipart request
 func addFile(w *multipart.Writer, fieldName, path string) error {
@@ -319,7 +399,7 @@ func addFile(w *multipart.Writer, fieldName, path string) error {
 }
 
 // Prevent trying to import "fmt"
-func reportError(format string, a ...interface{}) (error) {
+func reportError(format string, a ...interface{}) error {
 	return fmt.Errorf(format, a...)
 }
 
@@ -356,7 +436,7 @@ func setBody(body interface{}, contentType string) (bodyBuf *bytes.Buffer, err e
 func detectContentType(body interface{}) string {
 	contentType := "text/plain; charset=utf-8"
 	kind := reflect.TypeOf(body).Kind()
-	
+
 	switch kind {
 	case reflect.Struct, reflect.Map, reflect.Ptr:
 		contentType = "application/json; charset=utf-8"
@@ -372,7 +452,6 @@ func detectContentType(body interface{}) string {
 
 	return contentType
 }
-
 
 // Ripped from https://github.com/gregjones/httpcache/blob/master/httpcache.go
 type cacheControl map[string]string
@@ -396,7 +475,7 @@ func parseCacheControl(headers http.Header) cacheControl {
 }
 
 // CacheExpires helper function to determine remaining time before repeating a request.
-func CacheExpires(r *http.Response) (time.Time) {
+func CacheExpires(r *http.Response) time.Time {
 	// Figure out when the cache expires.
 	var expires time.Time
 	now, err := time.Parse(time.RFC1123, r.Header.Get("date"))
@@ -404,7 +483,7 @@ func CacheExpires(r *http.Response) (time.Time) {
 		return time.Now()
 	}
 	respCacheControl := parseCacheControl(r.Header)
-	
+
 	if maxAge, ok := respCacheControl["max-age"]; ok {
 		lifetime, err := time.ParseDuration(maxAge + "s")
 		if err != nil {
@@ -423,7 +502,6 @@ func CacheExpires(r *http.Response) (time.Time) {
 	return expires
 }
 
-func strlen(s string) (int) {
+func strlen(s string) int {
 	return utf8.RuneCountInString(s)
 }
-
