@@ -173,7 +173,7 @@ func TestTestCoverage(t *testing.T) {
 func TestFieldDelete(t *testing.T) {
 
 	localFilePath := GetLocalPath(filepath.Join("DocumentElements", "Fields"), "GetField.docx")
-	remoteFolder := path.Join(remoteBaseTestDataFolder, path.Join("DocumentElements", "Fields"))
+	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Fields")
 	remoteName := "TestFieldDelete.docx"
 	nodePath := "sections/0/paragraphs/0"
 	index := 0

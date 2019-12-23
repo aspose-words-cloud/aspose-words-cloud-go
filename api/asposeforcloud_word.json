@@ -15223,7 +15223,7 @@
         {
           "type": "object",
           "properties": {
-            "Error": {
+            "ApiError": {
               "description": "Gets or sets error.",
               "$ref": "#/definitions/ApiError"
             }
