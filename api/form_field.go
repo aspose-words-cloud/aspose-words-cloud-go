@@ -20,8 +20,7 @@
 * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 * SOFTWARE.
-*/
-
+ */
 
 package api
 
@@ -60,4 +59,8 @@ type FormField struct {
 
 	// Gets or sets returns or sets the text that's displayed in the status bar when a form field has the focus.
 	StatusText string `json:"StatusText,omitempty"`
+}
+
+type IFormField interface {
+	IsFormField() bool
 }

@@ -27,13 +27,13 @@ package api
 
 import (
 	"context"
-	"net/http"
-	"net/url"
-	"strings"
-	"os"
-	"io/ioutil"
 	"encoding/json"
 	"fmt"
+	"io/ioutil"
+	"net/http"
+	"net/url"
+	"os"
+	"strings"
 )
 
 // Linger please
@@ -11995,7 +11995,7 @@ func (a *WordsApiService) InsertFootnoteWithoutNodePath(ctx context.Context, nam
      @param "revisionDateTime" (string) The date and time to use for revisions.
      @param "insertBeforeNode" (string) Form field will be inserted before node with index.
  @return FormFieldResponse*/
-func (a *WordsApiService) InsertFormField(ctx context.Context, name string, formField FormField, nodePath string, localVarOptionals map[string]interface{}) (FormFieldResponse,  *http.Response, error) {
+func (a *WordsApiService) InsertFormField(ctx context.Context, name string, formField IFormField, nodePath string, localVarOptionals map[string]interface{}) (FormFieldResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
@@ -12120,7 +12120,7 @@ func (a *WordsApiService) InsertFormField(ctx context.Context, name string, form
      @param "revisionDateTime" (string) The date and time to use for revisions.
      @param "insertBeforeNode" (string) Form field will be inserted before node with index.
  @return FormFieldResponse*/
-func (a *WordsApiService) InsertFormFieldWithoutNodePath(ctx context.Context, name string, formField FormField, localVarOptionals map[string]interface{}) (FormFieldResponse,  *http.Response, error) {
+func (a *WordsApiService) InsertFormFieldWithoutNodePath(ctx context.Context, name string, formField IFormField, localVarOptionals map[string]interface{}) (FormFieldResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
@@ -17064,7 +17064,7 @@ func (a *WordsApiService) UpdateFootnoteWithoutNodePath(ctx context.Context, nam
      @param "revisionAuthor" (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
      @param "revisionDateTime" (string) The date and time to use for revisions.
  @return FormFieldResponse*/
-func (a *WordsApiService) UpdateFormField(ctx context.Context, name string, formField FormField, nodePath string, index int32, localVarOptionals map[string]interface{}) (FormFieldResponse,  *http.Response, error) {
+func (a *WordsApiService) UpdateFormField(ctx context.Context, name string, formField IFormField, nodePath string, index int32, localVarOptionals map[string]interface{}) (FormFieldResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
@@ -17184,7 +17184,7 @@ func (a *WordsApiService) UpdateFormField(ctx context.Context, name string, form
      @param "revisionAuthor" (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
      @param "revisionDateTime" (string) The date and time to use for revisions.
  @return FormFieldResponse*/
-func (a *WordsApiService) UpdateFormFieldWithoutNodePath(ctx context.Context, name string, formField FormField, index int32, localVarOptionals map[string]interface{}) (FormFieldResponse,  *http.Response, error) {
+func (a *WordsApiService) UpdateFormFieldWithoutNodePath(ctx context.Context, name string, formField IFormField, index int32, localVarOptionals map[string]interface{}) (FormFieldResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
