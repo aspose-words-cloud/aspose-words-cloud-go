@@ -34,3 +34,13 @@ type RunsResponse struct {
 	// Gets or sets collection of runs.
 	Runs *Runs `json:"Runs,omitempty"`
 }
+type IRunsResponse interface {
+	IsRunsResponse() bool
+}
+func (RunsResponse) IsRunsResponse() bool {
+	return true;
+}
+func (RunsResponse) IsWordsResponse() bool {
+	return true;
+}
+

@@ -34,3 +34,13 @@ type HeaderFooterLink struct {
 	// Gets or sets paragraph's text.
 	Type_ string `json:"Type,omitempty"`
 }
+type IHeaderFooterLink interface {
+	IsHeaderFooterLink() bool
+}
+func (HeaderFooterLink) IsHeaderFooterLink() bool {
+	return true;
+}
+func (HeaderFooterLink) IsLinkElement() bool {
+	return true;
+}
+

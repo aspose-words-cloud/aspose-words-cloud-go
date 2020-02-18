@@ -64,3 +64,13 @@ type OdtSaveOptionsData struct {
 	// Gets or sets specifies whether or not use pretty formats output.
 	PrettyFormat bool `json:"PrettyFormat,omitempty"`
 }
+type IOdtSaveOptionsData interface {
+	IsOdtSaveOptionsData() bool
+}
+func (OdtSaveOptionsData) IsOdtSaveOptionsData() bool {
+	return true;
+}
+func (OdtSaveOptionsData) IsSaveOptionsData() bool {
+	return true;
+}
+

@@ -43,3 +43,13 @@ type Field struct {
 	// Gets or sets field result.
 	Result string `json:"Result,omitempty"`
 }
+type IField interface {
+	IsField() bool
+}
+func (Field) IsField() bool {
+	return true;
+}
+func (Field) IsFieldLink() bool {
+	return true;
+}
+

@@ -15,7 +15,7 @@ Method | HTTP request | Description
 [**CreateDocument**](WordsApi.md#CreateDocument) | **Put** /words/create | Creates new document. Document is created with format which is recognized from file extensions. Supported extensions: \&quot;.doc\&quot;, \&quot;.docx\&quot;, \&quot;.docm\&quot;, \&quot;.dot\&quot;, \&quot;.dotm\&quot;, \&quot;.dotx\&quot;, \&quot;.flatopc\&quot;, \&quot;.fopc\&quot;, \&quot;.flatopc_macro\&quot;, \&quot;.fopc_macro\&quot;, \&quot;.flatopc_template\&quot;, \&quot;.fopc_template\&quot;, \&quot;.flatopc_template_macro\&quot;, \&quot;.fopc_template_macro\&quot;, \&quot;.wordml\&quot;, \&quot;.wml\&quot;, \&quot;.rtf\&quot;.
 [**CreateFolder**](WordsApi.md#CreateFolder) | **Put** /words/storage/folder/{path} | Create the folder
 [**CreateOrUpdateDocumentProperty**](WordsApi.md#CreateOrUpdateDocumentProperty) | **Put** /words/{name}/documentProperties/{propertyName} | Adds new or update existing document property.
-[**DeleteBorder**](WordsApi.md#DeleteBorder) | **Delete** /words/{name}/{nodePath}/borders/{index} | Resets border properties to default values.             
+[**DeleteBorder**](WordsApi.md#DeleteBorder) | **Delete** /words/{name}/{nodePath}/borders/{borderType} | Resets border properties to default values.             
 [**DeleteBorders**](WordsApi.md#DeleteBorders) | **Delete** /words/{name}/{nodePath}/borders | Resets borders properties to default values.             
 [**DeleteComment**](WordsApi.md#DeleteComment) | **Delete** /words/{name}/comments/{commentIndex} | Removes comment from document.
 [**DeleteDocumentProperty**](WordsApi.md#DeleteDocumentProperty) | **Delete** /words/{name}/documentProperties/{propertyName} | Deletes document property.
@@ -51,7 +51,7 @@ Method | HTTP request | Description
 [**GetAvailableFonts**](WordsApi.md#GetAvailableFonts) | **Get** /words/fonts/available | Gets the list of fonts, available for document processing.
 [**GetBookmarkByName**](WordsApi.md#GetBookmarkByName) | **Get** /words/{name}/bookmarks/{bookmarkName} | Reads document bookmark data by its name.
 [**GetBookmarks**](WordsApi.md#GetBookmarks) | **Get** /words/{name}/bookmarks | Reads document bookmarks common info.
-[**GetBorder**](WordsApi.md#GetBorder) | **Get** /words/{name}/{nodePath}/borders/{index} | Returns a border.
+[**GetBorder**](WordsApi.md#GetBorder) | **Get** /words/{name}/{nodePath}/borders/{borderType} | Returns a border.
 [**GetBorders**](WordsApi.md#GetBorders) | **Get** /words/{name}/{nodePath}/borders | Returns a collection of borders.
 [**GetComment**](WordsApi.md#GetComment) | **Get** /words/{name}/comments/{commentIndex} | Gets comment from document.
 [**GetComments**](WordsApi.md#GetComments) | **Get** /words/{name}/comments | Gets comments from document.
@@ -160,7 +160,7 @@ Method | HTTP request | Description
 [**SplitDocument**](WordsApi.md#SplitDocument) | **Put** /words/{name}/split | Splits document.
 [**UnprotectDocument**](WordsApi.md#UnprotectDocument) | **Delete** /words/{name}/protection | Unprotects document.
 [**UpdateBookmark**](WordsApi.md#UpdateBookmark) | **Put** /words/{name}/bookmarks/{bookmarkName} | Updates document bookmark.
-[**UpdateBorder**](WordsApi.md#UpdateBorder) | **Put** /words/{name}/{nodePath}/borders/{index} | Updates border properties.             
+[**UpdateBorder**](WordsApi.md#UpdateBorder) | **Put** /words/{name}/{nodePath}/borders/{borderType} | Updates border properties.             
 [**UpdateComment**](WordsApi.md#UpdateComment) | **Put** /words/{name}/comments/{commentIndex} | Updates the comment, returns updated comment data.
 [**UpdateDrawingObject**](WordsApi.md#UpdateDrawingObject) | **Put** /words/{name}/{nodePath}/drawingObjects/{index} | Updates drawing object, returns updated  drawing object&#39;s data.
 [**UpdateDrawingObjectWithoutNodePath**](WordsApi.md#UpdateDrawingObjectWithoutNodePath) | **Put** /words/{name}/drawingObjects/{index} | Updates drawing object, returns updated  drawing object&#39;s data.
@@ -612,7 +612,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **DeleteBorder**
-> BorderResponse DeleteBorder(ctx, name, nodePath, index, optional)
+> BorderResponse DeleteBorder(ctx, name, nodePath, borderType, optional)
 Resets border properties to default values.             
 
 'nodePath' should refer to paragraph, cell or row.
@@ -624,7 +624,7 @@ Name | Type | Description  | Notes
  **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
   **name** | **string**| The document name. | 
   **nodePath** | **string**| Path to the node with border(node should be paragraph, cell or row). | 
-  **index** | **int32**| Object index. | 
+  **borderType** | **string**| Border type. | 
  **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -634,7 +634,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **string**| The document name. | 
  **nodePath** | **string**| Path to the node with border(node should be paragraph, cell or row). | 
- **index** | **int32**| Object index. | 
+ **borderType** | **string**| Border type. | 
  **folder** | **string**| Original document folder. | 
  **storage** | **string**| Original document storage. | 
  **loadEncoding** | **string**| Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML. | 
@@ -2141,7 +2141,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetBorder**
-> BorderResponse GetBorder(ctx, name, nodePath, index, optional)
+> BorderResponse GetBorder(ctx, name, nodePath, borderType, optional)
 Returns a border.
 
 'nodePath' should refer to paragraph, cell or row.
@@ -2153,7 +2153,7 @@ Name | Type | Description  | Notes
  **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
   **name** | **string**| The document name. | 
   **nodePath** | **string**| Path to the node with border(node should be paragraph, cell or row). | 
-  **index** | **int32**| Object index. | 
+  **borderType** | **string**| Border type. | 
  **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -2163,7 +2163,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **string**| The document name. | 
  **nodePath** | **string**| Path to the node with border(node should be paragraph, cell or row). | 
- **index** | **int32**| Object index. | 
+ **borderType** | **string**| Border type. | 
  **folder** | **string**| Original document folder. | 
  **storage** | **string**| Original document storage. | 
  **loadEncoding** | **string**| Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML. | 
@@ -6651,7 +6651,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **UpdateBorder**
-> BorderResponse UpdateBorder(ctx, name, borderProperties, nodePath, index, optional)
+> BorderResponse UpdateBorder(ctx, name, borderProperties, nodePath, borderType, optional)
 Updates border properties.             
 
 'nodePath' should refer to paragraph, cell or row.
@@ -6664,7 +6664,7 @@ Name | Type | Description  | Notes
   **name** | **string**| The document name. | 
   **borderProperties** | [**Border**](Border.md)| Border properties. | 
   **nodePath** | **string**| Path to the node with border(node should be paragraph, cell or row). | 
-  **index** | **int32**| Object index. | 
+  **borderType** | **string**| Border type. | 
  **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -6675,7 +6675,7 @@ Name | Type | Description  | Notes
  **name** | **string**| The document name. | 
  **borderProperties** | [**Border**](Border.md)| Border properties. | 
  **nodePath** | **string**| Path to the node with border(node should be paragraph, cell or row). | 
- **index** | **int32**| Object index. | 
+ **borderType** | **string**| Border type. | 
  **folder** | **string**| Original document folder. | 
  **storage** | **string**| Original document storage. | 
  **loadEncoding** | **string**| Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML. | 
@@ -7479,7 +7479,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **UploadFile**
-> FilesUploadResult UploadFile(ctx, file, path, optional)
+> FilesUploadResult UploadFile(ctx, fileContent, path, optional)
 Upload file
 
 ### Required Parameters
@@ -7487,7 +7487,7 @@ Upload file
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
-  **file** | ***os.File**| File to upload | 
+  **fileContent** | ***os.File**| File to upload | 
   **path** | **string**| Path where to upload including filename and extension e.g. /file.ext or /Folder 1/file.ext              If the content is multipart and path does not contains the file name it tries to get them from filename parameter              from Content-Disposition header. | 
  **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
 
@@ -7496,7 +7496,7 @@ Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **file** | ***os.File**| File to upload | 
+ **fileContent** | ***os.File**| File to upload | 
  **path** | **string**| Path where to upload including filename and extension e.g. /file.ext or /Folder 1/file.ext              If the content is multipart and path does not contains the file name it tries to get them from filename parameter              from Content-Disposition header. | 
  **storageName** | **string**| Storage name | 
 

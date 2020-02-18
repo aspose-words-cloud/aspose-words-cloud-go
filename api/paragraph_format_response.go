@@ -34,3 +34,13 @@ type ParagraphFormatResponse struct {
 	// Gets or sets represents all the formatting for a paragraph.
 	ParagraphFormat *ParagraphFormat `json:"ParagraphFormat,omitempty"`
 }
+type IParagraphFormatResponse interface {
+	IsParagraphFormatResponse() bool
+}
+func (ParagraphFormatResponse) IsParagraphFormatResponse() bool {
+	return true;
+}
+func (ParagraphFormatResponse) IsWordsResponse() bool {
+	return true;
+}
+

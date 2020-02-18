@@ -64,3 +64,13 @@ type DrawingObject struct {
 	// Gets or sets specifies how to wrap text around the image.
 	WrapType string `json:"WrapType,omitempty"`
 }
+type IDrawingObject interface {
+	IsDrawingObject() bool
+}
+func (DrawingObject) IsDrawingObject() bool {
+	return true;
+}
+func (DrawingObject) IsDrawingObjectLink() bool {
+	return true;
+}
+

@@ -40,3 +40,10 @@ type PageNumber struct {
 	// Gets or sets a value indicating whether if true the page number is added on first page too.
 	SetPageNumberOnFirstPage bool `json:"SetPageNumberOnFirstPage"`
 }
+type IPageNumber interface {
+	IsPageNumber() bool
+}
+func (PageNumber) IsPageNumber() bool {
+	return true;
+}
+

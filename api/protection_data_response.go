@@ -37,3 +37,13 @@ type ProtectionDataResponse struct {
 	// Gets or sets protection's data of the document.
 	ProtectionData *ProtectionData `json:"ProtectionData,omitempty"`
 }
+type IProtectionDataResponse interface {
+	IsProtectionDataResponse() bool
+}
+func (ProtectionDataResponse) IsProtectionDataResponse() bool {
+	return true;
+}
+func (ProtectionDataResponse) IsWordsResponse() bool {
+	return true;
+}
+

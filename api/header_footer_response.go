@@ -34,3 +34,13 @@ type HeaderFooterResponse struct {
 	// Gets or sets headerFooter.
 	HeaderFooter *HeaderFooter `json:"HeaderFooter,omitempty"`
 }
+type IHeaderFooterResponse interface {
+	IsHeaderFooterResponse() bool
+}
+func (HeaderFooterResponse) IsHeaderFooterResponse() bool {
+	return true;
+}
+func (HeaderFooterResponse) IsWordsResponse() bool {
+	return true;
+}
+

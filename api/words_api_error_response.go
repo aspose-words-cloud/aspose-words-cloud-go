@@ -34,3 +34,13 @@ type WordsApiErrorResponse struct {
 	// Gets or sets error.
 	ApiError *ApiError `json:"ApiError,omitempty"`
 }
+type IWordsApiErrorResponse interface {
+	IsWordsApiErrorResponse() bool
+}
+func (WordsApiErrorResponse) IsWordsApiErrorResponse() bool {
+	return true;
+}
+func (WordsApiErrorResponse) IsWordsResponse() bool {
+	return true;
+}
+

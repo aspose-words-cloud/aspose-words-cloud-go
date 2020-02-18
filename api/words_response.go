@@ -31,3 +31,10 @@ type WordsResponse struct {
 	// Gets or sets request Id.
 	RequestId string `json:"RequestId,omitempty"`
 }
+type IWordsResponse interface {
+	IsWordsResponse() bool
+}
+func (WordsResponse) IsWordsResponse() bool {
+	return true;
+}
+

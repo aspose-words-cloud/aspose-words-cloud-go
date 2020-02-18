@@ -34,3 +34,13 @@ type CommentResponse struct {
 	// Gets or sets comment information.
 	Comment *Comment `json:"Comment,omitempty"`
 }
+type ICommentResponse interface {
+	IsCommentResponse() bool
+}
+func (CommentResponse) IsCommentResponse() bool {
+	return true;
+}
+func (CommentResponse) IsWordsResponse() bool {
+	return true;
+}
+

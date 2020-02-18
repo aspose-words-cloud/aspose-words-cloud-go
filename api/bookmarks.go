@@ -34,3 +34,13 @@ type Bookmarks struct {
 	// Gets or sets array of bookmarks.
 	BookmarkList []Bookmark `json:"BookmarkList,omitempty"`
 }
+type IBookmarks interface {
+	IsBookmarks() bool
+}
+func (Bookmarks) IsBookmarks() bool {
+	return true;
+}
+func (Bookmarks) IsLinkElement() bool {
+	return true;
+}
+

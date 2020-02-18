@@ -43,3 +43,10 @@ type ReplaceTextParameters struct {
 	// Gets or sets a value indicating whether flag, means that  contains regex expression.
 	IsOldValueRegex bool `json:"IsOldValueRegex"`
 }
+type IReplaceTextParameters interface {
+	IsReplaceTextParameters() bool
+}
+func (ReplaceTextParameters) IsReplaceTextParameters() bool {
+	return true;
+}
+

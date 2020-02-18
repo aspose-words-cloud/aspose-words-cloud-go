@@ -61,3 +61,13 @@ type XamlFlowSaveOptionsData struct {
 	// Gets or sets specifies the name of the folder used to construct image URIs.
 	ImagesFolderAlias string `json:"ImagesFolderAlias,omitempty"`
 }
+type IXamlFlowSaveOptionsData interface {
+	IsXamlFlowSaveOptionsData() bool
+}
+func (XamlFlowSaveOptionsData) IsXamlFlowSaveOptionsData() bool {
+	return true;
+}
+func (XamlFlowSaveOptionsData) IsSaveOptionsData() bool {
+	return true;
+}
+

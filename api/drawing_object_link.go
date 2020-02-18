@@ -34,3 +34,13 @@ type DrawingObjectLink struct {
 	// Gets or sets node id.
 	NodeId string `json:"NodeId,omitempty"`
 }
+type IDrawingObjectLink interface {
+	IsDrawingObjectLink() bool
+}
+func (DrawingObjectLink) IsDrawingObjectLink() bool {
+	return true;
+}
+func (DrawingObjectLink) IsNodeLink() bool {
+	return true;
+}
+

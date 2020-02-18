@@ -34,3 +34,13 @@ type BordersCollection struct {
 	// Gets or sets collection of comments.
 	List []Border `json:"List,omitempty"`
 }
+type IBordersCollection interface {
+	IsBordersCollection() bool
+}
+func (BordersCollection) IsBordersCollection() bool {
+	return true;
+}
+func (BordersCollection) IsLinkElement() bool {
+	return true;
+}
+

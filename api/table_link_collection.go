@@ -34,3 +34,13 @@ type TableLinkCollection struct {
 	// Gets or sets collection of table's links.
 	TableLinkList []TableLink `json:"TableLinkList,omitempty"`
 }
+type ITableLinkCollection interface {
+	IsTableLinkCollection() bool
+}
+func (TableLinkCollection) IsTableLinkCollection() bool {
+	return true;
+}
+func (TableLinkCollection) IsLinkElement() bool {
+	return true;
+}
+

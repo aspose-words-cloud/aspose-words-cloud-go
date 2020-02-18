@@ -37,3 +37,13 @@ type Hyperlink struct {
 	// Gets or sets value.
 	Value string `json:"Value,omitempty"`
 }
+type IHyperlink interface {
+	IsHyperlink() bool
+}
+func (Hyperlink) IsHyperlink() bool {
+	return true;
+}
+func (Hyperlink) IsLinkElement() bool {
+	return true;
+}
+

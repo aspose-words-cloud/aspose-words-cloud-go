@@ -34,3 +34,10 @@ type WatermarkText struct {
 	// Gets or sets the watermark rotation angle.
 	RotationAngle float64 `json:"RotationAngle"`
 }
+type IWatermarkText interface {
+	IsWatermarkText() bool
+}
+func (WatermarkText) IsWatermarkText() bool {
+	return true;
+}
+

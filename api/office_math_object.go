@@ -46,3 +46,13 @@ type OfficeMathObject struct {
 	// Gets or sets type Aspose.Words.Math.OfficeMath.MathObjectType of this Office Math object.
 	MathObjectType string `json:"MathObjectType,omitempty"`
 }
+type IOfficeMathObject interface {
+	IsOfficeMathObject() bool
+}
+func (OfficeMathObject) IsOfficeMathObject() bool {
+	return true;
+}
+func (OfficeMathObject) IsOfficeMathLink() bool {
+	return true;
+}
+

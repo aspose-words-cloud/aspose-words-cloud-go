@@ -34,3 +34,13 @@ type HyperlinkResponse struct {
 	// Gets or sets hyperlink.
 	Hyperlink *Hyperlink `json:"Hyperlink,omitempty"`
 }
+type IHyperlinkResponse interface {
+	IsHyperlinkResponse() bool
+}
+func (HyperlinkResponse) IsHyperlinkResponse() bool {
+	return true;
+}
+func (HyperlinkResponse) IsWordsResponse() bool {
+	return true;
+}
+

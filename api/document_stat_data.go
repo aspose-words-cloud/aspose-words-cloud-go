@@ -43,3 +43,10 @@ type DocumentStatData struct {
 	// Gets or sets detailed statistics of all pages.
 	PageStatData []PageStatData `json:"PageStatData,omitempty"`
 }
+type IDocumentStatData interface {
+	IsDocumentStatData() bool
+}
+func (DocumentStatData) IsDocumentStatData() bool {
+	return true;
+}
+

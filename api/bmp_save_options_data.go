@@ -112,3 +112,13 @@ type BmpSaveOptionsData struct {
 	// Gets or sets the vertical resolution for the generated images, in dots per inch.  This property has effect only when saving to raster image formats. The default value is 96.
 	VerticalResolution float64 `json:"VerticalResolution,omitempty"`
 }
+type IBmpSaveOptionsData interface {
+	IsBmpSaveOptionsData() bool
+}
+func (BmpSaveOptionsData) IsBmpSaveOptionsData() bool {
+	return true;
+}
+func (BmpSaveOptionsData) IsImageSaveOptionsData() bool {
+	return true;
+}
+

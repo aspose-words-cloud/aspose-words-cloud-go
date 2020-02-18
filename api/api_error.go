@@ -47,3 +47,10 @@ type ApiError struct {
 	// Gets or sets inner error.
 	InnerError *ApiError `json:"InnerError,omitempty"`
 }
+type IApiError interface {
+	IsApiError() bool
+}
+func (ApiError) IsApiError() bool {
+	return true;
+}
+

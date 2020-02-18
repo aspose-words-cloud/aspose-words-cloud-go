@@ -34,3 +34,13 @@ type TableRowFormatResponse struct {
 	// Gets or sets table.
 	RowFormat *TableRowFormat `json:"RowFormat,omitempty"`
 }
+type ITableRowFormatResponse interface {
+	IsTableRowFormatResponse() bool
+}
+func (TableRowFormatResponse) IsTableRowFormatResponse() bool {
+	return true;
+}
+func (TableRowFormatResponse) IsWordsResponse() bool {
+	return true;
+}
+

@@ -34,3 +34,13 @@ type BookmarkResponse struct {
 	// Gets or sets bookmark.
 	Bookmark *Bookmark `json:"Bookmark,omitempty"`
 }
+type IBookmarkResponse interface {
+	IsBookmarkResponse() bool
+}
+func (BookmarkResponse) IsBookmarkResponse() bool {
+	return true;
+}
+func (BookmarkResponse) IsWordsResponse() bool {
+	return true;
+}
+

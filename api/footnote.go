@@ -49,3 +49,13 @@ type Footnote struct {
 	// Gets or sets this is a convenience property that allows to easily get or set text of the footnote.
 	Text string `json:"Text,omitempty"`
 }
+type IFootnote interface {
+	IsFootnote() bool
+}
+func (Footnote) IsFootnote() bool {
+	return true;
+}
+func (Footnote) IsFootnoteLink() bool {
+	return true;
+}
+

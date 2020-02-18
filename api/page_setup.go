@@ -118,3 +118,13 @@ type PageSetup struct {
 	// Gets or sets returns or sets the vertical alignment of text on each page in a document or section.             
 	VerticalAlignment string `json:"VerticalAlignment,omitempty"`
 }
+type IPageSetup interface {
+	IsPageSetup() bool
+}
+func (PageSetup) IsPageSetup() bool {
+	return true;
+}
+func (PageSetup) IsLinkElement() bool {
+	return true;
+}
+

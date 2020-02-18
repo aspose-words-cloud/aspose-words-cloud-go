@@ -70,3 +70,13 @@ type FormFieldCheckbox struct {
 	// Gets or sets the boolean value that indicates whether the size of the textbox is automatic or specified explicitly.
 	IsCheckBoxExactSize bool `json:"IsCheckBoxExactSize,omitempty"`
 }
+type IFormFieldCheckbox interface {
+	IsFormFieldCheckbox() bool
+}
+func (FormFieldCheckbox) IsFormFieldCheckbox() bool {
+	return true;
+}
+func (FormFieldCheckbox) IsFormField() bool {
+	return true;
+}
+

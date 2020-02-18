@@ -40,3 +40,13 @@ type FileLink struct {
 	// Gets or sets the \"title\" attribute conveys human-readable information about the link.  The content of the \"title\" attribute is Language-Sensitive.
 	Title string `json:"Title,omitempty"`
 }
+type IFileLink interface {
+	IsFileLink() bool
+}
+func (FileLink) IsFileLink() bool {
+	return true;
+}
+func (FileLink) IsLink() bool {
+	return true;
+}
+

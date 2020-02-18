@@ -37,3 +37,13 @@ type ParagraphLink struct {
 	// Gets or sets paragraph's text.
 	Text string `json:"Text,omitempty"`
 }
+type IParagraphLink interface {
+	IsParagraphLink() bool
+}
+func (ParagraphLink) IsParagraphLink() bool {
+	return true;
+}
+func (ParagraphLink) IsNodeLink() bool {
+	return true;
+}
+

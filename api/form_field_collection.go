@@ -34,3 +34,13 @@ type FormFieldCollection struct {
 	// Gets or sets collection of formfields.
 	List []FormField `json:"List,omitempty"`
 }
+type IFormFieldCollection interface {
+	IsFormFieldCollection() bool
+}
+func (FormFieldCollection) IsFormFieldCollection() bool {
+	return true;
+}
+func (FormFieldCollection) IsLinkElement() bool {
+	return true;
+}
+

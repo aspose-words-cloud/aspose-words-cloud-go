@@ -34,3 +34,13 @@ type FootnoteResponse struct {
 	// Gets or sets footnote information.
 	Footnote *Footnote `json:"Footnote,omitempty"`
 }
+type IFootnoteResponse interface {
+	IsFootnoteResponse() bool
+}
+func (FootnoteResponse) IsFootnoteResponse() bool {
+	return true;
+}
+func (FootnoteResponse) IsWordsResponse() bool {
+	return true;
+}
+

@@ -34,3 +34,13 @@ type Runs struct {
 	// Gets or sets collection of fields.
 	List []Run `json:"List,omitempty"`
 }
+type IRuns interface {
+	IsRuns() bool
+}
+func (Runs) IsRuns() bool {
+	return true;
+}
+func (Runs) IsLinkElement() bool {
+	return true;
+}
+

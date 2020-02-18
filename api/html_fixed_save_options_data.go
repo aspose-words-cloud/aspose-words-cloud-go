@@ -112,3 +112,13 @@ type HtmlFixedSaveOptionsData struct {
 	// Gets or sets specifies whether border around pages should be shown.
 	ShowPageBorder bool `json:"ShowPageBorder,omitempty"`
 }
+type IHtmlFixedSaveOptionsData interface {
+	IsHtmlFixedSaveOptionsData() bool
+}
+func (HtmlFixedSaveOptionsData) IsHtmlFixedSaveOptionsData() bool {
+	return true;
+}
+func (HtmlFixedSaveOptionsData) IsFixedPageSaveOptionsData() bool {
+	return true;
+}
+

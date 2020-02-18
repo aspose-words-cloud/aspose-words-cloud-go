@@ -34,3 +34,13 @@ type SectionLink struct {
 	// Gets or sets node id.
 	NodeId string `json:"NodeId,omitempty"`
 }
+type ISectionLink interface {
+	IsSectionLink() bool
+}
+func (SectionLink) IsSectionLink() bool {
+	return true;
+}
+func (SectionLink) IsNodeLink() bool {
+	return true;
+}
+

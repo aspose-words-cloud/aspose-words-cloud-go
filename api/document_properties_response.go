@@ -34,3 +34,13 @@ type DocumentPropertiesResponse struct {
 	// Gets or sets collection of document properties.
 	DocumentProperties *DocumentProperties `json:"DocumentProperties,omitempty"`
 }
+type IDocumentPropertiesResponse interface {
+	IsDocumentPropertiesResponse() bool
+}
+func (DocumentPropertiesResponse) IsDocumentPropertiesResponse() bool {
+	return true;
+}
+func (DocumentPropertiesResponse) IsWordsResponse() bool {
+	return true;
+}
+

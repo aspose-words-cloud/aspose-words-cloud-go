@@ -43,3 +43,10 @@ type StringFormatData struct {
 	// Gets or sets the System.Drawing.StringTrimming enumeration for this System.Drawing.StringFormat object.
 	Trimming string `json:"Trimming,omitempty"`
 }
+type IStringFormatData interface {
+	IsStringFormatData() bool
+}
+func (StringFormatData) IsStringFormatData() bool {
+	return true;
+}
+

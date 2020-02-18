@@ -49,3 +49,13 @@ type Border struct {
 	// Gets or sets a value indicating whether the border has a shadow.
 	Shadow bool `json:"Shadow,omitempty"`
 }
+type IBorder interface {
+	IsBorder() bool
+}
+func (Border) IsBorder() bool {
+	return true;
+}
+func (Border) IsLinkElement() bool {
+	return true;
+}
+

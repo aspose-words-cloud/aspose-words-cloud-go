@@ -79,3 +79,13 @@ type PclSaveOptionsData struct {
 	// Gets or sets a value determining whether or not complex transformed elements should be rasterized before saving to PCL document.  Default is true.
 	RasterizeTransformedElements bool `json:"RasterizeTransformedElements,omitempty"`
 }
+type IPclSaveOptionsData interface {
+	IsPclSaveOptionsData() bool
+}
+func (PclSaveOptionsData) IsPclSaveOptionsData() bool {
+	return true;
+}
+func (PclSaveOptionsData) IsFixedPageSaveOptionsData() bool {
+	return true;
+}
+

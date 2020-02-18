@@ -172,3 +172,13 @@ type HtmlSaveOptionsData struct {
 	// Gets or sets controls how table, row and cell widths are exported.
 	TableWidthOutputMode string `json:"TableWidthOutputMode,omitempty"`
 }
+type IHtmlSaveOptionsData interface {
+	IsHtmlSaveOptionsData() bool
+}
+func (HtmlSaveOptionsData) IsHtmlSaveOptionsData() bool {
+	return true;
+}
+func (HtmlSaveOptionsData) IsSaveOptionsData() bool {
+	return true;
+}
+

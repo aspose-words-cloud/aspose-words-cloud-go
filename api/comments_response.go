@@ -34,3 +34,13 @@ type CommentsResponse struct {
 	// Gets or sets collection of comments.
 	Comments *CommentsCollection `json:"Comments,omitempty"`
 }
+type ICommentsResponse interface {
+	IsCommentsResponse() bool
+}
+func (CommentsResponse) IsCommentsResponse() bool {
+	return true;
+}
+func (CommentsResponse) IsWordsResponse() bool {
+	return true;
+}
+

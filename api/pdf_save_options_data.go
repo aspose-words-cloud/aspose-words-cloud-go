@@ -145,3 +145,13 @@ type PdfSaveOptionsData struct {
 	// Gets or sets determines zoom factor (in percentages) for a document.
 	ZoomFactor int32 `json:"ZoomFactor,omitempty"`
 }
+type IPdfSaveOptionsData interface {
+	IsPdfSaveOptionsData() bool
+}
+func (PdfSaveOptionsData) IsPdfSaveOptionsData() bool {
+	return true;
+}
+func (PdfSaveOptionsData) IsFixedPageSaveOptionsData() bool {
+	return true;
+}
+

@@ -85,3 +85,13 @@ type XpsSaveOptionsData struct {
 	// Gets or sets determines whether the document should be saved using a booklet printing layout.
 	UseBookFoldPrintingSettings bool `json:"UseBookFoldPrintingSettings,omitempty"`
 }
+type IXpsSaveOptionsData interface {
+	IsXpsSaveOptionsData() bool
+}
+func (XpsSaveOptionsData) IsXpsSaveOptionsData() bool {
+	return true;
+}
+func (XpsSaveOptionsData) IsFixedPageSaveOptionsData() bool {
+	return true;
+}
+

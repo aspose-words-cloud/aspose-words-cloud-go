@@ -34,3 +34,13 @@ type FieldResponse struct {
 	// Gets or sets field information.
 	Field *Field `json:"Field,omitempty"`
 }
+type IFieldResponse interface {
+	IsFieldResponse() bool
+}
+func (FieldResponse) IsFieldResponse() bool {
+	return true;
+}
+func (FieldResponse) IsWordsResponse() bool {
+	return true;
+}
+

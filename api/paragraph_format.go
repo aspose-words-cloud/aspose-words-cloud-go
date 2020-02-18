@@ -109,3 +109,13 @@ type ParagraphFormat struct {
 	// Gets or sets true if the first and last lines in the paragraph are to remain on the same page as the rest of the paragraph.             
 	WidowControl bool `json:"WidowControl,omitempty"`
 }
+type IParagraphFormat interface {
+	IsParagraphFormat() bool
+}
+func (ParagraphFormat) IsParagraphFormat() bool {
+	return true;
+}
+func (ParagraphFormat) IsLinkElement() bool {
+	return true;
+}
+

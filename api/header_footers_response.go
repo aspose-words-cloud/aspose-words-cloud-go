@@ -34,3 +34,13 @@ type HeaderFootersResponse struct {
 	// Gets or sets collection of headers/footers.
 	HeaderFooters *HeaderFooterLinkCollection `json:"HeaderFooters,omitempty"`
 }
+type IHeaderFootersResponse interface {
+	IsHeaderFootersResponse() bool
+}
+func (HeaderFootersResponse) IsHeaderFootersResponse() bool {
+	return true;
+}
+func (HeaderFootersResponse) IsWordsResponse() bool {
+	return true;
+}
+

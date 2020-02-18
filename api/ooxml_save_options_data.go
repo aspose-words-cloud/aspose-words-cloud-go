@@ -64,3 +64,13 @@ type OoxmlSaveOptionsData struct {
 	// Gets or sets specifies whether or not use pretty formats output.
 	PrettyFormat bool `json:"PrettyFormat,omitempty"`
 }
+type IOoxmlSaveOptionsData interface {
+	IsOoxmlSaveOptionsData() bool
+}
+func (OoxmlSaveOptionsData) IsOoxmlSaveOptionsData() bool {
+	return true;
+}
+func (OoxmlSaveOptionsData) IsSaveOptionsData() bool {
+	return true;
+}
+

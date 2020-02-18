@@ -112,3 +112,13 @@ type GifSaveOptionsData struct {
 	// Gets or sets the vertical resolution for the generated images, in dots per inch.  This property has effect only when saving to raster image formats. The default value is 96.
 	VerticalResolution float64 `json:"VerticalResolution,omitempty"`
 }
+type IGifSaveOptionsData interface {
+	IsGifSaveOptionsData() bool
+}
+func (GifSaveOptionsData) IsGifSaveOptionsData() bool {
+	return true;
+}
+func (GifSaveOptionsData) IsImageSaveOptionsData() bool {
+	return true;
+}
+

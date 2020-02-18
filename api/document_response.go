@@ -34,3 +34,13 @@ type DocumentResponse struct {
 	// Gets or sets document description.
 	Document *Document `json:"Document,omitempty"`
 }
+type IDocumentResponse interface {
+	IsDocumentResponse() bool
+}
+func (DocumentResponse) IsDocumentResponse() bool {
+	return true;
+}
+func (DocumentResponse) IsWordsResponse() bool {
+	return true;
+}
+

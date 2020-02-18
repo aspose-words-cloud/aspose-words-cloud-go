@@ -34,3 +34,13 @@ type DocumentProperties struct {
 	// Gets or sets collection of document properties.
 	List []DocumentProperty `json:"List,omitempty"`
 }
+type IDocumentProperties interface {
+	IsDocumentProperties() bool
+}
+func (DocumentProperties) IsDocumentProperties() bool {
+	return true;
+}
+func (DocumentProperties) IsLinkElement() bool {
+	return true;
+}
+

@@ -34,3 +34,13 @@ type FootnotesResponse struct {
 	// Gets or sets collection of footnotes.
 	Footnotes *FootnoteCollection `json:"Footnotes,omitempty"`
 }
+type IFootnotesResponse interface {
+	IsFootnotesResponse() bool
+}
+func (FootnotesResponse) IsFootnotesResponse() bool {
+	return true;
+}
+func (FootnotesResponse) IsWordsResponse() bool {
+	return true;
+}
+

@@ -34,3 +34,10 @@ type FootnotesStatData struct {
 	// Gets or sets total count of paragraphs in footnotes.
 	ParagraphCount int32 `json:"ParagraphCount"`
 }
+type IFootnotesStatData interface {
+	IsFootnotesStatData() bool
+}
+func (FootnotesStatData) IsFootnotesStatData() bool {
+	return true;
+}
+

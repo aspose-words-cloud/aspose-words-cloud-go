@@ -112,3 +112,13 @@ type ImageSaveOptionsData struct {
 	// Gets or sets the vertical resolution for the generated images, in dots per inch.  This property has effect only when saving to raster image formats. The default value is 96.
 	VerticalResolution float64 `json:"VerticalResolution,omitempty"`
 }
+type IImageSaveOptionsData interface {
+	IsImageSaveOptionsData() bool
+}
+func (ImageSaveOptionsData) IsImageSaveOptionsData() bool {
+	return true;
+}
+func (ImageSaveOptionsData) IsFixedPageSaveOptionsData() bool {
+	return true;
+}
+

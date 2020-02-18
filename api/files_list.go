@@ -31,3 +31,10 @@ type FilesList struct {
 	// Files and folders contained by folder .
 	Value []StorageFile `json:"Value,omitempty"`
 }
+type IFilesList interface {
+	IsFilesList() bool
+}
+func (FilesList) IsFilesList() bool {
+	return true;
+}
+

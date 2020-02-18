@@ -37,3 +37,10 @@ type SaveResult struct {
 	// Gets or sets links to additional items (css, images etc).
 	AdditionalItems []FileLink `json:"AdditionalItems,omitempty"`
 }
+type ISaveResult interface {
+	IsSaveResult() bool
+}
+func (SaveResult) IsSaveResult() bool {
+	return true;
+}
+

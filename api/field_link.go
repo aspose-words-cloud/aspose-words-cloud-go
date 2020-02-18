@@ -37,3 +37,13 @@ type FieldLink struct {
 	// Gets or sets field code.
 	FieldCode string `json:"FieldCode,omitempty"`
 }
+type IFieldLink interface {
+	IsFieldLink() bool
+}
+func (FieldLink) IsFieldLink() bool {
+	return true;
+}
+func (FieldLink) IsNodeLink() bool {
+	return true;
+}
+

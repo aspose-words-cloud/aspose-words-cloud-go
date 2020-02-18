@@ -151,3 +151,13 @@ type Font struct {
 	// Gets or sets the color of the underline applied to the font.
 	UnderlineColor *XmlColor `json:"UnderlineColor,omitempty"`
 }
+type IFont interface {
+	IsFont() bool
+}
+func (Font) IsFont() bool {
+	return true;
+}
+func (Font) IsLinkElement() bool {
+	return true;
+}
+

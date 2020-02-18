@@ -37,3 +37,13 @@ type Run struct {
 	// Gets or sets run's text.
 	Text string `json:"Text,omitempty"`
 }
+type IRun interface {
+	IsRun() bool
+}
+func (Run) IsRun() bool {
+	return true;
+}
+func (Run) IsRunLink() bool {
+	return true;
+}
+

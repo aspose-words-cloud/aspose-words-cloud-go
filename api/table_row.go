@@ -40,3 +40,13 @@ type TableRow struct {
 	// Gets or sets collection of table's rows.
 	TableCellList []TableCell `json:"TableCellList,omitempty"`
 }
+type ITableRow interface {
+	IsTableRow() bool
+}
+func (TableRow) IsTableRow() bool {
+	return true;
+}
+func (TableRow) IsNodeLink() bool {
+	return true;
+}
+

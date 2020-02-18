@@ -34,3 +34,13 @@ type BordersResponse struct {
 	// Gets or sets table.
 	Borders *BordersCollection `json:"Borders,omitempty"`
 }
+type IBordersResponse interface {
+	IsBordersResponse() bool
+}
+func (BordersResponse) IsBordersResponse() bool {
+	return true;
+}
+func (BordersResponse) IsWordsResponse() bool {
+	return true;
+}
+

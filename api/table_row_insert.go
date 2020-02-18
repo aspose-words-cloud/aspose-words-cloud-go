@@ -34,3 +34,10 @@ type TableRowInsert struct {
 	// Gets or sets count of columns. Default is 1.
 	ColumnsCount int32 `json:"ColumnsCount"`
 }
+type ITableRowInsert interface {
+	IsTableRowInsert() bool
+}
+func (TableRowInsert) IsTableRowInsert() bool {
+	return true;
+}
+

@@ -34,3 +34,13 @@ type SectionPageSetupResponse struct {
 	// Gets or sets section.
 	PageSetup *PageSetup `json:"PageSetup,omitempty"`
 }
+type ISectionPageSetupResponse interface {
+	IsSectionPageSetupResponse() bool
+}
+func (SectionPageSetupResponse) IsSectionPageSetupResponse() bool {
+	return true;
+}
+func (SectionPageSetupResponse) IsWordsResponse() bool {
+	return true;
+}
+

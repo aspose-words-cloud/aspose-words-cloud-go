@@ -46,3 +46,10 @@ type GraphicsQualityOptionsData struct {
 	// Gets or sets the rendering mode for text associated with this Graphics.
 	TextRenderingHint string `json:"TextRenderingHint,omitempty"`
 }
+type IGraphicsQualityOptionsData interface {
+	IsGraphicsQualityOptionsData() bool
+}
+func (GraphicsQualityOptionsData) IsGraphicsQualityOptionsData() bool {
+	return true;
+}
+

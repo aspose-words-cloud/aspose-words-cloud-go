@@ -34,3 +34,10 @@ type LoadWebDocumentData struct {
 	// Gets or sets save options.
 	SaveOptions *SaveOptionsData `json:"SaveOptions,omitempty"`
 }
+type ILoadWebDocumentData interface {
+	IsLoadWebDocumentData() bool
+}
+func (LoadWebDocumentData) IsLoadWebDocumentData() bool {
+	return true;
+}
+

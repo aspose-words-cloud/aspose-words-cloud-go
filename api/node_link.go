@@ -34,3 +34,13 @@ type NodeLink struct {
 	// Gets or sets node id.
 	NodeId string `json:"NodeId,omitempty"`
 }
+type INodeLink interface {
+	IsNodeLink() bool
+}
+func (NodeLink) IsNodeLink() bool {
+	return true;
+}
+func (NodeLink) IsLinkElement() bool {
+	return true;
+}
+

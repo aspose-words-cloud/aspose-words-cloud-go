@@ -34,3 +34,13 @@ type FormFieldsResponse struct {
 	// Gets or sets collection of form fields.
 	FormFields *FormFieldCollection `json:"FormFields,omitempty"`
 }
+type IFormFieldsResponse interface {
+	IsFormFieldsResponse() bool
+}
+func (FormFieldsResponse) IsFormFieldsResponse() bool {
+	return true;
+}
+func (FormFieldsResponse) IsWordsResponse() bool {
+	return true;
+}
+

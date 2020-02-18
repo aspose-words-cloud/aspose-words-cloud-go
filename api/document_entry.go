@@ -34,3 +34,10 @@ type DocumentEntry struct {
 	// Gets or sets defines which formatting will be used: appended or destination document.Can be KeepSourceFormatting or UseDestinationStyles.
 	ImportFormatMode string `json:"ImportFormatMode,omitempty"`
 }
+type IDocumentEntry interface {
+	IsDocumentEntry() bool
+}
+func (DocumentEntry) IsDocumentEntry() bool {
+	return true;
+}
+

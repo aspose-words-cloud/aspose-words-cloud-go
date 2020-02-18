@@ -91,3 +91,13 @@ type SvgSaveOptionsData struct {
 	// Gets or sets determines how text should be rendered.
 	TextOutputMode string `json:"TextOutputMode,omitempty"`
 }
+type ISvgSaveOptionsData interface {
+	IsSvgSaveOptionsData() bool
+}
+func (SvgSaveOptionsData) IsSvgSaveOptionsData() bool {
+	return true;
+}
+func (SvgSaveOptionsData) IsFixedPageSaveOptionsData() bool {
+	return true;
+}
+

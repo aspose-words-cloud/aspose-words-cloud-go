@@ -34,3 +34,10 @@ type BookmarksOutlineLevelData struct {
 	// Gets or sets specify the bookmark's level.
 	BookmarksOutlineLevel int32 `json:"BookmarksOutlineLevel"`
 }
+type IBookmarksOutlineLevelData interface {
+	IsBookmarksOutlineLevelData() bool
+}
+func (BookmarksOutlineLevelData) IsBookmarksOutlineLevelData() bool {
+	return true;
+}
+

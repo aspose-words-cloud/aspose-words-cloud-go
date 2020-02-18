@@ -3,7 +3,7 @@
   "swagger": "2.0",
   "info": {
     "title": "Aspose.Words Cloud API Reference",
-    "version": "19.11.0"
+    "version": "19.12.0"
   },
   "host": "localhost",
   "basePath": "/v4.0",
@@ -531,7 +531,7 @@
         "x-operationId": "DeleteBorders"
       }
     },
-    "/words/{name}/{nodePath}/borders/{index}": {
+    "/words/{name}/{nodePath}/borders/{borderType}": {
       "get": {
         "tags": [
           "words"
@@ -557,11 +557,22 @@
             "description": "Path to the node with border(node should be paragraph, cell or row)."
           },
           {
-            "type": "integer",
-            "name": "Index",
+            "type": "string",
+            "name": "BorderType",
             "in": "path",
             "required": true,
-            "description": "Object index."
+            "description": "Border type.",
+            "enum": [
+              "Bottom",
+              "Left",
+              "Right",
+              "Top",
+              "Horizontal",
+              "Vertical",
+              "DiagonalDown",
+              "DiagonalUp",
+              "None"
+            ]
           },
           {
             "type": "string",
@@ -639,11 +650,22 @@
             "description": "Path to the node with border(node should be paragraph, cell or row)."
           },
           {
-            "type": "integer",
-            "name": "Index",
+            "type": "string",
+            "name": "BorderType",
             "in": "path",
             "required": true,
-            "description": "Object index."
+            "description": "Border type.",
+            "enum": [
+              "Bottom",
+              "Left",
+              "Right",
+              "Top",
+              "Horizontal",
+              "Vertical",
+              "DiagonalDown",
+              "DiagonalUp",
+              "None"
+            ]
           },
           {
             "type": "string",
@@ -749,11 +771,22 @@
             "description": "Path to the node with border(node should be paragraph, cell or row)."
           },
           {
-            "type": "integer",
-            "name": "Index",
+            "type": "string",
+            "name": "BorderType",
             "in": "path",
             "required": true,
-            "description": "Object index."
+            "description": "Border type.",
+            "enum": [
+              "Bottom",
+              "Left",
+              "Right",
+              "Top",
+              "Horizontal",
+              "Vertical",
+              "DiagonalDown",
+              "DiagonalUp",
+              "None"
+            ]
           },
           {
             "type": "string",
@@ -3622,7 +3655,7 @@
         "parameters": [
           {
             "type": "file",
-            "name": "File",
+            "name": "FileContent",
             "in": "formData",
             "required": true,
             "description": "File to upload"
@@ -17444,16 +17477,16 @@
       "description": "The error details",
       "additionalProperties": false,
       "required": [
-        "Date"
+        "ErrorDateTime"
       ],
       "properties": {
         "RequestId": {
           "type": "string",
-          "description": "The request id"
+          "description": "The request id."
         },
-        "Date": {
+        "ErrorDateTime": {
           "type": "string",
-          "description": "Date",
+          "description": "Error datetime.",
           "format": "date-time"
         }
       }

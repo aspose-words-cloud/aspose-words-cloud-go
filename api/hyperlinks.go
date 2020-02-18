@@ -34,3 +34,13 @@ type Hyperlinks struct {
 	// Gets or sets array of .
 	HyperlinkList []Hyperlink `json:"HyperlinkList,omitempty"`
 }
+type IHyperlinks interface {
+	IsHyperlinks() bool
+}
+func (Hyperlinks) IsHyperlinks() bool {
+	return true;
+}
+func (Hyperlinks) IsLinkElement() bool {
+	return true;
+}
+

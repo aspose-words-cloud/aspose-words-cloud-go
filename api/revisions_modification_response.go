@@ -34,3 +34,13 @@ type RevisionsModificationResponse struct {
 	// Gets or sets result of the modification operations for the revisions collection.
 	Result *ModificationOperationResult `json:"Result,omitempty"`
 }
+type IRevisionsModificationResponse interface {
+	IsRevisionsModificationResponse() bool
+}
+func (RevisionsModificationResponse) IsRevisionsModificationResponse() bool {
+	return true;
+}
+func (RevisionsModificationResponse) IsWordsResponse() bool {
+	return true;
+}
+

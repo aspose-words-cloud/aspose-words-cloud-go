@@ -40,3 +40,10 @@ type PageStatData struct {
 	// Gets or sets detailed statistics of footnotes.
 	FootnotesStatData *FootnotesStatData `json:"FootnotesStatData,omitempty"`
 }
+type IPageStatData interface {
+	IsPageStatData() bool
+}
+func (PageStatData) IsPageStatData() bool {
+	return true;
+}
+

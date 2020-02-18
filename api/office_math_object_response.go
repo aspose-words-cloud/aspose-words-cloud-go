@@ -34,3 +34,13 @@ type OfficeMathObjectResponse struct {
 	// Gets or sets officeMathObject information.
 	OfficeMathObject *OfficeMathObject `json:"OfficeMathObject,omitempty"`
 }
+type IOfficeMathObjectResponse interface {
+	IsOfficeMathObjectResponse() bool
+}
+func (OfficeMathObjectResponse) IsOfficeMathObjectResponse() bool {
+	return true;
+}
+func (OfficeMathObjectResponse) IsWordsResponse() bool {
+	return true;
+}
+

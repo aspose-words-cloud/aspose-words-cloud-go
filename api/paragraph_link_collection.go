@@ -34,3 +34,13 @@ type ParagraphLinkCollection struct {
 	// Gets or sets collection of paragraph's links.
 	ParagraphLinkList []ParagraphLink `json:"ParagraphLinkList,omitempty"`
 }
+type IParagraphLinkCollection interface {
+	IsParagraphLinkCollection() bool
+}
+func (ParagraphLinkCollection) IsParagraphLinkCollection() bool {
+	return true;
+}
+func (ParagraphLinkCollection) IsLinkElement() bool {
+	return true;
+}
+

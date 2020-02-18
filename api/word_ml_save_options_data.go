@@ -58,3 +58,13 @@ type WordMlSaveOptionsData struct {
 	// Gets or sets specifies whether or not use pretty formats output.
 	PrettyFormat bool `json:"PrettyFormat,omitempty"`
 }
+type IWordMlSaveOptionsData interface {
+	IsWordMLSaveOptionsData() bool
+}
+func (WordMlSaveOptionsData) IsWordMLSaveOptionsData() bool {
+	return true;
+}
+func (WordMlSaveOptionsData) IsSaveOptionsData() bool {
+	return true;
+}
+

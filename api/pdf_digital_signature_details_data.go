@@ -47,3 +47,10 @@ type PdfDigitalSignatureDetailsData struct {
 	// Gets or sets date of the signing.
 	SignatureDate time.Time `json:"SignatureDate,omitempty"`
 }
+type IPdfDigitalSignatureDetailsData interface {
+	IsPdfDigitalSignatureDetailsData() bool
+}
+func (PdfDigitalSignatureDetailsData) IsPdfDigitalSignatureDetailsData() bool {
+	return true;
+}
+

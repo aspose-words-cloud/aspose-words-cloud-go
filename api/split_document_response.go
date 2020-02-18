@@ -34,3 +34,13 @@ type SplitDocumentResponse struct {
 	// Gets or sets resylt of splitting document.
 	SplitResult *SplitDocumentResult `json:"SplitResult,omitempty"`
 }
+type ISplitDocumentResponse interface {
+	IsSplitDocumentResponse() bool
+}
+func (SplitDocumentResponse) IsSplitDocumentResponse() bool {
+	return true;
+}
+func (SplitDocumentResponse) IsWordsResponse() bool {
+	return true;
+}
+

@@ -46,3 +46,13 @@ type Section struct {
 	// Gets or sets link to Tables resource.
 	Tables *LinkElement `json:"Tables,omitempty"`
 }
+type ISection interface {
+	IsSection() bool
+}
+func (Section) IsSection() bool {
+	return true;
+}
+func (Section) IsLinkElement() bool {
+	return true;
+}
+

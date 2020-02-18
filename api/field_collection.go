@@ -34,3 +34,13 @@ type FieldCollection struct {
 	// Gets or sets collection of fields.
 	List []Field `json:"List,omitempty"`
 }
+type IFieldCollection interface {
+	IsFieldCollection() bool
+}
+func (FieldCollection) IsFieldCollection() bool {
+	return true;
+}
+func (FieldCollection) IsLinkElement() bool {
+	return true;
+}
+

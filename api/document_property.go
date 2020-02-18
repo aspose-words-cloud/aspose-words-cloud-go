@@ -40,3 +40,13 @@ type DocumentProperty struct {
 	// Gets or sets string value of the document property.
 	Value string `json:"Value,omitempty"`
 }
+type IDocumentProperty interface {
+	IsDocumentProperty() bool
+}
+func (DocumentProperty) IsDocumentProperty() bool {
+	return true;
+}
+func (DocumentProperty) IsLinkElement() bool {
+	return true;
+}
+

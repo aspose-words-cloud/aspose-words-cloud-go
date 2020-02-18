@@ -55,3 +55,10 @@ type SaveOptionsData struct {
 	// Gets or sets a value determining if fields should be updated before saving the document to a fixed page format. Default value for this property is. true
 	UpdateFields bool `json:"UpdateFields,omitempty"`
 }
+type ISaveOptionsData interface {
+	IsSaveOptionsData() bool
+}
+func (SaveOptionsData) IsSaveOptionsData() bool {
+	return true;
+}
+

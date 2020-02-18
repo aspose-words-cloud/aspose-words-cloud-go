@@ -34,3 +34,10 @@ type ModificationOperationResult struct {
 	// Gets or sets link to the dest document (result of the modification operation).
 	Dest *FileLink `json:"Dest,omitempty"`
 }
+type IModificationOperationResult interface {
+	IsModificationOperationResult() bool
+}
+func (ModificationOperationResult) IsModificationOperationResult() bool {
+	return true;
+}
+

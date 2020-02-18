@@ -34,3 +34,13 @@ type SectionLinkCollectionResponse struct {
 	// Gets or sets collection of sections.
 	Sections *SectionLinkCollection `json:"Sections,omitempty"`
 }
+type ISectionLinkCollectionResponse interface {
+	IsSectionLinkCollectionResponse() bool
+}
+func (SectionLinkCollectionResponse) IsSectionLinkCollectionResponse() bool {
+	return true;
+}
+func (SectionLinkCollectionResponse) IsWordsResponse() bool {
+	return true;
+}
+

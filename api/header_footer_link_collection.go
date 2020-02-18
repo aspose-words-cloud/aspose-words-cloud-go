@@ -34,3 +34,13 @@ type HeaderFooterLinkCollection struct {
 	// Gets or sets collection of section's links.
 	List []HeaderFooterLink `json:"List,omitempty"`
 }
+type IHeaderFooterLinkCollection interface {
+	IsHeaderFooterLinkCollection() bool
+}
+func (HeaderFooterLinkCollection) IsHeaderFooterLinkCollection() bool {
+	return true;
+}
+func (HeaderFooterLinkCollection) IsLinkElement() bool {
+	return true;
+}
+

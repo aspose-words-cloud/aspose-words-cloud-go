@@ -34,3 +34,10 @@ type DocumentPosition struct {
 	// Gets or sets offset into the node.
 	Offset int32 `json:"Offset,omitempty"`
 }
+type IDocumentPosition interface {
+	IsDocumentPosition() bool
+}
+func (DocumentPosition) IsDocumentPosition() bool {
+	return true;
+}
+

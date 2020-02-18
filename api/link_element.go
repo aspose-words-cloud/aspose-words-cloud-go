@@ -31,3 +31,10 @@ type LinkElement struct {
 	// Gets or sets link to the document.
 	Link *WordsApiLink `json:"link,omitempty"`
 }
+type ILinkElement interface {
+	IsLinkElement() bool
+}
+func (LinkElement) IsLinkElement() bool {
+	return true;
+}
+

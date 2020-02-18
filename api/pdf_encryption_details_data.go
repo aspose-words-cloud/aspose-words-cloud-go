@@ -40,3 +40,10 @@ type PdfEncryptionDetailsData struct {
 	// Gets or sets specifies the user password required for opening the encrypted PDF document.
 	UserPassword string `json:"UserPassword,omitempty"`
 }
+type IPdfEncryptionDetailsData interface {
+	IsPdfEncryptionDetailsData() bool
+}
+func (PdfEncryptionDetailsData) IsPdfEncryptionDetailsData() bool {
+	return true;
+}
+

@@ -31,3 +31,13 @@ type CommentLink struct {
 	// Gets or sets link to the document.
 	Link *WordsApiLink `json:"link,omitempty"`
 }
+type ICommentLink interface {
+	IsCommentLink() bool
+}
+func (CommentLink) IsCommentLink() bool {
+	return true;
+}
+func (CommentLink) IsLinkElement() bool {
+	return true;
+}
+

@@ -73,3 +73,13 @@ type FixedPageSaveOptionsData struct {
 	// Gets or sets determines 0-based index of the first page to render.
 	PageIndex int32 `json:"PageIndex,omitempty"`
 }
+type IFixedPageSaveOptionsData interface {
+	IsFixedPageSaveOptionsData() bool
+}
+func (FixedPageSaveOptionsData) IsFixedPageSaveOptionsData() bool {
+	return true;
+}
+func (FixedPageSaveOptionsData) IsSaveOptionsData() bool {
+	return true;
+}
+

@@ -79,3 +79,13 @@ type XamlFixedSaveOptionsData struct {
 	// Gets or sets specifies the name of the folder used to construct image URIs written into an fixed page Xaml document. Default is null.
 	ResourcesFolderAlias string `json:"ResourcesFolderAlias,omitempty"`
 }
+type IXamlFixedSaveOptionsData interface {
+	IsXamlFixedSaveOptionsData() bool
+}
+func (XamlFixedSaveOptionsData) IsXamlFixedSaveOptionsData() bool {
+	return true;
+}
+func (XamlFixedSaveOptionsData) IsFixedPageSaveOptionsData() bool {
+	return true;
+}
+

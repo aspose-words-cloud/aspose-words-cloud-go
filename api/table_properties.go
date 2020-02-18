@@ -73,3 +73,13 @@ type TableProperties struct {
 	// Gets or sets the amount of space (in points) to add above the contents of cells.
 	TopPadding float64 `json:"TopPadding,omitempty"`
 }
+type ITableProperties interface {
+	IsTableProperties() bool
+}
+func (TableProperties) IsTableProperties() bool {
+	return true;
+}
+func (TableProperties) IsLinkElement() bool {
+	return true;
+}
+

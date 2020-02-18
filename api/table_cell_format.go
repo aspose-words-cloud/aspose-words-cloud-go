@@ -67,3 +67,13 @@ type TableCellFormat struct {
 	// Gets or sets if true, wrap text for the cell.
 	WrapText bool `json:"WrapText,omitempty"`
 }
+type ITableCellFormat interface {
+	IsTableCellFormat() bool
+}
+func (TableCellFormat) IsTableCellFormat() bool {
+	return true;
+}
+func (TableCellFormat) IsLinkElement() bool {
+	return true;
+}
+

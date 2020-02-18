@@ -34,3 +34,13 @@ type TableLink struct {
 	// Gets or sets node id.
 	NodeId string `json:"NodeId,omitempty"`
 }
+type ITableLink interface {
+	IsTableLink() bool
+}
+func (TableLink) IsTableLink() bool {
+	return true;
+}
+func (TableLink) IsNodeLink() bool {
+	return true;
+}
+

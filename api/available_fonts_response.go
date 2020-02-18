@@ -40,3 +40,13 @@ type AvailableFontsResponse struct {
 	// Gets or sets the list of system fonts, availiable on the server.
 	SystemFonts []FontInfo `json:"SystemFonts,omitempty"`
 }
+type IAvailableFontsResponse interface {
+	IsAvailableFontsResponse() bool
+}
+func (AvailableFontsResponse) IsAvailableFontsResponse() bool {
+	return true;
+}
+func (AvailableFontsResponse) IsWordsResponse() bool {
+	return true;
+}
+

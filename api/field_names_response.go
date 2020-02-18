@@ -34,3 +34,13 @@ type FieldNamesResponse struct {
 	// Gets or sets collection of mail merge fields.
 	FieldNames *FieldNames `json:"FieldNames,omitempty"`
 }
+type IFieldNamesResponse interface {
+	IsFieldNamesResponse() bool
+}
+func (FieldNamesResponse) IsFieldNamesResponse() bool {
+	return true;
+}
+func (FieldNamesResponse) IsWordsResponse() bool {
+	return true;
+}
+

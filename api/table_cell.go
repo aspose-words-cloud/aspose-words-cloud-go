@@ -37,3 +37,13 @@ type TableCell struct {
 	// Gets or sets child nodes.
 	ChildNodes []NodeLink `json:"ChildNodes,omitempty"`
 }
+type ITableCell interface {
+	IsTableCell() bool
+}
+func (TableCell) IsTableCell() bool {
+	return true;
+}
+func (TableCell) IsNodeLink() bool {
+	return true;
+}
+

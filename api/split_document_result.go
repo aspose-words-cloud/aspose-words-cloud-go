@@ -37,3 +37,10 @@ type SplitDocumentResult struct {
 	// Gets or sets link to the file archive with pages.
 	ZippedPages *FileLink `json:"ZippedPages,omitempty"`
 }
+type ISplitDocumentResult interface {
+	IsSplitDocumentResult() bool
+}
+func (SplitDocumentResult) IsSplitDocumentResult() bool {
+	return true;
+}
+

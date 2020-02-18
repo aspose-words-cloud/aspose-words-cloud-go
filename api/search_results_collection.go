@@ -34,3 +34,13 @@ type SearchResultsCollection struct {
 	// Gets or sets collection of comments.
 	ResultsList []SearchResult `json:"ResultsList,omitempty"`
 }
+type ISearchResultsCollection interface {
+	IsSearchResultsCollection() bool
+}
+func (SearchResultsCollection) IsSearchResultsCollection() bool {
+	return true;
+}
+func (SearchResultsCollection) IsLinkElement() bool {
+	return true;
+}
+

@@ -34,3 +34,13 @@ type DrawingObjectCollection struct {
 	// Gets or sets collection of DrawingObjects links.
 	List []LinkElement `json:"List,omitempty"`
 }
+type IDrawingObjectCollection interface {
+	IsDrawingObjectCollection() bool
+}
+func (DrawingObjectCollection) IsDrawingObjectCollection() bool {
+	return true;
+}
+func (DrawingObjectCollection) IsLinkElement() bool {
+	return true;
+}
+

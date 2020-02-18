@@ -34,3 +34,13 @@ type ParagraphResponse struct {
 	// Gets or sets paragraph.
 	Paragraph *Paragraph `json:"Paragraph,omitempty"`
 }
+type IParagraphResponse interface {
+	IsParagraphResponse() bool
+}
+func (ParagraphResponse) IsParagraphResponse() bool {
+	return true;
+}
+func (ParagraphResponse) IsWordsResponse() bool {
+	return true;
+}
+

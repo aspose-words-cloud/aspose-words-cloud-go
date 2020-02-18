@@ -46,3 +46,10 @@ type Document struct {
 	// Gets or sets returns document properties.
 	DocumentProperties *DocumentProperties `json:"DocumentProperties,omitempty"`
 }
+type IDocument interface {
+	IsDocument() bool
+}
+func (Document) IsDocument() bool {
+	return true;
+}
+

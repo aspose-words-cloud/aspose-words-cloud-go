@@ -46,3 +46,10 @@ type OutlineOptionsData struct {
 	// Gets or sets specifies how many levels of headings (paragraphs formatted with the Heading styles) to include in the document outline.
 	HeadingsOutlineLevels int32 `json:"HeadingsOutlineLevels,omitempty"`
 }
+type IOutlineOptionsData interface {
+	IsOutlineOptionsData() bool
+}
+func (OutlineOptionsData) IsOutlineOptionsData() bool {
+	return true;
+}
+

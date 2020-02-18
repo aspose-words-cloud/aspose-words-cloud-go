@@ -37,3 +37,13 @@ type Bookmark struct {
 	// Gets or sets the text enclosed in the bookmark.
 	Text string `json:"Text,omitempty"`
 }
+type IBookmark interface {
+	IsBookmark() bool
+}
+func (Bookmark) IsBookmark() bool {
+	return true;
+}
+func (Bookmark) IsLinkElement() bool {
+	return true;
+}
+

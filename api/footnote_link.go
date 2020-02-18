@@ -34,3 +34,13 @@ type FootnoteLink struct {
 	// Gets or sets node id.
 	NodeId string `json:"NodeId,omitempty"`
 }
+type IFootnoteLink interface {
+	IsFootnoteLink() bool
+}
+func (FootnoteLink) IsFootnoteLink() bool {
+	return true;
+}
+func (FootnoteLink) IsNodeLink() bool {
+	return true;
+}
+

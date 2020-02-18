@@ -34,3 +34,13 @@ type FieldNames struct {
 	// Gets or sets collection of fields names.
 	Names []string `json:"Names,omitempty"`
 }
+type IFieldNames interface {
+	IsFieldNames() bool
+}
+func (FieldNames) IsFieldNames() bool {
+	return true;
+}
+func (FieldNames) IsLinkElement() bool {
+	return true;
+}
+

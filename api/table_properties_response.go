@@ -34,3 +34,13 @@ type TablePropertiesResponse struct {
 	// Gets or sets table.
 	Properties *TableProperties `json:"Properties,omitempty"`
 }
+type ITablePropertiesResponse interface {
+	IsTablePropertiesResponse() bool
+}
+func (TablePropertiesResponse) IsTablePropertiesResponse() bool {
+	return true;
+}
+func (TablePropertiesResponse) IsWordsResponse() bool {
+	return true;
+}
+

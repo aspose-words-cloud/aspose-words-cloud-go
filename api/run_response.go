@@ -34,3 +34,13 @@ type RunResponse struct {
 	// Gets or sets run.
 	Run *Run `json:"Run,omitempty"`
 }
+type IRunResponse interface {
+	IsRunResponse() bool
+}
+func (RunResponse) IsRunResponse() bool {
+	return true;
+}
+func (RunResponse) IsWordsResponse() bool {
+	return true;
+}
+

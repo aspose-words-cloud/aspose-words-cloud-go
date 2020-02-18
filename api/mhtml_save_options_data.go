@@ -175,3 +175,13 @@ type MhtmlSaveOptionsData struct {
 	// Gets or sets specifies whether to use CID (Content-ID) URLs to reference resources (images, fonts, CSS) included in MHTML documents. Default value is false.             
 	ExportCidUrlsForMhtmlResources bool `json:"ExportCidUrlsForMhtmlResources,omitempty"`
 }
+type IMhtmlSaveOptionsData interface {
+	IsMhtmlSaveOptionsData() bool
+}
+func (MhtmlSaveOptionsData) IsMhtmlSaveOptionsData() bool {
+	return true;
+}
+func (MhtmlSaveOptionsData) IsHtmlSaveOptionsData() bool {
+	return true;
+}
+

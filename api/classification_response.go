@@ -40,3 +40,13 @@ type ClassificationResponse struct {
 	// Gets or sets array of best classes results.
 	BestResults []ClassificationResult `json:"BestResults,omitempty"`
 }
+type IClassificationResponse interface {
+	IsClassificationResponse() bool
+}
+func (ClassificationResponse) IsClassificationResponse() bool {
+	return true;
+}
+func (ClassificationResponse) IsWordsResponse() bool {
+	return true;
+}
+

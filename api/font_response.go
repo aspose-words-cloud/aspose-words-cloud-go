@@ -34,3 +34,13 @@ type FontResponse struct {
 	// Gets or sets font.
 	Font *Font `json:"Font,omitempty"`
 }
+type IFontResponse interface {
+	IsFontResponse() bool
+}
+func (FontResponse) IsFontResponse() bool {
+	return true;
+}
+func (FontResponse) IsWordsResponse() bool {
+	return true;
+}
+

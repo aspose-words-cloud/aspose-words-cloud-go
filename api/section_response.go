@@ -34,3 +34,13 @@ type SectionResponse struct {
 	// Gets or sets section.
 	Section *Section `json:"Section,omitempty"`
 }
+type ISectionResponse interface {
+	IsSectionResponse() bool
+}
+func (SectionResponse) IsSectionResponse() bool {
+	return true;
+}
+func (SectionResponse) IsWordsResponse() bool {
+	return true;
+}
+

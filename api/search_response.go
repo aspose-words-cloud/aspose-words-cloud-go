@@ -37,3 +37,13 @@ type SearchResponse struct {
 	// Gets or sets collection of search results.
 	SearchResults *SearchResultsCollection `json:"SearchResults,omitempty"`
 }
+type ISearchResponse interface {
+	IsSearchResponse() bool
+}
+func (SearchResponse) IsSearchResponse() bool {
+	return true;
+}
+func (SearchResponse) IsWordsResponse() bool {
+	return true;
+}
+

@@ -34,3 +34,13 @@ type DrawingObjectsResponse struct {
 	// Gets or sets collection of drawing objects.
 	DrawingObjects *DrawingObjectCollection `json:"DrawingObjects,omitempty"`
 }
+type IDrawingObjectsResponse interface {
+	IsDrawingObjectsResponse() bool
+}
+func (DrawingObjectsResponse) IsDrawingObjectsResponse() bool {
+	return true;
+}
+func (DrawingObjectsResponse) IsWordsResponse() bool {
+	return true;
+}
+

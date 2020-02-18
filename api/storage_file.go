@@ -47,3 +47,10 @@ type StorageFile struct {
 	// File or folder path.
 	Path string `json:"Path,omitempty"`
 }
+type IStorageFile interface {
+	IsStorageFile() bool
+}
+func (StorageFile) IsStorageFile() bool {
+	return true;
+}
+

@@ -34,3 +34,13 @@ type ParagraphLinkCollectionResponse struct {
 	// Gets or sets collection of paragraphs.
 	Paragraphs *ParagraphLinkCollection `json:"Paragraphs,omitempty"`
 }
+type IParagraphLinkCollectionResponse interface {
+	IsParagraphLinkCollectionResponse() bool
+}
+func (ParagraphLinkCollectionResponse) IsParagraphLinkCollectionResponse() bool {
+	return true;
+}
+func (ParagraphLinkCollectionResponse) IsWordsResponse() bool {
+	return true;
+}
+

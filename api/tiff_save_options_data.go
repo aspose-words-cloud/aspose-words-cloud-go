@@ -121,3 +121,13 @@ type TiffSaveOptionsData struct {
 	// Gets or sets type of compression.
 	TiffCompression string `json:"TiffCompression,omitempty"`
 }
+type ITiffSaveOptionsData interface {
+	IsTiffSaveOptionsData() bool
+}
+func (TiffSaveOptionsData) IsTiffSaveOptionsData() bool {
+	return true;
+}
+func (TiffSaveOptionsData) IsImageSaveOptionsData() bool {
+	return true;
+}
+

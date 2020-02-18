@@ -34,3 +34,13 @@ type TableRowResponse struct {
 	// Gets or sets table row.
 	Row *TableRow `json:"Row,omitempty"`
 }
+type ITableRowResponse interface {
+	IsTableRowResponse() bool
+}
+func (TableRowResponse) IsTableRowResponse() bool {
+	return true;
+}
+func (TableRowResponse) IsWordsResponse() bool {
+	return true;
+}
+

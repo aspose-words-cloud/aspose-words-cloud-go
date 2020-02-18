@@ -37,3 +37,10 @@ type ProtectionRequest struct {
 	// Gets or sets new type of protection.
 	ProtectionType string `json:"ProtectionType,omitempty"`
 }
+type IProtectionRequest interface {
+	IsProtectionRequest() bool
+}
+func (ProtectionRequest) IsProtectionRequest() bool {
+	return true;
+}
+

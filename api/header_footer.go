@@ -43,3 +43,13 @@ type HeaderFooter struct {
 	// Gets or sets link to Paragraphs resource.
 	Paragraphs *LinkElement `json:"Paragraphs,omitempty"`
 }
+type IHeaderFooter interface {
+	IsHeaderFooter() bool
+}
+func (HeaderFooter) IsHeaderFooter() bool {
+	return true;
+}
+func (HeaderFooter) IsHeaderFooterLink() bool {
+	return true;
+}
+

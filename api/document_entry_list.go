@@ -31,3 +31,10 @@ type DocumentEntryList struct {
 	// Gets or sets list of documents.
 	DocumentEntries []DocumentEntry `json:"DocumentEntries,omitempty"`
 }
+type IDocumentEntryList interface {
+	IsDocumentEntryList() bool
+}
+func (DocumentEntryList) IsDocumentEntryList() bool {
+	return true;
+}
+

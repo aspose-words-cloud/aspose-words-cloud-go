@@ -34,3 +34,13 @@ type FootnoteCollection struct {
 	// Gets or sets collection of foonotes links.
 	List []Footnote `json:"List,omitempty"`
 }
+type IFootnoteCollection interface {
+	IsFootnoteCollection() bool
+}
+func (FootnoteCollection) IsFootnoteCollection() bool {
+	return true;
+}
+func (FootnoteCollection) IsLinkElement() bool {
+	return true;
+}
+

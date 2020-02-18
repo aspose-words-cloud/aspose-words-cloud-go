@@ -37,3 +37,13 @@ type StatDataResponse struct {
 	// Gets or sets statistical data of the document.
 	StatData *DocumentStatData `json:"StatData,omitempty"`
 }
+type IStatDataResponse interface {
+	IsStatDataResponse() bool
+}
+func (StatDataResponse) IsStatDataResponse() bool {
+	return true;
+}
+func (StatDataResponse) IsWordsResponse() bool {
+	return true;
+}
+

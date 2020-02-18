@@ -56,3 +56,13 @@ type Comment struct {
 	// Gets or sets this is a convenience property that allows to easily get or set text of the comment.
 	Text string `json:"Text,omitempty"`
 }
+type IComment interface {
+	IsComment() bool
+}
+func (Comment) IsComment() bool {
+	return true;
+}
+func (Comment) IsCommentLink() bool {
+	return true;
+}
+

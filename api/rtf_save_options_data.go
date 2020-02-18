@@ -64,3 +64,13 @@ type RtfSaveOptionsData struct {
 	// Gets or sets specifies whether or not use pretty formats output.
 	PrettyFormat bool `json:"PrettyFormat,omitempty"`
 }
+type IRtfSaveOptionsData interface {
+	IsRtfSaveOptionsData() bool
+}
+func (RtfSaveOptionsData) IsRtfSaveOptionsData() bool {
+	return true;
+}
+func (RtfSaveOptionsData) IsSaveOptionsData() bool {
+	return true;
+}
+

@@ -34,3 +34,10 @@ type ClassificationResult struct {
 	// Gets or sets the probability of class.
 	ClassProbability float64 `json:"ClassProbability"`
 }
+type IClassificationResult interface {
+	IsClassificationResult() bool
+}
+func (ClassificationResult) IsClassificationResult() bool {
+	return true;
+}
+

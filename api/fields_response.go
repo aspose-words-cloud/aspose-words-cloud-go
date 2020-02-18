@@ -34,3 +34,13 @@ type FieldsResponse struct {
 	// Gets or sets collection of fields.
 	Fields *FieldCollection `json:"Fields,omitempty"`
 }
+type IFieldsResponse interface {
+	IsFieldsResponse() bool
+}
+func (FieldsResponse) IsFieldsResponse() bool {
+	return true;
+}
+func (FieldsResponse) IsWordsResponse() bool {
+	return true;
+}
+

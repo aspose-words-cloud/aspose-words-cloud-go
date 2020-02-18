@@ -34,3 +34,13 @@ type RangeTextResponse struct {
 	// Gets or sets text from range.
 	Text string `json:"Text,omitempty"`
 }
+type IRangeTextResponse interface {
+	IsRangeTextResponse() bool
+}
+func (RangeTextResponse) IsRangeTextResponse() bool {
+	return true;
+}
+func (RangeTextResponse) IsWordsResponse() bool {
+	return true;
+}
+

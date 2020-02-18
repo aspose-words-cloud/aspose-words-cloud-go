@@ -40,3 +40,13 @@ type WordsApiLink struct {
 	// Gets or sets the \"title\" attribute conveys human-readable information about the link.  The content of the \"title\" attribute is Language-Sensitive.
 	Title string `json:"Title,omitempty"`
 }
+type IWordsApiLink interface {
+	IsWordsApiLink() bool
+}
+func (WordsApiLink) IsWordsApiLink() bool {
+	return true;
+}
+func (WordsApiLink) IsLink() bool {
+	return true;
+}
+

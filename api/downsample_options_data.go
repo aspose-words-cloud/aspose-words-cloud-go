@@ -37,3 +37,10 @@ type DownsampleOptionsData struct {
 	// Gets or sets specifies the threshold resolution in pixels per inch. If resolution of an image in the document is less than threshold value, the downsampling algorithm will not be applied. A value of 0 means the threshold check is not used and all images that can be reduced in size are downsampled.
 	ResolutionThreshold int32 `json:"ResolutionThreshold,omitempty"`
 }
+type IDownsampleOptionsData interface {
+	IsDownsampleOptionsData() bool
+}
+func (DownsampleOptionsData) IsDownsampleOptionsData() bool {
+	return true;
+}
+

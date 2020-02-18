@@ -34,3 +34,13 @@ type FormFieldResponse struct {
 	// Gets or sets field information.
 	FormField *FormField `json:"FormField,omitempty"`
 }
+type IFormFieldResponse interface {
+	IsFormFieldResponse() bool
+}
+func (FormFieldResponse) IsFormFieldResponse() bool {
+	return true;
+}
+func (FormFieldResponse) IsWordsResponse() bool {
+	return true;
+}
+

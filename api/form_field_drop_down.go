@@ -67,3 +67,13 @@ type FormFieldDropDown struct {
 	// Gets or sets the index specifying the currently selected item in a dropdown form field.
 	DropDownSelectedIndex int32 `json:"DropDownSelectedIndex,omitempty"`
 }
+type IFormFieldDropDown interface {
+	IsFormFieldDropDown() bool
+}
+func (FormFieldDropDown) IsFormFieldDropDown() bool {
+	return true;
+}
+func (FormFieldDropDown) IsFormField() bool {
+	return true;
+}
+

@@ -67,3 +67,13 @@ type DocSaveOptionsData struct {
 	// Gets or sets determine whether or not save RoutingSlip data saved to output document.
 	SaveRoutingSlip bool `json:"SaveRoutingSlip,omitempty"`
 }
+type IDocSaveOptionsData interface {
+	IsDocSaveOptionsData() bool
+}
+func (DocSaveOptionsData) IsDocSaveOptionsData() bool {
+	return true;
+}
+func (DocSaveOptionsData) IsSaveOptionsData() bool {
+	return true;
+}
+

@@ -31,3 +31,10 @@ type StoryChildNodes struct {
 	// Gets or sets child nodes.
 	ChildNodes []NodeLink `json:"ChildNodes,omitempty"`
 }
+type IStoryChildNodes interface {
+	IsStoryChildNodes() bool
+}
+func (StoryChildNodes) IsStoryChildNodes() bool {
+	return true;
+}
+

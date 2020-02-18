@@ -34,3 +34,13 @@ type TableCellResponse struct {
 	// Gets or sets table cell.
 	Cell *TableCell `json:"Cell,omitempty"`
 }
+type ITableCellResponse interface {
+	IsTableCellResponse() bool
+}
+func (TableCellResponse) IsTableCellResponse() bool {
+	return true;
+}
+func (TableCellResponse) IsWordsResponse() bool {
+	return true;
+}
+

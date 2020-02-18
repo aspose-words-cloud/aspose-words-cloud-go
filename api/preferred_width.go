@@ -34,3 +34,10 @@ type PreferredWidth struct {
 	// Gets or sets the preferred width value. The unit of measure is specified in the  property.
 	Value float64 `json:"Value,omitempty"`
 }
+type IPreferredWidth interface {
+	IsPreferredWidth() bool
+}
+func (PreferredWidth) IsPreferredWidth() bool {
+	return true;
+}
+

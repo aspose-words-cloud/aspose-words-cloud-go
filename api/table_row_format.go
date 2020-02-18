@@ -43,3 +43,13 @@ type TableRowFormat struct {
 	// Gets or sets the rule for determining the height of the table row.
 	HeightRule string `json:"HeightRule,omitempty"`
 }
+type ITableRowFormat interface {
+	IsTableRowFormat() bool
+}
+func (TableRowFormat) IsTableRowFormat() bool {
+	return true;
+}
+func (TableRowFormat) IsLinkElement() bool {
+	return true;
+}
+

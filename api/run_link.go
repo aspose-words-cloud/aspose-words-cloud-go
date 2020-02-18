@@ -37,3 +37,13 @@ type RunLink struct {
 	// Gets or sets run's text.
 	Text string `json:"Text,omitempty"`
 }
+type IRunLink interface {
+	IsRunLink() bool
+}
+func (RunLink) IsRunLink() bool {
+	return true;
+}
+func (RunLink) IsNodeLink() bool {
+	return true;
+}
+

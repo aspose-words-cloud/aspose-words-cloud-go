@@ -34,3 +34,13 @@ type CommentsCollection struct {
 	// Gets or sets collection of comments.
 	CommentList []Comment `json:"CommentList,omitempty"`
 }
+type ICommentsCollection interface {
+	IsCommentsCollection() bool
+}
+func (CommentsCollection) IsCommentsCollection() bool {
+	return true;
+}
+func (CommentsCollection) IsLinkElement() bool {
+	return true;
+}
+

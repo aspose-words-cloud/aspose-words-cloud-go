@@ -175,3 +175,13 @@ type EpubSaveOptionsData struct {
 	// Gets or sets specifies the maximum level of headings populated to the navigation map when exporting.
 	EpubNavigationMapLevel int32 `json:"EpubNavigationMapLevel,omitempty"`
 }
+type IEpubSaveOptionsData interface {
+	IsEpubSaveOptionsData() bool
+}
+func (EpubSaveOptionsData) IsEpubSaveOptionsData() bool {
+	return true;
+}
+func (EpubSaveOptionsData) IsHtmlSaveOptionsData() bool {
+	return true;
+}
+

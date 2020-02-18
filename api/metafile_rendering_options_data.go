@@ -43,3 +43,10 @@ type MetafileRenderingOptionsData struct {
 	// Gets or sets a value determining whether or not to scale fonts in WMF metafile according to metafile size on the page. The default value is true.
 	ScaleWmfFontsToMetafileSize bool `json:"ScaleWmfFontsToMetafileSize,omitempty"`
 }
+type IMetafileRenderingOptionsData interface {
+	IsMetafileRenderingOptionsData() bool
+}
+func (MetafileRenderingOptionsData) IsMetafileRenderingOptionsData() bool {
+	return true;
+}
+

@@ -34,3 +34,13 @@ type SaveResponse struct {
 	// Gets or sets save result.
 	SaveResult *SaveResult `json:"SaveResult,omitempty"`
 }
+type ISaveResponse interface {
+	IsSaveResponse() bool
+}
+func (SaveResponse) IsSaveResponse() bool {
+	return true;
+}
+func (SaveResponse) IsWordsResponse() bool {
+	return true;
+}
+

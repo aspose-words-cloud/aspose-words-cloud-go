@@ -40,3 +40,10 @@ type StorageApiError struct {
 	// Inner Error             
 	InnerError *ErrorDetails `json:"InnerError,omitempty"`
 }
+type IStorageApiError interface {
+	IsStorageApiError() bool
+}
+func (StorageApiError) IsStorageApiError() bool {
+	return true;
+}
+

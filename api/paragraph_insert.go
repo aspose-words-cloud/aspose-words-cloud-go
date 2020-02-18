@@ -31,3 +31,10 @@ type ParagraphInsert struct {
 	// Gets or sets paragraph's text.
 	Text string `json:"Text,omitempty"`
 }
+type IParagraphInsert interface {
+	IsParagraphInsert() bool
+}
+func (ParagraphInsert) IsParagraphInsert() bool {
+	return true;
+}
+

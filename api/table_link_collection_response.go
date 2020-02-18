@@ -34,3 +34,13 @@ type TableLinkCollectionResponse struct {
 	// Gets or sets collection of tables.
 	Tables *TableLinkCollection `json:"Tables,omitempty"`
 }
+type ITableLinkCollectionResponse interface {
+	IsTableLinkCollectionResponse() bool
+}
+func (TableLinkCollectionResponse) IsTableLinkCollectionResponse() bool {
+	return true;
+}
+func (TableLinkCollectionResponse) IsWordsResponse() bool {
+	return true;
+}
+

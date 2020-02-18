@@ -37,3 +37,13 @@ type Paragraph struct {
 	// Gets or sets child nodes.
 	ChildNodes []NodeLink `json:"ChildNodes,omitempty"`
 }
+type IParagraph interface {
+	IsParagraph() bool
+}
+func (Paragraph) IsParagraph() bool {
+	return true;
+}
+func (Paragraph) IsNodeLink() bool {
+	return true;
+}
+

@@ -34,3 +34,13 @@ type OfficeMathObjectsCollection struct {
 	// Gets or sets collection of OfficeMath objects.
 	List []OfficeMathObject `json:"List,omitempty"`
 }
+type IOfficeMathObjectsCollection interface {
+	IsOfficeMathObjectsCollection() bool
+}
+func (OfficeMathObjectsCollection) IsOfficeMathObjectsCollection() bool {
+	return true;
+}
+func (OfficeMathObjectsCollection) IsLinkElement() bool {
+	return true;
+}
+

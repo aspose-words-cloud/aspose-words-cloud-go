@@ -34,3 +34,13 @@ type OfficeMathLink struct {
 	// Gets or sets node id.
 	NodeId string `json:"NodeId,omitempty"`
 }
+type IOfficeMathLink interface {
+	IsOfficeMathLink() bool
+}
+func (OfficeMathLink) IsOfficeMathLink() bool {
+	return true;
+}
+func (OfficeMathLink) IsNodeLink() bool {
+	return true;
+}
+

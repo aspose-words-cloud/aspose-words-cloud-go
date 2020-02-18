@@ -76,3 +76,13 @@ type TextSaveOptionsData struct {
 	// Gets or sets specifies whether the program should simplify list labels in case of complex label formatting not being adequately represented by plain text.
 	SimplifyListLabels bool `json:"SimplifyListLabels,omitempty"`
 }
+type ITextSaveOptionsData interface {
+	IsTextSaveOptionsData() bool
+}
+func (TextSaveOptionsData) IsTextSaveOptionsData() bool {
+	return true;
+}
+func (TextSaveOptionsData) IsSaveOptionsData() bool {
+	return true;
+}
+

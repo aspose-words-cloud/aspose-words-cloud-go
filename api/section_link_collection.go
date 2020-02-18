@@ -34,3 +34,13 @@ type SectionLinkCollection struct {
 	// Gets or sets collection of section's links.
 	SectionLinkList []SectionLink `json:"SectionLinkList,omitempty"`
 }
+type ISectionLinkCollection interface {
+	IsSectionLinkCollection() bool
+}
+func (SectionLinkCollection) IsSectionLinkCollection() bool {
+	return true;
+}
+func (SectionLinkCollection) IsLinkElement() bool {
+	return true;
+}
+
