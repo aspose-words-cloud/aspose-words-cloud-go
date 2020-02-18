@@ -58,8 +58,7 @@ func (a *WordsApiService) AcceptAllRevisions(ctx context.Context, name string, l
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  RevisionsModificationResponse
 	)
 
@@ -122,7 +121,7 @@ func (a *WordsApiService) AcceptAllRevisions(ctx context.Context, name string, l
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -158,12 +157,11 @@ func (a *WordsApiService) AcceptAllRevisions(ctx context.Context, name string, l
      @param "revisionAuthor" (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
      @param "revisionDateTime" (string) The date and time to use for revisions.
  @return DocumentResponse*/
-func (a *WordsApiService) AppendDocument(ctx context.Context, name string, documentList DocumentEntryList, localVarOptionals map[string]interface{}) (DocumentResponse,  *http.Response, error) {
+func (a *WordsApiService) AppendDocument(ctx context.Context, name string, documentList IDocumentEntryList, localVarOptionals map[string]interface{}) (DocumentResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  DocumentResponse
 	)
 
@@ -240,7 +238,7 @@ func (a *WordsApiService) AppendDocument(ctx context.Context, name string, docum
 	}
 	// body params
 	localVarPostBody = &documentList
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -273,8 +271,7 @@ func (a *WordsApiService) Classify(ctx context.Context, text string, localVarOpt
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  ClassificationResponse
 	)
 
@@ -314,7 +311,7 @@ func (a *WordsApiService) Classify(ctx context.Context, text string, localVarOpt
 	}
 	// body params
 	localVarPostBody = &text
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -352,8 +349,7 @@ func (a *WordsApiService) ClassifyDocument(ctx context.Context, documentName str
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  ClassificationResponse
 	)
 
@@ -422,7 +418,7 @@ func (a *WordsApiService) ClassifyDocument(ctx context.Context, documentName str
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -456,12 +452,11 @@ func (a *WordsApiService) ClassifyDocument(ctx context.Context, documentName str
      @param "password" (string) Password for opening an encrypted document.
      @param "destFileName" (string) Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.
  @return DocumentResponse*/
-func (a *WordsApiService) CompareDocument(ctx context.Context, name string, compareData CompareData, localVarOptionals map[string]interface{}) (DocumentResponse,  *http.Response, error) {
+func (a *WordsApiService) CompareDocument(ctx context.Context, name string, compareData ICompareData, localVarOptionals map[string]interface{}) (DocumentResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  DocumentResponse
 	)
 
@@ -526,7 +521,7 @@ func (a *WordsApiService) CompareDocument(ctx context.Context, name string, comp
 	}
 	// body params
 	localVarPostBody = &compareData
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -563,8 +558,7 @@ func (a *WordsApiService) ConvertDocument(ctx context.Context, document *os.File
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  *os.File
 	)
 
@@ -621,13 +615,13 @@ func (a *WordsApiService) ConvertDocument(ctx context.Context, document *os.File
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	if localVarFile != nil {
-		fbs, _ := ioutil.ReadAll(localVarFile)
-		localVarFileBytes = fbs
-		localVarFileName = localVarFile.Name()
-		localVarFile.Close()
+	_document := document
+	if _document != nil {
+		fbs, _ := ioutil.ReadAll(_document)
+		_document.Close()
+		localFiles[_document.Name()] = fbs
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -663,8 +657,7 @@ func (a *WordsApiService) CopyFile(ctx context.Context, destPath string, srcPath
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	)
 
 	// create path and map variables
@@ -715,7 +708,7 @@ func (a *WordsApiService) CopyFile(ctx context.Context, destPath string, srcPath
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -745,8 +738,7 @@ func (a *WordsApiService) CopyFolder(ctx context.Context, destPath string, srcPa
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	)
 
 	// create path and map variables
@@ -791,7 +783,7 @@ func (a *WordsApiService) CopyFolder(ctx context.Context, destPath string, srcPa
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -820,8 +812,7 @@ func (a *WordsApiService) CreateDocument(ctx context.Context, localVarOptionals 
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  DocumentResponse
 	)
 
@@ -871,7 +862,7 @@ func (a *WordsApiService) CreateDocument(ctx context.Context, localVarOptionals 
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -904,8 +895,7 @@ func (a *WordsApiService) CreateFolder(ctx context.Context, path string, localVa
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	)
 
 	// create path and map variables
@@ -943,7 +933,7 @@ func (a *WordsApiService) CreateFolder(ctx context.Context, path string, localVa
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -975,12 +965,11 @@ func (a *WordsApiService) CreateFolder(ctx context.Context, path string, localVa
      @param "revisionAuthor" (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
      @param "revisionDateTime" (string) The date and time to use for revisions.
  @return DocumentPropertyResponse*/
-func (a *WordsApiService) CreateOrUpdateDocumentProperty(ctx context.Context, name string, propertyName string, property DocumentProperty, localVarOptionals map[string]interface{}) (DocumentPropertyResponse,  *http.Response, error) {
+func (a *WordsApiService) CreateOrUpdateDocumentProperty(ctx context.Context, name string, propertyName string, property IDocumentProperty, localVarOptionals map[string]interface{}) (DocumentPropertyResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  DocumentPropertyResponse
 	)
 
@@ -1058,7 +1047,7 @@ func (a *WordsApiService) CreateOrUpdateDocumentProperty(ctx context.Context, na
 	}
 	// body params
 	localVarPostBody = &property
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -1100,8 +1089,7 @@ func (a *WordsApiService) DeleteBorder(ctx context.Context, name string, nodePat
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  BorderResponse
 	)
 
@@ -1178,7 +1166,7 @@ func (a *WordsApiService) DeleteBorder(ctx context.Context, name string, nodePat
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -1219,8 +1207,7 @@ func (a *WordsApiService) DeleteBorders(ctx context.Context, name string, nodePa
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  BordersResponse
 	)
 
@@ -1296,7 +1283,7 @@ func (a *WordsApiService) DeleteBorders(ctx context.Context, name string, nodePa
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -1336,8 +1323,7 @@ func (a *WordsApiService) DeleteComment(ctx context.Context, name string, commen
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	)
 
 	// create path and map variables
@@ -1412,7 +1398,7 @@ func (a *WordsApiService) DeleteComment(ctx context.Context, name string, commen
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -1447,8 +1433,7 @@ func (a *WordsApiService) DeleteDocumentProperty(ctx context.Context, name strin
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	)
 
 	// create path and map variables
@@ -1523,7 +1508,7 @@ func (a *WordsApiService) DeleteDocumentProperty(ctx context.Context, name strin
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -1559,8 +1544,7 @@ func (a *WordsApiService) DeleteDrawingObject(ctx context.Context, name string, 
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	)
 
 	// create path and map variables
@@ -1636,7 +1620,7 @@ func (a *WordsApiService) DeleteDrawingObject(ctx context.Context, name string, 
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -1671,8 +1655,7 @@ func (a *WordsApiService) DeleteDrawingObjectWithoutNodePath(ctx context.Context
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	)
 
 	// create path and map variables
@@ -1747,7 +1730,7 @@ func (a *WordsApiService) DeleteDrawingObjectWithoutNodePath(ctx context.Context
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -1783,8 +1766,7 @@ func (a *WordsApiService) DeleteField(ctx context.Context, name string, nodePath
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	)
 
 	// create path and map variables
@@ -1860,7 +1842,7 @@ func (a *WordsApiService) DeleteField(ctx context.Context, name string, nodePath
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -1895,8 +1877,7 @@ func (a *WordsApiService) DeleteFieldWithoutNodePath(ctx context.Context, name s
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	)
 
 	// create path and map variables
@@ -1971,7 +1952,7 @@ func (a *WordsApiService) DeleteFieldWithoutNodePath(ctx context.Context, name s
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -2006,8 +1987,7 @@ func (a *WordsApiService) DeleteFields(ctx context.Context, name string, nodePat
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	)
 
 	// create path and map variables
@@ -2082,7 +2062,7 @@ func (a *WordsApiService) DeleteFields(ctx context.Context, name string, nodePat
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -2116,8 +2096,7 @@ func (a *WordsApiService) DeleteFieldsWithoutNodePath(ctx context.Context, name 
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	)
 
 	// create path and map variables
@@ -2191,7 +2170,7 @@ func (a *WordsApiService) DeleteFieldsWithoutNodePath(ctx context.Context, name 
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -2220,8 +2199,7 @@ func (a *WordsApiService) DeleteFile(ctx context.Context, path string, localVarO
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	)
 
 	// create path and map variables
@@ -2265,7 +2243,7 @@ func (a *WordsApiService) DeleteFile(ctx context.Context, path string, localVarO
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -2294,8 +2272,7 @@ func (a *WordsApiService) DeleteFolder(ctx context.Context, path string, localVa
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	)
 
 	// create path and map variables
@@ -2339,7 +2316,7 @@ func (a *WordsApiService) DeleteFolder(ctx context.Context, path string, localVa
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -2375,8 +2352,7 @@ func (a *WordsApiService) DeleteFootnote(ctx context.Context, name string, nodeP
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	)
 
 	// create path and map variables
@@ -2452,7 +2428,7 @@ func (a *WordsApiService) DeleteFootnote(ctx context.Context, name string, nodeP
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -2487,8 +2463,7 @@ func (a *WordsApiService) DeleteFootnoteWithoutNodePath(ctx context.Context, nam
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	)
 
 	// create path and map variables
@@ -2563,7 +2538,7 @@ func (a *WordsApiService) DeleteFootnoteWithoutNodePath(ctx context.Context, nam
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -2599,8 +2574,7 @@ func (a *WordsApiService) DeleteFormField(ctx context.Context, name string, node
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	)
 
 	// create path and map variables
@@ -2676,7 +2650,7 @@ func (a *WordsApiService) DeleteFormField(ctx context.Context, name string, node
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -2711,8 +2685,7 @@ func (a *WordsApiService) DeleteFormFieldWithoutNodePath(ctx context.Context, na
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	)
 
 	// create path and map variables
@@ -2787,7 +2760,7 @@ func (a *WordsApiService) DeleteFormFieldWithoutNodePath(ctx context.Context, na
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -2823,8 +2796,7 @@ func (a *WordsApiService) DeleteHeaderFooter(ctx context.Context, name string, s
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	)
 
 	// create path and map variables
@@ -2900,7 +2872,7 @@ func (a *WordsApiService) DeleteHeaderFooter(ctx context.Context, name string, s
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -2936,8 +2908,7 @@ func (a *WordsApiService) DeleteHeadersFooters(ctx context.Context, name string,
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	)
 
 	// create path and map variables
@@ -3018,7 +2989,7 @@ func (a *WordsApiService) DeleteHeadersFooters(ctx context.Context, name string,
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -3052,8 +3023,7 @@ func (a *WordsApiService) DeleteMacros(ctx context.Context, name string, localVa
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	)
 
 	// create path and map variables
@@ -3127,7 +3097,7 @@ func (a *WordsApiService) DeleteMacros(ctx context.Context, name string, localVa
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -3163,8 +3133,7 @@ func (a *WordsApiService) DeleteOfficeMathObject(ctx context.Context, name strin
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	)
 
 	// create path and map variables
@@ -3240,7 +3209,7 @@ func (a *WordsApiService) DeleteOfficeMathObject(ctx context.Context, name strin
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -3275,8 +3244,7 @@ func (a *WordsApiService) DeleteOfficeMathObjectWithoutNodePath(ctx context.Cont
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	)
 
 	// create path and map variables
@@ -3351,7 +3319,7 @@ func (a *WordsApiService) DeleteOfficeMathObjectWithoutNodePath(ctx context.Cont
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -3387,8 +3355,7 @@ func (a *WordsApiService) DeleteParagraph(ctx context.Context, name string, node
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	)
 
 	// create path and map variables
@@ -3464,7 +3431,7 @@ func (a *WordsApiService) DeleteParagraph(ctx context.Context, name string, node
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -3499,8 +3466,7 @@ func (a *WordsApiService) DeleteParagraphWithoutNodePath(ctx context.Context, na
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	)
 
 	// create path and map variables
@@ -3575,7 +3541,7 @@ func (a *WordsApiService) DeleteParagraphWithoutNodePath(ctx context.Context, na
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -3611,8 +3577,7 @@ func (a *WordsApiService) DeleteRun(ctx context.Context, name string, paragraphP
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	)
 
 	// create path and map variables
@@ -3688,7 +3653,7 @@ func (a *WordsApiService) DeleteRun(ctx context.Context, name string, paragraphP
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -3723,8 +3688,7 @@ func (a *WordsApiService) DeleteSection(ctx context.Context, name string, sectio
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	)
 
 	// create path and map variables
@@ -3799,7 +3763,7 @@ func (a *WordsApiService) DeleteSection(ctx context.Context, name string, sectio
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -3835,8 +3799,7 @@ func (a *WordsApiService) DeleteTable(ctx context.Context, name string, nodePath
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	)
 
 	// create path and map variables
@@ -3912,7 +3875,7 @@ func (a *WordsApiService) DeleteTable(ctx context.Context, name string, nodePath
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -3948,8 +3911,7 @@ func (a *WordsApiService) DeleteTableCell(ctx context.Context, name string, tabl
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	)
 
 	// create path and map variables
@@ -4025,7 +3987,7 @@ func (a *WordsApiService) DeleteTableCell(ctx context.Context, name string, tabl
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -4061,8 +4023,7 @@ func (a *WordsApiService) DeleteTableRow(ctx context.Context, name string, table
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	)
 
 	// create path and map variables
@@ -4138,7 +4099,7 @@ func (a *WordsApiService) DeleteTableRow(ctx context.Context, name string, table
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -4173,8 +4134,7 @@ func (a *WordsApiService) DeleteTableWithoutNodePath(ctx context.Context, name s
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	)
 
 	// create path and map variables
@@ -4249,7 +4209,7 @@ func (a *WordsApiService) DeleteTableWithoutNodePath(ctx context.Context, name s
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -4283,8 +4243,7 @@ func (a *WordsApiService) DeleteWatermark(ctx context.Context, name string, loca
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  DocumentResponse
 	)
 
@@ -4359,7 +4318,7 @@ func (a *WordsApiService) DeleteWatermark(ctx context.Context, name string, loca
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -4393,8 +4352,7 @@ func (a *WordsApiService) DownloadFile(ctx context.Context, path string, localVa
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  *os.File
 	)
 
@@ -4439,7 +4397,7 @@ func (a *WordsApiService) DownloadFile(ctx context.Context, path string, localVa
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -4481,8 +4439,7 @@ func (a *WordsApiService) ExecuteMailMerge(ctx context.Context, name string, loc
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  DocumentResponse
 	)
 
@@ -4575,7 +4532,7 @@ func (a *WordsApiService) ExecuteMailMerge(ctx context.Context, name string, loc
 	if localVarTempParam, localVarOk := localVarOptionals["data"].(string); localVarOk {
 		localVarFormParams.Add("Data", parameterToString(localVarTempParam, ""))
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -4611,8 +4568,7 @@ func (a *WordsApiService) ExecuteMailMergeOnline(ctx context.Context, template *
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  *os.File
 	)
 
@@ -4662,19 +4618,19 @@ func (a *WordsApiService) ExecuteMailMergeOnline(ctx context.Context, template *
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	if localVarFile != nil {
-		fbs, _ := ioutil.ReadAll(localVarFile)
-		localVarFileBytes = fbs
-		localVarFileName = localVarFile.Name()
-		localVarFile.Close()
+	_template := template
+	if _template != nil {
+		fbs, _ := ioutil.ReadAll(_template)
+		_template.Close()
+		localFiles[_template.Name()] = fbs
 	}
-	if localVarFile != nil {
-		fbs, _ := ioutil.ReadAll(localVarFile)
-		localVarFileBytes = fbs
-		localVarFileName = localVarFile.Name()
-		localVarFile.Close()
+	_data := data
+	if _data != nil {
+		fbs, _ := ioutil.ReadAll(_data)
+		_data.Close()
+		localFiles[_data.Name()] = fbs
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -4706,8 +4662,7 @@ func (a *WordsApiService) GetAvailableFonts(ctx context.Context, localVarOptiona
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  AvailableFontsResponse
 	)
 
@@ -4745,7 +4700,7 @@ func (a *WordsApiService) GetAvailableFonts(ctx context.Context, localVarOptiona
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -4782,8 +4737,7 @@ func (a *WordsApiService) GetBookmarkByName(ctx context.Context, name string, bo
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  BookmarkResponse
 	)
 
@@ -4841,7 +4795,7 @@ func (a *WordsApiService) GetBookmarkByName(ctx context.Context, name string, bo
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -4877,8 +4831,7 @@ func (a *WordsApiService) GetBookmarks(ctx context.Context, name string, localVa
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  BookmarksResponse
 	)
 
@@ -4935,7 +4888,7 @@ func (a *WordsApiService) GetBookmarks(ctx context.Context, name string, localVa
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -4974,8 +4927,7 @@ func (a *WordsApiService) GetBorder(ctx context.Context, name string, nodePath s
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  BorderResponse
 	)
 
@@ -5034,7 +4986,7 @@ func (a *WordsApiService) GetBorder(ctx context.Context, name string, nodePath s
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -5072,8 +5024,7 @@ func (a *WordsApiService) GetBorders(ctx context.Context, name string, nodePath 
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  BordersResponse
 	)
 
@@ -5131,7 +5082,7 @@ func (a *WordsApiService) GetBorders(ctx context.Context, name string, nodePath 
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -5168,8 +5119,7 @@ func (a *WordsApiService) GetComment(ctx context.Context, name string, commentIn
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  CommentResponse
 	)
 
@@ -5227,7 +5177,7 @@ func (a *WordsApiService) GetComment(ctx context.Context, name string, commentIn
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -5263,8 +5213,7 @@ func (a *WordsApiService) GetComments(ctx context.Context, name string, localVar
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  CommentsResponse
 	)
 
@@ -5321,7 +5270,7 @@ func (a *WordsApiService) GetComments(ctx context.Context, name string, localVar
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -5357,8 +5306,7 @@ func (a *WordsApiService) GetDocument(ctx context.Context, documentName string, 
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  DocumentResponse
 	)
 
@@ -5415,7 +5363,7 @@ func (a *WordsApiService) GetDocument(ctx context.Context, documentName string, 
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -5453,8 +5401,7 @@ func (a *WordsApiService) GetDocumentDrawingObjectByIndex(ctx context.Context, n
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  DrawingObjectResponse
 	)
 
@@ -5513,7 +5460,7 @@ func (a *WordsApiService) GetDocumentDrawingObjectByIndex(ctx context.Context, n
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -5550,8 +5497,7 @@ func (a *WordsApiService) GetDocumentDrawingObjectByIndexWithoutNodePath(ctx con
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  DrawingObjectResponse
 	)
 
@@ -5609,7 +5555,7 @@ func (a *WordsApiService) GetDocumentDrawingObjectByIndexWithoutNodePath(ctx con
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -5647,8 +5593,7 @@ func (a *WordsApiService) GetDocumentDrawingObjectImageData(ctx context.Context,
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  *os.File
 	)
 
@@ -5707,7 +5652,7 @@ func (a *WordsApiService) GetDocumentDrawingObjectImageData(ctx context.Context,
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -5744,8 +5689,7 @@ func (a *WordsApiService) GetDocumentDrawingObjectImageDataWithoutNodePath(ctx c
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  *os.File
 	)
 
@@ -5803,7 +5747,7 @@ func (a *WordsApiService) GetDocumentDrawingObjectImageDataWithoutNodePath(ctx c
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -5841,8 +5785,7 @@ func (a *WordsApiService) GetDocumentDrawingObjectOleData(ctx context.Context, n
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  *os.File
 	)
 
@@ -5901,7 +5844,7 @@ func (a *WordsApiService) GetDocumentDrawingObjectOleData(ctx context.Context, n
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -5938,8 +5881,7 @@ func (a *WordsApiService) GetDocumentDrawingObjectOleDataWithoutNodePath(ctx con
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  *os.File
 	)
 
@@ -5997,7 +5939,7 @@ func (a *WordsApiService) GetDocumentDrawingObjectOleDataWithoutNodePath(ctx con
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -6034,8 +5976,7 @@ func (a *WordsApiService) GetDocumentDrawingObjects(ctx context.Context, name st
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  DrawingObjectsResponse
 	)
 
@@ -6093,7 +6034,7 @@ func (a *WordsApiService) GetDocumentDrawingObjects(ctx context.Context, name st
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -6129,8 +6070,7 @@ func (a *WordsApiService) GetDocumentDrawingObjectsWithoutNodePath(ctx context.C
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  DrawingObjectsResponse
 	)
 
@@ -6187,7 +6127,7 @@ func (a *WordsApiService) GetDocumentDrawingObjectsWithoutNodePath(ctx context.C
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -6224,8 +6164,7 @@ func (a *WordsApiService) GetDocumentFieldNames(ctx context.Context, name string
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  FieldNamesResponse
 	)
 
@@ -6288,7 +6227,7 @@ func (a *WordsApiService) GetDocumentFieldNames(ctx context.Context, name string
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -6321,8 +6260,7 @@ func (a *WordsApiService) GetDocumentFieldNamesOnline(ctx context.Context, templ
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  FieldNamesResponse
 	)
 
@@ -6360,13 +6298,13 @@ func (a *WordsApiService) GetDocumentFieldNamesOnline(ctx context.Context, templ
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	if localVarFile != nil {
-		fbs, _ := ioutil.ReadAll(localVarFile)
-		localVarFileBytes = fbs
-		localVarFileName = localVarFile.Name()
-		localVarFile.Close()
+	_template := template
+	if _template != nil {
+		fbs, _ := ioutil.ReadAll(_template)
+		_template.Close()
+		localFiles[_template.Name()] = fbs
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -6403,8 +6341,7 @@ func (a *WordsApiService) GetDocumentHyperlinkByIndex(ctx context.Context, name 
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  HyperlinkResponse
 	)
 
@@ -6462,7 +6399,7 @@ func (a *WordsApiService) GetDocumentHyperlinkByIndex(ctx context.Context, name 
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -6498,8 +6435,7 @@ func (a *WordsApiService) GetDocumentHyperlinks(ctx context.Context, name string
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  HyperlinksResponse
 	)
 
@@ -6556,7 +6492,7 @@ func (a *WordsApiService) GetDocumentHyperlinks(ctx context.Context, name string
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -6592,8 +6528,7 @@ func (a *WordsApiService) GetDocumentProperties(ctx context.Context, name string
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  DocumentPropertiesResponse
 	)
 
@@ -6650,7 +6585,7 @@ func (a *WordsApiService) GetDocumentProperties(ctx context.Context, name string
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -6687,8 +6622,7 @@ func (a *WordsApiService) GetDocumentProperty(ctx context.Context, name string, 
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  DocumentPropertyResponse
 	)
 
@@ -6746,7 +6680,7 @@ func (a *WordsApiService) GetDocumentProperty(ctx context.Context, name string, 
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -6782,8 +6716,7 @@ func (a *WordsApiService) GetDocumentProtection(ctx context.Context, name string
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  ProtectionDataResponse
 	)
 
@@ -6840,7 +6773,7 @@ func (a *WordsApiService) GetDocumentProtection(ctx context.Context, name string
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -6879,8 +6812,7 @@ func (a *WordsApiService) GetDocumentStatistics(ctx context.Context, name string
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  StatDataResponse
 	)
 
@@ -6955,7 +6887,7 @@ func (a *WordsApiService) GetDocumentStatistics(ctx context.Context, name string
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -6994,8 +6926,7 @@ func (a *WordsApiService) GetDocumentWithFormat(ctx context.Context, name string
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  *os.File
 	)
 
@@ -7065,7 +6996,7 @@ func (a *WordsApiService) GetDocumentWithFormat(ctx context.Context, name string
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -7103,8 +7034,7 @@ func (a *WordsApiService) GetField(ctx context.Context, name string, nodePath st
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  FieldResponse
 	)
 
@@ -7163,7 +7093,7 @@ func (a *WordsApiService) GetField(ctx context.Context, name string, nodePath st
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -7200,8 +7130,7 @@ func (a *WordsApiService) GetFieldWithoutNodePath(ctx context.Context, name stri
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  FieldResponse
 	)
 
@@ -7259,7 +7188,7 @@ func (a *WordsApiService) GetFieldWithoutNodePath(ctx context.Context, name stri
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -7296,8 +7225,7 @@ func (a *WordsApiService) GetFields(ctx context.Context, name string, nodePath s
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  FieldsResponse
 	)
 
@@ -7355,7 +7283,7 @@ func (a *WordsApiService) GetFields(ctx context.Context, name string, nodePath s
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -7391,8 +7319,7 @@ func (a *WordsApiService) GetFieldsWithoutNodePath(ctx context.Context, name str
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  FieldsResponse
 	)
 
@@ -7449,7 +7376,7 @@ func (a *WordsApiService) GetFieldsWithoutNodePath(ctx context.Context, name str
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -7482,8 +7409,7 @@ func (a *WordsApiService) GetFilesList(ctx context.Context, path string, localVa
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  FilesList
 	)
 
@@ -7522,7 +7448,7 @@ func (a *WordsApiService) GetFilesList(ctx context.Context, path string, localVa
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -7560,8 +7486,7 @@ func (a *WordsApiService) GetFootnote(ctx context.Context, name string, nodePath
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  FootnoteResponse
 	)
 
@@ -7620,7 +7545,7 @@ func (a *WordsApiService) GetFootnote(ctx context.Context, name string, nodePath
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -7657,8 +7582,7 @@ func (a *WordsApiService) GetFootnoteWithoutNodePath(ctx context.Context, name s
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  FootnoteResponse
 	)
 
@@ -7716,7 +7640,7 @@ func (a *WordsApiService) GetFootnoteWithoutNodePath(ctx context.Context, name s
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -7753,8 +7677,7 @@ func (a *WordsApiService) GetFootnotes(ctx context.Context, name string, nodePat
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  FootnotesResponse
 	)
 
@@ -7812,7 +7735,7 @@ func (a *WordsApiService) GetFootnotes(ctx context.Context, name string, nodePat
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -7848,8 +7771,7 @@ func (a *WordsApiService) GetFootnotesWithoutNodePath(ctx context.Context, name 
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  FootnotesResponse
 	)
 
@@ -7906,7 +7828,7 @@ func (a *WordsApiService) GetFootnotesWithoutNodePath(ctx context.Context, name 
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -7944,8 +7866,7 @@ func (a *WordsApiService) GetFormField(ctx context.Context, name string, nodePat
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  FormFieldResponse
 	)
 
@@ -8004,7 +7925,7 @@ func (a *WordsApiService) GetFormField(ctx context.Context, name string, nodePat
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -8041,8 +7962,7 @@ func (a *WordsApiService) GetFormFieldWithoutNodePath(ctx context.Context, name 
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  FormFieldResponse
 	)
 
@@ -8100,7 +8020,7 @@ func (a *WordsApiService) GetFormFieldWithoutNodePath(ctx context.Context, name 
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -8137,8 +8057,7 @@ func (a *WordsApiService) GetFormFields(ctx context.Context, name string, nodePa
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  FormFieldsResponse
 	)
 
@@ -8196,7 +8115,7 @@ func (a *WordsApiService) GetFormFields(ctx context.Context, name string, nodePa
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -8232,8 +8151,7 @@ func (a *WordsApiService) GetFormFieldsWithoutNodePath(ctx context.Context, name
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  FormFieldsResponse
 	)
 
@@ -8290,7 +8208,7 @@ func (a *WordsApiService) GetFormFieldsWithoutNodePath(ctx context.Context, name
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -8328,8 +8246,7 @@ func (a *WordsApiService) GetHeaderFooter(ctx context.Context, name string, head
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  HeaderFooterResponse
 	)
 
@@ -8393,7 +8310,7 @@ func (a *WordsApiService) GetHeaderFooter(ctx context.Context, name string, head
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -8432,8 +8349,7 @@ func (a *WordsApiService) GetHeaderFooterOfSection(ctx context.Context, name str
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  HeaderFooterResponse
 	)
 
@@ -8498,7 +8414,7 @@ func (a *WordsApiService) GetHeaderFooterOfSection(ctx context.Context, name str
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -8536,8 +8452,7 @@ func (a *WordsApiService) GetHeaderFooters(ctx context.Context, name string, sec
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  HeaderFootersResponse
 	)
 
@@ -8601,7 +8516,7 @@ func (a *WordsApiService) GetHeaderFooters(ctx context.Context, name string, sec
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -8639,8 +8554,7 @@ func (a *WordsApiService) GetOfficeMathObject(ctx context.Context, name string, 
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  OfficeMathObjectResponse
 	)
 
@@ -8699,7 +8613,7 @@ func (a *WordsApiService) GetOfficeMathObject(ctx context.Context, name string, 
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -8736,8 +8650,7 @@ func (a *WordsApiService) GetOfficeMathObjectWithoutNodePath(ctx context.Context
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  OfficeMathObjectResponse
 	)
 
@@ -8795,7 +8708,7 @@ func (a *WordsApiService) GetOfficeMathObjectWithoutNodePath(ctx context.Context
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -8832,8 +8745,7 @@ func (a *WordsApiService) GetOfficeMathObjects(ctx context.Context, name string,
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  OfficeMathObjectsResponse
 	)
 
@@ -8891,7 +8803,7 @@ func (a *WordsApiService) GetOfficeMathObjects(ctx context.Context, name string,
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -8927,8 +8839,7 @@ func (a *WordsApiService) GetOfficeMathObjectsWithoutNodePath(ctx context.Contex
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  OfficeMathObjectsResponse
 	)
 
@@ -8985,7 +8896,7 @@ func (a *WordsApiService) GetOfficeMathObjectsWithoutNodePath(ctx context.Contex
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -9023,8 +8934,7 @@ func (a *WordsApiService) GetParagraph(ctx context.Context, name string, nodePat
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  ParagraphResponse
 	)
 
@@ -9083,7 +8993,7 @@ func (a *WordsApiService) GetParagraph(ctx context.Context, name string, nodePat
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -9121,8 +9031,7 @@ func (a *WordsApiService) GetParagraphFormat(ctx context.Context, name string, n
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  ParagraphFormatResponse
 	)
 
@@ -9181,7 +9090,7 @@ func (a *WordsApiService) GetParagraphFormat(ctx context.Context, name string, n
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -9218,8 +9127,7 @@ func (a *WordsApiService) GetParagraphFormatWithoutNodePath(ctx context.Context,
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  ParagraphFormatResponse
 	)
 
@@ -9277,7 +9185,7 @@ func (a *WordsApiService) GetParagraphFormatWithoutNodePath(ctx context.Context,
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -9314,8 +9222,7 @@ func (a *WordsApiService) GetParagraphWithoutNodePath(ctx context.Context, name 
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  ParagraphResponse
 	)
 
@@ -9373,7 +9280,7 @@ func (a *WordsApiService) GetParagraphWithoutNodePath(ctx context.Context, name 
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -9410,8 +9317,7 @@ func (a *WordsApiService) GetParagraphs(ctx context.Context, name string, nodePa
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  ParagraphLinkCollectionResponse
 	)
 
@@ -9469,7 +9375,7 @@ func (a *WordsApiService) GetParagraphs(ctx context.Context, name string, nodePa
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -9505,8 +9411,7 @@ func (a *WordsApiService) GetParagraphsWithoutNodePath(ctx context.Context, name
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  ParagraphLinkCollectionResponse
 	)
 
@@ -9563,7 +9468,7 @@ func (a *WordsApiService) GetParagraphsWithoutNodePath(ctx context.Context, name
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -9601,8 +9506,7 @@ func (a *WordsApiService) GetRangeText(ctx context.Context, name string, rangeSt
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  RangeTextResponse
 	)
 
@@ -9661,7 +9565,7 @@ func (a *WordsApiService) GetRangeText(ctx context.Context, name string, rangeSt
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -9699,8 +9603,7 @@ func (a *WordsApiService) GetRun(ctx context.Context, name string, paragraphPath
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  RunResponse
 	)
 
@@ -9759,7 +9662,7 @@ func (a *WordsApiService) GetRun(ctx context.Context, name string, paragraphPath
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -9797,8 +9700,7 @@ func (a *WordsApiService) GetRunFont(ctx context.Context, name string, paragraph
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  FontResponse
 	)
 
@@ -9857,7 +9759,7 @@ func (a *WordsApiService) GetRunFont(ctx context.Context, name string, paragraph
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -9894,8 +9796,7 @@ func (a *WordsApiService) GetRuns(ctx context.Context, name string, paragraphPat
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  RunsResponse
 	)
 
@@ -9953,7 +9854,7 @@ func (a *WordsApiService) GetRuns(ctx context.Context, name string, paragraphPat
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -9990,8 +9891,7 @@ func (a *WordsApiService) GetSection(ctx context.Context, name string, sectionIn
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  SectionResponse
 	)
 
@@ -10049,7 +9949,7 @@ func (a *WordsApiService) GetSection(ctx context.Context, name string, sectionIn
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -10086,8 +9986,7 @@ func (a *WordsApiService) GetSectionPageSetup(ctx context.Context, name string, 
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  SectionPageSetupResponse
 	)
 
@@ -10145,7 +10044,7 @@ func (a *WordsApiService) GetSectionPageSetup(ctx context.Context, name string, 
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -10181,8 +10080,7 @@ func (a *WordsApiService) GetSections(ctx context.Context, name string, localVar
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  SectionLinkCollectionResponse
 	)
 
@@ -10239,7 +10137,7 @@ func (a *WordsApiService) GetSections(ctx context.Context, name string, localVar
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -10277,8 +10175,7 @@ func (a *WordsApiService) GetTable(ctx context.Context, name string, nodePath st
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  TableResponse
 	)
 
@@ -10337,7 +10234,7 @@ func (a *WordsApiService) GetTable(ctx context.Context, name string, nodePath st
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -10375,8 +10272,7 @@ func (a *WordsApiService) GetTableCell(ctx context.Context, name string, tableRo
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  TableCellResponse
 	)
 
@@ -10435,7 +10331,7 @@ func (a *WordsApiService) GetTableCell(ctx context.Context, name string, tableRo
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -10473,8 +10369,7 @@ func (a *WordsApiService) GetTableCellFormat(ctx context.Context, name string, t
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  TableCellFormatResponse
 	)
 
@@ -10533,7 +10428,7 @@ func (a *WordsApiService) GetTableCellFormat(ctx context.Context, name string, t
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -10571,8 +10466,7 @@ func (a *WordsApiService) GetTableProperties(ctx context.Context, name string, n
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  TablePropertiesResponse
 	)
 
@@ -10631,7 +10525,7 @@ func (a *WordsApiService) GetTableProperties(ctx context.Context, name string, n
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -10668,8 +10562,7 @@ func (a *WordsApiService) GetTablePropertiesWithoutNodePath(ctx context.Context,
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  TablePropertiesResponse
 	)
 
@@ -10727,7 +10620,7 @@ func (a *WordsApiService) GetTablePropertiesWithoutNodePath(ctx context.Context,
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -10765,8 +10658,7 @@ func (a *WordsApiService) GetTableRow(ctx context.Context, name string, tablePat
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  TableRowResponse
 	)
 
@@ -10825,7 +10717,7 @@ func (a *WordsApiService) GetTableRow(ctx context.Context, name string, tablePat
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -10863,8 +10755,7 @@ func (a *WordsApiService) GetTableRowFormat(ctx context.Context, name string, ta
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  TableRowFormatResponse
 	)
 
@@ -10923,7 +10814,7 @@ func (a *WordsApiService) GetTableRowFormat(ctx context.Context, name string, ta
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -10960,8 +10851,7 @@ func (a *WordsApiService) GetTableWithoutNodePath(ctx context.Context, name stri
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  TableResponse
 	)
 
@@ -11019,7 +10909,7 @@ func (a *WordsApiService) GetTableWithoutNodePath(ctx context.Context, name stri
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -11056,8 +10946,7 @@ func (a *WordsApiService) GetTables(ctx context.Context, name string, nodePath s
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  TableLinkCollectionResponse
 	)
 
@@ -11115,7 +11004,7 @@ func (a *WordsApiService) GetTables(ctx context.Context, name string, nodePath s
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -11151,8 +11040,7 @@ func (a *WordsApiService) GetTablesWithoutNodePath(ctx context.Context, name str
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  TableLinkCollectionResponse
 	)
 
@@ -11209,7 +11097,7 @@ func (a *WordsApiService) GetTablesWithoutNodePath(ctx context.Context, name str
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -11245,12 +11133,11 @@ func (a *WordsApiService) GetTablesWithoutNodePath(ctx context.Context, name str
      @param "revisionAuthor" (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
      @param "revisionDateTime" (string) The date and time to use for revisions.
  @return CommentResponse*/
-func (a *WordsApiService) InsertComment(ctx context.Context, name string, comment Comment, localVarOptionals map[string]interface{}) (CommentResponse,  *http.Response, error) {
+func (a *WordsApiService) InsertComment(ctx context.Context, name string, comment IComment, localVarOptionals map[string]interface{}) (CommentResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  CommentResponse
 	)
 
@@ -11327,7 +11214,7 @@ func (a *WordsApiService) InsertComment(ctx context.Context, name string, commen
 	}
 	// body params
 	localVarPostBody = &comment
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -11369,8 +11256,7 @@ func (a *WordsApiService) InsertDrawingObject(ctx context.Context, name string, 
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  DrawingObjectResponse
 	)
 
@@ -11447,13 +11333,13 @@ func (a *WordsApiService) InsertDrawingObject(ctx context.Context, name string, 
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	localVarFormParams.Add("DrawingObject", parameterToString(drawingObject, ""))
-	if localVarFile != nil {
-		fbs, _ := ioutil.ReadAll(localVarFile)
-		localVarFileBytes = fbs
-		localVarFileName = localVarFile.Name()
-		localVarFile.Close()
+	_imageFile := imageFile
+	if _imageFile != nil {
+		fbs, _ := ioutil.ReadAll(_imageFile)
+		_imageFile.Close()
+		localFiles[_imageFile.Name()] = fbs
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -11494,8 +11380,7 @@ func (a *WordsApiService) InsertDrawingObjectWithoutNodePath(ctx context.Context
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  DrawingObjectResponse
 	)
 
@@ -11571,13 +11456,13 @@ func (a *WordsApiService) InsertDrawingObjectWithoutNodePath(ctx context.Context
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	localVarFormParams.Add("DrawingObject", parameterToString(drawingObject, ""))
-	if localVarFile != nil {
-		fbs, _ := ioutil.ReadAll(localVarFile)
-		localVarFileBytes = fbs
-		localVarFileName = localVarFile.Name()
-		localVarFile.Close()
+	_imageFile := imageFile
+	if _imageFile != nil {
+		fbs, _ := ioutil.ReadAll(_imageFile)
+		_imageFile.Close()
+		localFiles[_imageFile.Name()] = fbs
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -11615,12 +11500,11 @@ func (a *WordsApiService) InsertDrawingObjectWithoutNodePath(ctx context.Context
      @param "revisionDateTime" (string) The date and time to use for revisions.
      @param "insertBeforeNode" (string) Field will be inserted before node with id&#x3D;\&quot;nodeId\&quot;.
  @return FieldResponse*/
-func (a *WordsApiService) InsertField(ctx context.Context, name string, field Field, nodePath string, localVarOptionals map[string]interface{}) (FieldResponse,  *http.Response, error) {
+func (a *WordsApiService) InsertField(ctx context.Context, name string, field IField, nodePath string, localVarOptionals map[string]interface{}) (FieldResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  FieldResponse
 	)
 
@@ -11704,7 +11588,7 @@ func (a *WordsApiService) InsertField(ctx context.Context, name string, field Fi
 	}
 	// body params
 	localVarPostBody = &field
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -11741,12 +11625,11 @@ func (a *WordsApiService) InsertField(ctx context.Context, name string, field Fi
      @param "revisionDateTime" (string) The date and time to use for revisions.
      @param "insertBeforeNode" (string) Field will be inserted before node with id&#x3D;\&quot;nodeId\&quot;.
  @return FieldResponse*/
-func (a *WordsApiService) InsertFieldWithoutNodePath(ctx context.Context, name string, field Field, localVarOptionals map[string]interface{}) (FieldResponse,  *http.Response, error) {
+func (a *WordsApiService) InsertFieldWithoutNodePath(ctx context.Context, name string, field IField, localVarOptionals map[string]interface{}) (FieldResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  FieldResponse
 	)
 
@@ -11829,7 +11712,7 @@ func (a *WordsApiService) InsertFieldWithoutNodePath(ctx context.Context, name s
 	}
 	// body params
 	localVarPostBody = &field
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -11866,12 +11749,11 @@ func (a *WordsApiService) InsertFieldWithoutNodePath(ctx context.Context, name s
      @param "revisionAuthor" (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
      @param "revisionDateTime" (string) The date and time to use for revisions.
  @return FootnoteResponse*/
-func (a *WordsApiService) InsertFootnote(ctx context.Context, name string, footnoteDto Footnote, nodePath string, localVarOptionals map[string]interface{}) (FootnoteResponse,  *http.Response, error) {
+func (a *WordsApiService) InsertFootnote(ctx context.Context, name string, footnoteDto IFootnote, nodePath string, localVarOptionals map[string]interface{}) (FootnoteResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  FootnoteResponse
 	)
 
@@ -11949,7 +11831,7 @@ func (a *WordsApiService) InsertFootnote(ctx context.Context, name string, footn
 	}
 	// body params
 	localVarPostBody = &footnoteDto
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -11985,12 +11867,11 @@ func (a *WordsApiService) InsertFootnote(ctx context.Context, name string, footn
      @param "revisionAuthor" (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
      @param "revisionDateTime" (string) The date and time to use for revisions.
  @return FootnoteResponse*/
-func (a *WordsApiService) InsertFootnoteWithoutNodePath(ctx context.Context, name string, footnoteDto Footnote, localVarOptionals map[string]interface{}) (FootnoteResponse,  *http.Response, error) {
+func (a *WordsApiService) InsertFootnoteWithoutNodePath(ctx context.Context, name string, footnoteDto IFootnote, localVarOptionals map[string]interface{}) (FootnoteResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  FootnoteResponse
 	)
 
@@ -12067,7 +11948,7 @@ func (a *WordsApiService) InsertFootnoteWithoutNodePath(ctx context.Context, nam
 	}
 	// body params
 	localVarPostBody = &footnoteDto
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -12105,12 +11986,11 @@ func (a *WordsApiService) InsertFootnoteWithoutNodePath(ctx context.Context, nam
      @param "revisionDateTime" (string) The date and time to use for revisions.
      @param "insertBeforeNode" (string) Form field will be inserted before node with index.
  @return FormFieldResponse*/
-func (a *WordsApiService) InsertFormField(ctx context.Context, name string, formField FormField, nodePath string, localVarOptionals map[string]interface{}) (FormFieldResponse,  *http.Response, error) {
+func (a *WordsApiService) InsertFormField(ctx context.Context, name string, formField IFormField, nodePath string, localVarOptionals map[string]interface{}) (FormFieldResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  FormFieldResponse
 	)
 
@@ -12194,7 +12074,7 @@ func (a *WordsApiService) InsertFormField(ctx context.Context, name string, form
 	}
 	// body params
 	localVarPostBody = &formField
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -12231,12 +12111,11 @@ func (a *WordsApiService) InsertFormField(ctx context.Context, name string, form
      @param "revisionDateTime" (string) The date and time to use for revisions.
      @param "insertBeforeNode" (string) Form field will be inserted before node with index.
  @return FormFieldResponse*/
-func (a *WordsApiService) InsertFormFieldWithoutNodePath(ctx context.Context, name string, formField FormField, localVarOptionals map[string]interface{}) (FormFieldResponse,  *http.Response, error) {
+func (a *WordsApiService) InsertFormFieldWithoutNodePath(ctx context.Context, name string, formField IFormField, localVarOptionals map[string]interface{}) (FormFieldResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  FormFieldResponse
 	)
 
@@ -12319,7 +12198,7 @@ func (a *WordsApiService) InsertFormFieldWithoutNodePath(ctx context.Context, na
 	}
 	// body params
 	localVarPostBody = &formField
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -12360,8 +12239,7 @@ func (a *WordsApiService) InsertHeaderFooter(ctx context.Context, name string, h
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  HeaderFooterResponse
 	)
 
@@ -12439,7 +12317,7 @@ func (a *WordsApiService) InsertHeaderFooter(ctx context.Context, name string, h
 	}
 	// body params
 	localVarPostBody = &headerFooterType
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -12475,12 +12353,11 @@ func (a *WordsApiService) InsertHeaderFooter(ctx context.Context, name string, h
      @param "revisionAuthor" (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
      @param "revisionDateTime" (string) The date and time to use for revisions.
  @return DocumentResponse*/
-func (a *WordsApiService) InsertPageNumbers(ctx context.Context, name string, pageNumber PageNumber, localVarOptionals map[string]interface{}) (DocumentResponse,  *http.Response, error) {
+func (a *WordsApiService) InsertPageNumbers(ctx context.Context, name string, pageNumber IPageNumber, localVarOptionals map[string]interface{}) (DocumentResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  DocumentResponse
 	)
 
@@ -12557,7 +12434,7 @@ func (a *WordsApiService) InsertPageNumbers(ctx context.Context, name string, pa
 	}
 	// body params
 	localVarPostBody = &pageNumber
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -12595,12 +12472,11 @@ func (a *WordsApiService) InsertPageNumbers(ctx context.Context, name string, pa
      @param "revisionDateTime" (string) The date and time to use for revisions.
      @param "insertBeforeNode" (string) Paragraph will be inserted before node with index.
  @return ParagraphResponse*/
-func (a *WordsApiService) InsertParagraph(ctx context.Context, name string, paragraph ParagraphInsert, nodePath string, localVarOptionals map[string]interface{}) (ParagraphResponse,  *http.Response, error) {
+func (a *WordsApiService) InsertParagraph(ctx context.Context, name string, paragraph IParagraphInsert, nodePath string, localVarOptionals map[string]interface{}) (ParagraphResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  ParagraphResponse
 	)
 
@@ -12684,7 +12560,7 @@ func (a *WordsApiService) InsertParagraph(ctx context.Context, name string, para
 	}
 	// body params
 	localVarPostBody = &paragraph
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -12722,12 +12598,11 @@ func (a *WordsApiService) InsertParagraph(ctx context.Context, name string, para
      @param "revisionDateTime" (string) The date and time to use for revisions.
      @param "insertBeforeNode" (string) Paragraph will be inserted before node with index.
  @return RunResponse*/
-func (a *WordsApiService) InsertRun(ctx context.Context, name string, paragraphPath string, run Run, localVarOptionals map[string]interface{}) (RunResponse,  *http.Response, error) {
+func (a *WordsApiService) InsertRun(ctx context.Context, name string, paragraphPath string, run IRun, localVarOptionals map[string]interface{}) (RunResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  RunResponse
 	)
 
@@ -12811,7 +12686,7 @@ func (a *WordsApiService) InsertRun(ctx context.Context, name string, paragraphP
 	}
 	// body params
 	localVarPostBody = &run
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -12852,8 +12727,7 @@ func (a *WordsApiService) InsertTable(ctx context.Context, name string, nodePath
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  TableResponse
 	)
 
@@ -12933,7 +12807,7 @@ func (a *WordsApiService) InsertTable(ctx context.Context, name string, nodePath
 	if localVarTempParam, localVarOk := localVarOptionals["table"].(TableInsert); localVarOk {
 		localVarPostBody = &localVarTempParam
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -12974,8 +12848,7 @@ func (a *WordsApiService) InsertTableCell(ctx context.Context, name string, tabl
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  TableCellResponse
 	)
 
@@ -13055,7 +12928,7 @@ func (a *WordsApiService) InsertTableCell(ctx context.Context, name string, tabl
 	if localVarTempParam, localVarOk := localVarOptionals["cell"].(TableCellInsert); localVarOk {
 		localVarPostBody = &localVarTempParam
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -13096,8 +12969,7 @@ func (a *WordsApiService) InsertTableRow(ctx context.Context, name string, table
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  TableRowResponse
 	)
 
@@ -13177,7 +13049,7 @@ func (a *WordsApiService) InsertTableRow(ctx context.Context, name string, table
 	if localVarTempParam, localVarOk := localVarOptionals["row"].(TableRowInsert); localVarOk {
 		localVarPostBody = &localVarTempParam
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -13217,8 +13089,7 @@ func (a *WordsApiService) InsertTableWithoutNodePath(ctx context.Context, name s
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  TableResponse
 	)
 
@@ -13297,7 +13168,7 @@ func (a *WordsApiService) InsertTableWithoutNodePath(ctx context.Context, name s
 	if localVarTempParam, localVarOk := localVarOptionals["table"].(TableInsert); localVarOk {
 		localVarPostBody = &localVarTempParam
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -13339,8 +13210,7 @@ func (a *WordsApiService) InsertWatermarkImage(ctx context.Context, name string,
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  DocumentResponse
 	)
 
@@ -13427,17 +13297,19 @@ func (a *WordsApiService) InsertWatermarkImage(ctx context.Context, name string,
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var localVarFile (*os.File)
+	var imageFile (*os.File)
 	if localVarTempParam, localVarOk := localVarOptionals["imageFile"].(*os.File); localVarOk {
-		localVarFile = localVarTempParam
+		imageFile = localVarTempParam
+	} else {
+		return successPayload, nil, reportError("imageFile should be *os.File")
 	}
-	if localVarFile != nil {
-		fbs, _ := ioutil.ReadAll(localVarFile)
-		localVarFileBytes = fbs
-		localVarFileName = localVarFile.Name()
-		localVarFile.Close()
+	_imageFile := imageFile
+	if _imageFile != nil {
+		fbs, _ := ioutil.ReadAll(_imageFile)
+		_imageFile.Close()
+		localFiles[_imageFile.Name()] = fbs
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -13473,12 +13345,11 @@ func (a *WordsApiService) InsertWatermarkImage(ctx context.Context, name string,
      @param "revisionAuthor" (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
      @param "revisionDateTime" (string) The date and time to use for revisions.
  @return DocumentResponse*/
-func (a *WordsApiService) InsertWatermarkText(ctx context.Context, name string, watermarkText WatermarkText, localVarOptionals map[string]interface{}) (DocumentResponse,  *http.Response, error) {
+func (a *WordsApiService) InsertWatermarkText(ctx context.Context, name string, watermarkText IWatermarkText, localVarOptionals map[string]interface{}) (DocumentResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  DocumentResponse
 	)
 
@@ -13555,7 +13426,7 @@ func (a *WordsApiService) InsertWatermarkText(ctx context.Context, name string, 
 	}
 	// body params
 	localVarPostBody = &watermarkText
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -13584,12 +13455,11 @@ func (a *WordsApiService) InsertWatermarkText(ctx context.Context, name string, 
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "storage" (string) Original document storage.
  @return SaveResponse*/
-func (a *WordsApiService) LoadWebDocument(ctx context.Context, data LoadWebDocumentData, localVarOptionals map[string]interface{}) (SaveResponse,  *http.Response, error) {
+func (a *WordsApiService) LoadWebDocument(ctx context.Context, data ILoadWebDocumentData, localVarOptionals map[string]interface{}) (SaveResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  SaveResponse
 	)
 
@@ -13629,7 +13499,7 @@ func (a *WordsApiService) LoadWebDocument(ctx context.Context, data LoadWebDocum
 	}
 	// body params
 	localVarPostBody = &data
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -13665,8 +13535,7 @@ func (a *WordsApiService) MoveFile(ctx context.Context, destPath string, srcPath
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	)
 
 	// create path and map variables
@@ -13717,7 +13586,7 @@ func (a *WordsApiService) MoveFile(ctx context.Context, destPath string, srcPath
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -13747,8 +13616,7 @@ func (a *WordsApiService) MoveFolder(ctx context.Context, destPath string, srcPa
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	)
 
 	// create path and map variables
@@ -13793,7 +13661,7 @@ func (a *WordsApiService) MoveFolder(ctx context.Context, destPath string, srcPa
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -13822,12 +13690,11 @@ func (a *WordsApiService) MoveFolder(ctx context.Context, destPath string, srcPa
      @param "password" (string) Password for opening an encrypted document.
      @param "destFileName" (string) Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.
  @return ProtectionDataResponse*/
-func (a *WordsApiService) ProtectDocument(ctx context.Context, name string, protectionRequest ProtectionRequest, localVarOptionals map[string]interface{}) (ProtectionDataResponse,  *http.Response, error) {
+func (a *WordsApiService) ProtectDocument(ctx context.Context, name string, protectionRequest IProtectionRequest, localVarOptionals map[string]interface{}) (ProtectionDataResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  ProtectionDataResponse
 	)
 
@@ -13892,7 +13759,7 @@ func (a *WordsApiService) ProtectDocument(ctx context.Context, name string, prot
 	}
 	// body params
 	localVarPostBody = &protectionRequest
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -13929,8 +13796,7 @@ func (a *WordsApiService) RejectAllRevisions(ctx context.Context, name string, l
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  RevisionsModificationResponse
 	)
 
@@ -13993,7 +13859,7 @@ func (a *WordsApiService) RejectAllRevisions(ctx context.Context, name string, l
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -14032,8 +13898,7 @@ func (a *WordsApiService) RemoveRange(ctx context.Context, name string, rangeSta
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  DocumentResponse
 	)
 
@@ -14098,7 +13963,7 @@ func (a *WordsApiService) RemoveRange(ctx context.Context, name string, rangeSta
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -14138,8 +14003,7 @@ func (a *WordsApiService) RenderDrawingObject(ctx context.Context, name string, 
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  *os.File
 	)
 
@@ -14205,7 +14069,7 @@ func (a *WordsApiService) RenderDrawingObject(ctx context.Context, name string, 
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -14244,8 +14108,7 @@ func (a *WordsApiService) RenderDrawingObjectWithoutNodePath(ctx context.Context
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  *os.File
 	)
 
@@ -14310,7 +14173,7 @@ func (a *WordsApiService) RenderDrawingObjectWithoutNodePath(ctx context.Context
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -14350,8 +14213,7 @@ func (a *WordsApiService) RenderMathObject(ctx context.Context, name string, for
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  *os.File
 	)
 
@@ -14417,7 +14279,7 @@ func (a *WordsApiService) RenderMathObject(ctx context.Context, name string, for
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -14456,8 +14318,7 @@ func (a *WordsApiService) RenderMathObjectWithoutNodePath(ctx context.Context, n
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  *os.File
 	)
 
@@ -14522,7 +14383,7 @@ func (a *WordsApiService) RenderMathObjectWithoutNodePath(ctx context.Context, n
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -14561,8 +14422,7 @@ func (a *WordsApiService) RenderPage(ctx context.Context, name string, pageIndex
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  *os.File
 	)
 
@@ -14627,7 +14487,7 @@ func (a *WordsApiService) RenderPage(ctx context.Context, name string, pageIndex
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -14667,8 +14527,7 @@ func (a *WordsApiService) RenderParagraph(ctx context.Context, name string, form
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  *os.File
 	)
 
@@ -14734,7 +14593,7 @@ func (a *WordsApiService) RenderParagraph(ctx context.Context, name string, form
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -14773,8 +14632,7 @@ func (a *WordsApiService) RenderParagraphWithoutNodePath(ctx context.Context, na
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  *os.File
 	)
 
@@ -14839,7 +14697,7 @@ func (a *WordsApiService) RenderParagraphWithoutNodePath(ctx context.Context, na
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -14879,8 +14737,7 @@ func (a *WordsApiService) RenderTable(ctx context.Context, name string, format s
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  *os.File
 	)
 
@@ -14946,7 +14803,7 @@ func (a *WordsApiService) RenderTable(ctx context.Context, name string, format s
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -14985,8 +14842,7 @@ func (a *WordsApiService) RenderTableWithoutNodePath(ctx context.Context, name s
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  *os.File
 	)
 
@@ -15051,7 +14907,7 @@ func (a *WordsApiService) RenderTableWithoutNodePath(ctx context.Context, name s
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -15087,12 +14943,11 @@ func (a *WordsApiService) RenderTableWithoutNodePath(ctx context.Context, name s
      @param "revisionAuthor" (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
      @param "revisionDateTime" (string) The date and time to use for revisions.
  @return ReplaceTextResponse*/
-func (a *WordsApiService) ReplaceText(ctx context.Context, name string, replaceText ReplaceTextParameters, localVarOptionals map[string]interface{}) (ReplaceTextResponse,  *http.Response, error) {
+func (a *WordsApiService) ReplaceText(ctx context.Context, name string, replaceText IReplaceTextParameters, localVarOptionals map[string]interface{}) (ReplaceTextResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  ReplaceTextResponse
 	)
 
@@ -15169,7 +15024,7 @@ func (a *WordsApiService) ReplaceText(ctx context.Context, name string, replaceT
 	}
 	// body params
 	localVarPostBody = &replaceText
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -15205,12 +15060,11 @@ func (a *WordsApiService) ReplaceText(ctx context.Context, name string, replaceT
      @param "password" (string) Password for opening an encrypted document.
      @param "destFileName" (string) Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.
  @return DocumentResponse*/
-func (a *WordsApiService) ReplaceWithText(ctx context.Context, name string, rangeStartIdentifier string, rangeText ReplaceRange, rangeEndIdentifier string, localVarOptionals map[string]interface{}) (DocumentResponse,  *http.Response, error) {
+func (a *WordsApiService) ReplaceWithText(ctx context.Context, name string, rangeStartIdentifier string, rangeText IReplaceRange, rangeEndIdentifier string, localVarOptionals map[string]interface{}) (DocumentResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  DocumentResponse
 	)
 
@@ -15277,7 +15131,7 @@ func (a *WordsApiService) ReplaceWithText(ctx context.Context, name string, rang
 	}
 	// body params
 	localVarPostBody = &rangeText
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -15307,8 +15161,7 @@ func (a *WordsApiService) ResetCache(ctx context.Context) ( *http.Response, erro
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	)
 
 	// create path and map variables
@@ -15339,7 +15192,7 @@ func (a *WordsApiService) ResetCache(ctx context.Context) ( *http.Response, erro
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -15368,12 +15221,11 @@ func (a *WordsApiService) ResetCache(ctx context.Context) ( *http.Response, erro
      @param "password" (string) Password for opening an encrypted document.
      @param "fontsLocation" (string) Folder in filestorage with custom fonts.
  @return SaveResponse*/
-func (a *WordsApiService) SaveAs(ctx context.Context, name string, saveOptionsData SaveOptionsData, localVarOptionals map[string]interface{}) (SaveResponse,  *http.Response, error) {
+func (a *WordsApiService) SaveAs(ctx context.Context, name string, saveOptionsData ISaveOptionsData, localVarOptionals map[string]interface{}) (SaveResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  SaveResponse
 	)
 
@@ -15438,7 +15290,7 @@ func (a *WordsApiService) SaveAs(ctx context.Context, name string, saveOptionsDa
 	}
 	// body params
 	localVarPostBody = &saveOptionsData
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -15473,12 +15325,11 @@ func (a *WordsApiService) SaveAs(ctx context.Context, name string, saveOptionsDa
      @param "loadEncoding" (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
      @param "password" (string) Password for opening an encrypted document.
  @return DocumentResponse*/
-func (a *WordsApiService) SaveAsRange(ctx context.Context, name string, rangeStartIdentifier string, documentParameters RangeDocument, rangeEndIdentifier string, localVarOptionals map[string]interface{}) (DocumentResponse,  *http.Response, error) {
+func (a *WordsApiService) SaveAsRange(ctx context.Context, name string, rangeStartIdentifier string, documentParameters IRangeDocument, rangeEndIdentifier string, localVarOptionals map[string]interface{}) (DocumentResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  DocumentResponse
 	)
 
@@ -15539,7 +15390,7 @@ func (a *WordsApiService) SaveAsRange(ctx context.Context, name string, rangeSta
 	}
 	// body params
 	localVarPostBody = &documentParameters
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -15590,12 +15441,11 @@ func (a *WordsApiService) SaveAsRange(ctx context.Context, name string, rangeSta
      @param "zipOutput" (bool) Optional. A value determining zip output or not.
      @param "fontsLocation" (string) Folder in filestorage with custom fonts.
  @return SaveResponse*/
-func (a *WordsApiService) SaveAsTiff(ctx context.Context, name string, saveOptions TiffSaveOptionsData, localVarOptionals map[string]interface{}) (SaveResponse,  *http.Response, error) {
+func (a *WordsApiService) SaveAsTiff(ctx context.Context, name string, saveOptions ITiffSaveOptionsData, localVarOptionals map[string]interface{}) (SaveResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  SaveResponse
 	)
 
@@ -15762,7 +15612,7 @@ func (a *WordsApiService) SaveAsTiff(ctx context.Context, name string, saveOptio
 	}
 	// body params
 	localVarPostBody = &saveOptions
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -15799,8 +15649,7 @@ func (a *WordsApiService) Search(ctx context.Context, name string, pattern strin
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  SearchResponse
 	)
 
@@ -15858,7 +15707,7 @@ func (a *WordsApiService) Search(ctx context.Context, name string, pattern strin
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -15900,8 +15749,7 @@ func (a *WordsApiService) SplitDocument(ctx context.Context, name string, localV
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  SplitDocumentResponse
 	)
 
@@ -15994,7 +15842,7 @@ func (a *WordsApiService) SplitDocument(ctx context.Context, name string, localV
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -16028,12 +15876,11 @@ func (a *WordsApiService) SplitDocument(ctx context.Context, name string, localV
      @param "password" (string) Password for opening an encrypted document.
      @param "destFileName" (string) Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.
  @return ProtectionDataResponse*/
-func (a *WordsApiService) UnprotectDocument(ctx context.Context, name string, protectionRequest ProtectionRequest, localVarOptionals map[string]interface{}) (ProtectionDataResponse,  *http.Response, error) {
+func (a *WordsApiService) UnprotectDocument(ctx context.Context, name string, protectionRequest IProtectionRequest, localVarOptionals map[string]interface{}) (ProtectionDataResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  ProtectionDataResponse
 	)
 
@@ -16098,7 +15945,7 @@ func (a *WordsApiService) UnprotectDocument(ctx context.Context, name string, pr
 	}
 	// body params
 	localVarPostBody = &protectionRequest
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -16135,12 +15982,11 @@ func (a *WordsApiService) UnprotectDocument(ctx context.Context, name string, pr
      @param "revisionAuthor" (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
      @param "revisionDateTime" (string) The date and time to use for revisions.
  @return BookmarkResponse*/
-func (a *WordsApiService) UpdateBookmark(ctx context.Context, name string, bookmarkData BookmarkData, bookmarkName string, localVarOptionals map[string]interface{}) (BookmarkResponse,  *http.Response, error) {
+func (a *WordsApiService) UpdateBookmark(ctx context.Context, name string, bookmarkData IBookmarkData, bookmarkName string, localVarOptionals map[string]interface{}) (BookmarkResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  BookmarkResponse
 	)
 
@@ -16218,7 +16064,7 @@ func (a *WordsApiService) UpdateBookmark(ctx context.Context, name string, bookm
 	}
 	// body params
 	localVarPostBody = &bookmarkData
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -16257,12 +16103,11 @@ func (a *WordsApiService) UpdateBookmark(ctx context.Context, name string, bookm
      @param "revisionAuthor" (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
      @param "revisionDateTime" (string) The date and time to use for revisions.
  @return BorderResponse*/
-func (a *WordsApiService) UpdateBorder(ctx context.Context, name string, borderProperties Border, nodePath string, borderType string, localVarOptionals map[string]interface{}) (BorderResponse,  *http.Response, error) {
+func (a *WordsApiService) UpdateBorder(ctx context.Context, name string, borderProperties IBorder, nodePath string, borderType string, localVarOptionals map[string]interface{}) (BorderResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  BorderResponse
 	)
 
@@ -16341,7 +16186,7 @@ func (a *WordsApiService) UpdateBorder(ctx context.Context, name string, borderP
 	}
 	// body params
 	localVarPostBody = &borderProperties
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -16378,12 +16223,11 @@ func (a *WordsApiService) UpdateBorder(ctx context.Context, name string, borderP
      @param "revisionAuthor" (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
      @param "revisionDateTime" (string) The date and time to use for revisions.
  @return CommentResponse*/
-func (a *WordsApiService) UpdateComment(ctx context.Context, name string, commentIndex int32, comment Comment, localVarOptionals map[string]interface{}) (CommentResponse,  *http.Response, error) {
+func (a *WordsApiService) UpdateComment(ctx context.Context, name string, commentIndex int32, comment IComment, localVarOptionals map[string]interface{}) (CommentResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  CommentResponse
 	)
 
@@ -16461,7 +16305,7 @@ func (a *WordsApiService) UpdateComment(ctx context.Context, name string, commen
 	}
 	// body params
 	localVarPostBody = &comment
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -16504,8 +16348,7 @@ func (a *WordsApiService) UpdateDrawingObject(ctx context.Context, name string, 
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  DrawingObjectResponse
 	)
 
@@ -16583,13 +16426,13 @@ func (a *WordsApiService) UpdateDrawingObject(ctx context.Context, name string, 
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	localVarFormParams.Add("DrawingObject", parameterToString(drawingObject, ""))
-	if localVarFile != nil {
-		fbs, _ := ioutil.ReadAll(localVarFile)
-		localVarFileBytes = fbs
-		localVarFileName = localVarFile.Name()
-		localVarFile.Close()
+	_imageFile := imageFile
+	if _imageFile != nil {
+		fbs, _ := ioutil.ReadAll(_imageFile)
+		_imageFile.Close()
+		localFiles[_imageFile.Name()] = fbs
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -16631,8 +16474,7 @@ func (a *WordsApiService) UpdateDrawingObjectWithoutNodePath(ctx context.Context
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  DrawingObjectResponse
 	)
 
@@ -16709,13 +16551,13 @@ func (a *WordsApiService) UpdateDrawingObjectWithoutNodePath(ctx context.Context
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	localVarFormParams.Add("DrawingObject", parameterToString(drawingObject, ""))
-	if localVarFile != nil {
-		fbs, _ := ioutil.ReadAll(localVarFile)
-		localVarFileBytes = fbs
-		localVarFileName = localVarFile.Name()
-		localVarFile.Close()
+	_imageFile := imageFile
+	if _imageFile != nil {
+		fbs, _ := ioutil.ReadAll(_imageFile)
+		_imageFile.Close()
+		localFiles[_imageFile.Name()] = fbs
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -16753,12 +16595,11 @@ func (a *WordsApiService) UpdateDrawingObjectWithoutNodePath(ctx context.Context
      @param "revisionAuthor" (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
      @param "revisionDateTime" (string) The date and time to use for revisions.
  @return FieldResponse*/
-func (a *WordsApiService) UpdateField(ctx context.Context, name string, field Field, nodePath string, index int32, localVarOptionals map[string]interface{}) (FieldResponse,  *http.Response, error) {
+func (a *WordsApiService) UpdateField(ctx context.Context, name string, field IField, nodePath string, index int32, localVarOptionals map[string]interface{}) (FieldResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  FieldResponse
 	)
 
@@ -16837,7 +16678,7 @@ func (a *WordsApiService) UpdateField(ctx context.Context, name string, field Fi
 	}
 	// body params
 	localVarPostBody = &field
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -16874,8 +16715,7 @@ func (a *WordsApiService) UpdateFields(ctx context.Context, name string, localVa
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  DocumentResponse
 	)
 
@@ -16938,7 +16778,7 @@ func (a *WordsApiService) UpdateFields(ctx context.Context, name string, localVa
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -16976,12 +16816,11 @@ func (a *WordsApiService) UpdateFields(ctx context.Context, name string, localVa
      @param "revisionAuthor" (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
      @param "revisionDateTime" (string) The date and time to use for revisions.
  @return FootnoteResponse*/
-func (a *WordsApiService) UpdateFootnote(ctx context.Context, name string, footnoteDto Footnote, nodePath string, index int32, localVarOptionals map[string]interface{}) (FootnoteResponse,  *http.Response, error) {
+func (a *WordsApiService) UpdateFootnote(ctx context.Context, name string, footnoteDto IFootnote, nodePath string, index int32, localVarOptionals map[string]interface{}) (FootnoteResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  FootnoteResponse
 	)
 
@@ -17060,7 +16899,7 @@ func (a *WordsApiService) UpdateFootnote(ctx context.Context, name string, footn
 	}
 	// body params
 	localVarPostBody = &footnoteDto
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -17097,12 +16936,11 @@ func (a *WordsApiService) UpdateFootnote(ctx context.Context, name string, footn
      @param "revisionAuthor" (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
      @param "revisionDateTime" (string) The date and time to use for revisions.
  @return FootnoteResponse*/
-func (a *WordsApiService) UpdateFootnoteWithoutNodePath(ctx context.Context, name string, footnoteDto Footnote, index int32, localVarOptionals map[string]interface{}) (FootnoteResponse,  *http.Response, error) {
+func (a *WordsApiService) UpdateFootnoteWithoutNodePath(ctx context.Context, name string, footnoteDto IFootnote, index int32, localVarOptionals map[string]interface{}) (FootnoteResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  FootnoteResponse
 	)
 
@@ -17180,7 +17018,7 @@ func (a *WordsApiService) UpdateFootnoteWithoutNodePath(ctx context.Context, nam
 	}
 	// body params
 	localVarPostBody = &footnoteDto
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -17218,12 +17056,11 @@ func (a *WordsApiService) UpdateFootnoteWithoutNodePath(ctx context.Context, nam
      @param "revisionAuthor" (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
      @param "revisionDateTime" (string) The date and time to use for revisions.
  @return FormFieldResponse*/
-func (a *WordsApiService) UpdateFormField(ctx context.Context, name string, formField FormField, nodePath string, index int32, localVarOptionals map[string]interface{}) (FormFieldResponse,  *http.Response, error) {
+func (a *WordsApiService) UpdateFormField(ctx context.Context, name string, formField IFormField, nodePath string, index int32, localVarOptionals map[string]interface{}) (FormFieldResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  FormFieldResponse
 	)
 
@@ -17302,7 +17139,7 @@ func (a *WordsApiService) UpdateFormField(ctx context.Context, name string, form
 	}
 	// body params
 	localVarPostBody = &formField
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -17339,12 +17176,11 @@ func (a *WordsApiService) UpdateFormField(ctx context.Context, name string, form
      @param "revisionAuthor" (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
      @param "revisionDateTime" (string) The date and time to use for revisions.
  @return FormFieldResponse*/
-func (a *WordsApiService) UpdateFormFieldWithoutNodePath(ctx context.Context, name string, formField FormField, index int32, localVarOptionals map[string]interface{}) (FormFieldResponse,  *http.Response, error) {
+func (a *WordsApiService) UpdateFormFieldWithoutNodePath(ctx context.Context, name string, formField IFormField, index int32, localVarOptionals map[string]interface{}) (FormFieldResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  FormFieldResponse
 	)
 
@@ -17422,7 +17258,7 @@ func (a *WordsApiService) UpdateFormFieldWithoutNodePath(ctx context.Context, na
 	}
 	// body params
 	localVarPostBody = &formField
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -17460,12 +17296,11 @@ func (a *WordsApiService) UpdateFormFieldWithoutNodePath(ctx context.Context, na
      @param "revisionAuthor" (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
      @param "revisionDateTime" (string) The date and time to use for revisions.
  @return ParagraphFormatResponse*/
-func (a *WordsApiService) UpdateParagraphFormat(ctx context.Context, name string, dto ParagraphFormat, nodePath string, index int32, localVarOptionals map[string]interface{}) (ParagraphFormatResponse,  *http.Response, error) {
+func (a *WordsApiService) UpdateParagraphFormat(ctx context.Context, name string, dto IParagraphFormat, nodePath string, index int32, localVarOptionals map[string]interface{}) (ParagraphFormatResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  ParagraphFormatResponse
 	)
 
@@ -17544,7 +17379,7 @@ func (a *WordsApiService) UpdateParagraphFormat(ctx context.Context, name string
 	}
 	// body params
 	localVarPostBody = &dto
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -17582,12 +17417,11 @@ func (a *WordsApiService) UpdateParagraphFormat(ctx context.Context, name string
      @param "revisionAuthor" (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
      @param "revisionDateTime" (string) The date and time to use for revisions.
  @return RunResponse*/
-func (a *WordsApiService) UpdateRun(ctx context.Context, name string, run Run, paragraphPath string, index int32, localVarOptionals map[string]interface{}) (RunResponse,  *http.Response, error) {
+func (a *WordsApiService) UpdateRun(ctx context.Context, name string, run IRun, paragraphPath string, index int32, localVarOptionals map[string]interface{}) (RunResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  RunResponse
 	)
 
@@ -17666,7 +17500,7 @@ func (a *WordsApiService) UpdateRun(ctx context.Context, name string, run Run, p
 	}
 	// body params
 	localVarPostBody = &run
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -17704,12 +17538,11 @@ func (a *WordsApiService) UpdateRun(ctx context.Context, name string, run Run, p
      @param "revisionAuthor" (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
      @param "revisionDateTime" (string) The date and time to use for revisions.
  @return FontResponse*/
-func (a *WordsApiService) UpdateRunFont(ctx context.Context, name string, fontDto Font, paragraphPath string, index int32, localVarOptionals map[string]interface{}) (FontResponse,  *http.Response, error) {
+func (a *WordsApiService) UpdateRunFont(ctx context.Context, name string, fontDto IFont, paragraphPath string, index int32, localVarOptionals map[string]interface{}) (FontResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  FontResponse
 	)
 
@@ -17788,7 +17621,7 @@ func (a *WordsApiService) UpdateRunFont(ctx context.Context, name string, fontDt
 	}
 	// body params
 	localVarPostBody = &fontDto
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -17825,12 +17658,11 @@ func (a *WordsApiService) UpdateRunFont(ctx context.Context, name string, fontDt
      @param "revisionAuthor" (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
      @param "revisionDateTime" (string) The date and time to use for revisions.
  @return SectionPageSetupResponse*/
-func (a *WordsApiService) UpdateSectionPageSetup(ctx context.Context, name string, sectionIndex int32, pageSetup PageSetup, localVarOptionals map[string]interface{}) (SectionPageSetupResponse,  *http.Response, error) {
+func (a *WordsApiService) UpdateSectionPageSetup(ctx context.Context, name string, sectionIndex int32, pageSetup IPageSetup, localVarOptionals map[string]interface{}) (SectionPageSetupResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  SectionPageSetupResponse
 	)
 
@@ -17908,7 +17740,7 @@ func (a *WordsApiService) UpdateSectionPageSetup(ctx context.Context, name strin
 	}
 	// body params
 	localVarPostBody = &pageSetup
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -17950,8 +17782,7 @@ func (a *WordsApiService) UpdateTableCellFormat(ctx context.Context, name string
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  TableCellFormatResponse
 	)
 
@@ -18032,7 +17863,7 @@ func (a *WordsApiService) UpdateTableCellFormat(ctx context.Context, name string
 	if localVarTempParam, localVarOk := localVarOptionals["format"].(TableCellFormat); localVarOk {
 		localVarPostBody = &localVarTempParam
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -18074,8 +17905,7 @@ func (a *WordsApiService) UpdateTableProperties(ctx context.Context, name string
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  TablePropertiesResponse
 	)
 
@@ -18156,7 +17986,7 @@ func (a *WordsApiService) UpdateTableProperties(ctx context.Context, name string
 	if localVarTempParam, localVarOk := localVarOptionals["properties"].(TableProperties); localVarOk {
 		localVarPostBody = &localVarTempParam
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -18197,8 +18027,7 @@ func (a *WordsApiService) UpdateTablePropertiesWithoutNodePath(ctx context.Conte
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  TablePropertiesResponse
 	)
 
@@ -18278,7 +18107,7 @@ func (a *WordsApiService) UpdateTablePropertiesWithoutNodePath(ctx context.Conte
 	if localVarTempParam, localVarOk := localVarOptionals["properties"].(TableProperties); localVarOk {
 		localVarPostBody = &localVarTempParam
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -18320,8 +18149,7 @@ func (a *WordsApiService) UpdateTableRowFormat(ctx context.Context, name string,
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  TableRowFormatResponse
 	)
 
@@ -18402,7 +18230,7 @@ func (a *WordsApiService) UpdateTableRowFormat(ctx context.Context, name string,
 	if localVarTempParam, localVarOk := localVarOptionals["format"].(TableRowFormat); localVarOk {
 		localVarPostBody = &localVarTempParam
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}
@@ -18436,8 +18264,7 @@ func (a *WordsApiService) UploadFile(ctx context.Context, fileContent *os.File, 
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localFiles map[string][]byte
 	 	successPayload  FilesUploadResult
 	)
 
@@ -18476,13 +18303,13 @@ func (a *WordsApiService) UploadFile(ctx context.Context, fileContent *os.File, 
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	if localVarFile != nil {
-		fbs, _ := ioutil.ReadAll(localVarFile)
-		localVarFileBytes = fbs
-		localVarFileName = localVarFile.Name()
-		localVarFile.Close()
+	_fileContent := fileContent
+	if _fileContent != nil {
+		fbs, _ := ioutil.ReadAll(_fileContent)
+		_fileContent.Close()
+		localFiles[_fileContent.Name()] = fbs
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
 	}

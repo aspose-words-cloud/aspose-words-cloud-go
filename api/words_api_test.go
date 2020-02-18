@@ -388,7 +388,7 @@ func TestCreateDocument(t *testing.T) {
 
 func TestCreateFolder(t *testing.T) {
 
-	remoteFolder := path.Join(remoteBaseTestDataFolder, "Storage", fmt.Sprintf("TestCreateFolder%s"), uuid.New().String())
+	remoteFolder := path.Join(remoteBaseTestDataFolder, "Storage", fmt.Sprintf("TestCreateFolder%s", uuid.New().String()))
 
 	config := ReadConfiguration(t)
 	client, ctx := PrepareTest(t, config)
@@ -429,14 +429,14 @@ func TestDeleteBorder(t *testing.T) {
 	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Tables")
 	remoteName := "TestDeleteBorder.docx"
 	nodePath := "tables/1/rows/0/cells/0"
-	index := 0
+	borderType := "Left"
 	options := map[string]interface{}{
 		"folder": remoteFolder,
 	}
 
 	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, _, err := client.WordsApi.DeleteBorder(ctx, remoteName, nodePath, int32(index), options)
+	_, _, err := client.WordsApi.DeleteBorder(ctx, remoteName, nodePath, borderType, options)
 
 	if err != nil {
 		t.Error(err)
@@ -1107,14 +1107,14 @@ func TestGetBorder(t *testing.T) {
 	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Tables")
 	remoteName := "TestGetBorder.docx"
 	nodePath := "tables/1/rows/0/cells/0"
-	index := 0
+	borderType := "Left"
 	options := map[string]interface{}{
 		"folder": remoteFolder,
 	}
 
 	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, _, err := client.WordsApi.GetBorder(ctx, remoteName, nodePath, int32(index), options)
+	_, _, err := client.WordsApi.GetBorder(ctx, remoteName, nodePath, borderType, options)
 
 	if err != nil {
 		t.Error(err)
@@ -3304,7 +3304,7 @@ func TestUpdateBorder(t *testing.T) {
 	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Tables")
 	remoteName := "TestUpdateBorder.docx"
 	nodePath := "tables/1/rows/0/cells/0"
-	index := 0
+	borderType := "Left"
 	borderProperties := api.Border{
 		BorderType: "Left",
 		Color: &api.XmlColor{
@@ -3321,7 +3321,7 @@ func TestUpdateBorder(t *testing.T) {
 
 	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, _, err := client.WordsApi.UpdateBorder(ctx, remoteName, borderProperties, nodePath, int32(index), options)
+	_, _, err := client.WordsApi.UpdateBorder(ctx, remoteName, borderProperties, nodePath, borderType, options)
 
 	if err != nil {
 		t.Error(err)
@@ -3418,11 +3418,11 @@ func TestUpdateField(t *testing.T) {
 	remoteName := "TestUpdateField.docx"
 	nodePath := "sections/0/paragraphs/0"
 	index := 0
-	field := api.Field { 
-		Result: "3", 
-		FieldCode: "{ NUMPAGES }", 
-		NodeId: "0.0.3",
-	 }
+	field := api.Field{
+		Result:    "3",
+		FieldCode: "{ NUMPAGES }",
+		NodeId:    "0.0.3",
+	}
 	options := map[string]interface{}{
 		"folder": remoteFolder,
 	}
@@ -3461,9 +3461,9 @@ func TestUpdateFootnote(t *testing.T) {
 	remoteName := "TestUpdateFootnote.docx"
 	nodePath := "sections/0"
 	index := 0
-	footnoteDto := api.Footnote { 
+	footnoteDto := api.Footnote{
 		Text: "new text is here",
-	 }
+	}
 	options := map[string]interface{}{
 		"folder": remoteFolder,
 	}
@@ -3483,9 +3483,9 @@ func TestUpdateFootnoteWithoutNodePath(t *testing.T) {
 	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Footnotes")
 	remoteName := "TestUpdateFootnoteWithoutNodePath.docx"
 	index := 0
-	footnoteDto := api.Footnote { 
+	footnoteDto := api.Footnote{
 		Text: "new text is here",
-	 }
+	}
 	options := map[string]interface{}{
 		"folder": remoteFolder,
 	}
@@ -3506,12 +3506,12 @@ func TestUpdateFormField(t *testing.T) {
 	remoteName := "TestUpdateFormField.docx"
 	nodePath := "sections/0"
 	index := 0
-	formField := api.FormFieldTextInput	{
-		Name: "FullName",
-		Enabled: true,
-		CalculateOnExit: true,
-		StatusText: "",
-		TextInputType: "Regular",
+	formField := api.FormFieldTextInput{
+		Name:             "FullName",
+		Enabled:          true,
+		CalculateOnExit:  true,
+		StatusText:       "",
+		TextInputType:    "Regular",
 		TextInputDefault: "",
 	}
 	options := map[string]interface{}{
@@ -3533,12 +3533,12 @@ func TestUpdateFormFieldWithoutNodePath(t *testing.T) {
 	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "FormFields")
 	remoteName := "TestUpdateFormFieldWithoutNodePath.docx"
 	index := 0
-	formField := api.FormFieldTextInput	{
-		Name: "FullName",
-		Enabled: true,
-		CalculateOnExit: true,
-		StatusText: "",
-		TextInputType: "Regular",
+	formField := api.FormFieldTextInput{
+		Name:             "FullName",
+		Enabled:          true,
+		CalculateOnExit:  true,
+		StatusText:       "",
+		TextInputType:    "Regular",
 		TextInputDefault: "",
 	}
 	options := map[string]interface{}{
@@ -3561,7 +3561,7 @@ func TestUpdateParagraphFormat(t *testing.T) {
 	remoteName := "TestUpdateParagraphFormat.docx"
 	nodePath := "sections/0"
 	index := 0
-	dto := api.ParagraphFormat	{
+	dto := api.ParagraphFormat{
 		Alignment: "Right",
 	}
 	options := map[string]interface{}{
@@ -3584,7 +3584,7 @@ func TestUpdateRun(t *testing.T) {
 	remoteName := "TestUpdateRun.docx"
 	paragraphPath := "paragraphs/1"
 	index := 0
-	run := api.Run { 
+	run := api.Run{
 		Text: "run with text",
 	}
 	options := map[string]interface{}{
@@ -3607,7 +3607,7 @@ func TestUpdateRunFont(t *testing.T) {
 	remoteName := "TestUpdateRunFont.docx"
 	paragraphPath := "paragraphs/0"
 	index := 0
-	fontDto := api.Font { 
+	fontDto := api.Font{
 		Bold: true,
 	}
 	options := map[string]interface{}{
@@ -3629,11 +3629,11 @@ func TestUpdateSectionPageSetup(t *testing.T) {
 	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "PageSetup")
 	remoteName := "TestUpdateSectionPageSetup.docx"
 	sectionIndex := 0
-	pageSetup := api.PageSetup	{
-		RtlGutter: true,
-		LeftMargin: 10.0,
+	pageSetup := api.PageSetup{
+		RtlGutter:   true,
+		LeftMargin:  10.0,
 		Orientation: "Landscape",
-		PaperSize: "A5",
+		PaperSize:   "A5",
 	}
 	options := map[string]interface{}{
 		"folder": remoteFolder,
@@ -3657,11 +3657,11 @@ func TestUpdateTableCellFormat(t *testing.T) {
 	index := 0
 	options := map[string]interface{}{
 		"folder": remoteFolder,
-		"format": api.TableCellFormat { 
-			BottomPadding: 5, 
-			FitText: true, 
-			HorizontalMerge: "First", 
-			WrapText: true, 
+		"format": api.TableCellFormat{
+			BottomPadding:   5,
+			FitText:         true,
+			HorizontalMerge: "First",
+			WrapText:        true,
 		},
 	}
 
@@ -3683,17 +3683,17 @@ func TestUpdateTableProperties(t *testing.T) {
 	index := 0
 	options := map[string]interface{}{
 		"folder": remoteFolder,
-		"properties": api.TableProperties {
-			Alignment: "Right",
-			AllowAutoFit: false,
-			Bidi: true,
+		"properties": api.TableProperties{
+			Alignment:     "Right",
+			AllowAutoFit:  false,
+			Bidi:          true,
 			BottomPadding: 1,
-			CellSpacing: 2,
-			LeftIndent: 3,
-			LeftPadding: 4,
-			RightPadding: 5,
-			StyleOptions: "ColumnBands",
-			TopPadding: 6,
+			CellSpacing:   2,
+			LeftIndent:    3,
+			LeftPadding:   4,
+			RightPadding:  5,
+			StyleOptions:  "ColumnBands",
+			TopPadding:    6,
 		},
 	}
 
@@ -3714,17 +3714,17 @@ func TestUpdateTablePropertiesWithoutNodePath(t *testing.T) {
 	index := 0
 	options := map[string]interface{}{
 		"folder": remoteFolder,
-		"properties": api.TableProperties {
-			Alignment: "Right",
-			AllowAutoFit: false,
-			Bidi: true,
+		"properties": api.TableProperties{
+			Alignment:     "Right",
+			AllowAutoFit:  false,
+			Bidi:          true,
 			BottomPadding: 1,
-			CellSpacing: 2,
-			LeftIndent: 3,
-			LeftPadding: 4,
-			RightPadding: 5,
-			StyleOptions: "ColumnBands",
-			TopPadding: 6,
+			CellSpacing:   2,
+			LeftIndent:    3,
+			LeftPadding:   4,
+			RightPadding:  5,
+			StyleOptions:  "ColumnBands",
+			TopPadding:    6,
 		},
 	}
 	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
@@ -3745,12 +3745,12 @@ func TestUpdateTableRowFormat(t *testing.T) {
 	index := 0
 	options := map[string]interface{}{
 		"folder": remoteFolder,
-		"format": api.TableRowFormat { 
-			AllowBreakAcrossPages: true, 
-			HeadingFormat: true, 
-			Height: 10, 
-			HeightRule: "Auto",
-		 },
+		"format": api.TableRowFormat{
+			AllowBreakAcrossPages: true,
+			HeadingFormat:         true,
+			Height:                10,
+			HeightRule:            "Auto",
+		},
 	}
 
 	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
