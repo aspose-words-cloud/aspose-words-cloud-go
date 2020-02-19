@@ -41,6 +41,7 @@ import (
 
 	"github.com/aspose-words-cloud/aspose-words-cloud-go/api"
 	"github.com/google/uuid"
+	//	"github.com/stretchr/testify/assert"
 )
 
 var remoteBaseTestDataFolder string = "Temp/SdkTests/TestData"
@@ -83,6 +84,7 @@ func PrepareTest(t *testing.T, config *api.Configuration) (apiClient *api.APICli
 
 func UploadFileToStorage(t *testing.T, fileName string, path string) (*api.APIClient, context.Context) {
 	config := ReadConfiguration(t)
+	config.DebugMode = true
 	client, ctx := PrepareTest(t, config)
 
 	UploadNextFileToStorage(t, ctx, client, fileName, path)
@@ -160,7 +162,7 @@ func TestTestCoverage(t *testing.T) {
 		t.Error(err)
 	}
 
-	callFuncRegex := regexp.MustCompile(`\.WordsApiService\.(\w+)`)
+	callFuncRegex := regexp.MustCompile(`\.WordsApi\.(\w+)`)
 	testedlApiFuncNames := callFuncRegex.FindAllSubmatch(tests, -1)
 
 	for _, name := range testedlApiFuncNames {
@@ -247,7 +249,7 @@ func TestClassify(t *testing.T) {
 
 	text := "Try text classification"
 	options := map[string]interface{}{
-		"bestClassesCount": 3,
+		"bestClassesCount": "3",
 	}
 
 	config := ReadConfiguration(t)
@@ -262,12 +264,12 @@ func TestClassify(t *testing.T) {
 
 func TestClassifyDocument(t *testing.T) {
 
-	localFilePath := GetLocalPath(filepath.Join("Common"), "Source.docx")
+	localFilePath := GetLocalPath(filepath.Join("Common"), "test_multi_pages.docx")
 	remoteFolder := path.Join(remoteBaseTestDataFolder, "Common")
 	remoteName := "TestClassifyDocument.docx"
 	options := map[string]interface{}{
 		"folder":           remoteFolder,
-		"bestClassesCount": 3,
+		"bestClassesCount": "3",
 	}
 
 	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
@@ -320,8 +322,8 @@ func TestConvertDocument(t *testing.T) {
 	config := ReadConfiguration(t)
 	client, ctx := PrepareTest(t, config)
 
-	output, _, err := client.WordsApi.ConvertDocument(ctx, document, format, nil)
-	defer output.Close()
+	output, err := client.WordsApi.ConvertDocument(ctx, document, format, nil)
+	defer output.Body.Close()
 
 	if err != nil {
 		t.Error(err)
@@ -851,7 +853,7 @@ func TestDeleteRun(t *testing.T) {
 	localFilePath := GetLocalPath(filepath.Join("DocumentElements", "Runs"), "Run.doc")
 	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Runs")
 	remoteName := "TestDeleteRun.docx"
-	paragraphPath := "sections/0"
+	paragraphPath := "paragraphs/1"
 	index := 0
 	options := map[string]interface{}{
 		"folder": remoteFolder,
@@ -984,17 +986,16 @@ func TestDeleteWatermark(t *testing.T) {
 
 func TestDownloadFile(t *testing.T) {
 
-	localFilePath := GetLocalPath(filepath.Join("", ""), "")
-	remoteFolder := path.Join(remoteBaseTestDataFolder, "")
+	localFilePath := commonTestFile
+	remoteFolder := path.Join(remoteBaseTestDataFolder, "Storage")
 	remoteName := "TestDownloadFile.docx"
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
+	fullName := path.Join(remoteFolder, remoteName)
+	options := map[string]interface{}{}
 
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
+	client, ctx := UploadFileToStorage(t, localFilePath, fullName)
 
-	output, _, err := client.WordsApi.DownloadFile(ctx, remoteName, options)
-	defer output.Close()
+	output, err := client.WordsApi.DownloadFile(ctx, fullName, options)
+	defer output.Body.Close()
 
 	if err != nil {
 		t.Error(err)
@@ -1044,8 +1045,8 @@ func TestExecuteMailMergeOnline(t *testing.T) {
 	config := ReadConfiguration(t)
 	client, ctx := PrepareTest(t, config)
 
-	output, _, err := client.WordsApi.ExecuteMailMergeOnline(ctx, template, data, nil)
-	defer output.Close()
+	output, err := client.WordsApi.ExecuteMailMergeOnline(ctx, template, data, nil)
+	defer output.Body.Close()
 
 	if err != nil {
 		t.Error(err)
@@ -1247,8 +1248,8 @@ func TestGetDocumentDrawingObjectImageData(t *testing.T) {
 
 	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	output, _, err := client.WordsApi.GetDocumentDrawingObjectImageData(ctx, remoteName, nodePath, int32(index), options)
-	defer output.Close()
+	output, err := client.WordsApi.GetDocumentDrawingObjectImageData(ctx, remoteName, nodePath, int32(index), options)
+	defer output.Body.Close()
 
 	if err != nil {
 		t.Error(err)
@@ -1267,8 +1268,8 @@ func TestGetDocumentDrawingObjectImageDataWithoutNodePath(t *testing.T) {
 
 	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	output, _, err := client.WordsApi.GetDocumentDrawingObjectImageDataWithoutNodePath(ctx, remoteName, int32(index), options)
-	defer output.Close()
+	output, err := client.WordsApi.GetDocumentDrawingObjectImageDataWithoutNodePath(ctx, remoteName, int32(index), options)
+	defer output.Body.Close()
 
 	if err != nil {
 		t.Error(err)
@@ -1277,7 +1278,7 @@ func TestGetDocumentDrawingObjectImageDataWithoutNodePath(t *testing.T) {
 
 func TestGetDocumentDrawingObjectOleData(t *testing.T) {
 
-	localFilePath := commonTestFile
+	localFilePath := GetLocalPath(filepath.Join("DocumentElements", "DrawingObjects"), "sample_EmbeddedOLE.docx")
 	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "DrawingObjects")
 	remoteName := "TestGetDocumentDrawingObjectOleData.docx"
 	nodePath := "sections/0"
@@ -1288,8 +1289,8 @@ func TestGetDocumentDrawingObjectOleData(t *testing.T) {
 
 	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	output, _, err := client.WordsApi.GetDocumentDrawingObjectOleData(ctx, remoteName, nodePath, int32(index), options)
-	defer output.Close()
+	output, err := client.WordsApi.GetDocumentDrawingObjectOleData(ctx, remoteName, nodePath, int32(index), options)
+	defer output.Body.Close()
 
 	if err != nil {
 		t.Error(err)
@@ -1298,7 +1299,7 @@ func TestGetDocumentDrawingObjectOleData(t *testing.T) {
 
 func TestGetDocumentDrawingObjectOleDataWithoutNodePath(t *testing.T) {
 
-	localFilePath := commonTestFile
+	localFilePath := GetLocalPath(filepath.Join("DocumentElements", "DrawingObjects"), "sample_EmbeddedOLE.docx")
 	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "DrawingObjects")
 	remoteName := "TestGetDocumentDrawingObjectOleDataWithoutNodePath.docx"
 	index := 0
@@ -1308,8 +1309,8 @@ func TestGetDocumentDrawingObjectOleDataWithoutNodePath(t *testing.T) {
 
 	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	output, _, err := client.WordsApi.GetDocumentDrawingObjectOleDataWithoutNodePath(ctx, remoteName, int32(index), options)
-	defer output.Close()
+	output, err := client.WordsApi.GetDocumentDrawingObjectOleDataWithoutNodePath(ctx, remoteName, int32(index), options)
+	defer output.Body.Close()
 
 	if err != nil {
 		t.Error(err)
@@ -1391,7 +1392,7 @@ func TestGetDocumentFieldNamesOnline(t *testing.T) {
 
 func TestGetDocumentHyperlinkByIndex(t *testing.T) {
 
-	localFilePath := GetLocalPath(filepath.Join("DocumentElements", "Hyperlink"), "test_doc.docx")
+	localFilePath := GetLocalPath("Common", "test_doc.docx")
 	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Hyperlink")
 	remoteName := "TestGetDocumentHyperlinkByIndex.docx"
 	hyperlinkIndex := 0
@@ -1410,7 +1411,7 @@ func TestGetDocumentHyperlinkByIndex(t *testing.T) {
 
 func TestGetDocumentHyperlinks(t *testing.T) {
 
-	localFilePath := GetLocalPath(filepath.Join("DocumentElements", "Hyperlink"), "test_doc.docx")
+	localFilePath := GetLocalPath("Common", "test_doc.docx")
 	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Hyperlink")
 	remoteName := "TestGetDocumentHyperlinks.docx"
 	options := map[string]interface{}{
@@ -1511,7 +1512,8 @@ func TestGetDocumentWithFormat(t *testing.T) {
 
 	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, _, err := client.WordsApi.GetDocumentWithFormat(ctx, remoteName, format, options)
+	output, err := client.WordsApi.GetDocumentWithFormat(ctx, remoteName, format, options)
+	defer output.Body.Close()
 
 	if err != nil {
 		t.Error(err)
@@ -1599,6 +1601,7 @@ func TestGetFilesList(t *testing.T) {
 	remoteFolder := path.Join(remoteBaseTestDataFolder, "Storage")
 
 	config := ReadConfiguration(t)
+	config.DebugMode = true
 	client, ctx := PrepareTest(t, config)
 
 	_, _, err := client.WordsApi.GetFilesList(ctx, remoteFolder, nil)
@@ -2421,7 +2424,7 @@ func TestInsertDrawingObjectWithoutNodePath(t *testing.T) {
 
 func TestInsertField(t *testing.T) {
 
-	localFilePath := GetLocalPath(filepath.Join("DocumentElements", "Fields"), "SampleWordDocument.docx")
+	localFilePath := GetLocalPath(filepath.Join("DocumentElements", "Text"), "SampleWordDocument.docx")
 	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Fields")
 	remoteName := "TestInsertField.docx"
 	nodePath := "sections/0/paragraphs/0"
@@ -2445,7 +2448,7 @@ func TestInsertField(t *testing.T) {
 
 func TestInsertFieldWithoutNodePath(t *testing.T) {
 
-	localFilePath := GetLocalPath(filepath.Join("DocumentElements", "Fields"), "SampleWordDocument.docx")
+	localFilePath := GetLocalPath(filepath.Join("DocumentElements", "Text"), "SampleWordDocument.docx")
 	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Fields")
 	remoteName := "TestInsertFieldWithoutNodePath.docx"
 	field := api.Field{
@@ -2747,6 +2750,7 @@ func TestInsertWatermarkImage(t *testing.T) {
 	remoteName := "TestInsertWatermarkImage.docx"
 	localImagePath := GetLocalPath("Common", "aspose-cloud.png")
 	remoteImageName := "TestInsertWatermarkImage.png"
+
 	options := map[string]interface{}{
 		"folder":        remoteFolder,
 		"image":         path.Join(remoteFolder, remoteImageName),
@@ -2917,7 +2921,8 @@ func TestRenderDrawingObject(t *testing.T) {
 
 	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, _, err := client.WordsApi.RenderDrawingObject(ctx, remoteName, format, nodePath, int32(index), options)
+	output, err := client.WordsApi.RenderDrawingObject(ctx, remoteName, format, nodePath, int32(index), options)
+	defer output.Body.Close()
 
 	if err != nil {
 		t.Error(err)
@@ -2937,7 +2942,8 @@ func TestRenderDrawingObjectWithoutNodePath(t *testing.T) {
 
 	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, _, err := client.WordsApi.RenderDrawingObjectWithoutNodePath(ctx, remoteName, format, int32(index), options)
+	output, err := client.WordsApi.RenderDrawingObjectWithoutNodePath(ctx, remoteName, format, int32(index), options)
+	defer output.Body.Close()
 
 	if err != nil {
 		t.Error(err)
@@ -2958,7 +2964,8 @@ func TestRenderMathObject(t *testing.T) {
 
 	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, _, err := client.WordsApi.RenderMathObject(ctx, remoteName, format, nodePath, int32(index), options)
+	output, err := client.WordsApi.RenderMathObject(ctx, remoteName, format, nodePath, int32(index), options)
+	defer output.Body.Close()
 
 	if err != nil {
 		t.Error(err)
@@ -2978,7 +2985,8 @@ func TestRenderMathObjectWithoutNodePath(t *testing.T) {
 
 	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, _, err := client.WordsApi.RenderMathObjectWithoutNodePath(ctx, remoteName, format, int32(index), options)
+	output, err := client.WordsApi.RenderMathObjectWithoutNodePath(ctx, remoteName, format, int32(index), options)
+	defer output.Body.Close()
 
 	if err != nil {
 		t.Error(err)
@@ -2987,7 +2995,7 @@ func TestRenderMathObjectWithoutNodePath(t *testing.T) {
 
 func TestRenderPage(t *testing.T) {
 
-	localFilePath := GetLocalPath(filepath.Join("DocumentElements", "PageSetup"), "SampleWordDocument.docx")
+	localFilePath := GetLocalPath(filepath.Join("DocumentElements", "Text"), "SampleWordDocument.docx")
 	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "PageSetup")
 	remoteName := "TestRenderPage.docx"
 	format := "bmp"
@@ -2998,7 +3006,8 @@ func TestRenderPage(t *testing.T) {
 
 	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, _, err := client.WordsApi.RenderPage(ctx, remoteName, int32(pageIndex), format, options)
+	output, err := client.WordsApi.RenderPage(ctx, remoteName, int32(pageIndex), format, options)
+	defer output.Body.Close()
 
 	if err != nil {
 		t.Error(err)
@@ -3019,7 +3028,8 @@ func TestRenderParagraph(t *testing.T) {
 
 	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, _, err := client.WordsApi.RenderParagraph(ctx, remoteName, format, nodePath, int32(index), options)
+	output, err := client.WordsApi.RenderParagraph(ctx, remoteName, format, nodePath, int32(index), options)
+	defer output.Body.Close()
 
 	if err != nil {
 		t.Error(err)
@@ -3039,7 +3049,8 @@ func TestRenderParagraphWithoutNodePath(t *testing.T) {
 
 	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, _, err := client.WordsApi.RenderParagraphWithoutNodePath(ctx, remoteName, format, int32(index), options)
+	output, err := client.WordsApi.RenderParagraphWithoutNodePath(ctx, remoteName, format, int32(index), options)
+	defer output.Body.Close()
 
 	if err != nil {
 		t.Error(err)
@@ -3060,7 +3071,8 @@ func TestRenderTable(t *testing.T) {
 
 	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, _, err := client.WordsApi.RenderTable(ctx, remoteName, format, nodePath, int32(index), options)
+	output, err := client.WordsApi.RenderTable(ctx, remoteName, format, nodePath, int32(index), options)
+	defer output.Body.Close()
 
 	if err != nil {
 		t.Error(err)
@@ -3080,7 +3092,8 @@ func TestRenderTableWithoutNodePath(t *testing.T) {
 
 	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, _, err := client.WordsApi.RenderTableWithoutNodePath(ctx, remoteName, format, int32(index), options)
+	output, err := client.WordsApi.RenderTableWithoutNodePath(ctx, remoteName, format, int32(index), options)
+	defer output.Body.Close()
 
 	if err != nil {
 		t.Error(err)
@@ -3241,8 +3254,8 @@ func TestSplitDocument(t *testing.T) {
 	options := map[string]interface{}{
 		"folder": remoteFolder,
 		"format": "text",
-		"from":   1,
-		"to":     2,
+		"from":   int32(1),
+		"to":     int32(2),
 	}
 
 	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
@@ -3363,7 +3376,7 @@ func TestUpdateComment(t *testing.T) {
 func TestUpdateDrawingObject(t *testing.T) {
 
 	localFilePath := commonTestFile
-	localImagePath := GetLocalPath("Common", "TablesGet.docx")
+	localImagePath := GetLocalPath("Common", "aspose-cloud.png")
 	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "DrawingObjects")
 	remoteName := "TestUpdateDrawingObject.docx"
 	imageFile, fileErr := os.Open(localImagePath)
@@ -3389,7 +3402,7 @@ func TestUpdateDrawingObject(t *testing.T) {
 func TestUpdateDrawingObjectWithoutNodePath(t *testing.T) {
 
 	localFilePath := commonTestFile
-	localImagePath := GetLocalPath("Common", "TablesGet.docx")
+	localImagePath := GetLocalPath("Common", "aspose-cloud.png")
 	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "DrawingObjects")
 	remoteName := "TestUpdateDrawingObjectWithoutNodePath.docx"
 	imageFile, fileErr := os.Open(localImagePath)
@@ -3510,9 +3523,8 @@ func TestUpdateFormField(t *testing.T) {
 		Name:             "FullName",
 		Enabled:          true,
 		CalculateOnExit:  true,
-		StatusText:       "",
 		TextInputType:    "Regular",
-		TextInputDefault: "",
+		TextInputDefault: "No name",
 	}
 	options := map[string]interface{}{
 		"folder": remoteFolder,
@@ -3537,9 +3549,8 @@ func TestUpdateFormFieldWithoutNodePath(t *testing.T) {
 		Name:             "FullName",
 		Enabled:          true,
 		CalculateOnExit:  true,
-		StatusText:       "",
 		TextInputType:    "Regular",
-		TextInputDefault: "",
+		TextInputDefault: "No name",
 	}
 	options := map[string]interface{}{
 		"folder": remoteFolder,

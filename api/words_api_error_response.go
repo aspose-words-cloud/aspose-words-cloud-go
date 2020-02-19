@@ -32,7 +32,7 @@ type WordsApiErrorResponse struct {
 	RequestId string `json:"RequestId,omitempty"`
 
 	// Gets or sets error.
-	ApiError *ApiError `json:"ApiError,omitempty"`
+	Error_ *ApiError `json:"Error,omitempty"`
 }
 type IWordsApiErrorResponse interface {
 	IsWordsApiErrorResponse() bool
