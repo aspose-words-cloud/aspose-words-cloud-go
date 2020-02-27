@@ -15,7 +15,7 @@ node('windows2019') {
 				withCredentials([usernamePassword(credentialsId: '6839cbe8-39fa-40c0-86ce-90706f0bae5d', passwordVariable: 'AppKey', usernameVariable: 'AppSid')]) {
 					bat "echo {\"AppSid\":\"%AppSid%\",\"AppKey\":\"%AppKey%\" } > config.json"
 				}
-				bat 'docker run -v %cd%:c:/sdk -w="c:/sdk" --rm -it golang:1.14.0-windowsservercore-1809 go test ./... -v'
+				bat 'docker run -v %cd%:c:/sdk -w="c:/sdk" --rm -t golang:1.14.0-windowsservercore-1809 go test ./... -v'
 			}
 		}
 	} finally {
