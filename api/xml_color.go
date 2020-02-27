@@ -32,7 +32,7 @@ type XmlColor struct {
 	Web string `json:"Web,omitempty"`
 
 	// Gets or sets alpha component of color structure.
-	Alpha int32 `json:"Alpha"`
+	Alpha int32 `json:"Alpha,omitempty"`
 }
 type IXmlColor interface {
 	IsXmlColor() bool

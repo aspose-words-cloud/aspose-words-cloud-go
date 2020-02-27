@@ -3,7 +3,7 @@
   "swagger": "2.0",
   "info": {
     "title": "Aspose.Words Cloud API Reference",
-    "version": "19.12.0"
+    "version": "20.2.0"
   },
   "host": "localhost",
   "basePath": "/v4.0",
@@ -106,11 +106,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "ICanModifyDocumentRequest, ICanSaveRevisionRequest, IWordDocumentRequest",
         "x-operationId": "AppendDocument"
       }
@@ -174,11 +169,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "IWordDocumentRequest",
         "x-operationId": "GetBookmarks"
       }
@@ -250,11 +240,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "IWordDocumentRequest",
         "x-operationId": "GetBookmarkByName"
       },
@@ -352,11 +337,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "ICanModifyDocumentRequest, ICanSaveRevisionRequest, IWordDocumentRequest",
         "x-operationId": "UpdateBookmark"
       }
@@ -429,11 +409,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "IWordDocumentRequest",
         "x-operationId": "GetBorders"
       },
@@ -522,11 +497,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "ICanModifyDocumentRequest, ICanSaveRevisionRequest, IWordDocumentRequest",
         "x-operationId": "DeleteBorders"
       }
@@ -617,11 +587,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "IWordDocumentRequest",
         "x-operationId": "GetBorder"
       },
@@ -728,11 +693,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "ICanModifyDocumentRequest, ICanSaveRevisionRequest, IWordDocumentRequest",
         "x-operationId": "DeleteBorder"
       },
@@ -849,11 +809,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "ICanModifyDocumentRequest, ICanSaveRevisionRequest, IWordDocumentRequest",
         "x-operationId": "UpdateBorder"
       }
@@ -900,11 +855,6 @@
             "description": "Authentication failed!"
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-operationId": "Classify"
       }
     },
@@ -983,11 +933,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-operationId": "ClassifyDocument"
       }
     },
@@ -1050,11 +995,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "IWordDocumentRequest",
         "x-operationId": "GetComments"
       },
@@ -1144,11 +1084,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "ICanModifyDocumentRequest, ICanSaveRevisionRequest, IWordDocumentRequest",
         "x-operationId": "InsertComment"
       }
@@ -1221,11 +1156,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "IWordDocumentRequest",
         "x-operationId": "GetComment"
       },
@@ -1310,11 +1240,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "ICanModifyDocumentRequest, ICanSaveRevisionRequest, IWordDocumentRequest",
         "x-operationId": "DeleteComment"
       },
@@ -1413,11 +1338,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "ICanModifyDocumentRequest, ICanSaveRevisionRequest, IWordDocumentRequest",
         "x-operationId": "UpdateComment"
       }
@@ -1497,11 +1417,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "ICanModifyDocumentRequest, IWordDocumentRequest",
         "x-operationId": "CompareDocument"
       }
@@ -1587,11 +1502,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "IWordDocumentRequest, ICanUseCustomFontsRequest, ICanSpecifyOutputFormatRequest",
         "x-binary-result": "true",
         "x-operationId": "GetDocumentWithFormat"
@@ -1667,11 +1577,6 @@
             "description": "Authentication failed!"
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "ICanUseCustomFontsRequest, ICanSpecifyOutputFormatRequest",
         "x-binary-result": "true",
         "x-operationId": "ConvertDocument"
@@ -1877,11 +1782,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "IWordDocumentRequest, ICanUseCustomFontsRequest",
         "x-operationId": "SaveAsTiff"
       }
@@ -1961,11 +1861,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "IWordDocumentRequest, ICanUseCustomFontsRequest",
         "x-operationId": "SaveAs"
       }
@@ -2029,11 +1924,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "IWordDocumentRequest",
         "x-operationId": "GetDocumentProperties"
       }
@@ -2105,11 +1995,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "IWordDocumentRequest",
         "x-operationId": "GetDocumentProperty"
       },
@@ -2207,11 +2092,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "ICanModifyDocumentRequest, ICanSaveRevisionRequest, IWordDocumentRequest",
         "x-operationId": "CreateOrUpdateDocumentProperty"
       },
@@ -2295,11 +2175,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "ICanModifyDocumentRequest, ICanSaveRevisionRequest, IWordDocumentRequest",
         "x-operationId": "DeleteDocumentProperty"
       }
@@ -2371,11 +2246,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "IWordDocumentRequest",
         "x-operationId": "GetDocumentDrawingObjects"
       },
@@ -2480,11 +2350,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "ICanModifyDocumentRequest, ICanSaveRevisionRequest, IWordDocumentRequest",
         "x-operationId": "InsertDrawingObject"
       }
@@ -2563,11 +2428,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "IWordDocumentRequest",
         "x-operationId": "GetDocumentDrawingObjectByIndex"
       },
@@ -2658,11 +2518,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "ICanModifyDocumentRequest, ICanSaveRevisionRequest, IWordDocumentRequest",
         "x-operationId": "DeleteDrawingObject"
       },
@@ -2774,11 +2629,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "ICanModifyDocumentRequest, ICanSaveRevisionRequest, IWordDocumentRequest",
         "x-operationId": "UpdateDrawingObject"
       }
@@ -2858,11 +2708,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "IWordDocumentRequest",
         "x-binary-result": "true",
         "x-operationId": "GetDocumentDrawingObjectImageData"
@@ -2943,11 +2788,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "IWordDocumentRequest",
         "x-binary-result": "true",
         "x-operationId": "GetDocumentDrawingObjectOleData"
@@ -3018,11 +2858,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "ICanModifyDocumentRequest, IWordDocumentRequest",
         "x-operationId": "UpdateFields"
       }
@@ -3108,11 +2943,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "ICanModifyDocumentRequest, ICanSaveRevisionRequest, IWordDocumentRequest",
         "x-operationId": "DeleteFields"
       },
@@ -3182,11 +3012,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "IWordDocumentRequest",
         "x-operationId": "GetFields"
       },
@@ -3291,11 +3116,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "ICanModifyDocumentRequest, ICanSaveRevisionRequest, IWordDocumentRequest",
         "x-operationId": "InsertField"
       }
@@ -3374,11 +3194,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "IWordDocumentRequest",
         "x-operationId": "GetField"
       },
@@ -3469,11 +3284,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "ICanModifyDocumentRequest, ICanSaveRevisionRequest, IWordDocumentRequest",
         "x-operationId": "DeleteField"
       },
@@ -3578,11 +3388,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "ICanModifyDocumentRequest, ICanSaveRevisionRequest, IWordDocumentRequest",
         "x-operationId": "UpdateField"
       }
@@ -3635,11 +3440,6 @@
             "description": "Something wrong with request parameters. Check response message to get more information."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-binary-result": "true",
         "x-operationId": "DownloadFile"
       },
@@ -3690,11 +3490,6 @@
             "description": "Something wrong with request parameters. Check response message to get more information."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-operationId": "UploadFile"
       },
       "delete": {
@@ -3737,11 +3532,6 @@
             "description": "Something wrong with request parameters. Check response message to get more information."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-operationId": "DeleteFile"
       }
     },
@@ -3801,11 +3591,6 @@
             "description": "Something wrong with request parameters. Check response message to get more information."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-operationId": "CopyFile"
       }
     },
@@ -3868,11 +3653,6 @@
             "description": "Something wrong with request parameters. Check response message to get more information."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-operationId": "MoveFile"
       }
     },
@@ -3917,11 +3697,6 @@
             "description": "Something wrong with request parameters. Check response message to get more information."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-operationId": "GetFilesList"
       },
       "put": {
@@ -3957,11 +3732,6 @@
             "description": "Storage not found or it is not associated with the application."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-operationId": "CreateFolder"
       },
       "delete": {
@@ -4005,11 +3775,6 @@
             "description": "Something wrong with request parameters. Check response message to get more information."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-operationId": "DeleteFolder"
       }
     },
@@ -4062,11 +3827,6 @@
             "description": "Something wrong with request parameters. Check response message to get more information."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-operationId": "CopyFolder"
       }
     },
@@ -4119,11 +3879,6 @@
             "description": "Something wrong with request parameters. Check response message to get more information."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-operationId": "MoveFolder"
       }
     },
@@ -4158,11 +3913,6 @@
             "description": "Authentication failed!"
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-operationId": "GetAvailableFonts"
       }
     },
@@ -4185,11 +3935,6 @@
             "description": "Authentication failed!"
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-operationId": "ResetCache"
       }
     },
@@ -4260,11 +4005,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "IWordDocumentRequest",
         "x-operationId": "GetFootnotes"
       },
@@ -4362,11 +4102,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "ICanModifyDocumentRequest, ICanSaveRevisionRequest, IWordDocumentRequest",
         "x-operationId": "InsertFootnote"
       }
@@ -4445,11 +4180,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "IWordDocumentRequest",
         "x-operationId": "GetFootnote"
       },
@@ -4540,11 +4270,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "ICanModifyDocumentRequest, ICanSaveRevisionRequest, IWordDocumentRequest",
         "x-operationId": "DeleteFootnote"
       },
@@ -4649,11 +4374,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "ICanModifyDocumentRequest, ICanSaveRevisionRequest, IWordDocumentRequest",
         "x-operationId": "UpdateFootnote"
       }
@@ -4725,11 +4445,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "IWordDocumentRequest",
         "x-operationId": "GetFormFields"
       },
@@ -4834,11 +4549,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "ICanModifyDocumentRequest, ICanSaveRevisionRequest, IWordDocumentRequest",
         "x-operationId": "InsertFormField"
       }
@@ -4917,11 +4627,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "IWordDocumentRequest",
         "x-operationId": "GetFormField"
       },
@@ -5026,11 +4731,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "ICanModifyDocumentRequest, ICanSaveRevisionRequest, IWordDocumentRequest",
         "x-operationId": "UpdateFormField"
       },
@@ -5121,11 +4821,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "ICanModifyDocumentRequest, ICanSaveRevisionRequest, IWordDocumentRequest",
         "x-operationId": "DeleteFormField"
       }
@@ -5204,11 +4899,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "IWordDocumentRequest",
         "x-operationId": "GetHeaderFooters"
       },
@@ -5299,11 +4989,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "ICanModifyDocumentRequest, ICanSaveRevisionRequest, IWordDocumentRequest",
         "x-operationId": "DeleteHeadersFooters"
       },
@@ -5401,11 +5086,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "ICanModifyDocumentRequest, ICanSaveRevisionRequest, IWordDocumentRequest",
         "x-operationId": "InsertHeaderFooter"
       }
@@ -5485,11 +5165,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "IWordDocumentRequest",
         "x-operationId": "GetHeaderFooter"
       }
@@ -5578,11 +5253,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "IWordDocumentRequest",
         "x-operationId": "GetHeaderFooterOfSection"
       }
@@ -5675,11 +5345,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "ICanModifyDocumentRequest, ICanSaveRevisionRequest, IWordDocumentRequest",
         "x-operationId": "DeleteHeaderFooter"
       }
@@ -5743,11 +5408,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "IWordDocumentRequest",
         "x-operationId": "GetDocumentHyperlinks"
       }
@@ -5820,11 +5480,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "IWordDocumentRequest",
         "x-operationId": "GetDocumentHyperlinkByIndex"
       }
@@ -5902,11 +5557,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "ICanModifyDocumentRequest, ICanSaveRevisionRequest, IWordDocumentRequest",
         "x-operationId": "DeleteMacros"
       }
@@ -6016,11 +5666,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "ICanModifyDocumentRequest, IWordDocumentRequest, ICanSpecifyMailMergeParametersRequest",
         "x-operationId": "ExecuteMailMerge"
       }
@@ -6090,11 +5735,6 @@
             "description": "Authentication failed!"
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "IPutExecuteRequest",
         "x-binary-result": "true",
         "x-operationId": "ExecuteMailMergeOnline"
@@ -6142,11 +5782,6 @@
             "description": "Authentication failed!"
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-operationId": "GetDocumentFieldNamesOnline"
       }
     },
@@ -6217,11 +5852,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "IWordDocumentRequest",
         "x-operationId": "GetDocumentFieldNames"
       }
@@ -6293,11 +5923,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "IWordDocumentRequest",
         "x-operationId": "GetOfficeMathObjects"
       }
@@ -6376,11 +6001,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "IWordDocumentRequest",
         "x-operationId": "GetOfficeMathObject"
       },
@@ -6471,11 +6091,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "ICanModifyDocumentRequest, ICanSaveRevisionRequest, IWordDocumentRequest",
         "x-operationId": "DeleteOfficeMathObject"
       }
@@ -6567,11 +6182,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "ICanModifyDocumentRequest, ICanSaveRevisionRequest, IWordDocumentRequest",
         "x-operationId": "InsertPageNumbers"
       }
@@ -6643,11 +6253,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "IWordDocumentRequest",
         "x-operationId": "GetParagraphs"
       },
@@ -6752,11 +6357,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "ICanModifyDocumentRequest, ICanSaveRevisionRequest, IWordDocumentRequest",
         "x-operationId": "InsertParagraph"
       }
@@ -6835,11 +6435,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "IWordDocumentRequest",
         "x-operationId": "GetParagraph"
       },
@@ -6930,11 +6525,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "ICanModifyDocumentRequest, ICanSaveRevisionRequest, IWordDocumentRequest",
         "x-operationId": "DeleteParagraph"
       }
@@ -7013,11 +6603,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "IWordDocumentRequest",
         "x-operationId": "GetParagraphFormat"
       },
@@ -7122,11 +6707,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "ICanModifyDocumentRequest, ICanSaveRevisionRequest, IWordDocumentRequest",
         "x-operationId": "UpdateParagraphFormat"
       }
@@ -7190,11 +6770,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "IWordDocumentRequest",
         "x-operationId": "GetDocumentProtection"
       },
@@ -7272,11 +6847,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "ICanModifyDocumentRequest, IWordDocumentRequest",
         "x-operationId": "ProtectDocument"
       },
@@ -7354,11 +6924,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "ICanModifyDocumentRequest, IWordDocumentRequest",
         "x-operationId": "UnprotectDocument"
       }
@@ -7437,11 +7002,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "IWordDocumentRequest",
         "x-operationId": "GetRangeText"
       },
@@ -7524,11 +7084,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "ICanModifyDocumentRequest, IWordDocumentRequest",
         "x-operationId": "RemoveRange"
       },
@@ -7621,11 +7176,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "ICanModifyDocumentRequest, IWordDocumentRequest",
         "x-operationId": "ReplaceWithText"
       }
@@ -7714,11 +7264,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "IWordDocumentRequest",
         "x-operationId": "SaveAsRange"
       }
@@ -7806,11 +7351,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "IWordDocumentRequest, ICanUseCustomFontsRequest",
         "x-binary-result": "true",
         "x-operationId": "RenderPage"
@@ -7905,11 +7445,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "IWordDocumentRequest, ICanUseCustomFontsRequest",
         "x-binary-result": "true",
         "x-operationId": "RenderParagraph"
@@ -8004,11 +7539,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "IWordDocumentRequest, ICanUseCustomFontsRequest",
         "x-binary-result": "true",
         "x-operationId": "RenderTable"
@@ -8103,11 +7633,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "IWordDocumentRequest, ICanUseCustomFontsRequest",
         "x-binary-result": "true",
         "x-operationId": "RenderDrawingObject"
@@ -8202,11 +7727,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "IWordDocumentRequest, ICanUseCustomFontsRequest",
         "x-binary-result": "true",
         "x-operationId": "RenderMathObject"
@@ -8299,11 +7819,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "ICanModifyDocumentRequest, ICanSaveRevisionRequest, IWordDocumentRequest",
         "x-operationId": "ReplaceText"
       }
@@ -8373,11 +7888,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "ICanModifyDocumentRequest, IWordDocumentRequest",
         "x-operationId": "AcceptAllRevisions"
       }
@@ -8447,11 +7957,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "ICanModifyDocumentRequest, IWordDocumentRequest",
         "x-operationId": "RejectAllRevisions"
       }
@@ -8523,11 +8028,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "IWordDocumentRequest",
         "x-operationId": "GetRuns"
       },
@@ -8632,11 +8132,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "ICanModifyDocumentRequest, ICanSaveRevisionRequest, IWordDocumentRequest",
         "x-operationId": "InsertRun"
       }
@@ -8715,11 +8210,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "IWordDocumentRequest",
         "x-operationId": "GetRun"
       },
@@ -8810,11 +8300,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "ICanModifyDocumentRequest, ICanSaveRevisionRequest, IWordDocumentRequest",
         "x-operationId": "DeleteRun"
       },
@@ -8919,11 +8404,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "ICanModifyDocumentRequest, ICanSaveRevisionRequest, IWordDocumentRequest",
         "x-operationId": "UpdateRun"
       }
@@ -9002,11 +8482,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "IWordDocumentRequest",
         "x-operationId": "GetRunFont"
       },
@@ -9111,11 +8586,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "ICanModifyDocumentRequest, ICanSaveRevisionRequest, IWordDocumentRequest",
         "x-operationId": "UpdateRunFont"
       }
@@ -9187,11 +8657,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "IWordDocumentRequest",
         "x-operationId": "Search"
       }
@@ -9255,11 +8720,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "IWordDocumentRequest",
         "x-operationId": "GetSections"
       }
@@ -9332,11 +8792,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "IWordDocumentRequest",
         "x-operationId": "GetSection"
       },
@@ -9421,11 +8876,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "ICanModifyDocumentRequest, ICanSaveRevisionRequest, IWordDocumentRequest",
         "x-operationId": "DeleteSection"
       }
@@ -9498,11 +8948,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "IWordDocumentRequest",
         "x-operationId": "GetSectionPageSetup"
       },
@@ -9601,11 +9046,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "ICanModifyDocumentRequest, ICanSaveRevisionRequest, IWordDocumentRequest",
         "x-operationId": "UpdateSectionPageSetup"
       }
@@ -9712,11 +9152,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "ICanModifyDocumentRequest, IWordDocumentRequest, ICanUseCustomFontsRequest",
         "x-operationId": "SplitDocument"
       }
@@ -9804,11 +9239,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "IWordDocumentRequest",
         "x-operationId": "GetDocumentStatistics"
       }
@@ -9880,11 +9310,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "IWordDocumentRequest",
         "x-operationId": "GetTables"
       },
@@ -9981,11 +9406,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "ICanModifyDocumentRequest, ICanSaveRevisionRequest, IWordDocumentRequest",
         "x-operationId": "InsertTable"
       }
@@ -10064,11 +9484,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "IWordDocumentRequest",
         "x-operationId": "GetTable"
       },
@@ -10159,11 +9574,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "ICanModifyDocumentRequest, ICanSaveRevisionRequest, IWordDocumentRequest",
         "x-operationId": "DeleteTable"
       }
@@ -10242,11 +9652,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "IWordDocumentRequest",
         "x-operationId": "GetTableProperties"
       },
@@ -10350,11 +9755,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "ICanModifyDocumentRequest, ICanSaveRevisionRequest, IWordDocumentRequest",
         "x-operationId": "UpdateTableProperties"
       }
@@ -10433,11 +9833,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "IWordDocumentRequest",
         "x-operationId": "GetTableRow"
       },
@@ -10528,11 +9923,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "ICanModifyDocumentRequest, ICanSaveRevisionRequest, IWordDocumentRequest",
         "x-operationId": "DeleteTableRow"
       }
@@ -10631,11 +10021,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "ICanModifyDocumentRequest, ICanSaveRevisionRequest, IWordDocumentRequest",
         "x-operationId": "InsertTableRow"
       }
@@ -10714,11 +10099,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "IWordDocumentRequest",
         "x-operationId": "GetTableRowFormat"
       },
@@ -10822,11 +10202,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "ICanModifyDocumentRequest, ICanSaveRevisionRequest, IWordDocumentRequest",
         "x-operationId": "UpdateTableRowFormat"
       }
@@ -10905,11 +10280,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "IWordDocumentRequest",
         "x-operationId": "GetTableCell"
       },
@@ -11000,11 +10370,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "ICanModifyDocumentRequest, ICanSaveRevisionRequest, IWordDocumentRequest",
         "x-operationId": "DeleteTableCell"
       }
@@ -11103,11 +10468,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "ICanModifyDocumentRequest, ICanSaveRevisionRequest, IWordDocumentRequest",
         "x-operationId": "InsertTableCell"
       }
@@ -11186,11 +10546,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "IWordDocumentRequest",
         "x-operationId": "GetTableCellFormat"
       },
@@ -11294,11 +10649,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "ICanModifyDocumentRequest, ICanSaveRevisionRequest, IWordDocumentRequest",
         "x-operationId": "UpdateTableCellFormat"
       }
@@ -11405,11 +10755,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "ICanModifyDocumentRequest, ICanSaveRevisionRequest, IWordDocumentRequest",
         "x-operationId": "InsertWatermarkImage"
       }
@@ -11501,11 +10846,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "ICanModifyDocumentRequest, ICanSaveRevisionRequest, IWordDocumentRequest",
         "x-operationId": "InsertWatermarkText"
       }
@@ -11587,11 +10927,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-csharp-implements": "ICanModifyDocumentRequest, ICanSaveRevisionRequest, IWordDocumentRequest",
         "x-operationId": "DeleteWatermark"
       }
@@ -11655,11 +10990,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-operationId": "GetDocument"
       }
     },
@@ -11703,11 +11033,6 @@
             "description": "Authentication failed!"
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-operationId": "LoadWebDocument"
       }
     },
@@ -11755,11 +11080,6 @@
             "description": "Authentication failed!"
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-operationId": "CreateDocument"
       }
     },
@@ -11822,11 +11142,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-operationId": "GetDocumentDrawingObjectsWithoutNodePath",
         "x-csharp-implements": "IWordDocumentRequest"
       },
@@ -11923,11 +11238,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-operationId": "InsertDrawingObjectWithoutNodePath",
         "x-csharp-implements": "ICanModifyDocumentRequest, ICanSaveRevisionRequest, IWordDocumentRequest"
       }
@@ -11998,11 +11308,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-operationId": "GetDocumentDrawingObjectByIndexWithoutNodePath",
         "x-csharp-implements": "IWordDocumentRequest"
       },
@@ -12085,11 +11390,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-operationId": "DeleteDrawingObjectWithoutNodePath",
         "x-csharp-implements": "ICanModifyDocumentRequest, ICanSaveRevisionRequest, IWordDocumentRequest"
       },
@@ -12193,11 +11493,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-operationId": "UpdateDrawingObjectWithoutNodePath",
         "x-csharp-implements": "ICanModifyDocumentRequest, ICanSaveRevisionRequest, IWordDocumentRequest"
       }
@@ -12269,11 +11564,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-operationId": "GetDocumentDrawingObjectImageDataWithoutNodePath",
         "x-binary-result": "true",
         "x-csharp-implements": "IWordDocumentRequest"
@@ -12346,11 +11636,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-operationId": "GetDocumentDrawingObjectOleDataWithoutNodePath",
         "x-binary-result": "true",
         "x-csharp-implements": "IWordDocumentRequest"
@@ -12429,11 +11714,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-operationId": "DeleteFieldsWithoutNodePath",
         "x-csharp-implements": "ICanModifyDocumentRequest, ICanSaveRevisionRequest, IWordDocumentRequest"
       },
@@ -12495,11 +11775,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-operationId": "GetFieldsWithoutNodePath",
         "x-csharp-implements": "IWordDocumentRequest"
       },
@@ -12596,11 +11871,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-operationId": "InsertFieldWithoutNodePath",
         "x-csharp-implements": "ICanModifyDocumentRequest, ICanSaveRevisionRequest, IWordDocumentRequest"
       }
@@ -12671,11 +11941,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-operationId": "GetFieldWithoutNodePath",
         "x-csharp-implements": "IWordDocumentRequest"
       },
@@ -12758,11 +12023,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-operationId": "DeleteFieldWithoutNodePath",
         "x-csharp-implements": "ICanModifyDocumentRequest, ICanSaveRevisionRequest, IWordDocumentRequest"
       }
@@ -12826,11 +12086,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-operationId": "GetFootnotesWithoutNodePath",
         "x-csharp-implements": "IWordDocumentRequest"
       },
@@ -12920,11 +12175,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-operationId": "InsertFootnoteWithoutNodePath",
         "x-csharp-implements": "ICanModifyDocumentRequest, ICanSaveRevisionRequest, IWordDocumentRequest"
       }
@@ -12995,11 +12245,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-operationId": "GetFootnoteWithoutNodePath",
         "x-csharp-implements": "IWordDocumentRequest"
       },
@@ -13082,11 +12327,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-operationId": "DeleteFootnoteWithoutNodePath",
         "x-csharp-implements": "ICanModifyDocumentRequest, ICanSaveRevisionRequest, IWordDocumentRequest"
       },
@@ -13183,11 +12423,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-operationId": "UpdateFootnoteWithoutNodePath",
         "x-csharp-implements": "ICanModifyDocumentRequest, ICanSaveRevisionRequest, IWordDocumentRequest"
       }
@@ -13251,11 +12486,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-operationId": "GetFormFieldsWithoutNodePath",
         "x-csharp-implements": "IWordDocumentRequest"
       },
@@ -13352,11 +12582,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-operationId": "InsertFormFieldWithoutNodePath",
         "x-csharp-implements": "ICanModifyDocumentRequest, ICanSaveRevisionRequest, IWordDocumentRequest"
       }
@@ -13427,11 +12652,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-operationId": "GetFormFieldWithoutNodePath",
         "x-csharp-implements": "IWordDocumentRequest"
       },
@@ -13528,11 +12748,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-operationId": "UpdateFormFieldWithoutNodePath",
         "x-csharp-implements": "ICanModifyDocumentRequest, ICanSaveRevisionRequest, IWordDocumentRequest"
       },
@@ -13615,11 +12830,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-operationId": "DeleteFormFieldWithoutNodePath",
         "x-csharp-implements": "ICanModifyDocumentRequest, ICanSaveRevisionRequest, IWordDocumentRequest"
       }
@@ -13683,11 +12893,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-operationId": "GetOfficeMathObjectsWithoutNodePath",
         "x-csharp-implements": "IWordDocumentRequest"
       }
@@ -13758,11 +12963,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-operationId": "GetOfficeMathObjectWithoutNodePath",
         "x-csharp-implements": "IWordDocumentRequest"
       },
@@ -13845,11 +13045,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-operationId": "DeleteOfficeMathObjectWithoutNodePath",
         "x-csharp-implements": "ICanModifyDocumentRequest, ICanSaveRevisionRequest, IWordDocumentRequest"
       }
@@ -13913,11 +13108,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-operationId": "GetParagraphsWithoutNodePath",
         "x-csharp-implements": "IWordDocumentRequest"
       }
@@ -13988,11 +13178,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-operationId": "GetParagraphWithoutNodePath",
         "x-csharp-implements": "IWordDocumentRequest"
       },
@@ -14075,11 +13260,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-operationId": "DeleteParagraphWithoutNodePath",
         "x-csharp-implements": "ICanModifyDocumentRequest, ICanSaveRevisionRequest, IWordDocumentRequest"
       }
@@ -14150,11 +13330,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-operationId": "GetParagraphFormatWithoutNodePath",
         "x-csharp-implements": "IWordDocumentRequest"
       }
@@ -14240,11 +13415,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-operationId": "RenderParagraphWithoutNodePath",
         "x-binary-result": "true",
         "x-csharp-implements": "IWordDocumentRequest, ICanUseCustomFontsRequest"
@@ -14331,11 +13501,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-operationId": "RenderTableWithoutNodePath",
         "x-binary-result": "true",
         "x-csharp-implements": "IWordDocumentRequest, ICanUseCustomFontsRequest"
@@ -14422,11 +13587,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-operationId": "RenderDrawingObjectWithoutNodePath",
         "x-binary-result": "true",
         "x-csharp-implements": "IWordDocumentRequest, ICanUseCustomFontsRequest"
@@ -14513,11 +13673,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-operationId": "RenderMathObjectWithoutNodePath",
         "x-binary-result": "true",
         "x-csharp-implements": "IWordDocumentRequest, ICanUseCustomFontsRequest"
@@ -14582,11 +13737,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-operationId": "GetTablesWithoutNodePath",
         "x-csharp-implements": "IWordDocumentRequest"
       },
@@ -14675,11 +13825,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-operationId": "InsertTableWithoutNodePath",
         "x-csharp-implements": "ICanModifyDocumentRequest, ICanSaveRevisionRequest, IWordDocumentRequest"
       }
@@ -14750,11 +13895,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-operationId": "GetTableWithoutNodePath",
         "x-csharp-implements": "IWordDocumentRequest"
       },
@@ -14837,11 +13977,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-operationId": "DeleteTableWithoutNodePath",
         "x-csharp-implements": "ICanModifyDocumentRequest, ICanSaveRevisionRequest, IWordDocumentRequest"
       }
@@ -14912,11 +14047,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-operationId": "GetTablePropertiesWithoutNodePath",
         "x-csharp-implements": "IWordDocumentRequest"
       },
@@ -15012,11 +14142,6 @@
             "description": "The specified file or document node does not exist. Please check the file path and node path provided."
           }
         },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
         "x-operationId": "UpdateTablePropertiesWithoutNodePath",
         "x-csharp-implements": "ICanModifyDocumentRequest, ICanSaveRevisionRequest, IWordDocumentRequest"
       }
@@ -15256,7 +14381,7 @@
         {
           "type": "object",
           "properties": {
-            "ApiError": {
+            "Error": {
               "description": "Gets or sets error.",
               "$ref": "#/definitions/ApiError"
             }
@@ -15514,9 +14639,6 @@
       "type": "object",
       "description": "Utility class for  serialization.",
       "additionalProperties": false,
-      "required": [
-        "Alpha"
-      ],
       "properties": {
         "Web": {
           "type": "string",
@@ -15550,7 +14672,7 @@
     },
     "ClassificationResponse": {
       "type": "object",
-      "description": "This response should be returned by the service when handling:\nPUT http://api.aspose.com/v4.0/words/classify.",
+      "description": "This response should be returned by the service when handling:\nPUT https://api.aspose.cloud/v4.0/words/classify.",
       "additionalProperties": false,
       "required": [
         "BestClassProbability"
@@ -15603,7 +14725,7 @@
     },
     "CommentsResponse": {
       "type": "object",
-      "description": "This response should be returned by the service when handling:\nGET http://api.aspose.com/v4.0/words/Test.doc/comments.",
+      "description": "This response should be returned by the service when handling:\nGET https://api.aspose.cloud/v4.0/words/Test.doc/comments.",
       "additionalProperties": false,
       "allOf": [
         {
@@ -15752,7 +14874,7 @@
     },
     "CommentResponse": {
       "type": "object",
-      "description": "This response should be returned by the service when handling:\nGET http://api.aspose.com/v4.0/words/Test.doc/comments/0.",
+      "description": "This response should be returned by the service when handling:\nGET https://api.aspose.cloud/v4.0/words/Test.doc/comments/0.",
       "additionalProperties": false,
       "allOf": [
         {
@@ -16024,6 +15146,10 @@
         {
           "type": "object",
           "properties": {
+            "ColorMode": {
+              "type": "string",
+              "description": "Gets or sets a value determining how colors are rendered.\n{ Normal | Grayscale}."
+            },
             "JpegQuality": {
               "type": "integer",
               "description": "Gets or sets determines the quality of the JPEG images inside PDF document.",
@@ -16088,10 +15214,6 @@
       "description": "base container class for save options data.",
       "additionalProperties": false,
       "properties": {
-        "ColorMode": {
-          "type": "string",
-          "description": "Gets or sets a value determining how colors are rendered.\n{ Normal | Grayscale}."
-        },
         "SaveFormat": {
           "type": "string",
           "description": "Gets or sets format of save."
@@ -16880,6 +16002,10 @@
             "PrettyFormat": {
               "type": "boolean",
               "description": "Gets or sets specifies whether or not use pretty formats output."
+            },
+            "SaveImagesAsWmf": {
+              "type": "boolean",
+              "description": "Gets or sets a value indicating whether when true all images will be saved as WMF. This option might help to avoid WordPad warning messages."
             }
           }
         }
@@ -17327,7 +16453,7 @@
     },
     "FieldResponse": {
       "type": "object",
-      "description": "This response should be returned by the service when handling:\nGET http://api.aspose.com/v4.0/words/Test.doc/paragraphs/{0}/fields/{1}.",
+      "description": "This response should be returned by the service when handling:\nGET https://api.aspose.cloud/v4.0/words/Test.doc/paragraphs/{0}/fields/{1}.",
       "additionalProperties": false,
       "allOf": [
         {
@@ -17389,7 +16515,7 @@
     },
     "FieldsResponse": {
       "type": "object",
-      "description": "This response should be returned by the service when handling:\nGET http://api.aspose.com/v4.0/words/Test.doc/{nodePath}/fields.",
+      "description": "This response should be returned by the service when handling:\nGET https://api.aspose.cloud/v4.0/words/Test.doc/{nodePath}/fields.",
       "additionalProperties": false,
       "allOf": [
         {
@@ -17599,7 +16725,7 @@
     },
     "FootnotesResponse": {
       "type": "object",
-      "description": "This response should be returned by the service when handling:\nGET http://api.aspose.com/v4.0/words/Test.doc/footnotes.",
+      "description": "This response should be returned by the service when handling:\nGET https://api.aspose.cloud/v4.0/words/Test.doc/footnotes.",
       "additionalProperties": false,
       "allOf": [
         {
@@ -17692,7 +16818,7 @@
     },
     "FootnoteResponse": {
       "type": "object",
-      "description": "This response should be returned by the service when handling:\nGET http://api.aspose.com/v4.0/words/Test.doc/footnote/0.",
+      "description": "This response should be returned by the service when handling:\nGET https://api.aspose.cloud/v4.0/words/Test.doc/footnote/0.",
       "additionalProperties": false,
       "allOf": [
         {
@@ -17711,7 +16837,7 @@
     },
     "FormFieldsResponse": {
       "type": "object",
-      "description": "This response should be returned by the service when handling:\nGET http://api.aspose.com/v4.0/words/Test.doc/{nodePath}/formfields.",
+      "description": "This response should be returned by the service when handling:\nGET https://api.aspose.cloud/v4.0/words/Test.doc/{nodePath}/formfields.",
       "additionalProperties": false,
       "allOf": [
         {
@@ -17898,7 +17024,7 @@
     },
     "FormFieldResponse": {
       "type": "object",
-      "description": "This response should be returned by the service when handling:\nGET http://api.aspose.com/v4.0/words/Test.doc/paragraphs/{0}/formfields/{1}.",
+      "description": "This response should be returned by the service when handling:\nGET https://api.aspose.cloud/v4.0/words/Test.doc/paragraphs/{0}/formfields/{1}.",
       "additionalProperties": false,
       "allOf": [
         {
@@ -17917,7 +17043,7 @@
     },
     "HeaderFootersResponse": {
       "type": "object",
-      "description": "This response should be returned by the service when handling:\nGET http://api.aspose.com/v4.0/words/Test.doc/headersfooters.",
+      "description": "This response should be returned by the service when handling:\nGET https://api.aspose.cloud/v4.0/words/Test.doc/headersfooters.",
       "additionalProperties": false,
       "allOf": [
         {
@@ -17988,7 +17114,7 @@
     },
     "HeaderFooterResponse": {
       "type": "object",
-      "description": "This response should be returned by the service when handling:\nGET http://api.aspose.com/v4.0/words/Test.doc/headersfooters/{0}.",
+      "description": "This response should be returned by the service when handling:\nGET https://api.aspose.cloud/v4.0/words/Test.doc/headersfooters/{0}.",
       "additionalProperties": false,
       "allOf": [
         {
@@ -18161,7 +17287,7 @@
     },
     "OfficeMathObjectsResponse": {
       "type": "object",
-      "description": "This response should be returned by the service when handling:\nGET http://api.aspose.com/v4.0/words/Test.doc/OfficeMathObjects.",
+      "description": "This response should be returned by the service when handling:\nGET https://api.aspose.cloud/v4.0/words/Test.doc/OfficeMathObjects.",
       "additionalProperties": false,
       "allOf": [
         {
@@ -18288,7 +17414,7 @@
     },
     "OfficeMathObjectResponse": {
       "type": "object",
-      "description": "This response should be returned by the service when handling:\nGET http://api.aspose.com/v4.0/words/Test.doc/officeMathObjects/0.",
+      "description": "This response should be returned by the service when handling:\nGET https://api.aspose.cloud/v4.0/words/Test.doc/officeMathObjects/0.",
       "additionalProperties": false,
       "allOf": [
         {
@@ -18334,7 +17460,7 @@
     },
     "ParagraphLinkCollectionResponse": {
       "type": "object",
-      "description": "This response should be returned by the service when handling:\nGET http://api.aspose.com/v4.0/words/Test.doc/paragraphs.",
+      "description": "This response should be returned by the service when handling:\nGET https://api.aspose.cloud/v4.0/words/Test.doc/paragraphs.",
       "additionalProperties": false,
       "allOf": [
         {
@@ -18394,7 +17520,7 @@
     },
     "ParagraphResponse": {
       "type": "object",
-      "description": "This response should be returned by the service when handling:\nGET http://api.aspose.com/v4.0/words/Test.doc/paragraphs/{0}.",
+      "description": "This response should be returned by the service when handling:\nGET https://api.aspose.cloud/v4.0/words/Test.doc/paragraphs/{0}.",
       "additionalProperties": false,
       "allOf": [
         {
@@ -18435,7 +17561,7 @@
     },
     "ParagraphFormatResponse": {
       "type": "object",
-      "description": "This response should be returned by the service when handling:\nGET http://api.aspose.com/v4.0/words/Test.doc/paragraphs/{0}/format.",
+      "description": "This response should be returned by the service when handling:\nGET https://api.aspose.cloud/v4.0/words/Test.doc/paragraphs/{0}/format.",
       "additionalProperties": false,
       "allOf": [
         {
@@ -19047,7 +18173,7 @@
     },
     "RangeTextResponse": {
       "type": "object",
-      "description": "This response should be returned by the service when handling:\nGET http://api.aspose.com/v4.0/words/Test.doc/range/{0}/{1}/.",
+      "description": "This response should be returned by the service when handling:\nGET https://api.aspose.cloud/v4.0/words/Test.doc/range/{0}/{1}/.",
       "additionalProperties": false,
       "allOf": [
         {
@@ -19188,7 +18314,7 @@
     },
     "RunsResponse": {
       "type": "object",
-      "description": "This response should be returned by the service when handling:\nGET http://api.aspose.com/v4.0/words/Test.doc/{paragraphPath}/runs.",
+      "description": "This response should be returned by the service when handling:\nGET https://api.aspose.cloud/v4.0/words/Test.doc/{paragraphPath}/runs.",
       "additionalProperties": false,
       "allOf": [
         {
@@ -19262,7 +18388,7 @@
     },
     "RunResponse": {
       "type": "object",
-      "description": "This response should be returned by the service when handling:\nGET http://api.aspose.com/v4.0/words/Test.doc/paragraphs/{0}/runs/{1}.",
+      "description": "This response should be returned by the service when handling:\nGET https://api.aspose.cloud/v4.0/words/Test.doc/paragraphs/{0}/runs/{1}.",
       "additionalProperties": false,
       "allOf": [
         {
@@ -19281,7 +18407,7 @@
     },
     "FontResponse": {
       "type": "object",
-      "description": "This response should be returned by the service when handling:\nGET http://api.aspose.com/v4.0/words/Test.doc/paragraphs/{0}/runs/{1}/font.",
+      "description": "This response should be returned by the service when handling:\nGET https://api.aspose.cloud/v4.0/words/Test.doc/paragraphs/{0}/runs/{1}/font.",
       "additionalProperties": false,
       "allOf": [
         {
@@ -19885,7 +19011,7 @@
     },
     "SearchResponse": {
       "type": "object",
-      "description": "This response should be returned by the service when handling:\nGET http://api.aspose.com/v4.0/words/Test.doc/search.",
+      "description": "This response should be returned by the service when handling:\nGET https://api.aspose.cloud/v4.0/words/Test.doc/search.",
       "additionalProperties": false,
       "allOf": [
         {
@@ -19945,7 +19071,7 @@
     },
     "SectionLinkCollectionResponse": {
       "type": "object",
-      "description": "This response should be returned by the service when handling:\nGET http://api.aspose.com/v4.0/words/Test.doc/sections.",
+      "description": "This response should be returned by the service when handling:\nGET https://api.aspose.cloud/v4.0/words/Test.doc/sections.",
       "additionalProperties": false,
       "allOf": [
         {
@@ -19999,7 +19125,7 @@
     },
     "SectionResponse": {
       "type": "object",
-      "description": "This response should be returned by the service when handling:\nGET http://api.aspose.com/v4.0/words/Test.doc/sections/{0}.",
+      "description": "This response should be returned by the service when handling:\nGET https://api.aspose.cloud/v4.0/words/Test.doc/sections/{0}.",
       "additionalProperties": false,
       "allOf": [
         {
@@ -20056,7 +19182,7 @@
     },
     "SectionPageSetupResponse": {
       "type": "object",
-      "description": "This response should be returned by the service when handling:\nGET http://api.aspose.com/v4.0/words/Test.doc/sections/{0}/PageSetup.",
+      "description": "This response should be returned by the service when handling:\nGET https://api.aspose.cloud/v4.0/words/Test.doc/sections/{0}/PageSetup.",
       "additionalProperties": false,
       "allOf": [
         {
@@ -20481,7 +19607,7 @@
     },
     "TableLinkCollectionResponse": {
       "type": "object",
-      "description": "This response should be returned by the service when handling:\nGET http://api.aspose.com/v4.0/words/Test.doc/tables.",
+      "description": "This response should be returned by the service when handling:\nGET https://api.aspose.cloud/v4.0/words/Test.doc/tables.",
       "additionalProperties": false,
       "allOf": [
         {
@@ -20560,7 +19686,7 @@
     },
     "TableResponse": {
       "type": "object",
-      "description": "This response should be returned by the service when handling:\nGET http://api.aspose.com/v4.0/words/Test.doc/tables/{0}.",
+      "description": "This response should be returned by the service when handling:\nGET https://api.aspose.cloud/v4.0/words/Test.doc/tables/{0}.",
       "additionalProperties": false,
       "allOf": [
         {
@@ -21181,7 +20307,7 @@
     },
     "TablePropertiesResponse": {
       "type": "object",
-      "description": "This response should be returned by the service when handling:\nGET http://api.aspose.com/v4.0/words/Test.doc/tables/{0}/properties.",
+      "description": "This response should be returned by the service when handling:\nGET https://api.aspose.cloud/v4.0/words/Test.doc/tables/{0}/properties.",
       "additionalProperties": false,
       "allOf": [
         {
@@ -21200,7 +20326,7 @@
     },
     "TableRowResponse": {
       "type": "object",
-      "description": "This response should be returned by the service when handling:\nGET http://api.aspose.com/v4.0/words/Test.doc/tables/{0}.",
+      "description": "This response should be returned by the service when handling:\nGET https://api.aspose.cloud/v4.0/words/Test.doc/tables/{0}.",
       "additionalProperties": false,
       "allOf": [
         {
@@ -21239,7 +20365,7 @@
     },
     "TableRowFormatResponse": {
       "type": "object",
-      "description": "This response should be returned by the service when handling:\nGET http://api.aspose.com/v4.0/words/Test.doc/tables/{0}/rows/{1}/rowformat.",
+      "description": "This response should be returned by the service when handling:\nGET https://api.aspose.cloud/v4.0/words/Test.doc/tables/{0}/rows/{1}/rowformat.",
       "additionalProperties": false,
       "allOf": [
         {
@@ -21258,7 +20384,7 @@
     },
     "TableCellResponse": {
       "type": "object",
-      "description": "This response should be returned by the service when handling:\nGET http://api.aspose.com/v4.0/words/Test.doc/tables/{0}.",
+      "description": "This response should be returned by the service when handling:\nGET https://api.aspose.cloud/v4.0/words/Test.doc/tables/{0}.",
       "additionalProperties": false,
       "allOf": [
         {
@@ -21289,7 +20415,7 @@
     },
     "TableCellFormatResponse": {
       "type": "object",
-      "description": "This response should be returned by the service when handling:\nGET http://api.aspose.com/v4.0/words/Test.doc/tables/{0}/rows/{1}/cells/{2}/cellformat.",
+      "description": "This response should be returned by the service when handling:\nGET https://api.aspose.cloud/v4.0/words/Test.doc/tables/{0}/rows/{1}/cells/{2}/cellformat.",
       "additionalProperties": false,
       "allOf": [
         {
@@ -21436,5 +20562,10 @@
       "flow": "application",
       "tokenUrl": "localhost/connect/token"
     }
-  }
+  },
+  "security": [
+    {
+      "JWT": []
+    }
+  ]
 }

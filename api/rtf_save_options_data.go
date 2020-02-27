@@ -28,9 +28,6 @@ package api
 // container class for rtf save options.
 type RtfSaveOptionsData struct {
 
-	// Gets or sets a value determining how colors are rendered. { Normal | Grayscale}.
-	ColorMode string `json:"ColorMode,omitempty"`
-
 	// Gets or sets format of save.
 	SaveFormat string `json:"SaveFormat,omitempty"`
 
@@ -63,6 +60,9 @@ type RtfSaveOptionsData struct {
 
 	// Gets or sets specifies whether or not use pretty formats output.
 	PrettyFormat bool `json:"PrettyFormat,omitempty"`
+
+	// Gets or sets a value indicating whether when true all images will be saved as WMF. This option might help to avoid WordPad warning messages.
+	SaveImagesAsWmf bool `json:"SaveImagesAsWmf,omitempty"`
 }
 type IRtfSaveOptionsData interface {
 	IsRtfSaveOptionsData() bool

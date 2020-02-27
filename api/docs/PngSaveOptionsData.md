@@ -3,7 +3,6 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ColorMode** | **string** | Gets or sets a value determining how colors are rendered. { Normal | Grayscale}. | [optional] [default to null]
 **SaveFormat** | **string** | Gets or sets format of save. | [optional] [default to null]
 **FileName** | **string** | Gets or sets name of destination file. | [optional] [default to null]
 **DmlRenderingMode** | **string** | Gets or sets a value determining how DrawingML shapes are rendered. { Fallback | DrawingML }. | [optional] [default to null]
@@ -12,6 +11,7 @@ Name | Type | Description | Notes
 **UpdateLastSavedTimeProperty** | **bool** | Gets or sets a value determining whether the Aspose.Words.Properties.BuiltInDocumentProperties.LastSavedTime property is updated before saving. | [optional] [default to null]
 **UpdateSdtContent** | **bool** | Gets or sets value determining whether content of  is updated before saving. | [optional] [default to null]
 **UpdateFields** | **bool** | Gets or sets a value determining if fields should be updated before saving the document to a fixed page format. Default value for this property is. true | [optional] [default to null]
+**ColorMode** | **string** | Gets or sets a value determining how colors are rendered. { Normal | Grayscale}. | [optional] [default to null]
 **JpegQuality** | **int32** | Gets or sets determines the quality of the JPEG images inside PDF document. | [optional] [default to null]
 **MetafileRenderingOptions** | [***MetafileRenderingOptionsData**](MetafileRenderingOptionsData.md) | Gets or sets allows to specify metafile rendering options. | [optional] [default to null]
 **NumeralFormat** | **string** | Gets or sets indicates the symbol set that is used to represent numbers while rendering to fixed page formats. | [optional] [default to null]

@@ -28,9 +28,6 @@ package api
 // container class for docx/docm/dotx/dotm/flatopc save options.
 type OoxmlSaveOptionsData struct {
 
-	// Gets or sets a value determining how colors are rendered. { Normal | Grayscale}.
-	ColorMode string `json:"ColorMode,omitempty"`
-
 	// Gets or sets format of save.
 	SaveFormat string `json:"SaveFormat,omitempty"`
 

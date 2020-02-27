@@ -2793,7 +2793,6 @@ func TestLoadWebDocument(t *testing.T) {
 		SaveOptions: &api.SaveOptionsData{
 			FileName:                "google.doc",
 			SaveFormat:              "doc",
-			ColorMode:               "1",
 			DmlEffectsRenderingMode: "1",
 			DmlRenderingMode:        "1",
 			UpdateSdtContent:        false,

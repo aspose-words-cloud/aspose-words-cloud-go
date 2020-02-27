@@ -28,9 +28,6 @@ package api
 // container class for jpeg save options.
 type JpegSaveOptionsData struct {
 
-	// Gets or sets a value determining how colors are rendered. { Normal | Grayscale}.
-	ColorMode string `json:"ColorMode,omitempty"`
-
 	// Gets or sets format of save.
 	SaveFormat string `json:"SaveFormat,omitempty"`
 
@@ -54,6 +51,9 @@ type JpegSaveOptionsData struct {
 
 	// Gets or sets a value determining if fields should be updated before saving the document to a fixed page format. Default value for this property is. true
 	UpdateFields bool `json:"UpdateFields,omitempty"`
+
+	// Gets or sets a value determining how colors are rendered. { Normal | Grayscale}.
+	ColorMode string `json:"ColorMode,omitempty"`
 
 	// Gets or sets determines the quality of the JPEG images inside PDF document.
 	JpegQuality int32 `json:"JpegQuality,omitempty"`
