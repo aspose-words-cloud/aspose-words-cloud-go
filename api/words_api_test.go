@@ -41,7 +41,6 @@ import (
 
 	"github.com/aspose-words-cloud/aspose-words-cloud-go/api"
 	"github.com/google/uuid"
-	//	"github.com/stretchr/testify/assert"
 )
 
 var remoteBaseTestDataFolder string = "Temp/SdkTests/TestData"
@@ -84,7 +83,6 @@ func PrepareTest(t *testing.T, config *api.Configuration) (apiClient *api.APICli
 
 func UploadFileToStorage(t *testing.T, fileName string, path string) (*api.APIClient, context.Context) {
 	config := ReadConfiguration(t)
-	config.DebugMode = true
 	client, ctx := PrepareTest(t, config)
 
 	UploadNextFileToStorage(t, ctx, client, fileName, path)
@@ -1601,7 +1599,6 @@ func TestGetFilesList(t *testing.T) {
 	remoteFolder := path.Join(remoteBaseTestDataFolder, "Storage")
 
 	config := ReadConfiguration(t)
-	config.DebugMode = true
 	client, ctx := PrepareTest(t, config)
 
 	_, _, err := client.WordsApi.GetFilesList(ctx, remoteFolder, nil)
