@@ -524,7 +524,7 @@ func TestDeleteDrawingObjectWithoutNodePath(t *testing.T) {
 
 	localFilePath := commonTestFile
 	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "DrawingObjects")
-	remoteName := "TestDeleteDrawingObject.docx"
+	remoteName := "TestDeleteDrawingObjectWithoutNodePath.docx"
 	index := 0
 	options := map[string]interface{}{
 		"folder": remoteFolder,
@@ -543,7 +543,7 @@ func TestDeleteFieldWithoutNodePath(t *testing.T) {
 
 	localFilePath := GetLocalPath(filepath.Join("DocumentElements", "Fields"), "GetField.docx")
 	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Fields")
-	remoteName := "TestDeleteFieldWithoutNode.docx"
+	remoteName := "TestDeleteFieldWithoutNodePath.docx"
 	index := 0
 	options := map[string]interface{}{
 		"folder": remoteFolder,
@@ -735,7 +735,7 @@ func TestDeleteHeadersFooters(t *testing.T) {
 
 	localFilePath := GetLocalPath(filepath.Join("DocumentElements", "HeaderFooters"), "HeadersFooters.doc")
 	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "HeaderFooters")
-	remoteName := "TestDeleteHeaderFooters.docx"
+	remoteName := "TestDeleteHeadersFooters.docx"
 	sectionPath := "sections/0"
 	options := map[string]interface{}{
 		"folder": remoteFolder,
@@ -949,7 +949,7 @@ func TestDeleteTableWithoutNodePath(t *testing.T) {
 
 	localFilePath := GetLocalPath(filepath.Join("DocumentElements", "Tables"), "TablesGet.docx")
 	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Tables")
-	remoteName := "TestDeleteTableWithoutNode.docx"
+	remoteName := "TestDeleteTableWithoutNodePath.docx"
 	index := 1
 	options := map[string]interface{}{
 		"folder": remoteFolder,
