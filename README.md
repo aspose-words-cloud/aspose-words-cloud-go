@@ -1,4 +1,4 @@
-# Aspose.Words Cloud SDK for Go (https://github.com/aspose-words-cloud/aspose-words-cloud-go)
+# Aspose.Words Cloud SDK for Go
 This repository contains Aspose.Words Cloud SDK for Go source code. This SDK allows you to work with Aspose.Words Cloud REST APIs in your Go applications quickly and easily, with zero initial cost.
 
 [Aspose.Words Cloud](https://products.aspose.cloud/words/family "Aspose.Words Cloud")  
