@@ -29,6 +29,8 @@ import (
 	"encoding/json"
 	"io/ioutil"
 	"net/http"
+	"net/url"
+	"path"
 )
 
 // contextKeys are used to identify the type of value in the context.
@@ -68,7 +70,7 @@ type APIKey struct {
 }
 
 type Configuration struct {
-	BaseUrl       string            `json:"BasePath,omitempty"`
+	BaseUrl       string            `json:"BaseUrl,omitempty"`
 	AppKey        string            `json:"AppKey"`
 	AppSid        string            `json:"AppSid"`
 	DebugMode     bool              `json:"DebugMode,omitempty"`
@@ -85,7 +87,7 @@ func NewConfiguration(configFilePath string) (pConfig *Configuration, err error)
 	}
 
 	cfg := Configuration{
-		BaseUrl:       "https://api.aspose.cloud/v4.0",
+		BaseUrl:       "https://api.aspose.cloud",
 		DebugMode:     false,
 		DefaultHeader: map[string]string{"x-aspose-client": "go sdk", "x-aspose-client-version": "19.11"},
 	}
@@ -94,6 +96,10 @@ func NewConfiguration(configFilePath string) (pConfig *Configuration, err error)
 	if err != nil {
 		return nil, err
 	}
+	
+	u, err := url.Parse(cfg.BaseUrl)
+	u.Path = path.Join(u.Path, "v4.0")
+	cfg.BaseUrl = u.String()
 
 	return &cfg, nil
 }
