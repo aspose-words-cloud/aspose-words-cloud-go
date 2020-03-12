@@ -3,7 +3,7 @@
   "swagger": "2.0",
   "info": {
     "title": "Aspose.Words Cloud API Reference",
-    "version": "20.3.0"
+    "version": "20.2.0"
   },
   "host": "localhost",
   "basePath": "/v4.0",
