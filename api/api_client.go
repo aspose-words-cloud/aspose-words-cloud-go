@@ -49,6 +49,7 @@ import (
 	"unicode/utf8"
 
 	"golang.org/x/oauth2"
+	"github.com/aspose-words-cloud/aspose-words-cloud-go/api/models"
 )
 
 var (
@@ -59,7 +60,7 @@ var (
 // APIClient manages communication with the Aspose.Words Cloud API Reference API v20.2.0
 // In most cases there should be only one, shared, APIClient.
 type APIClient struct {
-	cfg 	*Configuration
+	cfg 	*models.Configuration
 	common 	service 		// Reuse a single struct instead of allocating one for each service on the heap.
 
 	 // API Services
@@ -72,7 +73,7 @@ type service struct {
 
 // NewAPIClient creates a new API client. Requires a userAgent string describing your application.
 // optionally a custom http.Client to allow for advanced features such as caching.
-func NewAPIClient(cfg *Configuration) (client *APIClient, err error) {
+func NewAPIClient(cfg *models.Configuration) (client *APIClient, err error) {
 	if cfg.HttpClient == nil {
 		cfg.HttpClient = http.DefaultClient
 	}
@@ -256,7 +257,7 @@ func (c *APIClient) NewContextWithToken(ctx context.Context) (ctxWithToken conte
 		return nil, err
 	}
 
-	return context.WithValue(ctx, ContextAccessToken, result.AccessToken), nil
+	return context.WithValue(ctx, models.ContextAccessToken, result.AccessToken), nil
 }
 
 // prepareRequest build the request
@@ -369,7 +370,7 @@ func (c *APIClient) prepareRequest (
 		// Walk through any authentication.
 
 		// OAuth2 authentication
-		if tok, ok := ctx.Value(ContextOAuth2).(oauth2.TokenSource); ok {
+		if tok, ok := ctx.Value(models.ContextOAuth2).(oauth2.TokenSource); ok {
 			// We were able to grab an oauth2 token from the context
 			var latestToken *oauth2.Token
 			if latestToken, err = tok.Token(); err != nil {
@@ -380,12 +381,12 @@ func (c *APIClient) prepareRequest (
 		}
 
 		// Basic HTTP Authentication
-		if auth, ok := ctx.Value(ContextBasicAuth).(BasicAuth); ok {
+		if auth, ok := ctx.Value(models.ContextBasicAuth).(models.BasicAuth); ok {
 			localVarRequest.SetBasicAuth(auth.UserName, auth.Password)
 		}
 
 		// AccessToken Authentication
-		if auth, ok := ctx.Value(ContextAccessToken).(string); ok {
+		if auth, ok := ctx.Value(models.ContextAccessToken).(string); ok {
 			localVarRequest.Header.Add("Authorization", "Bearer " + auth)
 		}
 	}
