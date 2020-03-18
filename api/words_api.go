@@ -34,6 +34,7 @@ import (
 	"io/ioutil"
 	"encoding/json"
 	"fmt"
+	"github.com/aspose-words-cloud/aspose-words-cloud-go/api/models"
 )
 
 // Linger please
@@ -42,16 +43,6 @@ var (
 )
 
 type WordsApiService service
-
-func (w *WordsApiErrorResponse) Error() string {
-	out, err := json.Marshal(w)
-	if err != nil {
-		return err.Error()
-	}
-
-	return string(out)
-}
-
 
 /* WordsApiService Accepts all revisions in document.
  * @param ctx context.Context for authentication, logging, tracing, etc.
@@ -63,12 +54,12 @@ func (w *WordsApiErrorResponse) Error() string {
      @param "password" (string) Password for opening an encrypted document.
      @param "destFileName" (string) Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.
  @return RevisionsModificationResponse*/
-func (a *WordsApiService) AcceptAllRevisions(ctx context.Context, name string, localVarOptionals map[string]interface{}) ( RevisionsModificationResponse,  *http.Response, error) {
+func (a *WordsApiService) AcceptAllRevisions(ctx context.Context, name string, localVarOptionals map[string]interface{}) ( models.RevisionsModificationResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload RevisionsModificationResponse
+		successPayload models.RevisionsModificationResponse
 	)
 
 	// create path and map variables
@@ -142,7 +133,7 @@ func (a *WordsApiService) AcceptAllRevisions(ctx context.Context, name string, l
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -157,7 +148,6 @@ func (a *WordsApiService) AcceptAllRevisions(ctx context.Context, name string, l
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Appends documents to original document.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name Original document name.
@@ -171,12 +161,12 @@ func (a *WordsApiService) AcceptAllRevisions(ctx context.Context, name string, l
      @param "revisionAuthor" (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
      @param "revisionDateTime" (string) The date and time to use for revisions.
  @return DocumentResponse*/
-func (a *WordsApiService) AppendDocument(ctx context.Context, name string, documentList IDocumentEntryList, localVarOptionals map[string]interface{}) ( DocumentResponse,  *http.Response, error) {
+func (a *WordsApiService) AppendDocument(ctx context.Context, name string, documentList models.IDocumentEntryList, localVarOptionals map[string]interface{}) ( models.DocumentResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload DocumentResponse
+		successPayload models.DocumentResponse
 	)
 
 	// create path and map variables
@@ -264,7 +254,7 @@ func (a *WordsApiService) AppendDocument(ctx context.Context, name string, docum
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -279,19 +269,18 @@ func (a *WordsApiService) AppendDocument(ctx context.Context, name string, docum
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Classifies raw text.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param text Text to classify.
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "bestClassesCount" (string) Number of the best classes to return.
  @return ClassificationResponse*/
-func (a *WordsApiService) Classify(ctx context.Context, text string, localVarOptionals map[string]interface{}) ( ClassificationResponse,  *http.Response, error) {
+func (a *WordsApiService) Classify(ctx context.Context, text string, localVarOptionals map[string]interface{}) ( models.ClassificationResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload ClassificationResponse
+		successPayload models.ClassificationResponse
 	)
 
 	// create path and map variables
@@ -342,7 +331,7 @@ func (a *WordsApiService) Classify(ctx context.Context, text string, localVarOpt
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -357,7 +346,6 @@ func (a *WordsApiService) Classify(ctx context.Context, text string, localVarOpt
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Classifies document.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param documentName The document name.
@@ -369,12 +357,12 @@ func (a *WordsApiService) Classify(ctx context.Context, text string, localVarOpt
      @param "bestClassesCount" (string) Count of the best classes to return.
      @param "taxonomy" (string) Taxonomy to use for classification return.
  @return ClassificationResponse*/
-func (a *WordsApiService) ClassifyDocument(ctx context.Context, documentName string, localVarOptionals map[string]interface{}) ( ClassificationResponse,  *http.Response, error) {
+func (a *WordsApiService) ClassifyDocument(ctx context.Context, documentName string, localVarOptionals map[string]interface{}) ( models.ClassificationResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload ClassificationResponse
+		successPayload models.ClassificationResponse
 	)
 
 	// create path and map variables
@@ -454,7 +442,7 @@ func (a *WordsApiService) ClassifyDocument(ctx context.Context, documentName str
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -469,7 +457,6 @@ func (a *WordsApiService) ClassifyDocument(ctx context.Context, documentName str
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Compares document with original document.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name Original document name.
@@ -481,12 +468,12 @@ func (a *WordsApiService) ClassifyDocument(ctx context.Context, documentName str
      @param "password" (string) Password for opening an encrypted document.
      @param "destFileName" (string) Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.
  @return DocumentResponse*/
-func (a *WordsApiService) CompareDocument(ctx context.Context, name string, compareData ICompareData, localVarOptionals map[string]interface{}) ( DocumentResponse,  *http.Response, error) {
+func (a *WordsApiService) CompareDocument(ctx context.Context, name string, compareData models.ICompareData, localVarOptionals map[string]interface{}) ( models.DocumentResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload DocumentResponse
+		successPayload models.DocumentResponse
 	)
 
 	// create path and map variables
@@ -562,7 +549,7 @@ func (a *WordsApiService) CompareDocument(ctx context.Context, name string, comp
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -577,7 +564,6 @@ func (a *WordsApiService) CompareDocument(ctx context.Context, name string, comp
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Converts document from the request&#39;s content to the specified format .
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param document Converting document
@@ -666,7 +652,7 @@ func (a *WordsApiService) ConvertDocument(ctx context.Context, document *os.File
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return localVarHttpResponse, err
@@ -676,7 +662,6 @@ func (a *WordsApiService) ConvertDocument(ctx context.Context, document *os.File
 	}
 	return localVarHttpResponse, err
 }
-
 /* WordsApiService Copy file
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param destPath Destination file path
@@ -753,7 +738,7 @@ func (a *WordsApiService) CopyFile(ctx context.Context, destPath string, srcPath
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return localVarHttpResponse, err
@@ -764,7 +749,6 @@ func (a *WordsApiService) CopyFile(ctx context.Context, destPath string, srcPath
 	defer localVarHttpResponse.Body.Close()
 	return localVarHttpResponse, err
 }
-
 /* WordsApiService Copy folder
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param destPath Destination folder path e.g. &#39;/dst&#39;
@@ -834,7 +818,7 @@ func (a *WordsApiService) CopyFolder(ctx context.Context, destPath string, srcPa
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return localVarHttpResponse, err
@@ -845,7 +829,6 @@ func (a *WordsApiService) CopyFolder(ctx context.Context, destPath string, srcPa
 	defer localVarHttpResponse.Body.Close()
 	return localVarHttpResponse, err
 }
-
 /* WordsApiService Creates new document. Document is created with format which is recognized from file extensions. Supported extensions: \&quot;.doc\&quot;, \&quot;.docx\&quot;, \&quot;.docm\&quot;, \&quot;.dot\&quot;, \&quot;.dotm\&quot;, \&quot;.dotx\&quot;, \&quot;.flatopc\&quot;, \&quot;.fopc\&quot;, \&quot;.flatopc_macro\&quot;, \&quot;.fopc_macro\&quot;, \&quot;.flatopc_template\&quot;, \&quot;.fopc_template\&quot;, \&quot;.flatopc_template_macro\&quot;, \&quot;.fopc_template_macro\&quot;, \&quot;.wordml\&quot;, \&quot;.wml\&quot;, \&quot;.rtf\&quot;.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param optional (nil or map[string]interface{}) with one or more of:
@@ -853,12 +836,12 @@ func (a *WordsApiService) CopyFolder(ctx context.Context, destPath string, srcPa
      @param "fileName" (string) The document name.
      @param "folder" (string) The document folder.
  @return DocumentResponse*/
-func (a *WordsApiService) CreateDocument(ctx context.Context, localVarOptionals map[string]interface{}) ( DocumentResponse,  *http.Response, error) {
+func (a *WordsApiService) CreateDocument(ctx context.Context, localVarOptionals map[string]interface{}) ( models.DocumentResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload DocumentResponse
+		successPayload models.DocumentResponse
 	)
 
 	// create path and map variables
@@ -919,7 +902,7 @@ func (a *WordsApiService) CreateDocument(ctx context.Context, localVarOptionals 
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -934,7 +917,6 @@ func (a *WordsApiService) CreateDocument(ctx context.Context, localVarOptionals 
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Create the folder
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param path Target folder&#39;s path e.g. Folder1/Folder2/. The folders will be created recursively
@@ -995,7 +977,7 @@ func (a *WordsApiService) CreateFolder(ctx context.Context, path string, localVa
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return localVarHttpResponse, err
@@ -1006,7 +988,6 @@ func (a *WordsApiService) CreateFolder(ctx context.Context, path string, localVa
 	defer localVarHttpResponse.Body.Close()
 	return localVarHttpResponse, err
 }
-
 /* WordsApiService Adds new or update existing document property.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -1021,12 +1002,12 @@ func (a *WordsApiService) CreateFolder(ctx context.Context, path string, localVa
      @param "revisionAuthor" (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
      @param "revisionDateTime" (string) The date and time to use for revisions.
  @return DocumentPropertyResponse*/
-func (a *WordsApiService) CreateOrUpdateDocumentProperty(ctx context.Context, name string, propertyName string, property IDocumentProperty, localVarOptionals map[string]interface{}) ( DocumentPropertyResponse,  *http.Response, error) {
+func (a *WordsApiService) CreateOrUpdateDocumentProperty(ctx context.Context, name string, propertyName string, property models.IDocumentProperty, localVarOptionals map[string]interface{}) ( models.DocumentPropertyResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload DocumentPropertyResponse
+		successPayload models.DocumentPropertyResponse
 	)
 
 	// create path and map variables
@@ -1115,7 +1096,7 @@ func (a *WordsApiService) CreateOrUpdateDocumentProperty(ctx context.Context, na
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -1130,7 +1111,6 @@ func (a *WordsApiService) CreateOrUpdateDocumentProperty(ctx context.Context, na
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Resets border properties to default values.             
  &#39;nodePath&#39; should refer to paragraph, cell or row.
  * @param ctx context.Context for authentication, logging, tracing, etc.
@@ -1146,12 +1126,12 @@ func (a *WordsApiService) CreateOrUpdateDocumentProperty(ctx context.Context, na
      @param "revisionAuthor" (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
      @param "revisionDateTime" (string) The date and time to use for revisions.
  @return BorderResponse*/
-func (a *WordsApiService) DeleteBorder(ctx context.Context, name string, nodePath string, borderType string, localVarOptionals map[string]interface{}) ( BorderResponse,  *http.Response, error) {
+func (a *WordsApiService) DeleteBorder(ctx context.Context, name string, nodePath string, borderType string, localVarOptionals map[string]interface{}) ( models.BorderResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload BorderResponse
+		successPayload models.BorderResponse
 	)
 
 	// create path and map variables
@@ -1239,7 +1219,7 @@ func (a *WordsApiService) DeleteBorder(ctx context.Context, name string, nodePat
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -1254,7 +1234,6 @@ func (a *WordsApiService) DeleteBorder(ctx context.Context, name string, nodePat
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Resets borders properties to default values.             
  &#39;nodePath&#39; should refer to paragraph, cell or row.
  * @param ctx context.Context for authentication, logging, tracing, etc.
@@ -1269,12 +1248,12 @@ func (a *WordsApiService) DeleteBorder(ctx context.Context, name string, nodePat
      @param "revisionAuthor" (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
      @param "revisionDateTime" (string) The date and time to use for revisions.
  @return BordersResponse*/
-func (a *WordsApiService) DeleteBorders(ctx context.Context, name string, nodePath string, localVarOptionals map[string]interface{}) ( BordersResponse,  *http.Response, error) {
+func (a *WordsApiService) DeleteBorders(ctx context.Context, name string, nodePath string, localVarOptionals map[string]interface{}) ( models.BordersResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload BordersResponse
+		successPayload models.BordersResponse
 	)
 
 	// create path and map variables
@@ -1361,7 +1340,7 @@ func (a *WordsApiService) DeleteBorders(ctx context.Context, name string, nodePa
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -1376,7 +1355,6 @@ func (a *WordsApiService) DeleteBorders(ctx context.Context, name string, nodePa
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Removes comment from document.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -1481,7 +1459,7 @@ func (a *WordsApiService) DeleteComment(ctx context.Context, name string, commen
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return localVarHttpResponse, err
@@ -1492,7 +1470,6 @@ func (a *WordsApiService) DeleteComment(ctx context.Context, name string, commen
 	defer localVarHttpResponse.Body.Close()
 	return localVarHttpResponse, err
 }
-
 /* WordsApiService Deletes document property.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -1597,7 +1574,7 @@ func (a *WordsApiService) DeleteDocumentProperty(ctx context.Context, name strin
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return localVarHttpResponse, err
@@ -1608,7 +1585,6 @@ func (a *WordsApiService) DeleteDocumentProperty(ctx context.Context, name strin
 	defer localVarHttpResponse.Body.Close()
 	return localVarHttpResponse, err
 }
-
 /* WordsApiService Removes drawing object from document.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -1715,7 +1691,7 @@ func (a *WordsApiService) DeleteDrawingObject(ctx context.Context, name string, 
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return localVarHttpResponse, err
@@ -1726,7 +1702,6 @@ func (a *WordsApiService) DeleteDrawingObject(ctx context.Context, name string, 
 	defer localVarHttpResponse.Body.Close()
 	return localVarHttpResponse, err
 }
-
 /* WordsApiService Removes drawing object from document.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -1831,7 +1806,7 @@ func (a *WordsApiService) DeleteDrawingObjectWithoutNodePath(ctx context.Context
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return localVarHttpResponse, err
@@ -1842,7 +1817,6 @@ func (a *WordsApiService) DeleteDrawingObjectWithoutNodePath(ctx context.Context
 	defer localVarHttpResponse.Body.Close()
 	return localVarHttpResponse, err
 }
-
 /* WordsApiService Deletes field from document.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -1949,7 +1923,7 @@ func (a *WordsApiService) DeleteField(ctx context.Context, name string, nodePath
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return localVarHttpResponse, err
@@ -1960,7 +1934,6 @@ func (a *WordsApiService) DeleteField(ctx context.Context, name string, nodePath
 	defer localVarHttpResponse.Body.Close()
 	return localVarHttpResponse, err
 }
-
 /* WordsApiService Deletes field from document.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -2065,7 +2038,7 @@ func (a *WordsApiService) DeleteFieldWithoutNodePath(ctx context.Context, name s
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return localVarHttpResponse, err
@@ -2076,7 +2049,6 @@ func (a *WordsApiService) DeleteFieldWithoutNodePath(ctx context.Context, name s
 	defer localVarHttpResponse.Body.Close()
 	return localVarHttpResponse, err
 }
-
 /* WordsApiService Removes fields from section paragraph.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -2181,7 +2153,7 @@ func (a *WordsApiService) DeleteFields(ctx context.Context, name string, nodePat
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return localVarHttpResponse, err
@@ -2192,7 +2164,6 @@ func (a *WordsApiService) DeleteFields(ctx context.Context, name string, nodePat
 	defer localVarHttpResponse.Body.Close()
 	return localVarHttpResponse, err
 }
-
 /* WordsApiService Removes fields from section paragraph.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -2295,7 +2266,7 @@ func (a *WordsApiService) DeleteFieldsWithoutNodePath(ctx context.Context, name 
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return localVarHttpResponse, err
@@ -2306,7 +2277,6 @@ func (a *WordsApiService) DeleteFieldsWithoutNodePath(ctx context.Context, name 
 	defer localVarHttpResponse.Body.Close()
 	return localVarHttpResponse, err
 }
-
 /* WordsApiService Delete file
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param path Path of the file including file name and extension e.g. /Folder1/file.ext
@@ -2374,7 +2344,7 @@ func (a *WordsApiService) DeleteFile(ctx context.Context, path string, localVarO
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return localVarHttpResponse, err
@@ -2385,7 +2355,6 @@ func (a *WordsApiService) DeleteFile(ctx context.Context, path string, localVarO
 	defer localVarHttpResponse.Body.Close()
 	return localVarHttpResponse, err
 }
-
 /* WordsApiService Delete folder
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param path Folder path e.g. /Folder1s
@@ -2453,7 +2422,7 @@ func (a *WordsApiService) DeleteFolder(ctx context.Context, path string, localVa
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return localVarHttpResponse, err
@@ -2464,7 +2433,6 @@ func (a *WordsApiService) DeleteFolder(ctx context.Context, path string, localVa
 	defer localVarHttpResponse.Body.Close()
 	return localVarHttpResponse, err
 }
-
 /* WordsApiService Removes footnote from document.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -2571,7 +2539,7 @@ func (a *WordsApiService) DeleteFootnote(ctx context.Context, name string, nodeP
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return localVarHttpResponse, err
@@ -2582,7 +2550,6 @@ func (a *WordsApiService) DeleteFootnote(ctx context.Context, name string, nodeP
 	defer localVarHttpResponse.Body.Close()
 	return localVarHttpResponse, err
 }
-
 /* WordsApiService Removes footnote from document.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -2687,7 +2654,7 @@ func (a *WordsApiService) DeleteFootnoteWithoutNodePath(ctx context.Context, nam
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return localVarHttpResponse, err
@@ -2698,7 +2665,6 @@ func (a *WordsApiService) DeleteFootnoteWithoutNodePath(ctx context.Context, nam
 	defer localVarHttpResponse.Body.Close()
 	return localVarHttpResponse, err
 }
-
 /* WordsApiService Removes form field from document.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -2805,7 +2771,7 @@ func (a *WordsApiService) DeleteFormField(ctx context.Context, name string, node
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return localVarHttpResponse, err
@@ -2816,7 +2782,6 @@ func (a *WordsApiService) DeleteFormField(ctx context.Context, name string, node
 	defer localVarHttpResponse.Body.Close()
 	return localVarHttpResponse, err
 }
-
 /* WordsApiService Removes form field from document.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -2921,7 +2886,7 @@ func (a *WordsApiService) DeleteFormFieldWithoutNodePath(ctx context.Context, na
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return localVarHttpResponse, err
@@ -2932,7 +2897,6 @@ func (a *WordsApiService) DeleteFormFieldWithoutNodePath(ctx context.Context, na
 	defer localVarHttpResponse.Body.Close()
 	return localVarHttpResponse, err
 }
-
 /* WordsApiService Deletes header/footer from document.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -3039,7 +3003,7 @@ func (a *WordsApiService) DeleteHeaderFooter(ctx context.Context, name string, s
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return localVarHttpResponse, err
@@ -3050,7 +3014,6 @@ func (a *WordsApiService) DeleteHeaderFooter(ctx context.Context, name string, s
 	defer localVarHttpResponse.Body.Close()
 	return localVarHttpResponse, err
 }
-
 /* WordsApiService Deletes document headers and footers.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -3162,7 +3125,7 @@ func (a *WordsApiService) DeleteHeadersFooters(ctx context.Context, name string,
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return localVarHttpResponse, err
@@ -3173,7 +3136,6 @@ func (a *WordsApiService) DeleteHeadersFooters(ctx context.Context, name string,
 	defer localVarHttpResponse.Body.Close()
 	return localVarHttpResponse, err
 }
-
 /* WordsApiService Removes macros from document.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -3276,7 +3238,7 @@ func (a *WordsApiService) DeleteMacros(ctx context.Context, name string, localVa
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return localVarHttpResponse, err
@@ -3287,7 +3249,6 @@ func (a *WordsApiService) DeleteMacros(ctx context.Context, name string, localVa
 	defer localVarHttpResponse.Body.Close()
 	return localVarHttpResponse, err
 }
-
 /* WordsApiService Removes OfficeMath object from document.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -3394,7 +3355,7 @@ func (a *WordsApiService) DeleteOfficeMathObject(ctx context.Context, name strin
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return localVarHttpResponse, err
@@ -3405,7 +3366,6 @@ func (a *WordsApiService) DeleteOfficeMathObject(ctx context.Context, name strin
 	defer localVarHttpResponse.Body.Close()
 	return localVarHttpResponse, err
 }
-
 /* WordsApiService Removes OfficeMath object from document.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -3510,7 +3470,7 @@ func (a *WordsApiService) DeleteOfficeMathObjectWithoutNodePath(ctx context.Cont
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return localVarHttpResponse, err
@@ -3521,7 +3481,6 @@ func (a *WordsApiService) DeleteOfficeMathObjectWithoutNodePath(ctx context.Cont
 	defer localVarHttpResponse.Body.Close()
 	return localVarHttpResponse, err
 }
-
 /* WordsApiService Removes paragraph from section.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The file name.
@@ -3628,7 +3587,7 @@ func (a *WordsApiService) DeleteParagraph(ctx context.Context, name string, node
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return localVarHttpResponse, err
@@ -3639,7 +3598,6 @@ func (a *WordsApiService) DeleteParagraph(ctx context.Context, name string, node
 	defer localVarHttpResponse.Body.Close()
 	return localVarHttpResponse, err
 }
-
 /* WordsApiService Removes paragraph from section.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The file name.
@@ -3744,7 +3702,7 @@ func (a *WordsApiService) DeleteParagraphWithoutNodePath(ctx context.Context, na
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return localVarHttpResponse, err
@@ -3755,7 +3713,6 @@ func (a *WordsApiService) DeleteParagraphWithoutNodePath(ctx context.Context, na
 	defer localVarHttpResponse.Body.Close()
 	return localVarHttpResponse, err
 }
-
 /* WordsApiService Removes run from document.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -3862,7 +3819,7 @@ func (a *WordsApiService) DeleteRun(ctx context.Context, name string, paragraphP
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return localVarHttpResponse, err
@@ -3873,7 +3830,6 @@ func (a *WordsApiService) DeleteRun(ctx context.Context, name string, paragraphP
 	defer localVarHttpResponse.Body.Close()
 	return localVarHttpResponse, err
 }
-
 /* WordsApiService Removes section from document.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -3978,7 +3934,7 @@ func (a *WordsApiService) DeleteSection(ctx context.Context, name string, sectio
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return localVarHttpResponse, err
@@ -3989,7 +3945,6 @@ func (a *WordsApiService) DeleteSection(ctx context.Context, name string, sectio
 	defer localVarHttpResponse.Body.Close()
 	return localVarHttpResponse, err
 }
-
 /* WordsApiService Deletes a table.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -4096,7 +4051,7 @@ func (a *WordsApiService) DeleteTable(ctx context.Context, name string, nodePath
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return localVarHttpResponse, err
@@ -4107,7 +4062,6 @@ func (a *WordsApiService) DeleteTable(ctx context.Context, name string, nodePath
 	defer localVarHttpResponse.Body.Close()
 	return localVarHttpResponse, err
 }
-
 /* WordsApiService Deletes a table cell.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -4214,7 +4168,7 @@ func (a *WordsApiService) DeleteTableCell(ctx context.Context, name string, tabl
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return localVarHttpResponse, err
@@ -4225,7 +4179,6 @@ func (a *WordsApiService) DeleteTableCell(ctx context.Context, name string, tabl
 	defer localVarHttpResponse.Body.Close()
 	return localVarHttpResponse, err
 }
-
 /* WordsApiService Deletes a table row.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -4332,7 +4285,7 @@ func (a *WordsApiService) DeleteTableRow(ctx context.Context, name string, table
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return localVarHttpResponse, err
@@ -4343,7 +4296,6 @@ func (a *WordsApiService) DeleteTableRow(ctx context.Context, name string, table
 	defer localVarHttpResponse.Body.Close()
 	return localVarHttpResponse, err
 }
-
 /* WordsApiService Deletes a table.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -4448,7 +4400,7 @@ func (a *WordsApiService) DeleteTableWithoutNodePath(ctx context.Context, name s
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return localVarHttpResponse, err
@@ -4459,7 +4411,6 @@ func (a *WordsApiService) DeleteTableWithoutNodePath(ctx context.Context, name s
 	defer localVarHttpResponse.Body.Close()
 	return localVarHttpResponse, err
 }
-
 /* WordsApiService Deletes watermark (for deleting last watermark from the document).
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -4472,12 +4423,12 @@ func (a *WordsApiService) DeleteTableWithoutNodePath(ctx context.Context, name s
      @param "revisionAuthor" (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
      @param "revisionDateTime" (string) The date and time to use for revisions.
  @return DocumentResponse*/
-func (a *WordsApiService) DeleteWatermark(ctx context.Context, name string, localVarOptionals map[string]interface{}) ( DocumentResponse,  *http.Response, error) {
+func (a *WordsApiService) DeleteWatermark(ctx context.Context, name string, localVarOptionals map[string]interface{}) ( models.DocumentResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload DocumentResponse
+		successPayload models.DocumentResponse
 	)
 
 	// create path and map variables
@@ -4563,7 +4514,7 @@ func (a *WordsApiService) DeleteWatermark(ctx context.Context, name string, loca
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -4578,7 +4529,6 @@ func (a *WordsApiService) DeleteWatermark(ctx context.Context, name string, loca
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Download file
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param path Path of the file including the file name and extension e.g. /folder1/file.ext
@@ -4646,7 +4596,7 @@ func (a *WordsApiService) DownloadFile(ctx context.Context, path string, localVa
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return localVarHttpResponse, err
@@ -4656,7 +4606,6 @@ func (a *WordsApiService) DownloadFile(ctx context.Context, path string, localVa
 	}
 	return localVarHttpResponse, err
 }
-
 /* WordsApiService Executes document mail merge operation.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -4672,12 +4621,12 @@ func (a *WordsApiService) DownloadFile(ctx context.Context, path string, localVa
      @param "useWholeParagraphAsRegion" (bool) Gets or sets a value indicating whether paragraph with TableStart or             TableEnd field should be fully included into mail merge region or particular range between TableStart and TableEnd fields.             The default value is true.
      @param "destFileName" (string) Result name of the document after the operation. If this parameter is omitted then result of the operation will be saved with autogenerated name.
  @return DocumentResponse*/
-func (a *WordsApiService) ExecuteMailMerge(ctx context.Context, name string, localVarOptionals map[string]interface{}) ( DocumentResponse,  *http.Response, error) {
+func (a *WordsApiService) ExecuteMailMerge(ctx context.Context, name string, localVarOptionals map[string]interface{}) ( models.DocumentResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload DocumentResponse
+		successPayload models.DocumentResponse
 	)
 
 	// create path and map variables
@@ -4781,7 +4730,7 @@ func (a *WordsApiService) ExecuteMailMerge(ctx context.Context, name string, loc
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -4796,7 +4745,6 @@ func (a *WordsApiService) ExecuteMailMerge(ctx context.Context, name string, loc
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Executes document mail merge online.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param template File with template
@@ -4883,7 +4831,7 @@ func (a *WordsApiService) ExecuteMailMergeOnline(ctx context.Context, template *
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return localVarHttpResponse, err
@@ -4893,18 +4841,17 @@ func (a *WordsApiService) ExecuteMailMergeOnline(ctx context.Context, template *
 	}
 	return localVarHttpResponse, err
 }
-
 /* WordsApiService Gets the list of fonts, available for document processing.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "fontsLocation" (string) Folder in filestorage with custom fonts.
  @return AvailableFontsResponse*/
-func (a *WordsApiService) GetAvailableFonts(ctx context.Context, localVarOptionals map[string]interface{}) ( AvailableFontsResponse,  *http.Response, error) {
+func (a *WordsApiService) GetAvailableFonts(ctx context.Context, localVarOptionals map[string]interface{}) ( models.AvailableFontsResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload AvailableFontsResponse
+		successPayload models.AvailableFontsResponse
 	)
 
 	// create path and map variables
@@ -4953,7 +4900,7 @@ func (a *WordsApiService) GetAvailableFonts(ctx context.Context, localVarOptiona
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -4968,7 +4915,6 @@ func (a *WordsApiService) GetAvailableFonts(ctx context.Context, localVarOptiona
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Reads document bookmark data by its name.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -4979,12 +4925,12 @@ func (a *WordsApiService) GetAvailableFonts(ctx context.Context, localVarOptiona
      @param "loadEncoding" (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
      @param "password" (string) Password for opening an encrypted document.
  @return BookmarkResponse*/
-func (a *WordsApiService) GetBookmarkByName(ctx context.Context, name string, bookmarkName string, localVarOptionals map[string]interface{}) ( BookmarkResponse,  *http.Response, error) {
+func (a *WordsApiService) GetBookmarkByName(ctx context.Context, name string, bookmarkName string, localVarOptionals map[string]interface{}) ( models.BookmarkResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload BookmarkResponse
+		successPayload models.BookmarkResponse
 	)
 
 	// create path and map variables
@@ -5053,7 +4999,7 @@ func (a *WordsApiService) GetBookmarkByName(ctx context.Context, name string, bo
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -5068,7 +5014,6 @@ func (a *WordsApiService) GetBookmarkByName(ctx context.Context, name string, bo
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Reads document bookmarks common info.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -5078,12 +5023,12 @@ func (a *WordsApiService) GetBookmarkByName(ctx context.Context, name string, bo
      @param "loadEncoding" (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
      @param "password" (string) Password for opening an encrypted document.
  @return BookmarksResponse*/
-func (a *WordsApiService) GetBookmarks(ctx context.Context, name string, localVarOptionals map[string]interface{}) ( BookmarksResponse,  *http.Response, error) {
+func (a *WordsApiService) GetBookmarks(ctx context.Context, name string, localVarOptionals map[string]interface{}) ( models.BookmarksResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload BookmarksResponse
+		successPayload models.BookmarksResponse
 	)
 
 	// create path and map variables
@@ -5151,7 +5096,7 @@ func (a *WordsApiService) GetBookmarks(ctx context.Context, name string, localVa
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -5166,7 +5111,6 @@ func (a *WordsApiService) GetBookmarks(ctx context.Context, name string, localVa
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Returns a border.
  &#39;nodePath&#39; should refer to paragraph, cell or row.
  * @param ctx context.Context for authentication, logging, tracing, etc.
@@ -5179,12 +5123,12 @@ func (a *WordsApiService) GetBookmarks(ctx context.Context, name string, localVa
      @param "loadEncoding" (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
      @param "password" (string) Password for opening an encrypted document.
  @return BorderResponse*/
-func (a *WordsApiService) GetBorder(ctx context.Context, name string, nodePath string, borderType string, localVarOptionals map[string]interface{}) ( BorderResponse,  *http.Response, error) {
+func (a *WordsApiService) GetBorder(ctx context.Context, name string, nodePath string, borderType string, localVarOptionals map[string]interface{}) ( models.BorderResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload BorderResponse
+		successPayload models.BorderResponse
 	)
 
 	// create path and map variables
@@ -5254,7 +5198,7 @@ func (a *WordsApiService) GetBorder(ctx context.Context, name string, nodePath s
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -5269,7 +5213,6 @@ func (a *WordsApiService) GetBorder(ctx context.Context, name string, nodePath s
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Returns a collection of borders.
  &#39;nodePath&#39; should refer to paragraph, cell or row.
  * @param ctx context.Context for authentication, logging, tracing, etc.
@@ -5281,12 +5224,12 @@ func (a *WordsApiService) GetBorder(ctx context.Context, name string, nodePath s
      @param "loadEncoding" (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
      @param "password" (string) Password for opening an encrypted document.
  @return BordersResponse*/
-func (a *WordsApiService) GetBorders(ctx context.Context, name string, nodePath string, localVarOptionals map[string]interface{}) ( BordersResponse,  *http.Response, error) {
+func (a *WordsApiService) GetBorders(ctx context.Context, name string, nodePath string, localVarOptionals map[string]interface{}) ( models.BordersResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload BordersResponse
+		successPayload models.BordersResponse
 	)
 
 	// create path and map variables
@@ -5355,7 +5298,7 @@ func (a *WordsApiService) GetBorders(ctx context.Context, name string, nodePath 
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -5370,7 +5313,6 @@ func (a *WordsApiService) GetBorders(ctx context.Context, name string, nodePath 
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Gets comment from document.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -5381,12 +5323,12 @@ func (a *WordsApiService) GetBorders(ctx context.Context, name string, nodePath 
      @param "loadEncoding" (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
      @param "password" (string) Password for opening an encrypted document.
  @return CommentResponse*/
-func (a *WordsApiService) GetComment(ctx context.Context, name string, commentIndex int32, localVarOptionals map[string]interface{}) ( CommentResponse,  *http.Response, error) {
+func (a *WordsApiService) GetComment(ctx context.Context, name string, commentIndex int32, localVarOptionals map[string]interface{}) ( models.CommentResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload CommentResponse
+		successPayload models.CommentResponse
 	)
 
 	// create path and map variables
@@ -5455,7 +5397,7 @@ func (a *WordsApiService) GetComment(ctx context.Context, name string, commentIn
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -5470,7 +5412,6 @@ func (a *WordsApiService) GetComment(ctx context.Context, name string, commentIn
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Gets comments from document.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -5480,12 +5421,12 @@ func (a *WordsApiService) GetComment(ctx context.Context, name string, commentIn
      @param "loadEncoding" (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
      @param "password" (string) Password for opening an encrypted document.
  @return CommentsResponse*/
-func (a *WordsApiService) GetComments(ctx context.Context, name string, localVarOptionals map[string]interface{}) ( CommentsResponse,  *http.Response, error) {
+func (a *WordsApiService) GetComments(ctx context.Context, name string, localVarOptionals map[string]interface{}) ( models.CommentsResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload CommentsResponse
+		successPayload models.CommentsResponse
 	)
 
 	// create path and map variables
@@ -5553,7 +5494,7 @@ func (a *WordsApiService) GetComments(ctx context.Context, name string, localVar
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -5568,7 +5509,6 @@ func (a *WordsApiService) GetComments(ctx context.Context, name string, localVar
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Reads document common info.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param documentName The document name.
@@ -5578,12 +5518,12 @@ func (a *WordsApiService) GetComments(ctx context.Context, name string, localVar
      @param "loadEncoding" (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
      @param "password" (string) Password for opening an encrypted document.
  @return DocumentResponse*/
-func (a *WordsApiService) GetDocument(ctx context.Context, documentName string, localVarOptionals map[string]interface{}) ( DocumentResponse,  *http.Response, error) {
+func (a *WordsApiService) GetDocument(ctx context.Context, documentName string, localVarOptionals map[string]interface{}) ( models.DocumentResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload DocumentResponse
+		successPayload models.DocumentResponse
 	)
 
 	// create path and map variables
@@ -5651,7 +5591,7 @@ func (a *WordsApiService) GetDocument(ctx context.Context, documentName string, 
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -5666,7 +5606,6 @@ func (a *WordsApiService) GetDocument(ctx context.Context, documentName string, 
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Reads document drawing object common info by its index or convert to format specified.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -5678,12 +5617,12 @@ func (a *WordsApiService) GetDocument(ctx context.Context, documentName string, 
      @param "loadEncoding" (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
      @param "password" (string) Password for opening an encrypted document.
  @return DrawingObjectResponse*/
-func (a *WordsApiService) GetDocumentDrawingObjectByIndex(ctx context.Context, name string, nodePath string, index int32, localVarOptionals map[string]interface{}) ( DrawingObjectResponse,  *http.Response, error) {
+func (a *WordsApiService) GetDocumentDrawingObjectByIndex(ctx context.Context, name string, nodePath string, index int32, localVarOptionals map[string]interface{}) ( models.DrawingObjectResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload DrawingObjectResponse
+		successPayload models.DrawingObjectResponse
 	)
 
 	// create path and map variables
@@ -5753,7 +5692,7 @@ func (a *WordsApiService) GetDocumentDrawingObjectByIndex(ctx context.Context, n
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -5768,7 +5707,6 @@ func (a *WordsApiService) GetDocumentDrawingObjectByIndex(ctx context.Context, n
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Reads document drawing object common info by its index or convert to format specified.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -5779,12 +5717,12 @@ func (a *WordsApiService) GetDocumentDrawingObjectByIndex(ctx context.Context, n
      @param "loadEncoding" (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
      @param "password" (string) Password for opening an encrypted document.
  @return DrawingObjectResponse*/
-func (a *WordsApiService) GetDocumentDrawingObjectByIndexWithoutNodePath(ctx context.Context, name string, index int32, localVarOptionals map[string]interface{}) ( DrawingObjectResponse,  *http.Response, error) {
+func (a *WordsApiService) GetDocumentDrawingObjectByIndexWithoutNodePath(ctx context.Context, name string, index int32, localVarOptionals map[string]interface{}) ( models.DrawingObjectResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload DrawingObjectResponse
+		successPayload models.DrawingObjectResponse
 	)
 
 	// create path and map variables
@@ -5853,7 +5791,7 @@ func (a *WordsApiService) GetDocumentDrawingObjectByIndexWithoutNodePath(ctx con
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -5868,7 +5806,6 @@ func (a *WordsApiService) GetDocumentDrawingObjectByIndexWithoutNodePath(ctx con
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Reads drawing object image data.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -5954,7 +5891,7 @@ func (a *WordsApiService) GetDocumentDrawingObjectImageData(ctx context.Context,
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return localVarHttpResponse, err
@@ -5964,7 +5901,6 @@ func (a *WordsApiService) GetDocumentDrawingObjectImageData(ctx context.Context,
 	}
 	return localVarHttpResponse, err
 }
-
 /* WordsApiService Reads drawing object image data.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -6048,7 +5984,7 @@ func (a *WordsApiService) GetDocumentDrawingObjectImageDataWithoutNodePath(ctx c
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return localVarHttpResponse, err
@@ -6058,7 +5994,6 @@ func (a *WordsApiService) GetDocumentDrawingObjectImageDataWithoutNodePath(ctx c
 	}
 	return localVarHttpResponse, err
 }
-
 /* WordsApiService Gets drawing object OLE data.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -6144,7 +6079,7 @@ func (a *WordsApiService) GetDocumentDrawingObjectOleData(ctx context.Context, n
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return localVarHttpResponse, err
@@ -6154,7 +6089,6 @@ func (a *WordsApiService) GetDocumentDrawingObjectOleData(ctx context.Context, n
 	}
 	return localVarHttpResponse, err
 }
-
 /* WordsApiService Gets drawing object OLE data.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -6238,7 +6172,7 @@ func (a *WordsApiService) GetDocumentDrawingObjectOleDataWithoutNodePath(ctx con
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return localVarHttpResponse, err
@@ -6248,7 +6182,6 @@ func (a *WordsApiService) GetDocumentDrawingObjectOleDataWithoutNodePath(ctx con
 	}
 	return localVarHttpResponse, err
 }
-
 /* WordsApiService Reads document drawing objects common info.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -6259,12 +6192,12 @@ func (a *WordsApiService) GetDocumentDrawingObjectOleDataWithoutNodePath(ctx con
      @param "loadEncoding" (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
      @param "password" (string) Password for opening an encrypted document.
  @return DrawingObjectsResponse*/
-func (a *WordsApiService) GetDocumentDrawingObjects(ctx context.Context, name string, nodePath string, localVarOptionals map[string]interface{}) ( DrawingObjectsResponse,  *http.Response, error) {
+func (a *WordsApiService) GetDocumentDrawingObjects(ctx context.Context, name string, nodePath string, localVarOptionals map[string]interface{}) ( models.DrawingObjectsResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload DrawingObjectsResponse
+		successPayload models.DrawingObjectsResponse
 	)
 
 	// create path and map variables
@@ -6333,7 +6266,7 @@ func (a *WordsApiService) GetDocumentDrawingObjects(ctx context.Context, name st
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -6348,7 +6281,6 @@ func (a *WordsApiService) GetDocumentDrawingObjects(ctx context.Context, name st
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Reads document drawing objects common info.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -6358,12 +6290,12 @@ func (a *WordsApiService) GetDocumentDrawingObjects(ctx context.Context, name st
      @param "loadEncoding" (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
      @param "password" (string) Password for opening an encrypted document.
  @return DrawingObjectsResponse*/
-func (a *WordsApiService) GetDocumentDrawingObjectsWithoutNodePath(ctx context.Context, name string, localVarOptionals map[string]interface{}) ( DrawingObjectsResponse,  *http.Response, error) {
+func (a *WordsApiService) GetDocumentDrawingObjectsWithoutNodePath(ctx context.Context, name string, localVarOptionals map[string]interface{}) ( models.DrawingObjectsResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload DrawingObjectsResponse
+		successPayload models.DrawingObjectsResponse
 	)
 
 	// create path and map variables
@@ -6431,7 +6363,7 @@ func (a *WordsApiService) GetDocumentDrawingObjectsWithoutNodePath(ctx context.C
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -6446,7 +6378,6 @@ func (a *WordsApiService) GetDocumentDrawingObjectsWithoutNodePath(ctx context.C
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Reads document field names.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -6457,12 +6388,12 @@ func (a *WordsApiService) GetDocumentDrawingObjectsWithoutNodePath(ctx context.C
      @param "password" (string) Password for opening an encrypted document.
      @param "useNonMergeFields" (bool) If true, result includes \&quot;mustache\&quot; field names.
  @return FieldNamesResponse*/
-func (a *WordsApiService) GetDocumentFieldNames(ctx context.Context, name string, localVarOptionals map[string]interface{}) ( FieldNamesResponse,  *http.Response, error) {
+func (a *WordsApiService) GetDocumentFieldNames(ctx context.Context, name string, localVarOptionals map[string]interface{}) ( models.FieldNamesResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload FieldNamesResponse
+		successPayload models.FieldNamesResponse
 	)
 
 	// create path and map variables
@@ -6536,7 +6467,7 @@ func (a *WordsApiService) GetDocumentFieldNames(ctx context.Context, name string
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -6551,19 +6482,18 @@ func (a *WordsApiService) GetDocumentFieldNames(ctx context.Context, name string
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Reads document field names.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param template File with template
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "useNonMergeFields" (bool) Use non merge fields or not.
  @return FieldNamesResponse*/
-func (a *WordsApiService) GetDocumentFieldNamesOnline(ctx context.Context, template *os.File, localVarOptionals map[string]interface{}) ( FieldNamesResponse,  *http.Response, error) {
+func (a *WordsApiService) GetDocumentFieldNamesOnline(ctx context.Context, template *os.File, localVarOptionals map[string]interface{}) ( models.FieldNamesResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload FieldNamesResponse
+		successPayload models.FieldNamesResponse
 	)
 
 	// create path and map variables
@@ -6618,7 +6548,7 @@ func (a *WordsApiService) GetDocumentFieldNamesOnline(ctx context.Context, templ
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -6633,7 +6563,6 @@ func (a *WordsApiService) GetDocumentFieldNamesOnline(ctx context.Context, templ
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Reads document hyperlink by its index.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -6644,12 +6573,12 @@ func (a *WordsApiService) GetDocumentFieldNamesOnline(ctx context.Context, templ
      @param "loadEncoding" (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
      @param "password" (string) Password for opening an encrypted document.
  @return HyperlinkResponse*/
-func (a *WordsApiService) GetDocumentHyperlinkByIndex(ctx context.Context, name string, hyperlinkIndex int32, localVarOptionals map[string]interface{}) ( HyperlinkResponse,  *http.Response, error) {
+func (a *WordsApiService) GetDocumentHyperlinkByIndex(ctx context.Context, name string, hyperlinkIndex int32, localVarOptionals map[string]interface{}) ( models.HyperlinkResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload HyperlinkResponse
+		successPayload models.HyperlinkResponse
 	)
 
 	// create path and map variables
@@ -6718,7 +6647,7 @@ func (a *WordsApiService) GetDocumentHyperlinkByIndex(ctx context.Context, name 
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -6733,7 +6662,6 @@ func (a *WordsApiService) GetDocumentHyperlinkByIndex(ctx context.Context, name 
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Reads document hyperlinks common info.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -6743,12 +6671,12 @@ func (a *WordsApiService) GetDocumentHyperlinkByIndex(ctx context.Context, name 
      @param "loadEncoding" (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
      @param "password" (string) Password for opening an encrypted document.
  @return HyperlinksResponse*/
-func (a *WordsApiService) GetDocumentHyperlinks(ctx context.Context, name string, localVarOptionals map[string]interface{}) ( HyperlinksResponse,  *http.Response, error) {
+func (a *WordsApiService) GetDocumentHyperlinks(ctx context.Context, name string, localVarOptionals map[string]interface{}) ( models.HyperlinksResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload HyperlinksResponse
+		successPayload models.HyperlinksResponse
 	)
 
 	// create path and map variables
@@ -6816,7 +6744,7 @@ func (a *WordsApiService) GetDocumentHyperlinks(ctx context.Context, name string
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -6831,7 +6759,6 @@ func (a *WordsApiService) GetDocumentHyperlinks(ctx context.Context, name string
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Reads document properties info.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document&#39;s name.
@@ -6841,12 +6768,12 @@ func (a *WordsApiService) GetDocumentHyperlinks(ctx context.Context, name string
      @param "loadEncoding" (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
      @param "password" (string) Password for opening an encrypted document.
  @return DocumentPropertiesResponse*/
-func (a *WordsApiService) GetDocumentProperties(ctx context.Context, name string, localVarOptionals map[string]interface{}) ( DocumentPropertiesResponse,  *http.Response, error) {
+func (a *WordsApiService) GetDocumentProperties(ctx context.Context, name string, localVarOptionals map[string]interface{}) ( models.DocumentPropertiesResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload DocumentPropertiesResponse
+		successPayload models.DocumentPropertiesResponse
 	)
 
 	// create path and map variables
@@ -6914,7 +6841,7 @@ func (a *WordsApiService) GetDocumentProperties(ctx context.Context, name string
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -6929,7 +6856,6 @@ func (a *WordsApiService) GetDocumentProperties(ctx context.Context, name string
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Reads document property info by the property name.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -6940,12 +6866,12 @@ func (a *WordsApiService) GetDocumentProperties(ctx context.Context, name string
      @param "loadEncoding" (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
      @param "password" (string) Password for opening an encrypted document.
  @return DocumentPropertyResponse*/
-func (a *WordsApiService) GetDocumentProperty(ctx context.Context, name string, propertyName string, localVarOptionals map[string]interface{}) ( DocumentPropertyResponse,  *http.Response, error) {
+func (a *WordsApiService) GetDocumentProperty(ctx context.Context, name string, propertyName string, localVarOptionals map[string]interface{}) ( models.DocumentPropertyResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload DocumentPropertyResponse
+		successPayload models.DocumentPropertyResponse
 	)
 
 	// create path and map variables
@@ -7014,7 +6940,7 @@ func (a *WordsApiService) GetDocumentProperty(ctx context.Context, name string, 
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -7029,7 +6955,6 @@ func (a *WordsApiService) GetDocumentProperty(ctx context.Context, name string, 
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Reads document protection common info.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -7039,12 +6964,12 @@ func (a *WordsApiService) GetDocumentProperty(ctx context.Context, name string, 
      @param "loadEncoding" (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
      @param "password" (string) Password for opening an encrypted document.
  @return ProtectionDataResponse*/
-func (a *WordsApiService) GetDocumentProtection(ctx context.Context, name string, localVarOptionals map[string]interface{}) ( ProtectionDataResponse,  *http.Response, error) {
+func (a *WordsApiService) GetDocumentProtection(ctx context.Context, name string, localVarOptionals map[string]interface{}) ( models.ProtectionDataResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload ProtectionDataResponse
+		successPayload models.ProtectionDataResponse
 	)
 
 	// create path and map variables
@@ -7112,7 +7037,7 @@ func (a *WordsApiService) GetDocumentProtection(ctx context.Context, name string
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -7127,7 +7052,6 @@ func (a *WordsApiService) GetDocumentProtection(ctx context.Context, name string
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Reads document statistics.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -7140,12 +7064,12 @@ func (a *WordsApiService) GetDocumentProtection(ctx context.Context, name string
      @param "includeFootnotes" (bool) Support including/excluding footnotes from the WordCount. Default value is \&quot;false\&quot;.
      @param "includeTextInShapes" (bool) Support including/excluding shape&#39;s text from the WordCount. Default value is \&quot;false\&quot;.
  @return StatDataResponse*/
-func (a *WordsApiService) GetDocumentStatistics(ctx context.Context, name string, localVarOptionals map[string]interface{}) ( StatDataResponse,  *http.Response, error) {
+func (a *WordsApiService) GetDocumentStatistics(ctx context.Context, name string, localVarOptionals map[string]interface{}) ( models.StatDataResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload StatDataResponse
+		successPayload models.StatDataResponse
 	)
 
 	// create path and map variables
@@ -7231,7 +7155,7 @@ func (a *WordsApiService) GetDocumentStatistics(ctx context.Context, name string
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -7246,7 +7170,6 @@ func (a *WordsApiService) GetDocumentStatistics(ctx context.Context, name string
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Exports the document into the specified format.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -7344,7 +7267,7 @@ func (a *WordsApiService) GetDocumentWithFormat(ctx context.Context, name string
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return localVarHttpResponse, err
@@ -7354,7 +7277,6 @@ func (a *WordsApiService) GetDocumentWithFormat(ctx context.Context, name string
 	}
 	return localVarHttpResponse, err
 }
-
 /* WordsApiService Gets field from document.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -7366,12 +7288,12 @@ func (a *WordsApiService) GetDocumentWithFormat(ctx context.Context, name string
      @param "loadEncoding" (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
      @param "password" (string) Password for opening an encrypted document.
  @return FieldResponse*/
-func (a *WordsApiService) GetField(ctx context.Context, name string, nodePath string, index int32, localVarOptionals map[string]interface{}) ( FieldResponse,  *http.Response, error) {
+func (a *WordsApiService) GetField(ctx context.Context, name string, nodePath string, index int32, localVarOptionals map[string]interface{}) ( models.FieldResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload FieldResponse
+		successPayload models.FieldResponse
 	)
 
 	// create path and map variables
@@ -7441,7 +7363,7 @@ func (a *WordsApiService) GetField(ctx context.Context, name string, nodePath st
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -7456,7 +7378,6 @@ func (a *WordsApiService) GetField(ctx context.Context, name string, nodePath st
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Gets field from document.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -7467,12 +7388,12 @@ func (a *WordsApiService) GetField(ctx context.Context, name string, nodePath st
      @param "loadEncoding" (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
      @param "password" (string) Password for opening an encrypted document.
  @return FieldResponse*/
-func (a *WordsApiService) GetFieldWithoutNodePath(ctx context.Context, name string, index int32, localVarOptionals map[string]interface{}) ( FieldResponse,  *http.Response, error) {
+func (a *WordsApiService) GetFieldWithoutNodePath(ctx context.Context, name string, index int32, localVarOptionals map[string]interface{}) ( models.FieldResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload FieldResponse
+		successPayload models.FieldResponse
 	)
 
 	// create path and map variables
@@ -7541,7 +7462,7 @@ func (a *WordsApiService) GetFieldWithoutNodePath(ctx context.Context, name stri
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -7556,7 +7477,6 @@ func (a *WordsApiService) GetFieldWithoutNodePath(ctx context.Context, name stri
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Get fields from document.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -7567,12 +7487,12 @@ func (a *WordsApiService) GetFieldWithoutNodePath(ctx context.Context, name stri
      @param "loadEncoding" (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
      @param "password" (string) Password for opening an encrypted document.
  @return FieldsResponse*/
-func (a *WordsApiService) GetFields(ctx context.Context, name string, nodePath string, localVarOptionals map[string]interface{}) ( FieldsResponse,  *http.Response, error) {
+func (a *WordsApiService) GetFields(ctx context.Context, name string, nodePath string, localVarOptionals map[string]interface{}) ( models.FieldsResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload FieldsResponse
+		successPayload models.FieldsResponse
 	)
 
 	// create path and map variables
@@ -7641,7 +7561,7 @@ func (a *WordsApiService) GetFields(ctx context.Context, name string, nodePath s
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -7656,7 +7576,6 @@ func (a *WordsApiService) GetFields(ctx context.Context, name string, nodePath s
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Get fields from document.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -7666,12 +7585,12 @@ func (a *WordsApiService) GetFields(ctx context.Context, name string, nodePath s
      @param "loadEncoding" (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
      @param "password" (string) Password for opening an encrypted document.
  @return FieldsResponse*/
-func (a *WordsApiService) GetFieldsWithoutNodePath(ctx context.Context, name string, localVarOptionals map[string]interface{}) ( FieldsResponse,  *http.Response, error) {
+func (a *WordsApiService) GetFieldsWithoutNodePath(ctx context.Context, name string, localVarOptionals map[string]interface{}) ( models.FieldsResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload FieldsResponse
+		successPayload models.FieldsResponse
 	)
 
 	// create path and map variables
@@ -7739,7 +7658,7 @@ func (a *WordsApiService) GetFieldsWithoutNodePath(ctx context.Context, name str
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -7754,19 +7673,18 @@ func (a *WordsApiService) GetFieldsWithoutNodePath(ctx context.Context, name str
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Get all files and folders within a folder
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param path Folder path e.g. /Folder1
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "storageName" (string) Storage name
  @return FilesList*/
-func (a *WordsApiService) GetFilesList(ctx context.Context, path string, localVarOptionals map[string]interface{}) ( FilesList,  *http.Response, error) {
+func (a *WordsApiService) GetFilesList(ctx context.Context, path string, localVarOptionals map[string]interface{}) ( models.FilesList,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload FilesList
+		successPayload models.FilesList
 	)
 
 	// create path and map variables
@@ -7816,7 +7734,7 @@ func (a *WordsApiService) GetFilesList(ctx context.Context, path string, localVa
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -7831,7 +7749,6 @@ func (a *WordsApiService) GetFilesList(ctx context.Context, path string, localVa
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Reads footnote by index.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -7843,12 +7760,12 @@ func (a *WordsApiService) GetFilesList(ctx context.Context, path string, localVa
      @param "loadEncoding" (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
      @param "password" (string) Password for opening an encrypted document.
  @return FootnoteResponse*/
-func (a *WordsApiService) GetFootnote(ctx context.Context, name string, nodePath string, index int32, localVarOptionals map[string]interface{}) ( FootnoteResponse,  *http.Response, error) {
+func (a *WordsApiService) GetFootnote(ctx context.Context, name string, nodePath string, index int32, localVarOptionals map[string]interface{}) ( models.FootnoteResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload FootnoteResponse
+		successPayload models.FootnoteResponse
 	)
 
 	// create path and map variables
@@ -7918,7 +7835,7 @@ func (a *WordsApiService) GetFootnote(ctx context.Context, name string, nodePath
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -7933,7 +7850,6 @@ func (a *WordsApiService) GetFootnote(ctx context.Context, name string, nodePath
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Reads footnote by index.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -7944,12 +7860,12 @@ func (a *WordsApiService) GetFootnote(ctx context.Context, name string, nodePath
      @param "loadEncoding" (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
      @param "password" (string) Password for opening an encrypted document.
  @return FootnoteResponse*/
-func (a *WordsApiService) GetFootnoteWithoutNodePath(ctx context.Context, name string, index int32, localVarOptionals map[string]interface{}) ( FootnoteResponse,  *http.Response, error) {
+func (a *WordsApiService) GetFootnoteWithoutNodePath(ctx context.Context, name string, index int32, localVarOptionals map[string]interface{}) ( models.FootnoteResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload FootnoteResponse
+		successPayload models.FootnoteResponse
 	)
 
 	// create path and map variables
@@ -8018,7 +7934,7 @@ func (a *WordsApiService) GetFootnoteWithoutNodePath(ctx context.Context, name s
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -8033,7 +7949,6 @@ func (a *WordsApiService) GetFootnoteWithoutNodePath(ctx context.Context, name s
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Gets footnotes from document.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -8044,12 +7959,12 @@ func (a *WordsApiService) GetFootnoteWithoutNodePath(ctx context.Context, name s
      @param "loadEncoding" (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
      @param "password" (string) Password for opening an encrypted document.
  @return FootnotesResponse*/
-func (a *WordsApiService) GetFootnotes(ctx context.Context, name string, nodePath string, localVarOptionals map[string]interface{}) ( FootnotesResponse,  *http.Response, error) {
+func (a *WordsApiService) GetFootnotes(ctx context.Context, name string, nodePath string, localVarOptionals map[string]interface{}) ( models.FootnotesResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload FootnotesResponse
+		successPayload models.FootnotesResponse
 	)
 
 	// create path and map variables
@@ -8118,7 +8033,7 @@ func (a *WordsApiService) GetFootnotes(ctx context.Context, name string, nodePat
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -8133,7 +8048,6 @@ func (a *WordsApiService) GetFootnotes(ctx context.Context, name string, nodePat
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Gets footnotes from document.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -8143,12 +8057,12 @@ func (a *WordsApiService) GetFootnotes(ctx context.Context, name string, nodePat
      @param "loadEncoding" (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
      @param "password" (string) Password for opening an encrypted document.
  @return FootnotesResponse*/
-func (a *WordsApiService) GetFootnotesWithoutNodePath(ctx context.Context, name string, localVarOptionals map[string]interface{}) ( FootnotesResponse,  *http.Response, error) {
+func (a *WordsApiService) GetFootnotesWithoutNodePath(ctx context.Context, name string, localVarOptionals map[string]interface{}) ( models.FootnotesResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload FootnotesResponse
+		successPayload models.FootnotesResponse
 	)
 
 	// create path and map variables
@@ -8216,7 +8130,7 @@ func (a *WordsApiService) GetFootnotesWithoutNodePath(ctx context.Context, name 
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -8231,7 +8145,6 @@ func (a *WordsApiService) GetFootnotesWithoutNodePath(ctx context.Context, name 
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Returns representation of an one of the form field.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -8243,12 +8156,12 @@ func (a *WordsApiService) GetFootnotesWithoutNodePath(ctx context.Context, name 
      @param "loadEncoding" (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
      @param "password" (string) Password for opening an encrypted document.
  @return FormFieldResponse*/
-func (a *WordsApiService) GetFormField(ctx context.Context, name string, nodePath string, index int32, localVarOptionals map[string]interface{}) ( FormFieldResponse,  *http.Response, error) {
+func (a *WordsApiService) GetFormField(ctx context.Context, name string, nodePath string, index int32, localVarOptionals map[string]interface{}) ( models.FormFieldResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload FormFieldResponse
+		successPayload models.FormFieldResponse
 	)
 
 	// create path and map variables
@@ -8318,7 +8231,7 @@ func (a *WordsApiService) GetFormField(ctx context.Context, name string, nodePat
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -8333,7 +8246,6 @@ func (a *WordsApiService) GetFormField(ctx context.Context, name string, nodePat
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Returns representation of an one of the form field.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -8344,12 +8256,12 @@ func (a *WordsApiService) GetFormField(ctx context.Context, name string, nodePat
      @param "loadEncoding" (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
      @param "password" (string) Password for opening an encrypted document.
  @return FormFieldResponse*/
-func (a *WordsApiService) GetFormFieldWithoutNodePath(ctx context.Context, name string, index int32, localVarOptionals map[string]interface{}) ( FormFieldResponse,  *http.Response, error) {
+func (a *WordsApiService) GetFormFieldWithoutNodePath(ctx context.Context, name string, index int32, localVarOptionals map[string]interface{}) ( models.FormFieldResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload FormFieldResponse
+		successPayload models.FormFieldResponse
 	)
 
 	// create path and map variables
@@ -8418,7 +8330,7 @@ func (a *WordsApiService) GetFormFieldWithoutNodePath(ctx context.Context, name 
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -8433,7 +8345,6 @@ func (a *WordsApiService) GetFormFieldWithoutNodePath(ctx context.Context, name 
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Gets form fields from document.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -8444,12 +8355,12 @@ func (a *WordsApiService) GetFormFieldWithoutNodePath(ctx context.Context, name 
      @param "loadEncoding" (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
      @param "password" (string) Password for opening an encrypted document.
  @return FormFieldsResponse*/
-func (a *WordsApiService) GetFormFields(ctx context.Context, name string, nodePath string, localVarOptionals map[string]interface{}) ( FormFieldsResponse,  *http.Response, error) {
+func (a *WordsApiService) GetFormFields(ctx context.Context, name string, nodePath string, localVarOptionals map[string]interface{}) ( models.FormFieldsResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload FormFieldsResponse
+		successPayload models.FormFieldsResponse
 	)
 
 	// create path and map variables
@@ -8518,7 +8429,7 @@ func (a *WordsApiService) GetFormFields(ctx context.Context, name string, nodePa
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -8533,7 +8444,6 @@ func (a *WordsApiService) GetFormFields(ctx context.Context, name string, nodePa
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Gets form fields from document.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -8543,12 +8453,12 @@ func (a *WordsApiService) GetFormFields(ctx context.Context, name string, nodePa
      @param "loadEncoding" (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
      @param "password" (string) Password for opening an encrypted document.
  @return FormFieldsResponse*/
-func (a *WordsApiService) GetFormFieldsWithoutNodePath(ctx context.Context, name string, localVarOptionals map[string]interface{}) ( FormFieldsResponse,  *http.Response, error) {
+func (a *WordsApiService) GetFormFieldsWithoutNodePath(ctx context.Context, name string, localVarOptionals map[string]interface{}) ( models.FormFieldsResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload FormFieldsResponse
+		successPayload models.FormFieldsResponse
 	)
 
 	// create path and map variables
@@ -8616,7 +8526,7 @@ func (a *WordsApiService) GetFormFieldsWithoutNodePath(ctx context.Context, name
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -8631,7 +8541,6 @@ func (a *WordsApiService) GetFormFieldsWithoutNodePath(ctx context.Context, name
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Returns a header/footer from the document by index.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -8643,12 +8552,12 @@ func (a *WordsApiService) GetFormFieldsWithoutNodePath(ctx context.Context, name
      @param "password" (string) Password for opening an encrypted document.
      @param "filterByType" (string) List of types of headers and footers.
  @return HeaderFooterResponse*/
-func (a *WordsApiService) GetHeaderFooter(ctx context.Context, name string, headerFooterIndex int32, localVarOptionals map[string]interface{}) ( HeaderFooterResponse,  *http.Response, error) {
+func (a *WordsApiService) GetHeaderFooter(ctx context.Context, name string, headerFooterIndex int32, localVarOptionals map[string]interface{}) ( models.HeaderFooterResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload HeaderFooterResponse
+		successPayload models.HeaderFooterResponse
 	)
 
 	// create path and map variables
@@ -8723,7 +8632,7 @@ func (a *WordsApiService) GetHeaderFooter(ctx context.Context, name string, head
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -8738,7 +8647,6 @@ func (a *WordsApiService) GetHeaderFooter(ctx context.Context, name string, head
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Returns a header/footer from the document section.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -8751,12 +8659,12 @@ func (a *WordsApiService) GetHeaderFooter(ctx context.Context, name string, head
      @param "password" (string) Password for opening an encrypted document.
      @param "filterByType" (string) List of types of headers and footers.
  @return HeaderFooterResponse*/
-func (a *WordsApiService) GetHeaderFooterOfSection(ctx context.Context, name string, headerFooterIndex int32, sectionIndex int32, localVarOptionals map[string]interface{}) ( HeaderFooterResponse,  *http.Response, error) {
+func (a *WordsApiService) GetHeaderFooterOfSection(ctx context.Context, name string, headerFooterIndex int32, sectionIndex int32, localVarOptionals map[string]interface{}) ( models.HeaderFooterResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload HeaderFooterResponse
+		successPayload models.HeaderFooterResponse
 	)
 
 	// create path and map variables
@@ -8832,7 +8740,7 @@ func (a *WordsApiService) GetHeaderFooterOfSection(ctx context.Context, name str
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -8847,7 +8755,6 @@ func (a *WordsApiService) GetHeaderFooterOfSection(ctx context.Context, name str
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Returns a list of header/footers from the document.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -8859,12 +8766,12 @@ func (a *WordsApiService) GetHeaderFooterOfSection(ctx context.Context, name str
      @param "password" (string) Password for opening an encrypted document.
      @param "filterByType" (string) List of types of headers and footers.
  @return HeaderFootersResponse*/
-func (a *WordsApiService) GetHeaderFooters(ctx context.Context, name string, sectionPath string, localVarOptionals map[string]interface{}) ( HeaderFootersResponse,  *http.Response, error) {
+func (a *WordsApiService) GetHeaderFooters(ctx context.Context, name string, sectionPath string, localVarOptionals map[string]interface{}) ( models.HeaderFootersResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload HeaderFootersResponse
+		successPayload models.HeaderFootersResponse
 	)
 
 	// create path and map variables
@@ -8939,7 +8846,7 @@ func (a *WordsApiService) GetHeaderFooters(ctx context.Context, name string, sec
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -8954,7 +8861,6 @@ func (a *WordsApiService) GetHeaderFooters(ctx context.Context, name string, sec
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Reads OfficeMath object by index.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -8966,12 +8872,12 @@ func (a *WordsApiService) GetHeaderFooters(ctx context.Context, name string, sec
      @param "loadEncoding" (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
      @param "password" (string) Password for opening an encrypted document.
  @return OfficeMathObjectResponse*/
-func (a *WordsApiService) GetOfficeMathObject(ctx context.Context, name string, nodePath string, index int32, localVarOptionals map[string]interface{}) ( OfficeMathObjectResponse,  *http.Response, error) {
+func (a *WordsApiService) GetOfficeMathObject(ctx context.Context, name string, nodePath string, index int32, localVarOptionals map[string]interface{}) ( models.OfficeMathObjectResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload OfficeMathObjectResponse
+		successPayload models.OfficeMathObjectResponse
 	)
 
 	// create path and map variables
@@ -9041,7 +8947,7 @@ func (a *WordsApiService) GetOfficeMathObject(ctx context.Context, name string, 
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -9056,7 +8962,6 @@ func (a *WordsApiService) GetOfficeMathObject(ctx context.Context, name string, 
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Reads OfficeMath object by index.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -9067,12 +8972,12 @@ func (a *WordsApiService) GetOfficeMathObject(ctx context.Context, name string, 
      @param "loadEncoding" (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
      @param "password" (string) Password for opening an encrypted document.
  @return OfficeMathObjectResponse*/
-func (a *WordsApiService) GetOfficeMathObjectWithoutNodePath(ctx context.Context, name string, index int32, localVarOptionals map[string]interface{}) ( OfficeMathObjectResponse,  *http.Response, error) {
+func (a *WordsApiService) GetOfficeMathObjectWithoutNodePath(ctx context.Context, name string, index int32, localVarOptionals map[string]interface{}) ( models.OfficeMathObjectResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload OfficeMathObjectResponse
+		successPayload models.OfficeMathObjectResponse
 	)
 
 	// create path and map variables
@@ -9141,7 +9046,7 @@ func (a *WordsApiService) GetOfficeMathObjectWithoutNodePath(ctx context.Context
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -9156,7 +9061,6 @@ func (a *WordsApiService) GetOfficeMathObjectWithoutNodePath(ctx context.Context
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Gets OfficeMath objects from document.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -9167,12 +9071,12 @@ func (a *WordsApiService) GetOfficeMathObjectWithoutNodePath(ctx context.Context
      @param "loadEncoding" (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
      @param "password" (string) Password for opening an encrypted document.
  @return OfficeMathObjectsResponse*/
-func (a *WordsApiService) GetOfficeMathObjects(ctx context.Context, name string, nodePath string, localVarOptionals map[string]interface{}) ( OfficeMathObjectsResponse,  *http.Response, error) {
+func (a *WordsApiService) GetOfficeMathObjects(ctx context.Context, name string, nodePath string, localVarOptionals map[string]interface{}) ( models.OfficeMathObjectsResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload OfficeMathObjectsResponse
+		successPayload models.OfficeMathObjectsResponse
 	)
 
 	// create path and map variables
@@ -9241,7 +9145,7 @@ func (a *WordsApiService) GetOfficeMathObjects(ctx context.Context, name string,
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -9256,7 +9160,6 @@ func (a *WordsApiService) GetOfficeMathObjects(ctx context.Context, name string,
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Gets OfficeMath objects from document.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -9266,12 +9169,12 @@ func (a *WordsApiService) GetOfficeMathObjects(ctx context.Context, name string,
      @param "loadEncoding" (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
      @param "password" (string) Password for opening an encrypted document.
  @return OfficeMathObjectsResponse*/
-func (a *WordsApiService) GetOfficeMathObjectsWithoutNodePath(ctx context.Context, name string, localVarOptionals map[string]interface{}) ( OfficeMathObjectsResponse,  *http.Response, error) {
+func (a *WordsApiService) GetOfficeMathObjectsWithoutNodePath(ctx context.Context, name string, localVarOptionals map[string]interface{}) ( models.OfficeMathObjectsResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload OfficeMathObjectsResponse
+		successPayload models.OfficeMathObjectsResponse
 	)
 
 	// create path and map variables
@@ -9339,7 +9242,7 @@ func (a *WordsApiService) GetOfficeMathObjectsWithoutNodePath(ctx context.Contex
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -9354,7 +9257,6 @@ func (a *WordsApiService) GetOfficeMathObjectsWithoutNodePath(ctx context.Contex
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService This resource represents one of the paragraphs contained in the document.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -9366,12 +9268,12 @@ func (a *WordsApiService) GetOfficeMathObjectsWithoutNodePath(ctx context.Contex
      @param "loadEncoding" (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
      @param "password" (string) Password for opening an encrypted document.
  @return ParagraphResponse*/
-func (a *WordsApiService) GetParagraph(ctx context.Context, name string, nodePath string, index int32, localVarOptionals map[string]interface{}) ( ParagraphResponse,  *http.Response, error) {
+func (a *WordsApiService) GetParagraph(ctx context.Context, name string, nodePath string, index int32, localVarOptionals map[string]interface{}) ( models.ParagraphResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload ParagraphResponse
+		successPayload models.ParagraphResponse
 	)
 
 	// create path and map variables
@@ -9441,7 +9343,7 @@ func (a *WordsApiService) GetParagraph(ctx context.Context, name string, nodePat
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -9456,7 +9358,6 @@ func (a *WordsApiService) GetParagraph(ctx context.Context, name string, nodePat
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Represents all the formatting for a paragraph.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -9468,12 +9369,12 @@ func (a *WordsApiService) GetParagraph(ctx context.Context, name string, nodePat
      @param "loadEncoding" (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
      @param "password" (string) Password for opening an encrypted document.
  @return ParagraphFormatResponse*/
-func (a *WordsApiService) GetParagraphFormat(ctx context.Context, name string, nodePath string, index int32, localVarOptionals map[string]interface{}) ( ParagraphFormatResponse,  *http.Response, error) {
+func (a *WordsApiService) GetParagraphFormat(ctx context.Context, name string, nodePath string, index int32, localVarOptionals map[string]interface{}) ( models.ParagraphFormatResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload ParagraphFormatResponse
+		successPayload models.ParagraphFormatResponse
 	)
 
 	// create path and map variables
@@ -9543,7 +9444,7 @@ func (a *WordsApiService) GetParagraphFormat(ctx context.Context, name string, n
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -9558,7 +9459,6 @@ func (a *WordsApiService) GetParagraphFormat(ctx context.Context, name string, n
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Represents all the formatting for a paragraph.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -9569,12 +9469,12 @@ func (a *WordsApiService) GetParagraphFormat(ctx context.Context, name string, n
      @param "loadEncoding" (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
      @param "password" (string) Password for opening an encrypted document.
  @return ParagraphFormatResponse*/
-func (a *WordsApiService) GetParagraphFormatWithoutNodePath(ctx context.Context, name string, index int32, localVarOptionals map[string]interface{}) ( ParagraphFormatResponse,  *http.Response, error) {
+func (a *WordsApiService) GetParagraphFormatWithoutNodePath(ctx context.Context, name string, index int32, localVarOptionals map[string]interface{}) ( models.ParagraphFormatResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload ParagraphFormatResponse
+		successPayload models.ParagraphFormatResponse
 	)
 
 	// create path and map variables
@@ -9643,7 +9543,7 @@ func (a *WordsApiService) GetParagraphFormatWithoutNodePath(ctx context.Context,
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -9658,7 +9558,6 @@ func (a *WordsApiService) GetParagraphFormatWithoutNodePath(ctx context.Context,
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService This resource represents one of the paragraphs contained in the document.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -9669,12 +9568,12 @@ func (a *WordsApiService) GetParagraphFormatWithoutNodePath(ctx context.Context,
      @param "loadEncoding" (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
      @param "password" (string) Password for opening an encrypted document.
  @return ParagraphResponse*/
-func (a *WordsApiService) GetParagraphWithoutNodePath(ctx context.Context, name string, index int32, localVarOptionals map[string]interface{}) ( ParagraphResponse,  *http.Response, error) {
+func (a *WordsApiService) GetParagraphWithoutNodePath(ctx context.Context, name string, index int32, localVarOptionals map[string]interface{}) ( models.ParagraphResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload ParagraphResponse
+		successPayload models.ParagraphResponse
 	)
 
 	// create path and map variables
@@ -9743,7 +9642,7 @@ func (a *WordsApiService) GetParagraphWithoutNodePath(ctx context.Context, name 
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -9758,7 +9657,6 @@ func (a *WordsApiService) GetParagraphWithoutNodePath(ctx context.Context, name 
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Returns a list of paragraphs that are contained in the document.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -9769,12 +9667,12 @@ func (a *WordsApiService) GetParagraphWithoutNodePath(ctx context.Context, name 
      @param "loadEncoding" (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
      @param "password" (string) Password for opening an encrypted document.
  @return ParagraphLinkCollectionResponse*/
-func (a *WordsApiService) GetParagraphs(ctx context.Context, name string, nodePath string, localVarOptionals map[string]interface{}) ( ParagraphLinkCollectionResponse,  *http.Response, error) {
+func (a *WordsApiService) GetParagraphs(ctx context.Context, name string, nodePath string, localVarOptionals map[string]interface{}) ( models.ParagraphLinkCollectionResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload ParagraphLinkCollectionResponse
+		successPayload models.ParagraphLinkCollectionResponse
 	)
 
 	// create path and map variables
@@ -9843,7 +9741,7 @@ func (a *WordsApiService) GetParagraphs(ctx context.Context, name string, nodePa
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -9858,7 +9756,6 @@ func (a *WordsApiService) GetParagraphs(ctx context.Context, name string, nodePa
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Returns a list of paragraphs that are contained in the document.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -9868,12 +9765,12 @@ func (a *WordsApiService) GetParagraphs(ctx context.Context, name string, nodePa
      @param "loadEncoding" (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
      @param "password" (string) Password for opening an encrypted document.
  @return ParagraphLinkCollectionResponse*/
-func (a *WordsApiService) GetParagraphsWithoutNodePath(ctx context.Context, name string, localVarOptionals map[string]interface{}) ( ParagraphLinkCollectionResponse,  *http.Response, error) {
+func (a *WordsApiService) GetParagraphsWithoutNodePath(ctx context.Context, name string, localVarOptionals map[string]interface{}) ( models.ParagraphLinkCollectionResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload ParagraphLinkCollectionResponse
+		successPayload models.ParagraphLinkCollectionResponse
 	)
 
 	// create path and map variables
@@ -9941,7 +9838,7 @@ func (a *WordsApiService) GetParagraphsWithoutNodePath(ctx context.Context, name
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -9956,7 +9853,6 @@ func (a *WordsApiService) GetParagraphsWithoutNodePath(ctx context.Context, name
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Gets the text from the range.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document.
@@ -9968,12 +9864,12 @@ func (a *WordsApiService) GetParagraphsWithoutNodePath(ctx context.Context, name
      @param "loadEncoding" (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
      @param "password" (string) Password for opening an encrypted document.
  @return RangeTextResponse*/
-func (a *WordsApiService) GetRangeText(ctx context.Context, name string, rangeStartIdentifier string, rangeEndIdentifier string, localVarOptionals map[string]interface{}) ( RangeTextResponse,  *http.Response, error) {
+func (a *WordsApiService) GetRangeText(ctx context.Context, name string, rangeStartIdentifier string, rangeEndIdentifier string, localVarOptionals map[string]interface{}) ( models.RangeTextResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload RangeTextResponse
+		successPayload models.RangeTextResponse
 	)
 
 	// create path and map variables
@@ -10043,7 +9939,7 @@ func (a *WordsApiService) GetRangeText(ctx context.Context, name string, rangeSt
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -10058,7 +9954,6 @@ func (a *WordsApiService) GetRangeText(ctx context.Context, name string, rangeSt
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService This resource represents run of text contained in the document.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -10070,12 +9965,12 @@ func (a *WordsApiService) GetRangeText(ctx context.Context, name string, rangeSt
      @param "loadEncoding" (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
      @param "password" (string) Password for opening an encrypted document.
  @return RunResponse*/
-func (a *WordsApiService) GetRun(ctx context.Context, name string, paragraphPath string, index int32, localVarOptionals map[string]interface{}) ( RunResponse,  *http.Response, error) {
+func (a *WordsApiService) GetRun(ctx context.Context, name string, paragraphPath string, index int32, localVarOptionals map[string]interface{}) ( models.RunResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload RunResponse
+		successPayload models.RunResponse
 	)
 
 	// create path and map variables
@@ -10145,7 +10040,7 @@ func (a *WordsApiService) GetRun(ctx context.Context, name string, paragraphPath
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -10160,7 +10055,6 @@ func (a *WordsApiService) GetRun(ctx context.Context, name string, paragraphPath
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService This resource represents font of run.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -10172,12 +10066,12 @@ func (a *WordsApiService) GetRun(ctx context.Context, name string, paragraphPath
      @param "loadEncoding" (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
      @param "password" (string) Password for opening an encrypted document.
  @return FontResponse*/
-func (a *WordsApiService) GetRunFont(ctx context.Context, name string, paragraphPath string, index int32, localVarOptionals map[string]interface{}) ( FontResponse,  *http.Response, error) {
+func (a *WordsApiService) GetRunFont(ctx context.Context, name string, paragraphPath string, index int32, localVarOptionals map[string]interface{}) ( models.FontResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload FontResponse
+		successPayload models.FontResponse
 	)
 
 	// create path and map variables
@@ -10247,7 +10141,7 @@ func (a *WordsApiService) GetRunFont(ctx context.Context, name string, paragraph
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -10262,7 +10156,6 @@ func (a *WordsApiService) GetRunFont(ctx context.Context, name string, paragraph
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService This resource represents collection of runs in the paragraph.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -10273,12 +10166,12 @@ func (a *WordsApiService) GetRunFont(ctx context.Context, name string, paragraph
      @param "loadEncoding" (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
      @param "password" (string) Password for opening an encrypted document.
  @return RunsResponse*/
-func (a *WordsApiService) GetRuns(ctx context.Context, name string, paragraphPath string, localVarOptionals map[string]interface{}) ( RunsResponse,  *http.Response, error) {
+func (a *WordsApiService) GetRuns(ctx context.Context, name string, paragraphPath string, localVarOptionals map[string]interface{}) ( models.RunsResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload RunsResponse
+		successPayload models.RunsResponse
 	)
 
 	// create path and map variables
@@ -10347,7 +10240,7 @@ func (a *WordsApiService) GetRuns(ctx context.Context, name string, paragraphPat
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -10362,7 +10255,6 @@ func (a *WordsApiService) GetRuns(ctx context.Context, name string, paragraphPat
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Gets document section by index.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -10373,12 +10265,12 @@ func (a *WordsApiService) GetRuns(ctx context.Context, name string, paragraphPat
      @param "loadEncoding" (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
      @param "password" (string) Password for opening an encrypted document.
  @return SectionResponse*/
-func (a *WordsApiService) GetSection(ctx context.Context, name string, sectionIndex int32, localVarOptionals map[string]interface{}) ( SectionResponse,  *http.Response, error) {
+func (a *WordsApiService) GetSection(ctx context.Context, name string, sectionIndex int32, localVarOptionals map[string]interface{}) ( models.SectionResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload SectionResponse
+		successPayload models.SectionResponse
 	)
 
 	// create path and map variables
@@ -10447,7 +10339,7 @@ func (a *WordsApiService) GetSection(ctx context.Context, name string, sectionIn
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -10462,7 +10354,6 @@ func (a *WordsApiService) GetSection(ctx context.Context, name string, sectionIn
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Gets page setup of section.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -10473,12 +10364,12 @@ func (a *WordsApiService) GetSection(ctx context.Context, name string, sectionIn
      @param "loadEncoding" (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
      @param "password" (string) Password for opening an encrypted document.
  @return SectionPageSetupResponse*/
-func (a *WordsApiService) GetSectionPageSetup(ctx context.Context, name string, sectionIndex int32, localVarOptionals map[string]interface{}) ( SectionPageSetupResponse,  *http.Response, error) {
+func (a *WordsApiService) GetSectionPageSetup(ctx context.Context, name string, sectionIndex int32, localVarOptionals map[string]interface{}) ( models.SectionPageSetupResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload SectionPageSetupResponse
+		successPayload models.SectionPageSetupResponse
 	)
 
 	// create path and map variables
@@ -10547,7 +10438,7 @@ func (a *WordsApiService) GetSectionPageSetup(ctx context.Context, name string, 
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -10562,7 +10453,6 @@ func (a *WordsApiService) GetSectionPageSetup(ctx context.Context, name string, 
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Returns a list of sections that are contained in the document.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -10572,12 +10462,12 @@ func (a *WordsApiService) GetSectionPageSetup(ctx context.Context, name string, 
      @param "loadEncoding" (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
      @param "password" (string) Password for opening an encrypted document.
  @return SectionLinkCollectionResponse*/
-func (a *WordsApiService) GetSections(ctx context.Context, name string, localVarOptionals map[string]interface{}) ( SectionLinkCollectionResponse,  *http.Response, error) {
+func (a *WordsApiService) GetSections(ctx context.Context, name string, localVarOptionals map[string]interface{}) ( models.SectionLinkCollectionResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload SectionLinkCollectionResponse
+		successPayload models.SectionLinkCollectionResponse
 	)
 
 	// create path and map variables
@@ -10645,7 +10535,7 @@ func (a *WordsApiService) GetSections(ctx context.Context, name string, localVar
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -10660,7 +10550,6 @@ func (a *WordsApiService) GetSections(ctx context.Context, name string, localVar
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Returns a table.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -10672,12 +10561,12 @@ func (a *WordsApiService) GetSections(ctx context.Context, name string, localVar
      @param "loadEncoding" (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
      @param "password" (string) Password for opening an encrypted document.
  @return TableResponse*/
-func (a *WordsApiService) GetTable(ctx context.Context, name string, nodePath string, index int32, localVarOptionals map[string]interface{}) ( TableResponse,  *http.Response, error) {
+func (a *WordsApiService) GetTable(ctx context.Context, name string, nodePath string, index int32, localVarOptionals map[string]interface{}) ( models.TableResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload TableResponse
+		successPayload models.TableResponse
 	)
 
 	// create path and map variables
@@ -10747,7 +10636,7 @@ func (a *WordsApiService) GetTable(ctx context.Context, name string, nodePath st
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -10762,7 +10651,6 @@ func (a *WordsApiService) GetTable(ctx context.Context, name string, nodePath st
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Returns a table cell.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -10774,12 +10662,12 @@ func (a *WordsApiService) GetTable(ctx context.Context, name string, nodePath st
      @param "loadEncoding" (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
      @param "password" (string) Password for opening an encrypted document.
  @return TableCellResponse*/
-func (a *WordsApiService) GetTableCell(ctx context.Context, name string, tableRowPath string, index int32, localVarOptionals map[string]interface{}) ( TableCellResponse,  *http.Response, error) {
+func (a *WordsApiService) GetTableCell(ctx context.Context, name string, tableRowPath string, index int32, localVarOptionals map[string]interface{}) ( models.TableCellResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload TableCellResponse
+		successPayload models.TableCellResponse
 	)
 
 	// create path and map variables
@@ -10849,7 +10737,7 @@ func (a *WordsApiService) GetTableCell(ctx context.Context, name string, tableRo
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -10864,7 +10752,6 @@ func (a *WordsApiService) GetTableCell(ctx context.Context, name string, tableRo
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Returns a table cell format.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -10876,12 +10763,12 @@ func (a *WordsApiService) GetTableCell(ctx context.Context, name string, tableRo
      @param "loadEncoding" (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
      @param "password" (string) Password for opening an encrypted document.
  @return TableCellFormatResponse*/
-func (a *WordsApiService) GetTableCellFormat(ctx context.Context, name string, tableRowPath string, index int32, localVarOptionals map[string]interface{}) ( TableCellFormatResponse,  *http.Response, error) {
+func (a *WordsApiService) GetTableCellFormat(ctx context.Context, name string, tableRowPath string, index int32, localVarOptionals map[string]interface{}) ( models.TableCellFormatResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload TableCellFormatResponse
+		successPayload models.TableCellFormatResponse
 	)
 
 	// create path and map variables
@@ -10951,7 +10838,7 @@ func (a *WordsApiService) GetTableCellFormat(ctx context.Context, name string, t
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -10966,7 +10853,6 @@ func (a *WordsApiService) GetTableCellFormat(ctx context.Context, name string, t
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Returns a table properties.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -10978,12 +10864,12 @@ func (a *WordsApiService) GetTableCellFormat(ctx context.Context, name string, t
      @param "loadEncoding" (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
      @param "password" (string) Password for opening an encrypted document.
  @return TablePropertiesResponse*/
-func (a *WordsApiService) GetTableProperties(ctx context.Context, name string, nodePath string, index int32, localVarOptionals map[string]interface{}) ( TablePropertiesResponse,  *http.Response, error) {
+func (a *WordsApiService) GetTableProperties(ctx context.Context, name string, nodePath string, index int32, localVarOptionals map[string]interface{}) ( models.TablePropertiesResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload TablePropertiesResponse
+		successPayload models.TablePropertiesResponse
 	)
 
 	// create path and map variables
@@ -11053,7 +10939,7 @@ func (a *WordsApiService) GetTableProperties(ctx context.Context, name string, n
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -11068,7 +10954,6 @@ func (a *WordsApiService) GetTableProperties(ctx context.Context, name string, n
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Returns a table properties.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -11079,12 +10964,12 @@ func (a *WordsApiService) GetTableProperties(ctx context.Context, name string, n
      @param "loadEncoding" (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
      @param "password" (string) Password for opening an encrypted document.
  @return TablePropertiesResponse*/
-func (a *WordsApiService) GetTablePropertiesWithoutNodePath(ctx context.Context, name string, index int32, localVarOptionals map[string]interface{}) ( TablePropertiesResponse,  *http.Response, error) {
+func (a *WordsApiService) GetTablePropertiesWithoutNodePath(ctx context.Context, name string, index int32, localVarOptionals map[string]interface{}) ( models.TablePropertiesResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload TablePropertiesResponse
+		successPayload models.TablePropertiesResponse
 	)
 
 	// create path and map variables
@@ -11153,7 +11038,7 @@ func (a *WordsApiService) GetTablePropertiesWithoutNodePath(ctx context.Context,
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -11168,7 +11053,6 @@ func (a *WordsApiService) GetTablePropertiesWithoutNodePath(ctx context.Context,
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Returns a table row.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -11180,12 +11064,12 @@ func (a *WordsApiService) GetTablePropertiesWithoutNodePath(ctx context.Context,
      @param "loadEncoding" (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
      @param "password" (string) Password for opening an encrypted document.
  @return TableRowResponse*/
-func (a *WordsApiService) GetTableRow(ctx context.Context, name string, tablePath string, index int32, localVarOptionals map[string]interface{}) ( TableRowResponse,  *http.Response, error) {
+func (a *WordsApiService) GetTableRow(ctx context.Context, name string, tablePath string, index int32, localVarOptionals map[string]interface{}) ( models.TableRowResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload TableRowResponse
+		successPayload models.TableRowResponse
 	)
 
 	// create path and map variables
@@ -11255,7 +11139,7 @@ func (a *WordsApiService) GetTableRow(ctx context.Context, name string, tablePat
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -11270,7 +11154,6 @@ func (a *WordsApiService) GetTableRow(ctx context.Context, name string, tablePat
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Returns a table row format.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -11282,12 +11165,12 @@ func (a *WordsApiService) GetTableRow(ctx context.Context, name string, tablePat
      @param "loadEncoding" (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
      @param "password" (string) Password for opening an encrypted document.
  @return TableRowFormatResponse*/
-func (a *WordsApiService) GetTableRowFormat(ctx context.Context, name string, tablePath string, index int32, localVarOptionals map[string]interface{}) ( TableRowFormatResponse,  *http.Response, error) {
+func (a *WordsApiService) GetTableRowFormat(ctx context.Context, name string, tablePath string, index int32, localVarOptionals map[string]interface{}) ( models.TableRowFormatResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload TableRowFormatResponse
+		successPayload models.TableRowFormatResponse
 	)
 
 	// create path and map variables
@@ -11357,7 +11240,7 @@ func (a *WordsApiService) GetTableRowFormat(ctx context.Context, name string, ta
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -11372,7 +11255,6 @@ func (a *WordsApiService) GetTableRowFormat(ctx context.Context, name string, ta
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Returns a table.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -11383,12 +11265,12 @@ func (a *WordsApiService) GetTableRowFormat(ctx context.Context, name string, ta
      @param "loadEncoding" (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
      @param "password" (string) Password for opening an encrypted document.
  @return TableResponse*/
-func (a *WordsApiService) GetTableWithoutNodePath(ctx context.Context, name string, index int32, localVarOptionals map[string]interface{}) ( TableResponse,  *http.Response, error) {
+func (a *WordsApiService) GetTableWithoutNodePath(ctx context.Context, name string, index int32, localVarOptionals map[string]interface{}) ( models.TableResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload TableResponse
+		successPayload models.TableResponse
 	)
 
 	// create path and map variables
@@ -11457,7 +11339,7 @@ func (a *WordsApiService) GetTableWithoutNodePath(ctx context.Context, name stri
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -11472,7 +11354,6 @@ func (a *WordsApiService) GetTableWithoutNodePath(ctx context.Context, name stri
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Returns a list of tables that are contained in the document.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -11483,12 +11364,12 @@ func (a *WordsApiService) GetTableWithoutNodePath(ctx context.Context, name stri
      @param "loadEncoding" (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
      @param "password" (string) Password for opening an encrypted document.
  @return TableLinkCollectionResponse*/
-func (a *WordsApiService) GetTables(ctx context.Context, name string, nodePath string, localVarOptionals map[string]interface{}) ( TableLinkCollectionResponse,  *http.Response, error) {
+func (a *WordsApiService) GetTables(ctx context.Context, name string, nodePath string, localVarOptionals map[string]interface{}) ( models.TableLinkCollectionResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload TableLinkCollectionResponse
+		successPayload models.TableLinkCollectionResponse
 	)
 
 	// create path and map variables
@@ -11557,7 +11438,7 @@ func (a *WordsApiService) GetTables(ctx context.Context, name string, nodePath s
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -11572,7 +11453,6 @@ func (a *WordsApiService) GetTables(ctx context.Context, name string, nodePath s
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Returns a list of tables that are contained in the document.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -11582,12 +11462,12 @@ func (a *WordsApiService) GetTables(ctx context.Context, name string, nodePath s
      @param "loadEncoding" (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
      @param "password" (string) Password for opening an encrypted document.
  @return TableLinkCollectionResponse*/
-func (a *WordsApiService) GetTablesWithoutNodePath(ctx context.Context, name string, localVarOptionals map[string]interface{}) ( TableLinkCollectionResponse,  *http.Response, error) {
+func (a *WordsApiService) GetTablesWithoutNodePath(ctx context.Context, name string, localVarOptionals map[string]interface{}) ( models.TableLinkCollectionResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload TableLinkCollectionResponse
+		successPayload models.TableLinkCollectionResponse
 	)
 
 	// create path and map variables
@@ -11655,7 +11535,7 @@ func (a *WordsApiService) GetTablesWithoutNodePath(ctx context.Context, name str
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -11670,7 +11550,6 @@ func (a *WordsApiService) GetTablesWithoutNodePath(ctx context.Context, name str
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Adds comment to document, returns inserted comment data.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -11684,12 +11563,12 @@ func (a *WordsApiService) GetTablesWithoutNodePath(ctx context.Context, name str
      @param "revisionAuthor" (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
      @param "revisionDateTime" (string) The date and time to use for revisions.
  @return CommentResponse*/
-func (a *WordsApiService) InsertComment(ctx context.Context, name string, comment IComment, localVarOptionals map[string]interface{}) ( CommentResponse,  *http.Response, error) {
+func (a *WordsApiService) InsertComment(ctx context.Context, name string, comment models.IComment, localVarOptionals map[string]interface{}) ( models.CommentResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload CommentResponse
+		successPayload models.CommentResponse
 	)
 
 	// create path and map variables
@@ -11777,7 +11656,7 @@ func (a *WordsApiService) InsertComment(ctx context.Context, name string, commen
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -11792,7 +11671,6 @@ func (a *WordsApiService) InsertComment(ctx context.Context, name string, commen
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Adds drawing object to document, returns added  drawing object&#39;s data.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -11808,12 +11686,12 @@ func (a *WordsApiService) InsertComment(ctx context.Context, name string, commen
      @param "revisionAuthor" (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
      @param "revisionDateTime" (string) The date and time to use for revisions.
  @return DrawingObjectResponse*/
-func (a *WordsApiService) InsertDrawingObject(ctx context.Context, name string, drawingObject string, imageFile *os.File, nodePath string, localVarOptionals map[string]interface{}) ( DrawingObjectResponse,  *http.Response, error) {
+func (a *WordsApiService) InsertDrawingObject(ctx context.Context, name string, drawingObject string, imageFile *os.File, nodePath string, localVarOptionals map[string]interface{}) ( models.DrawingObjectResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload DrawingObjectResponse
+		successPayload models.DrawingObjectResponse
 	)
 
 	// create path and map variables
@@ -11907,7 +11785,7 @@ func (a *WordsApiService) InsertDrawingObject(ctx context.Context, name string, 
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -11922,7 +11800,6 @@ func (a *WordsApiService) InsertDrawingObject(ctx context.Context, name string, 
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Adds drawing object to document, returns added  drawing object&#39;s data.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -11937,12 +11814,12 @@ func (a *WordsApiService) InsertDrawingObject(ctx context.Context, name string, 
      @param "revisionAuthor" (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
      @param "revisionDateTime" (string) The date and time to use for revisions.
  @return DrawingObjectResponse*/
-func (a *WordsApiService) InsertDrawingObjectWithoutNodePath(ctx context.Context, name string, drawingObject string, imageFile *os.File, localVarOptionals map[string]interface{}) ( DrawingObjectResponse,  *http.Response, error) {
+func (a *WordsApiService) InsertDrawingObjectWithoutNodePath(ctx context.Context, name string, drawingObject string, imageFile *os.File, localVarOptionals map[string]interface{}) ( models.DrawingObjectResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload DrawingObjectResponse
+		successPayload models.DrawingObjectResponse
 	)
 
 	// create path and map variables
@@ -12035,7 +11912,7 @@ func (a *WordsApiService) InsertDrawingObjectWithoutNodePath(ctx context.Context
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -12050,7 +11927,6 @@ func (a *WordsApiService) InsertDrawingObjectWithoutNodePath(ctx context.Context
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Adds field to document, returns inserted field&#39;s data.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -12066,12 +11942,12 @@ func (a *WordsApiService) InsertDrawingObjectWithoutNodePath(ctx context.Context
      @param "revisionDateTime" (string) The date and time to use for revisions.
      @param "insertBeforeNode" (string) Field will be inserted before node with id&#x3D;\&quot;nodeId\&quot;.
  @return FieldResponse*/
-func (a *WordsApiService) InsertField(ctx context.Context, name string, field IField, nodePath string, localVarOptionals map[string]interface{}) ( FieldResponse,  *http.Response, error) {
+func (a *WordsApiService) InsertField(ctx context.Context, name string, field models.IField, nodePath string, localVarOptionals map[string]interface{}) ( models.FieldResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload FieldResponse
+		successPayload models.FieldResponse
 	)
 
 	// create path and map variables
@@ -12166,7 +12042,7 @@ func (a *WordsApiService) InsertField(ctx context.Context, name string, field IF
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -12181,7 +12057,6 @@ func (a *WordsApiService) InsertField(ctx context.Context, name string, field IF
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Adds field to document, returns inserted field&#39;s data.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -12196,12 +12071,12 @@ func (a *WordsApiService) InsertField(ctx context.Context, name string, field IF
      @param "revisionDateTime" (string) The date and time to use for revisions.
      @param "insertBeforeNode" (string) Field will be inserted before node with id&#x3D;\&quot;nodeId\&quot;.
  @return FieldResponse*/
-func (a *WordsApiService) InsertFieldWithoutNodePath(ctx context.Context, name string, field IField, localVarOptionals map[string]interface{}) ( FieldResponse,  *http.Response, error) {
+func (a *WordsApiService) InsertFieldWithoutNodePath(ctx context.Context, name string, field models.IField, localVarOptionals map[string]interface{}) ( models.FieldResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload FieldResponse
+		successPayload models.FieldResponse
 	)
 
 	// create path and map variables
@@ -12295,7 +12170,7 @@ func (a *WordsApiService) InsertFieldWithoutNodePath(ctx context.Context, name s
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -12310,7 +12185,6 @@ func (a *WordsApiService) InsertFieldWithoutNodePath(ctx context.Context, name s
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Adds footnote to document, returns added footnote&#39;s data.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -12325,12 +12199,12 @@ func (a *WordsApiService) InsertFieldWithoutNodePath(ctx context.Context, name s
      @param "revisionAuthor" (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
      @param "revisionDateTime" (string) The date and time to use for revisions.
  @return FootnoteResponse*/
-func (a *WordsApiService) InsertFootnote(ctx context.Context, name string, footnoteDto IFootnote, nodePath string, localVarOptionals map[string]interface{}) ( FootnoteResponse,  *http.Response, error) {
+func (a *WordsApiService) InsertFootnote(ctx context.Context, name string, footnoteDto models.IFootnote, nodePath string, localVarOptionals map[string]interface{}) ( models.FootnoteResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload FootnoteResponse
+		successPayload models.FootnoteResponse
 	)
 
 	// create path and map variables
@@ -12419,7 +12293,7 @@ func (a *WordsApiService) InsertFootnote(ctx context.Context, name string, footn
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -12434,7 +12308,6 @@ func (a *WordsApiService) InsertFootnote(ctx context.Context, name string, footn
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Adds footnote to document, returns added footnote&#39;s data.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -12448,12 +12321,12 @@ func (a *WordsApiService) InsertFootnote(ctx context.Context, name string, footn
      @param "revisionAuthor" (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
      @param "revisionDateTime" (string) The date and time to use for revisions.
  @return FootnoteResponse*/
-func (a *WordsApiService) InsertFootnoteWithoutNodePath(ctx context.Context, name string, footnoteDto IFootnote, localVarOptionals map[string]interface{}) ( FootnoteResponse,  *http.Response, error) {
+func (a *WordsApiService) InsertFootnoteWithoutNodePath(ctx context.Context, name string, footnoteDto models.IFootnote, localVarOptionals map[string]interface{}) ( models.FootnoteResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload FootnoteResponse
+		successPayload models.FootnoteResponse
 	)
 
 	// create path and map variables
@@ -12541,7 +12414,7 @@ func (a *WordsApiService) InsertFootnoteWithoutNodePath(ctx context.Context, nam
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -12556,7 +12429,6 @@ func (a *WordsApiService) InsertFootnoteWithoutNodePath(ctx context.Context, nam
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Adds form field to paragraph, returns added form field&#39;s data.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -12572,12 +12444,12 @@ func (a *WordsApiService) InsertFootnoteWithoutNodePath(ctx context.Context, nam
      @param "revisionDateTime" (string) The date and time to use for revisions.
      @param "insertBeforeNode" (string) Form field will be inserted before node with index.
  @return FormFieldResponse*/
-func (a *WordsApiService) InsertFormField(ctx context.Context, name string, formField IFormField, nodePath string, localVarOptionals map[string]interface{}) ( FormFieldResponse,  *http.Response, error) {
+func (a *WordsApiService) InsertFormField(ctx context.Context, name string, formField models.IFormField, nodePath string, localVarOptionals map[string]interface{}) ( models.FormFieldResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload FormFieldResponse
+		successPayload models.FormFieldResponse
 	)
 
 	// create path and map variables
@@ -12672,7 +12544,7 @@ func (a *WordsApiService) InsertFormField(ctx context.Context, name string, form
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -12687,7 +12559,6 @@ func (a *WordsApiService) InsertFormField(ctx context.Context, name string, form
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Adds form field to paragraph, returns added form field&#39;s data.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -12702,12 +12573,12 @@ func (a *WordsApiService) InsertFormField(ctx context.Context, name string, form
      @param "revisionDateTime" (string) The date and time to use for revisions.
      @param "insertBeforeNode" (string) Form field will be inserted before node with index.
  @return FormFieldResponse*/
-func (a *WordsApiService) InsertFormFieldWithoutNodePath(ctx context.Context, name string, formField IFormField, localVarOptionals map[string]interface{}) ( FormFieldResponse,  *http.Response, error) {
+func (a *WordsApiService) InsertFormFieldWithoutNodePath(ctx context.Context, name string, formField models.IFormField, localVarOptionals map[string]interface{}) ( models.FormFieldResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload FormFieldResponse
+		successPayload models.FormFieldResponse
 	)
 
 	// create path and map variables
@@ -12801,7 +12672,7 @@ func (a *WordsApiService) InsertFormFieldWithoutNodePath(ctx context.Context, na
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -12816,7 +12687,6 @@ func (a *WordsApiService) InsertFormFieldWithoutNodePath(ctx context.Context, na
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Inserts to document header or footer.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -12831,12 +12701,12 @@ func (a *WordsApiService) InsertFormFieldWithoutNodePath(ctx context.Context, na
      @param "revisionAuthor" (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
      @param "revisionDateTime" (string) The date and time to use for revisions.
  @return HeaderFooterResponse*/
-func (a *WordsApiService) InsertHeaderFooter(ctx context.Context, name string, headerFooterType string, sectionPath string, localVarOptionals map[string]interface{}) ( HeaderFooterResponse,  *http.Response, error) {
+func (a *WordsApiService) InsertHeaderFooter(ctx context.Context, name string, headerFooterType string, sectionPath string, localVarOptionals map[string]interface{}) ( models.HeaderFooterResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload HeaderFooterResponse
+		successPayload models.HeaderFooterResponse
 	)
 
 	// create path and map variables
@@ -12925,7 +12795,7 @@ func (a *WordsApiService) InsertHeaderFooter(ctx context.Context, name string, h
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -12940,7 +12810,6 @@ func (a *WordsApiService) InsertHeaderFooter(ctx context.Context, name string, h
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Inserts document page numbers.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name A document name.
@@ -12954,12 +12823,12 @@ func (a *WordsApiService) InsertHeaderFooter(ctx context.Context, name string, h
      @param "revisionAuthor" (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
      @param "revisionDateTime" (string) The date and time to use for revisions.
  @return DocumentResponse*/
-func (a *WordsApiService) InsertPageNumbers(ctx context.Context, name string, pageNumber IPageNumber, localVarOptionals map[string]interface{}) ( DocumentResponse,  *http.Response, error) {
+func (a *WordsApiService) InsertPageNumbers(ctx context.Context, name string, pageNumber models.IPageNumber, localVarOptionals map[string]interface{}) ( models.DocumentResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload DocumentResponse
+		successPayload models.DocumentResponse
 	)
 
 	// create path and map variables
@@ -13047,7 +12916,7 @@ func (a *WordsApiService) InsertPageNumbers(ctx context.Context, name string, pa
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -13062,7 +12931,6 @@ func (a *WordsApiService) InsertPageNumbers(ctx context.Context, name string, pa
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Adds paragraph to document, returns added paragraph&#39;s data.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -13078,12 +12946,12 @@ func (a *WordsApiService) InsertPageNumbers(ctx context.Context, name string, pa
      @param "revisionDateTime" (string) The date and time to use for revisions.
      @param "insertBeforeNode" (string) Paragraph will be inserted before node with index.
  @return ParagraphResponse*/
-func (a *WordsApiService) InsertParagraph(ctx context.Context, name string, paragraph IParagraphInsert, nodePath string, localVarOptionals map[string]interface{}) ( ParagraphResponse,  *http.Response, error) {
+func (a *WordsApiService) InsertParagraph(ctx context.Context, name string, paragraph models.IParagraphInsert, nodePath string, localVarOptionals map[string]interface{}) ( models.ParagraphResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload ParagraphResponse
+		successPayload models.ParagraphResponse
 	)
 
 	// create path and map variables
@@ -13178,7 +13046,7 @@ func (a *WordsApiService) InsertParagraph(ctx context.Context, name string, para
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -13193,7 +13061,6 @@ func (a *WordsApiService) InsertParagraph(ctx context.Context, name string, para
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Adds run to document, returns added paragraph&#39;s data.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -13209,12 +13076,12 @@ func (a *WordsApiService) InsertParagraph(ctx context.Context, name string, para
      @param "revisionDateTime" (string) The date and time to use for revisions.
      @param "insertBeforeNode" (string) Paragraph will be inserted before node with index.
  @return RunResponse*/
-func (a *WordsApiService) InsertRun(ctx context.Context, name string, paragraphPath string, run IRun, localVarOptionals map[string]interface{}) ( RunResponse,  *http.Response, error) {
+func (a *WordsApiService) InsertRun(ctx context.Context, name string, paragraphPath string, run models.IRun, localVarOptionals map[string]interface{}) ( models.RunResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload RunResponse
+		successPayload models.RunResponse
 	)
 
 	// create path and map variables
@@ -13309,7 +13176,7 @@ func (a *WordsApiService) InsertRun(ctx context.Context, name string, paragraphP
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -13324,7 +13191,6 @@ func (a *WordsApiService) InsertRun(ctx context.Context, name string, paragraphP
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Adds table to document, returns added table&#39;s data.             
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -13339,12 +13205,12 @@ func (a *WordsApiService) InsertRun(ctx context.Context, name string, paragraphP
      @param "revisionDateTime" (string) The date and time to use for revisions.
      @param "table" (TableInsert) Table parameters/.
  @return TableResponse*/
-func (a *WordsApiService) InsertTable(ctx context.Context, name string, nodePath string, localVarOptionals map[string]interface{}) ( TableResponse,  *http.Response, error) {
+func (a *WordsApiService) InsertTable(ctx context.Context, name string, nodePath string, localVarOptionals map[string]interface{}) ( models.TableResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload TableResponse
+		successPayload models.TableResponse
 	)
 
 	// create path and map variables
@@ -13420,7 +13286,7 @@ func (a *WordsApiService) InsertTable(ctx context.Context, name string, nodePath
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	// body params
-	if localVarTempParam, localVarOk := localVarOptionals["table"].(TableInsert); localVarOk {
+	if localVarTempParam, localVarOk := localVarOptionals["table"].(models.TableInsert); localVarOk {
 		localVarPostBody = &localVarTempParam
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
@@ -13435,7 +13301,7 @@ func (a *WordsApiService) InsertTable(ctx context.Context, name string, nodePath
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -13450,7 +13316,6 @@ func (a *WordsApiService) InsertTable(ctx context.Context, name string, nodePath
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Adds table cell to table, returns added cell&#39;s data.             
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -13465,12 +13330,12 @@ func (a *WordsApiService) InsertTable(ctx context.Context, name string, nodePath
      @param "revisionDateTime" (string) The date and time to use for revisions.
      @param "cell" (TableCellInsert) Table cell parameters/.
  @return TableCellResponse*/
-func (a *WordsApiService) InsertTableCell(ctx context.Context, name string, tableRowPath string, localVarOptionals map[string]interface{}) ( TableCellResponse,  *http.Response, error) {
+func (a *WordsApiService) InsertTableCell(ctx context.Context, name string, tableRowPath string, localVarOptionals map[string]interface{}) ( models.TableCellResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload TableCellResponse
+		successPayload models.TableCellResponse
 	)
 
 	// create path and map variables
@@ -13546,7 +13411,7 @@ func (a *WordsApiService) InsertTableCell(ctx context.Context, name string, tabl
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	// body params
-	if localVarTempParam, localVarOk := localVarOptionals["cell"].(TableCellInsert); localVarOk {
+	if localVarTempParam, localVarOk := localVarOptionals["cell"].(models.TableCellInsert); localVarOk {
 		localVarPostBody = &localVarTempParam
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
@@ -13561,7 +13426,7 @@ func (a *WordsApiService) InsertTableCell(ctx context.Context, name string, tabl
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -13576,7 +13441,6 @@ func (a *WordsApiService) InsertTableCell(ctx context.Context, name string, tabl
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Adds table row to table, returns added row&#39;s data.             
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -13591,12 +13455,12 @@ func (a *WordsApiService) InsertTableCell(ctx context.Context, name string, tabl
      @param "revisionDateTime" (string) The date and time to use for revisions.
      @param "row" (TableRowInsert) Table row parameters/.
  @return TableRowResponse*/
-func (a *WordsApiService) InsertTableRow(ctx context.Context, name string, tablePath string, localVarOptionals map[string]interface{}) ( TableRowResponse,  *http.Response, error) {
+func (a *WordsApiService) InsertTableRow(ctx context.Context, name string, tablePath string, localVarOptionals map[string]interface{}) ( models.TableRowResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload TableRowResponse
+		successPayload models.TableRowResponse
 	)
 
 	// create path and map variables
@@ -13672,7 +13536,7 @@ func (a *WordsApiService) InsertTableRow(ctx context.Context, name string, table
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	// body params
-	if localVarTempParam, localVarOk := localVarOptionals["row"].(TableRowInsert); localVarOk {
+	if localVarTempParam, localVarOk := localVarOptionals["row"].(models.TableRowInsert); localVarOk {
 		localVarPostBody = &localVarTempParam
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
@@ -13687,7 +13551,7 @@ func (a *WordsApiService) InsertTableRow(ctx context.Context, name string, table
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -13702,7 +13566,6 @@ func (a *WordsApiService) InsertTableRow(ctx context.Context, name string, table
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Adds table to document, returns added table&#39;s data.             
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -13716,12 +13579,12 @@ func (a *WordsApiService) InsertTableRow(ctx context.Context, name string, table
      @param "revisionDateTime" (string) The date and time to use for revisions.
      @param "table" (TableInsert) Table parameters/.
  @return TableResponse*/
-func (a *WordsApiService) InsertTableWithoutNodePath(ctx context.Context, name string, localVarOptionals map[string]interface{}) ( TableResponse,  *http.Response, error) {
+func (a *WordsApiService) InsertTableWithoutNodePath(ctx context.Context, name string, localVarOptionals map[string]interface{}) ( models.TableResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload TableResponse
+		successPayload models.TableResponse
 	)
 
 	// create path and map variables
@@ -13796,7 +13659,7 @@ func (a *WordsApiService) InsertTableWithoutNodePath(ctx context.Context, name s
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	// body params
-	if localVarTempParam, localVarOk := localVarOptionals["table"].(TableInsert); localVarOk {
+	if localVarTempParam, localVarOk := localVarOptionals["table"].(models.TableInsert); localVarOk {
 		localVarPostBody = &localVarTempParam
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
@@ -13811,7 +13674,7 @@ func (a *WordsApiService) InsertTableWithoutNodePath(ctx context.Context, name s
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -13826,7 +13689,6 @@ func (a *WordsApiService) InsertTableWithoutNodePath(ctx context.Context, name s
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Inserts document watermark image.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -13842,12 +13704,12 @@ func (a *WordsApiService) InsertTableWithoutNodePath(ctx context.Context, name s
      @param "rotationAngle" (float64) The watermark rotation angle.
      @param "image" (string) The image file server full name. If the name is empty the image is expected in request content.
  @return DocumentResponse*/
-func (a *WordsApiService) InsertWatermarkImage(ctx context.Context, name string, localVarOptionals map[string]interface{}) ( DocumentResponse,  *http.Response, error) {
+func (a *WordsApiService) InsertWatermarkImage(ctx context.Context, name string, localVarOptionals map[string]interface{}) ( models.DocumentResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload DocumentResponse
+		successPayload models.DocumentResponse
 	)
 
 	// create path and map variables
@@ -13955,7 +13817,7 @@ func (a *WordsApiService) InsertWatermarkImage(ctx context.Context, name string,
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -13970,7 +13832,6 @@ func (a *WordsApiService) InsertWatermarkImage(ctx context.Context, name string,
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Inserts document watermark text.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -13984,12 +13845,12 @@ func (a *WordsApiService) InsertWatermarkImage(ctx context.Context, name string,
      @param "revisionAuthor" (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
      @param "revisionDateTime" (string) The date and time to use for revisions.
  @return DocumentResponse*/
-func (a *WordsApiService) InsertWatermarkText(ctx context.Context, name string, watermarkText IWatermarkText, localVarOptionals map[string]interface{}) ( DocumentResponse,  *http.Response, error) {
+func (a *WordsApiService) InsertWatermarkText(ctx context.Context, name string, watermarkText models.IWatermarkText, localVarOptionals map[string]interface{}) ( models.DocumentResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload DocumentResponse
+		successPayload models.DocumentResponse
 	)
 
 	// create path and map variables
@@ -14077,7 +13938,7 @@ func (a *WordsApiService) InsertWatermarkText(ctx context.Context, name string, 
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -14092,19 +13953,18 @@ func (a *WordsApiService) InsertWatermarkText(ctx context.Context, name string, 
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Loads new document from web into the file with any supported format of data.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param data Parameters of loading.
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "storage" (string) Original document storage.
  @return SaveResponse*/
-func (a *WordsApiService) LoadWebDocument(ctx context.Context, data ILoadWebDocumentData, localVarOptionals map[string]interface{}) ( SaveResponse,  *http.Response, error) {
+func (a *WordsApiService) LoadWebDocument(ctx context.Context, data models.ILoadWebDocumentData, localVarOptionals map[string]interface{}) ( models.SaveResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload SaveResponse
+		successPayload models.SaveResponse
 	)
 
 	// create path and map variables
@@ -14155,7 +14015,7 @@ func (a *WordsApiService) LoadWebDocument(ctx context.Context, data ILoadWebDocu
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -14170,7 +14030,6 @@ func (a *WordsApiService) LoadWebDocument(ctx context.Context, data ILoadWebDocu
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Move file
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param destPath Destination file path e.g. &#39;/dest.ext&#39;
@@ -14247,7 +14106,7 @@ func (a *WordsApiService) MoveFile(ctx context.Context, destPath string, srcPath
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return localVarHttpResponse, err
@@ -14258,7 +14117,6 @@ func (a *WordsApiService) MoveFile(ctx context.Context, destPath string, srcPath
 	defer localVarHttpResponse.Body.Close()
 	return localVarHttpResponse, err
 }
-
 /* WordsApiService Move folder
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param destPath Destination folder path to move to e.g &#39;/dst&#39;
@@ -14328,7 +14186,7 @@ func (a *WordsApiService) MoveFolder(ctx context.Context, destPath string, srcPa
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return localVarHttpResponse, err
@@ -14339,7 +14197,6 @@ func (a *WordsApiService) MoveFolder(ctx context.Context, destPath string, srcPa
 	defer localVarHttpResponse.Body.Close()
 	return localVarHttpResponse, err
 }
-
 /* WordsApiService Protects document.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -14351,12 +14208,12 @@ func (a *WordsApiService) MoveFolder(ctx context.Context, destPath string, srcPa
      @param "password" (string) Password for opening an encrypted document.
      @param "destFileName" (string) Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.
  @return ProtectionDataResponse*/
-func (a *WordsApiService) ProtectDocument(ctx context.Context, name string, protectionRequest IProtectionRequest, localVarOptionals map[string]interface{}) ( ProtectionDataResponse,  *http.Response, error) {
+func (a *WordsApiService) ProtectDocument(ctx context.Context, name string, protectionRequest models.IProtectionRequest, localVarOptionals map[string]interface{}) ( models.ProtectionDataResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload ProtectionDataResponse
+		successPayload models.ProtectionDataResponse
 	)
 
 	// create path and map variables
@@ -14432,7 +14289,7 @@ func (a *WordsApiService) ProtectDocument(ctx context.Context, name string, prot
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -14447,7 +14304,6 @@ func (a *WordsApiService) ProtectDocument(ctx context.Context, name string, prot
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Rejects all revisions in document.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -14458,12 +14314,12 @@ func (a *WordsApiService) ProtectDocument(ctx context.Context, name string, prot
      @param "password" (string) Password for opening an encrypted document.
      @param "destFileName" (string) Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.
  @return RevisionsModificationResponse*/
-func (a *WordsApiService) RejectAllRevisions(ctx context.Context, name string, localVarOptionals map[string]interface{}) ( RevisionsModificationResponse,  *http.Response, error) {
+func (a *WordsApiService) RejectAllRevisions(ctx context.Context, name string, localVarOptionals map[string]interface{}) ( models.RevisionsModificationResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload RevisionsModificationResponse
+		successPayload models.RevisionsModificationResponse
 	)
 
 	// create path and map variables
@@ -14537,7 +14393,7 @@ func (a *WordsApiService) RejectAllRevisions(ctx context.Context, name string, l
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -14552,7 +14408,6 @@ func (a *WordsApiService) RejectAllRevisions(ctx context.Context, name string, l
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Removes the range from the document.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document.
@@ -14565,12 +14420,12 @@ func (a *WordsApiService) RejectAllRevisions(ctx context.Context, name string, l
      @param "password" (string) Password for opening an encrypted document.
      @param "destFileName" (string) Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.
  @return DocumentResponse*/
-func (a *WordsApiService) RemoveRange(ctx context.Context, name string, rangeStartIdentifier string, rangeEndIdentifier string, localVarOptionals map[string]interface{}) ( DocumentResponse,  *http.Response, error) {
+func (a *WordsApiService) RemoveRange(ctx context.Context, name string, rangeStartIdentifier string, rangeEndIdentifier string, localVarOptionals map[string]interface{}) ( models.DocumentResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload DocumentResponse
+		successPayload models.DocumentResponse
 	)
 
 	// create path and map variables
@@ -14646,7 +14501,7 @@ func (a *WordsApiService) RemoveRange(ctx context.Context, name string, rangeSta
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -14661,7 +14516,6 @@ func (a *WordsApiService) RemoveRange(ctx context.Context, name string, rangeSta
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Renders drawing object to specified format.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -14756,7 +14610,7 @@ func (a *WordsApiService) RenderDrawingObject(ctx context.Context, name string, 
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return localVarHttpResponse, err
@@ -14766,7 +14620,6 @@ func (a *WordsApiService) RenderDrawingObject(ctx context.Context, name string, 
 	}
 	return localVarHttpResponse, err
 }
-
 /* WordsApiService Renders drawing object to specified format.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -14859,7 +14712,7 @@ func (a *WordsApiService) RenderDrawingObjectWithoutNodePath(ctx context.Context
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return localVarHttpResponse, err
@@ -14869,7 +14722,6 @@ func (a *WordsApiService) RenderDrawingObjectWithoutNodePath(ctx context.Context
 	}
 	return localVarHttpResponse, err
 }
-
 /* WordsApiService Renders math object to specified format.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -14964,7 +14816,7 @@ func (a *WordsApiService) RenderMathObject(ctx context.Context, name string, for
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return localVarHttpResponse, err
@@ -14974,7 +14826,6 @@ func (a *WordsApiService) RenderMathObject(ctx context.Context, name string, for
 	}
 	return localVarHttpResponse, err
 }
-
 /* WordsApiService Renders math object to specified format.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -15067,7 +14918,7 @@ func (a *WordsApiService) RenderMathObjectWithoutNodePath(ctx context.Context, n
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return localVarHttpResponse, err
@@ -15077,7 +14928,6 @@ func (a *WordsApiService) RenderMathObjectWithoutNodePath(ctx context.Context, n
 	}
 	return localVarHttpResponse, err
 }
-
 /* WordsApiService Renders page to specified format.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -15170,7 +15020,7 @@ func (a *WordsApiService) RenderPage(ctx context.Context, name string, pageIndex
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return localVarHttpResponse, err
@@ -15180,7 +15030,6 @@ func (a *WordsApiService) RenderPage(ctx context.Context, name string, pageIndex
 	}
 	return localVarHttpResponse, err
 }
-
 /* WordsApiService Renders paragraph to specified format.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -15275,7 +15124,7 @@ func (a *WordsApiService) RenderParagraph(ctx context.Context, name string, form
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return localVarHttpResponse, err
@@ -15285,7 +15134,6 @@ func (a *WordsApiService) RenderParagraph(ctx context.Context, name string, form
 	}
 	return localVarHttpResponse, err
 }
-
 /* WordsApiService Renders paragraph to specified format.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -15378,7 +15226,7 @@ func (a *WordsApiService) RenderParagraphWithoutNodePath(ctx context.Context, na
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return localVarHttpResponse, err
@@ -15388,7 +15236,6 @@ func (a *WordsApiService) RenderParagraphWithoutNodePath(ctx context.Context, na
 	}
 	return localVarHttpResponse, err
 }
-
 /* WordsApiService Renders table to specified format.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -15483,7 +15330,7 @@ func (a *WordsApiService) RenderTable(ctx context.Context, name string, format s
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return localVarHttpResponse, err
@@ -15493,7 +15340,6 @@ func (a *WordsApiService) RenderTable(ctx context.Context, name string, format s
 	}
 	return localVarHttpResponse, err
 }
-
 /* WordsApiService Renders table to specified format.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -15586,7 +15432,7 @@ func (a *WordsApiService) RenderTableWithoutNodePath(ctx context.Context, name s
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return localVarHttpResponse, err
@@ -15596,7 +15442,6 @@ func (a *WordsApiService) RenderTableWithoutNodePath(ctx context.Context, name s
 	}
 	return localVarHttpResponse, err
 }
-
 /* WordsApiService Replaces document text.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -15610,12 +15455,12 @@ func (a *WordsApiService) RenderTableWithoutNodePath(ctx context.Context, name s
      @param "revisionAuthor" (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
      @param "revisionDateTime" (string) The date and time to use for revisions.
  @return ReplaceTextResponse*/
-func (a *WordsApiService) ReplaceText(ctx context.Context, name string, replaceText IReplaceTextParameters, localVarOptionals map[string]interface{}) ( ReplaceTextResponse,  *http.Response, error) {
+func (a *WordsApiService) ReplaceText(ctx context.Context, name string, replaceText models.IReplaceTextParameters, localVarOptionals map[string]interface{}) ( models.ReplaceTextResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload ReplaceTextResponse
+		successPayload models.ReplaceTextResponse
 	)
 
 	// create path and map variables
@@ -15703,7 +15548,7 @@ func (a *WordsApiService) ReplaceText(ctx context.Context, name string, replaceT
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -15718,7 +15563,6 @@ func (a *WordsApiService) ReplaceText(ctx context.Context, name string, replaceT
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Replaces the content in the range.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document.
@@ -15732,12 +15576,12 @@ func (a *WordsApiService) ReplaceText(ctx context.Context, name string, replaceT
      @param "password" (string) Password for opening an encrypted document.
      @param "destFileName" (string) Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.
  @return DocumentResponse*/
-func (a *WordsApiService) ReplaceWithText(ctx context.Context, name string, rangeStartIdentifier string, rangeText IReplaceRange, rangeEndIdentifier string, localVarOptionals map[string]interface{}) ( DocumentResponse,  *http.Response, error) {
+func (a *WordsApiService) ReplaceWithText(ctx context.Context, name string, rangeStartIdentifier string, rangeText models.IReplaceRange, rangeEndIdentifier string, localVarOptionals map[string]interface{}) ( models.DocumentResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload DocumentResponse
+		successPayload models.DocumentResponse
 	)
 
 	// create path and map variables
@@ -15815,7 +15659,7 @@ func (a *WordsApiService) ReplaceWithText(ctx context.Context, name string, rang
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -15830,7 +15674,6 @@ func (a *WordsApiService) ReplaceWithText(ctx context.Context, name string, rang
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Resets font&#39;s cache.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @return */
@@ -15881,7 +15724,7 @@ func (a *WordsApiService) ResetCache(ctx context.Context) ( *http.Response, erro
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return localVarHttpResponse, err
@@ -15892,7 +15735,6 @@ func (a *WordsApiService) ResetCache(ctx context.Context) ( *http.Response, erro
 	defer localVarHttpResponse.Body.Close()
 	return localVarHttpResponse, err
 }
-
 /* WordsApiService Converts document to destination format with detailed settings and saves result to storage.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -15904,12 +15746,12 @@ func (a *WordsApiService) ResetCache(ctx context.Context) ( *http.Response, erro
      @param "password" (string) Password for opening an encrypted document.
      @param "fontsLocation" (string) Folder in filestorage with custom fonts.
  @return SaveResponse*/
-func (a *WordsApiService) SaveAs(ctx context.Context, name string, saveOptionsData ISaveOptionsData, localVarOptionals map[string]interface{}) ( SaveResponse,  *http.Response, error) {
+func (a *WordsApiService) SaveAs(ctx context.Context, name string, saveOptionsData models.ISaveOptionsData, localVarOptionals map[string]interface{}) ( models.SaveResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload SaveResponse
+		successPayload models.SaveResponse
 	)
 
 	// create path and map variables
@@ -15985,7 +15827,7 @@ func (a *WordsApiService) SaveAs(ctx context.Context, name string, saveOptionsDa
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -16000,7 +15842,6 @@ func (a *WordsApiService) SaveAs(ctx context.Context, name string, saveOptionsDa
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Saves the selected range as a new document.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document.
@@ -16013,12 +15854,12 @@ func (a *WordsApiService) SaveAs(ctx context.Context, name string, saveOptionsDa
      @param "loadEncoding" (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
      @param "password" (string) Password for opening an encrypted document.
  @return DocumentResponse*/
-func (a *WordsApiService) SaveAsRange(ctx context.Context, name string, rangeStartIdentifier string, documentParameters IRangeDocument, rangeEndIdentifier string, localVarOptionals map[string]interface{}) ( DocumentResponse,  *http.Response, error) {
+func (a *WordsApiService) SaveAsRange(ctx context.Context, name string, rangeStartIdentifier string, documentParameters models.IRangeDocument, rangeEndIdentifier string, localVarOptionals map[string]interface{}) ( models.DocumentResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload DocumentResponse
+		successPayload models.DocumentResponse
 	)
 
 	// create path and map variables
@@ -16090,7 +15931,7 @@ func (a *WordsApiService) SaveAsRange(ctx context.Context, name string, rangeSta
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -16105,7 +15946,6 @@ func (a *WordsApiService) SaveAsRange(ctx context.Context, name string, rangeSta
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Converts document to tiff with detailed settings and saves result to storage.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -16134,12 +15974,12 @@ func (a *WordsApiService) SaveAsRange(ctx context.Context, name string, rangeSta
      @param "zipOutput" (bool) Optional. A value determining zip output or not.
      @param "fontsLocation" (string) Folder in filestorage with custom fonts.
  @return SaveResponse*/
-func (a *WordsApiService) SaveAsTiff(ctx context.Context, name string, saveOptions ITiffSaveOptionsData, localVarOptionals map[string]interface{}) ( SaveResponse,  *http.Response, error) {
+func (a *WordsApiService) SaveAsTiff(ctx context.Context, name string, saveOptions models.ITiffSaveOptionsData, localVarOptionals map[string]interface{}) ( models.SaveResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload SaveResponse
+		successPayload models.SaveResponse
 	)
 
 	// create path and map variables
@@ -16317,7 +16157,7 @@ func (a *WordsApiService) SaveAsTiff(ctx context.Context, name string, saveOptio
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -16332,7 +16172,6 @@ func (a *WordsApiService) SaveAsTiff(ctx context.Context, name string, saveOptio
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Searches text in document.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -16343,12 +16182,12 @@ func (a *WordsApiService) SaveAsTiff(ctx context.Context, name string, saveOptio
      @param "loadEncoding" (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
      @param "password" (string) Password for opening an encrypted document.
  @return SearchResponse*/
-func (a *WordsApiService) Search(ctx context.Context, name string, pattern string, localVarOptionals map[string]interface{}) ( SearchResponse,  *http.Response, error) {
+func (a *WordsApiService) Search(ctx context.Context, name string, pattern string, localVarOptionals map[string]interface{}) ( models.SearchResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload SearchResponse
+		successPayload models.SearchResponse
 	)
 
 	// create path and map variables
@@ -16417,7 +16256,7 @@ func (a *WordsApiService) Search(ctx context.Context, name string, pattern strin
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -16432,7 +16271,6 @@ func (a *WordsApiService) Search(ctx context.Context, name string, pattern strin
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Splits document.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name Original document name.
@@ -16448,12 +16286,12 @@ func (a *WordsApiService) Search(ctx context.Context, name string, pattern strin
      @param "zipOutput" (bool) ZipOutput or not.
      @param "fontsLocation" (string) Folder in filestorage with custom fonts.
  @return SplitDocumentResponse*/
-func (a *WordsApiService) SplitDocument(ctx context.Context, name string, localVarOptionals map[string]interface{}) ( SplitDocumentResponse,  *http.Response, error) {
+func (a *WordsApiService) SplitDocument(ctx context.Context, name string, localVarOptionals map[string]interface{}) ( models.SplitDocumentResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload SplitDocumentResponse
+		successPayload models.SplitDocumentResponse
 	)
 
 	// create path and map variables
@@ -16557,7 +16395,7 @@ func (a *WordsApiService) SplitDocument(ctx context.Context, name string, localV
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -16572,7 +16410,6 @@ func (a *WordsApiService) SplitDocument(ctx context.Context, name string, localV
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Unprotects document.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -16584,12 +16421,12 @@ func (a *WordsApiService) SplitDocument(ctx context.Context, name string, localV
      @param "password" (string) Password for opening an encrypted document.
      @param "destFileName" (string) Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.
  @return ProtectionDataResponse*/
-func (a *WordsApiService) UnprotectDocument(ctx context.Context, name string, protectionRequest IProtectionRequest, localVarOptionals map[string]interface{}) ( ProtectionDataResponse,  *http.Response, error) {
+func (a *WordsApiService) UnprotectDocument(ctx context.Context, name string, protectionRequest models.IProtectionRequest, localVarOptionals map[string]interface{}) ( models.ProtectionDataResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload ProtectionDataResponse
+		successPayload models.ProtectionDataResponse
 	)
 
 	// create path and map variables
@@ -16665,7 +16502,7 @@ func (a *WordsApiService) UnprotectDocument(ctx context.Context, name string, pr
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -16680,7 +16517,6 @@ func (a *WordsApiService) UnprotectDocument(ctx context.Context, name string, pr
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Updates document bookmark.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -16695,12 +16531,12 @@ func (a *WordsApiService) UnprotectDocument(ctx context.Context, name string, pr
      @param "revisionAuthor" (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
      @param "revisionDateTime" (string) The date and time to use for revisions.
  @return BookmarkResponse*/
-func (a *WordsApiService) UpdateBookmark(ctx context.Context, name string, bookmarkData IBookmarkData, bookmarkName string, localVarOptionals map[string]interface{}) ( BookmarkResponse,  *http.Response, error) {
+func (a *WordsApiService) UpdateBookmark(ctx context.Context, name string, bookmarkData models.IBookmarkData, bookmarkName string, localVarOptionals map[string]interface{}) ( models.BookmarkResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload BookmarkResponse
+		successPayload models.BookmarkResponse
 	)
 
 	// create path and map variables
@@ -16789,7 +16625,7 @@ func (a *WordsApiService) UpdateBookmark(ctx context.Context, name string, bookm
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -16804,7 +16640,6 @@ func (a *WordsApiService) UpdateBookmark(ctx context.Context, name string, bookm
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Updates border properties.             
  &#39;nodePath&#39; should refer to paragraph, cell or row.
  * @param ctx context.Context for authentication, logging, tracing, etc.
@@ -16821,12 +16656,12 @@ func (a *WordsApiService) UpdateBookmark(ctx context.Context, name string, bookm
      @param "revisionAuthor" (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
      @param "revisionDateTime" (string) The date and time to use for revisions.
  @return BorderResponse*/
-func (a *WordsApiService) UpdateBorder(ctx context.Context, name string, borderProperties IBorder, nodePath string, borderType string, localVarOptionals map[string]interface{}) ( BorderResponse,  *http.Response, error) {
+func (a *WordsApiService) UpdateBorder(ctx context.Context, name string, borderProperties models.IBorder, nodePath string, borderType string, localVarOptionals map[string]interface{}) ( models.BorderResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload BorderResponse
+		successPayload models.BorderResponse
 	)
 
 	// create path and map variables
@@ -16916,7 +16751,7 @@ func (a *WordsApiService) UpdateBorder(ctx context.Context, name string, borderP
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -16931,7 +16766,6 @@ func (a *WordsApiService) UpdateBorder(ctx context.Context, name string, borderP
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Updates the comment, returns updated comment data.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -16946,12 +16780,12 @@ func (a *WordsApiService) UpdateBorder(ctx context.Context, name string, borderP
      @param "revisionAuthor" (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
      @param "revisionDateTime" (string) The date and time to use for revisions.
  @return CommentResponse*/
-func (a *WordsApiService) UpdateComment(ctx context.Context, name string, commentIndex int32, comment IComment, localVarOptionals map[string]interface{}) ( CommentResponse,  *http.Response, error) {
+func (a *WordsApiService) UpdateComment(ctx context.Context, name string, commentIndex int32, comment models.IComment, localVarOptionals map[string]interface{}) ( models.CommentResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload CommentResponse
+		successPayload models.CommentResponse
 	)
 
 	// create path and map variables
@@ -17040,7 +16874,7 @@ func (a *WordsApiService) UpdateComment(ctx context.Context, name string, commen
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -17055,7 +16889,6 @@ func (a *WordsApiService) UpdateComment(ctx context.Context, name string, commen
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Updates drawing object, returns updated  drawing object&#39;s data.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -17072,12 +16905,12 @@ func (a *WordsApiService) UpdateComment(ctx context.Context, name string, commen
      @param "revisionAuthor" (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
      @param "revisionDateTime" (string) The date and time to use for revisions.
  @return DrawingObjectResponse*/
-func (a *WordsApiService) UpdateDrawingObject(ctx context.Context, name string, drawingObject string, imageFile *os.File, nodePath string, index int32, localVarOptionals map[string]interface{}) ( DrawingObjectResponse,  *http.Response, error) {
+func (a *WordsApiService) UpdateDrawingObject(ctx context.Context, name string, drawingObject string, imageFile *os.File, nodePath string, index int32, localVarOptionals map[string]interface{}) ( models.DrawingObjectResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload DrawingObjectResponse
+		successPayload models.DrawingObjectResponse
 	)
 
 	// create path and map variables
@@ -17172,7 +17005,7 @@ func (a *WordsApiService) UpdateDrawingObject(ctx context.Context, name string, 
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -17187,7 +17020,6 @@ func (a *WordsApiService) UpdateDrawingObject(ctx context.Context, name string, 
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Updates drawing object, returns updated  drawing object&#39;s data.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -17203,12 +17035,12 @@ func (a *WordsApiService) UpdateDrawingObject(ctx context.Context, name string, 
      @param "revisionAuthor" (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
      @param "revisionDateTime" (string) The date and time to use for revisions.
  @return DrawingObjectResponse*/
-func (a *WordsApiService) UpdateDrawingObjectWithoutNodePath(ctx context.Context, name string, drawingObject string, imageFile *os.File, index int32, localVarOptionals map[string]interface{}) ( DrawingObjectResponse,  *http.Response, error) {
+func (a *WordsApiService) UpdateDrawingObjectWithoutNodePath(ctx context.Context, name string, drawingObject string, imageFile *os.File, index int32, localVarOptionals map[string]interface{}) ( models.DrawingObjectResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload DrawingObjectResponse
+		successPayload models.DrawingObjectResponse
 	)
 
 	// create path and map variables
@@ -17302,7 +17134,7 @@ func (a *WordsApiService) UpdateDrawingObjectWithoutNodePath(ctx context.Context
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -17317,7 +17149,6 @@ func (a *WordsApiService) UpdateDrawingObjectWithoutNodePath(ctx context.Context
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Updates field&#39;s properties, returns updated field&#39;s data.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -17333,12 +17164,12 @@ func (a *WordsApiService) UpdateDrawingObjectWithoutNodePath(ctx context.Context
      @param "revisionAuthor" (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
      @param "revisionDateTime" (string) The date and time to use for revisions.
  @return FieldResponse*/
-func (a *WordsApiService) UpdateField(ctx context.Context, name string, field IField, nodePath string, index int32, localVarOptionals map[string]interface{}) ( FieldResponse,  *http.Response, error) {
+func (a *WordsApiService) UpdateField(ctx context.Context, name string, field models.IField, nodePath string, index int32, localVarOptionals map[string]interface{}) ( models.FieldResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload FieldResponse
+		successPayload models.FieldResponse
 	)
 
 	// create path and map variables
@@ -17428,7 +17259,7 @@ func (a *WordsApiService) UpdateField(ctx context.Context, name string, field IF
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -17443,7 +17274,6 @@ func (a *WordsApiService) UpdateField(ctx context.Context, name string, field IF
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Updates (reevaluate) fields in document.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -17454,12 +17284,12 @@ func (a *WordsApiService) UpdateField(ctx context.Context, name string, field IF
      @param "password" (string) Password for opening an encrypted document.
      @param "destFileName" (string) Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.
  @return DocumentResponse*/
-func (a *WordsApiService) UpdateFields(ctx context.Context, name string, localVarOptionals map[string]interface{}) ( DocumentResponse,  *http.Response, error) {
+func (a *WordsApiService) UpdateFields(ctx context.Context, name string, localVarOptionals map[string]interface{}) ( models.DocumentResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload DocumentResponse
+		successPayload models.DocumentResponse
 	)
 
 	// create path and map variables
@@ -17533,7 +17363,7 @@ func (a *WordsApiService) UpdateFields(ctx context.Context, name string, localVa
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -17548,7 +17378,6 @@ func (a *WordsApiService) UpdateFields(ctx context.Context, name string, localVa
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Updates footnote&#39;s properties, returns updated run&#39;s data.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -17564,12 +17393,12 @@ func (a *WordsApiService) UpdateFields(ctx context.Context, name string, localVa
      @param "revisionAuthor" (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
      @param "revisionDateTime" (string) The date and time to use for revisions.
  @return FootnoteResponse*/
-func (a *WordsApiService) UpdateFootnote(ctx context.Context, name string, footnoteDto IFootnote, nodePath string, index int32, localVarOptionals map[string]interface{}) ( FootnoteResponse,  *http.Response, error) {
+func (a *WordsApiService) UpdateFootnote(ctx context.Context, name string, footnoteDto models.IFootnote, nodePath string, index int32, localVarOptionals map[string]interface{}) ( models.FootnoteResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload FootnoteResponse
+		successPayload models.FootnoteResponse
 	)
 
 	// create path and map variables
@@ -17659,7 +17488,7 @@ func (a *WordsApiService) UpdateFootnote(ctx context.Context, name string, footn
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -17674,7 +17503,6 @@ func (a *WordsApiService) UpdateFootnote(ctx context.Context, name string, footn
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Updates footnote&#39;s properties, returns updated run&#39;s data.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -17689,12 +17517,12 @@ func (a *WordsApiService) UpdateFootnote(ctx context.Context, name string, footn
      @param "revisionAuthor" (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
      @param "revisionDateTime" (string) The date and time to use for revisions.
  @return FootnoteResponse*/
-func (a *WordsApiService) UpdateFootnoteWithoutNodePath(ctx context.Context, name string, footnoteDto IFootnote, index int32, localVarOptionals map[string]interface{}) ( FootnoteResponse,  *http.Response, error) {
+func (a *WordsApiService) UpdateFootnoteWithoutNodePath(ctx context.Context, name string, footnoteDto models.IFootnote, index int32, localVarOptionals map[string]interface{}) ( models.FootnoteResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload FootnoteResponse
+		successPayload models.FootnoteResponse
 	)
 
 	// create path and map variables
@@ -17783,7 +17611,7 @@ func (a *WordsApiService) UpdateFootnoteWithoutNodePath(ctx context.Context, nam
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -17798,7 +17626,6 @@ func (a *WordsApiService) UpdateFootnoteWithoutNodePath(ctx context.Context, nam
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Updates properties of form field, returns updated form field.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -17814,12 +17641,12 @@ func (a *WordsApiService) UpdateFootnoteWithoutNodePath(ctx context.Context, nam
      @param "revisionAuthor" (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
      @param "revisionDateTime" (string) The date and time to use for revisions.
  @return FormFieldResponse*/
-func (a *WordsApiService) UpdateFormField(ctx context.Context, name string, formField IFormField, nodePath string, index int32, localVarOptionals map[string]interface{}) ( FormFieldResponse,  *http.Response, error) {
+func (a *WordsApiService) UpdateFormField(ctx context.Context, name string, formField models.IFormField, nodePath string, index int32, localVarOptionals map[string]interface{}) ( models.FormFieldResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload FormFieldResponse
+		successPayload models.FormFieldResponse
 	)
 
 	// create path and map variables
@@ -17909,7 +17736,7 @@ func (a *WordsApiService) UpdateFormField(ctx context.Context, name string, form
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -17924,7 +17751,6 @@ func (a *WordsApiService) UpdateFormField(ctx context.Context, name string, form
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Updates properties of form field, returns updated form field.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -17939,12 +17765,12 @@ func (a *WordsApiService) UpdateFormField(ctx context.Context, name string, form
      @param "revisionAuthor" (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
      @param "revisionDateTime" (string) The date and time to use for revisions.
  @return FormFieldResponse*/
-func (a *WordsApiService) UpdateFormFieldWithoutNodePath(ctx context.Context, name string, formField IFormField, index int32, localVarOptionals map[string]interface{}) ( FormFieldResponse,  *http.Response, error) {
+func (a *WordsApiService) UpdateFormFieldWithoutNodePath(ctx context.Context, name string, formField models.IFormField, index int32, localVarOptionals map[string]interface{}) ( models.FormFieldResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload FormFieldResponse
+		successPayload models.FormFieldResponse
 	)
 
 	// create path and map variables
@@ -18033,7 +17859,7 @@ func (a *WordsApiService) UpdateFormFieldWithoutNodePath(ctx context.Context, na
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -18048,7 +17874,6 @@ func (a *WordsApiService) UpdateFormFieldWithoutNodePath(ctx context.Context, na
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Updates paragraph format properties, returns updated format properties.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -18064,12 +17889,12 @@ func (a *WordsApiService) UpdateFormFieldWithoutNodePath(ctx context.Context, na
      @param "revisionAuthor" (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
      @param "revisionDateTime" (string) The date and time to use for revisions.
  @return ParagraphFormatResponse*/
-func (a *WordsApiService) UpdateParagraphFormat(ctx context.Context, name string, dto IParagraphFormat, nodePath string, index int32, localVarOptionals map[string]interface{}) ( ParagraphFormatResponse,  *http.Response, error) {
+func (a *WordsApiService) UpdateParagraphFormat(ctx context.Context, name string, dto models.IParagraphFormat, nodePath string, index int32, localVarOptionals map[string]interface{}) ( models.ParagraphFormatResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload ParagraphFormatResponse
+		successPayload models.ParagraphFormatResponse
 	)
 
 	// create path and map variables
@@ -18159,7 +17984,7 @@ func (a *WordsApiService) UpdateParagraphFormat(ctx context.Context, name string
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -18174,7 +17999,6 @@ func (a *WordsApiService) UpdateParagraphFormat(ctx context.Context, name string
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Updates run&#39;s properties, returns updated run&#39;s data.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -18190,12 +18014,12 @@ func (a *WordsApiService) UpdateParagraphFormat(ctx context.Context, name string
      @param "revisionAuthor" (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
      @param "revisionDateTime" (string) The date and time to use for revisions.
  @return RunResponse*/
-func (a *WordsApiService) UpdateRun(ctx context.Context, name string, run IRun, paragraphPath string, index int32, localVarOptionals map[string]interface{}) ( RunResponse,  *http.Response, error) {
+func (a *WordsApiService) UpdateRun(ctx context.Context, name string, run models.IRun, paragraphPath string, index int32, localVarOptionals map[string]interface{}) ( models.RunResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload RunResponse
+		successPayload models.RunResponse
 	)
 
 	// create path and map variables
@@ -18285,7 +18109,7 @@ func (a *WordsApiService) UpdateRun(ctx context.Context, name string, run IRun, 
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -18300,7 +18124,6 @@ func (a *WordsApiService) UpdateRun(ctx context.Context, name string, run IRun, 
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Updates font properties, returns updated font data.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -18316,12 +18139,12 @@ func (a *WordsApiService) UpdateRun(ctx context.Context, name string, run IRun, 
      @param "revisionAuthor" (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
      @param "revisionDateTime" (string) The date and time to use for revisions.
  @return FontResponse*/
-func (a *WordsApiService) UpdateRunFont(ctx context.Context, name string, fontDto IFont, paragraphPath string, index int32, localVarOptionals map[string]interface{}) ( FontResponse,  *http.Response, error) {
+func (a *WordsApiService) UpdateRunFont(ctx context.Context, name string, fontDto models.IFont, paragraphPath string, index int32, localVarOptionals map[string]interface{}) ( models.FontResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload FontResponse
+		successPayload models.FontResponse
 	)
 
 	// create path and map variables
@@ -18411,7 +18234,7 @@ func (a *WordsApiService) UpdateRunFont(ctx context.Context, name string, fontDt
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -18426,7 +18249,6 @@ func (a *WordsApiService) UpdateRunFont(ctx context.Context, name string, fontDt
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Updates page setup of section.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -18441,12 +18263,12 @@ func (a *WordsApiService) UpdateRunFont(ctx context.Context, name string, fontDt
      @param "revisionAuthor" (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
      @param "revisionDateTime" (string) The date and time to use for revisions.
  @return SectionPageSetupResponse*/
-func (a *WordsApiService) UpdateSectionPageSetup(ctx context.Context, name string, sectionIndex int32, pageSetup IPageSetup, localVarOptionals map[string]interface{}) ( SectionPageSetupResponse,  *http.Response, error) {
+func (a *WordsApiService) UpdateSectionPageSetup(ctx context.Context, name string, sectionIndex int32, pageSetup models.IPageSetup, localVarOptionals map[string]interface{}) ( models.SectionPageSetupResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload SectionPageSetupResponse
+		successPayload models.SectionPageSetupResponse
 	)
 
 	// create path and map variables
@@ -18535,7 +18357,7 @@ func (a *WordsApiService) UpdateSectionPageSetup(ctx context.Context, name strin
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -18550,7 +18372,6 @@ func (a *WordsApiService) UpdateSectionPageSetup(ctx context.Context, name strin
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Updates a table cell format.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -18566,12 +18387,12 @@ func (a *WordsApiService) UpdateSectionPageSetup(ctx context.Context, name strin
      @param "revisionDateTime" (string) The date and time to use for revisions.
      @param "format" (TableCellFormat) The properties.
  @return TableCellFormatResponse*/
-func (a *WordsApiService) UpdateTableCellFormat(ctx context.Context, name string, tableRowPath string, index int32, localVarOptionals map[string]interface{}) ( TableCellFormatResponse,  *http.Response, error) {
+func (a *WordsApiService) UpdateTableCellFormat(ctx context.Context, name string, tableRowPath string, index int32, localVarOptionals map[string]interface{}) ( models.TableCellFormatResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload TableCellFormatResponse
+		successPayload models.TableCellFormatResponse
 	)
 
 	// create path and map variables
@@ -18648,7 +18469,7 @@ func (a *WordsApiService) UpdateTableCellFormat(ctx context.Context, name string
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	// body params
-	if localVarTempParam, localVarOk := localVarOptionals["format"].(TableCellFormat); localVarOk {
+	if localVarTempParam, localVarOk := localVarOptionals["format"].(models.TableCellFormat); localVarOk {
 		localVarPostBody = &localVarTempParam
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
@@ -18663,7 +18484,7 @@ func (a *WordsApiService) UpdateTableCellFormat(ctx context.Context, name string
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -18678,7 +18499,6 @@ func (a *WordsApiService) UpdateTableCellFormat(ctx context.Context, name string
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Updates a table properties.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -18694,12 +18514,12 @@ func (a *WordsApiService) UpdateTableCellFormat(ctx context.Context, name string
      @param "revisionDateTime" (string) The date and time to use for revisions.
      @param "properties" (TableProperties) The properties.
  @return TablePropertiesResponse*/
-func (a *WordsApiService) UpdateTableProperties(ctx context.Context, name string, nodePath string, index int32, localVarOptionals map[string]interface{}) ( TablePropertiesResponse,  *http.Response, error) {
+func (a *WordsApiService) UpdateTableProperties(ctx context.Context, name string, nodePath string, index int32, localVarOptionals map[string]interface{}) ( models.TablePropertiesResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload TablePropertiesResponse
+		successPayload models.TablePropertiesResponse
 	)
 
 	// create path and map variables
@@ -18776,7 +18596,7 @@ func (a *WordsApiService) UpdateTableProperties(ctx context.Context, name string
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	// body params
-	if localVarTempParam, localVarOk := localVarOptionals["properties"].(TableProperties); localVarOk {
+	if localVarTempParam, localVarOk := localVarOptionals["properties"].(models.TableProperties); localVarOk {
 		localVarPostBody = &localVarTempParam
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
@@ -18791,7 +18611,7 @@ func (a *WordsApiService) UpdateTableProperties(ctx context.Context, name string
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -18806,7 +18626,6 @@ func (a *WordsApiService) UpdateTableProperties(ctx context.Context, name string
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Updates a table properties.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -18821,12 +18640,12 @@ func (a *WordsApiService) UpdateTableProperties(ctx context.Context, name string
      @param "revisionDateTime" (string) The date and time to use for revisions.
      @param "properties" (TableProperties) The properties.
  @return TablePropertiesResponse*/
-func (a *WordsApiService) UpdateTablePropertiesWithoutNodePath(ctx context.Context, name string, index int32, localVarOptionals map[string]interface{}) ( TablePropertiesResponse,  *http.Response, error) {
+func (a *WordsApiService) UpdateTablePropertiesWithoutNodePath(ctx context.Context, name string, index int32, localVarOptionals map[string]interface{}) ( models.TablePropertiesResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload TablePropertiesResponse
+		successPayload models.TablePropertiesResponse
 	)
 
 	// create path and map variables
@@ -18902,7 +18721,7 @@ func (a *WordsApiService) UpdateTablePropertiesWithoutNodePath(ctx context.Conte
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	// body params
-	if localVarTempParam, localVarOk := localVarOptionals["properties"].(TableProperties); localVarOk {
+	if localVarTempParam, localVarOk := localVarOptionals["properties"].(models.TableProperties); localVarOk {
 		localVarPostBody = &localVarTempParam
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
@@ -18917,7 +18736,7 @@ func (a *WordsApiService) UpdateTablePropertiesWithoutNodePath(ctx context.Conte
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -18932,7 +18751,6 @@ func (a *WordsApiService) UpdateTablePropertiesWithoutNodePath(ctx context.Conte
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Updates a table row format.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -18948,12 +18766,12 @@ func (a *WordsApiService) UpdateTablePropertiesWithoutNodePath(ctx context.Conte
      @param "revisionDateTime" (string) The date and time to use for revisions.
      @param "format" (TableRowFormat) Table row format.
  @return TableRowFormatResponse*/
-func (a *WordsApiService) UpdateTableRowFormat(ctx context.Context, name string, tablePath string, index int32, localVarOptionals map[string]interface{}) ( TableRowFormatResponse,  *http.Response, error) {
+func (a *WordsApiService) UpdateTableRowFormat(ctx context.Context, name string, tablePath string, index int32, localVarOptionals map[string]interface{}) ( models.TableRowFormatResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload TableRowFormatResponse
+		successPayload models.TableRowFormatResponse
 	)
 
 	// create path and map variables
@@ -19030,7 +18848,7 @@ func (a *WordsApiService) UpdateTableRowFormat(ctx context.Context, name string,
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	// body params
-	if localVarTempParam, localVarOk := localVarOptionals["format"].(TableRowFormat); localVarOk {
+	if localVarTempParam, localVarOk := localVarOptionals["format"].(models.TableRowFormat); localVarOk {
 		localVarPostBody = &localVarTempParam
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
@@ -19045,7 +18863,7 @@ func (a *WordsApiService) UpdateTableRowFormat(ctx context.Context, name string,
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err
@@ -19060,7 +18878,6 @@ func (a *WordsApiService) UpdateTableRowFormat(ctx context.Context, name string,
 	
 	return successPayload, localVarHttpResponse, err
 }
-
 /* WordsApiService Upload file
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param fileContent File to upload
@@ -19068,12 +18885,12 @@ func (a *WordsApiService) UpdateTableRowFormat(ctx context.Context, name string,
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "storageName" (string) Storage name
  @return FilesUploadResult*/
-func (a *WordsApiService) UploadFile(ctx context.Context, fileContent *os.File, path string, localVarOptionals map[string]interface{}) ( FilesUploadResult,  *http.Response, error) {
+func (a *WordsApiService) UploadFile(ctx context.Context, fileContent *os.File, path string, localVarOptionals map[string]interface{}) ( models.FilesUploadResult,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
 		localFiles map[string][]byte = make(map[string][]byte)
-		successPayload FilesUploadResult
+		successPayload models.FilesUploadResult
 	)
 
 	// create path and map variables
@@ -19129,7 +18946,7 @@ func (a *WordsApiService) UploadFile(ctx context.Context, fileContent *os.File, 
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
-		var apiError WordsApiErrorResponse;
+		var apiError models.WordsApiErrorResponse;
 
 		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
 			return successPayload, localVarHttpResponse, err

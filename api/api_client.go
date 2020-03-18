@@ -20,8 +20,7 @@
 * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 * SOFTWARE.
-*/
-
+ */
 
 package api
 
@@ -48,22 +47,23 @@ import (
 	"time"
 	"unicode/utf8"
 
+	"github.com/aspose-words-cloud/aspose-words-cloud-go/api/models"
 	"golang.org/x/oauth2"
 )
 
 var (
 	jsonCheck = regexp.MustCompile("(?i:[application|text]/json)")
-	xmlCheck = regexp.MustCompile("(?i:[application|text]/xml)")
+	xmlCheck  = regexp.MustCompile("(?i:[application|text]/xml)")
 )
 
 // APIClient manages communication with the Aspose.Words Cloud API Reference API v20.3.0
 // In most cases there should be only one, shared, APIClient.
 type APIClient struct {
-	cfg 	*Configuration
-	common 	service 		// Reuse a single struct instead of allocating one for each service on the heap.
+	cfg    *models.Configuration
+	common service // Reuse a single struct instead of allocating one for each service on the heap.
 
-	 // API Services
-	WordsApi	*WordsApiService
+	// API Services
+	WordsApi *WordsApiService
 }
 
 type service struct {
@@ -72,11 +72,11 @@ type service struct {
 
 // NewAPIClient creates a new API client. Requires a userAgent string describing your application.
 // optionally a custom http.Client to allow for advanced features such as caching.
-func NewAPIClient(cfg *Configuration) (client *APIClient, err error) {
+func NewAPIClient(cfg *models.Configuration) (client *APIClient, err error) {
 	if cfg.HttpClient == nil {
 		cfg.HttpClient = http.DefaultClient
 	}
-	
+
 	if cfg.AppKey == "" {
 		return nil, errors.New("AppKey must be non-empty string")
 	}
@@ -104,7 +104,6 @@ func NewAPIClient(cfg *Configuration) (client *APIClient, err error) {
 func atoi(in string) (int, error) {
 	return strconv.Atoi(in)
 }
-
 
 // selectHeaderContentType select a content type from the available list.
 func selectHeaderContentType(contentTypes []string) string {
@@ -176,7 +175,7 @@ func parameterToString(obj interface{}, collectionFormat string) string {
 	return fmt.Sprintf("%v", obj)
 }
 
-// callAPI do the request. 
+// callAPI do the request.
 func (c *APIClient) callAPI(request *http.Request) (resp *http.Response, err error) {
 
 	// log request
@@ -256,11 +255,11 @@ func (c *APIClient) NewContextWithToken(ctx context.Context) (ctxWithToken conte
 		return nil, err
 	}
 
-	return context.WithValue(ctx, ContextAccessToken, result.AccessToken), nil
+	return context.WithValue(ctx, models.ContextAccessToken, result.AccessToken), nil
 }
 
 // prepareRequest build the request
-func (c *APIClient) prepareRequest (
+func (c *APIClient) prepareRequest(
 	ctx context.Context,
 	path string, method string,
 	postBody interface{},
@@ -306,7 +305,7 @@ func (c *APIClient) prepareRequest (
 				}
 			}
 		}
-		
+
 		for fileName, fileBytes := range files {
 			if len(fileBytes) > 0 && fileName != "" {
 				w.Boundary()
@@ -320,7 +319,7 @@ func (c *APIClient) prepareRequest (
 				}
 			}
 		}
-		
+
 		// Set Content-Length
 		headerParams["Content-Length"] = fmt.Sprintf("%d", body.Len())
 		w.Close()
@@ -361,7 +360,7 @@ func (c *APIClient) prepareRequest (
 		}
 		localVarRequest.Header = headers
 	}
-	
+
 	if ctx != nil {
 		// add context to the request
 		localVarRequest = localVarRequest.WithContext(ctx)
@@ -369,7 +368,7 @@ func (c *APIClient) prepareRequest (
 		// Walk through any authentication.
 
 		// OAuth2 authentication
-		if tok, ok := ctx.Value(ContextOAuth2).(oauth2.TokenSource); ok {
+		if tok, ok := ctx.Value(models.ContextOAuth2).(oauth2.TokenSource); ok {
 			// We were able to grab an oauth2 token from the context
 			var latestToken *oauth2.Token
 			if latestToken, err = tok.Token(); err != nil {
@@ -380,23 +379,22 @@ func (c *APIClient) prepareRequest (
 		}
 
 		// Basic HTTP Authentication
-		if auth, ok := ctx.Value(ContextBasicAuth).(BasicAuth); ok {
+		if auth, ok := ctx.Value(models.ContextBasicAuth).(models.BasicAuth); ok {
 			localVarRequest.SetBasicAuth(auth.UserName, auth.Password)
 		}
 
 		// AccessToken Authentication
-		if auth, ok := ctx.Value(ContextAccessToken).(string); ok {
-			localVarRequest.Header.Add("Authorization", "Bearer " + auth)
+		if auth, ok := ctx.Value(models.ContextAccessToken).(string); ok {
+			localVarRequest.Header.Add("Authorization", "Bearer "+auth)
 		}
 	}
 
 	for header, value := range c.cfg.DefaultHeader {
 		localVarRequest.Header.Add(header, value)
 	}
-	
+
 	return localVarRequest, nil
 }
-
 
 // Add a file to the multipart request
 func addFile(w *multipart.Writer, fieldName, path string) error {
@@ -416,7 +414,7 @@ func addFile(w *multipart.Writer, fieldName, path string) error {
 }
 
 // Prevent trying to import "fmt"
-func reportError(format string, a ...interface{}) (error) {
+func reportError(format string, a ...interface{}) error {
 	return fmt.Errorf(format, a...)
 }
 
@@ -453,7 +451,7 @@ func setBody(body interface{}, contentType string) (bodyBuf *bytes.Buffer, err e
 func detectContentType(body interface{}) string {
 	contentType := "text/plain; charset=utf-8"
 	kind := reflect.TypeOf(body).Kind()
-	
+
 	switch kind {
 	case reflect.Struct, reflect.Map, reflect.Ptr:
 		contentType = "application/json; charset=utf-8"
@@ -469,7 +467,6 @@ func detectContentType(body interface{}) string {
 
 	return contentType
 }
-
 
 // Ripped from https://github.com/gregjones/httpcache/blob/master/httpcache.go
 type cacheControl map[string]string
@@ -493,7 +490,7 @@ func parseCacheControl(headers http.Header) cacheControl {
 }
 
 // CacheExpires helper function to determine remaining time before repeating a request.
-func CacheExpires(r *http.Response) (time.Time) {
+func CacheExpires(r *http.Response) time.Time {
 	// Figure out when the cache expires.
 	var expires time.Time
 	now, err := time.Parse(time.RFC1123, r.Header.Get("date"))
@@ -501,7 +498,7 @@ func CacheExpires(r *http.Response) (time.Time) {
 		return time.Now()
 	}
 	respCacheControl := parseCacheControl(r.Header)
-	
+
 	if maxAge, ok := respCacheControl["max-age"]; ok {
 		lifetime, err := time.ParseDuration(maxAge + "s")
 		if err != nil {
@@ -520,7 +517,22 @@ func CacheExpires(r *http.Response) (time.Time) {
 	return expires
 }
 
-func strlen(s string) (int) {
+func strlen(s string) int {
 	return utf8.RuneCountInString(s)
 }
 
+func CreateWordsApi(config *models.Configuration) (wordsApi *WordsApiService, ctxWithToken context.Context, err error) {
+	client, err := NewAPIClient(config)
+
+	if err != nil {
+		return nil, nil, err
+	}
+
+	ctx, err := client.NewContextWithToken(nil)
+
+	if err != nil {
+		return nil, nil, err
+	}
+
+	return client.WordsApi, ctx, err
+}

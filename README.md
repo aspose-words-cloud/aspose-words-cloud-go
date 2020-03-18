@@ -60,16 +60,15 @@ import (
 
 // init words cloud api
 config, _ := api.NewConfiguration("config.json")
-client, _ := api.NewAPIClient(config)
-ctx, _ := client.NewContextWithToken(nil)
+wordsApi, ctx, _ := api.CreateWordsApi(config)
 
 // upload test.docx to a cloud
 // remote.docx is a name in the cloud
 file, _ := os.Open("test.docx")
-client.WordsApi.UploadFile(ctx, file, "remote.docx", nil)
+wordsApi.UploadFile(ctx, file, "remote.docx", nil)
 
 // get a text for the first paragraph of the first section
-result, _, _ := client.WordsApi.GetParagraphs(ctx, "remote.docx", "sections/0", nil)
+result, _, _ := wordsApi.GetParagraphs(ctx, "remote.docx", "sections/0", nil)
 
 fmt.Println(result.Paragraphs.ParagraphLinkList[0].Text)
 ```
