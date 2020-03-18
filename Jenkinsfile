@@ -23,7 +23,7 @@ node('windows2019') {
 				}
 				try {
 					bat 'mkdir testResults'
-					bat 'docker run -v %cd%:c:/sdk -w="c:/sdk" --rm -t golang:1.14.0-windowsservercore-1809 go test ./tests/... -v 2>&1 | utils\\go-junit-report > testResults\\tests.xml'
+					bat 'docker run -v %cd%:c:/sdk -w="c:/sdk" --rm -t golang:1.14.0-windowsservercore-1809 go test ./tests/... -v 2>&1 | utils\\go-junit-report -set-exit-code > testResults\\tests.xml'
 				} 
 				finally {
 					junit '**\\testResults\\tests.xml'
