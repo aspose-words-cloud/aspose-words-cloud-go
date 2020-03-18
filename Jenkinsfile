@@ -21,7 +21,12 @@ node('windows2019') {
 					def apiUrl = params.apiUrl
 					bat "echo {\"AppSid\":\"%AppSid%\",\"AppKey\":\"%AppKey%\",\"BaseUrl\":\"%apiUrl%\" } > config.json"
 				}
-				bat 'docker run -v %cd%:c:/sdk -w="c:/sdk" --rm -t golang:1.14.0-windowsservercore-1809 go test ./... -v'
+				try {
+					bat 'docker run -v %cd%:c:/sdk -w="c:/sdk" --rm -t golang:1.14.0-windowsservercore-1809 go test ./tests/... -v 2>&1 | utils\\go-junit-report > testResults\\tests.xml'
+				} 
+				finally {
+					junit '**\\testResults\\tests.xml'
+				}
 			}
 		}
 	} finally {
