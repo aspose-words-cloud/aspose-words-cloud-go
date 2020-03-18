@@ -125,11 +125,11 @@ func TestDebugMode(t *testing.T) {
 	success := " 200 OK"
 
 	if !strings.Contains(logData, url) {
-		t.Errorf("Output doesn't contain the string '%s'", url)
+		t.Errorf("%s doesn't contain the string '%s'", logData, url)
 	}
 
 	if !strings.Contains(logData, success) {
-		t.Errorf("Output doesn't contain the string '%s'", success)
+		t.Errorf("%s doesn't contain the string '%s'", logData, success)
 	}
 }
 
