@@ -204,3 +204,14 @@ func TestResetCache(t *testing.T) {
 		t.Error(err)
 	}
 }
+
+func TestCreateWordsApi(t *testing.T) {
+	config := ReadConfiguration(t)
+	wordsApi, ctx, _ := api.CreateWordsApi(config)
+
+	_, err := wordsApi.ResetCache(ctx)
+
+	if err != nil {
+		t.Error(err)
+	}
+}
