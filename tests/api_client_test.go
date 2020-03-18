@@ -32,11 +32,11 @@ func TestBaseUrl(t *testing.T) {
 	config := models.Configuration{
 		AppKey:  "x",
 		AppSid:  "x",
-		BaseUrl: "http://localhost",
+		BaseUrl: "x",
 	}
 	_, err := api.NewAPIClient(&config)
 
-	if err != nil {
+	if err == nil {
 		t.Error(err)
 	}
 }
