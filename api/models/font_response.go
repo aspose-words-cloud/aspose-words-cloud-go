@@ -25,15 +25,17 @@
 
 package models
 
-// This response should be returned by the service when handling: GET https://api.aspose.cloud/v4.0/words/Test.doc/paragraphs/{0}/runs/{1}/font.
+
+
+// This response should be returned by the service when handling: GET http://api.aspose.com/v4.0/words/Test.doc/paragraphs/{0}/runs/{1}/font.
 type FontResponse struct {
 
 	// Gets or sets request Id.
 	RequestId string `json:"RequestId,omitempty"`
 
-	// Gets or sets font.
 	Font *Font `json:"Font,omitempty"`
 }
+
 type IFontResponse interface {
 	IsFontResponse() bool
 }
@@ -43,4 +45,3 @@ func (FontResponse) IsFontResponse() bool {
 func (FontResponse) IsWordsResponse() bool {
 	return true;
 }
-

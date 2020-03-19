@@ -25,15 +25,17 @@
 
 package models
 
+
+
 // Represents drawing objects collection DTO.
 type DrawingObjectCollection struct {
 
-	// Gets or sets link to the document.
 	Link *WordsApiLink `json:"link,omitempty"`
 
 	// Gets or sets collection of DrawingObjects links.
 	List []LinkElement `json:"List,omitempty"`
 }
+
 type IDrawingObjectCollection interface {
 	IsDrawingObjectCollection() bool
 }
@@ -43,4 +45,3 @@ func (DrawingObjectCollection) IsDrawingObjectCollection() bool {
 func (DrawingObjectCollection) IsLinkElement() bool {
 	return true;
 }
-

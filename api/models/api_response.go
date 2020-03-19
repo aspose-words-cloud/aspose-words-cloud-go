@@ -22,7 +22,6 @@
 * SOFTWARE.
 */
 
-
 package models
 
 import (
@@ -57,3 +56,4 @@ func NewAPIResponseWithError(errorMessage string) *APIResponse {
 	response := &APIResponse{Message: errorMessage}
 	return response
 }
+

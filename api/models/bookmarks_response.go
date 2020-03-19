@@ -25,15 +25,17 @@
 
 package models
 
+
+
 // This response should be returned by the service when handling:  GET bookmarks.
 type BookmarksResponse struct {
 
 	// Gets or sets request Id.
 	RequestId string `json:"RequestId,omitempty"`
 
-	// Gets or sets bookmarks which are contained in document.
 	Bookmarks *Bookmarks `json:"Bookmarks,omitempty"`
 }
+
 type IBookmarksResponse interface {
 	IsBookmarksResponse() bool
 }
@@ -43,4 +45,3 @@ func (BookmarksResponse) IsBookmarksResponse() bool {
 func (BookmarksResponse) IsWordsResponse() bool {
 	return true;
 }
-

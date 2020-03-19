@@ -25,10 +25,11 @@
 
 package models
 
+
+
 // Hyperlink element.
 type Hyperlink struct {
 
-	// Gets or sets link to the document.
 	Link *WordsApiLink `json:"link,omitempty"`
 
 	// Gets or sets hypelink's display text.
@@ -37,6 +38,7 @@ type Hyperlink struct {
 	// Gets or sets value.
 	Value string `json:"Value,omitempty"`
 }
+
 type IHyperlink interface {
 	IsHyperlink() bool
 }
@@ -46,4 +48,3 @@ func (Hyperlink) IsHyperlink() bool {
 func (Hyperlink) IsLinkElement() bool {
 	return true;
 }
-

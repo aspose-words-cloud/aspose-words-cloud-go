@@ -25,6 +25,8 @@
 
 package models
 
+
+
 // Provides information for the words api resource link.
 type WordsApiLink struct {
 
@@ -40,6 +42,7 @@ type WordsApiLink struct {
 	// Gets or sets the \"title\" attribute conveys human-readable information about the link.  The content of the \"title\" attribute is Language-Sensitive.
 	Title string `json:"Title,omitempty"`
 }
+
 type IWordsApiLink interface {
 	IsWordsApiLink() bool
 }
@@ -49,4 +52,3 @@ func (WordsApiLink) IsWordsApiLink() bool {
 func (WordsApiLink) IsLink() bool {
 	return true;
 }
-

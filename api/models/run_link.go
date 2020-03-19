@@ -25,18 +25,20 @@
 
 package models
 
+
+
 // Run link element.
 type RunLink struct {
-
-	// Gets or sets link to the document.
-	Link *WordsApiLink `json:"link,omitempty"`
 
 	// Gets or sets node id.
 	NodeId string `json:"NodeId,omitempty"`
 
+	Link *WordsApiLink `json:"link,omitempty"`
+
 	// Gets or sets run's text.
 	Text string `json:"Text,omitempty"`
 }
+
 type IRunLink interface {
 	IsRunLink() bool
 }
@@ -46,4 +48,3 @@ func (RunLink) IsRunLink() bool {
 func (RunLink) IsNodeLink() bool {
 	return true;
 }
-

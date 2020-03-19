@@ -25,15 +25,17 @@
 
 package models
 
+
+
 // Represents DTO for collection of fields.
 type FieldCollection struct {
 
-	// Gets or sets link to the document.
 	Link *WordsApiLink `json:"link,omitempty"`
 
 	// Gets or sets collection of fields.
 	List []Field `json:"List,omitempty"`
 }
+
 type IFieldCollection interface {
 	IsFieldCollection() bool
 }
@@ -43,4 +45,3 @@ func (FieldCollection) IsFieldCollection() bool {
 func (FieldCollection) IsLinkElement() bool {
 	return true;
 }
-

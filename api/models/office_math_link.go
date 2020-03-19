@@ -25,15 +25,17 @@
 
 package models
 
+
+
 // OfficeMath object link element.
 type OfficeMathLink struct {
 
-	// Gets or sets link to the document.
-	Link *WordsApiLink `json:"link,omitempty"`
-
 	// Gets or sets node id.
 	NodeId string `json:"NodeId,omitempty"`
+
+	Link *WordsApiLink `json:"link,omitempty"`
 }
+
 type IOfficeMathLink interface {
 	IsOfficeMathLink() bool
 }
@@ -43,4 +45,3 @@ func (OfficeMathLink) IsOfficeMathLink() bool {
 func (OfficeMathLink) IsNodeLink() bool {
 	return true;
 }
-

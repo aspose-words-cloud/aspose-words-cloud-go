@@ -25,10 +25,11 @@
 
 package models
 
+
+
 // Represents the page setup properties of a section.             
 type PageSetup struct {
 
-	// Gets or sets link to the document.
 	Link *WordsApiLink `json:"link,omitempty"`
 
 	// Gets or sets specifies that this section contains bidirectional (complex scripts) text.             
@@ -109,7 +110,7 @@ type PageSetup struct {
 	// Gets or sets returns or sets the type of section break for the specified object.             
 	SectionStart string `json:"SectionStart,omitempty"`
 
-	// Gets or sets true if endnotes are printed at the end of the next section that doesn't suppress endnotes.                 Suppressed endnotes are printed before the endnotes in that section.             
+	// Gets or sets true if endnotes are printed at the end of the next section that doesn't suppress endnotes. Suppressed endnotes are printed before the endnotes in that section.             
 	SuppressEndnotes bool `json:"SuppressEndnotes,omitempty"`
 
 	// Gets or sets returns or sets the distance (in points) between the top edge of the page and the top boundary of the body text.             
@@ -118,6 +119,7 @@ type PageSetup struct {
 	// Gets or sets returns or sets the vertical alignment of text on each page in a document or section.             
 	VerticalAlignment string `json:"VerticalAlignment,omitempty"`
 }
+
 type IPageSetup interface {
 	IsPageSetup() bool
 }
@@ -127,4 +129,3 @@ func (PageSetup) IsPageSetup() bool {
 func (PageSetup) IsLinkElement() bool {
 	return true;
 }
-

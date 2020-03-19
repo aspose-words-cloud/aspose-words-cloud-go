@@ -25,12 +25,14 @@
 
 package models
 
+
+
 // Comment link.
 type CommentLink struct {
 
-	// Gets or sets link to the document.
 	Link *WordsApiLink `json:"link,omitempty"`
 }
+
 type ICommentLink interface {
 	IsCommentLink() bool
 }
@@ -40,4 +42,3 @@ func (CommentLink) IsCommentLink() bool {
 func (CommentLink) IsLinkElement() bool {
 	return true;
 }
-

@@ -25,15 +25,17 @@
 
 package models
 
+
+
 // Collection of links to sections.
 type SectionLinkCollection struct {
 
-	// Gets or sets link to the document.
 	Link *WordsApiLink `json:"link,omitempty"`
 
 	// Gets or sets collection of section's links.
 	SectionLinkList []SectionLink `json:"SectionLinkList,omitempty"`
 }
+
 type ISectionLinkCollection interface {
 	IsSectionLinkCollection() bool
 }
@@ -43,4 +45,3 @@ func (SectionLinkCollection) IsSectionLinkCollection() bool {
 func (SectionLinkCollection) IsLinkElement() bool {
 	return true;
 }
-

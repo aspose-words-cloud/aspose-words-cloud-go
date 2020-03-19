@@ -25,15 +25,17 @@
 
 package models
 
+
+
 // Reference to node.
 type NodeLink struct {
 
-	// Gets or sets link to the document.
 	Link *WordsApiLink `json:"link,omitempty"`
 
 	// Gets or sets node id.
 	NodeId string `json:"NodeId,omitempty"`
 }
+
 type INodeLink interface {
 	IsNodeLink() bool
 }
@@ -43,4 +45,3 @@ func (NodeLink) IsNodeLink() bool {
 func (NodeLink) IsLinkElement() bool {
 	return true;
 }
-

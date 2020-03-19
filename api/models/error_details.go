@@ -29,6 +29,7 @@ import (
 	"time"
 )
 
+
 // The error details
 type ErrorDetails struct {
 
@@ -36,12 +37,12 @@ type ErrorDetails struct {
 	RequestId string `json:"RequestId,omitempty"`
 
 	// Error datetime.
-	ErrorDateTime time.Time `json:"ErrorDateTime"`
+	ErrorDateTime time.Time `json:"ErrorDateTime,omitempty"`
 }
+
 type IErrorDetails interface {
 	IsErrorDetails() bool
 }
 func (ErrorDetails) IsErrorDetails() bool {
 	return true;
 }
-

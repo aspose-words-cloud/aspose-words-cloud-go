@@ -25,15 +25,17 @@
 
 package models
 
-// This response should be returned by the service when handling: GET https://api.aspose.cloud/v4.0/words/Test.doc/paragraphs/{0}/runs/{1}.
+
+
+// This response should be returned by the service when handling: GET http://api.aspose.com/v4.0/words/Test.doc/paragraphs/{0}/runs/{1}.
 type RunResponse struct {
 
 	// Gets or sets request Id.
 	RequestId string `json:"RequestId,omitempty"`
 
-	// Gets or sets run.
 	Run *Run `json:"Run,omitempty"`
 }
+
 type IRunResponse interface {
 	IsRunResponse() bool
 }
@@ -43,4 +45,3 @@ func (RunResponse) IsRunResponse() bool {
 func (RunResponse) IsWordsResponse() bool {
 	return true;
 }
-

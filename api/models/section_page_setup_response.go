@@ -25,15 +25,17 @@
 
 package models
 
-// This response should be returned by the service when handling: GET https://api.aspose.cloud/v4.0/words/Test.doc/sections/{0}/PageSetup.
+
+
+// This response should be returned by the service when handling: GET http://api.aspose.com/v4.0/words/Test.doc/sections/{0}/PageSetup.
 type SectionPageSetupResponse struct {
 
 	// Gets or sets request Id.
 	RequestId string `json:"RequestId,omitempty"`
 
-	// Gets or sets section.
 	PageSetup *PageSetup `json:"PageSetup,omitempty"`
 }
+
 type ISectionPageSetupResponse interface {
 	IsSectionPageSetupResponse() bool
 }
@@ -43,4 +45,3 @@ func (SectionPageSetupResponse) IsSectionPageSetupResponse() bool {
 func (SectionPageSetupResponse) IsWordsResponse() bool {
 	return true;
 }
-

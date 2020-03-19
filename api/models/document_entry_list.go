@@ -25,16 +25,18 @@
 
 package models
 
+
+
 // Represents a list of documents which will be appended to the original resource document.
 type DocumentEntryList struct {
 
 	// Gets or sets list of documents.
 	DocumentEntries []DocumentEntry `json:"DocumentEntries,omitempty"`
 }
+
 type IDocumentEntryList interface {
 	IsDocumentEntryList() bool
 }
 func (DocumentEntryList) IsDocumentEntryList() bool {
 	return true;
 }
-

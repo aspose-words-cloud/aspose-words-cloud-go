@@ -25,18 +25,20 @@
 
 package models
 
+
+
 // Field link.
 type FieldLink struct {
-
-	// Gets or sets link to the document.
-	Link *WordsApiLink `json:"link,omitempty"`
 
 	// Gets or sets node id.
 	NodeId string `json:"NodeId,omitempty"`
 
+	Link *WordsApiLink `json:"link,omitempty"`
+
 	// Gets or sets field code.
 	FieldCode string `json:"FieldCode,omitempty"`
 }
+
 type IFieldLink interface {
 	IsFieldLink() bool
 }
@@ -46,4 +48,3 @@ func (FieldLink) IsFieldLink() bool {
 func (FieldLink) IsNodeLink() bool {
 	return true;
 }
-

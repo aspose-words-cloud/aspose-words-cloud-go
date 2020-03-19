@@ -25,6 +25,8 @@
 
 package models
 
+
+
 // container class for rtf save options.
 type RtfSaveOptionsData struct {
 
@@ -46,7 +48,7 @@ type RtfSaveOptionsData struct {
 	// Gets or sets a value determining whether the Aspose.Words.Properties.BuiltInDocumentProperties.LastSavedTime property is updated before saving.
 	UpdateLastSavedTimeProperty bool `json:"UpdateLastSavedTimeProperty,omitempty"`
 
-	// Gets or sets value determining whether content of  is updated before saving.
+	// Gets or sets value determining whether content of StructuredDocumentTag is updated before saving.
 	UpdateSdtContent bool `json:"UpdateSdtContent,omitempty"`
 
 	// Gets or sets a value determining if fields should be updated before saving the document to a fixed page format. Default value for this property is. true
@@ -60,10 +62,8 @@ type RtfSaveOptionsData struct {
 
 	// Gets or sets specifies whether or not use pretty formats output.
 	PrettyFormat bool `json:"PrettyFormat,omitempty"`
-
-	// Gets or sets a value indicating whether when true all images will be saved as WMF. This option might help to avoid WordPad warning messages.
-	SaveImagesAsWmf bool `json:"SaveImagesAsWmf,omitempty"`
 }
+
 type IRtfSaveOptionsData interface {
 	IsRtfSaveOptionsData() bool
 }
@@ -73,4 +73,3 @@ func (RtfSaveOptionsData) IsRtfSaveOptionsData() bool {
 func (RtfSaveOptionsData) IsSaveOptionsData() bool {
 	return true;
 }
-

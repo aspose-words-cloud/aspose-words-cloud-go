@@ -25,15 +25,17 @@
 
 package models
 
+
+
 // Represents DTO for collection of formfields.
 type FormFieldCollection struct {
 
-	// Gets or sets link to the document.
 	Link *WordsApiLink `json:"link,omitempty"`
 
 	// Gets or sets collection of formfields.
 	List []FormField `json:"List,omitempty"`
 }
+
 type IFormFieldCollection interface {
 	IsFormFieldCollection() bool
 }
@@ -43,4 +45,3 @@ func (FormFieldCollection) IsFormFieldCollection() bool {
 func (FormFieldCollection) IsLinkElement() bool {
 	return true;
 }
-

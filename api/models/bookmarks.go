@@ -25,15 +25,17 @@
 
 package models
 
+
+
 // Represents an array of bookmarks.
 type Bookmarks struct {
 
-	// Gets or sets link to the document.
 	Link *WordsApiLink `json:"link,omitempty"`
 
 	// Gets or sets array of bookmarks.
 	BookmarkList []Bookmark `json:"BookmarkList,omitempty"`
 }
+
 type IBookmarks interface {
 	IsBookmarks() bool
 }
@@ -43,4 +45,3 @@ func (Bookmarks) IsBookmarks() bool {
 func (Bookmarks) IsLinkElement() bool {
 	return true;
 }
-

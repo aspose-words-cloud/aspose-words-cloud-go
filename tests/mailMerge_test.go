@@ -26,7 +26,7 @@ package api_test
 
 import (
 	"io/ioutil"
-	"os"
+	//"os"
 	"path"
 	"path/filepath"
 	"testing"
@@ -57,7 +57,7 @@ func TestExecuteMailMerge(t *testing.T) {
 	}
 }
 
-func TestExecuteMailMergeOnline(t *testing.T) {
+/*func TestExecuteMailMergeOnline(t *testing.T) {
 
 	localFolder := filepath.Join("DocumentActions", "MailMerge")
 	localTemplatePath := GetLocalPath(localFolder, "SampleMailMergeTemplate.docx")
@@ -81,4 +81,4 @@ func TestExecuteMailMergeOnline(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
-}
+}*/

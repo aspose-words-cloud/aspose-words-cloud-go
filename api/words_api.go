@@ -22,7 +22,6 @@
 * SOFTWARE.
 */
 
-
 package api
 
 import (
@@ -33,7 +32,7 @@ import (
 	"os"
 	"io/ioutil"
 	"encoding/json"
-	"fmt"
+    "fmt"
 	"github.com/aspose-words-cloud/aspose-words-cloud-go/api/models"
 )
 
@@ -151,7 +150,7 @@ func (a *WordsApiService) AcceptAllRevisions(ctx context.Context, name string, l
 /* WordsApiService Appends documents to original document.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name Original document name.
- @param documentList with a list of documents to append.            
+ @param documentList DocumentEntryList with a list of documents to append.
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "folder" (string) Original document folder.
      @param "storage" (string) Original document storage.
@@ -460,7 +459,7 @@ func (a *WordsApiService) ClassifyDocument(ctx context.Context, documentName str
 /* WordsApiService Compares document with original document.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name Original document name.
- @param compareData with a document to compare.            
+ @param compareData CompareData with a document to compare.
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "folder" (string) Original document folder.
      @param "storage" (string) Original document storage.
@@ -571,7 +570,7 @@ func (a *WordsApiService) CompareDocument(ctx context.Context, name string, comp
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "storage" (string) Original document storage.
      @param "outPath" (string) Path for saving operation result to the local storage.
-     @param "fileNameFieldValue" (string) This file name will be used when resulting document has dynamic field for document file name {filename}. If it is not set, \&quot;sourceFilename\&quot; will be used instead. 
+     @param "fileNameFieldValue" (string) This file name will be used when resulting document has dynamic field for document file name {filename}. If it is not set, &quot;sourceFilename&quot; will be used instead. 
      @param "fontsLocation" (string) Folder in filestorage with custom fonts.
  @return *os.File*/
 func (a *WordsApiService) ConvertDocument(ctx context.Context, document *os.File, format string, localVarOptionals map[string]interface{}) (  *http.Response, error) {
@@ -4752,7 +4751,7 @@ func (a *WordsApiService) ExecuteMailMerge(ctx context.Context, name string, loc
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "withRegions" (bool) With regions flag.
      @param "cleanup" (string) Clean up options.
-     @param "documentFileName" (string) This file name will be used when resulting document has dynamic field for document file name {filename}. If it is not setted, \&quot;template\&quot; will be used instead. 
+     @param "documentFileName" (string) This file name will be used when resulting document has dynamic field for document file name {filename}. If it is not setted, &quot;template&quot; will be used instead. 
  @return *os.File*/
 func (a *WordsApiService) ExecuteMailMergeOnline(ctx context.Context, template *os.File, data *os.File, localVarOptionals map[string]interface{}) (  *http.Response, error) {
 	var (
@@ -6386,7 +6385,7 @@ func (a *WordsApiService) GetDocumentDrawingObjectsWithoutNodePath(ctx context.C
      @param "storage" (string) Original document storage.
      @param "loadEncoding" (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
      @param "password" (string) Password for opening an encrypted document.
-     @param "useNonMergeFields" (bool) If true, result includes \&quot;mustache\&quot; field names.
+     @param "useNonMergeFields" (bool) If true, result includes &quot;mustache&quot; field names.
  @return FieldNamesResponse*/
 func (a *WordsApiService) GetDocumentFieldNames(ctx context.Context, name string, localVarOptionals map[string]interface{}) ( models.FieldNamesResponse,  *http.Response, error) {
 	var (
@@ -7060,9 +7059,9 @@ func (a *WordsApiService) GetDocumentProtection(ctx context.Context, name string
      @param "storage" (string) Original document storage.
      @param "loadEncoding" (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
      @param "password" (string) Password for opening an encrypted document.
-     @param "includeComments" (bool) Support including/excluding comments from the WordCount. Default value is \&quot;false\&quot;.
-     @param "includeFootnotes" (bool) Support including/excluding footnotes from the WordCount. Default value is \&quot;false\&quot;.
-     @param "includeTextInShapes" (bool) Support including/excluding shape&#39;s text from the WordCount. Default value is \&quot;false\&quot;.
+     @param "includeComments" (bool) Support including/excluding comments from the WordCount. Default value is &quot;false&quot;.
+     @param "includeFootnotes" (bool) Support including/excluding footnotes from the WordCount. Default value is &quot;false&quot;.
+     @param "includeTextInShapes" (bool) Support including/excluding shape&#39;s text from the WordCount. Default value is &quot;false&quot;.
  @return StatDataResponse*/
 func (a *WordsApiService) GetDocumentStatistics(ctx context.Context, name string, localVarOptionals map[string]interface{}) ( models.StatDataResponse,  *http.Response, error) {
 	var (
@@ -9856,15 +9855,15 @@ func (a *WordsApiService) GetParagraphsWithoutNodePath(ctx context.Context, name
 /* WordsApiService Gets the text from the range.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document.
- @param rangeStartIdentifier The range start identifier. Identifier is the value of the \&quot;nodeId\&quot; field, which every document node has, extended with the prefix \&quot;id\&quot;. It looks like \&quot;id0.0.7\&quot;. Also values like \&quot;image5\&quot; and \&quot;table3\&quot; can be used as an identifier for images and tables, where the number is an index of the image/table.
- @param rangeEndIdentifier The range end identifier.
+ @param rangeStartIdentifier The range start identifier. Identifier is the value of the &quot;nodeId&quot; field, which every document node has, extended with the prefix &quot;id&quot;. It looks like &quot;id0.0.7&quot;. Also values like &quot;image5&quot; and &quot;table3&quot; can be used as an identifier for images and tables, where the number is an index of the image/table.
  @param optional (nil or map[string]interface{}) with one or more of:
+     @param "rangeEndIdentifier" (string) The range end identifier.
      @param "folder" (string) Original document folder.
      @param "storage" (string) Original document storage.
      @param "loadEncoding" (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
      @param "password" (string) Password for opening an encrypted document.
  @return RangeTextResponse*/
-func (a *WordsApiService) GetRangeText(ctx context.Context, name string, rangeStartIdentifier string, rangeEndIdentifier string, localVarOptionals map[string]interface{}) ( models.RangeTextResponse,  *http.Response, error) {
+func (a *WordsApiService) GetRangeText(ctx context.Context, name string, rangeStartIdentifier string, localVarOptionals map[string]interface{}) ( models.RangeTextResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
@@ -9876,12 +9875,15 @@ func (a *WordsApiService) GetRangeText(ctx context.Context, name string, rangeSt
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/range/{rangeStartIdentifier}/{rangeEndIdentifier}"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"rangeStartIdentifier"+"}", fmt.Sprintf("%v", rangeStartIdentifier), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"rangeEndIdentifier"+"}", fmt.Sprintf("%v", rangeEndIdentifier), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"rangeEndIdentifier"+"}", fmt.Sprintf("%v", localVarOptionals["rangeEndIdentifier"]), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if err := typeCheckParameter(localVarOptionals["rangeEndIdentifier"], "string", "rangeEndIdentifier"); err != nil {
+		return successPayload, nil, err
+	}
 	if err := typeCheckParameter(localVarOptionals["folder"], "string", "folder"); err != nil {
 		return successPayload, nil, err
 	}
@@ -11940,7 +11942,7 @@ func (a *WordsApiService) InsertDrawingObjectWithoutNodePath(ctx context.Context
      @param "destFileName" (string) Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.
      @param "revisionAuthor" (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
      @param "revisionDateTime" (string) The date and time to use for revisions.
-     @param "insertBeforeNode" (string) Field will be inserted before node with id&#x3D;\&quot;nodeId\&quot;.
+     @param "insertBeforeNode" (string) Field will be inserted before node with id&#x3D;&quot;nodeId&quot;.
  @return FieldResponse*/
 func (a *WordsApiService) InsertField(ctx context.Context, name string, field models.IField, nodePath string, localVarOptionals map[string]interface{}) ( models.FieldResponse,  *http.Response, error) {
 	var (
@@ -12069,7 +12071,7 @@ func (a *WordsApiService) InsertField(ctx context.Context, name string, field mo
      @param "destFileName" (string) Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.
      @param "revisionAuthor" (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
      @param "revisionDateTime" (string) The date and time to use for revisions.
-     @param "insertBeforeNode" (string) Field will be inserted before node with id&#x3D;\&quot;nodeId\&quot;.
+     @param "insertBeforeNode" (string) Field will be inserted before node with id&#x3D;&quot;nodeId&quot;.
  @return FieldResponse*/
 func (a *WordsApiService) InsertFieldWithoutNodePath(ctx context.Context, name string, field models.IField, localVarOptionals map[string]interface{}) ( models.FieldResponse,  *http.Response, error) {
 	var (
@@ -12813,7 +12815,7 @@ func (a *WordsApiService) InsertHeaderFooter(ctx context.Context, name string, h
 /* WordsApiService Inserts document page numbers.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name A document name.
- @param pageNumber with the page numbers settings.
+ @param pageNumber PageNumber with the page numbers settings.
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "folder" (string) Original document folder.
      @param "storage" (string) Original document storage.
@@ -13195,6 +13197,7 @@ func (a *WordsApiService) InsertRun(ctx context.Context, name string, paragraphP
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
  @param nodePath Path to the node, which contains tables.
+ @param table Table parameters/.
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "folder" (string) Original document folder.
      @param "storage" (string) Original document storage.
@@ -13203,9 +13206,8 @@ func (a *WordsApiService) InsertRun(ctx context.Context, name string, paragraphP
      @param "destFileName" (string) Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.
      @param "revisionAuthor" (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
      @param "revisionDateTime" (string) The date and time to use for revisions.
-     @param "table" (TableInsert) Table parameters/.
  @return TableResponse*/
-func (a *WordsApiService) InsertTable(ctx context.Context, name string, nodePath string, localVarOptionals map[string]interface{}) ( models.TableResponse,  *http.Response, error) {
+func (a *WordsApiService) InsertTable(ctx context.Context, name string, nodePath string, table models.ITableInsert, localVarOptionals map[string]interface{}) ( models.TableResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
@@ -13286,9 +13288,7 @@ func (a *WordsApiService) InsertTable(ctx context.Context, name string, nodePath
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	// body params
-	if localVarTempParam, localVarOk := localVarOptionals["table"].(models.TableInsert); localVarOk {
-		localVarPostBody = &localVarTempParam
-	}
+	localVarPostBody = &table
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
@@ -13320,6 +13320,7 @@ func (a *WordsApiService) InsertTable(ctx context.Context, name string, nodePath
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
  @param tableRowPath Path to table row.
+ @param cell Table cell parameters/.
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "folder" (string) Original document folder.
      @param "storage" (string) Original document storage.
@@ -13328,9 +13329,8 @@ func (a *WordsApiService) InsertTable(ctx context.Context, name string, nodePath
      @param "destFileName" (string) Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.
      @param "revisionAuthor" (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
      @param "revisionDateTime" (string) The date and time to use for revisions.
-     @param "cell" (TableCellInsert) Table cell parameters/.
  @return TableCellResponse*/
-func (a *WordsApiService) InsertTableCell(ctx context.Context, name string, tableRowPath string, localVarOptionals map[string]interface{}) ( models.TableCellResponse,  *http.Response, error) {
+func (a *WordsApiService) InsertTableCell(ctx context.Context, name string, tableRowPath string, cell models.ITableCellInsert, localVarOptionals map[string]interface{}) ( models.TableCellResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
@@ -13411,9 +13411,7 @@ func (a *WordsApiService) InsertTableCell(ctx context.Context, name string, tabl
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	// body params
-	if localVarTempParam, localVarOk := localVarOptionals["cell"].(models.TableCellInsert); localVarOk {
-		localVarPostBody = &localVarTempParam
-	}
+	localVarPostBody = &cell
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
@@ -13445,6 +13443,7 @@ func (a *WordsApiService) InsertTableCell(ctx context.Context, name string, tabl
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
  @param tablePath Path to table.
+ @param row Table row parameters/.
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "folder" (string) Original document folder.
      @param "storage" (string) Original document storage.
@@ -13453,9 +13452,8 @@ func (a *WordsApiService) InsertTableCell(ctx context.Context, name string, tabl
      @param "destFileName" (string) Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.
      @param "revisionAuthor" (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
      @param "revisionDateTime" (string) The date and time to use for revisions.
-     @param "row" (TableRowInsert) Table row parameters/.
  @return TableRowResponse*/
-func (a *WordsApiService) InsertTableRow(ctx context.Context, name string, tablePath string, localVarOptionals map[string]interface{}) ( models.TableRowResponse,  *http.Response, error) {
+func (a *WordsApiService) InsertTableRow(ctx context.Context, name string, tablePath string, row models.ITableRowInsert, localVarOptionals map[string]interface{}) ( models.TableRowResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
@@ -13536,9 +13534,7 @@ func (a *WordsApiService) InsertTableRow(ctx context.Context, name string, table
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	// body params
-	if localVarTempParam, localVarOk := localVarOptionals["row"].(models.TableRowInsert); localVarOk {
-		localVarPostBody = &localVarTempParam
-	}
+	localVarPostBody = &row
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
@@ -13569,6 +13565,7 @@ func (a *WordsApiService) InsertTableRow(ctx context.Context, name string, table
 /* WordsApiService Adds table to document, returns added table&#39;s data.             
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
+ @param table Table parameters/.
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "folder" (string) Original document folder.
      @param "storage" (string) Original document storage.
@@ -13577,9 +13574,8 @@ func (a *WordsApiService) InsertTableRow(ctx context.Context, name string, table
      @param "destFileName" (string) Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.
      @param "revisionAuthor" (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
      @param "revisionDateTime" (string) The date and time to use for revisions.
-     @param "table" (TableInsert) Table parameters/.
  @return TableResponse*/
-func (a *WordsApiService) InsertTableWithoutNodePath(ctx context.Context, name string, localVarOptionals map[string]interface{}) ( models.TableResponse,  *http.Response, error) {
+func (a *WordsApiService) InsertTableWithoutNodePath(ctx context.Context, name string, table models.ITableInsert, localVarOptionals map[string]interface{}) ( models.TableResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
@@ -13659,9 +13655,7 @@ func (a *WordsApiService) InsertTableWithoutNodePath(ctx context.Context, name s
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	// body params
-	if localVarTempParam, localVarOk := localVarOptionals["table"].(models.TableInsert); localVarOk {
-		localVarPostBody = &localVarTempParam
-	}
+	localVarPostBody = &table
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
@@ -13835,7 +13829,7 @@ func (a *WordsApiService) InsertWatermarkImage(ctx context.Context, name string,
 /* WordsApiService Inserts document watermark text.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
- @param watermarkText with the watermark data.            
+ @param watermarkText WatermarkText with the watermark data.             
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "folder" (string) Original document folder.
      @param "storage" (string) Original document storage.
@@ -14200,7 +14194,7 @@ func (a *WordsApiService) MoveFolder(ctx context.Context, destPath string, srcPa
 /* WordsApiService Protects document.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
- @param protectionRequest with protection settings.            
+ @param protectionRequest ProtectionRequest with protection settings.
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "folder" (string) Original document folder.
      @param "storage" (string) Original document storage.
@@ -14411,16 +14405,16 @@ func (a *WordsApiService) RejectAllRevisions(ctx context.Context, name string, l
 /* WordsApiService Removes the range from the document.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document.
- @param rangeStartIdentifier The range start identifier. Identifier is the value of the \&quot;nodeId\&quot; field, which every document node has, extended with the prefix \&quot;id\&quot;. It looks like \&quot;id0.0.7\&quot;. Also values like \&quot;image5\&quot; and \&quot;table3\&quot; can be used as an identifier for images and tables, where the number is an index of the image/table.
- @param rangeEndIdentifier The range end identifier.
+ @param rangeStartIdentifier The range start identifier. Identifier is the value of the &quot;nodeId&quot; field, which every document node has, extended with the prefix &quot;id&quot;. It looks like &quot;id0.0.7&quot;. Also values like &quot;image5&quot; and &quot;table3&quot; can be used as an identifier for images and tables, where the number is an index of the image/table.
  @param optional (nil or map[string]interface{}) with one or more of:
+     @param "rangeEndIdentifier" (string) The range end identifier.
      @param "folder" (string) Original document folder.
      @param "storage" (string) Original document storage.
      @param "loadEncoding" (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
      @param "password" (string) Password for opening an encrypted document.
      @param "destFileName" (string) Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.
  @return DocumentResponse*/
-func (a *WordsApiService) RemoveRange(ctx context.Context, name string, rangeStartIdentifier string, rangeEndIdentifier string, localVarOptionals map[string]interface{}) ( models.DocumentResponse,  *http.Response, error) {
+func (a *WordsApiService) RemoveRange(ctx context.Context, name string, rangeStartIdentifier string, localVarOptionals map[string]interface{}) ( models.DocumentResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody interface{}
@@ -14432,12 +14426,15 @@ func (a *WordsApiService) RemoveRange(ctx context.Context, name string, rangeSta
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/range/{rangeStartIdentifier}/{rangeEndIdentifier}"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"rangeStartIdentifier"+"}", fmt.Sprintf("%v", rangeStartIdentifier), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"rangeEndIdentifier"+"}", fmt.Sprintf("%v", rangeEndIdentifier), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"rangeEndIdentifier"+"}", fmt.Sprintf("%v", localVarOptionals["rangeEndIdentifier"]), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if err := typeCheckParameter(localVarOptionals["rangeEndIdentifier"], "string", "rangeEndIdentifier"); err != nil {
+		return successPayload, nil, err
+	}
 	if err := typeCheckParameter(localVarOptionals["folder"], "string", "folder"); err != nil {
 		return successPayload, nil, err
 	}
@@ -15445,7 +15442,7 @@ func (a *WordsApiService) RenderTableWithoutNodePath(ctx context.Context, name s
 /* WordsApiService Replaces document text.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
- @param replaceText with the replace operation settings.            
+ @param replaceText ReplaceTextResponse with the replace operation settings.
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "folder" (string) Original document folder.
      @param "storage" (string) Original document storage.
@@ -15566,17 +15563,17 @@ func (a *WordsApiService) ReplaceText(ctx context.Context, name string, replaceT
 /* WordsApiService Replaces the content in the range.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document.
- @param rangeStartIdentifier The range start identifier. Identifier is the value of the \&quot;nodeId\&quot; field, which every document node has, extended with the prefix \&quot;id\&quot;. It looks like \&quot;id0.0.7\&quot;. Also values like \&quot;image5\&quot; and \&quot;table3\&quot; can be used as an identifier for images and tables, where the number is an index of the image/table.
+ @param rangeStartIdentifier The range start identifier. Identifier is the value of the &quot;nodeId&quot; field, which every document node has, extended with the prefix &quot;id&quot;. It looks like &quot;id0.0.7&quot;. Also values like &quot;image5&quot; and &quot;table3&quot; can be used as an identifier for images and tables, where the number is an index of the image/table.
  @param rangeText Model with text for replacement.
- @param rangeEndIdentifier The range end identifier.
  @param optional (nil or map[string]interface{}) with one or more of:
+     @param "rangeEndIdentifier" (string) The range end identifier.
      @param "folder" (string) Original document folder.
      @param "storage" (string) Original document storage.
      @param "loadEncoding" (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
      @param "password" (string) Password for opening an encrypted document.
      @param "destFileName" (string) Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.
  @return DocumentResponse*/
-func (a *WordsApiService) ReplaceWithText(ctx context.Context, name string, rangeStartIdentifier string, rangeText models.IReplaceRange, rangeEndIdentifier string, localVarOptionals map[string]interface{}) ( models.DocumentResponse,  *http.Response, error) {
+func (a *WordsApiService) ReplaceWithText(ctx context.Context, name string, rangeStartIdentifier string, rangeText models.IReplaceRange, localVarOptionals map[string]interface{}) ( models.DocumentResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
@@ -15588,12 +15585,15 @@ func (a *WordsApiService) ReplaceWithText(ctx context.Context, name string, rang
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/range/{rangeStartIdentifier}/{rangeEndIdentifier}"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"rangeStartIdentifier"+"}", fmt.Sprintf("%v", rangeStartIdentifier), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"rangeEndIdentifier"+"}", fmt.Sprintf("%v", rangeEndIdentifier), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"rangeEndIdentifier"+"}", fmt.Sprintf("%v", localVarOptionals["rangeEndIdentifier"]), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if err := typeCheckParameter(localVarOptionals["rangeEndIdentifier"], "string", "rangeEndIdentifier"); err != nil {
+		return successPayload, nil, err
+	}
 	if err := typeCheckParameter(localVarOptionals["folder"], "string", "folder"); err != nil {
 		return successPayload, nil, err
 	}
@@ -15845,16 +15845,16 @@ func (a *WordsApiService) SaveAs(ctx context.Context, name string, saveOptionsDa
 /* WordsApiService Saves the selected range as a new document.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document.
- @param rangeStartIdentifier The range start identifier. Identifier is the value of the \&quot;nodeId\&quot; field, which every document node has, extended with the prefix \&quot;id\&quot;. It looks like \&quot;id0.0.7\&quot;. Also values like \&quot;image5\&quot; and \&quot;table3\&quot; can be used as an identifier for images and tables, where the number is an index of the image/table.
+ @param rangeStartIdentifier The range start identifier. Identifier is the value of the &quot;nodeId&quot; field, which every document node has, extended with the prefix &quot;id&quot;. It looks like &quot;id0.0.7&quot;. Also values like &quot;image5&quot; and &quot;table3&quot; can be used as an identifier for images and tables, where the number is an index of the image/table.
  @param documentParameters Parameters of a new document.
- @param rangeEndIdentifier The range end identifier.
  @param optional (nil or map[string]interface{}) with one or more of:
+     @param "rangeEndIdentifier" (string) The range end identifier.
      @param "folder" (string) Original document folder.
      @param "storage" (string) Original document storage.
      @param "loadEncoding" (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
      @param "password" (string) Password for opening an encrypted document.
  @return DocumentResponse*/
-func (a *WordsApiService) SaveAsRange(ctx context.Context, name string, rangeStartIdentifier string, documentParameters models.IRangeDocument, rangeEndIdentifier string, localVarOptionals map[string]interface{}) ( models.DocumentResponse,  *http.Response, error) {
+func (a *WordsApiService) SaveAsRange(ctx context.Context, name string, rangeStartIdentifier string, documentParameters models.IRangeDocument, localVarOptionals map[string]interface{}) ( models.DocumentResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
@@ -15866,12 +15866,15 @@ func (a *WordsApiService) SaveAsRange(ctx context.Context, name string, rangeSta
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/range/{rangeStartIdentifier}/{rangeEndIdentifier}/SaveAs"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"rangeStartIdentifier"+"}", fmt.Sprintf("%v", rangeStartIdentifier), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"rangeEndIdentifier"+"}", fmt.Sprintf("%v", rangeEndIdentifier), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"rangeEndIdentifier"+"}", fmt.Sprintf("%v", localVarOptionals["rangeEndIdentifier"]), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if err := typeCheckParameter(localVarOptionals["rangeEndIdentifier"], "string", "rangeEndIdentifier"); err != nil {
+		return successPayload, nil, err
+	}
 	if err := typeCheckParameter(localVarOptionals["folder"], "string", "folder"); err != nil {
 		return successPayload, nil, err
 	}
@@ -16413,7 +16416,7 @@ func (a *WordsApiService) SplitDocument(ctx context.Context, name string, localV
 /* WordsApiService Unprotects document.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
- @param protectionRequest with protection settings.            
+ @param protectionRequest ProtectionRequest with protection settings.
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "folder" (string) Original document folder.
      @param "storage" (string) Original document storage.
@@ -16520,7 +16523,7 @@ func (a *WordsApiService) UnprotectDocument(ctx context.Context, name string, pr
 /* WordsApiService Updates document bookmark.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
- @param bookmarkData with new bookmark data.            
+ @param bookmarkData BookmarkData with new bookmark data.
  @param bookmarkName The bookmark name.
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "folder" (string) Original document folder.
@@ -18377,6 +18380,7 @@ func (a *WordsApiService) UpdateSectionPageSetup(ctx context.Context, name strin
  @param name The document name.
  @param tableRowPath Path to table row.
  @param index Object index.
+ @param format The properties.
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "folder" (string) Original document folder.
      @param "storage" (string) Original document storage.
@@ -18385,9 +18389,8 @@ func (a *WordsApiService) UpdateSectionPageSetup(ctx context.Context, name strin
      @param "destFileName" (string) Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.
      @param "revisionAuthor" (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
      @param "revisionDateTime" (string) The date and time to use for revisions.
-     @param "format" (TableCellFormat) The properties.
  @return TableCellFormatResponse*/
-func (a *WordsApiService) UpdateTableCellFormat(ctx context.Context, name string, tableRowPath string, index int32, localVarOptionals map[string]interface{}) ( models.TableCellFormatResponse,  *http.Response, error) {
+func (a *WordsApiService) UpdateTableCellFormat(ctx context.Context, name string, tableRowPath string, index int32, format models.ITableCellFormat, localVarOptionals map[string]interface{}) ( models.TableCellFormatResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
@@ -18469,9 +18472,7 @@ func (a *WordsApiService) UpdateTableCellFormat(ctx context.Context, name string
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	// body params
-	if localVarTempParam, localVarOk := localVarOptionals["format"].(models.TableCellFormat); localVarOk {
-		localVarPostBody = &localVarTempParam
-	}
+	localVarPostBody = &format
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
@@ -18504,6 +18505,7 @@ func (a *WordsApiService) UpdateTableCellFormat(ctx context.Context, name string
  @param name The document name.
  @param nodePath Path to the node, which contains tables.
  @param index Object index.
+ @param properties The properties.
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "folder" (string) Original document folder.
      @param "storage" (string) Original document storage.
@@ -18512,9 +18514,8 @@ func (a *WordsApiService) UpdateTableCellFormat(ctx context.Context, name string
      @param "destFileName" (string) Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.
      @param "revisionAuthor" (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
      @param "revisionDateTime" (string) The date and time to use for revisions.
-     @param "properties" (TableProperties) The properties.
  @return TablePropertiesResponse*/
-func (a *WordsApiService) UpdateTableProperties(ctx context.Context, name string, nodePath string, index int32, localVarOptionals map[string]interface{}) ( models.TablePropertiesResponse,  *http.Response, error) {
+func (a *WordsApiService) UpdateTableProperties(ctx context.Context, name string, nodePath string, index int32, properties models.ITableProperties, localVarOptionals map[string]interface{}) ( models.TablePropertiesResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
@@ -18596,9 +18597,7 @@ func (a *WordsApiService) UpdateTableProperties(ctx context.Context, name string
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	// body params
-	if localVarTempParam, localVarOk := localVarOptionals["properties"].(models.TableProperties); localVarOk {
-		localVarPostBody = &localVarTempParam
-	}
+	localVarPostBody = &properties
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
@@ -18630,6 +18629,7 @@ func (a *WordsApiService) UpdateTableProperties(ctx context.Context, name string
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
  @param index Object index.
+ @param properties The properties.
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "folder" (string) Original document folder.
      @param "storage" (string) Original document storage.
@@ -18638,9 +18638,8 @@ func (a *WordsApiService) UpdateTableProperties(ctx context.Context, name string
      @param "destFileName" (string) Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.
      @param "revisionAuthor" (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
      @param "revisionDateTime" (string) The date and time to use for revisions.
-     @param "properties" (TableProperties) The properties.
  @return TablePropertiesResponse*/
-func (a *WordsApiService) UpdateTablePropertiesWithoutNodePath(ctx context.Context, name string, index int32, localVarOptionals map[string]interface{}) ( models.TablePropertiesResponse,  *http.Response, error) {
+func (a *WordsApiService) UpdateTablePropertiesWithoutNodePath(ctx context.Context, name string, index int32, properties models.ITableProperties, localVarOptionals map[string]interface{}) ( models.TablePropertiesResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
@@ -18721,9 +18720,7 @@ func (a *WordsApiService) UpdateTablePropertiesWithoutNodePath(ctx context.Conte
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	// body params
-	if localVarTempParam, localVarOk := localVarOptionals["properties"].(models.TableProperties); localVarOk {
-		localVarPostBody = &localVarTempParam
-	}
+	localVarPostBody = &properties
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
@@ -18756,6 +18753,7 @@ func (a *WordsApiService) UpdateTablePropertiesWithoutNodePath(ctx context.Conte
  @param name The document name.
  @param tablePath Path to table.
  @param index Object index.
+ @param format Table row format.
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "folder" (string) Original document folder.
      @param "storage" (string) Original document storage.
@@ -18764,9 +18762,8 @@ func (a *WordsApiService) UpdateTablePropertiesWithoutNodePath(ctx context.Conte
      @param "destFileName" (string) Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.
      @param "revisionAuthor" (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
      @param "revisionDateTime" (string) The date and time to use for revisions.
-     @param "format" (TableRowFormat) Table row format.
  @return TableRowFormatResponse*/
-func (a *WordsApiService) UpdateTableRowFormat(ctx context.Context, name string, tablePath string, index int32, localVarOptionals map[string]interface{}) ( models.TableRowFormatResponse,  *http.Response, error) {
+func (a *WordsApiService) UpdateTableRowFormat(ctx context.Context, name string, tablePath string, index int32, format models.ITableRowFormat, localVarOptionals map[string]interface{}) ( models.TableRowFormatResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
@@ -18848,9 +18845,7 @@ func (a *WordsApiService) UpdateTableRowFormat(ctx context.Context, name string,
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	// body params
-	if localVarTempParam, localVarOk := localVarOptionals["format"].(models.TableRowFormat); localVarOk {
-		localVarPostBody = &localVarTempParam
-	}
+	localVarPostBody = &format
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
@@ -18881,7 +18876,7 @@ func (a *WordsApiService) UpdateTableRowFormat(ctx context.Context, name string,
 /* WordsApiService Upload file
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param fileContent File to upload
- @param path Path where to upload including filename and extension e.g. /file.ext or /Folder 1/file.ext              If the content is multipart and path does not contains the file name it tries to get them from filename parameter              from Content-Disposition header.
+ @param path Path where to upload including filename and extension e.g. /file.ext or /Folder 1/file.ext             If the content is multipart and path does not contains the file name it tries to get them from filename parameter             from Content-Disposition header.
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "storageName" (string) Storage name
  @return FilesUploadResult*/
@@ -18961,4 +18956,3 @@ func (a *WordsApiService) UploadFile(ctx context.Context, fileContent *os.File, 
 	
 	return successPayload, localVarHttpResponse, err
 }
-

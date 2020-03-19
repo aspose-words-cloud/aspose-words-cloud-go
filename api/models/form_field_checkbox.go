@@ -25,14 +25,10 @@
 
 package models
 
+
+
 // FormField checkbox element.
 type FormFieldCheckbox struct {
-
-	// Gets or sets link to the document.
-	Link *WordsApiLink `json:"link,omitempty"`
-
-	// Gets or sets node id.
-	NodeId string `json:"NodeId,omitempty"`
 
 	// Gets or sets true if references to the specified form field are automatically updated whenever the field is exited.
 	CalculateOnExit bool `json:"CalculateOnExit,omitempty"`
@@ -61,7 +57,12 @@ type FormFieldCheckbox struct {
 	// Gets or sets returns or sets the text that's displayed in the status bar when a form field has the focus.
 	StatusText string `json:"StatusText,omitempty"`
 
-	// Gets or sets the size of the checkbox in points. Has effect only when  is true.
+	Link *WordsApiLink `json:"link,omitempty"`
+
+	// Gets or sets node id.
+	NodeId string `json:"NodeId,omitempty"`
+
+	// Gets or sets the size of the checkbox in points. Has effect only when IsCheckBoxExactSize is true.
 	CheckBoxSize float64 `json:"CheckBoxSize,omitempty"`
 
 	// Gets or sets the checked status of the check box form field.
@@ -70,6 +71,7 @@ type FormFieldCheckbox struct {
 	// Gets or sets the boolean value that indicates whether the size of the textbox is automatic or specified explicitly.
 	IsCheckBoxExactSize bool `json:"IsCheckBoxExactSize,omitempty"`
 }
+
 type IFormFieldCheckbox interface {
 	IsFormFieldCheckbox() bool
 }
@@ -79,4 +81,3 @@ func (FormFieldCheckbox) IsFormFieldCheckbox() bool {
 func (FormFieldCheckbox) IsFormField() bool {
 	return true;
 }
-

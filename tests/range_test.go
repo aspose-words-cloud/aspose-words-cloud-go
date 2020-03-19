@@ -41,11 +41,12 @@ func TestGetRangeText(t *testing.T) {
 	rangeEndIdentifier := "id0.0.1"
 	options := map[string]interface{}{
 		"folder": remoteFolder,
+        "rangeEndIdentifier": rangeEndIdentifier,
 	}
 
 	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, _, err := client.WordsApi.GetRangeText(ctx, remoteName, rangeStartIdentifier, rangeEndIdentifier, options)
+	_, _, err := client.WordsApi.GetRangeText(ctx, remoteName, rangeStartIdentifier, options)
 
 	if err != nil {
 		t.Error(err)
@@ -61,11 +62,12 @@ func TestRemoveRange(t *testing.T) {
 	rangeEndIdentifier := "id0.0.1"
 	options := map[string]interface{}{
 		"folder": remoteFolder,
+        "rangeEndIdentifier": rangeEndIdentifier,
 	}
 
 	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, _, err := client.WordsApi.RemoveRange(ctx, remoteName, rangeStartIdentifier, rangeEndIdentifier, options)
+	_, _, err := client.WordsApi.RemoveRange(ctx, remoteName, rangeStartIdentifier, options)
 
 	if err != nil {
 		t.Error(err)
@@ -85,11 +87,12 @@ func TestSaveAsRange(t *testing.T) {
 	}
 	options := map[string]interface{}{
 		"folder": remoteFolder,
+        "rangeEndIdentifier": rangeEndIdentifier,
 	}
 
 	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, _, err := client.WordsApi.SaveAsRange(ctx, remoteName, rangeStartIdentifier, documentParameters, rangeEndIdentifier, options)
+	_, _, err := client.WordsApi.SaveAsRange(ctx, remoteName, rangeStartIdentifier, documentParameters, options)
 
 	if err != nil {
 		t.Error(err)
@@ -108,11 +111,12 @@ func TestReplaceWithText(t *testing.T) {
 	}
 	options := map[string]interface{}{
 		"folder": remoteFolder,
+        "rangeEndIdentifier": rangeEndIdentifier,
 	}
 
 	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, _, err := client.WordsApi.ReplaceWithText(ctx, remoteName, rangeStartIdentifier, rangeText, rangeEndIdentifier, options)
+	_, _, err := client.WordsApi.ReplaceWithText(ctx, remoteName, rangeStartIdentifier, rangeText, options)
 
 	if err != nil {
 		t.Error(err)

@@ -25,7 +25,9 @@
 
 package models
 
-// This response should be returned by the service when handling: PUT https://api.aspose.cloud/v4.0/words/classify.
+
+
+// This response should be returned by the service when handling: PUT http://api.aspose.com/v4.0/words/classify.
 type ClassificationResponse struct {
 
 	// Gets or sets request Id.
@@ -40,6 +42,7 @@ type ClassificationResponse struct {
 	// Gets or sets array of best classes results.
 	BestResults []ClassificationResult `json:"BestResults,omitempty"`
 }
+
 type IClassificationResponse interface {
 	IsClassificationResponse() bool
 }
@@ -49,4 +52,3 @@ func (ClassificationResponse) IsClassificationResponse() bool {
 func (ClassificationResponse) IsWordsResponse() bool {
 	return true;
 }
-

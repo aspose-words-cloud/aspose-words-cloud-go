@@ -25,18 +25,20 @@
 
 package models
 
+
+
 // Table cell element.
 type TableCell struct {
-
-	// Gets or sets link to the document.
-	Link *WordsApiLink `json:"link,omitempty"`
 
 	// Gets or sets node id.
 	NodeId string `json:"NodeId,omitempty"`
 
+	Link *WordsApiLink `json:"link,omitempty"`
+
 	// Gets or sets child nodes.
 	ChildNodes []NodeLink `json:"ChildNodes,omitempty"`
 }
+
 type ITableCell interface {
 	IsTableCell() bool
 }
@@ -46,4 +48,3 @@ func (TableCell) IsTableCell() bool {
 func (TableCell) IsNodeLink() bool {
 	return true;
 }
-
