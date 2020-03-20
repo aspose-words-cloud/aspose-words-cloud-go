@@ -33,8 +33,6 @@ import (
 // Comment.
 type Comment struct {
 
-	Link *WordsApiLink `json:"link,omitempty"`
-
 	// Gets or sets returns or sets the author name for a comment.
 	Author string `json:"Author,omitempty"`
 

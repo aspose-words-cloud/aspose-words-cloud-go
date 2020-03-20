@@ -33,8 +33,6 @@ type ParagraphLink struct {
 	// Gets or sets node id.
 	NodeId string `json:"NodeId,omitempty"`
 
-	Link *WordsApiLink `json:"link,omitempty"`
-
 	// Gets or sets paragraph's text.
 	Text string `json:"Text,omitempty"`
 }

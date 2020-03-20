@@ -33,8 +33,6 @@ type FieldLink struct {
 	// Gets or sets node id.
 	NodeId string `json:"NodeId,omitempty"`
 
-	Link *WordsApiLink `json:"link,omitempty"`
-
 	// Gets or sets field code.
 	FieldCode string `json:"FieldCode,omitempty"`
 }

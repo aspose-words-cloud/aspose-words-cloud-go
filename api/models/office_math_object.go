@@ -30,11 +30,6 @@ package models
 // OfficeMath object.
 type OfficeMathObject struct {
 
-	Link *WordsApiLink `json:"link,omitempty"`
-
-	// Gets or sets node id.
-	NodeId string `json:"NodeId,omitempty"`
-
 	Content *StoryChildNodes `json:"Content,omitempty"`
 
 	// Gets or sets /sets Office Math display format type which represents whether an equation is displayed inline with the text or displayed on its own line.

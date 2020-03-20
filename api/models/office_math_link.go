@@ -32,8 +32,6 @@ type OfficeMathLink struct {
 
 	// Gets or sets node id.
 	NodeId string `json:"NodeId,omitempty"`
-
-	Link *WordsApiLink `json:"link,omitempty"`
 }
 
 type IOfficeMathLink interface {

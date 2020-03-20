@@ -33,8 +33,6 @@ type Paragraph struct {
 	// Gets or sets node id.
 	NodeId string `json:"NodeId,omitempty"`
 
-	Link *WordsApiLink `json:"link,omitempty"`
-
 	// Gets or sets child nodes.
 	ChildNodes []NodeLink `json:"ChildNodes,omitempty"`
 }

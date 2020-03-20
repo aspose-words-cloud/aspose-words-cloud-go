@@ -33,8 +33,6 @@ type TableRow struct {
 	// Gets or sets node id.
 	NodeId string `json:"NodeId,omitempty"`
 
-	Link *WordsApiLink `json:"link,omitempty"`
-
 	RowFormat *TableRowFormat `json:"RowFormat,omitempty"`
 
 	// Gets or sets collection of table's rows.

@@ -30,11 +30,6 @@ package models
 // Represents Drawing Object DTO.
 type DrawingObject struct {
 
-	Link *WordsApiLink `json:"link,omitempty"`
-
-	// Gets or sets node id.
-	NodeId string `json:"NodeId,omitempty"`
-
 	// Gets or sets height of the drawing object in points.
 	Height float64 `json:"Height,omitempty"`
 

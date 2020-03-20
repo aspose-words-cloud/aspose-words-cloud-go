@@ -30,11 +30,6 @@ package models
 // Footnote.
 type Footnote struct {
 
-	Link *WordsApiLink `json:"link,omitempty"`
-
-	// Gets or sets node id.
-	NodeId string `json:"NodeId,omitempty"`
-
 	Content *StoryChildNodes `json:"Content,omitempty"`
 
 	// Gets or sets returns a value that specifies whether this is a footnote or endnote.
