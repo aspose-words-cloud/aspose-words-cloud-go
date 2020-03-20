@@ -13,9 +13,3 @@
 
 # credentials for tests
 config.json
-
-#test utility
-!utils/*.exe
-
-# test results
-testResults
