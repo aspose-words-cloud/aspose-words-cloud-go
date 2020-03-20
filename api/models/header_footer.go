@@ -33,6 +33,8 @@ type HeaderFooter struct {
 	// Gets or sets paragraph's text.
 	Type_ string `json:"Type,omitempty"`
 
+	Link *WordsApiLink `json:"link,omitempty"`
+
 	// Gets or sets child nodes.
 	ChildNodes []NodeLink `json:"ChildNodes,omitempty"`
 

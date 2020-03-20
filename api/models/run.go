@@ -32,6 +32,11 @@ type Run struct {
 
 	// Gets or sets run's text.
 	Text string `json:"Text,omitempty"`
+
+	Link *WordsApiLink `json:"link,omitempty"`
+
+	// Gets or sets node id.
+	NodeId string `json:"NodeId,omitempty"`
 }
 
 type IRun interface {

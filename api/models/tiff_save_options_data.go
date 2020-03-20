@@ -68,6 +68,50 @@ type TiffSaveOptionsData struct {
 	// Gets or sets the vertical resolution for the generated images, in dots per inch.  This property has effect only when saving to raster image formats. The default value is 96.
 	VerticalResolution float64 `json:"VerticalResolution,omitempty"`
 
+	// Gets or sets a value determining how colors are rendered. { Normal | Grayscale}.
+	ColorMode string `json:"ColorMode,omitempty"`
+
+	// Gets or sets determines the quality of the JPEG images inside PDF document.
+	JpegQuality int32 `json:"JpegQuality,omitempty"`
+
+	MetafileRenderingOptions *MetafileRenderingOptionsData `json:"MetafileRenderingOptions,omitempty"`
+
+	// Gets or sets indicates the symbol set that is used to represent numbers while rendering to fixed page formats.
+	NumeralFormat string `json:"NumeralFormat,omitempty"`
+
+	// Gets or sets flag indicates whether it is required to optimize output of XPS. If this flag is set redundant nested canvases and empty canvases are removed, also neighbor glyphs with the same formatting are concatenated. Note: The accuracy of the content display may be affected if this property is set to true.  Default is false.
+	OptimizeOutput bool `json:"OptimizeOutput,omitempty"`
+
+	// Gets or sets determines number of pages to render.
+	PageCount int32 `json:"PageCount,omitempty"`
+
+	// Gets or sets determines 0-based index of the first page to render.
+	PageIndex int32 `json:"PageIndex,omitempty"`
+
+	// Gets or sets format of save.
+	SaveFormat string `json:"SaveFormat,omitempty"`
+
+	// Gets or sets name of destination file.
+	FileName string `json:"FileName,omitempty"`
+
+	// Gets or sets a value determining how DrawingML shapes are rendered. { Fallback | DrawingML }.
+	DmlRenderingMode string `json:"DmlRenderingMode,omitempty"`
+
+	// Gets or sets a value determining how DrawingML effects are rendered. { Simplified | None | Fine }.
+	DmlEffectsRenderingMode string `json:"DmlEffectsRenderingMode,omitempty"`
+
+	// Gets or sets controls zip output or not. Default value is false.
+	ZipOutput bool `json:"ZipOutput,omitempty"`
+
+	// Gets or sets a value determining whether the Aspose.Words.Properties.BuiltInDocumentProperties.LastSavedTime property is updated before saving.
+	UpdateLastSavedTimeProperty bool `json:"UpdateLastSavedTimeProperty,omitempty"`
+
+	// Gets or sets value determining whether content of StructuredDocumentTag is updated before saving.
+	UpdateSdtContent bool `json:"UpdateSdtContent,omitempty"`
+
+	// Gets or sets a value determining if fields should be updated before saving the document to a fixed page format. Default value for this property is. true
+	UpdateFields bool `json:"UpdateFields,omitempty"`
+
 	// Gets or sets the threshold that determines the value of the binarization error in the Floyd-Steinberg method. when ImageBinarizationMethod is ImageBinarizationMethod.FloydSteinbergDithering. Default value is 128.
 	ThresholdForFloydSteinbergDithering int32 `json:"ThresholdForFloydSteinbergDithering,omitempty"`
 

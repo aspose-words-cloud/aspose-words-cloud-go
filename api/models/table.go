@@ -33,6 +33,8 @@ type Table struct {
 	// Gets or sets node id.
 	NodeId string `json:"NodeId,omitempty"`
 
+	Link *WordsApiLink `json:"link,omitempty"`
+
 	TableProperties *TableProperties `json:"TableProperties,omitempty"`
 
 	// Gets or sets collection of table's rows.

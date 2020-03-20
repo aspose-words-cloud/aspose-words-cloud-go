@@ -57,6 +57,11 @@ type FormFieldDropDown struct {
 	// Gets or sets returns or sets the text that's displayed in the status bar when a form field has the focus.
 	StatusText string `json:"StatusText,omitempty"`
 
+	Link *WordsApiLink `json:"link,omitempty"`
+
+	// Gets or sets node id.
+	NodeId string `json:"NodeId,omitempty"`
+
 	// Gets or sets provides access to the items of a dropdown form field.
 	DropDownItems []string `json:"DropDownItems,omitempty"`
 

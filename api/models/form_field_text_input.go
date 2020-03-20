@@ -57,6 +57,11 @@ type FormFieldTextInput struct {
 	// Gets or sets returns or sets the text that's displayed in the status bar when a form field has the focus.
 	StatusText string `json:"StatusText,omitempty"`
 
+	Link *WordsApiLink `json:"link,omitempty"`
+
+	// Gets or sets node id.
+	NodeId string `json:"NodeId,omitempty"`
+
 	// Gets or sets maximum length for the text field. Zero when the length is not limited.
 	MaxLength int32 `json:"MaxLength,omitempty"`
 
