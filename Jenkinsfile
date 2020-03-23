@@ -17,16 +17,14 @@ node('windows2019') {
 		}
 		gitlabCommitStatus("tests") {
 			stage('tests') {
-				withCredentials([usernamePassword(credentialsId: '6839cbe8-39fa-40c0-86ce-90706f0bae5d', passwordVariable: 'AppKey', usernameVariable: 'AppSid')]) {
-					def apiUrl = params.apiUrl
-					bat "echo {\"AppSid\":\"%AppSid%\",\"AppKey\":\"%AppKey%\",\"BaseUrl\":\"%apiUrl%\" } > config.json"
-				}
-				try {
-					bat 'mkdir testResults'
-					bat 'docker run -v %cd%:c:/sdk -w="c:/sdk" --rm -t golang:1.14.0-windowsservercore-1809 go test ./tests/... -v'
-				} 
-				finally {
+				withCredentials([usernamePassword(credentialsId: '6839cbe8-39fa-40c0-86ce-90706f0bae5d', passwordVariable: 'WordsAppKey', usernameVariable: 'WordsAppSid')]) {
+					def WordsBaseUrl = params.apiUrl
+					try {
+						bat 'test.bat'
+					} 
+					finally {
 
+					}
 				}
 			}
 		}

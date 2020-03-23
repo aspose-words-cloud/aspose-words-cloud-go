@@ -28,63 +28,82 @@ import (
 	"path"
 	"testing"
 
-	"github.com/aspose-words-cloud/aspose-words-cloud-go/api/models"
+	"github.com/aspose-words-cloud/aspose-words-cloud-go/v2003/api/models"
 )
 
-func TestGetBookmarkByName(t *testing.T) {
+func TestCreateOrUpdateDocumentProperty(t *testing.T) {
 
 	localFilePath := commonTestFile
-	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Bookmarks")
-	remoteName := "TestGetBookmarkByName.docx"
-	bookmarkName := "aspose"
+	remoteFolder := "TestOut"
+	remoteName := "TestCreateOrUpdateDocumentProperty.docx"
+	propertyName := "AsposeAuthor"
+	property := models.DocumentProperty{
+		Name:  "Author",
+		Value: "Imran Anwar",
+	}
 	options := map[string]interface{}{
 		"folder": remoteFolder,
 	}
 
 	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, _, err := client.WordsApi.GetBookmarkByName(ctx, remoteName, bookmarkName, options)
+	_, _, err := client.WordsApi.CreateOrUpdateDocumentProperty(ctx, remoteName, propertyName, property, options)
 
 	if err != nil {
 		t.Error(err)
 	}
 }
 
-func TestGetBookmarks(t *testing.T) {
+func TestDeleteDocumentProperty(t *testing.T) {
 
 	localFilePath := commonTestFile
-	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Bookmarks")
-	remoteName := "TestGetBookmarks.docx"
+	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "DocumentProperties")
+	remoteName := "TestDeleteDocumentProperty.docx"
+	propertyName := "testProp"
 	options := map[string]interface{}{
 		"folder": remoteFolder,
 	}
 
 	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, _, err := client.WordsApi.GetBookmarks(ctx, remoteName, options)
+	_, err := client.WordsApi.DeleteDocumentProperty(ctx, remoteName, propertyName, options)
 
 	if err != nil {
 		t.Error(err)
 	}
 }
 
-func TestUpdateBookmark(t *testing.T) {
+func TestGetDocumentProperties(t *testing.T) {
 
 	localFilePath := commonTestFile
-	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Bookmarks")
-	remoteName := "TestUpdateBookmark.docx"
-	bookmarkName := "aspose"
-	bookmarkData := models.BookmarkData{
-		Name: bookmarkName,
-		Text: "This will be the text for Aspose",
-	}
+	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "DocumentProperties")
+	remoteName := "TestGetDocumentProperties.docx"
 	options := map[string]interface{}{
 		"folder": remoteFolder,
 	}
 
 	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, _, err := client.WordsApi.UpdateBookmark(ctx, remoteName, bookmarkData, bookmarkName, options)
+	_, _, err := client.WordsApi.GetDocumentProperties(ctx, remoteName, options)
+
+	if err != nil {
+		t.Error(err)
+	}
+}
+
+func TestGetDocumentProperty(t *testing.T) {
+
+	localFilePath := commonTestFile
+	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "DocumentProperties")
+	remoteName := "TestGetDocumentProperty.docx"
+	propertyName := "Author"
+	options := map[string]interface{}{
+		"folder": remoteFolder,
+	}
+
+	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
+
+	_, _, err := client.WordsApi.GetDocumentProperty(ctx, remoteName, propertyName, options)
 
 	if err != nil {
 		t.Error(err)

@@ -1,4 +1,4 @@
-module github.com/aspose-words-cloud/aspose-words-cloud-go
+module github.com/aspose-words-cloud/aspose-words-cloud-go/v2003
 
 go 1.13
 

@@ -26,84 +26,68 @@ package api_test
 
 import (
 	"path"
+	"path/filepath"
 	"testing"
 
-	"github.com/aspose-words-cloud/aspose-words-cloud-go/api/models"
+	"github.com/aspose-words-cloud/aspose-words-cloud-go/v2003/api/models"
 )
 
-func TestCreateOrUpdateDocumentProperty(t *testing.T) {
+func TestSearch(t *testing.T) {
 
-	localFilePath := commonTestFile
-	remoteFolder := "TestOut"
-	remoteName := "TestCreateOrUpdateDocumentProperty.docx"
-	propertyName := "AsposeAuthor"
-	property := models.DocumentProperty{
-		Name:  "Author",
-		Value: "Imran Anwar",
-	}
+	localFilePath := GetLocalPath(filepath.Join("DocumentElements", "Text"), "SampleWordDocument.docx")
+	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Text")
+	remoteName := "TestSearch.docx"
+	pattern := "aspose"
 	options := map[string]interface{}{
 		"folder": remoteFolder,
 	}
 
 	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, _, err := client.WordsApi.CreateOrUpdateDocumentProperty(ctx, remoteName, propertyName, property, options)
+	_, _, err := client.WordsApi.Search(ctx, remoteName, pattern, options)
 
 	if err != nil {
 		t.Error(err)
 	}
 }
 
-func TestDeleteDocumentProperty(t *testing.T) {
+func TestRenderPage(t *testing.T) {
 
-	localFilePath := commonTestFile
-	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "DocumentProperties")
-	remoteName := "TestDeleteDocumentProperty.docx"
-	propertyName := "testProp"
+	localFilePath := GetLocalPath(filepath.Join("DocumentElements", "Text"), "SampleWordDocument.docx")
+	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "PageSetup")
+	remoteName := "TestRenderPage.docx"
+	format := "bmp"
+	pageIndex := 1
 	options := map[string]interface{}{
 		"folder": remoteFolder,
 	}
 
 	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, err := client.WordsApi.DeleteDocumentProperty(ctx, remoteName, propertyName, options)
+	output, err := client.WordsApi.RenderPage(ctx, remoteName, int32(pageIndex), format, options)
+	defer output.Body.Close()
 
 	if err != nil {
 		t.Error(err)
 	}
 }
 
-func TestGetDocumentProperties(t *testing.T) {
+func TestReplaceText(t *testing.T) {
 
 	localFilePath := commonTestFile
-	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "DocumentProperties")
-	remoteName := "TestGetDocumentProperties.docx"
+	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Text")
+	remoteName := "TestReplaceText.docx"
+	replaceText := models.ReplaceTextParameters{
+		OldValue: "aspose",
+		NewValue: "aspose new",
+	}
 	options := map[string]interface{}{
 		"folder": remoteFolder,
 	}
 
 	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, _, err := client.WordsApi.GetDocumentProperties(ctx, remoteName, options)
-
-	if err != nil {
-		t.Error(err)
-	}
-}
-
-func TestGetDocumentProperty(t *testing.T) {
-
-	localFilePath := commonTestFile
-	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "DocumentProperties")
-	remoteName := "TestGetDocumentProperty.docx"
-	propertyName := "Author"
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
-
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
-
-	_, _, err := client.WordsApi.GetDocumentProperty(ctx, remoteName, propertyName, options)
+	_, _, err := client.WordsApi.ReplaceText(ctx, remoteName, replaceText, options)
 
 	if err != nil {
 		t.Error(err)

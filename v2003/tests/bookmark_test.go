@@ -26,66 +26,65 @@ package api_test
 
 import (
 	"path"
-	"path/filepath"
 	"testing"
 
-	"github.com/aspose-words-cloud/aspose-words-cloud-go/api/models"
+	"github.com/aspose-words-cloud/aspose-words-cloud-go/v2003/api/models"
 )
 
-func TestProtectDocument(t *testing.T) {
+func TestGetBookmarkByName(t *testing.T) {
 
 	localFilePath := commonTestFile
-	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentActions", "DocumentProtection")
-	remoteName := "TestProtectDocument.docx"
-	protectionRequest := models.ProtectionRequest{
-		NewPassword: "123",
-	}
+	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Bookmarks")
+	remoteName := "TestGetBookmarkByName.docx"
+	bookmarkName := "aspose"
 	options := map[string]interface{}{
 		"folder": remoteFolder,
 	}
 
 	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, _, err := client.WordsApi.ProtectDocument(ctx, remoteName, protectionRequest, options)
+	_, _, err := client.WordsApi.GetBookmarkByName(ctx, remoteName, bookmarkName, options)
 
 	if err != nil {
 		t.Error(err)
 	}
 }
 
-func TestUnprotectDocument(t *testing.T) {
+func TestGetBookmarks(t *testing.T) {
 
-	localFilePath := GetLocalPath(filepath.Join("DocumentActions", "DocumentProtection"), "SampleProtectedBlankWordDocument.docx")
-	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentActions", "DocumentProtection")
-	remoteName := "TestUnprotectDocument.docx"
-	protectionRequest := models.ProtectionRequest{
-		Password: "aspose",
-	}
+	localFilePath := commonTestFile
+	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Bookmarks")
+	remoteName := "TestGetBookmarks.docx"
 	options := map[string]interface{}{
 		"folder": remoteFolder,
 	}
 
 	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, _, err := client.WordsApi.UnprotectDocument(ctx, remoteName, protectionRequest, options)
+	_, _, err := client.WordsApi.GetBookmarks(ctx, remoteName, options)
 
 	if err != nil {
 		t.Error(err)
 	}
 }
 
-func TestGetDocumentProtection(t *testing.T) {
+func TestUpdateBookmark(t *testing.T) {
 
 	localFilePath := commonTestFile
-	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentActions", "DocumentProtection")
-	remoteName := "TestGetDocumentProtection.docx"
+	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Bookmarks")
+	remoteName := "TestUpdateBookmark.docx"
+	bookmarkName := "aspose"
+	bookmarkData := models.BookmarkData{
+		Name: bookmarkName,
+		Text: "This will be the text for Aspose",
+	}
 	options := map[string]interface{}{
 		"folder": remoteFolder,
 	}
 
 	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, _, err := client.WordsApi.GetDocumentProtection(ctx, remoteName, options)
+	_, _, err := client.WordsApi.UpdateBookmark(ctx, remoteName, bookmarkData, bookmarkName, options)
 
 	if err != nil {
 		t.Error(err)
