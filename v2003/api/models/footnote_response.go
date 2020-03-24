@@ -27,7 +27,7 @@ package models
 
 
 
-// This response should be returned by the service when handling: GET http://api.aspose.com/v4.0/words/Test.doc/footnote/0.
+// This response should be returned by the service when handling: GET https://api.aspose.cloud/v4.0/words/Test.doc/footnote/0.
 type FootnoteResponse struct {
 
 	// Gets or sets request Id.

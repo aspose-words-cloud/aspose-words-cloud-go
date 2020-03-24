@@ -27,7 +27,7 @@ package models
 
 
 
-// This response should be returned by the service when handling: PUT http://api.aspose.com/v4.0/words/classify.
+// This response should be returned by the service when handling: PUT https://api.aspose.cloud/v4.0/words/classify.
 type ClassificationResponse struct {
 
 	// Gets or sets request Id.

@@ -62,6 +62,9 @@ type RtfSaveOptionsData struct {
 
 	// Gets or sets specifies whether or not use pretty formats output.
 	PrettyFormat bool `json:"PrettyFormat,omitempty"`
+
+	// Gets or sets a value indicating whether when true all images will be saved as WMF. This option might help to avoid WordPad warning messages.
+	SaveImagesAsWmf bool `json:"SaveImagesAsWmf,omitempty"`
 }
 
 type IRtfSaveOptionsData interface {

@@ -27,7 +27,7 @@ package models
 
 
 
-// This response should be returned by the service when handling: GET http://api.aspose.com/v4.0/words/Test.doc/paragraphs/{0}/formfields/{1}.
+// This response should be returned by the service when handling: GET https://api.aspose.cloud/v4.0/words/Test.doc/paragraphs/{0}/formfields/{1}.
 type FormFieldResponse struct {
 
 	// Gets or sets request Id.
