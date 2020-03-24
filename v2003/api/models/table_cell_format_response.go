@@ -25,15 +25,17 @@
 
 package models
 
-// This response should be returned by the service when handling: GET https://api.aspose.cloud/v4.0/words/Test.doc/tables/{0}/rows/{1}/cells/{2}/cellformat.
+
+
+// This response should be returned by the service when handling: GET http://api.aspose.com/v4.0/words/Test.doc/tables/{0}/rows/{1}/cells/{2}/cellformat.
 type TableCellFormatResponse struct {
 
 	// Gets or sets request Id.
 	RequestId string `json:"RequestId,omitempty"`
 
-	// Gets or sets table.
 	CellFormat *TableCellFormat `json:"CellFormat,omitempty"`
 }
+
 type ITableCellFormatResponse interface {
 	IsTableCellFormatResponse() bool
 }
@@ -43,4 +45,3 @@ func (TableCellFormatResponse) IsTableCellFormatResponse() bool {
 func (TableCellFormatResponse) IsWordsResponse() bool {
 	return true;
 }
-

@@ -25,6 +25,8 @@
 
 package models
 
+
+
 // Container class for text save options.
 type TextSaveOptionsData struct {
 
@@ -46,7 +48,7 @@ type TextSaveOptionsData struct {
 	// Gets or sets a value determining whether the Aspose.Words.Properties.BuiltInDocumentProperties.LastSavedTime property is updated before saving.
 	UpdateLastSavedTimeProperty bool `json:"UpdateLastSavedTimeProperty,omitempty"`
 
-	// Gets or sets value determining whether content of  is updated before saving.
+	// Gets or sets value determining whether content of StructuredDocumentTag is updated before saving.
 	UpdateSdtContent bool `json:"UpdateSdtContent,omitempty"`
 
 	// Gets or sets a value determining if fields should be updated before saving the document to a fixed page format. Default value for this property is. true
@@ -73,6 +75,7 @@ type TextSaveOptionsData struct {
 	// Gets or sets specifies whether the program should simplify list labels in case of complex label formatting not being adequately represented by plain text.
 	SimplifyListLabels bool `json:"SimplifyListLabels,omitempty"`
 }
+
 type ITextSaveOptionsData interface {
 	IsTextSaveOptionsData() bool
 }
@@ -82,4 +85,3 @@ func (TextSaveOptionsData) IsTextSaveOptionsData() bool {
 func (TextSaveOptionsData) IsSaveOptionsData() bool {
 	return true;
 }
-

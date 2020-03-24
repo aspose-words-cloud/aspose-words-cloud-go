@@ -25,15 +25,17 @@
 
 package models
 
+
+
 // Collection of footnotes.
 type FootnoteCollection struct {
 
-	// Gets or sets link to the document.
 	Link *WordsApiLink `json:"link,omitempty"`
 
 	// Gets or sets collection of foonotes links.
 	List []Footnote `json:"List,omitempty"`
 }
+
 type IFootnoteCollection interface {
 	IsFootnoteCollection() bool
 }
@@ -43,4 +45,3 @@ func (FootnoteCollection) IsFootnoteCollection() bool {
 func (FootnoteCollection) IsLinkElement() bool {
 	return true;
 }
-

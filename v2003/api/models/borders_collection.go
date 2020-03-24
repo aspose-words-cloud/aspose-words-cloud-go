@@ -25,15 +25,17 @@
 
 package models
 
+
+
 // Collection of borders.
 type BordersCollection struct {
 
-	// Gets or sets link to the document.
 	Link *WordsApiLink `json:"link,omitempty"`
 
 	// Gets or sets collection of comments.
 	List []Border `json:"List,omitempty"`
 }
+
 type IBordersCollection interface {
 	IsBordersCollection() bool
 }
@@ -43,4 +45,3 @@ func (BordersCollection) IsBordersCollection() bool {
 func (BordersCollection) IsLinkElement() bool {
 	return true;
 }
-

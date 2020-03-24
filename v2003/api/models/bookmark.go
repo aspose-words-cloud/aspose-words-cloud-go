@@ -25,10 +25,11 @@
 
 package models
 
+
+
 // Represents a single bookmark.
 type Bookmark struct {
 
-	// Gets or sets link to the document.
 	Link *WordsApiLink `json:"link,omitempty"`
 
 	// Gets or sets the name of the bookmark.
@@ -37,6 +38,7 @@ type Bookmark struct {
 	// Gets or sets the text enclosed in the bookmark.
 	Text string `json:"Text,omitempty"`
 }
+
 type IBookmark interface {
 	IsBookmark() bool
 }
@@ -46,4 +48,3 @@ func (Bookmark) IsBookmark() bool {
 func (Bookmark) IsLinkElement() bool {
 	return true;
 }
-

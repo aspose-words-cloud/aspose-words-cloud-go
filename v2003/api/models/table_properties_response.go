@@ -25,15 +25,17 @@
 
 package models
 
-// This response should be returned by the service when handling: GET https://api.aspose.cloud/v4.0/words/Test.doc/tables/{0}/properties.
+
+
+// This response should be returned by the service when handling: GET http://api.aspose.com/v4.0/words/Test.doc/tables/{0}/properties.
 type TablePropertiesResponse struct {
 
 	// Gets or sets request Id.
 	RequestId string `json:"RequestId,omitempty"`
 
-	// Gets or sets table.
 	Properties *TableProperties `json:"Properties,omitempty"`
 }
+
 type ITablePropertiesResponse interface {
 	IsTablePropertiesResponse() bool
 }
@@ -43,4 +45,3 @@ func (TablePropertiesResponse) IsTablePropertiesResponse() bool {
 func (TablePropertiesResponse) IsWordsResponse() bool {
 	return true;
 }
-

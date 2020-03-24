@@ -25,7 +25,9 @@
 
 package models
 
-// This response should be returned by the service when handling: GET https://api.aspose.cloud/v4.0/words/Test.doc/search.
+
+
+// This response should be returned by the service when handling: GET http://api.aspose.com/v4.0/words/Test.doc/search.
 type SearchResponse struct {
 
 	// Gets or sets request Id.
@@ -34,9 +36,9 @@ type SearchResponse struct {
 	// Gets or sets a regular expression pattern used to find matches.
 	SearchingPattern string `json:"SearchingPattern,omitempty"`
 
-	// Gets or sets collection of search results.
 	SearchResults *SearchResultsCollection `json:"SearchResults,omitempty"`
 }
+
 type ISearchResponse interface {
 	IsSearchResponse() bool
 }
@@ -46,4 +48,3 @@ func (SearchResponse) IsSearchResponse() bool {
 func (SearchResponse) IsWordsResponse() bool {
 	return true;
 }
-

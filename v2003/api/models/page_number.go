@@ -25,6 +25,8 @@
 
 package models
 
+
+
 // Class is used for insert page number request building.
 type PageNumber struct {
 
@@ -35,15 +37,15 @@ type PageNumber struct {
 	Alignment string `json:"Alignment,omitempty"`
 
 	// Gets or sets a value indicating whether if true the page number is added at the top of the page, else at the bottom.
-	IsTop bool `json:"IsTop"`
+	IsTop bool `json:"IsTop,omitempty"`
 
 	// Gets or sets a value indicating whether if true the page number is added on first page too.
-	SetPageNumberOnFirstPage bool `json:"SetPageNumberOnFirstPage"`
+	SetPageNumberOnFirstPage bool `json:"SetPageNumberOnFirstPage,omitempty"`
 }
+
 type IPageNumber interface {
 	IsPageNumber() bool
 }
 func (PageNumber) IsPageNumber() bool {
 	return true;
 }
-

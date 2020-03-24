@@ -25,6 +25,8 @@
 
 package models
 
+
+
 // Represents a single classification result.
 type ClassificationResult struct {
 
@@ -32,12 +34,12 @@ type ClassificationResult struct {
 	ClassName string `json:"ClassName,omitempty"`
 
 	// Gets or sets the probability of class.
-	ClassProbability float64 `json:"ClassProbability"`
+	ClassProbability float64 `json:"ClassProbability,omitempty"`
 }
+
 type IClassificationResult interface {
 	IsClassificationResult() bool
 }
 func (ClassificationResult) IsClassificationResult() bool {
 	return true;
 }
-

@@ -25,18 +25,19 @@
 
 package models
 
+
+
 // Response for the request of the document's statistical data.
 type StatDataResponse struct {
 
 	// Gets or sets request Id.
 	RequestId string `json:"RequestId,omitempty"`
 
-	// Gets or sets link to the document.
 	DocumentLink *FileLink `json:"DocumentLink,omitempty"`
 
-	// Gets or sets statistical data of the document.
 	StatData *DocumentStatData `json:"StatData,omitempty"`
 }
+
 type IStatDataResponse interface {
 	IsStatDataResponse() bool
 }
@@ -46,4 +47,3 @@ func (StatDataResponse) IsStatDataResponse() bool {
 func (StatDataResponse) IsWordsResponse() bool {
 	return true;
 }
-

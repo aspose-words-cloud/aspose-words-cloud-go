@@ -25,15 +25,17 @@
 
 package models
 
+
+
 // This response should be returned by the service when handling: GET {nodeWithBorders}/borders.
 type BordersResponse struct {
 
 	// Gets or sets request Id.
 	RequestId string `json:"RequestId,omitempty"`
 
-	// Gets or sets table.
 	Borders *BordersCollection `json:"Borders,omitempty"`
 }
+
 type IBordersResponse interface {
 	IsBordersResponse() bool
 }
@@ -43,4 +45,3 @@ func (BordersResponse) IsBordersResponse() bool {
 func (BordersResponse) IsWordsResponse() bool {
 	return true;
 }
-

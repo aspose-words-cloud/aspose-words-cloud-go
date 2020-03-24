@@ -25,8 +25,30 @@
 
 package models
 
+
+
 // container class for fixed html save options.
 type HtmlFixedSaveOptionsData struct {
+
+	// Gets or sets a value determining how colors are rendered. { Normal | Grayscale}.
+	ColorMode string `json:"ColorMode,omitempty"`
+
+	// Gets or sets determines the quality of the JPEG images inside PDF document.
+	JpegQuality int32 `json:"JpegQuality,omitempty"`
+
+	MetafileRenderingOptions *MetafileRenderingOptionsData `json:"MetafileRenderingOptions,omitempty"`
+
+	// Gets or sets indicates the symbol set that is used to represent numbers while rendering to fixed page formats.
+	NumeralFormat string `json:"NumeralFormat,omitempty"`
+
+	// Gets or sets flag indicates whether it is required to optimize output of XPS. If this flag is set redundant nested canvases and empty canvases are removed, also neighbor glyphs with the same formatting are concatenated. Note: The accuracy of the content display may be affected if this property is set to true.  Default is false.
+	OptimizeOutput bool `json:"OptimizeOutput,omitempty"`
+
+	// Gets or sets determines number of pages to render.
+	PageCount int32 `json:"PageCount,omitempty"`
+
+	// Gets or sets determines 0-based index of the first page to render.
+	PageIndex int32 `json:"PageIndex,omitempty"`
 
 	// Gets or sets format of save.
 	SaveFormat string `json:"SaveFormat,omitempty"`
@@ -46,32 +68,11 @@ type HtmlFixedSaveOptionsData struct {
 	// Gets or sets a value determining whether the Aspose.Words.Properties.BuiltInDocumentProperties.LastSavedTime property is updated before saving.
 	UpdateLastSavedTimeProperty bool `json:"UpdateLastSavedTimeProperty,omitempty"`
 
-	// Gets or sets value determining whether content of  is updated before saving.
+	// Gets or sets value determining whether content of StructuredDocumentTag is updated before saving.
 	UpdateSdtContent bool `json:"UpdateSdtContent,omitempty"`
 
 	// Gets or sets a value determining if fields should be updated before saving the document to a fixed page format. Default value for this property is. true
 	UpdateFields bool `json:"UpdateFields,omitempty"`
-
-	// Gets or sets a value determining how colors are rendered. { Normal | Grayscale}.
-	ColorMode string `json:"ColorMode,omitempty"`
-
-	// Gets or sets determines the quality of the JPEG images inside PDF document.
-	JpegQuality int32 `json:"JpegQuality,omitempty"`
-
-	// Gets or sets allows to specify metafile rendering options.
-	MetafileRenderingOptions *MetafileRenderingOptionsData `json:"MetafileRenderingOptions,omitempty"`
-
-	// Gets or sets indicates the symbol set that is used to represent numbers while rendering to fixed page formats.
-	NumeralFormat string `json:"NumeralFormat,omitempty"`
-
-	// Gets or sets flag indicates whether it is required to optimize output of XPS. If this flag is set redundant nested canvases and empty canvases are removed, also neighbor glyphs with the same formatting are concatenated. Note: The accuracy of the content display may be affected if this property is set to true.  Default is false.
-	OptimizeOutput bool `json:"OptimizeOutput,omitempty"`
-
-	// Gets or sets determines number of pages to render.
-	PageCount int32 `json:"PageCount,omitempty"`
-
-	// Gets or sets determines 0-based index of the first page to render.
-	PageIndex int32 `json:"PageIndex,omitempty"`
 
 	// Gets or sets specifies prefix which is added to all class names in style.css file. Default value is \"aw\".
 	CssClassNamesPrefix string `json:"CssClassNamesPrefix,omitempty"`
@@ -112,6 +113,7 @@ type HtmlFixedSaveOptionsData struct {
 	// Gets or sets specifies whether border around pages should be shown.
 	ShowPageBorder bool `json:"ShowPageBorder,omitempty"`
 }
+
 type IHtmlFixedSaveOptionsData interface {
 	IsHtmlFixedSaveOptionsData() bool
 }
@@ -121,4 +123,3 @@ func (HtmlFixedSaveOptionsData) IsHtmlFixedSaveOptionsData() bool {
 func (HtmlFixedSaveOptionsData) IsFixedPageSaveOptionsData() bool {
 	return true;
 }
-

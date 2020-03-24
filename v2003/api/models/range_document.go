@@ -25,16 +25,18 @@
 
 package models
 
+
+
 // Range element.
 type RangeDocument struct {
 
 	// Gets or sets name for new document.
 	DocumentName string `json:"DocumentName,omitempty"`
 }
+
 type IRangeDocument interface {
 	IsRangeDocument() bool
 }
 func (RangeDocument) IsRangeDocument() bool {
 	return true;
 }
-

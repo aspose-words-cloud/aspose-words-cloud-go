@@ -22,7 +22,6 @@
 * SOFTWARE.
 */
 
-
 package api
 
 import (
@@ -57,7 +56,7 @@ var (
 	xmlCheck = regexp.MustCompile("(?i:[application|text]/xml)")
 )
 
-// APIClient manages communication with the Aspose.Words Cloud API Reference API v20.2.0
+// APIClient manages communication with the Aspose.Words Cloud API Reference API v20.1.0
 // In most cases there should be only one, shared, APIClient.
 type APIClient struct {
 	cfg 	*models.Configuration
@@ -540,4 +539,5 @@ func CreateWordsApi(config *models.Configuration) (wordsApi *WordsApiService, ct
 
 	return client.WordsApi, ctx, err
 }
+
 

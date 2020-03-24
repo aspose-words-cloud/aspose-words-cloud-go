@@ -25,10 +25,11 @@
 
 package models
 
+
+
 // Represents all formatting for a table row.
 type TableRowFormat struct {
 
-	// Gets or sets link to the document.
 	Link *WordsApiLink `json:"link,omitempty"`
 
 	// Gets or sets true if the text in a table row is allowed to split across a page break.
@@ -43,6 +44,7 @@ type TableRowFormat struct {
 	// Gets or sets the rule for determining the height of the table row.
 	HeightRule string `json:"HeightRule,omitempty"`
 }
+
 type ITableRowFormat interface {
 	IsTableRowFormat() bool
 }
@@ -52,4 +54,3 @@ func (TableRowFormat) IsTableRowFormat() bool {
 func (TableRowFormat) IsLinkElement() bool {
 	return true;
 }
-

@@ -25,22 +25,23 @@
 
 package models
 
+
+
 // Table element.
 type TableInsert struct {
 
-	// Gets or sets table will be inserted before specified position.
 	Position *DocumentPosition `json:"Position,omitempty"`
 
 	// Gets or sets count of columns. Default is 2.
-	ColumnsCount int32 `json:"ColumnsCount"`
+	ColumnsCount int32 `json:"ColumnsCount,omitempty"`
 
 	// Gets or sets count of rows. Default is 2.
-	RowsCount int32 `json:"RowsCount"`
+	RowsCount int32 `json:"RowsCount,omitempty"`
 }
+
 type ITableInsert interface {
 	IsTableInsert() bool
 }
 func (TableInsert) IsTableInsert() bool {
 	return true;
 }
-

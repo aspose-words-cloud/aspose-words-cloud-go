@@ -25,8 +25,30 @@
 
 package models
 
+
+
 // container class for pdf save options.
 type PdfSaveOptionsData struct {
+
+	// Gets or sets a value determining how colors are rendered. { Normal | Grayscale}.
+	ColorMode string `json:"ColorMode,omitempty"`
+
+	// Gets or sets determines the quality of the JPEG images inside PDF document.
+	JpegQuality int32 `json:"JpegQuality,omitempty"`
+
+	MetafileRenderingOptions *MetafileRenderingOptionsData `json:"MetafileRenderingOptions,omitempty"`
+
+	// Gets or sets indicates the symbol set that is used to represent numbers while rendering to fixed page formats.
+	NumeralFormat string `json:"NumeralFormat,omitempty"`
+
+	// Gets or sets flag indicates whether it is required to optimize output of XPS. If this flag is set redundant nested canvases and empty canvases are removed, also neighbor glyphs with the same formatting are concatenated. Note: The accuracy of the content display may be affected if this property is set to true.  Default is false.
+	OptimizeOutput bool `json:"OptimizeOutput,omitempty"`
+
+	// Gets or sets determines number of pages to render.
+	PageCount int32 `json:"PageCount,omitempty"`
+
+	// Gets or sets determines 0-based index of the first page to render.
+	PageIndex int32 `json:"PageIndex,omitempty"`
 
 	// Gets or sets format of save.
 	SaveFormat string `json:"SaveFormat,omitempty"`
@@ -46,32 +68,11 @@ type PdfSaveOptionsData struct {
 	// Gets or sets a value determining whether the Aspose.Words.Properties.BuiltInDocumentProperties.LastSavedTime property is updated before saving.
 	UpdateLastSavedTimeProperty bool `json:"UpdateLastSavedTimeProperty,omitempty"`
 
-	// Gets or sets value determining whether content of  is updated before saving.
+	// Gets or sets value determining whether content of StructuredDocumentTag is updated before saving.
 	UpdateSdtContent bool `json:"UpdateSdtContent,omitempty"`
 
 	// Gets or sets a value determining if fields should be updated before saving the document to a fixed page format. Default value for this property is. true
 	UpdateFields bool `json:"UpdateFields,omitempty"`
-
-	// Gets or sets a value determining how colors are rendered. { Normal | Grayscale}.
-	ColorMode string `json:"ColorMode,omitempty"`
-
-	// Gets or sets determines the quality of the JPEG images inside PDF document.
-	JpegQuality int32 `json:"JpegQuality,omitempty"`
-
-	// Gets or sets allows to specify metafile rendering options.
-	MetafileRenderingOptions *MetafileRenderingOptionsData `json:"MetafileRenderingOptions,omitempty"`
-
-	// Gets or sets indicates the symbol set that is used to represent numbers while rendering to fixed page formats.
-	NumeralFormat string `json:"NumeralFormat,omitempty"`
-
-	// Gets or sets flag indicates whether it is required to optimize output of XPS. If this flag is set redundant nested canvases and empty canvases are removed, also neighbor glyphs with the same formatting are concatenated. Note: The accuracy of the content display may be affected if this property is set to true.  Default is false.
-	OptimizeOutput bool `json:"OptimizeOutput,omitempty"`
-
-	// Gets or sets determines number of pages to render.
-	PageCount int32 `json:"PageCount,omitempty"`
-
-	// Gets or sets determines 0-based index of the first page to render.
-	PageIndex int32 `json:"PageIndex,omitempty"`
 
 	// Gets or sets specifies the PDF standards compliance level for output documents.
 	Compliance string `json:"Compliance,omitempty"`
@@ -79,22 +80,19 @@ type PdfSaveOptionsData struct {
 	// Gets or sets specifies whether to convert footnote/endnote references in main text story into active hyperlinks. When clicked the hyperlink will lead to the corresponding footnote/endnote. Default is false.
 	CreateNoteHyperlinks bool `json:"CreateNoteHyperlinks,omitempty"`
 
-	// Gets or sets a value determining the way  are exported to PDF file. Default value is .
+	// Gets or sets a value determining the way CustomDocumentProperties are exported to PDF file. Default value is None.
 	CustomPropertiesExport string `json:"CustomPropertiesExport,omitempty"`
 
-	// Gets or sets specifies the details for signing the output PDF document.
 	DigitalSignatureDetails *PdfDigitalSignatureDetailsData `json:"DigitalSignatureDetails,omitempty"`
 
 	// Gets or sets a flag specifying whether the window�s title bar should display the document title taken from the Title entry of the document information dictionary.
 	DisplayDocTitle bool `json:"DisplayDocTitle,omitempty"`
 
-	// Gets or sets allows to specify downsample options.
 	DownsampleOptions *DownsampleOptionsData `json:"DownsampleOptions,omitempty"`
 
 	// Gets or sets controls how fonts are embedded into the resulting PDF documents.
 	EmbedFullFonts bool `json:"EmbedFullFonts,omitempty"`
 
-	// Gets or sets specifies the details for encrypting the output PDF document.
 	EncryptionDetails *PdfEncryptionDetailsData `json:"EncryptionDetails,omitempty"`
 
 	// Gets or sets a flag specifying whether URI should be escaped before writing.             
@@ -118,7 +116,6 @@ type PdfSaveOptionsData struct {
 	// Gets or sets determines whether hyperlinks in the output Pdf document are forced to be opened in a new window (or tab) of a browser.
 	OpenHyperlinksInNewWindow bool `json:"OpenHyperlinksInNewWindow,omitempty"`
 
-	// Gets or sets allows to specify outline options.
 	OutlineOptions *OutlineOptionsData `json:"OutlineOptions,omitempty"`
 
 	// Gets or sets specifies how the PDF document should be displayed when opened in the PDF reader.
@@ -145,6 +142,7 @@ type PdfSaveOptionsData struct {
 	// Gets or sets determines zoom factor (in percentages) for a document.
 	ZoomFactor int32 `json:"ZoomFactor,omitempty"`
 }
+
 type IPdfSaveOptionsData interface {
 	IsPdfSaveOptionsData() bool
 }
@@ -154,4 +152,3 @@ func (PdfSaveOptionsData) IsPdfSaveOptionsData() bool {
 func (PdfSaveOptionsData) IsFixedPageSaveOptionsData() bool {
 	return true;
 }
-

@@ -25,16 +25,18 @@
 
 package models
 
+
+
 // Container for the data about protection of the document.
 type ProtectionData struct {
 
 	// Gets or sets type of the protection.
 	ProtectionType string `json:"ProtectionType,omitempty"`
 }
+
 type IProtectionData interface {
 	IsProtectionData() bool
 }
 func (ProtectionData) IsProtectionData() bool {
 	return true;
 }
-

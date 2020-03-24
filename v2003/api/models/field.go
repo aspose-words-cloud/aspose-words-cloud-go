@@ -25,17 +25,18 @@
 
 package models
 
+
+
 // Field.
 type Field struct {
 
-	// Gets or sets link to the document.
+	// Gets or sets field code.
+	FieldCode string `json:"FieldCode,omitempty"`
+
 	Link *WordsApiLink `json:"link,omitempty"`
 
 	// Gets or sets node id.
 	NodeId string `json:"NodeId,omitempty"`
-
-	// Gets or sets field code.
-	FieldCode string `json:"FieldCode,omitempty"`
 
 	// Gets or sets LCID of the field.
 	LocaleId string `json:"LocaleId,omitempty"`
@@ -43,6 +44,7 @@ type Field struct {
 	// Gets or sets field result.
 	Result string `json:"Result,omitempty"`
 }
+
 type IField interface {
 	IsField() bool
 }
@@ -52,4 +54,3 @@ func (Field) IsField() bool {
 func (Field) IsFieldLink() bool {
 	return true;
 }
-

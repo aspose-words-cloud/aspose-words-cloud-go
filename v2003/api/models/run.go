@@ -25,18 +25,20 @@
 
 package models
 
+
+
 // Run element.
 type Run struct {
 
-	// Gets or sets link to the document.
+	// Gets or sets run's text.
+	Text string `json:"Text,omitempty"`
+
 	Link *WordsApiLink `json:"link,omitempty"`
 
 	// Gets or sets node id.
 	NodeId string `json:"NodeId,omitempty"`
-
-	// Gets or sets run's text.
-	Text string `json:"Text,omitempty"`
 }
+
 type IRun interface {
 	IsRun() bool
 }
@@ -46,4 +48,3 @@ func (Run) IsRun() bool {
 func (Run) IsRunLink() bool {
 	return true;
 }
-

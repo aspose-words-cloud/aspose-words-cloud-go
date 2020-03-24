@@ -25,30 +25,30 @@
 
 package models
 
+
+
 // Footnote.
 type Footnote struct {
 
-	// Gets or sets link to the document.
 	Link *WordsApiLink `json:"link,omitempty"`
 
 	// Gets or sets node id.
 	NodeId string `json:"NodeId,omitempty"`
 
-	// Gets or sets content of footnote.
 	Content *StoryChildNodes `json:"Content,omitempty"`
 
 	// Gets or sets returns a value that specifies whether this is a footnote or endnote.
 	FootnoteType string `json:"FootnoteType,omitempty"`
 
-	// Gets or sets link to comment range start node.
 	Position *DocumentPosition `json:"Position,omitempty"`
 
-	// Gets or sets /sets custom reference mark to be used for this footnote. Default value is , meaning auto-numbered footnotes are used.
+	// Gets or sets /sets custom reference mark to be used for this footnote. Default value is Empty, meaning auto-numbered footnotes are used.
 	ReferenceMark string `json:"ReferenceMark,omitempty"`
 
 	// Gets or sets this is a convenience property that allows to easily get or set text of the footnote.
 	Text string `json:"Text,omitempty"`
 }
+
 type IFootnote interface {
 	IsFootnote() bool
 }
@@ -58,4 +58,3 @@ func (Footnote) IsFootnote() bool {
 func (Footnote) IsFootnoteLink() bool {
 	return true;
 }
-

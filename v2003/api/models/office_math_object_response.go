@@ -25,15 +25,17 @@
 
 package models
 
-// This response should be returned by the service when handling: GET https://api.aspose.cloud/v4.0/words/Test.doc/officeMathObjects/0.
+
+
+// This response should be returned by the service when handling: GET http://api.aspose.com/v4.0/words/Test.doc/officeMathObjects/0.
 type OfficeMathObjectResponse struct {
 
 	// Gets or sets request Id.
 	RequestId string `json:"RequestId,omitempty"`
 
-	// Gets or sets officeMathObject information.
 	OfficeMathObject *OfficeMathObject `json:"OfficeMathObject,omitempty"`
 }
+
 type IOfficeMathObjectResponse interface {
 	IsOfficeMathObjectResponse() bool
 }
@@ -43,4 +45,3 @@ func (OfficeMathObjectResponse) IsOfficeMathObjectResponse() bool {
 func (OfficeMathObjectResponse) IsWordsResponse() bool {
 	return true;
 }
-
