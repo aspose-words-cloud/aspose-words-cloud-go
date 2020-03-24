@@ -30,7 +30,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/aspose-words-cloud/aspose-words-cloud-go/api/models"
+	"github.com/aspose-words-cloud/aspose-words-cloud-go/v2003/api/models"
 )
 
 func TestDeleteField(t *testing.T) {

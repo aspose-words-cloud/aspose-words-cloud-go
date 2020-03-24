@@ -29,57 +29,16 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/aspose-words-cloud/aspose-words-cloud-go/api/models"
+	"github.com/aspose-words-cloud/aspose-words-cloud-go/v2003/api/models"
 )
 
-func TestSearch(t *testing.T) {
-
-	localFilePath := GetLocalPath(filepath.Join("DocumentElements", "Text"), "SampleWordDocument.docx")
-	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Text")
-	remoteName := "TestSearch.docx"
-	pattern := "aspose"
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
-
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
-
-	_, _, err := client.WordsApi.Search(ctx, remoteName, pattern, options)
-
-	if err != nil {
-		t.Error(err)
-	}
-}
-
-func TestRenderPage(t *testing.T) {
-
-	localFilePath := GetLocalPath(filepath.Join("DocumentElements", "Text"), "SampleWordDocument.docx")
-	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "PageSetup")
-	remoteName := "TestRenderPage.docx"
-	format := "bmp"
-	pageIndex := 1
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
-
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
-
-	output, err := client.WordsApi.RenderPage(ctx, remoteName, int32(pageIndex), format, options)
-	defer output.Body.Close()
-
-	if err != nil {
-		t.Error(err)
-	}
-}
-
-func TestReplaceText(t *testing.T) {
+func TestProtectDocument(t *testing.T) {
 
 	localFilePath := commonTestFile
-	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Text")
-	remoteName := "TestReplaceText.docx"
-	replaceText := models.ReplaceTextParameters{
-		OldValue: "aspose",
-		NewValue: "aspose new",
+	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentActions", "DocumentProtection")
+	remoteName := "TestProtectDocument.docx"
+	protectionRequest := models.ProtectionRequest{
+		NewPassword: "123",
 	}
 	options := map[string]interface{}{
 		"folder": remoteFolder,
@@ -87,7 +46,46 @@ func TestReplaceText(t *testing.T) {
 
 	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, _, err := client.WordsApi.ReplaceText(ctx, remoteName, replaceText, options)
+	_, _, err := client.WordsApi.ProtectDocument(ctx, remoteName, protectionRequest, options)
+
+	if err != nil {
+		t.Error(err)
+	}
+}
+
+func TestUnprotectDocument(t *testing.T) {
+
+	localFilePath := GetLocalPath(filepath.Join("DocumentActions", "DocumentProtection"), "SampleProtectedBlankWordDocument.docx")
+	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentActions", "DocumentProtection")
+	remoteName := "TestUnprotectDocument.docx"
+	protectionRequest := models.ProtectionRequest{
+		Password: "aspose",
+	}
+	options := map[string]interface{}{
+		"folder": remoteFolder,
+	}
+
+	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
+
+	_, _, err := client.WordsApi.UnprotectDocument(ctx, remoteName, protectionRequest, options)
+
+	if err != nil {
+		t.Error(err)
+	}
+}
+
+func TestGetDocumentProtection(t *testing.T) {
+
+	localFilePath := commonTestFile
+	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentActions", "DocumentProtection")
+	remoteName := "TestGetDocumentProtection.docx"
+	options := map[string]interface{}{
+		"folder": remoteFolder,
+	}
+
+	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
+
+	_, _, err := client.WordsApi.GetDocumentProtection(ctx, remoteName, options)
 
 	if err != nil {
 		t.Error(err)

@@ -3,8 +3,8 @@ package api_test
 import (
 	"testing"
 
-	"github.com/aspose-words-cloud/aspose-words-cloud-go/api"
-	"github.com/aspose-words-cloud/aspose-words-cloud-go/api/models"
+	"github.com/aspose-words-cloud/aspose-words-cloud-go/v2003/api"
+	"github.com/aspose-words-cloud/aspose-words-cloud-go/v2003/api/models"
 )
 
 func TestAppSidAndAppKey(t *testing.T) {

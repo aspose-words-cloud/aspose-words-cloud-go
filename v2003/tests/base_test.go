@@ -37,8 +37,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/aspose-words-cloud/aspose-words-cloud-go/api"
-	"github.com/aspose-words-cloud/aspose-words-cloud-go/api/models"
+	"github.com/aspose-words-cloud/aspose-words-cloud-go/v2003/api"
+	"github.com/aspose-words-cloud/aspose-words-cloud-go/v2003/api/models"
 )
 
 var remoteBaseTestDataFolder string = "Temp/SdkTests/TestData"
@@ -54,6 +54,10 @@ func GetLocalPath(folderPath string, filename string) string {
 func ReadConfiguration(t *testing.T) (cfg *models.Configuration) {
 	_, filename, _, _ := runtime.Caller(0)
 	configFile := filepath.Join(filepath.Dir(filename), "../config.json")
+	_, fileErr := os.Stat(configFile)
+	if os.IsNotExist(fileErr) {
+		configFile = filepath.Join(filepath.Dir(filename), "../../config.json")
+	}
 	configuration, err := models.NewConfiguration(configFile)
 
 	if err != nil {
