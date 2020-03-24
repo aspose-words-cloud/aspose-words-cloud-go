@@ -12,4 +12,4 @@
 *.out
 
 # credentials for tests
-config.json
+/config.json
