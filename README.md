@@ -54,7 +54,7 @@ Go code:
 ```csharp
 import (
 	"fmt"
-	"github.com/aspose-words-cloud/aspose-words-cloud-go/api"
+	"github.com/aspose-words-cloud/aspose-words-cloud-go/vXXXX/api"
 	"os"
 )
 
