@@ -25,10 +25,11 @@
 
 package models
 
+
+
 // Words document property DTO.
 type DocumentProperty struct {
 
-	// Gets or sets link to the document.
 	Link *WordsApiLink `json:"link,omitempty"`
 
 	// Gets or sets a value indicating whether flag indicates whether the property is built-in or not. If true the property is built-in, if false the property is custom.
@@ -40,6 +41,7 @@ type DocumentProperty struct {
 	// Gets or sets string value of the document property.
 	Value string `json:"Value,omitempty"`
 }
+
 type IDocumentProperty interface {
 	IsDocumentProperty() bool
 }
@@ -49,4 +51,3 @@ func (DocumentProperty) IsDocumentProperty() bool {
 func (DocumentProperty) IsLinkElement() bool {
 	return true;
 }
-

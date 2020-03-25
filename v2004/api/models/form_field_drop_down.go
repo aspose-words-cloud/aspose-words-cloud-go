@@ -25,14 +25,10 @@
 
 package models
 
+
+
 // FormField dropdownlist element.
 type FormFieldDropDown struct {
-
-	// Gets or sets link to the document.
-	Link *WordsApiLink `json:"link,omitempty"`
-
-	// Gets or sets node id.
-	NodeId string `json:"NodeId,omitempty"`
 
 	// Gets or sets true if references to the specified form field are automatically updated whenever the field is exited.
 	CalculateOnExit bool `json:"CalculateOnExit,omitempty"`
@@ -61,12 +57,18 @@ type FormFieldDropDown struct {
 	// Gets or sets returns or sets the text that's displayed in the status bar when a form field has the focus.
 	StatusText string `json:"StatusText,omitempty"`
 
+	Link *WordsApiLink `json:"link,omitempty"`
+
+	// Gets or sets node id.
+	NodeId string `json:"NodeId,omitempty"`
+
 	// Gets or sets provides access to the items of a dropdown form field.
 	DropDownItems []string `json:"DropDownItems,omitempty"`
 
 	// Gets or sets the index specifying the currently selected item in a dropdown form field.
 	DropDownSelectedIndex int32 `json:"DropDownSelectedIndex,omitempty"`
 }
+
 type IFormFieldDropDown interface {
 	IsFormFieldDropDown() bool
 }
@@ -76,4 +78,3 @@ func (FormFieldDropDown) IsFormFieldDropDown() bool {
 func (FormFieldDropDown) IsFormField() bool {
 	return true;
 }
-

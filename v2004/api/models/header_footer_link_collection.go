@@ -25,15 +25,17 @@
 
 package models
 
+
+
 // Collection of links to header/footers.
 type HeaderFooterLinkCollection struct {
 
-	// Gets or sets link to the document.
 	Link *WordsApiLink `json:"link,omitempty"`
 
 	// Gets or sets collection of section's links.
 	List []HeaderFooterLink `json:"List,omitempty"`
 }
+
 type IHeaderFooterLinkCollection interface {
 	IsHeaderFooterLinkCollection() bool
 }
@@ -43,4 +45,3 @@ func (HeaderFooterLinkCollection) IsHeaderFooterLinkCollection() bool {
 func (HeaderFooterLinkCollection) IsLinkElement() bool {
 	return true;
 }
-

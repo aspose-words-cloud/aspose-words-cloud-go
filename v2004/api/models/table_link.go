@@ -25,15 +25,17 @@
 
 package models
 
+
+
 // Table link element.
 type TableLink struct {
 
-	// Gets or sets link to the document.
-	Link *WordsApiLink `json:"link,omitempty"`
-
 	// Gets or sets node id.
 	NodeId string `json:"NodeId,omitempty"`
+
+	Link *WordsApiLink `json:"link,omitempty"`
 }
+
 type ITableLink interface {
 	IsTableLink() bool
 }
@@ -43,4 +45,3 @@ func (TableLink) IsTableLink() bool {
 func (TableLink) IsNodeLink() bool {
 	return true;
 }
-

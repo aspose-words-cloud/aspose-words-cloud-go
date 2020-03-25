@@ -25,18 +25,20 @@
 
 package models
 
+
+
 // Paragraph link element.
 type ParagraphLink struct {
-
-	// Gets or sets link to the document.
-	Link *WordsApiLink `json:"link,omitempty"`
 
 	// Gets or sets node id.
 	NodeId string `json:"NodeId,omitempty"`
 
+	Link *WordsApiLink `json:"link,omitempty"`
+
 	// Gets or sets paragraph's text.
 	Text string `json:"Text,omitempty"`
 }
+
 type IParagraphLink interface {
 	IsParagraphLink() bool
 }
@@ -46,4 +48,3 @@ func (ParagraphLink) IsParagraphLink() bool {
 func (ParagraphLink) IsNodeLink() bool {
 	return true;
 }
-

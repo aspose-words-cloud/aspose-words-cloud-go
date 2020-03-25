@@ -25,15 +25,17 @@
 
 package models
 
+
+
 // Section link element.
 type SectionLink struct {
 
-	// Gets or sets link to the document.
-	Link *WordsApiLink `json:"link,omitempty"`
-
 	// Gets or sets node id.
 	NodeId string `json:"NodeId,omitempty"`
+
+	Link *WordsApiLink `json:"link,omitempty"`
 }
+
 type ISectionLink interface {
 	IsSectionLink() bool
 }
@@ -43,4 +45,3 @@ func (SectionLink) IsSectionLink() bool {
 func (SectionLink) IsNodeLink() bool {
 	return true;
 }
-

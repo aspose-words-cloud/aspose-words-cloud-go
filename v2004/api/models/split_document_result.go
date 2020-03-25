@@ -25,22 +25,22 @@
 
 package models
 
+
+
 // Result of splitting document.
 type SplitDocumentResult struct {
 
-	// Gets or sets linkt to the source document.
 	SourceDocument *FileLink `json:"SourceDocument,omitempty"`
 
 	// Gets or sets array of pages.
 	Pages []FileLink `json:"Pages,omitempty"`
 
-	// Gets or sets link to the file archive with pages.
 	ZippedPages *FileLink `json:"ZippedPages,omitempty"`
 }
+
 type ISplitDocumentResult interface {
 	IsSplitDocumentResult() bool
 }
 func (SplitDocumentResult) IsSplitDocumentResult() bool {
 	return true;
 }
-

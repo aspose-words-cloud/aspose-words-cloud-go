@@ -25,10 +25,11 @@
 
 package models
 
+
+
 // Represents Drawing Object DTO.
 type DrawingObject struct {
 
-	// Gets or sets link to the document.
 	Link *WordsApiLink `json:"link,omitempty"`
 
 	// Gets or sets node id.
@@ -37,13 +38,11 @@ type DrawingObject struct {
 	// Gets or sets height of the drawing object in points.
 	Height float64 `json:"Height,omitempty"`
 
-	// Gets or sets link to image data. Can be null if shape does not have an image.
 	ImageDataLink *WordsApiLink `json:"ImageDataLink,omitempty"`
 
 	// Gets or sets distance in points from the origin to the left side of the image.             
 	Left float64 `json:"Left,omitempty"`
 
-	// Gets or sets link to ole object. Can be null if shape does not have ole data.
 	OleDataLink *WordsApiLink `json:"OleDataLink,omitempty"`
 
 	// Gets or sets specifies where the distance to the image is measured from.             
@@ -52,7 +51,7 @@ type DrawingObject struct {
 	// Gets or sets specifies where the distance to the image measured from.
 	RelativeVerticalPosition string `json:"RelativeVerticalPosition,omitempty"`
 
-	// Gets or sets a list of links that originate from this .
+	// Gets or sets a list of links that originate from this DrawingObjectDto.
 	RenderLinks []WordsApiLink `json:"RenderLinks,omitempty"`
 
 	// Gets or sets distance in points from the origin to the top side of the image.
@@ -64,6 +63,7 @@ type DrawingObject struct {
 	// Gets or sets specifies how to wrap text around the image.
 	WrapType string `json:"WrapType,omitempty"`
 }
+
 type IDrawingObject interface {
 	IsDrawingObject() bool
 }
@@ -73,4 +73,3 @@ func (DrawingObject) IsDrawingObject() bool {
 func (DrawingObject) IsDrawingObjectLink() bool {
 	return true;
 }
-

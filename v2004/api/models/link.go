@@ -25,6 +25,8 @@
 
 package models
 
+
+
 // Provides information for the object link. This is supposed to be an atom:link, therefore it should have all attributes specified here http://tools.ietf.org/html/rfc4287#section-4.2.7.
 type Link struct {
 
@@ -40,10 +42,10 @@ type Link struct {
 	// Gets or sets the \"title\" attribute conveys human-readable information about the link.  The content of the \"title\" attribute is Language-Sensitive.
 	Title string `json:"Title,omitempty"`
 }
+
 type ILink interface {
 	IsLink() bool
 }
 func (Link) IsLink() bool {
 	return true;
 }
-

@@ -25,15 +25,17 @@
 
 package models
 
+
+
 // This response should be returned by the service when handling:  GET /{name}/hyperlinks/{hyperlinkIndex} .
 type HyperlinkResponse struct {
 
 	// Gets or sets request Id.
 	RequestId string `json:"RequestId,omitempty"`
 
-	// Gets or sets hyperlink.
 	Hyperlink *Hyperlink `json:"Hyperlink,omitempty"`
 }
+
 type IHyperlinkResponse interface {
 	IsHyperlinkResponse() bool
 }
@@ -43,4 +45,3 @@ func (HyperlinkResponse) IsHyperlinkResponse() bool {
 func (HyperlinkResponse) IsWordsResponse() bool {
 	return true;
 }
-

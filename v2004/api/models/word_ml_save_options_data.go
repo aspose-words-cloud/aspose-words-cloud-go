@@ -25,6 +25,8 @@
 
 package models
 
+
+
 // container class for wml save options.
 type WordMlSaveOptionsData struct {
 
@@ -46,7 +48,7 @@ type WordMlSaveOptionsData struct {
 	// Gets or sets a value determining whether the Aspose.Words.Properties.BuiltInDocumentProperties.LastSavedTime property is updated before saving.
 	UpdateLastSavedTimeProperty bool `json:"UpdateLastSavedTimeProperty,omitempty"`
 
-	// Gets or sets value determining whether content of  is updated before saving.
+	// Gets or sets value determining whether content of StructuredDocumentTag is updated before saving.
 	UpdateSdtContent bool `json:"UpdateSdtContent,omitempty"`
 
 	// Gets or sets a value determining if fields should be updated before saving the document to a fixed page format. Default value for this property is. true
@@ -55,6 +57,7 @@ type WordMlSaveOptionsData struct {
 	// Gets or sets specifies whether or not use pretty formats output.
 	PrettyFormat bool `json:"PrettyFormat,omitempty"`
 }
+
 type IWordMlSaveOptionsData interface {
 	IsWordMLSaveOptionsData() bool
 }
@@ -64,4 +67,3 @@ func (WordMlSaveOptionsData) IsWordMLSaveOptionsData() bool {
 func (WordMlSaveOptionsData) IsSaveOptionsData() bool {
 	return true;
 }
-

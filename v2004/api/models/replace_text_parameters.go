@@ -25,28 +25,30 @@
 
 package models
 
+
+
 // Class for document replace text request building.
 type ReplaceTextParameters struct {
 
-	// Gets or sets old text value (or regex pattern ) to replace.
+	// Gets or sets old text value (or regex pattern IsOldValueRegex) to replace.
 	OldValue string `json:"OldValue,omitempty"`
 
 	// Gets or sets new text value to replace by.
 	NewValue string `json:"NewValue,omitempty"`
 
 	// Gets or sets a value indicating whether flag, true means the search is case-sensitive; false means the search is not case-sensitive.
-	IsMatchCase bool `json:"IsMatchCase"`
+	IsMatchCase bool `json:"IsMatchCase,omitempty"`
 
 	// Gets or sets a value indicating whether flag, means that only whole word matched are replaced.
-	IsMatchWholeWord bool `json:"IsMatchWholeWord"`
+	IsMatchWholeWord bool `json:"IsMatchWholeWord,omitempty"`
 
-	// Gets or sets a value indicating whether flag, means that  contains regex expression.
-	IsOldValueRegex bool `json:"IsOldValueRegex"`
+	// Gets or sets a value indicating whether flag, means that OldValue contains regex expression.
+	IsOldValueRegex bool `json:"IsOldValueRegex,omitempty"`
 }
+
 type IReplaceTextParameters interface {
 	IsReplaceTextParameters() bool
 }
 func (ReplaceTextParameters) IsReplaceTextParameters() bool {
 	return true;
 }
-

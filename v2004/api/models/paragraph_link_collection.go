@@ -25,15 +25,17 @@
 
 package models
 
+
+
 // Collection of links to paragraphs.
 type ParagraphLinkCollection struct {
 
-	// Gets or sets link to the document.
 	Link *WordsApiLink `json:"link,omitempty"`
 
 	// Gets or sets collection of paragraph's links.
 	ParagraphLinkList []ParagraphLink `json:"ParagraphLinkList,omitempty"`
 }
+
 type IParagraphLinkCollection interface {
 	IsParagraphLinkCollection() bool
 }
@@ -43,4 +45,3 @@ func (ParagraphLinkCollection) IsParagraphLinkCollection() bool {
 func (ParagraphLinkCollection) IsLinkElement() bool {
 	return true;
 }
-

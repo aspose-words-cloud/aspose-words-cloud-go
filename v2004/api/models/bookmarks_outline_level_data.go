@@ -25,6 +25,8 @@
 
 package models
 
+
+
 // container class for individual bookmarks outline level.
 type BookmarksOutlineLevelData struct {
 
@@ -32,12 +34,12 @@ type BookmarksOutlineLevelData struct {
 	Name string `json:"Name,omitempty"`
 
 	// Gets or sets specify the bookmark's level.
-	BookmarksOutlineLevel int32 `json:"BookmarksOutlineLevel"`
+	BookmarksOutlineLevel int32 `json:"BookmarksOutlineLevel,omitempty"`
 }
+
 type IBookmarksOutlineLevelData interface {
 	IsBookmarksOutlineLevelData() bool
 }
 func (BookmarksOutlineLevelData) IsBookmarksOutlineLevelData() bool {
 	return true;
 }
-

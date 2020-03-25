@@ -25,10 +25,11 @@
 
 package models
 
+
+
 // Represents all formatting for a table row.
 type TableCellFormat struct {
 
-	// Gets or sets link to the document.
 	Link *WordsApiLink `json:"link,omitempty"`
 
 	// Gets or sets returns or sets the amount of space (in points) to add below the contents of cell.
@@ -46,7 +47,6 @@ type TableCellFormat struct {
 	// Gets or sets returns or sets the orientation of text in a table cell.
 	Orientation string `json:"Orientation,omitempty"`
 
-	// Gets or sets returns or sets the preferred width of the cell.
 	PreferredWidth *PreferredWidth `json:"PreferredWidth,omitempty"`
 
 	// Gets or sets returns or sets the amount of space (in points) to add to the right of the contents of cell.
@@ -67,6 +67,7 @@ type TableCellFormat struct {
 	// Gets or sets if true, wrap text for the cell.
 	WrapText bool `json:"WrapText,omitempty"`
 }
+
 type ITableCellFormat interface {
 	IsTableCellFormat() bool
 }
@@ -76,4 +77,3 @@ func (TableCellFormat) IsTableCellFormat() bool {
 func (TableCellFormat) IsLinkElement() bool {
 	return true;
 }
-

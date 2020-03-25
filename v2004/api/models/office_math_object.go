@@ -25,16 +25,16 @@
 
 package models
 
+
+
 // OfficeMath object.
 type OfficeMathObject struct {
 
-	// Gets or sets link to the document.
 	Link *WordsApiLink `json:"link,omitempty"`
 
 	// Gets or sets node id.
 	NodeId string `json:"NodeId,omitempty"`
 
-	// Gets or sets content of footnote.
 	Content *StoryChildNodes `json:"Content,omitempty"`
 
 	// Gets or sets /sets Office Math display format type which represents whether an equation is displayed inline with the text or displayed on its own line.
@@ -46,6 +46,7 @@ type OfficeMathObject struct {
 	// Gets or sets type Aspose.Words.Math.OfficeMath.MathObjectType of this Office Math object.
 	MathObjectType string `json:"MathObjectType,omitempty"`
 }
+
 type IOfficeMathObject interface {
 	IsOfficeMathObject() bool
 }
@@ -55,4 +56,3 @@ func (OfficeMathObject) IsOfficeMathObject() bool {
 func (OfficeMathObject) IsOfficeMathLink() bool {
 	return true;
 }
-

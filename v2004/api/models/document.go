@@ -25,6 +25,8 @@
 
 package models
 
+
+
 // Represents Words document DTO.
 type Document struct {
 
@@ -35,21 +37,20 @@ type Document struct {
 	FileName string `json:"FileName,omitempty"`
 
 	// Gets or sets the original format of the document.
-	SourceFormat string `json:"SourceFormat"`
+	SourceFormat string `json:"SourceFormat,omitempty"`
 
 	// Gets or sets a value indicating whether returns true if the document is encrypted and requires a password to open.
-	IsEncrypted bool `json:"IsEncrypted"`
+	IsEncrypted bool `json:"IsEncrypted,omitempty"`
 
 	// Gets or sets a value indicating whether returns true if the document contains a digital signature. This property merely informs that a digital signature is present on a document, but it does not specify whether the signature is valid or not.
-	IsSigned bool `json:"IsSigned"`
+	IsSigned bool `json:"IsSigned,omitempty"`
 
-	// Gets or sets returns document properties.
 	DocumentProperties *DocumentProperties `json:"DocumentProperties,omitempty"`
 }
+
 type IDocument interface {
 	IsDocument() bool
 }
 func (Document) IsDocument() bool {
 	return true;
 }
-

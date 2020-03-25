@@ -25,15 +25,17 @@
 
 package models
 
+
+
 // Collection of links to tables.
 type TableLinkCollection struct {
 
-	// Gets or sets link to the document.
 	Link *WordsApiLink `json:"link,omitempty"`
 
 	// Gets or sets collection of table's links.
 	TableLinkList []TableLink `json:"TableLinkList,omitempty"`
 }
+
 type ITableLinkCollection interface {
 	IsTableLinkCollection() bool
 }
@@ -43,4 +45,3 @@ func (TableLinkCollection) IsTableLinkCollection() bool {
 func (TableLinkCollection) IsLinkElement() bool {
 	return true;
 }
-

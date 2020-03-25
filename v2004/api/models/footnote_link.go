@@ -25,15 +25,17 @@
 
 package models
 
+
+
 // Footnote link.
 type FootnoteLink struct {
 
-	// Gets or sets link to the document.
-	Link *WordsApiLink `json:"link,omitempty"`
-
 	// Gets or sets node id.
 	NodeId string `json:"NodeId,omitempty"`
+
+	Link *WordsApiLink `json:"link,omitempty"`
 }
+
 type IFootnoteLink interface {
 	IsFootnoteLink() bool
 }
@@ -43,4 +45,3 @@ func (FootnoteLink) IsFootnoteLink() bool {
 func (FootnoteLink) IsNodeLink() bool {
 	return true;
 }
-

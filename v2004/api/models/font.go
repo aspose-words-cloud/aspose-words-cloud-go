@@ -25,10 +25,11 @@
 
 package models
 
+
+
 // Font element.             
 type Font struct {
 
-	// Gets or sets link to the document.
 	Link *WordsApiLink `json:"link,omitempty"`
 
 	// Gets or sets true if the font is formatted as all capital letters.             
@@ -43,10 +44,8 @@ type Font struct {
 	// Gets or sets true if the right-to-left text is formatted as bold.             
 	BoldBi bool `json:"BoldBi,omitempty"`
 
-	// Gets or sets border object that specifies border for the font.
 	Border *Border `json:"Border,omitempty"`
 
-	// Gets or sets the color of the font.             
 	Color *XmlColor `json:"Color,omitempty"`
 
 	// Gets or sets specifies whether the contents of this run shall be treated as complex script text regardless of their Unicode character values when determining the formatting for this run.             
@@ -64,7 +63,6 @@ type Font struct {
 	// Gets or sets true if the font is formatted as hidden text.             
 	Hidden bool `json:"Hidden,omitempty"`
 
-	// Gets or sets the highlight (marker) color.             
 	HighlightColor *XmlColor `json:"HighlightColor,omitempty"`
 
 	// Gets or sets true if the font is formatted as italic.             
@@ -148,9 +146,9 @@ type Font struct {
 	// Gets or sets the type of underline applied to the font.
 	Underline string `json:"Underline,omitempty"`
 
-	// Gets or sets the color of the underline applied to the font.
 	UnderlineColor *XmlColor `json:"UnderlineColor,omitempty"`
 }
+
 type IFont interface {
 	IsFont() bool
 }
@@ -160,4 +158,3 @@ func (Font) IsFont() bool {
 func (Font) IsLinkElement() bool {
 	return true;
 }
-

@@ -25,10 +25,11 @@
 
 package models
 
+
+
 // Paragraph format element.             
 type ParagraphFormat struct {
 
-	// Gets or sets link to the document.
 	Link *WordsApiLink `json:"link,omitempty"`
 
 	// Gets or sets a flag indicating whether inter-character spacing is automatically adjusted between regions of Latin text and regions of East Asian text in the current paragraph.             
@@ -70,7 +71,7 @@ type ParagraphFormat struct {
 	// Gets or sets the number of lines of the paragraph text used to calculate the drop cap height.             
 	LinesToDrop int32 `json:"LinesToDrop,omitempty"`
 
-	// Gets or sets when true,  and  will be ignored between the paragraphs of the same style.             
+	// Gets or sets when true, SpaceBefore and SpaceAfter will be ignored between the paragraphs of the same style.             
 	NoSpaceBetweenParagraphsOfSameStyle bool `json:"NoSpaceBetweenParagraphsOfSameStyle,omitempty"`
 
 	// Gets or sets specifies the outline level of the paragraph in the document.             
@@ -109,6 +110,7 @@ type ParagraphFormat struct {
 	// Gets or sets true if the first and last lines in the paragraph are to remain on the same page as the rest of the paragraph.             
 	WidowControl bool `json:"WidowControl,omitempty"`
 }
+
 type IParagraphFormat interface {
 	IsParagraphFormat() bool
 }
@@ -118,4 +120,3 @@ func (ParagraphFormat) IsParagraphFormat() bool {
 func (ParagraphFormat) IsLinkElement() bool {
 	return true;
 }
-

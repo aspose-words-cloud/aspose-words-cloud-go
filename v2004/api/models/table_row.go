@@ -25,21 +25,22 @@
 
 package models
 
+
+
 // Table row element.
 type TableRow struct {
-
-	// Gets or sets link to the document.
-	Link *WordsApiLink `json:"link,omitempty"`
 
 	// Gets or sets node id.
 	NodeId string `json:"NodeId,omitempty"`
 
-	// Gets or sets provides access to the formatting properties of the row.
+	Link *WordsApiLink `json:"link,omitempty"`
+
 	RowFormat *TableRowFormat `json:"RowFormat,omitempty"`
 
 	// Gets or sets collection of table's rows.
 	TableCellList []TableCell `json:"TableCellList,omitempty"`
 }
+
 type ITableRow interface {
 	IsTableRow() bool
 }
@@ -49,4 +50,3 @@ func (TableRow) IsTableRow() bool {
 func (TableRow) IsNodeLink() bool {
 	return true;
 }
-

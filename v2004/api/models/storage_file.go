@@ -29,6 +29,7 @@ import (
 	"time"
 )
 
+
 // File or folder information
 type StorageFile struct {
 
@@ -36,21 +37,21 @@ type StorageFile struct {
 	Name string `json:"Name,omitempty"`
 
 	// True if it is a folder.
-	IsFolder bool `json:"IsFolder"`
+	IsFolder bool `json:"IsFolder,omitempty"`
 
-	// File or folder last modified .
+	// File or folder last modified DateTime.
 	ModifiedDate time.Time `json:"ModifiedDate,omitempty"`
 
 	// File or folder size.
-	Size int64 `json:"Size"`
+	Size int64 `json:"Size,omitempty"`
 
 	// File or folder path.
 	Path string `json:"Path,omitempty"`
 }
+
 type IStorageFile interface {
 	IsStorageFile() bool
 }
 func (StorageFile) IsStorageFile() bool {
 	return true;
 }
-

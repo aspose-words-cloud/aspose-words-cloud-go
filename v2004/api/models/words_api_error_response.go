@@ -25,15 +25,17 @@
 
 package models
 
+
+
 // Response for Api error.
 type WordsApiErrorResponse struct {
 
 	// Gets or sets request Id.
 	RequestId string `json:"RequestId,omitempty"`
 
-	// Gets or sets error.
 	Error_ *ApiError `json:"Error,omitempty"`
 }
+
 type IWordsApiErrorResponse interface {
 	IsWordsApiErrorResponse() bool
 }
@@ -43,4 +45,3 @@ func (WordsApiErrorResponse) IsWordsApiErrorResponse() bool {
 func (WordsApiErrorResponse) IsWordsResponse() bool {
 	return true;
 }
-

@@ -25,28 +25,29 @@
 
 package models
 
+
+
 // Container for the document's statistical data.
 type DocumentStatData struct {
 
 	// Gets or sets total count of words in the document.
-	WordCount int32 `json:"WordCount"`
+	WordCount int32 `json:"WordCount,omitempty"`
 
 	// Gets or sets total count of paragraphs in the document.
-	ParagraphCount int32 `json:"ParagraphCount"`
+	ParagraphCount int32 `json:"ParagraphCount,omitempty"`
 
 	// Gets or sets total count of pages in the document.
-	PageCount int32 `json:"PageCount"`
+	PageCount int32 `json:"PageCount,omitempty"`
 
-	// Gets or sets detailed statistics of footnotes.
 	FootnotesStatData *FootnotesStatData `json:"FootnotesStatData,omitempty"`
 
 	// Gets or sets detailed statistics of all pages.
 	PageStatData []PageStatData `json:"PageStatData,omitempty"`
 }
+
 type IDocumentStatData interface {
 	IsDocumentStatData() bool
 }
 func (DocumentStatData) IsDocumentStatData() bool {
 	return true;
 }
-

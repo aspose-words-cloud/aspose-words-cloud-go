@@ -29,6 +29,7 @@ import (
 	"time"
 )
 
+
 // Container class for compare documents.
 type CompareData struct {
 
@@ -41,10 +42,10 @@ type CompareData struct {
 	// Gets or sets the date and time to use for revisions.             
 	DateTime time.Time `json:"DateTime,omitempty"`
 }
+
 type ICompareData interface {
 	IsCompareData() bool
 }
 func (CompareData) IsCompareData() bool {
 	return true;
 }
-

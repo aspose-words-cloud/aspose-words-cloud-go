@@ -25,15 +25,17 @@
 
 package models
 
+
+
 // Represents link for Drawing Object DTO.
 type DrawingObjectLink struct {
 
-	// Gets or sets link to the document.
-	Link *WordsApiLink `json:"link,omitempty"`
-
 	// Gets or sets node id.
 	NodeId string `json:"NodeId,omitempty"`
+
+	Link *WordsApiLink `json:"link,omitempty"`
 }
+
 type IDrawingObjectLink interface {
 	IsDrawingObjectLink() bool
 }
@@ -43,4 +45,3 @@ func (DrawingObjectLink) IsDrawingObjectLink() bool {
 func (DrawingObjectLink) IsNodeLink() bool {
 	return true;
 }
-

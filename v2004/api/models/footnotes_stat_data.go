@@ -25,19 +25,21 @@
 
 package models
 
+
+
 // Container for the footnotes statistical data.
 type FootnotesStatData struct {
 
 	// Gets or sets total count of words in footnotes.
-	WordCount int32 `json:"WordCount"`
+	WordCount int32 `json:"WordCount,omitempty"`
 
 	// Gets or sets total count of paragraphs in footnotes.
-	ParagraphCount int32 `json:"ParagraphCount"`
+	ParagraphCount int32 `json:"ParagraphCount,omitempty"`
 }
+
 type IFootnotesStatData interface {
 	IsFootnotesStatData() bool
 }
 func (FootnotesStatData) IsFootnotesStatData() bool {
 	return true;
 }
-

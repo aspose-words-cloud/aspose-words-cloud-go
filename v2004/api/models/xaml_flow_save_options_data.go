@@ -25,6 +25,8 @@
 
 package models
 
+
+
 // container class for xaml flow save options.
 type XamlFlowSaveOptionsData struct {
 
@@ -46,7 +48,7 @@ type XamlFlowSaveOptionsData struct {
 	// Gets or sets a value determining whether the Aspose.Words.Properties.BuiltInDocumentProperties.LastSavedTime property is updated before saving.
 	UpdateLastSavedTimeProperty bool `json:"UpdateLastSavedTimeProperty,omitempty"`
 
-	// Gets or sets value determining whether content of  is updated before saving.
+	// Gets or sets value determining whether content of StructuredDocumentTag is updated before saving.
 	UpdateSdtContent bool `json:"UpdateSdtContent,omitempty"`
 
 	// Gets or sets a value determining if fields should be updated before saving the document to a fixed page format. Default value for this property is. true
@@ -58,6 +60,7 @@ type XamlFlowSaveOptionsData struct {
 	// Gets or sets specifies the name of the folder used to construct image URIs.
 	ImagesFolderAlias string `json:"ImagesFolderAlias,omitempty"`
 }
+
 type IXamlFlowSaveOptionsData interface {
 	IsXamlFlowSaveOptionsData() bool
 }
@@ -67,4 +70,3 @@ func (XamlFlowSaveOptionsData) IsXamlFlowSaveOptionsData() bool {
 func (XamlFlowSaveOptionsData) IsSaveOptionsData() bool {
 	return true;
 }
-

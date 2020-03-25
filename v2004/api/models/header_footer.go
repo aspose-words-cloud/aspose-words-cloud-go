@@ -25,24 +25,24 @@
 
 package models
 
+
+
 // Section element.
 type HeaderFooter struct {
-
-	// Gets or sets link to the document.
-	Link *WordsApiLink `json:"link,omitempty"`
 
 	// Gets or sets paragraph's text.
 	Type_ string `json:"Type,omitempty"`
 
+	Link *WordsApiLink `json:"link,omitempty"`
+
 	// Gets or sets child nodes.
 	ChildNodes []NodeLink `json:"ChildNodes,omitempty"`
 
-	// Gets or sets link to DrawingObjects resource.
 	DrawingObjects *LinkElement `json:"DrawingObjects,omitempty"`
 
-	// Gets or sets link to Paragraphs resource.
 	Paragraphs *LinkElement `json:"Paragraphs,omitempty"`
 }
+
 type IHeaderFooter interface {
 	IsHeaderFooter() bool
 }
@@ -52,4 +52,3 @@ func (HeaderFooter) IsHeaderFooter() bool {
 func (HeaderFooter) IsHeaderFooterLink() bool {
 	return true;
 }
-

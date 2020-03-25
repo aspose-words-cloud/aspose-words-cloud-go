@@ -25,6 +25,8 @@
 
 package models
 
+
+
 // container class for html save options.
 type HtmlSaveOptionsData struct {
 
@@ -46,7 +48,7 @@ type HtmlSaveOptionsData struct {
 	// Gets or sets a value determining whether the Aspose.Words.Properties.BuiltInDocumentProperties.LastSavedTime property is updated before saving.
 	UpdateLastSavedTimeProperty bool `json:"UpdateLastSavedTimeProperty,omitempty"`
 
-	// Gets or sets value determining whether content of  is updated before saving.
+	// Gets or sets value determining whether content of StructuredDocumentTag is updated before saving.
 	UpdateSdtContent bool `json:"UpdateSdtContent,omitempty"`
 
 	// Gets or sets a value determining if fields should be updated before saving the document to a fixed page format. Default value for this property is. true
@@ -169,6 +171,7 @@ type HtmlSaveOptionsData struct {
 	// Gets or sets controls how table, row and cell widths are exported.
 	TableWidthOutputMode string `json:"TableWidthOutputMode,omitempty"`
 }
+
 type IHtmlSaveOptionsData interface {
 	IsHtmlSaveOptionsData() bool
 }
@@ -178,4 +181,3 @@ func (HtmlSaveOptionsData) IsHtmlSaveOptionsData() bool {
 func (HtmlSaveOptionsData) IsSaveOptionsData() bool {
 	return true;
 }
-

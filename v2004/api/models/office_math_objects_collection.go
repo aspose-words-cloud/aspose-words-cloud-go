@@ -25,15 +25,17 @@
 
 package models
 
+
+
 // Collection of OfficeMath objects.
 type OfficeMathObjectsCollection struct {
 
-	// Gets or sets link to the document.
 	Link *WordsApiLink `json:"link,omitempty"`
 
 	// Gets or sets collection of OfficeMath objects.
 	List []OfficeMathObject `json:"List,omitempty"`
 }
+
 type IOfficeMathObjectsCollection interface {
 	IsOfficeMathObjectsCollection() bool
 }
@@ -43,4 +45,3 @@ func (OfficeMathObjectsCollection) IsOfficeMathObjectsCollection() bool {
 func (OfficeMathObjectsCollection) IsLinkElement() bool {
 	return true;
 }
-

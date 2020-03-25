@@ -25,15 +25,17 @@
 
 package models
 
+
+
 // This response should be returned by the service when handling:  GET /{name}/mailMergeFieldNames.
 type FieldNamesResponse struct {
 
 	// Gets or sets request Id.
 	RequestId string `json:"RequestId,omitempty"`
 
-	// Gets or sets collection of mail merge fields.
 	FieldNames *FieldNames `json:"FieldNames,omitempty"`
 }
+
 type IFieldNamesResponse interface {
 	IsFieldNamesResponse() bool
 }
@@ -43,4 +45,3 @@ func (FieldNamesResponse) IsFieldNamesResponse() bool {
 func (FieldNamesResponse) IsWordsResponse() bool {
 	return true;
 }
-

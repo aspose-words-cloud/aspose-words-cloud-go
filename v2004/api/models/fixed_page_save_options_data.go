@@ -25,6 +25,8 @@
 
 package models
 
+
+
 // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
 type FixedPageSaveOptionsData struct {
 
@@ -46,7 +48,7 @@ type FixedPageSaveOptionsData struct {
 	// Gets or sets a value determining whether the Aspose.Words.Properties.BuiltInDocumentProperties.LastSavedTime property is updated before saving.
 	UpdateLastSavedTimeProperty bool `json:"UpdateLastSavedTimeProperty,omitempty"`
 
-	// Gets or sets value determining whether content of  is updated before saving.
+	// Gets or sets value determining whether content of StructuredDocumentTag is updated before saving.
 	UpdateSdtContent bool `json:"UpdateSdtContent,omitempty"`
 
 	// Gets or sets a value determining if fields should be updated before saving the document to a fixed page format. Default value for this property is. true
@@ -58,7 +60,6 @@ type FixedPageSaveOptionsData struct {
 	// Gets or sets determines the quality of the JPEG images inside PDF document.
 	JpegQuality int32 `json:"JpegQuality,omitempty"`
 
-	// Gets or sets allows to specify metafile rendering options.
 	MetafileRenderingOptions *MetafileRenderingOptionsData `json:"MetafileRenderingOptions,omitempty"`
 
 	// Gets or sets indicates the symbol set that is used to represent numbers while rendering to fixed page formats.
@@ -73,6 +74,7 @@ type FixedPageSaveOptionsData struct {
 	// Gets or sets determines 0-based index of the first page to render.
 	PageIndex int32 `json:"PageIndex,omitempty"`
 }
+
 type IFixedPageSaveOptionsData interface {
 	IsFixedPageSaveOptionsData() bool
 }
@@ -82,4 +84,3 @@ func (FixedPageSaveOptionsData) IsFixedPageSaveOptionsData() bool {
 func (FixedPageSaveOptionsData) IsSaveOptionsData() bool {
 	return true;
 }
-

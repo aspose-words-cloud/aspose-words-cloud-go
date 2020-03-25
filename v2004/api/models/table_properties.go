@@ -25,10 +25,11 @@
 
 package models
 
+
+
 // Represents the table properties.             
 type TableProperties struct {
 
-	// Gets or sets link to the document.
 	Link *WordsApiLink `json:"link,omitempty"`
 
 	// Gets or sets specifies how an inline table is aligned in the document.
@@ -52,7 +53,6 @@ type TableProperties struct {
 	// Gets or sets the amount of space (in points) to add to the left of the contents of cells.
 	LeftPadding float64 `json:"LeftPadding,omitempty"`
 
-	// Gets or sets the table preferred width. Preferred width can be specified as a percentage, number of points or a special \"auto\" value.
 	PreferredWidth *PreferredWidth `json:"PreferredWidth,omitempty"`
 
 	// Gets or sets the amount of space (in points) to add to the right of the contents of cells.
@@ -67,12 +67,13 @@ type TableProperties struct {
 	// Gets or sets bit flags that specify how a table style is applied to this table.
 	StyleOptions string `json:"StyleOptions,omitempty"`
 
-	// Gets or sets get or sets TextWrapping  for table.
+	// Gets or sets get or sets TextWrapping for table.
 	TextWrapping string `json:"TextWrapping,omitempty"`
 
 	// Gets or sets the amount of space (in points) to add above the contents of cells.
 	TopPadding float64 `json:"TopPadding,omitempty"`
 }
+
 type ITableProperties interface {
 	IsTableProperties() bool
 }
@@ -82,4 +83,3 @@ func (TableProperties) IsTableProperties() bool {
 func (TableProperties) IsLinkElement() bool {
 	return true;
 }
-

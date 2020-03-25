@@ -25,6 +25,8 @@
 
 package models
 
+
+
 // DTO for bookmark updating.
 type BookmarkData struct {
 
@@ -34,10 +36,10 @@ type BookmarkData struct {
 	// Gets or sets the text enclosed in the bookmark.
 	Text string `json:"Text,omitempty"`
 }
+
 type IBookmarkData interface {
 	IsBookmarkData() bool
 }
 func (BookmarkData) IsBookmarkData() bool {
 	return true;
 }
-

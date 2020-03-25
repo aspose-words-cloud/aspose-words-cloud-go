@@ -25,15 +25,17 @@
 
 package models
 
+
+
 // Represents DTO for collection of runs.
 type Runs struct {
 
-	// Gets or sets link to the document.
 	Link *WordsApiLink `json:"link,omitempty"`
 
 	// Gets or sets collection of fields.
 	List []Run `json:"List,omitempty"`
 }
+
 type IRuns interface {
 	IsRuns() bool
 }
@@ -43,4 +45,3 @@ func (Runs) IsRuns() bool {
 func (Runs) IsLinkElement() bool {
 	return true;
 }
-

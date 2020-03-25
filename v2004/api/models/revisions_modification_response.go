@@ -25,15 +25,17 @@
 
 package models
 
+
+
 // response of the modification operations for the revisions collection (now these are acceptAll and rejectAll).
 type RevisionsModificationResponse struct {
 
 	// Gets or sets request Id.
 	RequestId string `json:"RequestId,omitempty"`
 
-	// Gets or sets result of the modification operations for the revisions collection.
 	Result *ModificationOperationResult `json:"Result,omitempty"`
 }
+
 type IRevisionsModificationResponse interface {
 	IsRevisionsModificationResponse() bool
 }
@@ -43,4 +45,3 @@ func (RevisionsModificationResponse) IsRevisionsModificationResponse() bool {
 func (RevisionsModificationResponse) IsWordsResponse() bool {
 	return true;
 }
-

@@ -25,16 +25,16 @@
 
 package models
 
+
+
 // Represents a border of an object.
 type Border struct {
 
-	// Gets or sets link to the document.
 	Link *WordsApiLink `json:"link,omitempty"`
 
 	// Gets or sets the border type.             
 	BorderType string `json:"BorderType,omitempty"`
 
-	// Gets or sets the border color.             
 	Color *XmlColor `json:"Color,omitempty"`
 
 	// Gets or sets distance of the border from text or from the page edge in points.
@@ -49,6 +49,7 @@ type Border struct {
 	// Gets or sets a value indicating whether the border has a shadow.
 	Shadow bool `json:"Shadow,omitempty"`
 }
+
 type IBorder interface {
 	IsBorder() bool
 }
@@ -58,4 +59,3 @@ func (Border) IsBorder() bool {
 func (Border) IsLinkElement() bool {
 	return true;
 }
-

@@ -25,15 +25,17 @@
 
 package models
 
+
+
 // This response should be returned by the service when handling:  POST /{name}/split .
 type SplitDocumentResponse struct {
 
 	// Gets or sets request Id.
 	RequestId string `json:"RequestId,omitempty"`
 
-	// Gets or sets resylt of splitting document.
 	SplitResult *SplitDocumentResult `json:"SplitResult,omitempty"`
 }
+
 type ISplitDocumentResponse interface {
 	IsSplitDocumentResponse() bool
 }
@@ -43,4 +45,3 @@ func (SplitDocumentResponse) IsSplitDocumentResponse() bool {
 func (SplitDocumentResponse) IsWordsResponse() bool {
 	return true;
 }
-

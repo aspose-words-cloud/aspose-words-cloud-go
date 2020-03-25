@@ -25,21 +25,22 @@
 
 package models
 
+
+
 // Table element.
 type Table struct {
-
-	// Gets or sets link to the document.
-	Link *WordsApiLink `json:"link,omitempty"`
 
 	// Gets or sets node id.
 	NodeId string `json:"NodeId,omitempty"`
 
-	// Gets or sets table properties.
+	Link *WordsApiLink `json:"link,omitempty"`
+
 	TableProperties *TableProperties `json:"TableProperties,omitempty"`
 
 	// Gets or sets collection of table's rows.
 	TableRowList []TableRow `json:"TableRowList,omitempty"`
 }
+
 type ITable interface {
 	IsTable() bool
 }
@@ -49,4 +50,3 @@ func (Table) IsTable() bool {
 func (Table) IsNodeLink() bool {
 	return true;
 }
-

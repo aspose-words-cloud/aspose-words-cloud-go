@@ -25,15 +25,17 @@
 
 package models
 
+
+
 // Collection of comments.
 type CommentsCollection struct {
 
-	// Gets or sets link to the document.
 	Link *WordsApiLink `json:"link,omitempty"`
 
 	// Gets or sets collection of comments.
 	CommentList []Comment `json:"CommentList,omitempty"`
 }
+
 type ICommentsCollection interface {
 	IsCommentsCollection() bool
 }
@@ -43,4 +45,3 @@ func (CommentsCollection) IsCommentsCollection() bool {
 func (CommentsCollection) IsLinkElement() bool {
 	return true;
 }
-

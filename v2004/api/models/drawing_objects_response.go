@@ -25,15 +25,17 @@
 
 package models
 
+
+
 // This response should be returned by the service when handling:  GET /drawingObjects.
 type DrawingObjectsResponse struct {
 
 	// Gets or sets request Id.
 	RequestId string `json:"RequestId,omitempty"`
 
-	// Gets or sets collection of drawing objects.
 	DrawingObjects *DrawingObjectCollection `json:"DrawingObjects,omitempty"`
 }
+
 type IDrawingObjectsResponse interface {
 	IsDrawingObjectsResponse() bool
 }
@@ -43,4 +45,3 @@ func (DrawingObjectsResponse) IsDrawingObjectsResponse() bool {
 func (DrawingObjectsResponse) IsWordsResponse() bool {
 	return true;
 }
-

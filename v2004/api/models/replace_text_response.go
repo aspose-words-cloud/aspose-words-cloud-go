@@ -25,18 +25,20 @@
 
 package models
 
+
+
 // Response for \"Replace text\" action.
 type ReplaceTextResponse struct {
 
 	// Gets or sets request Id.
 	RequestId string `json:"RequestId,omitempty"`
 
-	// Gets or sets link to the document.
 	DocumentLink *FileLink `json:"DocumentLink,omitempty"`
 
 	// Gets or sets number of occurrences of the captured text in the document.
 	Matches int32 `json:"Matches,omitempty"`
 }
+
 type IReplaceTextResponse interface {
 	IsReplaceTextResponse() bool
 }
@@ -46,4 +48,3 @@ func (ReplaceTextResponse) IsReplaceTextResponse() bool {
 func (ReplaceTextResponse) IsWordsResponse() bool {
 	return true;
 }
-

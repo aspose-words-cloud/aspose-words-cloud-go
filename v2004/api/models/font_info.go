@@ -25,6 +25,8 @@
 
 package models
 
+
+
 // Font info.
 type FontInfo struct {
 
@@ -40,10 +42,10 @@ type FontInfo struct {
 	// Gets or sets path to the font file if any.
 	FilePath string `json:"FilePath,omitempty"`
 }
+
 type IFontInfo interface {
 	IsFontInfo() bool
 }
 func (FontInfo) IsFontInfo() bool {
 	return true;
 }
-

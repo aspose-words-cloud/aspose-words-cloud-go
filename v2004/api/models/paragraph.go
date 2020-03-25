@@ -25,18 +25,20 @@
 
 package models
 
+
+
 // Paragraph element.
 type Paragraph struct {
-
-	// Gets or sets link to the document.
-	Link *WordsApiLink `json:"link,omitempty"`
 
 	// Gets or sets node id.
 	NodeId string `json:"NodeId,omitempty"`
 
+	Link *WordsApiLink `json:"link,omitempty"`
+
 	// Gets or sets child nodes.
 	ChildNodes []NodeLink `json:"ChildNodes,omitempty"`
 }
+
 type IParagraph interface {
 	IsParagraph() bool
 }
@@ -46,4 +48,3 @@ func (Paragraph) IsParagraph() bool {
 func (Paragraph) IsNodeLink() bool {
 	return true;
 }
-

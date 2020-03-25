@@ -25,6 +25,8 @@
 
 package models
 
+
+
 // Range element.
 type ReplaceRange struct {
 
@@ -34,10 +36,10 @@ type ReplaceRange struct {
 	// Gets or sets range's text type.
 	TextType string `json:"TextType,omitempty"`
 }
+
 type IReplaceRange interface {
 	IsReplaceRange() bool
 }
 func (ReplaceRange) IsReplaceRange() bool {
 	return true;
 }
-

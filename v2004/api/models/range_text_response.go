@@ -25,6 +25,8 @@
 
 package models
 
+
+
 // This response should be returned by the service when handling: GET https://api.aspose.cloud/v4.0/words/Test.doc/range/{0}/{1}/.
 type RangeTextResponse struct {
 
@@ -34,6 +36,7 @@ type RangeTextResponse struct {
 	// Gets or sets text from range.
 	Text string `json:"Text,omitempty"`
 }
+
 type IRangeTextResponse interface {
 	IsRangeTextResponse() bool
 }
@@ -43,4 +46,3 @@ func (RangeTextResponse) IsRangeTextResponse() bool {
 func (RangeTextResponse) IsWordsResponse() bool {
 	return true;
 }
-

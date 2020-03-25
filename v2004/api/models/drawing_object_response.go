@@ -25,15 +25,17 @@
 
 package models
 
+
+
 // Response for \"drawingObjects/n\" resource.
 type DrawingObjectResponse struct {
 
 	// Gets or sets request Id.
 	RequestId string `json:"RequestId,omitempty"`
 
-	// Gets or sets drawing object.
 	DrawingObject *DrawingObject `json:"DrawingObject,omitempty"`
 }
+
 type IDrawingObjectResponse interface {
 	IsDrawingObjectResponse() bool
 }
@@ -43,4 +45,3 @@ func (DrawingObjectResponse) IsDrawingObjectResponse() bool {
 func (DrawingObjectResponse) IsWordsResponse() bool {
 	return true;
 }
-

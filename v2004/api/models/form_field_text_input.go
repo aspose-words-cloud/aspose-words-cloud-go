@@ -25,14 +25,10 @@
 
 package models
 
+
+
 // FormField text input element.
 type FormFieldTextInput struct {
-
-	// Gets or sets link to the document.
-	Link *WordsApiLink `json:"link,omitempty"`
-
-	// Gets or sets node id.
-	NodeId string `json:"NodeId,omitempty"`
 
 	// Gets or sets true if references to the specified form field are automatically updated whenever the field is exited.
 	CalculateOnExit bool `json:"CalculateOnExit,omitempty"`
@@ -61,6 +57,11 @@ type FormFieldTextInput struct {
 	// Gets or sets returns or sets the text that's displayed in the status bar when a form field has the focus.
 	StatusText string `json:"StatusText,omitempty"`
 
+	Link *WordsApiLink `json:"link,omitempty"`
+
+	// Gets or sets node id.
+	NodeId string `json:"NodeId,omitempty"`
+
 	// Gets or sets maximum length for the text field. Zero when the length is not limited.
 	MaxLength int32 `json:"MaxLength,omitempty"`
 
@@ -73,6 +74,7 @@ type FormFieldTextInput struct {
 	// Gets or sets the type of a text form field.
 	TextInputType string `json:"TextInputType,omitempty"`
 }
+
 type IFormFieldTextInput interface {
 	IsFormFieldTextInput() bool
 }
@@ -82,4 +84,3 @@ func (FormFieldTextInput) IsFormFieldTextInput() bool {
 func (FormFieldTextInput) IsFormField() bool {
 	return true;
 }
-

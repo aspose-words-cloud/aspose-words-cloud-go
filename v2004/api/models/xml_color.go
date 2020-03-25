@@ -25,7 +25,9 @@
 
 package models
 
-// Utility class for  serialization.
+
+
+// Utility class for Color serialization.
 type XmlColor struct {
 
 	// Gets or sets hTML string color representation.
@@ -34,10 +36,10 @@ type XmlColor struct {
 	// Gets or sets alpha component of color structure.
 	Alpha int32 `json:"Alpha,omitempty"`
 }
+
 type IXmlColor interface {
 	IsXmlColor() bool
 }
 func (XmlColor) IsXmlColor() bool {
 	return true;
 }
-

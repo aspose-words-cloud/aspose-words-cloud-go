@@ -25,15 +25,17 @@
 
 package models
 
+
+
 // Save response.
 type SaveResponse struct {
 
 	// Gets or sets request Id.
 	RequestId string `json:"RequestId,omitempty"`
 
-	// Gets or sets save result.
 	SaveResult *SaveResult `json:"SaveResult,omitempty"`
 }
+
 type ISaveResponse interface {
 	IsSaveResponse() bool
 }
@@ -43,4 +45,3 @@ func (SaveResponse) IsSaveResponse() bool {
 func (SaveResponse) IsWordsResponse() bool {
 	return true;
 }
-

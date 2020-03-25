@@ -25,25 +25,26 @@
 
 package models
 
+
+
 // Container for the page's statistical data.
 type PageStatData struct {
 
 	// Gets or sets page number.
-	PageNumber int32 `json:"PageNumber"`
+	PageNumber int32 `json:"PageNumber,omitempty"`
 
 	// Gets or sets total count of words in the page.
-	WordCount int32 `json:"WordCount"`
+	WordCount int32 `json:"WordCount,omitempty"`
 
 	// Gets or sets total count of paragraphs in the page.
-	ParagraphCount int32 `json:"ParagraphCount"`
+	ParagraphCount int32 `json:"ParagraphCount,omitempty"`
 
-	// Gets or sets detailed statistics of footnotes.
 	FootnotesStatData *FootnotesStatData `json:"FootnotesStatData,omitempty"`
 }
+
 type IPageStatData interface {
 	IsPageStatData() bool
 }
 func (PageStatData) IsPageStatData() bool {
 	return true;
 }
-

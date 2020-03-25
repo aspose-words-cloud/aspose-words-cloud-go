@@ -25,6 +25,8 @@
 
 package models
 
+
+
 // Allows to specify additional System.Drawing.Graphics quality options.
 type GraphicsQualityOptionsData struct {
 
@@ -40,16 +42,15 @@ type GraphicsQualityOptionsData struct {
 	// Gets or sets the rendering quality for this Graphics.
 	SmoothingMode string `json:"SmoothingMode,omitempty"`
 
-	// Gets or sets text layout information (such as alignment, orientation and tab stops) display manipulations (such as ellipsis insertion and national digit substitution) and OpenType features.
 	StringFormat *StringFormatData `json:"StringFormat,omitempty"`
 
 	// Gets or sets the rendering mode for text associated with this Graphics.
 	TextRenderingHint string `json:"TextRenderingHint,omitempty"`
 }
+
 type IGraphicsQualityOptionsData interface {
 	IsGraphicsQualityOptionsData() bool
 }
 func (GraphicsQualityOptionsData) IsGraphicsQualityOptionsData() bool {
 	return true;
 }
-

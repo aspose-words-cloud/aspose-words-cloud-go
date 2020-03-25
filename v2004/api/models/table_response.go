@@ -25,15 +25,17 @@
 
 package models
 
+
+
 // This response should be returned by the service when handling: GET https://api.aspose.cloud/v4.0/words/Test.doc/tables/{0}.
 type TableResponse struct {
 
 	// Gets or sets request Id.
 	RequestId string `json:"RequestId,omitempty"`
 
-	// Gets or sets table.
 	Table *Table `json:"Table,omitempty"`
 }
+
 type ITableResponse interface {
 	IsTableResponse() bool
 }
@@ -43,4 +45,3 @@ func (TableResponse) IsTableResponse() bool {
 func (TableResponse) IsWordsResponse() bool {
 	return true;
 }
-

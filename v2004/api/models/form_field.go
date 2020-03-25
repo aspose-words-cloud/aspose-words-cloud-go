@@ -25,14 +25,15 @@
 
 package models
 
+
+
 // FromField.
 type FormField struct {
 
-	// Gets or sets link to the document.
-	Link *WordsApiLink `json:"link,omitempty"`
-
 	// Gets or sets node id.
 	NodeId string `json:"NodeId,omitempty"`
+
+	Link *WordsApiLink `json:"link,omitempty"`
 
 	// Gets or sets true if references to the specified form field are automatically updated whenever the field is exited.
 	CalculateOnExit bool `json:"CalculateOnExit,omitempty"`
@@ -61,6 +62,7 @@ type FormField struct {
 	// Gets or sets returns or sets the text that's displayed in the status bar when a form field has the focus.
 	StatusText string `json:"StatusText,omitempty"`
 }
+
 type IFormField interface {
 	IsFormField() bool
 }
@@ -70,4 +72,3 @@ func (FormField) IsFormField() bool {
 func (FormField) IsNodeLink() bool {
 	return true;
 }
-

@@ -25,6 +25,8 @@
 
 package models
 
+
+
 // Error
 type StorageApiError struct {
 
@@ -37,13 +39,12 @@ type StorageApiError struct {
 	// Description             
 	Description string `json:"Description,omitempty"`
 
-	// Inner Error             
 	InnerError *ErrorDetails `json:"InnerError,omitempty"`
 }
+
 type IStorageApiError interface {
 	IsStorageApiError() bool
 }
 func (StorageApiError) IsStorageApiError() bool {
 	return true;
 }
-

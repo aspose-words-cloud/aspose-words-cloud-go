@@ -25,16 +25,18 @@
 
 package models
 
+
+
 // Table cell element.
 type TableCellInsert struct {
 
 	// Gets or sets table cell will be inserted after cell with specified 0-based index.
 	InsertAfter int32 `json:"InsertAfter,omitempty"`
 }
+
 type ITableCellInsert interface {
 	IsTableCellInsert() bool
 }
 func (TableCellInsert) IsTableCellInsert() bool {
 	return true;
 }
-

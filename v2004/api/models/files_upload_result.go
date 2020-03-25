@@ -25,6 +25,8 @@
 
 package models
 
+
+
 // File upload result
 type FilesUploadResult struct {
 
@@ -34,10 +36,10 @@ type FilesUploadResult struct {
 	// List of errors.
 	Errors []StorageApiError `json:"Errors,omitempty"`
 }
+
 type IFilesUploadResult interface {
 	IsFilesUploadResult() bool
 }
 func (FilesUploadResult) IsFilesUploadResult() bool {
 	return true;
 }
-
