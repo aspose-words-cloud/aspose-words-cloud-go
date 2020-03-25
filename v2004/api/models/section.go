@@ -25,27 +25,25 @@
 
 package models
 
+
+
 // Section element.
 type Section struct {
 
-	// Gets or sets link to the document.
 	Link *WordsApiLink `json:"link,omitempty"`
 
 	// Gets or sets child nodes.
 	ChildNodes []NodeLink `json:"ChildNodes,omitempty"`
 
-	// Gets or sets link to HeaderFooters resource.
 	HeaderFooters *LinkElement `json:"HeaderFooters,omitempty"`
 
-	// Gets or sets link to PageSetup resource.
 	PageSetup *LinkElement `json:"PageSetup,omitempty"`
 
-	// Gets or sets link to Paragraphs resource.
 	Paragraphs *LinkElement `json:"Paragraphs,omitempty"`
 
-	// Gets or sets link to Tables resource.
 	Tables *LinkElement `json:"Tables,omitempty"`
 }
+
 type ISection interface {
 	IsSection() bool
 }
@@ -55,4 +53,3 @@ func (Section) IsSection() bool {
 func (Section) IsLinkElement() bool {
 	return true;
 }
-

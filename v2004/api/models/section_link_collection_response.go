@@ -25,15 +25,17 @@
 
 package models
 
+
+
 // This response should be returned by the service when handling: GET https://api.aspose.cloud/v4.0/words/Test.doc/sections.
 type SectionLinkCollectionResponse struct {
 
 	// Gets or sets request Id.
 	RequestId string `json:"RequestId,omitempty"`
 
-	// Gets or sets collection of sections.
 	Sections *SectionLinkCollection `json:"Sections,omitempty"`
 }
+
 type ISectionLinkCollectionResponse interface {
 	IsSectionLinkCollectionResponse() bool
 }
@@ -43,4 +45,3 @@ func (SectionLinkCollectionResponse) IsSectionLinkCollectionResponse() bool {
 func (SectionLinkCollectionResponse) IsWordsResponse() bool {
 	return true;
 }
-

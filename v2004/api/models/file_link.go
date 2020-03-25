@@ -25,6 +25,8 @@
 
 package models
 
+
+
 // Provides information for the file link.
 type FileLink struct {
 
@@ -40,6 +42,7 @@ type FileLink struct {
 	// Gets or sets the \"title\" attribute conveys human-readable information about the link.  The content of the \"title\" attribute is Language-Sensitive.
 	Title string `json:"Title,omitempty"`
 }
+
 type IFileLink interface {
 	IsFileLink() bool
 }
@@ -49,4 +52,3 @@ func (FileLink) IsFileLink() bool {
 func (FileLink) IsLink() bool {
 	return true;
 }
-

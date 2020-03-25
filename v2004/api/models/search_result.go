@@ -25,19 +25,19 @@
 
 package models
 
+
+
 // Result of search operation.
 type SearchResult struct {
 
-	// Gets or sets link to result range start node.
 	RangeStart *DocumentPosition `json:"RangeStart,omitempty"`
 
-	// Gets or sets link to result range end node.
 	RangeEnd *DocumentPosition `json:"RangeEnd,omitempty"`
 }
+
 type ISearchResult interface {
 	IsSearchResult() bool
 }
 func (SearchResult) IsSearchResult() bool {
 	return true;
 }
-

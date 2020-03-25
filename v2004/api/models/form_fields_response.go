@@ -25,15 +25,17 @@
 
 package models
 
+
+
 // This response should be returned by the service when handling: GET https://api.aspose.cloud/v4.0/words/Test.doc/{nodePath}/formfields.
 type FormFieldsResponse struct {
 
 	// Gets or sets request Id.
 	RequestId string `json:"RequestId,omitempty"`
 
-	// Gets or sets collection of form fields.
 	FormFields *FormFieldCollection `json:"FormFields,omitempty"`
 }
+
 type IFormFieldsResponse interface {
 	IsFormFieldsResponse() bool
 }
@@ -43,4 +45,3 @@ func (FormFieldsResponse) IsFormFieldsResponse() bool {
 func (FormFieldsResponse) IsWordsResponse() bool {
 	return true;
 }
-

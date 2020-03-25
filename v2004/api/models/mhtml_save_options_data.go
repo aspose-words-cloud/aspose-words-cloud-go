@@ -25,32 +25,10 @@
 
 package models
 
+
+
 // Container class for mhtml save options.
 type MhtmlSaveOptionsData struct {
-
-	// Gets or sets format of save.
-	SaveFormat string `json:"SaveFormat,omitempty"`
-
-	// Gets or sets name of destination file.
-	FileName string `json:"FileName,omitempty"`
-
-	// Gets or sets a value determining how DrawingML shapes are rendered. { Fallback | DrawingML }.
-	DmlRenderingMode string `json:"DmlRenderingMode,omitempty"`
-
-	// Gets or sets a value determining how DrawingML effects are rendered. { Simplified | None | Fine }.
-	DmlEffectsRenderingMode string `json:"DmlEffectsRenderingMode,omitempty"`
-
-	// Gets or sets controls zip output or not. Default value is false.
-	ZipOutput bool `json:"ZipOutput,omitempty"`
-
-	// Gets or sets a value determining whether the Aspose.Words.Properties.BuiltInDocumentProperties.LastSavedTime property is updated before saving.
-	UpdateLastSavedTimeProperty bool `json:"UpdateLastSavedTimeProperty,omitempty"`
-
-	// Gets or sets value determining whether content of  is updated before saving.
-	UpdateSdtContent bool `json:"UpdateSdtContent,omitempty"`
-
-	// Gets or sets a value determining if fields should be updated before saving the document to a fixed page format. Default value for this property is. true
-	UpdateFields bool `json:"UpdateFields,omitempty"`
 
 	// Gets or sets specifies whether negative left and right indents of paragraphs are allowed (not normalized).
 	AllowNegativeIndent bool `json:"AllowNegativeIndent,omitempty"`
@@ -169,9 +147,34 @@ type MhtmlSaveOptionsData struct {
 	// Gets or sets controls how table, row and cell widths are exported.
 	TableWidthOutputMode string `json:"TableWidthOutputMode,omitempty"`
 
+	// Gets or sets format of save.
+	SaveFormat string `json:"SaveFormat,omitempty"`
+
+	// Gets or sets name of destination file.
+	FileName string `json:"FileName,omitempty"`
+
+	// Gets or sets a value determining how DrawingML shapes are rendered. { Fallback | DrawingML }.
+	DmlRenderingMode string `json:"DmlRenderingMode,omitempty"`
+
+	// Gets or sets a value determining how DrawingML effects are rendered. { Simplified | None | Fine }.
+	DmlEffectsRenderingMode string `json:"DmlEffectsRenderingMode,omitempty"`
+
+	// Gets or sets controls zip output or not. Default value is false.
+	ZipOutput bool `json:"ZipOutput,omitempty"`
+
+	// Gets or sets a value determining whether the Aspose.Words.Properties.BuiltInDocumentProperties.LastSavedTime property is updated before saving.
+	UpdateLastSavedTimeProperty bool `json:"UpdateLastSavedTimeProperty,omitempty"`
+
+	// Gets or sets value determining whether content of StructuredDocumentTag is updated before saving.
+	UpdateSdtContent bool `json:"UpdateSdtContent,omitempty"`
+
+	// Gets or sets a value determining if fields should be updated before saving the document to a fixed page format. Default value for this property is. true
+	UpdateFields bool `json:"UpdateFields,omitempty"`
+
 	// Gets or sets specifies whether to use CID (Content-ID) URLs to reference resources (images, fonts, CSS) included in MHTML documents. Default value is false.             
 	ExportCidUrlsForMhtmlResources bool `json:"ExportCidUrlsForMhtmlResources,omitempty"`
 }
+
 type IMhtmlSaveOptionsData interface {
 	IsMhtmlSaveOptionsData() bool
 }
@@ -181,4 +184,3 @@ func (MhtmlSaveOptionsData) IsMhtmlSaveOptionsData() bool {
 func (MhtmlSaveOptionsData) IsHtmlSaveOptionsData() bool {
 	return true;
 }
-

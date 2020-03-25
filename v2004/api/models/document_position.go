@@ -25,19 +25,20 @@
 
 package models
 
+
+
 // Represents a position in the document tree.
 type DocumentPosition struct {
 
-	// Gets or sets link to  node.
 	Node *NodeLink `json:"Node,omitempty"`
 
 	// Gets or sets offset into the node.
 	Offset int32 `json:"Offset,omitempty"`
 }
+
 type IDocumentPosition interface {
 	IsDocumentPosition() bool
 }
 func (DocumentPosition) IsDocumentPosition() bool {
 	return true;
 }
-

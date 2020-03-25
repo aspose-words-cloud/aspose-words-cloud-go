@@ -25,15 +25,17 @@
 
 package models
 
+
+
 // Represents the response with document description.
 type DocumentResponse struct {
 
 	// Gets or sets request Id.
 	RequestId string `json:"RequestId,omitempty"`
 
-	// Gets or sets document description.
 	Document *Document `json:"Document,omitempty"`
 }
+
 type IDocumentResponse interface {
 	IsDocumentResponse() bool
 }
@@ -43,4 +45,3 @@ func (DocumentResponse) IsDocumentResponse() bool {
 func (DocumentResponse) IsWordsResponse() bool {
 	return true;
 }
-

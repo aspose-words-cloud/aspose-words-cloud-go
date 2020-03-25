@@ -25,15 +25,17 @@
 
 package models
 
+
+
 // This response should be returned by the service when handling: GET https://api.aspose.cloud/v4.0/words/Test.doc/headersfooters/{0}.
 type HeaderFooterResponse struct {
 
 	// Gets or sets request Id.
 	RequestId string `json:"RequestId,omitempty"`
 
-	// Gets or sets headerFooter.
 	HeaderFooter *HeaderFooter `json:"HeaderFooter,omitempty"`
 }
+
 type IHeaderFooterResponse interface {
 	IsHeaderFooterResponse() bool
 }
@@ -43,4 +45,3 @@ func (HeaderFooterResponse) IsHeaderFooterResponse() bool {
 func (HeaderFooterResponse) IsWordsResponse() bool {
 	return true;
 }
-

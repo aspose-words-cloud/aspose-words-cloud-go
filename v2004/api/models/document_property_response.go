@@ -25,15 +25,17 @@
 
 package models
 
+
+
 // This response should be returned by the service when handling:  GET documentProperties/{propertyName}.
 type DocumentPropertyResponse struct {
 
 	// Gets or sets request Id.
 	RequestId string `json:"RequestId,omitempty"`
 
-	// Gets or sets document property.
 	DocumentProperty *DocumentProperty `json:"DocumentProperty,omitempty"`
 }
+
 type IDocumentPropertyResponse interface {
 	IsDocumentPropertyResponse() bool
 }
@@ -43,4 +45,3 @@ func (DocumentPropertyResponse) IsDocumentPropertyResponse() bool {
 func (DocumentPropertyResponse) IsWordsResponse() bool {
 	return true;
 }
-

@@ -25,18 +25,19 @@
 
 package models
 
+
+
 // Response for the request of data about protection.
 type ProtectionDataResponse struct {
 
 	// Gets or sets request Id.
 	RequestId string `json:"RequestId,omitempty"`
 
-	// Gets or sets link to the document.
 	DocumentLink *FileLink `json:"DocumentLink,omitempty"`
 
-	// Gets or sets protection's data of the document.
 	ProtectionData *ProtectionData `json:"ProtectionData,omitempty"`
 }
+
 type IProtectionDataResponse interface {
 	IsProtectionDataResponse() bool
 }
@@ -46,4 +47,3 @@ func (ProtectionDataResponse) IsProtectionDataResponse() bool {
 func (ProtectionDataResponse) IsWordsResponse() bool {
 	return true;
 }
-

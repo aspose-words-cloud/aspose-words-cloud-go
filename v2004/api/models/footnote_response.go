@@ -25,15 +25,17 @@
 
 package models
 
+
+
 // This response should be returned by the service when handling: GET https://api.aspose.cloud/v4.0/words/Test.doc/footnote/0.
 type FootnoteResponse struct {
 
 	// Gets or sets request Id.
 	RequestId string `json:"RequestId,omitempty"`
 
-	// Gets or sets footnote information.
 	Footnote *Footnote `json:"Footnote,omitempty"`
 }
+
 type IFootnoteResponse interface {
 	IsFootnoteResponse() bool
 }
@@ -43,4 +45,3 @@ func (FootnoteResponse) IsFootnoteResponse() bool {
 func (FootnoteResponse) IsWordsResponse() bool {
 	return true;
 }
-

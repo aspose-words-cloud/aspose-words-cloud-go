@@ -25,15 +25,17 @@
 
 package models
 
+
+
 // This response should be returned by the service when handling: GET https://api.aspose.cloud/v4.0/words/Test.doc/paragraphs/{0}.
 type ParagraphResponse struct {
 
 	// Gets or sets request Id.
 	RequestId string `json:"RequestId,omitempty"`
 
-	// Gets or sets paragraph.
 	Paragraph *Paragraph `json:"Paragraph,omitempty"`
 }
+
 type IParagraphResponse interface {
 	IsParagraphResponse() bool
 }
@@ -43,4 +45,3 @@ func (ParagraphResponse) IsParagraphResponse() bool {
 func (ParagraphResponse) IsWordsResponse() bool {
 	return true;
 }
-

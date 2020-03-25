@@ -25,15 +25,17 @@
 
 package models
 
+
+
 // This response should be returned by the service when handling: GET https://api.aspose.cloud/v4.0/words/Test.doc/paragraphs/{0}/format.
 type ParagraphFormatResponse struct {
 
 	// Gets or sets request Id.
 	RequestId string `json:"RequestId,omitempty"`
 
-	// Gets or sets represents all the formatting for a paragraph.
 	ParagraphFormat *ParagraphFormat `json:"ParagraphFormat,omitempty"`
 }
+
 type IParagraphFormatResponse interface {
 	IsParagraphFormatResponse() bool
 }
@@ -43,4 +45,3 @@ func (ParagraphFormatResponse) IsParagraphFormatResponse() bool {
 func (ParagraphFormatResponse) IsWordsResponse() bool {
 	return true;
 }
-

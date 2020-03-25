@@ -25,15 +25,17 @@
 
 package models
 
+
+
 // HeaderFooter link element.
 type HeaderFooterLink struct {
 
-	// Gets or sets link to the document.
 	Link *WordsApiLink `json:"link,omitempty"`
 
 	// Gets or sets paragraph's text.
 	Type_ string `json:"Type,omitempty"`
 }
+
 type IHeaderFooterLink interface {
 	IsHeaderFooterLink() bool
 }
@@ -43,4 +45,3 @@ func (HeaderFooterLink) IsHeaderFooterLink() bool {
 func (HeaderFooterLink) IsLinkElement() bool {
 	return true;
 }
-

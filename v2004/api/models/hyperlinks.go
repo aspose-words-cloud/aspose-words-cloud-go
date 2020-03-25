@@ -25,15 +25,17 @@
 
 package models
 
-// Collection of .
+
+
+// Collection of Hyperlink.
 type Hyperlinks struct {
 
-	// Gets or sets link to the document.
 	Link *WordsApiLink `json:"link,omitempty"`
 
-	// Gets or sets array of .
+	// Gets or sets array of Hyperlink.
 	HyperlinkList []Hyperlink `json:"HyperlinkList,omitempty"`
 }
+
 type IHyperlinks interface {
 	IsHyperlinks() bool
 }
@@ -43,4 +45,3 @@ func (Hyperlinks) IsHyperlinks() bool {
 func (Hyperlinks) IsLinkElement() bool {
 	return true;
 }
-

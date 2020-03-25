@@ -25,19 +25,19 @@
 
 package models
 
+
+
 // result of the operation which modifies the original document and saves the result.
 type ModificationOperationResult struct {
 
-	// Gets or sets link to the source document (source for the modification operation).
 	Source *FileLink `json:"Source,omitempty"`
 
-	// Gets or sets link to the dest document (result of the modification operation).
 	Dest *FileLink `json:"Dest,omitempty"`
 }
+
 type IModificationOperationResult interface {
 	IsModificationOperationResult() bool
 }
 func (ModificationOperationResult) IsModificationOperationResult() bool {
 	return true;
 }
-

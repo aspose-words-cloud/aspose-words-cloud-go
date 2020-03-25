@@ -25,15 +25,17 @@
 
 package models
 
+
+
 // This response should be returned by the service when handling: GET https://api.aspose.cloud/v4.0/words/Test.doc/comments/0.
 type CommentResponse struct {
 
 	// Gets or sets request Id.
 	RequestId string `json:"RequestId,omitempty"`
 
-	// Gets or sets comment information.
 	Comment *Comment `json:"Comment,omitempty"`
 }
+
 type ICommentResponse interface {
 	IsCommentResponse() bool
 }
@@ -43,4 +45,3 @@ func (CommentResponse) IsCommentResponse() bool {
 func (CommentResponse) IsWordsResponse() bool {
 	return true;
 }
-

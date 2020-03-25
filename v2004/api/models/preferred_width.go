@@ -25,19 +25,21 @@
 
 package models
 
+
+
 // Preferred width.
 type PreferredWidth struct {
 
 	// Gets or sets the unit of measure used for this preferred width value.
-	Type_ string `json:"Type"`
+	Type_ string `json:"Type,omitempty"`
 
-	// Gets or sets the preferred width value. The unit of measure is specified in the  property.
+	// Gets or sets the preferred width value. The unit of measure is specified in the Type property.
 	Value float64 `json:"Value,omitempty"`
 }
+
 type IPreferredWidth interface {
 	IsPreferredWidth() bool
 }
 func (PreferredWidth) IsPreferredWidth() bool {
 	return true;
 }
-

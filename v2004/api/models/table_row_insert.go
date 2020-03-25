@@ -25,6 +25,8 @@
 
 package models
 
+
+
 // Table row element.
 type TableRowInsert struct {
 
@@ -32,12 +34,12 @@ type TableRowInsert struct {
 	InsertAfter int32 `json:"InsertAfter,omitempty"`
 
 	// Gets or sets count of columns. Default is 1.
-	ColumnsCount int32 `json:"ColumnsCount"`
+	ColumnsCount int32 `json:"ColumnsCount,omitempty"`
 }
+
 type ITableRowInsert interface {
 	IsTableRowInsert() bool
 }
 func (TableRowInsert) IsTableRowInsert() bool {
 	return true;
 }
-

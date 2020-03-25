@@ -25,15 +25,17 @@
 
 package models
 
+
+
 // Collection of search results.
 type SearchResultsCollection struct {
 
-	// Gets or sets link to the document.
 	Link *WordsApiLink `json:"link,omitempty"`
 
 	// Gets or sets collection of comments.
 	ResultsList []SearchResult `json:"ResultsList,omitempty"`
 }
+
 type ISearchResultsCollection interface {
 	IsSearchResultsCollection() bool
 }
@@ -43,4 +45,3 @@ func (SearchResultsCollection) IsSearchResultsCollection() bool {
 func (SearchResultsCollection) IsLinkElement() bool {
 	return true;
 }
-

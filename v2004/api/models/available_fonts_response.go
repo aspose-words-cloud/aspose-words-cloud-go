@@ -25,6 +25,8 @@
 
 package models
 
+
+
 // The list of fonts, available for document processing.
 type AvailableFontsResponse struct {
 
@@ -40,6 +42,7 @@ type AvailableFontsResponse struct {
 	// Gets or sets the list of system fonts, availiable on the server.
 	SystemFonts []FontInfo `json:"SystemFonts,omitempty"`
 }
+
 type IAvailableFontsResponse interface {
 	IsAvailableFontsResponse() bool
 }
@@ -49,4 +52,3 @@ func (AvailableFontsResponse) IsAvailableFontsResponse() bool {
 func (AvailableFontsResponse) IsWordsResponse() bool {
 	return true;
 }
-
