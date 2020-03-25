@@ -312,18 +312,18 @@ func TestInsertTable(t *testing.T) {
 	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Tables")
 	remoteName := "TestInsertTable.docx"
 	nodePath := "sections/0"
+	table := models.TableInsert{
+		ColumnsCount: 5,
+		RowsCount:    4,
+	}
 
 	options := map[string]interface{}{
 		"folder": remoteFolder,
-		"table": models.TableInsert{
-			ColumnsCount: 5,
-			RowsCount:    4,
-		},
 	}
 
 	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, _, err := client.WordsApi.InsertTable(ctx, remoteName, nodePath, options)
+	_, _, err := client.WordsApi.InsertTable(ctx, remoteName, nodePath, table, options)
 
 	if err != nil {
 		t.Error(err)
@@ -336,14 +336,14 @@ func TestInsertTableCell(t *testing.T) {
 	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Tables")
 	remoteName := "TestInsertTableCell.docx"
 	tableRowPath := "sections/0/tables/2/rows/0"
+	cell := models.TableCellInsert{}
 	options := map[string]interface{}{
 		"folder": remoteFolder,
-		"cell":   models.TableCellInsert{},
 	}
 
 	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, _, err := client.WordsApi.InsertTableCell(ctx, remoteName, tableRowPath, options)
+	_, _, err := client.WordsApi.InsertTableCell(ctx, remoteName, tableRowPath, cell, options)
 
 	if err != nil {
 		t.Error(err)
@@ -356,16 +356,16 @@ func TestInsertTableRow(t *testing.T) {
 	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Tables")
 	tablePath := "sections/0/tables/2"
 	remoteName := "TestInsertTableRow.docx"
+	row := models.TableRowInsert{
+		ColumnsCount: 5,
+	}
 	options := map[string]interface{}{
 		"folder": remoteFolder,
-		"row": models.TableRowInsert{
-			ColumnsCount: 5,
-		},
 	}
 
 	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, _, err := client.WordsApi.InsertTableRow(ctx, remoteName, tablePath, options)
+	_, _, err := client.WordsApi.InsertTableRow(ctx, remoteName, tablePath, row, options)
 
 	if err != nil {
 		t.Error(err)
@@ -377,17 +377,17 @@ func TestInsertTableWithoutNodePath(t *testing.T) {
 	localFilePath := GetLocalPath(filepath.Join("DocumentElements", "Tables"), "TablesGet.docx")
 	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Tables")
 	remoteName := "TestInsertTableWithoutNodePath.docx"
+	table := models.TableInsert{
+		ColumnsCount: 5,
+		RowsCount:    4,
+	}
 	options := map[string]interface{}{
 		"folder": remoteFolder,
-		"table": models.TableInsert{
-			ColumnsCount: 5,
-			RowsCount:    4,
-		},
 	}
 
 	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, _, err := client.WordsApi.InsertTableWithoutNodePath(ctx, remoteName, options)
+	_, _, err := client.WordsApi.InsertTableWithoutNodePath(ctx, remoteName, table, options)
 
 	if err != nil {
 		t.Error(err)
@@ -444,19 +444,19 @@ func TestUpdateTableCellFormat(t *testing.T) {
 	remoteName := "TestUpdateTableCellFormat.docx"
 	tableRowPath := "sections/0/tables/2/rows/0"
 	index := 0
+	format := models.TableCellFormat{
+		BottomPadding:   5,
+		FitText:         true,
+		HorizontalMerge: "First",
+		WrapText:        true,
+	}
 	options := map[string]interface{}{
 		"folder": remoteFolder,
-		"format": models.TableCellFormat{
-			BottomPadding:   5,
-			FitText:         true,
-			HorizontalMerge: "First",
-			WrapText:        true,
-		},
 	}
 
 	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, _, err := client.WordsApi.UpdateTableCellFormat(ctx, remoteName, tableRowPath, int32(index), options)
+	_, _, err := client.WordsApi.UpdateTableCellFormat(ctx, remoteName, tableRowPath, int32(index), format, options)
 
 	if err != nil {
 		t.Error(err)
@@ -470,25 +470,25 @@ func TestUpdateTableProperties(t *testing.T) {
 	remoteName := "TestUpdateTableProperties.docx"
 	nodePath := "sections/0"
 	index := 0
+	tableProperties := models.TableProperties{
+		Alignment:     "Right",
+		AllowAutoFit:  false,
+		Bidi:          true,
+		BottomPadding: 1,
+		CellSpacing:   2,
+		LeftIndent:    3,
+		LeftPadding:   4,
+		RightPadding:  5,
+		StyleOptions:  "ColumnBands",
+		TopPadding:    6,
+	}
 	options := map[string]interface{}{
 		"folder": remoteFolder,
-		"properties": models.TableProperties{
-			Alignment:     "Right",
-			AllowAutoFit:  false,
-			Bidi:          true,
-			BottomPadding: 1,
-			CellSpacing:   2,
-			LeftIndent:    3,
-			LeftPadding:   4,
-			RightPadding:  5,
-			StyleOptions:  "ColumnBands",
-			TopPadding:    6,
-		},
 	}
 
 	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, _, err := client.WordsApi.UpdateTableProperties(ctx, remoteName, nodePath, int32(index), options)
+	_, _, err := client.WordsApi.UpdateTableProperties(ctx, remoteName, nodePath, int32(index), tableProperties, options)
 
 	if err != nil {
 		t.Error(err)
@@ -501,24 +501,24 @@ func TestUpdateTablePropertiesWithoutNodePath(t *testing.T) {
 	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Tables")
 	remoteName := "TestUpdateTablePropertiesWithoutNodePath.docx"
 	index := 0
+	properties := models.TableProperties{
+		Alignment:     "Right",
+		AllowAutoFit:  false,
+		Bidi:          true,
+		BottomPadding: 1,
+		CellSpacing:   2,
+		LeftIndent:    3,
+		LeftPadding:   4,
+		RightPadding:  5,
+		StyleOptions:  "ColumnBands",
+		TopPadding:    6,
+	}
 	options := map[string]interface{}{
 		"folder": remoteFolder,
-		"properties": models.TableProperties{
-			Alignment:     "Right",
-			AllowAutoFit:  false,
-			Bidi:          true,
-			BottomPadding: 1,
-			CellSpacing:   2,
-			LeftIndent:    3,
-			LeftPadding:   4,
-			RightPadding:  5,
-			StyleOptions:  "ColumnBands",
-			TopPadding:    6,
-		},
 	}
 	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, _, err := client.WordsApi.UpdateTablePropertiesWithoutNodePath(ctx, remoteName, int32(index), options)
+	_, _, err := client.WordsApi.UpdateTablePropertiesWithoutNodePath(ctx, remoteName, int32(index), properties, options)
 
 	if err != nil {
 		t.Error(err)
@@ -532,19 +532,19 @@ func TestUpdateTableRowFormat(t *testing.T) {
 	remoteName := "TestUpdateTableRowFormat.docx"
 	tablePath := "sections/0/tables/2"
 	index := 0
+	format := models.TableRowFormat{
+		AllowBreakAcrossPages: true,
+		HeadingFormat:         true,
+		Height:                10,
+		HeightRule:            "Auto",
+	}
 	options := map[string]interface{}{
 		"folder": remoteFolder,
-		"format": models.TableRowFormat{
-			AllowBreakAcrossPages: true,
-			HeadingFormat:         true,
-			Height:                10,
-			HeightRule:            "Auto",
-		},
 	}
 
 	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, _, err := client.WordsApi.UpdateTableRowFormat(ctx, remoteName, tablePath, int32(index), options)
+	_, _, err := client.WordsApi.UpdateTableRowFormat(ctx, remoteName, tablePath, int32(index), format, options)
 
 	if err != nil {
 		t.Error(err)

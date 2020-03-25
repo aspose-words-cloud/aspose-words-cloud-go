@@ -1,10 +1,13 @@
 package api_test
 
 import (
+	"context"
+	"os"
 	"testing"
 
 	"github.com/aspose-words-cloud/aspose-words-cloud-go/v2004/api"
 	"github.com/aspose-words-cloud/aspose-words-cloud-go/v2004/api/models"
+	"github.com/stretchr/testify/assert"
 )
 
 func TestAppSidAndAppKey(t *testing.T) {
@@ -22,9 +25,7 @@ func TestAppSidAndAppKey(t *testing.T) {
 		}
 		_, err := api.NewAPIClient(&config)
 
-		if err == nil {
-			t.Error(err)
-		}
+		assert.Error(t, err)
 	}
 }
 
@@ -36,7 +37,40 @@ func TestBaseUrl(t *testing.T) {
 	}
 	_, err := api.NewAPIClient(&config)
 
-	if err == nil {
+	assert.Error(t, err)
+}
+
+func TestWrongAppKey(t *testing.T) {
+	config := ReadConfiguration(t)
+	config.AppKey = "x"
+	_, _, err := api.CreateWordsApi(config)
+
+	assert.Error(t, err)
+}
+
+func TestWrongAppSid(t *testing.T) {
+	config := ReadConfiguration(t)
+	config.AppSid = "x"
+	_, _, err := api.CreateWordsApi(config)
+
+	assert.Error(t, err)
+}
+
+func TestUnathorizedAccess(t *testing.T) {
+	config := ReadConfiguration(t)
+	client, err := api.NewAPIClient(config)
+
+	if err != nil {
 		t.Error(err)
 	}
+
+	file, fileErr := os.Open("d:\\api.doc")
+	if fileErr != nil {
+		t.Error(fileErr)
+	}
+
+	_, err = client.WordsApi.ConvertDocument(context.Background(), file, "pdf", nil)
+
+	assert.Error(t, err)
+	assert.Equal(t, err.Error(), "Access is denied")
 }

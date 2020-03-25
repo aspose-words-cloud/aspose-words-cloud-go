@@ -38,14 +38,14 @@ func TestGetRangeText(t *testing.T) {
 	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Range")
 	remoteName := "TestGetRangeText.docx"
 	rangeStartIdentifier := "id0.0.0"
-	rangeEndIdentifier := "id0.0.1"
 	options := map[string]interface{}{
-		"folder": remoteFolder,
+		"folder":             remoteFolder,
+		"rangeEndIdentifier": "id0.0.0",
 	}
 
 	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, _, err := client.WordsApi.GetRangeText(ctx, remoteName, rangeStartIdentifier, rangeEndIdentifier, options)
+	_, _, err := client.WordsApi.GetRangeText(ctx, remoteName, rangeStartIdentifier, options)
 
 	if err != nil {
 		t.Error(err)
@@ -58,14 +58,14 @@ func TestRemoveRange(t *testing.T) {
 	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Range")
 	remoteName := "TestRemoveRange.docx"
 	rangeStartIdentifier := "id0.0.0"
-	rangeEndIdentifier := "id0.0.1"
 	options := map[string]interface{}{
-		"folder": remoteFolder,
+		"folder":             remoteFolder,
+		"rangeEndIdentifier": "id0.0.0",
 	}
 
 	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, _, err := client.WordsApi.RemoveRange(ctx, remoteName, rangeStartIdentifier, rangeEndIdentifier, options)
+	_, _, err := client.WordsApi.RemoveRange(ctx, remoteName, rangeStartIdentifier, options)
 
 	if err != nil {
 		t.Error(err)
@@ -78,18 +78,18 @@ func TestSaveAsRange(t *testing.T) {
 	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Range")
 	remoteName := "TestSaveAsRange.docx"
 	rangeStartIdentifier := "id0.0.0"
-	rangeEndIdentifier := "id0.0.1"
 	newDocName := "NewDoc.docx"
 	documentParameters := models.RangeDocument{
 		DocumentName: path.Join(remoteFolder, newDocName),
 	}
 	options := map[string]interface{}{
-		"folder": remoteFolder,
+		"folder":             remoteFolder,
+		"rangeEndIdentifier": "id0.0.0",
 	}
 
 	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, _, err := client.WordsApi.SaveAsRange(ctx, remoteName, rangeStartIdentifier, documentParameters, rangeEndIdentifier, options)
+	_, _, err := client.WordsApi.SaveAsRange(ctx, remoteName, rangeStartIdentifier, documentParameters, options)
 
 	if err != nil {
 		t.Error(err)
@@ -102,17 +102,17 @@ func TestReplaceWithText(t *testing.T) {
 	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Range")
 	remoteName := "TestReplaceWithText.docx"
 	rangeStartIdentifier := "id0.0.0"
-	rangeEndIdentifier := "id0.0.1"
 	rangeText := models.ReplaceRange{
 		Text: "Replaced header",
 	}
 	options := map[string]interface{}{
-		"folder": remoteFolder,
+		"folder":             remoteFolder,
+		"rangeEndIdentifier": "id0.0.0",
 	}
 
 	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, _, err := client.WordsApi.ReplaceWithText(ctx, remoteName, rangeStartIdentifier, rangeText, rangeEndIdentifier, options)
+	_, _, err := client.WordsApi.ReplaceWithText(ctx, remoteName, rangeStartIdentifier, rangeText, options)
 
 	if err != nil {
 		t.Error(err)

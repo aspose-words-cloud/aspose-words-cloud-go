@@ -34,6 +34,7 @@ import (
 	"encoding/json"
     "fmt"
 	"github.com/aspose-words-cloud/aspose-words-cloud-go/v2004/api/models"
+	"errors"
 )
 
 // Linger please
@@ -128,6 +129,10 @@ func (a *WordsApiService) AcceptAllRevisions(ctx context.Context, name string, l
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
+	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
 	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
@@ -250,6 +255,10 @@ func (a *WordsApiService) AppendDocument(ctx context.Context, name string, docum
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -326,6 +335,10 @@ func (a *WordsApiService) Classify(ctx context.Context, text string, localVarOpt
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
+	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
 	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
@@ -438,6 +451,10 @@ func (a *WordsApiService) ClassifyDocument(ctx context.Context, documentName str
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -545,6 +562,10 @@ func (a *WordsApiService) CompareDocument(ctx context.Context, name string, comp
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -648,6 +669,10 @@ func (a *WordsApiService) ConvertDocument(ctx context.Context, document *os.File
 	if err != nil || localVarHttpResponse == nil {
 		return localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -734,6 +759,10 @@ func (a *WordsApiService) CopyFile(ctx context.Context, destPath string, srcPath
 	if err != nil || localVarHttpResponse == nil {
 		return localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -813,6 +842,10 @@ func (a *WordsApiService) CopyFolder(ctx context.Context, destPath string, srcPa
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return localVarHttpResponse, err
+	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return nil, errors.New("Access is denied")
 	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
@@ -898,6 +931,10 @@ func (a *WordsApiService) CreateDocument(ctx context.Context, localVarOptionals 
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -972,6 +1009,10 @@ func (a *WordsApiService) CreateFolder(ctx context.Context, path string, localVa
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return localVarHttpResponse, err
+	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return nil, errors.New("Access is denied")
 	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
@@ -1091,6 +1132,10 @@ func (a *WordsApiService) CreateOrUpdateDocumentProperty(ctx context.Context, na
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
+	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
 	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
@@ -1215,6 +1260,10 @@ func (a *WordsApiService) DeleteBorder(ctx context.Context, name string, nodePat
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -1336,6 +1385,10 @@ func (a *WordsApiService) DeleteBorders(ctx context.Context, name string, nodePa
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -1455,6 +1508,10 @@ func (a *WordsApiService) DeleteComment(ctx context.Context, name string, commen
 	if err != nil || localVarHttpResponse == nil {
 		return localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -1569,6 +1626,10 @@ func (a *WordsApiService) DeleteDocumentProperty(ctx context.Context, name strin
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return localVarHttpResponse, err
+	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return nil, errors.New("Access is denied")
 	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
@@ -1687,6 +1748,10 @@ func (a *WordsApiService) DeleteDrawingObject(ctx context.Context, name string, 
 	if err != nil || localVarHttpResponse == nil {
 		return localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -1801,6 +1866,10 @@ func (a *WordsApiService) DeleteDrawingObjectWithoutNodePath(ctx context.Context
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return localVarHttpResponse, err
+	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return nil, errors.New("Access is denied")
 	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
@@ -1919,6 +1988,10 @@ func (a *WordsApiService) DeleteField(ctx context.Context, name string, nodePath
 	if err != nil || localVarHttpResponse == nil {
 		return localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -2033,6 +2106,10 @@ func (a *WordsApiService) DeleteFieldWithoutNodePath(ctx context.Context, name s
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return localVarHttpResponse, err
+	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return nil, errors.New("Access is denied")
 	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
@@ -2149,6 +2226,10 @@ func (a *WordsApiService) DeleteFields(ctx context.Context, name string, nodePat
 	if err != nil || localVarHttpResponse == nil {
 		return localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -2262,6 +2343,10 @@ func (a *WordsApiService) DeleteFieldsWithoutNodePath(ctx context.Context, name 
 	if err != nil || localVarHttpResponse == nil {
 		return localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -2340,6 +2425,10 @@ func (a *WordsApiService) DeleteFile(ctx context.Context, path string, localVarO
 	if err != nil || localVarHttpResponse == nil {
 		return localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -2417,6 +2506,10 @@ func (a *WordsApiService) DeleteFolder(ctx context.Context, path string, localVa
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return localVarHttpResponse, err
+	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return nil, errors.New("Access is denied")
 	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
@@ -2535,6 +2628,10 @@ func (a *WordsApiService) DeleteFootnote(ctx context.Context, name string, nodeP
 	if err != nil || localVarHttpResponse == nil {
 		return localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -2649,6 +2746,10 @@ func (a *WordsApiService) DeleteFootnoteWithoutNodePath(ctx context.Context, nam
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return localVarHttpResponse, err
+	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return nil, errors.New("Access is denied")
 	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
@@ -2767,6 +2868,10 @@ func (a *WordsApiService) DeleteFormField(ctx context.Context, name string, node
 	if err != nil || localVarHttpResponse == nil {
 		return localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -2881,6 +2986,10 @@ func (a *WordsApiService) DeleteFormFieldWithoutNodePath(ctx context.Context, na
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return localVarHttpResponse, err
+	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return nil, errors.New("Access is denied")
 	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
@@ -2998,6 +3107,10 @@ func (a *WordsApiService) DeleteHeaderFooter(ctx context.Context, name string, s
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return localVarHttpResponse, err
+	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return nil, errors.New("Access is denied")
 	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
@@ -3121,6 +3234,10 @@ func (a *WordsApiService) DeleteHeadersFooters(ctx context.Context, name string,
 	if err != nil || localVarHttpResponse == nil {
 		return localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -3233,6 +3350,10 @@ func (a *WordsApiService) DeleteMacros(ctx context.Context, name string, localVa
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return localVarHttpResponse, err
+	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return nil, errors.New("Access is denied")
 	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
@@ -3351,6 +3472,10 @@ func (a *WordsApiService) DeleteOfficeMathObject(ctx context.Context, name strin
 	if err != nil || localVarHttpResponse == nil {
 		return localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -3465,6 +3590,10 @@ func (a *WordsApiService) DeleteOfficeMathObjectWithoutNodePath(ctx context.Cont
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return localVarHttpResponse, err
+	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return nil, errors.New("Access is denied")
 	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
@@ -3583,6 +3712,10 @@ func (a *WordsApiService) DeleteParagraph(ctx context.Context, name string, node
 	if err != nil || localVarHttpResponse == nil {
 		return localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -3697,6 +3830,10 @@ func (a *WordsApiService) DeleteParagraphWithoutNodePath(ctx context.Context, na
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return localVarHttpResponse, err
+	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return nil, errors.New("Access is denied")
 	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
@@ -3815,6 +3952,10 @@ func (a *WordsApiService) DeleteRun(ctx context.Context, name string, paragraphP
 	if err != nil || localVarHttpResponse == nil {
 		return localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -3929,6 +4070,10 @@ func (a *WordsApiService) DeleteSection(ctx context.Context, name string, sectio
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return localVarHttpResponse, err
+	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return nil, errors.New("Access is denied")
 	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
@@ -4047,6 +4192,10 @@ func (a *WordsApiService) DeleteTable(ctx context.Context, name string, nodePath
 	if err != nil || localVarHttpResponse == nil {
 		return localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -4163,6 +4312,10 @@ func (a *WordsApiService) DeleteTableCell(ctx context.Context, name string, tabl
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return localVarHttpResponse, err
+	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return nil, errors.New("Access is denied")
 	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
@@ -4281,6 +4434,10 @@ func (a *WordsApiService) DeleteTableRow(ctx context.Context, name string, table
 	if err != nil || localVarHttpResponse == nil {
 		return localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -4396,6 +4553,10 @@ func (a *WordsApiService) DeleteTableWithoutNodePath(ctx context.Context, name s
 	if err != nil || localVarHttpResponse == nil {
 		return localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -4510,6 +4671,10 @@ func (a *WordsApiService) DeleteWatermark(ctx context.Context, name string, loca
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -4591,6 +4756,10 @@ func (a *WordsApiService) DownloadFile(ctx context.Context, path string, localVa
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return localVarHttpResponse, err
+	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return nil, errors.New("Access is denied")
 	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
@@ -4726,6 +4895,10 @@ func (a *WordsApiService) ExecuteMailMerge(ctx context.Context, name string, loc
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -4827,6 +5000,10 @@ func (a *WordsApiService) ExecuteMailMergeOnline(ctx context.Context, template *
 	if err != nil || localVarHttpResponse == nil {
 		return localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -4895,6 +5072,10 @@ func (a *WordsApiService) GetAvailableFonts(ctx context.Context, localVarOptiona
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
+	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
 	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
@@ -4995,6 +5176,10 @@ func (a *WordsApiService) GetBookmarkByName(ctx context.Context, name string, bo
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -5091,6 +5276,10 @@ func (a *WordsApiService) GetBookmarks(ctx context.Context, name string, localVa
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
+	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
 	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
@@ -5194,6 +5383,10 @@ func (a *WordsApiService) GetBorder(ctx context.Context, name string, nodePath s
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -5294,6 +5487,10 @@ func (a *WordsApiService) GetBorders(ctx context.Context, name string, nodePath 
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -5393,6 +5590,10 @@ func (a *WordsApiService) GetComment(ctx context.Context, name string, commentIn
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -5490,6 +5691,10 @@ func (a *WordsApiService) GetComments(ctx context.Context, name string, localVar
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -5586,6 +5791,10 @@ func (a *WordsApiService) GetDocument(ctx context.Context, documentName string, 
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
+	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
 	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
@@ -5688,6 +5897,10 @@ func (a *WordsApiService) GetDocumentDrawingObjectByIndex(ctx context.Context, n
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -5786,6 +5999,10 @@ func (a *WordsApiService) GetDocumentDrawingObjectByIndexWithoutNodePath(ctx con
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
+	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
 	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
@@ -5887,6 +6104,10 @@ func (a *WordsApiService) GetDocumentDrawingObjectImageData(ctx context.Context,
 	if err != nil || localVarHttpResponse == nil {
 		return localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -5979,6 +6200,10 @@ func (a *WordsApiService) GetDocumentDrawingObjectImageDataWithoutNodePath(ctx c
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return localVarHttpResponse, err
+	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return nil, errors.New("Access is denied")
 	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
@@ -6075,6 +6300,10 @@ func (a *WordsApiService) GetDocumentDrawingObjectOleData(ctx context.Context, n
 	if err != nil || localVarHttpResponse == nil {
 		return localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -6167,6 +6396,10 @@ func (a *WordsApiService) GetDocumentDrawingObjectOleDataWithoutNodePath(ctx con
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return localVarHttpResponse, err
+	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return nil, errors.New("Access is denied")
 	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
@@ -6261,6 +6494,10 @@ func (a *WordsApiService) GetDocumentDrawingObjects(ctx context.Context, name st
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
+	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
 	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
@@ -6358,6 +6595,10 @@ func (a *WordsApiService) GetDocumentDrawingObjectsWithoutNodePath(ctx context.C
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
+	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
 	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
@@ -6463,6 +6704,10 @@ func (a *WordsApiService) GetDocumentFieldNames(ctx context.Context, name string
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -6543,6 +6788,10 @@ func (a *WordsApiService) GetDocumentFieldNamesOnline(ctx context.Context, templ
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
+	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
 	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
@@ -6643,6 +6892,10 @@ func (a *WordsApiService) GetDocumentHyperlinkByIndex(ctx context.Context, name 
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -6740,6 +6993,10 @@ func (a *WordsApiService) GetDocumentHyperlinks(ctx context.Context, name string
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -6836,6 +7093,10 @@ func (a *WordsApiService) GetDocumentProperties(ctx context.Context, name string
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
+	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
 	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
@@ -6936,6 +7197,10 @@ func (a *WordsApiService) GetDocumentProperty(ctx context.Context, name string, 
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -7032,6 +7297,10 @@ func (a *WordsApiService) GetDocumentProtection(ctx context.Context, name string
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
+	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
 	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
@@ -7151,6 +7420,10 @@ func (a *WordsApiService) GetDocumentStatistics(ctx context.Context, name string
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -7263,6 +7536,10 @@ func (a *WordsApiService) GetDocumentWithFormat(ctx context.Context, name string
 	if err != nil || localVarHttpResponse == nil {
 		return localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -7358,6 +7635,10 @@ func (a *WordsApiService) GetField(ctx context.Context, name string, nodePath st
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
+	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
 	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
@@ -7458,6 +7739,10 @@ func (a *WordsApiService) GetFieldWithoutNodePath(ctx context.Context, name stri
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -7557,6 +7842,10 @@ func (a *WordsApiService) GetFields(ctx context.Context, name string, nodePath s
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -7654,6 +7943,10 @@ func (a *WordsApiService) GetFieldsWithoutNodePath(ctx context.Context, name str
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -7729,6 +8022,10 @@ func (a *WordsApiService) GetFilesList(ctx context.Context, path string, localVa
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
+	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
 	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
@@ -7831,6 +8128,10 @@ func (a *WordsApiService) GetFootnote(ctx context.Context, name string, nodePath
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -7929,6 +8230,10 @@ func (a *WordsApiService) GetFootnoteWithoutNodePath(ctx context.Context, name s
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
+	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
 	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
@@ -8029,6 +8334,10 @@ func (a *WordsApiService) GetFootnotes(ctx context.Context, name string, nodePat
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -8125,6 +8434,10 @@ func (a *WordsApiService) GetFootnotesWithoutNodePath(ctx context.Context, name 
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
+	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
 	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
@@ -8227,6 +8540,10 @@ func (a *WordsApiService) GetFormField(ctx context.Context, name string, nodePat
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -8325,6 +8642,10 @@ func (a *WordsApiService) GetFormFieldWithoutNodePath(ctx context.Context, name 
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
+	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
 	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
@@ -8425,6 +8746,10 @@ func (a *WordsApiService) GetFormFields(ctx context.Context, name string, nodePa
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -8521,6 +8846,10 @@ func (a *WordsApiService) GetFormFieldsWithoutNodePath(ctx context.Context, name
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
+	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
 	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
@@ -8627,6 +8956,10 @@ func (a *WordsApiService) GetHeaderFooter(ctx context.Context, name string, head
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
+	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
 	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
@@ -8736,6 +9069,10 @@ func (a *WordsApiService) GetHeaderFooterOfSection(ctx context.Context, name str
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -8842,6 +9179,10 @@ func (a *WordsApiService) GetHeaderFooters(ctx context.Context, name string, sec
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -8943,6 +9284,10 @@ func (a *WordsApiService) GetOfficeMathObject(ctx context.Context, name string, 
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -9041,6 +9386,10 @@ func (a *WordsApiService) GetOfficeMathObjectWithoutNodePath(ctx context.Context
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
+	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
 	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
@@ -9141,6 +9490,10 @@ func (a *WordsApiService) GetOfficeMathObjects(ctx context.Context, name string,
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -9237,6 +9590,10 @@ func (a *WordsApiService) GetOfficeMathObjectsWithoutNodePath(ctx context.Contex
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
+	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
 	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
@@ -9339,6 +9696,10 @@ func (a *WordsApiService) GetParagraph(ctx context.Context, name string, nodePat
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -9440,6 +9801,10 @@ func (a *WordsApiService) GetParagraphFormat(ctx context.Context, name string, n
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -9538,6 +9903,10 @@ func (a *WordsApiService) GetParagraphFormatWithoutNodePath(ctx context.Context,
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
+	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
 	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
@@ -9638,6 +10007,10 @@ func (a *WordsApiService) GetParagraphWithoutNodePath(ctx context.Context, name 
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -9737,6 +10110,10 @@ func (a *WordsApiService) GetParagraphs(ctx context.Context, name string, nodePa
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -9833,6 +10210,10 @@ func (a *WordsApiService) GetParagraphsWithoutNodePath(ctx context.Context, name
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
+	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
 	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
@@ -9938,6 +10319,10 @@ func (a *WordsApiService) GetRangeText(ctx context.Context, name string, rangeSt
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -10038,6 +10423,10 @@ func (a *WordsApiService) GetRun(ctx context.Context, name string, paragraphPath
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
+	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
 	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
@@ -10140,6 +10529,10 @@ func (a *WordsApiService) GetRunFont(ctx context.Context, name string, paragraph
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -10238,6 +10631,10 @@ func (a *WordsApiService) GetRuns(ctx context.Context, name string, paragraphPat
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
+	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
 	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
@@ -10338,6 +10735,10 @@ func (a *WordsApiService) GetSection(ctx context.Context, name string, sectionIn
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -10437,6 +10838,10 @@ func (a *WordsApiService) GetSectionPageSetup(ctx context.Context, name string, 
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -10533,6 +10938,10 @@ func (a *WordsApiService) GetSections(ctx context.Context, name string, localVar
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
+	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
 	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
@@ -10635,6 +11044,10 @@ func (a *WordsApiService) GetTable(ctx context.Context, name string, nodePath st
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -10735,6 +11148,10 @@ func (a *WordsApiService) GetTableCell(ctx context.Context, name string, tableRo
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
+	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
 	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
@@ -10837,6 +11254,10 @@ func (a *WordsApiService) GetTableCellFormat(ctx context.Context, name string, t
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -10938,6 +11359,10 @@ func (a *WordsApiService) GetTableProperties(ctx context.Context, name string, n
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -11036,6 +11461,10 @@ func (a *WordsApiService) GetTablePropertiesWithoutNodePath(ctx context.Context,
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
+	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
 	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
@@ -11138,6 +11567,10 @@ func (a *WordsApiService) GetTableRow(ctx context.Context, name string, tablePat
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -11239,6 +11672,10 @@ func (a *WordsApiService) GetTableRowFormat(ctx context.Context, name string, ta
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -11337,6 +11774,10 @@ func (a *WordsApiService) GetTableWithoutNodePath(ctx context.Context, name stri
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
+	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
 	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
@@ -11437,6 +11878,10 @@ func (a *WordsApiService) GetTables(ctx context.Context, name string, nodePath s
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -11533,6 +11978,10 @@ func (a *WordsApiService) GetTablesWithoutNodePath(ctx context.Context, name str
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
+	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
 	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
@@ -11654,6 +12103,10 @@ func (a *WordsApiService) InsertComment(ctx context.Context, name string, commen
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
+	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
 	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
@@ -11784,6 +12237,10 @@ func (a *WordsApiService) InsertDrawingObject(ctx context.Context, name string, 
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -11910,6 +12367,10 @@ func (a *WordsApiService) InsertDrawingObjectWithoutNodePath(ctx context.Context
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
+	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
 	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
@@ -12041,6 +12502,10 @@ func (a *WordsApiService) InsertField(ctx context.Context, name string, field mo
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -12169,6 +12634,10 @@ func (a *WordsApiService) InsertFieldWithoutNodePath(ctx context.Context, name s
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -12292,6 +12761,10 @@ func (a *WordsApiService) InsertFootnote(ctx context.Context, name string, footn
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -12412,6 +12885,10 @@ func (a *WordsApiService) InsertFootnoteWithoutNodePath(ctx context.Context, nam
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
+	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
 	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
@@ -12543,6 +13020,10 @@ func (a *WordsApiService) InsertFormField(ctx context.Context, name string, form
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -12671,6 +13152,10 @@ func (a *WordsApiService) InsertFormFieldWithoutNodePath(ctx context.Context, na
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -12794,6 +13279,10 @@ func (a *WordsApiService) InsertHeaderFooter(ctx context.Context, name string, h
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -12914,6 +13403,10 @@ func (a *WordsApiService) InsertPageNumbers(ctx context.Context, name string, pa
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
+	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
 	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
@@ -13045,6 +13538,10 @@ func (a *WordsApiService) InsertParagraph(ctx context.Context, name string, para
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -13175,6 +13672,10 @@ func (a *WordsApiService) InsertRun(ctx context.Context, name string, paragraphP
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -13297,6 +13798,10 @@ func (a *WordsApiService) InsertTable(ctx context.Context, name string, nodePath
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
+	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
 	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
@@ -13421,6 +13926,10 @@ func (a *WordsApiService) InsertTableCell(ctx context.Context, name string, tabl
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -13544,6 +14053,10 @@ func (a *WordsApiService) InsertTableRow(ctx context.Context, name string, table
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -13664,6 +14177,10 @@ func (a *WordsApiService) InsertTableWithoutNodePath(ctx context.Context, name s
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
+	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
 	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
@@ -13808,6 +14325,10 @@ func (a *WordsApiService) InsertWatermarkImage(ctx context.Context, name string,
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -13929,6 +14450,10 @@ func (a *WordsApiService) InsertWatermarkText(ctx context.Context, name string, 
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -14005,6 +14530,10 @@ func (a *WordsApiService) LoadWebDocument(ctx context.Context, data models.ILoad
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
+	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
 	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
@@ -14097,6 +14626,10 @@ func (a *WordsApiService) MoveFile(ctx context.Context, destPath string, srcPath
 	if err != nil || localVarHttpResponse == nil {
 		return localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -14176,6 +14709,10 @@ func (a *WordsApiService) MoveFolder(ctx context.Context, destPath string, srcPa
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return localVarHttpResponse, err
+	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return nil, errors.New("Access is denied")
 	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
@@ -14280,6 +14817,10 @@ func (a *WordsApiService) ProtectDocument(ctx context.Context, name string, prot
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -14383,6 +14924,10 @@ func (a *WordsApiService) RejectAllRevisions(ctx context.Context, name string, l
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
+	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
 	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
@@ -14495,6 +15040,10 @@ func (a *WordsApiService) RemoveRange(ctx context.Context, name string, rangeSta
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -14604,6 +15153,10 @@ func (a *WordsApiService) RenderDrawingObject(ctx context.Context, name string, 
 	if err != nil || localVarHttpResponse == nil {
 		return localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -14705,6 +15258,10 @@ func (a *WordsApiService) RenderDrawingObjectWithoutNodePath(ctx context.Context
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return localVarHttpResponse, err
+	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return nil, errors.New("Access is denied")
 	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
@@ -14810,6 +15367,10 @@ func (a *WordsApiService) RenderMathObject(ctx context.Context, name string, for
 	if err != nil || localVarHttpResponse == nil {
 		return localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -14912,6 +15473,10 @@ func (a *WordsApiService) RenderMathObjectWithoutNodePath(ctx context.Context, n
 	if err != nil || localVarHttpResponse == nil {
 		return localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -15013,6 +15578,10 @@ func (a *WordsApiService) RenderPage(ctx context.Context, name string, pageIndex
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return localVarHttpResponse, err
+	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return nil, errors.New("Access is denied")
 	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
@@ -15118,6 +15687,10 @@ func (a *WordsApiService) RenderParagraph(ctx context.Context, name string, form
 	if err != nil || localVarHttpResponse == nil {
 		return localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -15219,6 +15792,10 @@ func (a *WordsApiService) RenderParagraphWithoutNodePath(ctx context.Context, na
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return localVarHttpResponse, err
+	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return nil, errors.New("Access is denied")
 	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
@@ -15324,6 +15901,10 @@ func (a *WordsApiService) RenderTable(ctx context.Context, name string, format s
 	if err != nil || localVarHttpResponse == nil {
 		return localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -15425,6 +16006,10 @@ func (a *WordsApiService) RenderTableWithoutNodePath(ctx context.Context, name s
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return localVarHttpResponse, err
+	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return nil, errors.New("Access is denied")
 	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
@@ -15542,6 +16127,10 @@ func (a *WordsApiService) ReplaceText(ctx context.Context, name string, replaceT
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -15656,6 +16245,10 @@ func (a *WordsApiService) ReplaceWithText(ctx context.Context, name string, rang
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -15720,6 +16313,10 @@ func (a *WordsApiService) ResetCache(ctx context.Context) ( *http.Response, erro
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return localVarHttpResponse, err
+	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return nil, errors.New("Access is denied")
 	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
@@ -15823,6 +16420,10 @@ func (a *WordsApiService) SaveAs(ctx context.Context, name string, saveOptionsDa
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
+	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
 	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
@@ -15930,6 +16531,10 @@ func (a *WordsApiService) SaveAsRange(ctx context.Context, name string, rangeSta
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
+	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
 	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
@@ -16157,6 +16762,10 @@ func (a *WordsApiService) SaveAsTiff(ctx context.Context, name string, saveOptio
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -16255,6 +16864,10 @@ func (a *WordsApiService) Search(ctx context.Context, name string, pattern strin
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
+	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
 	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
@@ -16395,6 +17008,10 @@ func (a *WordsApiService) SplitDocument(ctx context.Context, name string, localV
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -16501,6 +17118,10 @@ func (a *WordsApiService) UnprotectDocument(ctx context.Context, name string, pr
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
+	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
 	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
@@ -16624,6 +17245,10 @@ func (a *WordsApiService) UpdateBookmark(ctx context.Context, name string, bookm
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
+	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
 	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
@@ -16751,6 +17376,10 @@ func (a *WordsApiService) UpdateBorder(ctx context.Context, name string, borderP
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -16873,6 +17502,10 @@ func (a *WordsApiService) UpdateComment(ctx context.Context, name string, commen
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
+	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
 	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
@@ -17005,6 +17638,10 @@ func (a *WordsApiService) UpdateDrawingObject(ctx context.Context, name string, 
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -17134,6 +17771,10 @@ func (a *WordsApiService) UpdateDrawingObjectWithoutNodePath(ctx context.Context
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -17259,6 +17900,10 @@ func (a *WordsApiService) UpdateField(ctx context.Context, name string, field mo
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -17362,6 +18007,10 @@ func (a *WordsApiService) UpdateFields(ctx context.Context, name string, localVa
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
+	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
 	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
@@ -17488,6 +18137,10 @@ func (a *WordsApiService) UpdateFootnote(ctx context.Context, name string, footn
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -17610,6 +18263,10 @@ func (a *WordsApiService) UpdateFootnoteWithoutNodePath(ctx context.Context, nam
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
+	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
 	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
@@ -17736,6 +18393,10 @@ func (a *WordsApiService) UpdateFormField(ctx context.Context, name string, form
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -17858,6 +18519,10 @@ func (a *WordsApiService) UpdateFormFieldWithoutNodePath(ctx context.Context, na
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
+	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
 	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
@@ -17984,6 +18649,10 @@ func (a *WordsApiService) UpdateParagraphFormat(ctx context.Context, name string
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -18108,6 +18777,10 @@ func (a *WordsApiService) UpdateRun(ctx context.Context, name string, run models
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
+	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
 	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
@@ -18234,6 +18907,10 @@ func (a *WordsApiService) UpdateRunFont(ctx context.Context, name string, fontDt
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -18356,6 +19033,10 @@ func (a *WordsApiService) UpdateSectionPageSetup(ctx context.Context, name strin
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
+	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
 	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
@@ -18482,6 +19163,10 @@ func (a *WordsApiService) UpdateTableCellFormat(ctx context.Context, name string
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -18607,6 +19292,10 @@ func (a *WordsApiService) UpdateTableProperties(ctx context.Context, name string
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -18729,6 +19418,10 @@ func (a *WordsApiService) UpdateTablePropertiesWithoutNodePath(ctx context.Conte
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
+	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
 	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
@@ -18855,6 +19548,10 @@ func (a *WordsApiService) UpdateTableRowFormat(ctx context.Context, name string,
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
 	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
+	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
 		
@@ -18937,6 +19634,10 @@ func (a *WordsApiService) UploadFile(ctx context.Context, fileContent *os.File, 
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return successPayload, localVarHttpResponse, err
+	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
 	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		defer localVarHttpResponse.Body.Close()
