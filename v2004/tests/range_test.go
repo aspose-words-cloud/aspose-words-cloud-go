@@ -39,7 +39,8 @@ func TestGetRangeText(t *testing.T) {
 	remoteName := "TestGetRangeText.docx"
 	rangeStartIdentifier := "id0.0.0"
 	options := map[string]interface{}{
-		"folder": remoteFolder,
+		"folder":             remoteFolder,
+		"rangeEndIdentifier": "id0.0.0",
 	}
 
 	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
@@ -58,7 +59,8 @@ func TestRemoveRange(t *testing.T) {
 	remoteName := "TestRemoveRange.docx"
 	rangeStartIdentifier := "id0.0.0"
 	options := map[string]interface{}{
-		"folder": remoteFolder,
+		"folder":             remoteFolder,
+		"rangeEndIdentifier": "id0.0.0",
 	}
 
 	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
@@ -81,7 +83,8 @@ func TestSaveAsRange(t *testing.T) {
 		DocumentName: path.Join(remoteFolder, newDocName),
 	}
 	options := map[string]interface{}{
-		"folder": remoteFolder,
+		"folder":             remoteFolder,
+		"rangeEndIdentifier": "id0.0.0",
 	}
 
 	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
@@ -103,7 +106,8 @@ func TestReplaceWithText(t *testing.T) {
 		Text: "Replaced header",
 	}
 	options := map[string]interface{}{
-		"folder": remoteFolder,
+		"folder":             remoteFolder,
+		"rangeEndIdentifier": "id0.0.0",
 	}
 
 	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
