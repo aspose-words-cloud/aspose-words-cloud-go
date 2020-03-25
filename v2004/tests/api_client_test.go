@@ -3,6 +3,7 @@ package api_test
 import (
 	"context"
 	"os"
+	"path/filepath"
 	"testing"
 
 	"github.com/aspose-words-cloud/aspose-words-cloud-go/v2004/api"
@@ -64,12 +65,14 @@ func TestUnathorizedAccess(t *testing.T) {
 		t.Error(err)
 	}
 
-	file, fileErr := os.Open("d:\\api.doc")
+	format := "pdf"
+	localFilePath := GetLocalPath(filepath.Join("DocumentActions", "ConvertDocument"), "test_uploadfile.docx")
+	document, fileErr := os.Open(localFilePath)
 	if fileErr != nil {
 		t.Error(fileErr)
 	}
 
-	_, err = client.WordsApi.ConvertDocument(context.Background(), file, "pdf", nil)
+	_, err = client.WordsApi.ConvertDocument(context.Background(), document, format, nil)
 
 	assert.Error(t, err)
 	assert.Equal(t, err.Error(), "Access is denied")
