@@ -52,6 +52,25 @@ func TestGetRangeText(t *testing.T) {
 	}
 }
 
+func TestGetRangeTextWithoutRangeEndIdentifier(t *testing.T) {
+
+	localFilePath := GetLocalPath(filepath.Join("DocumentElements", "Range"), "RangeGet.doc")
+	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Range")
+	remoteName := "TestGetRangeText.docx"
+	rangeStartIdentifier := "id0.0.0"
+	options := map[string]interface{}{
+		"folder": remoteFolder,
+	}
+
+	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
+
+	_, _, err := client.WordsApi.GetRangeText(ctx, remoteName, rangeStartIdentifier, options)
+
+	if err != nil {
+		t.Error(err)
+	}
+}
+
 func TestRemoveRange(t *testing.T) {
 
 	localFilePath := GetLocalPath(filepath.Join("DocumentElements", "Range"), "RangeGet.doc")

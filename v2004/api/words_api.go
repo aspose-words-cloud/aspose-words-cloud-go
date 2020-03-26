@@ -65,6 +65,8 @@ func (a *WordsApiService) AcceptAllRevisions(ctx context.Context, name string, l
 	// create path and map variables
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/revisions/acceptAll"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -176,6 +178,8 @@ func (a *WordsApiService) AppendDocument(ctx context.Context, name string, docum
 	// create path and map variables
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/appendDocument"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -293,6 +297,8 @@ func (a *WordsApiService) Classify(ctx context.Context, text string, localVarOpt
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BaseUrl + "/words/classify"
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -380,6 +386,8 @@ func (a *WordsApiService) ClassifyDocument(ctx context.Context, documentName str
 	// create path and map variables
 	localVarPath := a.client.cfg.BaseUrl + "/words/{documentName}/classify"
 	localVarPath = strings.Replace(localVarPath, "{"+"documentName"+"}", fmt.Sprintf("%v", documentName), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -495,6 +503,8 @@ func (a *WordsApiService) CompareDocument(ctx context.Context, name string, comp
 	// create path and map variables
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/compareDocument"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -603,6 +613,8 @@ func (a *WordsApiService) ConvertDocument(ctx context.Context, document *os.File
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BaseUrl + "/words/convert"
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -705,6 +717,8 @@ func (a *WordsApiService) CopyFile(ctx context.Context, destPath string, srcPath
 	// create path and map variables
 	localVarPath := a.client.cfg.BaseUrl + "/words/storage/file/copy/{srcPath}"
 	localVarPath = strings.Replace(localVarPath, "{"+"srcPath"+"}", fmt.Sprintf("%v", srcPath), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -795,6 +809,8 @@ func (a *WordsApiService) CopyFolder(ctx context.Context, destPath string, srcPa
 	// create path and map variables
 	localVarPath := a.client.cfg.BaseUrl + "/words/storage/folder/copy/{srcPath}"
 	localVarPath = strings.Replace(localVarPath, "{"+"srcPath"+"}", fmt.Sprintf("%v", srcPath), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -878,6 +894,8 @@ func (a *WordsApiService) CreateDocument(ctx context.Context, localVarOptionals 
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BaseUrl + "/words/create"
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -969,6 +987,8 @@ func (a *WordsApiService) CreateFolder(ctx context.Context, path string, localVa
 	// create path and map variables
 	localVarPath := a.client.cfg.BaseUrl + "/words/storage/folder/{path}"
 	localVarPath = strings.Replace(localVarPath, "{"+"path"+"}", fmt.Sprintf("%v", path), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1054,6 +1074,8 @@ func (a *WordsApiService) CreateOrUpdateDocumentProperty(ctx context.Context, na
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/documentProperties/{propertyName}"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"propertyName"+"}", fmt.Sprintf("%v", propertyName), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1183,6 +1205,8 @@ func (a *WordsApiService) DeleteBorder(ctx context.Context, name string, nodePat
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"nodePath"+"}", fmt.Sprintf("%v", nodePath), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"borderType"+"}", fmt.Sprintf("%v", borderType), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1308,6 +1332,8 @@ func (a *WordsApiService) DeleteBorders(ctx context.Context, name string, nodePa
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/{nodePath}/borders"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"nodePath"+"}", fmt.Sprintf("%v", nodePath), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1431,6 +1457,8 @@ func (a *WordsApiService) DeleteComment(ctx context.Context, name string, commen
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/comments/{commentIndex}"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"commentIndex"+"}", fmt.Sprintf("%v", commentIndex), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1550,6 +1578,8 @@ func (a *WordsApiService) DeleteDocumentProperty(ctx context.Context, name strin
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/documentProperties/{propertyName}"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"propertyName"+"}", fmt.Sprintf("%v", propertyName), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1671,6 +1701,8 @@ func (a *WordsApiService) DeleteDrawingObject(ctx context.Context, name string, 
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"nodePath"+"}", fmt.Sprintf("%v", nodePath), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"index"+"}", fmt.Sprintf("%v", index), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1790,6 +1822,8 @@ func (a *WordsApiService) DeleteDrawingObjectWithoutNodePath(ctx context.Context
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/drawingObjects/{index}"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"index"+"}", fmt.Sprintf("%v", index), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1911,6 +1945,8 @@ func (a *WordsApiService) DeleteField(ctx context.Context, name string, nodePath
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"nodePath"+"}", fmt.Sprintf("%v", nodePath), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"index"+"}", fmt.Sprintf("%v", index), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2030,6 +2066,8 @@ func (a *WordsApiService) DeleteFieldWithoutNodePath(ctx context.Context, name s
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/fields/{index}"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"index"+"}", fmt.Sprintf("%v", index), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2149,6 +2187,8 @@ func (a *WordsApiService) DeleteFields(ctx context.Context, name string, nodePat
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/{nodePath}/fields"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"nodePath"+"}", fmt.Sprintf("%v", nodePath), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2266,6 +2306,8 @@ func (a *WordsApiService) DeleteFieldsWithoutNodePath(ctx context.Context, name 
 	// create path and map variables
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/fields"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2378,6 +2420,8 @@ func (a *WordsApiService) DeleteFile(ctx context.Context, path string, localVarO
 	// create path and map variables
 	localVarPath := a.client.cfg.BaseUrl + "/words/storage/file/{path}"
 	localVarPath = strings.Replace(localVarPath, "{"+"path"+"}", fmt.Sprintf("%v", path), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2460,6 +2504,8 @@ func (a *WordsApiService) DeleteFolder(ctx context.Context, path string, localVa
 	// create path and map variables
 	localVarPath := a.client.cfg.BaseUrl + "/words/storage/folder/{path}"
 	localVarPath = strings.Replace(localVarPath, "{"+"path"+"}", fmt.Sprintf("%v", path), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2551,6 +2597,8 @@ func (a *WordsApiService) DeleteFootnote(ctx context.Context, name string, nodeP
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"nodePath"+"}", fmt.Sprintf("%v", nodePath), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"index"+"}", fmt.Sprintf("%v", index), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2670,6 +2718,8 @@ func (a *WordsApiService) DeleteFootnoteWithoutNodePath(ctx context.Context, nam
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/footnotes/{index}"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"index"+"}", fmt.Sprintf("%v", index), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2791,6 +2841,8 @@ func (a *WordsApiService) DeleteFormField(ctx context.Context, name string, node
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"nodePath"+"}", fmt.Sprintf("%v", nodePath), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"index"+"}", fmt.Sprintf("%v", index), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2910,6 +2962,8 @@ func (a *WordsApiService) DeleteFormFieldWithoutNodePath(ctx context.Context, na
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/formfields/{index}"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"index"+"}", fmt.Sprintf("%v", index), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3031,6 +3085,8 @@ func (a *WordsApiService) DeleteHeaderFooter(ctx context.Context, name string, s
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"sectionPath"+"}", fmt.Sprintf("%v", sectionPath), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"index"+"}", fmt.Sprintf("%v", index), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3151,6 +3207,8 @@ func (a *WordsApiService) DeleteHeadersFooters(ctx context.Context, name string,
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/{sectionPath}/headersfooters"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"sectionPath"+"}", fmt.Sprintf("%v", sectionPath), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3274,6 +3332,8 @@ func (a *WordsApiService) DeleteMacros(ctx context.Context, name string, localVa
 	// create path and map variables
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/macros"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3395,6 +3455,8 @@ func (a *WordsApiService) DeleteOfficeMathObject(ctx context.Context, name strin
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"nodePath"+"}", fmt.Sprintf("%v", nodePath), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"index"+"}", fmt.Sprintf("%v", index), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3514,6 +3576,8 @@ func (a *WordsApiService) DeleteOfficeMathObjectWithoutNodePath(ctx context.Cont
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/OfficeMathObjects/{index}"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"index"+"}", fmt.Sprintf("%v", index), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3635,6 +3699,8 @@ func (a *WordsApiService) DeleteParagraph(ctx context.Context, name string, node
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"nodePath"+"}", fmt.Sprintf("%v", nodePath), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"index"+"}", fmt.Sprintf("%v", index), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3754,6 +3820,8 @@ func (a *WordsApiService) DeleteParagraphWithoutNodePath(ctx context.Context, na
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/paragraphs/{index}"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"index"+"}", fmt.Sprintf("%v", index), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3875,6 +3943,8 @@ func (a *WordsApiService) DeleteRun(ctx context.Context, name string, paragraphP
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"paragraphPath"+"}", fmt.Sprintf("%v", paragraphPath), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"index"+"}", fmt.Sprintf("%v", index), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3994,6 +4064,8 @@ func (a *WordsApiService) DeleteSection(ctx context.Context, name string, sectio
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/sections/{sectionIndex}"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"sectionIndex"+"}", fmt.Sprintf("%v", sectionIndex), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -4115,6 +4187,8 @@ func (a *WordsApiService) DeleteTable(ctx context.Context, name string, nodePath
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"nodePath"+"}", fmt.Sprintf("%v", nodePath), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"index"+"}", fmt.Sprintf("%v", index), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -4236,6 +4310,8 @@ func (a *WordsApiService) DeleteTableCell(ctx context.Context, name string, tabl
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"tableRowPath"+"}", fmt.Sprintf("%v", tableRowPath), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"index"+"}", fmt.Sprintf("%v", index), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -4357,6 +4433,8 @@ func (a *WordsApiService) DeleteTableRow(ctx context.Context, name string, table
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"tablePath"+"}", fmt.Sprintf("%v", tablePath), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"index"+"}", fmt.Sprintf("%v", index), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -4476,6 +4554,8 @@ func (a *WordsApiService) DeleteTableWithoutNodePath(ctx context.Context, name s
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/tables/{index}"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"index"+"}", fmt.Sprintf("%v", index), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -4594,6 +4674,8 @@ func (a *WordsApiService) DeleteWatermark(ctx context.Context, name string, loca
 	// create path and map variables
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/watermarks/deleteLast"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -4710,6 +4792,8 @@ func (a *WordsApiService) DownloadFile(ctx context.Context, path string, localVa
 	// create path and map variables
 	localVarPath := a.client.cfg.BaseUrl + "/words/storage/file/{path}"
 	localVarPath = strings.Replace(localVarPath, "{"+"path"+"}", fmt.Sprintf("%v", path), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -4800,6 +4884,8 @@ func (a *WordsApiService) ExecuteMailMerge(ctx context.Context, name string, loc
 	// create path and map variables
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/MailMerge"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -4935,6 +5021,8 @@ func (a *WordsApiService) ExecuteMailMergeOnline(ctx context.Context, template *
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BaseUrl + "/words/MailMerge"
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -5032,6 +5120,8 @@ func (a *WordsApiService) GetAvailableFonts(ctx context.Context, localVarOptiona
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BaseUrl + "/words/fonts/available"
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -5117,6 +5207,8 @@ func (a *WordsApiService) GetBookmarkByName(ctx context.Context, name string, bo
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/bookmarks/{bookmarkName}"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"bookmarkName"+"}", fmt.Sprintf("%v", bookmarkName), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -5218,6 +5310,8 @@ func (a *WordsApiService) GetBookmarks(ctx context.Context, name string, localVa
 	// create path and map variables
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/bookmarks"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -5324,6 +5418,8 @@ func (a *WordsApiService) GetBorder(ctx context.Context, name string, nodePath s
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"nodePath"+"}", fmt.Sprintf("%v", nodePath), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"borderType"+"}", fmt.Sprintf("%v", borderType), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -5428,6 +5524,8 @@ func (a *WordsApiService) GetBorders(ctx context.Context, name string, nodePath 
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/{nodePath}/borders"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"nodePath"+"}", fmt.Sprintf("%v", nodePath), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -5531,6 +5629,8 @@ func (a *WordsApiService) GetComment(ctx context.Context, name string, commentIn
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/comments/{commentIndex}"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"commentIndex"+"}", fmt.Sprintf("%v", commentIndex), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -5632,6 +5732,8 @@ func (a *WordsApiService) GetComments(ctx context.Context, name string, localVar
 	// create path and map variables
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/comments"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -5733,6 +5835,8 @@ func (a *WordsApiService) GetDocument(ctx context.Context, documentName string, 
 	// create path and map variables
 	localVarPath := a.client.cfg.BaseUrl + "/words/{documentName}"
 	localVarPath = strings.Replace(localVarPath, "{"+"documentName"+"}", fmt.Sprintf("%v", documentName), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -5838,6 +5942,8 @@ func (a *WordsApiService) GetDocumentDrawingObjectByIndex(ctx context.Context, n
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"nodePath"+"}", fmt.Sprintf("%v", nodePath), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"index"+"}", fmt.Sprintf("%v", index), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -5941,6 +6047,8 @@ func (a *WordsApiService) GetDocumentDrawingObjectByIndexWithoutNodePath(ctx con
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/drawingObjects/{index}"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"index"+"}", fmt.Sprintf("%v", index), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -6045,6 +6153,8 @@ func (a *WordsApiService) GetDocumentDrawingObjectImageData(ctx context.Context,
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"nodePath"+"}", fmt.Sprintf("%v", nodePath), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"index"+"}", fmt.Sprintf("%v", index), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -6142,6 +6252,8 @@ func (a *WordsApiService) GetDocumentDrawingObjectImageDataWithoutNodePath(ctx c
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/drawingObjects/{index}/imageData"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"index"+"}", fmt.Sprintf("%v", index), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -6241,6 +6353,8 @@ func (a *WordsApiService) GetDocumentDrawingObjectOleData(ctx context.Context, n
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"nodePath"+"}", fmt.Sprintf("%v", nodePath), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"index"+"}", fmt.Sprintf("%v", index), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -6338,6 +6452,8 @@ func (a *WordsApiService) GetDocumentDrawingObjectOleDataWithoutNodePath(ctx con
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/drawingObjects/{index}/oleData"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"index"+"}", fmt.Sprintf("%v", index), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -6436,6 +6552,8 @@ func (a *WordsApiService) GetDocumentDrawingObjects(ctx context.Context, name st
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/{nodePath}/drawingObjects"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"nodePath"+"}", fmt.Sprintf("%v", nodePath), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -6537,6 +6655,8 @@ func (a *WordsApiService) GetDocumentDrawingObjectsWithoutNodePath(ctx context.C
 	// create path and map variables
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/drawingObjects"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -6639,6 +6759,8 @@ func (a *WordsApiService) GetDocumentFieldNames(ctx context.Context, name string
 	// create path and map variables
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/mailMerge/FieldNames"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -6742,6 +6864,8 @@ func (a *WordsApiService) GetDocumentFieldNamesOnline(ctx context.Context, templ
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BaseUrl + "/words/mailMerge/FieldNames"
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -6833,6 +6957,8 @@ func (a *WordsApiService) GetDocumentHyperlinkByIndex(ctx context.Context, name 
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/hyperlinks/{hyperlinkIndex}"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"hyperlinkIndex"+"}", fmt.Sprintf("%v", hyperlinkIndex), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -6934,6 +7060,8 @@ func (a *WordsApiService) GetDocumentHyperlinks(ctx context.Context, name string
 	// create path and map variables
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/hyperlinks"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -7035,6 +7163,8 @@ func (a *WordsApiService) GetDocumentProperties(ctx context.Context, name string
 	// create path and map variables
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/documentProperties"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -7138,6 +7268,8 @@ func (a *WordsApiService) GetDocumentProperty(ctx context.Context, name string, 
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/documentProperties/{propertyName}"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"propertyName"+"}", fmt.Sprintf("%v", propertyName), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -7239,6 +7371,8 @@ func (a *WordsApiService) GetDocumentProtection(ctx context.Context, name string
 	// create path and map variables
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/protection"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -7343,6 +7477,8 @@ func (a *WordsApiService) GetDocumentStatistics(ctx context.Context, name string
 	// create path and map variables
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/statistics"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -7464,6 +7600,8 @@ func (a *WordsApiService) GetDocumentWithFormat(ctx context.Context, name string
 	// create path and map variables
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -7577,6 +7715,8 @@ func (a *WordsApiService) GetField(ctx context.Context, name string, nodePath st
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"nodePath"+"}", fmt.Sprintf("%v", nodePath), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"index"+"}", fmt.Sprintf("%v", index), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -7680,6 +7820,8 @@ func (a *WordsApiService) GetFieldWithoutNodePath(ctx context.Context, name stri
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/fields/{index}"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"index"+"}", fmt.Sprintf("%v", index), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -7783,6 +7925,8 @@ func (a *WordsApiService) GetFields(ctx context.Context, name string, nodePath s
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/{nodePath}/fields"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"nodePath"+"}", fmt.Sprintf("%v", nodePath), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -7884,6 +8028,8 @@ func (a *WordsApiService) GetFieldsWithoutNodePath(ctx context.Context, name str
 	// create path and map variables
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/fields"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -7982,6 +8128,8 @@ func (a *WordsApiService) GetFilesList(ctx context.Context, path string, localVa
 	// create path and map variables
 	localVarPath := a.client.cfg.BaseUrl + "/words/storage/folder/{path}"
 	localVarPath = strings.Replace(localVarPath, "{"+"path"+"}", fmt.Sprintf("%v", path), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -8069,6 +8217,8 @@ func (a *WordsApiService) GetFootnote(ctx context.Context, name string, nodePath
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"nodePath"+"}", fmt.Sprintf("%v", nodePath), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"index"+"}", fmt.Sprintf("%v", index), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -8172,6 +8322,8 @@ func (a *WordsApiService) GetFootnoteWithoutNodePath(ctx context.Context, name s
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/footnotes/{index}"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"index"+"}", fmt.Sprintf("%v", index), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -8275,6 +8427,8 @@ func (a *WordsApiService) GetFootnotes(ctx context.Context, name string, nodePat
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/{nodePath}/footnotes"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"nodePath"+"}", fmt.Sprintf("%v", nodePath), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -8376,6 +8530,8 @@ func (a *WordsApiService) GetFootnotesWithoutNodePath(ctx context.Context, name 
 	// create path and map variables
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/footnotes"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -8481,6 +8637,8 @@ func (a *WordsApiService) GetFormField(ctx context.Context, name string, nodePat
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"nodePath"+"}", fmt.Sprintf("%v", nodePath), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"index"+"}", fmt.Sprintf("%v", index), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -8584,6 +8742,8 @@ func (a *WordsApiService) GetFormFieldWithoutNodePath(ctx context.Context, name 
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/formfields/{index}"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"index"+"}", fmt.Sprintf("%v", index), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -8687,6 +8847,8 @@ func (a *WordsApiService) GetFormFields(ctx context.Context, name string, nodePa
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/{nodePath}/formfields"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"nodePath"+"}", fmt.Sprintf("%v", nodePath), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -8788,6 +8950,8 @@ func (a *WordsApiService) GetFormFieldsWithoutNodePath(ctx context.Context, name
 	// create path and map variables
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/formfields"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -8892,6 +9056,8 @@ func (a *WordsApiService) GetHeaderFooter(ctx context.Context, name string, head
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/headersfooters/{headerFooterIndex}"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"headerFooterIndex"+"}", fmt.Sprintf("%v", headerFooterIndex), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -9004,6 +9170,8 @@ func (a *WordsApiService) GetHeaderFooterOfSection(ctx context.Context, name str
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"headerFooterIndex"+"}", fmt.Sprintf("%v", headerFooterIndex), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"sectionIndex"+"}", fmt.Sprintf("%v", sectionIndex), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -9114,6 +9282,8 @@ func (a *WordsApiService) GetHeaderFooters(ctx context.Context, name string, sec
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/{sectionPath}/headersfooters"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"sectionPath"+"}", fmt.Sprintf("%v", sectionPath), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -9225,6 +9395,8 @@ func (a *WordsApiService) GetOfficeMathObject(ctx context.Context, name string, 
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"nodePath"+"}", fmt.Sprintf("%v", nodePath), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"index"+"}", fmt.Sprintf("%v", index), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -9328,6 +9500,8 @@ func (a *WordsApiService) GetOfficeMathObjectWithoutNodePath(ctx context.Context
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/OfficeMathObjects/{index}"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"index"+"}", fmt.Sprintf("%v", index), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -9431,6 +9605,8 @@ func (a *WordsApiService) GetOfficeMathObjects(ctx context.Context, name string,
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/{nodePath}/OfficeMathObjects"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"nodePath"+"}", fmt.Sprintf("%v", nodePath), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -9532,6 +9708,8 @@ func (a *WordsApiService) GetOfficeMathObjectsWithoutNodePath(ctx context.Contex
 	// create path and map variables
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/OfficeMathObjects"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -9637,6 +9815,8 @@ func (a *WordsApiService) GetParagraph(ctx context.Context, name string, nodePat
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"nodePath"+"}", fmt.Sprintf("%v", nodePath), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"index"+"}", fmt.Sprintf("%v", index), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -9742,6 +9922,8 @@ func (a *WordsApiService) GetParagraphFormat(ctx context.Context, name string, n
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"nodePath"+"}", fmt.Sprintf("%v", nodePath), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"index"+"}", fmt.Sprintf("%v", index), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -9845,6 +10027,8 @@ func (a *WordsApiService) GetParagraphFormatWithoutNodePath(ctx context.Context,
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/paragraphs/{index}/format"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"index"+"}", fmt.Sprintf("%v", index), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -9948,6 +10132,8 @@ func (a *WordsApiService) GetParagraphWithoutNodePath(ctx context.Context, name 
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/paragraphs/{index}"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"index"+"}", fmt.Sprintf("%v", index), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -10051,6 +10237,8 @@ func (a *WordsApiService) GetParagraphs(ctx context.Context, name string, nodePa
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/{nodePath}/paragraphs"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"nodePath"+"}", fmt.Sprintf("%v", nodePath), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -10152,6 +10340,8 @@ func (a *WordsApiService) GetParagraphsWithoutNodePath(ctx context.Context, name
 	// create path and map variables
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/paragraphs"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -10257,6 +10447,8 @@ func (a *WordsApiService) GetRangeText(ctx context.Context, name string, rangeSt
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"rangeStartIdentifier"+"}", fmt.Sprintf("%v", rangeStartIdentifier), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"rangeEndIdentifier"+"}", fmt.Sprintf("%v", localVarOptionals["rangeEndIdentifier"]), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -10365,6 +10557,8 @@ func (a *WordsApiService) GetRun(ctx context.Context, name string, paragraphPath
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"paragraphPath"+"}", fmt.Sprintf("%v", paragraphPath), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"index"+"}", fmt.Sprintf("%v", index), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -10470,6 +10664,8 @@ func (a *WordsApiService) GetRunFont(ctx context.Context, name string, paragraph
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"paragraphPath"+"}", fmt.Sprintf("%v", paragraphPath), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"index"+"}", fmt.Sprintf("%v", index), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -10573,6 +10769,8 @@ func (a *WordsApiService) GetRuns(ctx context.Context, name string, paragraphPat
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/{paragraphPath}/runs"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"paragraphPath"+"}", fmt.Sprintf("%v", paragraphPath), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -10676,6 +10874,8 @@ func (a *WordsApiService) GetSection(ctx context.Context, name string, sectionIn
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/sections/{sectionIndex}"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"sectionIndex"+"}", fmt.Sprintf("%v", sectionIndex), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -10779,6 +10979,8 @@ func (a *WordsApiService) GetSectionPageSetup(ctx context.Context, name string, 
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/sections/{sectionIndex}/pageSetup"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"sectionIndex"+"}", fmt.Sprintf("%v", sectionIndex), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -10880,6 +11082,8 @@ func (a *WordsApiService) GetSections(ctx context.Context, name string, localVar
 	// create path and map variables
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/sections"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -10985,6 +11189,8 @@ func (a *WordsApiService) GetTable(ctx context.Context, name string, nodePath st
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"nodePath"+"}", fmt.Sprintf("%v", nodePath), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"index"+"}", fmt.Sprintf("%v", index), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -11090,6 +11296,8 @@ func (a *WordsApiService) GetTableCell(ctx context.Context, name string, tableRo
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"tableRowPath"+"}", fmt.Sprintf("%v", tableRowPath), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"index"+"}", fmt.Sprintf("%v", index), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -11195,6 +11403,8 @@ func (a *WordsApiService) GetTableCellFormat(ctx context.Context, name string, t
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"tableRowPath"+"}", fmt.Sprintf("%v", tableRowPath), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"index"+"}", fmt.Sprintf("%v", index), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -11300,6 +11510,8 @@ func (a *WordsApiService) GetTableProperties(ctx context.Context, name string, n
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"nodePath"+"}", fmt.Sprintf("%v", nodePath), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"index"+"}", fmt.Sprintf("%v", index), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -11403,6 +11615,8 @@ func (a *WordsApiService) GetTablePropertiesWithoutNodePath(ctx context.Context,
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/tables/{index}/properties"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"index"+"}", fmt.Sprintf("%v", index), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -11508,6 +11722,8 @@ func (a *WordsApiService) GetTableRow(ctx context.Context, name string, tablePat
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"tablePath"+"}", fmt.Sprintf("%v", tablePath), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"index"+"}", fmt.Sprintf("%v", index), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -11613,6 +11829,8 @@ func (a *WordsApiService) GetTableRowFormat(ctx context.Context, name string, ta
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"tablePath"+"}", fmt.Sprintf("%v", tablePath), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"index"+"}", fmt.Sprintf("%v", index), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -11716,6 +11934,8 @@ func (a *WordsApiService) GetTableWithoutNodePath(ctx context.Context, name stri
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/tables/{index}"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"index"+"}", fmt.Sprintf("%v", index), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -11819,6 +12039,8 @@ func (a *WordsApiService) GetTables(ctx context.Context, name string, nodePath s
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/{nodePath}/tables"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"nodePath"+"}", fmt.Sprintf("%v", nodePath), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -11920,6 +12142,8 @@ func (a *WordsApiService) GetTablesWithoutNodePath(ctx context.Context, name str
 	// create path and map variables
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/tables"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -12025,6 +12249,8 @@ func (a *WordsApiService) InsertComment(ctx context.Context, name string, commen
 	// create path and map variables
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/comments"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -12153,6 +12379,8 @@ func (a *WordsApiService) InsertDrawingObject(ctx context.Context, name string, 
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/{nodePath}/drawingObjects"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"nodePath"+"}", fmt.Sprintf("%v", nodePath), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -12284,6 +12512,8 @@ func (a *WordsApiService) InsertDrawingObjectWithoutNodePath(ctx context.Context
 	// create path and map variables
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/drawingObjects"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -12417,6 +12647,8 @@ func (a *WordsApiService) InsertField(ctx context.Context, name string, field mo
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/{nodePath}/fields"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"nodePath"+"}", fmt.Sprintf("%v", nodePath), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -12549,6 +12781,8 @@ func (a *WordsApiService) InsertFieldWithoutNodePath(ctx context.Context, name s
 	// create path and map variables
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/fields"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -12682,6 +12916,8 @@ func (a *WordsApiService) InsertFootnote(ctx context.Context, name string, footn
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/{nodePath}/footnotes"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"nodePath"+"}", fmt.Sprintf("%v", nodePath), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -12807,6 +13043,8 @@ func (a *WordsApiService) InsertFootnoteWithoutNodePath(ctx context.Context, nam
 	// create path and map variables
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/footnotes"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -12935,6 +13173,8 @@ func (a *WordsApiService) InsertFormField(ctx context.Context, name string, form
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/{nodePath}/formfields"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"nodePath"+"}", fmt.Sprintf("%v", nodePath), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -13067,6 +13307,8 @@ func (a *WordsApiService) InsertFormFieldWithoutNodePath(ctx context.Context, na
 	// create path and map variables
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/formfields"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -13200,6 +13442,8 @@ func (a *WordsApiService) InsertHeaderFooter(ctx context.Context, name string, h
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/{sectionPath}/headersfooters"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"sectionPath"+"}", fmt.Sprintf("%v", sectionPath), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -13325,6 +13569,8 @@ func (a *WordsApiService) InsertPageNumbers(ctx context.Context, name string, pa
 	// create path and map variables
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/PageNumbers"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -13453,6 +13699,8 @@ func (a *WordsApiService) InsertParagraph(ctx context.Context, name string, para
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/{nodePath}/paragraphs"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"nodePath"+"}", fmt.Sprintf("%v", nodePath), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -13587,6 +13835,8 @@ func (a *WordsApiService) InsertRun(ctx context.Context, name string, paragraphP
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/{paragraphPath}/runs"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"paragraphPath"+"}", fmt.Sprintf("%v", paragraphPath), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -13720,6 +13970,8 @@ func (a *WordsApiService) InsertTable(ctx context.Context, name string, nodePath
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/{nodePath}/tables"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"nodePath"+"}", fmt.Sprintf("%v", nodePath), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -13847,6 +14099,8 @@ func (a *WordsApiService) InsertTableCell(ctx context.Context, name string, tabl
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/{tableRowPath}/cells"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"tableRowPath"+"}", fmt.Sprintf("%v", tableRowPath), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -13974,6 +14228,8 @@ func (a *WordsApiService) InsertTableRow(ctx context.Context, name string, table
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/{tablePath}/rows"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"tablePath"+"}", fmt.Sprintf("%v", tablePath), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -14099,6 +14355,8 @@ func (a *WordsApiService) InsertTableWithoutNodePath(ctx context.Context, name s
 	// create path and map variables
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/tables"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -14226,6 +14484,8 @@ func (a *WordsApiService) InsertWatermarkImage(ctx context.Context, name string,
 	// create path and map variables
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/watermarks/images"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -14371,6 +14631,8 @@ func (a *WordsApiService) InsertWatermarkText(ctx context.Context, name string, 
 	// create path and map variables
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/watermarks/texts"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -14488,6 +14750,8 @@ func (a *WordsApiService) LoadWebDocument(ctx context.Context, data models.ILoad
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BaseUrl + "/words/loadWebDocument"
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -14572,6 +14836,8 @@ func (a *WordsApiService) MoveFile(ctx context.Context, destPath string, srcPath
 	// create path and map variables
 	localVarPath := a.client.cfg.BaseUrl + "/words/storage/file/move/{srcPath}"
 	localVarPath = strings.Replace(localVarPath, "{"+"srcPath"+"}", fmt.Sprintf("%v", srcPath), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -14662,6 +14928,8 @@ func (a *WordsApiService) MoveFolder(ctx context.Context, destPath string, srcPa
 	// create path and map variables
 	localVarPath := a.client.cfg.BaseUrl + "/words/storage/folder/move/{srcPath}"
 	localVarPath = strings.Replace(localVarPath, "{"+"srcPath"+"}", fmt.Sprintf("%v", srcPath), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -14750,6 +15018,8 @@ func (a *WordsApiService) ProtectDocument(ctx context.Context, name string, prot
 	// create path and map variables
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/protection"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -14860,6 +15130,8 @@ func (a *WordsApiService) RejectAllRevisions(ctx context.Context, name string, l
 	// create path and map variables
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/revisions/rejectAll"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -14972,6 +15244,8 @@ func (a *WordsApiService) RemoveRange(ctx context.Context, name string, rangeSta
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"rangeStartIdentifier"+"}", fmt.Sprintf("%v", rangeStartIdentifier), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"rangeEndIdentifier"+"}", fmt.Sprintf("%v", localVarOptionals["rangeEndIdentifier"]), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -15087,6 +15361,8 @@ func (a *WordsApiService) RenderDrawingObject(ctx context.Context, name string, 
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"nodePath"+"}", fmt.Sprintf("%v", nodePath), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"index"+"}", fmt.Sprintf("%v", index), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -15193,6 +15469,8 @@ func (a *WordsApiService) RenderDrawingObjectWithoutNodePath(ctx context.Context
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/drawingObjects/{index}/render"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"index"+"}", fmt.Sprintf("%v", index), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -15301,6 +15579,8 @@ func (a *WordsApiService) RenderMathObject(ctx context.Context, name string, for
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"nodePath"+"}", fmt.Sprintf("%v", nodePath), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"index"+"}", fmt.Sprintf("%v", index), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -15407,6 +15687,8 @@ func (a *WordsApiService) RenderMathObjectWithoutNodePath(ctx context.Context, n
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/OfficeMathObjects/{index}/render"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"index"+"}", fmt.Sprintf("%v", index), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -15513,6 +15795,8 @@ func (a *WordsApiService) RenderPage(ctx context.Context, name string, pageIndex
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/pages/{pageIndex}/render"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"pageIndex"+"}", fmt.Sprintf("%v", pageIndex), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -15621,6 +15905,8 @@ func (a *WordsApiService) RenderParagraph(ctx context.Context, name string, form
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"nodePath"+"}", fmt.Sprintf("%v", nodePath), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"index"+"}", fmt.Sprintf("%v", index), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -15727,6 +16013,8 @@ func (a *WordsApiService) RenderParagraphWithoutNodePath(ctx context.Context, na
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/paragraphs/{index}/render"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"index"+"}", fmt.Sprintf("%v", index), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -15835,6 +16123,8 @@ func (a *WordsApiService) RenderTable(ctx context.Context, name string, format s
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"nodePath"+"}", fmt.Sprintf("%v", nodePath), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"index"+"}", fmt.Sprintf("%v", index), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -15941,6 +16231,8 @@ func (a *WordsApiService) RenderTableWithoutNodePath(ctx context.Context, name s
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/tables/{index}/render"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"index"+"}", fmt.Sprintf("%v", index), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -16048,6 +16340,8 @@ func (a *WordsApiService) ReplaceText(ctx context.Context, name string, replaceT
 	// create path and map variables
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/replaceText"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -16175,6 +16469,8 @@ func (a *WordsApiService) ReplaceWithText(ctx context.Context, name string, rang
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"rangeStartIdentifier"+"}", fmt.Sprintf("%v", rangeStartIdentifier), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"rangeEndIdentifier"+"}", fmt.Sprintf("%v", localVarOptionals["rangeEndIdentifier"]), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -16279,6 +16575,8 @@ func (a *WordsApiService) ResetCache(ctx context.Context) ( *http.Response, erro
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BaseUrl + "/words/fonts/cache"
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -16354,6 +16652,8 @@ func (a *WordsApiService) SaveAs(ctx context.Context, name string, saveOptionsDa
 	// create path and map variables
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/saveAs"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -16468,6 +16768,8 @@ func (a *WordsApiService) SaveAsRange(ctx context.Context, name string, rangeSta
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"rangeStartIdentifier"+"}", fmt.Sprintf("%v", rangeStartIdentifier), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"rangeEndIdentifier"+"}", fmt.Sprintf("%v", localVarOptionals["rangeEndIdentifier"]), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -16593,6 +16895,8 @@ func (a *WordsApiService) SaveAsTiff(ctx context.Context, name string, saveOptio
 	// create path and map variables
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/saveAs/tiff"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -16805,6 +17109,8 @@ func (a *WordsApiService) Search(ctx context.Context, name string, pattern strin
 	// create path and map variables
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/search"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -16913,6 +17219,8 @@ func (a *WordsApiService) SplitDocument(ctx context.Context, name string, localV
 	// create path and map variables
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/split"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -17052,6 +17360,8 @@ func (a *WordsApiService) UnprotectDocument(ctx context.Context, name string, pr
 	// create path and map variables
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/protection"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -17167,6 +17477,8 @@ func (a *WordsApiService) UpdateBookmark(ctx context.Context, name string, bookm
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/bookmarks/{bookmarkName}"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"bookmarkName"+"}", fmt.Sprintf("%v", bookmarkName), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -17297,6 +17609,8 @@ func (a *WordsApiService) UpdateBorder(ctx context.Context, name string, borderP
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"nodePath"+"}", fmt.Sprintf("%v", nodePath), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"borderType"+"}", fmt.Sprintf("%v", borderType), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -17424,6 +17738,8 @@ func (a *WordsApiService) UpdateComment(ctx context.Context, name string, commen
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/comments/{commentIndex}"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"commentIndex"+"}", fmt.Sprintf("%v", commentIndex), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -17554,6 +17870,8 @@ func (a *WordsApiService) UpdateDrawingObject(ctx context.Context, name string, 
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"nodePath"+"}", fmt.Sprintf("%v", nodePath), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"index"+"}", fmt.Sprintf("%v", index), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -17687,6 +18005,8 @@ func (a *WordsApiService) UpdateDrawingObjectWithoutNodePath(ctx context.Context
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/drawingObjects/{index}"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"index"+"}", fmt.Sprintf("%v", index), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -17821,6 +18141,8 @@ func (a *WordsApiService) UpdateField(ctx context.Context, name string, field mo
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"nodePath"+"}", fmt.Sprintf("%v", nodePath), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"index"+"}", fmt.Sprintf("%v", index), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -17943,6 +18265,8 @@ func (a *WordsApiService) UpdateFields(ctx context.Context, name string, localVa
 	// create path and map variables
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/updateFields"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -18058,6 +18382,8 @@ func (a *WordsApiService) UpdateFootnote(ctx context.Context, name string, footn
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"nodePath"+"}", fmt.Sprintf("%v", nodePath), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"index"+"}", fmt.Sprintf("%v", index), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -18185,6 +18511,8 @@ func (a *WordsApiService) UpdateFootnoteWithoutNodePath(ctx context.Context, nam
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/footnotes/{index}"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"index"+"}", fmt.Sprintf("%v", index), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -18314,6 +18642,8 @@ func (a *WordsApiService) UpdateFormField(ctx context.Context, name string, form
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"nodePath"+"}", fmt.Sprintf("%v", nodePath), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"index"+"}", fmt.Sprintf("%v", index), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -18441,6 +18771,8 @@ func (a *WordsApiService) UpdateFormFieldWithoutNodePath(ctx context.Context, na
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/formfields/{index}"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"index"+"}", fmt.Sprintf("%v", index), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -18570,6 +18902,8 @@ func (a *WordsApiService) UpdateParagraphFormat(ctx context.Context, name string
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"nodePath"+"}", fmt.Sprintf("%v", nodePath), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"index"+"}", fmt.Sprintf("%v", index), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -18699,6 +19033,8 @@ func (a *WordsApiService) UpdateRun(ctx context.Context, name string, run models
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"paragraphPath"+"}", fmt.Sprintf("%v", paragraphPath), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"index"+"}", fmt.Sprintf("%v", index), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -18828,6 +19164,8 @@ func (a *WordsApiService) UpdateRunFont(ctx context.Context, name string, fontDt
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"paragraphPath"+"}", fmt.Sprintf("%v", paragraphPath), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"index"+"}", fmt.Sprintf("%v", index), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -18955,6 +19293,8 @@ func (a *WordsApiService) UpdateSectionPageSetup(ctx context.Context, name strin
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/sections/{sectionIndex}/pageSetup"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"sectionIndex"+"}", fmt.Sprintf("%v", sectionIndex), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -19084,6 +19424,8 @@ func (a *WordsApiService) UpdateTableCellFormat(ctx context.Context, name string
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"tableRowPath"+"}", fmt.Sprintf("%v", tableRowPath), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"index"+"}", fmt.Sprintf("%v", index), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -19213,6 +19555,8 @@ func (a *WordsApiService) UpdateTableProperties(ctx context.Context, name string
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"nodePath"+"}", fmt.Sprintf("%v", nodePath), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"index"+"}", fmt.Sprintf("%v", index), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -19340,6 +19684,8 @@ func (a *WordsApiService) UpdateTablePropertiesWithoutNodePath(ctx context.Conte
 	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/tables/{index}/properties"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"index"+"}", fmt.Sprintf("%v", index), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -19469,6 +19815,8 @@ func (a *WordsApiService) UpdateTableRowFormat(ctx context.Context, name string,
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"tablePath"+"}", fmt.Sprintf("%v", tablePath), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"index"+"}", fmt.Sprintf("%v", index), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -19588,6 +19936,8 @@ func (a *WordsApiService) UploadFile(ctx context.Context, fileContent *os.File, 
 	// create path and map variables
 	localVarPath := a.client.cfg.BaseUrl + "/words/storage/file/{path}"
 	localVarPath = strings.Replace(localVarPath, "{"+"path"+"}", fmt.Sprintf("%v", path), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
