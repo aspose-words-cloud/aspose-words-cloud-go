@@ -96,7 +96,13 @@ func TestMoveFolder(t *testing.T) {
 	config := ReadConfiguration(t)
 	client, ctx := PrepareTest(t, config)
 
-	_, err := client.WordsApi.MoveFolder(ctx, remoteSrcFolder, remoteDstFolder, nil)
+	_, err := client.WordsApi.CreateFolder(ctx, remoteSrcFolder, nil)
+
+	if err != nil {
+		t.Error(err)
+	}
+
+	_, err = client.WordsApi.MoveFolder(ctx, remoteDstFolder, remoteSrcFolder, nil)
 
 	if err != nil {
 		t.Error(err)
