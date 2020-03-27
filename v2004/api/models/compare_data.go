@@ -41,6 +41,8 @@ type CompareData struct {
 
 	// Gets or sets the date and time to use for revisions.             
 	DateTime time.Time `json:"DateTime,omitempty"`
+
+	CompareOptions *CompareOptions `json:"CompareOptions,omitempty"`
 }
 
 type ICompareData interface {
