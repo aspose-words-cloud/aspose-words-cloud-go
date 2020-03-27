@@ -75,4 +75,5 @@ func TestUnathorizedAccess(t *testing.T) {
 	_, err = client.WordsApi.ConvertDocument(context.Background(), document, format, nil)
 
 	assert.Error(t, err)
+	assert.Equal(t, err.Error(), "Access is denied")
 }
