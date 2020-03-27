@@ -117,7 +117,7 @@ func TestInsertRun(t *testing.T) {
 	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Runs")
 	remoteName := "TestInsertRun.docx"
 	paragraphPath := "paragraphs/1"
-	run := models.Run{
+	run := models.RunInsert{
 		Text: "run with text",
 	}
 	options := map[string]interface{}{
@@ -140,7 +140,7 @@ func TestUpdateRun(t *testing.T) {
 	remoteName := "TestUpdateRun.docx"
 	paragraphPath := "paragraphs/1"
 	index := 0
-	run := models.Run{
+	run := models.RunUpdate{
 		Text: "run with text",
 	}
 	options := map[string]interface{}{

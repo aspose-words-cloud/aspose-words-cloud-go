@@ -152,7 +152,7 @@ func TestInsertFootnote(t *testing.T) {
 	localFilePath := GetLocalPath(filepath.Join("DocumentElements", "Footnotes"), "Footnote.doc")
 	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Footnotes")
 	remoteName := "TestInsertFootnote.docx"
-	footnoteDto := models.Footnote{
+	footnoteDto := models.FootnoteInsert{
 		FootnoteType: "Endnote",
 		Text:         "test endnote",
 	}
@@ -175,7 +175,7 @@ func TestInsertFootnoteWithoutNodePath(t *testing.T) {
 	localFilePath := GetLocalPath(filepath.Join("DocumentElements", "Footnotes"), "Footnote.doc")
 	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Footnotes")
 	remoteName := "TestInsertFootnoteWithoutNodePath.docx"
-	footnoteDto := models.Footnote{
+	footnoteDto := models.FootnoteInsert{
 		FootnoteType: "Endnote",
 		Text:         "test endnote",
 	}
@@ -199,7 +199,7 @@ func TestUpdateFootnote(t *testing.T) {
 	remoteName := "TestUpdateFootnote.docx"
 	nodePath := "sections/0"
 	index := 0
-	footnoteDto := models.Footnote{
+	footnoteDto := models.FootnoteUpdate{
 		Text: "new text is here",
 	}
 	options := map[string]interface{}{
@@ -221,7 +221,7 @@ func TestUpdateFootnoteWithoutNodePath(t *testing.T) {
 	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Footnotes")
 	remoteName := "TestUpdateFootnoteWithoutNodePath.docx"
 	index := 0
-	footnoteDto := models.Footnote{
+	footnoteDto := models.FootnoteUpdate{
 		Text: "new text is here",
 	}
 	options := map[string]interface{}{

@@ -37,8 +37,7 @@ func TestCreateOrUpdateDocumentProperty(t *testing.T) {
 	remoteFolder := "TestOut"
 	remoteName := "TestCreateOrUpdateDocumentProperty.docx"
 	propertyName := "AsposeAuthor"
-	property := models.DocumentProperty{
-		Name:  "Author",
+	property := models.DocumentPropertyCreateOrUpdate{
 		Value: "Imran Anwar",
 	}
 	options := map[string]interface{}{
