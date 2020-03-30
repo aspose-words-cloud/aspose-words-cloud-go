@@ -221,7 +221,7 @@ func TestSplitDocument(t *testing.T) {
 
 	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, _, err := client.WordsApi.SplitDocument(ctx, format, remoteName, options)
+	_, _, err := client.WordsApi.SplitDocument(ctx, remoteName, format, options)
 
 	if err != nil {
 		t.Error(err)
