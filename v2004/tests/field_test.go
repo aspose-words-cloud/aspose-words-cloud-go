@@ -191,10 +191,8 @@ func TestInsertField(t *testing.T) {
 	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Fields")
 	remoteName := "TestInsertField.docx"
 	nodePath := "sections/0/paragraphs/0"
-	field := models.Field{
-		NodeId:    "0.0.3",
+	field := models.FieldInsert{
 		FieldCode: "{ NUMPAGES }",
-		Result:    "3",
 	}
 	options := map[string]interface{}{
 		"folder": remoteFolder,
@@ -214,10 +212,8 @@ func TestInsertFieldWithoutNodePath(t *testing.T) {
 	localFilePath := GetLocalPath(filepath.Join("DocumentElements", "Text"), "SampleWordDocument.docx")
 	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Fields")
 	remoteName := "TestInsertFieldWithoutNodePath.docx"
-	field := models.Field{
-		NodeId:    "0.0.3",
+	field := models.FieldInsert{
 		FieldCode: "{ NUMPAGES }",
-		Result:    "3",
 	}
 	options := map[string]interface{}{
 		"folder": remoteFolder,
@@ -239,10 +235,8 @@ func TestUpdateField(t *testing.T) {
 	remoteName := "TestUpdateField.docx"
 	nodePath := "sections/0/paragraphs/0"
 	index := 0
-	field := models.Field{
-		Result:    "3",
+	field := models.FieldUpdate{
 		FieldCode: "{ NUMPAGES }",
-		NodeId:    "0.0.3",
 	}
 	options := map[string]interface{}{
 		"folder": remoteFolder,

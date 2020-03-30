@@ -1062,7 +1062,7 @@ func (a *WordsApiService) CreateFolder(ctx context.Context, path string, localVa
      @param "revisionAuthor" (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
      @param "revisionDateTime" (string) The date and time to use for revisions.
  @return DocumentPropertyResponse*/
-func (a *WordsApiService) CreateOrUpdateDocumentProperty(ctx context.Context, name string, propertyName string, property models.IDocumentProperty, localVarOptionals map[string]interface{}) ( models.DocumentPropertyResponse,  *http.Response, error) {
+func (a *WordsApiService) CreateOrUpdateDocumentProperty(ctx context.Context, name string, propertyName string, property models.IDocumentPropertyCreateOrUpdate, localVarOptionals map[string]interface{}) ( models.DocumentPropertyResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
@@ -12238,7 +12238,7 @@ func (a *WordsApiService) GetTablesWithoutNodePath(ctx context.Context, name str
      @param "revisionAuthor" (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
      @param "revisionDateTime" (string) The date and time to use for revisions.
  @return CommentResponse*/
-func (a *WordsApiService) InsertComment(ctx context.Context, name string, comment models.IComment, localVarOptionals map[string]interface{}) ( models.CommentResponse,  *http.Response, error) {
+func (a *WordsApiService) InsertComment(ctx context.Context, name string, comment models.ICommentInsert, localVarOptionals map[string]interface{}) ( models.CommentResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
@@ -12635,7 +12635,7 @@ func (a *WordsApiService) InsertDrawingObjectWithoutNodePath(ctx context.Context
      @param "revisionDateTime" (string) The date and time to use for revisions.
      @param "insertBeforeNode" (string) Field will be inserted before node with id&#x3D;&quot;nodeId&quot;.
  @return FieldResponse*/
-func (a *WordsApiService) InsertField(ctx context.Context, name string, field models.IField, nodePath string, localVarOptionals map[string]interface{}) ( models.FieldResponse,  *http.Response, error) {
+func (a *WordsApiService) InsertField(ctx context.Context, name string, field models.IFieldInsert, nodePath string, localVarOptionals map[string]interface{}) ( models.FieldResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
@@ -12770,7 +12770,7 @@ func (a *WordsApiService) InsertField(ctx context.Context, name string, field mo
      @param "revisionDateTime" (string) The date and time to use for revisions.
      @param "insertBeforeNode" (string) Field will be inserted before node with id&#x3D;&quot;nodeId&quot;.
  @return FieldResponse*/
-func (a *WordsApiService) InsertFieldWithoutNodePath(ctx context.Context, name string, field models.IField, localVarOptionals map[string]interface{}) ( models.FieldResponse,  *http.Response, error) {
+func (a *WordsApiService) InsertFieldWithoutNodePath(ctx context.Context, name string, field models.IFieldInsert, localVarOptionals map[string]interface{}) ( models.FieldResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
@@ -12904,7 +12904,7 @@ func (a *WordsApiService) InsertFieldWithoutNodePath(ctx context.Context, name s
      @param "revisionAuthor" (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
      @param "revisionDateTime" (string) The date and time to use for revisions.
  @return FootnoteResponse*/
-func (a *WordsApiService) InsertFootnote(ctx context.Context, name string, footnoteDto models.IFootnote, nodePath string, localVarOptionals map[string]interface{}) ( models.FootnoteResponse,  *http.Response, error) {
+func (a *WordsApiService) InsertFootnote(ctx context.Context, name string, footnoteDto models.IFootnoteInsert, nodePath string, localVarOptionals map[string]interface{}) ( models.FootnoteResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
@@ -13032,7 +13032,7 @@ func (a *WordsApiService) InsertFootnote(ctx context.Context, name string, footn
      @param "revisionAuthor" (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
      @param "revisionDateTime" (string) The date and time to use for revisions.
  @return FootnoteResponse*/
-func (a *WordsApiService) InsertFootnoteWithoutNodePath(ctx context.Context, name string, footnoteDto models.IFootnote, localVarOptionals map[string]interface{}) ( models.FootnoteResponse,  *http.Response, error) {
+func (a *WordsApiService) InsertFootnoteWithoutNodePath(ctx context.Context, name string, footnoteDto models.IFootnoteInsert, localVarOptionals map[string]interface{}) ( models.FootnoteResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
@@ -13823,7 +13823,7 @@ func (a *WordsApiService) InsertParagraph(ctx context.Context, name string, para
      @param "revisionDateTime" (string) The date and time to use for revisions.
      @param "insertBeforeNode" (string) Paragraph will be inserted before node with index.
  @return RunResponse*/
-func (a *WordsApiService) InsertRun(ctx context.Context, name string, paragraphPath string, run models.IRun, localVarOptionals map[string]interface{}) ( models.RunResponse,  *http.Response, error) {
+func (a *WordsApiService) InsertRun(ctx context.Context, name string, paragraphPath string, run models.IRunInsert, localVarOptionals map[string]interface{}) ( models.RunResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
@@ -17726,7 +17726,7 @@ func (a *WordsApiService) UpdateBorder(ctx context.Context, name string, borderP
      @param "revisionAuthor" (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
      @param "revisionDateTime" (string) The date and time to use for revisions.
  @return CommentResponse*/
-func (a *WordsApiService) UpdateComment(ctx context.Context, name string, commentIndex int32, comment models.IComment, localVarOptionals map[string]interface{}) ( models.CommentResponse,  *http.Response, error) {
+func (a *WordsApiService) UpdateComment(ctx context.Context, name string, commentIndex int32, comment models.ICommentUpdate, localVarOptionals map[string]interface{}) ( models.CommentResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
@@ -18128,7 +18128,7 @@ func (a *WordsApiService) UpdateDrawingObjectWithoutNodePath(ctx context.Context
      @param "revisionAuthor" (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
      @param "revisionDateTime" (string) The date and time to use for revisions.
  @return FieldResponse*/
-func (a *WordsApiService) UpdateField(ctx context.Context, name string, field models.IField, nodePath string, index int32, localVarOptionals map[string]interface{}) ( models.FieldResponse,  *http.Response, error) {
+func (a *WordsApiService) UpdateField(ctx context.Context, name string, field models.IFieldUpdate, nodePath string, index int32, localVarOptionals map[string]interface{}) ( models.FieldResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
@@ -18369,7 +18369,7 @@ func (a *WordsApiService) UpdateFields(ctx context.Context, name string, localVa
      @param "revisionAuthor" (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
      @param "revisionDateTime" (string) The date and time to use for revisions.
  @return FootnoteResponse*/
-func (a *WordsApiService) UpdateFootnote(ctx context.Context, name string, footnoteDto models.IFootnote, nodePath string, index int32, localVarOptionals map[string]interface{}) ( models.FootnoteResponse,  *http.Response, error) {
+func (a *WordsApiService) UpdateFootnote(ctx context.Context, name string, footnoteDto models.IFootnoteUpdate, nodePath string, index int32, localVarOptionals map[string]interface{}) ( models.FootnoteResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
@@ -18499,7 +18499,7 @@ func (a *WordsApiService) UpdateFootnote(ctx context.Context, name string, footn
      @param "revisionAuthor" (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
      @param "revisionDateTime" (string) The date and time to use for revisions.
  @return FootnoteResponse*/
-func (a *WordsApiService) UpdateFootnoteWithoutNodePath(ctx context.Context, name string, footnoteDto models.IFootnote, index int32, localVarOptionals map[string]interface{}) ( models.FootnoteResponse,  *http.Response, error) {
+func (a *WordsApiService) UpdateFootnoteWithoutNodePath(ctx context.Context, name string, footnoteDto models.IFootnoteUpdate, index int32, localVarOptionals map[string]interface{}) ( models.FootnoteResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
@@ -19020,7 +19020,7 @@ func (a *WordsApiService) UpdateParagraphFormat(ctx context.Context, name string
      @param "revisionAuthor" (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
      @param "revisionDateTime" (string) The date and time to use for revisions.
  @return RunResponse*/
-func (a *WordsApiService) UpdateRun(ctx context.Context, name string, run models.IRun, paragraphPath string, index int32, localVarOptionals map[string]interface{}) ( models.RunResponse,  *http.Response, error) {
+func (a *WordsApiService) UpdateRun(ctx context.Context, name string, run models.IRunUpdate, paragraphPath string, index int32, localVarOptionals map[string]interface{}) ( models.RunResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}

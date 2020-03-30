@@ -98,7 +98,7 @@ func TestInsertComment(t *testing.T) {
 		},
 		Offset: 0,
 	}
-	comment := models.Comment{
+	comment := models.CommentInsert{
 		Author:     "Imran Anwar",
 		Initial:    "IA",
 		RangeStart: &position,
@@ -130,7 +130,7 @@ func TestUpdateComment(t *testing.T) {
 		},
 		Offset: 0,
 	}
-	comment := models.Comment{
+	comment := models.CommentUpdate{
 		RangeStart: &documentPosition,
 		RangeEnd:   &documentPosition,
 		Initial:    "IA",
