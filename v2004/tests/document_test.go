@@ -212,16 +212,16 @@ func TestSplitDocument(t *testing.T) {
 	localFilePath := commonTestFile
 	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentActions", "SplitDocument")
 	remoteName := "TestSplitDocument.docx"
+    format := "text"
 	options := map[string]interface{}{
 		"folder": remoteFolder,
-		"format": "text",
 		"from":   int32(1),
 		"to":     int32(2),
 	}
 
 	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, _, err := client.WordsApi.SplitDocument(ctx, remoteName, options)
+	_, _, err := client.WordsApi.SplitDocument(ctx, format, remoteName, options)
 
 	if err != nil {
 		t.Error(err)
