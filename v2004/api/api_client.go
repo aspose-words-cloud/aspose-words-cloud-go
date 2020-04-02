@@ -173,6 +173,11 @@ func parameterToString(obj interface{}, collectionFormat string) string {
 		return strings.Trim(strings.Replace(fmt.Sprint(obj), " ", delimiter, -1), "[]")
 	}
 
+	if reflect.TypeOf(obj).Kind() == reflect.Struct {
+		b, _ := json.Marshal(obj)
+		return string(b)
+	}
+
 	return fmt.Sprintf("%v", obj)
 }
 
