@@ -74,10 +74,9 @@ func TestBuildReportOnline(t *testing.T) {
 
 	settings := models.ReportEngineSettings{DataSourceType:"Json", DataSourceName:"persons"}
 
-	output, err := client.WordsApi.BuildReportOnline(ctx, template, string(data), settings, nil)
-	defer output.Body.Close()
+	_, err2 := client.WordsApi.BuildReportOnline(ctx, template, string(data), settings, nil)
 
-	if err != nil {
-		t.Error(err)
+	if err2 != nil {
+		t.Error(err2)
 	}
 }
