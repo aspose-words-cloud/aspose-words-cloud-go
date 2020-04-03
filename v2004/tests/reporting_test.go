@@ -72,7 +72,7 @@ func TestBuildReportOnline(t *testing.T) {
 	config := ReadConfiguration(t)
 	client, ctx := PrepareTest(t, config)
 
-	settings := models.ReportEngineSettings{DataSourceType:"Json"}
+	settings := models.ReportEngineSettings{DataSourceType:"Json", DataSourceName:"persons"}
 
 	output, err := client.WordsApi.BuildReportOnline(ctx, template, string(data), settings, nil)
 	defer output.Body.Close()
