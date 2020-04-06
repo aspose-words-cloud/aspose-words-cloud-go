@@ -54,11 +54,20 @@ type OdtSaveOptionsData struct {
 	// Gets or sets a value determining if fields should be updated before saving the document to a fixed page format. Default value for this property is. true
 	UpdateFields bool `json:"UpdateFields,omitempty"`
 
+	// Gets or sets a value determining how 3D effects are rendered.
+	Dml3DEffectsRenderingMode string `json:"Dml3DEffectsRenderingMode,omitempty"`
+
+	// Gets or sets a value determining whether the Aspose.Words.Properties.BuiltInDocumentProperties.LastPrinted property is updated before saving.
+	UpdateLastPrintedProperty bool `json:"UpdateLastPrintedProperty,omitempty"`
+
 	// Gets or sets specifies whether export should correspond to ODT specification 1.1 strictly.
 	IsStrictSchema11 bool `json:"IsStrictSchema11,omitempty"`
 
 	// Gets or sets allows to specify units of measure to apply to document content. The default value is Aspose.Words.Saving.OdtSaveMeasureUnit.Centimeters.  Open Office uses centimeters when specifying lengths, widths and other measurable formatting and content properties in documents whereas MS Office uses inches.
 	MeasureUnit string `json:"MeasureUnit,omitempty"`
+
+	// Gets or sets a password to encrypt document.
+	Password string `json:"Password,omitempty"`
 
 	// Gets or sets specifies whether or not use pretty formats output.
 	PrettyFormat bool `json:"PrettyFormat,omitempty"`

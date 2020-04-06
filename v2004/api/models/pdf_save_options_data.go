@@ -74,6 +74,12 @@ type PdfSaveOptionsData struct {
 	// Gets or sets a value determining if fields should be updated before saving the document to a fixed page format. Default value for this property is. true
 	UpdateFields bool `json:"UpdateFields,omitempty"`
 
+	// Gets or sets a value determining how 3D effects are rendered.
+	Dml3DEffectsRenderingMode string `json:"Dml3DEffectsRenderingMode,omitempty"`
+
+	// Gets or sets a value determining whether the Aspose.Words.Properties.BuiltInDocumentProperties.LastPrinted property is updated before saving.
+	UpdateLastPrintedProperty bool `json:"UpdateLastPrintedProperty,omitempty"`
+
 	// Gets or sets specifies the PDF standards compliance level for output documents.
 	Compliance string `json:"Compliance,omitempty"`
 
@@ -112,6 +118,9 @@ type PdfSaveOptionsData struct {
 
 	// Gets or sets specifies compression type to be used for all images in the document.
 	ImageCompression string `json:"ImageCompression,omitempty"`
+
+	// Gets or sets a flag indicating whether image interpolation shall be performed by a conforming reader. When false is specified, the flag is not written to the output document and the default behaviour of reader is used instead.
+	InterpolateImages bool `json:"InterpolateImages,omitempty"`
 
 	// Gets or sets determines whether hyperlinks in the output Pdf document are forced to be opened in a new window (or tab) of a browser.
 	OpenHyperlinksInNewWindow bool `json:"OpenHyperlinksInNewWindow,omitempty"`
