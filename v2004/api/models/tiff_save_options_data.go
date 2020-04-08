@@ -112,12 +112,6 @@ type TiffSaveOptionsData struct {
 	// Gets or sets a value determining if fields should be updated before saving the document to a fixed page format. Default value for this property is. true
 	UpdateFields bool `json:"UpdateFields,omitempty"`
 
-	// Gets or sets a value determining how 3D effects are rendered.
-	Dml3DEffectsRenderingMode string `json:"Dml3DEffectsRenderingMode,omitempty"`
-
-	// Gets or sets a value determining whether the Aspose.Words.Properties.BuiltInDocumentProperties.LastPrinted property is updated before saving.
-	UpdateLastPrintedProperty bool `json:"UpdateLastPrintedProperty,omitempty"`
-
 	// Gets or sets the threshold that determines the value of the binarization error in the Floyd-Steinberg method. when ImageBinarizationMethod is ImageBinarizationMethod.FloydSteinbergDithering. Default value is 128.
 	ThresholdForFloydSteinbergDithering int32 `json:"ThresholdForFloydSteinbergDithering,omitempty"`
 
