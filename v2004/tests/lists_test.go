@@ -27,7 +27,6 @@ package api_test
 import (
 	"github.com/aspose-words-cloud/aspose-words-cloud-go/v2004/api/models"
 	"path"
-	"path/filepath"
 	"testing"
 )
 
@@ -35,7 +34,9 @@ func TestGetLists(t *testing.T) {
 	localFilePath := GetLocalPath("Lists", "ListsGet.doc")
 	remoteFolder := path.Join(remoteBaseTestDataFolder, "Lists")
 	remoteName := "TestGetLists.doc"
-	options := map[string]interface{}{ }
+	options := map[string]interface{}{
+		"folder": remoteFolder,
+	}
 
 	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
@@ -50,7 +51,9 @@ func TestGetList(t *testing.T) {
 	localFilePath := GetLocalPath("Lists", "ListsGet.doc")
 	remoteFolder := path.Join(remoteBaseTestDataFolder, "Lists")
 	remoteName := "TestGetList.doc"
-	options := map[string]interface{}{ }
+	options := map[string]interface{}{
+		"folder": remoteFolder,
+	}
 
 	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
@@ -66,7 +69,9 @@ func TestUpdateList(t *testing.T) {
 	remoteFolder := path.Join(remoteBaseTestDataFolder, "Lists")
 	remoteName := "TestUpdateList.doc"
 	listUpdate := models.ListUpdate{IsRestartAtEachSection:true}
-	options := map[string]interface{}{ }
+	options := map[string]interface{}{
+		"folder": remoteFolder,
+	}
 
 	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
@@ -82,7 +87,9 @@ func TestUpdateListLevel(t *testing.T) {
 	remoteFolder := path.Join(remoteBaseTestDataFolder, "Lists")
 	remoteName := "TestUpdateListLevel.doc"
 	listUpdate := models.ListLevelUpdate{Alignment:"Right"}
-	options := map[string]interface{}{ }
+	options := map[string]interface{}{
+		"folder": remoteFolder,
+	}
 
 	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
@@ -98,7 +105,9 @@ func TestInsertList(t *testing.T) {
 	remoteFolder := path.Join(remoteBaseTestDataFolder, "Lists")
 	remoteName := "TestInsertList.doc"
 	listInsert := models.ListInsert{Template:"OutlineLegal"}
-	options := map[string]interface{}{ }
+	options := map[string]interface{}{
+		"folder": remoteFolder,
+	}
 
 	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
