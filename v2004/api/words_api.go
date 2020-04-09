@@ -9371,6 +9371,214 @@ func (a *WordsApiService) GetHeaderFooters(ctx context.Context, name string, sec
 	
 	return successPayload, localVarHttpResponse, err
 }
+/* WordsApiService This resource represents one of the lists contained in the document.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ @param name The document name.
+ @param listId List unique identifier.
+ @param optional (nil or map[string]interface{}) with one or more of:
+     @param "folder" (string) Original document folder.
+     @param "storage" (string) Original document storage.
+     @param "loadEncoding" (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
+     @param "password" (string) Password for opening an encrypted document.
+ @return ListResponse*/
+func (a *WordsApiService) GetList(ctx context.Context, name string, listId int32, localVarOptionals map[string]interface{}) ( models.ListResponse,  *http.Response, error) {
+	var (
+		localVarHttpMethod = strings.ToUpper("Get")
+		localVarPostBody interface{}
+		localFiles map[string][]byte = make(map[string][]byte)
+		successPayload models.ListResponse
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/lists/{listId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"listId"+"}", fmt.Sprintf("%v", listId), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if err := typeCheckParameter(localVarOptionals["folder"], "string", "folder"); err != nil {
+		return successPayload, nil, err
+	}
+	if err := typeCheckParameter(localVarOptionals["storage"], "string", "storage"); err != nil {
+		return successPayload, nil, err
+	}
+	if err := typeCheckParameter(localVarOptionals["loadEncoding"], "string", "loadEncoding"); err != nil {
+		return successPayload, nil, err
+	}
+	if err := typeCheckParameter(localVarOptionals["password"], "string", "password"); err != nil {
+		return successPayload, nil, err
+	}
+
+	if localVarTempParam, localVarOk := localVarOptionals["folder"].(string); localVarOk {
+		localVarQueryParams.Add("Folder", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["storage"].(string); localVarOk {
+		localVarQueryParams.Add("Storage", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["loadEncoding"].(string); localVarOk {
+		localVarQueryParams.Add("LoadEncoding", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["password"].(string); localVarOk {
+		localVarQueryParams.Add("Password", parameterToString(localVarTempParam, ""))
+	}
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/xml", "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHttpContentType
+	}
+
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/xml",
+		"application/json",
+		}
+
+	// set Accept header
+	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
+	if err != nil {
+		return successPayload, nil, err
+	}
+
+	localVarHttpResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHttpResponse == nil {
+		return successPayload, localVarHttpResponse, err
+	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
+	}
+	if localVarHttpResponse.StatusCode >= 300 {
+		defer localVarHttpResponse.Body.Close()
+		
+		var apiError models.WordsApiErrorResponse;
+
+		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
+			return successPayload, localVarHttpResponse, err
+		}
+		
+		return successPayload, localVarHttpResponse, &apiError
+	}
+	defer localVarHttpResponse.Body.Close()
+	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
+		return successPayload, localVarHttpResponse, err
+	}
+	
+	return successPayload, localVarHttpResponse, err
+}
+/* WordsApiService Returns a list of lists that are contained in the document.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ @param name The document name.
+ @param optional (nil or map[string]interface{}) with one or more of:
+     @param "folder" (string) Original document folder.
+     @param "storage" (string) Original document storage.
+     @param "loadEncoding" (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
+     @param "password" (string) Password for opening an encrypted document.
+ @return ListsResponse*/
+func (a *WordsApiService) GetLists(ctx context.Context, name string, localVarOptionals map[string]interface{}) ( models.ListsResponse,  *http.Response, error) {
+	var (
+		localVarHttpMethod = strings.ToUpper("Get")
+		localVarPostBody interface{}
+		localFiles map[string][]byte = make(map[string][]byte)
+		successPayload models.ListsResponse
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/lists"
+	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if err := typeCheckParameter(localVarOptionals["folder"], "string", "folder"); err != nil {
+		return successPayload, nil, err
+	}
+	if err := typeCheckParameter(localVarOptionals["storage"], "string", "storage"); err != nil {
+		return successPayload, nil, err
+	}
+	if err := typeCheckParameter(localVarOptionals["loadEncoding"], "string", "loadEncoding"); err != nil {
+		return successPayload, nil, err
+	}
+	if err := typeCheckParameter(localVarOptionals["password"], "string", "password"); err != nil {
+		return successPayload, nil, err
+	}
+
+	if localVarTempParam, localVarOk := localVarOptionals["folder"].(string); localVarOk {
+		localVarQueryParams.Add("Folder", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["storage"].(string); localVarOk {
+		localVarQueryParams.Add("Storage", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["loadEncoding"].(string); localVarOk {
+		localVarQueryParams.Add("LoadEncoding", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["password"].(string); localVarOk {
+		localVarQueryParams.Add("Password", parameterToString(localVarTempParam, ""))
+	}
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/xml", "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHttpContentType
+	}
+
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/xml",
+		"application/json",
+		}
+
+	// set Accept header
+	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
+	if err != nil {
+		return successPayload, nil, err
+	}
+
+	localVarHttpResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHttpResponse == nil {
+		return successPayload, localVarHttpResponse, err
+	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
+	}
+	if localVarHttpResponse.StatusCode >= 300 {
+		defer localVarHttpResponse.Body.Close()
+		
+		var apiError models.WordsApiErrorResponse;
+
+		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
+			return successPayload, localVarHttpResponse, err
+		}
+		
+		return successPayload, localVarHttpResponse, &apiError
+	}
+	defer localVarHttpResponse.Body.Close()
+	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
+		return successPayload, localVarHttpResponse, err
+	}
+	
+	return successPayload, localVarHttpResponse, err
+}
 /* WordsApiService Reads OfficeMath object by index.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
@@ -13514,6 +13722,133 @@ func (a *WordsApiService) InsertHeaderFooter(ctx context.Context, name string, h
 	}
 	// body params
 	localVarPostBody = &headerFooterType
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
+	if err != nil {
+		return successPayload, nil, err
+	}
+
+	localVarHttpResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHttpResponse == nil {
+		return successPayload, localVarHttpResponse, err
+	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
+	}
+	if localVarHttpResponse.StatusCode >= 300 {
+		defer localVarHttpResponse.Body.Close()
+		
+		var apiError models.WordsApiErrorResponse;
+
+		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
+			return successPayload, localVarHttpResponse, err
+		}
+		
+		return successPayload, localVarHttpResponse, &apiError
+	}
+	defer localVarHttpResponse.Body.Close()
+	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
+		return successPayload, localVarHttpResponse, err
+	}
+	
+	return successPayload, localVarHttpResponse, err
+}
+/* WordsApiService Adds list to document, returns added list&#39;s data.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ @param name The document name.
+ @param listInsert List to insert.
+ @param optional (nil or map[string]interface{}) with one or more of:
+     @param "folder" (string) Original document folder.
+     @param "storage" (string) Original document storage.
+     @param "loadEncoding" (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
+     @param "password" (string) Password for opening an encrypted document.
+     @param "destFileName" (string) Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.
+     @param "revisionAuthor" (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
+     @param "revisionDateTime" (string) The date and time to use for revisions.
+ @return ListResponse*/
+func (a *WordsApiService) InsertList(ctx context.Context, name string, listInsert models.IListInsert, localVarOptionals map[string]interface{}) ( models.ListResponse,  *http.Response, error) {
+	var (
+		localVarHttpMethod = strings.ToUpper("Post")
+		localVarPostBody interface{}
+		localFiles map[string][]byte = make(map[string][]byte)
+		successPayload models.ListResponse
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/lists"
+	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if err := typeCheckParameter(localVarOptionals["folder"], "string", "folder"); err != nil {
+		return successPayload, nil, err
+	}
+	if err := typeCheckParameter(localVarOptionals["storage"], "string", "storage"); err != nil {
+		return successPayload, nil, err
+	}
+	if err := typeCheckParameter(localVarOptionals["loadEncoding"], "string", "loadEncoding"); err != nil {
+		return successPayload, nil, err
+	}
+	if err := typeCheckParameter(localVarOptionals["password"], "string", "password"); err != nil {
+		return successPayload, nil, err
+	}
+	if err := typeCheckParameter(localVarOptionals["destFileName"], "string", "destFileName"); err != nil {
+		return successPayload, nil, err
+	}
+	if err := typeCheckParameter(localVarOptionals["revisionAuthor"], "string", "revisionAuthor"); err != nil {
+		return successPayload, nil, err
+	}
+	if err := typeCheckParameter(localVarOptionals["revisionDateTime"], "string", "revisionDateTime"); err != nil {
+		return successPayload, nil, err
+	}
+
+	if localVarTempParam, localVarOk := localVarOptionals["folder"].(string); localVarOk {
+		localVarQueryParams.Add("Folder", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["storage"].(string); localVarOk {
+		localVarQueryParams.Add("Storage", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["loadEncoding"].(string); localVarOk {
+		localVarQueryParams.Add("LoadEncoding", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["password"].(string); localVarOk {
+		localVarQueryParams.Add("Password", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["destFileName"].(string); localVarOk {
+		localVarQueryParams.Add("DestFileName", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["revisionAuthor"].(string); localVarOk {
+		localVarQueryParams.Add("RevisionAuthor", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["revisionDateTime"].(string); localVarOk {
+		localVarQueryParams.Add("RevisionDateTime", parameterToString(localVarTempParam, ""))
+	}
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/xml", "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHttpContentType
+	}
+
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/xml",
+		"application/json",
+		}
+
+	// set Accept header
+	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	localVarPostBody = &listInsert
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
@@ -18838,6 +19173,266 @@ func (a *WordsApiService) UpdateFormFieldWithoutNodePath(ctx context.Context, na
 	}
 	// body params
 	localVarPostBody = &formField
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
+	if err != nil {
+		return successPayload, nil, err
+	}
+
+	localVarHttpResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHttpResponse == nil {
+		return successPayload, localVarHttpResponse, err
+	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
+	}
+	if localVarHttpResponse.StatusCode >= 300 {
+		defer localVarHttpResponse.Body.Close()
+		
+		var apiError models.WordsApiErrorResponse;
+
+		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
+			return successPayload, localVarHttpResponse, err
+		}
+		
+		return successPayload, localVarHttpResponse, &apiError
+	}
+	defer localVarHttpResponse.Body.Close()
+	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
+		return successPayload, localVarHttpResponse, err
+	}
+	
+	return successPayload, localVarHttpResponse, err
+}
+/* WordsApiService Updates list properties, returns updated list.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ @param name The document name.
+ @param listUpdate List object.
+ @param listId List unique identifier.
+ @param optional (nil or map[string]interface{}) with one or more of:
+     @param "folder" (string) Original document folder.
+     @param "storage" (string) Original document storage.
+     @param "loadEncoding" (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
+     @param "password" (string) Password for opening an encrypted document.
+     @param "destFileName" (string) Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.
+     @param "revisionAuthor" (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
+     @param "revisionDateTime" (string) The date and time to use for revisions.
+ @return ListResponse*/
+func (a *WordsApiService) UpdateList(ctx context.Context, name string, listUpdate models.IListUpdate, listId int32, localVarOptionals map[string]interface{}) ( models.ListResponse,  *http.Response, error) {
+	var (
+		localVarHttpMethod = strings.ToUpper("Put")
+		localVarPostBody interface{}
+		localFiles map[string][]byte = make(map[string][]byte)
+		successPayload models.ListResponse
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/lists/{listId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"listId"+"}", fmt.Sprintf("%v", listId), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if err := typeCheckParameter(localVarOptionals["folder"], "string", "folder"); err != nil {
+		return successPayload, nil, err
+	}
+	if err := typeCheckParameter(localVarOptionals["storage"], "string", "storage"); err != nil {
+		return successPayload, nil, err
+	}
+	if err := typeCheckParameter(localVarOptionals["loadEncoding"], "string", "loadEncoding"); err != nil {
+		return successPayload, nil, err
+	}
+	if err := typeCheckParameter(localVarOptionals["password"], "string", "password"); err != nil {
+		return successPayload, nil, err
+	}
+	if err := typeCheckParameter(localVarOptionals["destFileName"], "string", "destFileName"); err != nil {
+		return successPayload, nil, err
+	}
+	if err := typeCheckParameter(localVarOptionals["revisionAuthor"], "string", "revisionAuthor"); err != nil {
+		return successPayload, nil, err
+	}
+	if err := typeCheckParameter(localVarOptionals["revisionDateTime"], "string", "revisionDateTime"); err != nil {
+		return successPayload, nil, err
+	}
+
+	if localVarTempParam, localVarOk := localVarOptionals["folder"].(string); localVarOk {
+		localVarQueryParams.Add("Folder", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["storage"].(string); localVarOk {
+		localVarQueryParams.Add("Storage", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["loadEncoding"].(string); localVarOk {
+		localVarQueryParams.Add("LoadEncoding", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["password"].(string); localVarOk {
+		localVarQueryParams.Add("Password", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["destFileName"].(string); localVarOk {
+		localVarQueryParams.Add("DestFileName", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["revisionAuthor"].(string); localVarOk {
+		localVarQueryParams.Add("RevisionAuthor", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["revisionDateTime"].(string); localVarOk {
+		localVarQueryParams.Add("RevisionDateTime", parameterToString(localVarTempParam, ""))
+	}
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/xml", "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHttpContentType
+	}
+
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/xml",
+		"application/json",
+		}
+
+	// set Accept header
+	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	localVarPostBody = &listUpdate
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
+	if err != nil {
+		return successPayload, nil, err
+	}
+
+	localVarHttpResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHttpResponse == nil {
+		return successPayload, localVarHttpResponse, err
+	}
+	if localVarHttpResponse.StatusCode == 401 {
+		defer localVarHttpResponse.Body.Close()
+		return successPayload, nil, errors.New("Access is denied")
+	}
+	if localVarHttpResponse.StatusCode >= 300 {
+		defer localVarHttpResponse.Body.Close()
+		
+		var apiError models.WordsApiErrorResponse;
+
+		if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
+			return successPayload, localVarHttpResponse, err
+		}
+		
+		return successPayload, localVarHttpResponse, &apiError
+	}
+	defer localVarHttpResponse.Body.Close()
+	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
+		return successPayload, localVarHttpResponse, err
+	}
+	
+	return successPayload, localVarHttpResponse, err
+}
+/* WordsApiService Updates list level in document list, returns updated list.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ @param name The document name.
+ @param listUpdate List object.
+ @param listId List unique identifier.
+ @param listLevel List level identifier.
+ @param optional (nil or map[string]interface{}) with one or more of:
+     @param "folder" (string) Original document folder.
+     @param "storage" (string) Original document storage.
+     @param "loadEncoding" (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
+     @param "password" (string) Password for opening an encrypted document.
+     @param "destFileName" (string) Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.
+     @param "revisionAuthor" (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
+     @param "revisionDateTime" (string) The date and time to use for revisions.
+ @return ListResponse*/
+func (a *WordsApiService) UpdateListLevel(ctx context.Context, name string, listUpdate models.IListLevelUpdate, listId int32, listLevel int32, localVarOptionals map[string]interface{}) ( models.ListResponse,  *http.Response, error) {
+	var (
+		localVarHttpMethod = strings.ToUpper("Put")
+		localVarPostBody interface{}
+		localFiles map[string][]byte = make(map[string][]byte)
+		successPayload models.ListResponse
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BaseUrl + "/words/{name}/lists/{listId}/{listLevel}"
+	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"listId"+"}", fmt.Sprintf("%v", listId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"listLevel"+"}", fmt.Sprintf("%v", listLevel), -1)
+	
+	localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if err := typeCheckParameter(localVarOptionals["folder"], "string", "folder"); err != nil {
+		return successPayload, nil, err
+	}
+	if err := typeCheckParameter(localVarOptionals["storage"], "string", "storage"); err != nil {
+		return successPayload, nil, err
+	}
+	if err := typeCheckParameter(localVarOptionals["loadEncoding"], "string", "loadEncoding"); err != nil {
+		return successPayload, nil, err
+	}
+	if err := typeCheckParameter(localVarOptionals["password"], "string", "password"); err != nil {
+		return successPayload, nil, err
+	}
+	if err := typeCheckParameter(localVarOptionals["destFileName"], "string", "destFileName"); err != nil {
+		return successPayload, nil, err
+	}
+	if err := typeCheckParameter(localVarOptionals["revisionAuthor"], "string", "revisionAuthor"); err != nil {
+		return successPayload, nil, err
+	}
+	if err := typeCheckParameter(localVarOptionals["revisionDateTime"], "string", "revisionDateTime"); err != nil {
+		return successPayload, nil, err
+	}
+
+	if localVarTempParam, localVarOk := localVarOptionals["folder"].(string); localVarOk {
+		localVarQueryParams.Add("Folder", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["storage"].(string); localVarOk {
+		localVarQueryParams.Add("Storage", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["loadEncoding"].(string); localVarOk {
+		localVarQueryParams.Add("LoadEncoding", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["password"].(string); localVarOk {
+		localVarQueryParams.Add("Password", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["destFileName"].(string); localVarOk {
+		localVarQueryParams.Add("DestFileName", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["revisionAuthor"].(string); localVarOk {
+		localVarQueryParams.Add("RevisionAuthor", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["revisionDateTime"].(string); localVarOk {
+		localVarQueryParams.Add("RevisionDateTime", parameterToString(localVarTempParam, ""))
+	}
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/xml", "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHttpContentType
+	}
+
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/xml",
+		"application/json",
+		}
+
+	// set Accept header
+	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	localVarPostBody = &listUpdate
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localFiles)
 	if err != nil {
 		return successPayload, nil, err
