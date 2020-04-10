@@ -70,6 +70,29 @@ type service struct {
 	client *APIClient
 }
 
+type FormParamContainer struct {
+	name string
+	text string
+	file []byte
+	isFile bool
+}
+
+func NewTextFormParamContainer(name string, text string) (result FormParamContainer) {
+	r := FormParamContainer{}
+	r.name = name
+	r.text = text
+	r.isFile = false
+	return r
+}
+
+func NewFileFormParamContainer(name string, file []byte) (result FormParamContainer) {
+	r := FormParamContainer{}
+	r.name = name
+	r.file = file
+	r.isFile = true
+	return r
+}
+
 // NewAPIClient creates a new API client. Requires a userAgent string describing your application.
 // optionally a custom http.Client to allow for advanced features such as caching.
 func NewAPIClient(cfg *models.Configuration) (client *APIClient, err error) {
@@ -173,6 +196,11 @@ func parameterToString(obj interface{}, collectionFormat string) string {
 		return strings.Trim(strings.Replace(fmt.Sprint(obj), " ", delimiter, -1), "[]")
 	}
 
+	if reflect.TypeOf(obj).Kind() == reflect.Struct {
+		b, _ := json.Marshal(obj)
+		return string(b)
+	}
+
 	return fmt.Sprintf("%v", obj)
 }
 
@@ -266,8 +294,7 @@ func (c *APIClient) prepareRequest (
 	postBody interface{},
 	headerParams map[string]string,
 	queryParams url.Values,
-	formParams url.Values,
-	files map[string][]byte) (localVarRequest *http.Request, err error) {
+	formParams []FormParamContainer) (localVarRequest *http.Request, err error) {
 
 	var body *bytes.Buffer
 
@@ -286,7 +313,7 @@ func (c *APIClient) prepareRequest (
 	}
 
 	// add form parameters and file if available.
-	if len(formParams) > 0 || (len(files) > 0) {
+	if len(formParams) > 0 {
 		if body != nil {
 			return nil, errors.New("Cannot specify postBody and multipart form at the same time.")
 		}
@@ -294,30 +321,21 @@ func (c *APIClient) prepareRequest (
 		w := multipart.NewWriter(body)
 		headerParams["Content-Type"] = w.FormDataContentType()
 
-		for k, v := range formParams {
-			for _, iv := range v {
-				if strings.HasPrefix(k, "@") { // file
-					err = addFile(w, k[1:], iv)
+		for _, fp := range formParams {
+			if fp.isFile {
+				if len(fp.file) > 0 && fp.name != "" {
+					w.Boundary()
+					part, err := w.CreateFormFile("file", filepath.Base(fp.name))
 					if err != nil {
 						return nil, err
 					}
-				} else { // form value
-					w.WriteField(k, iv)
+					_, err = part.Write(fp.file)
+					if err != nil {
+						return nil, err
+					}
 				}
-			}
-		}
-		
-		for fileName, fileBytes := range files {
-			if len(fileBytes) > 0 && fileName != "" {
-				w.Boundary()
-				part, err := w.CreateFormFile("file", filepath.Base(fileName))
-				if err != nil {
-					return nil, err
-				}
-				_, err = part.Write(fileBytes)
-				if err != nil {
-					return nil, err
-				}
+			} else {
+				w.WriteField(fp.name, fp.text)
 			}
 		}
 		
