@@ -25,7 +25,7 @@
 package api_test
 
 import (
-	"github.com/aspose-words-cloud/aspose-words-cloud-go/v2004/api/models"
+	"github.com/aspose-words-cloud/aspose-words-cloud-go/v2005/api/models"
 	"io/ioutil"
 	"os"
 	"path"
