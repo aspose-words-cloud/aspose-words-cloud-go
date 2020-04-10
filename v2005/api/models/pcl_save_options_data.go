@@ -74,6 +74,12 @@ type PclSaveOptionsData struct {
 	// Gets or sets a value determining if fields should be updated before saving the document to a fixed page format. Default value for this property is. true
 	UpdateFields bool `json:"UpdateFields,omitempty"`
 
+	// Gets or sets a value determining how 3D effects are rendered.
+	Dml3DEffectsRenderingMode string `json:"Dml3DEffectsRenderingMode,omitempty"`
+
+	// Gets or sets a value determining whether the Aspose.Words.Properties.BuiltInDocumentProperties.LastPrinted property is updated before saving.
+	UpdateLastPrintedProperty bool `json:"UpdateLastPrintedProperty,omitempty"`
+
 	// Gets or sets name of the font that will be used if no expected font is found in printer and built-in fonts collections.
 	FalllbackFontName string `json:"FalllbackFontName,omitempty"`
 

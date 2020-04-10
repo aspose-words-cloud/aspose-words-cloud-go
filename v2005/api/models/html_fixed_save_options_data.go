@@ -74,6 +74,12 @@ type HtmlFixedSaveOptionsData struct {
 	// Gets or sets a value determining if fields should be updated before saving the document to a fixed page format. Default value for this property is. true
 	UpdateFields bool `json:"UpdateFields,omitempty"`
 
+	// Gets or sets a value determining how 3D effects are rendered.
+	Dml3DEffectsRenderingMode string `json:"Dml3DEffectsRenderingMode,omitempty"`
+
+	// Gets or sets a value determining whether the Aspose.Words.Properties.BuiltInDocumentProperties.LastPrinted property is updated before saving.
+	UpdateLastPrintedProperty bool `json:"UpdateLastPrintedProperty,omitempty"`
+
 	// Gets or sets specifies prefix which is added to all class names in style.css file. Default value is \"aw\".
 	CssClassNamesPrefix string `json:"CssClassNamesPrefix,omitempty"`
 
@@ -112,6 +118,9 @@ type HtmlFixedSaveOptionsData struct {
 
 	// Gets or sets specifies whether border around pages should be shown.
 	ShowPageBorder bool `json:"ShowPageBorder,omitempty"`
+
+	// Gets or sets flag indicates whether fonts from target machine must be used to display the document. If this flag is set to true, Aspose.Words.Saving.HtmlFixedSaveOptions.FontFormat and Aspose.Words.Saving.HtmlFixedSaveOptions.ExportEmbeddedFonts properties do not have effect, also Aspose.Words.Saving.HtmlFixedSaveOptions.ResourceSavingCallback is not fired for fonts. Default is false.
+	UseTargetMachineFonts bool `json:"UseTargetMachineFonts,omitempty"`
 }
 
 type IHtmlFixedSaveOptionsData interface {
