@@ -298,7 +298,6 @@ func TestGetParagraphListFormatWithoutNodePath(t *testing.T) {
 	baseDirPath := path.Join("DocumentElements", "ParagraphListFormat");
 	localFilePath := GetLocalPath(baseDirPath, filename)
 	remoteFolder := path.Join(remoteBaseTestDataFolder, baseDirPath)
-	nodePath := ""
 	index := 0
 	options := map[string]interface{}{
 		"folder": remoteFolder,
