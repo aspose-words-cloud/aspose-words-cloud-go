@@ -272,3 +272,83 @@ func TestUpdateParagraphFormat(t *testing.T) {
 		t.Error(err)
 	}
 }
+
+func TestGetParagraphListFormat(t *testing.T) {
+	filename := "ParagraphGetListFormat.doc"
+	baseDirPath := path.Join("DocumentElements", "ParagraphListFormat");
+	localFilePath := GetLocalPath(baseDirPath, filename)
+	remoteFolder := path.Join(remoteBaseTestDataFolder, baseDirPath)
+	nodePath := ""
+	index := 0
+	options := map[string]interface{}{
+		"folder": remoteFolder,
+	}
+
+	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, filename))
+
+	_, _, err := client.WordsApi.GetParagraphListFormat(ctx, filename, nodePath, int32(index), options)
+
+	if err != nil {
+		t.Error(err)
+	}
+}
+
+func TestGetParagraphListFormatWithoutNodePath(t *testing.T) {
+	filename := "ParagraphGetListFormat.doc"
+	baseDirPath := path.Join("DocumentElements", "ParagraphListFormat");
+	localFilePath := GetLocalPath(baseDirPath, filename)
+	remoteFolder := path.Join(remoteBaseTestDataFolder, baseDirPath)
+	index := 0
+	options := map[string]interface{}{
+		"folder": remoteFolder,
+	}
+
+	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, filename))
+
+	_, _, err := client.WordsApi.GetParagraphListFormatWithoutNodePath(ctx, filename, int32(index), options)
+
+	if err != nil {
+		t.Error(err)
+	}
+}
+
+func TestUpdateParagraphListFormat(t *testing.T) {
+	filename := "ParagraphUpdateListFormat.doc"
+	baseDirPath := path.Join("DocumentElements", "ParagraphListFormat");
+	localFilePath := GetLocalPath(baseDirPath, filename)
+	remoteFolder := path.Join(remoteBaseTestDataFolder, baseDirPath)
+	nodePath := ""
+	index := 0
+	options := map[string]interface{}{
+		"folder": remoteFolder,
+	}
+	dto := models.ListFormatUpdate{ListId:2}
+
+	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, filename))
+
+	_, _, err := client.WordsApi.UpdateParagraphListFormat(ctx, filename, dto, nodePath, int32(index), options)
+
+	if err != nil {
+		t.Error(err)
+	}
+}
+
+func TestDeleteParagraphListFormat(t *testing.T) {
+	filename := "ParagraphDeleteListFormat.doc"
+	baseDirPath := path.Join("DocumentElements", "ParagraphListFormat");
+	localFilePath := GetLocalPath(baseDirPath, filename)
+	remoteFolder := path.Join(remoteBaseTestDataFolder, baseDirPath)
+	nodePath := ""
+	index := 0
+	options := map[string]interface{}{
+		"folder": remoteFolder,
+	}
+
+	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, filename))
+
+	_, _, err := client.WordsApi.DeleteParagraphListFormat(ctx, filename, nodePath, int32(index), options)
+
+	if err != nil {
+		t.Error(err)
+	}
+}
