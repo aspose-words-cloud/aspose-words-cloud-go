@@ -25,12 +25,13 @@
 package api_test
 
 import (
-	"github.com/aspose-words-cloud/aspose-words-cloud-go/v2005/api/models"
 	"io/ioutil"
 	"os"
 	"path"
 	"path/filepath"
 	"testing"
+
+	"github.com/aspose-words-cloud/aspose-words-cloud-go/v2005/api/models"
 )
 
 func TestBuildReport(t *testing.T) {
@@ -45,9 +46,12 @@ func TestBuildReport(t *testing.T) {
 	}
 
 	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
-	settings := models.ReportEngineSettings{DataSourceType:"Json", ReportBuildOptions: []models.ReportBuildOptions{"AllowMissingMembers", "RemoveEmptyParagraphs"}}
+	settings := models.ReportEngineSettings{DataSourceType: "Json", ReportBuildOptions: []models.ReportBuildOptions{"AllowMissingMembers", "RemoveEmptyParagraphs"}}
+	options := map[string]interface{}{
+		"folder": remoteFolder,
+	}
 
-	_, _, err := client.WordsApi.BuildReport(ctx, remoteName, string(data), settings, nil)
+	_, _, err := client.WordsApi.BuildReport(ctx, remoteName, string(data), settings, options)
 
 	if err != nil {
 		t.Error(err)
@@ -72,7 +76,7 @@ func TestBuildReportOnline(t *testing.T) {
 	config := ReadConfiguration(t)
 	client, ctx := PrepareTest(t, config)
 
-	settings := models.ReportEngineSettings{DataSourceType:"Json", DataSourceName:"persons"}
+	settings := models.ReportEngineSettings{DataSourceType: "Json", DataSourceName: "persons"}
 
 	_, err2 := client.WordsApi.BuildReportOnline(ctx, template, string(data), settings, nil)
 
