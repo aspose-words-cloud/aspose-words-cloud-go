@@ -42,7 +42,7 @@ func TestAppendDocument(t *testing.T) {
 	remoteFilePath := path.Join(remoteFolder, remoteName)
 	documentList := models.DocumentEntryList{
 		DocumentEntries: []models.DocumentEntry{
-			models.DocumentEntry{
+			{
 				Href:             remoteFilePath,
 				ImportFormatMode: "KeepSourceFormatting",
 			},
@@ -212,7 +212,7 @@ func TestSplitDocument(t *testing.T) {
 	localFilePath := commonTestFile
 	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentActions", "SplitDocument")
 	remoteName := "TestSplitDocument.docx"
-    format := "text"
+	format := "text"
 	options := map[string]interface{}{
 		"folder": remoteFolder,
 		"from":   int32(1),
