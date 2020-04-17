@@ -19,10 +19,10 @@ node('windows2019') {
 			stage('tests') {
 				withCredentials([usernamePassword(credentialsId: '6839cbe8-39fa-40c0-86ce-90706f0bae5d', passwordVariable: 'WordsAppKey', usernameVariable: 'WordsAppSid')]) {
 					try {
-						bat 'test.bat'
+						bat 'Scripts\\RunTestsInDocker.bat'
 					} 
 					finally {
-
+                        junit '**\\testReport.xml'
 					}
 				}
 			}
