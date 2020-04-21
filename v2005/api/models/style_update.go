@@ -27,50 +27,25 @@ package models
 
 
 
-// Represents a single document style.
-type Style struct {
-
-	Link *WordsApiLink `json:"link,omitempty"`
-
-	// Gets or sets all aliases of this style. If style has no aliases then empty array of string is returned.
-	Aliases []string `json:"Aliases,omitempty"`
-
-	// Gets or sets /sets the name of the style this style is based on.
-	BaseStyleName string `json:"BaseStyleName,omitempty"`
-
-	// Gets or sets a value indicating whether true if this style is one of the built-in styles in MS Word.
-	BuiltIn bool `json:"BuiltIn,omitempty"`
-
-	Font *Font `json:"Font,omitempty"`
-
-	// Gets or sets a value indicating whether true when the style is one of the built-in Heading styles.
-	IsHeading bool `json:"IsHeading,omitempty"`
-
-	// Gets or sets a value indicating whether specifies whether this style is shown in the Quick Style gallery inside MS Word UI.
-	IsQuickStyle bool `json:"IsQuickStyle,omitempty"`
-
-	// Gets or sets the name of the Style linked to this one. Returns Empty string if no styles are linked.
-	LinkedStyleName string `json:"LinkedStyleName,omitempty"`
-
-	// Gets or sets the name of the style.
-	Name string `json:"Name,omitempty"`
+// Represents a single document style properties to update.
+type StyleUpdate struct {
 
 	// Gets or sets /sets the name of the style to be applied automatically to a new paragraph inserted after a paragraph formatted with the specified style.
 	NextParagraphStyleName string `json:"NextParagraphStyleName,omitempty"`
 
-	// Gets or sets the locale independent style identifier for a built-in style.
-	StyleIdentifier string `json:"StyleIdentifier,omitempty"`
+	// Gets or sets /sets the name of the style this style is based on.
+	BaseStyleName string `json:"BaseStyleName,omitempty"`
 
-	// Gets or sets the style type (paragraph or character).
-	Type_ string `json:"Type,omitempty"`
+	// Gets or sets a value indicating whether specifies whether this style is shown in the Quick Style gallery inside MS Word UI.
+	IsQuickStyle bool `json:"IsQuickStyle,omitempty"`
+
+	// Gets or sets the name of the style.
+	Name string `json:"Name,omitempty"`
 }
 
-type IStyle interface {
-	IsStyle() bool
+type IStyleUpdate interface {
+	IsStyleUpdate() bool
 }
-func (Style) IsStyle() bool {
-	return true;
-}
-func (Style) IsLinkElement() bool {
+func (StyleUpdate) IsStyleUpdate() bool {
 	return true;
 }
