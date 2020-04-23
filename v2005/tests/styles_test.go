@@ -147,7 +147,7 @@ func TestApplyStyleToDocumentElement(t *testing.T) {
 
 	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, _, err := client.WordsApi.ApplyStyleToDocmentElement(ctx, remoteName, styleApply, "paragraphs/1/paragraphFormat", options)
+	_, _, err := client.WordsApi.ApplyStyleToDocumentElement(ctx, remoteName, styleApply, "paragraphs/1/paragraphFormat", options)
 
 	if err != nil {
 		t.Error(err)

@@ -295,7 +295,7 @@ func (a *WordsApiService) AppendDocument(ctx context.Context, name string, docum
      @param "revisionAuthor" (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
      @param "revisionDateTime" (string) The date and time to use for revisions.
  @return WordsResponse*/
-func (a *WordsApiService) ApplyStyleToDocmentElement(ctx context.Context, name string, styleApply models.IStyleApply, styledNodePath string, localVarOptionals map[string]interface{}) ( models.WordsResponse,  *http.Response, error) {
+func (a *WordsApiService) ApplyStyleToDocumentElement(ctx context.Context, name string, styleApply models.IStyleApply, styledNodePath string, localVarOptionals map[string]interface{}) ( models.WordsResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
