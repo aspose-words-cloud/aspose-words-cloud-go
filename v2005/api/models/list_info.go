@@ -30,14 +30,7 @@ package models
 // Represents a single document list.
 type ListInfo struct {
 
-	// Gets or sets the unique identifier of the list.
-	ListId int32 `json:"ListId,omitempty"`
-
-	// Gets or sets a value indicating whether returns true when the list contains 9 levels; false when 1 level.
-	IsMultiLevel bool `json:"IsMultiLevel,omitempty"`
-
-	// Gets or sets a value indicating whether specifies whether list should be restarted at each section. Default value is false.
-	IsRestartAtEachSection bool `json:"IsRestartAtEachSection,omitempty"`
+	Link *WordsApiLink `json:"link,omitempty"`
 
 	// Gets or sets a value indicating whether returns true if this list is a definition of a list style.
 	IsListStyleDefinition bool `json:"IsListStyleDefinition,omitempty"`
@@ -45,14 +38,26 @@ type ListInfo struct {
 	// Gets or sets a value indicating whether returns true if this list is a reference to a list style.
 	IsListStyleReference bool `json:"IsListStyleReference,omitempty"`
 
-	Style *Style `json:"Style,omitempty"`
+	// Gets or sets a value indicating whether returns true when the list contains 9 levels; false when 1 level.
+	IsMultiLevel bool `json:"IsMultiLevel,omitempty"`
+
+	// Gets or sets a value indicating whether specifies whether list should be restarted at each section. Default value is false.
+	IsRestartAtEachSection bool `json:"IsRestartAtEachSection,omitempty"`
+
+	// Gets or sets the unique identifier of the list.
+	ListId int32 `json:"ListId,omitempty"`
 
 	ListLevels *ListLevels `json:"ListLevels,omitempty"`
+
+	Style *Style `json:"Style,omitempty"`
 }
 
 type IListInfo interface {
 	IsListInfo() bool
 }
 func (ListInfo) IsListInfo() bool {
+	return true;
+}
+func (ListInfo) IsLinkElement() bool {
 	return true;
 }

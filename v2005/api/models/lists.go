@@ -30,6 +30,8 @@ package models
 // Represents an array of document lists.
 type Lists struct {
 
+	Link *WordsApiLink `json:"link,omitempty"`
+
 	// Gets or sets array of document lists.
 	ListInfo []ListInfo `json:"ListInfo,omitempty"`
 }
@@ -38,5 +40,8 @@ type ILists interface {
 	IsLists() bool
 }
 func (Lists) IsLists() bool {
+	return true;
+}
+func (Lists) IsLinkElement() bool {
 	return true;
 }

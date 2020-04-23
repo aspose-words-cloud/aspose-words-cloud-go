@@ -20357,7 +20357,7 @@ func (a *WordsApiService) UpdateListLevel(ctx context.Context, name string, list
 	)
 
 	// create path and map variables
-	localVarPath := "/words/{name}/lists/{listId}/{listLevel}"
+	localVarPath := "/words/{name}/lists/{listId}/listLevels/{listLevel}"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"listId"+"}", fmt.Sprintf("%v", listId), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"listLevel"+"}", fmt.Sprintf("%v", listLevel), -1)

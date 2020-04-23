@@ -30,6 +30,8 @@ package models
 // Represents a single document list.
 type ListLevels struct {
 
+	Link *WordsApiLink `json:"link,omitempty"`
+
 	// Gets or sets the collection of list levels for this list.
 	ListLevel []ListLevel `json:"ListLevel,omitempty"`
 }
@@ -38,5 +40,8 @@ type IListLevels interface {
 	IsListLevels() bool
 }
 func (ListLevels) IsListLevels() bool {
+	return true;
+}
+func (ListLevels) IsLinkElement() bool {
 	return true;
 }
