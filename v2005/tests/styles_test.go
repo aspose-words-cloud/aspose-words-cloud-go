@@ -118,3 +118,38 @@ func TestCopyStyle(t *testing.T) {
 		t.Error(err)
 	}
 }
+
+func TestGetStyleFromDocumentElement(t *testing.T) {
+	localFilePath := GetLocalPath(filepath.Join("DocumentElements", "Styles"), "GetStyles.docx")
+	remoteFolder := path.Join(remoteBaseTestDataFolder, filepath.Join("DocumentElements", "Styles"))
+	remoteName := "TestGetStyleFromDocumentElement.docx"
+	options := map[string]interface{}{
+		"folder": remoteFolder,
+	}
+
+	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
+
+	_, _, err := client.WordsApi.GetStyleFromDocumentElement(ctx, remoteName, "paragraphs/1/paragraphFormat", options)
+
+	if err != nil {
+		t.Error(err)
+	}
+}
+
+func TestApplyStyleToDocumentElement(t *testing.T) {
+	localFilePath := GetLocalPath(filepath.Join("DocumentElements", "Styles"), "GetStyles.docx")
+	remoteFolder := path.Join(remoteBaseTestDataFolder, filepath.Join("DocumentElements", "Styles"))
+	remoteName := "TestApplyStyleToDocumentElement.docx"
+	styleApply := models.StyleApply{StyleName:"Heading 1"}
+	options := map[string]interface{}{
+		"folder": remoteFolder,
+	}
+
+	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
+
+	_, _, err := client.WordsApi.ApplyStyleToDocmentElement(ctx, remoteName, styleApply, "paragraphs/1/paragraphFormat", options)
+
+	if err != nil {
+		t.Error(err)
+	}
+}
