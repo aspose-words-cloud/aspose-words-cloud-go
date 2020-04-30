@@ -31,11 +31,11 @@ To use Aspose Words for Cloud .NET SDK you need :
 
 From Visual Stuio Code:
 
-	Add "github.com/aspose-words-cloud/aspose-words-cloud-go/v2005/api" and "github.com/aspose-words-cloud/aspose-words-cloud-go/v2005/api/models" in the import section of your code
+	Add "github.com/aspose-words-cloud/aspose-words-cloud-go/api" in the import section of your code
 
 From the command line:
 
-	go get -v github.com/aspose-words-cloud/aspose-words-cloud-go/v2005/api
+	go get -v github.com/aspose-words-cloud/aspose-words-cloud-go/api
 
 ### Sample usage
 
@@ -54,8 +54,7 @@ Go code:
 ```csharp
 import (
 	"fmt"
-	"github.com/aspose-words-cloud/aspose-words-cloud-go/v2005/api"
-	"github.com/aspose-words-cloud/aspose-words-cloud-go/v2005/api/models"
+	"github.com/aspose-words-cloud/aspose-words-cloud-go/vXXXX/api"
 	"os"
 )
 
