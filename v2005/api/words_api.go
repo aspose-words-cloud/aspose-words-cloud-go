@@ -281,7 +281,7 @@ func (a *WordsApiService) AppendDocument(ctx context.Context, name string, docum
 	
 	return successPayload, localVarHttpResponse, err
 }
-/* WordsApiService Apply a style to the document node.
+/* WordsApiService Apply a style to the document node. Supported node types: ParagraphFormat, List, ListLevel, Table.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
  @param styleApply Style to apply.
@@ -412,7 +412,7 @@ func (a *WordsApiService) ApplyStyleToDocumentElement(ctx context.Context, name 
 }
 /* WordsApiService Executes document \&quot;build report\&quot; operation.
  * @param ctx context.Context for authentication, logging, tracing, etc.
- @param name The document name.
+ @param name The template name.
  @param data A string providing a data to populate the specified template. The string must be of one of the following types: xml, json, csv
  @param reportEngineSettings An object providing a settings of report engine.
  @param optional (nil or map[string]interface{}) with one or more of:
@@ -12273,7 +12273,7 @@ func (a *WordsApiService) GetStyle(ctx context.Context, name string, styleName s
 	
 	return successPayload, localVarHttpResponse, err
 }
-/* WordsApiService Gets a style from the document node.
+/* WordsApiService Gets a style from the document node. Supported node types: ParagraphFormat, List, ListLevel, Table.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
  @param styledNodePath Path to the node of IStyledDocumentElement.
