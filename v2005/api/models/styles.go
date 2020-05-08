@@ -33,7 +33,7 @@ type Styles struct {
 	Link *WordsApiLink `json:"link,omitempty"`
 
 	// Gets or sets array of document styles.
-	Style []Style `json:"Style,omitempty"`
+	StyleList []Style `json:"StyleList,omitempty"`
 }
 
 type IStyles interface {

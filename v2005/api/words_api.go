@@ -281,7 +281,7 @@ func (a *WordsApiService) AppendDocument(ctx context.Context, name string, docum
 	
 	return successPayload, localVarHttpResponse, err
 }
-/* WordsApiService Apply style to document node.
+/* WordsApiService Apply a style to the document node.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
  @param styleApply Style to apply.
@@ -1205,7 +1205,7 @@ func (a *WordsApiService) CopyFolder(ctx context.Context, destPath string, srcPa
 	defer localVarHttpResponse.Body.Close()
 	return localVarHttpResponse, err
 }
-/* WordsApiService Copy and insert new style to document, returns copied style.
+/* WordsApiService Copy and insert a new style to the document, returns an copied style.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
  @param styleCopy Style to copy.
@@ -12273,7 +12273,7 @@ func (a *WordsApiService) GetStyle(ctx context.Context, name string, styleName s
 	
 	return successPayload, localVarHttpResponse, err
 }
-/* WordsApiService Gets style from document node.
+/* WordsApiService Gets a style from the document node.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
  @param styledNodePath Path to the node of IStyledDocumentElement.
@@ -12378,7 +12378,7 @@ func (a *WordsApiService) GetStyleFromDocumentElement(ctx context.Context, name 
 	
 	return successPayload, localVarHttpResponse, err
 }
-/* WordsApiService Returns a list of styles that are contained in the document.
+/* WordsApiService Returns a list of styles contained in the document.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
  @param optional (nil or map[string]interface{}) with one or more of:
@@ -15387,7 +15387,7 @@ func (a *WordsApiService) InsertRun(ctx context.Context, name string, paragraphP
 	
 	return successPayload, localVarHttpResponse, err
 }
-/* WordsApiService Adds style to document, returns added style.
+/* WordsApiService Adds a style to the document, returns an added style.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
  @param styleInsert Style to insert.
@@ -21352,7 +21352,7 @@ func (a *WordsApiService) UpdateSectionPageSetup(ctx context.Context, name strin
 	
 	return successPayload, localVarHttpResponse, err
 }
-/* WordsApiService Updates style properties, returns updated style.
+/* WordsApiService Updates a style properties, returns an updated style.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
  @param styleUpdate Style properties to update.
