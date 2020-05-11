@@ -275,7 +275,7 @@ func TestUpdateParagraphFormat(t *testing.T) {
 
 func TestGetParagraphListFormat(t *testing.T) {
 	filename := "ParagraphGetListFormat.doc"
-	baseDirPath := path.Join("DocumentElements", "ParagraphListFormat");
+	baseDirPath := path.Join("DocumentElements", "ParagraphListFormat")
 	localFilePath := GetLocalPath(baseDirPath, filename)
 	remoteFolder := path.Join(remoteBaseTestDataFolder, baseDirPath)
 	nodePath := ""
@@ -295,7 +295,7 @@ func TestGetParagraphListFormat(t *testing.T) {
 
 func TestGetParagraphListFormatWithoutNodePath(t *testing.T) {
 	filename := "ParagraphGetListFormat.doc"
-	baseDirPath := path.Join("DocumentElements", "ParagraphListFormat");
+	baseDirPath := path.Join("DocumentElements", "ParagraphListFormat")
 	localFilePath := GetLocalPath(baseDirPath, filename)
 	remoteFolder := path.Join(remoteBaseTestDataFolder, baseDirPath)
 	index := 0
@@ -314,7 +314,7 @@ func TestGetParagraphListFormatWithoutNodePath(t *testing.T) {
 
 func TestUpdateParagraphListFormat(t *testing.T) {
 	filename := "ParagraphUpdateListFormat.doc"
-	baseDirPath := path.Join("DocumentElements", "ParagraphListFormat");
+	baseDirPath := path.Join("DocumentElements", "ParagraphListFormat")
 	localFilePath := GetLocalPath(baseDirPath, filename)
 	remoteFolder := path.Join(remoteBaseTestDataFolder, baseDirPath)
 	nodePath := ""
@@ -322,7 +322,7 @@ func TestUpdateParagraphListFormat(t *testing.T) {
 	options := map[string]interface{}{
 		"folder": remoteFolder,
 	}
-	dto := models.ListFormatUpdate{ListId:2}
+	dto := models.ListFormatUpdate{ListId: 2}
 
 	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, filename))
 
@@ -335,7 +335,7 @@ func TestUpdateParagraphListFormat(t *testing.T) {
 
 func TestDeleteParagraphListFormat(t *testing.T) {
 	filename := "ParagraphDeleteListFormat.doc"
-	baseDirPath := path.Join("DocumentElements", "ParagraphListFormat");
+	baseDirPath := path.Join("DocumentElements", "ParagraphListFormat")
 	localFilePath := GetLocalPath(baseDirPath, filename)
 	remoteFolder := path.Join(remoteBaseTestDataFolder, baseDirPath)
 	nodePath := ""
@@ -347,6 +347,84 @@ func TestDeleteParagraphListFormat(t *testing.T) {
 	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, filename))
 
 	_, _, err := client.WordsApi.DeleteParagraphListFormat(ctx, filename, nodePath, int32(index), options)
+
+	if err != nil {
+		t.Error(err)
+	}
+}
+
+func TestGetParagraphTabStops(t *testing.T) {
+	filename := "ParagraphTabStops.docx"
+	baseDirPath := path.Join("DocumentElements", "Paragraphs")
+	localFilePath := GetLocalPath(baseDirPath, filename)
+	remoteFolder := path.Join(remoteBaseTestDataFolder, baseDirPath)
+	index := 0
+	options := map[string]interface{}{
+		"folder": remoteFolder,
+	}
+
+	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, filename))
+
+	_, _, err := client.WordsApi.GetParagraphTabStops(ctx, filename, "", int32(index), options)
+
+	if err != nil {
+		t.Error(err)
+	}
+}
+
+func TestInsertParagraphTabStop(t *testing.T) {
+	filename := "ParagraphTabStops.docx"
+	baseDirPath := path.Join("DocumentElements", "Paragraphs")
+	localFilePath := GetLocalPath(baseDirPath, filename)
+	remoteFolder := path.Join(remoteBaseTestDataFolder, baseDirPath)
+	index := 0
+	options := map[string]interface{}{
+		"folder": remoteFolder,
+	}
+
+	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, filename))
+
+	dto := models.TabStopInsert{Alignment: "Left", Leader: "None", Position: 72}
+
+	_, _, err := client.WordsApi.InsertOrUpdateParagraphTabStop(ctx, filename, "", dto, int32(index), options)
+
+	if err != nil {
+		t.Error(err)
+	}
+}
+
+func TestDeleteAllParagraphTabStops(t *testing.T) {
+	filename := "ParagraphTabStops.docx"
+	baseDirPath := path.Join("DocumentElements", "Paragraphs")
+	localFilePath := GetLocalPath(baseDirPath, filename)
+	remoteFolder := path.Join(remoteBaseTestDataFolder, baseDirPath)
+	index := 0
+	options := map[string]interface{}{
+		"folder": remoteFolder,
+	}
+
+	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, filename))
+
+	_, _, err := client.WordsApi.DeleteAllParagraphTabStops(ctx, filename, "", int32(index), options)
+
+	if err != nil {
+		t.Error(err)
+	}
+}
+
+func TestDeleteParagraphTabStop(t *testing.T) {
+	filename := "ParagraphTabStops.docx"
+	baseDirPath := path.Join("DocumentElements", "Paragraphs")
+	localFilePath := GetLocalPath(baseDirPath, filename)
+	remoteFolder := path.Join(remoteBaseTestDataFolder, baseDirPath)
+	index := 0
+	options := map[string]interface{}{
+		"folder": remoteFolder,
+	}
+
+	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, filename))
+
+	_, _, err := client.WordsApi.DeleteParagraphTabStop(ctx, filename, "", 72, int32(index), options)
 
 	if err != nil {
 		t.Error(err)
