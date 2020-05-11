@@ -83,6 +83,8 @@ type ParagraphFormat struct {
 	// Gets or sets the value (in points) that represents the right indent for paragraph.             
 	RightIndent float64 `json:"RightIndent,omitempty"`
 
+	Shading *Shading `json:"Shading,omitempty"`
+
 	// Gets or sets the amount of spacing (in points) after the paragraph.             
 	SpaceAfter float64 `json:"SpaceAfter,omitempty"`
 
