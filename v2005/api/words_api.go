@@ -5673,7 +5673,7 @@ func (a *WordsApiService) DownloadFile(ctx context.Context, path string, localVa
 }
 /* WordsApiService Executes document mail merge operation.
  * @param ctx context.Context for authentication, logging, tracing, etc.
- @param name The document name.
+ @param name The template name.
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "data" (string) Mail merge data
      @param "folder" (string) Original document folder.
@@ -7553,7 +7553,7 @@ func (a *WordsApiService) GetDocumentDrawingObjectsWithoutNodePath(ctx context.C
 }
 /* WordsApiService Reads document field names.
  * @param ctx context.Context for authentication, logging, tracing, etc.
- @param name The document name.
+ @param name The template name.
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "folder" (string) Original document folder.
      @param "storage" (string) Original document storage.
