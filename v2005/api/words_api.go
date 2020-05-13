@@ -281,11 +281,11 @@ func (a *WordsApiService) AppendDocument(ctx context.Context, name string, docum
 	
 	return successPayload, localVarHttpResponse, err
 }
-/* WordsApiService Apply a style to the document node. Supported node types: ParagraphFormat, List, ListLevel, Table.
+/* WordsApiService Apply a style to the document node.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
  @param styleApply Style to apply.
- @param styledNodePath Path to the node of IStyledDocumentElement.
+ @param styledNodePath The path to the node that supports a style. Supported node types: ParagraphFormat, List, ListLevel, Table.
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "folder" (string) Original document folder.
      @param "storage" (string) Original document storage.
@@ -1205,7 +1205,7 @@ func (a *WordsApiService) CopyFolder(ctx context.Context, destPath string, srcPa
 	defer localVarHttpResponse.Body.Close()
 	return localVarHttpResponse, err
 }
-/* WordsApiService Copy and insert a new style to the document, returns an copied style.
+/* WordsApiService Copy and insert a new style to the document, returns a copied style.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
  @param styleCopy Style to copy.
@@ -12610,10 +12610,10 @@ func (a *WordsApiService) GetStyle(ctx context.Context, name string, styleName s
 	
 	return successPayload, localVarHttpResponse, err
 }
-/* WordsApiService Gets a style from the document node. Supported node types: ParagraphFormat, List, ListLevel, Table.
+/* WordsApiService Gets a style from the document node.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
- @param styledNodePath Path to the node of IStyledDocumentElement.
+ @param styledNodePath The path to the node that supports a style. Supported node types: ParagraphFormat, List, ListLevel, Table.
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "folder" (string) Original document folder.
      @param "storage" (string) Original document storage.
@@ -21806,7 +21806,7 @@ func (a *WordsApiService) UpdateSectionPageSetup(ctx context.Context, name strin
 	
 	return successPayload, localVarHttpResponse, err
 }
-/* WordsApiService Updates a style properties, returns an updated style.
+/* WordsApiService Updates style properties, returns an updated style.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
  @param styleUpdate Style properties to update.
