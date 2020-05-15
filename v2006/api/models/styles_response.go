@@ -33,7 +33,8 @@ type StylesResponse struct {
 	// Gets or sets request Id.
 	RequestId string `json:"RequestId,omitempty"`
 
-	Styles *Styles `json:"Styles,omitempty"`
+	// Gets or sets styles which are contained in document.
+	Styles []Style `json:"Styles,omitempty"`
 }
 
 type IStylesResponse interface {
