@@ -27,21 +27,21 @@ package models
 
 
 
-// This response should be returned by the service when handling: GET https://api.aspose.cloud/v4.0/words/Test.doc/styles.
-type StylesResponse struct {
+// Represents an array of styles list.
+type Styles struct {
 
-	// Gets or sets request Id.
-	RequestId string `json:"RequestId,omitempty"`
+	Link *WordsApiLink `json:"link,omitempty"`
 
-	Styles *Styles `json:"Styles,omitempty"`
+	// Gets or sets array of document styles.
+	StyleList []Style `json:"StyleList,omitempty"`
 }
 
-type IStylesResponse interface {
-	IsStylesResponse() bool
+type IStyles interface {
+	IsStyles() bool
 }
-func (StylesResponse) IsStylesResponse() bool {
+func (Styles) IsStyles() bool {
 	return true;
 }
-func (StylesResponse) IsWordsResponse() bool {
+func (Styles) IsLinkElement() bool {
 	return true;
 }
