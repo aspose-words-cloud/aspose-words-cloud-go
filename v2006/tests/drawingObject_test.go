@@ -29,6 +29,7 @@ import (
 	"path"
 	"path/filepath"
 	"testing"
+	"github.com/aspose-words-cloud/aspose-words-cloud-go/v2006/api/models"
 )
 
 func TestDeleteDrawingObject(t *testing.T) {
@@ -238,7 +239,9 @@ func TestInsertDrawingObject(t *testing.T) {
 	if fileErr != nil {
 		t.Error(fileErr)
 	}
-	drawingObject := "{\"Left\": 0}"
+	drawingObject := models.DrawingObjectInsert{
+		Left: 0,
+	}
 	nodePath := "sections/0"
 	options := map[string]interface{}{
 		"folder": remoteFolder,
@@ -263,7 +266,9 @@ func TestInsertDrawingObjectWithoutNodePath(t *testing.T) {
 	if fileErr != nil {
 		t.Error(fileErr)
 	}
-	drawingObject := "{\"Left\": 0}"
+	drawingObject := models.DrawingObjectInsert{
+		Left: 0,
+	}
 	options := map[string]interface{}{
 		"folder": remoteFolder,
 	}
@@ -332,7 +337,9 @@ func TestUpdateDrawingObject(t *testing.T) {
 	}
 	nodePath := "sections/0"
 	index := 0
-	drawingObject := "{\"Left\": 0}"
+	drawingObject := models.DrawingObjectUpdate{
+		Left: 0,
+	}
 	options := map[string]interface{}{
 		"folder": remoteFolder,
 	}
@@ -357,7 +364,9 @@ func TestUpdateDrawingObjectWithoutNodePath(t *testing.T) {
 		t.Error(fileErr)
 	}
 	index := 0
-	drawingObject := "{\"Left\": 0}"
+	drawingObject := models.DrawingObjectUpdate{
+		Left: 0,
+	}
 	options := map[string]interface{}{
 		"folder": remoteFolder,
 	}
