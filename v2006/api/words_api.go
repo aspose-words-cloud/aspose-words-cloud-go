@@ -14008,7 +14008,7 @@ func (a *WordsApiService) InsertComment(ctx context.Context, name string, commen
 /* WordsApiService Adds drawing object to document, returns added  drawing object&#39;s data.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
- @param drawingObject Drawing object parameters
+ @param drawingObject Drawing object parameters.
  @param imageFile File with image
  @param nodePath Path to the node, which contains collection of drawing objects.
  @param optional (nil or map[string]interface{}) with one or more of:
@@ -14020,7 +14020,7 @@ func (a *WordsApiService) InsertComment(ctx context.Context, name string, commen
      @param "revisionAuthor" (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
      @param "revisionDateTime" (string) The date and time to use for revisions.
  @return DrawingObjectResponse*/
-func (a *WordsApiService) InsertDrawingObject(ctx context.Context, name string, drawingObject string, imageFile *os.File, nodePath string, localVarOptionals map[string]interface{}) ( models.DrawingObjectResponse,  *http.Response, error) {
+func (a *WordsApiService) InsertDrawingObject(ctx context.Context, name string, drawingObject models.IDrawingObjectInsert, imageFile *os.File, nodePath string, localVarOptionals map[string]interface{}) ( models.DrawingObjectResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
@@ -14143,7 +14143,7 @@ func (a *WordsApiService) InsertDrawingObject(ctx context.Context, name string, 
 /* WordsApiService Adds drawing object to document, returns added  drawing object&#39;s data.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
- @param drawingObject Drawing object parameters
+ @param drawingObject Drawing object parameters.
  @param imageFile File with image
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "folder" (string) Original document folder.
@@ -14154,7 +14154,7 @@ func (a *WordsApiService) InsertDrawingObject(ctx context.Context, name string, 
      @param "revisionAuthor" (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
      @param "revisionDateTime" (string) The date and time to use for revisions.
  @return DrawingObjectResponse*/
-func (a *WordsApiService) InsertDrawingObjectWithoutNodePath(ctx context.Context, name string, drawingObject string, imageFile *os.File, localVarOptionals map[string]interface{}) ( models.DrawingObjectResponse,  *http.Response, error) {
+func (a *WordsApiService) InsertDrawingObjectWithoutNodePath(ctx context.Context, name string, drawingObject models.IDrawingObjectInsert, imageFile *os.File, localVarOptionals map[string]interface{}) ( models.DrawingObjectResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
@@ -19876,7 +19876,7 @@ func (a *WordsApiService) UpdateComment(ctx context.Context, name string, commen
      @param "revisionAuthor" (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
      @param "revisionDateTime" (string) The date and time to use for revisions.
  @return DrawingObjectResponse*/
-func (a *WordsApiService) UpdateDrawingObject(ctx context.Context, name string, drawingObject string, imageFile *os.File, nodePath string, index int32, localVarOptionals map[string]interface{}) ( models.DrawingObjectResponse,  *http.Response, error) {
+func (a *WordsApiService) UpdateDrawingObject(ctx context.Context, name string, drawingObject models.IDrawingObjectUpdate, imageFile *os.File, nodePath string, index int32, localVarOptionals map[string]interface{}) ( models.DrawingObjectResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
@@ -20012,7 +20012,7 @@ func (a *WordsApiService) UpdateDrawingObject(ctx context.Context, name string, 
      @param "revisionAuthor" (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
      @param "revisionDateTime" (string) The date and time to use for revisions.
  @return DrawingObjectResponse*/
-func (a *WordsApiService) UpdateDrawingObjectWithoutNodePath(ctx context.Context, name string, drawingObject string, imageFile *os.File, index int32, localVarOptionals map[string]interface{}) ( models.DrawingObjectResponse,  *http.Response, error) {
+func (a *WordsApiService) UpdateDrawingObjectWithoutNodePath(ctx context.Context, name string, drawingObject models.IDrawingObjectUpdate, imageFile *os.File, index int32, localVarOptionals map[string]interface{}) ( models.DrawingObjectResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody interface{}
