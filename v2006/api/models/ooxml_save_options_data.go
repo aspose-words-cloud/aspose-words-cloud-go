@@ -63,6 +63,9 @@ type OoxmlSaveOptionsData struct {
 	// Gets or sets specifies the OOXML version for the output document.
 	Compliance string `json:"Compliance,omitempty"`
 
+	// Gets or sets compression level.
+	CompressionLevel string `json:"CompressionLevel,omitempty"`
+
 	// Gets or sets specifies a password to encrypt document using ECMA376 Standard encryption algorithm.
 	Password string `json:"Password,omitempty"`
 
