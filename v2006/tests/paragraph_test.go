@@ -386,7 +386,7 @@ func TestInsertParagraphTabStop(t *testing.T) {
 
 	dto := models.TabStopInsert{Alignment: "Left", Leader: "None", Position: 72}
 
-	_, _, err := client.WordsApi.InsertOrUpdateParagraphTabStop(ctx, filename, "", dto, int32(index), options)
+	_, _, err := client.WordsApi.InsertOrUpdateParagraphTabStop(ctx, filename, dto, "", int32(index), options)
 
 	if err != nil {
 		t.Error(err)
@@ -424,7 +424,7 @@ func TestDeleteParagraphTabStop(t *testing.T) {
 
 	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, filename))
 
-	_, _, err := client.WordsApi.DeleteParagraphTabStop(ctx, filename, "", 72, int32(index), options)
+	_, _, err := client.WordsApi.DeleteParagraphTabStop(ctx, filename, 72, "", int32(index), options)
 
 	if err != nil {
 		t.Error(err)
