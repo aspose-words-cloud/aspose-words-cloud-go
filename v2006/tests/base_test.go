@@ -52,19 +52,23 @@ func GetLocalPath(folderPath string, filename string) string {
 }
 
 func ReadConfiguration(t *testing.T) (cfg *models.Configuration) {
-	_, filename, _, _ := runtime.Caller(0)
-	configFile := filepath.Join(filepath.Dir(filename), "../config.json")
-	_, fileErr := os.Stat(configFile)
-	if os.IsNotExist(fileErr) {
-		configFile = filepath.Join(filepath.Dir(filename), "../../config.json")
-	}
-	configuration, err := models.NewConfiguration(configFile)
+	configuration, err := models.NewConfiguration(GetConfigFilePath())
 
 	if err != nil {
 		t.Error(err)
 	}
 
 	return configuration
+}
+
+func GetConfigFilePath() (path string) {
+	_, filename, _, _ := runtime.Caller(0)
+	configFilePath := filepath.Join(filepath.Dir(filename), "../config.json")
+	_, fileErr := os.Stat(configFilePath)
+	if os.IsNotExist(fileErr) {
+		configFilePath = filepath.Join(filepath.Dir(filename), "../../config.json")
+	}
+	return configFilePath
 }
 
 func PrepareTest(t *testing.T, config *models.Configuration) (apiClient *api.APIClient, ctx context.Context) {
