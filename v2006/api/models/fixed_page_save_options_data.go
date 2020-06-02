@@ -1,92 +1,93 @@
 /*
-* MIT License
-
-* Copyright (c) 2019 Aspose Pty Ltd
-
-* Permission is hereby granted, free of charge, to any person obtaining a copy
-* of this software and associated documentation files (the "Software"), to deal
-* in the Software without restriction, including without limitation the rights
-* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-* copies of the Software, and to permit persons to whom the Software is
-* furnished to do so, subject to the following conditions:
-
-* The above copyright notice and this permission notice shall be included in all
-* copies or substantial portions of the Software.
-
-* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-* OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-* SOFTWARE.
-*/
-
+ * --------------------------------------------------------------------------------
+ * <copyright company="Aspose" file="fixed_page_save_options_data.go">
+ *   Copyright (c) 2020 Aspose.Words for Cloud
+ * </copyright>
+ * <summary>
+ *   Permission is hereby granted, free of charge, to any person obtaining a copy
+ *  of this software and associated documentation files (the "Software"), to deal
+ *  in the Software without restriction, including without limitation the rights
+ *  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ *  copies of the Software, and to permit persons to whom the Software is
+ *  furnished to do so, subject to the following conditions:
+ * 
+ *  The above copyright notice and this permission notice shall be included in all
+ *  copies or substantial portions of the Software.
+ * 
+ *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ *  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ *  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ *  SOFTWARE.
+ * </summary>
+ * --------------------------------------------------------------------------------
+ */
 
 package models
 
-
-
 // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
 type FixedPageSaveOptionsData struct {
+    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
+    Dml3DEffectsRenderingMode string `json:"Dml3DEffectsRenderingMode,omitempty"`
 
-	// Gets or sets format of save.
-	SaveFormat string `json:"SaveFormat,omitempty"`
+    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
+    DmlEffectsRenderingMode string `json:"DmlEffectsRenderingMode,omitempty"`
 
-	// Gets or sets name of destination file.
-	FileName string `json:"FileName,omitempty"`
+    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
+    DmlRenderingMode string `json:"DmlRenderingMode,omitempty"`
 
-	// Gets or sets a value determining how DrawingML shapes are rendered. { Fallback | DrawingML }.
-	DmlRenderingMode string `json:"DmlRenderingMode,omitempty"`
+    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
+    FileName string `json:"FileName,omitempty"`
 
-	// Gets or sets a value determining how DrawingML effects are rendered. { Simplified | None | Fine }.
-	DmlEffectsRenderingMode string `json:"DmlEffectsRenderingMode,omitempty"`
+    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
+    SaveFormat string `json:"SaveFormat,omitempty"`
 
-	// Gets or sets controls zip output or not. Default value is false.
-	ZipOutput bool `json:"ZipOutput,omitempty"`
+    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
+    UpdateFields bool `json:"UpdateFields,omitempty"`
 
-	// Gets or sets a value determining whether the Aspose.Words.Properties.BuiltInDocumentProperties.LastSavedTime property is updated before saving.
-	UpdateLastSavedTimeProperty bool `json:"UpdateLastSavedTimeProperty,omitempty"`
+    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
+    UpdateLastPrintedProperty bool `json:"UpdateLastPrintedProperty,omitempty"`
 
-	// Gets or sets value determining whether content of StructuredDocumentTag is updated before saving.
-	UpdateSdtContent bool `json:"UpdateSdtContent,omitempty"`
+    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
+    UpdateLastSavedTimeProperty bool `json:"UpdateLastSavedTimeProperty,omitempty"`
 
-	// Gets or sets a value determining if fields should be updated before saving the document to a fixed page format. Default value for this property is. true
-	UpdateFields bool `json:"UpdateFields,omitempty"`
+    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
+    UpdateSdtContent bool `json:"UpdateSdtContent,omitempty"`
 
-	// Gets or sets a value determining how 3D effects are rendered.
-	Dml3DEffectsRenderingMode string `json:"Dml3DEffectsRenderingMode,omitempty"`
+    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
+    ZipOutput bool `json:"ZipOutput,omitempty"`
 
-	// Gets or sets a value determining whether the Aspose.Words.Properties.BuiltInDocumentProperties.LastPrinted property is updated before saving.
-	UpdateLastPrintedProperty bool `json:"UpdateLastPrintedProperty,omitempty"`
+    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
+    ColorMode string `json:"ColorMode,omitempty"`
 
-	// Gets or sets a value determining how colors are rendered. { Normal | Grayscale}.
-	ColorMode string `json:"ColorMode,omitempty"`
+    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
+    JpegQuality int32 `json:"JpegQuality,omitempty"`
 
-	// Gets or sets determines the quality of the JPEG images inside PDF document.
-	JpegQuality int32 `json:"JpegQuality,omitempty"`
+    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
+    MetafileRenderingOptions *MetafileRenderingOptionsData `json:"MetafileRenderingOptions,omitempty"`
 
-	MetafileRenderingOptions *MetafileRenderingOptionsData `json:"MetafileRenderingOptions,omitempty"`
+    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
+    NumeralFormat string `json:"NumeralFormat,omitempty"`
 
-	// Gets or sets indicates the symbol set that is used to represent numbers while rendering to fixed page formats.
-	NumeralFormat string `json:"NumeralFormat,omitempty"`
+    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
+    OptimizeOutput bool `json:"OptimizeOutput,omitempty"`
 
-	// Gets or sets flag indicates whether it is required to optimize output of XPS. If this flag is set redundant nested canvases and empty canvases are removed, also neighbor glyphs with the same formatting are concatenated. Note: The accuracy of the content display may be affected if this property is set to true.  Default is false.
-	OptimizeOutput bool `json:"OptimizeOutput,omitempty"`
+    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
+    PageCount int32 `json:"PageCount,omitempty"`
 
-	// Gets or sets determines number of pages to render.
-	PageCount int32 `json:"PageCount,omitempty"`
-
-	// Gets or sets determines 0-based index of the first page to render.
-	PageIndex int32 `json:"PageIndex,omitempty"`
+    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
+    PageIndex int32 `json:"PageIndex,omitempty"`
 }
 
 type IFixedPageSaveOptionsData interface {
-	IsFixedPageSaveOptionsData() bool
+    IsFixedPageSaveOptionsData() bool
 }
 func (FixedPageSaveOptionsData) IsFixedPageSaveOptionsData() bool {
-	return true;
+    return true
 }
+
 func (FixedPageSaveOptionsData) IsSaveOptionsData() bool {
-	return true;
+    return true
 }

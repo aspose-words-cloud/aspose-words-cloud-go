@@ -1,6 +1,6 @@
 /*
  * --------------------------------------------------------------------------------
- * <copyright company="Aspose" file="styles_response.go">
+ * <copyright company="Aspose" file="error.go">
  *   Copyright (c) 2020 Aspose.Words for Cloud
  * </copyright>
  * <summary>
@@ -27,25 +27,25 @@
 
 package models
 
-// This response should be returned by the service when handling:
-// GET https://api.aspose.cloud/v4.0/words/Test.doc/styles.
-type StylesResponse struct {
-    // This response should be returned by the service when handling:
-    // GET https://api.aspose.cloud/v4.0/words/Test.doc/styles.
-    RequestId string `json:"RequestId,omitempty"`
+// Error.
+type Error struct {
+    // Error.
+    Code string `json:"Code,omitempty"`
 
-    // This response should be returned by the service when handling:
-    // GET https://api.aspose.cloud/v4.0/words/Test.doc/styles.
-    Styles []Style `json:"Styles,omitempty"`
+    // Error.
+    Description string `json:"Description,omitempty"`
+
+    // Error.
+    InnerError *ErrorDetails `json:"InnerError,omitempty"`
+
+    // Error.
+    Message string `json:"Message,omitempty"`
 }
 
-type IStylesResponse interface {
-    IsStylesResponse() bool
+type IError interface {
+    IsError() bool
 }
-func (StylesResponse) IsStylesResponse() bool {
+func (Error) IsError() bool {
     return true
 }
 
-func (StylesResponse) IsWordsResponse() bool {
-    return true
-}
