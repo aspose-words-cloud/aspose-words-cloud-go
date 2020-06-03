@@ -24,9 +24,10 @@ node('windows2019') {
                 bat 'git clean -fdx'
 			}
 		}
-		gitlabCommitStatus("tests") {
-			stage('tests') {
-                if (needToBuild) {
+        
+        if (needToBuild) {
+            gitlabCommitStatus("tests") {
+                stage('tests') {
                     withCredentials([usernamePassword(credentialsId: '6839cbe8-39fa-40c0-86ce-90706f0bae5d', passwordVariable: 'WordsAppKey', usernameVariable: 'WordsAppSid')]) {
                         try {
                             bat 'Scripts\\RunTestsInDocker.bat'
@@ -36,8 +37,8 @@ node('windows2019') {
                         }
                     }
                 }
-			}
-		}
+            }
+        }
 	} finally {
 		bat 'docker system prune -f'
 		deleteDir()
