@@ -63,6 +63,9 @@ type OoxmlSaveOptionsData struct {
     Compliance string `json:"Compliance,omitempty"`
 
     // container class for docx/docm/dotx/dotm/flatopc save options.
+    CompressionLevel string `json:"CompressionLevel,omitempty"`
+
+    // container class for docx/docm/dotx/dotm/flatopc save options.
     Password string `json:"Password,omitempty"`
 
     // container class for docx/docm/dotx/dotm/flatopc save options.
