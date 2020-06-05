@@ -84,7 +84,7 @@ Firstly, create an account at [Aspose for Cloud](https://dashboard.aspose.cloud/
 
 From Visual Stuio Code:
 
-	Add "github.com/aspose-words-cloud/aspose-words-cloud-go/v2005/api" and "github.com/aspose-words-cloud/aspose-words-cloud-go/v2005/api/models" in the import section of your code
+	Add "github.com/aspose-words-cloud/aspose-words-cloud-go/v2006/api" and "github.com/aspose-words-cloud/aspose-words-cloud-go/v2006/api/models" in the import section of your code
 
 From the command line:
 
