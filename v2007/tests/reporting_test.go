@@ -31,7 +31,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/aspose-words-cloud/aspose-words-cloud-go/v2007/api/models"
+	"github.com/aspose-words-cloud/aspose-words-cloud-go/v2006/api/models"
 )
 
 func TestBuildReport(t *testing.T) {
@@ -46,7 +46,7 @@ func TestBuildReport(t *testing.T) {
 	}
 
 	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
-	settings := models.ReportEngineSettings{DataSourceType: "Json", ReportBuildOptions: []models.ReportBuildOptions{"AllowMissingMembers", "RemoveEmptyParagraphs"}}
+	settings := models.ReportEngineSettings{DataSourceType: "Json", DataSourceName: "persons"}
 	options := map[string]interface{}{
 		"folder": remoteFolder,
 	}

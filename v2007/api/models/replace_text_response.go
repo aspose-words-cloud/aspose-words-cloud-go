@@ -1,50 +1,51 @@
 /*
-* MIT License
-
-* Copyright (c) 2019 Aspose Pty Ltd
-
-* Permission is hereby granted, free of charge, to any person obtaining a copy
-* of this software and associated documentation files (the "Software"), to deal
-* in the Software without restriction, including without limitation the rights
-* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-* copies of the Software, and to permit persons to whom the Software is
-* furnished to do so, subject to the following conditions:
-
-* The above copyright notice and this permission notice shall be included in all
-* copies or substantial portions of the Software.
-
-* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-* OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-* SOFTWARE.
-*/
-
+ * --------------------------------------------------------------------------------
+ * <copyright company="Aspose" file="replace_text_response.go">
+ *   Copyright (c) 2020 Aspose.Words for Cloud
+ * </copyright>
+ * <summary>
+ *   Permission is hereby granted, free of charge, to any person obtaining a copy
+ *  of this software and associated documentation files (the "Software"), to deal
+ *  in the Software without restriction, including without limitation the rights
+ *  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ *  copies of the Software, and to permit persons to whom the Software is
+ *  furnished to do so, subject to the following conditions:
+ * 
+ *  The above copyright notice and this permission notice shall be included in all
+ *  copies or substantial portions of the Software.
+ * 
+ *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ *  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ *  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ *  SOFTWARE.
+ * </summary>
+ * --------------------------------------------------------------------------------
+ */
 
 package models
 
-
-
-// Response for \"Replace text\" action.
+// Response for "Replace text" action.
 type ReplaceTextResponse struct {
+    // Response for "Replace text" action.
+    RequestId string `json:"RequestId,omitempty"`
 
-	// Gets or sets request Id.
-	RequestId string `json:"RequestId,omitempty"`
+    // Response for "Replace text" action.
+    DocumentLink *FileLink `json:"DocumentLink,omitempty"`
 
-	DocumentLink *FileLink `json:"DocumentLink,omitempty"`
-
-	// Gets or sets number of occurrences of the captured text in the document.
-	Matches int32 `json:"Matches,omitempty"`
+    // Response for "Replace text" action.
+    Matches int32 `json:"Matches,omitempty"`
 }
 
 type IReplaceTextResponse interface {
-	IsReplaceTextResponse() bool
+    IsReplaceTextResponse() bool
 }
 func (ReplaceTextResponse) IsReplaceTextResponse() bool {
-	return true;
+    return true
 }
+
 func (ReplaceTextResponse) IsWordsResponse() bool {
-	return true;
+    return true
 }

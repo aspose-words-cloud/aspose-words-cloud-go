@@ -37,8 +37,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/aspose-words-cloud/aspose-words-cloud-go/v2007/api"
-	"github.com/aspose-words-cloud/aspose-words-cloud-go/v2007/api/models"
+	"github.com/aspose-words-cloud/aspose-words-cloud-go/v2006/api"
+	"github.com/aspose-words-cloud/aspose-words-cloud-go/v2006/api/models"
 )
 
 var remoteBaseTestDataFolder string = "Temp/SdkTests/TestData"

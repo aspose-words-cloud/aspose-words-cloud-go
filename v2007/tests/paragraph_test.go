@@ -28,7 +28,7 @@ import (
 	"path"
 	"testing"
 
-	"github.com/aspose-words-cloud/aspose-words-cloud-go/v2007/api/models"
+	"github.com/aspose-words-cloud/aspose-words-cloud-go/v2006/api/models"
 )
 
 func TestDeleteParagraph(t *testing.T) {
