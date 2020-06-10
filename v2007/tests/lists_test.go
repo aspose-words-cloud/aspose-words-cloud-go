@@ -25,7 +25,7 @@
 package api_test
 
 import (
-	"github.com/aspose-words-cloud/aspose-words-cloud-go/v2006/api/models"
+	"github.com/aspose-words-cloud/aspose-words-cloud-go/v2007/api/models"
 	"path"
     "path/filepath"
 	"testing"
