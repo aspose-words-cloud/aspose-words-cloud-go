@@ -12,5 +12,6 @@
 *.out
 
 # credentials for tests
-/config.json
-/v2003/config.json
+**/config.json
+**/.idea/*
+testReport.xml

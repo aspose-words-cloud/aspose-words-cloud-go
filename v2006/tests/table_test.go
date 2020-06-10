@@ -323,7 +323,7 @@ func TestInsertTable(t *testing.T) {
 
 	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, _, err := client.WordsApi.InsertTable(ctx, remoteName, nodePath, table, options)
+	_, _, err := client.WordsApi.InsertTable(ctx, remoteName, table, nodePath, options)
 
 	if err != nil {
 		t.Error(err)
@@ -343,7 +343,7 @@ func TestInsertTableCell(t *testing.T) {
 
 	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, _, err := client.WordsApi.InsertTableCell(ctx, remoteName, tableRowPath, cell, options)
+	_, _, err := client.WordsApi.InsertTableCell(ctx, remoteName, cell, tableRowPath, options)
 
 	if err != nil {
 		t.Error(err)
@@ -365,7 +365,7 @@ func TestInsertTableRow(t *testing.T) {
 
 	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, _, err := client.WordsApi.InsertTableRow(ctx, remoteName, tablePath, row, options)
+	_, _, err := client.WordsApi.InsertTableRow(ctx, remoteName, row, tablePath, options)
 
 	if err != nil {
 		t.Error(err)
@@ -456,7 +456,7 @@ func TestUpdateTableCellFormat(t *testing.T) {
 
 	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, _, err := client.WordsApi.UpdateTableCellFormat(ctx, remoteName, tableRowPath, int32(index), format, options)
+	_, _, err := client.WordsApi.UpdateTableCellFormat(ctx, remoteName, format, tableRowPath, int32(index), options)
 
 	if err != nil {
 		t.Error(err)
@@ -488,7 +488,7 @@ func TestUpdateTableProperties(t *testing.T) {
 
 	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, _, err := client.WordsApi.UpdateTableProperties(ctx, remoteName, nodePath, int32(index), tableProperties, options)
+	_, _, err := client.WordsApi.UpdateTableProperties(ctx, remoteName, tableProperties, nodePath, int32(index), options)
 
 	if err != nil {
 		t.Error(err)
@@ -518,7 +518,7 @@ func TestUpdateTablePropertiesWithoutNodePath(t *testing.T) {
 	}
 	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, _, err := client.WordsApi.UpdateTablePropertiesWithoutNodePath(ctx, remoteName, int32(index), properties, options)
+	_, _, err := client.WordsApi.UpdateTablePropertiesWithoutNodePath(ctx, remoteName, properties, int32(index), options)
 
 	if err != nil {
 		t.Error(err)
@@ -544,7 +544,7 @@ func TestUpdateTableRowFormat(t *testing.T) {
 
 	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, _, err := client.WordsApi.UpdateTableRowFormat(ctx, remoteName, tablePath, int32(index), format, options)
+	_, _, err := client.WordsApi.UpdateTableRowFormat(ctx, remoteName, format, tablePath, int32(index), options)
 
 	if err != nil {
 		t.Error(err)
