@@ -1,6 +1,6 @@
 /*
  * --------------------------------------------------------------------------------
- * <copyright company="Aspose" file="text_save_options_data.go">
+ * <copyright company="Aspose" file="markdown_save_options_data.go">
  *   Copyright (c) 2020 Aspose.Words for Cloud
  * </copyright>
  * <summary>
@@ -27,67 +27,61 @@
 
 package models
 
-// Container class for text save options.
-type TextSaveOptionsData struct {
-    // Container class for text save options.
+// Container class for markdown save options.
+type MarkdownSaveOptionsData struct {
+    // Container class for markdown save options.
     Dml3DEffectsRenderingMode string `json:"Dml3DEffectsRenderingMode,omitempty"`
 
-    // Container class for text save options.
+    // Container class for markdown save options.
     DmlEffectsRenderingMode string `json:"DmlEffectsRenderingMode,omitempty"`
 
-    // Container class for text save options.
+    // Container class for markdown save options.
     DmlRenderingMode string `json:"DmlRenderingMode,omitempty"`
 
-    // Container class for text save options.
+    // Container class for markdown save options.
     FileName string `json:"FileName,omitempty"`
 
-    // Container class for text save options.
+    // Container class for markdown save options.
     SaveFormat string `json:"SaveFormat,omitempty"`
 
-    // Container class for text save options.
+    // Container class for markdown save options.
     UpdateFields bool `json:"UpdateFields,omitempty"`
 
-    // Container class for text save options.
+    // Container class for markdown save options.
     UpdateLastPrintedProperty bool `json:"UpdateLastPrintedProperty,omitempty"`
 
-    // Container class for text save options.
+    // Container class for markdown save options.
     UpdateLastSavedTimeProperty bool `json:"UpdateLastSavedTimeProperty,omitempty"`
 
-    // Container class for text save options.
+    // Container class for markdown save options.
     UpdateSdtContent bool `json:"UpdateSdtContent,omitempty"`
 
-    // Container class for text save options.
+    // Container class for markdown save options.
     ZipOutput bool `json:"ZipOutput,omitempty"`
 
-    // Container class for text save options.
+    // Container class for markdown save options.
     Encoding string `json:"Encoding,omitempty"`
 
-    // Container class for text save options.
+    // Container class for markdown save options.
     ExportHeadersFootersMode string `json:"ExportHeadersFootersMode,omitempty"`
 
-    // Container class for text save options.
+    // Container class for markdown save options.
     ForcePageBreaks bool `json:"ForcePageBreaks,omitempty"`
 
-    // Container class for text save options.
+    // Container class for markdown save options.
     ParagraphBreak string `json:"ParagraphBreak,omitempty"`
 
-    // Container class for text save options.
-    AddBidiMarks bool `json:"AddBidiMarks,omitempty"`
-
-    // Container class for text save options.
-    PreserveTableLayout bool `json:"PreserveTableLayout,omitempty"`
-
-    // Container class for text save options.
-    SimplifyListLabels bool `json:"SimplifyListLabels,omitempty"`
+    // Container class for markdown save options.
+    TableContentAlignment string `json:"TableContentAlignment,omitempty"`
 }
 
-type ITextSaveOptionsData interface {
-    IsTextSaveOptionsData() bool
+type IMarkdownSaveOptionsData interface {
+    IsMarkdownSaveOptionsData() bool
 }
-func (TextSaveOptionsData) IsTextSaveOptionsData() bool {
+func (MarkdownSaveOptionsData) IsMarkdownSaveOptionsData() bool {
     return true
 }
 
-func (TextSaveOptionsData) IsTxtSaveOptionsBaseData() bool {
+func (MarkdownSaveOptionsData) IsTxtSaveOptionsBaseData() bool {
     return true
 }

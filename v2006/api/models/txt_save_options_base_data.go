@@ -1,6 +1,6 @@
 /*
  * --------------------------------------------------------------------------------
- * <copyright company="Aspose" file="text_save_options_data.go">
+ * <copyright company="Aspose" file="txt_save_options_base_data.go">
  *   Copyright (c) 2020 Aspose.Words for Cloud
  * </copyright>
  * <summary>
@@ -27,67 +27,58 @@
 
 package models
 
-// Container class for text save options.
-type TextSaveOptionsData struct {
-    // Container class for text save options.
+// Base class for save options of text formats.
+type TxtSaveOptionsBaseData struct {
+    // Base class for save options of text formats.
     Dml3DEffectsRenderingMode string `json:"Dml3DEffectsRenderingMode,omitempty"`
 
-    // Container class for text save options.
+    // Base class for save options of text formats.
     DmlEffectsRenderingMode string `json:"DmlEffectsRenderingMode,omitempty"`
 
-    // Container class for text save options.
+    // Base class for save options of text formats.
     DmlRenderingMode string `json:"DmlRenderingMode,omitempty"`
 
-    // Container class for text save options.
+    // Base class for save options of text formats.
     FileName string `json:"FileName,omitempty"`
 
-    // Container class for text save options.
+    // Base class for save options of text formats.
     SaveFormat string `json:"SaveFormat,omitempty"`
 
-    // Container class for text save options.
+    // Base class for save options of text formats.
     UpdateFields bool `json:"UpdateFields,omitempty"`
 
-    // Container class for text save options.
+    // Base class for save options of text formats.
     UpdateLastPrintedProperty bool `json:"UpdateLastPrintedProperty,omitempty"`
 
-    // Container class for text save options.
+    // Base class for save options of text formats.
     UpdateLastSavedTimeProperty bool `json:"UpdateLastSavedTimeProperty,omitempty"`
 
-    // Container class for text save options.
+    // Base class for save options of text formats.
     UpdateSdtContent bool `json:"UpdateSdtContent,omitempty"`
 
-    // Container class for text save options.
+    // Base class for save options of text formats.
     ZipOutput bool `json:"ZipOutput,omitempty"`
 
-    // Container class for text save options.
+    // Base class for save options of text formats.
     Encoding string `json:"Encoding,omitempty"`
 
-    // Container class for text save options.
+    // Base class for save options of text formats.
     ExportHeadersFootersMode string `json:"ExportHeadersFootersMode,omitempty"`
 
-    // Container class for text save options.
+    // Base class for save options of text formats.
     ForcePageBreaks bool `json:"ForcePageBreaks,omitempty"`
 
-    // Container class for text save options.
+    // Base class for save options of text formats.
     ParagraphBreak string `json:"ParagraphBreak,omitempty"`
-
-    // Container class for text save options.
-    AddBidiMarks bool `json:"AddBidiMarks,omitempty"`
-
-    // Container class for text save options.
-    PreserveTableLayout bool `json:"PreserveTableLayout,omitempty"`
-
-    // Container class for text save options.
-    SimplifyListLabels bool `json:"SimplifyListLabels,omitempty"`
 }
 
-type ITextSaveOptionsData interface {
-    IsTextSaveOptionsData() bool
+type ITxtSaveOptionsBaseData interface {
+    IsTxtSaveOptionsBaseData() bool
 }
-func (TextSaveOptionsData) IsTextSaveOptionsData() bool {
+func (TxtSaveOptionsBaseData) IsTxtSaveOptionsBaseData() bool {
     return true
 }
 
-func (TextSaveOptionsData) IsTxtSaveOptionsBaseData() bool {
+func (TxtSaveOptionsBaseData) IsSaveOptionsData() bool {
     return true
 }
