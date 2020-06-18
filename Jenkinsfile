@@ -11,7 +11,7 @@ properties([
 
 def needToBuild = false
 
-node('windows2019') {
+node('win2019') {
 	try {
 		gitlabCommitStatus("checkout") {
 			stage('checkout'){
