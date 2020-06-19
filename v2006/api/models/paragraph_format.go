@@ -51,6 +51,9 @@ type ParagraphFormat struct {
     FirstLineIndent float64 `json:"FirstLineIndent,omitempty"`
 
     // Paragraph format element.
+    IsListItem bool `json:"IsListItem,omitempty"`
+
+    // Paragraph format element.
     KeepTogether bool `json:"KeepTogether,omitempty"`
 
     // Paragraph format element.
@@ -109,12 +112,6 @@ type ParagraphFormat struct {
 
     // Paragraph format element.
     WidowControl bool `json:"WidowControl,omitempty"`
-
-    // Paragraph format element.
-    IsHeading bool `json:"IsHeading,omitempty"`
-
-    // Paragraph format element.
-    IsListItem bool `json:"IsListItem,omitempty"`
 }
 
 type IParagraphFormat interface {
@@ -124,6 +121,6 @@ func (ParagraphFormat) IsParagraphFormat() bool {
     return true
 }
 
-func (ParagraphFormat) IsParagraphFormatBase() bool {
+func (ParagraphFormat) IsLinkElement() bool {
     return true
 }
