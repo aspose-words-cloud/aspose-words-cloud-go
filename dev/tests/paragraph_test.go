@@ -278,7 +278,7 @@ func TestUpdateParagraphFormat(t *testing.T) {
 	remoteName := "TestUpdateParagraphFormat.docx"
 	nodePath := "sections/0"
 	index := 0
-	dto := models.ParagraphFormat{
+	dto := models.ParagraphFormatUpdate{
 		Alignment: "Right",
 	}
 	options := map[string]interface{}{
@@ -288,28 +288,6 @@ func TestUpdateParagraphFormat(t *testing.T) {
 	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
 	_, _, err := client.WordsApi.UpdateParagraphFormat(ctx, remoteName, dto, nodePath, int32(index), options)
-
-	if err != nil {
-		t.Error(err)
-	}
-}
-
-func TestUpdateParagraphFormatWithoutNodePath(t *testing.T) {
-
-	localFilePath := commonTestFile
-	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Paragraphs")
-	remoteName := "TestUpdateParagraphFormat.docx"
-	index := 0
-	dto := models.ParagraphFormat{
-		Alignment: "Right",
-	}
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
-
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
-
-	_, _, err := client.WordsApi.UpdateParagraphFormatWithoutNodePath(ctx, remoteName, dto, int32(index), options)
 
 	if err != nil {
 		t.Error(err)
