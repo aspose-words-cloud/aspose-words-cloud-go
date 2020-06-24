@@ -1,6 +1,6 @@
 /*
  * --------------------------------------------------------------------------------
- * <copyright company="Aspose" file="run_test.go">
+ * <copyright company="Aspose" file="page_setup_test.go">
  *   Copyright (c) 2020 Aspose.Words for Cloud
  * </copyright>
  * <summary>
@@ -25,7 +25,7 @@
  * --------------------------------------------------------------------------------
  */
 
-// Example of how to work with runs.
+// Example of how to work with macros.
 package api_test
 
 import (
@@ -33,69 +33,69 @@ import (
     "github.com/aspose-words-cloud/aspose-words-cloud-go/dev/api/models"
 )
 
-// Test for updating run.
-func Test_Run_UpdateRun(t *testing.T) {
+// Test for getting page settings.
+func Test_PageSetup_GetSectionPageSetup(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
-    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Runs"
-    localFile := "DocumentElements/Runs/Run.doc"
-    remoteFileName := "TestUpdateRun.docx"
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/PageSetup"
+    localFile := "Common/test_multi_pages.docx"
+    remoteFileName := "TestGetSectionPageSetup.docx"
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-    requestRun := models.RunUpdate{
-        Text: "run with text",
-    }
 
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.UpdateRun(ctx, remoteFileName, requestRun, "paragraphs/1", int32(0), options)
+    _, _, err := client.WordsApi.GetSectionPageSetup(ctx, remoteFileName, int32(0), options)
 
     if err != nil {
         t.Error(err)
     }
 }
 
-// Test for adding run.
-func Test_Run_InsertRun(t *testing.T) {
+// Test for updating page settings.
+func Test_PageSetup_UpdateSectionPageSetup(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
-    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Runs"
-    localFile := "DocumentElements/Runs/Run.doc"
-    remoteFileName := "TestInsertRun.docx"
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/PageSetup"
+    localFile := "Common/test_multi_pages.docx"
+    remoteFileName := "TestUpdateSectionPageSetup.docx"
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-    requestRun := models.RunInsert{
-        Text: "run with text",
+    requestPageSetup := models.PageSetup{
+        RtlGutter: true,
+        LeftMargin: 10,
+        Orientation: "Landscape",
+        PaperSize: "A5",
     }
 
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.InsertRun(ctx, remoteFileName, "paragraphs/1", requestRun, options)
+    _, _, err := client.WordsApi.UpdateSectionPageSetup(ctx, remoteFileName, int32(0), requestPageSetup, options)
 
     if err != nil {
         t.Error(err)
     }
 }
 
-// Test for deleting run.
-func Test_Run_DeleteRun(t *testing.T) {
+// Test for page rendering.
+func Test_PageSetup_GetRenderPage(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
-    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Runs"
-    localFile := "DocumentElements/Runs/Run.doc"
-    remoteFileName := "TestDeleteRun.docx"
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/PageSetup"
+    localTextFile := "DocumentElements/Text/SampleWordDocument.docx"
+    remoteFileName := "TestGetRenderPage.docx"
 
-    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localTextFile), remoteDataFolder + "/" + remoteFileName)
 
 
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, err := client.WordsApi.DeleteRun(ctx, remoteFileName, "paragraphs/1", int32(0), options)
+    _, err := client.WordsApi.RenderPage(ctx, remoteFileName, int32(1), "bmp", options)
 
     if err != nil {
         t.Error(err)

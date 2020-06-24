@@ -1,6 +1,6 @@
 /*
  * --------------------------------------------------------------------------------
- * <copyright company="Aspose" file="range_test.go">
+ * <copyright company="Aspose" file="table_border_test.go">
  *   Copyright (c) 2020 Aspose.Words for Cloud
  * </copyright>
  * <summary>
@@ -25,7 +25,7 @@
  * --------------------------------------------------------------------------------
  */
 
-// Example of how to work with ranges.
+// Example of how to work with table borders.
 package api_test
 
 import (
@@ -33,94 +33,116 @@ import (
     "github.com/aspose-words-cloud/aspose-words-cloud-go/dev/api/models"
 )
 
-// Test for getting the text from range.
-func Test_Range_GetRangeText(t *testing.T) {
+// Test for getting borders.
+func Test_TableBorder_GetBorders(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
-    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Range"
-    localFile := "DocumentElements/Range/RangeGet.doc"
-    remoteFileName := "TestGetRangeText.docx"
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Tables"
+    localFile := "DocumentElements/Tables/TablesGet.docx"
+    remoteFileName := "TestGetBorders.docx"
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
 
     options := map[string]interface{}{
-        "rangeEndIdentifier": "id0.0.1",
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetRangeText(ctx, remoteFileName, "id0.0.0", options)
+    _, _, err := client.WordsApi.GetBorders(ctx, remoteFileName, "tables/1/rows/0/cells/0", options)
 
     if err != nil {
         t.Error(err)
     }
 }
 
-// Test for removing the text for range.
-func Test_Range_RemoveRange(t *testing.T) {
+// Test for getting border.
+func Test_TableBorder_GetBorder(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
-    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Range"
-    localFile := "DocumentElements/Range/RangeGet.doc"
-    remoteFileName := "TestRemoveRange.docx"
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Tables"
+    localFile := "DocumentElements/Tables/TablesGet.docx"
+    remoteFileName := "TestGetBorder.docx"
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
 
     options := map[string]interface{}{
-        "rangeEndIdentifier": "id0.0.1",
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.RemoveRange(ctx, remoteFileName, "id0.0.0", options)
+    _, _, err := client.WordsApi.GetBorder(ctx, remoteFileName, "tables/1/rows/0/cells/0", "left", options)
 
     if err != nil {
         t.Error(err)
     }
 }
 
-// Test for saving a range as a new document.
-func Test_Range_SaveAsRange(t *testing.T) {
+// Test for deleting borders.
+func Test_TableBorder_DeleteBorders(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
-    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Range"
-    localFile := "DocumentElements/Range/RangeGet.doc"
-    remoteFileName := "TestSaveAsRange.docx"
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Tables"
+    localFile := "DocumentElements/Tables/TablesGet.docx"
+    remoteFileName := "TestDeleteBorders.docx"
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-    requestDocumentParameters := models.RangeDocument{
-        DocumentName: remoteDataFolder + "/NewDoc.docx",
-    }
 
     options := map[string]interface{}{
-        "rangeEndIdentifier": "id0.0.1",
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.SaveAsRange(ctx, remoteFileName, "id0.0.0", requestDocumentParameters, options)
+    _, _, err := client.WordsApi.DeleteBorders(ctx, remoteFileName, "tables/1/rows/0/cells/0", options)
 
     if err != nil {
         t.Error(err)
     }
 }
 
-// Test for replacing text in range.
-func Test_Range_ReplaceWithText(t *testing.T) {
+// Test for deleting border.
+func Test_TableBorder_DeleteBorder(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
-    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Range"
-    localFile := "DocumentElements/Range/RangeGet.doc"
-    remoteFileName := "TestReplaceWithText.docx"
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Tables"
+    localFile := "DocumentElements/Tables/TablesGet.docx"
+    remoteFileName := "TestDeleteBorder.docx"
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-    requestRangeText := models.ReplaceRange{
-        Text: "Replaced header",
+
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, _, err := client.WordsApi.DeleteBorder(ctx, remoteFileName, "tables/1/rows/0/cells/0", "left", options)
+
+    if err != nil {
+        t.Error(err)
+    }
+}
+
+// Test for updating border.
+func Test_TableBorder_UpdateBorder(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Tables"
+    localFile := "DocumentElements/Tables/TablesGet.docx"
+    remoteFileName := "TestUpdateBorder.docx"
+
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
+
+    requestBorderPropertiesColor := models.XmlColor{
+        Alpha: int32(2),
+    }
+    requestBorderProperties := models.Border{
+        BorderType: "Left",
+        Color: &requestBorderPropertiesColor,
+        DistanceFromText: 6,
+        LineStyle: "DashDotStroker",
+        LineWidth: 2,
+        Shadow: true,
     }
 
     options := map[string]interface{}{
-        "rangeEndIdentifier": "id0.0.1",
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.ReplaceWithText(ctx, remoteFileName, "id0.0.0", requestRangeText, options)
+    _, _, err := client.WordsApi.UpdateBorder(ctx, remoteFileName, requestBorderProperties, "tables/1/rows/0/cells/0", "left", options)
 
     if err != nil {
         t.Error(err)

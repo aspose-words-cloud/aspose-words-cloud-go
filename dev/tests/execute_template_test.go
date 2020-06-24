@@ -1,6 +1,6 @@
 /*
  * --------------------------------------------------------------------------------
- * <copyright company="Aspose" file="hyperlink_test.go">
+ * <copyright company="Aspose" file="execute_template_test.go">
  *   Copyright (c) 2020 Aspose.Words for Cloud
  * </copyright>
  * <summary>
@@ -25,49 +25,50 @@
  * --------------------------------------------------------------------------------
  */
 
-// Example of how to work with hyperlinks.
+// Example of how to perform template execution.
 package api_test
 
 import (
     "testing"
 )
 
-// Test for getting hyperlink by specified index.
-func Test_Hyperlink_GetDocumentHyperlinkByIndex(t *testing.T) {
+// Test for posting execute template.
+func Test_ExecuteTemplate_ExecuteTemplate(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
-    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Hyperlink"
-    localFile := "Common/test_doc.docx"
-    remoteFileName := "TestGetDocumentHyperlinkByIndex.docx"
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentActions/MailMerge"
+    mailMergeFolder := "DocumentActions/MailMerge"
+    localDocumentFile := "TestExecuteTemplate.doc"
+    remoteFileName := "TestExecuteTemplate.docx"
+    localDataFile := ReadFile(t, mailMergeFolder + "/TestExecuteTemplateData.txt")
 
-    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(mailMergeFolder + "/" + localDocumentFile), remoteDataFolder + "/" + remoteFileName)
 
 
     options := map[string]interface{}{
+        "data": localDataFile,
         "folder": remoteDataFolder,
+        "destFileName": baseTestOutPath + "/" + remoteFileName,
     }
-    _, _, err := client.WordsApi.GetDocumentHyperlinkByIndex(ctx, remoteFileName, int32(0), options)
+    _, _, err := client.WordsApi.ExecuteMailMerge(ctx, remoteFileName, options)
 
     if err != nil {
         t.Error(err)
     }
 }
 
-// Test for getting hyperlinks.
-func Test_Hyperlink_GetDocumentHyperlinks(t *testing.T) {
+// Test for execute template online.
+func Test_ExecuteTemplate_ExecuteTemplateOnline(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
-    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Hyperlink"
-    localFile := "Common/test_doc.docx"
-    remoteFileName := "TestGetDocumentHyperlinks.docx"
-
-    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
+    mailMergeFolder := "DocumentActions/MailMerge"
+    localDocumentFile := "SampleMailMergeTemplate.docx"
+    localDataFile := "SampleExecuteTemplateData.txt"
 
 
     options := map[string]interface{}{
-        "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetDocumentHyperlinks(ctx, remoteFileName, options)
+    _, err := client.WordsApi.ExecuteMailMergeOnline(ctx, OpenFile(t, mailMergeFolder + "/" + localDocumentFile), OpenFile(t, mailMergeFolder + "/" + localDataFile), options)
 
     if err != nil {
         t.Error(err)

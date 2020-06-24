@@ -1,6 +1,6 @@
 /*
  * --------------------------------------------------------------------------------
- * <copyright company="Aspose" file="run_test.go">
+ * <copyright company="Aspose" file="document_with_format_test.go">
  *   Copyright (c) 2020 Aspose.Words for Cloud
  * </copyright>
  * <summary>
@@ -25,77 +25,50 @@
  * --------------------------------------------------------------------------------
  */
 
-// Example of how to work with runs.
+// Example of how to get document with different format.
 package api_test
 
 import (
     "testing"
-    "github.com/aspose-words-cloud/aspose-words-cloud-go/dev/api/models"
 )
 
-// Test for updating run.
-func Test_Run_UpdateRun(t *testing.T) {
+// Test for getting document with specified format.
+func Test_DocumentWithFormat_GetDocumentWithFormat(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
-    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Runs"
-    localFile := "DocumentElements/Runs/Run.doc"
-    remoteFileName := "TestUpdateRun.docx"
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentActions/DocumentWithFormat"
+    localFile := "Common/test_multi_pages.docx"
+    remoteFileName := "TestGetDocumentWithFormat.docx"
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-    requestRun := models.RunUpdate{
-        Text: "run with text",
-    }
 
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.UpdateRun(ctx, remoteFileName, requestRun, "paragraphs/1", int32(0), options)
+    _, err := client.WordsApi.GetDocumentWithFormat(ctx, remoteFileName, "text", options)
 
     if err != nil {
         t.Error(err)
     }
 }
 
-// Test for adding run.
-func Test_Run_InsertRun(t *testing.T) {
+// Test for getting document with specified format.
+func Test_DocumentWithFormat_GetDocumentWithFormatAndOutPath(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
-    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Runs"
-    localFile := "DocumentElements/Runs/Run.doc"
-    remoteFileName := "TestInsertRun.docx"
-
-    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
-
-    requestRun := models.RunInsert{
-        Text: "run with text",
-    }
-
-    options := map[string]interface{}{
-        "folder": remoteDataFolder,
-    }
-    _, _, err := client.WordsApi.InsertRun(ctx, remoteFileName, "paragraphs/1", requestRun, options)
-
-    if err != nil {
-        t.Error(err)
-    }
-}
-
-// Test for deleting run.
-func Test_Run_DeleteRun(t *testing.T) {
-    config := ReadConfiguration(t)
-    client, ctx := PrepareTest(t, config)
-    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Runs"
-    localFile := "DocumentElements/Runs/Run.doc"
-    remoteFileName := "TestDeleteRun.docx"
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentActions/DocumentWithFormat"
+    localFile := "Common/test_multi_pages.docx"
+    remoteFileName := "TestGetDocumentWithFormat.docx"
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
 
     options := map[string]interface{}{
         "folder": remoteDataFolder,
+        "outPath": baseTestOutPath + "/TestGetDocumentWithFormatAndOutPath.text",
     }
-    _, err := client.WordsApi.DeleteRun(ctx, remoteFileName, "paragraphs/1", int32(0), options)
+    _, err := client.WordsApi.GetDocumentWithFormat(ctx, remoteFileName, "text", options)
 
     if err != nil {
         t.Error(err)

@@ -1,6 +1,6 @@
 /*
  * --------------------------------------------------------------------------------
- * <copyright company="Aspose" file="run_test.go">
+ * <copyright company="Aspose" file="build_report_test.go">
  *   Copyright (c) 2020 Aspose.Words for Cloud
  * </copyright>
  * <summary>
@@ -25,7 +25,7 @@
  * --------------------------------------------------------------------------------
  */
 
-// Example of how to work with runs.
+// Example of how to perform mail merge.
 package api_test
 
 import (
@@ -33,69 +33,53 @@ import (
     "github.com/aspose-words-cloud/aspose-words-cloud-go/dev/api/models"
 )
 
-// Test for updating run.
-func Test_Run_UpdateRun(t *testing.T) {
+// Test for build report online.
+func Test_BuildReport_BuildReportOnline(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
-    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Runs"
-    localFile := "DocumentElements/Runs/Run.doc"
-    remoteFileName := "TestUpdateRun.docx"
+    reportingFolder := "DocumentActions/Reporting"
+    localDocumentFile := "ReportTemplate.docx"
+    localDataFile := ReadFile(t, reportingFolder + "/ReportData.json")
 
-    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
-
-    requestRun := models.RunUpdate{
-        Text: "run with text",
+    requestReportEngineSettings := models.ReportEngineSettings{
+        DataSourceType: "Json",
+        DataSourceName: "persons",
     }
 
     options := map[string]interface{}{
-        "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.UpdateRun(ctx, remoteFileName, requestRun, "paragraphs/1", int32(0), options)
+    _, err := client.WordsApi.BuildReportOnline(ctx, OpenFile(t, reportingFolder + "/" + localDocumentFile), localDataFile, requestReportEngineSettings, options)
 
     if err != nil {
         t.Error(err)
     }
 }
 
-// Test for adding run.
-func Test_Run_InsertRun(t *testing.T) {
+// Test for build report.
+func Test_BuildReport_BuildReport(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
-    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Runs"
-    localFile := "DocumentElements/Runs/Run.doc"
-    remoteFileName := "TestInsertRun.docx"
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentActions/Reporting"
+    reportingFolder := "DocumentActions/Reporting"
+    localDocumentFile := "ReportTemplate.docx"
+    remoteFileName := "TestBuildReport.docx"
+    localDataFile := ReadFile(t, reportingFolder + "/ReportData.json")
 
-    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(reportingFolder + "/" + localDocumentFile), remoteDataFolder + "/" + remoteFileName)
 
-    requestRun := models.RunInsert{
-        Text: "run with text",
+    requestReportEngineSettingsReportBuildOptions := []string{
+        "AllowMissingMembers",
+        "RemoveEmptyParagraphs",
+    }
+    requestReportEngineSettings := models.ReportEngineSettings{
+        DataSourceType: "Json",
+        ReportBuildOptions: requestReportEngineSettingsReportBuildOptions,
     }
 
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.InsertRun(ctx, remoteFileName, "paragraphs/1", requestRun, options)
-
-    if err != nil {
-        t.Error(err)
-    }
-}
-
-// Test for deleting run.
-func Test_Run_DeleteRun(t *testing.T) {
-    config := ReadConfiguration(t)
-    client, ctx := PrepareTest(t, config)
-    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Runs"
-    localFile := "DocumentElements/Runs/Run.doc"
-    remoteFileName := "TestDeleteRun.docx"
-
-    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
-
-
-    options := map[string]interface{}{
-        "folder": remoteDataFolder,
-    }
-    _, err := client.WordsApi.DeleteRun(ctx, remoteFileName, "paragraphs/1", int32(0), options)
+    _, _, err := client.WordsApi.BuildReport(ctx, remoteFileName, localDataFile, requestReportEngineSettings, options)
 
     if err != nil {
         t.Error(err)

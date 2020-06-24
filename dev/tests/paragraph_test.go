@@ -1,570 +1,738 @@
-//
-// MIT License
+/*
+ * --------------------------------------------------------------------------------
+ * <copyright company="Aspose" file="paragraph_test.go">
+ *   Copyright (c) 2020 Aspose.Words for Cloud
+ * </copyright>
+ * <summary>
+ *   Permission is hereby granted, free of charge, to any person obtaining a copy
+ *  of this software and associated documentation files (the "Software"), to deal
+ *  in the Software without restriction, including without limitation the rights
+ *  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ *  copies of the Software, and to permit persons to whom the Software is
+ *  furnished to do so, subject to the following conditions:
+ * 
+ *  The above copyright notice and this permission notice shall be included in all
+ *  copies or substantial portions of the Software.
+ * 
+ *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ *  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ *  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ *  SOFTWARE.
+ * </summary>
+ * --------------------------------------------------------------------------------
+ */
 
-// Copyright (c) 2019 Aspose Pty Ltd
-
-// Permission is hereby granted, free of charge, to any person obtaining a copy
-// of this software and associated documentation files (the "Software"), to deal
-// in the Software without restriction, including without limitation the rights
-// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-// copies of the Software, and to permit persons to whom the Software is
-// furnished to do so, subject to the following conditions:
-
-// The above copyright notice and this permission notice shall be included in all
-// copies or substantial portions of the Software.
-
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-// SOFTWARE.
-//
-
+// Example of how to work with paragraph.
 package api_test
 
 import (
-	"path"
-	"testing"
-
-	"github.com/aspose-words-cloud/aspose-words-cloud-go/dev/api/models"
+    "testing"
+    "github.com/aspose-words-cloud/aspose-words-cloud-go/dev/api/models"
 )
 
-func TestDeleteParagraph(t *testing.T) {
+// Test for getting paragraph.
+func Test_Paragraph_GetDocumentParagraphByIndex(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Paragraphs"
+    localFile := "Common/test_multi_pages.docx"
+    remoteFileName := "TestGetDocumentParagraphByIndex.docx"
 
-	localFilePath := commonTestFile
-	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Paragraphs")
-	remoteName := "TestDeleteParagraph.docx"
-	nodePath := "sections/0"
-	index := 0
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, err := client.WordsApi.DeleteParagraph(ctx, remoteName, nodePath, int32(index), options)
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, _, err := client.WordsApi.GetParagraph(ctx, remoteFileName, "sections/0", int32(0), options)
 
-	if err != nil {
-		t.Error(err)
-	}
+    if err != nil {
+        t.Error(err)
+    }
 }
 
-func TestDeleteParagraphWithoutNodePath(t *testing.T) {
+// Test for getting paragraph without node path.
+func Test_Paragraph_GetDocumentParagraphByIndexWithoutNodePath(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Paragraphs"
+    localFile := "Common/test_multi_pages.docx"
+    remoteFileName := "TestGetDocumentParagraphByIndexWithoutNodePath.docx"
 
-	localFilePath := commonTestFile
-	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Paragraphs")
-	remoteName := "TestDeleteParagraphWithoutNodePath.docx"
-	index := 0
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, err := client.WordsApi.DeleteParagraphWithoutNodePath(ctx, remoteName, int32(index), options)
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, _, err := client.WordsApi.GetParagraphWithoutNodePath(ctx, remoteFileName, int32(0), options)
 
-	if err != nil {
-		t.Error(err)
-	}
+    if err != nil {
+        t.Error(err)
+    }
 }
 
-func TestGetParagraph(t *testing.T) {
+// Test for getting all paragraphs.
+func Test_Paragraph_GetDocumentParagraphs(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Paragraphs"
+    localFile := "Common/test_multi_pages.docx"
+    remoteFileName := "TestGetDocumentParagraphs.docx"
 
-	localFilePath := commonTestFile
-	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Paragraphs")
-	remoteName := "TestGetParagraph.docx"
-	nodePath := "sections/0"
-	index := 0
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, _, err := client.WordsApi.GetParagraph(ctx, remoteName, nodePath, int32(index), options)
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, _, err := client.WordsApi.GetParagraphs(ctx, remoteFileName, "sections/0", options)
 
-	if err != nil {
-		t.Error(err)
-	}
+    if err != nil {
+        t.Error(err)
+    }
 }
 
-func TestGetParagraphFormat(t *testing.T) {
+// Test for getting all paragraphs without node path.
+func Test_Paragraph_GetDocumentParagraphsWithoutNodePath(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Paragraphs"
+    localFile := "Common/test_multi_pages.docx"
+    remoteFileName := "TestGetDocumentParagraphsWithoutNodePath.docx"
 
-	localFilePath := commonTestFile
-	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Paragraphs")
-	remoteName := "TestGetParagraphFormat.docx"
-	nodePath := "sections/0"
-	index := 0
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, _, err := client.WordsApi.GetParagraphFormat(ctx, remoteName, nodePath, int32(index), options)
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, _, err := client.WordsApi.GetParagraphsWithoutNodePath(ctx, remoteFileName, options)
 
-	if err != nil {
-		t.Error(err)
-	}
+    if err != nil {
+        t.Error(err)
+    }
 }
 
-func TestGetParagraphFormatWithoutNodePath(t *testing.T) {
+// Test for getting paragraph run.
+func Test_Paragraph_GetDocumentParagraphRun(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Paragraphs"
+    localFile := "Common/test_multi_pages.docx"
+    remoteFileName := "TestGetDocumentParagraphRun.docx"
 
-	localFilePath := commonTestFile
-	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Paragraphs")
-	remoteName := "TestGetParagraphFormatWithoutNodePath.docx"
-	index := 0
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, _, err := client.WordsApi.GetParagraphFormatWithoutNodePath(ctx, remoteName, int32(index), options)
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, _, err := client.WordsApi.GetRun(ctx, remoteFileName, "paragraphs/0", int32(0), options)
 
-	if err != nil {
-		t.Error(err)
-	}
+    if err != nil {
+        t.Error(err)
+    }
 }
 
-func TestGetParagraphWithoutNodePath(t *testing.T) {
+// Test for getting paragraph run font.
+func Test_Paragraph_GetDocumentParagraphRunFont(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Paragraphs"
+    localFile := "Common/test_multi_pages.docx"
+    remoteFileName := "TestGetDocumentParagraphRunFont.docx"
 
-	localFilePath := commonTestFile
-	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Paragraphs")
-	remoteName := "TestGetParagraphWithoutNodePath.docx"
-	index := 0
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, _, err := client.WordsApi.GetParagraphWithoutNodePath(ctx, remoteName, int32(index), options)
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, _, err := client.WordsApi.GetRunFont(ctx, remoteFileName, "paragraphs/0", int32(0), options)
 
-	if err != nil {
-		t.Error(err)
-	}
+    if err != nil {
+        t.Error(err)
+    }
 }
 
-func TestGetParagraphs(t *testing.T) {
+// Test for getting paragraph runs.
+func Test_Paragraph_GetParagraphRuns(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Paragraphs"
+    localFile := "Common/test_multi_pages.docx"
+    remoteFileName := "TestGetParagraphRuns.docx"
 
-	localFilePath := commonTestFile
-	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Paragraphs")
-	remoteName := "TestGetParagraphs.docx"
-	nodePath := "sections/0"
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, _, err := client.WordsApi.GetParagraphs(ctx, remoteName, nodePath, options)
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, _, err := client.WordsApi.GetRuns(ctx, remoteFileName, "sections/0/paragraphs/0", options)
 
-	if err != nil {
-		t.Error(err)
-	}
+    if err != nil {
+        t.Error(err)
+    }
 }
 
-func TestGetParagraphsWithoutNodePath(t *testing.T) {
+// Test for updating paragraph run font.
+func Test_Paragraph_UpdateRunFont(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Paragraphs"
+    localFile := "Common/test_multi_pages.docx"
+    remoteFileName := "TestUpdateRunFont.docx"
 
-	localFilePath := commonTestFile
-	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Paragraphs")
-	remoteName := "TestGetParagraphsWithoutNodePath.docx"
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
+    requestFontDto := models.Font{
+        Bold: true,
+    }
 
-	_, _, err := client.WordsApi.GetParagraphsWithoutNodePath(ctx, remoteName, options)
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+        "destFileName": baseTestOutPath + "/" + remoteFileName,
+    }
+    _, _, err := client.WordsApi.UpdateRunFont(ctx, remoteFileName, requestFontDto, "paragraphs/0", int32(0), options)
 
-	if err != nil {
-		t.Error(err)
-	}
+    if err != nil {
+        t.Error(err)
+    }
 }
 
-func TestInsertParagraph(t *testing.T) {
+// Test for adding paragraph.
+func Test_Paragraph_InsertParagraph(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Paragraphs"
+    localFile := "Common/test_multi_pages.docx"
+    remoteFileName := "TestInsertParagraph.docx"
 
-	localFilePath := commonTestFile
-	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Paragraphs")
-	remoteName := "TestInsertParagraph.docx"
-	nodePath := "sections/0"
-	paragraph := models.ParagraphInsert{
-		Text: "This is a new paragraph for your document",
-	}
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
+    requestParagraph := models.ParagraphInsert{
+        Text: "This is a new paragraph for your document",
+    }
 
-	_, _, err := client.WordsApi.InsertParagraph(ctx, remoteName, paragraph, nodePath, options)
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, _, err := client.WordsApi.InsertParagraph(ctx, remoteFileName, requestParagraph, "sections/0", options)
 
-	if err != nil {
-		t.Error(err)
-	}
+    if err != nil {
+        t.Error(err)
+    }
 }
 
-func TestInsertParagraphWithoutNodePath(t *testing.T) {
+// Test for adding paragraph without node path.
+func Test_Paragraph_InsertParagraphWithoutNodePath(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Paragraphs"
+    localFile := "Common/test_multi_pages.docx"
+    remoteFileName := "TestInsertParagraphWithoutNodePath.docx"
 
-	localFilePath := commonTestFile
-	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Paragraphs")
-	remoteName := "TestInsertParagraph.docx"
-	paragraph := models.ParagraphInsert{
-		Text: "This is a new paragraph for your document",
-	}
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
+    requestParagraph := models.ParagraphInsert{
+        Text: "This is a new paragraph for your document",
+    }
 
-	_, _, err := client.WordsApi.InsertParagraphWithoutNodePath(ctx, remoteName, paragraph, options)
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, _, err := client.WordsApi.InsertParagraphWithoutNodePath(ctx, remoteFileName, requestParagraph, options)
 
-	if err != nil {
-		t.Error(err)
-	}
+    if err != nil {
+        t.Error(err)
+    }
 }
 
-func TestRenderParagraph(t *testing.T) {
+// Test for paragraph rendering.
+func Test_Paragraph_RenderParagraph(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Paragraphs"
+    localFile := "Common/test_multi_pages.docx"
+    remoteFileName := "TestRenderParagraph.docx"
 
-	localFilePath := commonTestFile
-	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Paragraphs")
-	remoteName := "TestRenderParagraph.docx"
-	nodePath := "sections/0"
-	format := "png"
-	index := 0
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	output, err := client.WordsApi.RenderParagraph(ctx, remoteName, format, nodePath, int32(index), options)
-	defer output.Body.Close()
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, err := client.WordsApi.RenderParagraph(ctx, remoteFileName, "png", "", int32(0), options)
 
-	if err != nil {
-		t.Error(err)
-	}
+    if err != nil {
+        t.Error(err)
+    }
 }
 
-func TestRenderParagraphWithoutNodePath(t *testing.T) {
+// Test for paragraph rendering without node path.
+func Test_Paragraph_RenderParagraphWithoutNodePath(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Paragraphs"
+    localFile := "Common/test_multi_pages.docx"
+    remoteFileName := "TestRenderParagraphWithoutNodePath.docx"
 
-	localFilePath := commonTestFile
-	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Paragraphs")
-	remoteName := "TestRenderParagraphWithoutNodePath.docx"
-	format := "png"
-	index := 0
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	output, err := client.WordsApi.RenderParagraphWithoutNodePath(ctx, remoteName, format, int32(index), options)
-	defer output.Body.Close()
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, err := client.WordsApi.RenderParagraphWithoutNodePath(ctx, remoteFileName, "png", int32(0), options)
 
-	if err != nil {
-		t.Error(err)
-	}
+    if err != nil {
+        t.Error(err)
+    }
 }
 
-func TestUpdateParagraphFormat(t *testing.T) {
+// Test for getting paragraph format settings.
+func Test_Paragraph_GetParagraphFormat(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Paragraphs"
+    localFile := "Common/test_multi_pages.docx"
+    remoteFileName := "TestGetDocumentParagraphs.docx"
 
-	localFilePath := commonTestFile
-	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Paragraphs")
-	remoteName := "TestUpdateParagraphFormat.docx"
-	nodePath := "sections/0"
-	index := 0
-	dto := models.ParagraphFormatUpdate{
-		Alignment: "Right",
-	}
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, _, err := client.WordsApi.UpdateParagraphFormat(ctx, remoteName, dto, nodePath, int32(index), options)
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, _, err := client.WordsApi.GetParagraphFormat(ctx, remoteFileName, "", int32(0), options)
 
-	if err != nil {
-		t.Error(err)
-	}
+    if err != nil {
+        t.Error(err)
+    }
 }
 
-func TestGetParagraphListFormat(t *testing.T) {
-	filename := "ParagraphGetListFormat.doc"
-	baseDirPath := path.Join("DocumentElements", "ParagraphListFormat")
-	localFilePath := GetLocalPath(baseDirPath, filename)
-	remoteFolder := path.Join(remoteBaseTestDataFolder, baseDirPath)
-	nodePath := ""
-	index := 0
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
+// Test for getting paragraph format settings without node path.
+func Test_Paragraph_GetParagraphFormatWithoutNodePath(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Paragraphs"
+    localFile := "Common/test_multi_pages.docx"
+    remoteFileName := "TestGetDocumentParagraphsWithoutNodePath.docx"
 
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, filename))
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-	_, _, err := client.WordsApi.GetParagraphListFormat(ctx, filename, nodePath, int32(index), options)
 
-	if err != nil {
-		t.Error(err)
-	}
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, _, err := client.WordsApi.GetParagraphFormatWithoutNodePath(ctx, remoteFileName, int32(0), options)
+
+    if err != nil {
+        t.Error(err)
+    }
 }
 
-func TestGetParagraphListFormatWithoutNodePath(t *testing.T) {
-	filename := "ParagraphGetListFormat.doc"
-	baseDirPath := path.Join("DocumentElements", "ParagraphListFormat")
-	localFilePath := GetLocalPath(baseDirPath, filename)
-	remoteFolder := path.Join(remoteBaseTestDataFolder, baseDirPath)
-	index := 0
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
+// Test for updating  paragraph format settings.
+func Test_Paragraph_UpdateParagraphFormat(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Paragraphs"
+    localFile := "Common/test_multi_pages.docx"
+    remoteFileName := "TestGetDocumentParagraphs.docx"
 
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, filename))
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-	_, _, err := client.WordsApi.GetParagraphListFormatWithoutNodePath(ctx, filename, int32(index), options)
+    requestDto := models.ParagraphFormat{
+        Alignment: "Right",
+    }
 
-	if err != nil {
-		t.Error(err)
-	}
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, _, err := client.WordsApi.UpdateParagraphFormat(ctx, remoteFileName, requestDto, "", int32(0), options)
+
+    if err != nil {
+        t.Error(err)
+    }
 }
 
-func TestUpdateParagraphListFormat(t *testing.T) {
-	filename := "ParagraphUpdateListFormat.doc"
-	baseDirPath := path.Join("DocumentElements", "ParagraphListFormat")
-	localFilePath := GetLocalPath(baseDirPath, filename)
-	remoteFolder := path.Join(remoteBaseTestDataFolder, baseDirPath)
-	nodePath := ""
-	index := 0
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
-	dto := models.ListFormatUpdate{ListId: 2}
+// Test for updating  paragraph format settings without node path.
+func Test_Paragraph_UpdateParagraphFormatWithoutNodePath(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Paragraphs"
+    localFile := "Common/test_multi_pages.docx"
+    remoteFileName := "TestGetDocumentParagraphsWithoutNodePath.docx"
 
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, filename))
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-	_, _, err := client.WordsApi.UpdateParagraphListFormat(ctx, filename, dto, nodePath, int32(index), options)
+    requestDto := models.ParagraphFormat{
+        Alignment: "Right",
+    }
 
-	if err != nil {
-		t.Error(err)
-	}
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, _, err := client.WordsApi.UpdateParagraphFormatWithoutNodePath(ctx, remoteFileName, requestDto, int32(0), options)
+
+    if err != nil {
+        t.Error(err)
+    }
 }
 
-func TestUpdateParagraphListFormatWithoutNodePath(t *testing.T) {
-	filename := "ParagraphUpdateListFormat.doc"
-	baseDirPath := path.Join("DocumentElements", "ParagraphListFormat")
-	localFilePath := GetLocalPath(baseDirPath, filename)
-	remoteFolder := path.Join(remoteBaseTestDataFolder, baseDirPath)
-	index := 0
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
-	dto := models.ListFormatUpdate{ListId: 2}
+// Test for deleting  a paragraph.
+func Test_Paragraph_DeleteParagraph(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Paragraphs"
+    localFile := "Common/test_multi_pages.docx"
+    remoteFileName := "TestDeleteParagraph.docx"
 
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, filename))
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-	_, _, err := client.WordsApi.UpdateParagraphListFormatWithoutNodePath(ctx, filename, dto, int32(index), options)
 
-	if err != nil {
-		t.Error(err)
-	}
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, err := client.WordsApi.DeleteParagraph(ctx, remoteFileName, "", int32(0), options)
+
+    if err != nil {
+        t.Error(err)
+    }
 }
 
-func TestDeleteParagraphListFormat(t *testing.T) {
-	filename := "ParagraphDeleteListFormat.doc"
-	baseDirPath := path.Join("DocumentElements", "ParagraphListFormat")
-	localFilePath := GetLocalPath(baseDirPath, filename)
-	remoteFolder := path.Join(remoteBaseTestDataFolder, baseDirPath)
-	nodePath := ""
-	index := 0
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
+// Test for deleting  a paragraph without node path.
+func Test_Paragraph_DeleteParagraphWithoutNodePath(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Paragraphs"
+    localFile := "Common/test_multi_pages.docx"
+    remoteFileName := "TestDeleteParagraphWithoutNodePath.docx"
 
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, filename))
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-	_, _, err := client.WordsApi.DeleteParagraphListFormat(ctx, filename, nodePath, int32(index), options)
 
-	if err != nil {
-		t.Error(err)
-	}
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, err := client.WordsApi.DeleteParagraphWithoutNodePath(ctx, remoteFileName, int32(0), options)
+
+    if err != nil {
+        t.Error(err)
+    }
 }
 
-func TestDeleteParagraphListFormatWithoutNodePath(t *testing.T) {
-	filename := "ParagraphDeleteListFormat.doc"
-	baseDirPath := path.Join("DocumentElements", "ParagraphListFormat")
-	localFilePath := GetLocalPath(baseDirPath, filename)
-	remoteFolder := path.Join(remoteBaseTestDataFolder, baseDirPath)
-	index := 0
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
+// Test for getting paragraph list format.
+func Test_Paragraph_GetParagraphListFormat(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Paragraphs"
+    listFolder := "DocumentElements/ParagraphListFormat"
+    remoteFileName := "TestParagraphGetListFormat.docx"
 
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, filename))
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(listFolder + "/ParagraphGetListFormat.doc"), remoteDataFolder + "/" + remoteFileName)
 
-	_, _, err := client.WordsApi.DeleteParagraphListFormatWithoutNodePath(ctx, filename, int32(index), options)
 
-	if err != nil {
-		t.Error(err)
-	}
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, _, err := client.WordsApi.GetParagraphListFormat(ctx, remoteFileName, "", int32(0), options)
+
+    if err != nil {
+        t.Error(err)
+    }
 }
 
-func TestGetParagraphTabStops(t *testing.T) {
-	filename := "ParagraphTabStops.docx"
-	baseDirPath := path.Join("DocumentElements", "Paragraphs")
-	localFilePath := GetLocalPath(baseDirPath, filename)
-	remoteFolder := path.Join(remoteBaseTestDataFolder, baseDirPath)
-	index := 0
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
+// Test for getting paragraph list format without node path.
+func Test_Paragraph_GetParagraphListFormatWithoutNodePath(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Paragraphs"
+    listFolder := "DocumentElements/ParagraphListFormat"
+    remoteFileName := "TestParagraphGetListFormatWithoutNodePath.docx"
 
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, filename))
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(listFolder + "/ParagraphGetListFormat.doc"), remoteDataFolder + "/" + remoteFileName)
 
-	_, _, err := client.WordsApi.GetParagraphTabStops(ctx, filename, "", int32(index), options)
 
-	if err != nil {
-		t.Error(err)
-	}
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, _, err := client.WordsApi.GetParagraphListFormatWithoutNodePath(ctx, remoteFileName, int32(0), options)
+
+    if err != nil {
+        t.Error(err)
+    }
 }
 
-func TestGetParagraphTabStopsWithoutNodePath(t *testing.T) {
-	filename := "ParagraphTabStops.docx"
-	baseDirPath := path.Join("DocumentElements", "Paragraphs")
-	localFilePath := GetLocalPath(baseDirPath, filename)
-	remoteFolder := path.Join(remoteBaseTestDataFolder, baseDirPath)
-	index := 0
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
+// Test for updating paragraph list format.
+func Test_Paragraph_UpdateParagraphListFormat(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Paragraphs"
+    listFolder := "DocumentElements/ParagraphListFormat"
+    remoteFileName := "TestUpdateParagraphListFormat.docx"
 
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, filename))
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(listFolder + "/ParagraphUpdateListFormat.doc"), remoteDataFolder + "/" + remoteFileName)
 
-	_, _, err := client.WordsApi.GetParagraphTabStopsWithoutNodePath(ctx, filename, int32(index), options)
+    requestDto := models.ListFormatUpdate{
+        ListId: int32(2),
+    }
 
-	if err != nil {
-		t.Error(err)
-	}
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, _, err := client.WordsApi.UpdateParagraphListFormat(ctx, remoteFileName, requestDto, "", int32(0), options)
+
+    if err != nil {
+        t.Error(err)
+    }
 }
 
-func TestInsertParagraphTabStop(t *testing.T) {
-	filename := "ParagraphTabStops.docx"
-	baseDirPath := path.Join("DocumentElements", "Paragraphs")
-	localFilePath := GetLocalPath(baseDirPath, filename)
-	remoteFolder := path.Join(remoteBaseTestDataFolder, baseDirPath)
-	index := 0
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
+// Test for updating paragraph list format without node path.
+func Test_Paragraph_UpdateParagraphListFormatWithoutNodePath(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Paragraphs"
+    listFolder := "DocumentElements/ParagraphListFormat"
+    remoteFileName := "TestUpdateParagraphListFormatWithoutNodePath.docx"
 
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, filename))
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(listFolder + "/ParagraphUpdateListFormat.doc"), remoteDataFolder + "/" + remoteFileName)
 
-	dto := models.TabStopInsert{Alignment: "Left", Leader: "None", Position: 72}
+    requestDto := models.ListFormatUpdate{
+        ListId: int32(2),
+    }
 
-	_, _, err := client.WordsApi.InsertOrUpdateParagraphTabStop(ctx, filename, dto, "", int32(index), options)
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, _, err := client.WordsApi.UpdateParagraphListFormatWithoutNodePath(ctx, remoteFileName, requestDto, int32(0), options)
 
-	if err != nil {
-		t.Error(err)
-	}
+    if err != nil {
+        t.Error(err)
+    }
 }
 
-func TestInsertParagraphTabStopWithoutNodePath(t *testing.T) {
-	filename := "ParagraphTabStops.docx"
-	baseDirPath := path.Join("DocumentElements", "Paragraphs")
-	localFilePath := GetLocalPath(baseDirPath, filename)
-	remoteFolder := path.Join(remoteBaseTestDataFolder, baseDirPath)
-	index := 0
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
+// Test for deleting paragraph list format.
+func Test_Paragraph_DeleteParagraphListFormat(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Paragraphs"
+    listFolder := "DocumentElements/ParagraphListFormat"
+    remoteFileName := "TestDeleteParagraphListFormat.docx"
 
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, filename))
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(listFolder + "/ParagraphDeleteListFormat.doc"), remoteDataFolder + "/" + remoteFileName)
 
-	dto := models.TabStopInsert{Alignment: "Left", Leader: "None", Position: 72}
 
-	_, _, err := client.WordsApi.InsertOrUpdateParagraphTabStopWithoutNodePath(ctx, filename, dto, int32(index), options)
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, _, err := client.WordsApi.DeleteParagraphListFormat(ctx, remoteFileName, "", int32(0), options)
 
-	if err != nil {
-		t.Error(err)
-	}
+    if err != nil {
+        t.Error(err)
+    }
 }
 
-func TestDeleteAllParagraphTabStops(t *testing.T) {
-	filename := "ParagraphTabStops.docx"
-	baseDirPath := path.Join("DocumentElements", "Paragraphs")
-	localFilePath := GetLocalPath(baseDirPath, filename)
-	remoteFolder := path.Join(remoteBaseTestDataFolder, baseDirPath)
-	index := 0
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
+// Test for deleting paragraph list format without node path.
+func Test_Paragraph_DeleteParagraphListFormatWithoutNodePath(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Paragraphs"
+    listFolder := "DocumentElements/ParagraphListFormat"
+    remoteFileName := "TestDeleteParagraphListFormatWithoutNodePath.docx"
 
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, filename))
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(listFolder + "/ParagraphDeleteListFormat.doc"), remoteDataFolder + "/" + remoteFileName)
 
-	_, _, err := client.WordsApi.DeleteAllParagraphTabStops(ctx, filename, "", int32(index), options)
 
-	if err != nil {
-		t.Error(err)
-	}
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, _, err := client.WordsApi.DeleteParagraphListFormatWithoutNodePath(ctx, remoteFileName, int32(0), options)
+
+    if err != nil {
+        t.Error(err)
+    }
 }
 
-func TestDeleteAllParagraphTabStopsWithoutNodePath(t *testing.T) {
-	filename := "ParagraphTabStops.docx"
-	baseDirPath := path.Join("DocumentElements", "Paragraphs")
-	localFilePath := GetLocalPath(baseDirPath, filename)
-	remoteFolder := path.Join(remoteBaseTestDataFolder, baseDirPath)
-	index := 0
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
+// Test for getting paragraph tab stops.
+func Test_Paragraph_GetParagraphTabStops(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Paragraphs"
+    tabStopFolder := "DocumentElements/Paragraphs"
+    remoteFileName := "TestGetParagraphTabStops.docx"
 
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, filename))
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(tabStopFolder + "/ParagraphTabStops.docx"), remoteDataFolder + "/" + remoteFileName)
 
-	_, _, err := client.WordsApi.DeleteAllParagraphTabStopsWithoutNodePath(ctx, filename, int32(index), options)
 
-	if err != nil {
-		t.Error(err)
-	}
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, _, err := client.WordsApi.GetParagraphTabStops(ctx, remoteFileName, "", int32(0), options)
+
+    if err != nil {
+        t.Error(err)
+    }
 }
 
-func TestDeleteParagraphTabStop(t *testing.T) {
-	filename := "ParagraphTabStops.docx"
-	baseDirPath := path.Join("DocumentElements", "Paragraphs")
-	localFilePath := GetLocalPath(baseDirPath, filename)
-	remoteFolder := path.Join(remoteBaseTestDataFolder, baseDirPath)
-	index := 0
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
+// Test for getting paragraph tab stops without node path.
+func Test_Paragraph_GetParagraphTabStopsWithoutNodePath(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Paragraphs"
+    tabStopFolder := "DocumentElements/Paragraphs"
+    remoteFileName := "TestGetParagraphTabStopsWithoutNodePath.docx"
 
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, filename))
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(tabStopFolder + "/ParagraphTabStops.docx"), remoteDataFolder + "/" + remoteFileName)
 
-	_, _, err := client.WordsApi.DeleteParagraphTabStop(ctx, filename, 72, "", int32(index), options)
 
-	if err != nil {
-		t.Error(err)
-	}
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, _, err := client.WordsApi.GetParagraphTabStopsWithoutNodePath(ctx, remoteFileName, int32(0), options)
+
+    if err != nil {
+        t.Error(err)
+    }
 }
 
-func TestDeleteParagraphTabStopWithoutNodePath(t *testing.T) {
-	filename := "ParagraphTabStops.docx"
-	baseDirPath := path.Join("DocumentElements", "Paragraphs")
-	localFilePath := GetLocalPath(baseDirPath, filename)
-	remoteFolder := path.Join(remoteBaseTestDataFolder, baseDirPath)
-	index := 0
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
+// Test for inserting paragraph tab stop.
+func Test_Paragraph_InsertParagraphTabStops(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Paragraphs"
+    tabStopFolder := "DocumentElements/Paragraphs"
+    remoteFileName := "TestInsertOrUpdateParagraphTabStop.docx"
 
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, filename))
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(tabStopFolder + "/ParagraphTabStops.docx"), remoteDataFolder + "/" + remoteFileName)
 
-	_, _, err := client.WordsApi.DeleteParagraphTabStopWithoutNodePath(ctx, filename, 72, int32(index), options)
+    requestDto := models.TabStopInsert{
+        Alignment: "Left",
+        Leader: "None",
+        Position: 72,
+    }
 
-	if err != nil {
-		t.Error(err)
-	}
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, _, err := client.WordsApi.InsertOrUpdateParagraphTabStop(ctx, remoteFileName, requestDto, "", int32(0), options)
+
+    if err != nil {
+        t.Error(err)
+    }
+}
+
+// Test for inserting paragraph tab stop without node path.
+func Test_Paragraph_InsertParagraphTabStopsWithoutNodePath(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Paragraphs"
+    tabStopFolder := "DocumentElements/Paragraphs"
+    remoteFileName := "TestInsertOrUpdateParagraphTabStopWithoutNodePath.docx"
+
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(tabStopFolder + "/ParagraphTabStops.docx"), remoteDataFolder + "/" + remoteFileName)
+
+    requestDto := models.TabStopInsert{
+        Alignment: "Left",
+        Leader: "None",
+        Position: 72,
+    }
+
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, _, err := client.WordsApi.InsertOrUpdateParagraphTabStopWithoutNodePath(ctx, remoteFileName, requestDto, int32(0), options)
+
+    if err != nil {
+        t.Error(err)
+    }
+}
+
+// Test for deleting all paragraph tab stops.
+func Test_Paragraph_DeleteAllParagraphTabStops(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Paragraphs"
+    tabStopFolder := "DocumentElements/Paragraphs"
+    remoteFileName := "TestDeleteAllParagraphTabStops.docx"
+
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(tabStopFolder + "/ParagraphTabStops.docx"), remoteDataFolder + "/" + remoteFileName)
+
+
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, _, err := client.WordsApi.DeleteAllParagraphTabStops(ctx, remoteFileName, "", int32(0), options)
+
+    if err != nil {
+        t.Error(err)
+    }
+}
+
+// Test for deleting all paragraph tab stops without node path.
+func Test_Paragraph_DeleteAllParagraphTabStopsWithoutNodePath(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Paragraphs"
+    tabStopFolder := "DocumentElements/Paragraphs"
+    remoteFileName := "TestDeleteAllParagraphTabStopsWithoutNodePath.docx"
+
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(tabStopFolder + "/ParagraphTabStops.docx"), remoteDataFolder + "/" + remoteFileName)
+
+
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, _, err := client.WordsApi.DeleteAllParagraphTabStopsWithoutNodePath(ctx, remoteFileName, int32(0), options)
+
+    if err != nil {
+        t.Error(err)
+    }
+}
+
+// Test for deleting a tab stops.
+func Test_Paragraph_DeleteParagraphTabStop(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Paragraphs"
+    tabStopFolder := "DocumentElements/Paragraphs"
+    remoteFileName := "TestDeleteParagraphTabStop.docx"
+
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(tabStopFolder + "/ParagraphTabStops.docx"), remoteDataFolder + "/" + remoteFileName)
+
+
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, _, err := client.WordsApi.DeleteParagraphTabStop(ctx, remoteFileName, 72, "", int32(0), options)
+
+    if err != nil {
+        t.Error(err)
+    }
+}
+
+// Test for deleting a tab stops without node path.
+func Test_Paragraph_DeleteParagraphTabStopWithoutNodePath(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Paragraphs"
+    tabStopFolder := "DocumentElements/Paragraphs"
+    remoteFileName := "TestDeleteParagraphTabStopWithoutNodePath.docx"
+
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(tabStopFolder + "/ParagraphTabStops.docx"), remoteDataFolder + "/" + remoteFileName)
+
+
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, _, err := client.WordsApi.DeleteParagraphTabStopWithoutNodePath(ctx, remoteFileName, 72, int32(0), options)
+
+    if err != nil {
+        t.Error(err)
+    }
 }

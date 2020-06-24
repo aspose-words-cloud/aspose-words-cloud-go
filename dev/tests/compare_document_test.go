@@ -1,6 +1,6 @@
 /*
  * --------------------------------------------------------------------------------
- * <copyright company="Aspose" file="hyperlink_test.go">
+ * <copyright company="Aspose" file="compare_document_test.go">
  *   Copyright (c) 2020 Aspose.Words for Cloud
  * </copyright>
  * <summary>
@@ -25,49 +25,39 @@
  * --------------------------------------------------------------------------------
  */
 
-// Example of how to work with hyperlinks.
+// Example of document comparison.
 package api_test
 
 import (
     "testing"
+    "github.com/aspose-words-cloud/aspose-words-cloud-go/dev/api/models"
 )
 
-// Test for getting hyperlink by specified index.
-func Test_Hyperlink_GetDocumentHyperlinkByIndex(t *testing.T) {
+// Test for document comparison.
+func Test_CompareDocument_CompareDocument(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
-    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Hyperlink"
-    localFile := "Common/test_doc.docx"
-    remoteFileName := "TestGetDocumentHyperlinkByIndex.docx"
+    remoteFolder := remoteBaseTestDataFolder + "/DocumentActions/CompareDocument"
+    localFolder := "DocumentActions/CompareDocument"
+    localName1 := "compareTestDoc1.doc"
+    localName2 := "compareTestDoc2.doc"
+    remoteName1 := "TestCompareDocument1.doc"
+    remoteName2 := "TestCompareDocument2.doc"
 
-    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFolder + "/" + localName1), remoteFolder + "/" + remoteName1)
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFolder + "/" + localName2), remoteFolder + "/" + remoteName2)
 
+    requestCompareData := models.CompareData{
+        Author: "author",
+        ComparingWithDocument: remoteFolder + "/" + remoteName2,
+        DateTime: CreateTime(2015, 10, 26, 0, 0, 0),
+    }
 
     options := map[string]interface{}{
-        "folder": remoteDataFolder,
+        "folder": remoteFolder,
+        "destFileName": baseTestOutPath + "/TestCompareDocumentOut.doc",
     }
-    _, _, err := client.WordsApi.GetDocumentHyperlinkByIndex(ctx, remoteFileName, int32(0), options)
-
-    if err != nil {
-        t.Error(err)
-    }
-}
-
-// Test for getting hyperlinks.
-func Test_Hyperlink_GetDocumentHyperlinks(t *testing.T) {
-    config := ReadConfiguration(t)
-    client, ctx := PrepareTest(t, config)
-    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Hyperlink"
-    localFile := "Common/test_doc.docx"
-    remoteFileName := "TestGetDocumentHyperlinks.docx"
-
-    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
-
-
-    options := map[string]interface{}{
-        "folder": remoteDataFolder,
-    }
-    _, _, err := client.WordsApi.GetDocumentHyperlinks(ctx, remoteFileName, options)
+    _, _, err := client.WordsApi.CompareDocument(ctx, remoteName1, requestCompareData, options)
 
     if err != nil {
         t.Error(err)

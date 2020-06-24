@@ -1,6 +1,6 @@
 /*
  * --------------------------------------------------------------------------------
- * <copyright company="Aspose" file="hyperlink_test.go">
+ * <copyright company="Aspose" file="load_web_document_test.go">
  *   Copyright (c) 2020 Aspose.Words for Cloud
  * </copyright>
  * <summary>
@@ -25,49 +25,34 @@
  * --------------------------------------------------------------------------------
  */
 
-// Example of how to work with hyperlinks.
+// Example of how to load web document.
 package api_test
 
 import (
     "testing"
+    "github.com/aspose-words-cloud/aspose-words-cloud-go/dev/api/models"
 )
 
-// Test for getting hyperlink by specified index.
-func Test_Hyperlink_GetDocumentHyperlinkByIndex(t *testing.T) {
+// Test for loading web document.
+func Test_LoadWebDocument_LoadWebDocument(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
-    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Hyperlink"
-    localFile := "Common/test_doc.docx"
-    remoteFileName := "TestGetDocumentHyperlinkByIndex.docx"
-
-    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
-
+    requestDataSaveOptions := models.SaveOptionsData{
+        FileName: "google.doc",
+        SaveFormat: "doc",
+        DmlEffectsRenderingMode: "1",
+        DmlRenderingMode: "1",
+        UpdateSdtContent: false,
+        ZipOutput: false,
+    }
+    requestData := models.LoadWebDocumentData{
+        LoadingDocumentUrl: "http://google.com",
+        SaveOptions: &requestDataSaveOptions,
+    }
 
     options := map[string]interface{}{
-        "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetDocumentHyperlinkByIndex(ctx, remoteFileName, int32(0), options)
-
-    if err != nil {
-        t.Error(err)
-    }
-}
-
-// Test for getting hyperlinks.
-func Test_Hyperlink_GetDocumentHyperlinks(t *testing.T) {
-    config := ReadConfiguration(t)
-    client, ctx := PrepareTest(t, config)
-    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Hyperlink"
-    localFile := "Common/test_doc.docx"
-    remoteFileName := "TestGetDocumentHyperlinks.docx"
-
-    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
-
-
-    options := map[string]interface{}{
-        "folder": remoteDataFolder,
-    }
-    _, _, err := client.WordsApi.GetDocumentHyperlinks(ctx, remoteFileName, options)
+    _, _, err := client.WordsApi.LoadWebDocument(ctx, requestData, options)
 
     if err != nil {
         t.Error(err)
