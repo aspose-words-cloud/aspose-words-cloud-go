@@ -1,6 +1,6 @@
 /*
  * --------------------------------------------------------------------------------
- * <copyright company="Aspose" file="hyperlink_test.go">
+ * <copyright company="Aspose" file="document_statistics_test.go">
  *   Copyright (c) 2020 Aspose.Words for Cloud
  * </copyright>
  * <summary>
@@ -25,20 +25,20 @@
  * --------------------------------------------------------------------------------
  */
 
-// Example of how to work with hyperlinks.
+// Example of how to get document statistics.
 package api_test
 
 import (
     "testing"
 )
 
-// Test for getting hyperlink by specified index.
-func Test_Hyperlink_GetDocumentHyperlinkByIndex(t *testing.T) {
+// Test for document classification.
+func Test_DocumentStatistics_GetDocumentStatistics(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
-    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Hyperlink"
-    localFile := "Common/test_doc.docx"
-    remoteFileName := "TestGetDocumentHyperlinkByIndex.docx"
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentActions/Statistics"
+    localFile := "Common/test_multi_pages.docx"
+    remoteFileName := "TestGetDocumentStatistics.docx"
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
@@ -46,28 +46,7 @@ func Test_Hyperlink_GetDocumentHyperlinkByIndex(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetDocumentHyperlinkByIndex(ctx, remoteFileName, int32(0), options)
-
-    if err != nil {
-        t.Error(err)
-    }
-}
-
-// Test for getting hyperlinks.
-func Test_Hyperlink_GetDocumentHyperlinks(t *testing.T) {
-    config := ReadConfiguration(t)
-    client, ctx := PrepareTest(t, config)
-    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Hyperlink"
-    localFile := "Common/test_doc.docx"
-    remoteFileName := "TestGetDocumentHyperlinks.docx"
-
-    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
-
-
-    options := map[string]interface{}{
-        "folder": remoteDataFolder,
-    }
-    _, _, err := client.WordsApi.GetDocumentHyperlinks(ctx, remoteFileName, options)
+    _, _, err := client.WordsApi.GetDocumentStatistics(ctx, remoteFileName, options)
 
     if err != nil {
         t.Error(err)

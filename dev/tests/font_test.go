@@ -1,6 +1,6 @@
 /*
  * --------------------------------------------------------------------------------
- * <copyright company="Aspose" file="hyperlink_test.go">
+ * <copyright company="Aspose" file="font_test.go">
  *   Copyright (c) 2020 Aspose.Words for Cloud
  * </copyright>
  * <summary>
@@ -25,49 +25,33 @@
  * --------------------------------------------------------------------------------
  */
 
-// Example of how to work with hyperlinks.
+// Example of how to work with font.
 package api_test
 
 import (
     "testing"
 )
 
-// Test for getting hyperlink by specified index.
-func Test_Hyperlink_GetDocumentHyperlinkByIndex(t *testing.T) {
+// Test for reseting cache.
+func Test_Font_ResetCache(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
-    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Hyperlink"
-    localFile := "Common/test_doc.docx"
-    remoteFileName := "TestGetDocumentHyperlinkByIndex.docx"
 
-    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
-
-
-    options := map[string]interface{}{
-        "folder": remoteDataFolder,
-    }
-    _, _, err := client.WordsApi.GetDocumentHyperlinkByIndex(ctx, remoteFileName, int32(0), options)
+    _, err := client.WordsApi.ResetCache(ctx)
 
     if err != nil {
         t.Error(err)
     }
 }
 
-// Test for getting hyperlinks.
-func Test_Hyperlink_GetDocumentHyperlinks(t *testing.T) {
+// Test for GetAvailableFonts resource.
+func Test_Font_GetAvailableFonts(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
-    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Hyperlink"
-    localFile := "Common/test_doc.docx"
-    remoteFileName := "TestGetDocumentHyperlinks.docx"
-
-    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
-
 
     options := map[string]interface{}{
-        "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetDocumentHyperlinks(ctx, remoteFileName, options)
+    _, _, err := client.WordsApi.GetAvailableFonts(ctx, options)
 
     if err != nil {
         t.Error(err)

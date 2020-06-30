@@ -1,6 +1,6 @@
 /*
  * --------------------------------------------------------------------------------
- * <copyright company="Aspose" file="run_test.go">
+ * <copyright company="Aspose" file="document_properties_test.go">
  *   Copyright (c) 2020 Aspose.Words for Cloud
  * </copyright>
  * <summary>
@@ -25,7 +25,7 @@
  * --------------------------------------------------------------------------------
  */
 
-// Example of how to work with runs.
+// Example of how to get document properties.
 package api_test
 
 import (
@@ -33,69 +33,89 @@ import (
     "github.com/aspose-words-cloud/aspose-words-cloud-go/dev/api/models"
 )
 
-// Test for updating run.
-func Test_Run_UpdateRun(t *testing.T) {
+// Test for getting document properties.
+func Test_DocumentProperties_GetDocumentProperties(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
-    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Runs"
-    localFile := "DocumentElements/Runs/Run.doc"
-    remoteFileName := "TestUpdateRun.docx"
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/DocumentProperties"
+    localFile := "Common/test_multi_pages.docx"
+    remoteFileName := "TestGetDocumentProperties.docx"
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-    requestRun := models.RunUpdate{
-        Text: "run with text",
-    }
 
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.UpdateRun(ctx, remoteFileName, requestRun, "paragraphs/1", int32(0), options)
+    _, _, err := client.WordsApi.GetDocumentProperties(ctx, remoteFileName, options)
 
     if err != nil {
         t.Error(err)
     }
 }
 
-// Test for adding run.
-func Test_Run_InsertRun(t *testing.T) {
+// A test for GetDocumentProperty.
+func Test_DocumentProperties_GetDocumentProperty(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
-    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Runs"
-    localFile := "DocumentElements/Runs/Run.doc"
-    remoteFileName := "TestInsertRun.docx"
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/DocumentProperties"
+    localFile := "Common/test_multi_pages.docx"
+    remoteFileName := "TestGetDocumentProperty.docx"
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-    requestRun := models.RunInsert{
-        Text: "run with text",
-    }
 
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.InsertRun(ctx, remoteFileName, "paragraphs/1", requestRun, options)
+    _, _, err := client.WordsApi.GetDocumentProperty(ctx, remoteFileName, "Author", options)
 
     if err != nil {
         t.Error(err)
     }
 }
 
-// Test for deleting run.
-func Test_Run_DeleteRun(t *testing.T) {
+// Test for deleting document property.
+func Test_DocumentProperties_DeleteDocumentProperty(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
-    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Runs"
-    localFile := "DocumentElements/Runs/Run.doc"
-    remoteFileName := "TestDeleteRun.docx"
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/DocumentProperties"
+    localFile := "Common/test_multi_pages.docx"
+    remoteFileName := "TestDeleteDocumentProperty.docx"
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
 
     options := map[string]interface{}{
         "folder": remoteDataFolder,
+        "destFileName": baseTestOutPath + "/" + remoteFileName,
     }
-    _, err := client.WordsApi.DeleteRun(ctx, remoteFileName, "paragraphs/1", int32(0), options)
+    _, err := client.WordsApi.DeleteDocumentProperty(ctx, remoteFileName, "testProp", options)
+
+    if err != nil {
+        t.Error(err)
+    }
+}
+
+// Test for updating document property.
+func Test_DocumentProperties_UpdateDocumentProperty(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/DocumentProperties"
+    localFile := "Common/test_multi_pages.docx"
+    remoteFileName := "TestUpdateDocumentProperty.docx"
+
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
+
+    requestProperty := models.DocumentPropertyCreateOrUpdate{
+        Value: "Imran Anwar",
+    }
+
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+        "destFileName": baseTestOutPath + "/" + remoteFileName,
+    }
+    _, _, err := client.WordsApi.CreateOrUpdateDocumentProperty(ctx, remoteFileName, "AsposeAuthor", requestProperty, options)
 
     if err != nil {
         t.Error(err)

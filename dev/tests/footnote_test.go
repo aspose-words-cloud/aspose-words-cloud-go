@@ -1,238 +1,258 @@
-//
-// MIT License
+/*
+ * --------------------------------------------------------------------------------
+ * <copyright company="Aspose" file="footnote_test.go">
+ *   Copyright (c) 2020 Aspose.Words for Cloud
+ * </copyright>
+ * <summary>
+ *   Permission is hereby granted, free of charge, to any person obtaining a copy
+ *  of this software and associated documentation files (the "Software"), to deal
+ *  in the Software without restriction, including without limitation the rights
+ *  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ *  copies of the Software, and to permit persons to whom the Software is
+ *  furnished to do so, subject to the following conditions:
+ * 
+ *  The above copyright notice and this permission notice shall be included in all
+ *  copies or substantial portions of the Software.
+ * 
+ *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ *  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ *  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ *  SOFTWARE.
+ * </summary>
+ * --------------------------------------------------------------------------------
+ */
 
-// Copyright (c) 2019 Aspose Pty Ltd
-
-// Permission is hereby granted, free of charge, to any person obtaining a copy
-// of this software and associated documentation files (the "Software"), to deal
-// in the Software without restriction, including without limitation the rights
-// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-// copies of the Software, and to permit persons to whom the Software is
-// furnished to do so, subject to the following conditions:
-
-// The above copyright notice and this permission notice shall be included in all
-// copies or substantial portions of the Software.
-
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-// SOFTWARE.
-//
-
+// Example of how to work with footnotes.
 package api_test
 
 import (
-	"path"
-	"path/filepath"
-	"testing"
-
-	"github.com/aspose-words-cloud/aspose-words-cloud-go/dev/api/models"
+    "testing"
+    "github.com/aspose-words-cloud/aspose-words-cloud-go/dev/api/models"
 )
 
-func TestDeleteFootnote(t *testing.T) {
+// Test for adding footnote.
+func Test_Footnote_InsertFootnote(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Footnotes"
+    footnoteFolder := "DocumentElements/Footnotes"
+    remoteFileName := "TestInsertFootnote.docx"
 
-	localFilePath := GetLocalPath(filepath.Join("DocumentElements", "Footnotes"), "Footnote.doc")
-	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Footnotes")
-	remoteName := "TestDeleteFootnote.docx"
-	nodePath := "sections/0"
-	index := 0
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(footnoteFolder + "/Footnote.doc"), remoteDataFolder + "/" + remoteFileName)
 
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
+    requestFootnoteDto := models.FootnoteInsert{
+        FootnoteType: "Endnote",
+        Text: "test endnote",
+    }
 
-	_, err := client.WordsApi.DeleteFootnote(ctx, remoteName, nodePath, int32(index), options)
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, _, err := client.WordsApi.InsertFootnote(ctx, remoteFileName, requestFootnoteDto, "", options)
 
-	if err != nil {
-		t.Error(err)
-	}
+    if err != nil {
+        t.Error(err)
+    }
 }
 
-func TestDeleteFootnoteWithoutNodePath(t *testing.T) {
+// Test for adding footnote without node path.
+func Test_Footnote_InsertFootnoteWithoutNodePath(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Footnotes"
+    footnoteFolder := "DocumentElements/Footnotes"
+    remoteFileName := "TestInsertFootnoteWithoutNodePath.docx"
 
-	localFilePath := GetLocalPath(filepath.Join("DocumentElements", "Footnotes"), "Footnote.doc")
-	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Footnotes")
-	remoteName := "TestDeleteFootnoteWithoutNodePath.docx"
-	index := 0
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(footnoteFolder + "/Footnote.doc"), remoteDataFolder + "/" + remoteFileName)
 
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
+    requestFootnoteDto := models.FootnoteInsert{
+        FootnoteType: "Endnote",
+        Text: "test endnote",
+    }
 
-	_, err := client.WordsApi.DeleteFootnoteWithoutNodePath(ctx, remoteName, int32(index), options)
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, _, err := client.WordsApi.InsertFootnoteWithoutNodePath(ctx, remoteFileName, requestFootnoteDto, options)
 
-	if err != nil {
-		t.Error(err)
-	}
+    if err != nil {
+        t.Error(err)
+    }
 }
 
-func TestGetFootnote(t *testing.T) {
+// Test for deleting footnote.
+func Test_Footnote_DeleteFootnote(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Footnotes"
+    footnoteFolder := "DocumentElements/Footnotes"
+    remoteFileName := "TestDeleteFootnote.docx"
 
-	localFilePath := GetLocalPath(filepath.Join("DocumentElements", "Footnotes"), "Footnote.doc")
-	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Footnotes")
-	remoteName := "TestGetFootnote.docx"
-	nodePath := "sections/0"
-	index := 0
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(footnoteFolder + "/Footnote.doc"), remoteDataFolder + "/" + remoteFileName)
 
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, _, err := client.WordsApi.GetFootnote(ctx, remoteName, nodePath, int32(index), options)
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, err := client.WordsApi.DeleteFootnote(ctx, remoteFileName, "", int32(0), options)
 
-	if err != nil {
-		t.Error(err)
-	}
+    if err != nil {
+        t.Error(err)
+    }
 }
 
-func TestGetFootnoteWithoutNodePath(t *testing.T) {
+// Test for deleting footnote without node path.
+func Test_Footnote_DeleteFootnoteWithoutNodePath(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Footnotes"
+    footnoteFolder := "DocumentElements/Footnotes"
+    remoteFileName := "TestDeleteFootnoteWithoutNodePath.docx"
 
-	localFilePath := GetLocalPath(filepath.Join("DocumentElements", "Footnotes"), "Footnote.doc")
-	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Footnotes")
-	remoteName := "TestGetFootnoteWithoutNodePath.docx"
-	index := 0
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(footnoteFolder + "/Footnote.doc"), remoteDataFolder + "/" + remoteFileName)
 
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, _, err := client.WordsApi.GetFootnoteWithoutNodePath(ctx, remoteName, int32(index), options)
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, err := client.WordsApi.DeleteFootnoteWithoutNodePath(ctx, remoteFileName, int32(0), options)
 
-	if err != nil {
-		t.Error(err)
-	}
+    if err != nil {
+        t.Error(err)
+    }
 }
 
-func TestGetFootnotes(t *testing.T) {
+// Test for getting footnotes.
+func Test_Footnote_GetFootnotes(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Footnotes"
+    footnoteFolder := "DocumentElements/Footnotes"
+    remoteFileName := "TestGetFootnotes.docx"
 
-	localFilePath := GetLocalPath(filepath.Join("DocumentElements", "Footnotes"), "Footnote.doc")
-	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Footnotes")
-	nodePath := "sections/0"
-	remoteName := "TestGetFootnotes.docx"
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(footnoteFolder + "/Footnote.doc"), remoteDataFolder + "/" + remoteFileName)
 
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, _, err := client.WordsApi.GetFootnotes(ctx, remoteName, nodePath, options)
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, _, err := client.WordsApi.GetFootnotes(ctx, remoteFileName, "", options)
 
-	if err != nil {
-		t.Error(err)
-	}
+    if err != nil {
+        t.Error(err)
+    }
 }
 
-func TestGetFootnotesWithoutNodePath(t *testing.T) {
+// Test for getting footnotes without node path.
+func Test_Footnote_GetFootnotesWithoutNodePath(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Footnotes"
+    footnoteFolder := "DocumentElements/Footnotes"
+    remoteFileName := "TestGetFootnotesWithoutNodePath.docx"
 
-	localFilePath := GetLocalPath(filepath.Join("DocumentElements", "Footnotes"), "Footnote.doc")
-	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Footnotes")
-	remoteName := "TestGetFootnotesWithoutNodePath.docx"
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(footnoteFolder + "/Footnote.doc"), remoteDataFolder + "/" + remoteFileName)
 
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, _, err := client.WordsApi.GetFootnotesWithoutNodePath(ctx, remoteName, options)
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, _, err := client.WordsApi.GetFootnotesWithoutNodePath(ctx, remoteFileName, options)
 
-	if err != nil {
-		t.Error(err)
-	}
+    if err != nil {
+        t.Error(err)
+    }
 }
 
-func TestInsertFootnote(t *testing.T) {
+// Test for getting footnote.
+func Test_Footnote_GetFootnote(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Footnotes"
+    footnoteFolder := "DocumentElements/Footnotes"
+    remoteFileName := "TestGetFootnote.docx"
 
-	localFilePath := GetLocalPath(filepath.Join("DocumentElements", "Footnotes"), "Footnote.doc")
-	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Footnotes")
-	remoteName := "TestInsertFootnote.docx"
-	footnoteDto := models.FootnoteInsert{
-		FootnoteType: "Endnote",
-		Text:         "test endnote",
-	}
-	nodePath := "sections/0"
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(footnoteFolder + "/Footnote.doc"), remoteDataFolder + "/" + remoteFileName)
 
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, _, err := client.WordsApi.InsertFootnote(ctx, remoteName, footnoteDto, nodePath, options)
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, _, err := client.WordsApi.GetFootnote(ctx, remoteFileName, "", int32(0), options)
 
-	if err != nil {
-		t.Error(err)
-	}
+    if err != nil {
+        t.Error(err)
+    }
 }
 
-func TestInsertFootnoteWithoutNodePath(t *testing.T) {
+// Test for getting footnote without node path.
+func Test_Footnote_GetFootnoteWithoutNodePath(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Footnotes"
+    footnoteFolder := "DocumentElements/Footnotes"
+    remoteFileName := "TestGetFootnoteWithoutNodePath.docx"
 
-	localFilePath := GetLocalPath(filepath.Join("DocumentElements", "Footnotes"), "Footnote.doc")
-	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Footnotes")
-	remoteName := "TestInsertFootnoteWithoutNodePath.docx"
-	footnoteDto := models.FootnoteInsert{
-		FootnoteType: "Endnote",
-		Text:         "test endnote",
-	}
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(footnoteFolder + "/Footnote.doc"), remoteDataFolder + "/" + remoteFileName)
 
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, _, err := client.WordsApi.InsertFootnoteWithoutNodePath(ctx, remoteName, footnoteDto, options)
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, _, err := client.WordsApi.GetFootnoteWithoutNodePath(ctx, remoteFileName, int32(0), options)
 
-	if err != nil {
-		t.Error(err)
-	}
+    if err != nil {
+        t.Error(err)
+    }
 }
 
-func TestUpdateFootnote(t *testing.T) {
+// Test for updating footnote.
+func Test_Footnote_UpdateFootnote(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Footnotes"
+    footnoteFolder := "DocumentElements/Footnotes"
+    remoteFileName := "TestUpdateFootnote.docx"
 
-	localFilePath := GetLocalPath(filepath.Join("DocumentElements", "Footnotes"), "Footnote.doc")
-	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Footnotes")
-	remoteName := "TestUpdateFootnote.docx"
-	nodePath := "sections/0"
-	index := 0
-	footnoteDto := models.FootnoteUpdate{
-		Text: "new text is here",
-	}
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(footnoteFolder + "/Footnote.doc"), remoteDataFolder + "/" + remoteFileName)
 
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
+    requestFootnoteDto := models.FootnoteUpdate{
+        Text: "new text is here",
+    }
 
-	_, _, err := client.WordsApi.UpdateFootnote(ctx, remoteName, footnoteDto, nodePath, int32(index), options)
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, _, err := client.WordsApi.UpdateFootnote(ctx, remoteFileName, requestFootnoteDto, "", int32(0), options)
 
-	if err != nil {
-		t.Error(err)
-	}
+    if err != nil {
+        t.Error(err)
+    }
 }
 
-func TestUpdateFootnoteWithoutNodePath(t *testing.T) {
+// Test for updating footnote without node path.
+func Test_Footnote_UpdateFootnoteWithoutNodePath(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Footnotes"
+    footnoteFolder := "DocumentElements/Footnotes"
+    remoteFileName := "TestUpdateFootnoteWithoutNodePath.docx"
 
-	localFilePath := GetLocalPath(filepath.Join("DocumentElements", "Footnotes"), "Footnote.doc")
-	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Footnotes")
-	remoteName := "TestUpdateFootnoteWithoutNodePath.docx"
-	index := 0
-	footnoteDto := models.FootnoteUpdate{
-		Text: "new text is here",
-	}
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(footnoteFolder + "/Footnote.doc"), remoteDataFolder + "/" + remoteFileName)
 
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
+    requestFootnoteDto := models.FootnoteUpdate{
+        Text: "new text is here",
+    }
 
-	_, _, err := client.WordsApi.UpdateFootnoteWithoutNodePath(ctx, remoteName, footnoteDto, int32(index), options)
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, _, err := client.WordsApi.UpdateFootnoteWithoutNodePath(ctx, remoteFileName, requestFootnoteDto, int32(0), options)
 
-	if err != nil {
-		t.Error(err)
-	}
+    if err != nil {
+        t.Error(err)
+    }
 }

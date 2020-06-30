@@ -1,6 +1,6 @@
 /*
  * --------------------------------------------------------------------------------
- * <copyright company="Aspose" file="hyperlink_test.go">
+ * <copyright company="Aspose" file="append_document_test.go">
  *   Copyright (c) 2020 Aspose.Words for Cloud
  * </copyright>
  * <summary>
@@ -25,49 +25,40 @@
  * --------------------------------------------------------------------------------
  */
 
-// Example of how to work with hyperlinks.
+// Example of how to append document.
 package api_test
 
 import (
     "testing"
+    "github.com/aspose-words-cloud/aspose-words-cloud-go/dev/api/models"
 )
 
-// Test for getting hyperlink by specified index.
-func Test_Hyperlink_GetDocumentHyperlinkByIndex(t *testing.T) {
+// Test for appending document.
+func Test_AppendDocument_AppendDocument(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
-    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Hyperlink"
-    localFile := "Common/test_doc.docx"
-    remoteFileName := "TestGetDocumentHyperlinkByIndex.docx"
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentActions/AppendDocument"
+    localFile := "Common/test_multi_pages.docx"
+    remoteFileName := "TestAppendDocument.docx"
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
+    requestDocumentListDocumentEntries0 := models.DocumentEntry{
+        Href: remoteDataFolder + "/" + remoteFileName,
+        ImportFormatMode: "KeepSourceFormatting",
+    }
+    requestDocumentListDocumentEntries := []models.DocumentEntry{
+        requestDocumentListDocumentEntries0,
+    }
+    requestDocumentList := models.DocumentEntryList{
+        DocumentEntries: requestDocumentListDocumentEntries,
+    }
 
     options := map[string]interface{}{
         "folder": remoteDataFolder,
+        "destFileName": baseTestOutPath + "/" + remoteFileName,
     }
-    _, _, err := client.WordsApi.GetDocumentHyperlinkByIndex(ctx, remoteFileName, int32(0), options)
-
-    if err != nil {
-        t.Error(err)
-    }
-}
-
-// Test for getting hyperlinks.
-func Test_Hyperlink_GetDocumentHyperlinks(t *testing.T) {
-    config := ReadConfiguration(t)
-    client, ctx := PrepareTest(t, config)
-    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Hyperlink"
-    localFile := "Common/test_doc.docx"
-    remoteFileName := "TestGetDocumentHyperlinks.docx"
-
-    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
-
-
-    options := map[string]interface{}{
-        "folder": remoteDataFolder,
-    }
-    _, _, err := client.WordsApi.GetDocumentHyperlinks(ctx, remoteFileName, options)
+    _, _, err := client.WordsApi.AppendDocument(ctx, remoteFileName, requestDocumentList, options)
 
     if err != nil {
         t.Error(err)

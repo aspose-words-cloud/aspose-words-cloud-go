@@ -1,6 +1,6 @@
 /*
  * --------------------------------------------------------------------------------
- * <copyright company="Aspose" file="hyperlink_test.go">
+ * <copyright company="Aspose" file="mail_merge_fileds_test.go">
  *   Copyright (c) 2020 Aspose.Words for Cloud
  * </copyright>
  * <summary>
@@ -25,49 +25,45 @@
  * --------------------------------------------------------------------------------
  */
 
-// Example of how to work with hyperlinks.
+// Example of how to work with merge fields.
 package api_test
 
 import (
     "testing"
 )
 
-// Test for getting hyperlink by specified index.
-func Test_Hyperlink_GetDocumentHyperlinkByIndex(t *testing.T) {
+// Test for putting new fields.
+func Test_MailMergeFileds_GetDocumentFieldNamesOnline(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
-    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Hyperlink"
-    localFile := "Common/test_doc.docx"
-    remoteFileName := "TestGetDocumentHyperlinkByIndex.docx"
-
-    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
+    mailMergeFolder := "DocumentActions/MailMerge"
+    localDocumentFile := "SampleExecuteTemplate.docx"
 
 
     options := map[string]interface{}{
-        "folder": remoteDataFolder,
+        "useNonMergeFields": true,
     }
-    _, _, err := client.WordsApi.GetDocumentHyperlinkByIndex(ctx, remoteFileName, int32(0), options)
+    _, _, err := client.WordsApi.GetDocumentFieldNamesOnline(ctx, OpenFile(t, mailMergeFolder + "/" + localDocumentFile), options)
 
     if err != nil {
         t.Error(err)
     }
 }
 
-// Test for getting hyperlinks.
-func Test_Hyperlink_GetDocumentHyperlinks(t *testing.T) {
+// Test for getting mailmerge fields.
+func Test_MailMergeFileds_GetDocumentFieldNames(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
-    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Hyperlink"
-    localFile := "Common/test_doc.docx"
-    remoteFileName := "TestGetDocumentHyperlinks.docx"
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentActions/MailMerge"
+    remoteFileName := "TestGetDocumentFieldNames.docx"
 
-    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile("Common/test_multi_pages.docx"), remoteDataFolder + "/" + remoteFileName)
 
 
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetDocumentHyperlinks(ctx, remoteFileName, options)
+    _, _, err := client.WordsApi.GetDocumentFieldNames(ctx, remoteFileName, options)
 
     if err != nil {
         t.Error(err)

@@ -1,306 +1,414 @@
-//
-// MIT License
+/*
+ * --------------------------------------------------------------------------------
+ * <copyright company="Aspose" file="field_test.go">
+ *   Copyright (c) 2020 Aspose.Words for Cloud
+ * </copyright>
+ * <summary>
+ *   Permission is hereby granted, free of charge, to any person obtaining a copy
+ *  of this software and associated documentation files (the "Software"), to deal
+ *  in the Software without restriction, including without limitation the rights
+ *  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ *  copies of the Software, and to permit persons to whom the Software is
+ *  furnished to do so, subject to the following conditions:
+ * 
+ *  The above copyright notice and this permission notice shall be included in all
+ *  copies or substantial portions of the Software.
+ * 
+ *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ *  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ *  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ *  SOFTWARE.
+ * </summary>
+ * --------------------------------------------------------------------------------
+ */
 
-// Copyright (c) 2019 Aspose Pty Ltd
-
-// Permission is hereby granted, free of charge, to any person obtaining a copy
-// of this software and associated documentation files (the "Software"), to deal
-// in the Software without restriction, including without limitation the rights
-// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-// copies of the Software, and to permit persons to whom the Software is
-// furnished to do so, subject to the following conditions:
-
-// The above copyright notice and this permission notice shall be included in all
-// copies or substantial portions of the Software.
-
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-// SOFTWARE.
-//
-
+// Example of how to work with field.
 package api_test
 
 import (
-	"os"
-	"path"
-	"path/filepath"
-	"testing"
-
-	"github.com/aspose-words-cloud/aspose-words-cloud-go/dev/api/models"
+    "testing"
+    "github.com/aspose-words-cloud/aspose-words-cloud-go/dev/api/models"
 )
 
-func TestDeleteField(t *testing.T) {
+// Test for getting fields.
+func Test_Field_GetFields(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Fields"
+    fieldFolder := "DocumentElements/Fields"
+    localFileName := "GetField.docx"
+    remoteFileName := "TestGetFields.docx"
 
-	localFilePath := GetLocalPath(filepath.Join("DocumentElements", "Fields"), "GetField.docx")
-	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Fields")
-	remoteName := "TestDeleteField.docx"
-	nodePath := "sections/0/paragraphs/0"
-	index := 0
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(fieldFolder + "/" + localFileName), remoteDataFolder + "/" + remoteFileName)
 
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, err := client.WordsApi.DeleteField(ctx, remoteName, nodePath, int32(index), options)
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, _, err := client.WordsApi.GetFields(ctx, remoteFileName, "sections/0", options)
 
-	if err != nil {
-		t.Error(err)
-	}
+    if err != nil {
+        t.Error(err)
+    }
 }
 
-func TestDeleteFieldWithoutNodePath(t *testing.T) {
+// Test for getting fields without node path.
+func Test_Field_GetFieldsWithoutNodePath(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Fields"
+    fieldFolder := "DocumentElements/Fields"
+    localFileName := "GetField.docx"
+    remoteFileName := "TestGetFieldsWithoutNodePath.docx"
 
-	localFilePath := GetLocalPath(filepath.Join("DocumentElements", "Fields"), "GetField.docx")
-	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Fields")
-	remoteName := "TestDeleteFieldWithoutNodePath.docx"
-	index := 0
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(fieldFolder + "/" + localFileName), remoteDataFolder + "/" + remoteFileName)
 
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, err := client.WordsApi.DeleteFieldWithoutNodePath(ctx, remoteName, int32(index), options)
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, _, err := client.WordsApi.GetFieldsWithoutNodePath(ctx, remoteFileName, options)
 
-	if err != nil {
-		t.Error(err)
-	}
+    if err != nil {
+        t.Error(err)
+    }
 }
 
-func TestDeleteFields(t *testing.T) {
+// Test for getting field by index.
+func Test_Field_GetField(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Fields"
+    fieldFolder := "DocumentElements/Fields"
+    localFileName := "GetField.docx"
+    remoteFileName := "TestGetField.docx"
 
-	localFilePath := commonTestFile
-	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Fields")
-	remoteName := "TestDeleteFields.docx"
-	nodePath := "sections/0"
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(fieldFolder + "/" + localFileName), remoteDataFolder + "/" + remoteFileName)
 
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, err := client.WordsApi.DeleteFields(ctx, remoteName, nodePath, options)
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, _, err := client.WordsApi.GetField(ctx, remoteFileName, "sections/0/paragraphs/0", int32(0), options)
 
-	if err != nil {
-		t.Error(err)
-	}
+    if err != nil {
+        t.Error(err)
+    }
 }
 
-func TestDeleteFieldsWithoutNodePath(t *testing.T) {
+// Test for getting field by index without node path.
+func Test_Field_GetFieldWithoutNodePath(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Fields"
+    fieldFolder := "DocumentElements/Fields"
+    localFileName := "GetField.docx"
+    remoteFileName := "TestGetFieldWithoutNodePath.docx"
 
-	localFilePath := commonTestFile
-	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Fields")
-	remoteName := "TestDeleteFieldsWithoutNodePath.docx"
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(fieldFolder + "/" + localFileName), remoteDataFolder + "/" + remoteFileName)
 
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, err := client.WordsApi.DeleteFieldsWithoutNodePath(ctx, remoteName, options)
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, _, err := client.WordsApi.GetFieldWithoutNodePath(ctx, remoteFileName, int32(0), options)
 
-	if err != nil {
-		t.Error(err)
-	}
+    if err != nil {
+        t.Error(err)
+    }
 }
 
-func TestGetField(t *testing.T) {
+// Test for putting field.
+func Test_Field_InsertField(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Fields"
+    textFolder := "DocumentElements/Text"
+    localFileName := "SampleWordDocument.docx"
+    remoteFileName := "TestInsertField.docx"
 
-	localFilePath := GetLocalPath(filepath.Join("DocumentElements", "Fields"), "GetField.docx")
-	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Fields")
-	remoteName := "TestGetField.docx"
-	nodePath := "sections/0/paragraphs/0"
-	index := 0
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(textFolder + "/" + localFileName), remoteDataFolder + "/" + remoteFileName)
 
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
+    requestField := models.FieldInsert{
+        FieldCode: "{ NUMPAGES }",
+    }
 
-	_, _, err := client.WordsApi.GetField(ctx, remoteName, nodePath, int32(index), options)
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, _, err := client.WordsApi.InsertField(ctx, remoteFileName, requestField, "sections/0/paragraphs/0", options)
 
-	if err != nil {
-		t.Error(err)
-	}
+    if err != nil {
+        t.Error(err)
+    }
 }
 
-func TestGetFieldWithoutNodePath(t *testing.T) {
+// Test for putting field without node path.
+func Test_Field_InsertFieldWithoutNodePath(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Fields"
+    textFolder := "DocumentElements/Text"
+    localFileName := "SampleWordDocument.docx"
+    remoteFileName := "TestInsertFieldWithoutNodePath.docx"
 
-	localFilePath := GetLocalPath(filepath.Join("DocumentElements", "Fields"), "GetField.docx")
-	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Fields")
-	remoteName := "TestGetFieldWithoutNodePath.docx"
-	index := 0
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(textFolder + "/" + localFileName), remoteDataFolder + "/" + remoteFileName)
 
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
+    requestField := models.FieldInsert{
+        FieldCode: "{ NUMPAGES }",
+    }
 
-	_, _, err := client.WordsApi.GetFieldWithoutNodePath(ctx, remoteName, int32(index), options)
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, _, err := client.WordsApi.InsertFieldWithoutNodePath(ctx, remoteFileName, requestField, options)
 
-	if err != nil {
-		t.Error(err)
-	}
+    if err != nil {
+        t.Error(err)
+    }
 }
 
-func TestGetFields(t *testing.T) {
+// Test for posting field.
+func Test_Field_UpdateField(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Fields"
+    fieldFolder := "DocumentElements/Fields"
+    localFileName := "GetField.docx"
+    remoteFileName := "TestUpdateField.docx"
 
-	localFilePath := GetLocalPath(filepath.Join("DocumentElements", "Fields"), "GetField.docx")
-	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Fields")
-	remoteName := "TestGetFields.docx"
-	nodePath := "sections/0"
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(fieldFolder + "/" + localFileName), remoteDataFolder + "/" + remoteFileName)
 
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
+    requestField := models.FieldUpdate{
+        FieldCode: "{ NUMPAGES }",
+    }
 
-	_, _, err := client.WordsApi.GetFields(ctx, remoteName, nodePath, options)
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, _, err := client.WordsApi.UpdateField(ctx, remoteFileName, requestField, "sections/0/paragraphs/0", int32(0), options)
 
-	if err != nil {
-		t.Error(err)
-	}
+    if err != nil {
+        t.Error(err)
+    }
 }
 
-func TestGetFieldsWithoutNodePath(t *testing.T) {
+// Test for inserting page numbers field.
+func Test_Field_InsertPageNumbers(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Fields"
+    localFileName := "test_multi_pages.docx"
+    remoteFileName := "TestInsertPageNumbers.docx"
 
-	localFilePath := GetLocalPath(filepath.Join("DocumentElements", "Fields"), "GetField.docx")
-	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Fields")
-	remoteName := "TestGetFieldsWithoutNodePath.docx"
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile("Common/" + localFileName), remoteDataFolder + "/" + remoteFileName)
 
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
+    requestPageNumber := models.PageNumber{
+        Alignment: "center",
+        Format: "{PAGE} of {NUMPAGES}",
+    }
 
-	_, _, err := client.WordsApi.GetFieldsWithoutNodePath(ctx, remoteName, options)
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+        "destFileName": baseTestOutPath + "/" + remoteFileName,
+    }
+    _, _, err := client.WordsApi.InsertPageNumbers(ctx, remoteFileName, requestPageNumber, options)
 
-	if err != nil {
-		t.Error(err)
-	}
+    if err != nil {
+        t.Error(err)
+    }
 }
 
-func TestInsertField(t *testing.T) {
+// Test for deleting field.
+func Test_Field_DeleteField(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Fields"
+    fieldFolder := "DocumentElements/Fields"
+    localFileName := "GetField.docx"
+    remoteFileName := "TestDeleteField.docx"
 
-	localFilePath := GetLocalPath(filepath.Join("DocumentElements", "Text"), "SampleWordDocument.docx")
-	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Fields")
-	remoteName := "TestInsertField.docx"
-	nodePath := "sections/0/paragraphs/0"
-	field := models.FieldInsert{
-		FieldCode: "{ NUMPAGES }",
-	}
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(fieldFolder + "/" + localFileName), remoteDataFolder + "/" + remoteFileName)
 
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, _, err := client.WordsApi.InsertField(ctx, remoteName, field, nodePath, options)
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, err := client.WordsApi.DeleteField(ctx, remoteFileName, "sections/0/paragraphs/0", int32(0), options)
 
-	if err != nil {
-		t.Error(err)
-	}
+    if err != nil {
+        t.Error(err)
+    }
 }
 
-func TestInsertFieldWithoutNodePath(t *testing.T) {
+// Test for deleting field without node path.
+func Test_Field_DeleteFieldWithoutNodePath(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Fields"
+    fieldFolder := "DocumentElements/Fields"
+    localFileName := "GetField.docx"
+    remoteFileName := "TestDeleteFieldWithoutNodePath.docx"
 
-	localFilePath := GetLocalPath(filepath.Join("DocumentElements", "Text"), "SampleWordDocument.docx")
-	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Fields")
-	remoteName := "TestInsertFieldWithoutNodePath.docx"
-	field := models.FieldInsert{
-		FieldCode: "{ NUMPAGES }",
-	}
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(fieldFolder + "/" + localFileName), remoteDataFolder + "/" + remoteFileName)
 
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, _, err := client.WordsApi.InsertFieldWithoutNodePath(ctx, remoteName, field, options)
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, err := client.WordsApi.DeleteFieldWithoutNodePath(ctx, remoteFileName, int32(0), options)
 
-	if err != nil {
-		t.Error(err)
-	}
+    if err != nil {
+        t.Error(err)
+    }
 }
 
-func TestUpdateField(t *testing.T) {
+// Test for deleting paragraph fields.
+func Test_Field_DeleteParagraphFields(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Fields"
+    localFileName := "test_multi_pages.docx"
+    remoteFileName := "TestDeleteParagraphFields.docx"
 
-	localFilePath := GetLocalPath(filepath.Join("DocumentElements", "Fields"), "GetField.docx")
-	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Fields")
-	remoteName := "TestUpdateField.docx"
-	nodePath := "sections/0/paragraphs/0"
-	index := 0
-	field := models.FieldUpdate{
-		FieldCode: "{ NUMPAGES }",
-	}
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile("Common/" + localFileName), remoteDataFolder + "/" + remoteFileName)
 
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, _, err := client.WordsApi.UpdateField(ctx, remoteName, field, nodePath, int32(index), options)
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, err := client.WordsApi.DeleteFields(ctx, remoteFileName, "paragraphs/0", options)
 
-	if err != nil {
-		t.Error(err)
-	}
+    if err != nil {
+        t.Error(err)
+    }
 }
 
-func TestUpdateFields(t *testing.T) {
+// Test for deleting paragraph fields without node path.
+func Test_Field_DeleteParagraphFieldsWithoutNodePath(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Fields"
+    localFileName := "test_multi_pages.docx"
+    remoteFileName := "TestDeleteParagraphFieldsWithoutNodePath.docx"
 
-	localFilePath := commonTestFile
-	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Fields")
-	remoteName := "TestUpdateFields.docx"
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile("Common/" + localFileName), remoteDataFolder + "/" + remoteFileName)
 
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, _, err := client.WordsApi.UpdateFields(ctx, remoteName, options)
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, err := client.WordsApi.DeleteFieldsWithoutNodePath(ctx, remoteFileName, options)
 
-	if err != nil {
-		t.Error(err)
-	}
+    if err != nil {
+        t.Error(err)
+    }
 }
 
-func TestGetDocumentFieldNames(t *testing.T) {
+// Test for deleting section fields.
+func Test_Field_DeleteSectionFields(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Fields"
+    localFileName := "test_multi_pages.docx"
+    remoteFileName := "TestDeleteSectionFields.docx"
 
-	localFilePath := commonTestFile
-	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentActions", "MailMerge")
-	remoteName := "TestGetDocumentFieldNames.docx"
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile("Common/" + localFileName), remoteDataFolder + "/" + remoteFileName)
 
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, _, err := client.WordsApi.GetDocumentFieldNames(ctx, remoteName, options)
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, err := client.WordsApi.DeleteFields(ctx, remoteFileName, "sections/0", options)
 
-	if err != nil {
-		t.Error(err)
-	}
+    if err != nil {
+        t.Error(err)
+    }
 }
 
-func TestGetDocumentFieldNamesOnline(t *testing.T) {
+// Test for deleting section fields without node path.
+func Test_Field_DeleteSectionFieldsWithoutNodePath(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Fields"
+    localFileName := "test_multi_pages.docx"
+    remoteFileName := "TestDeleteSectionFieldsWithoutNodePath.docx"
 
-	localFilePath := GetLocalPath(filepath.Join("DocumentActions", "MailMerge"), "SampleExecuteTemplate.docx")
-	template, fileErr := os.Open(localFilePath)
-	if fileErr != nil {
-		t.Error(fileErr)
-	}
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile("Common/" + localFileName), remoteDataFolder + "/" + remoteFileName)
 
-	config := ReadConfiguration(t)
-	client, ctx := PrepareTest(t, config)
 
-	_, _, err := client.WordsApi.GetDocumentFieldNamesOnline(ctx, template, nil)
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, err := client.WordsApi.DeleteFieldsWithoutNodePath(ctx, remoteFileName, options)
 
-	if err != nil {
-		t.Error(err)
-	}
+    if err != nil {
+        t.Error(err)
+    }
+}
+
+// Test for deleting paragraph fields in section.
+func Test_Field_DeleteSectionParagraphFields(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Fields"
+    localFileName := "test_multi_pages.docx"
+    remoteFileName := "TestDeleteSectionParagraphFields.docx"
+
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile("Common/" + localFileName), remoteDataFolder + "/" + remoteFileName)
+
+
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, err := client.WordsApi.DeleteFields(ctx, remoteFileName, "sections/0/paragraphs/0", options)
+
+    if err != nil {
+        t.Error(err)
+    }
+}
+
+// Test for deleting fields.
+func Test_Field_DeleteDocumentFields(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Fields"
+    localFileName := "test_multi_pages.docx"
+    remoteFileName := "TestDeleteSectionParagraphFields.docx"
+
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile("Common/" + localFileName), remoteDataFolder + "/" + remoteFileName)
+
+
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, err := client.WordsApi.DeleteFields(ctx, remoteFileName, "", options)
+
+    if err != nil {
+        t.Error(err)
+    }
+}
+
+// Test for posting updated fields.
+func Test_Field_UpdateDocumentFields(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Fields"
+    localFileName := "test_multi_pages.docx"
+    remoteFileName := "TestUpdateDocumentFields.docx"
+
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile("Common/" + localFileName), remoteDataFolder + "/" + remoteFileName)
+
+
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, _, err := client.WordsApi.UpdateFields(ctx, remoteFileName, options)
+
+    if err != nil {
+        t.Error(err)
+    }
 }

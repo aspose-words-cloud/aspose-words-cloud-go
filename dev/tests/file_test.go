@@ -1,105 +1,131 @@
-//
-// MIT License
+/*
+ * --------------------------------------------------------------------------------
+ * <copyright company="Aspose" file="file_test.go">
+ *   Copyright (c) 2020 Aspose.Words for Cloud
+ * </copyright>
+ * <summary>
+ *   Permission is hereby granted, free of charge, to any person obtaining a copy
+ *  of this software and associated documentation files (the "Software"), to deal
+ *  in the Software without restriction, including without limitation the rights
+ *  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ *  copies of the Software, and to permit persons to whom the Software is
+ *  furnished to do so, subject to the following conditions:
+ * 
+ *  The above copyright notice and this permission notice shall be included in all
+ *  copies or substantial portions of the Software.
+ * 
+ *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ *  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ *  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ *  SOFTWARE.
+ * </summary>
+ * --------------------------------------------------------------------------------
+ */
 
-// Copyright (c) 2019 Aspose Pty Ltd
-
-// Permission is hereby granted, free of charge, to any person obtaining a copy
-// of this software and associated documentation files (the "Software"), to deal
-// in the Software without restriction, including without limitation the rights
-// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-// copies of the Software, and to permit persons to whom the Software is
-// furnished to do so, subject to the following conditions:
-
-// The above copyright notice and this permission notice shall be included in all
-// copies or substantial portions of the Software.
-
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-// SOFTWARE.
-//
-
+// Example of how to work with files.
 package api_test
 
 import (
-	"fmt"
-	"path"
-	"testing"
-
-	"github.com/google/uuid"
+    "testing"
 )
 
-func TestCopyFile(t *testing.T) {
+// Test for uploading file.
+func Test_File_UploadFile(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/Storage"
+    localFile := "Common/test_multi_pages.docx"
+    remoteFileName := "TestUploadFile.docx"
 
-	localFilePath := commonTestFile
-	remoteFolder := path.Join(remoteBaseTestDataFolder, "Storage")
-	remoteSrcName := "TestCopyFile.docx"
-	remoteDstName := fmt.Sprintf("TestCopyFile%s.docx", uuid.New().String())
-	remoteSrcPath := path.Join(remoteFolder, remoteSrcName)
-	remoteDstPath := path.Join(remoteFolder, remoteDstName)
 
-	client, ctx := UploadFileToStorage(t, localFilePath, remoteSrcPath)
+    options := map[string]interface{}{
+    }
+    _, _, err := client.WordsApi.UploadFile(ctx, OpenFile(t, localFile), remoteDataFolder + "/" + remoteFileName, options)
 
-	_, err := client.WordsApi.CopyFile(ctx, remoteDstPath, remoteSrcPath, nil)
-
-	if err != nil {
-		t.Error(err)
-	}
+    if err != nil {
+        t.Error(err)
+    }
 }
 
-func TestDeleteFile(t *testing.T) {
+// Test for copy file.
+func Test_File_CopyFile(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/Storage"
+    localFile := "Common/test_multi_pages.docx"
+    remoteFileName := "TestCopyFileSrc.docx"
 
-	localFilePath := commonTestFile
-	remoteFolder := path.Join(remoteBaseTestDataFolder, "Storage")
-	remoteName := "TestDeleteFile.docx"
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, err := client.WordsApi.DeleteFile(ctx, remoteName, options)
+    options := map[string]interface{}{
+    }
+    _, err := client.WordsApi.CopyFile(ctx, remoteDataFolder + "/TestCopyFileDest.docx", remoteDataFolder + "/" + remoteFileName, options)
 
-	if err != nil {
-		t.Error(err)
-	}
+    if err != nil {
+        t.Error(err)
+    }
 }
 
-func TestDownloadFile(t *testing.T) {
+// Test for move file.
+func Test_File_MoveFile(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/Storage"
+    localFile := "Common/test_multi_pages.docx"
+    remoteFileName := "TestMoveFileSrc.docx"
 
-	localFilePath := commonTestFile
-	remoteFolder := path.Join(remoteBaseTestDataFolder, "Storage")
-	remoteName := "TestDownloadFile.docx"
-	fullName := path.Join(remoteFolder, remoteName)
-	options := map[string]interface{}{}
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-	client, ctx := UploadFileToStorage(t, localFilePath, fullName)
 
-	output, err := client.WordsApi.DownloadFile(ctx, fullName, options)
-	defer output.Body.Close()
+    options := map[string]interface{}{
+    }
+    _, err := client.WordsApi.MoveFile(ctx, remoteDataFolder + "/TestMoveFileDest.docx", remoteDataFolder + "/" + remoteFileName, options)
 
-	if err != nil {
-		t.Error(err)
-	}
+    if err != nil {
+        t.Error(err)
+    }
 }
 
-func TestMoveFile(t *testing.T) {
+// Test for delete file.
+func Test_File_DeleteFile(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/Storage"
+    localFile := "Common/test_multi_pages.docx"
+    remoteFileName := "TestDeleteFile.docx"
 
-	localFilePath := commonTestFile
-	remoteFolder := path.Join(remoteBaseTestDataFolder, "Storage")
-	remoteSrcName := "TestMoveFile.docx"
-	remoteDstName := fmt.Sprintf("TesMoveFile%s.docx", uuid.New().String())
-	remoteSrcPath := path.Join(remoteFolder, remoteSrcName)
-	remoteDstPath := path.Join(remoteFolder, remoteDstName)
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteSrcName))
 
-	_, err := client.WordsApi.MoveFile(ctx, remoteDstPath, remoteSrcPath, nil)
+    options := map[string]interface{}{
+    }
+    _, err := client.WordsApi.DeleteFile(ctx, remoteDataFolder + "/" + remoteFileName, options)
 
-	if err != nil {
-		t.Error(err)
-	}
+    if err != nil {
+        t.Error(err)
+    }
+}
+
+// Test for download file.
+func Test_File_DownloadFile(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/Storage"
+    localFile := "Common/test_multi_pages.docx"
+    remoteFileName := "TestDownloadFile.docx"
+
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
+
+
+    options := map[string]interface{}{
+    }
+    _, err := client.WordsApi.DownloadFile(ctx, remoteDataFolder + "/" + remoteFileName, options)
+
+    if err != nil {
+        t.Error(err)
+    }
 }
