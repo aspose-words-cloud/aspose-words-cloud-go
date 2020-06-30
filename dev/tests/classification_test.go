@@ -53,7 +53,7 @@ func Test_Classification_ClassifyDocument(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     remoteDataFolder := remoteBaseTestDataFolder + "/Common"
     localFile := "Common/test_multi_pages.docx"
-    remoteFileName := "Source.docx"
+    remoteFileName := "TestClassifyDocument.docx"
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
@@ -61,29 +61,6 @@ func Test_Classification_ClassifyDocument(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
         "bestClassesCount": "3",
-    }
-    _, _, err := client.WordsApi.ClassifyDocument(ctx, remoteFileName, options)
-
-    if err != nil {
-        t.Error(err)
-    }
-}
-
-// Test for document classification with taxonomy documents.
-func Test_Classification_ClassifyTaxonomyDocuments(t *testing.T) {
-    config := ReadConfiguration(t)
-    client, ctx := PrepareTest(t, config)
-    remoteDataFolder := remoteBaseTestDataFolder + "/Common"
-    localFile := "Common/test_multi_pages.docx"
-    remoteFileName := "Source.docx"
-
-    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
-
-
-    options := map[string]interface{}{
-        "folder": remoteDataFolder,
-        "bestClassesCount": "3",
-        "taxonomy": "documents",
     }
     _, _, err := client.WordsApi.ClassifyDocument(ctx, remoteFileName, options)
 

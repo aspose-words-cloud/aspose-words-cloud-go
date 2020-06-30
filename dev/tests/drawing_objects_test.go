@@ -254,7 +254,13 @@ func Test_DrawingObjects_InsertDrawingObject(t *testing.T) {
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
     requestDrawingObject := models.DrawingObjectInsert{
+        Height: 0,
         Left: 0,
+        Top: 0,
+        Width: 0,
+        RelativeHorizontalPosition: "Margin",
+        RelativeVerticalPosition: "Margin",
+        WrapType: "Inline",
     }
 
     options := map[string]interface{}{
@@ -278,7 +284,13 @@ func Test_DrawingObjects_InsertDrawingObjectWithoutNodePath(t *testing.T) {
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
     requestDrawingObject := models.DrawingObjectInsert{
+        Height: 0,
         Left: 0,
+        Top: 0,
+        Width: 0,
+        RelativeHorizontalPosition: "Margin",
+        RelativeVerticalPosition: "Margin",
+        WrapType: "Inline",
     }
 
     options := map[string]interface{}{

@@ -347,7 +347,7 @@ func Test_Paragraph_UpdateParagraphFormat(t *testing.T) {
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-    requestDto := models.ParagraphFormat{
+    requestDto := models.ParagraphFormatUpdate{
         Alignment: "Right",
     }
 
@@ -355,30 +355,6 @@ func Test_Paragraph_UpdateParagraphFormat(t *testing.T) {
         "folder": remoteDataFolder,
     }
     _, _, err := client.WordsApi.UpdateParagraphFormat(ctx, remoteFileName, requestDto, "", int32(0), options)
-
-    if err != nil {
-        t.Error(err)
-    }
-}
-
-// Test for updating  paragraph format settings without node path.
-func Test_Paragraph_UpdateParagraphFormatWithoutNodePath(t *testing.T) {
-    config := ReadConfiguration(t)
-    client, ctx := PrepareTest(t, config)
-    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Paragraphs"
-    localFile := "Common/test_multi_pages.docx"
-    remoteFileName := "TestGetDocumentParagraphsWithoutNodePath.docx"
-
-    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
-
-    requestDto := models.ParagraphFormat{
-        Alignment: "Right",
-    }
-
-    options := map[string]interface{}{
-        "folder": remoteDataFolder,
-    }
-    _, _, err := client.WordsApi.UpdateParagraphFormatWithoutNodePath(ctx, remoteFileName, requestDto, int32(0), options)
 
     if err != nil {
         t.Error(err)

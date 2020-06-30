@@ -34,29 +34,6 @@ import (
 )
 
 // Test for adding watermark image.
-func Test_Watermark_InsertDocumentWatermarkImage(t *testing.T) {
-    config := ReadConfiguration(t)
-    client, ctx := PrepareTest(t, config)
-    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentActions/Watermark"
-    localFile := "Common/test_multi_pages.docx"
-    remoteFileName := "TestInsertWatermarkImage.docx"
-
-    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
-
-
-    options := map[string]interface{}{
-        "imageFile": OpenFile(t, "Common/aspose-cloud.png"),
-        "folder": remoteDataFolder,
-        "destFileName": baseTestOutPath + "/" + remoteFileName,
-    }
-    _, _, err := client.WordsApi.InsertWatermarkImage(ctx, remoteFileName, options)
-
-    if err != nil {
-        t.Error(err)
-    }
-}
-
-// Test for adding watermark image.
 func Test_Watermark_InsertWatermarkImage(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
@@ -70,6 +47,7 @@ func Test_Watermark_InsertWatermarkImage(t *testing.T) {
 
 
     options := map[string]interface{}{
+        "imageFile": nil,
         "folder": remoteDataFolder,
         "destFileName": baseTestOutPath + "/" + remoteFileName,
         "image": remoteImagePath,
