@@ -1,6 +1,6 @@
 /*
  * --------------------------------------------------------------------------------
- * <copyright company="Aspose" file="watermark_test.go">
+ * <copyright company="Aspose" file="document_protection_test.go">
  *   Copyright (c) 2020 Aspose.Words for Cloud
  * </copyright>
  * <summary>
@@ -25,7 +25,7 @@
  * --------------------------------------------------------------------------------
  */
 
-// Example of how to work with watermarks.
+// Example of how to set document protection.
 package api_test
 
 import (
@@ -33,74 +33,94 @@ import (
     "github.com/aspose-words-cloud/aspose-words-cloud-go/v2007/api/models"
 )
 
-// Test for adding watermark image.
-func Test_Watermark_InsertWatermarkImage(t *testing.T) {
+// Test for setting document protection.
+func Test_DocumentProtection_ProtectDocument(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
-    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentActions/Watermark"
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/DocumentProtection"
     localFile := "Common/test_multi_pages.docx"
-    remoteFileName := "TestInsertWatermarkImage.docx"
-    remoteImagePath := remoteDataFolder + "/TestInsertWatermarkImage.png"
+    remoteFileName := "TestProtectDocument.docx"
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
-    UploadNextFileToStorage(t, ctx, client, GetLocalFile("Common/aspose-cloud.png"), remoteImagePath)
 
+    requestProtectionRequest := models.ProtectionRequest{
+        NewPassword: "123",
+    }
 
     options := map[string]interface{}{
-        "imageFile": nil,
         "folder": remoteDataFolder,
         "destFileName": baseTestOutPath + "/" + remoteFileName,
-        "image": remoteImagePath,
     }
-    _, _, err := client.WordsApi.InsertWatermarkImage(ctx, remoteFileName, options)
+    _, _, err := client.WordsApi.ProtectDocument(ctx, remoteFileName, requestProtectionRequest, options)
 
     if err != nil {
         t.Error(err)
     }
 }
 
-// Test for adding watermark text.
-func Test_Watermark_InsertWatermarkText(t *testing.T) {
+// Test for getting document protection.
+func Test_DocumentProtection_GetDocumentProtection(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
-    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentActions/Watermark"
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/DocumentProtection"
     localFile := "Common/test_multi_pages.docx"
-    remoteFileName := "TestInsertWatermarkText.docx"
+    remoteFileName := "TestGetDocumentProtection.docx"
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-    requestWatermarkText := models.WatermarkText{
-        Text: "This is the text",
-        RotationAngle: 90,
-    }
 
     options := map[string]interface{}{
         "folder": remoteDataFolder,
-        "destFileName": baseTestOutPath + "/" + remoteFileName,
     }
-    _, _, err := client.WordsApi.InsertWatermarkText(ctx, remoteFileName, requestWatermarkText, options)
+    _, _, err := client.WordsApi.GetDocumentProtection(ctx, remoteFileName, options)
 
     if err != nil {
         t.Error(err)
     }
 }
 
-// Test for deleting watermark.
-func Test_Watermark_DeleteWatermark(t *testing.T) {
+// Test for changing document protection.
+func Test_DocumentProtection_ChangeDocumentProtection(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
-    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentActions/Watermark"
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/DocumentProtection"
     localFile := "Common/test_multi_pages.docx"
-    remoteFileName := "TestDeleteWatermark.docx"
+    remoteFileName := "TestChangeDocumentProtection.docx"
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
+    requestProtectionRequest := models.ProtectionRequest{
+        NewPassword: "321",
+    }
 
     options := map[string]interface{}{
         "folder": remoteDataFolder,
-        "destFileName": baseTestOutPath + "/" + remoteFileName,
     }
-    _, _, err := client.WordsApi.DeleteWatermark(ctx, remoteFileName, options)
+    _, _, err := client.WordsApi.ProtectDocument(ctx, remoteFileName, requestProtectionRequest, options)
+
+    if err != nil {
+        t.Error(err)
+    }
+}
+
+// Test for deleting unprotect document.
+func Test_DocumentProtection_DeleteUnprotectDocument(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/DocumentProtection"
+    localFilePath := "DocumentActions/DocumentProtection/SampleProtectedBlankWordDocument.docx"
+    remoteFileName := "TestDeleteUnprotectDocument.docx"
+
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFilePath), remoteDataFolder + "/" + remoteFileName)
+
+    requestProtectionRequest := models.ProtectionRequest{
+        Password: "aspose",
+    }
+
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, _, err := client.WordsApi.UnprotectDocument(ctx, remoteFileName, requestProtectionRequest, options)
 
     if err != nil {
         t.Error(err)

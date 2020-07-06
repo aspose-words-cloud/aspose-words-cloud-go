@@ -1,6 +1,6 @@
 /*
  * --------------------------------------------------------------------------------
- * <copyright company="Aspose" file="text_test.go">
+ * <copyright company="Aspose" file="font_test.go">
  *   Copyright (c) 2020 Aspose.Words for Cloud
  * </copyright>
  * <summary>
@@ -25,55 +25,33 @@
  * --------------------------------------------------------------------------------
  */
 
-// Example of how to work with macros.
+// Example of how to work with font.
 package api_test
 
 import (
     "testing"
-    "github.com/aspose-words-cloud/aspose-words-cloud-go/v2007/api/models"
 )
 
-// Test for replacing text.
-func Test_Text_ReplaceText(t *testing.T) {
+// Test for reseting cache.
+func Test_Font_ResetCache(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
-    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Text"
-    remoteFileName := "TestReplaceText.docx"
-    localFile := "Common/test_multi_pages.docx"
 
-    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
-
-    requestReplaceText := models.ReplaceTextParameters{
-        OldValue: "aspose",
-        NewValue: "aspose new",
-    }
-
-    options := map[string]interface{}{
-        "folder": remoteDataFolder,
-        "destFileName": baseTestOutPath + "/" + remoteFileName,
-    }
-    _, _, err := client.WordsApi.ReplaceText(ctx, remoteFileName, requestReplaceText, options)
+    _, err := client.WordsApi.ResetCache(ctx)
 
     if err != nil {
         t.Error(err)
     }
 }
 
-// Test for searching.
-func Test_Text_Search(t *testing.T) {
+// Test for GetAvailableFonts resource.
+func Test_Font_GetAvailableFonts(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
-    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Text"
-    remoteFileName := "TestSearch.docx"
-    localFile := "DocumentElements/Text/SampleWordDocument.docx"
-
-    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
-
 
     options := map[string]interface{}{
-        "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.Search(ctx, remoteFileName, "aspose", options)
+    _, _, err := client.WordsApi.GetAvailableFonts(ctx, options)
 
     if err != nil {
         t.Error(err)

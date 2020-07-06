@@ -1,6 +1,6 @@
 /*
  * --------------------------------------------------------------------------------
- * <copyright company="Aspose" file="watermark_test.go">
+ * <copyright company="Aspose" file="document_with_format_test.go">
  *   Copyright (c) 2020 Aspose.Words for Cloud
  * </copyright>
  * <summary>
@@ -25,82 +25,50 @@
  * --------------------------------------------------------------------------------
  */
 
-// Example of how to work with watermarks.
+// Example of how to get document with different format.
 package api_test
 
 import (
     "testing"
-    "github.com/aspose-words-cloud/aspose-words-cloud-go/v2007/api/models"
 )
 
-// Test for adding watermark image.
-func Test_Watermark_InsertWatermarkImage(t *testing.T) {
+// Test for getting document with specified format.
+func Test_DocumentWithFormat_GetDocumentWithFormat(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
-    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentActions/Watermark"
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentActions/DocumentWithFormat"
     localFile := "Common/test_multi_pages.docx"
-    remoteFileName := "TestInsertWatermarkImage.docx"
-    remoteImagePath := remoteDataFolder + "/TestInsertWatermarkImage.png"
+    remoteFileName := "TestGetDocumentWithFormat.docx"
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
-    UploadNextFileToStorage(t, ctx, client, GetLocalFile("Common/aspose-cloud.png"), remoteImagePath)
 
 
     options := map[string]interface{}{
-        "imageFile": nil,
         "folder": remoteDataFolder,
-        "destFileName": baseTestOutPath + "/" + remoteFileName,
-        "image": remoteImagePath,
     }
-    _, _, err := client.WordsApi.InsertWatermarkImage(ctx, remoteFileName, options)
+    _, err := client.WordsApi.GetDocumentWithFormat(ctx, remoteFileName, "text", options)
 
     if err != nil {
         t.Error(err)
     }
 }
 
-// Test for adding watermark text.
-func Test_Watermark_InsertWatermarkText(t *testing.T) {
+// Test for getting document with specified format.
+func Test_DocumentWithFormat_GetDocumentWithFormatAndOutPath(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
-    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentActions/Watermark"
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentActions/DocumentWithFormat"
     localFile := "Common/test_multi_pages.docx"
-    remoteFileName := "TestInsertWatermarkText.docx"
-
-    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
-
-    requestWatermarkText := models.WatermarkText{
-        Text: "This is the text",
-        RotationAngle: 90,
-    }
-
-    options := map[string]interface{}{
-        "folder": remoteDataFolder,
-        "destFileName": baseTestOutPath + "/" + remoteFileName,
-    }
-    _, _, err := client.WordsApi.InsertWatermarkText(ctx, remoteFileName, requestWatermarkText, options)
-
-    if err != nil {
-        t.Error(err)
-    }
-}
-
-// Test for deleting watermark.
-func Test_Watermark_DeleteWatermark(t *testing.T) {
-    config := ReadConfiguration(t)
-    client, ctx := PrepareTest(t, config)
-    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentActions/Watermark"
-    localFile := "Common/test_multi_pages.docx"
-    remoteFileName := "TestDeleteWatermark.docx"
+    remoteFileName := "TestGetDocumentWithFormat.docx"
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
 
     options := map[string]interface{}{
         "folder": remoteDataFolder,
-        "destFileName": baseTestOutPath + "/" + remoteFileName,
+        "outPath": baseTestOutPath + "/TestGetDocumentWithFormatAndOutPath.text",
     }
-    _, _, err := client.WordsApi.DeleteWatermark(ctx, remoteFileName, options)
+    _, err := client.WordsApi.GetDocumentWithFormat(ctx, remoteFileName, "text", options)
 
     if err != nil {
         t.Error(err)

@@ -1,6 +1,6 @@
 /*
  * --------------------------------------------------------------------------------
- * <copyright company="Aspose" file="watermark_test.go">
+ * <copyright company="Aspose" file="document_properties_test.go">
  *   Copyright (c) 2020 Aspose.Words for Cloud
  * </copyright>
  * <summary>
@@ -25,7 +25,7 @@
  * --------------------------------------------------------------------------------
  */
 
-// Example of how to work with watermarks.
+// Example of how to get document properties.
 package api_test
 
 import (
@@ -33,65 +33,55 @@ import (
     "github.com/aspose-words-cloud/aspose-words-cloud-go/v2007/api/models"
 )
 
-// Test for adding watermark image.
-func Test_Watermark_InsertWatermarkImage(t *testing.T) {
+// Test for getting document properties.
+func Test_DocumentProperties_GetDocumentProperties(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
-    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentActions/Watermark"
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/DocumentProperties"
     localFile := "Common/test_multi_pages.docx"
-    remoteFileName := "TestInsertWatermarkImage.docx"
-    remoteImagePath := remoteDataFolder + "/TestInsertWatermarkImage.png"
+    remoteFileName := "TestGetDocumentProperties.docx"
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
-    UploadNextFileToStorage(t, ctx, client, GetLocalFile("Common/aspose-cloud.png"), remoteImagePath)
 
 
     options := map[string]interface{}{
-        "imageFile": nil,
         "folder": remoteDataFolder,
-        "destFileName": baseTestOutPath + "/" + remoteFileName,
-        "image": remoteImagePath,
     }
-    _, _, err := client.WordsApi.InsertWatermarkImage(ctx, remoteFileName, options)
+    _, _, err := client.WordsApi.GetDocumentProperties(ctx, remoteFileName, options)
 
     if err != nil {
         t.Error(err)
     }
 }
 
-// Test for adding watermark text.
-func Test_Watermark_InsertWatermarkText(t *testing.T) {
+// A test for GetDocumentProperty.
+func Test_DocumentProperties_GetDocumentProperty(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
-    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentActions/Watermark"
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/DocumentProperties"
     localFile := "Common/test_multi_pages.docx"
-    remoteFileName := "TestInsertWatermarkText.docx"
+    remoteFileName := "TestGetDocumentProperty.docx"
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-    requestWatermarkText := models.WatermarkText{
-        Text: "This is the text",
-        RotationAngle: 90,
-    }
 
     options := map[string]interface{}{
         "folder": remoteDataFolder,
-        "destFileName": baseTestOutPath + "/" + remoteFileName,
     }
-    _, _, err := client.WordsApi.InsertWatermarkText(ctx, remoteFileName, requestWatermarkText, options)
+    _, _, err := client.WordsApi.GetDocumentProperty(ctx, remoteFileName, "Author", options)
 
     if err != nil {
         t.Error(err)
     }
 }
 
-// Test for deleting watermark.
-func Test_Watermark_DeleteWatermark(t *testing.T) {
+// Test for deleting document property.
+func Test_DocumentProperties_DeleteDocumentProperty(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
-    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentActions/Watermark"
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/DocumentProperties"
     localFile := "Common/test_multi_pages.docx"
-    remoteFileName := "TestDeleteWatermark.docx"
+    remoteFileName := "TestDeleteDocumentProperty.docx"
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
@@ -100,7 +90,32 @@ func Test_Watermark_DeleteWatermark(t *testing.T) {
         "folder": remoteDataFolder,
         "destFileName": baseTestOutPath + "/" + remoteFileName,
     }
-    _, _, err := client.WordsApi.DeleteWatermark(ctx, remoteFileName, options)
+    _, err := client.WordsApi.DeleteDocumentProperty(ctx, remoteFileName, "testProp", options)
+
+    if err != nil {
+        t.Error(err)
+    }
+}
+
+// Test for updating document property.
+func Test_DocumentProperties_UpdateDocumentProperty(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/DocumentProperties"
+    localFile := "Common/test_multi_pages.docx"
+    remoteFileName := "TestUpdateDocumentProperty.docx"
+
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
+
+    requestProperty := models.DocumentPropertyCreateOrUpdate{
+        Value: "Imran Anwar",
+    }
+
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+        "destFileName": baseTestOutPath + "/" + remoteFileName,
+    }
+    _, _, err := client.WordsApi.CreateOrUpdateDocumentProperty(ctx, remoteFileName, "AsposeAuthor", requestProperty, options)
 
     if err != nil {
         t.Error(err)

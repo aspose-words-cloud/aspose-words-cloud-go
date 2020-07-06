@@ -1,6 +1,6 @@
 /*
  * --------------------------------------------------------------------------------
- * <copyright company="Aspose" file="text_test.go">
+ * <copyright company="Aspose" file="classification_test.go">
  *   Copyright (c) 2020 Aspose.Words for Cloud
  * </copyright>
  * <summary>
@@ -25,55 +25,44 @@
  * --------------------------------------------------------------------------------
  */
 
-// Example of how to work with macros.
+// Example of how to classify text.
 package api_test
 
 import (
     "testing"
-    "github.com/aspose-words-cloud/aspose-words-cloud-go/v2007/api/models"
 )
 
-// Test for replacing text.
-func Test_Text_ReplaceText(t *testing.T) {
+// Test for raw text classification.
+func Test_Classification_Classify(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
-    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Text"
-    remoteFileName := "TestReplaceText.docx"
-    localFile := "Common/test_multi_pages.docx"
-
-    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
-
-    requestReplaceText := models.ReplaceTextParameters{
-        OldValue: "aspose",
-        NewValue: "aspose new",
-    }
 
     options := map[string]interface{}{
-        "folder": remoteDataFolder,
-        "destFileName": baseTestOutPath + "/" + remoteFileName,
+        "bestClassesCount": "3",
     }
-    _, _, err := client.WordsApi.ReplaceText(ctx, remoteFileName, requestReplaceText, options)
+    _, _, err := client.WordsApi.Classify(ctx, "Try text classification", options)
 
     if err != nil {
         t.Error(err)
     }
 }
 
-// Test for searching.
-func Test_Text_Search(t *testing.T) {
+// Test for document classification.
+func Test_Classification_ClassifyDocument(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
-    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Text"
-    remoteFileName := "TestSearch.docx"
-    localFile := "DocumentElements/Text/SampleWordDocument.docx"
+    remoteDataFolder := remoteBaseTestDataFolder + "/Common"
+    localFile := "Common/test_multi_pages.docx"
+    remoteFileName := "TestClassifyDocument.docx"
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
 
     options := map[string]interface{}{
         "folder": remoteDataFolder,
+        "bestClassesCount": "3",
     }
-    _, _, err := client.WordsApi.Search(ctx, remoteFileName, "aspose", options)
+    _, _, err := client.WordsApi.ClassifyDocument(ctx, remoteFileName, options)
 
     if err != nil {
         t.Error(err)

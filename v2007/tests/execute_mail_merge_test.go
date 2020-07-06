@@ -1,6 +1,6 @@
 /*
  * --------------------------------------------------------------------------------
- * <copyright company="Aspose" file="text_test.go">
+ * <copyright company="Aspose" file="execute_mail_merge_test.go">
  *   Copyright (c) 2020 Aspose.Words for Cloud
  * </copyright>
  * <summary>
@@ -25,55 +25,51 @@
  * --------------------------------------------------------------------------------
  */
 
-// Example of how to work with macros.
+// Example of how to perform mail merge.
 package api_test
 
 import (
     "testing"
-    "github.com/aspose-words-cloud/aspose-words-cloud-go/v2007/api/models"
 )
 
-// Test for replacing text.
-func Test_Text_ReplaceText(t *testing.T) {
+// Test for executing mail merge online.
+func Test_ExecuteMailMerge_ExecuteMailMergeOnline(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
-    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Text"
-    remoteFileName := "TestReplaceText.docx"
-    localFile := "Common/test_multi_pages.docx"
+    mailMergeFolder := "DocumentActions/MailMerge"
+    localDocumentFile := "SampleExecuteTemplate.docx"
+    localDataFile := "SampleExecuteTemplateData.txt"
 
-    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
-
-    requestReplaceText := models.ReplaceTextParameters{
-        OldValue: "aspose",
-        NewValue: "aspose new",
-    }
 
     options := map[string]interface{}{
-        "folder": remoteDataFolder,
-        "destFileName": baseTestOutPath + "/" + remoteFileName,
     }
-    _, _, err := client.WordsApi.ReplaceText(ctx, remoteFileName, requestReplaceText, options)
+    _, err := client.WordsApi.ExecuteMailMergeOnline(ctx, OpenFile(t, mailMergeFolder + "/" + localDocumentFile), OpenFile(t, mailMergeFolder + "/" + localDataFile), options)
 
     if err != nil {
         t.Error(err)
     }
 }
 
-// Test for searching.
-func Test_Text_Search(t *testing.T) {
+// Test for executing mail merge.
+func Test_ExecuteMailMerge_ExecuteMailMerge(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
-    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Text"
-    remoteFileName := "TestSearch.docx"
-    localFile := "DocumentElements/Text/SampleWordDocument.docx"
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentActions/MailMerge"
+    mailMergeFolder := "DocumentActions/MailMerge"
+    localDocumentFile := "SampleExecuteTemplate.docx"
+    remoteFileName := "TestExecuteMailMerge.docx"
+    localDataFile := ReadFile(t, mailMergeFolder + "/SampleMailMergeTemplateData.txt")
 
-    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(mailMergeFolder + "/" + localDocumentFile), remoteDataFolder + "/" + remoteFileName)
 
 
     options := map[string]interface{}{
+        "data": localDataFile,
         "folder": remoteDataFolder,
+        "withRegions": false,
+        "destFileName": baseTestOutPath + "/" + remoteFileName,
     }
-    _, _, err := client.WordsApi.Search(ctx, remoteFileName, "aspose", options)
+    _, _, err := client.WordsApi.ExecuteMailMerge(ctx, remoteFileName, options)
 
     if err != nil {
         t.Error(err)

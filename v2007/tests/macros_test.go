@@ -1,6 +1,6 @@
 /*
  * --------------------------------------------------------------------------------
- * <copyright company="Aspose" file="text_test.go">
+ * <copyright company="Aspose" file="macros_test.go">
  *   Copyright (c) 2020 Aspose.Words for Cloud
  * </copyright>
  * <summary>
@@ -30,42 +30,15 @@ package api_test
 
 import (
     "testing"
-    "github.com/aspose-words-cloud/aspose-words-cloud-go/v2007/api/models"
 )
 
-// Test for replacing text.
-func Test_Text_ReplaceText(t *testing.T) {
+// Test for deleting macros.
+func Test_Macros_DeleteMacros(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
-    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Text"
-    remoteFileName := "TestReplaceText.docx"
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Macros"
     localFile := "Common/test_multi_pages.docx"
-
-    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
-
-    requestReplaceText := models.ReplaceTextParameters{
-        OldValue: "aspose",
-        NewValue: "aspose new",
-    }
-
-    options := map[string]interface{}{
-        "folder": remoteDataFolder,
-        "destFileName": baseTestOutPath + "/" + remoteFileName,
-    }
-    _, _, err := client.WordsApi.ReplaceText(ctx, remoteFileName, requestReplaceText, options)
-
-    if err != nil {
-        t.Error(err)
-    }
-}
-
-// Test for searching.
-func Test_Text_Search(t *testing.T) {
-    config := ReadConfiguration(t)
-    client, ctx := PrepareTest(t, config)
-    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Text"
-    remoteFileName := "TestSearch.docx"
-    localFile := "DocumentElements/Text/SampleWordDocument.docx"
+    remoteFileName := "TestDeleteDocumentMacros.docx"
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
@@ -73,7 +46,7 @@ func Test_Text_Search(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.Search(ctx, remoteFileName, "aspose", options)
+    _, err := client.WordsApi.DeleteMacros(ctx, remoteFileName, options)
 
     if err != nil {
         t.Error(err)

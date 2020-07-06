@@ -1,6 +1,6 @@
 /*
  * --------------------------------------------------------------------------------
- * <copyright company="Aspose" file="text_test.go">
+ * <copyright company="Aspose" file="load_web_document_test.go">
  *   Copyright (c) 2020 Aspose.Words for Cloud
  * </copyright>
  * <summary>
@@ -25,7 +25,7 @@
  * --------------------------------------------------------------------------------
  */
 
-// Example of how to work with macros.
+// Example of how to load web document.
 package api_test
 
 import (
@@ -33,47 +33,26 @@ import (
     "github.com/aspose-words-cloud/aspose-words-cloud-go/v2007/api/models"
 )
 
-// Test for replacing text.
-func Test_Text_ReplaceText(t *testing.T) {
+// Test for loading web document.
+func Test_LoadWebDocument_LoadWebDocument(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
-    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Text"
-    remoteFileName := "TestReplaceText.docx"
-    localFile := "Common/test_multi_pages.docx"
-
-    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
-
-    requestReplaceText := models.ReplaceTextParameters{
-        OldValue: "aspose",
-        NewValue: "aspose new",
+    requestDataSaveOptions := models.SaveOptionsData{
+        FileName: "google.doc",
+        SaveFormat: "doc",
+        DmlEffectsRenderingMode: "1",
+        DmlRenderingMode: "1",
+        UpdateSdtContent: false,
+        ZipOutput: false,
+    }
+    requestData := models.LoadWebDocumentData{
+        LoadingDocumentUrl: "http://google.com",
+        SaveOptions: &requestDataSaveOptions,
     }
 
     options := map[string]interface{}{
-        "folder": remoteDataFolder,
-        "destFileName": baseTestOutPath + "/" + remoteFileName,
     }
-    _, _, err := client.WordsApi.ReplaceText(ctx, remoteFileName, requestReplaceText, options)
-
-    if err != nil {
-        t.Error(err)
-    }
-}
-
-// Test for searching.
-func Test_Text_Search(t *testing.T) {
-    config := ReadConfiguration(t)
-    client, ctx := PrepareTest(t, config)
-    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Text"
-    remoteFileName := "TestSearch.docx"
-    localFile := "DocumentElements/Text/SampleWordDocument.docx"
-
-    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
-
-
-    options := map[string]interface{}{
-        "folder": remoteDataFolder,
-    }
-    _, _, err := client.WordsApi.Search(ctx, remoteFileName, "aspose", options)
+    _, _, err := client.WordsApi.LoadWebDocument(ctx, requestData, options)
 
     if err != nil {
         t.Error(err)

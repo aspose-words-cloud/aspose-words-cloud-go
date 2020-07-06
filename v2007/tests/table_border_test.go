@@ -1,6 +1,6 @@
 /*
  * --------------------------------------------------------------------------------
- * <copyright company="Aspose" file="lists_test.go">
+ * <copyright company="Aspose" file="table_border_test.go">
  *   Copyright (c) 2020 Aspose.Words for Cloud
  * </copyright>
  * <summary>
@@ -25,7 +25,7 @@
  * --------------------------------------------------------------------------------
  */
 
-// Example of how to work with lists.
+// Example of how to work with table borders.
 package api_test
 
 import (
@@ -33,13 +33,13 @@ import (
     "github.com/aspose-words-cloud/aspose-words-cloud-go/v2007/api/models"
 )
 
-// Test for getting lists from document.
-func Test_Lists_GetLists(t *testing.T) {
+// Test for getting borders.
+func Test_TableBorder_GetBorders(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
-    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Lists"
-    localFile := "DocumentElements/Lists/ListsGet.doc"
-    remoteFileName := "TestGetLists.doc"
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Tables"
+    localFile := "DocumentElements/Tables/TablesGet.docx"
+    remoteFileName := "TestGetBorders.docx"
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
@@ -47,20 +47,20 @@ func Test_Lists_GetLists(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetLists(ctx, remoteFileName, options)
+    _, _, err := client.WordsApi.GetBorders(ctx, remoteFileName, "tables/1/rows/0/cells/0", options)
 
     if err != nil {
         t.Error(err)
     }
 }
 
-// Test for getting list from document.
-func Test_Lists_GetList(t *testing.T) {
+// Test for getting border.
+func Test_TableBorder_GetBorder(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
-    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Lists"
-    localFile := "DocumentElements/Lists/ListsGet.doc"
-    remoteFileName := "TestGetList.doc"
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Tables"
+    localFile := "DocumentElements/Tables/TablesGet.docx"
+    remoteFileName := "TestGetBorder.docx"
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
@@ -68,79 +68,81 @@ func Test_Lists_GetList(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetList(ctx, remoteFileName, int32(1), options)
+    _, _, err := client.WordsApi.GetBorder(ctx, remoteFileName, "tables/1/rows/0/cells/0", "left", options)
 
     if err != nil {
         t.Error(err)
     }
 }
 
-// Test for updating list from document.
-func Test_Lists_UpdateList(t *testing.T) {
+// Test for deleting borders.
+func Test_TableBorder_DeleteBorders(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
-    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Lists"
-    localFile := "DocumentElements/Lists/ListsGet.doc"
-    remoteFileName := "TestUpdateList.doc"
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Tables"
+    localFile := "DocumentElements/Tables/TablesGet.docx"
+    remoteFileName := "TestDeleteBorders.docx"
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-    requestListUpdate := models.ListUpdate{
-        IsRestartAtEachSection: true,
-    }
 
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.UpdateList(ctx, remoteFileName, requestListUpdate, int32(1), options)
+    _, _, err := client.WordsApi.DeleteBorders(ctx, remoteFileName, "tables/1/rows/0/cells/0", options)
 
     if err != nil {
         t.Error(err)
     }
 }
 
-// Test for updating list level from document.
-func Test_Lists_UpdateListLevel(t *testing.T) {
+// Test for deleting border.
+func Test_TableBorder_DeleteBorder(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
-    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Lists"
-    localFile := "DocumentElements/Lists/ListsGet.doc"
-    remoteFileName := "TestUpdateListLevel.doc"
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Tables"
+    localFile := "DocumentElements/Tables/TablesGet.docx"
+    remoteFileName := "TestDeleteBorder.docx"
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-    requestListUpdate := models.ListLevelUpdate{
-        Alignment: "Right",
-    }
 
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.UpdateListLevel(ctx, remoteFileName, requestListUpdate, int32(1), int32(1), options)
+    _, _, err := client.WordsApi.DeleteBorder(ctx, remoteFileName, "tables/1/rows/0/cells/0", "left", options)
 
     if err != nil {
         t.Error(err)
     }
 }
 
-// Test for inserting list from document.
-func Test_Lists_InsertList(t *testing.T) {
+// Test for updating border.
+func Test_TableBorder_UpdateBorder(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
-    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Lists"
-    localFile := "DocumentElements/Lists/ListsGet.doc"
-    remoteFileName := "TestInsertList.doc"
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Tables"
+    localFile := "DocumentElements/Tables/TablesGet.docx"
+    remoteFileName := "TestUpdateBorder.docx"
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-    requestListInsert := models.ListInsert{
-        Template: "OutlineLegal",
+    requestBorderPropertiesColor := models.XmlColor{
+        Alpha: int32(2),
+    }
+    requestBorderProperties := models.Border{
+        BorderType: "Left",
+        Color: &requestBorderPropertiesColor,
+        DistanceFromText: 6,
+        LineStyle: "DashDotStroker",
+        LineWidth: 2,
+        Shadow: true,
     }
 
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.InsertList(ctx, remoteFileName, requestListInsert, options)
+    _, _, err := client.WordsApi.UpdateBorder(ctx, remoteFileName, requestBorderProperties, "tables/1/rows/0/cells/0", "left", options)
 
     if err != nil {
         t.Error(err)

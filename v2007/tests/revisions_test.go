@@ -1,6 +1,6 @@
 /*
  * --------------------------------------------------------------------------------
- * <copyright company="Aspose" file="watermark_test.go">
+ * <copyright company="Aspose" file="revisions_test.go">
  *   Copyright (c) 2020 Aspose.Words for Cloud
  * </copyright>
  * <summary>
@@ -25,73 +25,42 @@
  * --------------------------------------------------------------------------------
  */
 
-// Example of how to work with watermarks.
+// Example of how to accept all revisions in document.
 package api_test
 
 import (
     "testing"
-    "github.com/aspose-words-cloud/aspose-words-cloud-go/v2007/api/models"
 )
 
-// Test for adding watermark image.
-func Test_Watermark_InsertWatermarkImage(t *testing.T) {
+// Test for accepting revisions in document.
+func Test_Revisions_AcceptAllRevisions(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
-    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentActions/Watermark"
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentActions/Revisions"
     localFile := "Common/test_multi_pages.docx"
-    remoteFileName := "TestInsertWatermarkImage.docx"
-    remoteImagePath := remoteDataFolder + "/TestInsertWatermarkImage.png"
+    remoteFileName := "TestAcceptAllRevisions.docx"
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
-    UploadNextFileToStorage(t, ctx, client, GetLocalFile("Common/aspose-cloud.png"), remoteImagePath)
 
 
     options := map[string]interface{}{
-        "imageFile": nil,
         "folder": remoteDataFolder,
         "destFileName": baseTestOutPath + "/" + remoteFileName,
-        "image": remoteImagePath,
     }
-    _, _, err := client.WordsApi.InsertWatermarkImage(ctx, remoteFileName, options)
+    _, _, err := client.WordsApi.AcceptAllRevisions(ctx, remoteFileName, options)
 
     if err != nil {
         t.Error(err)
     }
 }
 
-// Test for adding watermark text.
-func Test_Watermark_InsertWatermarkText(t *testing.T) {
+// Test for rejecting revisions in document.
+func Test_Revisions_RejectAllRevisions(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
-    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentActions/Watermark"
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentActions/Revisions"
     localFile := "Common/test_multi_pages.docx"
-    remoteFileName := "TestInsertWatermarkText.docx"
-
-    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
-
-    requestWatermarkText := models.WatermarkText{
-        Text: "This is the text",
-        RotationAngle: 90,
-    }
-
-    options := map[string]interface{}{
-        "folder": remoteDataFolder,
-        "destFileName": baseTestOutPath + "/" + remoteFileName,
-    }
-    _, _, err := client.WordsApi.InsertWatermarkText(ctx, remoteFileName, requestWatermarkText, options)
-
-    if err != nil {
-        t.Error(err)
-    }
-}
-
-// Test for deleting watermark.
-func Test_Watermark_DeleteWatermark(t *testing.T) {
-    config := ReadConfiguration(t)
-    client, ctx := PrepareTest(t, config)
-    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentActions/Watermark"
-    localFile := "Common/test_multi_pages.docx"
-    remoteFileName := "TestDeleteWatermark.docx"
+    remoteFileName := "TestRejectAllRevisions.docx"
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
@@ -100,7 +69,7 @@ func Test_Watermark_DeleteWatermark(t *testing.T) {
         "folder": remoteDataFolder,
         "destFileName": baseTestOutPath + "/" + remoteFileName,
     }
-    _, _, err := client.WordsApi.DeleteWatermark(ctx, remoteFileName, options)
+    _, _, err := client.WordsApi.RejectAllRevisions(ctx, remoteFileName, options)
 
     if err != nil {
         t.Error(err)

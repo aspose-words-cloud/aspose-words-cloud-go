@@ -1,6 +1,6 @@
 /*
  * --------------------------------------------------------------------------------
- * <copyright company="Aspose" file="text_test.go">
+ * <copyright company="Aspose" file="build_report_test.go">
  *   Copyright (c) 2020 Aspose.Words for Cloud
  * </copyright>
  * <summary>
@@ -25,7 +25,7 @@
  * --------------------------------------------------------------------------------
  */
 
-// Example of how to work with macros.
+// Example of how to perform mail merge.
 package api_test
 
 import (
@@ -33,47 +33,53 @@ import (
     "github.com/aspose-words-cloud/aspose-words-cloud-go/v2007/api/models"
 )
 
-// Test for replacing text.
-func Test_Text_ReplaceText(t *testing.T) {
+// Test for build report online.
+func Test_BuildReport_BuildReportOnline(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
-    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Text"
-    remoteFileName := "TestReplaceText.docx"
-    localFile := "Common/test_multi_pages.docx"
+    reportingFolder := "DocumentActions/Reporting"
+    localDocumentFile := "ReportTemplate.docx"
+    localDataFile := ReadFile(t, reportingFolder + "/ReportData.json")
 
-    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
-
-    requestReplaceText := models.ReplaceTextParameters{
-        OldValue: "aspose",
-        NewValue: "aspose new",
+    requestReportEngineSettings := models.ReportEngineSettings{
+        DataSourceType: "Json",
+        DataSourceName: "persons",
     }
 
     options := map[string]interface{}{
-        "folder": remoteDataFolder,
-        "destFileName": baseTestOutPath + "/" + remoteFileName,
     }
-    _, _, err := client.WordsApi.ReplaceText(ctx, remoteFileName, requestReplaceText, options)
+    _, err := client.WordsApi.BuildReportOnline(ctx, OpenFile(t, reportingFolder + "/" + localDocumentFile), localDataFile, requestReportEngineSettings, options)
 
     if err != nil {
         t.Error(err)
     }
 }
 
-// Test for searching.
-func Test_Text_Search(t *testing.T) {
+// Test for build report.
+func Test_BuildReport_BuildReport(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
-    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Text"
-    remoteFileName := "TestSearch.docx"
-    localFile := "DocumentElements/Text/SampleWordDocument.docx"
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentActions/Reporting"
+    reportingFolder := "DocumentActions/Reporting"
+    localDocumentFile := "ReportTemplate.docx"
+    remoteFileName := "TestBuildReport.docx"
+    localDataFile := ReadFile(t, reportingFolder + "/ReportData.json")
 
-    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(reportingFolder + "/" + localDocumentFile), remoteDataFolder + "/" + remoteFileName)
 
+    requestReportEngineSettingsReportBuildOptions := []string{
+        "AllowMissingMembers",
+        "RemoveEmptyParagraphs",
+    }
+    requestReportEngineSettings := models.ReportEngineSettings{
+        DataSourceType: "Json",
+        ReportBuildOptions: requestReportEngineSettingsReportBuildOptions,
+    }
 
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.Search(ctx, remoteFileName, "aspose", options)
+    _, _, err := client.WordsApi.BuildReport(ctx, remoteFileName, localDataFile, requestReportEngineSettings, options)
 
     if err != nil {
         t.Error(err)

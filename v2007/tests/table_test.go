@@ -1,552 +1,579 @@
-//
-// MIT License
+/*
+ * --------------------------------------------------------------------------------
+ * <copyright company="Aspose" file="table_test.go">
+ *   Copyright (c) 2020 Aspose.Words for Cloud
+ * </copyright>
+ * <summary>
+ *   Permission is hereby granted, free of charge, to any person obtaining a copy
+ *  of this software and associated documentation files (the "Software"), to deal
+ *  in the Software without restriction, including without limitation the rights
+ *  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ *  copies of the Software, and to permit persons to whom the Software is
+ *  furnished to do so, subject to the following conditions:
+ * 
+ *  The above copyright notice and this permission notice shall be included in all
+ *  copies or substantial portions of the Software.
+ * 
+ *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ *  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ *  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ *  SOFTWARE.
+ * </summary>
+ * --------------------------------------------------------------------------------
+ */
 
-// Copyright (c) 2019 Aspose Pty Ltd
-
-// Permission is hereby granted, free of charge, to any person obtaining a copy
-// of this software and associated documentation files (the "Software"), to deal
-// in the Software without restriction, including without limitation the rights
-// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-// copies of the Software, and to permit persons to whom the Software is
-// furnished to do so, subject to the following conditions:
-
-// The above copyright notice and this permission notice shall be included in all
-// copies or substantial portions of the Software.
-
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-// SOFTWARE.
-//
-
+// Example of how to work wtih table.
 package api_test
 
 import (
-	"path"
-	"path/filepath"
-	"testing"
-
-	"github.com/aspose-words-cloud/aspose-words-cloud-go/v2007/api/models"
+    "testing"
+    "github.com/aspose-words-cloud/aspose-words-cloud-go/v2007/api/models"
 )
 
-func TestDeleteTable(t *testing.T) {
+// Test for getting tables.
+func Test_Table_GetTables(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Tables"
+    localFile := "DocumentElements/Tables/TablesGet.docx"
+    remoteFileName := "TestGetTables.docx"
 
-	localFilePath := GetLocalPath(filepath.Join("DocumentElements", "Tables"), "TablesGet.docx")
-	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Tables")
-	remoteName := "TestDeleteTable.docx"
-	nodePath := "sections/0"
-	index := 1
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, err := client.WordsApi.DeleteTable(ctx, remoteName, nodePath, int32(index), options)
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, _, err := client.WordsApi.GetTables(ctx, remoteFileName, "", options)
 
-	if err != nil {
-		t.Error(err)
-	}
+    if err != nil {
+        t.Error(err)
+    }
 }
 
-func TestDeleteTableCell(t *testing.T) {
+// Test for getting tables without node path.
+func Test_Table_GetTablesWithoutNodePath(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Tables"
+    localFile := "DocumentElements/Tables/TablesGet.docx"
+    remoteFileName := "TestGetTablesWithoutNodePath.docx"
 
-	localFilePath := GetLocalPath(filepath.Join("DocumentElements", "Tables"), "TablesGet.docx")
-	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Tables")
-	remoteName := "TestDeleteTableCell.docx"
-	tableRowPath := "sections/0/tables/2/rows/0"
-	index := 0
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, err := client.WordsApi.DeleteTableCell(ctx, remoteName, tableRowPath, int32(index), options)
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, _, err := client.WordsApi.GetTablesWithoutNodePath(ctx, remoteFileName, options)
 
-	if err != nil {
-		t.Error(err)
-	}
+    if err != nil {
+        t.Error(err)
+    }
 }
 
-func TestDeleteTableRow(t *testing.T) {
+// Test for getting table.
+func Test_Table_GetTable(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Tables"
+    localFile := "DocumentElements/Tables/TablesGet.docx"
+    remoteFileName := "TestGetTable.docx"
 
-	localFilePath := GetLocalPath(filepath.Join("DocumentElements", "Tables"), "TablesGet.docx")
-	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Tables")
-	remoteName := "TestDeleteTableRow.docx"
-	tablePath := "tables/1"
-	index := 0
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, err := client.WordsApi.DeleteTableRow(ctx, remoteName, tablePath, int32(index), options)
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, _, err := client.WordsApi.GetTable(ctx, remoteFileName, "", int32(1), options)
 
-	if err != nil {
-		t.Error(err)
-	}
+    if err != nil {
+        t.Error(err)
+    }
 }
 
-func TestDeleteTableWithoutNodePath(t *testing.T) {
+// Test for getting table without node path.
+func Test_Table_GetTableWithoutNodePath(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Tables"
+    localFile := "DocumentElements/Tables/TablesGet.docx"
+    remoteFileName := "TestGetTableWithoutNodePath.docx"
 
-	localFilePath := GetLocalPath(filepath.Join("DocumentElements", "Tables"), "TablesGet.docx")
-	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Tables")
-	remoteName := "TestDeleteTableWithoutNodePath.docx"
-	index := 1
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, err := client.WordsApi.DeleteTableWithoutNodePath(ctx, remoteName, int32(index), options)
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, _, err := client.WordsApi.GetTableWithoutNodePath(ctx, remoteFileName, int32(1), options)
 
-	if err != nil {
-		t.Error(err)
-	}
+    if err != nil {
+        t.Error(err)
+    }
 }
 
-func TestGetTable(t *testing.T) {
+// Test for deleting table.
+func Test_Table_DeleteTable(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Tables"
+    localFile := "DocumentElements/Tables/TablesGet.docx"
+    remoteFileName := "TestDeleteTable.docx"
 
-	localFilePath := GetLocalPath(filepath.Join("DocumentElements", "Tables"), "TablesGet.docx")
-	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Tables")
-	remoteName := "TestGetTable.docx"
-	nodePath := "sections/0"
-	index := 0
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, _, err := client.WordsApi.GetTable(ctx, remoteName, nodePath, int32(index), options)
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, err := client.WordsApi.DeleteTable(ctx, remoteFileName, "", int32(1), options)
 
-	if err != nil {
-		t.Error(err)
-	}
+    if err != nil {
+        t.Error(err)
+    }
 }
 
-func TestGetTableCell(t *testing.T) {
+// Test for deleting table without node path.
+func Test_Table_DeleteTableWithoutNodePath(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Tables"
+    localFile := "DocumentElements/Tables/TablesGet.docx"
+    remoteFileName := "TestDeleteTableWithoutNodePath.docx"
 
-	localFilePath := GetLocalPath(filepath.Join("DocumentElements", "Tables"), "TablesGet.docx")
-	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Tables")
-	tableRowPath := "sections/0/tables/2/rows/0"
-	index := 0
-	remoteName := "TestGetTableCell.docx"
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, _, err := client.WordsApi.GetTableCell(ctx, remoteName, tableRowPath, int32(index), options)
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, err := client.WordsApi.DeleteTableWithoutNodePath(ctx, remoteFileName, int32(1), options)
 
-	if err != nil {
-		t.Error(err)
-	}
+    if err != nil {
+        t.Error(err)
+    }
 }
 
-func TestGetTableCellFormat(t *testing.T) {
+// Test for adding table.
+func Test_Table_InsertTable(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Tables"
+    localFile := "DocumentElements/Tables/TablesGet.docx"
+    remoteFileName := "TestInsertTable.docx"
 
-	localFilePath := GetLocalPath(filepath.Join("DocumentElements", "Tables"), "TablesGet.docx")
-	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Tables")
-	tableRowPath := "sections/0/tables/2/rows/0"
-	index := 0
-	remoteName := "TestGetTableCellFormat.docx"
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
+    requestTable := models.TableInsert{
+        ColumnsCount: int32(5),
+        RowsCount: int32(4),
+    }
 
-	_, _, err := client.WordsApi.GetTableCellFormat(ctx, remoteName, tableRowPath, int32(index), options)
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, _, err := client.WordsApi.InsertTable(ctx, remoteFileName, requestTable, "", options)
 
-	if err != nil {
-		t.Error(err)
-	}
+    if err != nil {
+        t.Error(err)
+    }
 }
 
-func TestGetTableProperties(t *testing.T) {
+// Test for adding table without node path.
+func Test_Table_InsertTableWithoutNodePath(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Tables"
+    localFile := "DocumentElements/Tables/TablesGet.docx"
+    remoteFileName := "TestInsertTableWithoutNodePath.docx"
 
-	localFilePath := GetLocalPath(filepath.Join("DocumentElements", "Tables"), "TablesGet.docx")
-	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Tables")
-	nodePath := "sections/0"
-	index := 0
-	remoteName := "TestGetTableProperties.docx"
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
+    requestTable := models.TableInsert{
+        ColumnsCount: int32(5),
+        RowsCount: int32(4),
+    }
 
-	_, _, err := client.WordsApi.GetTableProperties(ctx, remoteName, nodePath, int32(index), options)
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, _, err := client.WordsApi.InsertTableWithoutNodePath(ctx, remoteFileName, requestTable, options)
 
-	if err != nil {
-		t.Error(err)
-	}
+    if err != nil {
+        t.Error(err)
+    }
 }
 
-func TestGetTablePropertiesWithoutNodePath(t *testing.T) {
+// Test for getting document properties.
+func Test_Table_GetTableProperties(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Tables"
+    localFile := "DocumentElements/Tables/TablesGet.docx"
+    remoteFileName := "TestGetTableProperties.docx"
 
-	localFilePath := GetLocalPath(filepath.Join("DocumentElements", "Tables"), "TablesGet.docx")
-	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Tables")
-	remoteName := "TestGetTablePropertiesWithoutNodePath.docx"
-	index := 0
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, _, err := client.WordsApi.GetTablePropertiesWithoutNodePath(ctx, remoteName, int32(index), options)
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, _, err := client.WordsApi.GetTableProperties(ctx, remoteFileName, "", int32(1), options)
 
-	if err != nil {
-		t.Error(err)
-	}
+    if err != nil {
+        t.Error(err)
+    }
 }
 
-func TestGetTableRow(t *testing.T) {
+// Test for getting document properties without node path.
+func Test_Table_GetTablePropertiesWithoutNodePath(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Tables"
+    localFile := "DocumentElements/Tables/TablesGet.docx"
+    remoteFileName := "TestGetTablePropertiesWithoutNodePath.docx"
 
-	localFilePath := GetLocalPath(filepath.Join("DocumentElements", "Tables"), "TablesGet.docx")
-	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Tables")
-	remoteName := "TestGetTableRow.docx"
-	tablePath := "tables/1"
-	index := 0
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, _, err := client.WordsApi.GetTableRow(ctx, remoteName, tablePath, int32(index), options)
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, _, err := client.WordsApi.GetTablePropertiesWithoutNodePath(ctx, remoteFileName, int32(1), options)
 
-	if err != nil {
-		t.Error(err)
-	}
+    if err != nil {
+        t.Error(err)
+    }
 }
 
-func TestGetTableRowFormat(t *testing.T) {
+// Test for updating table properties.
+func Test_Table_UpdateTableProperties(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Tables"
+    localFile := "DocumentElements/Tables/TablesGet.docx"
+    remoteFileName := "TestUpdateTableProperties.docx"
 
-	localFilePath := GetLocalPath(filepath.Join("DocumentElements", "Tables"), "TablesGet.docx")
-	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Tables")
-	remoteName := "TestGetTableRowFormat.docx"
-	tablePath := "tables/1"
-	index := 0
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
+    requestProperties := models.TableProperties{
+        Alignment: "Right",
+        AllowAutoFit: false,
+        Bidi: true,
+        BottomPadding: 1,
+        CellSpacing: 2,
+        StyleOptions: "ColumnBands",
+    }
 
-	_, _, err := client.WordsApi.GetTableRowFormat(ctx, remoteName, tablePath, int32(index), options)
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, _, err := client.WordsApi.UpdateTableProperties(ctx, remoteFileName, requestProperties, "", int32(1), options)
 
-	if err != nil {
-		t.Error(err)
-	}
+    if err != nil {
+        t.Error(err)
+    }
 }
 
-func TestGetTableWithoutNodePath(t *testing.T) {
+// Test for updating table properties without node path.
+func Test_Table_UpdateTablePropertiesWithoutNodePath(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Tables"
+    localFile := "DocumentElements/Tables/TablesGet.docx"
+    remoteFileName := "TestUpdateTablePropertiesWithoutNodePath.docx"
 
-	localFilePath := GetLocalPath(filepath.Join("DocumentElements", "Tables"), "TablesGet.docx")
-	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Tables")
-	remoteName := "TestGetTableWithoutNodePath.docx"
-	index := 0
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
+    requestProperties := models.TableProperties{
+        Alignment: "Right",
+        AllowAutoFit: false,
+        Bidi: true,
+        BottomPadding: 1,
+        CellSpacing: 2,
+        StyleOptions: "ColumnBands",
+    }
 
-	_, _, err := client.WordsApi.GetTableWithoutNodePath(ctx, remoteName, int32(index), options)
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, _, err := client.WordsApi.UpdateTablePropertiesWithoutNodePath(ctx, remoteFileName, requestProperties, int32(1), options)
 
-	if err != nil {
-		t.Error(err)
-	}
+    if err != nil {
+        t.Error(err)
+    }
 }
 
-func TestGetTables(t *testing.T) {
+// Test for getting table row.
+func Test_Table_GetTableRow(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Tables"
+    localFile := "DocumentElements/Tables/TablesGet.docx"
+    remoteFileName := "TestGetTableRow.docx"
 
-	localFilePath := GetLocalPath(filepath.Join("DocumentElements", "Tables"), "TablesGet.docx")
-	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Tables")
-	remoteName := "TestGetTables.docx"
-	nodePath := "sections/0"
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, _, err := client.WordsApi.GetTables(ctx, remoteName, nodePath, options)
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, _, err := client.WordsApi.GetTableRow(ctx, remoteFileName, "tables/1", int32(0), options)
 
-	if err != nil {
-		t.Error(err)
-	}
+    if err != nil {
+        t.Error(err)
+    }
 }
 
-func TestGetTablesWithoutNodePath(t *testing.T) {
+// Test for deleting table row.
+func Test_Table_DeleteTableRow(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Tables"
+    localFile := "DocumentElements/Tables/TablesGet.docx"
+    remoteFileName := "TestDeleteTableRow.docx"
 
-	localFilePath := GetLocalPath(filepath.Join("DocumentElements", "Tables"), "TablesGet.docx")
-	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Tables")
-	remoteName := "TestGetTablesWithoutNodePath.docx"
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, _, err := client.WordsApi.GetTablesWithoutNodePath(ctx, remoteName, options)
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, err := client.WordsApi.DeleteTableRow(ctx, remoteFileName, "tables/1", int32(0), options)
 
-	if err != nil {
-		t.Error(err)
-	}
+    if err != nil {
+        t.Error(err)
+    }
 }
 
-func TestInsertTable(t *testing.T) {
+// Test for adding row.
+func Test_Table_InsertTableRow(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Tables"
+    localFile := "DocumentElements/Tables/TablesGet.docx"
+    remoteFileName := "TestInsertTableRow.docx"
 
-	localFilePath := GetLocalPath(filepath.Join("DocumentElements", "Tables"), "TablesGet.docx")
-	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Tables")
-	remoteName := "TestInsertTable.docx"
-	nodePath := "sections/0"
-	table := models.TableInsert{
-		ColumnsCount: 5,
-		RowsCount:    4,
-	}
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
+    requestRow := models.TableRowInsert{
+        ColumnsCount: int32(5),
+    }
 
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, _, err := client.WordsApi.InsertTableRow(ctx, remoteFileName, requestRow, "sections/0/tables/2", options)
 
-	_, _, err := client.WordsApi.InsertTable(ctx, remoteName, table, nodePath, options)
-
-	if err != nil {
-		t.Error(err)
-	}
+    if err != nil {
+        t.Error(err)
+    }
 }
 
-func TestInsertTableCell(t *testing.T) {
+// Test for getting row format.
+func Test_Table_GetTableRowFormat(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Tables"
+    localFile := "DocumentElements/Tables/TablesGet.docx"
+    remoteFileName := "TestGetTableRowFormat.docx"
 
-	localFilePath := GetLocalPath(filepath.Join("DocumentElements", "Tables"), "TablesGet.docx")
-	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Tables")
-	remoteName := "TestInsertTableCell.docx"
-	tableRowPath := "sections/0/tables/2/rows/0"
-	cell := models.TableCellInsert{}
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, _, err := client.WordsApi.InsertTableCell(ctx, remoteName, cell, tableRowPath, options)
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, _, err := client.WordsApi.GetTableRowFormat(ctx, remoteFileName, "sections/0/tables/2", int32(0), options)
 
-	if err != nil {
-		t.Error(err)
-	}
+    if err != nil {
+        t.Error(err)
+    }
 }
 
-func TestInsertTableRow(t *testing.T) {
+// Test updating row format.
+func Test_Table_UpdateTableRowFormat(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Tables"
+    localFile := "DocumentElements/Tables/TablesGet.docx"
+    remoteFileName := "TestUpdateTableRowFormat.docx"
 
-	localFilePath := GetLocalPath(filepath.Join("DocumentElements", "Tables"), "TablesGet.docx")
-	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Tables")
-	tablePath := "sections/0/tables/2"
-	remoteName := "TestInsertTableRow.docx"
-	row := models.TableRowInsert{
-		ColumnsCount: 5,
-	}
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
+    requestFormat := models.TableRowFormat{
+        AllowBreakAcrossPages: true,
+        HeadingFormat: true,
+        Height: 10,
+        HeightRule: "Auto",
+    }
 
-	_, _, err := client.WordsApi.InsertTableRow(ctx, remoteName, row, tablePath, options)
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, _, err := client.WordsApi.UpdateTableRowFormat(ctx, remoteFileName, requestFormat, "sections/0/tables/2", int32(0), options)
 
-	if err != nil {
-		t.Error(err)
-	}
+    if err != nil {
+        t.Error(err)
+    }
 }
 
-func TestInsertTableWithoutNodePath(t *testing.T) {
+// Test for getting table cell.
+func Test_Table_GetTableCell(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Tables"
+    localFile := "DocumentElements/Tables/TablesGet.docx"
+    remoteFileName := "TestGetTableCell.docx"
 
-	localFilePath := GetLocalPath(filepath.Join("DocumentElements", "Tables"), "TablesGet.docx")
-	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Tables")
-	remoteName := "TestInsertTableWithoutNodePath.docx"
-	table := models.TableInsert{
-		ColumnsCount: 5,
-		RowsCount:    4,
-	}
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, _, err := client.WordsApi.InsertTableWithoutNodePath(ctx, remoteName, table, options)
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, _, err := client.WordsApi.GetTableCell(ctx, remoteFileName, "sections/0/tables/2/rows/0", int32(0), options)
 
-	if err != nil {
-		t.Error(err)
-	}
+    if err != nil {
+        t.Error(err)
+    }
 }
 
-func TestRenderTable(t *testing.T) {
+// Test for deleting cell.
+func Test_Table_DeleteTableCell(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Tables"
+    localFile := "DocumentElements/Tables/TablesGet.docx"
+    remoteFileName := "TestDeleteTableCell.docx"
 
-	localFilePath := GetLocalPath(filepath.Join("DocumentElements", "Tables"), "TablesGet.docx")
-	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Tables")
-	remoteName := "TestRenderTable.docx"
-	format := "png"
-	nodePath := "sections/0"
-	index := 0
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	output, err := client.WordsApi.RenderTable(ctx, remoteName, format, nodePath, int32(index), options)
-	defer output.Body.Close()
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, err := client.WordsApi.DeleteTableCell(ctx, remoteFileName, "sections/0/tables/2/rows/0", int32(0), options)
 
-	if err != nil {
-		t.Error(err)
-	}
+    if err != nil {
+        t.Error(err)
+    }
 }
 
-func TestRenderTableWithoutNodePath(t *testing.T) {
+// Test for adding cell.
+func Test_Table_InsertTableCell(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Tables"
+    localFile := "DocumentElements/Tables/TablesGet.docx"
+    remoteFileName := "TestInsertTableCell.docx"
 
-	localFilePath := GetLocalPath(filepath.Join("DocumentElements", "Tables"), "TablesGet.docx")
-	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Tables")
-	remoteName := "TestRenderTableWithoutNodePath.docx"
-	format := "png"
-	index := 0
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
+    requestCell := models.TableCellInsert{
+    }
 
-	output, err := client.WordsApi.RenderTableWithoutNodePath(ctx, remoteName, format, int32(index), options)
-	defer output.Body.Close()
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, _, err := client.WordsApi.InsertTableCell(ctx, remoteFileName, requestCell, "sections/0/tables/2/rows/0", options)
 
-	if err != nil {
-		t.Error(err)
-	}
+    if err != nil {
+        t.Error(err)
+    }
 }
 
-func TestUpdateTableCellFormat(t *testing.T) {
+// Test for getting cell format.
+func Test_Table_GetTableCellFormat(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Tables"
+    localFile := "DocumentElements/Tables/TablesGet.docx"
+    remoteFileName := "TestGetTableCellFormat.docx"
 
-	localFilePath := GetLocalPath(filepath.Join("DocumentElements", "Tables"), "TablesGet.docx")
-	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Tables")
-	remoteName := "TestUpdateTableCellFormat.docx"
-	tableRowPath := "sections/0/tables/2/rows/0"
-	index := 0
-	format := models.TableCellFormat{
-		BottomPadding:   5,
-		FitText:         true,
-		HorizontalMerge: "First",
-		WrapText:        true,
-	}
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, _, err := client.WordsApi.UpdateTableCellFormat(ctx, remoteName, format, tableRowPath, int32(index), options)
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, _, err := client.WordsApi.GetTableCellFormat(ctx, remoteFileName, "sections/0/tables/2/rows/0", int32(0), options)
 
-	if err != nil {
-		t.Error(err)
-	}
+    if err != nil {
+        t.Error(err)
+    }
 }
 
-func TestUpdateTableProperties(t *testing.T) {
+// Test for updating cell format.
+func Test_Table_UpdateTableCellFormat(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Tables"
+    localFile := "DocumentElements/Tables/TablesGet.docx"
+    remoteFileName := "TestUpdateTableCellFormat.docx"
 
-	localFilePath := GetLocalPath(filepath.Join("DocumentElements", "Tables"), "TablesGet.docx")
-	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Tables")
-	remoteName := "TestUpdateTableProperties.docx"
-	nodePath := "sections/0"
-	index := 0
-	tableProperties := models.TableProperties{
-		Alignment:     "Right",
-		AllowAutoFit:  false,
-		Bidi:          true,
-		BottomPadding: 1,
-		CellSpacing:   2,
-		LeftIndent:    3,
-		LeftPadding:   4,
-		RightPadding:  5,
-		StyleOptions:  "ColumnBands",
-		TopPadding:    6,
-	}
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
+    requestFormat := models.TableCellFormat{
+        BottomPadding: 5,
+        FitText: true,
+        HorizontalMerge: "First",
+        WrapText: true,
+    }
 
-	_, _, err := client.WordsApi.UpdateTableProperties(ctx, remoteName, tableProperties, nodePath, int32(index), options)
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, _, err := client.WordsApi.UpdateTableCellFormat(ctx, remoteFileName, requestFormat, "sections/0/tables/2/rows/0", int32(0), options)
 
-	if err != nil {
-		t.Error(err)
-	}
+    if err != nil {
+        t.Error(err)
+    }
 }
 
-func TestUpdateTablePropertiesWithoutNodePath(t *testing.T) {
+// Test for table rendering.
+func Test_Table_RenderTable(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Tables"
+    localFile := "DocumentElements/Tables/TablesGet.docx"
+    remoteFileName := "TestRenderTable.docx"
 
-	localFilePath := GetLocalPath(filepath.Join("DocumentElements", "Tables"), "TablesGet.docx")
-	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Tables")
-	remoteName := "TestUpdateTablePropertiesWithoutNodePath.docx"
-	index := 0
-	properties := models.TableProperties{
-		Alignment:     "Right",
-		AllowAutoFit:  false,
-		Bidi:          true,
-		BottomPadding: 1,
-		CellSpacing:   2,
-		LeftIndent:    3,
-		LeftPadding:   4,
-		RightPadding:  5,
-		StyleOptions:  "ColumnBands",
-		TopPadding:    6,
-	}
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-	_, _, err := client.WordsApi.UpdateTablePropertiesWithoutNodePath(ctx, remoteName, properties, int32(index), options)
 
-	if err != nil {
-		t.Error(err)
-	}
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, err := client.WordsApi.RenderTable(ctx, remoteFileName, "png", "", int32(0), options)
+
+    if err != nil {
+        t.Error(err)
+    }
 }
 
-func TestUpdateTableRowFormat(t *testing.T) {
+// Test for table rendering without node path.
+func Test_Table_RenderTableWithoutNodePath(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Tables"
+    localFile := "DocumentElements/Tables/TablesGet.docx"
+    remoteFileName := "TestRenderTableWithoutNodePath.docx"
 
-	localFilePath := GetLocalPath(filepath.Join("DocumentElements", "Tables"), "TablesGet.docx")
-	remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Tables")
-	remoteName := "TestUpdateTableRowFormat.docx"
-	tablePath := "sections/0/tables/2"
-	index := 0
-	format := models.TableRowFormat{
-		AllowBreakAcrossPages: true,
-		HeadingFormat:         true,
-		Height:                10,
-		HeightRule:            "Auto",
-	}
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-	client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-	_, _, err := client.WordsApi.UpdateTableRowFormat(ctx, remoteName, format, tablePath, int32(index), options)
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+    _, err := client.WordsApi.RenderTableWithoutNodePath(ctx, remoteFileName, "png", int32(0), options)
 
-	if err != nil {
-		t.Error(err)
-	}
+    if err != nil {
+        t.Error(err)
+    }
 }
