@@ -110,14 +110,13 @@ func Test_Folder_MoveFolder(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     remoteDataFolder := remoteBaseTestDataFolder + "/Storage"
     localFile := "Common/test_multi_pages.docx"
-    folderToMove := remoteDataFolder + "/TestMoveFolder"
 
-    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), folderToMove + "Src/TestMoveFolderSrc.docx")
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/TestMoveFolderSrc/TestMoveFolderSrc.docx")
 
 
     options := map[string]interface{}{
     }
-    _, err := client.WordsApi.MoveFolder(ctx, folderToMove + "Dest", folderToMove + "Src", options)
+    _, err := client.WordsApi.MoveFolder(ctx, baseTestOutPath + "/TestMoveFolderDest", remoteDataFolder + "/TestMoveFolderSrc", options)
 
     if err != nil {
         t.Error(err)
