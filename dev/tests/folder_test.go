@@ -116,7 +116,7 @@ func Test_Folder_MoveFolder(t *testing.T) {
 
     options := map[string]interface{}{
     }
-    _, err := client.WordsApi.MoveFolder(ctx, baseTestOutPath + "/TestMoveFolderDest", remoteDataFolder + "/TestMoveFolderSrc", options)
+    _, err := client.WordsApi.MoveFolder(ctx, baseTestOutPath + "/TestMoveFolderDest_" + CreateRandomGuid(), remoteDataFolder + "/TestMoveFolderSrc", options)
 
     if err != nil {
         t.Error(err)
