@@ -19966,6 +19966,145 @@ func (a *WordsApiService) MoveFolder(ctx context.Context, destPath string, srcPa
     defer localVarHttpResponse.Body.Close()
     return localVarHttpResponse, err
 }
+/* WordsApiService Allows to optimize the document contents as well as default Aspose.Words behavior to a particular versions of MS Word.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ @param name The document name.
+ @param options The document optimization options.
+ @param optional (nil or map[string]interface{}) with one or more of:
+     @param "folder" (string) Original document folder.
+     @param "storage" (string) Original document storage.
+     @param "loadEncoding" (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
+     @param "password" (string) Password for opening an encrypted document.
+     @param "destFileName" (string) Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.
+     @param "revisionAuthor" (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
+     @param "revisionDateTime" (string) The date and time to use for revisions.
+@return */
+func (a *WordsApiService) OptimizeDocument(ctx context.Context, name string, options models.IOptimizationOptions, localVarOptionals map[string]interface{}) (*http.Response, error) {
+    var (
+        localVarHttpMethod = strings.ToUpper("put")
+        localVarPostBody interface{}
+    )
+
+    // create path and map variables
+    localVarPath := "/words/{name}/compatibility/optimize"
+    localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+
+    localVarPath = strings.Replace(localVarPath, "/<nil>", "", -1)
+    localVarPath = a.client.cfg.BaseUrl + strings.Replace(localVarPath, "//", "/", -1)
+
+    localVarHeaderParams := make(map[string]string)
+    localVarQueryParams := url.Values{}
+    localVarFormParams := make([]FormParamContainer, 0)
+
+    if err := typeCheckParameter(localVarOptionals["folder"], "string", "folder"); err != nil {
+        return nil, err
+    }
+    if err := typeCheckParameter(localVarOptionals["storage"], "string", "storage"); err != nil {
+        return nil, err
+    }
+    if err := typeCheckParameter(localVarOptionals["loadEncoding"], "string", "loadEncoding"); err != nil {
+        return nil, err
+    }
+    if err := typeCheckParameter(localVarOptionals["password"], "string", "password"); err != nil {
+        return nil, err
+    }
+    if err := typeCheckParameter(localVarOptionals["destFileName"], "string", "destFileName"); err != nil {
+        return nil, err
+    }
+    if err := typeCheckParameter(localVarOptionals["revisionAuthor"], "string", "revisionAuthor"); err != nil {
+        return nil, err
+    }
+    if err := typeCheckParameter(localVarOptionals["revisionDateTime"], "string", "revisionDateTime"); err != nil {
+        return nil, err
+    }
+
+
+    if localVarTempParam, localVarOk := localVarOptionals["folder"].(string); localVarOk {
+        localVarQueryParams.Add("Folder", parameterToString(localVarTempParam, ""))
+    }
+
+
+    if localVarTempParam, localVarOk := localVarOptionals["storage"].(string); localVarOk {
+        localVarQueryParams.Add("Storage", parameterToString(localVarTempParam, ""))
+    }
+
+
+    if localVarTempParam, localVarOk := localVarOptionals["loadEncoding"].(string); localVarOk {
+        localVarQueryParams.Add("LoadEncoding", parameterToString(localVarTempParam, ""))
+    }
+
+
+    if localVarTempParam, localVarOk := localVarOptionals["password"].(string); localVarOk {
+        localVarQueryParams.Add("Password", parameterToString(localVarTempParam, ""))
+    }
+
+
+    if localVarTempParam, localVarOk := localVarOptionals["destFileName"].(string); localVarOk {
+        localVarQueryParams.Add("DestFileName", parameterToString(localVarTempParam, ""))
+    }
+
+
+    if localVarTempParam, localVarOk := localVarOptionals["revisionAuthor"].(string); localVarOk {
+        localVarQueryParams.Add("RevisionAuthor", parameterToString(localVarTempParam, ""))
+    }
+
+
+    if localVarTempParam, localVarOk := localVarOptionals["revisionDateTime"].(string); localVarOk {
+        localVarQueryParams.Add("RevisionDateTime", parameterToString(localVarTempParam, ""))
+    }
+
+
+    // to determine the Content-Type header
+    localVarHttpContentTypes := []string{ "application/xml", "application/json", }
+
+    // set Content-Type header
+    localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
+    if localVarHttpContentType != "" {
+        localVarHeaderParams["Content-Type"] = localVarHttpContentType
+    }
+
+    // to determine the Accept header
+    localVarHttpHeaderAccepts := []string{
+        "application/xml",
+        "application/json",
+    }
+
+    // set Accept header
+    localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
+    if localVarHttpHeaderAccept != "" {
+        localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+    }
+
+
+
+    localVarPostBody = &options
+    r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams)
+    if err != nil {
+        return nil, err
+    }
+
+    localVarHttpResponse, err := a.client.callAPI(r)
+    if err != nil || localVarHttpResponse == nil {
+        return localVarHttpResponse, err
+    }
+    if localVarHttpResponse.StatusCode == 401 {
+        defer localVarHttpResponse.Body.Close()
+        return nil, errors.New("Access is denied")
+    }
+    if localVarHttpResponse.StatusCode >= 300 {
+        defer localVarHttpResponse.Body.Close()
+
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&apiError); err != nil {
+            return localVarHttpResponse, err
+        }
+
+        return localVarHttpResponse, &apiError
+    }
+    defer localVarHttpResponse.Body.Close()
+    return localVarHttpResponse, err
+}
 /* WordsApiService Protects document.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name The document name.
