@@ -45,9 +45,10 @@ func Test_DrawingObjects_GetDocumentDrawingObjects(t *testing.T) {
 
 
     options := map[string]interface{}{
+        "nodePath": "sections/0",
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetDocumentDrawingObjects(ctx, remoteFileName, "sections/0", options)
+    _, _, err := client.WordsApi.GetDocumentDrawingObjects(ctx, remoteFileName, options)
 
     if err != nil {
         t.Error(err)
@@ -68,7 +69,7 @@ func Test_DrawingObjects_GetDocumentDrawingObjectsWithoutNodePath(t *testing.T) 
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetDocumentDrawingObjectsWithoutNodePath(ctx, remoteFileName, options)
+    _, _, err := client.WordsApi.GetDocumentDrawingObjects(ctx, remoteFileName, options)
 
     if err != nil {
         t.Error(err)
@@ -87,9 +88,10 @@ func Test_DrawingObjects_GetDocumentDrawingObjectByIndex(t *testing.T) {
 
 
     options := map[string]interface{}{
+        "nodePath": "sections/0",
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetDocumentDrawingObjectByIndex(ctx, remoteFileName, "sections/0", int32(0), options)
+    _, _, err := client.WordsApi.GetDocumentDrawingObjectByIndex(ctx, remoteFileName, int32(0), options)
 
     if err != nil {
         t.Error(err)
@@ -110,7 +112,7 @@ func Test_DrawingObjects_GetDocumentDrawingObjectByIndexWithoutNodePath(t *testi
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetDocumentDrawingObjectByIndexWithoutNodePath(ctx, remoteFileName, int32(0), options)
+    _, _, err := client.WordsApi.GetDocumentDrawingObjectByIndex(ctx, remoteFileName, int32(0), options)
 
     if err != nil {
         t.Error(err)
@@ -129,9 +131,10 @@ func Test_DrawingObjects_RenderDrawingObject(t *testing.T) {
 
 
     options := map[string]interface{}{
+        "nodePath": "sections/0",
         "folder": remoteDataFolder,
     }
-    _, err := client.WordsApi.RenderDrawingObject(ctx, remoteFileName, "png", "sections/0", int32(0), options)
+    _, err := client.WordsApi.RenderDrawingObject(ctx, remoteFileName, "png", int32(0), options)
 
     if err != nil {
         t.Error(err)
@@ -152,7 +155,7 @@ func Test_DrawingObjects_RenderDrawingObjectWithoutNodePath(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, err := client.WordsApi.RenderDrawingObjectWithoutNodePath(ctx, remoteFileName, "png", int32(0), options)
+    _, err := client.WordsApi.RenderDrawingObject(ctx, remoteFileName, "png", int32(0), options)
 
     if err != nil {
         t.Error(err)
@@ -171,9 +174,10 @@ func Test_DrawingObjects_GetDocumentDrawingObjectImageData(t *testing.T) {
 
 
     options := map[string]interface{}{
+        "nodePath": "sections/0",
         "folder": remoteDataFolder,
     }
-    _, err := client.WordsApi.GetDocumentDrawingObjectImageData(ctx, remoteFileName, "sections/0", int32(0), options)
+    _, err := client.WordsApi.GetDocumentDrawingObjectImageData(ctx, remoteFileName, int32(0), options)
 
     if err != nil {
         t.Error(err)
@@ -194,7 +198,7 @@ func Test_DrawingObjects_GetDocumentDrawingObjectImageDataWithoutNodePath(t *tes
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, err := client.WordsApi.GetDocumentDrawingObjectImageDataWithoutNodePath(ctx, remoteFileName, int32(0), options)
+    _, err := client.WordsApi.GetDocumentDrawingObjectImageData(ctx, remoteFileName, int32(0), options)
 
     if err != nil {
         t.Error(err)
@@ -213,9 +217,10 @@ func Test_DrawingObjects_GetDocumentDrawingObjectOleData(t *testing.T) {
 
 
     options := map[string]interface{}{
+        "nodePath": "sections/0",
         "folder": remoteDataFolder,
     }
-    _, err := client.WordsApi.GetDocumentDrawingObjectOleData(ctx, remoteFileName, "sections/0", int32(0), options)
+    _, err := client.WordsApi.GetDocumentDrawingObjectOleData(ctx, remoteFileName, int32(0), options)
 
     if err != nil {
         t.Error(err)
@@ -236,7 +241,7 @@ func Test_DrawingObjects_GetDocumentDrawingObjectOleDataWithoutNodePath(t *testi
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, err := client.WordsApi.GetDocumentDrawingObjectOleDataWithoutNodePath(ctx, remoteFileName, int32(0), options)
+    _, err := client.WordsApi.GetDocumentDrawingObjectOleData(ctx, remoteFileName, int32(0), options)
 
     if err != nil {
         t.Error(err)
@@ -264,9 +269,10 @@ func Test_DrawingObjects_InsertDrawingObject(t *testing.T) {
     }
 
     options := map[string]interface{}{
+        "nodePath": "",
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.InsertDrawingObject(ctx, remoteFileName, requestDrawingObject, OpenFile(t, "Common/aspose-cloud.png"), "", options)
+    _, _, err := client.WordsApi.InsertDrawingObject(ctx, remoteFileName, requestDrawingObject, OpenFile(t, "Common/aspose-cloud.png"), options)
 
     if err != nil {
         t.Error(err)
@@ -296,7 +302,7 @@ func Test_DrawingObjects_InsertDrawingObjectWithoutNodePath(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.InsertDrawingObjectWithoutNodePath(ctx, remoteFileName, requestDrawingObject, OpenFile(t, "Common/aspose-cloud.png"), options)
+    _, _, err := client.WordsApi.InsertDrawingObject(ctx, remoteFileName, requestDrawingObject, OpenFile(t, "Common/aspose-cloud.png"), options)
 
     if err != nil {
         t.Error(err)
@@ -315,9 +321,10 @@ func Test_DrawingObjects_DeleteDrawingObject(t *testing.T) {
 
 
     options := map[string]interface{}{
+        "nodePath": "",
         "folder": remoteDataFolder,
     }
-    _, err := client.WordsApi.DeleteDrawingObject(ctx, remoteFileName, "", int32(0), options)
+    _, err := client.WordsApi.DeleteDrawingObject(ctx, remoteFileName, int32(0), options)
 
     if err != nil {
         t.Error(err)
@@ -338,7 +345,7 @@ func Test_DrawingObjects_DeleteDrawingObjectWithoutNodePath(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, err := client.WordsApi.DeleteDrawingObjectWithoutNodePath(ctx, remoteFileName, int32(0), options)
+    _, err := client.WordsApi.DeleteDrawingObject(ctx, remoteFileName, int32(0), options)
 
     if err != nil {
         t.Error(err)
@@ -360,9 +367,10 @@ func Test_DrawingObjects_UpdateDrawingObject(t *testing.T) {
     }
 
     options := map[string]interface{}{
+        "nodePath": "",
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.UpdateDrawingObject(ctx, remoteFileName, requestDrawingObject, OpenFile(t, "Common/aspose-cloud.png"), "", int32(0), options)
+    _, _, err := client.WordsApi.UpdateDrawingObject(ctx, remoteFileName, requestDrawingObject, OpenFile(t, "Common/aspose-cloud.png"), int32(0), options)
 
     if err != nil {
         t.Error(err)
@@ -386,7 +394,7 @@ func Test_DrawingObjects_UpdateDrawingObjectWithoutNodePath(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.UpdateDrawingObjectWithoutNodePath(ctx, remoteFileName, requestDrawingObject, OpenFile(t, "Common/aspose-cloud.png"), int32(0), options)
+    _, _, err := client.WordsApi.UpdateDrawingObject(ctx, remoteFileName, requestDrawingObject, OpenFile(t, "Common/aspose-cloud.png"), int32(0), options)
 
     if err != nil {
         t.Error(err)

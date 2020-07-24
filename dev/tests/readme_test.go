@@ -67,7 +67,7 @@ func TestReadmeCode(t *testing.T) {
         "folder": remoteFolder,
     }
 
-    result, _, _ := wordsApi.GetParagraphs(ctx, remoteName, "", options)
+    result, _, _ := wordsApi.GetParagraphs(ctx, remoteName, options)
 
     fmt.Println(result.Paragraphs.ParagraphLinkList[0].Text)
 

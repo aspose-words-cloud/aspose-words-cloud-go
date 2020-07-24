@@ -45,9 +45,10 @@ func Test_TableBorder_GetBorders(t *testing.T) {
 
 
     options := map[string]interface{}{
+        "nodePath": "tables/1/rows/0/cells/0",
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetBorders(ctx, remoteFileName, "tables/1/rows/0/cells/0", options)
+    _, _, err := client.WordsApi.GetBorders(ctx, remoteFileName, options)
 
     if err != nil {
         t.Error(err)
@@ -66,9 +67,10 @@ func Test_TableBorder_GetBorder(t *testing.T) {
 
 
     options := map[string]interface{}{
+        "nodePath": "tables/1/rows/0/cells/0",
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetBorder(ctx, remoteFileName, "tables/1/rows/0/cells/0", "left", options)
+    _, _, err := client.WordsApi.GetBorder(ctx, remoteFileName, "left", options)
 
     if err != nil {
         t.Error(err)
@@ -87,9 +89,10 @@ func Test_TableBorder_DeleteBorders(t *testing.T) {
 
 
     options := map[string]interface{}{
+        "nodePath": "tables/1/rows/0/cells/0",
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.DeleteBorders(ctx, remoteFileName, "tables/1/rows/0/cells/0", options)
+    _, _, err := client.WordsApi.DeleteBorders(ctx, remoteFileName, options)
 
     if err != nil {
         t.Error(err)
@@ -108,9 +111,10 @@ func Test_TableBorder_DeleteBorder(t *testing.T) {
 
 
     options := map[string]interface{}{
+        "nodePath": "tables/1/rows/0/cells/0",
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.DeleteBorder(ctx, remoteFileName, "tables/1/rows/0/cells/0", "left", options)
+    _, _, err := client.WordsApi.DeleteBorder(ctx, remoteFileName, "left", options)
 
     if err != nil {
         t.Error(err)
@@ -140,9 +144,10 @@ func Test_TableBorder_UpdateBorder(t *testing.T) {
     }
 
     options := map[string]interface{}{
+        "nodePath": "tables/1/rows/0/cells/0",
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.UpdateBorder(ctx, remoteFileName, requestBorderProperties, "tables/1/rows/0/cells/0", "left", options)
+    _, _, err := client.WordsApi.UpdateBorder(ctx, remoteFileName, requestBorderProperties, "left", options)
 
     if err != nil {
         t.Error(err)

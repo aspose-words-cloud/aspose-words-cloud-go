@@ -49,9 +49,10 @@ func Test_Footnote_InsertFootnote(t *testing.T) {
     }
 
     options := map[string]interface{}{
+        "nodePath": "",
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.InsertFootnote(ctx, remoteFileName, requestFootnoteDto, "", options)
+    _, _, err := client.WordsApi.InsertFootnote(ctx, remoteFileName, requestFootnoteDto, options)
 
     if err != nil {
         t.Error(err)
@@ -76,7 +77,7 @@ func Test_Footnote_InsertFootnoteWithoutNodePath(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.InsertFootnoteWithoutNodePath(ctx, remoteFileName, requestFootnoteDto, options)
+    _, _, err := client.WordsApi.InsertFootnote(ctx, remoteFileName, requestFootnoteDto, options)
 
     if err != nil {
         t.Error(err)
@@ -95,9 +96,10 @@ func Test_Footnote_DeleteFootnote(t *testing.T) {
 
 
     options := map[string]interface{}{
+        "nodePath": "",
         "folder": remoteDataFolder,
     }
-    _, err := client.WordsApi.DeleteFootnote(ctx, remoteFileName, "", int32(0), options)
+    _, err := client.WordsApi.DeleteFootnote(ctx, remoteFileName, int32(0), options)
 
     if err != nil {
         t.Error(err)
@@ -118,7 +120,7 @@ func Test_Footnote_DeleteFootnoteWithoutNodePath(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, err := client.WordsApi.DeleteFootnoteWithoutNodePath(ctx, remoteFileName, int32(0), options)
+    _, err := client.WordsApi.DeleteFootnote(ctx, remoteFileName, int32(0), options)
 
     if err != nil {
         t.Error(err)
@@ -137,9 +139,10 @@ func Test_Footnote_GetFootnotes(t *testing.T) {
 
 
     options := map[string]interface{}{
+        "nodePath": "",
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetFootnotes(ctx, remoteFileName, "", options)
+    _, _, err := client.WordsApi.GetFootnotes(ctx, remoteFileName, options)
 
     if err != nil {
         t.Error(err)
@@ -160,7 +163,7 @@ func Test_Footnote_GetFootnotesWithoutNodePath(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetFootnotesWithoutNodePath(ctx, remoteFileName, options)
+    _, _, err := client.WordsApi.GetFootnotes(ctx, remoteFileName, options)
 
     if err != nil {
         t.Error(err)
@@ -179,9 +182,10 @@ func Test_Footnote_GetFootnote(t *testing.T) {
 
 
     options := map[string]interface{}{
+        "nodePath": "",
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetFootnote(ctx, remoteFileName, "", int32(0), options)
+    _, _, err := client.WordsApi.GetFootnote(ctx, remoteFileName, int32(0), options)
 
     if err != nil {
         t.Error(err)
@@ -202,7 +206,7 @@ func Test_Footnote_GetFootnoteWithoutNodePath(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetFootnoteWithoutNodePath(ctx, remoteFileName, int32(0), options)
+    _, _, err := client.WordsApi.GetFootnote(ctx, remoteFileName, int32(0), options)
 
     if err != nil {
         t.Error(err)
@@ -224,9 +228,10 @@ func Test_Footnote_UpdateFootnote(t *testing.T) {
     }
 
     options := map[string]interface{}{
+        "nodePath": "",
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.UpdateFootnote(ctx, remoteFileName, requestFootnoteDto, "", int32(0), options)
+    _, _, err := client.WordsApi.UpdateFootnote(ctx, remoteFileName, requestFootnoteDto, int32(0), options)
 
     if err != nil {
         t.Error(err)
@@ -250,7 +255,7 @@ func Test_Footnote_UpdateFootnoteWithoutNodePath(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.UpdateFootnoteWithoutNodePath(ctx, remoteFileName, requestFootnoteDto, int32(0), options)
+    _, _, err := client.WordsApi.UpdateFootnote(ctx, remoteFileName, requestFootnoteDto, int32(0), options)
 
     if err != nil {
         t.Error(err)

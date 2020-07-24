@@ -45,9 +45,10 @@ func Test_Paragraph_GetDocumentParagraphByIndex(t *testing.T) {
 
 
     options := map[string]interface{}{
+        "nodePath": "sections/0",
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetParagraph(ctx, remoteFileName, "sections/0", int32(0), options)
+    _, _, err := client.WordsApi.GetParagraph(ctx, remoteFileName, int32(0), options)
 
     if err != nil {
         t.Error(err)
@@ -68,7 +69,7 @@ func Test_Paragraph_GetDocumentParagraphByIndexWithoutNodePath(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetParagraphWithoutNodePath(ctx, remoteFileName, int32(0), options)
+    _, _, err := client.WordsApi.GetParagraph(ctx, remoteFileName, int32(0), options)
 
     if err != nil {
         t.Error(err)
@@ -87,9 +88,10 @@ func Test_Paragraph_GetDocumentParagraphs(t *testing.T) {
 
 
     options := map[string]interface{}{
+        "nodePath": "sections/0",
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetParagraphs(ctx, remoteFileName, "sections/0", options)
+    _, _, err := client.WordsApi.GetParagraphs(ctx, remoteFileName, options)
 
     if err != nil {
         t.Error(err)
@@ -110,7 +112,7 @@ func Test_Paragraph_GetDocumentParagraphsWithoutNodePath(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetParagraphsWithoutNodePath(ctx, remoteFileName, options)
+    _, _, err := client.WordsApi.GetParagraphs(ctx, remoteFileName, options)
 
     if err != nil {
         t.Error(err)
@@ -220,9 +222,10 @@ func Test_Paragraph_InsertParagraph(t *testing.T) {
     }
 
     options := map[string]interface{}{
+        "nodePath": "sections/0",
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.InsertParagraph(ctx, remoteFileName, requestParagraph, "sections/0", options)
+    _, _, err := client.WordsApi.InsertParagraph(ctx, remoteFileName, requestParagraph, options)
 
     if err != nil {
         t.Error(err)
@@ -246,7 +249,7 @@ func Test_Paragraph_InsertParagraphWithoutNodePath(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.InsertParagraphWithoutNodePath(ctx, remoteFileName, requestParagraph, options)
+    _, _, err := client.WordsApi.InsertParagraph(ctx, remoteFileName, requestParagraph, options)
 
     if err != nil {
         t.Error(err)
@@ -265,9 +268,10 @@ func Test_Paragraph_RenderParagraph(t *testing.T) {
 
 
     options := map[string]interface{}{
+        "nodePath": "",
         "folder": remoteDataFolder,
     }
-    _, err := client.WordsApi.RenderParagraph(ctx, remoteFileName, "png", "", int32(0), options)
+    _, err := client.WordsApi.RenderParagraph(ctx, remoteFileName, "png", int32(0), options)
 
     if err != nil {
         t.Error(err)
@@ -288,7 +292,7 @@ func Test_Paragraph_RenderParagraphWithoutNodePath(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, err := client.WordsApi.RenderParagraphWithoutNodePath(ctx, remoteFileName, "png", int32(0), options)
+    _, err := client.WordsApi.RenderParagraph(ctx, remoteFileName, "png", int32(0), options)
 
     if err != nil {
         t.Error(err)
@@ -307,9 +311,10 @@ func Test_Paragraph_GetParagraphFormat(t *testing.T) {
 
 
     options := map[string]interface{}{
+        "nodePath": "",
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetParagraphFormat(ctx, remoteFileName, "", int32(0), options)
+    _, _, err := client.WordsApi.GetParagraphFormat(ctx, remoteFileName, int32(0), options)
 
     if err != nil {
         t.Error(err)
@@ -330,7 +335,7 @@ func Test_Paragraph_GetParagraphFormatWithoutNodePath(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetParagraphFormatWithoutNodePath(ctx, remoteFileName, int32(0), options)
+    _, _, err := client.WordsApi.GetParagraphFormat(ctx, remoteFileName, int32(0), options)
 
     if err != nil {
         t.Error(err)
@@ -352,9 +357,10 @@ func Test_Paragraph_UpdateParagraphFormat(t *testing.T) {
     }
 
     options := map[string]interface{}{
+        "nodePath": "",
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.UpdateParagraphFormat(ctx, remoteFileName, requestDto, "", int32(0), options)
+    _, _, err := client.WordsApi.UpdateParagraphFormat(ctx, remoteFileName, requestDto, int32(0), options)
 
     if err != nil {
         t.Error(err)
@@ -373,9 +379,10 @@ func Test_Paragraph_DeleteParagraph(t *testing.T) {
 
 
     options := map[string]interface{}{
+        "nodePath": "",
         "folder": remoteDataFolder,
     }
-    _, err := client.WordsApi.DeleteParagraph(ctx, remoteFileName, "", int32(0), options)
+    _, err := client.WordsApi.DeleteParagraph(ctx, remoteFileName, int32(0), options)
 
     if err != nil {
         t.Error(err)
@@ -396,7 +403,7 @@ func Test_Paragraph_DeleteParagraphWithoutNodePath(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, err := client.WordsApi.DeleteParagraphWithoutNodePath(ctx, remoteFileName, int32(0), options)
+    _, err := client.WordsApi.DeleteParagraph(ctx, remoteFileName, int32(0), options)
 
     if err != nil {
         t.Error(err)
@@ -415,9 +422,10 @@ func Test_Paragraph_GetParagraphListFormat(t *testing.T) {
 
 
     options := map[string]interface{}{
+        "nodePath": "",
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetParagraphListFormat(ctx, remoteFileName, "", int32(0), options)
+    _, _, err := client.WordsApi.GetParagraphListFormat(ctx, remoteFileName, int32(0), options)
 
     if err != nil {
         t.Error(err)
@@ -438,7 +446,7 @@ func Test_Paragraph_GetParagraphListFormatWithoutNodePath(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetParagraphListFormatWithoutNodePath(ctx, remoteFileName, int32(0), options)
+    _, _, err := client.WordsApi.GetParagraphListFormat(ctx, remoteFileName, int32(0), options)
 
     if err != nil {
         t.Error(err)
@@ -460,9 +468,10 @@ func Test_Paragraph_UpdateParagraphListFormat(t *testing.T) {
     }
 
     options := map[string]interface{}{
+        "nodePath": "",
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.UpdateParagraphListFormat(ctx, remoteFileName, requestDto, "", int32(0), options)
+    _, _, err := client.WordsApi.UpdateParagraphListFormat(ctx, remoteFileName, requestDto, int32(0), options)
 
     if err != nil {
         t.Error(err)
@@ -486,7 +495,7 @@ func Test_Paragraph_UpdateParagraphListFormatWithoutNodePath(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.UpdateParagraphListFormatWithoutNodePath(ctx, remoteFileName, requestDto, int32(0), options)
+    _, _, err := client.WordsApi.UpdateParagraphListFormat(ctx, remoteFileName, requestDto, int32(0), options)
 
     if err != nil {
         t.Error(err)
@@ -505,9 +514,10 @@ func Test_Paragraph_DeleteParagraphListFormat(t *testing.T) {
 
 
     options := map[string]interface{}{
+        "nodePath": "",
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.DeleteParagraphListFormat(ctx, remoteFileName, "", int32(0), options)
+    _, _, err := client.WordsApi.DeleteParagraphListFormat(ctx, remoteFileName, int32(0), options)
 
     if err != nil {
         t.Error(err)
@@ -528,7 +538,7 @@ func Test_Paragraph_DeleteParagraphListFormatWithoutNodePath(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.DeleteParagraphListFormatWithoutNodePath(ctx, remoteFileName, int32(0), options)
+    _, _, err := client.WordsApi.DeleteParagraphListFormat(ctx, remoteFileName, int32(0), options)
 
     if err != nil {
         t.Error(err)
@@ -547,9 +557,10 @@ func Test_Paragraph_GetParagraphTabStops(t *testing.T) {
 
 
     options := map[string]interface{}{
+        "nodePath": "",
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetParagraphTabStops(ctx, remoteFileName, "", int32(0), options)
+    _, _, err := client.WordsApi.GetParagraphTabStops(ctx, remoteFileName, int32(0), options)
 
     if err != nil {
         t.Error(err)
@@ -570,7 +581,7 @@ func Test_Paragraph_GetParagraphTabStopsWithoutNodePath(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetParagraphTabStopsWithoutNodePath(ctx, remoteFileName, int32(0), options)
+    _, _, err := client.WordsApi.GetParagraphTabStops(ctx, remoteFileName, int32(0), options)
 
     if err != nil {
         t.Error(err)
@@ -594,9 +605,10 @@ func Test_Paragraph_InsertParagraphTabStops(t *testing.T) {
     }
 
     options := map[string]interface{}{
+        "nodePath": "",
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.InsertOrUpdateParagraphTabStop(ctx, remoteFileName, requestDto, "", int32(0), options)
+    _, _, err := client.WordsApi.InsertOrUpdateParagraphTabStop(ctx, remoteFileName, requestDto, int32(0), options)
 
     if err != nil {
         t.Error(err)
@@ -622,7 +634,7 @@ func Test_Paragraph_InsertParagraphTabStopsWithoutNodePath(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.InsertOrUpdateParagraphTabStopWithoutNodePath(ctx, remoteFileName, requestDto, int32(0), options)
+    _, _, err := client.WordsApi.InsertOrUpdateParagraphTabStop(ctx, remoteFileName, requestDto, int32(0), options)
 
     if err != nil {
         t.Error(err)
@@ -641,9 +653,10 @@ func Test_Paragraph_DeleteAllParagraphTabStops(t *testing.T) {
 
 
     options := map[string]interface{}{
+        "nodePath": "",
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.DeleteAllParagraphTabStops(ctx, remoteFileName, "", int32(0), options)
+    _, _, err := client.WordsApi.DeleteAllParagraphTabStops(ctx, remoteFileName, int32(0), options)
 
     if err != nil {
         t.Error(err)
@@ -664,7 +677,7 @@ func Test_Paragraph_DeleteAllParagraphTabStopsWithoutNodePath(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.DeleteAllParagraphTabStopsWithoutNodePath(ctx, remoteFileName, int32(0), options)
+    _, _, err := client.WordsApi.DeleteAllParagraphTabStops(ctx, remoteFileName, int32(0), options)
 
     if err != nil {
         t.Error(err)
@@ -683,9 +696,10 @@ func Test_Paragraph_DeleteParagraphTabStop(t *testing.T) {
 
 
     options := map[string]interface{}{
+        "nodePath": "",
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.DeleteParagraphTabStop(ctx, remoteFileName, 72, "", int32(0), options)
+    _, _, err := client.WordsApi.DeleteParagraphTabStop(ctx, remoteFileName, 72, int32(0), options)
 
     if err != nil {
         t.Error(err)
@@ -706,7 +720,7 @@ func Test_Paragraph_DeleteParagraphTabStopWithoutNodePath(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.DeleteParagraphTabStopWithoutNodePath(ctx, remoteFileName, 72, int32(0), options)
+    _, _, err := client.WordsApi.DeleteParagraphTabStop(ctx, remoteFileName, 72, int32(0), options)
 
     if err != nil {
         t.Error(err)

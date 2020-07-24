@@ -44,9 +44,10 @@ func Test_MathObject_GetOfficeMathObjects(t *testing.T) {
 
 
     options := map[string]interface{}{
+        "nodePath": "",
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetOfficeMathObjects(ctx, remoteFileName, "", options)
+    _, _, err := client.WordsApi.GetOfficeMathObjects(ctx, remoteFileName, options)
 
     if err != nil {
         t.Error(err)
@@ -67,7 +68,7 @@ func Test_MathObject_GetOfficeMathObjectsWithoutNodePath(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetOfficeMathObjectsWithoutNodePath(ctx, remoteFileName, options)
+    _, _, err := client.WordsApi.GetOfficeMathObjects(ctx, remoteFileName, options)
 
     if err != nil {
         t.Error(err)
@@ -86,9 +87,10 @@ func Test_MathObject_GetOfficeMathObject(t *testing.T) {
 
 
     options := map[string]interface{}{
+        "nodePath": "",
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetOfficeMathObject(ctx, remoteFileName, "", int32(0), options)
+    _, _, err := client.WordsApi.GetOfficeMathObject(ctx, remoteFileName, int32(0), options)
 
     if err != nil {
         t.Error(err)
@@ -109,7 +111,7 @@ func Test_MathObject_GetOfficeMathObjectWithoutNodePath(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetOfficeMathObjectWithoutNodePath(ctx, remoteFileName, int32(0), options)
+    _, _, err := client.WordsApi.GetOfficeMathObject(ctx, remoteFileName, int32(0), options)
 
     if err != nil {
         t.Error(err)
@@ -128,9 +130,10 @@ func Test_MathObject_RenderMathObject(t *testing.T) {
 
 
     options := map[string]interface{}{
+        "nodePath": "",
         "folder": remoteDataFolder,
     }
-    _, err := client.WordsApi.RenderMathObject(ctx, remoteFileName, "png", "", int32(0), options)
+    _, err := client.WordsApi.RenderMathObject(ctx, remoteFileName, "png", int32(0), options)
 
     if err != nil {
         t.Error(err)
@@ -151,7 +154,7 @@ func Test_MathObject_RenderMathObjectWithoutNodePath(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, err := client.WordsApi.RenderMathObjectWithoutNodePath(ctx, remoteFileName, "png", int32(0), options)
+    _, err := client.WordsApi.RenderMathObject(ctx, remoteFileName, "png", int32(0), options)
 
     if err != nil {
         t.Error(err)
@@ -170,9 +173,10 @@ func Test_MathObject_DeleteOfficeMathObject(t *testing.T) {
 
 
     options := map[string]interface{}{
+        "nodePath": "",
         "folder": remoteDataFolder,
     }
-    _, err := client.WordsApi.DeleteOfficeMathObject(ctx, remoteFileName, "", int32(0), options)
+    _, err := client.WordsApi.DeleteOfficeMathObject(ctx, remoteFileName, int32(0), options)
 
     if err != nil {
         t.Error(err)
@@ -193,7 +197,7 @@ func Test_MathObject_DeleteOfficeMathObjectWithoutNodePath(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, err := client.WordsApi.DeleteOfficeMathObjectWithoutNodePath(ctx, remoteFileName, int32(0), options)
+    _, err := client.WordsApi.DeleteOfficeMathObject(ctx, remoteFileName, int32(0), options)
 
     if err != nil {
         t.Error(err)

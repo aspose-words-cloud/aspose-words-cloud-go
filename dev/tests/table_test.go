@@ -45,9 +45,10 @@ func Test_Table_GetTables(t *testing.T) {
 
 
     options := map[string]interface{}{
+        "nodePath": "",
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetTables(ctx, remoteFileName, "", options)
+    _, _, err := client.WordsApi.GetTables(ctx, remoteFileName, options)
 
     if err != nil {
         t.Error(err)
@@ -68,7 +69,7 @@ func Test_Table_GetTablesWithoutNodePath(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetTablesWithoutNodePath(ctx, remoteFileName, options)
+    _, _, err := client.WordsApi.GetTables(ctx, remoteFileName, options)
 
     if err != nil {
         t.Error(err)
@@ -87,9 +88,10 @@ func Test_Table_GetTable(t *testing.T) {
 
 
     options := map[string]interface{}{
+        "nodePath": "",
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetTable(ctx, remoteFileName, "", int32(1), options)
+    _, _, err := client.WordsApi.GetTable(ctx, remoteFileName, int32(1), options)
 
     if err != nil {
         t.Error(err)
@@ -110,7 +112,7 @@ func Test_Table_GetTableWithoutNodePath(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetTableWithoutNodePath(ctx, remoteFileName, int32(1), options)
+    _, _, err := client.WordsApi.GetTable(ctx, remoteFileName, int32(1), options)
 
     if err != nil {
         t.Error(err)
@@ -129,9 +131,10 @@ func Test_Table_DeleteTable(t *testing.T) {
 
 
     options := map[string]interface{}{
+        "nodePath": "",
         "folder": remoteDataFolder,
     }
-    _, err := client.WordsApi.DeleteTable(ctx, remoteFileName, "", int32(1), options)
+    _, err := client.WordsApi.DeleteTable(ctx, remoteFileName, int32(1), options)
 
     if err != nil {
         t.Error(err)
@@ -152,7 +155,7 @@ func Test_Table_DeleteTableWithoutNodePath(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, err := client.WordsApi.DeleteTableWithoutNodePath(ctx, remoteFileName, int32(1), options)
+    _, err := client.WordsApi.DeleteTable(ctx, remoteFileName, int32(1), options)
 
     if err != nil {
         t.Error(err)
@@ -175,9 +178,10 @@ func Test_Table_InsertTable(t *testing.T) {
     }
 
     options := map[string]interface{}{
+        "nodePath": "",
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.InsertTable(ctx, remoteFileName, requestTable, "", options)
+    _, _, err := client.WordsApi.InsertTable(ctx, remoteFileName, requestTable, options)
 
     if err != nil {
         t.Error(err)
@@ -202,7 +206,7 @@ func Test_Table_InsertTableWithoutNodePath(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.InsertTableWithoutNodePath(ctx, remoteFileName, requestTable, options)
+    _, _, err := client.WordsApi.InsertTable(ctx, remoteFileName, requestTable, options)
 
     if err != nil {
         t.Error(err)
@@ -221,9 +225,10 @@ func Test_Table_GetTableProperties(t *testing.T) {
 
 
     options := map[string]interface{}{
+        "nodePath": "",
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetTableProperties(ctx, remoteFileName, "", int32(1), options)
+    _, _, err := client.WordsApi.GetTableProperties(ctx, remoteFileName, int32(1), options)
 
     if err != nil {
         t.Error(err)
@@ -244,7 +249,7 @@ func Test_Table_GetTablePropertiesWithoutNodePath(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetTablePropertiesWithoutNodePath(ctx, remoteFileName, int32(1), options)
+    _, _, err := client.WordsApi.GetTableProperties(ctx, remoteFileName, int32(1), options)
 
     if err != nil {
         t.Error(err)
@@ -271,9 +276,10 @@ func Test_Table_UpdateTableProperties(t *testing.T) {
     }
 
     options := map[string]interface{}{
+        "nodePath": "",
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.UpdateTableProperties(ctx, remoteFileName, requestProperties, "", int32(1), options)
+    _, _, err := client.WordsApi.UpdateTableProperties(ctx, remoteFileName, requestProperties, int32(1), options)
 
     if err != nil {
         t.Error(err)
@@ -302,7 +308,7 @@ func Test_Table_UpdateTablePropertiesWithoutNodePath(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.UpdateTablePropertiesWithoutNodePath(ctx, remoteFileName, requestProperties, int32(1), options)
+    _, _, err := client.WordsApi.UpdateTableProperties(ctx, remoteFileName, requestProperties, int32(1), options)
 
     if err != nil {
         t.Error(err)
@@ -548,9 +554,10 @@ func Test_Table_RenderTable(t *testing.T) {
 
 
     options := map[string]interface{}{
+        "nodePath": "",
         "folder": remoteDataFolder,
     }
-    _, err := client.WordsApi.RenderTable(ctx, remoteFileName, "png", "", int32(0), options)
+    _, err := client.WordsApi.RenderTable(ctx, remoteFileName, "png", int32(0), options)
 
     if err != nil {
         t.Error(err)
@@ -571,7 +578,7 @@ func Test_Table_RenderTableWithoutNodePath(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, err := client.WordsApi.RenderTableWithoutNodePath(ctx, remoteFileName, "png", int32(0), options)
+    _, err := client.WordsApi.RenderTable(ctx, remoteFileName, "png", int32(0), options)
 
     if err != nil {
         t.Error(err)

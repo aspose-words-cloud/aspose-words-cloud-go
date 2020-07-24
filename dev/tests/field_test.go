@@ -46,9 +46,10 @@ func Test_Field_GetFields(t *testing.T) {
 
 
     options := map[string]interface{}{
+        "nodePath": "sections/0",
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetFields(ctx, remoteFileName, "sections/0", options)
+    _, _, err := client.WordsApi.GetFields(ctx, remoteFileName, options)
 
     if err != nil {
         t.Error(err)
@@ -70,7 +71,7 @@ func Test_Field_GetFieldsWithoutNodePath(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetFieldsWithoutNodePath(ctx, remoteFileName, options)
+    _, _, err := client.WordsApi.GetFields(ctx, remoteFileName, options)
 
     if err != nil {
         t.Error(err)
@@ -90,9 +91,10 @@ func Test_Field_GetField(t *testing.T) {
 
 
     options := map[string]interface{}{
+        "nodePath": "sections/0/paragraphs/0",
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetField(ctx, remoteFileName, "sections/0/paragraphs/0", int32(0), options)
+    _, _, err := client.WordsApi.GetField(ctx, remoteFileName, int32(0), options)
 
     if err != nil {
         t.Error(err)
@@ -114,7 +116,7 @@ func Test_Field_GetFieldWithoutNodePath(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetFieldWithoutNodePath(ctx, remoteFileName, int32(0), options)
+    _, _, err := client.WordsApi.GetField(ctx, remoteFileName, int32(0), options)
 
     if err != nil {
         t.Error(err)
@@ -137,9 +139,10 @@ func Test_Field_InsertField(t *testing.T) {
     }
 
     options := map[string]interface{}{
+        "nodePath": "sections/0/paragraphs/0",
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.InsertField(ctx, remoteFileName, requestField, "sections/0/paragraphs/0", options)
+    _, _, err := client.WordsApi.InsertField(ctx, remoteFileName, requestField, options)
 
     if err != nil {
         t.Error(err)
@@ -164,7 +167,7 @@ func Test_Field_InsertFieldWithoutNodePath(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.InsertFieldWithoutNodePath(ctx, remoteFileName, requestField, options)
+    _, _, err := client.WordsApi.InsertField(ctx, remoteFileName, requestField, options)
 
     if err != nil {
         t.Error(err)
@@ -187,9 +190,10 @@ func Test_Field_UpdateField(t *testing.T) {
     }
 
     options := map[string]interface{}{
+        "nodePath": "sections/0/paragraphs/0",
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.UpdateField(ctx, remoteFileName, requestField, "sections/0/paragraphs/0", int32(0), options)
+    _, _, err := client.WordsApi.UpdateField(ctx, remoteFileName, requestField, int32(0), options)
 
     if err != nil {
         t.Error(err)
@@ -235,9 +239,10 @@ func Test_Field_DeleteField(t *testing.T) {
 
 
     options := map[string]interface{}{
+        "nodePath": "sections/0/paragraphs/0",
         "folder": remoteDataFolder,
     }
-    _, err := client.WordsApi.DeleteField(ctx, remoteFileName, "sections/0/paragraphs/0", int32(0), options)
+    _, err := client.WordsApi.DeleteField(ctx, remoteFileName, int32(0), options)
 
     if err != nil {
         t.Error(err)
@@ -259,7 +264,7 @@ func Test_Field_DeleteFieldWithoutNodePath(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, err := client.WordsApi.DeleteFieldWithoutNodePath(ctx, remoteFileName, int32(0), options)
+    _, err := client.WordsApi.DeleteField(ctx, remoteFileName, int32(0), options)
 
     if err != nil {
         t.Error(err)
@@ -278,9 +283,10 @@ func Test_Field_DeleteParagraphFields(t *testing.T) {
 
 
     options := map[string]interface{}{
+        "nodePath": "paragraphs/0",
         "folder": remoteDataFolder,
     }
-    _, err := client.WordsApi.DeleteFields(ctx, remoteFileName, "paragraphs/0", options)
+    _, err := client.WordsApi.DeleteFields(ctx, remoteFileName, options)
 
     if err != nil {
         t.Error(err)
@@ -301,7 +307,7 @@ func Test_Field_DeleteParagraphFieldsWithoutNodePath(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, err := client.WordsApi.DeleteFieldsWithoutNodePath(ctx, remoteFileName, options)
+    _, err := client.WordsApi.DeleteFields(ctx, remoteFileName, options)
 
     if err != nil {
         t.Error(err)
@@ -320,9 +326,10 @@ func Test_Field_DeleteSectionFields(t *testing.T) {
 
 
     options := map[string]interface{}{
+        "nodePath": "sections/0",
         "folder": remoteDataFolder,
     }
-    _, err := client.WordsApi.DeleteFields(ctx, remoteFileName, "sections/0", options)
+    _, err := client.WordsApi.DeleteFields(ctx, remoteFileName, options)
 
     if err != nil {
         t.Error(err)
@@ -343,7 +350,7 @@ func Test_Field_DeleteSectionFieldsWithoutNodePath(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, err := client.WordsApi.DeleteFieldsWithoutNodePath(ctx, remoteFileName, options)
+    _, err := client.WordsApi.DeleteFields(ctx, remoteFileName, options)
 
     if err != nil {
         t.Error(err)
@@ -362,9 +369,10 @@ func Test_Field_DeleteSectionParagraphFields(t *testing.T) {
 
 
     options := map[string]interface{}{
+        "nodePath": "sections/0/paragraphs/0",
         "folder": remoteDataFolder,
     }
-    _, err := client.WordsApi.DeleteFields(ctx, remoteFileName, "sections/0/paragraphs/0", options)
+    _, err := client.WordsApi.DeleteFields(ctx, remoteFileName, options)
 
     if err != nil {
         t.Error(err)
@@ -383,9 +391,10 @@ func Test_Field_DeleteDocumentFields(t *testing.T) {
 
 
     options := map[string]interface{}{
+        "nodePath": "",
         "folder": remoteDataFolder,
     }
-    _, err := client.WordsApi.DeleteFields(ctx, remoteFileName, "", options)
+    _, err := client.WordsApi.DeleteFields(ctx, remoteFileName, options)
 
     if err != nil {
         t.Error(err)
