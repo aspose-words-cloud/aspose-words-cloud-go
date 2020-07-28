@@ -64,3 +64,31 @@ func Test_AppendDocument_AppendDocument(t *testing.T) {
         t.Error(err)
     }
 }
+
+// Test for appending document online.
+func Test_AppendDocument_AppendDocumentOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentActions/AppendDocument"
+    localFile := "Common/test_multi_pages.docx"
+    remoteFileName := "TestAppendDocument.docx"
+
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
+
+    requestDocumentListDocumentEntries0 := models.DocumentEntry{
+        Href: remoteDataFolder + "/" + remoteFileName,
+        ImportFormatMode: "KeepSourceFormatting",
+    }
+    requestDocumentListDocumentEntries := []models.DocumentEntry{
+        requestDocumentListDocumentEntries0,
+    }
+    requestDocumentList := models.DocumentEntryList{
+        DocumentEntries: requestDocumentListDocumentEntries,
+    }
+
+    _, err := client.WordsApi.AppendDocumentOnline(ctx, OpenFile(t, localFile), requestDocumentList)
+
+    if err != nil {
+        t.Error(err)
+    }
+}

@@ -48,7 +48,7 @@ func Test_Paragraph_GetDocumentParagraphByIndex(t *testing.T) {
         "nodePath": "sections/0",
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetParagraph(ctx, remoteFileName, int32(0), options)
+    _, err := client.WordsApi.GetParagraph(ctx, remoteFileName, int32(0), options)
 
     if err != nil {
         t.Error(err)
@@ -69,7 +69,7 @@ func Test_Paragraph_GetDocumentParagraphByIndexWithoutNodePath(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetParagraph(ctx, remoteFileName, int32(0), options)
+    _, err := client.WordsApi.GetParagraph(ctx, remoteFileName, int32(0), options)
 
     if err != nil {
         t.Error(err)
@@ -91,7 +91,7 @@ func Test_Paragraph_GetDocumentParagraphs(t *testing.T) {
         "nodePath": "sections/0",
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetParagraphs(ctx, remoteFileName, options)
+    _, err := client.WordsApi.GetParagraphs(ctx, remoteFileName, options)
 
     if err != nil {
         t.Error(err)
@@ -112,7 +112,7 @@ func Test_Paragraph_GetDocumentParagraphsWithoutNodePath(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetParagraphs(ctx, remoteFileName, options)
+    _, err := client.WordsApi.GetParagraphs(ctx, remoteFileName, options)
 
     if err != nil {
         t.Error(err)
@@ -225,7 +225,7 @@ func Test_Paragraph_InsertParagraph(t *testing.T) {
         "nodePath": "sections/0",
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.InsertParagraph(ctx, remoteFileName, requestParagraph, options)
+    _, err := client.WordsApi.InsertParagraph(ctx, remoteFileName, requestParagraph, options)
 
     if err != nil {
         t.Error(err)
@@ -249,7 +249,7 @@ func Test_Paragraph_InsertParagraphWithoutNodePath(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.InsertParagraph(ctx, remoteFileName, requestParagraph, options)
+    _, err := client.WordsApi.InsertParagraph(ctx, remoteFileName, requestParagraph, options)
 
     if err != nil {
         t.Error(err)

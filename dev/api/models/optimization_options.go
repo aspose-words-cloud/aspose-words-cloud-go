@@ -1,6 +1,6 @@
 /*
  * --------------------------------------------------------------------------------
- * <copyright company="Aspose" file="document_entry_list.go">
+ * <copyright company="Aspose" file="optimization_options.go">
  *   Copyright (c) 2020 Aspose.Words for Cloud
  * </copyright>
  * <summary>
@@ -27,19 +27,16 @@
 
 package models
 
-// Represents a list of documents which will be appended to the original resource document.
-type DocumentEntryList struct {
-    // Represents a list of documents which will be appended to the original resource document.
-    ApplyBaseDocumentHeadersAndFootersToAppendingDocuments bool `json:"ApplyBaseDocumentHeadersAndFootersToAppendingDocuments,omitempty"`
-
-    // Represents a list of documents which will be appended to the original resource document.
-    DocumentEntries []DocumentEntry `json:"DocumentEntries,omitempty"`
+// Container class for the document optimization options.
+type OptimizationOptions struct {
+    // Container class for the document optimization options.
+    MsWordVersion string `json:"MsWordVersion,omitempty"`
 }
 
-type IDocumentEntryList interface {
-    IsDocumentEntryList() bool
+type IOptimizationOptions interface {
+    IsOptimizationOptions() bool
 }
-func (DocumentEntryList) IsDocumentEntryList() bool {
+func (OptimizationOptions) IsOptimizationOptions() bool {
     return true
 }
 

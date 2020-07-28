@@ -58,6 +58,26 @@ func Test_ConvertDocument_SaveAs(t *testing.T) {
     }
 }
 
+// Test for converting document online to one of the available formats.
+func Test_ConvertDocument_SaveAsOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localName := "test_multi_pages.docx"
+
+    requestSaveOptionsData := models.SaveOptionsData{
+        SaveFormat: "pdf",
+        FileName: baseTestOutPath + "/TestSaveAs.pdf",
+    }
+
+    options := map[string]interface{}{
+    }
+    _, err := client.WordsApi.SaveAsOnline(ctx, OpenFile(t, "Common/" + localName), requestSaveOptionsData, options)
+
+    if err != nil {
+        t.Error(err)
+    }
+}
+
 // Test for converting document to one of the available formats.
 func Test_ConvertDocument_SaveAsDocx(t *testing.T) {
     config := ReadConfiguration(t)

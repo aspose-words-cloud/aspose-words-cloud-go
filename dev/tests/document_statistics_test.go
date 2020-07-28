@@ -52,3 +52,19 @@ func Test_DocumentStatistics_GetDocumentStatistics(t *testing.T) {
         t.Error(err)
     }
 }
+
+// Test for document classification online.
+func Test_DocumentStatistics_GetDocumentStatisticsOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "Common/test_multi_pages.docx"
+
+
+    options := map[string]interface{}{
+    }
+    _, err := client.WordsApi.GetDocumentStatisticsOnline(ctx, OpenFile(t, localFile), options)
+
+    if err != nil {
+        t.Error(err)
+    }
+}

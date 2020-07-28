@@ -43,7 +43,7 @@ func Test_MailMergeFileds_GetDocumentFieldNamesOnline(t *testing.T) {
     options := map[string]interface{}{
         "useNonMergeFields": true,
     }
-    _, _, err := client.WordsApi.GetDocumentFieldNamesOnline(ctx, OpenFile(t, mailMergeFolder + "/" + localDocumentFile), options)
+    _, err := client.WordsApi.GetDocumentFieldNamesOnline(ctx, OpenFile(t, mailMergeFolder + "/" + localDocumentFile), options)
 
     if err != nil {
         t.Error(err)
