@@ -53,6 +53,7 @@ func Test_Table_GetTables(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for getting tables without node path.
@@ -74,6 +75,7 @@ func Test_Table_GetTablesWithoutNodePath(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for getting table.
@@ -96,6 +98,7 @@ func Test_Table_GetTable(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for getting table without node path.
@@ -117,6 +120,7 @@ func Test_Table_GetTableWithoutNodePath(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for deleting table.
@@ -139,6 +143,7 @@ func Test_Table_DeleteTable(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for deleting table without node path.
@@ -160,6 +165,7 @@ func Test_Table_DeleteTableWithoutNodePath(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for adding table.
@@ -186,6 +192,7 @@ func Test_Table_InsertTable(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for adding table without node path.
@@ -211,6 +218,7 @@ func Test_Table_InsertTableWithoutNodePath(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for getting document properties.
@@ -233,6 +241,7 @@ func Test_Table_GetTableProperties(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for getting document properties without node path.
@@ -254,6 +263,7 @@ func Test_Table_GetTablePropertiesWithoutNodePath(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for updating table properties.
@@ -284,6 +294,7 @@ func Test_Table_UpdateTableProperties(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for updating table properties without node path.
@@ -313,6 +324,7 @@ func Test_Table_UpdateTablePropertiesWithoutNodePath(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for getting table row.
@@ -334,6 +346,7 @@ func Test_Table_GetTableRow(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for deleting table row.
@@ -355,6 +368,7 @@ func Test_Table_DeleteTableRow(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for adding row.
@@ -379,6 +393,7 @@ func Test_Table_InsertTableRow(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for getting row format.
@@ -400,6 +415,7 @@ func Test_Table_GetTableRowFormat(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test updating row format.
@@ -427,6 +443,7 @@ func Test_Table_UpdateTableRowFormat(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for getting table cell.
@@ -448,6 +465,7 @@ func Test_Table_GetTableCell(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for deleting cell.
@@ -469,6 +487,7 @@ func Test_Table_DeleteTableCell(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for adding cell.
@@ -492,6 +511,7 @@ func Test_Table_InsertTableCell(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for getting cell format.
@@ -513,6 +533,7 @@ func Test_Table_GetTableCellFormat(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for updating cell format.
@@ -540,6 +561,7 @@ func Test_Table_UpdateTableCellFormat(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for table rendering.
@@ -562,6 +584,7 @@ func Test_Table_RenderTable(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for table rendering without node path.
@@ -583,4 +606,5 @@ func Test_Table_RenderTableWithoutNodePath(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }

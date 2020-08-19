@@ -53,6 +53,7 @@ func Test_DrawingObjects_GetDocumentDrawingObjects(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for getting drawing objects from document without node path.
@@ -74,6 +75,7 @@ func Test_DrawingObjects_GetDocumentDrawingObjectsWithoutNodePath(t *testing.T) 
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for getting drawing object by specified index.
@@ -96,6 +98,7 @@ func Test_DrawingObjects_GetDocumentDrawingObjectByIndex(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for getting drawing object by specified index without node path.
@@ -117,6 +120,7 @@ func Test_DrawingObjects_GetDocumentDrawingObjectByIndexWithoutNodePath(t *testi
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for getting drawing object by specified index and format.
@@ -139,6 +143,7 @@ func Test_DrawingObjects_RenderDrawingObject(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for getting drawing object by specified index and format without node path.
@@ -160,6 +165,7 @@ func Test_DrawingObjects_RenderDrawingObjectWithoutNodePath(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for reading drawing object's image data.
@@ -182,6 +188,7 @@ func Test_DrawingObjects_GetDocumentDrawingObjectImageData(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for reading drawing object's image data without node path.
@@ -203,6 +210,7 @@ func Test_DrawingObjects_GetDocumentDrawingObjectImageDataWithoutNodePath(t *tes
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for getting drawing object OLE data.
@@ -225,6 +233,7 @@ func Test_DrawingObjects_GetDocumentDrawingObjectOleData(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for getting drawing object OLE data without node path.
@@ -246,6 +255,7 @@ func Test_DrawingObjects_GetDocumentDrawingObjectOleDataWithoutNodePath(t *testi
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for adding drawing object.
@@ -277,6 +287,7 @@ func Test_DrawingObjects_InsertDrawingObject(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for adding drawing object without node path.
@@ -307,6 +318,7 @@ func Test_DrawingObjects_InsertDrawingObjectWithoutNodePath(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for deleting drawing object.
@@ -329,6 +341,7 @@ func Test_DrawingObjects_DeleteDrawingObject(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for deleting drawing object without node path.
@@ -350,6 +363,7 @@ func Test_DrawingObjects_DeleteDrawingObjectWithoutNodePath(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for updating drawing object.
@@ -375,6 +389,7 @@ func Test_DrawingObjects_UpdateDrawingObject(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for updating drawing object without node path.
@@ -399,4 +414,5 @@ func Test_DrawingObjects_UpdateDrawingObjectWithoutNodePath(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }

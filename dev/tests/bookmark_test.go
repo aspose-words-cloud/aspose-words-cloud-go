@@ -47,11 +47,15 @@ func Test_Bookmark_GetBookmarks(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetBookmarks(ctx, remoteFileName, options)
+    actual, _, err := client.WordsApi.GetBookmarks(ctx, remoteFileName, options)
 
     if err != nil {
         t.Error(err)
     }
+
+    assert.NotNil(t, actual.Bookmarks, "Validate GetBookmarks response.");
+    assert.Equal(t, 3, len(actual.Bookmarks.BookmarkList), "Validate GetBookmarks response.");
+    assert.Equal(t, "aspose", actual.Bookmarks.BookmarkList[1].Name, "Validate GetBookmarks response.");
 }
 
 // Test for getting bookmark by specified name.
@@ -73,6 +77,7 @@ func Test_Bookmark_GetBookmarkByName(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for updating existed bookmark.
@@ -100,4 +105,5 @@ func Test_Bookmark_UpdateBookmark(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }

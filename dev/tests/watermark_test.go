@@ -57,6 +57,7 @@ func Test_Watermark_InsertWatermarkImage(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for adding watermark text.
@@ -83,6 +84,7 @@ func Test_Watermark_InsertWatermarkText(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for deleting watermark.
@@ -105,4 +107,5 @@ func Test_Watermark_DeleteWatermark(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }

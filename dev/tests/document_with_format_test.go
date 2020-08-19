@@ -51,6 +51,7 @@ func Test_DocumentWithFormat_GetDocumentWithFormat(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for getting document with specified format.
@@ -73,4 +74,5 @@ func Test_DocumentWithFormat_GetDocumentWithFormatAndOutPath(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }

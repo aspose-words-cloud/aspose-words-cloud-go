@@ -55,6 +55,7 @@ func Test_ExecuteTemplate_ExecuteTemplate(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for execute template online.
@@ -73,4 +74,5 @@ func Test_ExecuteTemplate_ExecuteTemplateOnline(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }

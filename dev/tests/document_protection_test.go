@@ -56,6 +56,7 @@ func Test_DocumentProtection_ProtectDocument(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for getting document protection.
@@ -77,6 +78,7 @@ func Test_DocumentProtection_GetDocumentProtection(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for changing document protection.
@@ -101,6 +103,7 @@ func Test_DocumentProtection_ChangeDocumentProtection(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for deleting unprotect document.
@@ -125,4 +128,5 @@ func Test_DocumentProtection_DeleteUnprotectDocument(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }

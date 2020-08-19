@@ -51,6 +51,7 @@ func Test_Document_GetDocument(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for creating word document.
@@ -70,4 +71,5 @@ func Test_Document_CreateDocument(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }

@@ -42,6 +42,7 @@ func Test_Font_ResetCache(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for GetAvailableFonts resource.
@@ -56,4 +57,5 @@ func Test_Font_GetAvailableFonts(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }

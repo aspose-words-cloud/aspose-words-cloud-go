@@ -52,6 +52,7 @@ func Test_Revisions_AcceptAllRevisions(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for rejecting revisions in document.
@@ -74,4 +75,5 @@ func Test_Revisions_RejectAllRevisions(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }

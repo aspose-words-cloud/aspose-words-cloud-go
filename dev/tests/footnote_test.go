@@ -57,6 +57,7 @@ func Test_Footnote_InsertFootnote(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for adding footnote without node path.
@@ -82,6 +83,7 @@ func Test_Footnote_InsertFootnoteWithoutNodePath(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for deleting footnote.
@@ -104,6 +106,7 @@ func Test_Footnote_DeleteFootnote(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for deleting footnote without node path.
@@ -125,6 +128,7 @@ func Test_Footnote_DeleteFootnoteWithoutNodePath(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for getting footnotes.
@@ -147,6 +151,7 @@ func Test_Footnote_GetFootnotes(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for getting footnotes without node path.
@@ -168,6 +173,7 @@ func Test_Footnote_GetFootnotesWithoutNodePath(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for getting footnote.
@@ -190,6 +196,7 @@ func Test_Footnote_GetFootnote(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for getting footnote without node path.
@@ -211,6 +218,7 @@ func Test_Footnote_GetFootnoteWithoutNodePath(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for updating footnote.
@@ -236,6 +244,7 @@ func Test_Footnote_UpdateFootnote(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for updating footnote without node path.
@@ -260,4 +269,5 @@ func Test_Footnote_UpdateFootnoteWithoutNodePath(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }

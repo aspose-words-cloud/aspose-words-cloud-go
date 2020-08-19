@@ -53,6 +53,7 @@ func Test_TableBorder_GetBorders(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for getting border.
@@ -75,6 +76,7 @@ func Test_TableBorder_GetBorder(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for deleting borders.
@@ -97,6 +99,7 @@ func Test_TableBorder_DeleteBorders(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for deleting border.
@@ -119,6 +122,7 @@ func Test_TableBorder_DeleteBorder(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for updating border.
@@ -152,4 +156,5 @@ func Test_TableBorder_UpdateBorder(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }

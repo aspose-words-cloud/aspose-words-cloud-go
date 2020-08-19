@@ -52,6 +52,7 @@ func Test_MathObject_GetOfficeMathObjects(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for getting mathObjects without node path.
@@ -73,6 +74,7 @@ func Test_MathObject_GetOfficeMathObjectsWithoutNodePath(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for getting mathObject.
@@ -95,6 +97,7 @@ func Test_MathObject_GetOfficeMathObject(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for getting mathObject without node path.
@@ -116,6 +119,7 @@ func Test_MathObject_GetOfficeMathObjectWithoutNodePath(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for rendering mathObject.
@@ -138,6 +142,7 @@ func Test_MathObject_RenderMathObject(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for rendering mathObject without node path.
@@ -159,6 +164,7 @@ func Test_MathObject_RenderMathObjectWithoutNodePath(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for deleting mathObject.
@@ -181,6 +187,7 @@ func Test_MathObject_DeleteOfficeMathObject(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for deleting mathObject without node path.
@@ -202,4 +209,5 @@ func Test_MathObject_DeleteOfficeMathObjectWithoutNodePath(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }

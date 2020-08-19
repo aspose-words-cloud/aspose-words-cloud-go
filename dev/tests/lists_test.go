@@ -52,6 +52,7 @@ func Test_Lists_GetLists(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for getting list from document.
@@ -73,6 +74,7 @@ func Test_Lists_GetList(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for updating list from document.
@@ -97,6 +99,7 @@ func Test_Lists_UpdateList(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for updating list level from document.
@@ -121,6 +124,7 @@ func Test_Lists_UpdateListLevel(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for inserting list from document.
@@ -145,4 +149,5 @@ func Test_Lists_InsertList(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }

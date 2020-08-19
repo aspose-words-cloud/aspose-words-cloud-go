@@ -51,6 +51,7 @@ func Test_Section_GetSection(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for getting sections.
@@ -72,6 +73,7 @@ func Test_Section_GetSections(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for delete a section.
@@ -93,4 +95,5 @@ func Test_Section_DeleteSection(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }

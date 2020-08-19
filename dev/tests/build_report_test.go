@@ -53,6 +53,7 @@ func Test_BuildReport_BuildReportOnline(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for build report.
@@ -84,4 +85,5 @@ func Test_BuildReport_BuildReport(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }

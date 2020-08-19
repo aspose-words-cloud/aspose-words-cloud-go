@@ -57,6 +57,7 @@ func Test_Text_ReplaceText(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for searching.
@@ -78,4 +79,5 @@ func Test_Text_Search(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }

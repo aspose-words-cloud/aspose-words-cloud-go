@@ -55,6 +55,7 @@ func Test_Run_UpdateRun(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for adding run.
@@ -79,6 +80,7 @@ func Test_Run_InsertRun(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for deleting run.
@@ -100,4 +102,5 @@ func Test_Run_DeleteRun(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }

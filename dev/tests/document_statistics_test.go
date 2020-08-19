@@ -51,4 +51,5 @@ func Test_DocumentStatistics_GetDocumentStatistics(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }

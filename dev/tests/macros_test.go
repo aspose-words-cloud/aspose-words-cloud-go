@@ -51,4 +51,5 @@ func Test_Macros_DeleteMacros(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }

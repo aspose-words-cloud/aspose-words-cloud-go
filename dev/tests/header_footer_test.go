@@ -51,6 +51,7 @@ func Test_HeaderFooter_GetHeaderFooters(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for getting headerfooter.
@@ -72,6 +73,7 @@ func Test_HeaderFooter_GetHeaderFooter(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for getting headerfooter of section.
@@ -93,6 +95,7 @@ func Test_HeaderFooter_GetHeaderFooterOfSection(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for deleting headerfooter.
@@ -114,6 +117,7 @@ func Test_HeaderFooter_DeleteHeaderFooter(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for deleting headerfooters.
@@ -135,6 +139,7 @@ func Test_HeaderFooter_DeleteHeadersFooters(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for adding headerfooters.
@@ -156,4 +161,5 @@ func Test_HeaderFooter_InsertHeaderFooter(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }

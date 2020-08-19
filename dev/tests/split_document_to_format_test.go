@@ -54,4 +54,5 @@ func Test_SplitDocumentToFormat_SplitDocument(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }

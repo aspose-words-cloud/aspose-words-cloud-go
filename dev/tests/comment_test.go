@@ -52,6 +52,7 @@ func Test_Comment_GetComment(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for getting all comments from document.
@@ -73,6 +74,7 @@ func Test_Comment_GetComments(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for adding comment.
@@ -115,6 +117,7 @@ func Test_Comment_InsertComment(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for updating comment.
@@ -157,6 +160,7 @@ func Test_Comment_UpdateComment(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // A test for DeleteComment.
@@ -179,4 +183,5 @@ func Test_Comment_DeleteComment(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
