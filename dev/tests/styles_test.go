@@ -52,6 +52,7 @@ func Test_Styles_GetStyles(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for getting style from document.
@@ -73,6 +74,7 @@ func Test_Styles_GetStyle(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for updating style from document.
@@ -97,6 +99,7 @@ func Test_Styles_UpdateStyle(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for inserting style from document.
@@ -122,6 +125,7 @@ func Test_Styles_InsertStyle(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for coping style from document.
@@ -146,6 +150,7 @@ func Test_Styles_CopyStyle(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for getting style from document element.
@@ -167,6 +172,7 @@ func Test_Styles_GetStyleFromDocumentElement(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for applying style to document element.
@@ -191,4 +197,5 @@ func Test_Styles_ApplyStyleToDocumentElement(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }

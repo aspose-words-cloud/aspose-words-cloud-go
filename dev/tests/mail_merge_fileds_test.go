@@ -48,6 +48,7 @@ func Test_MailMergeFileds_GetDocumentFieldNamesOnline(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for getting mailmerge fields.
@@ -68,4 +69,5 @@ func Test_MailMergeFileds_GetDocumentFieldNames(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }

@@ -29,6 +29,7 @@
 package api_test
 
 import (
+    "github.com/stretchr/testify/assert"
     "testing"
     "github.com/aspose-words-cloud/aspose-words-cloud-go/dev/api/models"
 )
@@ -47,11 +48,15 @@ func Test_Bookmark_GetBookmarks(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetBookmarks(ctx, remoteFileName, options)
+    actual, _, err := client.WordsApi.GetBookmarks(ctx, remoteFileName, options)
 
     if err != nil {
         t.Error(err)
     }
+
+    assert.NotNil(t, actual.Bookmarks, "Validate GetBookmarks response.");
+    assert.Equal(t, 3, len(actual.Bookmarks.BookmarkList), "Validate GetBookmarks response.");
+    assert.Equal(t, "aspose", actual.Bookmarks.BookmarkList[1].Name, "Validate GetBookmarks response.");
 }
 
 // Test for getting bookmark by specified name.
@@ -61,6 +66,7 @@ func Test_Bookmark_GetBookmarkByName(t *testing.T) {
     remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Bookmarks"
     localFile := "Common/test_multi_pages.docx"
     remoteFileName := "TestGetDocumentBookmarkByName.docx"
+    bookmarkName := "aspose"
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
@@ -68,11 +74,14 @@ func Test_Bookmark_GetBookmarkByName(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetBookmarkByName(ctx, remoteFileName, "aspose", options)
+    actual, _, err := client.WordsApi.GetBookmarkByName(ctx, remoteFileName, bookmarkName, options)
 
     if err != nil {
         t.Error(err)
     }
+
+    assert.NotNil(t, actual.Bookmark, "Validate GetBookmarkByName response.");
+    assert.Equal(t, bookmarkName, actual.Bookmark.Name, "Validate GetBookmarkByName response.");
 }
 
 // Test for updating existed bookmark.
@@ -83,21 +92,26 @@ func Test_Bookmark_UpdateBookmark(t *testing.T) {
     localFile := "Common/test_multi_pages.docx"
     remoteFileName := "TestUpdateDocumentBookmark.docx"
     bookmarkName := "aspose"
+    bookmarkText := "This will be the text for Aspose"
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
     requestBookmarkData := models.BookmarkData{
         Name: bookmarkName,
-        Text: "This will be the text for Aspose",
+        Text: bookmarkText,
     }
 
     options := map[string]interface{}{
         "folder": remoteDataFolder,
         "destFileName": baseTestOutPath + "/" + remoteFileName,
     }
-    _, _, err := client.WordsApi.UpdateBookmark(ctx, remoteFileName, requestBookmarkData, bookmarkName, options)
+    actual, _, err := client.WordsApi.UpdateBookmark(ctx, remoteFileName, requestBookmarkData, bookmarkName, options)
 
     if err != nil {
         t.Error(err)
     }
+
+    assert.NotNil(t, actual.Bookmark, "Validate UpdateBookmark response.");
+    assert.Equal(t, bookmarkName, actual.Bookmark.Name, "Validate UpdateBookmark response.");
+    assert.Equal(t, bookmarkText, actual.Bookmark.Text, "Validate UpdateBookmark response.");
 }

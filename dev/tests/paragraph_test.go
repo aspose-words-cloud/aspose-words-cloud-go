@@ -53,6 +53,7 @@ func Test_Paragraph_GetDocumentParagraphByIndex(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for getting paragraph without node path.
@@ -74,6 +75,7 @@ func Test_Paragraph_GetDocumentParagraphByIndexWithoutNodePath(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for getting all paragraphs.
@@ -96,6 +98,7 @@ func Test_Paragraph_GetDocumentParagraphs(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for getting all paragraphs without node path.
@@ -117,6 +120,7 @@ func Test_Paragraph_GetDocumentParagraphsWithoutNodePath(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for getting paragraph run.
@@ -138,6 +142,7 @@ func Test_Paragraph_GetDocumentParagraphRun(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for getting paragraph run font.
@@ -159,6 +164,7 @@ func Test_Paragraph_GetDocumentParagraphRunFont(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for getting paragraph runs.
@@ -180,6 +186,7 @@ func Test_Paragraph_GetParagraphRuns(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for updating paragraph run font.
@@ -205,6 +212,7 @@ func Test_Paragraph_UpdateRunFont(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for adding paragraph.
@@ -230,6 +238,7 @@ func Test_Paragraph_InsertParagraph(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for adding paragraph without node path.
@@ -254,6 +263,7 @@ func Test_Paragraph_InsertParagraphWithoutNodePath(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for paragraph rendering.
@@ -276,6 +286,7 @@ func Test_Paragraph_RenderParagraph(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for paragraph rendering without node path.
@@ -297,6 +308,7 @@ func Test_Paragraph_RenderParagraphWithoutNodePath(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for getting paragraph format settings.
@@ -319,6 +331,7 @@ func Test_Paragraph_GetParagraphFormat(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for getting paragraph format settings without node path.
@@ -340,6 +353,7 @@ func Test_Paragraph_GetParagraphFormatWithoutNodePath(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for updating  paragraph format settings.
@@ -365,6 +379,7 @@ func Test_Paragraph_UpdateParagraphFormat(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for deleting  a paragraph.
@@ -387,6 +402,7 @@ func Test_Paragraph_DeleteParagraph(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for deleting  a paragraph without node path.
@@ -408,6 +424,7 @@ func Test_Paragraph_DeleteParagraphWithoutNodePath(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for getting paragraph list format.
@@ -430,6 +447,7 @@ func Test_Paragraph_GetParagraphListFormat(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for getting paragraph list format without node path.
@@ -451,6 +469,7 @@ func Test_Paragraph_GetParagraphListFormatWithoutNodePath(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for updating paragraph list format.
@@ -476,6 +495,7 @@ func Test_Paragraph_UpdateParagraphListFormat(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for updating paragraph list format without node path.
@@ -500,6 +520,7 @@ func Test_Paragraph_UpdateParagraphListFormatWithoutNodePath(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for deleting paragraph list format.
@@ -522,6 +543,7 @@ func Test_Paragraph_DeleteParagraphListFormat(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for deleting paragraph list format without node path.
@@ -543,6 +565,7 @@ func Test_Paragraph_DeleteParagraphListFormatWithoutNodePath(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for getting paragraph tab stops.
@@ -565,6 +588,7 @@ func Test_Paragraph_GetParagraphTabStops(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for getting paragraph tab stops without node path.
@@ -586,6 +610,7 @@ func Test_Paragraph_GetParagraphTabStopsWithoutNodePath(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for inserting paragraph tab stop.
@@ -613,6 +638,7 @@ func Test_Paragraph_InsertParagraphTabStops(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for inserting paragraph tab stop without node path.
@@ -639,6 +665,7 @@ func Test_Paragraph_InsertParagraphTabStopsWithoutNodePath(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for deleting all paragraph tab stops.
@@ -661,6 +688,7 @@ func Test_Paragraph_DeleteAllParagraphTabStops(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for deleting all paragraph tab stops without node path.
@@ -682,6 +710,7 @@ func Test_Paragraph_DeleteAllParagraphTabStopsWithoutNodePath(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for deleting a tab stops.
@@ -704,6 +733,7 @@ func Test_Paragraph_DeleteParagraphTabStop(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for deleting a tab stops without node path.
@@ -725,4 +755,5 @@ func Test_Paragraph_DeleteParagraphTabStopWithoutNodePath(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }

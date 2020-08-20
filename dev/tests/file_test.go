@@ -48,6 +48,7 @@ func Test_File_UploadFile(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for copy file.
@@ -68,6 +69,7 @@ func Test_File_CopyFile(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for move file.
@@ -88,6 +90,7 @@ func Test_File_MoveFile(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for delete file.
@@ -108,6 +111,7 @@ func Test_File_DeleteFile(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for download file.
@@ -128,4 +132,5 @@ func Test_File_DownloadFile(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }

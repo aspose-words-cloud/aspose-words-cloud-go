@@ -52,6 +52,7 @@ func Test_DocumentProperties_GetDocumentProperties(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // A test for GetDocumentProperty.
@@ -73,6 +74,7 @@ func Test_DocumentProperties_GetDocumentProperty(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for deleting document property.
@@ -95,6 +97,7 @@ func Test_DocumentProperties_DeleteDocumentProperty(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for updating document property.
@@ -120,4 +123,5 @@ func Test_DocumentProperties_UpdateDocumentProperty(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }

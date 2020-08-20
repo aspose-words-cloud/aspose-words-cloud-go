@@ -52,6 +52,7 @@ func Test_PageSetup_GetSectionPageSetup(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for updating page settings.
@@ -79,6 +80,7 @@ func Test_PageSetup_UpdateSectionPageSetup(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for page rendering.
@@ -100,4 +102,5 @@ func Test_PageSetup_GetRenderPage(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }

@@ -55,4 +55,5 @@ func Test_Compatibility_OptimizeDocument(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }

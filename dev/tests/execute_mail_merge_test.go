@@ -48,6 +48,7 @@ func Test_ExecuteMailMerge_ExecuteMailMergeOnline(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for executing mail merge.
@@ -74,4 +75,5 @@ func Test_ExecuteMailMerge_ExecuteMailMerge(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }

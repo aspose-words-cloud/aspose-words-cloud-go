@@ -46,6 +46,7 @@ func Test_Folder_CreateFolder(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for delete folder.
@@ -66,6 +67,7 @@ func Test_Folder_DeleteFolder(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for get file list of folder.
@@ -82,6 +84,7 @@ func Test_Folder_GetFilesList(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for copy folder.
@@ -102,6 +105,7 @@ func Test_Folder_CopyFolder(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for move folder.
@@ -121,4 +125,5 @@ func Test_Folder_MoveFolder(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }

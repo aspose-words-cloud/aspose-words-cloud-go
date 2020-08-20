@@ -63,4 +63,5 @@ func Test_AppendDocument_AppendDocument(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }

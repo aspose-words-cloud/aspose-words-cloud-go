@@ -51,6 +51,7 @@ func Test_Hyperlink_GetDocumentHyperlinkByIndex(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for getting hyperlinks.
@@ -72,4 +73,5 @@ func Test_Hyperlink_GetDocumentHyperlinks(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }

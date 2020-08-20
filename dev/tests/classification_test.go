@@ -45,6 +45,7 @@ func Test_Classification_Classify(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for document classification.
@@ -67,4 +68,5 @@ func Test_Classification_ClassifyDocument(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }

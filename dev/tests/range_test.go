@@ -53,6 +53,7 @@ func Test_Range_GetRangeText(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for removing the text for range.
@@ -75,6 +76,7 @@ func Test_Range_RemoveRange(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for saving a range as a new document.
@@ -100,6 +102,7 @@ func Test_Range_SaveAsRange(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for replacing text in range.
@@ -125,4 +128,5 @@ func Test_Range_ReplaceWithText(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }

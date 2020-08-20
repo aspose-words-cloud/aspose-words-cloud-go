@@ -56,6 +56,7 @@ func Test_ConvertDocument_SaveAs(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for converting document to one of the available formats.
@@ -82,6 +83,7 @@ func Test_ConvertDocument_SaveAsDocx(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for converting document to one of the available formats.
@@ -107,6 +109,7 @@ func Test_ConvertDocument_SaveAsTiff(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // A test for ConvertDocument.
@@ -123,4 +126,5 @@ func Test_ConvertDocument_ConvertDocument(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+
 }
