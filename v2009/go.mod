@@ -1,6 +1,6 @@
 module github.com/aspose-words-cloud/aspose-words-cloud-go/2009
 
-go 1.13
+go 1.14
 
 require (
 	github.com/aspose-words-cloud/aspose-words-cloud-go/dev v0.0.0-20200904033616-c175e7306615
