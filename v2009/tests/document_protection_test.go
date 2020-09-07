@@ -30,7 +30,7 @@ package api_test
 
 import (
     "testing"
-    "github.com/aspose-words-cloud/aspose-words-cloud-go/dev/api/models"
+    "github.com/aspose-words-cloud/aspose-words-cloud-go/v2009/api/models"
 )
 
 // Test for setting document protection.

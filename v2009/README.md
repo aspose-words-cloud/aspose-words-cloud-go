@@ -16,11 +16,6 @@ Feel free to explore the [Developer's Guide](https://docs.aspose.cloud/display/w
 - Add & remove watermarks and protection.
 - Read & write access to Document Object Model.
 
-## Enhancements in Version 20.9
-
-- Added Batch API feature
-
-
 ## Enhancements in Version 20.8
 
 - Added new api method (PUT '/words/{name}/compatibility/optimize') which is allows to optimize the document contents as well as default Aspose.Words behavior to a particular versions of MS Word
@@ -108,7 +103,7 @@ From Visual Stuio Code:
 
 From the command line:
 
-	go get -v github.com/aspose-words-cloud/aspose-words-cloud-go/2009/api
+	go get -v github.com/aspose-words-cloud/aspose-words-cloud-go/v2009/api
 
 The complete source code is available at [GitHub Repository](https://github.com/aspose-words-cloud/aspose-words-cloud-go).
 
