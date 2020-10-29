@@ -29,6 +29,7 @@
 package api_test
 
 import (
+    "github.com/stretchr/testify/assert"
     "testing"
     "github.com/aspose-words-cloud/aspose-words-cloud-go/dev/api/models"
 )
@@ -58,10 +59,12 @@ func Test_AppendDocument_AppendDocument(t *testing.T) {
         "folder": remoteDataFolder,
         "destFileName": baseTestOutPath + "/" + remoteFileName,
     }
-    _, _, err := client.WordsApi.AppendDocument(ctx, remoteFileName, requestDocumentList, options)
+    actual, _, err := client.WordsApi.AppendDocument(ctx, remoteFileName, requestDocumentList, options)
 
     if err != nil {
         t.Error(err)
     }
 
+    assert.NotNil(t, actual.Document, "Validate AppendDocument response.");
+    assert.Equal(t, "TestAppendDocument.docx", actual.Document.FileName, "Validate AppendDocument response.");
 }

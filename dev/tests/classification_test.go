@@ -29,6 +29,7 @@
 package api_test
 
 import (
+    "github.com/stretchr/testify/assert"
     "testing"
 )
 
@@ -40,12 +41,15 @@ func Test_Classification_Classify(t *testing.T) {
     options := map[string]interface{}{
         "bestClassesCount": "3",
     }
-    _, _, err := client.WordsApi.Classify(ctx, "Try text classification", options)
+    actual, _, err := client.WordsApi.Classify(ctx, "Try text classification", options)
 
     if err != nil {
         t.Error(err)
     }
 
+    assert.Equal(t, "Science", actual.BestClassName, "Validate Classify response.");
+    assert.NotNil(t, actual.BestResults, "Validate Classify response.");
+    assert.Equal(t, 3, len(actual.BestResults), "Validate Classify response.");
 }
 
 // Test for document classification.
@@ -63,10 +67,13 @@ func Test_Classification_ClassifyDocument(t *testing.T) {
         "folder": remoteDataFolder,
         "bestClassesCount": "3",
     }
-    _, _, err := client.WordsApi.ClassifyDocument(ctx, remoteFileName, options)
+    actual, _, err := client.WordsApi.ClassifyDocument(ctx, remoteFileName, options)
 
     if err != nil {
         t.Error(err)
     }
 
+    assert.Equal(t, "Hobbies_&_Interests", actual.BestClassName, "Validate ClassifyDocument response.");
+    assert.NotNil(t, actual.BestResults, "Validate ClassifyDocument response.");
+    assert.Equal(t, 3, len(actual.BestResults), "Validate ClassifyDocument response.");
 }

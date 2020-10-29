@@ -29,6 +29,7 @@
 package api_test
 
 import (
+    "github.com/stretchr/testify/assert"
     "testing"
     "github.com/aspose-words-cloud/aspose-words-cloud-go/dev/api/models"
 )
@@ -47,12 +48,14 @@ func Test_PageSetup_GetSectionPageSetup(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetSectionPageSetup(ctx, remoteFileName, int32(0), options)
+    actual, _, err := client.WordsApi.GetSectionPageSetup(ctx, remoteFileName, int32(0), options)
 
     if err != nil {
         t.Error(err)
     }
 
+    assert.NotNil(t, actual.PageSetup, "Validate GetSectionPageSetup response.");
+    assert.Equal(t, 1, actual.PageSetup.LineStartingNumber, "Validate GetSectionPageSetup response.");
 }
 
 // Test for updating page settings.
@@ -75,11 +78,15 @@ func Test_PageSetup_UpdateSectionPageSetup(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.UpdateSectionPageSetup(ctx, remoteFileName, int32(0), requestPageSetup, options)
+    actual, _, err := client.WordsApi.UpdateSectionPageSetup(ctx, remoteFileName, int32(0), requestPageSetup, options)
 
     if err != nil {
         t.Error(err)
     }
+
+    assert.NotNil(t, actual.PageSetup, "Validate UpdateSectionPageSetup response.");
+    assert.True(t, actual.PageSetup.RtlGutter, "Validate UpdateSectionPageSetup response.");
+
 
 }
 

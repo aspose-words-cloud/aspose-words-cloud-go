@@ -29,6 +29,7 @@
 package api_test
 
 import (
+    "github.com/stretchr/testify/assert"
     "testing"
 )
 
@@ -43,12 +44,15 @@ func Test_File_UploadFile(t *testing.T) {
 
     options := map[string]interface{}{
     }
-    _, _, err := client.WordsApi.UploadFile(ctx, OpenFile(t, localFile), remoteDataFolder + "/" + remoteFileName, options)
+    actual, _, err := client.WordsApi.UploadFile(ctx, OpenFile(t, localFile), remoteDataFolder + "/" + remoteFileName, options)
 
     if err != nil {
         t.Error(err)
     }
 
+    assert.NotNil(t, actual.Uploaded, "Validate UploadFile response.");
+    assert.Equal(t, 1, len(actual.Uploaded), "Validate UploadFile response.");
+    assert.Equal(t, "TestUploadFile.docx", actual.Uploaded[0], "Validate UploadFile response.");
 }
 
 // Test for copy file.

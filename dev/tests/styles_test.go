@@ -29,6 +29,7 @@
 package api_test
 
 import (
+    "github.com/stretchr/testify/assert"
     "testing"
     "github.com/aspose-words-cloud/aspose-words-cloud-go/dev/api/models"
 )
@@ -47,12 +48,15 @@ func Test_Styles_GetStyles(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetStyles(ctx, remoteFileName, options)
+    actual, _, err := client.WordsApi.GetStyles(ctx, remoteFileName, options)
 
     if err != nil {
         t.Error(err)
     }
 
+    assert.NotNil(t, actual.Styles, "Validate GetStyles response.");
+    assert.Equal(t, 22, len(actual.Styles), "Validate GetStyles response.");
+    assert.Equal(t, "Default Paragraph Font", actual.Styles[0].Name, "Validate GetStyles response.");
 }
 
 // Test for getting style from document.
@@ -69,12 +73,14 @@ func Test_Styles_GetStyle(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetStyle(ctx, remoteFileName, "Heading 1", options)
+    actual, _, err := client.WordsApi.GetStyle(ctx, remoteFileName, "Heading 1", options)
 
     if err != nil {
         t.Error(err)
     }
 
+    assert.NotNil(t, actual.Style, "Validate GetStyle response.");
+    assert.Equal(t, "Heading 1", actual.Style.Name, "Validate GetStyle response.");
 }
 
 // Test for updating style from document.
@@ -94,12 +100,14 @@ func Test_Styles_UpdateStyle(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.UpdateStyle(ctx, remoteFileName, requestStyleUpdate, "Heading 1", options)
+    actual, _, err := client.WordsApi.UpdateStyle(ctx, remoteFileName, requestStyleUpdate, "Heading 1", options)
 
     if err != nil {
         t.Error(err)
     }
 
+    assert.NotNil(t, actual.Style, "Validate UpdateStyle response.");
+    assert.Equal(t, "My Style", actual.Style.Name, "Validate UpdateStyle response.");
 }
 
 // Test for inserting style from document.
@@ -120,12 +128,14 @@ func Test_Styles_InsertStyle(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.InsertStyle(ctx, remoteFileName, requestStyleInsert, options)
+    actual, _, err := client.WordsApi.InsertStyle(ctx, remoteFileName, requestStyleInsert, options)
 
     if err != nil {
         t.Error(err)
     }
 
+    assert.NotNil(t, actual.Style, "Validate InsertStyle response.");
+    assert.Equal(t, "My Style", actual.Style.Name, "Validate InsertStyle response.");
 }
 
 // Test for coping style from document.
@@ -145,12 +155,14 @@ func Test_Styles_CopyStyle(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.CopyStyle(ctx, remoteFileName, requestStyleCopy, options)
+    actual, _, err := client.WordsApi.CopyStyle(ctx, remoteFileName, requestStyleCopy, options)
 
     if err != nil {
         t.Error(err)
     }
 
+    assert.NotNil(t, actual.Style, "Validate CopyStyle response.");
+    assert.Equal(t, "Heading 1_0", actual.Style.Name, "Validate CopyStyle response.");
 }
 
 // Test for getting style from document element.
@@ -167,12 +179,14 @@ func Test_Styles_GetStyleFromDocumentElement(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetStyleFromDocumentElement(ctx, remoteFileName, "paragraphs/1/paragraphFormat", options)
+    actual, _, err := client.WordsApi.GetStyleFromDocumentElement(ctx, remoteFileName, "paragraphs/1/paragraphFormat", options)
 
     if err != nil {
         t.Error(err)
     }
 
+    assert.NotNil(t, actual.Style, "Validate GetStyleFromDocumentElement response.");
+    assert.Equal(t, "TOC 1", actual.Style.Name, "Validate GetStyleFromDocumentElement response.");
 }
 
 // Test for applying style to document element.

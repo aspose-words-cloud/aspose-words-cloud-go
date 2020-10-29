@@ -29,6 +29,7 @@
 package api_test
 
 import (
+    "github.com/stretchr/testify/assert"
     "testing"
     "github.com/aspose-words-cloud/aspose-words-cloud-go/dev/api/models"
 )
@@ -51,12 +52,15 @@ func Test_ConvertDocument_SaveAs(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteFolder,
     }
-    _, _, err := client.WordsApi.SaveAs(ctx, remoteName, requestSaveOptionsData, options)
+    actual, _, err := client.WordsApi.SaveAs(ctx, remoteName, requestSaveOptionsData, options)
 
     if err != nil {
         t.Error(err)
     }
 
+    assert.NotNil(t, actual.SaveResult, "Validate SaveAs response.");
+    assert.NotNil(t, actual.SaveResult.DestDocument, "Validate SaveAs response.");
+    assert.Equal(t, "Temp/SdkTests/NET/TestData/DocumentActions/ConvertDocument/TestOut/NET/TestSaveAs.pdf", actual.SaveResult.DestDocument.Href, "Validate SaveAs response.");
 }
 
 // Test for converting document to one of the available formats.
@@ -78,12 +82,15 @@ func Test_ConvertDocument_SaveAsDocx(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteFolder,
     }
-    _, _, err := client.WordsApi.SaveAs(ctx, remoteName, requestSaveOptionsData, options)
+    actual, _, err := client.WordsApi.SaveAs(ctx, remoteName, requestSaveOptionsData, options)
 
     if err != nil {
         t.Error(err)
     }
 
+    assert.NotNil(t, actual.SaveResult, "Validate SaveAsDocx response.");
+    assert.NotNil(t, actual.SaveResult.DestDocument, "Validate SaveAsDocx response.");
+    assert.Equal(t, "Temp/SdkTests/NET/TestData/DocumentActions/ConvertDocument/TestOut/NET/TestSaveAsFromPdfToDoc.docx", actual.SaveResult.DestDocument.Href, "Validate SaveAsDocx response.");
 }
 
 // Test for converting document to one of the available formats.
@@ -104,12 +111,15 @@ func Test_ConvertDocument_SaveAsTiff(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteFolder,
     }
-    _, _, err := client.WordsApi.SaveAsTiff(ctx, remoteName, requestSaveOptions, options)
+    actual, _, err := client.WordsApi.SaveAsTiff(ctx, remoteName, requestSaveOptions, options)
 
     if err != nil {
         t.Error(err)
     }
 
+    assert.NotNil(t, actual.SaveResult, "Validate SaveAsTiff response.");
+    assert.NotNil(t, actual.SaveResult.DestDocument, "Validate SaveAsTiff response.");
+    assert.Equal(t, "Temp/SdkTests/NET/TestData/DocumentActions/ConvertDocument/TestOut/NET/abc.tiff", actual.SaveResult.DestDocument.Href, "Validate SaveAsTiff response.");
 }
 
 // A test for ConvertDocument.

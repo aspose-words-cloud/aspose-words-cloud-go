@@ -29,6 +29,7 @@
 package api_test
 
 import (
+    "github.com/stretchr/testify/assert"
     "testing"
 )
 
@@ -46,12 +47,14 @@ func Test_Document_GetDocument(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetDocument(ctx, remoteFileName, options)
+    actual, _, err := client.WordsApi.GetDocument(ctx, remoteFileName, options)
 
     if err != nil {
         t.Error(err)
     }
 
+    assert.NotNil(t, actual.Document, "Validate GetDocument response.");
+    assert.Equal(t, "TestGetDocument.docx", actual.Document.FileName, "Validate GetDocument response.");
 }
 
 // Test for creating word document.
@@ -66,10 +69,12 @@ func Test_Document_CreateDocument(t *testing.T) {
         "fileName": remoteFileName,
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.CreateDocument(ctx, options)
+    actual, _, err := client.WordsApi.CreateDocument(ctx, options)
 
     if err != nil {
         t.Error(err)
     }
 
+    assert.NotNil(t, actual.Document, "Validate CreateDocument response.");
+    assert.Equal(t, "TestCreateDocument.doc", actual.Document.FileName, "Validate CreateDocument response.");
 }

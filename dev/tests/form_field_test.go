@@ -29,6 +29,7 @@
 package api_test
 
 import (
+    "github.com/stretchr/testify/assert"
     "testing"
     "github.com/aspose-words-cloud/aspose-words-cloud-go/dev/api/models"
 )
@@ -57,12 +58,15 @@ func Test_FormField_UpdateFormField(t *testing.T) {
         "folder": remoteDataFolder,
         "destFileName": baseTestOutPath + "/" + remoteFileName,
     }
-    _, _, err := client.WordsApi.UpdateFormField(ctx, remoteFileName, requestFormField, int32(0), options)
+    actual, _, err := client.WordsApi.UpdateFormField(ctx, remoteFileName, requestFormField, int32(0), options)
 
     if err != nil {
         t.Error(err)
     }
 
+    assert.NotNil(t, actual.FormField, "Validate UpdateFormField response.");
+    assert.Equal(t, "FullName", actual.FormField.Name, "Validate UpdateFormField response.");
+    assert.Equal(t, "", actual.FormField.StatusText, "Validate UpdateFormField response.");
 }
 
 // Test for posting form field without node path.
@@ -88,12 +92,15 @@ func Test_FormField_UpdateFormFieldWithoutNodePath(t *testing.T) {
         "folder": remoteDataFolder,
         "destFileName": baseTestOutPath + "/" + remoteFileName,
     }
-    _, _, err := client.WordsApi.UpdateFormField(ctx, remoteFileName, requestFormField, int32(0), options)
+    actual, _, err := client.WordsApi.UpdateFormField(ctx, remoteFileName, requestFormField, int32(0), options)
 
     if err != nil {
         t.Error(err)
     }
 
+    assert.NotNil(t, actual.FormField, "Validate UpdateFormFieldWithoutNodePath response.");
+    assert.Equal(t, "FullName", actual.FormField.Name, "Validate UpdateFormFieldWithoutNodePath response.");
+    assert.Equal(t, "", actual.FormField.StatusText, "Validate UpdateFormFieldWithoutNodePath response.");
 }
 
 // Test for getting form field.
@@ -111,12 +118,14 @@ func Test_FormField_GetFormField(t *testing.T) {
         "nodePath": "sections/0",
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetFormField(ctx, remoteFileName, int32(0), options)
+    actual, _, err := client.WordsApi.GetFormField(ctx, remoteFileName, int32(0), options)
 
     if err != nil {
         t.Error(err)
     }
 
+    assert.NotNil(t, actual.FormField, "Validate GetFormField response.");
+    assert.Equal(t, "FullName", actual.FormField.Name, "Validate GetFormField response.");
 }
 
 // Test for getting form field without node path.
@@ -133,12 +142,14 @@ func Test_FormField_GetFormFieldWithoutNodePath(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetFormField(ctx, remoteFileName, int32(0), options)
+    actual, _, err := client.WordsApi.GetFormField(ctx, remoteFileName, int32(0), options)
 
     if err != nil {
         t.Error(err)
     }
 
+    assert.NotNil(t, actual.FormField, "Validate GetFormFieldWithoutNodePath response.");
+    assert.Equal(t, "FullName", actual.FormField.Name, "Validate GetFormFieldWithoutNodePath response.");
 }
 
 // Test for getting form fields.
@@ -156,12 +167,16 @@ func Test_FormField_GetFormFields(t *testing.T) {
         "nodePath": "sections/0",
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetFormFields(ctx, remoteFileName, options)
+    actual, _, err := client.WordsApi.GetFormFields(ctx, remoteFileName, options)
 
     if err != nil {
         t.Error(err)
     }
 
+    assert.NotNil(t, actual.FormFields, "Validate GetFormFields response.");
+    assert.NotNil(t, actual.FormFields.List, "Validate GetFormFields response.");
+    assert.Equal(t, 5, len(actual.FormFields.List), "Validate GetFormFields response.");
+    assert.Equal(t, "FullName", actual.FormFields.List[0].Name, "Validate GetFormFields response.");
 }
 
 // Test for getting form fields without node path.
@@ -178,12 +193,16 @@ func Test_FormField_GetFormFieldsWithoutNodePath(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetFormFields(ctx, remoteFileName, options)
+    actual, _, err := client.WordsApi.GetFormFields(ctx, remoteFileName, options)
 
     if err != nil {
         t.Error(err)
     }
 
+    assert.NotNil(t, actual.FormFields, "Validate GetFormFieldsWithoutNodePath response.");
+    assert.NotNil(t, actual.FormFields.List, "Validate GetFormFieldsWithoutNodePath response.");
+    assert.Equal(t, 5, len(actual.FormFields.List), "Validate GetFormFieldsWithoutNodePath response.");
+    assert.Equal(t, "FullName", actual.FormFields.List[0].Name, "Validate GetFormFieldsWithoutNodePath response.");
 }
 
 // Test for insert form field without node path.
@@ -210,12 +229,15 @@ func Test_FormField_InsertFormField(t *testing.T) {
         "folder": remoteDataFolder,
         "destFileName": baseTestOutPath + "/" + remoteFileName,
     }
-    _, _, err := client.WordsApi.InsertFormField(ctx, remoteFileName, requestFormField, options)
+    actual, _, err := client.WordsApi.InsertFormField(ctx, remoteFileName, requestFormField, options)
 
     if err != nil {
         t.Error(err)
     }
 
+    assert.NotNil(t, actual.FormField, "Validate InsertFormField response.");
+    assert.Equal(t, "FullName", actual.FormField.Name, "Validate InsertFormField response.");
+    assert.Equal(t, "", actual.FormField.StatusText, "Validate InsertFormField response.");
 }
 
 // Test for insert form field without node path.
@@ -241,12 +263,15 @@ func Test_FormField_InsertFormFieldWithoutNodePath(t *testing.T) {
         "folder": remoteDataFolder,
         "destFileName": baseTestOutPath + "/" + remoteFileName,
     }
-    _, _, err := client.WordsApi.InsertFormField(ctx, remoteFileName, requestFormField, options)
+    actual, _, err := client.WordsApi.InsertFormField(ctx, remoteFileName, requestFormField, options)
 
     if err != nil {
         t.Error(err)
     }
 
+    assert.NotNil(t, actual.FormField, "Validate InsertFormFieldWithoutNodePath response.");
+    assert.Equal(t, "FullName", actual.FormField.Name, "Validate InsertFormFieldWithoutNodePath response.");
+    assert.Equal(t, "", actual.FormField.StatusText, "Validate InsertFormFieldWithoutNodePath response.");
 }
 
 // Test for deleting form field.

@@ -29,6 +29,7 @@
 package api_test
 
 import (
+    "github.com/stretchr/testify/assert"
     "testing"
 )
 
@@ -70,10 +71,12 @@ func Test_ExecuteMailMerge_ExecuteMailMerge(t *testing.T) {
         "withRegions": false,
         "destFileName": baseTestOutPath + "/" + remoteFileName,
     }
-    _, _, err := client.WordsApi.ExecuteMailMerge(ctx, remoteFileName, options)
+    actual, _, err := client.WordsApi.ExecuteMailMerge(ctx, remoteFileName, options)
 
     if err != nil {
         t.Error(err)
     }
 
+    assert.NotNil(t, actual.Document, "Validate ExecuteMailMerge response.");
+    assert.Equal(t, "TestExecuteMailMerge.docx", actual.Document.FileName, "Validate ExecuteMailMerge response.");
 }

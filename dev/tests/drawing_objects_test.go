@@ -29,6 +29,7 @@
 package api_test
 
 import (
+    "github.com/stretchr/testify/assert"
     "testing"
     "github.com/aspose-words-cloud/aspose-words-cloud-go/dev/api/models"
 )
@@ -48,12 +49,15 @@ func Test_DrawingObjects_GetDocumentDrawingObjects(t *testing.T) {
         "nodePath": "sections/0",
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetDocumentDrawingObjects(ctx, remoteFileName, options)
+    actual, _, err := client.WordsApi.GetDocumentDrawingObjects(ctx, remoteFileName, options)
 
     if err != nil {
         t.Error(err)
     }
 
+    assert.NotNil(t, actual.DrawingObjects, "Validate GetDocumentDrawingObjects response.");
+    assert.NotNil(t, actual.DrawingObjects.List, "Validate GetDocumentDrawingObjects response.");
+    assert.Equal(t, 1, len(actual.DrawingObjects.List), "Validate GetDocumentDrawingObjects response.");
 }
 
 // Test for getting drawing objects from document without node path.
@@ -70,12 +74,15 @@ func Test_DrawingObjects_GetDocumentDrawingObjectsWithoutNodePath(t *testing.T) 
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetDocumentDrawingObjects(ctx, remoteFileName, options)
+    actual, _, err := client.WordsApi.GetDocumentDrawingObjects(ctx, remoteFileName, options)
 
     if err != nil {
         t.Error(err)
     }
 
+    assert.NotNil(t, actual.DrawingObjects, "Validate GetDocumentDrawingObjectsWithoutNodePath response.");
+    assert.NotNil(t, actual.DrawingObjects.List, "Validate GetDocumentDrawingObjectsWithoutNodePath response.");
+    assert.Equal(t, 1, len(actual.DrawingObjects.List), "Validate GetDocumentDrawingObjectsWithoutNodePath response.");
 }
 
 // Test for getting drawing object by specified index.
@@ -93,12 +100,14 @@ func Test_DrawingObjects_GetDocumentDrawingObjectByIndex(t *testing.T) {
         "nodePath": "sections/0",
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetDocumentDrawingObjectByIndex(ctx, remoteFileName, int32(0), options)
+    actual, _, err := client.WordsApi.GetDocumentDrawingObjectByIndex(ctx, remoteFileName, int32(0), options)
 
     if err != nil {
         t.Error(err)
     }
 
+    assert.NotNil(t, actual.DrawingObject, "Validate GetDocumentDrawingObjectByIndex response.");
+    assert.Equal(t, 300, actual.DrawingObject.Height, "Validate GetDocumentDrawingObjectByIndex response.");
 }
 
 // Test for getting drawing object by specified index without node path.
@@ -115,12 +124,14 @@ func Test_DrawingObjects_GetDocumentDrawingObjectByIndexWithoutNodePath(t *testi
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetDocumentDrawingObjectByIndex(ctx, remoteFileName, int32(0), options)
+    actual, _, err := client.WordsApi.GetDocumentDrawingObjectByIndex(ctx, remoteFileName, int32(0), options)
 
     if err != nil {
         t.Error(err)
     }
 
+    assert.NotNil(t, actual.DrawingObject, "Validate GetDocumentDrawingObjectByIndexWithoutNodePath response.");
+    assert.Equal(t, 300, actual.DrawingObject.Height, "Validate GetDocumentDrawingObjectByIndexWithoutNodePath response.");
 }
 
 // Test for getting drawing object by specified index and format.
@@ -282,12 +293,14 @@ func Test_DrawingObjects_InsertDrawingObject(t *testing.T) {
         "nodePath": "",
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.InsertDrawingObject(ctx, remoteFileName, requestDrawingObject, OpenFile(t, "Common/aspose-cloud.png"), options)
+    actual, _, err := client.WordsApi.InsertDrawingObject(ctx, remoteFileName, requestDrawingObject, OpenFile(t, "Common/aspose-cloud.png"), options)
 
     if err != nil {
         t.Error(err)
     }
 
+    assert.NotNil(t, actual.DrawingObject, "Validate InsertDrawingObject response.");
+    assert.Equal(t, "0.3.7.1", actual.DrawingObject.NodeId, "Validate InsertDrawingObject response.");
 }
 
 // Test for adding drawing object without node path.
@@ -313,12 +326,14 @@ func Test_DrawingObjects_InsertDrawingObjectWithoutNodePath(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.InsertDrawingObject(ctx, remoteFileName, requestDrawingObject, OpenFile(t, "Common/aspose-cloud.png"), options)
+    actual, _, err := client.WordsApi.InsertDrawingObject(ctx, remoteFileName, requestDrawingObject, OpenFile(t, "Common/aspose-cloud.png"), options)
 
     if err != nil {
         t.Error(err)
     }
 
+    assert.NotNil(t, actual.DrawingObject, "Validate InsertDrawingObjectWithoutNodePath response.");
+    assert.Equal(t, "0.3.7.1", actual.DrawingObject.NodeId, "Validate InsertDrawingObjectWithoutNodePath response.");
 }
 
 // Test for deleting drawing object.
@@ -377,19 +392,21 @@ func Test_DrawingObjects_UpdateDrawingObject(t *testing.T) {
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
     requestDrawingObject := models.DrawingObjectUpdate{
-        Left: 0,
+        Left: 1,
     }
 
     options := map[string]interface{}{
         "nodePath": "",
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.UpdateDrawingObject(ctx, remoteFileName, requestDrawingObject, OpenFile(t, "Common/aspose-cloud.png"), int32(0), options)
+    actual, _, err := client.WordsApi.UpdateDrawingObject(ctx, remoteFileName, requestDrawingObject, OpenFile(t, "Common/aspose-cloud.png"), int32(0), options)
 
     if err != nil {
         t.Error(err)
     }
 
+    assert.NotNil(t, actual.DrawingObject, "Validate UpdateDrawingObject response.");
+    assert.Equal(t, 1, actual.DrawingObject.Left, "Validate UpdateDrawingObject response.");
 }
 
 // Test for updating drawing object without node path.
@@ -403,16 +420,18 @@ func Test_DrawingObjects_UpdateDrawingObjectWithoutNodePath(t *testing.T) {
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
     requestDrawingObject := models.DrawingObjectUpdate{
-        Left: 0,
+        Left: 1,
     }
 
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.UpdateDrawingObject(ctx, remoteFileName, requestDrawingObject, OpenFile(t, "Common/aspose-cloud.png"), int32(0), options)
+    actual, _, err := client.WordsApi.UpdateDrawingObject(ctx, remoteFileName, requestDrawingObject, OpenFile(t, "Common/aspose-cloud.png"), int32(0), options)
 
     if err != nil {
         t.Error(err)
     }
 
+    assert.NotNil(t, actual.DrawingObject, "Validate UpdateDrawingObjectWithoutNodePath response.");
+    assert.Equal(t, 1, actual.DrawingObject.Left, "Validate UpdateDrawingObjectWithoutNodePath response.");
 }

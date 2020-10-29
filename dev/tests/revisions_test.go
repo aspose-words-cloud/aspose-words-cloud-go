@@ -29,6 +29,7 @@
 package api_test
 
 import (
+    "github.com/stretchr/testify/assert"
     "testing"
 )
 
@@ -47,12 +48,15 @@ func Test_Revisions_AcceptAllRevisions(t *testing.T) {
         "folder": remoteDataFolder,
         "destFileName": baseTestOutPath + "/" + remoteFileName,
     }
-    _, _, err := client.WordsApi.AcceptAllRevisions(ctx, remoteFileName, options)
+    actual, _, err := client.WordsApi.AcceptAllRevisions(ctx, remoteFileName, options)
 
     if err != nil {
         t.Error(err)
     }
 
+    assert.NotNil(t, actual.Result, "Validate AcceptAllRevisions response.");
+    assert.NotNil(t, actual.Result.Dest, "Validate AcceptAllRevisions response.");
+    assert.Equal(t, "TestOut/NET/TestAcceptAllRevisions.docx", actual.Result.Dest.Href, "Validate AcceptAllRevisions response.");
 }
 
 // Test for rejecting revisions in document.
@@ -70,10 +74,13 @@ func Test_Revisions_RejectAllRevisions(t *testing.T) {
         "folder": remoteDataFolder,
         "destFileName": baseTestOutPath + "/" + remoteFileName,
     }
-    _, _, err := client.WordsApi.RejectAllRevisions(ctx, remoteFileName, options)
+    actual, _, err := client.WordsApi.RejectAllRevisions(ctx, remoteFileName, options)
 
     if err != nil {
         t.Error(err)
     }
 
+    assert.NotNil(t, actual.Result, "Validate RejectAllRevisions response.");
+    assert.NotNil(t, actual.Result.Dest, "Validate RejectAllRevisions response.");
+    assert.Equal(t, "TestOut/NET/TestRejectAllRevisions.docx", actual.Result.Dest.Href, "Validate RejectAllRevisions response.");
 }

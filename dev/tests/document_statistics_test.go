@@ -29,6 +29,7 @@
 package api_test
 
 import (
+    "github.com/stretchr/testify/assert"
     "testing"
 )
 
@@ -46,10 +47,12 @@ func Test_DocumentStatistics_GetDocumentStatistics(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetDocumentStatistics(ctx, remoteFileName, options)
+    actual, _, err := client.WordsApi.GetDocumentStatistics(ctx, remoteFileName, options)
 
     if err != nil {
         t.Error(err)
     }
 
+    assert.NotNil(t, actual.StatData, "Validate GetDocumentStatistics response.");
+    assert.Equal(t, 10, actual.StatData.WordCount, "Validate GetDocumentStatistics response.");
 }

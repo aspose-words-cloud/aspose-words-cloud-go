@@ -29,6 +29,7 @@
 package api_test
 
 import (
+    "github.com/stretchr/testify/assert"
     "testing"
     "github.com/aspose-words-cloud/aspose-words-cloud-go/dev/api/models"
 )
@@ -52,10 +53,13 @@ func Test_LoadWebDocument_LoadWebDocument(t *testing.T) {
 
     options := map[string]interface{}{
     }
-    _, _, err := client.WordsApi.LoadWebDocument(ctx, requestData, options)
+    actual, _, err := client.WordsApi.LoadWebDocument(ctx, requestData, options)
 
     if err != nil {
         t.Error(err)
     }
 
+    assert.NotNil(t, actual.SaveResult, "Validate LoadWebDocument response.");
+    assert.NotNil(t, actual.SaveResult.DestDocument, "Validate LoadWebDocument response.");
+    assert.Equal(t, "google.doc", actual.SaveResult.DestDocument.Href, "Validate LoadWebDocument response.");
 }

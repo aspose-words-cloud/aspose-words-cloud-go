@@ -29,6 +29,7 @@
 package api_test
 
 import (
+    "github.com/stretchr/testify/assert"
     "testing"
 )
 
@@ -47,12 +48,16 @@ func Test_MathObject_GetOfficeMathObjects(t *testing.T) {
         "nodePath": "",
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetOfficeMathObjects(ctx, remoteFileName, options)
+    actual, _, err := client.WordsApi.GetOfficeMathObjects(ctx, remoteFileName, options)
 
     if err != nil {
         t.Error(err)
     }
 
+    assert.NotNil(t, actual.OfficeMathObjects, "Validate GetOfficeMathObjects response.");
+    assert.NotNil(t, actual.OfficeMathObjects.List, "Validate GetOfficeMathObjects response.");
+    assert.Equal(t, 16, len(actual.OfficeMathObjects.List), "Validate GetOfficeMathObjects response.");
+    assert.Equal(t, "0.0.0.0", actual.OfficeMathObjects.List[0].NodeId, "Validate GetOfficeMathObjects response.");
 }
 
 // Test for getting mathObjects without node path.
@@ -69,12 +74,16 @@ func Test_MathObject_GetOfficeMathObjectsWithoutNodePath(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetOfficeMathObjects(ctx, remoteFileName, options)
+    actual, _, err := client.WordsApi.GetOfficeMathObjects(ctx, remoteFileName, options)
 
     if err != nil {
         t.Error(err)
     }
 
+    assert.NotNil(t, actual.OfficeMathObjects, "Validate GetOfficeMathObjectsWithoutNodePath response.");
+    assert.NotNil(t, actual.OfficeMathObjects.List, "Validate GetOfficeMathObjectsWithoutNodePath response.");
+    assert.Equal(t, 16, len(actual.OfficeMathObjects.List), "Validate GetOfficeMathObjectsWithoutNodePath response.");
+    assert.Equal(t, "0.0.0.0", actual.OfficeMathObjects.List[0].NodeId, "Validate GetOfficeMathObjectsWithoutNodePath response.");
 }
 
 // Test for getting mathObject.
@@ -92,12 +101,14 @@ func Test_MathObject_GetOfficeMathObject(t *testing.T) {
         "nodePath": "",
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetOfficeMathObject(ctx, remoteFileName, int32(0), options)
+    actual, _, err := client.WordsApi.GetOfficeMathObject(ctx, remoteFileName, int32(0), options)
 
     if err != nil {
         t.Error(err)
     }
 
+    assert.NotNil(t, actual.OfficeMathObject, "Validate GetOfficeMathObject response.");
+    assert.Equal(t, "0.0.0.0", actual.OfficeMathObject.NodeId, "Validate GetOfficeMathObject response.");
 }
 
 // Test for getting mathObject without node path.
@@ -114,12 +125,14 @@ func Test_MathObject_GetOfficeMathObjectWithoutNodePath(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetOfficeMathObject(ctx, remoteFileName, int32(0), options)
+    actual, _, err := client.WordsApi.GetOfficeMathObject(ctx, remoteFileName, int32(0), options)
 
     if err != nil {
         t.Error(err)
     }
 
+    assert.NotNil(t, actual.OfficeMathObject, "Validate GetOfficeMathObjectWithoutNodePath response.");
+    assert.Equal(t, "0.0.0.0", actual.OfficeMathObject.NodeId, "Validate GetOfficeMathObjectWithoutNodePath response.");
 }
 
 // Test for rendering mathObject.

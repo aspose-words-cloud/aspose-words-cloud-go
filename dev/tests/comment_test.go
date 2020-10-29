@@ -29,6 +29,7 @@
 package api_test
 
 import (
+    "github.com/stretchr/testify/assert"
     "testing"
     "github.com/aspose-words-cloud/aspose-words-cloud-go/dev/api/models"
 )
@@ -47,12 +48,14 @@ func Test_Comment_GetComment(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetComment(ctx, remoteFileName, int32(0), options)
+    actual, _, err := client.WordsApi.GetComment(ctx, remoteFileName, int32(0), options)
 
     if err != nil {
         t.Error(err)
     }
 
+    assert.NotNil(t, actual.Comment, "Validate GetComment response.");
+    assert.Equal(t, "Comment 1\r\n\r\n", actual.Comment.Text, "Validate GetComment response.");
 }
 
 // Test for getting all comments from document.
@@ -69,12 +72,16 @@ func Test_Comment_GetComments(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetComments(ctx, remoteFileName, options)
+    actual, _, err := client.WordsApi.GetComments(ctx, remoteFileName, options)
 
     if err != nil {
         t.Error(err)
     }
 
+    assert.NotNil(t, actual.Comments, "Validate GetComments response.");
+    assert.NotNil(t, actual.Comments.CommentList, "Validate GetComments response.");
+    assert.Equal(t, 1, len(actual.Comments.CommentList), "Validate GetComments response.");
+    assert.Equal(t, "Comment 1\r\n\r\n", actual.Comments.CommentList[0].Text, "Validate GetComments response.");
 }
 
 // Test for adding comment.
@@ -112,12 +119,17 @@ func Test_Comment_InsertComment(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.InsertComment(ctx, remoteFileName, requestComment, options)
+    actual, _, err := client.WordsApi.InsertComment(ctx, remoteFileName, requestComment, options)
 
     if err != nil {
         t.Error(err)
     }
 
+    assert.NotNil(t, actual.Comment, "Validate InsertComment response.");
+    assert.Equal(t, "A new Comment\r\n", actual.Comment.Text, "Validate InsertComment response.");
+    assert.NotNil(t, actual.Comment.RangeStart, "Validate InsertComment response.");
+    assert.NotNil(t, actual.Comment.RangeStart.Node, "Validate InsertComment response.");
+    assert.Equal(t, "0.3.0.4", actual.Comment.RangeStart.Node.NodeId, "Validate InsertComment response.");
 }
 
 // Test for updating comment.
@@ -155,12 +167,17 @@ func Test_Comment_UpdateComment(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.UpdateComment(ctx, remoteFileName, int32(0), requestComment, options)
+    actual, _, err := client.WordsApi.UpdateComment(ctx, remoteFileName, int32(0), requestComment, options)
 
     if err != nil {
         t.Error(err)
     }
 
+    assert.NotNil(t, actual.Comment, "Validate UpdateComment response.");
+    assert.Equal(t, "A new Comment\r\n", actual.Comment.Text, "Validate UpdateComment response.");
+    assert.NotNil(t, actual.Comment.RangeStart, "Validate UpdateComment response.");
+    assert.NotNil(t, actual.Comment.RangeStart.Node, "Validate UpdateComment response.");
+    assert.Equal(t, "0.3.0.1", actual.Comment.RangeStart.Node.NodeId, "Validate UpdateComment response.");
 }
 
 // A test for DeleteComment.

@@ -29,6 +29,7 @@
 package api_test
 
 import (
+    "github.com/stretchr/testify/assert"
     "testing"
     "github.com/aspose-words-cloud/aspose-words-cloud-go/dev/api/models"
 )
@@ -52,12 +53,14 @@ func Test_Watermark_InsertWatermarkImage(t *testing.T) {
         "destFileName": baseTestOutPath + "/" + remoteFileName,
         "image": remoteImagePath,
     }
-    _, _, err := client.WordsApi.InsertWatermarkImage(ctx, remoteFileName, options)
+    actual, _, err := client.WordsApi.InsertWatermarkImage(ctx, remoteFileName, options)
 
     if err != nil {
         t.Error(err)
     }
 
+    assert.NotNil(t, actual.Document, "Validate InsertWatermarkImage response.");
+    assert.Equal(t, "TestInsertWatermarkImage.docx", actual.Document.FileName, "Validate InsertWatermarkImage response.");
 }
 
 // Test for adding watermark text.
@@ -79,12 +82,14 @@ func Test_Watermark_InsertWatermarkText(t *testing.T) {
         "folder": remoteDataFolder,
         "destFileName": baseTestOutPath + "/" + remoteFileName,
     }
-    _, _, err := client.WordsApi.InsertWatermarkText(ctx, remoteFileName, requestWatermarkText, options)
+    actual, _, err := client.WordsApi.InsertWatermarkText(ctx, remoteFileName, requestWatermarkText, options)
 
     if err != nil {
         t.Error(err)
     }
 
+    assert.NotNil(t, actual.Document, "Validate InsertWatermarkText response.");
+    assert.Equal(t, "TestInsertWatermarkText.docx", actual.Document.FileName, "Validate InsertWatermarkText response.");
 }
 
 // Test for deleting watermark.
@@ -102,10 +107,12 @@ func Test_Watermark_DeleteWatermark(t *testing.T) {
         "folder": remoteDataFolder,
         "destFileName": baseTestOutPath + "/" + remoteFileName,
     }
-    _, _, err := client.WordsApi.DeleteWatermark(ctx, remoteFileName, options)
+    actual, _, err := client.WordsApi.DeleteWatermark(ctx, remoteFileName, options)
 
     if err != nil {
         t.Error(err)
     }
 
+    assert.NotNil(t, actual.Document, "Validate DeleteWatermark response.");
+    assert.Equal(t, "TestDeleteWatermark.docx", actual.Document.FileName, "Validate DeleteWatermark response.");
 }
