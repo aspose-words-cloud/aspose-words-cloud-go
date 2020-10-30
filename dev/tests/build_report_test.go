@@ -88,5 +88,5 @@ func Test_BuildReport_BuildReport(t *testing.T) {
     }
 
     assert.NotNil(t, actual.Document, "Validate BuildReport response.");
-    assert.Equal(t, "TestBuildReport.docx", actual.Document.FileName, "Validate BuildReport response.");
+    assert.True(t, strings.HasPrefix(actual.Document.FileName, "TestBuildReport.docx"), "Validate BuildReport response.");
 }

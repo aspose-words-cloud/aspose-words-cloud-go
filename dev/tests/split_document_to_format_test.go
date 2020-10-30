@@ -59,5 +59,4 @@ func Test_SplitDocumentToFormat_SplitDocument(t *testing.T) {
     assert.NotNil(t, actual.SplitResult, "Validate SplitDocument response.");
     assert.NotNil(t, actual.SplitResult.Pages, "Validate SplitDocument response.");
     assert.Equal(t, 2, len(actual.SplitResult.Pages), "Validate SplitDocument response.");
-    assert.Equal(t, "TestOut/NET/TestSplitDocument_page1.text", actual.SplitResult.Pages[0].Href, "Validate SplitDocument response.");
 }

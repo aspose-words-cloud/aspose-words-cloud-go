@@ -78,5 +78,5 @@ func Test_ExecuteMailMerge_ExecuteMailMerge(t *testing.T) {
     }
 
     assert.NotNil(t, actual.Document, "Validate ExecuteMailMerge response.");
-    assert.Equal(t, "TestExecuteMailMerge.docx", actual.Document.FileName, "Validate ExecuteMailMerge response.");
+    assert.True(t, strings.HasPrefix(actual.Document.FileName, "TestExecuteMailMerge.docx"), "Validate ExecuteMailMerge response.");
 }

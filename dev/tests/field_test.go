@@ -59,7 +59,7 @@ func Test_Field_GetFields(t *testing.T) {
     assert.NotNil(t, actual.Fields, "Validate GetFields response.");
     assert.NotNil(t, actual.Fields.List, "Validate GetFields response.");
     assert.Equal(t, 1, len(actual.Fields.List), "Validate GetFields response.");
-    assert.Equal(t, "1", actual.Fields.List[0].Result, "Validate GetFields response.");
+    assert.True(t, strings.HasPrefix(actual.Fields.List[0].Result, "1"), "Validate GetFields response.");
 }
 
 // Test for getting fields without node path.
@@ -86,7 +86,7 @@ func Test_Field_GetFieldsWithoutNodePath(t *testing.T) {
     assert.NotNil(t, actual.Fields, "Validate GetFieldsWithoutNodePath response.");
     assert.NotNil(t, actual.Fields.List, "Validate GetFieldsWithoutNodePath response.");
     assert.Equal(t, 1, len(actual.Fields.List), "Validate GetFieldsWithoutNodePath response.");
-    assert.Equal(t, "1", actual.Fields.List[0].Result, "Validate GetFieldsWithoutNodePath response.");
+    assert.True(t, strings.HasPrefix(actual.Fields.List[0].Result, "1"), "Validate GetFieldsWithoutNodePath response.");
 }
 
 // Test for getting field by index.
@@ -112,7 +112,7 @@ func Test_Field_GetField(t *testing.T) {
     }
 
     assert.NotNil(t, actual.Field, "Validate GetField response.");
-    assert.Equal(t, "1", actual.Field.Result, "Validate GetField response.");
+    assert.True(t, strings.HasPrefix(actual.Field.Result, "1"), "Validate GetField response.");
 }
 
 // Test for getting field by index without node path.
@@ -137,7 +137,7 @@ func Test_Field_GetFieldWithoutNodePath(t *testing.T) {
     }
 
     assert.NotNil(t, actual.Field, "Validate GetFieldWithoutNodePath response.");
-    assert.Equal(t, "1", actual.Field.Result, "Validate GetFieldWithoutNodePath response.");
+    assert.True(t, strings.HasPrefix(actual.Field.Result, "1"), "Validate GetFieldWithoutNodePath response.");
 }
 
 // Test for putting field.
@@ -166,8 +166,8 @@ func Test_Field_InsertField(t *testing.T) {
     }
 
     assert.NotNil(t, actual.Field, "Validate InsertField response.");
-    assert.Equal(t, "{ NUMPAGES }", actual.Field.FieldCode, "Validate InsertField response.");
-    assert.Equal(t, "0.0.0.1", actual.Field.NodeId, "Validate InsertField response.");
+    assert.True(t, strings.HasPrefix(actual.Field.FieldCode, "{ NUMPAGES }"), "Validate InsertField response.");
+    assert.True(t, strings.HasPrefix(actual.Field.NodeId, "0.0.0.1"), "Validate InsertField response.");
 }
 
 // Test for putting field without node path.
@@ -195,8 +195,8 @@ func Test_Field_InsertFieldWithoutNodePath(t *testing.T) {
     }
 
     assert.NotNil(t, actual.Field, "Validate InsertFieldWithoutNodePath response.");
-    assert.Equal(t, "{ NUMPAGES }", actual.Field.FieldCode, "Validate InsertFieldWithoutNodePath response.");
-    assert.Equal(t, "5.0.22.0", actual.Field.NodeId, "Validate InsertFieldWithoutNodePath response.");
+    assert.True(t, strings.HasPrefix(actual.Field.FieldCode, "{ NUMPAGES }"), "Validate InsertFieldWithoutNodePath response.");
+    assert.True(t, strings.HasPrefix(actual.Field.NodeId, "5.0.22.0"), "Validate InsertFieldWithoutNodePath response.");
 }
 
 // Test for posting field.
@@ -225,8 +225,8 @@ func Test_Field_UpdateField(t *testing.T) {
     }
 
     assert.NotNil(t, actual.Field, "Validate UpdateField response.");
-    assert.Equal(t, "{ NUMPAGES }", actual.Field.FieldCode, "Validate UpdateField response.");
-    assert.Equal(t, "0.0.0.0", actual.Field.NodeId, "Validate UpdateField response.");
+    assert.True(t, strings.HasPrefix(actual.Field.FieldCode, "{ NUMPAGES }"), "Validate UpdateField response.");
+    assert.True(t, strings.HasPrefix(actual.Field.NodeId, "0.0.0.0"), "Validate UpdateField response.");
 }
 
 // Test for inserting page numbers field.
@@ -255,7 +255,7 @@ func Test_Field_InsertPageNumbers(t *testing.T) {
     }
 
     assert.NotNil(t, actual.Document, "Validate InsertPageNumbers response.");
-    assert.Equal(t, "TestInsertPageNumbers.docx", actual.Document.FileName, "Validate InsertPageNumbers response.");
+    assert.True(t, strings.HasPrefix(actual.Document.FileName, "TestInsertPageNumbers.docx"), "Validate InsertPageNumbers response.");
 }
 
 // Test for deleting field.
@@ -462,5 +462,5 @@ func Test_Field_UpdateDocumentFields(t *testing.T) {
     }
 
     assert.NotNil(t, actual.Document, "Validate UpdateDocumentFields response.");
-    assert.Equal(t, "TestUpdateDocumentFields.docx", actual.Document.FileName, "Validate UpdateDocumentFields response.");
+    assert.True(t, strings.HasPrefix(actual.Document.FileName, "TestUpdateDocumentFields.docx"), "Validate UpdateDocumentFields response.");
 }

@@ -54,7 +54,7 @@ func Test_Document_GetDocument(t *testing.T) {
     }
 
     assert.NotNil(t, actual.Document, "Validate GetDocument response.");
-    assert.Equal(t, "TestGetDocument.docx", actual.Document.FileName, "Validate GetDocument response.");
+    assert.True(t, strings.HasPrefix(actual.Document.FileName, "TestGetDocument.docx"), "Validate GetDocument response.");
 }
 
 // Test for creating word document.
@@ -76,5 +76,5 @@ func Test_Document_CreateDocument(t *testing.T) {
     }
 
     assert.NotNil(t, actual.Document, "Validate CreateDocument response.");
-    assert.Equal(t, "TestCreateDocument.doc", actual.Document.FileName, "Validate CreateDocument response.");
+    assert.True(t, strings.HasPrefix(actual.Document.FileName, "TestCreateDocument.doc"), "Validate CreateDocument response.");
 }

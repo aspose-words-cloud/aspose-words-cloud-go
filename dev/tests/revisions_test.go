@@ -56,7 +56,6 @@ func Test_Revisions_AcceptAllRevisions(t *testing.T) {
 
     assert.NotNil(t, actual.Result, "Validate AcceptAllRevisions response.");
     assert.NotNil(t, actual.Result.Dest, "Validate AcceptAllRevisions response.");
-    assert.Equal(t, "TestOut/NET/TestAcceptAllRevisions.docx", actual.Result.Dest.Href, "Validate AcceptAllRevisions response.");
 }
 
 // Test for rejecting revisions in document.
@@ -82,5 +81,4 @@ func Test_Revisions_RejectAllRevisions(t *testing.T) {
 
     assert.NotNil(t, actual.Result, "Validate RejectAllRevisions response.");
     assert.NotNil(t, actual.Result.Dest, "Validate RejectAllRevisions response.");
-    assert.Equal(t, "TestOut/NET/TestRejectAllRevisions.docx", actual.Result.Dest.Href, "Validate RejectAllRevisions response.");
 }

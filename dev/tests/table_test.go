@@ -58,7 +58,7 @@ func Test_Table_GetTables(t *testing.T) {
     assert.NotNil(t, actual.Tables, "Validate GetTables response.");
     assert.NotNil(t, actual.Tables.TableLinkList, "Validate GetTables response.");
     assert.Equal(t, 5, len(actual.Tables.TableLinkList), "Validate GetTables response.");
-    assert.Equal(t, "0.0.1", actual.Tables.TableLinkList[0].NodeId, "Validate GetTables response.");
+    assert.True(t, strings.HasPrefix(actual.Tables.TableLinkList[0].NodeId, "0.0.1"), "Validate GetTables response.");
 }
 
 // Test for getting tables without node path.
@@ -84,7 +84,7 @@ func Test_Table_GetTablesWithoutNodePath(t *testing.T) {
     assert.NotNil(t, actual.Tables, "Validate GetTablesWithoutNodePath response.");
     assert.NotNil(t, actual.Tables.TableLinkList, "Validate GetTablesWithoutNodePath response.");
     assert.Equal(t, 5, len(actual.Tables.TableLinkList), "Validate GetTablesWithoutNodePath response.");
-    assert.Equal(t, "0.0.1", actual.Tables.TableLinkList[0].NodeId, "Validate GetTablesWithoutNodePath response.");
+    assert.True(t, strings.HasPrefix(actual.Tables.TableLinkList[0].NodeId, "0.0.1"), "Validate GetTablesWithoutNodePath response.");
 }
 
 // Test for getting table.
@@ -272,7 +272,7 @@ func Test_Table_GetTableProperties(t *testing.T) {
     }
 
     assert.NotNil(t, actual.Properties, "Validate GetTableProperties response.");
-    assert.Equal(t, "Table Grid", actual.Properties.StyleName, "Validate GetTableProperties response.");
+    assert.True(t, strings.HasPrefix(actual.Properties.StyleName, "Table Grid"), "Validate GetTableProperties response.");
 }
 
 // Test for getting document properties without node path.
@@ -296,7 +296,7 @@ func Test_Table_GetTablePropertiesWithoutNodePath(t *testing.T) {
     }
 
     assert.NotNil(t, actual.Properties, "Validate GetTablePropertiesWithoutNodePath response.");
-    assert.Equal(t, "Table Grid", actual.Properties.StyleName, "Validate GetTablePropertiesWithoutNodePath response.");
+    assert.True(t, strings.HasPrefix(actual.Properties.StyleName, "Table Grid"), "Validate GetTablePropertiesWithoutNodePath response.");
 }
 
 // Test for updating table properties.
@@ -522,7 +522,7 @@ func Test_Table_GetTableCell(t *testing.T) {
     }
 
     assert.NotNil(t, actual.Cell, "Validate GetTableCell response.");
-    assert.Equal(t, "0.0.5.0.0", actual.Cell.NodeId, "Validate GetTableCell response.");
+    assert.True(t, strings.HasPrefix(actual.Cell.NodeId, "0.0.5.0.0"), "Validate GetTableCell response.");
 }
 
 // Test for deleting cell.
@@ -570,7 +570,7 @@ func Test_Table_InsertTableCell(t *testing.T) {
     }
 
     assert.NotNil(t, actual.Cell, "Validate InsertTableCell response.");
-    assert.Equal(t, "0.0.5.0.3", actual.Cell.NodeId, "Validate InsertTableCell response.");
+    assert.True(t, strings.HasPrefix(actual.Cell.NodeId, "0.0.5.0.3"), "Validate InsertTableCell response.");
 }
 
 // Test for getting cell format.

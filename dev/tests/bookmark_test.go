@@ -56,7 +56,7 @@ func Test_Bookmark_GetBookmarks(t *testing.T) {
 
     assert.NotNil(t, actual.Bookmarks, "Validate GetBookmarks response.");
     assert.Equal(t, 3, len(actual.Bookmarks.BookmarkList), "Validate GetBookmarks response.");
-    assert.Equal(t, "aspose", actual.Bookmarks.BookmarkList[1].Name, "Validate GetBookmarks response.");
+    assert.True(t, strings.HasPrefix(actual.Bookmarks.BookmarkList[1].Name, "aspose"), "Validate GetBookmarks response.");
 }
 
 // Test for getting bookmark by specified name.
@@ -81,7 +81,7 @@ func Test_Bookmark_GetBookmarkByName(t *testing.T) {
     }
 
     assert.NotNil(t, actual.Bookmark, "Validate GetBookmarkByName response.");
-    assert.Equal(t, bookmarkName, actual.Bookmark.Name, "Validate GetBookmarkByName response.");
+    assert.True(t, strings.HasPrefix(actual.Bookmark.Name, bookmarkName), "Validate GetBookmarkByName response.");
 }
 
 // Test for updating existed bookmark.
@@ -112,6 +112,6 @@ func Test_Bookmark_UpdateBookmark(t *testing.T) {
     }
 
     assert.NotNil(t, actual.Bookmark, "Validate UpdateBookmark response.");
-    assert.Equal(t, bookmarkName, actual.Bookmark.Name, "Validate UpdateBookmark response.");
-    assert.Equal(t, bookmarkText, actual.Bookmark.Text, "Validate UpdateBookmark response.");
+    assert.True(t, strings.HasPrefix(actual.Bookmark.Name, bookmarkName), "Validate UpdateBookmark response.");
+    assert.True(t, strings.HasPrefix(actual.Bookmark.Text, bookmarkText), "Validate UpdateBookmark response.");
 }

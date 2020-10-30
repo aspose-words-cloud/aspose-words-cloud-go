@@ -60,7 +60,6 @@ func Test_ConvertDocument_SaveAs(t *testing.T) {
 
     assert.NotNil(t, actual.SaveResult, "Validate SaveAs response.");
     assert.NotNil(t, actual.SaveResult.DestDocument, "Validate SaveAs response.");
-    assert.Equal(t, "Temp/SdkTests/NET/TestData/DocumentActions/ConvertDocument/TestOut/NET/TestSaveAs.pdf", actual.SaveResult.DestDocument.Href, "Validate SaveAs response.");
 }
 
 // Test for converting document to one of the available formats.
@@ -90,7 +89,6 @@ func Test_ConvertDocument_SaveAsDocx(t *testing.T) {
 
     assert.NotNil(t, actual.SaveResult, "Validate SaveAsDocx response.");
     assert.NotNil(t, actual.SaveResult.DestDocument, "Validate SaveAsDocx response.");
-    assert.Equal(t, "Temp/SdkTests/NET/TestData/DocumentActions/ConvertDocument/TestOut/NET/TestSaveAsFromPdfToDoc.docx", actual.SaveResult.DestDocument.Href, "Validate SaveAsDocx response.");
 }
 
 // Test for converting document to one of the available formats.
@@ -119,7 +117,6 @@ func Test_ConvertDocument_SaveAsTiff(t *testing.T) {
 
     assert.NotNil(t, actual.SaveResult, "Validate SaveAsTiff response.");
     assert.NotNil(t, actual.SaveResult.DestDocument, "Validate SaveAsTiff response.");
-    assert.Equal(t, "Temp/SdkTests/NET/TestData/DocumentActions/ConvertDocument/TestOut/NET/abc.tiff", actual.SaveResult.DestDocument.Href, "Validate SaveAsTiff response.");
 }
 
 // A test for ConvertDocument.

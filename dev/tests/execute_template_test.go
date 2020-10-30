@@ -58,7 +58,7 @@ func Test_ExecuteTemplate_ExecuteTemplate(t *testing.T) {
     }
 
     assert.NotNil(t, actual.Document, "Validate ExecuteTemplate response.");
-    assert.Equal(t, "TestExecuteTemplate.docx", actual.Document.FileName, "Validate ExecuteTemplate response.");
+    assert.True(t, strings.HasPrefix(actual.Document.FileName, "TestExecuteTemplate.docx"), "Validate ExecuteTemplate response.");
 }
 
 // Test for execute template online.

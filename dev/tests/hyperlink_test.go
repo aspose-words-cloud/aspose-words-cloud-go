@@ -54,7 +54,7 @@ func Test_Hyperlink_GetDocumentHyperlinkByIndex(t *testing.T) {
     }
 
     assert.NotNil(t, actual.Hyperlink, "Validate GetDocumentHyperlinkByIndex response.");
-    assert.Equal(t, "Aspose", actual.Hyperlink.DisplayText, "Validate GetDocumentHyperlinkByIndex response.");
+    assert.True(t, strings.HasPrefix(actual.Hyperlink.DisplayText, "Aspose"), "Validate GetDocumentHyperlinkByIndex response.");
 }
 
 // Test for getting hyperlinks.
@@ -80,5 +80,5 @@ func Test_Hyperlink_GetDocumentHyperlinks(t *testing.T) {
     assert.NotNil(t, actual.Hyperlinks, "Validate GetDocumentHyperlinks response.");
     assert.NotNil(t, actual.Hyperlinks.HyperlinkList, "Validate GetDocumentHyperlinks response.");
     assert.Equal(t, 2, len(actual.Hyperlinks.HyperlinkList), "Validate GetDocumentHyperlinks response.");
-    assert.Equal(t, "Aspose", actual.Hyperlinks.HyperlinkList[0].DisplayText, "Validate GetDocumentHyperlinks response.");
+    assert.True(t, strings.HasPrefix(actual.Hyperlinks.HyperlinkList[0].DisplayText, "Aspose"), "Validate GetDocumentHyperlinks response.");
 }

@@ -81,7 +81,7 @@ func Test_HeaderFooter_GetHeaderFooter(t *testing.T) {
     assert.NotNil(t, actual.HeaderFooter, "Validate GetHeaderFooter response.");
     assert.NotNil(t, actual.HeaderFooter.ChildNodes, "Validate GetHeaderFooter response.");
     assert.Equal(t, 1, len(actual.HeaderFooter.ChildNodes), "Validate GetHeaderFooter response.");
-    assert.Equal(t, "0.0.0", actual.HeaderFooter.ChildNodes[0].NodeId, "Validate GetHeaderFooter response.");
+    assert.True(t, strings.HasPrefix(actual.HeaderFooter.ChildNodes[0].NodeId, "0.0.0"), "Validate GetHeaderFooter response.");
 }
 
 // Test for getting headerfooter of section.
@@ -107,7 +107,7 @@ func Test_HeaderFooter_GetHeaderFooterOfSection(t *testing.T) {
     assert.NotNil(t, actual.HeaderFooter, "Validate GetHeaderFooterOfSection response.");
     assert.NotNil(t, actual.HeaderFooter.ChildNodes, "Validate GetHeaderFooterOfSection response.");
     assert.Equal(t, 1, len(actual.HeaderFooter.ChildNodes), "Validate GetHeaderFooterOfSection response.");
-    assert.Equal(t, "0.0.0", actual.HeaderFooter.ChildNodes[0].NodeId, "Validate GetHeaderFooterOfSection response.");
+    assert.True(t, strings.HasPrefix(actual.HeaderFooter.ChildNodes[0].NodeId, "0.0.0"), "Validate GetHeaderFooterOfSection response.");
 }
 
 // Test for deleting headerfooter.
@@ -177,5 +177,5 @@ func Test_HeaderFooter_InsertHeaderFooter(t *testing.T) {
     assert.NotNil(t, actual.HeaderFooter, "Validate InsertHeaderFooter response.");
     assert.NotNil(t, actual.HeaderFooter.ChildNodes, "Validate InsertHeaderFooter response.");
     assert.Equal(t, 1, len(actual.HeaderFooter.ChildNodes), "Validate InsertHeaderFooter response.");
-    assert.Equal(t, "0.2.0", actual.HeaderFooter.ChildNodes[0].NodeId, "Validate InsertHeaderFooter response.");
+    assert.True(t, strings.HasPrefix(actual.HeaderFooter.ChildNodes[0].NodeId, "0.2.0"), "Validate InsertHeaderFooter response.");
 }

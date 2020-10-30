@@ -300,7 +300,7 @@ func Test_DrawingObjects_InsertDrawingObject(t *testing.T) {
     }
 
     assert.NotNil(t, actual.DrawingObject, "Validate InsertDrawingObject response.");
-    assert.Equal(t, "0.3.7.1", actual.DrawingObject.NodeId, "Validate InsertDrawingObject response.");
+    assert.True(t, strings.HasPrefix(actual.DrawingObject.NodeId, "0.3.7.1"), "Validate InsertDrawingObject response.");
 }
 
 // Test for adding drawing object without node path.
@@ -333,7 +333,7 @@ func Test_DrawingObjects_InsertDrawingObjectWithoutNodePath(t *testing.T) {
     }
 
     assert.NotNil(t, actual.DrawingObject, "Validate InsertDrawingObjectWithoutNodePath response.");
-    assert.Equal(t, "0.3.7.1", actual.DrawingObject.NodeId, "Validate InsertDrawingObjectWithoutNodePath response.");
+    assert.True(t, strings.HasPrefix(actual.DrawingObject.NodeId, "0.3.7.1"), "Validate InsertDrawingObjectWithoutNodePath response.");
 }
 
 // Test for deleting drawing object.

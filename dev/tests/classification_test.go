@@ -47,7 +47,7 @@ func Test_Classification_Classify(t *testing.T) {
         t.Error(err)
     }
 
-    assert.Equal(t, "Science", actual.BestClassName, "Validate Classify response.");
+    assert.True(t, strings.HasPrefix(actual.BestClassName, "Science"), "Validate Classify response.");
     assert.NotNil(t, actual.BestResults, "Validate Classify response.");
     assert.Equal(t, 3, len(actual.BestResults), "Validate Classify response.");
 }
@@ -73,7 +73,7 @@ func Test_Classification_ClassifyDocument(t *testing.T) {
         t.Error(err)
     }
 
-    assert.Equal(t, "Hobbies_&_Interests", actual.BestClassName, "Validate ClassifyDocument response.");
+    assert.True(t, strings.HasPrefix(actual.BestClassName, "Hobbies_&_Interests"), "Validate ClassifyDocument response.");
     assert.NotNil(t, actual.BestResults, "Validate ClassifyDocument response.");
     assert.Equal(t, 3, len(actual.BestResults), "Validate ClassifyDocument response.");
 }

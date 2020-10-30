@@ -53,7 +53,7 @@ func Test_MailMergeFileds_GetDocumentFieldNamesOnline(t *testing.T) {
     assert.NotNil(t, actual.FieldNames, "Validate GetDocumentFieldNamesOnline response.");
     assert.NotNil(t, actual.FieldNames.Names, "Validate GetDocumentFieldNamesOnline response.");
     assert.Equal(t, 15, len(actual.FieldNames.Names), "Validate GetDocumentFieldNamesOnline response.");
-    assert.Equal(t, "TableStart:Order", actual.FieldNames.Names[0], "Validate GetDocumentFieldNamesOnline response.");
+    assert.True(t, strings.HasPrefix(actual.FieldNames.Names[0], "TableStart:Order"), "Validate GetDocumentFieldNamesOnline response.");
 }
 
 // Test for getting mailmerge fields.

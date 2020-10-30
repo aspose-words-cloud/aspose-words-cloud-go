@@ -55,7 +55,7 @@ func Test_Range_GetRangeText(t *testing.T) {
         t.Error(err)
     }
 
-    assert.Equal(t, "This is HEADER ", actual.Text, "Validate GetRangeText response.");
+    assert.True(t, strings.HasPrefix(actual.Text, "This is HEADER "), "Validate GetRangeText response.");
 }
 
 // Test for removing the text for range.
@@ -80,7 +80,7 @@ func Test_Range_RemoveRange(t *testing.T) {
     }
 
     assert.NotNil(t, actual.Document, "Validate RemoveRange response.");
-    assert.Equal(t, "TestRemoveRange.docx", actual.Document.FileName, "Validate RemoveRange response.");
+    assert.True(t, strings.HasPrefix(actual.Document.FileName, "TestRemoveRange.docx"), "Validate RemoveRange response.");
 }
 
 // Test for saving a range as a new document.
@@ -108,7 +108,7 @@ func Test_Range_SaveAsRange(t *testing.T) {
     }
 
     assert.NotNil(t, actual.Document, "Validate SaveAsRange response.");
-    assert.Equal(t, "NewDoc.docx", actual.Document.FileName, "Validate SaveAsRange response.");
+    assert.True(t, strings.HasPrefix(actual.Document.FileName, "NewDoc.docx"), "Validate SaveAsRange response.");
 }
 
 // Test for replacing text in range.
@@ -136,5 +136,5 @@ func Test_Range_ReplaceWithText(t *testing.T) {
     }
 
     assert.NotNil(t, actual.Document, "Validate ReplaceWithText response.");
-    assert.Equal(t, "TestReplaceWithText.docx", actual.Document.FileName, "Validate ReplaceWithText response.");
+    assert.True(t, strings.HasPrefix(actual.Document.FileName, "TestReplaceWithText.docx"), "Validate ReplaceWithText response.");
 }

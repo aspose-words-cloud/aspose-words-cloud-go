@@ -66,5 +66,5 @@ func Test_AppendDocument_AppendDocument(t *testing.T) {
     }
 
     assert.NotNil(t, actual.Document, "Validate AppendDocument response.");
-    assert.Equal(t, "TestAppendDocument.docx", actual.Document.FileName, "Validate AppendDocument response.");
+    assert.True(t, strings.HasPrefix(actual.Document.FileName, "TestAppendDocument.docx"), "Validate AppendDocument response.");
 }
