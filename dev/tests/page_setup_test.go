@@ -55,7 +55,7 @@ func Test_PageSetup_GetSectionPageSetup(t *testing.T) {
     }
 
     assert.NotNil(t, actual.PageSetup, "Validate GetSectionPageSetup response.");
-    assert.Equal(t, 1, actual.PageSetup.LineStartingNumber, "Validate GetSectionPageSetup response.");
+    assert.Equal(t, int32(1), actual.PageSetup.LineStartingNumber, "Validate GetSectionPageSetup response.");
 }
 
 // Test for updating page settings.
@@ -70,7 +70,7 @@ func Test_PageSetup_UpdateSectionPageSetup(t *testing.T) {
 
     requestPageSetup := models.PageSetup{
         RtlGutter: true,
-        LeftMargin: 10,
+        LeftMargin: 10.0,
         Orientation: "Landscape",
         PaperSize: "A5",
     }

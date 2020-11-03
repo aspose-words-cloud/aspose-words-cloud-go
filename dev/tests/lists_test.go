@@ -57,7 +57,7 @@ func Test_Lists_GetLists(t *testing.T) {
     assert.NotNil(t, actual.Lists, "Validate GetLists response.");
     assert.NotNil(t, actual.Lists.ListInfo, "Validate GetLists response.");
     assert.Equal(t, 2, len(actual.Lists.ListInfo), "Validate GetLists response.");
-    assert.Equal(t, 1, actual.Lists.ListInfo[0].ListId, "Validate GetLists response.");
+    assert.Equal(t, int32(1), actual.Lists.ListInfo[0].ListId, "Validate GetLists response.");
 }
 
 // Test for getting list from document.
@@ -81,7 +81,7 @@ func Test_Lists_GetList(t *testing.T) {
     }
 
     assert.NotNil(t, actual.List, "Validate GetList response.");
-    assert.Equal(t, 1, actual.List.ListId, "Validate GetList response.");
+    assert.Equal(t, int32(1), actual.List.ListId, "Validate GetList response.");
 }
 
 // Test for updating list from document.
@@ -108,7 +108,7 @@ func Test_Lists_UpdateList(t *testing.T) {
     }
 
     assert.NotNil(t, actual.List, "Validate UpdateList response.");
-    assert.Equal(t, 1, actual.List.ListId, "Validate UpdateList response.");
+    assert.Equal(t, int32(1), actual.List.ListId, "Validate UpdateList response.");
     assert.True(t, actual.List.IsRestartAtEachSection, "Validate UpdateList response.");
 }
 
@@ -166,5 +166,5 @@ func Test_Lists_InsertList(t *testing.T) {
     }
 
     assert.NotNil(t, actual.List, "Validate InsertList response.");
-    assert.Equal(t, 3, actual.List.ListId, "Validate InsertList response.");
+    assert.Equal(t, int32(3), actual.List.ListId, "Validate InsertList response.");
 }

@@ -54,5 +54,5 @@ func Test_DocumentStatistics_GetDocumentStatistics(t *testing.T) {
     }
 
     assert.NotNil(t, actual.StatData, "Validate GetDocumentStatistics response.");
-    assert.Equal(t, 10, actual.StatData.WordCount, "Validate GetDocumentStatistics response.");
+    assert.Equal(t, int32(10), actual.StatData.WordCount, "Validate GetDocumentStatistics response.");
 }

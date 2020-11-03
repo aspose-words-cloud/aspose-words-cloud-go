@@ -56,7 +56,7 @@ func Test_Paragraph_GetDocumentParagraphByIndex(t *testing.T) {
     }
 
     assert.NotNil(t, actual.Paragraph, "Validate GetDocumentParagraphByIndex response.");
-    assert.True(t, strings.HasPrefix(actual.Paragraph.NodeId, "0.0.0"), "Validate GetDocumentParagraphByIndex response.");
+    assert.Equal(t, "0.0.0", actual.Paragraph.NodeId, "Validate GetDocumentParagraphByIndex response.");
 }
 
 // Test for getting paragraph without node path.
@@ -80,7 +80,7 @@ func Test_Paragraph_GetDocumentParagraphByIndexWithoutNodePath(t *testing.T) {
     }
 
     assert.NotNil(t, actual.Paragraph, "Validate GetDocumentParagraphByIndexWithoutNodePath response.");
-    assert.True(t, strings.HasPrefix(actual.Paragraph.NodeId, "0.0.0"), "Validate GetDocumentParagraphByIndexWithoutNodePath response.");
+    assert.Equal(t, "0.0.0", actual.Paragraph.NodeId, "Validate GetDocumentParagraphByIndexWithoutNodePath response.");
 }
 
 // Test for getting all paragraphs.
@@ -107,7 +107,7 @@ func Test_Paragraph_GetDocumentParagraphs(t *testing.T) {
     assert.NotNil(t, actual.Paragraphs, "Validate GetDocumentParagraphs response.");
     assert.NotNil(t, actual.Paragraphs.ParagraphLinkList, "Validate GetDocumentParagraphs response.");
     assert.Equal(t, 15, len(actual.Paragraphs.ParagraphLinkList), "Validate GetDocumentParagraphs response.");
-    assert.True(t, strings.HasPrefix(actual.Paragraphs.ParagraphLinkList[0].Text, "Page 1 of 3"), "Validate GetDocumentParagraphs response.");
+    assert.Equal(t, "Page 1 of 3", actual.Paragraphs.ParagraphLinkList[0].Text, "Validate GetDocumentParagraphs response.");
 }
 
 // Test for getting all paragraphs without node path.
@@ -133,7 +133,7 @@ func Test_Paragraph_GetDocumentParagraphsWithoutNodePath(t *testing.T) {
     assert.NotNil(t, actual.Paragraphs, "Validate GetDocumentParagraphsWithoutNodePath response.");
     assert.NotNil(t, actual.Paragraphs.ParagraphLinkList, "Validate GetDocumentParagraphsWithoutNodePath response.");
     assert.Equal(t, 15, len(actual.Paragraphs.ParagraphLinkList), "Validate GetDocumentParagraphsWithoutNodePath response.");
-    assert.True(t, strings.HasPrefix(actual.Paragraphs.ParagraphLinkList[0].Text, "Page 1 of 3"), "Validate GetDocumentParagraphsWithoutNodePath response.");
+    assert.Equal(t, "Page 1 of 3", actual.Paragraphs.ParagraphLinkList[0].Text, "Validate GetDocumentParagraphsWithoutNodePath response.");
 }
 
 // Test for getting paragraph run.
@@ -157,7 +157,7 @@ func Test_Paragraph_GetDocumentParagraphRun(t *testing.T) {
     }
 
     assert.NotNil(t, actual.Run, "Validate GetDocumentParagraphRun response.");
-    assert.True(t, strings.HasPrefix(actual.Run.Text, "Page "), "Validate GetDocumentParagraphRun response.");
+    assert.Equal(t, "Page ", actual.Run.Text, "Validate GetDocumentParagraphRun response.");
 }
 
 // Test for getting paragraph run font.
@@ -181,7 +181,7 @@ func Test_Paragraph_GetDocumentParagraphRunFont(t *testing.T) {
     }
 
     assert.NotNil(t, actual.Font, "Validate GetDocumentParagraphRunFont response.");
-    assert.True(t, strings.HasPrefix(actual.Font.Name, "Times New Roman"), "Validate GetDocumentParagraphRunFont response.");
+    assert.Equal(t, "Times New Roman", actual.Font.Name, "Validate GetDocumentParagraphRunFont response.");
 }
 
 // Test for getting paragraph runs.
@@ -207,7 +207,7 @@ func Test_Paragraph_GetParagraphRuns(t *testing.T) {
     assert.NotNil(t, actual.Runs, "Validate GetParagraphRuns response.");
     assert.NotNil(t, actual.Runs.List, "Validate GetParagraphRuns response.");
     assert.Equal(t, 6, len(actual.Runs.List), "Validate GetParagraphRuns response.");
-    assert.True(t, strings.HasPrefix(actual.Runs.List[0].Text, "Page "), "Validate GetParagraphRuns response.");
+    assert.Equal(t, "Page ", actual.Runs.List[0].Text, "Validate GetParagraphRuns response.");
 }
 
 // Test for updating paragraph run font.
@@ -263,7 +263,7 @@ func Test_Paragraph_InsertParagraph(t *testing.T) {
     }
 
     assert.NotNil(t, actual.Paragraph, "Validate InsertParagraph response.");
-    assert.True(t, strings.HasPrefix(actual.Paragraph.NodeId, "0.3.8"), "Validate InsertParagraph response.");
+    assert.Equal(t, "0.3.8", actual.Paragraph.NodeId, "Validate InsertParagraph response.");
 }
 
 // Test for adding paragraph without node path.
@@ -290,7 +290,7 @@ func Test_Paragraph_InsertParagraphWithoutNodePath(t *testing.T) {
     }
 
     assert.NotNil(t, actual.Paragraph, "Validate InsertParagraphWithoutNodePath response.");
-    assert.True(t, strings.HasPrefix(actual.Paragraph.NodeId, "0.3.8"), "Validate InsertParagraphWithoutNodePath response.");
+    assert.Equal(t, "0.3.8", actual.Paragraph.NodeId, "Validate InsertParagraphWithoutNodePath response.");
 }
 
 // Test for paragraph rendering.
@@ -360,7 +360,7 @@ func Test_Paragraph_GetParagraphFormat(t *testing.T) {
     }
 
     assert.NotNil(t, actual.ParagraphFormat, "Validate GetParagraphFormat response.");
-    assert.True(t, strings.HasPrefix(actual.ParagraphFormat.StyleName, "Normal"), "Validate GetParagraphFormat response.");
+    assert.Equal(t, "Normal", actual.ParagraphFormat.StyleName, "Validate GetParagraphFormat response.");
 }
 
 // Test for getting paragraph format settings without node path.
@@ -384,7 +384,7 @@ func Test_Paragraph_GetParagraphFormatWithoutNodePath(t *testing.T) {
     }
 
     assert.NotNil(t, actual.ParagraphFormat, "Validate GetParagraphFormatWithoutNodePath response.");
-    assert.True(t, strings.HasPrefix(actual.ParagraphFormat.StyleName, "Normal"), "Validate GetParagraphFormatWithoutNodePath response.");
+    assert.Equal(t, "Normal", actual.ParagraphFormat.StyleName, "Validate GetParagraphFormatWithoutNodePath response.");
 }
 
 // Test for updating  paragraph format settings.
@@ -482,7 +482,7 @@ func Test_Paragraph_GetParagraphListFormat(t *testing.T) {
     }
 
     assert.NotNil(t, actual.ListFormat, "Validate GetParagraphListFormat response.");
-    assert.Equal(t, 1, actual.ListFormat.ListId, "Validate GetParagraphListFormat response.");
+    assert.Equal(t, int32(1), actual.ListFormat.ListId, "Validate GetParagraphListFormat response.");
 }
 
 // Test for getting paragraph list format without node path.
@@ -506,7 +506,7 @@ func Test_Paragraph_GetParagraphListFormatWithoutNodePath(t *testing.T) {
     }
 
     assert.NotNil(t, actual.ListFormat, "Validate GetParagraphListFormatWithoutNodePath response.");
-    assert.Equal(t, 1, actual.ListFormat.ListId, "Validate GetParagraphListFormatWithoutNodePath response.");
+    assert.Equal(t, int32(1), actual.ListFormat.ListId, "Validate GetParagraphListFormatWithoutNodePath response.");
 }
 
 // Test for updating paragraph list format.
@@ -534,7 +534,7 @@ func Test_Paragraph_UpdateParagraphListFormat(t *testing.T) {
     }
 
     assert.NotNil(t, actual.ListFormat, "Validate UpdateParagraphListFormat response.");
-    assert.Equal(t, 2, actual.ListFormat.ListId, "Validate UpdateParagraphListFormat response.");
+    assert.Equal(t, int32(2), actual.ListFormat.ListId, "Validate UpdateParagraphListFormat response.");
 }
 
 // Test for updating paragraph list format without node path.
@@ -561,7 +561,7 @@ func Test_Paragraph_UpdateParagraphListFormatWithoutNodePath(t *testing.T) {
     }
 
     assert.NotNil(t, actual.ListFormat, "Validate UpdateParagraphListFormatWithoutNodePath response.");
-    assert.Equal(t, 2, actual.ListFormat.ListId, "Validate UpdateParagraphListFormatWithoutNodePath response.");
+    assert.Equal(t, int32(2), actual.ListFormat.ListId, "Validate UpdateParagraphListFormatWithoutNodePath response.");
 }
 
 // Test for deleting paragraph list format.
@@ -632,7 +632,7 @@ func Test_Paragraph_GetParagraphTabStops(t *testing.T) {
 
     assert.NotNil(t, actual.TabStops, "Validate GetParagraphTabStops response.");
     assert.Equal(t, 2, len(actual.TabStops), "Validate GetParagraphTabStops response.");
-    assert.Equal(t, 72, actual.TabStops[0].Position, "Validate GetParagraphTabStops response.");
+    assert.Equal(t, 72.0, actual.TabStops[0].Position, "Validate GetParagraphTabStops response.");
 }
 
 // Test for getting paragraph tab stops without node path.
@@ -657,7 +657,7 @@ func Test_Paragraph_GetParagraphTabStopsWithoutNodePath(t *testing.T) {
 
     assert.NotNil(t, actual.TabStops, "Validate GetParagraphTabStopsWithoutNodePath response.");
     assert.Equal(t, 2, len(actual.TabStops), "Validate GetParagraphTabStopsWithoutNodePath response.");
-    assert.Equal(t, 72, actual.TabStops[0].Position, "Validate GetParagraphTabStopsWithoutNodePath response.");
+    assert.Equal(t, 72.0, actual.TabStops[0].Position, "Validate GetParagraphTabStopsWithoutNodePath response.");
 }
 
 // Test for inserting paragraph tab stop.
@@ -673,7 +673,7 @@ func Test_Paragraph_InsertParagraphTabStops(t *testing.T) {
     requestDto := models.TabStopInsert{
         Alignment: "Left",
         Leader: "None",
-        Position: 100,
+        Position: 100.0,
     }
 
     options := map[string]interface{}{
@@ -688,7 +688,7 @@ func Test_Paragraph_InsertParagraphTabStops(t *testing.T) {
 
     assert.NotNil(t, actual.TabStops, "Validate InsertParagraphTabStops response.");
     assert.Equal(t, 3, len(actual.TabStops), "Validate InsertParagraphTabStops response.");
-    assert.Equal(t, 100, actual.TabStops[1].Position, "Validate InsertParagraphTabStops response.");
+    assert.Equal(t, 100.0, actual.TabStops[1].Position, "Validate InsertParagraphTabStops response.");
 
 
 }
@@ -706,7 +706,7 @@ func Test_Paragraph_InsertParagraphTabStopsWithoutNodePath(t *testing.T) {
     requestDto := models.TabStopInsert{
         Alignment: "Left",
         Leader: "None",
-        Position: 100,
+        Position: 100.0,
     }
 
     options := map[string]interface{}{
@@ -720,7 +720,7 @@ func Test_Paragraph_InsertParagraphTabStopsWithoutNodePath(t *testing.T) {
 
     assert.NotNil(t, actual.TabStops, "Validate InsertParagraphTabStopsWithoutNodePath response.");
     assert.Equal(t, 3, len(actual.TabStops), "Validate InsertParagraphTabStopsWithoutNodePath response.");
-    assert.Equal(t, 100, actual.TabStops[1].Position, "Validate InsertParagraphTabStopsWithoutNodePath response.");
+    assert.Equal(t, 100.0, actual.TabStops[1].Position, "Validate InsertParagraphTabStopsWithoutNodePath response.");
 
 
 }
@@ -789,7 +789,7 @@ func Test_Paragraph_DeleteParagraphTabStop(t *testing.T) {
         "nodePath": "",
         "folder": remoteDataFolder,
     }
-    actual, _, err := client.WordsApi.DeleteParagraphTabStop(ctx, remoteFileName, 72, int32(0), options)
+    actual, _, err := client.WordsApi.DeleteParagraphTabStop(ctx, remoteFileName, 72.0, int32(0), options)
 
     if err != nil {
         t.Error(err)
@@ -813,7 +813,7 @@ func Test_Paragraph_DeleteParagraphTabStopWithoutNodePath(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    actual, _, err := client.WordsApi.DeleteParagraphTabStop(ctx, remoteFileName, 72, int32(0), options)
+    actual, _, err := client.WordsApi.DeleteParagraphTabStop(ctx, remoteFileName, 72.0, int32(0), options)
 
     if err != nil {
         t.Error(err)

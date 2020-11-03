@@ -55,7 +55,7 @@ func Test_Comment_GetComment(t *testing.T) {
     }
 
     assert.NotNil(t, actual.Comment, "Validate GetComment response.");
-    assert.True(t, strings.HasPrefix(actual.Comment.Text, "Comment 1"), "Validate GetComment response.");
+    assert.Equal(t, "Comment 1" + "\r\n\r\n", actual.Comment.Text, "Validate GetComment response.");
 }
 
 // Test for getting all comments from document.
@@ -81,7 +81,7 @@ func Test_Comment_GetComments(t *testing.T) {
     assert.NotNil(t, actual.Comments, "Validate GetComments response.");
     assert.NotNil(t, actual.Comments.CommentList, "Validate GetComments response.");
     assert.Equal(t, 1, len(actual.Comments.CommentList), "Validate GetComments response.");
-    assert.True(t, strings.HasPrefix(actual.Comments.CommentList[0].Text, "Comment 1"), "Validate GetComments response.");
+    assert.Equal(t, "Comment 1" + "\r\n\r\n", actual.Comments.CommentList[0].Text, "Validate GetComments response.");
 }
 
 // Test for adding comment.
@@ -126,10 +126,10 @@ func Test_Comment_InsertComment(t *testing.T) {
     }
 
     assert.NotNil(t, actual.Comment, "Validate InsertComment response.");
-    assert.True(t, strings.HasPrefix(actual.Comment.Text, "A new Comment"), "Validate InsertComment response.");
+    assert.Equal(t, "A new Comment" + "\r\n", actual.Comment.Text, "Validate InsertComment response.");
     assert.NotNil(t, actual.Comment.RangeStart, "Validate InsertComment response.");
     assert.NotNil(t, actual.Comment.RangeStart.Node, "Validate InsertComment response.");
-    assert.True(t, strings.HasPrefix(actual.Comment.RangeStart.Node.NodeId, "0.3.0.4"), "Validate InsertComment response.");
+    assert.Equal(t, "0.3.0.4", actual.Comment.RangeStart.Node.NodeId, "Validate InsertComment response.");
 }
 
 // Test for updating comment.
@@ -174,10 +174,10 @@ func Test_Comment_UpdateComment(t *testing.T) {
     }
 
     assert.NotNil(t, actual.Comment, "Validate UpdateComment response.");
-    assert.True(t, strings.HasPrefix(actual.Comment.Text, "A new Comment"), "Validate UpdateComment response.");
+    assert.Equal(t, "A new Comment" + "\r\n", actual.Comment.Text, "Validate UpdateComment response.");
     assert.NotNil(t, actual.Comment.RangeStart, "Validate UpdateComment response.");
     assert.NotNil(t, actual.Comment.RangeStart.Node, "Validate UpdateComment response.");
-    assert.True(t, strings.HasPrefix(actual.Comment.RangeStart.Node.NodeId, "0.3.0.1"), "Validate UpdateComment response.");
+    assert.Equal(t, "0.3.0.1", actual.Comment.RangeStart.Node.NodeId, "Validate UpdateComment response.");
 }
 
 // A test for DeleteComment.

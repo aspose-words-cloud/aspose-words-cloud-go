@@ -52,7 +52,7 @@ func Test_File_UploadFile(t *testing.T) {
 
     assert.NotNil(t, actual.Uploaded, "Validate UploadFile response.");
     assert.Equal(t, 1, len(actual.Uploaded), "Validate UploadFile response.");
-    assert.True(t, strings.HasPrefix(actual.Uploaded[0], "TestUploadFile.docx"), "Validate UploadFile response.");
+    assert.Equal(t, "TestUploadFile.docx", actual.Uploaded[0], "Validate UploadFile response.");
 }
 
 // Test for copy file.

@@ -58,8 +58,8 @@ func Test_DocumentProperties_GetDocumentProperties(t *testing.T) {
     assert.NotNil(t, actual.DocumentProperties.List, "Validate GetDocumentProperties response.");
     assert.Equal(t, 24, len(actual.DocumentProperties.List), "Validate GetDocumentProperties response.");
     assert.NotNil(t, actual.DocumentProperties.List[0], "Validate GetDocumentProperties response.");
-    assert.True(t, strings.HasPrefix(actual.DocumentProperties.List[0].Name, "Author"), "Validate GetDocumentProperties response.");
-    assert.True(t, strings.HasPrefix(actual.DocumentProperties.List[0].Value, ""), "Validate GetDocumentProperties response.");
+    assert.Equal(t, "Author", actual.DocumentProperties.List[0].Name, "Validate GetDocumentProperties response.");
+    assert.Equal(t, "", actual.DocumentProperties.List[0].Value, "Validate GetDocumentProperties response.");
 }
 
 // A test for GetDocumentProperty.
@@ -83,8 +83,8 @@ func Test_DocumentProperties_GetDocumentProperty(t *testing.T) {
     }
 
     assert.NotNil(t, actual.DocumentProperty, "Validate GetDocumentProperty response.");
-    assert.True(t, strings.HasPrefix(actual.DocumentProperty.Name, "Author"), "Validate GetDocumentProperty response.");
-    assert.True(t, strings.HasPrefix(actual.DocumentProperty.Value, ""), "Validate GetDocumentProperty response.");
+    assert.Equal(t, "Author", actual.DocumentProperty.Name, "Validate GetDocumentProperty response.");
+    assert.Equal(t, "", actual.DocumentProperty.Value, "Validate GetDocumentProperty response.");
 }
 
 // Test for deleting document property.
@@ -135,6 +135,6 @@ func Test_DocumentProperties_UpdateDocumentProperty(t *testing.T) {
     }
 
     assert.NotNil(t, actual.DocumentProperty, "Validate UpdateDocumentProperty response.");
-    assert.True(t, strings.HasPrefix(actual.DocumentProperty.Name, "AsposeAuthor"), "Validate UpdateDocumentProperty response.");
-    assert.True(t, strings.HasPrefix(actual.DocumentProperty.Value, "Imran Anwar"), "Validate UpdateDocumentProperty response.");
+    assert.Equal(t, "AsposeAuthor", actual.DocumentProperty.Name, "Validate UpdateDocumentProperty response.");
+    assert.Equal(t, "Imran Anwar", actual.DocumentProperty.Value, "Validate UpdateDocumentProperty response.");
 }

@@ -65,5 +65,5 @@ func Test_CompareDocument_CompareDocument(t *testing.T) {
     }
 
     assert.NotNil(t, actual.Document, "Validate CompareDocument response.");
-    assert.True(t, strings.HasPrefix(actual.Document.FileName, "TestCompareDocumentOut.doc"), "Validate CompareDocument response.");
+    assert.Equal(t, "TestCompareDocumentOut.doc", actual.Document.FileName, "Validate CompareDocument response.");
 }

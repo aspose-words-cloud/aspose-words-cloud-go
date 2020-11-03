@@ -59,7 +59,7 @@ func Test_TableBorder_GetBorders(t *testing.T) {
     assert.NotNil(t, actual.Borders.List, "Validate GetBorders response.");
     assert.Equal(t, 6, len(actual.Borders.List), "Validate GetBorders response.");
     assert.NotNil(t, actual.Borders.List[0].Color, "Validate GetBorders response.");
-    assert.True(t, strings.HasPrefix(actual.Borders.List[0].Color.Web, "#000000"), "Validate GetBorders response.");
+    assert.Equal(t, "#000000", actual.Borders.List[0].Color.Web, "Validate GetBorders response.");
 }
 
 // Test for getting border.
@@ -85,7 +85,7 @@ func Test_TableBorder_GetBorder(t *testing.T) {
 
     assert.NotNil(t, actual.Border, "Validate GetBorder response.");
     assert.NotNil(t, actual.Border.Color, "Validate GetBorder response.");
-    assert.True(t, strings.HasPrefix(actual.Border.Color.Web, "#000000"), "Validate GetBorder response.");
+    assert.Equal(t, "#000000", actual.Border.Color.Web, "Validate GetBorder response.");
 }
 
 // Test for deleting borders.
@@ -113,7 +113,7 @@ func Test_TableBorder_DeleteBorders(t *testing.T) {
     assert.NotNil(t, actual.Borders.List, "Validate DeleteBorders response.");
     assert.Equal(t, 6, len(actual.Borders.List), "Validate DeleteBorders response.");
     assert.NotNil(t, actual.Borders.List[0].Color, "Validate DeleteBorders response.");
-    assert.True(t, strings.HasPrefix(actual.Borders.List[0].Color.Web, ""), "Validate DeleteBorders response.");
+    assert.Equal(t, "", actual.Borders.List[0].Color.Web, "Validate DeleteBorders response.");
 }
 
 // Test for deleting border.
@@ -139,7 +139,7 @@ func Test_TableBorder_DeleteBorder(t *testing.T) {
 
     assert.NotNil(t, actual.Border, "Validate DeleteBorder response.");
     assert.NotNil(t, actual.Border.Color, "Validate DeleteBorder response.");
-    assert.True(t, strings.HasPrefix(actual.Border.Color.Web, ""), "Validate DeleteBorder response.");
+    assert.Equal(t, "", actual.Border.Color.Web, "Validate DeleteBorder response.");
 }
 
 // Test for updating border.
@@ -158,9 +158,9 @@ func Test_TableBorder_UpdateBorder(t *testing.T) {
     requestBorderProperties := models.Border{
         BorderType: "Left",
         Color: &requestBorderPropertiesColor,
-        DistanceFromText: 6,
+        DistanceFromText: 6.0,
         LineStyle: "DashDotStroker",
-        LineWidth: 2,
+        LineWidth: 2.0,
         Shadow: true,
     }
 
@@ -176,8 +176,8 @@ func Test_TableBorder_UpdateBorder(t *testing.T) {
 
     assert.NotNil(t, actual.Border, "Validate UpdateBorder response.");
     assert.NotNil(t, actual.Border.Color, "Validate UpdateBorder response.");
-    assert.True(t, strings.HasPrefix(actual.Border.Color.Web, "#000002"), "Validate UpdateBorder response.");
-    assert.Equal(t, 6, actual.Border.DistanceFromText, "Validate UpdateBorder response.");
-    assert.Equal(t, 2, actual.Border.LineWidth, "Validate UpdateBorder response.");
+    assert.Equal(t, "#000002", actual.Border.Color.Web, "Validate UpdateBorder response.");
+    assert.Equal(t, 6.0, actual.Border.DistanceFromText, "Validate UpdateBorder response.");
+    assert.Equal(t, 2.0, actual.Border.LineWidth, "Validate UpdateBorder response.");
     assert.True(t, actual.Border.Shadow, "Validate UpdateBorder response.");
 }

@@ -61,5 +61,5 @@ func Test_LoadWebDocument_LoadWebDocument(t *testing.T) {
 
     assert.NotNil(t, actual.SaveResult, "Validate LoadWebDocument response.");
     assert.NotNil(t, actual.SaveResult.DestDocument, "Validate LoadWebDocument response.");
-    assert.True(t, strings.HasPrefix(actual.SaveResult.DestDocument.Href, "google.doc"), "Validate LoadWebDocument response.");
+    assert.Equal(t, "google.doc", actual.SaveResult.DestDocument.Href, "Validate LoadWebDocument response.");
 }

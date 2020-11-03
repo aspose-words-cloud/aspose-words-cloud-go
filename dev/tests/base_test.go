@@ -265,3 +265,7 @@ func TestCreateWordsApi(t *testing.T) {
         t.Error(err)
     }
 }
+
+func StringHasPrefix(str string, prefix string) bool {
+    return strings.HasPrefix(str, prefix)
+}

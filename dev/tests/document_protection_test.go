@@ -60,7 +60,7 @@ func Test_DocumentProtection_ProtectDocument(t *testing.T) {
     }
 
     assert.NotNil(t, actual.ProtectionData, "Validate ProtectDocument response.");
-    assert.True(t, strings.HasPrefix(actual.ProtectionData.ProtectionType, "ReadOnly"), "Validate ProtectDocument response.");
+    assert.Equal(t, "ReadOnly", actual.ProtectionData.ProtectionType, "Validate ProtectDocument response.");
 }
 
 // Test for getting document protection.
@@ -84,7 +84,7 @@ func Test_DocumentProtection_GetDocumentProtection(t *testing.T) {
     }
 
     assert.NotNil(t, actual.ProtectionData, "Validate GetDocumentProtection response.");
-    assert.True(t, strings.HasPrefix(actual.ProtectionData.ProtectionType, "ReadOnly"), "Validate GetDocumentProtection response.");
+    assert.Equal(t, "ReadOnly", actual.ProtectionData.ProtectionType, "Validate GetDocumentProtection response.");
 }
 
 // Test for deleting unprotect document.
@@ -111,5 +111,5 @@ func Test_DocumentProtection_DeleteUnprotectDocument(t *testing.T) {
     }
 
     assert.NotNil(t, actual.ProtectionData, "Validate DeleteUnprotectDocument response.");
-    assert.True(t, strings.HasPrefix(actual.ProtectionData.ProtectionType, "NoProtection"), "Validate DeleteUnprotectDocument response.");
+    assert.Equal(t, "NoProtection", actual.ProtectionData.ProtectionType, "Validate DeleteUnprotectDocument response.");
 }

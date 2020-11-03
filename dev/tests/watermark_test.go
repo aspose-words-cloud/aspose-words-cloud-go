@@ -60,7 +60,7 @@ func Test_Watermark_InsertWatermarkImage(t *testing.T) {
     }
 
     assert.NotNil(t, actual.Document, "Validate InsertWatermarkImage response.");
-    assert.True(t, strings.HasPrefix(actual.Document.FileName, "TestInsertWatermarkImage.docx"), "Validate InsertWatermarkImage response.");
+    assert.Equal(t, "TestInsertWatermarkImage.docx", actual.Document.FileName, "Validate InsertWatermarkImage response.");
 }
 
 // Test for adding watermark text.
@@ -75,7 +75,7 @@ func Test_Watermark_InsertWatermarkText(t *testing.T) {
 
     requestWatermarkText := models.WatermarkText{
         Text: "This is the text",
-        RotationAngle: 90,
+        RotationAngle: 90.0,
     }
 
     options := map[string]interface{}{
@@ -89,7 +89,7 @@ func Test_Watermark_InsertWatermarkText(t *testing.T) {
     }
 
     assert.NotNil(t, actual.Document, "Validate InsertWatermarkText response.");
-    assert.True(t, strings.HasPrefix(actual.Document.FileName, "TestInsertWatermarkText.docx"), "Validate InsertWatermarkText response.");
+    assert.Equal(t, "TestInsertWatermarkText.docx", actual.Document.FileName, "Validate InsertWatermarkText response.");
 }
 
 // Test for deleting watermark.
@@ -114,5 +114,5 @@ func Test_Watermark_DeleteWatermark(t *testing.T) {
     }
 
     assert.NotNil(t, actual.Document, "Validate DeleteWatermark response.");
-    assert.True(t, strings.HasPrefix(actual.Document.FileName, "TestDeleteWatermark.docx"), "Validate DeleteWatermark response.");
+    assert.Equal(t, "TestDeleteWatermark.docx", actual.Document.FileName, "Validate DeleteWatermark response.");
 }
