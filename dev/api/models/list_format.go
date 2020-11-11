@@ -33,13 +33,13 @@ type ListFormat struct {
     Link *WordsApiLink `json:"Link,omitempty"`
 
     // Paragraph list format element.
-    IsListItem bool `json:"IsListItem,omitempty"`
+    IsListItem *bool `json:"IsListItem,omitempty"`
 
     // Paragraph list format element.
-    ListId int32 `json:"ListId,omitempty"`
+    ListId *int32 `json:"ListId,omitempty"`
 
     // Paragraph list format element.
-    ListLevelNumber int32 `json:"ListLevelNumber,omitempty"`
+    ListLevelNumber *int32 `json:"ListLevelNumber,omitempty"`
 }
 
 type IListFormat interface {

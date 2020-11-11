@@ -33,10 +33,10 @@ type FieldLink struct {
     Link *WordsApiLink `json:"Link,omitempty"`
 
     // Field link.
-    NodeId string `json:"NodeId,omitempty"`
+    NodeId *string `json:"NodeId,omitempty"`
 
     // Field link.
-    FieldCode string `json:"FieldCode,omitempty"`
+    FieldCode *string `json:"FieldCode,omitempty"`
 }
 
 type IFieldLink interface {

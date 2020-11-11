@@ -45,7 +45,7 @@ func Test_Run_UpdateRun(t *testing.T) {
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
     requestRun := models.RunUpdate{
-        Text: "run with text",
+        Text: ToStringPointer("run with text"),
     }
 
     options := map[string]interface{}{
@@ -58,7 +58,7 @@ func Test_Run_UpdateRun(t *testing.T) {
     }
 
     assert.NotNil(t, actual.Run, "Validate UpdateRun response.");
-    assert.Equal(t, "run with text", actual.Run.Text, "Validate UpdateRun response.");
+    assert.Equal(t, "run with text", *actual.Run.Text, "Validate UpdateRun response.");
 }
 
 // Test for adding run.
@@ -72,7 +72,7 @@ func Test_Run_InsertRun(t *testing.T) {
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
     requestRun := models.RunInsert{
-        Text: "run with text",
+        Text: ToStringPointer("run with text"),
     }
 
     options := map[string]interface{}{
@@ -85,8 +85,8 @@ func Test_Run_InsertRun(t *testing.T) {
     }
 
     assert.NotNil(t, actual.Run, "Validate InsertRun response.");
-    assert.Equal(t, "run with text", actual.Run.Text, "Validate InsertRun response.");
-    assert.Equal(t, "0.0.1.3", actual.Run.NodeId, "Validate InsertRun response.");
+    assert.Equal(t, "run with text", *actual.Run.Text, "Validate InsertRun response.");
+    assert.Equal(t, "0.0.1.3", *actual.Run.NodeId, "Validate InsertRun response.");
 }
 
 // Test for deleting run.

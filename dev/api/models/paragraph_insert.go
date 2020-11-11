@@ -30,7 +30,7 @@ package models
 // Paragraph element.
 type ParagraphInsert struct {
     // Paragraph element.
-    Text string `json:"Text,omitempty"`
+    Text *string `json:"Text,omitempty"`
 }
 
 type IParagraphInsert interface {

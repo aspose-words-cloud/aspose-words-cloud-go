@@ -30,7 +30,7 @@ package models
 // Range element.
 type ReplaceRange struct {
     // Range element.
-    Text string `json:"Text,omitempty"`
+    Text *string `json:"Text,omitempty"`
 
     // Range element.
     TextType string `json:"TextType,omitempty"`

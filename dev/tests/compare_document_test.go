@@ -49,8 +49,8 @@ func Test_CompareDocument_CompareDocument(t *testing.T) {
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFolder + "/" + localName2), remoteFolder + "/" + remoteName2)
 
     requestCompareData := models.CompareData{
-        Author: "author",
-        ComparingWithDocument: remoteFolder + "/" + remoteName2,
+        Author: ToStringPointer("author"),
+        ComparingWithDocument: ToStringPointer(remoteFolder + "/" + remoteName2),
         DateTime: CreateTime(2015, 10, 26, 0, 0, 0),
     }
 
@@ -65,5 +65,5 @@ func Test_CompareDocument_CompareDocument(t *testing.T) {
     }
 
     assert.NotNil(t, actual.Document, "Validate CompareDocument response.");
-    assert.Equal(t, "TestCompareDocumentOut.doc", actual.Document.FileName, "Validate CompareDocument response.");
+    assert.Equal(t, "TestCompareDocumentOut.doc", *actual.Document.FileName, "Validate CompareDocument response.");
 }

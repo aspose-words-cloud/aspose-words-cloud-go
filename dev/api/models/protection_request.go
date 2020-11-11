@@ -30,13 +30,13 @@ package models
 // Request on changing of protection.
 type ProtectionRequest struct {
     // Request on changing of protection.
-    NewPassword string `json:"NewPassword,omitempty"`
+    NewPassword *string `json:"NewPassword,omitempty"`
 
     // Request on changing of protection.
-    Password string `json:"Password,omitempty"`
+    Password *string `json:"Password,omitempty"`
 
     // Request on changing of protection.
-    ProtectionType string `json:"ProtectionType,omitempty"`
+    ProtectionType *string `json:"ProtectionType,omitempty"`
 }
 
 type IProtectionRequest interface {

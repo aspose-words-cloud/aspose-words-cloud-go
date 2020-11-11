@@ -33,13 +33,13 @@ type Document struct {
     DocumentProperties *DocumentProperties `json:"DocumentProperties,omitempty"`
 
     // Represents Words document DTO.
-    FileName string `json:"FileName,omitempty"`
+    FileName *string `json:"FileName,omitempty"`
 
     // Represents Words document DTO.
-    IsEncrypted bool `json:"IsEncrypted,omitempty"`
+    IsEncrypted *bool `json:"IsEncrypted,omitempty"`
 
     // Represents Words document DTO.
-    IsSigned bool `json:"IsSigned,omitempty"`
+    IsSigned *bool `json:"IsSigned,omitempty"`
 
     // Represents Words document DTO.
     Links []Link `json:"Links,omitempty"`

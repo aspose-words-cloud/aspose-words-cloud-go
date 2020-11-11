@@ -33,19 +33,19 @@ type OutlineOptionsData struct {
     BookmarksOutlineLevels []BookmarksOutlineLevelData `json:"BookmarksOutlineLevels,omitempty"`
 
     // container class for outline options.
-    CreateMissingOutlineLevels bool `json:"CreateMissingOutlineLevels,omitempty"`
+    CreateMissingOutlineLevels *bool `json:"CreateMissingOutlineLevels,omitempty"`
 
     // container class for outline options.
-    CreateOutlinesForHeadingsInTables bool `json:"CreateOutlinesForHeadingsInTables,omitempty"`
+    CreateOutlinesForHeadingsInTables *bool `json:"CreateOutlinesForHeadingsInTables,omitempty"`
 
     // container class for outline options.
-    DefaultBookmarksOutlineLevel int32 `json:"DefaultBookmarksOutlineLevel,omitempty"`
+    DefaultBookmarksOutlineLevel *int32 `json:"DefaultBookmarksOutlineLevel,omitempty"`
 
     // container class for outline options.
-    ExpandedOutlineLevels int32 `json:"ExpandedOutlineLevels,omitempty"`
+    ExpandedOutlineLevels *int32 `json:"ExpandedOutlineLevels,omitempty"`
 
     // container class for outline options.
-    HeadingsOutlineLevels int32 `json:"HeadingsOutlineLevels,omitempty"`
+    HeadingsOutlineLevels *int32 `json:"HeadingsOutlineLevels,omitempty"`
 }
 
 type IOutlineOptionsData interface {

@@ -33,7 +33,7 @@ type NodeLink struct {
     Link *WordsApiLink `json:"Link,omitempty"`
 
     // Reference to node.
-    NodeId string `json:"NodeId,omitempty"`
+    NodeId *string `json:"NodeId,omitempty"`
 }
 
 type INodeLink interface {

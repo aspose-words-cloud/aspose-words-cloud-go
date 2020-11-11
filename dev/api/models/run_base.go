@@ -30,7 +30,7 @@ package models
 // Run element.
 type RunBase struct {
     // Run element.
-    Text string `json:"Text,omitempty"`
+    Text *string `json:"Text,omitempty"`
 }
 
 type IRunBase interface {

@@ -30,16 +30,16 @@ package models
 // Provides information for the words api resource link.
 type WordsApiLink struct {
     // Provides information for the words api resource link.
-    Href string `json:"Href,omitempty"`
+    Href *string `json:"Href,omitempty"`
 
     // Provides information for the words api resource link.
-    Rel string `json:"Rel,omitempty"`
+    Rel *string `json:"Rel,omitempty"`
 
     // Provides information for the words api resource link.
-    Title string `json:"Title,omitempty"`
+    Title *string `json:"Title,omitempty"`
 
     // Provides information for the words api resource link.
-    Type string `json:"Type,omitempty"`
+    Type *string `json:"Type,omitempty"`
 }
 
 type IWordsApiLink interface {

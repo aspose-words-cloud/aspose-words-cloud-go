@@ -107,7 +107,7 @@ func Test_DrawingObjects_GetDocumentDrawingObjectByIndex(t *testing.T) {
     }
 
     assert.NotNil(t, actual.DrawingObject, "Validate GetDocumentDrawingObjectByIndex response.");
-    assert.Equal(t, 300.0, actual.DrawingObject.Height, "Validate GetDocumentDrawingObjectByIndex response.");
+    assert.Equal(t, 300.0, *actual.DrawingObject.Height, "Validate GetDocumentDrawingObjectByIndex response.");
 }
 
 // Test for getting drawing object by specified index without node path.
@@ -131,7 +131,7 @@ func Test_DrawingObjects_GetDocumentDrawingObjectByIndexWithoutNodePath(t *testi
     }
 
     assert.NotNil(t, actual.DrawingObject, "Validate GetDocumentDrawingObjectByIndexWithoutNodePath response.");
-    assert.Equal(t, 300.0, actual.DrawingObject.Height, "Validate GetDocumentDrawingObjectByIndexWithoutNodePath response.");
+    assert.Equal(t, 300.0, *actual.DrawingObject.Height, "Validate GetDocumentDrawingObjectByIndexWithoutNodePath response.");
 }
 
 // Test for getting drawing object by specified index and format.
@@ -280,10 +280,10 @@ func Test_DrawingObjects_InsertDrawingObject(t *testing.T) {
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
     requestDrawingObject := models.DrawingObjectInsert{
-        Height: 0.0,
-        Left: 0.0,
-        Top: 0.0,
-        Width: 0.0,
+        Height: ToFloat64Pointer(0.0),
+        Left: ToFloat64Pointer(0.0),
+        Top: ToFloat64Pointer(0.0),
+        Width: ToFloat64Pointer(0.0),
         RelativeHorizontalPosition: "Margin",
         RelativeVerticalPosition: "Margin",
         WrapType: "Inline",
@@ -300,7 +300,7 @@ func Test_DrawingObjects_InsertDrawingObject(t *testing.T) {
     }
 
     assert.NotNil(t, actual.DrawingObject, "Validate InsertDrawingObject response.");
-    assert.Equal(t, "0.3.7.1", actual.DrawingObject.NodeId, "Validate InsertDrawingObject response.");
+    assert.Equal(t, "0.3.7.1", *actual.DrawingObject.NodeId, "Validate InsertDrawingObject response.");
 }
 
 // Test for adding drawing object without node path.
@@ -314,10 +314,10 @@ func Test_DrawingObjects_InsertDrawingObjectWithoutNodePath(t *testing.T) {
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
     requestDrawingObject := models.DrawingObjectInsert{
-        Height: 0.0,
-        Left: 0.0,
-        Top: 0.0,
-        Width: 0.0,
+        Height: ToFloat64Pointer(0.0),
+        Left: ToFloat64Pointer(0.0),
+        Top: ToFloat64Pointer(0.0),
+        Width: ToFloat64Pointer(0.0),
         RelativeHorizontalPosition: "Margin",
         RelativeVerticalPosition: "Margin",
         WrapType: "Inline",
@@ -333,7 +333,7 @@ func Test_DrawingObjects_InsertDrawingObjectWithoutNodePath(t *testing.T) {
     }
 
     assert.NotNil(t, actual.DrawingObject, "Validate InsertDrawingObjectWithoutNodePath response.");
-    assert.Equal(t, "0.3.7.1", actual.DrawingObject.NodeId, "Validate InsertDrawingObjectWithoutNodePath response.");
+    assert.Equal(t, "0.3.7.1", *actual.DrawingObject.NodeId, "Validate InsertDrawingObjectWithoutNodePath response.");
 }
 
 // Test for deleting drawing object.
@@ -392,7 +392,7 @@ func Test_DrawingObjects_UpdateDrawingObject(t *testing.T) {
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
     requestDrawingObject := models.DrawingObjectUpdate{
-        Left: 1.0,
+        Left: ToFloat64Pointer(1.0),
     }
 
     options := map[string]interface{}{
@@ -406,7 +406,7 @@ func Test_DrawingObjects_UpdateDrawingObject(t *testing.T) {
     }
 
     assert.NotNil(t, actual.DrawingObject, "Validate UpdateDrawingObject response.");
-    assert.Equal(t, 1.0, actual.DrawingObject.Left, "Validate UpdateDrawingObject response.");
+    assert.Equal(t, 1.0, *actual.DrawingObject.Left, "Validate UpdateDrawingObject response.");
 }
 
 // Test for updating drawing object without node path.
@@ -420,7 +420,7 @@ func Test_DrawingObjects_UpdateDrawingObjectWithoutNodePath(t *testing.T) {
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
     requestDrawingObject := models.DrawingObjectUpdate{
-        Left: 1.0,
+        Left: ToFloat64Pointer(1.0),
     }
 
     options := map[string]interface{}{
@@ -433,5 +433,5 @@ func Test_DrawingObjects_UpdateDrawingObjectWithoutNodePath(t *testing.T) {
     }
 
     assert.NotNil(t, actual.DrawingObject, "Validate UpdateDrawingObjectWithoutNodePath response.");
-    assert.Equal(t, 1.0, actual.DrawingObject.Left, "Validate UpdateDrawingObjectWithoutNodePath response.");
+    assert.Equal(t, 1.0, *actual.DrawingObject.Left, "Validate UpdateDrawingObjectWithoutNodePath response.");
 }

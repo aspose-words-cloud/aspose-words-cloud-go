@@ -33,7 +33,7 @@ type DrawingObjectLink struct {
     Link *WordsApiLink `json:"Link,omitempty"`
 
     // Represents link for Drawing Object DTO.
-    NodeId string `json:"NodeId,omitempty"`
+    NodeId *string `json:"NodeId,omitempty"`
 }
 
 type IDrawingObjectLink interface {

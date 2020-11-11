@@ -33,70 +33,70 @@ type SvgSaveOptionsData struct {
     Dml3DEffectsRenderingMode string `json:"Dml3DEffectsRenderingMode,omitempty"`
 
     // container class for svg save options.
-    DmlEffectsRenderingMode string `json:"DmlEffectsRenderingMode,omitempty"`
+    DmlEffectsRenderingMode *string `json:"DmlEffectsRenderingMode,omitempty"`
 
     // container class for svg save options.
-    DmlRenderingMode string `json:"DmlRenderingMode,omitempty"`
+    DmlRenderingMode *string `json:"DmlRenderingMode,omitempty"`
 
     // container class for svg save options.
-    FileName string `json:"FileName,omitempty"`
+    FileName *string `json:"FileName,omitempty"`
 
     // container class for svg save options.
-    SaveFormat string `json:"SaveFormat,omitempty"`
+    SaveFormat *string `json:"SaveFormat,omitempty"`
 
     // container class for svg save options.
-    UpdateFields bool `json:"UpdateFields,omitempty"`
+    UpdateFields *bool `json:"UpdateFields,omitempty"`
 
     // container class for svg save options.
-    UpdateLastPrintedProperty bool `json:"UpdateLastPrintedProperty,omitempty"`
+    UpdateLastPrintedProperty *bool `json:"UpdateLastPrintedProperty,omitempty"`
 
     // container class for svg save options.
-    UpdateLastSavedTimeProperty bool `json:"UpdateLastSavedTimeProperty,omitempty"`
+    UpdateLastSavedTimeProperty *bool `json:"UpdateLastSavedTimeProperty,omitempty"`
 
     // container class for svg save options.
-    UpdateSdtContent bool `json:"UpdateSdtContent,omitempty"`
+    UpdateSdtContent *bool `json:"UpdateSdtContent,omitempty"`
 
     // container class for svg save options.
-    ZipOutput bool `json:"ZipOutput,omitempty"`
+    ZipOutput *bool `json:"ZipOutput,omitempty"`
 
     // container class for svg save options.
-    ColorMode string `json:"ColorMode,omitempty"`
+    ColorMode *string `json:"ColorMode,omitempty"`
 
     // container class for svg save options.
-    JpegQuality int32 `json:"JpegQuality,omitempty"`
+    JpegQuality *int32 `json:"JpegQuality,omitempty"`
 
     // container class for svg save options.
     MetafileRenderingOptions *MetafileRenderingOptionsData `json:"MetafileRenderingOptions,omitempty"`
 
     // container class for svg save options.
-    NumeralFormat string `json:"NumeralFormat,omitempty"`
+    NumeralFormat *string `json:"NumeralFormat,omitempty"`
 
     // container class for svg save options.
-    OptimizeOutput bool `json:"OptimizeOutput,omitempty"`
+    OptimizeOutput *bool `json:"OptimizeOutput,omitempty"`
 
     // container class for svg save options.
-    PageCount int32 `json:"PageCount,omitempty"`
+    PageCount *int32 `json:"PageCount,omitempty"`
 
     // container class for svg save options.
-    PageIndex int32 `json:"PageIndex,omitempty"`
+    PageIndex *int32 `json:"PageIndex,omitempty"`
 
     // container class for svg save options.
-    ExportEmbeddedImages bool `json:"ExportEmbeddedImages,omitempty"`
+    ExportEmbeddedImages *bool `json:"ExportEmbeddedImages,omitempty"`
 
     // container class for svg save options.
-    FitToViewPort bool `json:"FitToViewPort,omitempty"`
+    FitToViewPort *bool `json:"FitToViewPort,omitempty"`
 
     // container class for svg save options.
-    ResourcesFolder string `json:"ResourcesFolder,omitempty"`
+    ResourcesFolder *string `json:"ResourcesFolder,omitempty"`
 
     // container class for svg save options.
-    ResourcesFolderAlias string `json:"ResourcesFolderAlias,omitempty"`
+    ResourcesFolderAlias *string `json:"ResourcesFolderAlias,omitempty"`
 
     // container class for svg save options.
-    ShowPageBorder bool `json:"ShowPageBorder,omitempty"`
+    ShowPageBorder *bool `json:"ShowPageBorder,omitempty"`
 
     // container class for svg save options.
-    TextOutputMode string `json:"TextOutputMode,omitempty"`
+    TextOutputMode *string `json:"TextOutputMode,omitempty"`
 }
 
 type ISvgSaveOptionsData interface {

@@ -30,7 +30,7 @@ package models
 // Represents the response with document description.
 type DocumentResponse struct {
     // Represents the response with document description.
-    RequestId string `json:"RequestId,omitempty"`
+    RequestId *string `json:"RequestId,omitempty"`
 
     // Represents the response with document description.
     Document *Document `json:"Document,omitempty"`

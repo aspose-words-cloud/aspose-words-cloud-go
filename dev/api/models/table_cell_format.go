@@ -33,16 +33,16 @@ type TableCellFormat struct {
     Link *WordsApiLink `json:"Link,omitempty"`
 
     // Represents all formatting for a table row.
-    BottomPadding float64 `json:"BottomPadding,omitempty"`
+    BottomPadding *float64 `json:"BottomPadding,omitempty"`
 
     // Represents all formatting for a table row.
-    FitText bool `json:"FitText,omitempty"`
+    FitText *bool `json:"FitText,omitempty"`
 
     // Represents all formatting for a table row.
     HorizontalMerge string `json:"HorizontalMerge,omitempty"`
 
     // Represents all formatting for a table row.
-    LeftPadding float64 `json:"LeftPadding,omitempty"`
+    LeftPadding *float64 `json:"LeftPadding,omitempty"`
 
     // Represents all formatting for a table row.
     Orientation string `json:"Orientation,omitempty"`
@@ -51,10 +51,10 @@ type TableCellFormat struct {
     PreferredWidth *PreferredWidth `json:"PreferredWidth,omitempty"`
 
     // Represents all formatting for a table row.
-    RightPadding float64 `json:"RightPadding,omitempty"`
+    RightPadding *float64 `json:"RightPadding,omitempty"`
 
     // Represents all formatting for a table row.
-    TopPadding float64 `json:"TopPadding,omitempty"`
+    TopPadding *float64 `json:"TopPadding,omitempty"`
 
     // Represents all formatting for a table row.
     VerticalAlignment string `json:"VerticalAlignment,omitempty"`
@@ -63,10 +63,10 @@ type TableCellFormat struct {
     VerticalMerge string `json:"VerticalMerge,omitempty"`
 
     // Represents all formatting for a table row.
-    Width float64 `json:"Width,omitempty"`
+    Width *float64 `json:"Width,omitempty"`
 
     // Represents all formatting for a table row.
-    WrapText bool `json:"WrapText,omitempty"`
+    WrapText *bool `json:"WrapText,omitempty"`
 }
 
 type ITableCellFormat interface {

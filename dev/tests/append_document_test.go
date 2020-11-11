@@ -45,8 +45,8 @@ func Test_AppendDocument_AppendDocument(t *testing.T) {
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
     requestDocumentListDocumentEntries0 := models.DocumentEntry{
-        Href: remoteDataFolder + "/" + remoteFileName,
-        ImportFormatMode: "KeepSourceFormatting",
+        Href: ToStringPointer(remoteDataFolder + "/" + remoteFileName),
+        ImportFormatMode: ToStringPointer("KeepSourceFormatting"),
     }
     requestDocumentListDocumentEntries := []models.DocumentEntry{
         requestDocumentListDocumentEntries0,
@@ -66,5 +66,5 @@ func Test_AppendDocument_AppendDocument(t *testing.T) {
     }
 
     assert.NotNil(t, actual.Document, "Validate AppendDocument response.");
-    assert.Equal(t, "TestAppendDocument.docx", actual.Document.FileName, "Validate AppendDocument response.");
+    assert.Equal(t, "TestAppendDocument.docx", *actual.Document.FileName, "Validate AppendDocument response.");
 }

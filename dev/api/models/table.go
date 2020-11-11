@@ -33,7 +33,7 @@ type Table struct {
     Link *WordsApiLink `json:"Link,omitempty"`
 
     // Table element.
-    NodeId string `json:"NodeId,omitempty"`
+    NodeId *string `json:"NodeId,omitempty"`
 
     // Table element.
     TableProperties *TableProperties `json:"TableProperties,omitempty"`

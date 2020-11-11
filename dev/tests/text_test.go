@@ -45,8 +45,8 @@ func Test_Text_ReplaceText(t *testing.T) {
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
     requestReplaceText := models.ReplaceTextParameters{
-        OldValue: "Testing",
-        NewValue: "Aspose testing",
+        OldValue: ToStringPointer("Testing"),
+        NewValue: ToStringPointer("Aspose testing"),
     }
 
     options := map[string]interface{}{
@@ -59,7 +59,7 @@ func Test_Text_ReplaceText(t *testing.T) {
         t.Error(err)
     }
 
-    assert.Equal(t, int32(3), actual.Matches, "Validate ReplaceText response.");
+    assert.Equal(t, int32(3), *actual.Matches, "Validate ReplaceText response.");
 }
 
 // Test for searching.
@@ -86,5 +86,5 @@ func Test_Text_Search(t *testing.T) {
     assert.NotNil(t, actual.SearchResults.ResultsList, "Validate Search response.");
     assert.Equal(t, 23, len(actual.SearchResults.ResultsList), "Validate Search response.");
     assert.NotNil(t, actual.SearchResults.ResultsList[0].RangeStart, "Validate Search response.");
-    assert.Equal(t, int32(65), actual.SearchResults.ResultsList[0].RangeStart.Offset, "Validate Search response.");
+    assert.Equal(t, int32(65), *actual.SearchResults.ResultsList[0].RangeStart.Offset, "Validate Search response.");
 }

@@ -37,7 +37,7 @@ type ErrorDetails struct {
     ErrorDateTime time.Time `json:"ErrorDateTime,omitempty"`
 
     // The error details.
-    RequestId string `json:"RequestId,omitempty"`
+    RequestId *string `json:"RequestId,omitempty"`
 }
 
 type IErrorDetails interface {

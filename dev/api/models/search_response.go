@@ -32,11 +32,11 @@ package models
 type SearchResponse struct {
     // This response should be returned by the service when handling:
     // GET https://api.aspose.cloud/v4.0/words/Test.doc/search.
-    RequestId string `json:"RequestId,omitempty"`
+    RequestId *string `json:"RequestId,omitempty"`
 
     // This response should be returned by the service when handling:
     // GET https://api.aspose.cloud/v4.0/words/Test.doc/search.
-    SearchingPattern string `json:"SearchingPattern,omitempty"`
+    SearchingPattern *string `json:"SearchingPattern,omitempty"`
 
     // This response should be returned by the service when handling:
     // GET https://api.aspose.cloud/v4.0/words/Test.doc/search.

@@ -30,7 +30,7 @@ package models
 // Run element for insert.
 type RunInsert struct {
     // Run element for insert.
-    Text string `json:"Text,omitempty"`
+    Text *string `json:"Text,omitempty"`
 }
 
 type IRunInsert interface {

@@ -34,13 +34,13 @@ import (
 // Comment update.
 type CommentUpdate struct {
     // Comment update.
-    Author string `json:"Author,omitempty"`
+    Author *string `json:"Author,omitempty"`
 
     // Comment update.
     DateTime time.Time `json:"DateTime,omitempty"`
 
     // Comment update.
-    Initial string `json:"Initial,omitempty"`
+    Initial *string `json:"Initial,omitempty"`
 
     // Comment update.
     RangeEnd *DocumentPosition `json:"RangeEnd,omitempty"`
@@ -49,7 +49,7 @@ type CommentUpdate struct {
     RangeStart *DocumentPosition `json:"RangeStart,omitempty"`
 
     // Comment update.
-    Text string `json:"Text,omitempty"`
+    Text *string `json:"Text,omitempty"`
 }
 
 type ICommentUpdate interface {

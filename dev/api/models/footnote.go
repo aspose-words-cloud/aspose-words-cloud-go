@@ -33,7 +33,7 @@ type Footnote struct {
     Link *WordsApiLink `json:"Link,omitempty"`
 
     // Footnote.
-    NodeId string `json:"NodeId,omitempty"`
+    NodeId *string `json:"NodeId,omitempty"`
 
     // Footnote.
     Content *StoryChildNodes `json:"Content,omitempty"`
@@ -45,10 +45,10 @@ type Footnote struct {
     Position *DocumentPosition `json:"Position,omitempty"`
 
     // Footnote.
-    ReferenceMark string `json:"ReferenceMark,omitempty"`
+    ReferenceMark *string `json:"ReferenceMark,omitempty"`
 
     // Footnote.
-    Text string `json:"Text,omitempty"`
+    Text *string `json:"Text,omitempty"`
 }
 
 type IFootnote interface {

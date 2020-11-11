@@ -33,16 +33,16 @@ type Font struct {
     Link *WordsApiLink `json:"Link,omitempty"`
 
     // Font element.
-    AllCaps bool `json:"AllCaps,omitempty"`
+    AllCaps *bool `json:"AllCaps,omitempty"`
 
     // Font element.
-    Bidi bool `json:"Bidi,omitempty"`
+    Bidi *bool `json:"Bidi,omitempty"`
 
     // Font element.
-    Bold bool `json:"Bold,omitempty"`
+    Bold *bool `json:"Bold,omitempty"`
 
     // Font element.
-    BoldBi bool `json:"BoldBi,omitempty"`
+    BoldBi *bool `json:"BoldBi,omitempty"`
 
     // Font element.
     Border *Border `json:"Border,omitempty"`
@@ -51,97 +51,97 @@ type Font struct {
     Color *XmlColor `json:"Color,omitempty"`
 
     // Font element.
-    ComplexScript bool `json:"ComplexScript,omitempty"`
+    ComplexScript *bool `json:"ComplexScript,omitempty"`
 
     // Font element.
-    DoubleStrikeThrough bool `json:"DoubleStrikeThrough,omitempty"`
+    DoubleStrikeThrough *bool `json:"DoubleStrikeThrough,omitempty"`
 
     // Font element.
-    Emboss bool `json:"Emboss,omitempty"`
+    Emboss *bool `json:"Emboss,omitempty"`
 
     // Font element.
-    Engrave bool `json:"Engrave,omitempty"`
+    Engrave *bool `json:"Engrave,omitempty"`
 
     // Font element.
-    Hidden bool `json:"Hidden,omitempty"`
+    Hidden *bool `json:"Hidden,omitempty"`
 
     // Font element.
     HighlightColor *XmlColor `json:"HighlightColor,omitempty"`
 
     // Font element.
-    Italic bool `json:"Italic,omitempty"`
+    Italic *bool `json:"Italic,omitempty"`
 
     // Font element.
-    ItalicBi bool `json:"ItalicBi,omitempty"`
+    ItalicBi *bool `json:"ItalicBi,omitempty"`
 
     // Font element.
-    Kerning float64 `json:"Kerning,omitempty"`
+    Kerning *float64 `json:"Kerning,omitempty"`
 
     // Font element.
-    LocaleId int32 `json:"LocaleId,omitempty"`
+    LocaleId *int32 `json:"LocaleId,omitempty"`
 
     // Font element.
-    LocaleIdBi int32 `json:"LocaleIdBi,omitempty"`
+    LocaleIdBi *int32 `json:"LocaleIdBi,omitempty"`
 
     // Font element.
-    LocaleIdFarEast int32 `json:"LocaleIdFarEast,omitempty"`
+    LocaleIdFarEast *int32 `json:"LocaleIdFarEast,omitempty"`
 
     // Font element.
-    Name string `json:"Name,omitempty"`
+    Name *string `json:"Name,omitempty"`
 
     // Font element.
-    NameAscii string `json:"NameAscii,omitempty"`
+    NameAscii *string `json:"NameAscii,omitempty"`
 
     // Font element.
-    NameBi string `json:"NameBi,omitempty"`
+    NameBi *string `json:"NameBi,omitempty"`
 
     // Font element.
-    NameFarEast string `json:"NameFarEast,omitempty"`
+    NameFarEast *string `json:"NameFarEast,omitempty"`
 
     // Font element.
-    NameOther string `json:"NameOther,omitempty"`
+    NameOther *string `json:"NameOther,omitempty"`
 
     // Font element.
-    NoProofing bool `json:"NoProofing,omitempty"`
+    NoProofing *bool `json:"NoProofing,omitempty"`
 
     // Font element.
-    Outline bool `json:"Outline,omitempty"`
+    Outline *bool `json:"Outline,omitempty"`
 
     // Font element.
-    Position float64 `json:"Position,omitempty"`
+    Position *float64 `json:"Position,omitempty"`
 
     // Font element.
-    Scaling int32 `json:"Scaling,omitempty"`
+    Scaling *int32 `json:"Scaling,omitempty"`
 
     // Font element.
-    Shadow bool `json:"Shadow,omitempty"`
+    Shadow *bool `json:"Shadow,omitempty"`
 
     // Font element.
-    Size float64 `json:"Size,omitempty"`
+    Size *float64 `json:"Size,omitempty"`
 
     // Font element.
-    SizeBi float64 `json:"SizeBi,omitempty"`
+    SizeBi *float64 `json:"SizeBi,omitempty"`
 
     // Font element.
-    SmallCaps bool `json:"SmallCaps,omitempty"`
+    SmallCaps *bool `json:"SmallCaps,omitempty"`
 
     // Font element.
-    Spacing float64 `json:"Spacing,omitempty"`
+    Spacing *float64 `json:"Spacing,omitempty"`
 
     // Font element.
-    StrikeThrough bool `json:"StrikeThrough,omitempty"`
+    StrikeThrough *bool `json:"StrikeThrough,omitempty"`
 
     // Font element.
     StyleIdentifier string `json:"StyleIdentifier,omitempty"`
 
     // Font element.
-    StyleName string `json:"StyleName,omitempty"`
+    StyleName *string `json:"StyleName,omitempty"`
 
     // Font element.
-    Subscript bool `json:"Subscript,omitempty"`
+    Subscript *bool `json:"Subscript,omitempty"`
 
     // Font element.
-    Superscript bool `json:"Superscript,omitempty"`
+    Superscript *bool `json:"Superscript,omitempty"`
 
     // Font element.
     TextEffect string `json:"TextEffect,omitempty"`

@@ -33,10 +33,10 @@ type ParagraphLink struct {
     Link *WordsApiLink `json:"Link,omitempty"`
 
     // Paragraph link element.
-    NodeId string `json:"NodeId,omitempty"`
+    NodeId *string `json:"NodeId,omitempty"`
 
     // Paragraph link element.
-    Text string `json:"Text,omitempty"`
+    Text *string `json:"Text,omitempty"`
 }
 
 type IParagraphLink interface {

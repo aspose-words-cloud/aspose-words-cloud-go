@@ -33,7 +33,7 @@ type OfficeMathObject struct {
     Link *WordsApiLink `json:"Link,omitempty"`
 
     // OfficeMath object.
-    NodeId string `json:"NodeId,omitempty"`
+    NodeId *string `json:"NodeId,omitempty"`
 
     // OfficeMath object.
     Content *StoryChildNodes `json:"Content,omitempty"`

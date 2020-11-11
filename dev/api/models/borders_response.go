@@ -32,7 +32,7 @@ package models
 type BordersResponse struct {
     // This response should be returned by the service when handling:
     // GET {nodeWithBorders}/borders.
-    RequestId string `json:"RequestId,omitempty"`
+    RequestId *string `json:"RequestId,omitempty"`
 
     // This response should be returned by the service when handling:
     // GET {nodeWithBorders}/borders.

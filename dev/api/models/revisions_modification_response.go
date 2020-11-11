@@ -30,7 +30,7 @@ package models
 // response of the modification operations for the revisions collection (now these are acceptAll and rejectAll).
 type RevisionsModificationResponse struct {
     // response of the modification operations for the revisions collection (now these are acceptAll and rejectAll).
-    RequestId string `json:"RequestId,omitempty"`
+    RequestId *string `json:"RequestId,omitempty"`
 
     // response of the modification operations for the revisions collection (now these are acceptAll and rejectAll).
     Result *ModificationOperationResult `json:"Result,omitempty"`

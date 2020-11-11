@@ -30,10 +30,10 @@ package models
 // Paragraph list format element for update.
 type ListFormatUpdate struct {
     // Paragraph list format element for update.
-    ListId int32 `json:"ListId,omitempty"`
+    ListId *int32 `json:"ListId,omitempty"`
 
     // Paragraph list format element for update.
-    ListLevelNumber int32 `json:"ListLevelNumber,omitempty"`
+    ListLevelNumber *int32 `json:"ListLevelNumber,omitempty"`
 }
 
 type IListFormatUpdate interface {

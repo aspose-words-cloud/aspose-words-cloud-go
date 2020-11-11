@@ -55,7 +55,7 @@ func Test_PageSetup_GetSectionPageSetup(t *testing.T) {
     }
 
     assert.NotNil(t, actual.PageSetup, "Validate GetSectionPageSetup response.");
-    assert.Equal(t, int32(1), actual.PageSetup.LineStartingNumber, "Validate GetSectionPageSetup response.");
+    assert.Equal(t, int32(1), *actual.PageSetup.LineStartingNumber, "Validate GetSectionPageSetup response.");
 }
 
 // Test for updating page settings.
@@ -69,8 +69,8 @@ func Test_PageSetup_UpdateSectionPageSetup(t *testing.T) {
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
     requestPageSetup := models.PageSetup{
-        RtlGutter: true,
-        LeftMargin: 10.0,
+        RtlGutter: ToBoolPointer(true),
+        LeftMargin: ToFloat64Pointer(10.0),
         Orientation: "Landscape",
         PaperSize: "A5",
     }
@@ -85,7 +85,7 @@ func Test_PageSetup_UpdateSectionPageSetup(t *testing.T) {
     }
 
     assert.NotNil(t, actual.PageSetup, "Validate UpdateSectionPageSetup response.");
-    assert.True(t, actual.PageSetup.RtlGutter, "Validate UpdateSectionPageSetup response.");
+    assert.True(t, *actual.PageSetup.RtlGutter, "Validate UpdateSectionPageSetup response.");
 
 
 }

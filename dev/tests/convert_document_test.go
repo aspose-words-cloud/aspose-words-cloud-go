@@ -45,8 +45,8 @@ func Test_ConvertDocument_SaveAs(t *testing.T) {
     UploadNextFileToStorage(t, ctx, client, GetLocalFile("Common/" + localName), remoteFolder + "/" + remoteName)
 
     requestSaveOptionsData := models.SaveOptionsData{
-        SaveFormat: "pdf",
-        FileName: baseTestOutPath + "/TestSaveAs.pdf",
+        SaveFormat: ToStringPointer("pdf"),
+        FileName: ToStringPointer(baseTestOutPath + "/TestSaveAs.pdf"),
     }
 
     options := map[string]interface{}{
@@ -74,8 +74,8 @@ func Test_ConvertDocument_SaveAsDocx(t *testing.T) {
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFolder + "/" + localName), remoteFolder + "/" + remoteName)
 
     requestSaveOptionsData := models.SaveOptionsData{
-        SaveFormat: "docx",
-        FileName: baseTestOutPath + "/TestSaveAsFromPdfToDoc.docx",
+        SaveFormat: ToStringPointer("docx"),
+        FileName: ToStringPointer(baseTestOutPath + "/TestSaveAsFromPdfToDoc.docx"),
     }
 
     options := map[string]interface{}{
@@ -102,8 +102,8 @@ func Test_ConvertDocument_SaveAsTiff(t *testing.T) {
     UploadNextFileToStorage(t, ctx, client, GetLocalFile("Common/" + localName), remoteFolder + "/" + remoteName)
 
     requestSaveOptions := models.TiffSaveOptionsData{
-        SaveFormat: "tiff",
-        FileName: baseTestOutPath + "/abc.tiff",
+        SaveFormat: ToStringPointer("tiff"),
+        FileName: ToStringPointer(baseTestOutPath + "/abc.tiff"),
     }
 
     options := map[string]interface{}{

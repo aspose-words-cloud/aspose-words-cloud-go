@@ -30,10 +30,10 @@ package models
 // Field for update.
 type FieldUpdate struct {
     // Field for update.
-    FieldCode string `json:"FieldCode,omitempty"`
+    FieldCode *string `json:"FieldCode,omitempty"`
 
     // Field for update.
-    LocaleId string `json:"LocaleId,omitempty"`
+    LocaleId *string `json:"LocaleId,omitempty"`
 }
 
 type IFieldUpdate interface {

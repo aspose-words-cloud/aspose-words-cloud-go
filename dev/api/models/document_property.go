@@ -33,13 +33,13 @@ type DocumentProperty struct {
     Link *WordsApiLink `json:"Link,omitempty"`
 
     // Words document property DTO.
-    BuiltIn bool `json:"BuiltIn,omitempty"`
+    BuiltIn *bool `json:"BuiltIn,omitempty"`
 
     // Words document property DTO.
-    Name string `json:"Name,omitempty"`
+    Name *string `json:"Name,omitempty"`
 
     // Words document property DTO.
-    Value string `json:"Value,omitempty"`
+    Value *string `json:"Value,omitempty"`
 }
 
 type IDocumentProperty interface {

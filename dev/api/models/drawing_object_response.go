@@ -30,7 +30,7 @@ package models
 // Response for "drawingObjects/n" resource.
 type DrawingObjectResponse struct {
     // Response for "drawingObjects/n" resource.
-    RequestId string `json:"RequestId,omitempty"`
+    RequestId *string `json:"RequestId,omitempty"`
 
     // Response for "drawingObjects/n" resource.
     DrawingObject *DrawingObject `json:"DrawingObject,omitempty"`

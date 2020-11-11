@@ -33,91 +33,91 @@ type ImageSaveOptionsData struct {
     Dml3DEffectsRenderingMode string `json:"Dml3DEffectsRenderingMode,omitempty"`
 
     // Container abstract class for image save options.
-    DmlEffectsRenderingMode string `json:"DmlEffectsRenderingMode,omitempty"`
+    DmlEffectsRenderingMode *string `json:"DmlEffectsRenderingMode,omitempty"`
 
     // Container abstract class for image save options.
-    DmlRenderingMode string `json:"DmlRenderingMode,omitempty"`
+    DmlRenderingMode *string `json:"DmlRenderingMode,omitempty"`
 
     // Container abstract class for image save options.
-    FileName string `json:"FileName,omitempty"`
+    FileName *string `json:"FileName,omitempty"`
 
     // Container abstract class for image save options.
-    SaveFormat string `json:"SaveFormat,omitempty"`
+    SaveFormat *string `json:"SaveFormat,omitempty"`
 
     // Container abstract class for image save options.
-    UpdateFields bool `json:"UpdateFields,omitempty"`
+    UpdateFields *bool `json:"UpdateFields,omitempty"`
 
     // Container abstract class for image save options.
-    UpdateLastPrintedProperty bool `json:"UpdateLastPrintedProperty,omitempty"`
+    UpdateLastPrintedProperty *bool `json:"UpdateLastPrintedProperty,omitempty"`
 
     // Container abstract class for image save options.
-    UpdateLastSavedTimeProperty bool `json:"UpdateLastSavedTimeProperty,omitempty"`
+    UpdateLastSavedTimeProperty *bool `json:"UpdateLastSavedTimeProperty,omitempty"`
 
     // Container abstract class for image save options.
-    UpdateSdtContent bool `json:"UpdateSdtContent,omitempty"`
+    UpdateSdtContent *bool `json:"UpdateSdtContent,omitempty"`
 
     // Container abstract class for image save options.
-    ZipOutput bool `json:"ZipOutput,omitempty"`
+    ZipOutput *bool `json:"ZipOutput,omitempty"`
 
     // Container abstract class for image save options.
-    ColorMode string `json:"ColorMode,omitempty"`
+    ColorMode *string `json:"ColorMode,omitempty"`
 
     // Container abstract class for image save options.
-    JpegQuality int32 `json:"JpegQuality,omitempty"`
+    JpegQuality *int32 `json:"JpegQuality,omitempty"`
 
     // Container abstract class for image save options.
     MetafileRenderingOptions *MetafileRenderingOptionsData `json:"MetafileRenderingOptions,omitempty"`
 
     // Container abstract class for image save options.
-    NumeralFormat string `json:"NumeralFormat,omitempty"`
+    NumeralFormat *string `json:"NumeralFormat,omitempty"`
 
     // Container abstract class for image save options.
-    OptimizeOutput bool `json:"OptimizeOutput,omitempty"`
+    OptimizeOutput *bool `json:"OptimizeOutput,omitempty"`
 
     // Container abstract class for image save options.
-    PageCount int32 `json:"PageCount,omitempty"`
+    PageCount *int32 `json:"PageCount,omitempty"`
 
     // Container abstract class for image save options.
-    PageIndex int32 `json:"PageIndex,omitempty"`
+    PageIndex *int32 `json:"PageIndex,omitempty"`
 
     // Container abstract class for image save options.
     GraphicsQualityOptions *GraphicsQualityOptionsData `json:"GraphicsQualityOptions,omitempty"`
 
     // Container abstract class for image save options.
-    HorizontalResolution float64 `json:"HorizontalResolution,omitempty"`
+    HorizontalResolution *float64 `json:"HorizontalResolution,omitempty"`
 
     // Container abstract class for image save options.
-    ImageBrightness float64 `json:"ImageBrightness,omitempty"`
+    ImageBrightness *float64 `json:"ImageBrightness,omitempty"`
 
     // Container abstract class for image save options.
-    ImageColorMode string `json:"ImageColorMode,omitempty"`
+    ImageColorMode *string `json:"ImageColorMode,omitempty"`
 
     // Container abstract class for image save options.
-    ImageContrast float64 `json:"ImageContrast,omitempty"`
+    ImageContrast *float64 `json:"ImageContrast,omitempty"`
 
     // Container abstract class for image save options.
-    PaperColor string `json:"PaperColor,omitempty"`
+    PaperColor *string `json:"PaperColor,omitempty"`
 
     // Container abstract class for image save options.
-    PixelFormat string `json:"PixelFormat,omitempty"`
+    PixelFormat *string `json:"PixelFormat,omitempty"`
 
     // Container abstract class for image save options.
-    Resolution float64 `json:"Resolution,omitempty"`
+    Resolution *float64 `json:"Resolution,omitempty"`
 
     // Container abstract class for image save options.
-    Scale float64 `json:"Scale,omitempty"`
+    Scale *float64 `json:"Scale,omitempty"`
 
     // Container abstract class for image save options.
-    UseAntiAliasing bool `json:"UseAntiAliasing,omitempty"`
+    UseAntiAliasing *bool `json:"UseAntiAliasing,omitempty"`
 
     // Container abstract class for image save options.
-    UseGdiEmfRenderer bool `json:"UseGdiEmfRenderer,omitempty"`
+    UseGdiEmfRenderer *bool `json:"UseGdiEmfRenderer,omitempty"`
 
     // Container abstract class for image save options.
-    UseHighQualityRendering bool `json:"UseHighQualityRendering,omitempty"`
+    UseHighQualityRendering *bool `json:"UseHighQualityRendering,omitempty"`
 
     // Container abstract class for image save options.
-    VerticalResolution float64 `json:"VerticalResolution,omitempty"`
+    VerticalResolution *float64 `json:"VerticalResolution,omitempty"`
 }
 
 type IImageSaveOptionsData interface {

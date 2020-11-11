@@ -30,7 +30,7 @@ package models
 // Contains data for load web document.
 type LoadWebDocumentData struct {
     // Contains data for load web document.
-    LoadingDocumentUrl string `json:"LoadingDocumentUrl,omitempty"`
+    LoadingDocumentUrl *string `json:"LoadingDocumentUrl,omitempty"`
 
     // Contains data for load web document.
     SaveOptions *SaveOptionsData `json:"SaveOptions,omitempty"`

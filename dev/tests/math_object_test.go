@@ -57,7 +57,7 @@ func Test_MathObject_GetOfficeMathObjects(t *testing.T) {
     assert.NotNil(t, actual.OfficeMathObjects, "Validate GetOfficeMathObjects response.");
     assert.NotNil(t, actual.OfficeMathObjects.List, "Validate GetOfficeMathObjects response.");
     assert.Equal(t, 16, len(actual.OfficeMathObjects.List), "Validate GetOfficeMathObjects response.");
-    assert.Equal(t, "0.0.0.0", actual.OfficeMathObjects.List[0].NodeId, "Validate GetOfficeMathObjects response.");
+    assert.Equal(t, "0.0.0.0", *actual.OfficeMathObjects.List[0].NodeId, "Validate GetOfficeMathObjects response.");
 }
 
 // Test for getting mathObjects without node path.
@@ -83,7 +83,7 @@ func Test_MathObject_GetOfficeMathObjectsWithoutNodePath(t *testing.T) {
     assert.NotNil(t, actual.OfficeMathObjects, "Validate GetOfficeMathObjectsWithoutNodePath response.");
     assert.NotNil(t, actual.OfficeMathObjects.List, "Validate GetOfficeMathObjectsWithoutNodePath response.");
     assert.Equal(t, 16, len(actual.OfficeMathObjects.List), "Validate GetOfficeMathObjectsWithoutNodePath response.");
-    assert.Equal(t, "0.0.0.0", actual.OfficeMathObjects.List[0].NodeId, "Validate GetOfficeMathObjectsWithoutNodePath response.");
+    assert.Equal(t, "0.0.0.0", *actual.OfficeMathObjects.List[0].NodeId, "Validate GetOfficeMathObjectsWithoutNodePath response.");
 }
 
 // Test for getting mathObject.
@@ -108,7 +108,7 @@ func Test_MathObject_GetOfficeMathObject(t *testing.T) {
     }
 
     assert.NotNil(t, actual.OfficeMathObject, "Validate GetOfficeMathObject response.");
-    assert.Equal(t, "0.0.0.0", actual.OfficeMathObject.NodeId, "Validate GetOfficeMathObject response.");
+    assert.Equal(t, "0.0.0.0", *actual.OfficeMathObject.NodeId, "Validate GetOfficeMathObject response.");
 }
 
 // Test for getting mathObject without node path.
@@ -132,7 +132,7 @@ func Test_MathObject_GetOfficeMathObjectWithoutNodePath(t *testing.T) {
     }
 
     assert.NotNil(t, actual.OfficeMathObject, "Validate GetOfficeMathObjectWithoutNodePath response.");
-    assert.Equal(t, "0.0.0.0", actual.OfficeMathObject.NodeId, "Validate GetOfficeMathObjectWithoutNodePath response.");
+    assert.Equal(t, "0.0.0.0", *actual.OfficeMathObject.NodeId, "Validate GetOfficeMathObjectWithoutNodePath response.");
 }
 
 // Test for rendering mathObject.

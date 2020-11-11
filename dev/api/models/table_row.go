@@ -33,7 +33,7 @@ type TableRow struct {
     Link *WordsApiLink `json:"Link,omitempty"`
 
     // Table row element.
-    NodeId string `json:"NodeId,omitempty"`
+    NodeId *string `json:"NodeId,omitempty"`
 
     // Table row element.
     RowFormat *TableRowFormat `json:"RowFormat,omitempty"`

@@ -30,7 +30,7 @@ package models
 // Container for the data about protection of the document.
 type ProtectionData struct {
     // Container for the data about protection of the document.
-    ProtectionType string `json:"ProtectionType,omitempty"`
+    ProtectionType *string `json:"ProtectionType,omitempty"`
 }
 
 type IProtectionData interface {

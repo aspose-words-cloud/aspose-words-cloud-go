@@ -39,16 +39,16 @@ type Border struct {
     Color *XmlColor `json:"Color,omitempty"`
 
     // Represents a border of an object.
-    DistanceFromText float64 `json:"DistanceFromText,omitempty"`
+    DistanceFromText *float64 `json:"DistanceFromText,omitempty"`
 
     // Represents a border of an object.
     LineStyle string `json:"LineStyle,omitempty"`
 
     // Represents a border of an object.
-    LineWidth float64 `json:"LineWidth,omitempty"`
+    LineWidth *float64 `json:"LineWidth,omitempty"`
 
     // Represents a border of an object.
-    Shadow bool `json:"Shadow,omitempty"`
+    Shadow *bool `json:"Shadow,omitempty"`
 }
 
 type IBorder interface {

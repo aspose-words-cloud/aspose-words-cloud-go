@@ -33,124 +33,124 @@ type EpubSaveOptionsData struct {
     Dml3DEffectsRenderingMode string `json:"Dml3DEffectsRenderingMode,omitempty"`
 
     // Container class for epub save options.
-    DmlEffectsRenderingMode string `json:"DmlEffectsRenderingMode,omitempty"`
+    DmlEffectsRenderingMode *string `json:"DmlEffectsRenderingMode,omitempty"`
 
     // Container class for epub save options.
-    DmlRenderingMode string `json:"DmlRenderingMode,omitempty"`
+    DmlRenderingMode *string `json:"DmlRenderingMode,omitempty"`
 
     // Container class for epub save options.
-    FileName string `json:"FileName,omitempty"`
+    FileName *string `json:"FileName,omitempty"`
 
     // Container class for epub save options.
-    SaveFormat string `json:"SaveFormat,omitempty"`
+    SaveFormat *string `json:"SaveFormat,omitempty"`
 
     // Container class for epub save options.
-    UpdateFields bool `json:"UpdateFields,omitempty"`
+    UpdateFields *bool `json:"UpdateFields,omitempty"`
 
     // Container class for epub save options.
-    UpdateLastPrintedProperty bool `json:"UpdateLastPrintedProperty,omitempty"`
+    UpdateLastPrintedProperty *bool `json:"UpdateLastPrintedProperty,omitempty"`
 
     // Container class for epub save options.
-    UpdateLastSavedTimeProperty bool `json:"UpdateLastSavedTimeProperty,omitempty"`
+    UpdateLastSavedTimeProperty *bool `json:"UpdateLastSavedTimeProperty,omitempty"`
 
     // Container class for epub save options.
-    UpdateSdtContent bool `json:"UpdateSdtContent,omitempty"`
+    UpdateSdtContent *bool `json:"UpdateSdtContent,omitempty"`
 
     // Container class for epub save options.
-    ZipOutput bool `json:"ZipOutput,omitempty"`
+    ZipOutput *bool `json:"ZipOutput,omitempty"`
 
     // Container class for epub save options.
-    AllowNegativeIndent bool `json:"AllowNegativeIndent,omitempty"`
+    AllowNegativeIndent *bool `json:"AllowNegativeIndent,omitempty"`
 
     // Container class for epub save options.
-    CssClassNamePrefix string `json:"CssClassNamePrefix,omitempty"`
+    CssClassNamePrefix *string `json:"CssClassNamePrefix,omitempty"`
 
     // Container class for epub save options.
-    CssStyleSheetFileName string `json:"CssStyleSheetFileName,omitempty"`
+    CssStyleSheetFileName *string `json:"CssStyleSheetFileName,omitempty"`
 
     // Container class for epub save options.
-    CssStyleSheetType string `json:"CssStyleSheetType,omitempty"`
+    CssStyleSheetType *string `json:"CssStyleSheetType,omitempty"`
 
     // Container class for epub save options.
-    DocumentSplitCriteria string `json:"DocumentSplitCriteria,omitempty"`
+    DocumentSplitCriteria *string `json:"DocumentSplitCriteria,omitempty"`
 
     // Container class for epub save options.
-    DocumentSplitHeadingLevel int32 `json:"DocumentSplitHeadingLevel,omitempty"`
+    DocumentSplitHeadingLevel *int32 `json:"DocumentSplitHeadingLevel,omitempty"`
 
     // Container class for epub save options.
-    Encoding string `json:"Encoding,omitempty"`
+    Encoding *string `json:"Encoding,omitempty"`
 
     // Container class for epub save options.
-    ExportDocumentProperties bool `json:"ExportDocumentProperties,omitempty"`
+    ExportDocumentProperties *bool `json:"ExportDocumentProperties,omitempty"`
 
     // Container class for epub save options.
-    ExportDropDownFormFieldAsText bool `json:"ExportDropDownFormFieldAsText,omitempty"`
+    ExportDropDownFormFieldAsText *bool `json:"ExportDropDownFormFieldAsText,omitempty"`
 
     // Container class for epub save options.
-    ExportFontResources bool `json:"ExportFontResources,omitempty"`
+    ExportFontResources *bool `json:"ExportFontResources,omitempty"`
 
     // Container class for epub save options.
-    ExportFontsAsBase64 bool `json:"ExportFontsAsBase64,omitempty"`
+    ExportFontsAsBase64 *bool `json:"ExportFontsAsBase64,omitempty"`
 
     // Container class for epub save options.
-    ExportHeadersFootersMode string `json:"ExportHeadersFootersMode,omitempty"`
+    ExportHeadersFootersMode *string `json:"ExportHeadersFootersMode,omitempty"`
 
     // Container class for epub save options.
-    ExportImagesAsBase64 bool `json:"ExportImagesAsBase64,omitempty"`
+    ExportImagesAsBase64 *bool `json:"ExportImagesAsBase64,omitempty"`
 
     // Container class for epub save options.
-    ExportLanguageInformation bool `json:"ExportLanguageInformation,omitempty"`
+    ExportLanguageInformation *bool `json:"ExportLanguageInformation,omitempty"`
 
     // Container class for epub save options.
-    ExportListLabels string `json:"ExportListLabels,omitempty"`
+    ExportListLabels *string `json:"ExportListLabels,omitempty"`
 
     // Container class for epub save options.
-    ExportOriginalUrlForLinkedImages bool `json:"ExportOriginalUrlForLinkedImages,omitempty"`
+    ExportOriginalUrlForLinkedImages *bool `json:"ExportOriginalUrlForLinkedImages,omitempty"`
 
     // Container class for epub save options.
-    ExportPageMargins bool `json:"ExportPageMargins,omitempty"`
+    ExportPageMargins *bool `json:"ExportPageMargins,omitempty"`
 
     // Container class for epub save options.
-    ExportPageSetup bool `json:"ExportPageSetup,omitempty"`
+    ExportPageSetup *bool `json:"ExportPageSetup,omitempty"`
 
     // Container class for epub save options.
-    ExportRelativeFontSize bool `json:"ExportRelativeFontSize,omitempty"`
+    ExportRelativeFontSize *bool `json:"ExportRelativeFontSize,omitempty"`
 
     // Container class for epub save options.
-    ExportRoundtripInformation bool `json:"ExportRoundtripInformation,omitempty"`
+    ExportRoundtripInformation *bool `json:"ExportRoundtripInformation,omitempty"`
 
     // Container class for epub save options.
-    ExportTextBoxAsSvg bool `json:"ExportTextBoxAsSvg,omitempty"`
+    ExportTextBoxAsSvg *bool `json:"ExportTextBoxAsSvg,omitempty"`
 
     // Container class for epub save options.
-    ExportTextInputFormFieldAsText bool `json:"ExportTextInputFormFieldAsText,omitempty"`
+    ExportTextInputFormFieldAsText *bool `json:"ExportTextInputFormFieldAsText,omitempty"`
 
     // Container class for epub save options.
-    ExportTocPageNumbers bool `json:"ExportTocPageNumbers,omitempty"`
+    ExportTocPageNumbers *bool `json:"ExportTocPageNumbers,omitempty"`
 
     // Container class for epub save options.
-    ExportXhtmlTransitional bool `json:"ExportXhtmlTransitional,omitempty"`
+    ExportXhtmlTransitional *bool `json:"ExportXhtmlTransitional,omitempty"`
 
     // Container class for epub save options.
-    FontResourcesSubsettingSizeThreshold int32 `json:"FontResourcesSubsettingSizeThreshold,omitempty"`
+    FontResourcesSubsettingSizeThreshold *int32 `json:"FontResourcesSubsettingSizeThreshold,omitempty"`
 
     // Container class for epub save options.
-    FontsFolder string `json:"FontsFolder,omitempty"`
+    FontsFolder *string `json:"FontsFolder,omitempty"`
 
     // Container class for epub save options.
-    FontsFolderAlias string `json:"FontsFolderAlias,omitempty"`
+    FontsFolderAlias *string `json:"FontsFolderAlias,omitempty"`
 
     // Container class for epub save options.
     HtmlVersion string `json:"HtmlVersion,omitempty"`
 
     // Container class for epub save options.
-    ImageResolution int32 `json:"ImageResolution,omitempty"`
+    ImageResolution *int32 `json:"ImageResolution,omitempty"`
 
     // Container class for epub save options.
-    ImagesFolder string `json:"ImagesFolder,omitempty"`
+    ImagesFolder *string `json:"ImagesFolder,omitempty"`
 
     // Container class for epub save options.
-    ImagesFolderAlias string `json:"ImagesFolderAlias,omitempty"`
+    ImagesFolderAlias *string `json:"ImagesFolderAlias,omitempty"`
 
     // Container class for epub save options.
     MetafileFormat string `json:"MetafileFormat,omitempty"`
@@ -159,25 +159,25 @@ type EpubSaveOptionsData struct {
     OfficeMathOutputMode string `json:"OfficeMathOutputMode,omitempty"`
 
     // Container class for epub save options.
-    PrettyFormat bool `json:"PrettyFormat,omitempty"`
+    PrettyFormat *bool `json:"PrettyFormat,omitempty"`
 
     // Container class for epub save options.
-    ResolveFontNames bool `json:"ResolveFontNames,omitempty"`
+    ResolveFontNames *bool `json:"ResolveFontNames,omitempty"`
 
     // Container class for epub save options.
-    ResourceFolder string `json:"ResourceFolder,omitempty"`
+    ResourceFolder *string `json:"ResourceFolder,omitempty"`
 
     // Container class for epub save options.
-    ResourceFolderAlias string `json:"ResourceFolderAlias,omitempty"`
+    ResourceFolderAlias *string `json:"ResourceFolderAlias,omitempty"`
 
     // Container class for epub save options.
-    ScaleImageToShapeSize bool `json:"ScaleImageToShapeSize,omitempty"`
+    ScaleImageToShapeSize *bool `json:"ScaleImageToShapeSize,omitempty"`
 
     // Container class for epub save options.
-    TableWidthOutputMode string `json:"TableWidthOutputMode,omitempty"`
+    TableWidthOutputMode *string `json:"TableWidthOutputMode,omitempty"`
 
     // Container class for epub save options.
-    EpubNavigationMapLevel int32 `json:"EpubNavigationMapLevel,omitempty"`
+    EpubNavigationMapLevel *int32 `json:"EpubNavigationMapLevel,omitempty"`
 }
 
 type IEpubSaveOptionsData interface {

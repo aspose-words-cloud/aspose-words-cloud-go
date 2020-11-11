@@ -30,7 +30,7 @@ package models
 // Words document property DTO base class.
 type DocumentPropertyBase struct {
     // Words document property DTO base class.
-    Value string `json:"Value,omitempty"`
+    Value *string `json:"Value,omitempty"`
 }
 
 type IDocumentPropertyBase interface {

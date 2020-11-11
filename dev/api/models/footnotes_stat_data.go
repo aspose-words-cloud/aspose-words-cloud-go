@@ -30,10 +30,10 @@ package models
 // Container for the footnotes statistical data.
 type FootnotesStatData struct {
     // Container for the footnotes statistical data.
-    ParagraphCount int32 `json:"ParagraphCount,omitempty"`
+    ParagraphCount *int32 `json:"ParagraphCount,omitempty"`
 
     // Container for the footnotes statistical data.
-    WordCount int32 `json:"WordCount,omitempty"`
+    WordCount *int32 `json:"WordCount,omitempty"`
 }
 
 type IFootnotesStatData interface {

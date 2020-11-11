@@ -30,7 +30,7 @@ package models
 // This response should be returned by the service when handling:  GET /{name}/mailMergeFieldNames.
 type FieldNamesResponse struct {
     // This response should be returned by the service when handling:  GET /{name}/mailMergeFieldNames.
-    RequestId string `json:"RequestId,omitempty"`
+    RequestId *string `json:"RequestId,omitempty"`
 
     // This response should be returned by the service when handling:  GET /{name}/mailMergeFieldNames.
     FieldNames *FieldNames `json:"FieldNames,omitempty"`

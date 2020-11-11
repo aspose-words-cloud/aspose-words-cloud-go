@@ -30,7 +30,7 @@ package models
 // Base class for all responses.
 type WordsResponse struct {
     // Base class for all responses.
-    RequestId string `json:"RequestId,omitempty"`
+    RequestId *string `json:"RequestId,omitempty"`
 }
 
 type IWordsResponse interface {

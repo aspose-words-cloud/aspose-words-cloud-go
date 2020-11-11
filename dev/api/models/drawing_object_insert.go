@@ -30,10 +30,10 @@ package models
 // Drawing object element for insert.
 type DrawingObjectInsert struct {
     // Drawing object element for insert.
-    Height float64 `json:"Height,omitempty"`
+    Height *float64 `json:"Height,omitempty"`
 
     // Drawing object element for insert.
-    Left float64 `json:"Left,omitempty"`
+    Left *float64 `json:"Left,omitempty"`
 
     // Drawing object element for insert.
     Position *DocumentPosition `json:"Position,omitempty"`
@@ -45,10 +45,10 @@ type DrawingObjectInsert struct {
     RelativeVerticalPosition string `json:"RelativeVerticalPosition,omitempty"`
 
     // Drawing object element for insert.
-    Top float64 `json:"Top,omitempty"`
+    Top *float64 `json:"Top,omitempty"`
 
     // Drawing object element for insert.
-    Width float64 `json:"Width,omitempty"`
+    Width *float64 `json:"Width,omitempty"`
 
     // Drawing object element for insert.
     WrapType string `json:"WrapType,omitempty"`

@@ -33,13 +33,13 @@ type TableRowFormat struct {
     Link *WordsApiLink `json:"Link,omitempty"`
 
     // Represents all formatting for a table row.
-    AllowBreakAcrossPages bool `json:"AllowBreakAcrossPages,omitempty"`
+    AllowBreakAcrossPages *bool `json:"AllowBreakAcrossPages,omitempty"`
 
     // Represents all formatting for a table row.
-    HeadingFormat bool `json:"HeadingFormat,omitempty"`
+    HeadingFormat *bool `json:"HeadingFormat,omitempty"`
 
     // Represents all formatting for a table row.
-    Height float64 `json:"Height,omitempty"`
+    Height *float64 `json:"Height,omitempty"`
 
     // Represents all formatting for a table row.
     HeightRule string `json:"HeightRule,omitempty"`

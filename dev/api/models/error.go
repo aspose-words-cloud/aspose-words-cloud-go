@@ -30,16 +30,16 @@ package models
 // Error.
 type Error struct {
     // Error.
-    Code string `json:"Code,omitempty"`
+    Code *string `json:"Code,omitempty"`
 
     // Error.
-    Description string `json:"Description,omitempty"`
+    Description *string `json:"Description,omitempty"`
 
     // Error.
     InnerError *ErrorDetails `json:"InnerError,omitempty"`
 
     // Error.
-    Message string `json:"Message,omitempty"`
+    Message *string `json:"Message,omitempty"`
 }
 
 type IError interface {

@@ -33,10 +33,10 @@ type Run struct {
     Link *WordsApiLink `json:"Link,omitempty"`
 
     // Run element.
-    NodeId string `json:"NodeId,omitempty"`
+    NodeId *string `json:"NodeId,omitempty"`
 
     // Run element.
-    Text string `json:"Text,omitempty"`
+    Text *string `json:"Text,omitempty"`
 }
 
 type IRun interface {

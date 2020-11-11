@@ -33,7 +33,7 @@ type DocumentPosition struct {
     Node *NodeLink `json:"Node,omitempty"`
 
     // Represents a position in the document tree.
-    Offset int32 `json:"Offset,omitempty"`
+    Offset *int32 `json:"Offset,omitempty"`
 }
 
 type IDocumentPosition interface {

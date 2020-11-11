@@ -30,7 +30,7 @@ package models
 // Response for the request of data about protection.
 type ProtectionDataResponse struct {
     // Response for the request of data about protection.
-    RequestId string `json:"RequestId,omitempty"`
+    RequestId *string `json:"RequestId,omitempty"`
 
     // Response for the request of data about protection.
     DocumentLink *FileLink `json:"DocumentLink,omitempty"`

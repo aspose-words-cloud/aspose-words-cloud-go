@@ -36,10 +36,10 @@ type FootnoteBase struct {
     Position *DocumentPosition `json:"Position,omitempty"`
 
     // Footnote base class.
-    ReferenceMark string `json:"ReferenceMark,omitempty"`
+    ReferenceMark *string `json:"ReferenceMark,omitempty"`
 
     // Footnote base class.
-    Text string `json:"Text,omitempty"`
+    Text *string `json:"Text,omitempty"`
 }
 
 type IFootnoteBase interface {

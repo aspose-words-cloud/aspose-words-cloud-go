@@ -45,8 +45,8 @@ func Test_DocumentProtection_ProtectDocument(t *testing.T) {
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
     requestProtectionRequest := models.ProtectionRequest{
-        Password: "123",
-        ProtectionType: "ReadOnly",
+        Password: ToStringPointer("123"),
+        ProtectionType: ToStringPointer("ReadOnly"),
     }
 
     options := map[string]interface{}{
@@ -60,7 +60,7 @@ func Test_DocumentProtection_ProtectDocument(t *testing.T) {
     }
 
     assert.NotNil(t, actual.ProtectionData, "Validate ProtectDocument response.");
-    assert.Equal(t, "ReadOnly", actual.ProtectionData.ProtectionType, "Validate ProtectDocument response.");
+    assert.Equal(t, "ReadOnly", *actual.ProtectionData.ProtectionType, "Validate ProtectDocument response.");
 }
 
 // Test for getting document protection.
@@ -84,7 +84,7 @@ func Test_DocumentProtection_GetDocumentProtection(t *testing.T) {
     }
 
     assert.NotNil(t, actual.ProtectionData, "Validate GetDocumentProtection response.");
-    assert.Equal(t, "ReadOnly", actual.ProtectionData.ProtectionType, "Validate GetDocumentProtection response.");
+    assert.Equal(t, "ReadOnly", *actual.ProtectionData.ProtectionType, "Validate GetDocumentProtection response.");
 }
 
 // Test for deleting unprotect document.
@@ -98,7 +98,7 @@ func Test_DocumentProtection_DeleteUnprotectDocument(t *testing.T) {
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFilePath), remoteDataFolder + "/" + remoteFileName)
 
     requestProtectionRequest := models.ProtectionRequest{
-        Password: "aspose",
+        Password: ToStringPointer("aspose"),
     }
 
     options := map[string]interface{}{
@@ -111,5 +111,5 @@ func Test_DocumentProtection_DeleteUnprotectDocument(t *testing.T) {
     }
 
     assert.NotNil(t, actual.ProtectionData, "Validate DeleteUnprotectDocument response.");
-    assert.Equal(t, "NoProtection", actual.ProtectionData.ProtectionType, "Validate DeleteUnprotectDocument response.");
+    assert.Equal(t, "NoProtection", *actual.ProtectionData.ProtectionType, "Validate DeleteUnprotectDocument response.");
 }

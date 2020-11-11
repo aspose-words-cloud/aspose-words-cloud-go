@@ -58,7 +58,7 @@ func Test_Table_GetTables(t *testing.T) {
     assert.NotNil(t, actual.Tables, "Validate GetTables response.");
     assert.NotNil(t, actual.Tables.TableLinkList, "Validate GetTables response.");
     assert.Equal(t, 5, len(actual.Tables.TableLinkList), "Validate GetTables response.");
-    assert.Equal(t, "0.0.1", actual.Tables.TableLinkList[0].NodeId, "Validate GetTables response.");
+    assert.Equal(t, "0.0.1", *actual.Tables.TableLinkList[0].NodeId, "Validate GetTables response.");
 }
 
 // Test for getting tables without node path.
@@ -84,7 +84,7 @@ func Test_Table_GetTablesWithoutNodePath(t *testing.T) {
     assert.NotNil(t, actual.Tables, "Validate GetTablesWithoutNodePath response.");
     assert.NotNil(t, actual.Tables.TableLinkList, "Validate GetTablesWithoutNodePath response.");
     assert.Equal(t, 5, len(actual.Tables.TableLinkList), "Validate GetTablesWithoutNodePath response.");
-    assert.Equal(t, "0.0.1", actual.Tables.TableLinkList[0].NodeId, "Validate GetTablesWithoutNodePath response.");
+    assert.Equal(t, "0.0.1", *actual.Tables.TableLinkList[0].NodeId, "Validate GetTablesWithoutNodePath response.");
 }
 
 // Test for getting table.
@@ -198,8 +198,8 @@ func Test_Table_InsertTable(t *testing.T) {
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
     requestTable := models.TableInsert{
-        ColumnsCount: int32(5),
-        RowsCount: int32(4),
+        ColumnsCount: ToIn32Pointer(int32(5)),
+        RowsCount: ToIn32Pointer(int32(4)),
     }
 
     options := map[string]interface{}{
@@ -230,8 +230,8 @@ func Test_Table_InsertTableWithoutNodePath(t *testing.T) {
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
     requestTable := models.TableInsert{
-        ColumnsCount: int32(5),
-        RowsCount: int32(4),
+        ColumnsCount: ToIn32Pointer(int32(5)),
+        RowsCount: ToIn32Pointer(int32(4)),
     }
 
     options := map[string]interface{}{
@@ -272,7 +272,7 @@ func Test_Table_GetTableProperties(t *testing.T) {
     }
 
     assert.NotNil(t, actual.Properties, "Validate GetTableProperties response.");
-    assert.Equal(t, "Table Grid", actual.Properties.StyleName, "Validate GetTableProperties response.");
+    assert.Equal(t, "Table Grid", *actual.Properties.StyleName, "Validate GetTableProperties response.");
 }
 
 // Test for getting document properties without node path.
@@ -296,7 +296,7 @@ func Test_Table_GetTablePropertiesWithoutNodePath(t *testing.T) {
     }
 
     assert.NotNil(t, actual.Properties, "Validate GetTablePropertiesWithoutNodePath response.");
-    assert.Equal(t, "Table Grid", actual.Properties.StyleName, "Validate GetTablePropertiesWithoutNodePath response.");
+    assert.Equal(t, "Table Grid", *actual.Properties.StyleName, "Validate GetTablePropertiesWithoutNodePath response.");
 }
 
 // Test for updating table properties.
@@ -311,10 +311,10 @@ func Test_Table_UpdateTableProperties(t *testing.T) {
 
     requestProperties := models.TableProperties{
         Alignment: "Right",
-        AllowAutoFit: false,
-        Bidi: true,
-        BottomPadding: 1,
-        CellSpacing: 2.0,
+        AllowAutoFit: ToBoolPointer(false),
+        Bidi: ToBoolPointer(true),
+        BottomPadding: ToFloat64Pointer(1),
+        CellSpacing: ToFloat64Pointer(2.0),
         StyleOptions: "ColumnBands",
     }
 
@@ -329,10 +329,10 @@ func Test_Table_UpdateTableProperties(t *testing.T) {
     }
 
     assert.NotNil(t, actual.Properties, "Validate UpdateTableProperties response.");
-    assert.False(t, actual.Properties.AllowAutoFit, "Validate UpdateTableProperties response.");
-    assert.True(t, actual.Properties.Bidi, "Validate UpdateTableProperties response.");
-    assert.Equal(t, 1.0, actual.Properties.BottomPadding, "Validate UpdateTableProperties response.");
-    assert.Equal(t, 2.0, actual.Properties.CellSpacing, "Validate UpdateTableProperties response.");
+    assert.False(t, *actual.Properties.AllowAutoFit, "Validate UpdateTableProperties response.");
+    assert.True(t, *actual.Properties.Bidi, "Validate UpdateTableProperties response.");
+    assert.Equal(t, 1.0, *actual.Properties.BottomPadding, "Validate UpdateTableProperties response.");
+    assert.Equal(t, 2.0, *actual.Properties.CellSpacing, "Validate UpdateTableProperties response.");
 }
 
 // Test for updating table properties without node path.
@@ -347,10 +347,10 @@ func Test_Table_UpdateTablePropertiesWithoutNodePath(t *testing.T) {
 
     requestProperties := models.TableProperties{
         Alignment: "Right",
-        AllowAutoFit: false,
-        Bidi: true,
-        BottomPadding: 1.0,
-        CellSpacing: 2.0,
+        AllowAutoFit: ToBoolPointer(false),
+        Bidi: ToBoolPointer(true),
+        BottomPadding: ToFloat64Pointer(1.0),
+        CellSpacing: ToFloat64Pointer(2.0),
         StyleOptions: "ColumnBands",
     }
 
@@ -364,10 +364,10 @@ func Test_Table_UpdateTablePropertiesWithoutNodePath(t *testing.T) {
     }
 
     assert.NotNil(t, actual.Properties, "Validate UpdateTablePropertiesWithoutNodePath response.");
-    assert.False(t, actual.Properties.AllowAutoFit, "Validate UpdateTablePropertiesWithoutNodePath response.");
-    assert.True(t, actual.Properties.Bidi, "Validate UpdateTablePropertiesWithoutNodePath response.");
-    assert.Equal(t, 1.0, actual.Properties.BottomPadding, "Validate UpdateTablePropertiesWithoutNodePath response.");
-    assert.Equal(t, 2.0, actual.Properties.CellSpacing, "Validate UpdateTablePropertiesWithoutNodePath response.");
+    assert.False(t, *actual.Properties.AllowAutoFit, "Validate UpdateTablePropertiesWithoutNodePath response.");
+    assert.True(t, *actual.Properties.Bidi, "Validate UpdateTablePropertiesWithoutNodePath response.");
+    assert.Equal(t, 1.0, *actual.Properties.BottomPadding, "Validate UpdateTablePropertiesWithoutNodePath response.");
+    assert.Equal(t, 2.0, *actual.Properties.CellSpacing, "Validate UpdateTablePropertiesWithoutNodePath response.");
 }
 
 // Test for getting table row.
@@ -428,7 +428,7 @@ func Test_Table_InsertTableRow(t *testing.T) {
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
     requestRow := models.TableRowInsert{
-        ColumnsCount: int32(5),
+        ColumnsCount: ToIn32Pointer(int32(5)),
     }
 
     options := map[string]interface{}{
@@ -466,7 +466,7 @@ func Test_Table_GetTableRowFormat(t *testing.T) {
     }
 
     assert.NotNil(t, actual.RowFormat, "Validate GetTableRowFormat response.");
-    assert.True(t, actual.RowFormat.AllowBreakAcrossPages, "Validate GetTableRowFormat response.");
+    assert.True(t, *actual.RowFormat.AllowBreakAcrossPages, "Validate GetTableRowFormat response.");
 }
 
 // Test updating row format.
@@ -480,9 +480,9 @@ func Test_Table_UpdateTableRowFormat(t *testing.T) {
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
     requestFormat := models.TableRowFormat{
-        AllowBreakAcrossPages: true,
-        HeadingFormat: true,
-        Height: 10.0,
+        AllowBreakAcrossPages: ToBoolPointer(true),
+        HeadingFormat: ToBoolPointer(true),
+        Height: ToFloat64Pointer(10.0),
         HeightRule: "Exactly",
     }
 
@@ -496,9 +496,9 @@ func Test_Table_UpdateTableRowFormat(t *testing.T) {
     }
 
     assert.NotNil(t, actual.RowFormat, "Validate UpdateTableRowFormat response.");
-    assert.True(t, actual.RowFormat.AllowBreakAcrossPages, "Validate UpdateTableRowFormat response.");
-    assert.True(t, actual.RowFormat.HeadingFormat, "Validate UpdateTableRowFormat response.");
-    assert.Equal(t, 10.0, actual.RowFormat.Height, "Validate UpdateTableRowFormat response.");
+    assert.True(t, *actual.RowFormat.AllowBreakAcrossPages, "Validate UpdateTableRowFormat response.");
+    assert.True(t, *actual.RowFormat.HeadingFormat, "Validate UpdateTableRowFormat response.");
+    assert.Equal(t, 10.0, *actual.RowFormat.Height, "Validate UpdateTableRowFormat response.");
 }
 
 // Test for getting table cell.
@@ -522,7 +522,7 @@ func Test_Table_GetTableCell(t *testing.T) {
     }
 
     assert.NotNil(t, actual.Cell, "Validate GetTableCell response.");
-    assert.Equal(t, "0.0.5.0.0", actual.Cell.NodeId, "Validate GetTableCell response.");
+    assert.Equal(t, "0.0.5.0.0", *actual.Cell.NodeId, "Validate GetTableCell response.");
 }
 
 // Test for deleting cell.
@@ -570,7 +570,7 @@ func Test_Table_InsertTableCell(t *testing.T) {
     }
 
     assert.NotNil(t, actual.Cell, "Validate InsertTableCell response.");
-    assert.Equal(t, "0.0.5.0.3", actual.Cell.NodeId, "Validate InsertTableCell response.");
+    assert.Equal(t, "0.0.5.0.3", *actual.Cell.NodeId, "Validate InsertTableCell response.");
 }
 
 // Test for getting cell format.
@@ -594,7 +594,7 @@ func Test_Table_GetTableCellFormat(t *testing.T) {
     }
 
     assert.NotNil(t, actual.CellFormat, "Validate GetTableCellFormat response.");
-    assert.True(t, actual.CellFormat.WrapText, "Validate GetTableCellFormat response.");
+    assert.True(t, *actual.CellFormat.WrapText, "Validate GetTableCellFormat response.");
 }
 
 // Test for updating cell format.
@@ -608,10 +608,10 @@ func Test_Table_UpdateTableCellFormat(t *testing.T) {
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
     requestFormat := models.TableCellFormat{
-        BottomPadding: 5.0,
-        FitText: true,
+        BottomPadding: ToFloat64Pointer(5.0),
+        FitText: ToBoolPointer(true),
         HorizontalMerge: "First",
-        WrapText: true,
+        WrapText: ToBoolPointer(true),
     }
 
     options := map[string]interface{}{
@@ -624,9 +624,9 @@ func Test_Table_UpdateTableCellFormat(t *testing.T) {
     }
 
     assert.NotNil(t, actual.CellFormat, "Validate UpdateTableCellFormat response.");
-    assert.Equal(t, 5.0, actual.CellFormat.BottomPadding, "Validate UpdateTableCellFormat response.");
-    assert.True(t, actual.CellFormat.FitText, "Validate UpdateTableCellFormat response.");
-    assert.True(t, actual.CellFormat.WrapText, "Validate UpdateTableCellFormat response.");
+    assert.Equal(t, 5.0, *actual.CellFormat.BottomPadding, "Validate UpdateTableCellFormat response.");
+    assert.True(t, *actual.CellFormat.FitText, "Validate UpdateTableCellFormat response.");
+    assert.True(t, *actual.CellFormat.WrapText, "Validate UpdateTableCellFormat response.");
 }
 
 // Test for table rendering.

@@ -30,16 +30,16 @@ package models
 // container class for details of encryption.
 type PdfEncryptionDetailsData struct {
     // container class for details of encryption.
-    EncryptionAlgorithm string `json:"EncryptionAlgorithm,omitempty"`
+    EncryptionAlgorithm *string `json:"EncryptionAlgorithm,omitempty"`
 
     // container class for details of encryption.
-    OwnerPassword string `json:"OwnerPassword,omitempty"`
+    OwnerPassword *string `json:"OwnerPassword,omitempty"`
 
     // container class for details of encryption.
-    Permissions string `json:"Permissions,omitempty"`
+    Permissions *string `json:"Permissions,omitempty"`
 
     // container class for details of encryption.
-    UserPassword string `json:"UserPassword,omitempty"`
+    UserPassword *string `json:"UserPassword,omitempty"`
 }
 
 type IPdfEncryptionDetailsData interface {

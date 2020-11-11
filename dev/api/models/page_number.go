@@ -30,16 +30,16 @@ package models
 // Class is used for insert page number request building.
 type PageNumber struct {
     // Class is used for insert page number request building.
-    Alignment string `json:"Alignment,omitempty"`
+    Alignment *string `json:"Alignment,omitempty"`
 
     // Class is used for insert page number request building.
-    Format string `json:"Format,omitempty"`
+    Format *string `json:"Format,omitempty"`
 
     // Class is used for insert page number request building.
-    IsTop bool `json:"IsTop,omitempty"`
+    IsTop *bool `json:"IsTop,omitempty"`
 
     // Class is used for insert page number request building.
-    SetPageNumberOnFirstPage bool `json:"SetPageNumberOnFirstPage,omitempty"`
+    SetPageNumberOnFirstPage *bool `json:"SetPageNumberOnFirstPage,omitempty"`
 }
 
 type IPageNumber interface {
