@@ -29,6 +29,7 @@
 package api_test
 
 import (
+    "github.com/stretchr/testify/assert"
     "testing"
 )
 
@@ -43,12 +44,16 @@ func Test_MailMergeFileds_GetDocumentFieldNamesOnline(t *testing.T) {
     options := map[string]interface{}{
         "useNonMergeFields": true,
     }
-    _, _, err := client.WordsApi.GetDocumentFieldNamesOnline(ctx, OpenFile(t, mailMergeFolder + "/" + localDocumentFile), options)
+    actual, _, err := client.WordsApi.GetDocumentFieldNamesOnline(ctx, OpenFile(t, mailMergeFolder + "/" + localDocumentFile), options)
 
     if err != nil {
         t.Error(err)
     }
 
+    assert.NotNil(t, actual.FieldNames, "Validate GetDocumentFieldNamesOnline response.");
+    assert.NotNil(t, actual.FieldNames.Names, "Validate GetDocumentFieldNamesOnline response.");
+    assert.Equal(t, 15, len(actual.FieldNames.Names), "Validate GetDocumentFieldNamesOnline response.");
+    assert.Equal(t, "TableStart:Order", actual.FieldNames.Names[0], "Validate GetDocumentFieldNamesOnline response.");
 }
 
 // Test for getting mailmerge fields.
@@ -64,10 +69,13 @@ func Test_MailMergeFileds_GetDocumentFieldNames(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetDocumentFieldNames(ctx, remoteFileName, options)
+    actual, _, err := client.WordsApi.GetDocumentFieldNames(ctx, remoteFileName, options)
 
     if err != nil {
         t.Error(err)
     }
 
+    assert.NotNil(t, actual.FieldNames, "Validate GetDocumentFieldNames response.");
+    assert.NotNil(t, actual.FieldNames.Names, "Validate GetDocumentFieldNames response.");
+    assert.Equal(t, 0, len(actual.FieldNames.Names), "Validate GetDocumentFieldNames response.");
 }

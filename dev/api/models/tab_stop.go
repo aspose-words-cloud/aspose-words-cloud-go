@@ -36,10 +36,10 @@ type TabStop struct {
     Leader string `json:"Leader,omitempty"`
 
     // Paragraph format tab stop.
-    Position float64 `json:"Position,omitempty"`
+    Position *float64 `json:"Position,omitempty"`
 
     // Paragraph format tab stop.
-    IsClear bool `json:"IsClear,omitempty"`
+    IsClear *bool `json:"IsClear,omitempty"`
 }
 
 type ITabStop interface {

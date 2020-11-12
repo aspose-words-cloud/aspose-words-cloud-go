@@ -33,7 +33,7 @@ type ReportEngineSettings struct {
     CsvDataLoadOptions *CsvDataLoadOptions `json:"CsvDataLoadOptions,omitempty"`
 
     // Report engine settings.
-    DataSourceName string `json:"DataSourceName,omitempty"`
+    DataSourceName *string `json:"DataSourceName,omitempty"`
 
     // Report engine settings.
     DataSourceType string `json:"DataSourceType,omitempty"`

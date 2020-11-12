@@ -33,7 +33,7 @@ type Paragraph struct {
     Link *WordsApiLink `json:"Link,omitempty"`
 
     // Paragraph element.
-    NodeId string `json:"NodeId,omitempty"`
+    NodeId *string `json:"NodeId,omitempty"`
 
     // Paragraph element.
     ChildNodes []NodeLink `json:"ChildNodes,omitempty"`

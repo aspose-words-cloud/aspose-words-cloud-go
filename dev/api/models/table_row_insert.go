@@ -30,10 +30,10 @@ package models
 // Table row element.
 type TableRowInsert struct {
     // Table row element.
-    ColumnsCount int32 `json:"ColumnsCount,omitempty"`
+    ColumnsCount *int32 `json:"ColumnsCount,omitempty"`
 
     // Table row element.
-    InsertAfter int32 `json:"InsertAfter,omitempty"`
+    InsertAfter *int32 `json:"InsertAfter,omitempty"`
 }
 
 type ITableRowInsert interface {

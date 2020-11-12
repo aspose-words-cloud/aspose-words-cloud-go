@@ -33,10 +33,10 @@ type PageSetup struct {
     Link *WordsApiLink `json:"Link,omitempty"`
 
     // Represents the page setup properties of a section.
-    Bidi bool `json:"Bidi,omitempty"`
+    Bidi *bool `json:"Bidi,omitempty"`
 
     // Represents the page setup properties of a section.
-    BorderAlwaysInFront bool `json:"BorderAlwaysInFront,omitempty"`
+    BorderAlwaysInFront *bool `json:"BorderAlwaysInFront,omitempty"`
 
     // Represents the page setup properties of a section.
     BorderAppliesTo string `json:"BorderAppliesTo,omitempty"`
@@ -45,76 +45,76 @@ type PageSetup struct {
     BorderDistanceFrom string `json:"BorderDistanceFrom,omitempty"`
 
     // Represents the page setup properties of a section.
-    BottomMargin float64 `json:"BottomMargin,omitempty"`
+    BottomMargin *float64 `json:"BottomMargin,omitempty"`
 
     // Represents the page setup properties of a section.
-    DifferentFirstPageHeaderFooter bool `json:"DifferentFirstPageHeaderFooter,omitempty"`
+    DifferentFirstPageHeaderFooter *bool `json:"DifferentFirstPageHeaderFooter,omitempty"`
 
     // Represents the page setup properties of a section.
-    FirstPageTray int32 `json:"FirstPageTray,omitempty"`
+    FirstPageTray *int32 `json:"FirstPageTray,omitempty"`
 
     // Represents the page setup properties of a section.
-    FooterDistance float64 `json:"FooterDistance,omitempty"`
+    FooterDistance *float64 `json:"FooterDistance,omitempty"`
 
     // Represents the page setup properties of a section.
-    Gutter float64 `json:"Gutter,omitempty"`
+    Gutter *float64 `json:"Gutter,omitempty"`
 
     // Represents the page setup properties of a section.
-    HeaderDistance float64 `json:"HeaderDistance,omitempty"`
+    HeaderDistance *float64 `json:"HeaderDistance,omitempty"`
 
     // Represents the page setup properties of a section.
-    LeftMargin float64 `json:"LeftMargin,omitempty"`
+    LeftMargin *float64 `json:"LeftMargin,omitempty"`
 
     // Represents the page setup properties of a section.
-    LineNumberCountBy int32 `json:"LineNumberCountBy,omitempty"`
+    LineNumberCountBy *int32 `json:"LineNumberCountBy,omitempty"`
 
     // Represents the page setup properties of a section.
-    LineNumberDistanceFromText float64 `json:"LineNumberDistanceFromText,omitempty"`
+    LineNumberDistanceFromText *float64 `json:"LineNumberDistanceFromText,omitempty"`
 
     // Represents the page setup properties of a section.
     LineNumberRestartMode string `json:"LineNumberRestartMode,omitempty"`
 
     // Represents the page setup properties of a section.
-    LineStartingNumber int32 `json:"LineStartingNumber,omitempty"`
+    LineStartingNumber *int32 `json:"LineStartingNumber,omitempty"`
 
     // Represents the page setup properties of a section.
     Orientation string `json:"Orientation,omitempty"`
 
     // Represents the page setup properties of a section.
-    OtherPagesTray int32 `json:"OtherPagesTray,omitempty"`
+    OtherPagesTray *int32 `json:"OtherPagesTray,omitempty"`
 
     // Represents the page setup properties of a section.
-    PageHeight float64 `json:"PageHeight,omitempty"`
+    PageHeight *float64 `json:"PageHeight,omitempty"`
 
     // Represents the page setup properties of a section.
     PageNumberStyle string `json:"PageNumberStyle,omitempty"`
 
     // Represents the page setup properties of a section.
-    PageStartingNumber int32 `json:"PageStartingNumber,omitempty"`
+    PageStartingNumber *int32 `json:"PageStartingNumber,omitempty"`
 
     // Represents the page setup properties of a section.
-    PageWidth float64 `json:"PageWidth,omitempty"`
+    PageWidth *float64 `json:"PageWidth,omitempty"`
 
     // Represents the page setup properties of a section.
     PaperSize string `json:"PaperSize,omitempty"`
 
     // Represents the page setup properties of a section.
-    RestartPageNumbering bool `json:"RestartPageNumbering,omitempty"`
+    RestartPageNumbering *bool `json:"RestartPageNumbering,omitempty"`
 
     // Represents the page setup properties of a section.
-    RightMargin float64 `json:"RightMargin,omitempty"`
+    RightMargin *float64 `json:"RightMargin,omitempty"`
 
     // Represents the page setup properties of a section.
-    RtlGutter bool `json:"RtlGutter,omitempty"`
+    RtlGutter *bool `json:"RtlGutter,omitempty"`
 
     // Represents the page setup properties of a section.
     SectionStart string `json:"SectionStart,omitempty"`
 
     // Represents the page setup properties of a section.
-    SuppressEndnotes bool `json:"SuppressEndnotes,omitempty"`
+    SuppressEndnotes *bool `json:"SuppressEndnotes,omitempty"`
 
     // Represents the page setup properties of a section.
-    TopMargin float64 `json:"TopMargin,omitempty"`
+    TopMargin *float64 `json:"TopMargin,omitempty"`
 
     // Represents the page setup properties of a section.
     VerticalAlignment string `json:"VerticalAlignment,omitempty"`

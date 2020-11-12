@@ -30,7 +30,7 @@ package models
 // Range element.
 type RangeDocument struct {
     // Range element.
-    DocumentName string `json:"DocumentName,omitempty"`
+    DocumentName *string `json:"DocumentName,omitempty"`
 }
 
 type IRangeDocument interface {

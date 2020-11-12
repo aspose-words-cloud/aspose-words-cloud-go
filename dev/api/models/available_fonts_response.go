@@ -30,7 +30,7 @@ package models
 // The list of fonts, available for document processing.
 type AvailableFontsResponse struct {
     // The list of fonts, available for document processing.
-    RequestId string `json:"RequestId,omitempty"`
+    RequestId *string `json:"RequestId,omitempty"`
 
     // The list of fonts, available for document processing.
     AdditionalFonts []FontInfo `json:"AdditionalFonts,omitempty"`

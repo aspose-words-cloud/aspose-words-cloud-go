@@ -36,28 +36,28 @@ type Style struct {
     Aliases []string `json:"Aliases,omitempty"`
 
     // Represents a single document style.
-    BaseStyleName string `json:"BaseStyleName,omitempty"`
+    BaseStyleName *string `json:"BaseStyleName,omitempty"`
 
     // Represents a single document style.
-    BuiltIn bool `json:"BuiltIn,omitempty"`
+    BuiltIn *bool `json:"BuiltIn,omitempty"`
 
     // Represents a single document style.
     Font *Font `json:"Font,omitempty"`
 
     // Represents a single document style.
-    IsHeading bool `json:"IsHeading,omitempty"`
+    IsHeading *bool `json:"IsHeading,omitempty"`
 
     // Represents a single document style.
-    IsQuickStyle bool `json:"IsQuickStyle,omitempty"`
+    IsQuickStyle *bool `json:"IsQuickStyle,omitempty"`
 
     // Represents a single document style.
-    LinkedStyleName string `json:"LinkedStyleName,omitempty"`
+    LinkedStyleName *string `json:"LinkedStyleName,omitempty"`
 
     // Represents a single document style.
-    Name string `json:"Name,omitempty"`
+    Name *string `json:"Name,omitempty"`
 
     // Represents a single document style.
-    NextParagraphStyleName string `json:"NextParagraphStyleName,omitempty"`
+    NextParagraphStyleName *string `json:"NextParagraphStyleName,omitempty"`
 
     // Represents a single document style.
     StyleIdentifier string `json:"StyleIdentifier,omitempty"`

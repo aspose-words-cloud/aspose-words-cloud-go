@@ -30,16 +30,16 @@ package models
 // Represents a single document style properties to update.
 type StyleUpdate struct {
     // Represents a single document style properties to update.
-    BaseStyleName string `json:"BaseStyleName,omitempty"`
+    BaseStyleName *string `json:"BaseStyleName,omitempty"`
 
     // Represents a single document style properties to update.
-    IsQuickStyle bool `json:"IsQuickStyle,omitempty"`
+    IsQuickStyle *bool `json:"IsQuickStyle,omitempty"`
 
     // Represents a single document style properties to update.
-    Name string `json:"Name,omitempty"`
+    Name *string `json:"Name,omitempty"`
 
     // Represents a single document style properties to update.
-    NextParagraphStyleName string `json:"NextParagraphStyleName,omitempty"`
+    NextParagraphStyleName *string `json:"NextParagraphStyleName,omitempty"`
 }
 
 type IStyleUpdate interface {

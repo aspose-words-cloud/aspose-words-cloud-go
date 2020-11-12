@@ -30,7 +30,7 @@ package models
 // Words document property DTO for create or update.
 type DocumentPropertyCreateOrUpdate struct {
     // Words document property DTO for create or update.
-    Value string `json:"Value,omitempty"`
+    Value *string `json:"Value,omitempty"`
 }
 
 type IDocumentPropertyCreateOrUpdate interface {

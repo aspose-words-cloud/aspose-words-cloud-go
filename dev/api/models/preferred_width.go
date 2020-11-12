@@ -33,7 +33,7 @@ type PreferredWidth struct {
     Type string `json:"Type,omitempty"`
 
     // Preferred width.
-    Value float64 `json:"Value,omitempty"`
+    Value *float64 `json:"Value,omitempty"`
 }
 
 type IPreferredWidth interface {

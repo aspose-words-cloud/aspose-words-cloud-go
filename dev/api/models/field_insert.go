@@ -30,10 +30,10 @@ package models
 // Field for insert.
 type FieldInsert struct {
     // Field for insert.
-    FieldCode string `json:"FieldCode,omitempty"`
+    FieldCode *string `json:"FieldCode,omitempty"`
 
     // Field for insert.
-    LocaleId string `json:"LocaleId,omitempty"`
+    LocaleId *string `json:"LocaleId,omitempty"`
 }
 
 type IFieldInsert interface {

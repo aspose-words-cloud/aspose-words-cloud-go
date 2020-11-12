@@ -30,10 +30,10 @@ package models
 // Utility class for Color serialization.
 type XmlColor struct {
     // Utility class for Color serialization.
-    Alpha int32 `json:"Alpha,omitempty"`
+    Alpha *int32 `json:"Alpha,omitempty"`
 
     // Utility class for Color serialization.
-    Web string `json:"Web,omitempty"`
+    Web *string `json:"Web,omitempty"`
 }
 
 type IXmlColor interface {

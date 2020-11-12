@@ -33,7 +33,7 @@ type TableLink struct {
     Link *WordsApiLink `json:"Link,omitempty"`
 
     // Table link element.
-    NodeId string `json:"NodeId,omitempty"`
+    NodeId *string `json:"NodeId,omitempty"`
 }
 
 type ITableLink interface {

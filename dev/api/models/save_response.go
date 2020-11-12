@@ -30,7 +30,7 @@ package models
 // Save response.
 type SaveResponse struct {
     // Save response.
-    RequestId string `json:"RequestId,omitempty"`
+    RequestId *string `json:"RequestId,omitempty"`
 
     // Save response.
     SaveResult *SaveResult `json:"SaveResult,omitempty"`

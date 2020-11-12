@@ -33,52 +33,52 @@ type TextSaveOptionsData struct {
     Dml3DEffectsRenderingMode string `json:"Dml3DEffectsRenderingMode,omitempty"`
 
     // Container class for text save options.
-    DmlEffectsRenderingMode string `json:"DmlEffectsRenderingMode,omitempty"`
+    DmlEffectsRenderingMode *string `json:"DmlEffectsRenderingMode,omitempty"`
 
     // Container class for text save options.
-    DmlRenderingMode string `json:"DmlRenderingMode,omitempty"`
+    DmlRenderingMode *string `json:"DmlRenderingMode,omitempty"`
 
     // Container class for text save options.
-    FileName string `json:"FileName,omitempty"`
+    FileName *string `json:"FileName,omitempty"`
 
     // Container class for text save options.
-    SaveFormat string `json:"SaveFormat,omitempty"`
+    SaveFormat *string `json:"SaveFormat,omitempty"`
 
     // Container class for text save options.
-    UpdateFields bool `json:"UpdateFields,omitempty"`
+    UpdateFields *bool `json:"UpdateFields,omitempty"`
 
     // Container class for text save options.
-    UpdateLastPrintedProperty bool `json:"UpdateLastPrintedProperty,omitempty"`
+    UpdateLastPrintedProperty *bool `json:"UpdateLastPrintedProperty,omitempty"`
 
     // Container class for text save options.
-    UpdateLastSavedTimeProperty bool `json:"UpdateLastSavedTimeProperty,omitempty"`
+    UpdateLastSavedTimeProperty *bool `json:"UpdateLastSavedTimeProperty,omitempty"`
 
     // Container class for text save options.
-    UpdateSdtContent bool `json:"UpdateSdtContent,omitempty"`
+    UpdateSdtContent *bool `json:"UpdateSdtContent,omitempty"`
 
     // Container class for text save options.
-    ZipOutput bool `json:"ZipOutput,omitempty"`
+    ZipOutput *bool `json:"ZipOutput,omitempty"`
 
     // Container class for text save options.
-    Encoding string `json:"Encoding,omitempty"`
+    Encoding *string `json:"Encoding,omitempty"`
 
     // Container class for text save options.
     ExportHeadersFootersMode string `json:"ExportHeadersFootersMode,omitempty"`
 
     // Container class for text save options.
-    ForcePageBreaks bool `json:"ForcePageBreaks,omitempty"`
+    ForcePageBreaks *bool `json:"ForcePageBreaks,omitempty"`
 
     // Container class for text save options.
-    ParagraphBreak string `json:"ParagraphBreak,omitempty"`
+    ParagraphBreak *string `json:"ParagraphBreak,omitempty"`
 
     // Container class for text save options.
-    AddBidiMarks bool `json:"AddBidiMarks,omitempty"`
+    AddBidiMarks *bool `json:"AddBidiMarks,omitempty"`
 
     // Container class for text save options.
-    PreserveTableLayout bool `json:"PreserveTableLayout,omitempty"`
+    PreserveTableLayout *bool `json:"PreserveTableLayout,omitempty"`
 
     // Container class for text save options.
-    SimplifyListLabels bool `json:"SimplifyListLabels,omitempty"`
+    SimplifyListLabels *bool `json:"SimplifyListLabels,omitempty"`
 }
 
 type ITextSaveOptionsData interface {

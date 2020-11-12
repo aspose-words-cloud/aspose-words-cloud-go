@@ -29,6 +29,7 @@
 package api_test
 
 import (
+    "github.com/stretchr/testify/assert"
     "testing"
     "github.com/aspose-words-cloud/aspose-words-cloud-go/dev/api/models"
 )
@@ -44,18 +45,20 @@ func Test_Run_UpdateRun(t *testing.T) {
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
     requestRun := models.RunUpdate{
-        Text: "run with text",
+        Text: ToStringPointer("run with text"),
     }
 
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.UpdateRun(ctx, remoteFileName, requestRun, "paragraphs/1", int32(0), options)
+    actual, _, err := client.WordsApi.UpdateRun(ctx, remoteFileName, requestRun, "paragraphs/1", int32(0), options)
 
     if err != nil {
         t.Error(err)
     }
 
+    assert.NotNil(t, actual.Run, "Validate UpdateRun response.");
+    assert.Equal(t, "run with text", *actual.Run.Text, "Validate UpdateRun response.");
 }
 
 // Test for adding run.
@@ -69,18 +72,21 @@ func Test_Run_InsertRun(t *testing.T) {
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
     requestRun := models.RunInsert{
-        Text: "run with text",
+        Text: ToStringPointer("run with text"),
     }
 
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.InsertRun(ctx, remoteFileName, "paragraphs/1", requestRun, options)
+    actual, _, err := client.WordsApi.InsertRun(ctx, remoteFileName, "paragraphs/1", requestRun, options)
 
     if err != nil {
         t.Error(err)
     }
 
+    assert.NotNil(t, actual.Run, "Validate InsertRun response.");
+    assert.Equal(t, "run with text", *actual.Run.Text, "Validate InsertRun response.");
+    assert.Equal(t, "0.0.1.3", *actual.Run.NodeId, "Validate InsertRun response.");
 }
 
 // Test for deleting run.

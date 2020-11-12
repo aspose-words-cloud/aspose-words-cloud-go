@@ -30,19 +30,19 @@ package models
 // Class for document replace text request building.
 type ReplaceTextParameters struct {
     // Class for document replace text request building.
-    IsMatchCase bool `json:"IsMatchCase,omitempty"`
+    IsMatchCase *bool `json:"IsMatchCase,omitempty"`
 
     // Class for document replace text request building.
-    IsMatchWholeWord bool `json:"IsMatchWholeWord,omitempty"`
+    IsMatchWholeWord *bool `json:"IsMatchWholeWord,omitempty"`
 
     // Class for document replace text request building.
-    IsOldValueRegex bool `json:"IsOldValueRegex,omitempty"`
+    IsOldValueRegex *bool `json:"IsOldValueRegex,omitempty"`
 
     // Class for document replace text request building.
-    NewValue string `json:"NewValue,omitempty"`
+    NewValue *string `json:"NewValue,omitempty"`
 
     // Class for document replace text request building.
-    OldValue string `json:"OldValue,omitempty"`
+    OldValue *string `json:"OldValue,omitempty"`
 }
 
 type IReplaceTextParameters interface {

@@ -36,34 +36,34 @@ type TableProperties struct {
     Alignment string `json:"Alignment,omitempty"`
 
     // Represents the table properties.
-    AllowAutoFit bool `json:"AllowAutoFit,omitempty"`
+    AllowAutoFit *bool `json:"AllowAutoFit,omitempty"`
 
     // Represents the table properties.
-    Bidi bool `json:"Bidi,omitempty"`
+    Bidi *bool `json:"Bidi,omitempty"`
 
     // Represents the table properties.
-    BottomPadding float64 `json:"BottomPadding,omitempty"`
+    BottomPadding *float64 `json:"BottomPadding,omitempty"`
 
     // Represents the table properties.
-    CellSpacing float64 `json:"CellSpacing,omitempty"`
+    CellSpacing *float64 `json:"CellSpacing,omitempty"`
 
     // Represents the table properties.
-    LeftIndent float64 `json:"LeftIndent,omitempty"`
+    LeftIndent *float64 `json:"LeftIndent,omitempty"`
 
     // Represents the table properties.
-    LeftPadding float64 `json:"LeftPadding,omitempty"`
+    LeftPadding *float64 `json:"LeftPadding,omitempty"`
 
     // Represents the table properties.
     PreferredWidth *PreferredWidth `json:"PreferredWidth,omitempty"`
 
     // Represents the table properties.
-    RightPadding float64 `json:"RightPadding,omitempty"`
+    RightPadding *float64 `json:"RightPadding,omitempty"`
 
     // Represents the table properties.
     StyleIdentifier string `json:"StyleIdentifier,omitempty"`
 
     // Represents the table properties.
-    StyleName string `json:"StyleName,omitempty"`
+    StyleName *string `json:"StyleName,omitempty"`
 
     // Represents the table properties.
     StyleOptions string `json:"StyleOptions,omitempty"`
@@ -72,7 +72,7 @@ type TableProperties struct {
     TextWrapping string `json:"TextWrapping,omitempty"`
 
     // Represents the table properties.
-    TopPadding float64 `json:"TopPadding,omitempty"`
+    TopPadding *float64 `json:"TopPadding,omitempty"`
 }
 
 type ITableProperties interface {

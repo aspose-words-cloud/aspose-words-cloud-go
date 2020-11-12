@@ -29,6 +29,7 @@
 package api_test
 
 import (
+    "github.com/stretchr/testify/assert"
     "testing"
     "github.com/aspose-words-cloud/aspose-words-cloud-go/dev/api/models"
 )
@@ -48,12 +49,13 @@ func Test_Range_GetRangeText(t *testing.T) {
         "rangeEndIdentifier": "id0.0.1",
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetRangeText(ctx, remoteFileName, "id0.0.0", options)
+    actual, _, err := client.WordsApi.GetRangeText(ctx, remoteFileName, "id0.0.0", options)
 
     if err != nil {
         t.Error(err)
     }
 
+    assert.Equal(t, "This is HEADER ", *actual.Text, "Validate GetRangeText response.");
 }
 
 // Test for removing the text for range.
@@ -71,12 +73,14 @@ func Test_Range_RemoveRange(t *testing.T) {
         "rangeEndIdentifier": "id0.0.1",
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.RemoveRange(ctx, remoteFileName, "id0.0.0", options)
+    actual, _, err := client.WordsApi.RemoveRange(ctx, remoteFileName, "id0.0.0", options)
 
     if err != nil {
         t.Error(err)
     }
 
+    assert.NotNil(t, actual.Document, "Validate RemoveRange response.");
+    assert.Equal(t, "TestRemoveRange.docx", *actual.Document.FileName, "Validate RemoveRange response.");
 }
 
 // Test for saving a range as a new document.
@@ -90,19 +94,21 @@ func Test_Range_SaveAsRange(t *testing.T) {
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
     requestDocumentParameters := models.RangeDocument{
-        DocumentName: remoteDataFolder + "/NewDoc.docx",
+        DocumentName: ToStringPointer(remoteDataFolder + "/NewDoc.docx"),
     }
 
     options := map[string]interface{}{
         "rangeEndIdentifier": "id0.0.1",
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.SaveAsRange(ctx, remoteFileName, "id0.0.0", requestDocumentParameters, options)
+    actual, _, err := client.WordsApi.SaveAsRange(ctx, remoteFileName, "id0.0.0", requestDocumentParameters, options)
 
     if err != nil {
         t.Error(err)
     }
 
+    assert.NotNil(t, actual.Document, "Validate SaveAsRange response.");
+    assert.Equal(t, "NewDoc.docx", *actual.Document.FileName, "Validate SaveAsRange response.");
 }
 
 // Test for replacing text in range.
@@ -116,17 +122,19 @@ func Test_Range_ReplaceWithText(t *testing.T) {
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
     requestRangeText := models.ReplaceRange{
-        Text: "Replaced header",
+        Text: ToStringPointer("Replaced header"),
     }
 
     options := map[string]interface{}{
         "rangeEndIdentifier": "id0.0.1",
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.ReplaceWithText(ctx, remoteFileName, "id0.0.0", requestRangeText, options)
+    actual, _, err := client.WordsApi.ReplaceWithText(ctx, remoteFileName, "id0.0.0", requestRangeText, options)
 
     if err != nil {
         t.Error(err)
     }
 
+    assert.NotNil(t, actual.Document, "Validate ReplaceWithText response.");
+    assert.Equal(t, "TestReplaceWithText.docx", *actual.Document.FileName, "Validate ReplaceWithText response.");
 }

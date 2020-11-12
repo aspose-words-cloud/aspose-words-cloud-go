@@ -30,7 +30,7 @@ package models
 // Response for Api error.
 type WordsApiErrorResponse struct {
     // Response for Api error.
-    RequestId string `json:"RequestId,omitempty"`
+    RequestId *string `json:"RequestId,omitempty"`
 
     // Response for Api error.
     Error_ *ApiError `json:"Error,omitempty"`

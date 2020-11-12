@@ -32,19 +32,19 @@ package models
 type Link struct {
     // Provides information for the object link.
     // This is supposed to be an atom:link, therefore it should have all attributes specified here http://tools.ietf.org/html/rfc4287#section-4.2.7.
-    Href string `json:"Href,omitempty"`
+    Href *string `json:"Href,omitempty"`
 
     // Provides information for the object link.
     // This is supposed to be an atom:link, therefore it should have all attributes specified here http://tools.ietf.org/html/rfc4287#section-4.2.7.
-    Rel string `json:"Rel,omitempty"`
+    Rel *string `json:"Rel,omitempty"`
 
     // Provides information for the object link.
     // This is supposed to be an atom:link, therefore it should have all attributes specified here http://tools.ietf.org/html/rfc4287#section-4.2.7.
-    Title string `json:"Title,omitempty"`
+    Title *string `json:"Title,omitempty"`
 
     // Provides information for the object link.
     // This is supposed to be an atom:link, therefore it should have all attributes specified here http://tools.ietf.org/html/rfc4287#section-4.2.7.
-    Type string `json:"Type,omitempty"`
+    Type *string `json:"Type,omitempty"`
 }
 
 type ILink interface {

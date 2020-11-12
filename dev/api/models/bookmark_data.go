@@ -30,10 +30,10 @@ package models
 // DTO for bookmark updating.
 type BookmarkData struct {
     // DTO for bookmark updating.
-    Name string `json:"Name,omitempty"`
+    Name *string `json:"Name,omitempty"`
 
     // DTO for bookmark updating.
-    Text string `json:"Text,omitempty"`
+    Text *string `json:"Text,omitempty"`
 }
 
 type IBookmarkData interface {

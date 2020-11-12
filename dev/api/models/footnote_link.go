@@ -33,7 +33,7 @@ type FootnoteLink struct {
     Link *WordsApiLink `json:"Link,omitempty"`
 
     // Footnote link.
-    NodeId string `json:"NodeId,omitempty"`
+    NodeId *string `json:"NodeId,omitempty"`
 }
 
 type IFootnoteLink interface {

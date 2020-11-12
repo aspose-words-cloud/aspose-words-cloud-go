@@ -33,34 +33,34 @@ type FormField struct {
     Link *WordsApiLink `json:"Link,omitempty"`
 
     // FromField.
-    NodeId string `json:"NodeId,omitempty"`
+    NodeId *string `json:"NodeId,omitempty"`
 
     // FromField.
-    CalculateOnExit bool `json:"CalculateOnExit,omitempty"`
+    CalculateOnExit *bool `json:"CalculateOnExit,omitempty"`
 
     // FromField.
-    Enabled bool `json:"Enabled,omitempty"`
+    Enabled *bool `json:"Enabled,omitempty"`
 
     // FromField.
-    EntryMacro string `json:"EntryMacro,omitempty"`
+    EntryMacro *string `json:"EntryMacro,omitempty"`
 
     // FromField.
-    ExitMacro string `json:"ExitMacro,omitempty"`
+    ExitMacro *string `json:"ExitMacro,omitempty"`
 
     // FromField.
-    HelpText string `json:"HelpText,omitempty"`
+    HelpText *string `json:"HelpText,omitempty"`
 
     // FromField.
-    Name string `json:"Name,omitempty"`
+    Name *string `json:"Name,omitempty"`
 
     // FromField.
-    OwnHelp bool `json:"OwnHelp,omitempty"`
+    OwnHelp *bool `json:"OwnHelp,omitempty"`
 
     // FromField.
-    OwnStatus bool `json:"OwnStatus,omitempty"`
+    OwnStatus *bool `json:"OwnStatus,omitempty"`
 
     // FromField.
-    StatusText string `json:"StatusText,omitempty"`
+    StatusText *string `json:"StatusText,omitempty"`
 }
 
 type IFormField interface {

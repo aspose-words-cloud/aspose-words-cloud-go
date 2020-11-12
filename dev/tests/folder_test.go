@@ -29,6 +29,7 @@
 package api_test
 
 import (
+    "github.com/stretchr/testify/assert"
     "testing"
 )
 
@@ -79,12 +80,13 @@ func Test_Folder_GetFilesList(t *testing.T) {
 
     options := map[string]interface{}{
     }
-    _, _, err := client.WordsApi.GetFilesList(ctx, remoteDataFolder, options)
+    actual, _, err := client.WordsApi.GetFilesList(ctx, remoteDataFolder, options)
 
     if err != nil {
         t.Error(err)
     }
 
+    assert.NotNil(t, actual.Value, "Validate GetFilesList response.");
 }
 
 // Test for copy folder.

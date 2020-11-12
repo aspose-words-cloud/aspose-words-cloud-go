@@ -33,16 +33,16 @@ type Field struct {
     Link *WordsApiLink `json:"Link,omitempty"`
 
     // Field.
-    NodeId string `json:"NodeId,omitempty"`
+    NodeId *string `json:"NodeId,omitempty"`
 
     // Field.
-    FieldCode string `json:"FieldCode,omitempty"`
+    FieldCode *string `json:"FieldCode,omitempty"`
 
     // Field.
-    LocaleId string `json:"LocaleId,omitempty"`
+    LocaleId *string `json:"LocaleId,omitempty"`
 
     // Field.
-    Result string `json:"Result,omitempty"`
+    Result *string `json:"Result,omitempty"`
 }
 
 type IField interface {

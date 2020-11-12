@@ -33,7 +33,7 @@ type TableCell struct {
     Link *WordsApiLink `json:"Link,omitempty"`
 
     // Table cell element.
-    NodeId string `json:"NodeId,omitempty"`
+    NodeId *string `json:"NodeId,omitempty"`
 
     // Table cell element.
     ChildNodes []NodeLink `json:"ChildNodes,omitempty"`

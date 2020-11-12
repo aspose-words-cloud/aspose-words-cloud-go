@@ -33,10 +33,10 @@ type Hyperlink struct {
     Link *WordsApiLink `json:"Link,omitempty"`
 
     // Hyperlink element.
-    DisplayText string `json:"DisplayText,omitempty"`
+    DisplayText *string `json:"DisplayText,omitempty"`
 
     // Hyperlink element.
-    Value string `json:"Value,omitempty"`
+    Value *string `json:"Value,omitempty"`
 }
 
 type IHyperlink interface {

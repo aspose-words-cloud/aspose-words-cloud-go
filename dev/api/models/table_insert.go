@@ -30,13 +30,13 @@ package models
 // Table element.
 type TableInsert struct {
     // Table element.
-    ColumnsCount int32 `json:"ColumnsCount,omitempty"`
+    ColumnsCount *int32 `json:"ColumnsCount,omitempty"`
 
     // Table element.
     Position *DocumentPosition `json:"Position,omitempty"`
 
     // Table element.
-    RowsCount int32 `json:"RowsCount,omitempty"`
+    RowsCount *int32 `json:"RowsCount,omitempty"`
 }
 
 type ITableInsert interface {

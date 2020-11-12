@@ -34,13 +34,13 @@ import (
 // Container class for compare documents.
 type CompareData struct {
     // Container class for compare documents.
-    Author string `json:"Author,omitempty"`
+    Author *string `json:"Author,omitempty"`
 
     // Container class for compare documents.
     CompareOptions *CompareOptions `json:"CompareOptions,omitempty"`
 
     // Container class for compare documents.
-    ComparingWithDocument string `json:"ComparingWithDocument,omitempty"`
+    ComparingWithDocument *string `json:"ComparingWithDocument,omitempty"`
 
     // Container class for compare documents.
     DateTime time.Time `json:"DateTime,omitempty"`

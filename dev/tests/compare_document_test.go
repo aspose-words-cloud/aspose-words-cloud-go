@@ -29,6 +29,7 @@
 package api_test
 
 import (
+    "github.com/stretchr/testify/assert"
     "testing"
     "github.com/aspose-words-cloud/aspose-words-cloud-go/dev/api/models"
 )
@@ -48,8 +49,8 @@ func Test_CompareDocument_CompareDocument(t *testing.T) {
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFolder + "/" + localName2), remoteFolder + "/" + remoteName2)
 
     requestCompareData := models.CompareData{
-        Author: "author",
-        ComparingWithDocument: remoteFolder + "/" + remoteName2,
+        Author: ToStringPointer("author"),
+        ComparingWithDocument: ToStringPointer(remoteFolder + "/" + remoteName2),
         DateTime: CreateTime(2015, 10, 26, 0, 0, 0),
     }
 
@@ -57,10 +58,12 @@ func Test_CompareDocument_CompareDocument(t *testing.T) {
         "folder": remoteFolder,
         "destFileName": baseTestOutPath + "/TestCompareDocumentOut.doc",
     }
-    _, _, err := client.WordsApi.CompareDocument(ctx, remoteName1, requestCompareData, options)
+    actual, _, err := client.WordsApi.CompareDocument(ctx, remoteName1, requestCompareData, options)
 
     if err != nil {
         t.Error(err)
     }
 
+    assert.NotNil(t, actual.Document, "Validate CompareDocument response.");
+    assert.Equal(t, "TestCompareDocumentOut.doc", *actual.Document.FileName, "Validate CompareDocument response.");
 }

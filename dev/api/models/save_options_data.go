@@ -33,31 +33,31 @@ type SaveOptionsData struct {
     Dml3DEffectsRenderingMode string `json:"Dml3DEffectsRenderingMode,omitempty"`
 
     // base container class for save options data.
-    DmlEffectsRenderingMode string `json:"DmlEffectsRenderingMode,omitempty"`
+    DmlEffectsRenderingMode *string `json:"DmlEffectsRenderingMode,omitempty"`
 
     // base container class for save options data.
-    DmlRenderingMode string `json:"DmlRenderingMode,omitempty"`
+    DmlRenderingMode *string `json:"DmlRenderingMode,omitempty"`
 
     // base container class for save options data.
-    FileName string `json:"FileName,omitempty"`
+    FileName *string `json:"FileName,omitempty"`
 
     // base container class for save options data.
-    SaveFormat string `json:"SaveFormat,omitempty"`
+    SaveFormat *string `json:"SaveFormat,omitempty"`
 
     // base container class for save options data.
-    UpdateFields bool `json:"UpdateFields,omitempty"`
+    UpdateFields *bool `json:"UpdateFields,omitempty"`
 
     // base container class for save options data.
-    UpdateLastPrintedProperty bool `json:"UpdateLastPrintedProperty,omitempty"`
+    UpdateLastPrintedProperty *bool `json:"UpdateLastPrintedProperty,omitempty"`
 
     // base container class for save options data.
-    UpdateLastSavedTimeProperty bool `json:"UpdateLastSavedTimeProperty,omitempty"`
+    UpdateLastSavedTimeProperty *bool `json:"UpdateLastSavedTimeProperty,omitempty"`
 
     // base container class for save options data.
-    UpdateSdtContent bool `json:"UpdateSdtContent,omitempty"`
+    UpdateSdtContent *bool `json:"UpdateSdtContent,omitempty"`
 
     // base container class for save options data.
-    ZipOutput bool `json:"ZipOutput,omitempty"`
+    ZipOutput *bool `json:"ZipOutput,omitempty"`
 }
 
 type ISaveOptionsData interface {

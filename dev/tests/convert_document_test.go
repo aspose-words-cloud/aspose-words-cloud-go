@@ -29,6 +29,7 @@
 package api_test
 
 import (
+    "github.com/stretchr/testify/assert"
     "testing"
     "github.com/aspose-words-cloud/aspose-words-cloud-go/dev/api/models"
 )
@@ -44,19 +45,21 @@ func Test_ConvertDocument_SaveAs(t *testing.T) {
     UploadNextFileToStorage(t, ctx, client, GetLocalFile("Common/" + localName), remoteFolder + "/" + remoteName)
 
     requestSaveOptionsData := models.SaveOptionsData{
-        SaveFormat: "pdf",
-        FileName: baseTestOutPath + "/TestSaveAs.pdf",
+        SaveFormat: ToStringPointer("pdf"),
+        FileName: ToStringPointer(baseTestOutPath + "/TestSaveAs.pdf"),
     }
 
     options := map[string]interface{}{
         "folder": remoteFolder,
     }
-    _, _, err := client.WordsApi.SaveAs(ctx, remoteName, requestSaveOptionsData, options)
+    actual, _, err := client.WordsApi.SaveAs(ctx, remoteName, requestSaveOptionsData, options)
 
     if err != nil {
         t.Error(err)
     }
 
+    assert.NotNil(t, actual.SaveResult, "Validate SaveAs response.");
+    assert.NotNil(t, actual.SaveResult.DestDocument, "Validate SaveAs response.");
 }
 
 // Test for converting document to one of the available formats.
@@ -71,19 +74,21 @@ func Test_ConvertDocument_SaveAsDocx(t *testing.T) {
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFolder + "/" + localName), remoteFolder + "/" + remoteName)
 
     requestSaveOptionsData := models.SaveOptionsData{
-        SaveFormat: "docx",
-        FileName: baseTestOutPath + "/TestSaveAsFromPdfToDoc.docx",
+        SaveFormat: ToStringPointer("docx"),
+        FileName: ToStringPointer(baseTestOutPath + "/TestSaveAsFromPdfToDoc.docx"),
     }
 
     options := map[string]interface{}{
         "folder": remoteFolder,
     }
-    _, _, err := client.WordsApi.SaveAs(ctx, remoteName, requestSaveOptionsData, options)
+    actual, _, err := client.WordsApi.SaveAs(ctx, remoteName, requestSaveOptionsData, options)
 
     if err != nil {
         t.Error(err)
     }
 
+    assert.NotNil(t, actual.SaveResult, "Validate SaveAsDocx response.");
+    assert.NotNil(t, actual.SaveResult.DestDocument, "Validate SaveAsDocx response.");
 }
 
 // Test for converting document to one of the available formats.
@@ -97,19 +102,21 @@ func Test_ConvertDocument_SaveAsTiff(t *testing.T) {
     UploadNextFileToStorage(t, ctx, client, GetLocalFile("Common/" + localName), remoteFolder + "/" + remoteName)
 
     requestSaveOptions := models.TiffSaveOptionsData{
-        SaveFormat: "tiff",
-        FileName: baseTestOutPath + "/abc.tiff",
+        SaveFormat: ToStringPointer("tiff"),
+        FileName: ToStringPointer(baseTestOutPath + "/abc.tiff"),
     }
 
     options := map[string]interface{}{
         "folder": remoteFolder,
     }
-    _, _, err := client.WordsApi.SaveAsTiff(ctx, remoteName, requestSaveOptions, options)
+    actual, _, err := client.WordsApi.SaveAsTiff(ctx, remoteName, requestSaveOptions, options)
 
     if err != nil {
         t.Error(err)
     }
 
+    assert.NotNil(t, actual.SaveResult, "Validate SaveAsTiff response.");
+    assert.NotNil(t, actual.SaveResult.DestDocument, "Validate SaveAsTiff response.");
 }
 
 // A test for ConvertDocument.

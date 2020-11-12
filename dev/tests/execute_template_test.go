@@ -29,6 +29,7 @@
 package api_test
 
 import (
+    "github.com/stretchr/testify/assert"
     "testing"
 )
 
@@ -50,12 +51,14 @@ func Test_ExecuteTemplate_ExecuteTemplate(t *testing.T) {
         "folder": remoteDataFolder,
         "destFileName": baseTestOutPath + "/" + remoteFileName,
     }
-    _, _, err := client.WordsApi.ExecuteMailMerge(ctx, remoteFileName, options)
+    actual, _, err := client.WordsApi.ExecuteMailMerge(ctx, remoteFileName, options)
 
     if err != nil {
         t.Error(err)
     }
 
+    assert.NotNil(t, actual.Document, "Validate ExecuteTemplate response.");
+    assert.Equal(t, "TestExecuteTemplate.docx", *actual.Document.FileName, "Validate ExecuteTemplate response.");
 }
 
 // Test for execute template online.

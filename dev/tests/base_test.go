@@ -129,6 +129,22 @@ func PrepareTest(t *testing.T, config *models.Configuration) (apiClient *api.API
     return client, context
 }
 
+func ToBoolPointer(x bool) *bool {
+    return &x
+}
+
+func ToFloat64Pointer(x float64) *float64 {
+    return &x
+}
+
+func ToIn32Pointer(x int32) *int32 {
+    return &x
+}
+
+func ToStringPointer(x string) *string {
+    return &x
+}
+
 func UploadFileToStorage(t *testing.T, fileName string, path string) (*api.APIClient, context.Context) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
@@ -264,4 +280,8 @@ func TestCreateWordsApi(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
+}
+
+func StringHasPrefix(str string, prefix string) bool {
+    return strings.HasPrefix(str, prefix)
 }

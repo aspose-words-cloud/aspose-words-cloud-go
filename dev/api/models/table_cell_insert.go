@@ -30,7 +30,7 @@ package models
 // Table cell element.
 type TableCellInsert struct {
     // Table cell element.
-    InsertAfter int32 `json:"InsertAfter,omitempty"`
+    InsertAfter *int32 `json:"InsertAfter,omitempty"`
 }
 
 type ITableCellInsert interface {

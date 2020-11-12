@@ -33,7 +33,7 @@ type OfficeMathLink struct {
     Link *WordsApiLink `json:"Link,omitempty"`
 
     // OfficeMath object link element.
-    NodeId string `json:"NodeId,omitempty"`
+    NodeId *string `json:"NodeId,omitempty"`
 }
 
 type IOfficeMathLink interface {

@@ -30,10 +30,10 @@ package models
 // container class for individual bookmarks outline level.
 type BookmarksOutlineLevelData struct {
     // container class for individual bookmarks outline level.
-    BookmarksOutlineLevel int32 `json:"BookmarksOutlineLevel,omitempty"`
+    BookmarksOutlineLevel *int32 `json:"BookmarksOutlineLevel,omitempty"`
 
     // container class for individual bookmarks outline level.
-    Name string `json:"Name,omitempty"`
+    Name *string `json:"Name,omitempty"`
 }
 
 type IBookmarksOutlineLevelData interface {

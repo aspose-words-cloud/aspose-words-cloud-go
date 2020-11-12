@@ -32,11 +32,11 @@ package models
 type RangeTextResponse struct {
     // This response should be returned by the service when handling:
     // GET https://api.aspose.cloud/v4.0/words/Test.doc/range/{0}/{1}/.
-    RequestId string `json:"RequestId,omitempty"`
+    RequestId *string `json:"RequestId,omitempty"`
 
     // This response should be returned by the service when handling:
     // GET https://api.aspose.cloud/v4.0/words/Test.doc/range/{0}/{1}/.
-    Text string `json:"Text,omitempty"`
+    Text *string `json:"Text,omitempty"`
 }
 
 type IRangeTextResponse interface {

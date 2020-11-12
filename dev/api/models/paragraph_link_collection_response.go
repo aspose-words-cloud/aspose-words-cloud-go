@@ -32,7 +32,7 @@ package models
 type ParagraphLinkCollectionResponse struct {
     // This response should be returned by the service when handling:
     // GET https://api.aspose.cloud/v4.0/words/Test.doc/paragraphs.
-    RequestId string `json:"RequestId,omitempty"`
+    RequestId *string `json:"RequestId,omitempty"`
 
     // This response should be returned by the service when handling:
     // GET https://api.aspose.cloud/v4.0/words/Test.doc/paragraphs.

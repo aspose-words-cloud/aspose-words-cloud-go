@@ -33,127 +33,127 @@ type PdfSaveOptionsData struct {
     Dml3DEffectsRenderingMode string `json:"Dml3DEffectsRenderingMode,omitempty"`
 
     // container class for pdf save options.
-    DmlEffectsRenderingMode string `json:"DmlEffectsRenderingMode,omitempty"`
+    DmlEffectsRenderingMode *string `json:"DmlEffectsRenderingMode,omitempty"`
 
     // container class for pdf save options.
-    DmlRenderingMode string `json:"DmlRenderingMode,omitempty"`
+    DmlRenderingMode *string `json:"DmlRenderingMode,omitempty"`
 
     // container class for pdf save options.
-    FileName string `json:"FileName,omitempty"`
+    FileName *string `json:"FileName,omitempty"`
 
     // container class for pdf save options.
-    SaveFormat string `json:"SaveFormat,omitempty"`
+    SaveFormat *string `json:"SaveFormat,omitempty"`
 
     // container class for pdf save options.
-    UpdateFields bool `json:"UpdateFields,omitempty"`
+    UpdateFields *bool `json:"UpdateFields,omitempty"`
 
     // container class for pdf save options.
-    UpdateLastPrintedProperty bool `json:"UpdateLastPrintedProperty,omitempty"`
+    UpdateLastPrintedProperty *bool `json:"UpdateLastPrintedProperty,omitempty"`
 
     // container class for pdf save options.
-    UpdateLastSavedTimeProperty bool `json:"UpdateLastSavedTimeProperty,omitempty"`
+    UpdateLastSavedTimeProperty *bool `json:"UpdateLastSavedTimeProperty,omitempty"`
 
     // container class for pdf save options.
-    UpdateSdtContent bool `json:"UpdateSdtContent,omitempty"`
+    UpdateSdtContent *bool `json:"UpdateSdtContent,omitempty"`
 
     // container class for pdf save options.
-    ZipOutput bool `json:"ZipOutput,omitempty"`
+    ZipOutput *bool `json:"ZipOutput,omitempty"`
 
     // container class for pdf save options.
-    ColorMode string `json:"ColorMode,omitempty"`
+    ColorMode *string `json:"ColorMode,omitempty"`
 
     // container class for pdf save options.
-    JpegQuality int32 `json:"JpegQuality,omitempty"`
+    JpegQuality *int32 `json:"JpegQuality,omitempty"`
 
     // container class for pdf save options.
     MetafileRenderingOptions *MetafileRenderingOptionsData `json:"MetafileRenderingOptions,omitempty"`
 
     // container class for pdf save options.
-    NumeralFormat string `json:"NumeralFormat,omitempty"`
+    NumeralFormat *string `json:"NumeralFormat,omitempty"`
 
     // container class for pdf save options.
-    OptimizeOutput bool `json:"OptimizeOutput,omitempty"`
+    OptimizeOutput *bool `json:"OptimizeOutput,omitempty"`
 
     // container class for pdf save options.
-    PageCount int32 `json:"PageCount,omitempty"`
+    PageCount *int32 `json:"PageCount,omitempty"`
 
     // container class for pdf save options.
-    PageIndex int32 `json:"PageIndex,omitempty"`
+    PageIndex *int32 `json:"PageIndex,omitempty"`
 
     // container class for pdf save options.
-    Compliance string `json:"Compliance,omitempty"`
+    Compliance *string `json:"Compliance,omitempty"`
 
     // container class for pdf save options.
-    CreateNoteHyperlinks bool `json:"CreateNoteHyperlinks,omitempty"`
+    CreateNoteHyperlinks *bool `json:"CreateNoteHyperlinks,omitempty"`
 
     // container class for pdf save options.
-    CustomPropertiesExport string `json:"CustomPropertiesExport,omitempty"`
+    CustomPropertiesExport *string `json:"CustomPropertiesExport,omitempty"`
 
     // container class for pdf save options.
     DigitalSignatureDetails *PdfDigitalSignatureDetailsData `json:"DigitalSignatureDetails,omitempty"`
 
     // container class for pdf save options.
-    DisplayDocTitle bool `json:"DisplayDocTitle,omitempty"`
+    DisplayDocTitle *bool `json:"DisplayDocTitle,omitempty"`
 
     // container class for pdf save options.
     DownsampleOptions *DownsampleOptionsData `json:"DownsampleOptions,omitempty"`
 
     // container class for pdf save options.
-    EmbedFullFonts bool `json:"EmbedFullFonts,omitempty"`
+    EmbedFullFonts *bool `json:"EmbedFullFonts,omitempty"`
 
     // container class for pdf save options.
     EncryptionDetails *PdfEncryptionDetailsData `json:"EncryptionDetails,omitempty"`
 
     // container class for pdf save options.
-    EscapeUri bool `json:"EscapeUri,omitempty"`
+    EscapeUri *bool `json:"EscapeUri,omitempty"`
 
     // container class for pdf save options.
-    ExportDocumentStructure bool `json:"ExportDocumentStructure,omitempty"`
+    ExportDocumentStructure *bool `json:"ExportDocumentStructure,omitempty"`
 
     // container class for pdf save options.
-    FontEmbeddingMode string `json:"FontEmbeddingMode,omitempty"`
+    FontEmbeddingMode *string `json:"FontEmbeddingMode,omitempty"`
 
     // container class for pdf save options.
     HeaderFooterBookmarksExportMode string `json:"HeaderFooterBookmarksExportMode,omitempty"`
 
     // container class for pdf save options.
-    ImageColorSpaceExportMode string `json:"ImageColorSpaceExportMode,omitempty"`
+    ImageColorSpaceExportMode *string `json:"ImageColorSpaceExportMode,omitempty"`
 
     // container class for pdf save options.
-    ImageCompression string `json:"ImageCompression,omitempty"`
+    ImageCompression *string `json:"ImageCompression,omitempty"`
 
     // container class for pdf save options.
-    InterpolateImages bool `json:"InterpolateImages,omitempty"`
+    InterpolateImages *bool `json:"InterpolateImages,omitempty"`
 
     // container class for pdf save options.
-    OpenHyperlinksInNewWindow bool `json:"OpenHyperlinksInNewWindow,omitempty"`
+    OpenHyperlinksInNewWindow *bool `json:"OpenHyperlinksInNewWindow,omitempty"`
 
     // container class for pdf save options.
     OutlineOptions *OutlineOptionsData `json:"OutlineOptions,omitempty"`
 
     // container class for pdf save options.
-    PageMode string `json:"PageMode,omitempty"`
+    PageMode *string `json:"PageMode,omitempty"`
 
     // container class for pdf save options.
-    PreblendImages bool `json:"PreblendImages,omitempty"`
+    PreblendImages *bool `json:"PreblendImages,omitempty"`
 
     // container class for pdf save options.
-    PreserveFormFields bool `json:"PreserveFormFields,omitempty"`
+    PreserveFormFields *bool `json:"PreserveFormFields,omitempty"`
 
     // container class for pdf save options.
-    TextCompression string `json:"TextCompression,omitempty"`
+    TextCompression *string `json:"TextCompression,omitempty"`
 
     // container class for pdf save options.
-    UseBookFoldPrintingSettings bool `json:"UseBookFoldPrintingSettings,omitempty"`
+    UseBookFoldPrintingSettings *bool `json:"UseBookFoldPrintingSettings,omitempty"`
 
     // container class for pdf save options.
-    UseCoreFonts bool `json:"UseCoreFonts,omitempty"`
+    UseCoreFonts *bool `json:"UseCoreFonts,omitempty"`
 
     // container class for pdf save options.
-    ZoomBehavior string `json:"ZoomBehavior,omitempty"`
+    ZoomBehavior *string `json:"ZoomBehavior,omitempty"`
 
     // container class for pdf save options.
-    ZoomFactor int32 `json:"ZoomFactor,omitempty"`
+    ZoomFactor *int32 `json:"ZoomFactor,omitempty"`
 }
 
 type IPdfSaveOptionsData interface {

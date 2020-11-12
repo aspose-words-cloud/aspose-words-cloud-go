@@ -30,7 +30,7 @@ package models
 // This response should be returned by the service when handling:  GET bookmarks.
 type BookmarksResponse struct {
     // This response should be returned by the service when handling:  GET bookmarks.
-    RequestId string `json:"RequestId,omitempty"`
+    RequestId *string `json:"RequestId,omitempty"`
 
     // This response should be returned by the service when handling:  GET bookmarks.
     Bookmarks *Bookmarks `json:"Bookmarks,omitempty"`

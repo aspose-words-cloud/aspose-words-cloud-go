@@ -30,13 +30,13 @@ package models
 // Response for "Replace text" action.
 type ReplaceTextResponse struct {
     // Response for "Replace text" action.
-    RequestId string `json:"RequestId,omitempty"`
+    RequestId *string `json:"RequestId,omitempty"`
 
     // Response for "Replace text" action.
     DocumentLink *FileLink `json:"DocumentLink,omitempty"`
 
     // Response for "Replace text" action.
-    Matches int32 `json:"Matches,omitempty"`
+    Matches *int32 `json:"Matches,omitempty"`
 }
 
 type IReplaceTextResponse interface {

@@ -36,10 +36,10 @@ type FootnoteInsert struct {
     Position *DocumentPosition `json:"Position,omitempty"`
 
     // Footnote for insert.
-    ReferenceMark string `json:"ReferenceMark,omitempty"`
+    ReferenceMark *string `json:"ReferenceMark,omitempty"`
 
     // Footnote for insert.
-    Text string `json:"Text,omitempty"`
+    Text *string `json:"Text,omitempty"`
 }
 
 type IFootnoteInsert interface {

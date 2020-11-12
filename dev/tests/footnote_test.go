@@ -29,6 +29,7 @@
 package api_test
 
 import (
+    "github.com/stretchr/testify/assert"
     "testing"
     "github.com/aspose-words-cloud/aspose-words-cloud-go/dev/api/models"
 )
@@ -45,19 +46,22 @@ func Test_Footnote_InsertFootnote(t *testing.T) {
 
     requestFootnoteDto := models.FootnoteInsert{
         FootnoteType: "Endnote",
-        Text: "test endnote",
+        Text: ToStringPointer("test endnote"),
     }
 
     options := map[string]interface{}{
         "nodePath": "",
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.InsertFootnote(ctx, remoteFileName, requestFootnoteDto, options)
+    actual, _, err := client.WordsApi.InsertFootnote(ctx, remoteFileName, requestFootnoteDto, options)
 
     if err != nil {
         t.Error(err)
     }
 
+    assert.NotNil(t, actual.Footnote, "Validate InsertFootnote response.");
+    assert.Equal(t, "0.1.7.1", *actual.Footnote.NodeId, "Validate InsertFootnote response.");
+    assert.Equal(t, " test endnote" + "\r\n", *actual.Footnote.Text, "Validate InsertFootnote response.");
 }
 
 // Test for adding footnote without node path.
@@ -72,18 +76,21 @@ func Test_Footnote_InsertFootnoteWithoutNodePath(t *testing.T) {
 
     requestFootnoteDto := models.FootnoteInsert{
         FootnoteType: "Endnote",
-        Text: "test endnote",
+        Text: ToStringPointer("test endnote"),
     }
 
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.InsertFootnote(ctx, remoteFileName, requestFootnoteDto, options)
+    actual, _, err := client.WordsApi.InsertFootnote(ctx, remoteFileName, requestFootnoteDto, options)
 
     if err != nil {
         t.Error(err)
     }
 
+    assert.NotNil(t, actual.Footnote, "Validate InsertFootnoteWithoutNodePath response.");
+    assert.Equal(t, "0.1.7.1", *actual.Footnote.NodeId, "Validate InsertFootnoteWithoutNodePath response.");
+    assert.Equal(t, " test endnote" + "\r\n", *actual.Footnote.Text, "Validate InsertFootnoteWithoutNodePath response.");
 }
 
 // Test for deleting footnote.
@@ -146,12 +153,16 @@ func Test_Footnote_GetFootnotes(t *testing.T) {
         "nodePath": "",
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetFootnotes(ctx, remoteFileName, options)
+    actual, _, err := client.WordsApi.GetFootnotes(ctx, remoteFileName, options)
 
     if err != nil {
         t.Error(err)
     }
 
+    assert.NotNil(t, actual.Footnotes, "Validate GetFootnotes response.");
+    assert.NotNil(t, actual.Footnotes.List, "Validate GetFootnotes response.");
+    assert.Equal(t, 6, len(actual.Footnotes.List), "Validate GetFootnotes response.");
+    assert.Equal(t, " Footnote 1." + "\r\n", *actual.Footnotes.List[0].Text, "Validate GetFootnotes response.");
 }
 
 // Test for getting footnotes without node path.
@@ -168,12 +179,16 @@ func Test_Footnote_GetFootnotesWithoutNodePath(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetFootnotes(ctx, remoteFileName, options)
+    actual, _, err := client.WordsApi.GetFootnotes(ctx, remoteFileName, options)
 
     if err != nil {
         t.Error(err)
     }
 
+    assert.NotNil(t, actual.Footnotes, "Validate GetFootnotesWithoutNodePath response.");
+    assert.NotNil(t, actual.Footnotes.List, "Validate GetFootnotesWithoutNodePath response.");
+    assert.Equal(t, 6, len(actual.Footnotes.List), "Validate GetFootnotesWithoutNodePath response.");
+    assert.Equal(t, " Footnote 1." + "\r\n", *actual.Footnotes.List[0].Text, "Validate GetFootnotesWithoutNodePath response.");
 }
 
 // Test for getting footnote.
@@ -191,12 +206,14 @@ func Test_Footnote_GetFootnote(t *testing.T) {
         "nodePath": "",
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetFootnote(ctx, remoteFileName, int32(0), options)
+    actual, _, err := client.WordsApi.GetFootnote(ctx, remoteFileName, int32(0), options)
 
     if err != nil {
         t.Error(err)
     }
 
+    assert.NotNil(t, actual.Footnote, "Validate GetFootnote response.");
+    assert.Equal(t, " Footnote 1." + "\r\n", *actual.Footnote.Text, "Validate GetFootnote response.");
 }
 
 // Test for getting footnote without node path.
@@ -213,12 +230,14 @@ func Test_Footnote_GetFootnoteWithoutNodePath(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetFootnote(ctx, remoteFileName, int32(0), options)
+    actual, _, err := client.WordsApi.GetFootnote(ctx, remoteFileName, int32(0), options)
 
     if err != nil {
         t.Error(err)
     }
 
+    assert.NotNil(t, actual.Footnote, "Validate GetFootnoteWithoutNodePath response.");
+    assert.Equal(t, " Footnote 1." + "\r\n", *actual.Footnote.Text, "Validate GetFootnoteWithoutNodePath response.");
 }
 
 // Test for updating footnote.
@@ -232,19 +251,21 @@ func Test_Footnote_UpdateFootnote(t *testing.T) {
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(footnoteFolder + "/Footnote.doc"), remoteDataFolder + "/" + remoteFileName)
 
     requestFootnoteDto := models.FootnoteUpdate{
-        Text: "new text is here",
+        Text: ToStringPointer("new text is here"),
     }
 
     options := map[string]interface{}{
         "nodePath": "",
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.UpdateFootnote(ctx, remoteFileName, requestFootnoteDto, int32(0), options)
+    actual, _, err := client.WordsApi.UpdateFootnote(ctx, remoteFileName, requestFootnoteDto, int32(0), options)
 
     if err != nil {
         t.Error(err)
     }
 
+    assert.NotNil(t, actual.Footnote, "Validate UpdateFootnote response.");
+    assert.Equal(t, " new text is here" + "\r\n", *actual.Footnote.Text, "Validate UpdateFootnote response.");
 }
 
 // Test for updating footnote without node path.
@@ -258,16 +279,18 @@ func Test_Footnote_UpdateFootnoteWithoutNodePath(t *testing.T) {
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(footnoteFolder + "/Footnote.doc"), remoteDataFolder + "/" + remoteFileName)
 
     requestFootnoteDto := models.FootnoteUpdate{
-        Text: "new text is here",
+        Text: ToStringPointer("new text is here"),
     }
 
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.UpdateFootnote(ctx, remoteFileName, requestFootnoteDto, int32(0), options)
+    actual, _, err := client.WordsApi.UpdateFootnote(ctx, remoteFileName, requestFootnoteDto, int32(0), options)
 
     if err != nil {
         t.Error(err)
     }
 
+    assert.NotNil(t, actual.Footnote, "Validate UpdateFootnoteWithoutNodePath response.");
+    assert.Equal(t, " new text is here" + "\r\n", *actual.Footnote.Text, "Validate UpdateFootnoteWithoutNodePath response.");
 }

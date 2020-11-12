@@ -30,16 +30,16 @@ package models
 // Font info.
 type FontInfo struct {
     // Font info.
-    FilePath string `json:"FilePath,omitempty"`
+    FilePath *string `json:"FilePath,omitempty"`
 
     // Font info.
-    FontFamilyName string `json:"FontFamilyName,omitempty"`
+    FontFamilyName *string `json:"FontFamilyName,omitempty"`
 
     // Font info.
-    FullFontName string `json:"FullFontName,omitempty"`
+    FullFontName *string `json:"FullFontName,omitempty"`
 
     // Font info.
-    Version string `json:"Version,omitempty"`
+    Version *string `json:"Version,omitempty"`
 }
 
 type IFontInfo interface {

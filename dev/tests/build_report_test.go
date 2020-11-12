@@ -29,6 +29,7 @@
 package api_test
 
 import (
+    "github.com/stretchr/testify/assert"
     "testing"
     "github.com/aspose-words-cloud/aspose-words-cloud-go/dev/api/models"
 )
@@ -43,7 +44,7 @@ func Test_BuildReport_BuildReportOnline(t *testing.T) {
 
     requestReportEngineSettings := models.ReportEngineSettings{
         DataSourceType: "Json",
-        DataSourceName: "persons",
+        DataSourceName: ToStringPointer("persons"),
     }
 
     options := map[string]interface{}{
@@ -80,10 +81,12 @@ func Test_BuildReport_BuildReport(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.BuildReport(ctx, remoteFileName, localDataFile, requestReportEngineSettings, options)
+    actual, _, err := client.WordsApi.BuildReport(ctx, remoteFileName, localDataFile, requestReportEngineSettings, options)
 
     if err != nil {
         t.Error(err)
     }
 
+    assert.NotNil(t, actual.Document, "Validate BuildReport response.");
+    assert.Equal(t, "TestBuildReport.docx", *actual.Document.FileName, "Validate BuildReport response.");
 }

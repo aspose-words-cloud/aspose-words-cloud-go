@@ -30,16 +30,16 @@ package models
 // Provides information for the file link.
 type FileLink struct {
     // Provides information for the file link.
-    Href string `json:"Href,omitempty"`
+    Href *string `json:"Href,omitempty"`
 
     // Provides information for the file link.
-    Rel string `json:"Rel,omitempty"`
+    Rel *string `json:"Rel,omitempty"`
 
     // Provides information for the file link.
-    Title string `json:"Title,omitempty"`
+    Title *string `json:"Title,omitempty"`
 
     // Provides information for the file link.
-    Type string `json:"Type,omitempty"`
+    Type *string `json:"Type,omitempty"`
 }
 
 type IFileLink interface {

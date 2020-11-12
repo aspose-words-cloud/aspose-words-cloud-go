@@ -36,7 +36,7 @@ type TabStopBase struct {
     Leader string `json:"Leader,omitempty"`
 
     // Base class for paragraph format tab stop DTO.
-    Position float64 `json:"Position,omitempty"`
+    Position *float64 `json:"Position,omitempty"`
 }
 
 type ITabStopBase interface {

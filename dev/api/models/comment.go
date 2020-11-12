@@ -37,7 +37,7 @@ type Comment struct {
     Link *WordsApiLink `json:"Link,omitempty"`
 
     // Comment.
-    Author string `json:"Author,omitempty"`
+    Author *string `json:"Author,omitempty"`
 
     // Comment.
     Content *StoryChildNodes `json:"Content,omitempty"`
@@ -46,7 +46,7 @@ type Comment struct {
     DateTime time.Time `json:"DateTime,omitempty"`
 
     // Comment.
-    Initial string `json:"Initial,omitempty"`
+    Initial *string `json:"Initial,omitempty"`
 
     // Comment.
     RangeEnd *DocumentPosition `json:"RangeEnd,omitempty"`
@@ -55,7 +55,7 @@ type Comment struct {
     RangeStart *DocumentPosition `json:"RangeStart,omitempty"`
 
     // Comment.
-    Text string `json:"Text,omitempty"`
+    Text *string `json:"Text,omitempty"`
 }
 
 type IComment interface {

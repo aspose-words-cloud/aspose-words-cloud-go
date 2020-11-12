@@ -33,16 +33,16 @@ type DrawingObject struct {
     Link *WordsApiLink `json:"Link,omitempty"`
 
     // Represents Drawing Object DTO.
-    NodeId string `json:"NodeId,omitempty"`
+    NodeId *string `json:"NodeId,omitempty"`
 
     // Represents Drawing Object DTO.
-    Height float64 `json:"Height,omitempty"`
+    Height *float64 `json:"Height,omitempty"`
 
     // Represents Drawing Object DTO.
     ImageDataLink *WordsApiLink `json:"ImageDataLink,omitempty"`
 
     // Represents Drawing Object DTO.
-    Left float64 `json:"Left,omitempty"`
+    Left *float64 `json:"Left,omitempty"`
 
     // Represents Drawing Object DTO.
     OleDataLink *WordsApiLink `json:"OleDataLink,omitempty"`
@@ -57,10 +57,10 @@ type DrawingObject struct {
     RenderLinks []WordsApiLink `json:"RenderLinks,omitempty"`
 
     // Represents Drawing Object DTO.
-    Top float64 `json:"Top,omitempty"`
+    Top *float64 `json:"Top,omitempty"`
 
     // Represents Drawing Object DTO.
-    Width float64 `json:"Width,omitempty"`
+    Width *float64 `json:"Width,omitempty"`
 
     // Represents Drawing Object DTO.
     WrapType string `json:"WrapType,omitempty"`

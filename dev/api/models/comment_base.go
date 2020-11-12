@@ -34,13 +34,13 @@ import (
 // Comment.
 type CommentBase struct {
     // Comment.
-    Author string `json:"Author,omitempty"`
+    Author *string `json:"Author,omitempty"`
 
     // Comment.
     DateTime time.Time `json:"DateTime,omitempty"`
 
     // Comment.
-    Initial string `json:"Initial,omitempty"`
+    Initial *string `json:"Initial,omitempty"`
 
     // Comment.
     RangeEnd *DocumentPosition `json:"RangeEnd,omitempty"`
@@ -49,7 +49,7 @@ type CommentBase struct {
     RangeStart *DocumentPosition `json:"RangeStart,omitempty"`
 
     // Comment.
-    Text string `json:"Text,omitempty"`
+    Text *string `json:"Text,omitempty"`
 }
 
 type ICommentBase interface {

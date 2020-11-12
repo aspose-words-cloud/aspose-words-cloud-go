@@ -30,7 +30,7 @@ package models
 // This response should be returned by the service when handling:  GET documentProperties/{propertyName}.
 type DocumentPropertyResponse struct {
     // This response should be returned by the service when handling:  GET documentProperties/{propertyName}.
-    RequestId string `json:"RequestId,omitempty"`
+    RequestId *string `json:"RequestId,omitempty"`
 
     // This response should be returned by the service when handling:  GET documentProperties/{propertyName}.
     DocumentProperty *DocumentProperty `json:"DocumentProperty,omitempty"`

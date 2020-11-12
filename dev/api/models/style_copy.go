@@ -30,7 +30,7 @@ package models
 // Represents a single document style to insert.
 type StyleCopy struct {
     // Represents a single document style to insert.
-    StyleName string `json:"StyleName,omitempty"`
+    StyleName *string `json:"StyleName,omitempty"`
 }
 
 type IStyleCopy interface {

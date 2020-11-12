@@ -32,7 +32,7 @@ package models
 type RunsResponse struct {
     // This response should be returned by the service when handling:
     // GET https://api.aspose.cloud/v4.0/words/Test.doc/{paragraphPath}/runs.
-    RequestId string `json:"RequestId,omitempty"`
+    RequestId *string `json:"RequestId,omitempty"`
 
     // This response should be returned by the service when handling:
     // GET https://api.aspose.cloud/v4.0/words/Test.doc/{paragraphPath}/runs.

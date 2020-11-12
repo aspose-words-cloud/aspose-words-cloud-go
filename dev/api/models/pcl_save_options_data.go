@@ -33,58 +33,58 @@ type PclSaveOptionsData struct {
     Dml3DEffectsRenderingMode string `json:"Dml3DEffectsRenderingMode,omitempty"`
 
     // Container class for pcl save options.
-    DmlEffectsRenderingMode string `json:"DmlEffectsRenderingMode,omitempty"`
+    DmlEffectsRenderingMode *string `json:"DmlEffectsRenderingMode,omitempty"`
 
     // Container class for pcl save options.
-    DmlRenderingMode string `json:"DmlRenderingMode,omitempty"`
+    DmlRenderingMode *string `json:"DmlRenderingMode,omitempty"`
 
     // Container class for pcl save options.
-    FileName string `json:"FileName,omitempty"`
+    FileName *string `json:"FileName,omitempty"`
 
     // Container class for pcl save options.
-    SaveFormat string `json:"SaveFormat,omitempty"`
+    SaveFormat *string `json:"SaveFormat,omitempty"`
 
     // Container class for pcl save options.
-    UpdateFields bool `json:"UpdateFields,omitempty"`
+    UpdateFields *bool `json:"UpdateFields,omitempty"`
 
     // Container class for pcl save options.
-    UpdateLastPrintedProperty bool `json:"UpdateLastPrintedProperty,omitempty"`
+    UpdateLastPrintedProperty *bool `json:"UpdateLastPrintedProperty,omitempty"`
 
     // Container class for pcl save options.
-    UpdateLastSavedTimeProperty bool `json:"UpdateLastSavedTimeProperty,omitempty"`
+    UpdateLastSavedTimeProperty *bool `json:"UpdateLastSavedTimeProperty,omitempty"`
 
     // Container class for pcl save options.
-    UpdateSdtContent bool `json:"UpdateSdtContent,omitempty"`
+    UpdateSdtContent *bool `json:"UpdateSdtContent,omitempty"`
 
     // Container class for pcl save options.
-    ZipOutput bool `json:"ZipOutput,omitempty"`
+    ZipOutput *bool `json:"ZipOutput,omitempty"`
 
     // Container class for pcl save options.
-    ColorMode string `json:"ColorMode,omitempty"`
+    ColorMode *string `json:"ColorMode,omitempty"`
 
     // Container class for pcl save options.
-    JpegQuality int32 `json:"JpegQuality,omitempty"`
+    JpegQuality *int32 `json:"JpegQuality,omitempty"`
 
     // Container class for pcl save options.
     MetafileRenderingOptions *MetafileRenderingOptionsData `json:"MetafileRenderingOptions,omitempty"`
 
     // Container class for pcl save options.
-    NumeralFormat string `json:"NumeralFormat,omitempty"`
+    NumeralFormat *string `json:"NumeralFormat,omitempty"`
 
     // Container class for pcl save options.
-    OptimizeOutput bool `json:"OptimizeOutput,omitempty"`
+    OptimizeOutput *bool `json:"OptimizeOutput,omitempty"`
 
     // Container class for pcl save options.
-    PageCount int32 `json:"PageCount,omitempty"`
+    PageCount *int32 `json:"PageCount,omitempty"`
 
     // Container class for pcl save options.
-    PageIndex int32 `json:"PageIndex,omitempty"`
+    PageIndex *int32 `json:"PageIndex,omitempty"`
 
     // Container class for pcl save options.
-    FalllbackFontName string `json:"FalllbackFontName,omitempty"`
+    FalllbackFontName *string `json:"FalllbackFontName,omitempty"`
 
     // Container class for pcl save options.
-    RasterizeTransformedElements bool `json:"RasterizeTransformedElements,omitempty"`
+    RasterizeTransformedElements *bool `json:"RasterizeTransformedElements,omitempty"`
 }
 
 type IPclSaveOptionsData interface {

@@ -33,34 +33,34 @@ type WordMLSaveOptionsData struct {
     Dml3DEffectsRenderingMode string `json:"Dml3DEffectsRenderingMode,omitempty"`
 
     // container class for wml save options.
-    DmlEffectsRenderingMode string `json:"DmlEffectsRenderingMode,omitempty"`
+    DmlEffectsRenderingMode *string `json:"DmlEffectsRenderingMode,omitempty"`
 
     // container class for wml save options.
-    DmlRenderingMode string `json:"DmlRenderingMode,omitempty"`
+    DmlRenderingMode *string `json:"DmlRenderingMode,omitempty"`
 
     // container class for wml save options.
-    FileName string `json:"FileName,omitempty"`
+    FileName *string `json:"FileName,omitempty"`
 
     // container class for wml save options.
-    SaveFormat string `json:"SaveFormat,omitempty"`
+    SaveFormat *string `json:"SaveFormat,omitempty"`
 
     // container class for wml save options.
-    UpdateFields bool `json:"UpdateFields,omitempty"`
+    UpdateFields *bool `json:"UpdateFields,omitempty"`
 
     // container class for wml save options.
-    UpdateLastPrintedProperty bool `json:"UpdateLastPrintedProperty,omitempty"`
+    UpdateLastPrintedProperty *bool `json:"UpdateLastPrintedProperty,omitempty"`
 
     // container class for wml save options.
-    UpdateLastSavedTimeProperty bool `json:"UpdateLastSavedTimeProperty,omitempty"`
+    UpdateLastSavedTimeProperty *bool `json:"UpdateLastSavedTimeProperty,omitempty"`
 
     // container class for wml save options.
-    UpdateSdtContent bool `json:"UpdateSdtContent,omitempty"`
+    UpdateSdtContent *bool `json:"UpdateSdtContent,omitempty"`
 
     // container class for wml save options.
-    ZipOutput bool `json:"ZipOutput,omitempty"`
+    ZipOutput *bool `json:"ZipOutput,omitempty"`
 
     // container class for wml save options.
-    PrettyFormat bool `json:"PrettyFormat,omitempty"`
+    PrettyFormat *bool `json:"PrettyFormat,omitempty"`
 }
 
 type IWordMLSaveOptionsData interface {

@@ -29,6 +29,7 @@
 package api_test
 
 import (
+    "github.com/stretchr/testify/assert"
     "testing"
 )
 
@@ -46,12 +47,14 @@ func Test_Hyperlink_GetDocumentHyperlinkByIndex(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetDocumentHyperlinkByIndex(ctx, remoteFileName, int32(0), options)
+    actual, _, err := client.WordsApi.GetDocumentHyperlinkByIndex(ctx, remoteFileName, int32(0), options)
 
     if err != nil {
         t.Error(err)
     }
 
+    assert.NotNil(t, actual.Hyperlink, "Validate GetDocumentHyperlinkByIndex response.");
+    assert.Equal(t, "Aspose", *actual.Hyperlink.DisplayText, "Validate GetDocumentHyperlinkByIndex response.");
 }
 
 // Test for getting hyperlinks.
@@ -68,10 +71,14 @@ func Test_Hyperlink_GetDocumentHyperlinks(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetDocumentHyperlinks(ctx, remoteFileName, options)
+    actual, _, err := client.WordsApi.GetDocumentHyperlinks(ctx, remoteFileName, options)
 
     if err != nil {
         t.Error(err)
     }
 
+    assert.NotNil(t, actual.Hyperlinks, "Validate GetDocumentHyperlinks response.");
+    assert.NotNil(t, actual.Hyperlinks.HyperlinkList, "Validate GetDocumentHyperlinks response.");
+    assert.Equal(t, 2, len(actual.Hyperlinks.HyperlinkList), "Validate GetDocumentHyperlinks response.");
+    assert.Equal(t, "Aspose", *actual.Hyperlinks.HyperlinkList[0].DisplayText, "Validate GetDocumentHyperlinks response.");
 }

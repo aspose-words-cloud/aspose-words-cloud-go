@@ -36,10 +36,10 @@ type FootnoteUpdate struct {
     Position *DocumentPosition `json:"Position,omitempty"`
 
     // Footnote for update.
-    ReferenceMark string `json:"ReferenceMark,omitempty"`
+    ReferenceMark *string `json:"ReferenceMark,omitempty"`
 
     // Footnote for update.
-    Text string `json:"Text,omitempty"`
+    Text *string `json:"Text,omitempty"`
 }
 
 type IFootnoteUpdate interface {

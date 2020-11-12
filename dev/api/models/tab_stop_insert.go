@@ -36,7 +36,7 @@ type TabStopInsert struct {
     Leader string `json:"Leader,omitempty"`
 
     // A DTO to Insert / replace a tab stop.
-    Position float64 `json:"Position,omitempty"`
+    Position *float64 `json:"Position,omitempty"`
 }
 
 type ITabStopInsert interface {

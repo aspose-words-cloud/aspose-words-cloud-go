@@ -34,19 +34,19 @@ import (
 // File or folder information.
 type StorageFile struct {
     // File or folder information.
-    IsFolder bool `json:"IsFolder,omitempty"`
+    IsFolder *bool `json:"IsFolder,omitempty"`
 
     // File or folder information.
     ModifiedDate time.Time `json:"ModifiedDate,omitempty"`
 
     // File or folder information.
-    Name string `json:"Name,omitempty"`
+    Name *string `json:"Name,omitempty"`
 
     // File or folder information.
-    Path string `json:"Path,omitempty"`
+    Path *string `json:"Path,omitempty"`
 
     // File or folder information.
-    Size int32 `json:"Size,omitempty"`
+    Size *int32 `json:"Size,omitempty"`
 }
 
 type IStorageFile interface {

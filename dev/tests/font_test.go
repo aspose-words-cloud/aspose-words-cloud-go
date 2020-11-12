@@ -29,6 +29,7 @@
 package api_test
 
 import (
+    "github.com/stretchr/testify/assert"
     "testing"
 )
 
@@ -52,10 +53,11 @@ func Test_Font_GetAvailableFonts(t *testing.T) {
 
     options := map[string]interface{}{
     }
-    _, _, err := client.WordsApi.GetAvailableFonts(ctx, options)
+    actual, _, err := client.WordsApi.GetAvailableFonts(ctx, options)
 
     if err != nil {
         t.Error(err)
     }
 
+    assert.NotNil(t, actual.SystemFonts, "Validate GetAvailableFonts response.");
 }

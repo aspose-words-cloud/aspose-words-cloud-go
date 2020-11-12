@@ -30,7 +30,7 @@ package models
 // This response should be returned by the service when handling:  GET /{name}/hyperlinks/{hyperlinkIndex} .
 type HyperlinkResponse struct {
     // This response should be returned by the service when handling:  GET /{name}/hyperlinks/{hyperlinkIndex} .
-    RequestId string `json:"RequestId,omitempty"`
+    RequestId *string `json:"RequestId,omitempty"`
 
     // This response should be returned by the service when handling:  GET /{name}/hyperlinks/{hyperlinkIndex} .
     Hyperlink *Hyperlink `json:"Hyperlink,omitempty"`

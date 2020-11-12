@@ -29,6 +29,7 @@
 package api_test
 
 import (
+    "github.com/stretchr/testify/assert"
     "testing"
     "github.com/aspose-words-cloud/aspose-words-cloud-go/dev/api/models"
 )
@@ -44,19 +45,22 @@ func Test_DocumentProtection_ProtectDocument(t *testing.T) {
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
     requestProtectionRequest := models.ProtectionRequest{
-        NewPassword: "123",
+        Password: ToStringPointer("123"),
+        ProtectionType: ToStringPointer("ReadOnly"),
     }
 
     options := map[string]interface{}{
         "folder": remoteDataFolder,
         "destFileName": baseTestOutPath + "/" + remoteFileName,
     }
-    _, _, err := client.WordsApi.ProtectDocument(ctx, remoteFileName, requestProtectionRequest, options)
+    actual, _, err := client.WordsApi.ProtectDocument(ctx, remoteFileName, requestProtectionRequest, options)
 
     if err != nil {
         t.Error(err)
     }
 
+    assert.NotNil(t, actual.ProtectionData, "Validate ProtectDocument response.");
+    assert.Equal(t, "ReadOnly", *actual.ProtectionData.ProtectionType, "Validate ProtectDocument response.");
 }
 
 // Test for getting document protection.
@@ -64,46 +68,23 @@ func Test_DocumentProtection_GetDocumentProtection(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
     remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/DocumentProtection"
-    localFile := "Common/test_multi_pages.docx"
+    localFilePath := "DocumentActions/DocumentProtection/SampleProtectedBlankWordDocument.docx"
     remoteFileName := "TestGetDocumentProtection.docx"
 
-    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFilePath), remoteDataFolder + "/" + remoteFileName)
 
 
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetDocumentProtection(ctx, remoteFileName, options)
+    actual, _, err := client.WordsApi.GetDocumentProtection(ctx, remoteFileName, options)
 
     if err != nil {
         t.Error(err)
     }
 
-}
-
-// Test for changing document protection.
-func Test_DocumentProtection_ChangeDocumentProtection(t *testing.T) {
-    config := ReadConfiguration(t)
-    client, ctx := PrepareTest(t, config)
-    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/DocumentProtection"
-    localFile := "Common/test_multi_pages.docx"
-    remoteFileName := "TestChangeDocumentProtection.docx"
-
-    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
-
-    requestProtectionRequest := models.ProtectionRequest{
-        NewPassword: "321",
-    }
-
-    options := map[string]interface{}{
-        "folder": remoteDataFolder,
-    }
-    _, _, err := client.WordsApi.ProtectDocument(ctx, remoteFileName, requestProtectionRequest, options)
-
-    if err != nil {
-        t.Error(err)
-    }
-
+    assert.NotNil(t, actual.ProtectionData, "Validate GetDocumentProtection response.");
+    assert.Equal(t, "ReadOnly", *actual.ProtectionData.ProtectionType, "Validate GetDocumentProtection response.");
 }
 
 // Test for deleting unprotect document.
@@ -117,16 +98,18 @@ func Test_DocumentProtection_DeleteUnprotectDocument(t *testing.T) {
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFilePath), remoteDataFolder + "/" + remoteFileName)
 
     requestProtectionRequest := models.ProtectionRequest{
-        Password: "aspose",
+        Password: ToStringPointer("aspose"),
     }
 
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.UnprotectDocument(ctx, remoteFileName, requestProtectionRequest, options)
+    actual, _, err := client.WordsApi.UnprotectDocument(ctx, remoteFileName, requestProtectionRequest, options)
 
     if err != nil {
         t.Error(err)
     }
 
+    assert.NotNil(t, actual.ProtectionData, "Validate DeleteUnprotectDocument response.");
+    assert.Equal(t, "NoProtection", *actual.ProtectionData.ProtectionType, "Validate DeleteUnprotectDocument response.");
 }

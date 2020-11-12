@@ -30,10 +30,10 @@ package models
 // Field.
 type FieldBase struct {
     // Field.
-    FieldCode string `json:"FieldCode,omitempty"`
+    FieldCode *string `json:"FieldCode,omitempty"`
 
     // Field.
-    LocaleId string `json:"LocaleId,omitempty"`
+    LocaleId *string `json:"LocaleId,omitempty"`
 }
 
 type IFieldBase interface {

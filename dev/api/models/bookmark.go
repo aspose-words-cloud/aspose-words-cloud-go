@@ -33,10 +33,10 @@ type Bookmark struct {
     Link *WordsApiLink `json:"Link,omitempty"`
 
     // Represents a single bookmark.
-    Name string `json:"Name,omitempty"`
+    Name *string `json:"Name,omitempty"`
 
     // Represents a single bookmark.
-    Text string `json:"Text,omitempty"`
+    Text *string `json:"Text,omitempty"`
 }
 
 type IBookmark interface {

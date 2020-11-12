@@ -32,15 +32,15 @@ package models
 type ClassificationResponse struct {
     // This response should be returned by the service when handling:
     // PUT https://api.aspose.cloud/v4.0/words/classify.
-    RequestId string `json:"RequestId,omitempty"`
+    RequestId *string `json:"RequestId,omitempty"`
 
     // This response should be returned by the service when handling:
     // PUT https://api.aspose.cloud/v4.0/words/classify.
-    BestClassName string `json:"BestClassName,omitempty"`
+    BestClassName *string `json:"BestClassName,omitempty"`
 
     // This response should be returned by the service when handling:
     // PUT https://api.aspose.cloud/v4.0/words/classify.
-    BestClassProbability float64 `json:"BestClassProbability,omitempty"`
+    BestClassProbability *float64 `json:"BestClassProbability,omitempty"`
 
     // This response should be returned by the service when handling:
     // PUT https://api.aspose.cloud/v4.0/words/classify.

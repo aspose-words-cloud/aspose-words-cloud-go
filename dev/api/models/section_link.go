@@ -33,7 +33,7 @@ type SectionLink struct {
     Link *WordsApiLink `json:"Link,omitempty"`
 
     // Section link element.
-    NodeId string `json:"NodeId,omitempty"`
+    NodeId *string `json:"NodeId,omitempty"`
 }
 
 type ISectionLink interface {
