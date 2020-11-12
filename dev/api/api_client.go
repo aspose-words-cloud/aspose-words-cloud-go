@@ -103,12 +103,12 @@ func NewAPIClient(cfg *models.Configuration) (client *APIClient, err error) {
         cfg.HttpClient = http.DefaultClient
     }
 
-    if cfg.AppKey == "" {
-        return nil, errors.New("AppKey must be non-empty string")
+    if cfg.ClientId == "" {
+        return nil, errors.New("ClientId must be non-empty string")
     }
 
-    if cfg.AppSid == "" {
-        return nil, errors.New("AppSid must be non-empty string")
+    if cfg.ClientSecret == "" {
+        return nil, errors.New("ClientSecret must be non-empty string")
     }
 
     _, urlErr := url.ParseRequestURI(cfg.BaseUrl)
@@ -260,8 +260,8 @@ func (c *APIClient) NewContextWithToken(ctx context.Context) (ctxWithToken conte
 
     response, err := http.PostForm(tokenUrl.String(), url.Values{
         "grant_type":    {"client_credentials"},
-        "client_id":     {c.cfg.AppSid},
-        "client_secret": {c.cfg.AppKey},
+        "client_id":     {c.cfg.ClientId},
+        "client_secret": {c.cfg.ClientSecret},
     })
 
     // http error

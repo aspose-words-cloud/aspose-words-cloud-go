@@ -38,18 +38,18 @@ import (
     "github.com/stretchr/testify/assert"
 )
 
-func TestAppSidAndAppKey(t *testing.T) {
+func TestClientIdAndClientSecret(t *testing.T) {
     p := []struct {
-        appKey string
-        appSid string
+        clientId string
+        clientSecret string
     }{
         {"", "x"},
         {"x", ""},
     }
     for _, cp := range p {
         config := models.Configuration{
-            AppKey: cp.appKey,
-            AppSid: cp.appSid,
+            ClientId: cp.clientId,
+            ClientSecret: cp.clientSecret,
         }
         _, err := api.NewAPIClient(&config)
 
@@ -59,8 +59,8 @@ func TestAppSidAndAppKey(t *testing.T) {
 
 func TestBaseUrl(t *testing.T) {
     config := models.Configuration{
-        AppKey:  "x",
-        AppSid:  "x",
+        ClientId:  "x",
+        ClientSecret:  "x",
         BaseUrl: "x",
     }
     _, err := api.NewAPIClient(&config)
@@ -68,17 +68,17 @@ func TestBaseUrl(t *testing.T) {
     assert.Error(t, err)
 }
 
-func TestWrongAppKey(t *testing.T) {
+func TestWrongClientSecret(t *testing.T) {
     config := ReadConfiguration(t)
-    config.AppKey = "x"
+    config.ClientSecret = "x"
     _, _, err := api.CreateWordsApi(config)
 
     assert.Error(t, err)
 }
 
-func TestWrongAppSid(t *testing.T) {
+func TestWrongClientId(t *testing.T) {
     config := ReadConfiguration(t)
-    config.AppSid = "x"
+    config.ClientId = "x"
     _, _, err := api.CreateWordsApi(config)
 
     assert.Error(t, err)
