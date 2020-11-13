@@ -136,27 +136,27 @@ Config.json file:
 Go code:
 
 ```
-    // Start README example
+	// Start README example
 
-    // init words cloud api
-    config, _ := models.NewConfiguration(configFilePath)
-    wordsApi, ctx, _ := api.CreateWordsApi(config)
+	// init words cloud api
+	config, _ := models.NewConfiguration(configFilePath)
+	wordsApi, ctx, _ := api.CreateWordsApi(config)
 
-    // upload test.docx to a cloud
-    // remote.docx is a name in the cloud
-    file, _ := os.Open(localFilePath)
-    wordsApi.UploadFile(ctx, file, remotePath, nil)
+	// upload test.docx to a cloud
+	// remote.docx is a name in the cloud
+	file, _ := os.Open(localFilePath)
+	wordsApi.UploadFile(ctx, file, remotePath, nil)
 
-    // get a text for the first paragraph of the first section
-    options := map[string]interface{}{
-        "folder": remoteFolder,
-    }
+	// get a text for the first paragraph of the first section
+	options := map[string]interface{}{
+		"folder": remoteFolder,
+	}
 
-    result, _, _ := wordsApi.GetParagraphs(ctx, remoteName, options)
+	result, _, _ := wordsApi.GetParagraphs(ctx, remoteName, options)
 
-    fmt.Println(result.Paragraphs.ParagraphLinkList[0].Text)
+	fmt.Println(result.Paragraphs.ParagraphLinkList[0].Text)
 
-    // End README example
+	// End README example
 ```
 
 [Product Page](https://products.aspose.cloud/words/go) | [Documentation](https://docs.aspose.cloud/display/wordscloud/Home) | [API Reference](https://apireference.aspose.cloud/words/) | [Code Samples](https://github.com/aspose-words-cloud/aspose-words-cloud-go) | [Blog](https://blog.aspose.cloud/category/words/) | [Free Support](https://forum.aspose.cloud/c/words) | [Free Trial](https://dashboard.aspose.cloud/#/apps)
