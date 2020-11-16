@@ -27,12 +27,12 @@
 
 package models
 
-// Collection of footnotes.
+// DTO container with a collection of footnotes.
 type FootnoteCollection struct {
-    // Collection of footnotes.
+    // DTO container with a collection of footnotes.
     Link *WordsApiLink `json:"Link,omitempty"`
 
-    // Collection of footnotes.
+    // DTO container with a collection of footnotes.
     List []Footnote `json:"List,omitempty"`
 }
 

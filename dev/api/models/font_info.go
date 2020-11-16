@@ -27,18 +27,18 @@
 
 package models
 
-// Font info.
+// DTO container with font info.
 type FontInfo struct {
-    // Font info.
+    // DTO container with font info.
     FilePath *string `json:"FilePath,omitempty"`
 
-    // Font info.
+    // DTO container with font info.
     FontFamilyName *string `json:"FontFamilyName,omitempty"`
 
-    // Font info.
+    // DTO container with font info.
     FullFontName *string `json:"FullFontName,omitempty"`
 
-    // Font info.
+    // DTO container with font info.
     Version *string `json:"Version,omitempty"`
 }
 

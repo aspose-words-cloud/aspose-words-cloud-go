@@ -31,21 +31,21 @@ import (
     "time"
 )
 
-// container class for details of digital signature.
+// Container class for details of digital signature.
 type PdfDigitalSignatureDetailsData struct {
-    // container class for details of digital signature.
+    // Container class for details of digital signature.
     CertificateFilename *string `json:"CertificateFilename,omitempty"`
 
-    // container class for details of digital signature.
+    // Container class for details of digital signature.
     HashAlgorithm *string `json:"HashAlgorithm,omitempty"`
 
-    // container class for details of digital signature.
+    // Container class for details of digital signature.
     Location *string `json:"Location,omitempty"`
 
-    // container class for details of digital signature.
+    // Container class for details of digital signature.
     Reason *string `json:"Reason,omitempty"`
 
-    // container class for details of digital signature.
+    // Container class for details of digital signature.
     SignatureDate time.Time `json:"SignatureDate,omitempty"`
 }
 

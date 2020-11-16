@@ -27,21 +27,21 @@
 
 package models
 
-// Represents all formatting for a table row.
+// DTO container with formatting for a table row.
 type TableRowFormat struct {
-    // Represents all formatting for a table row.
+    // DTO container with formatting for a table row.
     Link *WordsApiLink `json:"Link,omitempty"`
 
-    // Represents all formatting for a table row.
+    // DTO container with formatting for a table row.
     AllowBreakAcrossPages *bool `json:"AllowBreakAcrossPages,omitempty"`
 
-    // Represents all formatting for a table row.
+    // DTO container with formatting for a table row.
     HeadingFormat *bool `json:"HeadingFormat,omitempty"`
 
-    // Represents all formatting for a table row.
+    // DTO container with formatting for a table row.
     Height *float64 `json:"Height,omitempty"`
 
-    // Represents all formatting for a table row.
+    // DTO container with formatting for a table row.
     HeightRule string `json:"HeightRule,omitempty"`
 }
 

@@ -27,15 +27,12 @@
 
 package models
 
-// This response should be returned by the service when handling:
-// GET {nodeWithBorders}/borders.
+// The REST response with a collection of borders.
 type BordersResponse struct {
-    // This response should be returned by the service when handling:
-    // GET {nodeWithBorders}/borders.
+    // The REST response with a collection of borders.
     RequestId *string `json:"RequestId,omitempty"`
 
-    // This response should be returned by the service when handling:
-    // GET {nodeWithBorders}/borders.
+    // The REST response with a collection of borders.
     Borders *BordersCollection `json:"Borders,omitempty"`
 }
 

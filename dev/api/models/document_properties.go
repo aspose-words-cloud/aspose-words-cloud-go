@@ -27,12 +27,12 @@
 
 package models
 
-// Collection of document properties.
+// The collection of document properties.
 type DocumentProperties struct {
-    // Collection of document properties.
+    // The collection of document properties.
     Link *WordsApiLink `json:"Link,omitempty"`
 
-    // Collection of document properties.
+    // The collection of document properties.
     List []DocumentProperty `json:"List,omitempty"`
 }
 

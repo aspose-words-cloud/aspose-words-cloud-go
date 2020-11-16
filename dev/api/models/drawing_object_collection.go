@@ -27,12 +27,12 @@
 
 package models
 
-// Represents drawing objects collection DTO.
+// DTO container with a collection of DrawingObjects links.
 type DrawingObjectCollection struct {
-    // Represents drawing objects collection DTO.
+    // DTO container with a collection of DrawingObjects links.
     Link *WordsApiLink `json:"Link,omitempty"`
 
-    // Represents drawing objects collection DTO.
+    // DTO container with a collection of DrawingObjects links.
     List []LinkElement `json:"List,omitempty"`
 }
 

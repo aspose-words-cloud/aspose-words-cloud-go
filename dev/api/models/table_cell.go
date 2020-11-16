@@ -27,15 +27,15 @@
 
 package models
 
-// Table cell element.
+// DTO container with a table cell element.
 type TableCell struct {
-    // Table cell element.
+    // DTO container with a table cell element.
     Link *WordsApiLink `json:"Link,omitempty"`
 
-    // Table cell element.
+    // DTO container with a table cell element.
     NodeId *string `json:"NodeId,omitempty"`
 
-    // Table cell element.
+    // DTO container with a table cell element.
     ChildNodes []NodeLink `json:"ChildNodes,omitempty"`
 }
 

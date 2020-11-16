@@ -27,15 +27,12 @@
 
 package models
 
-// This response should be returned by the service when handling:
-// GET https://api.aspose.cloud/v4.0/words/Test.doc/tables.
+// The REST response with a collection of tables.
 type TableLinkCollectionResponse struct {
-    // This response should be returned by the service when handling:
-    // GET https://api.aspose.cloud/v4.0/words/Test.doc/tables.
+    // The REST response with a collection of tables.
     RequestId *string `json:"RequestId,omitempty"`
 
-    // This response should be returned by the service when handling:
-    // GET https://api.aspose.cloud/v4.0/words/Test.doc/tables.
+    // The REST response with a collection of tables.
     Tables *TableLinkCollection `json:"Tables,omitempty"`
 }
 

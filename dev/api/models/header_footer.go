@@ -27,21 +27,21 @@
 
 package models
 
-// Section element.
+// DTO container with a section element.
 type HeaderFooter struct {
-    // Section element.
+    // DTO container with a section element.
     Link *WordsApiLink `json:"Link,omitempty"`
 
-    // Section element.
+    // DTO container with a section element.
     Type string `json:"Type,omitempty"`
 
-    // Section element.
+    // DTO container with a section element.
     ChildNodes []NodeLink `json:"ChildNodes,omitempty"`
 
-    // Section element.
+    // DTO container with a section element.
     DrawingObjects *LinkElement `json:"DrawingObjects,omitempty"`
 
-    // Section element.
+    // DTO container with a section element.
     Paragraphs *LinkElement `json:"Paragraphs,omitempty"`
 }
 

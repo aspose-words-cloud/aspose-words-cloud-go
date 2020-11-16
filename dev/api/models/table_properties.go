@@ -27,51 +27,51 @@
 
 package models
 
-// Represents the table properties.
+// DTO container with table properties.
 type TableProperties struct {
-    // Represents the table properties.
+    // DTO container with table properties.
     Link *WordsApiLink `json:"Link,omitempty"`
 
-    // Represents the table properties.
+    // DTO container with table properties.
     Alignment string `json:"Alignment,omitempty"`
 
-    // Represents the table properties.
+    // DTO container with table properties.
     AllowAutoFit *bool `json:"AllowAutoFit,omitempty"`
 
-    // Represents the table properties.
+    // DTO container with table properties.
     Bidi *bool `json:"Bidi,omitempty"`
 
-    // Represents the table properties.
+    // DTO container with table properties.
     BottomPadding *float64 `json:"BottomPadding,omitempty"`
 
-    // Represents the table properties.
+    // DTO container with table properties.
     CellSpacing *float64 `json:"CellSpacing,omitempty"`
 
-    // Represents the table properties.
+    // DTO container with table properties.
     LeftIndent *float64 `json:"LeftIndent,omitempty"`
 
-    // Represents the table properties.
+    // DTO container with table properties.
     LeftPadding *float64 `json:"LeftPadding,omitempty"`
 
-    // Represents the table properties.
+    // DTO container with table properties.
     PreferredWidth *PreferredWidth `json:"PreferredWidth,omitempty"`
 
-    // Represents the table properties.
+    // DTO container with table properties.
     RightPadding *float64 `json:"RightPadding,omitempty"`
 
-    // Represents the table properties.
+    // DTO container with table properties.
     StyleIdentifier string `json:"StyleIdentifier,omitempty"`
 
-    // Represents the table properties.
+    // DTO container with table properties.
     StyleName *string `json:"StyleName,omitempty"`
 
-    // Represents the table properties.
+    // DTO container with table properties.
     StyleOptions string `json:"StyleOptions,omitempty"`
 
-    // Represents the table properties.
+    // DTO container with table properties.
     TextWrapping string `json:"TextWrapping,omitempty"`
 
-    // Represents the table properties.
+    // DTO container with table properties.
     TopPadding *float64 `json:"TopPadding,omitempty"`
 }
 

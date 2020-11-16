@@ -27,15 +27,12 @@
 
 package models
 
-// This response should be returned by the service when handling:
-// GET https://api.aspose.cloud/v4.0/words/Test.doc/paragraphs/{0}/formfields/{1}.
+// The REST response with a form field.
 type FormFieldResponse struct {
-    // This response should be returned by the service when handling:
-    // GET https://api.aspose.cloud/v4.0/words/Test.doc/paragraphs/{0}/formfields/{1}.
+    // The REST response with a form field.
     RequestId *string `json:"RequestId,omitempty"`
 
-    // This response should be returned by the service when handling:
-    // GET https://api.aspose.cloud/v4.0/words/Test.doc/paragraphs/{0}/formfields/{1}.
+    // The REST response with a form field.
     FormField *FormField `json:"FormField,omitempty"`
 }
 

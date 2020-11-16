@@ -27,9 +27,9 @@
 
 package models
 
-// Range element.
+// DTO container with a Range element.
 type RangeDocument struct {
-    // Range element.
+    // DTO container with a Range element.
     DocumentName *string `json:"DocumentName,omitempty"`
 }
 

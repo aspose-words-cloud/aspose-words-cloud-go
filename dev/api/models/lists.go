@@ -27,12 +27,12 @@
 
 package models
 
-// Represents an array of document lists.
+// DTO container with an array of document lists.
 type Lists struct {
-    // Represents an array of document lists.
+    // DTO container with an array of document lists.
     Link *WordsApiLink `json:"Link,omitempty"`
 
-    // Represents an array of document lists.
+    // DTO container with an array of document lists.
     ListInfo []ListInfo `json:"ListInfo,omitempty"`
 }
 

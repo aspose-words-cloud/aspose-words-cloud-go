@@ -27,18 +27,18 @@
 
 package models
 
-// Paragraph list format element.
+// DTO container with a paragraph list format element.
 type ListFormat struct {
-    // Paragraph list format element.
+    // DTO container with a paragraph list format element.
     Link *WordsApiLink `json:"Link,omitempty"`
 
-    // Paragraph list format element.
+    // DTO container with a paragraph list format element.
     IsListItem *bool `json:"IsListItem,omitempty"`
 
-    // Paragraph list format element.
+    // DTO container with a paragraph list format element.
     ListId *int32 `json:"ListId,omitempty"`
 
-    // Paragraph list format element.
+    // DTO container with a paragraph list format element.
     ListLevelNumber *int32 `json:"ListLevelNumber,omitempty"`
 }
 

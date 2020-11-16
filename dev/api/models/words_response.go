@@ -27,9 +27,9 @@
 
 package models
 
-// Base class for all responses.
+// The base class for all responses.
 type WordsResponse struct {
-    // Base class for all responses.
+    // The base class for all responses.
     RequestId *string `json:"RequestId,omitempty"`
 }
 

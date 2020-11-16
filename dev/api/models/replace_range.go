@@ -27,12 +27,12 @@
 
 package models
 
-// Range element.
+// DTO container with a range element.
 type ReplaceRange struct {
-    // Range element.
+    // DTO container with a range element.
     Text *string `json:"Text,omitempty"`
 
-    // Range element.
+    // DTO container with a range element.
     TextType string `json:"TextType,omitempty"`
 }
 

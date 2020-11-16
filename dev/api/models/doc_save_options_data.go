@@ -27,48 +27,48 @@
 
 package models
 
-// container class for doc/dot save options.
+// Container class for doc/dot save options.
 type DocSaveOptionsData struct {
-    // container class for doc/dot save options.
+    // Container class for doc/dot save options.
     Dml3DEffectsRenderingMode string `json:"Dml3DEffectsRenderingMode,omitempty"`
 
-    // container class for doc/dot save options.
+    // Container class for doc/dot save options.
     DmlEffectsRenderingMode *string `json:"DmlEffectsRenderingMode,omitempty"`
 
-    // container class for doc/dot save options.
+    // Container class for doc/dot save options.
     DmlRenderingMode *string `json:"DmlRenderingMode,omitempty"`
 
-    // container class for doc/dot save options.
+    // Container class for doc/dot save options.
     FileName *string `json:"FileName,omitempty"`
 
-    // container class for doc/dot save options.
+    // Container class for doc/dot save options.
     SaveFormat *string `json:"SaveFormat,omitempty"`
 
-    // container class for doc/dot save options.
+    // Container class for doc/dot save options.
     UpdateFields *bool `json:"UpdateFields,omitempty"`
 
-    // container class for doc/dot save options.
+    // Container class for doc/dot save options.
     UpdateLastPrintedProperty *bool `json:"UpdateLastPrintedProperty,omitempty"`
 
-    // container class for doc/dot save options.
+    // Container class for doc/dot save options.
     UpdateLastSavedTimeProperty *bool `json:"UpdateLastSavedTimeProperty,omitempty"`
 
-    // container class for doc/dot save options.
+    // Container class for doc/dot save options.
     UpdateSdtContent *bool `json:"UpdateSdtContent,omitempty"`
 
-    // container class for doc/dot save options.
+    // Container class for doc/dot save options.
     ZipOutput *bool `json:"ZipOutput,omitempty"`
 
-    // container class for doc/dot save options.
+    // Container class for doc/dot save options.
     AlwaysCompressMetafiles *bool `json:"AlwaysCompressMetafiles,omitempty"`
 
-    // container class for doc/dot save options.
+    // Container class for doc/dot save options.
     Password *string `json:"Password,omitempty"`
 
-    // container class for doc/dot save options.
+    // Container class for doc/dot save options.
     SavePictureBullet *bool `json:"SavePictureBullet,omitempty"`
 
-    // container class for doc/dot save options.
+    // Container class for doc/dot save options.
     SaveRoutingSlip *bool `json:"SaveRoutingSlip,omitempty"`
 }
 

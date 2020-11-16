@@ -27,30 +27,30 @@
 
 package models
 
-// Represents a single document list.
+// DTO container with a single document list.
 type ListInfo struct {
-    // Represents a single document list.
+    // DTO container with a single document list.
     Link *WordsApiLink `json:"Link,omitempty"`
 
-    // Represents a single document list.
+    // DTO container with a single document list.
     IsListStyleDefinition *bool `json:"IsListStyleDefinition,omitempty"`
 
-    // Represents a single document list.
+    // DTO container with a single document list.
     IsListStyleReference *bool `json:"IsListStyleReference,omitempty"`
 
-    // Represents a single document list.
+    // DTO container with a single document list.
     IsMultiLevel *bool `json:"IsMultiLevel,omitempty"`
 
-    // Represents a single document list.
+    // DTO container with a single document list.
     IsRestartAtEachSection *bool `json:"IsRestartAtEachSection,omitempty"`
 
-    // Represents a single document list.
+    // DTO container with a single document list.
     ListId *int32 `json:"ListId,omitempty"`
 
-    // Represents a single document list.
+    // DTO container with a single document list.
     ListLevels *ListLevels `json:"ListLevels,omitempty"`
 
-    // Represents a single document list.
+    // DTO container with a single document list.
     Style *Style `json:"Style,omitempty"`
 }
 

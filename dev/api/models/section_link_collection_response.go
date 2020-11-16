@@ -27,15 +27,12 @@
 
 package models
 
-// This response should be returned by the service when handling:
-// GET https://api.aspose.cloud/v4.0/words/Test.doc/sections.
+// The REST response with a collection of sections.
 type SectionLinkCollectionResponse struct {
-    // This response should be returned by the service when handling:
-    // GET https://api.aspose.cloud/v4.0/words/Test.doc/sections.
+    // The REST response with a collection of sections.
     RequestId *string `json:"RequestId,omitempty"`
 
-    // This response should be returned by the service when handling:
-    // GET https://api.aspose.cloud/v4.0/words/Test.doc/sections.
+    // The REST response with a collection of sections.
     Sections *SectionLinkCollection `json:"Sections,omitempty"`
 }
 

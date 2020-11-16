@@ -27,18 +27,18 @@
 
 package models
 
-// Table row element.
+// DTO container with a table row element.
 type TableRow struct {
-    // Table row element.
+    // DTO container with a table row element.
     Link *WordsApiLink `json:"Link,omitempty"`
 
-    // Table row element.
+    // DTO container with a table row element.
     NodeId *string `json:"NodeId,omitempty"`
 
-    // Table row element.
+    // DTO container with a table row element.
     RowFormat *TableRowFormat `json:"RowFormat,omitempty"`
 
-    // Table row element.
+    // DTO container with a table row element.
     TableCellList []TableCell `json:"TableCellList,omitempty"`
 }
 

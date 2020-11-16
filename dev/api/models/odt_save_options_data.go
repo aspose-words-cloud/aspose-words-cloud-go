@@ -27,48 +27,48 @@
 
 package models
 
-// container class for odt/ott save options.
+// Container class for odt/ott save options.
 type OdtSaveOptionsData struct {
-    // container class for odt/ott save options.
+    // Container class for odt/ott save options.
     Dml3DEffectsRenderingMode string `json:"Dml3DEffectsRenderingMode,omitempty"`
 
-    // container class for odt/ott save options.
+    // Container class for odt/ott save options.
     DmlEffectsRenderingMode *string `json:"DmlEffectsRenderingMode,omitempty"`
 
-    // container class for odt/ott save options.
+    // Container class for odt/ott save options.
     DmlRenderingMode *string `json:"DmlRenderingMode,omitempty"`
 
-    // container class for odt/ott save options.
+    // Container class for odt/ott save options.
     FileName *string `json:"FileName,omitempty"`
 
-    // container class for odt/ott save options.
+    // Container class for odt/ott save options.
     SaveFormat *string `json:"SaveFormat,omitempty"`
 
-    // container class for odt/ott save options.
+    // Container class for odt/ott save options.
     UpdateFields *bool `json:"UpdateFields,omitempty"`
 
-    // container class for odt/ott save options.
+    // Container class for odt/ott save options.
     UpdateLastPrintedProperty *bool `json:"UpdateLastPrintedProperty,omitempty"`
 
-    // container class for odt/ott save options.
+    // Container class for odt/ott save options.
     UpdateLastSavedTimeProperty *bool `json:"UpdateLastSavedTimeProperty,omitempty"`
 
-    // container class for odt/ott save options.
+    // Container class for odt/ott save options.
     UpdateSdtContent *bool `json:"UpdateSdtContent,omitempty"`
 
-    // container class for odt/ott save options.
+    // Container class for odt/ott save options.
     ZipOutput *bool `json:"ZipOutput,omitempty"`
 
-    // container class for odt/ott save options.
+    // Container class for odt/ott save options.
     IsStrictSchema11 *bool `json:"IsStrictSchema11,omitempty"`
 
-    // container class for odt/ott save options.
+    // Container class for odt/ott save options.
     MeasureUnit string `json:"MeasureUnit,omitempty"`
 
-    // container class for odt/ott save options.
+    // Container class for odt/ott save options.
     Password *string `json:"Password,omitempty"`
 
-    // container class for odt/ott save options.
+    // Container class for odt/ott save options.
     PrettyFormat *bool `json:"PrettyFormat,omitempty"`
 }
 

@@ -27,15 +27,15 @@
 
 package models
 
-// Paragraph element.
+// DTO container with a paragraph element.
 type Paragraph struct {
-    // Paragraph element.
+    // DTO container with a paragraph element.
     Link *WordsApiLink `json:"Link,omitempty"`
 
-    // Paragraph element.
+    // DTO container with a paragraph element.
     NodeId *string `json:"NodeId,omitempty"`
 
-    // Paragraph element.
+    // DTO container with a paragraph element.
     ChildNodes []NodeLink `json:"ChildNodes,omitempty"`
 }
 

@@ -27,15 +27,12 @@
 
 package models
 
-// This response should be returned by the service when handling:
-// GET https://api.aspose.cloud/v4.0/words/Test.doc/range/{0}/{1}/.
+// The REST response with a range's text.
 type RangeTextResponse struct {
-    // This response should be returned by the service when handling:
-    // GET https://api.aspose.cloud/v4.0/words/Test.doc/range/{0}/{1}/.
+    // The REST response with a range's text.
     RequestId *string `json:"RequestId,omitempty"`
 
-    // This response should be returned by the service when handling:
-    // GET https://api.aspose.cloud/v4.0/words/Test.doc/range/{0}/{1}/.
+    // The REST response with a range's text.
     Text *string `json:"Text,omitempty"`
 }
 

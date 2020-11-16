@@ -27,21 +27,21 @@
 
 package models
 
-// Field.
+// DTO container with a field.
 type Field struct {
-    // Field.
+    // DTO container with a field.
     Link *WordsApiLink `json:"Link,omitempty"`
 
-    // Field.
+    // DTO container with a field.
     NodeId *string `json:"NodeId,omitempty"`
 
-    // Field.
+    // DTO container with a field.
     FieldCode *string `json:"FieldCode,omitempty"`
 
-    // Field.
+    // DTO container with a field.
     LocaleId *string `json:"LocaleId,omitempty"`
 
-    // Field.
+    // DTO container with a field.
     Result *string `json:"Result,omitempty"`
 }
 

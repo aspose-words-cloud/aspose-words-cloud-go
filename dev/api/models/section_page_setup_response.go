@@ -27,15 +27,12 @@
 
 package models
 
-// This response should be returned by the service when handling:
-// GET https://api.aspose.cloud/v4.0/words/Test.doc/sections/{0}/PageSetup.
+// The REST response with a page setup of a section.
 type SectionPageSetupResponse struct {
-    // This response should be returned by the service when handling:
-    // GET https://api.aspose.cloud/v4.0/words/Test.doc/sections/{0}/PageSetup.
+    // The REST response with a page setup of a section.
     RequestId *string `json:"RequestId,omitempty"`
 
-    // This response should be returned by the service when handling:
-    // GET https://api.aspose.cloud/v4.0/words/Test.doc/sections/{0}/PageSetup.
+    // The REST response with a page setup of a section.
     PageSetup *PageSetup `json:"PageSetup,omitempty"`
 }
 

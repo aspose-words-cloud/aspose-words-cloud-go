@@ -27,12 +27,12 @@
 
 package models
 
-// Represents DTO for collection of fields.
+// DTO container with a collection of fields.
 type FieldCollection struct {
-    // Represents DTO for collection of fields.
+    // DTO container with a collection of fields.
     Link *WordsApiLink `json:"Link,omitempty"`
 
-    // Represents DTO for collection of fields.
+    // DTO container with a collection of fields.
     List []Field `json:"List,omitempty"`
 }
 

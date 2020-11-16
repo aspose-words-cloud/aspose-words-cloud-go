@@ -31,30 +31,30 @@ import (
     "time"
 )
 
-// Comment.
+// DTO container with a comment.
 type Comment struct {
-    // Comment.
+    // DTO container with a comment.
     Link *WordsApiLink `json:"Link,omitempty"`
 
-    // Comment.
+    // DTO container with a comment.
     Author *string `json:"Author,omitempty"`
 
-    // Comment.
+    // DTO container with a comment.
     Content *StoryChildNodes `json:"Content,omitempty"`
 
-    // Comment.
+    // DTO container with a comment.
     DateTime time.Time `json:"DateTime,omitempty"`
 
-    // Comment.
+    // DTO container with a comment.
     Initial *string `json:"Initial,omitempty"`
 
-    // Comment.
+    // DTO container with a comment.
     RangeEnd *DocumentPosition `json:"RangeEnd,omitempty"`
 
-    // Comment.
+    // DTO container with a comment.
     RangeStart *DocumentPosition `json:"RangeStart,omitempty"`
 
-    // Comment.
+    // DTO container with a comment.
     Text *string `json:"Text,omitempty"`
 }
 

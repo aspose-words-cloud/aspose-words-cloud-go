@@ -27,12 +27,12 @@
 
 package models
 
-// Collection of OfficeMath objects.
+// DTO container with a collection of OfficeMath objects.
 type OfficeMathObjectsCollection struct {
-    // Collection of OfficeMath objects.
+    // DTO container with a collection of OfficeMath objects.
     Link *WordsApiLink `json:"Link,omitempty"`
 
-    // Collection of OfficeMath objects.
+    // DTO container with a collection of OfficeMath objects.
     List []OfficeMathObject `json:"List,omitempty"`
 }
 

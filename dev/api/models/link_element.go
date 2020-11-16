@@ -27,9 +27,9 @@
 
 package models
 
-// Reference to document.
+// Reference to a document.
 type LinkElement struct {
-    // Reference to document.
+    // Reference to a document.
     Link *WordsApiLink `json:"Link,omitempty"`
 }
 

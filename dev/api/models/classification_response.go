@@ -27,23 +27,18 @@
 
 package models
 
-// This response should be returned by the service when handling:
-// PUT https://api.aspose.cloud/v4.0/words/classify.
+// The REST response with data on multi-class text classification.
 type ClassificationResponse struct {
-    // This response should be returned by the service when handling:
-    // PUT https://api.aspose.cloud/v4.0/words/classify.
+    // The REST response with data on multi-class text classification.
     RequestId *string `json:"RequestId,omitempty"`
 
-    // This response should be returned by the service when handling:
-    // PUT https://api.aspose.cloud/v4.0/words/classify.
+    // The REST response with data on multi-class text classification.
     BestClassName *string `json:"BestClassName,omitempty"`
 
-    // This response should be returned by the service when handling:
-    // PUT https://api.aspose.cloud/v4.0/words/classify.
+    // The REST response with data on multi-class text classification.
     BestClassProbability *float64 `json:"BestClassProbability,omitempty"`
 
-    // This response should be returned by the service when handling:
-    // PUT https://api.aspose.cloud/v4.0/words/classify.
+    // The REST response with data on multi-class text classification.
     BestResults []ClassificationResult `json:"BestResults,omitempty"`
 }
 

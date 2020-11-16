@@ -27,15 +27,15 @@
 
 package models
 
-// Response for "Replace text" action.
+// The REST response with a number of occurrences of the captured text in the document.
 type ReplaceTextResponse struct {
-    // Response for "Replace text" action.
+    // The REST response with a number of occurrences of the captured text in the document.
     RequestId *string `json:"RequestId,omitempty"`
 
-    // Response for "Replace text" action.
+    // The REST response with a number of occurrences of the captured text in the document.
     DocumentLink *FileLink `json:"DocumentLink,omitempty"`
 
-    // Response for "Replace text" action.
+    // The REST response with a number of occurrences of the captured text in the document.
     Matches *int32 `json:"Matches,omitempty"`
 }
 

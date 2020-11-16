@@ -27,33 +27,33 @@
 
 package models
 
-// Container class for compare documents options.
+// DTO container with compare documents options.
 type CompareOptions struct {
-    // Container class for compare documents options.
+    // DTO container with compare documents options.
     IgnoreCaseChanges *bool `json:"IgnoreCaseChanges,omitempty"`
 
-    // Container class for compare documents options.
+    // DTO container with compare documents options.
     IgnoreComments *bool `json:"IgnoreComments,omitempty"`
 
-    // Container class for compare documents options.
+    // DTO container with compare documents options.
     IgnoreFields *bool `json:"IgnoreFields,omitempty"`
 
-    // Container class for compare documents options.
+    // DTO container with compare documents options.
     IgnoreFootnotes *bool `json:"IgnoreFootnotes,omitempty"`
 
-    // Container class for compare documents options.
+    // DTO container with compare documents options.
     IgnoreFormatting *bool `json:"IgnoreFormatting,omitempty"`
 
-    // Container class for compare documents options.
+    // DTO container with compare documents options.
     IgnoreHeadersAndFooters *bool `json:"IgnoreHeadersAndFooters,omitempty"`
 
-    // Container class for compare documents options.
+    // DTO container with compare documents options.
     IgnoreTables *bool `json:"IgnoreTables,omitempty"`
 
-    // Container class for compare documents options.
+    // DTO container with compare documents options.
     IgnoreTextboxes *bool `json:"IgnoreTextboxes,omitempty"`
 
-    // Container class for compare documents options.
+    // DTO container with compare documents options.
     Target string `json:"Target,omitempty"`
 }
 

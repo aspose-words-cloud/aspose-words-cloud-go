@@ -27,15 +27,12 @@
 
 package models
 
-// This response should be returned by the service when handling:
-// GET https://api.aspose.cloud/v4.0/words/Test.doc/comments.
+// The REST response with a collection of comments.
 type CommentsResponse struct {
-    // This response should be returned by the service when handling:
-    // GET https://api.aspose.cloud/v4.0/words/Test.doc/comments.
+    // The REST response with a collection of comments.
     RequestId *string `json:"RequestId,omitempty"`
 
-    // This response should be returned by the service when handling:
-    // GET https://api.aspose.cloud/v4.0/words/Test.doc/comments.
+    // The REST response with a collection of comments.
     Comments *CommentsCollection `json:"Comments,omitempty"`
 }
 

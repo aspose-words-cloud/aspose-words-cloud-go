@@ -27,12 +27,12 @@
 
 package models
 
-// Save response.
+// The REST response with a save result.
 type SaveResponse struct {
-    // Save response.
+    // The REST response with a save result.
     RequestId *string `json:"RequestId,omitempty"`
 
-    // Save response.
+    // The REST response with a save result.
     SaveResult *SaveResult `json:"SaveResult,omitempty"`
 }
 

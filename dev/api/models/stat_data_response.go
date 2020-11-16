@@ -27,15 +27,15 @@
 
 package models
 
-// Response for the request of the document's statistical data.
+// The REST response with document's statistical data.
 type StatDataResponse struct {
-    // Response for the request of the document's statistical data.
+    // The REST response with document's statistical data.
     RequestId *string `json:"RequestId,omitempty"`
 
-    // Response for the request of the document's statistical data.
+    // The REST response with document's statistical data.
     DocumentLink *FileLink `json:"DocumentLink,omitempty"`
 
-    // Response for the request of the document's statistical data.
+    // The REST response with document's statistical data.
     StatData *DocumentStatData `json:"StatData,omitempty"`
 }
 

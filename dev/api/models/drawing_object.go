@@ -27,42 +27,42 @@
 
 package models
 
-// Represents Drawing Object DTO.
+// DTO container with a DrawingObject.
 type DrawingObject struct {
-    // Represents Drawing Object DTO.
+    // DTO container with a DrawingObject.
     Link *WordsApiLink `json:"Link,omitempty"`
 
-    // Represents Drawing Object DTO.
+    // DTO container with a DrawingObject.
     NodeId *string `json:"NodeId,omitempty"`
 
-    // Represents Drawing Object DTO.
+    // DTO container with a DrawingObject.
     Height *float64 `json:"Height,omitempty"`
 
-    // Represents Drawing Object DTO.
+    // DTO container with a DrawingObject.
     ImageDataLink *WordsApiLink `json:"ImageDataLink,omitempty"`
 
-    // Represents Drawing Object DTO.
+    // DTO container with a DrawingObject.
     Left *float64 `json:"Left,omitempty"`
 
-    // Represents Drawing Object DTO.
+    // DTO container with a DrawingObject.
     OleDataLink *WordsApiLink `json:"OleDataLink,omitempty"`
 
-    // Represents Drawing Object DTO.
+    // DTO container with a DrawingObject.
     RelativeHorizontalPosition string `json:"RelativeHorizontalPosition,omitempty"`
 
-    // Represents Drawing Object DTO.
+    // DTO container with a DrawingObject.
     RelativeVerticalPosition string `json:"RelativeVerticalPosition,omitempty"`
 
-    // Represents Drawing Object DTO.
+    // DTO container with a DrawingObject.
     RenderLinks []WordsApiLink `json:"RenderLinks,omitempty"`
 
-    // Represents Drawing Object DTO.
+    // DTO container with a DrawingObject.
     Top *float64 `json:"Top,omitempty"`
 
-    // Represents Drawing Object DTO.
+    // DTO container with a DrawingObject.
     Width *float64 `json:"Width,omitempty"`
 
-    // Represents Drawing Object DTO.
+    // DTO container with a DrawingObject.
     WrapType string `json:"WrapType,omitempty"`
 }
 

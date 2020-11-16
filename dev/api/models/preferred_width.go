@@ -27,12 +27,12 @@
 
 package models
 
-// Preferred width.
+// DTO container with a preferred width value.
 type PreferredWidth struct {
-    // Preferred width.
+    // DTO container with a preferred width value.
     Type string `json:"Type,omitempty"`
 
-    // Preferred width.
+    // DTO container with a preferred width value.
     Value *float64 `json:"Value,omitempty"`
 }
 

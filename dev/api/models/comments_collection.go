@@ -27,12 +27,12 @@
 
 package models
 
-// Collection of comments.
+// The collection of comments.
 type CommentsCollection struct {
-    // Collection of comments.
+    // The collection of comments.
     Link *WordsApiLink `json:"Link,omitempty"`
 
-    // Collection of comments.
+    // The collection of comments.
     CommentList []Comment `json:"CommentList,omitempty"`
 }
 

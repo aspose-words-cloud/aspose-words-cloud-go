@@ -27,12 +27,12 @@
 
 package models
 
-// This response should be returned by the service when handling:  GET /{name}/hyperlinks .
+// The REST response with a collection of hyperlinks.
 type HyperlinksResponse struct {
-    // This response should be returned by the service when handling:  GET /{name}/hyperlinks .
+    // The REST response with a collection of hyperlinks.
     RequestId *string `json:"RequestId,omitempty"`
 
-    // This response should be returned by the service when handling:  GET /{name}/hyperlinks .
+    // The REST response with a collection of hyperlinks.
     Hyperlinks *Hyperlinks `json:"Hyperlinks,omitempty"`
 }
 

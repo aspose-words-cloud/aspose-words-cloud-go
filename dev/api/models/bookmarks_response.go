@@ -27,12 +27,12 @@
 
 package models
 
-// This response should be returned by the service when handling:  GET bookmarks.
+// The REST response with a collection of bookmarks.
 type BookmarksResponse struct {
-    // This response should be returned by the service when handling:  GET bookmarks.
+    // The REST response with a collection of bookmarks.
     RequestId *string `json:"RequestId,omitempty"`
 
-    // This response should be returned by the service when handling:  GET bookmarks.
+    // The REST response with a collection of bookmarks.
     Bookmarks *Bookmarks `json:"Bookmarks,omitempty"`
 }
 

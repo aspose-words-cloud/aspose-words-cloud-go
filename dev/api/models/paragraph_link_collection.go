@@ -27,12 +27,12 @@
 
 package models
 
-// Collection of links to paragraphs.
+// The collection of paragraph's links.
 type ParagraphLinkCollection struct {
-    // Collection of links to paragraphs.
+    // The collection of paragraph's links.
     Link *WordsApiLink `json:"Link,omitempty"`
 
-    // Collection of links to paragraphs.
+    // The collection of paragraph's links.
     ParagraphLinkList []ParagraphLink `json:"ParagraphLinkList,omitempty"`
 }
 

@@ -27,15 +27,15 @@
 
 package models
 
-// Response for the request of data about protection.
+// The REST response with data on document's protection.
 type ProtectionDataResponse struct {
-    // Response for the request of data about protection.
+    // The REST response with data on document's protection.
     RequestId *string `json:"RequestId,omitempty"`
 
-    // Response for the request of data about protection.
+    // The REST response with data on document's protection.
     DocumentLink *FileLink `json:"DocumentLink,omitempty"`
 
-    // Response for the request of data about protection.
+    // The REST response with data on document's protection.
     ProtectionData *ProtectionData `json:"ProtectionData,omitempty"`
 }
 

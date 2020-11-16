@@ -27,12 +27,12 @@
 
 package models
 
-// Collection of search results.
+// The collection of search results.
 type SearchResultsCollection struct {
-    // Collection of search results.
+    // The collection of search results.
     Link *WordsApiLink `json:"Link,omitempty"`
 
-    // Collection of search results.
+    // The collection of search results.
     ResultsList []SearchResult `json:"ResultsList,omitempty"`
 }
 

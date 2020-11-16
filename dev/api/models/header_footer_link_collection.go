@@ -27,12 +27,12 @@
 
 package models
 
-// Collection of links to header/footers.
+// The collection of HeaderFooter's links.
 type HeaderFooterLinkCollection struct {
-    // Collection of links to header/footers.
+    // The collection of HeaderFooter's links.
     Link *WordsApiLink `json:"Link,omitempty"`
 
-    // Collection of links to header/footers.
+    // The collection of HeaderFooter's links.
     List []HeaderFooterLink `json:"List,omitempty"`
 }
 

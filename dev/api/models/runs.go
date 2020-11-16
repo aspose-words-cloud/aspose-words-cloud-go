@@ -27,12 +27,12 @@
 
 package models
 
-// Represents DTO for collection of runs.
+// DTO container with a collection of runs.
 type Runs struct {
-    // Represents DTO for collection of runs.
+    // DTO container with a collection of runs.
     Link *WordsApiLink `json:"Link,omitempty"`
 
-    // Represents DTO for collection of runs.
+    // DTO container with a collection of runs.
     List []Run `json:"List,omitempty"`
 }
 

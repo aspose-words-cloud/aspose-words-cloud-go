@@ -27,45 +27,45 @@
 
 package models
 
-// Represents a document list levels.
+// DTO container with a document list level.
 type ListLevel struct {
-    // Represents a document list levels.
+    // DTO container with a document list level.
     Link *WordsApiLink `json:"Link,omitempty"`
 
-    // Represents a document list levels.
+    // DTO container with a document list level.
     Alignment string `json:"Alignment,omitempty"`
 
-    // Represents a document list levels.
+    // DTO container with a document list level.
     Font *Font `json:"Font,omitempty"`
 
-    // Represents a document list levels.
+    // DTO container with a document list level.
     IsLegal *bool `json:"IsLegal,omitempty"`
 
-    // Represents a document list levels.
+    // DTO container with a document list level.
     LinkedStyle *Style `json:"LinkedStyle,omitempty"`
 
-    // Represents a document list levels.
+    // DTO container with a document list level.
     NumberFormat *string `json:"NumberFormat,omitempty"`
 
-    // Represents a document list levels.
+    // DTO container with a document list level.
     NumberPosition *float64 `json:"NumberPosition,omitempty"`
 
-    // Represents a document list levels.
+    // DTO container with a document list level.
     NumberStyle string `json:"NumberStyle,omitempty"`
 
-    // Represents a document list levels.
+    // DTO container with a document list level.
     RestartAfterLevel *int32 `json:"RestartAfterLevel,omitempty"`
 
-    // Represents a document list levels.
+    // DTO container with a document list level.
     StartAt *int32 `json:"StartAt,omitempty"`
 
-    // Represents a document list levels.
+    // DTO container with a document list level.
     TabPosition *float64 `json:"TabPosition,omitempty"`
 
-    // Represents a document list levels.
+    // DTO container with a document list level.
     TextPosition *float64 `json:"TextPosition,omitempty"`
 
-    // Represents a document list levels.
+    // DTO container with a document list level.
     TrailingCharacter string `json:"TrailingCharacter,omitempty"`
 }
 

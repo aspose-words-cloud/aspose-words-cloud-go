@@ -27,12 +27,12 @@
 
 package models
 
-// Represents DTO for collection of formfields.
+// DTO container with a collection of form fields.
 type FormFieldCollection struct {
-    // Represents DTO for collection of formfields.
+    // DTO container with a collection of form fields.
     Link *WordsApiLink `json:"Link,omitempty"`
 
-    // Represents DTO for collection of formfields.
+    // DTO container with a collection of form fields.
     List []FormField `json:"List,omitempty"`
 }
 

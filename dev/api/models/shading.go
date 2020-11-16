@@ -27,15 +27,15 @@
 
 package models
 
-// Paragraph format shading element.
+// DTO container with a paragraph format shading element.
 type Shading struct {
-    // Paragraph format shading element.
+    // DTO container with a paragraph format shading element.
     BackgroundPatternColor *XmlColor `json:"BackgroundPatternColor,omitempty"`
 
-    // Paragraph format shading element.
+    // DTO container with a paragraph format shading element.
     ForegroundPatternColor *XmlColor `json:"ForegroundPatternColor,omitempty"`
 
-    // Paragraph format shading element.
+    // DTO container with a paragraph format shading element.
     Texture string `json:"Texture,omitempty"`
 }
 

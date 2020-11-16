@@ -27,9 +27,9 @@
 
 package models
 
-// Table cell element.
+// DTO container with a table cell.
 type TableCellInsert struct {
-    // Table cell element.
+    // DTO container with a table cell.
     InsertAfter *int32 `json:"InsertAfter,omitempty"`
 }
 

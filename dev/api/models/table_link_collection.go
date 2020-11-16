@@ -27,12 +27,12 @@
 
 package models
 
-// Collection of links to tables.
+// The collection of table's links.
 type TableLinkCollection struct {
-    // Collection of links to tables.
+    // The collection of table's links.
     Link *WordsApiLink `json:"Link,omitempty"`
 
-    // Collection of links to tables.
+    // The collection of table's links.
     TableLinkList []TableLink `json:"TableLinkList,omitempty"`
 }
 

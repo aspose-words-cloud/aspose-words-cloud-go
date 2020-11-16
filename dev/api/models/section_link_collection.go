@@ -27,12 +27,12 @@
 
 package models
 
-// Collection of links to sections.
+// The collection of section's links.
 type SectionLinkCollection struct {
-    // Collection of links to sections.
+    // The collection of section's links.
     Link *WordsApiLink `json:"Link,omitempty"`
 
-    // Collection of links to sections.
+    // The collection of section's links.
     SectionLinkList []SectionLink `json:"SectionLinkList,omitempty"`
 }
 

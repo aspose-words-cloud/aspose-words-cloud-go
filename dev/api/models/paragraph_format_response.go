@@ -27,15 +27,12 @@
 
 package models
 
-// This response should be returned by the service when handling:
-// GET https://api.aspose.cloud/v4.0/words/Test.doc/paragraphs/{0}/format.
+// The REST response with the formatting properties of a paragraph.
 type ParagraphFormatResponse struct {
-    // This response should be returned by the service when handling:
-    // GET https://api.aspose.cloud/v4.0/words/Test.doc/paragraphs/{0}/format.
+    // The REST response with the formatting properties of a paragraph.
     RequestId *string `json:"RequestId,omitempty"`
 
-    // This response should be returned by the service when handling:
-    // GET https://api.aspose.cloud/v4.0/words/Test.doc/paragraphs/{0}/format.
+    // The REST response with the formatting properties of a paragraph.
     ParagraphFormat *ParagraphFormat `json:"ParagraphFormat,omitempty"`
 }
 

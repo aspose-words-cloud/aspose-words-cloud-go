@@ -27,12 +27,12 @@
 
 package models
 
-// Response for "drawingObjects/n" resource.
+// The REST response with a DrawingObject.
 type DrawingObjectResponse struct {
-    // Response for "drawingObjects/n" resource.
+    // The REST response with a DrawingObject.
     RequestId *string `json:"RequestId,omitempty"`
 
-    // Response for "drawingObjects/n" resource.
+    // The REST response with a DrawingObject.
     DrawingObject *DrawingObject `json:"DrawingObject,omitempty"`
 }
 

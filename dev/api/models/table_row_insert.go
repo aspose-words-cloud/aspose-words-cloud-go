@@ -27,12 +27,12 @@
 
 package models
 
-// Table row element.
+// DTO container with a table row element.
 type TableRowInsert struct {
-    // Table row element.
+    // DTO container with a table row element.
     ColumnsCount *int32 `json:"ColumnsCount,omitempty"`
 
-    // Table row element.
+    // DTO container with a table row element.
     InsertAfter *int32 `json:"InsertAfter,omitempty"`
 }
 

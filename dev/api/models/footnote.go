@@ -27,27 +27,27 @@
 
 package models
 
-// Footnote.
+// DTO container with a footnote.
 type Footnote struct {
-    // Footnote.
+    // DTO container with a footnote.
     Link *WordsApiLink `json:"Link,omitempty"`
 
-    // Footnote.
+    // DTO container with a footnote.
     NodeId *string `json:"NodeId,omitempty"`
 
-    // Footnote.
+    // DTO container with a footnote.
     Content *StoryChildNodes `json:"Content,omitempty"`
 
-    // Footnote.
+    // DTO container with a footnote.
     FootnoteType string `json:"FootnoteType,omitempty"`
 
-    // Footnote.
+    // DTO container with a footnote.
     Position *DocumentPosition `json:"Position,omitempty"`
 
-    // Footnote.
+    // DTO container with a footnote.
     ReferenceMark *string `json:"ReferenceMark,omitempty"`
 
-    // Footnote.
+    // DTO container with a footnote.
     Text *string `json:"Text,omitempty"`
 }
 

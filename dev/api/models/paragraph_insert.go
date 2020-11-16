@@ -27,9 +27,9 @@
 
 package models
 
-// Paragraph element.
+// DTO container with a paragraph's text.
 type ParagraphInsert struct {
-    // Paragraph element.
+    // DTO container with a paragraph's text.
     Text *string `json:"Text,omitempty"`
 }
 

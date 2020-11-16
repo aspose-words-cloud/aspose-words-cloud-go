@@ -27,15 +27,12 @@
 
 package models
 
-// This response should be returned by the service when handling:
-// GET https://api.aspose.cloud/v4.0/words/Test.doc/lists.
+// The REST response with a collection of lists, contained in the document.
 type ListsResponse struct {
-    // This response should be returned by the service when handling:
-    // GET https://api.aspose.cloud/v4.0/words/Test.doc/lists.
+    // The REST response with a collection of lists, contained in the document.
     RequestId *string `json:"RequestId,omitempty"`
 
-    // This response should be returned by the service when handling:
-    // GET https://api.aspose.cloud/v4.0/words/Test.doc/lists.
+    // The REST response with a collection of lists, contained in the document.
     Lists *Lists `json:"Lists,omitempty"`
 }
 

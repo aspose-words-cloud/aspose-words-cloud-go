@@ -27,12 +27,12 @@
 
 package models
 
-// Collection of borders.
+// The collection of borders.
 type BordersCollection struct {
-    // Collection of borders.
+    // The collection of borders.
     Link *WordsApiLink `json:"Link,omitempty"`
 
-    // Collection of borders.
+    // The collection of borders.
     List []Border `json:"List,omitempty"`
 }
 

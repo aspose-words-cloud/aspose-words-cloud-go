@@ -27,12 +27,12 @@
 
 package models
 
-// This response should be returned by the service when handling:  GET /drawingObjects.
+// The REST response with a collection of DrawingObjects.
 type DrawingObjectsResponse struct {
-    // This response should be returned by the service when handling:  GET /drawingObjects.
+    // The REST response with a collection of DrawingObjects.
     RequestId *string `json:"RequestId,omitempty"`
 
-    // This response should be returned by the service when handling:  GET /drawingObjects.
+    // The REST response with a collection of DrawingObjects.
     DrawingObjects *DrawingObjectCollection `json:"DrawingObjects,omitempty"`
 }
 

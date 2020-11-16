@@ -27,24 +27,24 @@
 
 package models
 
-// OfficeMath object.
+// DTO container with an OfficeMath object.
 type OfficeMathObject struct {
-    // OfficeMath object.
+    // DTO container with an OfficeMath object.
     Link *WordsApiLink `json:"Link,omitempty"`
 
-    // OfficeMath object.
+    // DTO container with an OfficeMath object.
     NodeId *string `json:"NodeId,omitempty"`
 
-    // OfficeMath object.
+    // DTO container with an OfficeMath object.
     Content *StoryChildNodes `json:"Content,omitempty"`
 
-    // OfficeMath object.
+    // DTO container with an OfficeMath object.
     DisplayType string `json:"DisplayType,omitempty"`
 
-    // OfficeMath object.
+    // DTO container with an OfficeMath object.
     Justification string `json:"Justification,omitempty"`
 
-    // OfficeMath object.
+    // DTO container with an OfficeMath object.
     MathObjectType string `json:"MathObjectType,omitempty"`
 }
 

@@ -27,15 +27,12 @@
 
 package models
 
-// This response should be returned by the service when handling:
-// GET https://api.aspose.cloud/v4.0/words/Test.doc/styles/{0}.
+// The REST response with a style.
 type StyleResponse struct {
-    // This response should be returned by the service when handling:
-    // GET https://api.aspose.cloud/v4.0/words/Test.doc/styles/{0}.
+    // The REST response with a style.
     RequestId *string `json:"RequestId,omitempty"`
 
-    // This response should be returned by the service when handling:
-    // GET https://api.aspose.cloud/v4.0/words/Test.doc/styles/{0}.
+    // The REST response with a style.
     Style *Style `json:"Style,omitempty"`
 }
 

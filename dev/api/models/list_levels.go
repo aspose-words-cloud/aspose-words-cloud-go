@@ -27,12 +27,12 @@
 
 package models
 
-// Represents a single document list.
+// DTO container with a single document list.
 type ListLevels struct {
-    // Represents a single document list.
+    // DTO container with a single document list.
     Link *WordsApiLink `json:"Link,omitempty"`
 
-    // Represents a single document list.
+    // DTO container with a single document list.
     ListLevel []ListLevel `json:"ListLevel,omitempty"`
 }
 

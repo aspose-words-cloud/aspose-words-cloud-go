@@ -27,45 +27,45 @@
 
 package models
 
-// Represents all formatting for a table row.
+// DTO container with all formatting for a table row.
 type TableCellFormat struct {
-    // Represents all formatting for a table row.
+    // DTO container with all formatting for a table row.
     Link *WordsApiLink `json:"Link,omitempty"`
 
-    // Represents all formatting for a table row.
+    // DTO container with all formatting for a table row.
     BottomPadding *float64 `json:"BottomPadding,omitempty"`
 
-    // Represents all formatting for a table row.
+    // DTO container with all formatting for a table row.
     FitText *bool `json:"FitText,omitempty"`
 
-    // Represents all formatting for a table row.
+    // DTO container with all formatting for a table row.
     HorizontalMerge string `json:"HorizontalMerge,omitempty"`
 
-    // Represents all formatting for a table row.
+    // DTO container with all formatting for a table row.
     LeftPadding *float64 `json:"LeftPadding,omitempty"`
 
-    // Represents all formatting for a table row.
+    // DTO container with all formatting for a table row.
     Orientation string `json:"Orientation,omitempty"`
 
-    // Represents all formatting for a table row.
+    // DTO container with all formatting for a table row.
     PreferredWidth *PreferredWidth `json:"PreferredWidth,omitempty"`
 
-    // Represents all formatting for a table row.
+    // DTO container with all formatting for a table row.
     RightPadding *float64 `json:"RightPadding,omitempty"`
 
-    // Represents all formatting for a table row.
+    // DTO container with all formatting for a table row.
     TopPadding *float64 `json:"TopPadding,omitempty"`
 
-    // Represents all formatting for a table row.
+    // DTO container with all formatting for a table row.
     VerticalAlignment string `json:"VerticalAlignment,omitempty"`
 
-    // Represents all formatting for a table row.
+    // DTO container with all formatting for a table row.
     VerticalMerge string `json:"VerticalMerge,omitempty"`
 
-    // Represents all formatting for a table row.
+    // DTO container with all formatting for a table row.
     Width *float64 `json:"Width,omitempty"`
 
-    // Represents all formatting for a table row.
+    // DTO container with all formatting for a table row.
     WrapText *bool `json:"WrapText,omitempty"`
 }
 
