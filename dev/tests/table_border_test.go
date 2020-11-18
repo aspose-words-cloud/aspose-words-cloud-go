@@ -153,7 +153,7 @@ func Test_TableBorder_UpdateBorder(t *testing.T) {
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
     requestBorderPropertiesColor := models.XmlColor{
-        Alpha: ToIn32Pointer(int32(2)),
+        Web: ToStringPointer("#AABBCC"),
     }
     requestBorderProperties := models.Border{
         BorderType: "Left",
@@ -176,7 +176,7 @@ func Test_TableBorder_UpdateBorder(t *testing.T) {
 
     assert.NotNil(t, actual.Border, "Validate UpdateBorder response.");
     assert.NotNil(t, actual.Border.Color, "Validate UpdateBorder response.");
-    assert.Equal(t, "#000002", *actual.Border.Color.Web, "Validate UpdateBorder response.");
+    assert.Equal(t, "#AABBCC", *actual.Border.Color.Web, "Validate UpdateBorder response.");
     assert.Equal(t, 6.0, *actual.Border.DistanceFromText, "Validate UpdateBorder response.");
     assert.Equal(t, 2.0, *actual.Border.LineWidth, "Validate UpdateBorder response.");
     assert.True(t, *actual.Border.Shadow, "Validate UpdateBorder response.");
