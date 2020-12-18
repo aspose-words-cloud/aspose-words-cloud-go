@@ -102,7 +102,7 @@ func Test_Folder_CopyFolder(t *testing.T) {
 
     options := map[string]interface{}{
     }
-    _, err := client.WordsApi.CopyFolder(ctx, folderToCopy + "Dest", folderToCopy + "Src", options)
+    _, err := client.WordsApi.CopyFolder(ctx, folderToCopy + "Src", folderToCopy + "Dest", options)
 
     if err != nil {
         t.Error(err)
@@ -122,7 +122,7 @@ func Test_Folder_MoveFolder(t *testing.T) {
 
     options := map[string]interface{}{
     }
-    _, err := client.WordsApi.MoveFolder(ctx, baseTestOutPath + "/TestMoveFolderDest_" + CreateRandomGuid(), remoteDataFolder + "/TestMoveFolderSrc", options)
+    _, err := client.WordsApi.MoveFolder(ctx, remoteDataFolder + "/TestMoveFolderSrc", baseTestOutPath + "/TestMoveFolderDest_" + CreateRandomGuid(), options)
 
     if err != nil {
         t.Error(err)
