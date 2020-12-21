@@ -1156,14 +1156,14 @@ func (a *WordsApiService) ConvertDocument(ctx context.Context, document *os.File
 }
 /* WordsApiService Copy file.
  * @param ctx context.Context for authentication, logging, tracing, etc.
- @param srcPath Source file path e.g. '/folder/file.ext'.
  @param destPath Destination file path.
+ @param srcPath Source file's path e.g. '/Folder 1/file.ext' or '/Bucket/Folder 1/file.ext'.
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "srcStorageName" (string) Source storage name.
      @param "destStorageName" (string) Destination storage name.
      @param "versionId" (string) File version ID to copy.
 @return */
-func (a *WordsApiService) CopyFile(ctx context.Context, srcPath string, destPath string, localVarOptionals map[string]interface{}) (*http.Response, error) {
+func (a *WordsApiService) CopyFile(ctx context.Context, destPath string, srcPath string, localVarOptionals map[string]interface{}) (*http.Response, error) {
     var (
         localVarHttpMethod = strings.ToUpper("put")
         localVarPostBody interface{}
@@ -1261,13 +1261,13 @@ func (a *WordsApiService) CopyFile(ctx context.Context, srcPath string, destPath
 }
 /* WordsApiService Copy folder.
  * @param ctx context.Context for authentication, logging, tracing, etc.
- @param srcPath Source folder path e.g. '/src'.
  @param destPath Destination folder path e.g. '/dst'.
+ @param srcPath Source folder path e.g. /Folder1.
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "srcStorageName" (string) Source storage name.
      @param "destStorageName" (string) Destination storage name.
 @return */
-func (a *WordsApiService) CopyFolder(ctx context.Context, srcPath string, destPath string, localVarOptionals map[string]interface{}) (*http.Response, error) {
+func (a *WordsApiService) CopyFolder(ctx context.Context, destPath string, srcPath string, localVarOptionals map[string]interface{}) (*http.Response, error) {
     var (
         localVarHttpMethod = strings.ToUpper("put")
         localVarPostBody interface{}
@@ -1605,7 +1605,7 @@ func (a *WordsApiService) CreateDocument(ctx context.Context, localVarOptionals 
 }
 /* WordsApiService Create the folder.
  * @param ctx context.Context for authentication, logging, tracing, etc.
- @param path Folder path to create e.g. 'folder_1/folder_2/'.
+ @param path Target folder's path e.g. Folder1/Folder2/. The folders will be created recursively.
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "storageName" (string) Storage name.
 @return */
@@ -2969,7 +2969,7 @@ func (a *WordsApiService) DeleteFields(ctx context.Context, name string, localVa
 }
 /* WordsApiService Delete file.
  * @param ctx context.Context for authentication, logging, tracing, etc.
- @param path File path e.g. '/folder/file.ext'.
+ @param path Path of the file including the file name and extension e.g. /folder1/file.ext.
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "storageName" (string) Storage name.
      @param "versionId" (string) File version ID to delete.
@@ -5287,7 +5287,7 @@ func (a *WordsApiService) DeleteWatermark(ctx context.Context, name string, loca
 }
 /* WordsApiService Download file.
  * @param ctx context.Context for authentication, logging, tracing, etc.
- @param path File path e.g. '/folder/file.ext'.
+ @param path Path of the file including the file name and extension e.g. /folder1/file.ext.
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "storageName" (string) Storage name.
      @param "versionId" (string) File version ID to download.
@@ -15040,14 +15040,14 @@ func (a *WordsApiService) LoadWebDocument(ctx context.Context, data models.ILoad
 }
 /* WordsApiService Move file.
  * @param ctx context.Context for authentication, logging, tracing, etc.
- @param srcPath Source file path e.g. '/src.ext'.
  @param destPath Destination file path e.g. '/dest.ext'.
+ @param srcPath Source file's path e.g. '/Folder 1/file.ext' or '/Bucket/Folder 1/file.ext'.
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "srcStorageName" (string) Source storage name.
      @param "destStorageName" (string) Destination storage name.
      @param "versionId" (string) File version ID to move.
 @return */
-func (a *WordsApiService) MoveFile(ctx context.Context, srcPath string, destPath string, localVarOptionals map[string]interface{}) (*http.Response, error) {
+func (a *WordsApiService) MoveFile(ctx context.Context, destPath string, srcPath string, localVarOptionals map[string]interface{}) (*http.Response, error) {
     var (
         localVarHttpMethod = strings.ToUpper("put")
         localVarPostBody interface{}
@@ -15145,13 +15145,13 @@ func (a *WordsApiService) MoveFile(ctx context.Context, srcPath string, destPath
 }
 /* WordsApiService Move folder.
  * @param ctx context.Context for authentication, logging, tracing, etc.
- @param srcPath Folder path to move e.g. '/folder'.
  @param destPath Destination folder path to move to e.g '/dst'.
+ @param srcPath Source folder path e.g. /Folder1.
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "srcStorageName" (string) Source storage name.
      @param "destStorageName" (string) Destination storage name.
 @return */
-func (a *WordsApiService) MoveFolder(ctx context.Context, srcPath string, destPath string, localVarOptionals map[string]interface{}) (*http.Response, error) {
+func (a *WordsApiService) MoveFolder(ctx context.Context, destPath string, srcPath string, localVarOptionals map[string]interface{}) (*http.Response, error) {
     var (
         localVarHttpMethod = strings.ToUpper("put")
         localVarPostBody interface{}

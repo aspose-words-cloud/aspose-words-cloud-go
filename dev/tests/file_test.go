@@ -68,7 +68,7 @@ func Test_File_CopyFile(t *testing.T) {
 
     options := map[string]interface{}{
     }
-    _, err := client.WordsApi.CopyFile(ctx, remoteDataFolder + "/" + remoteFileName, remoteDataFolder + "/TestCopyFileDest.docx", options)
+    _, err := client.WordsApi.CopyFile(ctx, remoteDataFolder + "/TestCopyFileDest.docx", remoteDataFolder + "/" + remoteFileName, options)
 
     if err != nil {
         t.Error(err)
@@ -89,7 +89,7 @@ func Test_File_MoveFile(t *testing.T) {
 
     options := map[string]interface{}{
     }
-    _, err := client.WordsApi.MoveFile(ctx, remoteDataFolder + "/" + remoteFileName, baseTestOutPath + "/TestMoveFileDest_" + CreateRandomGuid() + ".docx", options)
+    _, err := client.WordsApi.MoveFile(ctx, baseTestOutPath + "/TestMoveFileDest_" + CreateRandomGuid() + ".docx", remoteDataFolder + "/" + remoteFileName, options)
 
     if err != nil {
         t.Error(err)
