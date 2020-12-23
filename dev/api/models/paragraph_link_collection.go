@@ -27,12 +27,20 @@
 
 package models
 
-// Collection of links to paragraphs.
-type ParagraphLinkCollection struct {
-    // Collection of links to paragraphs.
-    Link *WordsApiLink `json:"Link,omitempty"`
+// The collection of paragraph's links.
+type ParagraphLinkCollectionResult struct {
+    // The collection of paragraph's links.
+    Link WordsApiLinkResult `json:"Link,omitempty"`
 
-    // Collection of links to paragraphs.
+    // The collection of paragraph's links.
+    ParagraphLinkList []ParagraphLinkResult `json:"ParagraphLinkList,omitempty"`
+}
+
+type ParagraphLinkCollection struct {
+    // The collection of paragraph's links.
+    Link IWordsApiLink `json:"Link,omitempty"`
+
+    // The collection of paragraph's links.
     ParagraphLinkList []ParagraphLink `json:"ParagraphLinkList,omitempty"`
 }
 
@@ -46,3 +54,5 @@ func (ParagraphLinkCollection) IsParagraphLinkCollection() bool {
 func (ParagraphLinkCollection) IsLinkElement() bool {
     return true
 }
+
+

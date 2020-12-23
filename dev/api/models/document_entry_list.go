@@ -28,9 +28,17 @@
 package models
 
 // Represents a list of documents which will be appended to the original resource document.
-type DocumentEntryList struct {
+type DocumentEntryListResult struct {
     // Represents a list of documents which will be appended to the original resource document.
     ApplyBaseDocumentHeadersAndFootersToAppendingDocuments bool `json:"ApplyBaseDocumentHeadersAndFootersToAppendingDocuments,omitempty"`
+
+    // Represents a list of documents which will be appended to the original resource document.
+    DocumentEntries []DocumentEntryResult `json:"DocumentEntries,omitempty"`
+}
+
+type DocumentEntryList struct {
+    // Represents a list of documents which will be appended to the original resource document.
+    ApplyBaseDocumentHeadersAndFootersToAppendingDocuments *bool `json:"ApplyBaseDocumentHeadersAndFootersToAppendingDocuments,omitempty"`
 
     // Represents a list of documents which will be appended to the original resource document.
     DocumentEntries []DocumentEntry `json:"DocumentEntries,omitempty"`
@@ -42,4 +50,5 @@ type IDocumentEntryList interface {
 func (DocumentEntryList) IsDocumentEntryList() bool {
     return true
 }
+
 

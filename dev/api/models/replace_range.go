@@ -27,13 +27,21 @@
 
 package models
 
-// Range element.
-type ReplaceRange struct {
-    // Range element.
+// DTO container with a range element.
+type ReplaceRangeResult struct {
+    // DTO container with a range element.
     Text string `json:"Text,omitempty"`
 
-    // Range element.
+    // DTO container with a range element.
     TextType string `json:"TextType,omitempty"`
+}
+
+type ReplaceRange struct {
+    // DTO container with a range element.
+    Text *string `json:"Text,omitempty"`
+
+    // DTO container with a range element.
+    TextType *string `json:"TextType,omitempty"`
 }
 
 type IReplaceRange interface {
@@ -42,4 +50,5 @@ type IReplaceRange interface {
 func (ReplaceRange) IsReplaceRange() bool {
     return true
 }
+
 

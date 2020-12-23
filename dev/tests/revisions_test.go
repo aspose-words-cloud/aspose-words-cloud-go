@@ -29,7 +29,9 @@
 package api_test
 
 import (
+    "github.com/stretchr/testify/assert"
     "testing"
+    "github.com/aspose-words-cloud/aspose-words-cloud-go/dev/api/models"
 )
 
 // Test for accepting revisions in document.
@@ -47,11 +49,43 @@ func Test_Revisions_AcceptAllRevisions(t *testing.T) {
         "folder": remoteDataFolder,
         "destFileName": baseTestOutPath + "/" + remoteFileName,
     }
-    _, _, err := client.WordsApi.AcceptAllRevisions(ctx, remoteFileName, options)
+
+    request := &models.AcceptAllRevisionsRequest{
+        Name: ToStringPointer(remoteFileName),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.AcceptAllRevisions(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
+
+    assert.NotNil(t, actual.Result, "Validate AcceptAllRevisions response.");
+    assert.NotNil(t, actual.Result.Dest, "Validate AcceptAllRevisions response.");
+}
+
+// Test for accepting revisions in document online.
+func Test_Revisions_AcceptAllRevisionsOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "Common/test_multi_pages.docx"
+
+
+    options := map[string]interface{}{
+    }
+
+    request := &models.AcceptAllRevisionsOnlineRequest{
+        Document: OpenFile(t, localFile),
+        Optionals: options,
+    }
+
+    _,err := client.WordsApi.AcceptAllRevisionsOnline(ctx, request)
+
+    if err != nil {
+        t.Error(err)
+    }
+
 }
 
 // Test for rejecting revisions in document.
@@ -69,9 +103,41 @@ func Test_Revisions_RejectAllRevisions(t *testing.T) {
         "folder": remoteDataFolder,
         "destFileName": baseTestOutPath + "/" + remoteFileName,
     }
-    _, _, err := client.WordsApi.RejectAllRevisions(ctx, remoteFileName, options)
+
+    request := &models.RejectAllRevisionsRequest{
+        Name: ToStringPointer(remoteFileName),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.RejectAllRevisions(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
+
+    assert.NotNil(t, actual.Result, "Validate RejectAllRevisions response.");
+    assert.NotNil(t, actual.Result.Dest, "Validate RejectAllRevisions response.");
+}
+
+// Test for rejecting revisions in document online.
+func Test_Revisions_RejectAllRevisionsOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "Common/test_multi_pages.docx"
+
+
+    options := map[string]interface{}{
+    }
+
+    request := &models.RejectAllRevisionsOnlineRequest{
+        Document: OpenFile(t, localFile),
+        Optionals: options,
+    }
+
+    _,err := client.WordsApi.RejectAllRevisionsOnline(ctx, request)
+
+    if err != nil {
+        t.Error(err)
+    }
+
 }

@@ -27,22 +27,39 @@
 
 package models
 
-// container class for options of metafile rendering.
-type MetafileRenderingOptionsData struct {
-    // container class for options of metafile rendering.
+// Container class for options of metafile rendering.
+type MetafileRenderingOptionsDataResult struct {
+    // Container class for options of metafile rendering.
     EmfPlusDualRenderingMode string `json:"EmfPlusDualRenderingMode,omitempty"`
 
-    // container class for options of metafile rendering.
+    // Container class for options of metafile rendering.
     EmulateRasterOperations bool `json:"EmulateRasterOperations,omitempty"`
 
-    // container class for options of metafile rendering.
+    // Container class for options of metafile rendering.
     RenderingMode string `json:"RenderingMode,omitempty"`
 
-    // container class for options of metafile rendering.
+    // Container class for options of metafile rendering.
     ScaleWmfFontsToMetafileSize bool `json:"ScaleWmfFontsToMetafileSize,omitempty"`
 
-    // container class for options of metafile rendering.
+    // Container class for options of metafile rendering.
     UseEmfEmbeddedToWmf bool `json:"UseEmfEmbeddedToWmf,omitempty"`
+}
+
+type MetafileRenderingOptionsData struct {
+    // Container class for options of metafile rendering.
+    EmfPlusDualRenderingMode *string `json:"EmfPlusDualRenderingMode,omitempty"`
+
+    // Container class for options of metafile rendering.
+    EmulateRasterOperations *bool `json:"EmulateRasterOperations,omitempty"`
+
+    // Container class for options of metafile rendering.
+    RenderingMode *string `json:"RenderingMode,omitempty"`
+
+    // Container class for options of metafile rendering.
+    ScaleWmfFontsToMetafileSize *bool `json:"ScaleWmfFontsToMetafileSize,omitempty"`
+
+    // Container class for options of metafile rendering.
+    UseEmfEmbeddedToWmf *bool `json:"UseEmfEmbeddedToWmf,omitempty"`
 }
 
 type IMetafileRenderingOptionsData interface {
@@ -51,4 +68,5 @@ type IMetafileRenderingOptionsData interface {
 func (MetafileRenderingOptionsData) IsMetafileRenderingOptionsData() bool {
     return true
 }
+
 

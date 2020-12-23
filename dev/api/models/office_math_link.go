@@ -28,12 +28,20 @@
 package models
 
 // OfficeMath object link element.
-type OfficeMathLink struct {
+type OfficeMathLinkResult struct {
     // OfficeMath object link element.
-    Link *WordsApiLink `json:"Link,omitempty"`
+    Link WordsApiLinkResult `json:"Link,omitempty"`
 
     // OfficeMath object link element.
     NodeId string `json:"NodeId,omitempty"`
+}
+
+type OfficeMathLink struct {
+    // OfficeMath object link element.
+    Link IWordsApiLink `json:"Link,omitempty"`
+
+    // OfficeMath object link element.
+    NodeId *string `json:"NodeId,omitempty"`
 }
 
 type IOfficeMathLink interface {
@@ -46,3 +54,5 @@ func (OfficeMathLink) IsOfficeMathLink() bool {
 func (OfficeMathLink) IsNodeLink() bool {
     return true
 }
+
+

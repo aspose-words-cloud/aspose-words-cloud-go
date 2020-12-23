@@ -27,25 +27,12 @@
 
 package models
 
-// This response should be returned by the service when handling:
-// GET https://api.aspose.cloud/v4.0/words/Test.doc/sections/{0}.
+// The REST response with a section.
 type SectionResponse struct {
-    // This response should be returned by the service when handling:
-    // GET https://api.aspose.cloud/v4.0/words/Test.doc/sections/{0}.
+    // The REST response with a section.
     RequestId string `json:"RequestId,omitempty"`
 
-    // This response should be returned by the service when handling:
-    // GET https://api.aspose.cloud/v4.0/words/Test.doc/sections/{0}.
-    Section *Section `json:"Section,omitempty"`
+    // The REST response with a section.
+    Section SectionResult `json:"Section,omitempty"`
 }
 
-type ISectionResponse interface {
-    IsSectionResponse() bool
-}
-func (SectionResponse) IsSectionResponse() bool {
-    return true
-}
-
-func (SectionResponse) IsWordsResponse() bool {
-    return true
-}

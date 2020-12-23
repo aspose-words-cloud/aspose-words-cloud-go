@@ -28,12 +28,20 @@
 package models
 
 // Utility class for Color serialization.
-type XmlColor struct {
+type XmlColorResult struct {
     // Utility class for Color serialization.
     Alpha int32 `json:"Alpha,omitempty"`
 
     // Utility class for Color serialization.
     Web string `json:"Web,omitempty"`
+}
+
+type XmlColor struct {
+    // Utility class for Color serialization.
+    Alpha *int32 `json:"Alpha,omitempty"`
+
+    // Utility class for Color serialization.
+    Web *string `json:"Web,omitempty"`
 }
 
 type IXmlColor interface {
@@ -42,4 +50,5 @@ type IXmlColor interface {
 func (XmlColor) IsXmlColor() bool {
     return true
 }
+
 

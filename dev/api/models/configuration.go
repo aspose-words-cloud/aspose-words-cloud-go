@@ -55,8 +55,8 @@ var (
 	// ContextAccessToken takes a string oauth2 access token as authentication for the request.
 	ContextAccessToken 	= contextKey("accesstoken")
 
-	// ContextAPIKey takes an APIKey as authentication for the request
- 	ContextAPIKey 		= contextKey("apikey")
+	// ContextclientSecret takes an ClientSecret as authentication for the request
+ 	ContextClientSecret = contextKey("clientsecret")
 )
 
 // BasicAuth provides basic http authentication to a request passed via context using ContextBasicAuth 
@@ -65,16 +65,16 @@ type BasicAuth struct {
 	Password      string            `json:"password,omitempty"`	
 }
 
-// APIKey provides API key based authentication to a request passed via context using ContextAPIKey
-type APIKey struct {
+// ClientSecret provides API key based authentication to a request passed via context using ContextclientSecret
+type ClientSecret struct {
 	Key 	string
 	Prefix	string
 }
 
 type Configuration struct {
+	ClientId        string            `json:"ClientId"`
+	ClientSecret        string            `json:"ClientSecret"`
 	BaseUrl       string            `json:"BaseUrl,omitempty"`
-	AppKey        string            `json:"AppKey"`
-	AppSid        string            `json:"AppSid"`
 	DebugMode     bool              `json:"DebugMode,omitempty"`
 	DefaultHeader map[string]string `json:"DefaultHeader,omitempty"`
 	HttpClient    *http.Client
@@ -91,7 +91,7 @@ func NewConfiguration(configFilePath string) (pConfig *Configuration, err error)
 	cfg := Configuration{
 		BaseUrl:       "https://api.aspose.cloud",
 		DebugMode:     false,
-		DefaultHeader: map[string]string{"x-aspose-client": "go sdk", "x-aspose-client-version": "20.7"},
+		DefaultHeader: map[string]string{"x-aspose-client": "go sdk", "x-aspose-client-version": "20.11"},
 	}
 	err = json.Unmarshal(data, &cfg)
 

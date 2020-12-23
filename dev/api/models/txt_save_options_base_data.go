@@ -28,7 +28,7 @@
 package models
 
 // Base class for save options of text formats.
-type TxtSaveOptionsBaseData struct {
+type TxtSaveOptionsBaseDataResult struct {
     // Base class for save options of text formats.
     Dml3DEffectsRenderingMode string `json:"Dml3DEffectsRenderingMode,omitempty"`
 
@@ -72,6 +72,50 @@ type TxtSaveOptionsBaseData struct {
     ParagraphBreak string `json:"ParagraphBreak,omitempty"`
 }
 
+type TxtSaveOptionsBaseData struct {
+    // Base class for save options of text formats.
+    Dml3DEffectsRenderingMode *string `json:"Dml3DEffectsRenderingMode,omitempty"`
+
+    // Base class for save options of text formats.
+    DmlEffectsRenderingMode *string `json:"DmlEffectsRenderingMode,omitempty"`
+
+    // Base class for save options of text formats.
+    DmlRenderingMode *string `json:"DmlRenderingMode,omitempty"`
+
+    // Base class for save options of text formats.
+    FileName *string `json:"FileName,omitempty"`
+
+    // Base class for save options of text formats.
+    SaveFormat *string `json:"SaveFormat,omitempty"`
+
+    // Base class for save options of text formats.
+    UpdateFields *bool `json:"UpdateFields,omitempty"`
+
+    // Base class for save options of text formats.
+    UpdateLastPrintedProperty *bool `json:"UpdateLastPrintedProperty,omitempty"`
+
+    // Base class for save options of text formats.
+    UpdateLastSavedTimeProperty *bool `json:"UpdateLastSavedTimeProperty,omitempty"`
+
+    // Base class for save options of text formats.
+    UpdateSdtContent *bool `json:"UpdateSdtContent,omitempty"`
+
+    // Base class for save options of text formats.
+    ZipOutput *bool `json:"ZipOutput,omitempty"`
+
+    // Base class for save options of text formats.
+    Encoding *string `json:"Encoding,omitempty"`
+
+    // Base class for save options of text formats.
+    ExportHeadersFootersMode *string `json:"ExportHeadersFootersMode,omitempty"`
+
+    // Base class for save options of text formats.
+    ForcePageBreaks *bool `json:"ForcePageBreaks,omitempty"`
+
+    // Base class for save options of text formats.
+    ParagraphBreak *string `json:"ParagraphBreak,omitempty"`
+}
+
 type ITxtSaveOptionsBaseData interface {
     IsTxtSaveOptionsBaseData() bool
 }
@@ -82,3 +126,5 @@ func (TxtSaveOptionsBaseData) IsTxtSaveOptionsBaseData() bool {
 func (TxtSaveOptionsBaseData) IsSaveOptionsData() bool {
     return true
 }
+
+

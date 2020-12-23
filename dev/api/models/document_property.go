@@ -28,9 +28,9 @@
 package models
 
 // Words document property DTO.
-type DocumentProperty struct {
+type DocumentPropertyResult struct {
     // Words document property DTO.
-    Link *WordsApiLink `json:"Link,omitempty"`
+    Link WordsApiLinkResult `json:"Link,omitempty"`
 
     // Words document property DTO.
     BuiltIn bool `json:"BuiltIn,omitempty"`
@@ -40,6 +40,20 @@ type DocumentProperty struct {
 
     // Words document property DTO.
     Value string `json:"Value,omitempty"`
+}
+
+type DocumentProperty struct {
+    // Words document property DTO.
+    Link IWordsApiLink `json:"Link,omitempty"`
+
+    // Words document property DTO.
+    BuiltIn *bool `json:"BuiltIn,omitempty"`
+
+    // Words document property DTO.
+    Name *string `json:"Name,omitempty"`
+
+    // Words document property DTO.
+    Value *string `json:"Value,omitempty"`
 }
 
 type IDocumentProperty interface {
@@ -52,3 +66,5 @@ func (DocumentProperty) IsDocumentProperty() bool {
 func (DocumentProperty) IsLinkElement() bool {
     return true
 }
+
+

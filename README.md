@@ -16,6 +16,34 @@ Feel free to explore the [Developer's Guide](https://docs.aspose.cloud/display/w
 - Add & remove watermarks and protection.
 - Read & write access to Document Object Model.
 
+## Enhancements in Version 20.12
+
+- Refactoring of Co SDK, all API method signatures are changed
+- Added Batch API feature
+
+## Enhancements in Version 20.11
+
+- In configuration json file appSid / appKey has been replaced to clientId / clientSecret.
+- In Words API initialization methods clientId parameter precedes clientSecret parameter.
+- Fixed the problem with object updating methods (they ignored parameters with default type values).
+
+## Enhancements in Version 20.10
+
+- Internal API changes.
+
+
+## Enhancements in Version 20.9
+
+- Added Batch API feature
+
+
+## Enhancements in Version 20.8
+
+- Added new api method (PUT '/words/{name}/compatibility/optimize') which is allows to optimize the document contents as well as default Aspose.Words behavior to a particular versions of MS Word
+- Added 'ApplyBaseDocumentHeadersAndFootersToAppendingDocuments' option to 'DocumentEntryList' for AppendDocument API
+- WithoutNodePath methods have been removed, pass null values instead
+
+
 ## Enhancements in Version 20.7
 
 - Added 'Markdown' save format
@@ -111,8 +139,8 @@ The examples below show how your application have to initiate and get a text of 
 Config.json file:
 ```csharp
 {
-	"AppKey": "your app key",
-	"AppSid": "your app sid",
+	"ClientId": "your client id",
+	"ClientSecret": "your client secret",
 	"BaseUrl": "https://api.aspose.cloud"
 } 
 ```

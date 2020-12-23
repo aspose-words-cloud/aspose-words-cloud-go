@@ -27,25 +27,12 @@
 
 package models
 
-// This response should be returned by the service when handling:
-// GET https://api.aspose.cloud/v4.0/words/Test.doc/officeMathObjects/0.
+// The REST response with a OfficeMath object.
 type OfficeMathObjectResponse struct {
-    // This response should be returned by the service when handling:
-    // GET https://api.aspose.cloud/v4.0/words/Test.doc/officeMathObjects/0.
+    // The REST response with a OfficeMath object.
     RequestId string `json:"RequestId,omitempty"`
 
-    // This response should be returned by the service when handling:
-    // GET https://api.aspose.cloud/v4.0/words/Test.doc/officeMathObjects/0.
-    OfficeMathObject *OfficeMathObject `json:"OfficeMathObject,omitempty"`
+    // The REST response with a OfficeMath object.
+    OfficeMathObject OfficeMathObjectResult `json:"OfficeMathObject,omitempty"`
 }
 
-type IOfficeMathObjectResponse interface {
-    IsOfficeMathObjectResponse() bool
-}
-func (OfficeMathObjectResponse) IsOfficeMathObjectResponse() bool {
-    return true
-}
-
-func (OfficeMathObjectResponse) IsWordsResponse() bool {
-    return true
-}

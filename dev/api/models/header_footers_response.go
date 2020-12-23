@@ -27,25 +27,12 @@
 
 package models
 
-// This response should be returned by the service when handling:
-// GET https://api.aspose.cloud/v4.0/words/Test.doc/headersfooters.
+// The REST response with a collection of HeaderFooter elements.
 type HeaderFootersResponse struct {
-    // This response should be returned by the service when handling:
-    // GET https://api.aspose.cloud/v4.0/words/Test.doc/headersfooters.
+    // The REST response with a collection of HeaderFooter elements.
     RequestId string `json:"RequestId,omitempty"`
 
-    // This response should be returned by the service when handling:
-    // GET https://api.aspose.cloud/v4.0/words/Test.doc/headersfooters.
-    HeaderFooters *HeaderFooterLinkCollection `json:"HeaderFooters,omitempty"`
+    // The REST response with a collection of HeaderFooter elements.
+    HeaderFooters HeaderFooterLinkCollectionResult `json:"HeaderFooters,omitempty"`
 }
 
-type IHeaderFootersResponse interface {
-    IsHeaderFootersResponse() bool
-}
-func (HeaderFootersResponse) IsHeaderFootersResponse() bool {
-    return true
-}
-
-func (HeaderFootersResponse) IsWordsResponse() bool {
-    return true
-}

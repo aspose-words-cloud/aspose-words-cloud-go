@@ -29,7 +29,9 @@
 package api_test
 
 import (
+    "github.com/stretchr/testify/assert"
     "testing"
+    "github.com/aspose-words-cloud/aspose-words-cloud-go/dev/api/models"
 )
 
 // Test for document classification.
@@ -46,11 +48,20 @@ func Test_DocumentStatistics_GetDocumentStatistics(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetDocumentStatistics(ctx, remoteFileName, options)
+
+    request := &models.GetDocumentStatisticsRequest{
+        Name: ToStringPointer(remoteFileName),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.GetDocumentStatistics(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
+
+    assert.NotNil(t, actual.StatData, "Validate GetDocumentStatistics response.");
+    assert.Equal(t, int32(10), actual.StatData.WordCount, "Validate GetDocumentStatistics response.");
 }
 
 // Test for document classification online.
@@ -62,9 +73,16 @@ func Test_DocumentStatistics_GetDocumentStatisticsOnline(t *testing.T) {
 
     options := map[string]interface{}{
     }
-    _, err := client.WordsApi.GetDocumentStatisticsOnline(ctx, OpenFile(t, localFile), options)
+
+    request := &models.GetDocumentStatisticsOnlineRequest{
+        Document: OpenFile(t, localFile),
+        Optionals: options,
+    }
+
+    _, _, err := client.WordsApi.GetDocumentStatisticsOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
+
 }

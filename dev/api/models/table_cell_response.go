@@ -27,25 +27,12 @@
 
 package models
 
-// This response should be returned by the service when handling:
-// GET https://api.aspose.cloud/v4.0/words/Test.doc/tables/{0}.
+// The REST response with a table cell.
 type TableCellResponse struct {
-    // This response should be returned by the service when handling:
-    // GET https://api.aspose.cloud/v4.0/words/Test.doc/tables/{0}.
+    // The REST response with a table cell.
     RequestId string `json:"RequestId,omitempty"`
 
-    // This response should be returned by the service when handling:
-    // GET https://api.aspose.cloud/v4.0/words/Test.doc/tables/{0}.
-    Cell *TableCell `json:"Cell,omitempty"`
+    // The REST response with a table cell.
+    Cell TableCellResult `json:"Cell,omitempty"`
 }
 
-type ITableCellResponse interface {
-    IsTableCellResponse() bool
-}
-func (TableCellResponse) IsTableCellResponse() bool {
-    return true
-}
-
-func (TableCellResponse) IsWordsResponse() bool {
-    return true
-}

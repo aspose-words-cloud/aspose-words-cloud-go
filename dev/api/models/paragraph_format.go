@@ -28,9 +28,9 @@
 package models
 
 // Paragraph format element.
-type ParagraphFormat struct {
+type ParagraphFormatResult struct {
     // Paragraph format element.
-    Link *WordsApiLink `json:"Link,omitempty"`
+    Link WordsApiLinkResult `json:"Link,omitempty"`
 
     // Paragraph format element.
     AddSpaceBetweenFarEastAndAlpha bool `json:"AddSpaceBetweenFarEastAndAlpha,omitempty"`
@@ -81,7 +81,7 @@ type ParagraphFormat struct {
     RightIndent float64 `json:"RightIndent,omitempty"`
 
     // Paragraph format element.
-    Shading *Shading `json:"Shading,omitempty"`
+    Shading ShadingResult `json:"Shading,omitempty"`
 
     // Paragraph format element.
     SpaceAfter float64 `json:"SpaceAfter,omitempty"`
@@ -117,6 +117,95 @@ type ParagraphFormat struct {
     IsListItem bool `json:"IsListItem,omitempty"`
 }
 
+type ParagraphFormat struct {
+    // Paragraph format element.
+    Link IWordsApiLink `json:"Link,omitempty"`
+
+    // Paragraph format element.
+    AddSpaceBetweenFarEastAndAlpha *bool `json:"AddSpaceBetweenFarEastAndAlpha,omitempty"`
+
+    // Paragraph format element.
+    AddSpaceBetweenFarEastAndDigit *bool `json:"AddSpaceBetweenFarEastAndDigit,omitempty"`
+
+    // Paragraph format element.
+    Alignment *string `json:"Alignment,omitempty"`
+
+    // Paragraph format element.
+    Bidi *bool `json:"Bidi,omitempty"`
+
+    // Paragraph format element.
+    DropCapPosition *string `json:"DropCapPosition,omitempty"`
+
+    // Paragraph format element.
+    FirstLineIndent *float64 `json:"FirstLineIndent,omitempty"`
+
+    // Paragraph format element.
+    KeepTogether *bool `json:"KeepTogether,omitempty"`
+
+    // Paragraph format element.
+    KeepWithNext *bool `json:"KeepWithNext,omitempty"`
+
+    // Paragraph format element.
+    LeftIndent *float64 `json:"LeftIndent,omitempty"`
+
+    // Paragraph format element.
+    LineSpacing *float64 `json:"LineSpacing,omitempty"`
+
+    // Paragraph format element.
+    LineSpacingRule *string `json:"LineSpacingRule,omitempty"`
+
+    // Paragraph format element.
+    LinesToDrop *int32 `json:"LinesToDrop,omitempty"`
+
+    // Paragraph format element.
+    NoSpaceBetweenParagraphsOfSameStyle *bool `json:"NoSpaceBetweenParagraphsOfSameStyle,omitempty"`
+
+    // Paragraph format element.
+    OutlineLevel *string `json:"OutlineLevel,omitempty"`
+
+    // Paragraph format element.
+    PageBreakBefore *bool `json:"PageBreakBefore,omitempty"`
+
+    // Paragraph format element.
+    RightIndent *float64 `json:"RightIndent,omitempty"`
+
+    // Paragraph format element.
+    Shading IShading `json:"Shading,omitempty"`
+
+    // Paragraph format element.
+    SpaceAfter *float64 `json:"SpaceAfter,omitempty"`
+
+    // Paragraph format element.
+    SpaceAfterAuto *bool `json:"SpaceAfterAuto,omitempty"`
+
+    // Paragraph format element.
+    SpaceBefore *float64 `json:"SpaceBefore,omitempty"`
+
+    // Paragraph format element.
+    SpaceBeforeAuto *bool `json:"SpaceBeforeAuto,omitempty"`
+
+    // Paragraph format element.
+    StyleIdentifier *string `json:"StyleIdentifier,omitempty"`
+
+    // Paragraph format element.
+    StyleName *string `json:"StyleName,omitempty"`
+
+    // Paragraph format element.
+    SuppressAutoHyphens *bool `json:"SuppressAutoHyphens,omitempty"`
+
+    // Paragraph format element.
+    SuppressLineNumbers *bool `json:"SuppressLineNumbers,omitempty"`
+
+    // Paragraph format element.
+    WidowControl *bool `json:"WidowControl,omitempty"`
+
+    // Paragraph format element.
+    IsHeading *bool `json:"IsHeading,omitempty"`
+
+    // Paragraph format element.
+    IsListItem *bool `json:"IsListItem,omitempty"`
+}
+
 type IParagraphFormat interface {
     IsParagraphFormat() bool
 }
@@ -127,3 +216,5 @@ func (ParagraphFormat) IsParagraphFormat() bool {
 func (ParagraphFormat) IsParagraphFormatBase() bool {
     return true
 }
+
+

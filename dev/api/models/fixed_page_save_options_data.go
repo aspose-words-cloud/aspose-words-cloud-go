@@ -28,7 +28,7 @@
 package models
 
 // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
-type FixedPageSaveOptionsData struct {
+type FixedPageSaveOptionsDataResult struct {
     // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
     Dml3DEffectsRenderingMode string `json:"Dml3DEffectsRenderingMode,omitempty"`
 
@@ -66,7 +66,7 @@ type FixedPageSaveOptionsData struct {
     JpegQuality int32 `json:"JpegQuality,omitempty"`
 
     // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
-    MetafileRenderingOptions *MetafileRenderingOptionsData `json:"MetafileRenderingOptions,omitempty"`
+    MetafileRenderingOptions MetafileRenderingOptionsDataResult `json:"MetafileRenderingOptions,omitempty"`
 
     // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
     NumeralFormat string `json:"NumeralFormat,omitempty"`
@@ -81,6 +81,59 @@ type FixedPageSaveOptionsData struct {
     PageIndex int32 `json:"PageIndex,omitempty"`
 }
 
+type FixedPageSaveOptionsData struct {
+    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
+    Dml3DEffectsRenderingMode *string `json:"Dml3DEffectsRenderingMode,omitempty"`
+
+    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
+    DmlEffectsRenderingMode *string `json:"DmlEffectsRenderingMode,omitempty"`
+
+    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
+    DmlRenderingMode *string `json:"DmlRenderingMode,omitempty"`
+
+    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
+    FileName *string `json:"FileName,omitempty"`
+
+    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
+    SaveFormat *string `json:"SaveFormat,omitempty"`
+
+    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
+    UpdateFields *bool `json:"UpdateFields,omitempty"`
+
+    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
+    UpdateLastPrintedProperty *bool `json:"UpdateLastPrintedProperty,omitempty"`
+
+    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
+    UpdateLastSavedTimeProperty *bool `json:"UpdateLastSavedTimeProperty,omitempty"`
+
+    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
+    UpdateSdtContent *bool `json:"UpdateSdtContent,omitempty"`
+
+    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
+    ZipOutput *bool `json:"ZipOutput,omitempty"`
+
+    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
+    ColorMode *string `json:"ColorMode,omitempty"`
+
+    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
+    JpegQuality *int32 `json:"JpegQuality,omitempty"`
+
+    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
+    MetafileRenderingOptions IMetafileRenderingOptionsData `json:"MetafileRenderingOptions,omitempty"`
+
+    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
+    NumeralFormat *string `json:"NumeralFormat,omitempty"`
+
+    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
+    OptimizeOutput *bool `json:"OptimizeOutput,omitempty"`
+
+    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
+    PageCount *int32 `json:"PageCount,omitempty"`
+
+    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
+    PageIndex *int32 `json:"PageIndex,omitempty"`
+}
+
 type IFixedPageSaveOptionsData interface {
     IsFixedPageSaveOptionsData() bool
 }
@@ -91,3 +144,5 @@ func (FixedPageSaveOptionsData) IsFixedPageSaveOptionsData() bool {
 func (FixedPageSaveOptionsData) IsSaveOptionsData() bool {
     return true
 }
+
+

@@ -28,15 +28,26 @@
 package models
 
 // Paragraph link element.
-type ParagraphLink struct {
+type ParagraphLinkResult struct {
     // Paragraph link element.
-    Link *WordsApiLink `json:"Link,omitempty"`
+    Link WordsApiLinkResult `json:"Link,omitempty"`
 
     // Paragraph link element.
     NodeId string `json:"NodeId,omitempty"`
 
     // Paragraph link element.
     Text string `json:"Text,omitempty"`
+}
+
+type ParagraphLink struct {
+    // Paragraph link element.
+    Link IWordsApiLink `json:"Link,omitempty"`
+
+    // Paragraph link element.
+    NodeId *string `json:"NodeId,omitempty"`
+
+    // Paragraph link element.
+    Text *string `json:"Text,omitempty"`
 }
 
 type IParagraphLink interface {
@@ -49,3 +60,5 @@ func (ParagraphLink) IsParagraphLink() bool {
 func (ParagraphLink) IsNodeLink() bool {
     return true
 }
+
+

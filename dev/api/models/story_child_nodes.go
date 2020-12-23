@@ -28,6 +28,11 @@
 package models
 
 // Child nodes of Story or InlineStory.
+type StoryChildNodesResult struct {
+    // Child nodes of Story or InlineStory.
+    ChildNodes []NodeLinkResult `json:"ChildNodes,omitempty"`
+}
+
 type StoryChildNodes struct {
     // Child nodes of Story or InlineStory.
     ChildNodes []NodeLink `json:"ChildNodes,omitempty"`
@@ -39,4 +44,5 @@ type IStoryChildNodes interface {
 func (StoryChildNodes) IsStoryChildNodes() bool {
     return true
 }
+
 

@@ -27,22 +27,39 @@
 
 package models
 
-// Represents all formatting for a table row.
-type TableRowFormat struct {
-    // Represents all formatting for a table row.
-    Link *WordsApiLink `json:"Link,omitempty"`
+// DTO container with formatting for a table row.
+type TableRowFormatResult struct {
+    // DTO container with formatting for a table row.
+    Link WordsApiLinkResult `json:"Link,omitempty"`
 
-    // Represents all formatting for a table row.
+    // DTO container with formatting for a table row.
     AllowBreakAcrossPages bool `json:"AllowBreakAcrossPages,omitempty"`
 
-    // Represents all formatting for a table row.
+    // DTO container with formatting for a table row.
     HeadingFormat bool `json:"HeadingFormat,omitempty"`
 
-    // Represents all formatting for a table row.
+    // DTO container with formatting for a table row.
     Height float64 `json:"Height,omitempty"`
 
-    // Represents all formatting for a table row.
+    // DTO container with formatting for a table row.
     HeightRule string `json:"HeightRule,omitempty"`
+}
+
+type TableRowFormat struct {
+    // DTO container with formatting for a table row.
+    Link IWordsApiLink `json:"Link,omitempty"`
+
+    // DTO container with formatting for a table row.
+    AllowBreakAcrossPages *bool `json:"AllowBreakAcrossPages,omitempty"`
+
+    // DTO container with formatting for a table row.
+    HeadingFormat *bool `json:"HeadingFormat,omitempty"`
+
+    // DTO container with formatting for a table row.
+    Height *float64 `json:"Height,omitempty"`
+
+    // DTO container with formatting for a table row.
+    HeightRule *string `json:"HeightRule,omitempty"`
 }
 
 type ITableRowFormat interface {
@@ -55,3 +72,5 @@ func (TableRowFormat) IsTableRowFormat() bool {
 func (TableRowFormat) IsLinkElement() bool {
     return true
 }
+
+

@@ -28,7 +28,7 @@
 package models
 
 // Provides information for the file link.
-type FileLink struct {
+type FileLinkResult struct {
     // Provides information for the file link.
     Href string `json:"Href,omitempty"`
 
@@ -42,6 +42,20 @@ type FileLink struct {
     Type string `json:"Type,omitempty"`
 }
 
+type FileLink struct {
+    // Provides information for the file link.
+    Href *string `json:"Href,omitempty"`
+
+    // Provides information for the file link.
+    Rel *string `json:"Rel,omitempty"`
+
+    // Provides information for the file link.
+    Title *string `json:"Title,omitempty"`
+
+    // Provides information for the file link.
+    Type *string `json:"Type,omitempty"`
+}
+
 type IFileLink interface {
     IsFileLink() bool
 }
@@ -52,3 +66,5 @@ func (FileLink) IsFileLink() bool {
 func (FileLink) IsLink() bool {
     return true
 }
+
+

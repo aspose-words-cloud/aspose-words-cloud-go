@@ -27,61 +27,117 @@
 
 package models
 
-// container class for ps save options.
-type PsSaveOptionsData struct {
-    // container class for ps save options.
+// Container class for ps save options.
+type PsSaveOptionsDataResult struct {
+    // Container class for ps save options.
     Dml3DEffectsRenderingMode string `json:"Dml3DEffectsRenderingMode,omitempty"`
 
-    // container class for ps save options.
+    // Container class for ps save options.
     DmlEffectsRenderingMode string `json:"DmlEffectsRenderingMode,omitempty"`
 
-    // container class for ps save options.
+    // Container class for ps save options.
     DmlRenderingMode string `json:"DmlRenderingMode,omitempty"`
 
-    // container class for ps save options.
+    // Container class for ps save options.
     FileName string `json:"FileName,omitempty"`
 
-    // container class for ps save options.
+    // Container class for ps save options.
     SaveFormat string `json:"SaveFormat,omitempty"`
 
-    // container class for ps save options.
+    // Container class for ps save options.
     UpdateFields bool `json:"UpdateFields,omitempty"`
 
-    // container class for ps save options.
+    // Container class for ps save options.
     UpdateLastPrintedProperty bool `json:"UpdateLastPrintedProperty,omitempty"`
 
-    // container class for ps save options.
+    // Container class for ps save options.
     UpdateLastSavedTimeProperty bool `json:"UpdateLastSavedTimeProperty,omitempty"`
 
-    // container class for ps save options.
+    // Container class for ps save options.
     UpdateSdtContent bool `json:"UpdateSdtContent,omitempty"`
 
-    // container class for ps save options.
+    // Container class for ps save options.
     ZipOutput bool `json:"ZipOutput,omitempty"`
 
-    // container class for ps save options.
+    // Container class for ps save options.
     ColorMode string `json:"ColorMode,omitempty"`
 
-    // container class for ps save options.
+    // Container class for ps save options.
     JpegQuality int32 `json:"JpegQuality,omitempty"`
 
-    // container class for ps save options.
-    MetafileRenderingOptions *MetafileRenderingOptionsData `json:"MetafileRenderingOptions,omitempty"`
+    // Container class for ps save options.
+    MetafileRenderingOptions MetafileRenderingOptionsDataResult `json:"MetafileRenderingOptions,omitempty"`
 
-    // container class for ps save options.
+    // Container class for ps save options.
     NumeralFormat string `json:"NumeralFormat,omitempty"`
 
-    // container class for ps save options.
+    // Container class for ps save options.
     OptimizeOutput bool `json:"OptimizeOutput,omitempty"`
 
-    // container class for ps save options.
+    // Container class for ps save options.
     PageCount int32 `json:"PageCount,omitempty"`
 
-    // container class for ps save options.
+    // Container class for ps save options.
     PageIndex int32 `json:"PageIndex,omitempty"`
 
-    // container class for ps save options.
+    // Container class for ps save options.
     UseBookFoldPrintingSettings bool `json:"UseBookFoldPrintingSettings,omitempty"`
+}
+
+type PsSaveOptionsData struct {
+    // Container class for ps save options.
+    Dml3DEffectsRenderingMode *string `json:"Dml3DEffectsRenderingMode,omitempty"`
+
+    // Container class for ps save options.
+    DmlEffectsRenderingMode *string `json:"DmlEffectsRenderingMode,omitempty"`
+
+    // Container class for ps save options.
+    DmlRenderingMode *string `json:"DmlRenderingMode,omitempty"`
+
+    // Container class for ps save options.
+    FileName *string `json:"FileName,omitempty"`
+
+    // Container class for ps save options.
+    SaveFormat *string `json:"SaveFormat,omitempty"`
+
+    // Container class for ps save options.
+    UpdateFields *bool `json:"UpdateFields,omitempty"`
+
+    // Container class for ps save options.
+    UpdateLastPrintedProperty *bool `json:"UpdateLastPrintedProperty,omitempty"`
+
+    // Container class for ps save options.
+    UpdateLastSavedTimeProperty *bool `json:"UpdateLastSavedTimeProperty,omitempty"`
+
+    // Container class for ps save options.
+    UpdateSdtContent *bool `json:"UpdateSdtContent,omitempty"`
+
+    // Container class for ps save options.
+    ZipOutput *bool `json:"ZipOutput,omitempty"`
+
+    // Container class for ps save options.
+    ColorMode *string `json:"ColorMode,omitempty"`
+
+    // Container class for ps save options.
+    JpegQuality *int32 `json:"JpegQuality,omitempty"`
+
+    // Container class for ps save options.
+    MetafileRenderingOptions IMetafileRenderingOptionsData `json:"MetafileRenderingOptions,omitempty"`
+
+    // Container class for ps save options.
+    NumeralFormat *string `json:"NumeralFormat,omitempty"`
+
+    // Container class for ps save options.
+    OptimizeOutput *bool `json:"OptimizeOutput,omitempty"`
+
+    // Container class for ps save options.
+    PageCount *int32 `json:"PageCount,omitempty"`
+
+    // Container class for ps save options.
+    PageIndex *int32 `json:"PageIndex,omitempty"`
+
+    // Container class for ps save options.
+    UseBookFoldPrintingSettings *bool `json:"UseBookFoldPrintingSettings,omitempty"`
 }
 
 type IPsSaveOptionsData interface {
@@ -94,3 +150,5 @@ func (PsSaveOptionsData) IsPsSaveOptionsData() bool {
 func (PsSaveOptionsData) IsFixedPageSaveOptionsData() bool {
     return true
 }
+
+

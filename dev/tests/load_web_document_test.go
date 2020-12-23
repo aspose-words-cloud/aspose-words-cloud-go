@@ -29,6 +29,7 @@
 package api_test
 
 import (
+    "github.com/stretchr/testify/assert"
     "testing"
     "github.com/aspose-words-cloud/aspose-words-cloud-go/dev/api/models"
 )
@@ -38,23 +39,33 @@ func Test_LoadWebDocument_LoadWebDocument(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
     requestDataSaveOptions := models.SaveOptionsData{
-        FileName: "google.doc",
-        SaveFormat: "doc",
-        DmlEffectsRenderingMode: "1",
-        DmlRenderingMode: "1",
-        UpdateSdtContent: false,
-        ZipOutput: false,
+        FileName: ToStringPointer("google.doc"),
+        SaveFormat: ToStringPointer("doc"),
+        DmlEffectsRenderingMode: ToStringPointer("1"),
+        DmlRenderingMode: ToStringPointer("1"),
+        UpdateSdtContent: ToBoolPointer(false),
+        ZipOutput: ToBoolPointer(false),
     }
     requestData := models.LoadWebDocumentData{
-        LoadingDocumentUrl: "http://google.com",
-        SaveOptions: &requestDataSaveOptions,
+        LoadingDocumentUrl: ToStringPointer("http://google.com"),
+        SaveOptions: requestDataSaveOptions,
     }
 
     options := map[string]interface{}{
     }
-    _, _, err := client.WordsApi.LoadWebDocument(ctx, requestData, options)
+
+    request := &models.LoadWebDocumentRequest{
+        Data: requestData,
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.LoadWebDocument(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
+
+    assert.NotNil(t, actual.SaveResult, "Validate LoadWebDocument response.");
+    assert.NotNil(t, actual.SaveResult.DestDocument, "Validate LoadWebDocument response.");
+    assert.Equal(t, "google.doc", actual.SaveResult.DestDocument.Href, "Validate LoadWebDocument response.");
 }

@@ -29,6 +29,7 @@
 package api_test
 
 import (
+    "github.com/stretchr/testify/assert"
     "testing"
     "github.com/aspose-words-cloud/aspose-words-cloud-go/dev/api/models"
 )
@@ -44,17 +45,58 @@ func Test_Run_UpdateRun(t *testing.T) {
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
     requestRun := models.RunUpdate{
-        Text: "run with text",
+        Text: ToStringPointer("run with text"),
     }
 
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.UpdateRun(ctx, remoteFileName, requestRun, "paragraphs/1", int32(0), options)
+
+    request := &models.UpdateRunRequest{
+        Name: ToStringPointer(remoteFileName),
+        ParagraphPath: ToStringPointer("paragraphs/1"),
+        Index: ToInt32Pointer(int32(0)),
+        Run: requestRun,
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.UpdateRun(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
+
+    assert.NotNil(t, actual.Run, "Validate UpdateRun response.");
+    assert.Equal(t, "run with text", actual.Run.Text, "Validate UpdateRun response.");
+}
+
+// Test for updating run online.
+func Test_Run_UpdateRunOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "DocumentElements/Runs/Run.doc"
+
+    requestRun := models.RunUpdate{
+        Text: ToStringPointer("run with text"),
+    }
+
+    options := map[string]interface{}{
+    }
+
+    request := &models.UpdateRunOnlineRequest{
+        Document: OpenFile(t, localFile),
+        ParagraphPath: ToStringPointer("paragraphs/1"),
+        Run: requestRun,
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    _,err := client.WordsApi.UpdateRunOnline(ctx, request)
+
+    if err != nil {
+        t.Error(err)
+    }
+
 }
 
 // Test for adding run.
@@ -68,17 +110,57 @@ func Test_Run_InsertRun(t *testing.T) {
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
     requestRun := models.RunInsert{
-        Text: "run with text",
+        Text: ToStringPointer("run with text"),
     }
 
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.InsertRun(ctx, remoteFileName, "paragraphs/1", requestRun, options)
+
+    request := &models.InsertRunRequest{
+        Name: ToStringPointer(remoteFileName),
+        ParagraphPath: ToStringPointer("paragraphs/1"),
+        Run: requestRun,
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.InsertRun(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
+
+    assert.NotNil(t, actual.Run, "Validate InsertRun response.");
+    assert.Equal(t, "run with text", actual.Run.Text, "Validate InsertRun response.");
+    assert.Equal(t, "0.0.1.3", actual.Run.NodeId, "Validate InsertRun response.");
+}
+
+// Test for adding run online.
+func Test_Run_InsertRunOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "DocumentElements/Runs/Run.doc"
+
+    requestRun := models.RunInsert{
+        Text: ToStringPointer("run with text"),
+    }
+
+    options := map[string]interface{}{
+    }
+
+    request := &models.InsertRunOnlineRequest{
+        Document: OpenFile(t, localFile),
+        ParagraphPath: ToStringPointer("paragraphs/1"),
+        Run: requestRun,
+        Optionals: options,
+    }
+
+    _,err := client.WordsApi.InsertRunOnline(ctx, request)
+
+    if err != nil {
+        t.Error(err)
+    }
+
 }
 
 // Test for deleting run.
@@ -95,9 +177,43 @@ func Test_Run_DeleteRun(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, err := client.WordsApi.DeleteRun(ctx, remoteFileName, "paragraphs/1", int32(0), options)
+
+    request := &models.DeleteRunRequest{
+        Name: ToStringPointer(remoteFileName),
+        ParagraphPath: ToStringPointer("paragraphs/1"),
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    _, err := client.WordsApi.DeleteRun(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
+
+}
+
+// Test for deleting run online.
+func Test_Run_DeleteRunOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "DocumentElements/Runs/Run.doc"
+
+
+    options := map[string]interface{}{
+    }
+
+    request := &models.DeleteRunOnlineRequest{
+        Document: OpenFile(t, localFile),
+        ParagraphPath: ToStringPointer("paragraphs/1"),
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    _, , _, err := client.WordsApi.DeleteRunOnline(ctx, request)
+
+    if err != nil {
+        t.Error(err)
+    }
+
 }

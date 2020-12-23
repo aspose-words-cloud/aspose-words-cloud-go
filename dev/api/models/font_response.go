@@ -27,25 +27,12 @@
 
 package models
 
-// This response should be returned by the service when handling:
-// GET https://api.aspose.cloud/v4.0/words/Test.doc/paragraphs/{0}/runs/{1}/font.
+// The REST response with a font.
 type FontResponse struct {
-    // This response should be returned by the service when handling:
-    // GET https://api.aspose.cloud/v4.0/words/Test.doc/paragraphs/{0}/runs/{1}/font.
+    // The REST response with a font.
     RequestId string `json:"RequestId,omitempty"`
 
-    // This response should be returned by the service when handling:
-    // GET https://api.aspose.cloud/v4.0/words/Test.doc/paragraphs/{0}/runs/{1}/font.
-    Font *Font `json:"Font,omitempty"`
+    // The REST response with a font.
+    Font FontResult `json:"Font,omitempty"`
 }
 
-type IFontResponse interface {
-    IsFontResponse() bool
-}
-func (FontResponse) IsFontResponse() bool {
-    return true
-}
-
-func (FontResponse) IsWordsResponse() bool {
-    return true
-}

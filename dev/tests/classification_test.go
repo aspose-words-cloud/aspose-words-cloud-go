@@ -29,7 +29,9 @@
 package api_test
 
 import (
+    "github.com/stretchr/testify/assert"
     "testing"
+    "github.com/aspose-words-cloud/aspose-words-cloud-go/dev/api/models"
 )
 
 // Test for raw text classification.
@@ -40,11 +42,21 @@ func Test_Classification_Classify(t *testing.T) {
     options := map[string]interface{}{
         "bestClassesCount": "3",
     }
-    _, _, err := client.WordsApi.Classify(ctx, "Try text classification", options)
+
+    request := &models.ClassifyRequest{
+        Text: ToStringPointer("Try text classification"),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.Classify(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
+
+    assert.Equal(t, "Science", actual.BestClassName, "Validate Classify response.");
+    assert.NotNil(t, actual.BestResults, "Validate Classify response.");
+    assert.Equal(t, 3, len(actual.BestResults), "Validate Classify response.");
 }
 
 // Test for document classification.
@@ -62,9 +74,43 @@ func Test_Classification_ClassifyDocument(t *testing.T) {
         "folder": remoteDataFolder,
         "bestClassesCount": "3",
     }
-    _, _, err := client.WordsApi.ClassifyDocument(ctx, remoteFileName, options)
+
+    request := &models.ClassifyDocumentRequest{
+        Name: ToStringPointer(remoteFileName),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.ClassifyDocument(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
+
+    assert.Equal(t, "Hobbies_&_Interests", actual.BestClassName, "Validate ClassifyDocument response.");
+    assert.NotNil(t, actual.BestResults, "Validate ClassifyDocument response.");
+    assert.Equal(t, 3, len(actual.BestResults), "Validate ClassifyDocument response.");
+}
+
+// Test for document classification online.
+func Test_Classification_ClassifyDocumentOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "Common/test_multi_pages.docx"
+
+
+    options := map[string]interface{}{
+        "bestClassesCount": "3",
+    }
+
+    request := &models.ClassifyDocumentOnlineRequest{
+        Document: OpenFile(t, localFile),
+        Optionals: options,
+    }
+
+    _, _, err := client.WordsApi.ClassifyDocumentOnline(ctx, request)
+
+    if err != nil {
+        t.Error(err)
+    }
+
 }

@@ -28,9 +28,14 @@
 package models
 
 // Words document property DTO for create or update.
-type DocumentPropertyCreateOrUpdate struct {
+type DocumentPropertyCreateOrUpdateResult struct {
     // Words document property DTO for create or update.
     Value string `json:"Value,omitempty"`
+}
+
+type DocumentPropertyCreateOrUpdate struct {
+    // Words document property DTO for create or update.
+    Value *string `json:"Value,omitempty"`
 }
 
 type IDocumentPropertyCreateOrUpdate interface {
@@ -43,3 +48,5 @@ func (DocumentPropertyCreateOrUpdate) IsDocumentPropertyCreateOrUpdate() bool {
 func (DocumentPropertyCreateOrUpdate) IsDocumentPropertyBase() bool {
     return true
 }
+
+

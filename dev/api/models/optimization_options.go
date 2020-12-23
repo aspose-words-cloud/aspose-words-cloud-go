@@ -28,9 +28,14 @@
 package models
 
 // Container class for the document optimization options.
-type OptimizationOptions struct {
+type OptimizationOptionsResult struct {
     // Container class for the document optimization options.
     MsWordVersion string `json:"MsWordVersion,omitempty"`
+}
+
+type OptimizationOptions struct {
+    // Container class for the document optimization options.
+    MsWordVersion *string `json:"MsWordVersion,omitempty"`
 }
 
 type IOptimizationOptions interface {
@@ -39,4 +44,5 @@ type IOptimizationOptions interface {
 func (OptimizationOptions) IsOptimizationOptions() bool {
     return true
 }
+
 

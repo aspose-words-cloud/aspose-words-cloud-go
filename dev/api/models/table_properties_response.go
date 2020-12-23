@@ -27,25 +27,12 @@
 
 package models
 
-// This response should be returned by the service when handling:
-// GET https://api.aspose.cloud/v4.0/words/Test.doc/tables/{0}/properties.
+// The REST response with a table.
 type TablePropertiesResponse struct {
-    // This response should be returned by the service when handling:
-    // GET https://api.aspose.cloud/v4.0/words/Test.doc/tables/{0}/properties.
+    // The REST response with a table.
     RequestId string `json:"RequestId,omitempty"`
 
-    // This response should be returned by the service when handling:
-    // GET https://api.aspose.cloud/v4.0/words/Test.doc/tables/{0}/properties.
-    Properties *TableProperties `json:"Properties,omitempty"`
+    // The REST response with a table.
+    Properties TablePropertiesResult `json:"Properties,omitempty"`
 }
 
-type ITablePropertiesResponse interface {
-    IsTablePropertiesResponse() bool
-}
-func (TablePropertiesResponse) IsTablePropertiesResponse() bool {
-    return true
-}
-
-func (TablePropertiesResponse) IsWordsResponse() bool {
-    return true
-}

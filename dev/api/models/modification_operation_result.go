@@ -28,12 +28,20 @@
 package models
 
 // result of the operation which modifies the original document and saves the result.
-type ModificationOperationResult struct {
+type ModificationOperationResultResult struct {
     // result of the operation which modifies the original document and saves the result.
-    Dest *FileLink `json:"Dest,omitempty"`
+    Dest FileLinkResult `json:"Dest,omitempty"`
 
     // result of the operation which modifies the original document and saves the result.
-    Source *FileLink `json:"Source,omitempty"`
+    Source FileLinkResult `json:"Source,omitempty"`
+}
+
+type ModificationOperationResult struct {
+    // result of the operation which modifies the original document and saves the result.
+    Dest IFileLink `json:"Dest,omitempty"`
+
+    // result of the operation which modifies the original document and saves the result.
+    Source IFileLink `json:"Source,omitempty"`
 }
 
 type IModificationOperationResult interface {
@@ -42,4 +50,5 @@ type IModificationOperationResult interface {
 func (ModificationOperationResult) IsModificationOperationResult() bool {
     return true
 }
+
 

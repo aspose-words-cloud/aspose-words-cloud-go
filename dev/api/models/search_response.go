@@ -27,29 +27,15 @@
 
 package models
 
-// This response should be returned by the service when handling:
-// GET https://api.aspose.cloud/v4.0/words/Test.doc/search.
+// The REST response with a regular expression pattern and a collection of search results.
 type SearchResponse struct {
-    // This response should be returned by the service when handling:
-    // GET https://api.aspose.cloud/v4.0/words/Test.doc/search.
+    // The REST response with a regular expression pattern and a collection of search results.
     RequestId string `json:"RequestId,omitempty"`
 
-    // This response should be returned by the service when handling:
-    // GET https://api.aspose.cloud/v4.0/words/Test.doc/search.
+    // The REST response with a regular expression pattern and a collection of search results.
     SearchingPattern string `json:"SearchingPattern,omitempty"`
 
-    // This response should be returned by the service when handling:
-    // GET https://api.aspose.cloud/v4.0/words/Test.doc/search.
-    SearchResults *SearchResultsCollection `json:"SearchResults,omitempty"`
+    // The REST response with a regular expression pattern and a collection of search results.
+    SearchResults SearchResultsCollectionResult `json:"SearchResults,omitempty"`
 }
 
-type ISearchResponse interface {
-    IsSearchResponse() bool
-}
-func (SearchResponse) IsSearchResponse() bool {
-    return true
-}
-
-func (SearchResponse) IsWordsResponse() bool {
-    return true
-}

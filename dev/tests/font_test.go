@@ -29,7 +29,9 @@
 package api_test
 
 import (
+    "github.com/stretchr/testify/assert"
     "testing"
+    "github.com/aspose-words-cloud/aspose-words-cloud-go/dev/api/models"
 )
 
 // Test for reseting cache.
@@ -37,11 +39,15 @@ func Test_Font_ResetCache(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
 
-    _, err := client.WordsApi.ResetCache(ctx)
+    request := &models.ResetCacheRequest{
+    }
+
+    _, err := client.WordsApi.ResetCache(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for GetAvailableFonts resource.
@@ -51,9 +57,16 @@ func Test_Font_GetAvailableFonts(t *testing.T) {
 
     options := map[string]interface{}{
     }
-    _, _, err := client.WordsApi.GetAvailableFonts(ctx, options)
+
+    request := &models.GetAvailableFontsRequest{
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.GetAvailableFonts(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
+
+    assert.NotNil(t, actual.SystemFonts, "Validate GetAvailableFonts response.");
 }

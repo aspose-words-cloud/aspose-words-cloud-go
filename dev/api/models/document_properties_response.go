@@ -27,22 +27,12 @@
 
 package models
 
-// This response should be returned by the service when handling:  GET /documentProperties.
+// The REST response with a collection of document properties.
 type DocumentPropertiesResponse struct {
-    // This response should be returned by the service when handling:  GET /documentProperties.
+    // The REST response with a collection of document properties.
     RequestId string `json:"RequestId,omitempty"`
 
-    // This response should be returned by the service when handling:  GET /documentProperties.
-    DocumentProperties *DocumentProperties `json:"DocumentProperties,omitempty"`
+    // The REST response with a collection of document properties.
+    DocumentProperties DocumentPropertiesResult `json:"DocumentProperties,omitempty"`
 }
 
-type IDocumentPropertiesResponse interface {
-    IsDocumentPropertiesResponse() bool
-}
-func (DocumentPropertiesResponse) IsDocumentPropertiesResponse() bool {
-    return true
-}
-
-func (DocumentPropertiesResponse) IsWordsResponse() bool {
-    return true
-}

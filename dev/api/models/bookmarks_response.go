@@ -27,22 +27,12 @@
 
 package models
 
-// This response should be returned by the service when handling:  GET bookmarks.
+// The REST response with a collection of bookmarks.
 type BookmarksResponse struct {
-    // This response should be returned by the service when handling:  GET bookmarks.
+    // The REST response with a collection of bookmarks.
     RequestId string `json:"RequestId,omitempty"`
 
-    // This response should be returned by the service when handling:  GET bookmarks.
-    Bookmarks *Bookmarks `json:"Bookmarks,omitempty"`
+    // The REST response with a collection of bookmarks.
+    Bookmarks BookmarksResult `json:"Bookmarks,omitempty"`
 }
 
-type IBookmarksResponse interface {
-    IsBookmarksResponse() bool
-}
-func (BookmarksResponse) IsBookmarksResponse() bool {
-    return true
-}
-
-func (BookmarksResponse) IsWordsResponse() bool {
-    return true
-}

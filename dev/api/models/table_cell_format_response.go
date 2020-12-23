@@ -27,25 +27,12 @@
 
 package models
 
-// This response should be returned by the service when handling:
-// GET https://api.aspose.cloud/v4.0/words/Test.doc/tables/{0}/rows/{1}/cells/{2}/cellformat.
+// The REST response with the formatting properties of a table cell.
 type TableCellFormatResponse struct {
-    // This response should be returned by the service when handling:
-    // GET https://api.aspose.cloud/v4.0/words/Test.doc/tables/{0}/rows/{1}/cells/{2}/cellformat.
+    // The REST response with the formatting properties of a table cell.
     RequestId string `json:"RequestId,omitempty"`
 
-    // This response should be returned by the service when handling:
-    // GET https://api.aspose.cloud/v4.0/words/Test.doc/tables/{0}/rows/{1}/cells/{2}/cellformat.
-    CellFormat *TableCellFormat `json:"CellFormat,omitempty"`
+    // The REST response with the formatting properties of a table cell.
+    CellFormat TableCellFormatResult `json:"CellFormat,omitempty"`
 }
 
-type ITableCellFormatResponse interface {
-    IsTableCellFormatResponse() bool
-}
-func (TableCellFormatResponse) IsTableCellFormatResponse() bool {
-    return true
-}
-
-func (TableCellFormatResponse) IsWordsResponse() bool {
-    return true
-}

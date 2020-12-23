@@ -28,9 +28,17 @@
 package models
 
 // Represents a collection of merge fields within a document.
+type FieldNamesResult struct {
+    // Represents a collection of merge fields within a document.
+    Link WordsApiLinkResult `json:"Link,omitempty"`
+
+    // Represents a collection of merge fields within a document.
+    Names []string `json:"Names,omitempty"`
+}
+
 type FieldNames struct {
     // Represents a collection of merge fields within a document.
-    Link *WordsApiLink `json:"Link,omitempty"`
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // Represents a collection of merge fields within a document.
     Names []string `json:"Names,omitempty"`
@@ -46,3 +54,5 @@ func (FieldNames) IsFieldNames() bool {
 func (FieldNames) IsLinkElement() bool {
     return true
 }
+
+

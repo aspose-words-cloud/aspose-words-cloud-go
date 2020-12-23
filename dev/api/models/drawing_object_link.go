@@ -28,12 +28,20 @@
 package models
 
 // Represents link for Drawing Object DTO.
-type DrawingObjectLink struct {
+type DrawingObjectLinkResult struct {
     // Represents link for Drawing Object DTO.
-    Link *WordsApiLink `json:"Link,omitempty"`
+    Link WordsApiLinkResult `json:"Link,omitempty"`
 
     // Represents link for Drawing Object DTO.
     NodeId string `json:"NodeId,omitempty"`
+}
+
+type DrawingObjectLink struct {
+    // Represents link for Drawing Object DTO.
+    Link IWordsApiLink `json:"Link,omitempty"`
+
+    // Represents link for Drawing Object DTO.
+    NodeId *string `json:"NodeId,omitempty"`
 }
 
 type IDrawingObjectLink interface {
@@ -46,3 +54,5 @@ func (DrawingObjectLink) IsDrawingObjectLink() bool {
 func (DrawingObjectLink) IsNodeLink() bool {
     return true
 }
+
+

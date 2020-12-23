@@ -27,15 +27,26 @@
 
 package models
 
-// Paragraph element.
-type Paragraph struct {
-    // Paragraph element.
-    Link *WordsApiLink `json:"Link,omitempty"`
+// DTO container with a paragraph element.
+type ParagraphResult struct {
+    // DTO container with a paragraph element.
+    Link WordsApiLinkResult `json:"Link,omitempty"`
 
-    // Paragraph element.
+    // DTO container with a paragraph element.
     NodeId string `json:"NodeId,omitempty"`
 
-    // Paragraph element.
+    // DTO container with a paragraph element.
+    ChildNodes []NodeLinkResult `json:"ChildNodes,omitempty"`
+}
+
+type Paragraph struct {
+    // DTO container with a paragraph element.
+    Link IWordsApiLink `json:"Link,omitempty"`
+
+    // DTO container with a paragraph element.
+    NodeId *string `json:"NodeId,omitempty"`
+
+    // DTO container with a paragraph element.
     ChildNodes []NodeLink `json:"ChildNodes,omitempty"`
 }
 
@@ -49,3 +60,5 @@ func (Paragraph) IsParagraph() bool {
 func (Paragraph) IsNodeLink() bool {
     return true
 }
+
+

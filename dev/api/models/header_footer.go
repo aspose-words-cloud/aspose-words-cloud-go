@@ -27,22 +27,39 @@
 
 package models
 
-// Section element.
-type HeaderFooter struct {
-    // Section element.
-    Link *WordsApiLink `json:"Link,omitempty"`
+// DTO container with a section element.
+type HeaderFooterResult struct {
+    // DTO container with a section element.
+    Link WordsApiLinkResult `json:"Link,omitempty"`
 
-    // Section element.
+    // DTO container with a section element.
     Type string `json:"Type,omitempty"`
 
-    // Section element.
+    // DTO container with a section element.
+    ChildNodes []NodeLinkResult `json:"ChildNodes,omitempty"`
+
+    // DTO container with a section element.
+    DrawingObjects LinkElementResult `json:"DrawingObjects,omitempty"`
+
+    // DTO container with a section element.
+    Paragraphs LinkElementResult `json:"Paragraphs,omitempty"`
+}
+
+type HeaderFooter struct {
+    // DTO container with a section element.
+    Link IWordsApiLink `json:"Link,omitempty"`
+
+    // DTO container with a section element.
+    Type *string `json:"Type,omitempty"`
+
+    // DTO container with a section element.
     ChildNodes []NodeLink `json:"ChildNodes,omitempty"`
 
-    // Section element.
-    DrawingObjects *LinkElement `json:"DrawingObjects,omitempty"`
+    // DTO container with a section element.
+    DrawingObjects ILinkElement `json:"DrawingObjects,omitempty"`
 
-    // Section element.
-    Paragraphs *LinkElement `json:"Paragraphs,omitempty"`
+    // DTO container with a section element.
+    Paragraphs ILinkElement `json:"Paragraphs,omitempty"`
 }
 
 type IHeaderFooter interface {
@@ -55,3 +72,5 @@ func (HeaderFooter) IsHeaderFooter() bool {
 func (HeaderFooter) IsHeaderFooterLink() bool {
     return true
 }
+
+

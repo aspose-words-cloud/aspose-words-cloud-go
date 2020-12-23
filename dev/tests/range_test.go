@@ -29,6 +29,7 @@
 package api_test
 
 import (
+    "github.com/stretchr/testify/assert"
     "testing"
     "github.com/aspose-words-cloud/aspose-words-cloud-go/dev/api/models"
 )
@@ -48,11 +49,45 @@ func Test_Range_GetRangeText(t *testing.T) {
         "rangeEndIdentifier": "id0.0.1",
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetRangeText(ctx, remoteFileName, "id0.0.0", options)
+
+    request := &models.GetRangeTextRequest{
+        Name: ToStringPointer(remoteFileName),
+        RangeStartIdentifier: ToStringPointer("id0.0.0"),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.GetRangeText(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
+
+    assert.Equal(t, "This is HEADER ", actual.Text, "Validate GetRangeText response.");
+}
+
+// Test for getting the text from range online.
+func Test_Range_GetRangeTextOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "DocumentElements/Range/RangeGet.doc"
+
+
+    options := map[string]interface{}{
+        "rangeEndIdentifier": "id0.0.1",
+    }
+
+    request := &models.GetRangeTextOnlineRequest{
+        Document: OpenFile(t, localFile),
+        RangeStartIdentifier: ToStringPointer("id0.0.0"),
+        Optionals: options,
+    }
+
+    _, _, err := client.WordsApi.GetRangeTextOnline(ctx, request)
+
+    if err != nil {
+        t.Error(err)
+    }
+
 }
 
 // Test for removing the text for range.
@@ -70,11 +105,44 @@ func Test_Range_RemoveRange(t *testing.T) {
         "rangeEndIdentifier": "id0.0.1",
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.RemoveRange(ctx, remoteFileName, "id0.0.0", options)
+
+    request := &models.RemoveRangeRequest{
+        Name: ToStringPointer(remoteFileName),
+        RangeStartIdentifier: ToStringPointer("id0.0.0"),
+        Optionals: options,
+    }
+
+    _, _, err := client.WordsApi.RemoveRange(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
+
+}
+
+// Test for removing the text for range online.
+func Test_Range_RemoveRangeOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "DocumentElements/Range/RangeGet.doc"
+
+
+    options := map[string]interface{}{
+        "rangeEndIdentifier": "id0.0.1",
+    }
+
+    request := &models.RemoveRangeOnlineRequest{
+        Document: OpenFile(t, localFile),
+        RangeStartIdentifier: ToStringPointer("id0.0.0"),
+        Optionals: options,
+    }
+
+    _,err := client.WordsApi.RemoveRangeOnline(ctx, request)
+
+    if err != nil {
+        t.Error(err)
+    }
+
 }
 
 // Test for saving a range as a new document.
@@ -88,18 +156,59 @@ func Test_Range_SaveAsRange(t *testing.T) {
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
     requestDocumentParameters := models.RangeDocument{
-        DocumentName: remoteDataFolder + "/NewDoc.docx",
+        DocumentName: ToStringPointer(remoteDataFolder + "/NewDoc.docx"),
     }
 
     options := map[string]interface{}{
         "rangeEndIdentifier": "id0.0.1",
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.SaveAsRange(ctx, remoteFileName, "id0.0.0", requestDocumentParameters, options)
+
+    request := &models.SaveAsRangeRequest{
+        Name: ToStringPointer(remoteFileName),
+        RangeStartIdentifier: ToStringPointer("id0.0.0"),
+        DocumentParameters: requestDocumentParameters,
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.SaveAsRange(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
+
+    assert.NotNil(t, actual.Document, "Validate SaveAsRange response.");
+    assert.Equal(t, "NewDoc.docx", actual.Document.FileName, "Validate SaveAsRange response.");
+}
+
+// Test for saving a range as a new document online.
+func Test_Range_SaveAsRangeOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Range"
+    localFile := "DocumentElements/Range/RangeGet.doc"
+
+    requestDocumentParameters := models.RangeDocument{
+        DocumentName: ToStringPointer(remoteDataFolder + "/NewDoc.docx"),
+    }
+
+    options := map[string]interface{}{
+        "rangeEndIdentifier": "id0.0.1",
+    }
+
+    request := &models.SaveAsRangeOnlineRequest{
+        Document: OpenFile(t, localFile),
+        RangeStartIdentifier: ToStringPointer("id0.0.0"),
+        DocumentParameters: requestDocumentParameters,
+        Optionals: options,
+    }
+
+    _,err := client.WordsApi.SaveAsRangeOnline(ctx, request)
+
+    if err != nil {
+        t.Error(err)
+    }
+
 }
 
 // Test for replacing text in range.
@@ -113,16 +222,56 @@ func Test_Range_ReplaceWithText(t *testing.T) {
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
     requestRangeText := models.ReplaceRange{
-        Text: "Replaced header",
+        Text: ToStringPointer("Replaced header"),
     }
 
     options := map[string]interface{}{
         "rangeEndIdentifier": "id0.0.1",
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.ReplaceWithText(ctx, remoteFileName, "id0.0.0", requestRangeText, options)
+
+    request := &models.ReplaceWithTextRequest{
+        Name: ToStringPointer(remoteFileName),
+        RangeStartIdentifier: ToStringPointer("id0.0.0"),
+        RangeText: requestRangeText,
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.ReplaceWithText(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
+
+    assert.NotNil(t, actual.Document, "Validate ReplaceWithText response.");
+    assert.Equal(t, "TestReplaceWithText.docx", actual.Document.FileName, "Validate ReplaceWithText response.");
+}
+
+// Test for replacing text in range online.
+func Test_Range_ReplaceWithTextOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "DocumentElements/Range/RangeGet.doc"
+
+    requestRangeText := models.ReplaceRange{
+        Text: ToStringPointer("Replaced header"),
+    }
+
+    options := map[string]interface{}{
+        "rangeEndIdentifier": "id0.0.1",
+    }
+
+    request := &models.ReplaceWithTextOnlineRequest{
+        Document: OpenFile(t, localFile),
+        RangeStartIdentifier: ToStringPointer("id0.0.0"),
+        RangeText: requestRangeText,
+        Optionals: options,
+    }
+
+    _,err := client.WordsApi.ReplaceWithTextOnline(ctx, request)
+
+    if err != nil {
+        t.Error(err)
+    }
+
 }

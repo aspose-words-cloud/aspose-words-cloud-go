@@ -27,12 +27,20 @@
 
 package models
 
-// Collection of borders.
-type BordersCollection struct {
-    // Collection of borders.
-    Link *WordsApiLink `json:"Link,omitempty"`
+// The collection of borders.
+type BordersCollectionResult struct {
+    // The collection of borders.
+    Link WordsApiLinkResult `json:"Link,omitempty"`
 
-    // Collection of borders.
+    // The collection of borders.
+    List []BorderResult `json:"List,omitempty"`
+}
+
+type BordersCollection struct {
+    // The collection of borders.
+    Link IWordsApiLink `json:"Link,omitempty"`
+
+    // The collection of borders.
     List []Border `json:"List,omitempty"`
 }
 
@@ -46,3 +54,5 @@ func (BordersCollection) IsBordersCollection() bool {
 func (BordersCollection) IsLinkElement() bool {
     return true
 }
+
+

@@ -27,25 +27,12 @@
 
 package models
 
-// This response should be returned by the service when handling:
-// GET https://api.aspose.cloud/v4.0/words/Test.doc/{nodePath}/fields.
+// The REST response with a collection of fields.
 type FieldsResponse struct {
-    // This response should be returned by the service when handling:
-    // GET https://api.aspose.cloud/v4.0/words/Test.doc/{nodePath}/fields.
+    // The REST response with a collection of fields.
     RequestId string `json:"RequestId,omitempty"`
 
-    // This response should be returned by the service when handling:
-    // GET https://api.aspose.cloud/v4.0/words/Test.doc/{nodePath}/fields.
-    Fields *FieldCollection `json:"Fields,omitempty"`
+    // The REST response with a collection of fields.
+    Fields FieldCollectionResult `json:"Fields,omitempty"`
 }
 
-type IFieldsResponse interface {
-    IsFieldsResponse() bool
-}
-func (FieldsResponse) IsFieldsResponse() bool {
-    return true
-}
-
-func (FieldsResponse) IsWordsResponse() bool {
-    return true
-}

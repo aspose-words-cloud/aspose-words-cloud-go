@@ -28,15 +28,26 @@
 package models
 
 // Run element.
-type Run struct {
+type RunResult struct {
     // Run element.
-    Link *WordsApiLink `json:"Link,omitempty"`
+    Link WordsApiLinkResult `json:"Link,omitempty"`
 
     // Run element.
     NodeId string `json:"NodeId,omitempty"`
 
     // Run element.
     Text string `json:"Text,omitempty"`
+}
+
+type Run struct {
+    // Run element.
+    Link IWordsApiLink `json:"Link,omitempty"`
+
+    // Run element.
+    NodeId *string `json:"NodeId,omitempty"`
+
+    // Run element.
+    Text *string `json:"Text,omitempty"`
 }
 
 type IRun interface {
@@ -49,3 +60,5 @@ func (Run) IsRun() bool {
 func (Run) IsRunLink() bool {
     return true
 }
+
+

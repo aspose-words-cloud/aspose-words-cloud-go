@@ -27,25 +27,12 @@
 
 package models
 
-// This response should be returned by the service when handling:
-// GET https://api.aspose.cloud/v4.0/words/Test.doc/{paragraphPath}/runs.
+// The REST response with a collection of Run elements.
 type RunsResponse struct {
-    // This response should be returned by the service when handling:
-    // GET https://api.aspose.cloud/v4.0/words/Test.doc/{paragraphPath}/runs.
+    // The REST response with a collection of Run elements.
     RequestId string `json:"RequestId,omitempty"`
 
-    // This response should be returned by the service when handling:
-    // GET https://api.aspose.cloud/v4.0/words/Test.doc/{paragraphPath}/runs.
-    Runs *Runs `json:"Runs,omitempty"`
+    // The REST response with a collection of Run elements.
+    Runs RunsResult `json:"Runs,omitempty"`
 }
 
-type IRunsResponse interface {
-    IsRunsResponse() bool
-}
-func (RunsResponse) IsRunsResponse() bool {
-    return true
-}
-
-func (RunsResponse) IsWordsResponse() bool {
-    return true
-}

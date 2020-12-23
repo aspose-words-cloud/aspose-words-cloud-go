@@ -27,49 +27,93 @@
 
 package models
 
-// container class for docx/docm/dotx/dotm/flatopc save options.
-type OoxmlSaveOptionsData struct {
-    // container class for docx/docm/dotx/dotm/flatopc save options.
+// Container class for docx/docm/dotx/dotm/flatopc save options.
+type OoxmlSaveOptionsDataResult struct {
+    // Container class for docx/docm/dotx/dotm/flatopc save options.
     Dml3DEffectsRenderingMode string `json:"Dml3DEffectsRenderingMode,omitempty"`
 
-    // container class for docx/docm/dotx/dotm/flatopc save options.
+    // Container class for docx/docm/dotx/dotm/flatopc save options.
     DmlEffectsRenderingMode string `json:"DmlEffectsRenderingMode,omitempty"`
 
-    // container class for docx/docm/dotx/dotm/flatopc save options.
+    // Container class for docx/docm/dotx/dotm/flatopc save options.
     DmlRenderingMode string `json:"DmlRenderingMode,omitempty"`
 
-    // container class for docx/docm/dotx/dotm/flatopc save options.
+    // Container class for docx/docm/dotx/dotm/flatopc save options.
     FileName string `json:"FileName,omitempty"`
 
-    // container class for docx/docm/dotx/dotm/flatopc save options.
+    // Container class for docx/docm/dotx/dotm/flatopc save options.
     SaveFormat string `json:"SaveFormat,omitempty"`
 
-    // container class for docx/docm/dotx/dotm/flatopc save options.
+    // Container class for docx/docm/dotx/dotm/flatopc save options.
     UpdateFields bool `json:"UpdateFields,omitempty"`
 
-    // container class for docx/docm/dotx/dotm/flatopc save options.
+    // Container class for docx/docm/dotx/dotm/flatopc save options.
     UpdateLastPrintedProperty bool `json:"UpdateLastPrintedProperty,omitempty"`
 
-    // container class for docx/docm/dotx/dotm/flatopc save options.
+    // Container class for docx/docm/dotx/dotm/flatopc save options.
     UpdateLastSavedTimeProperty bool `json:"UpdateLastSavedTimeProperty,omitempty"`
 
-    // container class for docx/docm/dotx/dotm/flatopc save options.
+    // Container class for docx/docm/dotx/dotm/flatopc save options.
     UpdateSdtContent bool `json:"UpdateSdtContent,omitempty"`
 
-    // container class for docx/docm/dotx/dotm/flatopc save options.
+    // Container class for docx/docm/dotx/dotm/flatopc save options.
     ZipOutput bool `json:"ZipOutput,omitempty"`
 
-    // container class for docx/docm/dotx/dotm/flatopc save options.
+    // Container class for docx/docm/dotx/dotm/flatopc save options.
     Compliance string `json:"Compliance,omitempty"`
 
-    // container class for docx/docm/dotx/dotm/flatopc save options.
+    // Container class for docx/docm/dotx/dotm/flatopc save options.
     CompressionLevel string `json:"CompressionLevel,omitempty"`
 
-    // container class for docx/docm/dotx/dotm/flatopc save options.
+    // Container class for docx/docm/dotx/dotm/flatopc save options.
     Password string `json:"Password,omitempty"`
 
-    // container class for docx/docm/dotx/dotm/flatopc save options.
+    // Container class for docx/docm/dotx/dotm/flatopc save options.
     PrettyFormat bool `json:"PrettyFormat,omitempty"`
+}
+
+type OoxmlSaveOptionsData struct {
+    // Container class for docx/docm/dotx/dotm/flatopc save options.
+    Dml3DEffectsRenderingMode *string `json:"Dml3DEffectsRenderingMode,omitempty"`
+
+    // Container class for docx/docm/dotx/dotm/flatopc save options.
+    DmlEffectsRenderingMode *string `json:"DmlEffectsRenderingMode,omitempty"`
+
+    // Container class for docx/docm/dotx/dotm/flatopc save options.
+    DmlRenderingMode *string `json:"DmlRenderingMode,omitempty"`
+
+    // Container class for docx/docm/dotx/dotm/flatopc save options.
+    FileName *string `json:"FileName,omitempty"`
+
+    // Container class for docx/docm/dotx/dotm/flatopc save options.
+    SaveFormat *string `json:"SaveFormat,omitempty"`
+
+    // Container class for docx/docm/dotx/dotm/flatopc save options.
+    UpdateFields *bool `json:"UpdateFields,omitempty"`
+
+    // Container class for docx/docm/dotx/dotm/flatopc save options.
+    UpdateLastPrintedProperty *bool `json:"UpdateLastPrintedProperty,omitempty"`
+
+    // Container class for docx/docm/dotx/dotm/flatopc save options.
+    UpdateLastSavedTimeProperty *bool `json:"UpdateLastSavedTimeProperty,omitempty"`
+
+    // Container class for docx/docm/dotx/dotm/flatopc save options.
+    UpdateSdtContent *bool `json:"UpdateSdtContent,omitempty"`
+
+    // Container class for docx/docm/dotx/dotm/flatopc save options.
+    ZipOutput *bool `json:"ZipOutput,omitempty"`
+
+    // Container class for docx/docm/dotx/dotm/flatopc save options.
+    Compliance *string `json:"Compliance,omitempty"`
+
+    // Container class for docx/docm/dotx/dotm/flatopc save options.
+    CompressionLevel *string `json:"CompressionLevel,omitempty"`
+
+    // Container class for docx/docm/dotx/dotm/flatopc save options.
+    Password *string `json:"Password,omitempty"`
+
+    // Container class for docx/docm/dotx/dotm/flatopc save options.
+    PrettyFormat *bool `json:"PrettyFormat,omitempty"`
 }
 
 type IOoxmlSaveOptionsData interface {
@@ -82,3 +126,5 @@ func (OoxmlSaveOptionsData) IsOoxmlSaveOptionsData() bool {
 func (OoxmlSaveOptionsData) IsSaveOptionsData() bool {
     return true
 }
+
+

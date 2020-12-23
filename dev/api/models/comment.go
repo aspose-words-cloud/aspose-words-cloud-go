@@ -27,35 +27,57 @@
 
 package models
 
-import (
-    "time"
-)
+// DTO container with a comment.
+type CommentResult struct {
+    // DTO container with a comment.
+    Link WordsApiLinkResult `json:"Link,omitempty"`
 
-// Comment.
-type Comment struct {
-    // Comment.
-    Link *WordsApiLink `json:"Link,omitempty"`
-
-    // Comment.
+    // DTO container with a comment.
     Author string `json:"Author,omitempty"`
 
-    // Comment.
-    Content *StoryChildNodes `json:"Content,omitempty"`
+    // DTO container with a comment.
+    Content StoryChildNodesResult `json:"Content,omitempty"`
 
-    // Comment.
-    DateTime time.Time `json:"DateTime,omitempty"`
+    // DTO container with a comment.
+    DateTime Time `json:"DateTime,omitempty"`
 
-    // Comment.
+    // DTO container with a comment.
     Initial string `json:"Initial,omitempty"`
 
-    // Comment.
-    RangeEnd *DocumentPosition `json:"RangeEnd,omitempty"`
+    // DTO container with a comment.
+    RangeEnd DocumentPositionResult `json:"RangeEnd,omitempty"`
 
-    // Comment.
-    RangeStart *DocumentPosition `json:"RangeStart,omitempty"`
+    // DTO container with a comment.
+    RangeStart DocumentPositionResult `json:"RangeStart,omitempty"`
 
-    // Comment.
+    // DTO container with a comment.
     Text string `json:"Text,omitempty"`
+}
+
+type Comment struct {
+    // DTO container with a comment.
+    Link IWordsApiLink `json:"Link,omitempty"`
+
+    // DTO container with a comment.
+    Author *string `json:"Author,omitempty"`
+
+    // DTO container with a comment.
+    Content IStoryChildNodes `json:"Content,omitempty"`
+
+    // DTO container with a comment.
+    DateTime *Time `json:"DateTime,omitempty"`
+
+    // DTO container with a comment.
+    Initial *string `json:"Initial,omitempty"`
+
+    // DTO container with a comment.
+    RangeEnd IDocumentPosition `json:"RangeEnd,omitempty"`
+
+    // DTO container with a comment.
+    RangeStart IDocumentPosition `json:"RangeStart,omitempty"`
+
+    // DTO container with a comment.
+    Text *string `json:"Text,omitempty"`
 }
 
 type IComment interface {
@@ -68,3 +90,5 @@ func (Comment) IsComment() bool {
 func (Comment) IsCommentLink() bool {
     return true
 }
+
+

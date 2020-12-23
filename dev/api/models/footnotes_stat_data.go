@@ -28,12 +28,20 @@
 package models
 
 // Container for the footnotes statistical data.
-type FootnotesStatData struct {
+type FootnotesStatDataResult struct {
     // Container for the footnotes statistical data.
     ParagraphCount int32 `json:"ParagraphCount,omitempty"`
 
     // Container for the footnotes statistical data.
     WordCount int32 `json:"WordCount,omitempty"`
+}
+
+type FootnotesStatData struct {
+    // Container for the footnotes statistical data.
+    ParagraphCount *int32 `json:"ParagraphCount,omitempty"`
+
+    // Container for the footnotes statistical data.
+    WordCount *int32 `json:"WordCount,omitempty"`
 }
 
 type IFootnotesStatData interface {
@@ -42,4 +50,5 @@ type IFootnotesStatData interface {
 func (FootnotesStatData) IsFootnotesStatData() bool {
     return true
 }
+
 

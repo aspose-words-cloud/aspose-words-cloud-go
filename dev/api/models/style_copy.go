@@ -28,9 +28,14 @@
 package models
 
 // Represents a single document style to insert.
-type StyleCopy struct {
+type StyleCopyResult struct {
     // Represents a single document style to insert.
     StyleName string `json:"StyleName,omitempty"`
+}
+
+type StyleCopy struct {
+    // Represents a single document style to insert.
+    StyleName *string `json:"StyleName,omitempty"`
 }
 
 type IStyleCopy interface {
@@ -39,4 +44,5 @@ type IStyleCopy interface {
 func (StyleCopy) IsStyleCopy() bool {
     return true
 }
+
 

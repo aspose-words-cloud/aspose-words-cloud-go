@@ -28,15 +28,15 @@
 package models
 
 // Container for the document's statistical data.
-type DocumentStatData struct {
+type DocumentStatDataResult struct {
     // Container for the document's statistical data.
-    FootnotesStatData *FootnotesStatData `json:"FootnotesStatData,omitempty"`
+    FootnotesStatData FootnotesStatDataResult `json:"FootnotesStatData,omitempty"`
 
     // Container for the document's statistical data.
     PageCount int32 `json:"PageCount,omitempty"`
 
     // Container for the document's statistical data.
-    PageStatData []PageStatData `json:"PageStatData,omitempty"`
+    PageStatData []PageStatDataResult `json:"PageStatData,omitempty"`
 
     // Container for the document's statistical data.
     ParagraphCount int32 `json:"ParagraphCount,omitempty"`
@@ -45,10 +45,28 @@ type DocumentStatData struct {
     WordCount int32 `json:"WordCount,omitempty"`
 }
 
+type DocumentStatData struct {
+    // Container for the document's statistical data.
+    FootnotesStatData IFootnotesStatData `json:"FootnotesStatData,omitempty"`
+
+    // Container for the document's statistical data.
+    PageCount *int32 `json:"PageCount,omitempty"`
+
+    // Container for the document's statistical data.
+    PageStatData []PageStatData `json:"PageStatData,omitempty"`
+
+    // Container for the document's statistical data.
+    ParagraphCount *int32 `json:"ParagraphCount,omitempty"`
+
+    // Container for the document's statistical data.
+    WordCount *int32 `json:"WordCount,omitempty"`
+}
+
 type IDocumentStatData interface {
     IsDocumentStatData() bool
 }
 func (DocumentStatData) IsDocumentStatData() bool {
     return true
 }
+
 

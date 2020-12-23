@@ -27,19 +27,33 @@
 
 package models
 
-// Paragraph list format element.
-type ListFormat struct {
-    // Paragraph list format element.
-    Link *WordsApiLink `json:"Link,omitempty"`
+// DTO container with a paragraph list format element.
+type ListFormatResult struct {
+    // DTO container with a paragraph list format element.
+    Link WordsApiLinkResult `json:"Link,omitempty"`
 
-    // Paragraph list format element.
+    // DTO container with a paragraph list format element.
     IsListItem bool `json:"IsListItem,omitempty"`
 
-    // Paragraph list format element.
+    // DTO container with a paragraph list format element.
     ListId int32 `json:"ListId,omitempty"`
 
-    // Paragraph list format element.
+    // DTO container with a paragraph list format element.
     ListLevelNumber int32 `json:"ListLevelNumber,omitempty"`
+}
+
+type ListFormat struct {
+    // DTO container with a paragraph list format element.
+    Link IWordsApiLink `json:"Link,omitempty"`
+
+    // DTO container with a paragraph list format element.
+    IsListItem *bool `json:"IsListItem,omitempty"`
+
+    // DTO container with a paragraph list format element.
+    ListId *int32 `json:"ListId,omitempty"`
+
+    // DTO container with a paragraph list format element.
+    ListLevelNumber *int32 `json:"ListLevelNumber,omitempty"`
 }
 
 type IListFormat interface {
@@ -52,3 +66,5 @@ func (ListFormat) IsListFormat() bool {
 func (ListFormat) IsLinkElement() bool {
     return true
 }
+
+

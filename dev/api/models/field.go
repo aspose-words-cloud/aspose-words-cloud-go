@@ -27,22 +27,39 @@
 
 package models
 
-// Field.
-type Field struct {
-    // Field.
-    Link *WordsApiLink `json:"Link,omitempty"`
+// DTO container with a field.
+type FieldResult struct {
+    // DTO container with a field.
+    Link WordsApiLinkResult `json:"Link,omitempty"`
 
-    // Field.
+    // DTO container with a field.
     NodeId string `json:"NodeId,omitempty"`
 
-    // Field.
+    // DTO container with a field.
     FieldCode string `json:"FieldCode,omitempty"`
 
-    // Field.
+    // DTO container with a field.
     LocaleId string `json:"LocaleId,omitempty"`
 
-    // Field.
+    // DTO container with a field.
     Result string `json:"Result,omitempty"`
+}
+
+type Field struct {
+    // DTO container with a field.
+    Link IWordsApiLink `json:"Link,omitempty"`
+
+    // DTO container with a field.
+    NodeId *string `json:"NodeId,omitempty"`
+
+    // DTO container with a field.
+    FieldCode *string `json:"FieldCode,omitempty"`
+
+    // DTO container with a field.
+    LocaleId *string `json:"LocaleId,omitempty"`
+
+    // DTO container with a field.
+    Result *string `json:"Result,omitempty"`
 }
 
 type IField interface {
@@ -55,3 +72,5 @@ func (Field) IsField() bool {
 func (Field) IsFieldLink() bool {
     return true
 }
+
+

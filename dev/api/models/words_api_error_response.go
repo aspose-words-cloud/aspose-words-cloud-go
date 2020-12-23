@@ -27,22 +27,12 @@
 
 package models
 
-// Response for Api error.
+// The REST response with an API error.
 type WordsApiErrorResponse struct {
-    // Response for Api error.
+    // The REST response with an API error.
     RequestId string `json:"RequestId,omitempty"`
 
-    // Response for Api error.
-    Error_ *ApiError `json:"Error,omitempty"`
+    // The REST response with an API error.
+    Error_ ApiErrorResult `json:"Error,omitempty"`
 }
 
-type IWordsApiErrorResponse interface {
-    IsWordsApiErrorResponse() bool
-}
-func (WordsApiErrorResponse) IsWordsApiErrorResponse() bool {
-    return true
-}
-
-func (WordsApiErrorResponse) IsWordsResponse() bool {
-    return true
-}

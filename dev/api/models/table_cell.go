@@ -27,15 +27,26 @@
 
 package models
 
-// Table cell element.
-type TableCell struct {
-    // Table cell element.
-    Link *WordsApiLink `json:"Link,omitempty"`
+// DTO container with a table cell element.
+type TableCellResult struct {
+    // DTO container with a table cell element.
+    Link WordsApiLinkResult `json:"Link,omitempty"`
 
-    // Table cell element.
+    // DTO container with a table cell element.
     NodeId string `json:"NodeId,omitempty"`
 
-    // Table cell element.
+    // DTO container with a table cell element.
+    ChildNodes []NodeLinkResult `json:"ChildNodes,omitempty"`
+}
+
+type TableCell struct {
+    // DTO container with a table cell element.
+    Link IWordsApiLink `json:"Link,omitempty"`
+
+    // DTO container with a table cell element.
+    NodeId *string `json:"NodeId,omitempty"`
+
+    // DTO container with a table cell element.
     ChildNodes []NodeLink `json:"ChildNodes,omitempty"`
 }
 
@@ -49,3 +60,5 @@ func (TableCell) IsTableCell() bool {
 func (TableCell) IsNodeLink() bool {
     return true
 }
+
+

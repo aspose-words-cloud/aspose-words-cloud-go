@@ -28,9 +28,14 @@
 package models
 
 // Represents a single document style to insert.
-type StyleApply struct {
+type StyleApplyResult struct {
     // Represents a single document style to insert.
     StyleName string `json:"StyleName,omitempty"`
+}
+
+type StyleApply struct {
+    // Represents a single document style to insert.
+    StyleName *string `json:"StyleName,omitempty"`
 }
 
 type IStyleApply interface {
@@ -39,4 +44,5 @@ type IStyleApply interface {
 func (StyleApply) IsStyleApply() bool {
     return true
 }
+
 

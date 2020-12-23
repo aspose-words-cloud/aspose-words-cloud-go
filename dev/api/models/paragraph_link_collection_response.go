@@ -27,25 +27,12 @@
 
 package models
 
-// This response should be returned by the service when handling:
-// GET https://api.aspose.cloud/v4.0/words/Test.doc/paragraphs.
+// The REST response with a collection of paragraphs.
 type ParagraphLinkCollectionResponse struct {
-    // This response should be returned by the service when handling:
-    // GET https://api.aspose.cloud/v4.0/words/Test.doc/paragraphs.
+    // The REST response with a collection of paragraphs.
     RequestId string `json:"RequestId,omitempty"`
 
-    // This response should be returned by the service when handling:
-    // GET https://api.aspose.cloud/v4.0/words/Test.doc/paragraphs.
-    Paragraphs *ParagraphLinkCollection `json:"Paragraphs,omitempty"`
+    // The REST response with a collection of paragraphs.
+    Paragraphs ParagraphLinkCollectionResult `json:"Paragraphs,omitempty"`
 }
 
-type IParagraphLinkCollectionResponse interface {
-    IsParagraphLinkCollectionResponse() bool
-}
-func (ParagraphLinkCollectionResponse) IsParagraphLinkCollectionResponse() bool {
-    return true
-}
-
-func (ParagraphLinkCollectionResponse) IsWordsResponse() bool {
-    return true
-}

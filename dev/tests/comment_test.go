@@ -29,6 +29,7 @@
 package api_test
 
 import (
+    "github.com/stretchr/testify/assert"
     "testing"
     "github.com/aspose-words-cloud/aspose-words-cloud-go/dev/api/models"
 )
@@ -47,11 +48,45 @@ func Test_Comment_GetComment(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetComment(ctx, remoteFileName, int32(0), options)
+
+    request := &models.GetCommentRequest{
+        Name: ToStringPointer(remoteFileName),
+        CommentIndex: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.GetComment(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
+
+    assert.NotNil(t, actual.Comment, "Validate GetComment response.");
+    assert.Equal(t, "Comment 1" + "\r\n\r\n", actual.Comment.Text, "Validate GetComment response.");
+}
+
+// Test for getting comment by specified comment's index online.
+func Test_Comment_GetCommentOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "Common/test_multi_pages.docx"
+
+
+    options := map[string]interface{}{
+    }
+
+    request := &models.GetCommentOnlineRequest{
+        Document: OpenFile(t, localFile),
+        CommentIndex: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    _, _, err := client.WordsApi.GetCommentOnline(ctx, request)
+
+    if err != nil {
+        t.Error(err)
+    }
+
 }
 
 // Test for getting all comments from document.
@@ -68,11 +103,45 @@ func Test_Comment_GetComments(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetComments(ctx, remoteFileName, options)
+
+    request := &models.GetCommentsRequest{
+        Name: ToStringPointer(remoteFileName),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.GetComments(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
+
+    assert.NotNil(t, actual.Comments, "Validate GetComments response.");
+    assert.NotNil(t, actual.Comments.CommentList, "Validate GetComments response.");
+    assert.Equal(t, 1, len(actual.Comments.CommentList), "Validate GetComments response.");
+    assert.Equal(t, "Comment 1" + "\r\n\r\n", actual.Comments.CommentList[0].Text, "Validate GetComments response.");
+}
+
+// Test for getting all comments from document online.
+func Test_Comment_GetCommentsOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "Common/test_multi_pages.docx"
+
+
+    options := map[string]interface{}{
+    }
+
+    request := &models.GetCommentsOnlineRequest{
+        Document: OpenFile(t, localFile),
+        Optionals: options,
+    }
+
+    _, _, err := client.WordsApi.GetCommentsOnline(ctx, request)
+
+    if err != nil {
+        t.Error(err)
+    }
+
 }
 
 // Test for adding comment.
@@ -86,35 +155,93 @@ func Test_Comment_InsertComment(t *testing.T) {
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
     requestCommentRangeStartNode := models.NodeLink{
-        NodeId: "0.3.0.3",
+        NodeId: ToStringPointer("0.3.0.3"),
     }
     requestCommentRangeStart := models.DocumentPosition{
-        Node: &requestCommentRangeStartNode,
-        Offset: int32(0),
+        Node: requestCommentRangeStartNode,
+        Offset: ToInt32Pointer(int32(0)),
     }
     requestCommentRangeEndNode := models.NodeLink{
-        NodeId: "0.3.0.3",
+        NodeId: ToStringPointer("0.3.0.3"),
     }
     requestCommentRangeEnd := models.DocumentPosition{
-        Node: &requestCommentRangeEndNode,
-        Offset: int32(0),
+        Node: requestCommentRangeEndNode,
+        Offset: ToInt32Pointer(int32(0)),
     }
     requestComment := models.CommentInsert{
-        RangeStart: &requestCommentRangeStart,
-        RangeEnd: &requestCommentRangeEnd,
-        Initial: "IA",
-        Author: "Imran Anwar",
-        Text: "A new Comment",
+        RangeStart: requestCommentRangeStart,
+        RangeEnd: requestCommentRangeEnd,
+        Initial: ToStringPointer("IA"),
+        Author: ToStringPointer("Imran Anwar"),
+        Text: ToStringPointer("A new Comment"),
     }
 
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.InsertComment(ctx, remoteFileName, requestComment, options)
+
+    request := &models.InsertCommentRequest{
+        Name: ToStringPointer(remoteFileName),
+        Comment: requestComment,
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.InsertComment(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
+
+    assert.NotNil(t, actual.Comment, "Validate InsertComment response.");
+    assert.Equal(t, "A new Comment" + "\r\n", actual.Comment.Text, "Validate InsertComment response.");
+    assert.NotNil(t, actual.Comment.RangeStart, "Validate InsertComment response.");
+    assert.NotNil(t, actual.Comment.RangeStart.Node, "Validate InsertComment response.");
+    assert.Equal(t, "0.3.0.4", actual.Comment.RangeStart.Node.NodeId, "Validate InsertComment response.");
+}
+
+// Test for adding comment online.
+func Test_Comment_InsertCommentOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "Common/test_multi_pages.docx"
+
+    requestCommentRangeStartNode := models.NodeLink{
+        NodeId: ToStringPointer("0.3.0.3"),
+    }
+    requestCommentRangeStart := models.DocumentPosition{
+        Node: requestCommentRangeStartNode,
+        Offset: ToInt32Pointer(int32(0)),
+    }
+    requestCommentRangeEndNode := models.NodeLink{
+        NodeId: ToStringPointer("0.3.0.3"),
+    }
+    requestCommentRangeEnd := models.DocumentPosition{
+        Node: requestCommentRangeEndNode,
+        Offset: ToInt32Pointer(int32(0)),
+    }
+    requestComment := models.CommentInsert{
+        RangeStart: requestCommentRangeStart,
+        RangeEnd: requestCommentRangeEnd,
+        Initial: ToStringPointer("IA"),
+        Author: ToStringPointer("Imran Anwar"),
+        Text: ToStringPointer("A new Comment"),
+    }
+
+    options := map[string]interface{}{
+    }
+
+    request := &models.InsertCommentOnlineRequest{
+        Document: OpenFile(t, localFile),
+        Comment: requestComment,
+        Optionals: options,
+    }
+
+    _,err := client.WordsApi.InsertCommentOnline(ctx, request)
+
+    if err != nil {
+        t.Error(err)
+    }
+
 }
 
 // Test for updating comment.
@@ -128,35 +255,95 @@ func Test_Comment_UpdateComment(t *testing.T) {
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
     requestCommentRangeStartNode := models.NodeLink{
-        NodeId: "0.3.0",
+        NodeId: ToStringPointer("0.3.0"),
     }
     requestCommentRangeStart := models.DocumentPosition{
-        Node: &requestCommentRangeStartNode,
-        Offset: int32(0),
+        Node: requestCommentRangeStartNode,
+        Offset: ToInt32Pointer(int32(0)),
     }
     requestCommentRangeEndNode := models.NodeLink{
-        NodeId: "0.3.0",
+        NodeId: ToStringPointer("0.3.0"),
     }
     requestCommentRangeEnd := models.DocumentPosition{
-        Node: &requestCommentRangeEndNode,
-        Offset: int32(0),
+        Node: requestCommentRangeEndNode,
+        Offset: ToInt32Pointer(int32(0)),
     }
     requestComment := models.CommentUpdate{
-        RangeStart: &requestCommentRangeStart,
-        RangeEnd: &requestCommentRangeEnd,
-        Initial: "IA",
-        Author: "Imran Anwar",
-        Text: "A new Comment",
+        RangeStart: requestCommentRangeStart,
+        RangeEnd: requestCommentRangeEnd,
+        Initial: ToStringPointer("IA"),
+        Author: ToStringPointer("Imran Anwar"),
+        Text: ToStringPointer("A new Comment"),
     }
 
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.UpdateComment(ctx, remoteFileName, int32(0), requestComment, options)
+
+    request := &models.UpdateCommentRequest{
+        Name: ToStringPointer(remoteFileName),
+        CommentIndex: ToInt32Pointer(int32(0)),
+        Comment: requestComment,
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.UpdateComment(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
+
+    assert.NotNil(t, actual.Comment, "Validate UpdateComment response.");
+    assert.Equal(t, "A new Comment" + "\r\n", actual.Comment.Text, "Validate UpdateComment response.");
+    assert.NotNil(t, actual.Comment.RangeStart, "Validate UpdateComment response.");
+    assert.NotNil(t, actual.Comment.RangeStart.Node, "Validate UpdateComment response.");
+    assert.Equal(t, "0.3.0.1", actual.Comment.RangeStart.Node.NodeId, "Validate UpdateComment response.");
+}
+
+// Test for updating comment online.
+func Test_Comment_UpdateCommentOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "Common/test_multi_pages.docx"
+
+    requestCommentRangeStartNode := models.NodeLink{
+        NodeId: ToStringPointer("0.3.0"),
+    }
+    requestCommentRangeStart := models.DocumentPosition{
+        Node: requestCommentRangeStartNode,
+        Offset: ToInt32Pointer(int32(0)),
+    }
+    requestCommentRangeEndNode := models.NodeLink{
+        NodeId: ToStringPointer("0.3.0"),
+    }
+    requestCommentRangeEnd := models.DocumentPosition{
+        Node: requestCommentRangeEndNode,
+        Offset: ToInt32Pointer(int32(0)),
+    }
+    requestComment := models.CommentUpdate{
+        RangeStart: requestCommentRangeStart,
+        RangeEnd: requestCommentRangeEnd,
+        Initial: ToStringPointer("IA"),
+        Author: ToStringPointer("Imran Anwar"),
+        Text: ToStringPointer("A new Comment"),
+    }
+
+    options := map[string]interface{}{
+    }
+
+    request := &models.UpdateCommentOnlineRequest{
+        Document: OpenFile(t, localFile),
+        CommentIndex: ToInt32Pointer(int32(0)),
+        Comment: requestComment,
+        Optionals: options,
+    }
+
+    _,err := client.WordsApi.UpdateCommentOnline(ctx, request)
+
+    if err != nil {
+        t.Error(err)
+    }
+
 }
 
 // A test for DeleteComment.
@@ -174,9 +361,41 @@ func Test_Comment_DeleteComment(t *testing.T) {
         "folder": remoteDataFolder,
         "destFileName": baseTestOutPath + "/" + remoteFileName,
     }
-    _, err := client.WordsApi.DeleteComment(ctx, remoteFileName, int32(0), options)
+
+    request := &models.DeleteCommentRequest{
+        Name: ToStringPointer(remoteFileName),
+        CommentIndex: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    _, err := client.WordsApi.DeleteComment(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
+
+}
+
+// A test for DeleteComment online.
+func Test_Comment_DeleteCommentOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "Common/test_multi_pages.docx"
+
+
+    options := map[string]interface{}{
+    }
+
+    request := &models.DeleteCommentOnlineRequest{
+        Document: OpenFile(t, localFile),
+        CommentIndex: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    _, , _, err := client.WordsApi.DeleteCommentOnline(ctx, request)
+
+    if err != nil {
+        t.Error(err)
+    }
+
 }

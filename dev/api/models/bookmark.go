@@ -28,15 +28,26 @@
 package models
 
 // Represents a single bookmark.
-type Bookmark struct {
+type BookmarkResult struct {
     // Represents a single bookmark.
-    Link *WordsApiLink `json:"Link,omitempty"`
+    Link WordsApiLinkResult `json:"Link,omitempty"`
 
     // Represents a single bookmark.
     Name string `json:"Name,omitempty"`
 
     // Represents a single bookmark.
     Text string `json:"Text,omitempty"`
+}
+
+type Bookmark struct {
+    // Represents a single bookmark.
+    Link IWordsApiLink `json:"Link,omitempty"`
+
+    // Represents a single bookmark.
+    Name *string `json:"Name,omitempty"`
+
+    // Represents a single bookmark.
+    Text *string `json:"Text,omitempty"`
 }
 
 type IBookmark interface {
@@ -49,3 +60,5 @@ func (Bookmark) IsBookmark() bool {
 func (Bookmark) IsLinkElement() bool {
     return true
 }
+
+

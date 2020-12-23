@@ -28,9 +28,17 @@
 package models
 
 // Represents an array of bookmarks.
+type BookmarksResult struct {
+    // Represents an array of bookmarks.
+    Link WordsApiLinkResult `json:"Link,omitempty"`
+
+    // Represents an array of bookmarks.
+    BookmarkList []BookmarkResult `json:"BookmarkList,omitempty"`
+}
+
 type Bookmarks struct {
     // Represents an array of bookmarks.
-    Link *WordsApiLink `json:"Link,omitempty"`
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // Represents an array of bookmarks.
     BookmarkList []Bookmark `json:"BookmarkList,omitempty"`
@@ -46,3 +54,5 @@ func (Bookmarks) IsBookmarks() bool {
 func (Bookmarks) IsLinkElement() bool {
     return true
 }
+
+

@@ -27,22 +27,12 @@
 
 package models
 
-// This response should be returned by the service when handling:  POST /{name}/split .
+// The REST response with a result of document splitting.
 type SplitDocumentResponse struct {
-    // This response should be returned by the service when handling:  POST /{name}/split .
+    // The REST response with a result of document splitting.
     RequestId string `json:"RequestId,omitempty"`
 
-    // This response should be returned by the service when handling:  POST /{name}/split .
-    SplitResult *SplitDocumentResult `json:"SplitResult,omitempty"`
+    // The REST response with a result of document splitting.
+    SplitResult SplitDocumentResultResult `json:"SplitResult,omitempty"`
 }
 
-type ISplitDocumentResponse interface {
-    IsSplitDocumentResponse() bool
-}
-func (SplitDocumentResponse) IsSplitDocumentResponse() bool {
-    return true
-}
-
-func (SplitDocumentResponse) IsWordsResponse() bool {
-    return true
-}

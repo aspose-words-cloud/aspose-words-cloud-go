@@ -27,10 +27,15 @@
 
 package models
 
-// Reference to document.
+// Reference to a document.
+type LinkElementResult struct {
+    // Reference to a document.
+    Link WordsApiLinkResult `json:"Link,omitempty"`
+}
+
 type LinkElement struct {
-    // Reference to document.
-    Link *WordsApiLink `json:"Link,omitempty"`
+    // Reference to a document.
+    Link IWordsApiLink `json:"Link,omitempty"`
 }
 
 type ILinkElement interface {
@@ -39,4 +44,5 @@ type ILinkElement interface {
 func (LinkElement) IsLinkElement() bool {
     return true
 }
+
 

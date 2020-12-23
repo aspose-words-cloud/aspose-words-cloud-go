@@ -28,7 +28,7 @@
 package models
 
 // Container class for Downsample options.
-type DownsampleOptionsData struct {
+type DownsampleOptionsDataResult struct {
     // Container class for Downsample options.
     DownsampleImages bool `json:"DownsampleImages,omitempty"`
 
@@ -39,10 +39,22 @@ type DownsampleOptionsData struct {
     ResolutionThreshold int32 `json:"ResolutionThreshold,omitempty"`
 }
 
+type DownsampleOptionsData struct {
+    // Container class for Downsample options.
+    DownsampleImages *bool `json:"DownsampleImages,omitempty"`
+
+    // Container class for Downsample options.
+    Resolution *int32 `json:"Resolution,omitempty"`
+
+    // Container class for Downsample options.
+    ResolutionThreshold *int32 `json:"ResolutionThreshold,omitempty"`
+}
+
 type IDownsampleOptionsData interface {
     IsDownsampleOptionsData() bool
 }
 func (DownsampleOptionsData) IsDownsampleOptionsData() bool {
     return true
 }
+
 

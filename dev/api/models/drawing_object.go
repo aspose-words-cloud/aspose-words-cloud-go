@@ -27,43 +27,81 @@
 
 package models
 
-// Represents Drawing Object DTO.
-type DrawingObject struct {
-    // Represents Drawing Object DTO.
-    Link *WordsApiLink `json:"Link,omitempty"`
+// DTO container with a DrawingObject.
+type DrawingObjectResult struct {
+    // DTO container with a DrawingObject.
+    Link WordsApiLinkResult `json:"Link,omitempty"`
 
-    // Represents Drawing Object DTO.
+    // DTO container with a DrawingObject.
     NodeId string `json:"NodeId,omitempty"`
 
-    // Represents Drawing Object DTO.
+    // DTO container with a DrawingObject.
     Height float64 `json:"Height,omitempty"`
 
-    // Represents Drawing Object DTO.
-    ImageDataLink *WordsApiLink `json:"ImageDataLink,omitempty"`
+    // DTO container with a DrawingObject.
+    ImageDataLink WordsApiLinkResult `json:"ImageDataLink,omitempty"`
 
-    // Represents Drawing Object DTO.
+    // DTO container with a DrawingObject.
     Left float64 `json:"Left,omitempty"`
 
-    // Represents Drawing Object DTO.
-    OleDataLink *WordsApiLink `json:"OleDataLink,omitempty"`
+    // DTO container with a DrawingObject.
+    OleDataLink WordsApiLinkResult `json:"OleDataLink,omitempty"`
 
-    // Represents Drawing Object DTO.
+    // DTO container with a DrawingObject.
     RelativeHorizontalPosition string `json:"RelativeHorizontalPosition,omitempty"`
 
-    // Represents Drawing Object DTO.
+    // DTO container with a DrawingObject.
     RelativeVerticalPosition string `json:"RelativeVerticalPosition,omitempty"`
 
-    // Represents Drawing Object DTO.
-    RenderLinks []WordsApiLink `json:"RenderLinks,omitempty"`
+    // DTO container with a DrawingObject.
+    RenderLinks []WordsApiLinkResult `json:"RenderLinks,omitempty"`
 
-    // Represents Drawing Object DTO.
+    // DTO container with a DrawingObject.
     Top float64 `json:"Top,omitempty"`
 
-    // Represents Drawing Object DTO.
+    // DTO container with a DrawingObject.
     Width float64 `json:"Width,omitempty"`
 
-    // Represents Drawing Object DTO.
+    // DTO container with a DrawingObject.
     WrapType string `json:"WrapType,omitempty"`
+}
+
+type DrawingObject struct {
+    // DTO container with a DrawingObject.
+    Link IWordsApiLink `json:"Link,omitempty"`
+
+    // DTO container with a DrawingObject.
+    NodeId *string `json:"NodeId,omitempty"`
+
+    // DTO container with a DrawingObject.
+    Height *float64 `json:"Height,omitempty"`
+
+    // DTO container with a DrawingObject.
+    ImageDataLink IWordsApiLink `json:"ImageDataLink,omitempty"`
+
+    // DTO container with a DrawingObject.
+    Left *float64 `json:"Left,omitempty"`
+
+    // DTO container with a DrawingObject.
+    OleDataLink IWordsApiLink `json:"OleDataLink,omitempty"`
+
+    // DTO container with a DrawingObject.
+    RelativeHorizontalPosition *string `json:"RelativeHorizontalPosition,omitempty"`
+
+    // DTO container with a DrawingObject.
+    RelativeVerticalPosition *string `json:"RelativeVerticalPosition,omitempty"`
+
+    // DTO container with a DrawingObject.
+    RenderLinks []WordsApiLink `json:"RenderLinks,omitempty"`
+
+    // DTO container with a DrawingObject.
+    Top *float64 `json:"Top,omitempty"`
+
+    // DTO container with a DrawingObject.
+    Width *float64 `json:"Width,omitempty"`
+
+    // DTO container with a DrawingObject.
+    WrapType *string `json:"WrapType,omitempty"`
 }
 
 type IDrawingObject interface {
@@ -76,3 +114,5 @@ func (DrawingObject) IsDrawingObject() bool {
 func (DrawingObject) IsDrawingObjectLink() bool {
     return true
 }
+
+

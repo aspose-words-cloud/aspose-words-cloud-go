@@ -28,9 +28,9 @@
 package models
 
 // FromField.
-type FormField struct {
+type FormFieldResult struct {
     // FromField.
-    Link *WordsApiLink `json:"Link,omitempty"`
+    Link WordsApiLinkResult `json:"Link,omitempty"`
 
     // FromField.
     NodeId string `json:"NodeId,omitempty"`
@@ -63,6 +63,41 @@ type FormField struct {
     StatusText string `json:"StatusText,omitempty"`
 }
 
+type FormField struct {
+    // FromField.
+    Link IWordsApiLink `json:"Link,omitempty"`
+
+    // FromField.
+    NodeId *string `json:"NodeId,omitempty"`
+
+    // FromField.
+    CalculateOnExit *bool `json:"CalculateOnExit,omitempty"`
+
+    // FromField.
+    Enabled *bool `json:"Enabled,omitempty"`
+
+    // FromField.
+    EntryMacro *string `json:"EntryMacro,omitempty"`
+
+    // FromField.
+    ExitMacro *string `json:"ExitMacro,omitempty"`
+
+    // FromField.
+    HelpText *string `json:"HelpText,omitempty"`
+
+    // FromField.
+    Name *string `json:"Name,omitempty"`
+
+    // FromField.
+    OwnHelp *bool `json:"OwnHelp,omitempty"`
+
+    // FromField.
+    OwnStatus *bool `json:"OwnStatus,omitempty"`
+
+    // FromField.
+    StatusText *string `json:"StatusText,omitempty"`
+}
+
 type IFormField interface {
     IsFormField() bool
 }
@@ -73,3 +108,5 @@ func (FormField) IsFormField() bool {
 func (FormField) IsNodeLink() bool {
     return true
 }
+
+

@@ -28,7 +28,7 @@
 package models
 
 // base container class for save options data.
-type SaveOptionsData struct {
+type SaveOptionsDataResult struct {
     // base container class for save options data.
     Dml3DEffectsRenderingMode string `json:"Dml3DEffectsRenderingMode,omitempty"`
 
@@ -60,10 +60,43 @@ type SaveOptionsData struct {
     ZipOutput bool `json:"ZipOutput,omitempty"`
 }
 
+type SaveOptionsData struct {
+    // base container class for save options data.
+    Dml3DEffectsRenderingMode *string `json:"Dml3DEffectsRenderingMode,omitempty"`
+
+    // base container class for save options data.
+    DmlEffectsRenderingMode *string `json:"DmlEffectsRenderingMode,omitempty"`
+
+    // base container class for save options data.
+    DmlRenderingMode *string `json:"DmlRenderingMode,omitempty"`
+
+    // base container class for save options data.
+    FileName *string `json:"FileName,omitempty"`
+
+    // base container class for save options data.
+    SaveFormat *string `json:"SaveFormat,omitempty"`
+
+    // base container class for save options data.
+    UpdateFields *bool `json:"UpdateFields,omitempty"`
+
+    // base container class for save options data.
+    UpdateLastPrintedProperty *bool `json:"UpdateLastPrintedProperty,omitempty"`
+
+    // base container class for save options data.
+    UpdateLastSavedTimeProperty *bool `json:"UpdateLastSavedTimeProperty,omitempty"`
+
+    // base container class for save options data.
+    UpdateSdtContent *bool `json:"UpdateSdtContent,omitempty"`
+
+    // base container class for save options data.
+    ZipOutput *bool `json:"ZipOutput,omitempty"`
+}
+
 type ISaveOptionsData interface {
     IsSaveOptionsData() bool
 }
 func (SaveOptionsData) IsSaveOptionsData() bool {
     return true
 }
+
 

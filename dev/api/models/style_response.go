@@ -27,25 +27,12 @@
 
 package models
 
-// This response should be returned by the service when handling:
-// GET https://api.aspose.cloud/v4.0/words/Test.doc/styles/{0}.
+// The REST response with a style.
 type StyleResponse struct {
-    // This response should be returned by the service when handling:
-    // GET https://api.aspose.cloud/v4.0/words/Test.doc/styles/{0}.
+    // The REST response with a style.
     RequestId string `json:"RequestId,omitempty"`
 
-    // This response should be returned by the service when handling:
-    // GET https://api.aspose.cloud/v4.0/words/Test.doc/styles/{0}.
-    Style *Style `json:"Style,omitempty"`
+    // The REST response with a style.
+    Style StyleResult `json:"Style,omitempty"`
 }
 
-type IStyleResponse interface {
-    IsStyleResponse() bool
-}
-func (StyleResponse) IsStyleResponse() bool {
-    return true
-}
-
-func (StyleResponse) IsWordsResponse() bool {
-    return true
-}

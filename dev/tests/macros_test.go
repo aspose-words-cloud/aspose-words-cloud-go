@@ -30,6 +30,7 @@ package api_test
 
 import (
     "testing"
+    "github.com/aspose-words-cloud/aspose-words-cloud-go/dev/api/models"
 )
 
 // Test for deleting macros.
@@ -46,9 +47,39 @@ func Test_Macros_DeleteMacros(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, err := client.WordsApi.DeleteMacros(ctx, remoteFileName, options)
+
+    request := &models.DeleteMacrosRequest{
+        Name: ToStringPointer(remoteFileName),
+        Optionals: options,
+    }
+
+    _, err := client.WordsApi.DeleteMacros(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
+
+}
+
+// Test for deleting macros online.
+func Test_Macros_DeleteMacrosOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "Common/test_multi_pages.docx"
+
+
+    options := map[string]interface{}{
+    }
+
+    request := &models.DeleteMacrosOnlineRequest{
+        Document: OpenFile(t, localFile),
+        Optionals: options,
+    }
+
+    _, , _, err := client.WordsApi.DeleteMacrosOnline(ctx, request)
+
+    if err != nil {
+        t.Error(err)
+    }
+
 }

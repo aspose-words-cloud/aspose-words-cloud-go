@@ -27,12 +27,20 @@
 
 package models
 
-// Represents an array of document lists.
-type Lists struct {
-    // Represents an array of document lists.
-    Link *WordsApiLink `json:"Link,omitempty"`
+// DTO container with an array of document lists.
+type ListsResult struct {
+    // DTO container with an array of document lists.
+    Link WordsApiLinkResult `json:"Link,omitempty"`
 
-    // Represents an array of document lists.
+    // DTO container with an array of document lists.
+    ListInfo []ListInfoResult `json:"ListInfo,omitempty"`
+}
+
+type Lists struct {
+    // DTO container with an array of document lists.
+    Link IWordsApiLink `json:"Link,omitempty"`
+
+    // DTO container with an array of document lists.
     ListInfo []ListInfo `json:"ListInfo,omitempty"`
 }
 
@@ -46,3 +54,5 @@ func (Lists) IsLists() bool {
 func (Lists) IsLinkElement() bool {
     return true
 }
+
+

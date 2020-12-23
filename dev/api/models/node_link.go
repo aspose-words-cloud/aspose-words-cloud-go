@@ -28,12 +28,20 @@
 package models
 
 // Reference to node.
-type NodeLink struct {
+type NodeLinkResult struct {
     // Reference to node.
-    Link *WordsApiLink `json:"Link,omitempty"`
+    Link WordsApiLinkResult `json:"Link,omitempty"`
 
     // Reference to node.
     NodeId string `json:"NodeId,omitempty"`
+}
+
+type NodeLink struct {
+    // Reference to node.
+    Link IWordsApiLink `json:"Link,omitempty"`
+
+    // Reference to node.
+    NodeId *string `json:"NodeId,omitempty"`
 }
 
 type INodeLink interface {
@@ -46,3 +54,5 @@ func (NodeLink) IsNodeLink() bool {
 func (NodeLink) IsLinkElement() bool {
     return true
 }
+
+

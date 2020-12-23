@@ -27,25 +27,12 @@
 
 package models
 
-// This response should be returned by the service when handling:
-// GET https://api.aspose.cloud/v4.0/words/Test.doc/tables/{0}/rows/{1}/rowformat.
+// The REST response with the formatting properties of a table row.
 type TableRowFormatResponse struct {
-    // This response should be returned by the service when handling:
-    // GET https://api.aspose.cloud/v4.0/words/Test.doc/tables/{0}/rows/{1}/rowformat.
+    // The REST response with the formatting properties of a table row.
     RequestId string `json:"RequestId,omitempty"`
 
-    // This response should be returned by the service when handling:
-    // GET https://api.aspose.cloud/v4.0/words/Test.doc/tables/{0}/rows/{1}/rowformat.
-    RowFormat *TableRowFormat `json:"RowFormat,omitempty"`
+    // The REST response with the formatting properties of a table row.
+    RowFormat TableRowFormatResult `json:"RowFormat,omitempty"`
 }
 
-type ITableRowFormatResponse interface {
-    IsTableRowFormatResponse() bool
-}
-func (TableRowFormatResponse) IsTableRowFormatResponse() bool {
-    return true
-}
-
-func (TableRowFormatResponse) IsWordsResponse() bool {
-    return true
-}

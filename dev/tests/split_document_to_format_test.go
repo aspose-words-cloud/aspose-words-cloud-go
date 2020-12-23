@@ -29,7 +29,9 @@
 package api_test
 
 import (
+    "github.com/stretchr/testify/assert"
     "testing"
+    "github.com/aspose-words-cloud/aspose-words-cloud-go/dev/api/models"
 )
 
 // Test for document splitting.
@@ -49,9 +51,47 @@ func Test_SplitDocumentToFormat_SplitDocument(t *testing.T) {
         "from": int32(1),
         "to": int32(2),
     }
-    _, _, err := client.WordsApi.SplitDocument(ctx, remoteFileName, "text", options)
+
+    request := &models.SplitDocumentRequest{
+        Name: ToStringPointer(remoteFileName),
+        Format: ToStringPointer("text"),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.SplitDocument(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
+
+    assert.NotNil(t, actual.SplitResult, "Validate SplitDocument response.");
+    assert.NotNil(t, actual.SplitResult.Pages, "Validate SplitDocument response.");
+    assert.Equal(t, 2, len(actual.SplitResult.Pages), "Validate SplitDocument response.");
+}
+
+// Test for document splitting online.
+func Test_SplitDocumentToFormat_SplitDocumentOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "Common/test_multi_pages.docx"
+
+
+    options := map[string]interface{}{
+        "destFileName": baseTestOutPath + "/TestSplitDocument.text",
+        "from": int32(1),
+        "to": int32(2),
+    }
+
+    request := &models.SplitDocumentOnlineRequest{
+        Document: OpenFile(t, localFile),
+        Format: ToStringPointer("text"),
+        Optionals: options,
+    }
+
+    _,err := client.WordsApi.SplitDocumentOnline(ctx, request)
+
+    if err != nil {
+        t.Error(err)
+    }
+
 }

@@ -27,22 +27,12 @@
 
 package models
 
-// Save response.
+// The REST response with a save result.
 type SaveResponse struct {
-    // Save response.
+    // The REST response with a save result.
     RequestId string `json:"RequestId,omitempty"`
 
-    // Save response.
-    SaveResult *SaveResult `json:"SaveResult,omitempty"`
+    // The REST response with a save result.
+    SaveResult SaveResultResult `json:"SaveResult,omitempty"`
 }
 
-type ISaveResponse interface {
-    IsSaveResponse() bool
-}
-func (SaveResponse) IsSaveResponse() bool {
-    return true
-}
-
-func (SaveResponse) IsWordsResponse() bool {
-    return true
-}

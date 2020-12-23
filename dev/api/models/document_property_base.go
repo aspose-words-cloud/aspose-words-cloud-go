@@ -28,9 +28,14 @@
 package models
 
 // Words document property DTO base class.
-type DocumentPropertyBase struct {
+type DocumentPropertyBaseResult struct {
     // Words document property DTO base class.
     Value string `json:"Value,omitempty"`
+}
+
+type DocumentPropertyBase struct {
+    // Words document property DTO base class.
+    Value *string `json:"Value,omitempty"`
 }
 
 type IDocumentPropertyBase interface {
@@ -39,4 +44,5 @@ type IDocumentPropertyBase interface {
 func (DocumentPropertyBase) IsDocumentPropertyBase() bool {
     return true
 }
+
 

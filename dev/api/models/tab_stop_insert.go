@@ -28,7 +28,7 @@
 package models
 
 // A DTO to Insert / replace a tab stop.
-type TabStopInsert struct {
+type TabStopInsertResult struct {
     // A DTO to Insert / replace a tab stop.
     Alignment string `json:"Alignment,omitempty"`
 
@@ -37,6 +37,17 @@ type TabStopInsert struct {
 
     // A DTO to Insert / replace a tab stop.
     Position float64 `json:"Position,omitempty"`
+}
+
+type TabStopInsert struct {
+    // A DTO to Insert / replace a tab stop.
+    Alignment *string `json:"Alignment,omitempty"`
+
+    // A DTO to Insert / replace a tab stop.
+    Leader *string `json:"Leader,omitempty"`
+
+    // A DTO to Insert / replace a tab stop.
+    Position *float64 `json:"Position,omitempty"`
 }
 
 type ITabStopInsert interface {
@@ -49,3 +60,5 @@ func (TabStopInsert) IsTabStopInsert() bool {
 func (TabStopInsert) IsTabStopBase() bool {
     return true
 }
+
+

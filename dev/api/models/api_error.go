@@ -27,26 +27,39 @@
 
 package models
 
-import (
-    "time"
-)
-
 // Api error.
-type ApiError struct {
+type ApiErrorResult struct {
     // Api error.
     Code string `json:"Code,omitempty"`
 
     // Api error.
-    DateTime time.Time `json:"DateTime,omitempty"`
+    DateTime Time `json:"DateTime,omitempty"`
 
     // Api error.
     Description string `json:"Description,omitempty"`
 
     // Api error.
-    InnerError *ApiError `json:"InnerError,omitempty"`
+    InnerError *ApiErrorResult `json:"InnerError,omitempty"`
 
     // Api error.
     Message string `json:"Message,omitempty"`
+}
+
+type ApiError struct {
+    // Api error.
+    Code *string `json:"Code,omitempty"`
+
+    // Api error.
+    DateTime *Time `json:"DateTime,omitempty"`
+
+    // Api error.
+    Description *string `json:"Description,omitempty"`
+
+    // Api error.
+    InnerError *IApiError `json:"InnerError,omitempty"`
+
+    // Api error.
+    Message *string `json:"Message,omitempty"`
 }
 
 type IApiError interface {
@@ -55,4 +68,5 @@ type IApiError interface {
 func (ApiError) IsApiError() bool {
     return true
 }
+
 

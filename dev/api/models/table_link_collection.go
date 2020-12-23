@@ -27,12 +27,20 @@
 
 package models
 
-// Collection of links to tables.
-type TableLinkCollection struct {
-    // Collection of links to tables.
-    Link *WordsApiLink `json:"Link,omitempty"`
+// The collection of table's links.
+type TableLinkCollectionResult struct {
+    // The collection of table's links.
+    Link WordsApiLinkResult `json:"Link,omitempty"`
 
-    // Collection of links to tables.
+    // The collection of table's links.
+    TableLinkList []TableLinkResult `json:"TableLinkList,omitempty"`
+}
+
+type TableLinkCollection struct {
+    // The collection of table's links.
+    Link IWordsApiLink `json:"Link,omitempty"`
+
+    // The collection of table's links.
     TableLinkList []TableLink `json:"TableLinkList,omitempty"`
 }
 
@@ -46,3 +54,5 @@ func (TableLinkCollection) IsTableLinkCollection() bool {
 func (TableLinkCollection) IsLinkElement() bool {
     return true
 }
+
+

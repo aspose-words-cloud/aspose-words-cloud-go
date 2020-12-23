@@ -27,12 +27,20 @@
 
 package models
 
-// Collection of search results.
-type SearchResultsCollection struct {
-    // Collection of search results.
-    Link *WordsApiLink `json:"Link,omitempty"`
+// The collection of search results.
+type SearchResultsCollectionResult struct {
+    // The collection of search results.
+    Link WordsApiLinkResult `json:"Link,omitempty"`
 
-    // Collection of search results.
+    // The collection of search results.
+    ResultsList []SearchResultResult `json:"ResultsList,omitempty"`
+}
+
+type SearchResultsCollection struct {
+    // The collection of search results.
+    Link IWordsApiLink `json:"Link,omitempty"`
+
+    // The collection of search results.
     ResultsList []SearchResult `json:"ResultsList,omitempty"`
 }
 
@@ -46,3 +54,5 @@ func (SearchResultsCollection) IsSearchResultsCollection() bool {
 func (SearchResultsCollection) IsLinkElement() bool {
     return true
 }
+
+

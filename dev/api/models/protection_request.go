@@ -28,7 +28,7 @@
 package models
 
 // Request on changing of protection.
-type ProtectionRequest struct {
+type ProtectionRequestResult struct {
     // Request on changing of protection.
     NewPassword string `json:"NewPassword,omitempty"`
 
@@ -39,10 +39,22 @@ type ProtectionRequest struct {
     ProtectionType string `json:"ProtectionType,omitempty"`
 }
 
+type ProtectionRequest struct {
+    // Request on changing of protection.
+    NewPassword *string `json:"NewPassword,omitempty"`
+
+    // Request on changing of protection.
+    Password *string `json:"Password,omitempty"`
+
+    // Request on changing of protection.
+    ProtectionType *string `json:"ProtectionType,omitempty"`
+}
+
 type IProtectionRequest interface {
     IsProtectionRequest() bool
 }
 func (ProtectionRequest) IsProtectionRequest() bool {
     return true
 }
+
 

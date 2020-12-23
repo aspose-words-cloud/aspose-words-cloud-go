@@ -59,7 +59,7 @@ var (
     xmlCheck = regexp.MustCompile("(?i:[application|text]/xml)")
 )
 
-// APIClient manages communication with the Aspose.Words for Cloud API Reference API v20.7
+// APIClient manages communication with the Aspose.Words for Cloud API Reference API v20.11
 // In most cases there should be only one, shared, APIClient.
 type APIClient struct {
     cfg 	*models.Configuration
@@ -73,29 +73,6 @@ type service struct {
     client *APIClient
 }
 
-type FormParamContainer struct {
-    name string
-    text string
-    file []byte
-    isFile bool
-}
-
-func NewTextFormParamContainer(name string, text string) (result FormParamContainer) {
-    r := FormParamContainer{}
-    r.name = name
-    r.text = text
-    r.isFile = false
-    return r
-}
-
-func NewFileFormParamContainer(name string, file []byte) (result FormParamContainer) {
-    r := FormParamContainer{}
-    r.name = name
-    r.file = file
-    r.isFile = true
-    return r
-}
-
 // NewAPIClient creates a new API client. Requires a userAgent string describing your application.
 // optionally a custom http.Client to allow for advanced features such as caching.
 func NewAPIClient(cfg *models.Configuration) (client *APIClient, err error) {
@@ -103,12 +80,12 @@ func NewAPIClient(cfg *models.Configuration) (client *APIClient, err error) {
         cfg.HttpClient = http.DefaultClient
     }
 
-    if cfg.AppKey == "" {
-        return nil, errors.New("AppKey must be non-empty string")
+    if cfg.ClientId == "" {
+        return nil, errors.New("ClientId must be non-empty string")
     }
 
-    if cfg.AppSid == "" {
-        return nil, errors.New("AppSid must be non-empty string")
+    if cfg.ClientSecret == "" {
+        return nil, errors.New("ClientSecret must be non-empty string")
     }
 
     _, urlErr := url.ParseRequestURI(cfg.BaseUrl)
@@ -129,82 +106,6 @@ func NewAPIClient(cfg *models.Configuration) (client *APIClient, err error) {
 
 func atoi(in string) (int, error) {
     return strconv.Atoi(in)
-}
-
-
-// selectHeaderContentType select a content type from the available list.
-func selectHeaderContentType(contentTypes []string) string {
-    if len(contentTypes) == 0 {
-        return ""
-    }
-    if contains(contentTypes, "application/json") {
-        return "application/json"
-    }
-    return contentTypes[0] // use the first content type specified in 'consumes'
-}
-
-// selectHeaderAccept join all accept types and return
-func selectHeaderAccept(accepts []string) string {
-    if len(accepts) == 0 {
-        return ""
-    }
-
-    if contains(accepts, "application/json") {
-        return "application/json"
-    }
-
-    return strings.Join(accepts, ",")
-}
-
-// contains is a case insenstive match, finding needle in a haystack
-func contains(haystack []string, needle string) bool {
-    for _, a := range haystack {
-        if strings.ToLower(a) == strings.ToLower(needle) {
-            return true
-        }
-    }
-    return false
-}
-
-// Verify optional parameters are of the correct type.
-func typeCheckParameter(obj interface{}, expected string, name string) error {
-    // Make sure there is an object.
-    if obj == nil {
-        return nil
-    }
-
-    // Check the type is as expected.
-    if reflect.TypeOf(obj).String() != expected {
-        return fmt.Errorf("Expected %s to be of type %s but received %s.", name, expected, reflect.TypeOf(obj).String())
-    }
-    return nil
-}
-
-// parameterToString convert interface{} parameters to string, using a delimiter if format is provided.
-func parameterToString(obj interface{}, collectionFormat string) string {
-    var delimiter string
-
-    switch collectionFormat {
-    case "pipes":
-        delimiter = "|"
-    case "ssv":
-        delimiter = " "
-    case "tsv":
-        delimiter = "\t"
-    case "csv":
-        delimiter = ","
-    }
-
-    if reflect.TypeOf(obj).Kind() == reflect.Slice {
-        return strings.Trim(strings.Replace(fmt.Sprint(obj), " ", delimiter, -1), "[]")
-    }
-
-    if reflect.TypeOf(obj).Kind() == reflect.Struct {
-        b, _ := json.Marshal(obj)
-        return string(b)
-    }
-
-    return fmt.Sprintf("%v", obj)
 }
 
 // callAPI do the request. 
@@ -260,8 +161,8 @@ func (c *APIClient) NewContextWithToken(ctx context.Context) (ctxWithToken conte
 
     response, err := http.PostForm(tokenUrl.String(), url.Values{
         "grant_type":    {"client_credentials"},
-        "client_id":     {c.cfg.AppSid},
-        "client_secret": {c.cfg.AppKey},
+        "client_id":     {c.cfg.ClientId},
+        "client_secret": {c.cfg.ClientSecret},
     })
 
     // http error
@@ -293,69 +194,65 @@ func (c *APIClient) NewContextWithToken(ctx context.Context) (ctxWithToken conte
 // prepareRequest build the request
 func (c *APIClient) prepareRequest (
     ctx context.Context,
-    path string, method string,
-    postBody interface{},
-    headerParams map[string]string,
-    queryParams url.Values,
-    formParams []FormParamContainer) (localVarRequest *http.Request, err error) {
+    data models.RequestData) (request *http.Request, err error) {
 
     var body *bytes.Buffer
 
     // Detect postBody type and post.
-    if postBody != nil {
-        contentType := headerParams["Content-Type"]
+    if data.PostBody != nil {
+        contentType := data.HeaderParams["Content-Type"]
         if contentType == "" {
-            contentType = detectContentType(postBody)
-            headerParams["Content-Type"] = contentType
+            contentType = detectContentType(data.PostBody)
+            data.HeaderParams["Content-Type"] = contentType
         }
 
-        body, err = setBody(postBody, contentType)
+        body, err = setBody(data.PostBody, contentType)
         if err != nil {
             return nil, err
         }
     }
 
     // add form parameters and file if available.
-    if len(formParams) > 0 {
+    if len(data.FormParams) > 0 {
         if body != nil {
             return nil, errors.New("Cannot specify postBody and multipart form at the same time.")
         }
         body = &bytes.Buffer{}
         w := multipart.NewWriter(body)
-        headerParams["Content-Type"] = w.FormDataContentType()
+        data.HeaderParams["Content-Type"] = w.FormDataContentType()
 
-        for _, fp := range formParams {
-            if fp.isFile {
-                if len(fp.file) > 0 && fp.name != "" {
+        for _, fp := range data.FormParams {
+            if fp.IsFile {
+                if len(fp.File) > 0 && fp.Name != "" {
                     w.Boundary()
-                    part, err := w.CreateFormFile("file", filepath.Base(fp.name))
+                    part, err := w.CreateFormFile(fp.Name, filepath.Base(fp.Name))
                     if err != nil {
                         return nil, err
                     }
-                    _, err = part.Write(fp.file)
+                    _, err = part.Write(fp.File)
                     if err != nil {
                         return nil, err
                     }
                 }
             } else {
-                w.WriteField(fp.name, fp.text)
+                w.WriteField(fp.Name, fp.Text)
             }
         }
 
         // Set Content-Length
-        headerParams["Content-Length"] = fmt.Sprintf("%d", body.Len())
+        data.HeaderParams["Content-Length"] = fmt.Sprintf("%d", body.Len())
         w.Close()
     }
 
     // Setup path and query parameters
-    url, err := url.Parse(path)
+    url, err := url.Parse(data.Path)
     if err != nil {
         return nil, err
     }
 
     // Adding Query Param
     query := url.Query()
-    for k, v := range queryParams {
+    for k, v := range data.QueryParams {
         for _, iv := range v {
             query.Add(k, iv)
         }
@@ -366,26 +263,26 @@ func (c *APIClient) prepareRequest (
 
     // Generate a new request
     if body != nil {
-        localVarRequest, err = http.NewRequest(method, url.String(), body)
+        request, err = http.NewRequest(data.Method, url.String(), body)
     } else {
-        localVarRequest, err = http.NewRequest(method, url.String(), nil)
+        request, err = http.NewRequest(data.Method, url.String(), nil)
     }
     if err != nil {
         return nil, err
     }
 
     // add header parameters, if any
-    if len(headerParams) > 0 {
+    if len(data.HeaderParams) > 0 {
         headers := http.Header{}
-        for h, v := range headerParams {
+        for h, v := range data.HeaderParams {
             headers.Set(h, v)
         }
-        localVarRequest.Header = headers
+        request.Header = headers
     }
 
     if ctx != nil {
         // add context to the request
-        localVarRequest = localVarRequest.WithContext(ctx)
+        request = request.WithContext(ctx)
 
         // Walk through any authentication.
 
@@ -397,25 +294,25 @@ func (c *APIClient) prepareRequest (
                 return nil, err
             }
 
-            latestToken.SetAuthHeader(localVarRequest)
+            latestToken.SetAuthHeader(request)
         }
 
         // Basic HTTP Authentication
         if auth, ok := ctx.Value(models.ContextBasicAuth).(models.BasicAuth); ok {
-            localVarRequest.SetBasicAuth(auth.UserName, auth.Password)
+            request.SetBasicAuth(auth.UserName, auth.Password)
         }
 
         // AccessToken Authentication
         if auth, ok := ctx.Value(models.ContextAccessToken).(string); ok {
-            localVarRequest.Header.Add("Authorization", "Bearer " + auth)
+            request.Header.Add("Authorization", "Bearer " + auth)
         }
     }
 
     for header, value := range c.cfg.DefaultHeader {
-        localVarRequest.Header.Add(header, value)
+        request.Header.Add(header, value)
     }
 
-    return localVarRequest, nil
+    return request, nil
 }
 
 

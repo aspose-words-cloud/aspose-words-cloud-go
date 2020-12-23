@@ -29,6 +29,7 @@
 package api_test
 
 import (
+    "github.com/stretchr/testify/assert"
     "testing"
     "github.com/aspose-words-cloud/aspose-words-cloud-go/dev/api/models"
 )
@@ -48,11 +49,47 @@ func Test_TableBorder_GetBorders(t *testing.T) {
         "nodePath": "tables/1/rows/0/cells/0",
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetBorders(ctx, remoteFileName, options)
+
+    request := &models.GetBordersRequest{
+        Name: ToStringPointer(remoteFileName),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.GetBorders(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
+
+    assert.NotNil(t, actual.Borders, "Validate GetBorders response.");
+    assert.NotNil(t, actual.Borders.List, "Validate GetBorders response.");
+    assert.Equal(t, 6, len(actual.Borders.List), "Validate GetBorders response.");
+    assert.NotNil(t, actual.Borders.List[0].Color, "Validate GetBorders response.");
+    assert.Equal(t, "#000000", actual.Borders.List[0].Color.Web, "Validate GetBorders response.");
+}
+
+// Test for getting borders online.
+func Test_TableBorder_GetBordersOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "DocumentElements/Tables/TablesGet.docx"
+
+
+    options := map[string]interface{}{
+        "nodePath": "tables/1/rows/0/cells/0",
+    }
+
+    request := &models.GetBordersOnlineRequest{
+        Document: OpenFile(t, localFile),
+        Optionals: options,
+    }
+
+    _, _, err := client.WordsApi.GetBordersOnline(ctx, request)
+
+    if err != nil {
+        t.Error(err)
+    }
+
 }
 
 // Test for getting border.
@@ -70,11 +107,47 @@ func Test_TableBorder_GetBorder(t *testing.T) {
         "nodePath": "tables/1/rows/0/cells/0",
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetBorder(ctx, remoteFileName, "left", options)
+
+    request := &models.GetBorderRequest{
+        Name: ToStringPointer(remoteFileName),
+        BorderType: ToStringPointer("left"),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.GetBorder(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
+
+    assert.NotNil(t, actual.Border, "Validate GetBorder response.");
+    assert.NotNil(t, actual.Border.Color, "Validate GetBorder response.");
+    assert.Equal(t, "#000000", actual.Border.Color.Web, "Validate GetBorder response.");
+}
+
+// Test for getting border online.
+func Test_TableBorder_GetBorderOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "DocumentElements/Tables/TablesGet.docx"
+
+
+    options := map[string]interface{}{
+        "nodePath": "tables/1/rows/0/cells/0",
+    }
+
+    request := &models.GetBorderOnlineRequest{
+        Document: OpenFile(t, localFile),
+        BorderType: ToStringPointer("left"),
+        Optionals: options,
+    }
+
+    _, _, err := client.WordsApi.GetBorderOnline(ctx, request)
+
+    if err != nil {
+        t.Error(err)
+    }
+
 }
 
 // Test for deleting borders.
@@ -92,11 +165,42 @@ func Test_TableBorder_DeleteBorders(t *testing.T) {
         "nodePath": "tables/1/rows/0/cells/0",
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.DeleteBorders(ctx, remoteFileName, options)
+
+    request := &models.DeleteBordersRequest{
+        Name: ToStringPointer(remoteFileName),
+        Optionals: options,
+    }
+
+    _, _, err := client.WordsApi.DeleteBorders(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
+
+}
+
+// Test for deleting borders online.
+func Test_TableBorder_DeleteBordersOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "DocumentElements/Tables/TablesGet.docx"
+
+
+    options := map[string]interface{}{
+        "nodePath": "tables/1/rows/0/cells/0",
+    }
+
+    request := &models.DeleteBordersOnlineRequest{
+        Document: OpenFile(t, localFile),
+        Optionals: options,
+    }
+
+    _,err := client.WordsApi.DeleteBordersOnline(ctx, request)
+
+    if err != nil {
+        t.Error(err)
+    }
+
 }
 
 // Test for deleting border.
@@ -114,11 +218,44 @@ func Test_TableBorder_DeleteBorder(t *testing.T) {
         "nodePath": "tables/1/rows/0/cells/0",
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.DeleteBorder(ctx, remoteFileName, "left", options)
+
+    request := &models.DeleteBorderRequest{
+        Name: ToStringPointer(remoteFileName),
+        BorderType: ToStringPointer("left"),
+        Optionals: options,
+    }
+
+    _, _, err := client.WordsApi.DeleteBorder(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
+
+}
+
+// Test for deleting border online.
+func Test_TableBorder_DeleteBorderOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "DocumentElements/Tables/TablesGet.docx"
+
+
+    options := map[string]interface{}{
+        "nodePath": "tables/1/rows/0/cells/0",
+    }
+
+    request := &models.DeleteBorderOnlineRequest{
+        Document: OpenFile(t, localFile),
+        BorderType: ToStringPointer("left"),
+        Optionals: options,
+    }
+
+    _,err := client.WordsApi.DeleteBorderOnline(ctx, request)
+
+    if err != nil {
+        t.Error(err)
+    }
+
 }
 
 // Test for updating border.
@@ -132,24 +269,76 @@ func Test_TableBorder_UpdateBorder(t *testing.T) {
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
     requestBorderPropertiesColor := models.XmlColor{
-        Alpha: int32(2),
+        Web: ToStringPointer("#AABBCC"),
     }
     requestBorderProperties := models.Border{
-        BorderType: "Left",
-        Color: &requestBorderPropertiesColor,
-        DistanceFromText: 6,
-        LineStyle: "DashDotStroker",
-        LineWidth: 2,
-        Shadow: true,
+        BorderType: ToStringPointer("Left"),
+        Color: requestBorderPropertiesColor,
+        DistanceFromText: ToFloat64Pointer(6.0),
+        LineStyle: ToStringPointer("DashDotStroker"),
+        LineWidth: ToFloat64Pointer(2.0),
+        Shadow: ToBoolPointer(true),
     }
 
     options := map[string]interface{}{
         "nodePath": "tables/1/rows/0/cells/0",
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.UpdateBorder(ctx, remoteFileName, requestBorderProperties, "left", options)
+
+    request := &models.UpdateBorderRequest{
+        Name: ToStringPointer(remoteFileName),
+        BorderType: ToStringPointer("left"),
+        BorderProperties: requestBorderProperties,
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.UpdateBorder(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
+
+    assert.NotNil(t, actual.Border, "Validate UpdateBorder response.");
+    assert.NotNil(t, actual.Border.Color, "Validate UpdateBorder response.");
+    assert.Equal(t, "#AABBCC", actual.Border.Color.Web, "Validate UpdateBorder response.");
+    assert.Equal(t, 6.0, actual.Border.DistanceFromText, "Validate UpdateBorder response.");
+    assert.Equal(t, 2.0, actual.Border.LineWidth, "Validate UpdateBorder response.");
+    assert.True(t, actual.Border.Shadow, "Validate UpdateBorder response.");
+}
+
+// Test for updating border online.
+func Test_TableBorder_UpdateBorderOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "DocumentElements/Tables/TablesGet.docx"
+
+    requestBorderPropertiesColor := models.XmlColor{
+        Alpha: ToInt32Pointer(int32(2)),
+    }
+    requestBorderProperties := models.Border{
+        BorderType: ToStringPointer("Left"),
+        Color: requestBorderPropertiesColor,
+        DistanceFromText: ToFloat64Pointer(6),
+        LineStyle: ToStringPointer("DashDotStroker"),
+        LineWidth: ToFloat64Pointer(2),
+        Shadow: ToBoolPointer(true),
+    }
+
+    options := map[string]interface{}{
+        "nodePath": "tables/1/rows/0/cells/0",
+    }
+
+    request := &models.UpdateBorderOnlineRequest{
+        Document: OpenFile(t, localFile),
+        BorderProperties: requestBorderProperties,
+        BorderType: ToStringPointer("left"),
+        Optionals: options,
+    }
+
+    _,err := client.WordsApi.UpdateBorderOnline(ctx, request)
+
+    if err != nil {
+        t.Error(err)
+    }
+
 }

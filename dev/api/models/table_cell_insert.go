@@ -27,10 +27,15 @@
 
 package models
 
-// Table cell element.
-type TableCellInsert struct {
-    // Table cell element.
+// DTO container with a table cell.
+type TableCellInsertResult struct {
+    // DTO container with a table cell.
     InsertAfter int32 `json:"InsertAfter,omitempty"`
+}
+
+type TableCellInsert struct {
+    // DTO container with a table cell.
+    InsertAfter *int32 `json:"InsertAfter,omitempty"`
 }
 
 type ITableCellInsert interface {
@@ -39,4 +44,5 @@ type ITableCellInsert interface {
 func (TableCellInsert) IsTableCellInsert() bool {
     return true
 }
+
 

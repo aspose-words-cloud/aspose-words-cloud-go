@@ -28,9 +28,14 @@
 package models
 
 // Run element for insert.
-type RunUpdate struct {
+type RunUpdateResult struct {
     // Run element for insert.
     Text string `json:"Text,omitempty"`
+}
+
+type RunUpdate struct {
+    // Run element for insert.
+    Text *string `json:"Text,omitempty"`
 }
 
 type IRunUpdate interface {
@@ -43,3 +48,5 @@ func (RunUpdate) IsRunUpdate() bool {
 func (RunUpdate) IsRunBase() bool {
     return true
 }
+
+

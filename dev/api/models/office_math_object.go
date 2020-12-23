@@ -27,25 +27,45 @@
 
 package models
 
-// OfficeMath object.
-type OfficeMathObject struct {
-    // OfficeMath object.
-    Link *WordsApiLink `json:"Link,omitempty"`
+// DTO container with an OfficeMath object.
+type OfficeMathObjectResult struct {
+    // DTO container with an OfficeMath object.
+    Link WordsApiLinkResult `json:"Link,omitempty"`
 
-    // OfficeMath object.
+    // DTO container with an OfficeMath object.
     NodeId string `json:"NodeId,omitempty"`
 
-    // OfficeMath object.
-    Content *StoryChildNodes `json:"Content,omitempty"`
+    // DTO container with an OfficeMath object.
+    Content StoryChildNodesResult `json:"Content,omitempty"`
 
-    // OfficeMath object.
+    // DTO container with an OfficeMath object.
     DisplayType string `json:"DisplayType,omitempty"`
 
-    // OfficeMath object.
+    // DTO container with an OfficeMath object.
     Justification string `json:"Justification,omitempty"`
 
-    // OfficeMath object.
+    // DTO container with an OfficeMath object.
     MathObjectType string `json:"MathObjectType,omitempty"`
+}
+
+type OfficeMathObject struct {
+    // DTO container with an OfficeMath object.
+    Link IWordsApiLink `json:"Link,omitempty"`
+
+    // DTO container with an OfficeMath object.
+    NodeId *string `json:"NodeId,omitempty"`
+
+    // DTO container with an OfficeMath object.
+    Content IStoryChildNodes `json:"Content,omitempty"`
+
+    // DTO container with an OfficeMath object.
+    DisplayType *string `json:"DisplayType,omitempty"`
+
+    // DTO container with an OfficeMath object.
+    Justification *string `json:"Justification,omitempty"`
+
+    // DTO container with an OfficeMath object.
+    MathObjectType *string `json:"MathObjectType,omitempty"`
 }
 
 type IOfficeMathObject interface {
@@ -58,3 +78,5 @@ func (OfficeMathObject) IsOfficeMathObject() bool {
 func (OfficeMathObject) IsOfficeMathLink() bool {
     return true
 }
+
+

@@ -27,97 +27,189 @@
 
 package models
 
-// container class for png save options.
-type PngSaveOptionsData struct {
-    // container class for png save options.
+// Container class for png save options.
+type PngSaveOptionsDataResult struct {
+    // Container class for png save options.
     Dml3DEffectsRenderingMode string `json:"Dml3DEffectsRenderingMode,omitempty"`
 
-    // container class for png save options.
+    // Container class for png save options.
     DmlEffectsRenderingMode string `json:"DmlEffectsRenderingMode,omitempty"`
 
-    // container class for png save options.
+    // Container class for png save options.
     DmlRenderingMode string `json:"DmlRenderingMode,omitempty"`
 
-    // container class for png save options.
+    // Container class for png save options.
     FileName string `json:"FileName,omitempty"`
 
-    // container class for png save options.
+    // Container class for png save options.
     SaveFormat string `json:"SaveFormat,omitempty"`
 
-    // container class for png save options.
+    // Container class for png save options.
     UpdateFields bool `json:"UpdateFields,omitempty"`
 
-    // container class for png save options.
+    // Container class for png save options.
     UpdateLastPrintedProperty bool `json:"UpdateLastPrintedProperty,omitempty"`
 
-    // container class for png save options.
+    // Container class for png save options.
     UpdateLastSavedTimeProperty bool `json:"UpdateLastSavedTimeProperty,omitempty"`
 
-    // container class for png save options.
+    // Container class for png save options.
     UpdateSdtContent bool `json:"UpdateSdtContent,omitempty"`
 
-    // container class for png save options.
+    // Container class for png save options.
     ZipOutput bool `json:"ZipOutput,omitempty"`
 
-    // container class for png save options.
+    // Container class for png save options.
     ColorMode string `json:"ColorMode,omitempty"`
 
-    // container class for png save options.
+    // Container class for png save options.
     JpegQuality int32 `json:"JpegQuality,omitempty"`
 
-    // container class for png save options.
-    MetafileRenderingOptions *MetafileRenderingOptionsData `json:"MetafileRenderingOptions,omitempty"`
+    // Container class for png save options.
+    MetafileRenderingOptions MetafileRenderingOptionsDataResult `json:"MetafileRenderingOptions,omitempty"`
 
-    // container class for png save options.
+    // Container class for png save options.
     NumeralFormat string `json:"NumeralFormat,omitempty"`
 
-    // container class for png save options.
+    // Container class for png save options.
     OptimizeOutput bool `json:"OptimizeOutput,omitempty"`
 
-    // container class for png save options.
+    // Container class for png save options.
     PageCount int32 `json:"PageCount,omitempty"`
 
-    // container class for png save options.
+    // Container class for png save options.
     PageIndex int32 `json:"PageIndex,omitempty"`
 
-    // container class for png save options.
-    GraphicsQualityOptions *GraphicsQualityOptionsData `json:"GraphicsQualityOptions,omitempty"`
+    // Container class for png save options.
+    GraphicsQualityOptions GraphicsQualityOptionsDataResult `json:"GraphicsQualityOptions,omitempty"`
 
-    // container class for png save options.
+    // Container class for png save options.
     HorizontalResolution float64 `json:"HorizontalResolution,omitempty"`
 
-    // container class for png save options.
+    // Container class for png save options.
     ImageBrightness float64 `json:"ImageBrightness,omitempty"`
 
-    // container class for png save options.
+    // Container class for png save options.
     ImageColorMode string `json:"ImageColorMode,omitempty"`
 
-    // container class for png save options.
+    // Container class for png save options.
     ImageContrast float64 `json:"ImageContrast,omitempty"`
 
-    // container class for png save options.
+    // Container class for png save options.
     PaperColor string `json:"PaperColor,omitempty"`
 
-    // container class for png save options.
+    // Container class for png save options.
     PixelFormat string `json:"PixelFormat,omitempty"`
 
-    // container class for png save options.
+    // Container class for png save options.
     Resolution float64 `json:"Resolution,omitempty"`
 
-    // container class for png save options.
+    // Container class for png save options.
     Scale float64 `json:"Scale,omitempty"`
 
-    // container class for png save options.
+    // Container class for png save options.
     UseAntiAliasing bool `json:"UseAntiAliasing,omitempty"`
 
-    // container class for png save options.
+    // Container class for png save options.
     UseGdiEmfRenderer bool `json:"UseGdiEmfRenderer,omitempty"`
 
-    // container class for png save options.
+    // Container class for png save options.
     UseHighQualityRendering bool `json:"UseHighQualityRendering,omitempty"`
 
-    // container class for png save options.
+    // Container class for png save options.
     VerticalResolution float64 `json:"VerticalResolution,omitempty"`
+}
+
+type PngSaveOptionsData struct {
+    // Container class for png save options.
+    Dml3DEffectsRenderingMode *string `json:"Dml3DEffectsRenderingMode,omitempty"`
+
+    // Container class for png save options.
+    DmlEffectsRenderingMode *string `json:"DmlEffectsRenderingMode,omitempty"`
+
+    // Container class for png save options.
+    DmlRenderingMode *string `json:"DmlRenderingMode,omitempty"`
+
+    // Container class for png save options.
+    FileName *string `json:"FileName,omitempty"`
+
+    // Container class for png save options.
+    SaveFormat *string `json:"SaveFormat,omitempty"`
+
+    // Container class for png save options.
+    UpdateFields *bool `json:"UpdateFields,omitempty"`
+
+    // Container class for png save options.
+    UpdateLastPrintedProperty *bool `json:"UpdateLastPrintedProperty,omitempty"`
+
+    // Container class for png save options.
+    UpdateLastSavedTimeProperty *bool `json:"UpdateLastSavedTimeProperty,omitempty"`
+
+    // Container class for png save options.
+    UpdateSdtContent *bool `json:"UpdateSdtContent,omitempty"`
+
+    // Container class for png save options.
+    ZipOutput *bool `json:"ZipOutput,omitempty"`
+
+    // Container class for png save options.
+    ColorMode *string `json:"ColorMode,omitempty"`
+
+    // Container class for png save options.
+    JpegQuality *int32 `json:"JpegQuality,omitempty"`
+
+    // Container class for png save options.
+    MetafileRenderingOptions IMetafileRenderingOptionsData `json:"MetafileRenderingOptions,omitempty"`
+
+    // Container class for png save options.
+    NumeralFormat *string `json:"NumeralFormat,omitempty"`
+
+    // Container class for png save options.
+    OptimizeOutput *bool `json:"OptimizeOutput,omitempty"`
+
+    // Container class for png save options.
+    PageCount *int32 `json:"PageCount,omitempty"`
+
+    // Container class for png save options.
+    PageIndex *int32 `json:"PageIndex,omitempty"`
+
+    // Container class for png save options.
+    GraphicsQualityOptions IGraphicsQualityOptionsData `json:"GraphicsQualityOptions,omitempty"`
+
+    // Container class for png save options.
+    HorizontalResolution *float64 `json:"HorizontalResolution,omitempty"`
+
+    // Container class for png save options.
+    ImageBrightness *float64 `json:"ImageBrightness,omitempty"`
+
+    // Container class for png save options.
+    ImageColorMode *string `json:"ImageColorMode,omitempty"`
+
+    // Container class for png save options.
+    ImageContrast *float64 `json:"ImageContrast,omitempty"`
+
+    // Container class for png save options.
+    PaperColor *string `json:"PaperColor,omitempty"`
+
+    // Container class for png save options.
+    PixelFormat *string `json:"PixelFormat,omitempty"`
+
+    // Container class for png save options.
+    Resolution *float64 `json:"Resolution,omitempty"`
+
+    // Container class for png save options.
+    Scale *float64 `json:"Scale,omitempty"`
+
+    // Container class for png save options.
+    UseAntiAliasing *bool `json:"UseAntiAliasing,omitempty"`
+
+    // Container class for png save options.
+    UseGdiEmfRenderer *bool `json:"UseGdiEmfRenderer,omitempty"`
+
+    // Container class for png save options.
+    UseHighQualityRendering *bool `json:"UseHighQualityRendering,omitempty"`
+
+    // Container class for png save options.
+    VerticalResolution *float64 `json:"VerticalResolution,omitempty"`
 }
 
 type IPngSaveOptionsData interface {
@@ -130,3 +222,5 @@ func (PngSaveOptionsData) IsPngSaveOptionsData() bool {
 func (PngSaveOptionsData) IsImageSaveOptionsData() bool {
     return true
 }
+
+

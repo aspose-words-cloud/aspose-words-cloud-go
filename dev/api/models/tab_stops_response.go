@@ -27,25 +27,12 @@
 
 package models
 
-// This response should be returned by the service when handling:
-// GET https://api.aspose.cloud/v4.0/words/Test.doc/paragraphs/{0}/tabstops.
+// The REST response with an array of tab stops.
 type TabStopsResponse struct {
-    // This response should be returned by the service when handling:
-    // GET https://api.aspose.cloud/v4.0/words/Test.doc/paragraphs/{0}/tabstops.
+    // The REST response with an array of tab stops.
     RequestId string `json:"RequestId,omitempty"`
 
-    // This response should be returned by the service when handling:
-    // GET https://api.aspose.cloud/v4.0/words/Test.doc/paragraphs/{0}/tabstops.
-    TabStops []TabStop `json:"TabStops,omitempty"`
+    // The REST response with an array of tab stops.
+    TabStops []TabStopResult `json:"TabStops,omitempty"`
 }
 
-type ITabStopsResponse interface {
-    IsTabStopsResponse() bool
-}
-func (TabStopsResponse) IsTabStopsResponse() bool {
-    return true
-}
-
-func (TabStopsResponse) IsWordsResponse() bool {
-    return true
-}

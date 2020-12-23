@@ -27,25 +27,12 @@
 
 package models
 
-// This response should be returned by the service when handling:
-// GET https://api.aspose.cloud/v4.0/words/Test.doc/lists/{n}.
+// The REST response with a list information.
 type ListResponse struct {
-    // This response should be returned by the service when handling:
-    // GET https://api.aspose.cloud/v4.0/words/Test.doc/lists/{n}.
+    // The REST response with a list information.
     RequestId string `json:"RequestId,omitempty"`
 
-    // This response should be returned by the service when handling:
-    // GET https://api.aspose.cloud/v4.0/words/Test.doc/lists/{n}.
-    List *ListInfo `json:"List,omitempty"`
+    // The REST response with a list information.
+    List ListInfoResult `json:"List,omitempty"`
 }
 
-type IListResponse interface {
-    IsListResponse() bool
-}
-func (ListResponse) IsListResponse() bool {
-    return true
-}
-
-func (ListResponse) IsWordsResponse() bool {
-    return true
-}

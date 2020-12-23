@@ -29,6 +29,7 @@
 package api_test
 
 import (
+    "github.com/stretchr/testify/assert"
     "testing"
     "github.com/aspose-words-cloud/aspose-words-cloud-go/dev/api/models"
 )
@@ -47,11 +48,45 @@ func Test_PageSetup_GetSectionPageSetup(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.GetSectionPageSetup(ctx, remoteFileName, int32(0), options)
+
+    request := &models.GetSectionPageSetupRequest{
+        Name: ToStringPointer(remoteFileName),
+        SectionIndex: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.GetSectionPageSetup(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
+
+    assert.NotNil(t, actual.PageSetup, "Validate GetSectionPageSetup response.");
+    assert.Equal(t, int32(1), actual.PageSetup.LineStartingNumber, "Validate GetSectionPageSetup response.");
+}
+
+// Test for getting page settings online.
+func Test_PageSetup_GetSectionPageSetupOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "Common/test_multi_pages.docx"
+
+
+    options := map[string]interface{}{
+    }
+
+    request := &models.GetSectionPageSetupOnlineRequest{
+        Document: OpenFile(t, localFile),
+        SectionIndex: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    _, _, err := client.WordsApi.GetSectionPageSetupOnline(ctx, request)
+
+    if err != nil {
+        t.Error(err)
+    }
+
 }
 
 // Test for updating page settings.
@@ -65,20 +100,64 @@ func Test_PageSetup_UpdateSectionPageSetup(t *testing.T) {
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
     requestPageSetup := models.PageSetup{
-        RtlGutter: true,
-        LeftMargin: 10,
-        Orientation: "Landscape",
-        PaperSize: "A5",
+        RtlGutter: ToBoolPointer(true),
+        LeftMargin: ToFloat64Pointer(10.0),
+        Orientation: ToStringPointer("Landscape"),
+        PaperSize: ToStringPointer("A5"),
     }
 
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.UpdateSectionPageSetup(ctx, remoteFileName, int32(0), requestPageSetup, options)
+
+    request := &models.UpdateSectionPageSetupRequest{
+        Name: ToStringPointer(remoteFileName),
+        SectionIndex: ToInt32Pointer(int32(0)),
+        PageSetup: requestPageSetup,
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.UpdateSectionPageSetup(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
+
+    assert.NotNil(t, actual.PageSetup, "Validate UpdateSectionPageSetup response.");
+    assert.True(t, actual.PageSetup.RtlGutter, "Validate UpdateSectionPageSetup response.");
+
+
+}
+
+// Test for updating page settings online.
+func Test_PageSetup_UpdateSectionPageSetupOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "Common/test_multi_pages.docx"
+
+    requestPageSetup := models.PageSetup{
+        RtlGutter: ToBoolPointer(true),
+        LeftMargin: ToFloat64Pointer(10),
+        Orientation: ToStringPointer("Landscape"),
+        PaperSize: ToStringPointer("A5"),
+    }
+
+    options := map[string]interface{}{
+    }
+
+    request := &models.UpdateSectionPageSetupOnlineRequest{
+        Document: OpenFile(t, localFile),
+        SectionIndex: ToInt32Pointer(int32(0)),
+        PageSetup: requestPageSetup,
+        Optionals: options,
+    }
+
+    _,err := client.WordsApi.UpdateSectionPageSetupOnline(ctx, request)
+
+    if err != nil {
+        t.Error(err)
+    }
+
 }
 
 // Test for page rendering.
@@ -95,9 +174,43 @@ func Test_PageSetup_GetRenderPage(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, err := client.WordsApi.RenderPage(ctx, remoteFileName, int32(1), "bmp", options)
+
+    request := &models.RenderPageRequest{
+        Name: ToStringPointer(remoteFileName),
+        PageIndex: ToInt32Pointer(int32(1)),
+        Format: ToStringPointer("bmp"),
+        Optionals: options,
+    }
+
+    _, , _, err := client.WordsApi.RenderPage(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
+
+}
+
+// Test for page rendering.
+func Test_PageSetup_GetRenderPageOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localTextFile := "DocumentElements/Text/SampleWordDocument.docx"
+
+
+    options := map[string]interface{}{
+    }
+
+    request := &models.RenderPageOnlineRequest{
+        Document: OpenFile(t, localTextFile),
+        PageIndex: ToInt32Pointer(int32(1)),
+        Format: ToStringPointer("bmp"),
+        Optionals: options,
+    }
+
+    _, , _, err := client.WordsApi.RenderPageOnline(ctx, request)
+
+    if err != nil {
+        t.Error(err)
+    }
+
 }

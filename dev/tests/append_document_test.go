@@ -29,6 +29,7 @@
 package api_test
 
 import (
+    "github.com/stretchr/testify/assert"
     "testing"
     "github.com/aspose-words-cloud/aspose-words-cloud-go/dev/api/models"
 )
@@ -44,8 +45,8 @@ func Test_AppendDocument_AppendDocument(t *testing.T) {
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
     requestDocumentListDocumentEntries0 := models.DocumentEntry{
-        Href: remoteDataFolder + "/" + remoteFileName,
-        ImportFormatMode: "KeepSourceFormatting",
+        Href: ToStringPointer(remoteDataFolder + "/" + remoteFileName),
+        ImportFormatMode: ToStringPointer("KeepSourceFormatting"),
     }
     requestDocumentListDocumentEntries := []models.DocumentEntry{
         requestDocumentListDocumentEntries0,
@@ -58,11 +59,21 @@ func Test_AppendDocument_AppendDocument(t *testing.T) {
         "folder": remoteDataFolder,
         "destFileName": baseTestOutPath + "/" + remoteFileName,
     }
-    _, _, err := client.WordsApi.AppendDocument(ctx, remoteFileName, requestDocumentList, options)
+
+    request := &models.AppendDocumentRequest{
+        Name: ToStringPointer(remoteFileName),
+        DocumentList: requestDocumentList,
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.AppendDocument(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
+
+    assert.NotNil(t, actual.Document, "Validate AppendDocument response.");
+    assert.Equal(t, "TestAppendDocument.docx", actual.Document.FileName, "Validate AppendDocument response.");
 }
 
 // Test for appending document online.
@@ -76,8 +87,8 @@ func Test_AppendDocument_AppendDocumentOnline(t *testing.T) {
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
     requestDocumentListDocumentEntries0 := models.DocumentEntry{
-        Href: remoteDataFolder + "/" + remoteFileName,
-        ImportFormatMode: "KeepSourceFormatting",
+        Href: ToStringPointer(remoteDataFolder + "/" + remoteFileName),
+        ImportFormatMode: ToStringPointer("KeepSourceFormatting"),
     }
     requestDocumentListDocumentEntries := []models.DocumentEntry{
         requestDocumentListDocumentEntries0,
@@ -86,9 +97,19 @@ func Test_AppendDocument_AppendDocumentOnline(t *testing.T) {
         DocumentEntries: requestDocumentListDocumentEntries,
     }
 
-    _, err := client.WordsApi.AppendDocumentOnline(ctx, OpenFile(t, localFile), requestDocumentList)
+    options := map[string]interface{}{
+    }
+
+    request := &models.AppendDocumentOnlineRequest{
+        Document: OpenFile(t, localFile),
+        DocumentList: requestDocumentList,
+        Optionals: options,
+    }
+
+    _,err := client.WordsApi.AppendDocumentOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
+
 }

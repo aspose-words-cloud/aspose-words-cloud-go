@@ -28,18 +28,32 @@
 package models
 
 // Footnote for insert.
-type FootnoteInsert struct {
+type FootnoteInsertResult struct {
     // Footnote for insert.
     FootnoteType string `json:"FootnoteType,omitempty"`
 
     // Footnote for insert.
-    Position *DocumentPosition `json:"Position,omitempty"`
+    Position DocumentPositionResult `json:"Position,omitempty"`
 
     // Footnote for insert.
     ReferenceMark string `json:"ReferenceMark,omitempty"`
 
     // Footnote for insert.
     Text string `json:"Text,omitempty"`
+}
+
+type FootnoteInsert struct {
+    // Footnote for insert.
+    FootnoteType *string `json:"FootnoteType,omitempty"`
+
+    // Footnote for insert.
+    Position IDocumentPosition `json:"Position,omitempty"`
+
+    // Footnote for insert.
+    ReferenceMark *string `json:"ReferenceMark,omitempty"`
+
+    // Footnote for insert.
+    Text *string `json:"Text,omitempty"`
 }
 
 type IFootnoteInsert interface {
@@ -52,3 +66,5 @@ func (FootnoteInsert) IsFootnoteInsert() bool {
 func (FootnoteInsert) IsFootnoteBase() bool {
     return true
 }
+
+

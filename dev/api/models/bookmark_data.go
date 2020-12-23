@@ -28,12 +28,20 @@
 package models
 
 // DTO for bookmark updating.
-type BookmarkData struct {
+type BookmarkDataResult struct {
     // DTO for bookmark updating.
     Name string `json:"Name,omitempty"`
 
     // DTO for bookmark updating.
     Text string `json:"Text,omitempty"`
+}
+
+type BookmarkData struct {
+    // DTO for bookmark updating.
+    Name *string `json:"Name,omitempty"`
+
+    // DTO for bookmark updating.
+    Text *string `json:"Text,omitempty"`
 }
 
 type IBookmarkData interface {
@@ -42,4 +50,5 @@ type IBookmarkData interface {
 func (BookmarkData) IsBookmarkData() bool {
     return true
 }
+
 

@@ -28,9 +28,9 @@
 package models
 
 // Container for the page's statistical data.
-type PageStatData struct {
+type PageStatDataResult struct {
     // Container for the page's statistical data.
-    FootnotesStatData *FootnotesStatData `json:"FootnotesStatData,omitempty"`
+    FootnotesStatData FootnotesStatDataResult `json:"FootnotesStatData,omitempty"`
 
     // Container for the page's statistical data.
     PageNumber int32 `json:"PageNumber,omitempty"`
@@ -42,10 +42,25 @@ type PageStatData struct {
     WordCount int32 `json:"WordCount,omitempty"`
 }
 
+type PageStatData struct {
+    // Container for the page's statistical data.
+    FootnotesStatData IFootnotesStatData `json:"FootnotesStatData,omitempty"`
+
+    // Container for the page's statistical data.
+    PageNumber *int32 `json:"PageNumber,omitempty"`
+
+    // Container for the page's statistical data.
+    ParagraphCount *int32 `json:"ParagraphCount,omitempty"`
+
+    // Container for the page's statistical data.
+    WordCount *int32 `json:"WordCount,omitempty"`
+}
+
 type IPageStatData interface {
     IsPageStatData() bool
 }
 func (PageStatData) IsPageStatData() bool {
     return true
 }
+
 

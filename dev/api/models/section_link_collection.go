@@ -27,12 +27,20 @@
 
 package models
 
-// Collection of links to sections.
-type SectionLinkCollection struct {
-    // Collection of links to sections.
-    Link *WordsApiLink `json:"Link,omitempty"`
+// The collection of section's links.
+type SectionLinkCollectionResult struct {
+    // The collection of section's links.
+    Link WordsApiLinkResult `json:"Link,omitempty"`
 
-    // Collection of links to sections.
+    // The collection of section's links.
+    SectionLinkList []SectionLinkResult `json:"SectionLinkList,omitempty"`
+}
+
+type SectionLinkCollection struct {
+    // The collection of section's links.
+    Link IWordsApiLink `json:"Link,omitempty"`
+
+    // The collection of section's links.
     SectionLinkList []SectionLink `json:"SectionLinkList,omitempty"`
 }
 
@@ -46,3 +54,5 @@ func (SectionLinkCollection) IsSectionLinkCollection() bool {
 func (SectionLinkCollection) IsLinkElement() bool {
     return true
 }
+
+

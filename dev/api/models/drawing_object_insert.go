@@ -28,7 +28,7 @@
 package models
 
 // Drawing object element for insert.
-type DrawingObjectInsert struct {
+type DrawingObjectInsertResult struct {
     // Drawing object element for insert.
     Height float64 `json:"Height,omitempty"`
 
@@ -36,7 +36,7 @@ type DrawingObjectInsert struct {
     Left float64 `json:"Left,omitempty"`
 
     // Drawing object element for insert.
-    Position *DocumentPosition `json:"Position,omitempty"`
+    Position DocumentPositionResult `json:"Position,omitempty"`
 
     // Drawing object element for insert.
     RelativeHorizontalPosition string `json:"RelativeHorizontalPosition,omitempty"`
@@ -54,10 +54,37 @@ type DrawingObjectInsert struct {
     WrapType string `json:"WrapType,omitempty"`
 }
 
+type DrawingObjectInsert struct {
+    // Drawing object element for insert.
+    Height *float64 `json:"Height,omitempty"`
+
+    // Drawing object element for insert.
+    Left *float64 `json:"Left,omitempty"`
+
+    // Drawing object element for insert.
+    Position IDocumentPosition `json:"Position,omitempty"`
+
+    // Drawing object element for insert.
+    RelativeHorizontalPosition *string `json:"RelativeHorizontalPosition,omitempty"`
+
+    // Drawing object element for insert.
+    RelativeVerticalPosition *string `json:"RelativeVerticalPosition,omitempty"`
+
+    // Drawing object element for insert.
+    Top *float64 `json:"Top,omitempty"`
+
+    // Drawing object element for insert.
+    Width *float64 `json:"Width,omitempty"`
+
+    // Drawing object element for insert.
+    WrapType *string `json:"WrapType,omitempty"`
+}
+
 type IDrawingObjectInsert interface {
     IsDrawingObjectInsert() bool
 }
 func (DrawingObjectInsert) IsDrawingObjectInsert() bool {
     return true
 }
+
 

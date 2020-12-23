@@ -27,31 +27,57 @@
 
 package models
 
-// Represents a single document list.
-type ListInfo struct {
-    // Represents a single document list.
-    Link *WordsApiLink `json:"Link,omitempty"`
+// DTO container with a single document list.
+type ListInfoResult struct {
+    // DTO container with a single document list.
+    Link WordsApiLinkResult `json:"Link,omitempty"`
 
-    // Represents a single document list.
+    // DTO container with a single document list.
     IsListStyleDefinition bool `json:"IsListStyleDefinition,omitempty"`
 
-    // Represents a single document list.
+    // DTO container with a single document list.
     IsListStyleReference bool `json:"IsListStyleReference,omitempty"`
 
-    // Represents a single document list.
+    // DTO container with a single document list.
     IsMultiLevel bool `json:"IsMultiLevel,omitempty"`
 
-    // Represents a single document list.
+    // DTO container with a single document list.
     IsRestartAtEachSection bool `json:"IsRestartAtEachSection,omitempty"`
 
-    // Represents a single document list.
+    // DTO container with a single document list.
     ListId int32 `json:"ListId,omitempty"`
 
-    // Represents a single document list.
-    ListLevels *ListLevels `json:"ListLevels,omitempty"`
+    // DTO container with a single document list.
+    ListLevels ListLevelsResult `json:"ListLevels,omitempty"`
 
-    // Represents a single document list.
-    Style *Style `json:"Style,omitempty"`
+    // DTO container with a single document list.
+    Style StyleResult `json:"Style,omitempty"`
+}
+
+type ListInfo struct {
+    // DTO container with a single document list.
+    Link IWordsApiLink `json:"Link,omitempty"`
+
+    // DTO container with a single document list.
+    IsListStyleDefinition *bool `json:"IsListStyleDefinition,omitempty"`
+
+    // DTO container with a single document list.
+    IsListStyleReference *bool `json:"IsListStyleReference,omitempty"`
+
+    // DTO container with a single document list.
+    IsMultiLevel *bool `json:"IsMultiLevel,omitempty"`
+
+    // DTO container with a single document list.
+    IsRestartAtEachSection *bool `json:"IsRestartAtEachSection,omitempty"`
+
+    // DTO container with a single document list.
+    ListId *int32 `json:"ListId,omitempty"`
+
+    // DTO container with a single document list.
+    ListLevels IListLevels `json:"ListLevels,omitempty"`
+
+    // DTO container with a single document list.
+    Style IStyle `json:"Style,omitempty"`
 }
 
 type IListInfo interface {
@@ -64,3 +90,5 @@ func (ListInfo) IsListInfo() bool {
 func (ListInfo) IsLinkElement() bool {
     return true
 }
+
+

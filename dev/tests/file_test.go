@@ -29,7 +29,9 @@
 package api_test
 
 import (
+    "github.com/stretchr/testify/assert"
     "testing"
+    "github.com/aspose-words-cloud/aspose-words-cloud-go/dev/api/models"
 )
 
 // Test for uploading file.
@@ -43,11 +45,22 @@ func Test_File_UploadFile(t *testing.T) {
 
     options := map[string]interface{}{
     }
-    _, _, err := client.WordsApi.UploadFile(ctx, OpenFile(t, localFile), remoteDataFolder + "/" + remoteFileName, options)
+
+    request := &models.UploadFileRequest{
+        FileContent: OpenFile(t, localFile),
+        Path: ToStringPointer(remoteDataFolder + "/" + remoteFileName),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.UploadFile(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
+
+    assert.NotNil(t, actual.Uploaded, "Validate UploadFile response.");
+    assert.Equal(t, 1, len(actual.Uploaded), "Validate UploadFile response.");
+    assert.Equal(t, "TestUploadFile.docx", actual.Uploaded[0], "Validate UploadFile response.");
 }
 
 // Test for copy file.
@@ -63,11 +76,19 @@ func Test_File_CopyFile(t *testing.T) {
 
     options := map[string]interface{}{
     }
-    _, err := client.WordsApi.CopyFile(ctx, remoteDataFolder + "/TestCopyFileDest.docx", remoteDataFolder + "/" + remoteFileName, options)
+
+    request := &models.CopyFileRequest{
+        DestPath: ToStringPointer(remoteDataFolder + "/TestCopyFileDest.docx"),
+        SrcPath: ToStringPointer(remoteDataFolder + "/" + remoteFileName),
+        Optionals: options,
+    }
+
+    _, err := client.WordsApi.CopyFile(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for move file.
@@ -83,11 +104,19 @@ func Test_File_MoveFile(t *testing.T) {
 
     options := map[string]interface{}{
     }
-    _, err := client.WordsApi.MoveFile(ctx, baseTestOutPath + "/TestMoveFileDest_" + CreateRandomGuid() + ".docx", remoteDataFolder + "/" + remoteFileName, options)
+
+    request := &models.MoveFileRequest{
+        DestPath: ToStringPointer(baseTestOutPath + "/TestMoveFileDest_" + CreateRandomGuid() + ".docx"),
+        SrcPath: ToStringPointer(remoteDataFolder + "/" + remoteFileName),
+        Optionals: options,
+    }
+
+    _, err := client.WordsApi.MoveFile(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for delete file.
@@ -103,11 +132,18 @@ func Test_File_DeleteFile(t *testing.T) {
 
     options := map[string]interface{}{
     }
-    _, err := client.WordsApi.DeleteFile(ctx, remoteDataFolder + "/" + remoteFileName, options)
+
+    request := &models.DeleteFileRequest{
+        Path: ToStringPointer(remoteDataFolder + "/" + remoteFileName),
+        Optionals: options,
+    }
+
+    _, err := client.WordsApi.DeleteFile(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
+
 }
 
 // Test for download file.
@@ -123,9 +159,16 @@ func Test_File_DownloadFile(t *testing.T) {
 
     options := map[string]interface{}{
     }
-    _, err := client.WordsApi.DownloadFile(ctx, remoteDataFolder + "/" + remoteFileName, options)
+
+    request := &models.DownloadFileRequest{
+        Path: ToStringPointer(remoteDataFolder + "/" + remoteFileName),
+        Optionals: options,
+    }
+
+    _, , _, err := client.WordsApi.DownloadFile(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
+
 }

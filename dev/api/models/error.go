@@ -28,7 +28,7 @@
 package models
 
 // Error.
-type Error struct {
+type ErrorResult struct {
     // Error.
     Code string `json:"Code,omitempty"`
 
@@ -36,10 +36,24 @@ type Error struct {
     Description string `json:"Description,omitempty"`
 
     // Error.
-    InnerError *ErrorDetails `json:"InnerError,omitempty"`
+    InnerError *ErrorDetailsResult `json:"InnerError,omitempty"`
 
     // Error.
     Message string `json:"Message,omitempty"`
+}
+
+type Error struct {
+    // Error.
+    Code *string `json:"Code,omitempty"`
+
+    // Error.
+    Description *string `json:"Description,omitempty"`
+
+    // Error.
+    InnerError *IErrorDetails `json:"InnerError,omitempty"`
+
+    // Error.
+    Message *string `json:"Message,omitempty"`
 }
 
 type IError interface {
@@ -48,4 +62,5 @@ type IError interface {
 func (Error) IsError() bool {
     return true
 }
+
 

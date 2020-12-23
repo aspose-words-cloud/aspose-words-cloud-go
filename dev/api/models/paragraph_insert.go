@@ -27,10 +27,15 @@
 
 package models
 
-// Paragraph element.
-type ParagraphInsert struct {
-    // Paragraph element.
+// DTO container with a paragraph's text.
+type ParagraphInsertResult struct {
+    // DTO container with a paragraph's text.
     Text string `json:"Text,omitempty"`
+}
+
+type ParagraphInsert struct {
+    // DTO container with a paragraph's text.
+    Text *string `json:"Text,omitempty"`
 }
 
 type IParagraphInsert interface {
@@ -39,4 +44,5 @@ type IParagraphInsert interface {
 func (ParagraphInsert) IsParagraphInsert() bool {
     return true
 }
+
 

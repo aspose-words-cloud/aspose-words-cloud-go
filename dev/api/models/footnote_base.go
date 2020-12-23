@@ -28,12 +28,12 @@
 package models
 
 // Footnote base class.
-type FootnoteBase struct {
+type FootnoteBaseResult struct {
     // Footnote base class.
     FootnoteType string `json:"FootnoteType,omitempty"`
 
     // Footnote base class.
-    Position *DocumentPosition `json:"Position,omitempty"`
+    Position DocumentPositionResult `json:"Position,omitempty"`
 
     // Footnote base class.
     ReferenceMark string `json:"ReferenceMark,omitempty"`
@@ -42,10 +42,25 @@ type FootnoteBase struct {
     Text string `json:"Text,omitempty"`
 }
 
+type FootnoteBase struct {
+    // Footnote base class.
+    FootnoteType *string `json:"FootnoteType,omitempty"`
+
+    // Footnote base class.
+    Position IDocumentPosition `json:"Position,omitempty"`
+
+    // Footnote base class.
+    ReferenceMark *string `json:"ReferenceMark,omitempty"`
+
+    // Footnote base class.
+    Text *string `json:"Text,omitempty"`
+}
+
 type IFootnoteBase interface {
     IsFootnoteBase() bool
 }
 func (FootnoteBase) IsFootnoteBase() bool {
     return true
 }
+
 

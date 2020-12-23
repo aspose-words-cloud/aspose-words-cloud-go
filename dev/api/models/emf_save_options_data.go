@@ -28,7 +28,7 @@
 package models
 
 // Container class for emf save options.
-type EmfSaveOptionsData struct {
+type EmfSaveOptionsDataResult struct {
     // Container class for emf save options.
     Dml3DEffectsRenderingMode string `json:"Dml3DEffectsRenderingMode,omitempty"`
 
@@ -66,7 +66,7 @@ type EmfSaveOptionsData struct {
     JpegQuality int32 `json:"JpegQuality,omitempty"`
 
     // Container class for emf save options.
-    MetafileRenderingOptions *MetafileRenderingOptionsData `json:"MetafileRenderingOptions,omitempty"`
+    MetafileRenderingOptions MetafileRenderingOptionsDataResult `json:"MetafileRenderingOptions,omitempty"`
 
     // Container class for emf save options.
     NumeralFormat string `json:"NumeralFormat,omitempty"`
@@ -81,7 +81,7 @@ type EmfSaveOptionsData struct {
     PageIndex int32 `json:"PageIndex,omitempty"`
 
     // Container class for emf save options.
-    GraphicsQualityOptions *GraphicsQualityOptionsData `json:"GraphicsQualityOptions,omitempty"`
+    GraphicsQualityOptions GraphicsQualityOptionsDataResult `json:"GraphicsQualityOptions,omitempty"`
 
     // Container class for emf save options.
     HorizontalResolution float64 `json:"HorizontalResolution,omitempty"`
@@ -120,6 +120,98 @@ type EmfSaveOptionsData struct {
     VerticalResolution float64 `json:"VerticalResolution,omitempty"`
 }
 
+type EmfSaveOptionsData struct {
+    // Container class for emf save options.
+    Dml3DEffectsRenderingMode *string `json:"Dml3DEffectsRenderingMode,omitempty"`
+
+    // Container class for emf save options.
+    DmlEffectsRenderingMode *string `json:"DmlEffectsRenderingMode,omitempty"`
+
+    // Container class for emf save options.
+    DmlRenderingMode *string `json:"DmlRenderingMode,omitempty"`
+
+    // Container class for emf save options.
+    FileName *string `json:"FileName,omitempty"`
+
+    // Container class for emf save options.
+    SaveFormat *string `json:"SaveFormat,omitempty"`
+
+    // Container class for emf save options.
+    UpdateFields *bool `json:"UpdateFields,omitempty"`
+
+    // Container class for emf save options.
+    UpdateLastPrintedProperty *bool `json:"UpdateLastPrintedProperty,omitempty"`
+
+    // Container class for emf save options.
+    UpdateLastSavedTimeProperty *bool `json:"UpdateLastSavedTimeProperty,omitempty"`
+
+    // Container class for emf save options.
+    UpdateSdtContent *bool `json:"UpdateSdtContent,omitempty"`
+
+    // Container class for emf save options.
+    ZipOutput *bool `json:"ZipOutput,omitempty"`
+
+    // Container class for emf save options.
+    ColorMode *string `json:"ColorMode,omitempty"`
+
+    // Container class for emf save options.
+    JpegQuality *int32 `json:"JpegQuality,omitempty"`
+
+    // Container class for emf save options.
+    MetafileRenderingOptions IMetafileRenderingOptionsData `json:"MetafileRenderingOptions,omitempty"`
+
+    // Container class for emf save options.
+    NumeralFormat *string `json:"NumeralFormat,omitempty"`
+
+    // Container class for emf save options.
+    OptimizeOutput *bool `json:"OptimizeOutput,omitempty"`
+
+    // Container class for emf save options.
+    PageCount *int32 `json:"PageCount,omitempty"`
+
+    // Container class for emf save options.
+    PageIndex *int32 `json:"PageIndex,omitempty"`
+
+    // Container class for emf save options.
+    GraphicsQualityOptions IGraphicsQualityOptionsData `json:"GraphicsQualityOptions,omitempty"`
+
+    // Container class for emf save options.
+    HorizontalResolution *float64 `json:"HorizontalResolution,omitempty"`
+
+    // Container class for emf save options.
+    ImageBrightness *float64 `json:"ImageBrightness,omitempty"`
+
+    // Container class for emf save options.
+    ImageColorMode *string `json:"ImageColorMode,omitempty"`
+
+    // Container class for emf save options.
+    ImageContrast *float64 `json:"ImageContrast,omitempty"`
+
+    // Container class for emf save options.
+    PaperColor *string `json:"PaperColor,omitempty"`
+
+    // Container class for emf save options.
+    PixelFormat *string `json:"PixelFormat,omitempty"`
+
+    // Container class for emf save options.
+    Resolution *float64 `json:"Resolution,omitempty"`
+
+    // Container class for emf save options.
+    Scale *float64 `json:"Scale,omitempty"`
+
+    // Container class for emf save options.
+    UseAntiAliasing *bool `json:"UseAntiAliasing,omitempty"`
+
+    // Container class for emf save options.
+    UseGdiEmfRenderer *bool `json:"UseGdiEmfRenderer,omitempty"`
+
+    // Container class for emf save options.
+    UseHighQualityRendering *bool `json:"UseHighQualityRendering,omitempty"`
+
+    // Container class for emf save options.
+    VerticalResolution *float64 `json:"VerticalResolution,omitempty"`
+}
+
 type IEmfSaveOptionsData interface {
     IsEmfSaveOptionsData() bool
 }
@@ -130,3 +222,5 @@ func (EmfSaveOptionsData) IsEmfSaveOptionsData() bool {
 func (EmfSaveOptionsData) IsImageSaveOptionsData() bool {
     return true
 }
+
+

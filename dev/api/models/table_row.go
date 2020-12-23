@@ -27,18 +27,32 @@
 
 package models
 
-// Table row element.
-type TableRow struct {
-    // Table row element.
-    Link *WordsApiLink `json:"Link,omitempty"`
+// DTO container with a table row element.
+type TableRowResult struct {
+    // DTO container with a table row element.
+    Link WordsApiLinkResult `json:"Link,omitempty"`
 
-    // Table row element.
+    // DTO container with a table row element.
     NodeId string `json:"NodeId,omitempty"`
 
-    // Table row element.
-    RowFormat *TableRowFormat `json:"RowFormat,omitempty"`
+    // DTO container with a table row element.
+    RowFormat TableRowFormatResult `json:"RowFormat,omitempty"`
 
-    // Table row element.
+    // DTO container with a table row element.
+    TableCellList []TableCellResult `json:"TableCellList,omitempty"`
+}
+
+type TableRow struct {
+    // DTO container with a table row element.
+    Link IWordsApiLink `json:"Link,omitempty"`
+
+    // DTO container with a table row element.
+    NodeId *string `json:"NodeId,omitempty"`
+
+    // DTO container with a table row element.
+    RowFormat ITableRowFormat `json:"RowFormat,omitempty"`
+
+    // DTO container with a table row element.
     TableCellList []TableCell `json:"TableCellList,omitempty"`
 }
 
@@ -52,3 +66,5 @@ func (TableRow) IsTableRow() bool {
 func (TableRow) IsNodeLink() bool {
     return true
 }
+
+

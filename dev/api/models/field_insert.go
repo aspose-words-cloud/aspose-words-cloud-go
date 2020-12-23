@@ -28,12 +28,20 @@
 package models
 
 // Field for insert.
-type FieldInsert struct {
+type FieldInsertResult struct {
     // Field for insert.
     FieldCode string `json:"FieldCode,omitempty"`
 
     // Field for insert.
     LocaleId string `json:"LocaleId,omitempty"`
+}
+
+type FieldInsert struct {
+    // Field for insert.
+    FieldCode *string `json:"FieldCode,omitempty"`
+
+    // Field for insert.
+    LocaleId *string `json:"LocaleId,omitempty"`
 }
 
 type IFieldInsert interface {
@@ -46,3 +54,5 @@ func (FieldInsert) IsFieldInsert() bool {
 func (FieldInsert) IsFieldBase() bool {
     return true
 }
+
+

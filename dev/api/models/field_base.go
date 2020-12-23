@@ -28,12 +28,20 @@
 package models
 
 // Field.
-type FieldBase struct {
+type FieldBaseResult struct {
     // Field.
     FieldCode string `json:"FieldCode,omitempty"`
 
     // Field.
     LocaleId string `json:"LocaleId,omitempty"`
+}
+
+type FieldBase struct {
+    // Field.
+    FieldCode *string `json:"FieldCode,omitempty"`
+
+    // Field.
+    LocaleId *string `json:"LocaleId,omitempty"`
 }
 
 type IFieldBase interface {
@@ -42,4 +50,5 @@ type IFieldBase interface {
 func (FieldBase) IsFieldBase() bool {
     return true
 }
+
 

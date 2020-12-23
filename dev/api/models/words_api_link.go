@@ -27,19 +27,33 @@
 
 package models
 
-// Provides information for the words api resource link.
-type WordsApiLink struct {
-    // Provides information for the words api resource link.
+// Provides information for the words API resource link.
+type WordsApiLinkResult struct {
+    // Provides information for the words API resource link.
     Href string `json:"Href,omitempty"`
 
-    // Provides information for the words api resource link.
+    // Provides information for the words API resource link.
     Rel string `json:"Rel,omitempty"`
 
-    // Provides information for the words api resource link.
+    // Provides information for the words API resource link.
     Title string `json:"Title,omitempty"`
 
-    // Provides information for the words api resource link.
+    // Provides information for the words API resource link.
     Type string `json:"Type,omitempty"`
+}
+
+type WordsApiLink struct {
+    // Provides information for the words API resource link.
+    Href *string `json:"Href,omitempty"`
+
+    // Provides information for the words API resource link.
+    Rel *string `json:"Rel,omitempty"`
+
+    // Provides information for the words API resource link.
+    Title *string `json:"Title,omitempty"`
+
+    // Provides information for the words API resource link.
+    Type *string `json:"Type,omitempty"`
 }
 
 type IWordsApiLink interface {
@@ -52,3 +66,5 @@ func (WordsApiLink) IsWordsApiLink() bool {
 func (WordsApiLink) IsLink() bool {
     return true
 }
+
+

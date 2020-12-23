@@ -28,12 +28,20 @@
 package models
 
 // Paragraph list format element for update.
-type ListFormatUpdate struct {
+type ListFormatUpdateResult struct {
     // Paragraph list format element for update.
     ListId int32 `json:"ListId,omitempty"`
 
     // Paragraph list format element for update.
     ListLevelNumber int32 `json:"ListLevelNumber,omitempty"`
+}
+
+type ListFormatUpdate struct {
+    // Paragraph list format element for update.
+    ListId *int32 `json:"ListId,omitempty"`
+
+    // Paragraph list format element for update.
+    ListLevelNumber *int32 `json:"ListLevelNumber,omitempty"`
 }
 
 type IListFormatUpdate interface {
@@ -42,4 +50,5 @@ type IListFormatUpdate interface {
 func (ListFormatUpdate) IsListFormatUpdate() bool {
     return true
 }
+
 
