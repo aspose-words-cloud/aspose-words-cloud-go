@@ -28,7 +28,7 @@ node('win2019') {
         if (needToBuild) {
             gitlabCommitStatus("tests") {
                 stage('tests') {
-                    withCredentials([usernamePassword(credentialsId: '6839cbe8-39fa-40c0-86ce-90706f0bae5d', passwordVariable: 'WordsAppKey', usernameVariable: 'WordsAppSid')]) {
+                    withCredentials([usernamePassword(credentialsId: '6839cbe8-39fa-40c0-86ce-90706f0bae5d', passwordVariable: 'ClientSecret', usernameVariable: 'ClientId')]) {
                         try {
                             bat 'Scripts\\RunTestsInDocker.bat'
                         } 

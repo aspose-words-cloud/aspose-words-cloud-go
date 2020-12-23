@@ -1,2 +1,2 @@
-echo {"AppSid":"%WordsAppSid%","AppKey":"%WordsAppKey%","BaseUrl":"%apiUrl%" } > dev/config.json
+echo {"ClientId":"%ClientId%","ClientSecret":"%ClientSecret%","BaseUrl":"%apiUrl%" } > dev/config.json
 docker run --isolation=hyperv -v %cd%:c:/sdk -w="c:/sdk/" --rm -t golang:1.14.0-windowsservercore-1809 c:/sdk/Scripts/RunTestsStandalone.bat
