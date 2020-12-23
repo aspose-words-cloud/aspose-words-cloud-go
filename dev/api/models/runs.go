@@ -28,9 +28,17 @@
 package models
 
 // DTO container with a collection of runs.
+type RunsResult struct {
+    // DTO container with a collection of runs.
+    Link WordsApiLinkResult `json:"Link,omitempty"`
+
+    // DTO container with a collection of runs.
+    List []RunResult `json:"List,omitempty"`
+}
+
 type Runs struct {
     // DTO container with a collection of runs.
-    Link *WordsApiLink `json:"Link,omitempty"`
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // DTO container with a collection of runs.
     List []Run `json:"List,omitempty"`
@@ -46,3 +54,5 @@ func (Runs) IsRuns() bool {
 func (Runs) IsLinkElement() bool {
     return true
 }
+
+

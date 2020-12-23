@@ -28,6 +28,14 @@
 package models
 
 // Represents a document which will be appended to the original resource document.
+type DocumentEntryResult struct {
+    // Represents a document which will be appended to the original resource document.
+    Href string `json:"Href,omitempty"`
+
+    // Represents a document which will be appended to the original resource document.
+    ImportFormatMode string `json:"ImportFormatMode,omitempty"`
+}
+
 type DocumentEntry struct {
     // Represents a document which will be appended to the original resource document.
     Href *string `json:"Href,omitempty"`
@@ -42,4 +50,5 @@ type IDocumentEntry interface {
 func (DocumentEntry) IsDocumentEntry() bool {
     return true
 }
+
 

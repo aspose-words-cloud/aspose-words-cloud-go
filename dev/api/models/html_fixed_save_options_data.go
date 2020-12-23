@@ -28,9 +28,104 @@
 package models
 
 // Container class for fixed html save options.
-type HtmlFixedSaveOptionsData struct {
+type HtmlFixedSaveOptionsDataResult struct {
     // Container class for fixed html save options.
     Dml3DEffectsRenderingMode string `json:"Dml3DEffectsRenderingMode,omitempty"`
+
+    // Container class for fixed html save options.
+    DmlEffectsRenderingMode string `json:"DmlEffectsRenderingMode,omitempty"`
+
+    // Container class for fixed html save options.
+    DmlRenderingMode string `json:"DmlRenderingMode,omitempty"`
+
+    // Container class for fixed html save options.
+    FileName string `json:"FileName,omitempty"`
+
+    // Container class for fixed html save options.
+    SaveFormat string `json:"SaveFormat,omitempty"`
+
+    // Container class for fixed html save options.
+    UpdateFields bool `json:"UpdateFields,omitempty"`
+
+    // Container class for fixed html save options.
+    UpdateLastPrintedProperty bool `json:"UpdateLastPrintedProperty,omitempty"`
+
+    // Container class for fixed html save options.
+    UpdateLastSavedTimeProperty bool `json:"UpdateLastSavedTimeProperty,omitempty"`
+
+    // Container class for fixed html save options.
+    UpdateSdtContent bool `json:"UpdateSdtContent,omitempty"`
+
+    // Container class for fixed html save options.
+    ZipOutput bool `json:"ZipOutput,omitempty"`
+
+    // Container class for fixed html save options.
+    ColorMode string `json:"ColorMode,omitempty"`
+
+    // Container class for fixed html save options.
+    JpegQuality int32 `json:"JpegQuality,omitempty"`
+
+    // Container class for fixed html save options.
+    MetafileRenderingOptions MetafileRenderingOptionsDataResult `json:"MetafileRenderingOptions,omitempty"`
+
+    // Container class for fixed html save options.
+    NumeralFormat string `json:"NumeralFormat,omitempty"`
+
+    // Container class for fixed html save options.
+    OptimizeOutput bool `json:"OptimizeOutput,omitempty"`
+
+    // Container class for fixed html save options.
+    PageCount int32 `json:"PageCount,omitempty"`
+
+    // Container class for fixed html save options.
+    PageIndex int32 `json:"PageIndex,omitempty"`
+
+    // Container class for fixed html save options.
+    CssClassNamesPrefix string `json:"CssClassNamesPrefix,omitempty"`
+
+    // Container class for fixed html save options.
+    Encoding string `json:"Encoding,omitempty"`
+
+    // Container class for fixed html save options.
+    ExportEmbeddedCss bool `json:"ExportEmbeddedCss,omitempty"`
+
+    // Container class for fixed html save options.
+    ExportEmbeddedFonts bool `json:"ExportEmbeddedFonts,omitempty"`
+
+    // Container class for fixed html save options.
+    ExportEmbeddedImages bool `json:"ExportEmbeddedImages,omitempty"`
+
+    // Container class for fixed html save options.
+    ExportFormFields bool `json:"ExportFormFields,omitempty"`
+
+    // Container class for fixed html save options.
+    FontFormat string `json:"FontFormat,omitempty"`
+
+    // Container class for fixed html save options.
+    PageHorizontalAlignment string `json:"PageHorizontalAlignment,omitempty"`
+
+    // Container class for fixed html save options.
+    PageMargins float64 `json:"PageMargins,omitempty"`
+
+    // Container class for fixed html save options.
+    ResourcesFolder string `json:"ResourcesFolder,omitempty"`
+
+    // Container class for fixed html save options.
+    ResourcesFolderAlias string `json:"ResourcesFolderAlias,omitempty"`
+
+    // Container class for fixed html save options.
+    SaveFontFaceCssSeparately bool `json:"SaveFontFaceCssSeparately,omitempty"`
+
+    // Container class for fixed html save options.
+    ShowPageBorder bool `json:"ShowPageBorder,omitempty"`
+
+    // Container class for fixed html save options.
+    UseTargetMachineFonts bool `json:"UseTargetMachineFonts,omitempty"`
+}
+
+type HtmlFixedSaveOptionsData struct {
+    // Container class for fixed html save options.
+    Dml3DEffectsRenderingMode *string `json:"Dml3DEffectsRenderingMode,omitempty"`
 
     // Container class for fixed html save options.
     DmlEffectsRenderingMode *string `json:"DmlEffectsRenderingMode,omitempty"`
@@ -66,7 +161,7 @@ type HtmlFixedSaveOptionsData struct {
     JpegQuality *int32 `json:"JpegQuality,omitempty"`
 
     // Container class for fixed html save options.
-    MetafileRenderingOptions *MetafileRenderingOptionsData `json:"MetafileRenderingOptions,omitempty"`
+    MetafileRenderingOptions IMetafileRenderingOptionsData `json:"MetafileRenderingOptions,omitempty"`
 
     // Container class for fixed html save options.
     NumeralFormat *string `json:"NumeralFormat,omitempty"`
@@ -133,3 +228,5 @@ func (HtmlFixedSaveOptionsData) IsHtmlFixedSaveOptionsData() bool {
 func (HtmlFixedSaveOptionsData) IsFixedPageSaveOptionsData() bool {
     return true
 }
+
+

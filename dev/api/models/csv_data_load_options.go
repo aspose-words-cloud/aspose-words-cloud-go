@@ -28,6 +28,20 @@
 package models
 
 // Represents options for parsing CSV data.
+type CsvDataLoadOptionsResult struct {
+    // Represents options for parsing CSV data.
+    CommentChar string `json:"CommentChar,omitempty"`
+
+    // Represents options for parsing CSV data.
+    Delimiter string `json:"Delimiter,omitempty"`
+
+    // Represents options for parsing CSV data.
+    HasHeaders bool `json:"HasHeaders,omitempty"`
+
+    // Represents options for parsing CSV data.
+    QuoteChar string `json:"QuoteChar,omitempty"`
+}
+
 type CsvDataLoadOptions struct {
     // Represents options for parsing CSV data.
     CommentChar *string `json:"CommentChar,omitempty"`
@@ -48,4 +62,5 @@ type ICsvDataLoadOptions interface {
 func (CsvDataLoadOptions) IsCsvDataLoadOptions() bool {
     return true
 }
+
 

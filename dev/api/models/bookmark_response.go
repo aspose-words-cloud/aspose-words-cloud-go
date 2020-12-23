@@ -30,19 +30,9 @@ package models
 // The REST response with a bookmark.
 type BookmarkResponse struct {
     // The REST response with a bookmark.
-    RequestId *string `json:"RequestId,omitempty"`
+    RequestId string `json:"RequestId,omitempty"`
 
     // The REST response with a bookmark.
-    Bookmark *Bookmark `json:"Bookmark,omitempty"`
+    Bookmark BookmarkResult `json:"Bookmark,omitempty"`
 }
 
-type IBookmarkResponse interface {
-    IsBookmarkResponse() bool
-}
-func (BookmarkResponse) IsBookmarkResponse() bool {
-    return true
-}
-
-func (BookmarkResponse) IsWordsResponse() bool {
-    return true
-}

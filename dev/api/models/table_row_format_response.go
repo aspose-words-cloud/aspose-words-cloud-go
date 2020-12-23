@@ -30,19 +30,9 @@ package models
 // The REST response with the formatting properties of a table row.
 type TableRowFormatResponse struct {
     // The REST response with the formatting properties of a table row.
-    RequestId *string `json:"RequestId,omitempty"`
+    RequestId string `json:"RequestId,omitempty"`
 
     // The REST response with the formatting properties of a table row.
-    RowFormat *TableRowFormat `json:"RowFormat,omitempty"`
+    RowFormat TableRowFormatResult `json:"RowFormat,omitempty"`
 }
 
-type ITableRowFormatResponse interface {
-    IsTableRowFormatResponse() bool
-}
-func (TableRowFormatResponse) IsTableRowFormatResponse() bool {
-    return true
-}
-
-func (TableRowFormatResponse) IsWordsResponse() bool {
-    return true
-}

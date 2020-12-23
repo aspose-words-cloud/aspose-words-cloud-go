@@ -30,13 +30,6 @@ package models
 // The base class for all responses.
 type WordsResponse struct {
     // The base class for all responses.
-    RequestId *string `json:"RequestId,omitempty"`
-}
-
-type IWordsResponse interface {
-    IsWordsResponse() bool
-}
-func (WordsResponse) IsWordsResponse() bool {
-    return true
+    RequestId string `json:"RequestId,omitempty"`
 }
 

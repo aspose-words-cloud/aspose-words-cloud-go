@@ -53,14 +53,20 @@ func Test_Watermark_InsertWatermarkImage(t *testing.T) {
         "destFileName": baseTestOutPath + "/" + remoteFileName,
         "image": remoteImagePath,
     }
-    actual, _, err := client.WordsApi.InsertWatermarkImage(ctx, remoteFileName, options)
+
+    request := &models.InsertWatermarkImageRequest{
+        Name: ToStringPointer(remoteFileName),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.InsertWatermarkImage(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
 
     assert.NotNil(t, actual.Document, "Validate InsertWatermarkImage response.");
-    assert.Equal(t, "TestInsertWatermarkImage.docx", *actual.Document.FileName, "Validate InsertWatermarkImage response.");
+    assert.Equal(t, "TestInsertWatermarkImage.docx", actual.Document.FileName, "Validate InsertWatermarkImage response.");
 }
 
 // Test for adding watermark text.
@@ -82,14 +88,21 @@ func Test_Watermark_InsertWatermarkText(t *testing.T) {
         "folder": remoteDataFolder,
         "destFileName": baseTestOutPath + "/" + remoteFileName,
     }
-    actual, _, err := client.WordsApi.InsertWatermarkText(ctx, remoteFileName, requestWatermarkText, options)
+
+    request := &models.InsertWatermarkTextRequest{
+        Name: ToStringPointer(remoteFileName),
+        WatermarkText: requestWatermarkText,
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.InsertWatermarkText(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
 
     assert.NotNil(t, actual.Document, "Validate InsertWatermarkText response.");
-    assert.Equal(t, "TestInsertWatermarkText.docx", *actual.Document.FileName, "Validate InsertWatermarkText response.");
+    assert.Equal(t, "TestInsertWatermarkText.docx", actual.Document.FileName, "Validate InsertWatermarkText response.");
 }
 
 // Test for deleting watermark.
@@ -107,12 +120,18 @@ func Test_Watermark_DeleteWatermark(t *testing.T) {
         "folder": remoteDataFolder,
         "destFileName": baseTestOutPath + "/" + remoteFileName,
     }
-    actual, _, err := client.WordsApi.DeleteWatermark(ctx, remoteFileName, options)
+
+    request := &models.DeleteWatermarkRequest{
+        Name: ToStringPointer(remoteFileName),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.DeleteWatermark(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
 
     assert.NotNil(t, actual.Document, "Validate DeleteWatermark response.");
-    assert.Equal(t, "TestDeleteWatermark.docx", *actual.Document.FileName, "Validate DeleteWatermark response.");
+    assert.Equal(t, "TestDeleteWatermark.docx", actual.Document.FileName, "Validate DeleteWatermark response.");
 }

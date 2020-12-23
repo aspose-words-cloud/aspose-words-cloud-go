@@ -28,15 +28,26 @@
 package models
 
 // Result of saving.
+type SaveResultResult struct {
+    // Result of saving.
+    AdditionalItems []FileLinkResult `json:"AdditionalItems,omitempty"`
+
+    // Result of saving.
+    DestDocument FileLinkResult `json:"DestDocument,omitempty"`
+
+    // Result of saving.
+    SourceDocument FileLinkResult `json:"SourceDocument,omitempty"`
+}
+
 type SaveResult struct {
     // Result of saving.
     AdditionalItems []FileLink `json:"AdditionalItems,omitempty"`
 
     // Result of saving.
-    DestDocument *FileLink `json:"DestDocument,omitempty"`
+    DestDocument IFileLink `json:"DestDocument,omitempty"`
 
     // Result of saving.
-    SourceDocument *FileLink `json:"SourceDocument,omitempty"`
+    SourceDocument IFileLink `json:"SourceDocument,omitempty"`
 }
 
 type ISaveResult interface {
@@ -45,4 +56,5 @@ type ISaveResult interface {
 func (SaveResult) IsSaveResult() bool {
     return true
 }
+
 

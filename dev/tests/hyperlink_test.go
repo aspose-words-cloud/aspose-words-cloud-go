@@ -31,6 +31,7 @@ package api_test
 import (
     "github.com/stretchr/testify/assert"
     "testing"
+    "github.com/aspose-words-cloud/aspose-words-cloud-go/dev/api/models"
 )
 
 // Test for getting hyperlink by specified index.
@@ -47,14 +48,21 @@ func Test_Hyperlink_GetDocumentHyperlinkByIndex(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    actual, _, err := client.WordsApi.GetDocumentHyperlinkByIndex(ctx, remoteFileName, int32(0), options)
+
+    request := &models.GetDocumentHyperlinkByIndexRequest{
+        Name: ToStringPointer(remoteFileName),
+        HyperlinkIndex: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.GetDocumentHyperlinkByIndex(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
 
     assert.NotNil(t, actual.Hyperlink, "Validate GetDocumentHyperlinkByIndex response.");
-    assert.Equal(t, "Aspose", *actual.Hyperlink.DisplayText, "Validate GetDocumentHyperlinkByIndex response.");
+    assert.Equal(t, "Aspose", actual.Hyperlink.DisplayText, "Validate GetDocumentHyperlinkByIndex response.");
 }
 
 // Test for getting hyperlinks.
@@ -71,7 +79,13 @@ func Test_Hyperlink_GetDocumentHyperlinks(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    actual, _, err := client.WordsApi.GetDocumentHyperlinks(ctx, remoteFileName, options)
+
+    request := &models.GetDocumentHyperlinksRequest{
+        Name: ToStringPointer(remoteFileName),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.GetDocumentHyperlinks(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -80,5 +94,5 @@ func Test_Hyperlink_GetDocumentHyperlinks(t *testing.T) {
     assert.NotNil(t, actual.Hyperlinks, "Validate GetDocumentHyperlinks response.");
     assert.NotNil(t, actual.Hyperlinks.HyperlinkList, "Validate GetDocumentHyperlinks response.");
     assert.Equal(t, 2, len(actual.Hyperlinks.HyperlinkList), "Validate GetDocumentHyperlinks response.");
-    assert.Equal(t, "Aspose", *actual.Hyperlinks.HyperlinkList[0].DisplayText, "Validate GetDocumentHyperlinks response.");
+    assert.Equal(t, "Aspose", actual.Hyperlinks.HyperlinkList[0].DisplayText, "Validate GetDocumentHyperlinks response.");
 }

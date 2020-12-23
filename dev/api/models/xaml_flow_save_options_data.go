@@ -28,9 +28,47 @@
 package models
 
 // Container class for xaml flow save options.
-type XamlFlowSaveOptionsData struct {
+type XamlFlowSaveOptionsDataResult struct {
     // Container class for xaml flow save options.
     Dml3DEffectsRenderingMode string `json:"Dml3DEffectsRenderingMode,omitempty"`
+
+    // Container class for xaml flow save options.
+    DmlEffectsRenderingMode string `json:"DmlEffectsRenderingMode,omitempty"`
+
+    // Container class for xaml flow save options.
+    DmlRenderingMode string `json:"DmlRenderingMode,omitempty"`
+
+    // Container class for xaml flow save options.
+    FileName string `json:"FileName,omitempty"`
+
+    // Container class for xaml flow save options.
+    SaveFormat string `json:"SaveFormat,omitempty"`
+
+    // Container class for xaml flow save options.
+    UpdateFields bool `json:"UpdateFields,omitempty"`
+
+    // Container class for xaml flow save options.
+    UpdateLastPrintedProperty bool `json:"UpdateLastPrintedProperty,omitempty"`
+
+    // Container class for xaml flow save options.
+    UpdateLastSavedTimeProperty bool `json:"UpdateLastSavedTimeProperty,omitempty"`
+
+    // Container class for xaml flow save options.
+    UpdateSdtContent bool `json:"UpdateSdtContent,omitempty"`
+
+    // Container class for xaml flow save options.
+    ZipOutput bool `json:"ZipOutput,omitempty"`
+
+    // Container class for xaml flow save options.
+    ImagesFolder string `json:"ImagesFolder,omitempty"`
+
+    // Container class for xaml flow save options.
+    ImagesFolderAlias string `json:"ImagesFolderAlias,omitempty"`
+}
+
+type XamlFlowSaveOptionsData struct {
+    // Container class for xaml flow save options.
+    Dml3DEffectsRenderingMode *string `json:"Dml3DEffectsRenderingMode,omitempty"`
 
     // Container class for xaml flow save options.
     DmlEffectsRenderingMode *string `json:"DmlEffectsRenderingMode,omitempty"`
@@ -76,3 +114,5 @@ func (XamlFlowSaveOptionsData) IsXamlFlowSaveOptionsData() bool {
 func (XamlFlowSaveOptionsData) IsSaveOptionsData() bool {
     return true
 }
+
+

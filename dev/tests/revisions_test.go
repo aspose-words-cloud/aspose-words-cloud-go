@@ -31,6 +31,7 @@ package api_test
 import (
     "github.com/stretchr/testify/assert"
     "testing"
+    "github.com/aspose-words-cloud/aspose-words-cloud-go/dev/api/models"
 )
 
 // Test for accepting revisions in document.
@@ -48,7 +49,13 @@ func Test_Revisions_AcceptAllRevisions(t *testing.T) {
         "folder": remoteDataFolder,
         "destFileName": baseTestOutPath + "/" + remoteFileName,
     }
-    actual, _, err := client.WordsApi.AcceptAllRevisions(ctx, remoteFileName, options)
+
+    request := &models.AcceptAllRevisionsRequest{
+        Name: ToStringPointer(remoteFileName),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.AcceptAllRevisions(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -73,7 +80,13 @@ func Test_Revisions_RejectAllRevisions(t *testing.T) {
         "folder": remoteDataFolder,
         "destFileName": baseTestOutPath + "/" + remoteFileName,
     }
-    actual, _, err := client.WordsApi.RejectAllRevisions(ctx, remoteFileName, options)
+
+    request := &models.RejectAllRevisionsRequest{
+        Name: ToStringPointer(remoteFileName),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.RejectAllRevisions(ctx, request)
 
     if err != nil {
         t.Error(err)

@@ -28,9 +28,17 @@
 package models
 
 // DTO container with a collection of form fields.
+type FormFieldCollectionResult struct {
+    // DTO container with a collection of form fields.
+    Link WordsApiLinkResult `json:"Link,omitempty"`
+
+    // DTO container with a collection of form fields.
+    List []FormFieldResult `json:"List,omitempty"`
+}
+
 type FormFieldCollection struct {
     // DTO container with a collection of form fields.
-    Link *WordsApiLink `json:"Link,omitempty"`
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // DTO container with a collection of form fields.
     List []FormField `json:"List,omitempty"`
@@ -46,3 +54,5 @@ func (FormFieldCollection) IsFormFieldCollection() bool {
 func (FormFieldCollection) IsLinkElement() bool {
     return true
 }
+
+

@@ -30,19 +30,9 @@ package models
 // The REST response with a list information.
 type ListResponse struct {
     // The REST response with a list information.
-    RequestId *string `json:"RequestId,omitempty"`
+    RequestId string `json:"RequestId,omitempty"`
 
     // The REST response with a list information.
-    List *ListInfo `json:"List,omitempty"`
+    List ListInfoResult `json:"List,omitempty"`
 }
 
-type IListResponse interface {
-    IsListResponse() bool
-}
-func (ListResponse) IsListResponse() bool {
-    return true
-}
-
-func (ListResponse) IsWordsResponse() bool {
-    return true
-}

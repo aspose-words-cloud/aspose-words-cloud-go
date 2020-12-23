@@ -28,9 +28,74 @@
 package models
 
 // Container class for xps save options.
-type XpsSaveOptionsData struct {
+type XpsSaveOptionsDataResult struct {
     // Container class for xps save options.
     Dml3DEffectsRenderingMode string `json:"Dml3DEffectsRenderingMode,omitempty"`
+
+    // Container class for xps save options.
+    DmlEffectsRenderingMode string `json:"DmlEffectsRenderingMode,omitempty"`
+
+    // Container class for xps save options.
+    DmlRenderingMode string `json:"DmlRenderingMode,omitempty"`
+
+    // Container class for xps save options.
+    FileName string `json:"FileName,omitempty"`
+
+    // Container class for xps save options.
+    SaveFormat string `json:"SaveFormat,omitempty"`
+
+    // Container class for xps save options.
+    UpdateFields bool `json:"UpdateFields,omitempty"`
+
+    // Container class for xps save options.
+    UpdateLastPrintedProperty bool `json:"UpdateLastPrintedProperty,omitempty"`
+
+    // Container class for xps save options.
+    UpdateLastSavedTimeProperty bool `json:"UpdateLastSavedTimeProperty,omitempty"`
+
+    // Container class for xps save options.
+    UpdateSdtContent bool `json:"UpdateSdtContent,omitempty"`
+
+    // Container class for xps save options.
+    ZipOutput bool `json:"ZipOutput,omitempty"`
+
+    // Container class for xps save options.
+    ColorMode string `json:"ColorMode,omitempty"`
+
+    // Container class for xps save options.
+    JpegQuality int32 `json:"JpegQuality,omitempty"`
+
+    // Container class for xps save options.
+    MetafileRenderingOptions MetafileRenderingOptionsDataResult `json:"MetafileRenderingOptions,omitempty"`
+
+    // Container class for xps save options.
+    NumeralFormat string `json:"NumeralFormat,omitempty"`
+
+    // Container class for xps save options.
+    OptimizeOutput bool `json:"OptimizeOutput,omitempty"`
+
+    // Container class for xps save options.
+    PageCount int32 `json:"PageCount,omitempty"`
+
+    // Container class for xps save options.
+    PageIndex int32 `json:"PageIndex,omitempty"`
+
+    // Container class for xps save options.
+    BookmarksOutlineLevel int32 `json:"BookmarksOutlineLevel,omitempty"`
+
+    // Container class for xps save options.
+    HeadingsOutlineLevels int32 `json:"HeadingsOutlineLevels,omitempty"`
+
+    // Container class for xps save options.
+    OutlineOptions OutlineOptionsDataResult `json:"OutlineOptions,omitempty"`
+
+    // Container class for xps save options.
+    UseBookFoldPrintingSettings bool `json:"UseBookFoldPrintingSettings,omitempty"`
+}
+
+type XpsSaveOptionsData struct {
+    // Container class for xps save options.
+    Dml3DEffectsRenderingMode *string `json:"Dml3DEffectsRenderingMode,omitempty"`
 
     // Container class for xps save options.
     DmlEffectsRenderingMode *string `json:"DmlEffectsRenderingMode,omitempty"`
@@ -66,7 +131,7 @@ type XpsSaveOptionsData struct {
     JpegQuality *int32 `json:"JpegQuality,omitempty"`
 
     // Container class for xps save options.
-    MetafileRenderingOptions *MetafileRenderingOptionsData `json:"MetafileRenderingOptions,omitempty"`
+    MetafileRenderingOptions IMetafileRenderingOptionsData `json:"MetafileRenderingOptions,omitempty"`
 
     // Container class for xps save options.
     NumeralFormat *string `json:"NumeralFormat,omitempty"`
@@ -87,7 +152,7 @@ type XpsSaveOptionsData struct {
     HeadingsOutlineLevels *int32 `json:"HeadingsOutlineLevels,omitempty"`
 
     // Container class for xps save options.
-    OutlineOptions *OutlineOptionsData `json:"OutlineOptions,omitempty"`
+    OutlineOptions IOutlineOptionsData `json:"OutlineOptions,omitempty"`
 
     // Container class for xps save options.
     UseBookFoldPrintingSettings *bool `json:"UseBookFoldPrintingSettings,omitempty"`
@@ -103,3 +168,5 @@ func (XpsSaveOptionsData) IsXpsSaveOptionsData() bool {
 func (XpsSaveOptionsData) IsFixedPageSaveOptionsData() bool {
     return true
 }
+
+

@@ -30,19 +30,9 @@ package models
 // The REST response with a collection of document properties.
 type DocumentPropertiesResponse struct {
     // The REST response with a collection of document properties.
-    RequestId *string `json:"RequestId,omitempty"`
+    RequestId string `json:"RequestId,omitempty"`
 
     // The REST response with a collection of document properties.
-    DocumentProperties *DocumentProperties `json:"DocumentProperties,omitempty"`
+    DocumentProperties DocumentPropertiesResult `json:"DocumentProperties,omitempty"`
 }
 
-type IDocumentPropertiesResponse interface {
-    IsDocumentPropertiesResponse() bool
-}
-func (DocumentPropertiesResponse) IsDocumentPropertiesResponse() bool {
-    return true
-}
-
-func (DocumentPropertiesResponse) IsWordsResponse() bool {
-    return true
-}

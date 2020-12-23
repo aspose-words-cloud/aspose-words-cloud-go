@@ -28,6 +28,11 @@
 package models
 
 // Run element.
+type RunBaseResult struct {
+    // Run element.
+    Text string `json:"Text,omitempty"`
+}
+
 type RunBase struct {
     // Run element.
     Text *string `json:"Text,omitempty"`
@@ -39,4 +44,5 @@ type IRunBase interface {
 func (RunBase) IsRunBase() bool {
     return true
 }
+
 

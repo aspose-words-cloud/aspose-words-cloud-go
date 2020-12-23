@@ -48,12 +48,18 @@ func Test_LoadWebDocument_LoadWebDocument(t *testing.T) {
     }
     requestData := models.LoadWebDocumentData{
         LoadingDocumentUrl: ToStringPointer("http://google.com"),
-        SaveOptions: &requestDataSaveOptions,
+        SaveOptions: requestDataSaveOptions,
     }
 
     options := map[string]interface{}{
     }
-    actual, _, err := client.WordsApi.LoadWebDocument(ctx, requestData, options)
+
+    request := &models.LoadWebDocumentRequest{
+        Data: requestData,
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.LoadWebDocument(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -61,5 +67,5 @@ func Test_LoadWebDocument_LoadWebDocument(t *testing.T) {
 
     assert.NotNil(t, actual.SaveResult, "Validate LoadWebDocument response.");
     assert.NotNil(t, actual.SaveResult.DestDocument, "Validate LoadWebDocument response.");
-    assert.Equal(t, "google.doc", *actual.SaveResult.DestDocument.Href, "Validate LoadWebDocument response.");
+    assert.Equal(t, "google.doc", actual.SaveResult.DestDocument.Href, "Validate LoadWebDocument response.");
 }

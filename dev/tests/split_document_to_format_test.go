@@ -31,6 +31,7 @@ package api_test
 import (
     "github.com/stretchr/testify/assert"
     "testing"
+    "github.com/aspose-words-cloud/aspose-words-cloud-go/dev/api/models"
 )
 
 // Test for document splitting.
@@ -50,7 +51,14 @@ func Test_SplitDocumentToFormat_SplitDocument(t *testing.T) {
         "from": int32(1),
         "to": int32(2),
     }
-    actual, _, err := client.WordsApi.SplitDocument(ctx, remoteFileName, "text", options)
+
+    request := &models.SplitDocumentRequest{
+        Name: ToStringPointer(remoteFileName),
+        Format: ToStringPointer("text"),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.SplitDocument(ctx, request)
 
     if err != nil {
         t.Error(err)

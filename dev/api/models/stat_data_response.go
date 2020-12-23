@@ -30,22 +30,12 @@ package models
 // The REST response with document's statistical data.
 type StatDataResponse struct {
     // The REST response with document's statistical data.
-    RequestId *string `json:"RequestId,omitempty"`
+    RequestId string `json:"RequestId,omitempty"`
 
     // The REST response with document's statistical data.
-    DocumentLink *FileLink `json:"DocumentLink,omitempty"`
+    DocumentLink FileLinkResult `json:"DocumentLink,omitempty"`
 
     // The REST response with document's statistical data.
-    StatData *DocumentStatData `json:"StatData,omitempty"`
+    StatData DocumentStatDataResult `json:"StatData,omitempty"`
 }
 
-type IStatDataResponse interface {
-    IsStatDataResponse() bool
-}
-func (StatDataResponse) IsStatDataResponse() bool {
-    return true
-}
-
-func (StatDataResponse) IsWordsResponse() bool {
-    return true
-}

@@ -28,15 +28,26 @@
 package models
 
 // DTO container with a paragraph format shading element.
-type Shading struct {
+type ShadingResult struct {
     // DTO container with a paragraph format shading element.
-    BackgroundPatternColor *XmlColor `json:"BackgroundPatternColor,omitempty"`
+    BackgroundPatternColor XmlColorResult `json:"BackgroundPatternColor,omitempty"`
 
     // DTO container with a paragraph format shading element.
-    ForegroundPatternColor *XmlColor `json:"ForegroundPatternColor,omitempty"`
+    ForegroundPatternColor XmlColorResult `json:"ForegroundPatternColor,omitempty"`
 
     // DTO container with a paragraph format shading element.
     Texture string `json:"Texture,omitempty"`
+}
+
+type Shading struct {
+    // DTO container with a paragraph format shading element.
+    BackgroundPatternColor IXmlColor `json:"BackgroundPatternColor,omitempty"`
+
+    // DTO container with a paragraph format shading element.
+    ForegroundPatternColor IXmlColor `json:"ForegroundPatternColor,omitempty"`
+
+    // DTO container with a paragraph format shading element.
+    Texture *string `json:"Texture,omitempty"`
 }
 
 type IShading interface {
@@ -45,4 +56,5 @@ type IShading interface {
 func (Shading) IsShading() bool {
     return true
 }
+
 

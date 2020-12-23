@@ -30,19 +30,9 @@ package models
 // The REST response with a collection of form fields.
 type FormFieldsResponse struct {
     // The REST response with a collection of form fields.
-    RequestId *string `json:"RequestId,omitempty"`
+    RequestId string `json:"RequestId,omitempty"`
 
     // The REST response with a collection of form fields.
-    FormFields *FormFieldCollection `json:"FormFields,omitempty"`
+    FormFields FormFieldCollectionResult `json:"FormFields,omitempty"`
 }
 
-type IFormFieldsResponse interface {
-    IsFormFieldsResponse() bool
-}
-func (FormFieldsResponse) IsFormFieldsResponse() bool {
-    return true
-}
-
-func (FormFieldsResponse) IsWordsResponse() bool {
-    return true
-}

@@ -28,12 +28,20 @@
 package models
 
 // HeaderFooter link element.
-type HeaderFooterLink struct {
+type HeaderFooterLinkResult struct {
     // HeaderFooter link element.
-    Link *WordsApiLink `json:"Link,omitempty"`
+    Link WordsApiLinkResult `json:"Link,omitempty"`
 
     // HeaderFooter link element.
     Type string `json:"Type,omitempty"`
+}
+
+type HeaderFooterLink struct {
+    // HeaderFooter link element.
+    Link IWordsApiLink `json:"Link,omitempty"`
+
+    // HeaderFooter link element.
+    Type *string `json:"Type,omitempty"`
 }
 
 type IHeaderFooterLink interface {
@@ -46,3 +54,5 @@ func (HeaderFooterLink) IsHeaderFooterLink() bool {
 func (HeaderFooterLink) IsLinkElement() bool {
     return true
 }
+
+

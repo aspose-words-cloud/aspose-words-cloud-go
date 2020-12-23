@@ -28,9 +28,101 @@
 package models
 
 // Container class for jpeg save options.
-type JpegSaveOptionsData struct {
+type JpegSaveOptionsDataResult struct {
     // Container class for jpeg save options.
     Dml3DEffectsRenderingMode string `json:"Dml3DEffectsRenderingMode,omitempty"`
+
+    // Container class for jpeg save options.
+    DmlEffectsRenderingMode string `json:"DmlEffectsRenderingMode,omitempty"`
+
+    // Container class for jpeg save options.
+    DmlRenderingMode string `json:"DmlRenderingMode,omitempty"`
+
+    // Container class for jpeg save options.
+    FileName string `json:"FileName,omitempty"`
+
+    // Container class for jpeg save options.
+    SaveFormat string `json:"SaveFormat,omitempty"`
+
+    // Container class for jpeg save options.
+    UpdateFields bool `json:"UpdateFields,omitempty"`
+
+    // Container class for jpeg save options.
+    UpdateLastPrintedProperty bool `json:"UpdateLastPrintedProperty,omitempty"`
+
+    // Container class for jpeg save options.
+    UpdateLastSavedTimeProperty bool `json:"UpdateLastSavedTimeProperty,omitempty"`
+
+    // Container class for jpeg save options.
+    UpdateSdtContent bool `json:"UpdateSdtContent,omitempty"`
+
+    // Container class for jpeg save options.
+    ZipOutput bool `json:"ZipOutput,omitempty"`
+
+    // Container class for jpeg save options.
+    ColorMode string `json:"ColorMode,omitempty"`
+
+    // Container class for jpeg save options.
+    JpegQuality int32 `json:"JpegQuality,omitempty"`
+
+    // Container class for jpeg save options.
+    MetafileRenderingOptions MetafileRenderingOptionsDataResult `json:"MetafileRenderingOptions,omitempty"`
+
+    // Container class for jpeg save options.
+    NumeralFormat string `json:"NumeralFormat,omitempty"`
+
+    // Container class for jpeg save options.
+    OptimizeOutput bool `json:"OptimizeOutput,omitempty"`
+
+    // Container class for jpeg save options.
+    PageCount int32 `json:"PageCount,omitempty"`
+
+    // Container class for jpeg save options.
+    PageIndex int32 `json:"PageIndex,omitempty"`
+
+    // Container class for jpeg save options.
+    GraphicsQualityOptions GraphicsQualityOptionsDataResult `json:"GraphicsQualityOptions,omitempty"`
+
+    // Container class for jpeg save options.
+    HorizontalResolution float64 `json:"HorizontalResolution,omitempty"`
+
+    // Container class for jpeg save options.
+    ImageBrightness float64 `json:"ImageBrightness,omitempty"`
+
+    // Container class for jpeg save options.
+    ImageColorMode string `json:"ImageColorMode,omitempty"`
+
+    // Container class for jpeg save options.
+    ImageContrast float64 `json:"ImageContrast,omitempty"`
+
+    // Container class for jpeg save options.
+    PaperColor string `json:"PaperColor,omitempty"`
+
+    // Container class for jpeg save options.
+    PixelFormat string `json:"PixelFormat,omitempty"`
+
+    // Container class for jpeg save options.
+    Resolution float64 `json:"Resolution,omitempty"`
+
+    // Container class for jpeg save options.
+    Scale float64 `json:"Scale,omitempty"`
+
+    // Container class for jpeg save options.
+    UseAntiAliasing bool `json:"UseAntiAliasing,omitempty"`
+
+    // Container class for jpeg save options.
+    UseGdiEmfRenderer bool `json:"UseGdiEmfRenderer,omitempty"`
+
+    // Container class for jpeg save options.
+    UseHighQualityRendering bool `json:"UseHighQualityRendering,omitempty"`
+
+    // Container class for jpeg save options.
+    VerticalResolution float64 `json:"VerticalResolution,omitempty"`
+}
+
+type JpegSaveOptionsData struct {
+    // Container class for jpeg save options.
+    Dml3DEffectsRenderingMode *string `json:"Dml3DEffectsRenderingMode,omitempty"`
 
     // Container class for jpeg save options.
     DmlEffectsRenderingMode *string `json:"DmlEffectsRenderingMode,omitempty"`
@@ -66,7 +158,7 @@ type JpegSaveOptionsData struct {
     JpegQuality *int32 `json:"JpegQuality,omitempty"`
 
     // Container class for jpeg save options.
-    MetafileRenderingOptions *MetafileRenderingOptionsData `json:"MetafileRenderingOptions,omitempty"`
+    MetafileRenderingOptions IMetafileRenderingOptionsData `json:"MetafileRenderingOptions,omitempty"`
 
     // Container class for jpeg save options.
     NumeralFormat *string `json:"NumeralFormat,omitempty"`
@@ -81,7 +173,7 @@ type JpegSaveOptionsData struct {
     PageIndex *int32 `json:"PageIndex,omitempty"`
 
     // Container class for jpeg save options.
-    GraphicsQualityOptions *GraphicsQualityOptionsData `json:"GraphicsQualityOptions,omitempty"`
+    GraphicsQualityOptions IGraphicsQualityOptionsData `json:"GraphicsQualityOptions,omitempty"`
 
     // Container class for jpeg save options.
     HorizontalResolution *float64 `json:"HorizontalResolution,omitempty"`
@@ -130,3 +222,5 @@ func (JpegSaveOptionsData) IsJpegSaveOptionsData() bool {
 func (JpegSaveOptionsData) IsImageSaveOptionsData() bool {
     return true
 }
+
+

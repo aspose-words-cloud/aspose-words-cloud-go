@@ -31,6 +31,7 @@ package api_test
 import (
     "github.com/stretchr/testify/assert"
     "testing"
+    "github.com/aspose-words-cloud/aspose-words-cloud-go/dev/api/models"
 )
 
 // Test for getting section by index.
@@ -47,7 +48,14 @@ func Test_Section_GetSection(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    actual, _, err := client.WordsApi.GetSection(ctx, remoteFileName, int32(0), options)
+
+    request := &models.GetSectionRequest{
+        Name: ToStringPointer(remoteFileName),
+        SectionIndex: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.GetSection(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -56,7 +64,7 @@ func Test_Section_GetSection(t *testing.T) {
     assert.NotNil(t, actual.Section, "Validate GetSection response.");
     assert.NotNil(t, actual.Section.ChildNodes, "Validate GetSection response.");
     assert.Equal(t, 13, len(actual.Section.ChildNodes), "Validate GetSection response.");
-    assert.Equal(t, "0.3.0", *actual.Section.ChildNodes[0].NodeId, "Validate GetSection response.");
+    assert.Equal(t, "0.3.0", actual.Section.ChildNodes[0].NodeId, "Validate GetSection response.");
 }
 
 // Test for getting sections.
@@ -73,7 +81,13 @@ func Test_Section_GetSections(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    actual, _, err := client.WordsApi.GetSections(ctx, remoteFileName, options)
+
+    request := &models.GetSectionsRequest{
+        Name: ToStringPointer(remoteFileName),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.GetSections(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -82,7 +96,7 @@ func Test_Section_GetSections(t *testing.T) {
     assert.NotNil(t, actual.Sections, "Validate GetSections response.");
     assert.NotNil(t, actual.Sections.SectionLinkList, "Validate GetSections response.");
     assert.Equal(t, 1, len(actual.Sections.SectionLinkList), "Validate GetSections response.");
-    assert.Equal(t, "0", *actual.Sections.SectionLinkList[0].NodeId, "Validate GetSections response.");
+    assert.Equal(t, "0", actual.Sections.SectionLinkList[0].NodeId, "Validate GetSections response.");
 }
 
 // Test for delete a section.
@@ -99,7 +113,14 @@ func Test_Section_DeleteSection(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, err := client.WordsApi.DeleteSection(ctx, remoteFileName, int32(0), options)
+
+    request := &models.DeleteSectionRequest{
+        Name: ToStringPointer(remoteFileName),
+        SectionIndex: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    _, err := client.WordsApi.DeleteSection(ctx, request)
 
     if err != nil {
         t.Error(err)

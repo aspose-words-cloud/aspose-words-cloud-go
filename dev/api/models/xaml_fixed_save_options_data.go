@@ -28,9 +28,68 @@
 package models
 
 // Container class for xaml fixed save options.
-type XamlFixedSaveOptionsData struct {
+type XamlFixedSaveOptionsDataResult struct {
     // Container class for xaml fixed save options.
     Dml3DEffectsRenderingMode string `json:"Dml3DEffectsRenderingMode,omitempty"`
+
+    // Container class for xaml fixed save options.
+    DmlEffectsRenderingMode string `json:"DmlEffectsRenderingMode,omitempty"`
+
+    // Container class for xaml fixed save options.
+    DmlRenderingMode string `json:"DmlRenderingMode,omitempty"`
+
+    // Container class for xaml fixed save options.
+    FileName string `json:"FileName,omitempty"`
+
+    // Container class for xaml fixed save options.
+    SaveFormat string `json:"SaveFormat,omitempty"`
+
+    // Container class for xaml fixed save options.
+    UpdateFields bool `json:"UpdateFields,omitempty"`
+
+    // Container class for xaml fixed save options.
+    UpdateLastPrintedProperty bool `json:"UpdateLastPrintedProperty,omitempty"`
+
+    // Container class for xaml fixed save options.
+    UpdateLastSavedTimeProperty bool `json:"UpdateLastSavedTimeProperty,omitempty"`
+
+    // Container class for xaml fixed save options.
+    UpdateSdtContent bool `json:"UpdateSdtContent,omitempty"`
+
+    // Container class for xaml fixed save options.
+    ZipOutput bool `json:"ZipOutput,omitempty"`
+
+    // Container class for xaml fixed save options.
+    ColorMode string `json:"ColorMode,omitempty"`
+
+    // Container class for xaml fixed save options.
+    JpegQuality int32 `json:"JpegQuality,omitempty"`
+
+    // Container class for xaml fixed save options.
+    MetafileRenderingOptions MetafileRenderingOptionsDataResult `json:"MetafileRenderingOptions,omitempty"`
+
+    // Container class for xaml fixed save options.
+    NumeralFormat string `json:"NumeralFormat,omitempty"`
+
+    // Container class for xaml fixed save options.
+    OptimizeOutput bool `json:"OptimizeOutput,omitempty"`
+
+    // Container class for xaml fixed save options.
+    PageCount int32 `json:"PageCount,omitempty"`
+
+    // Container class for xaml fixed save options.
+    PageIndex int32 `json:"PageIndex,omitempty"`
+
+    // Container class for xaml fixed save options.
+    ResourcesFolder string `json:"ResourcesFolder,omitempty"`
+
+    // Container class for xaml fixed save options.
+    ResourcesFolderAlias string `json:"ResourcesFolderAlias,omitempty"`
+}
+
+type XamlFixedSaveOptionsData struct {
+    // Container class for xaml fixed save options.
+    Dml3DEffectsRenderingMode *string `json:"Dml3DEffectsRenderingMode,omitempty"`
 
     // Container class for xaml fixed save options.
     DmlEffectsRenderingMode *string `json:"DmlEffectsRenderingMode,omitempty"`
@@ -66,7 +125,7 @@ type XamlFixedSaveOptionsData struct {
     JpegQuality *int32 `json:"JpegQuality,omitempty"`
 
     // Container class for xaml fixed save options.
-    MetafileRenderingOptions *MetafileRenderingOptionsData `json:"MetafileRenderingOptions,omitempty"`
+    MetafileRenderingOptions IMetafileRenderingOptionsData `json:"MetafileRenderingOptions,omitempty"`
 
     // Container class for xaml fixed save options.
     NumeralFormat *string `json:"NumeralFormat,omitempty"`
@@ -97,3 +156,5 @@ func (XamlFixedSaveOptionsData) IsXamlFixedSaveOptionsData() bool {
 func (XamlFixedSaveOptionsData) IsFixedPageSaveOptionsData() bool {
     return true
 }
+
+

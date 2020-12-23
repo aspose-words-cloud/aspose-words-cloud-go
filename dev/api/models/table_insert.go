@@ -28,12 +28,23 @@
 package models
 
 // DTO container with a table element.
+type TableInsertResult struct {
+    // DTO container with a table element.
+    ColumnsCount int32 `json:"ColumnsCount,omitempty"`
+
+    // DTO container with a table element.
+    Position DocumentPositionResult `json:"Position,omitempty"`
+
+    // DTO container with a table element.
+    RowsCount int32 `json:"RowsCount,omitempty"`
+}
+
 type TableInsert struct {
     // DTO container with a table element.
     ColumnsCount *int32 `json:"ColumnsCount,omitempty"`
 
     // DTO container with a table element.
-    Position *DocumentPosition `json:"Position,omitempty"`
+    Position IDocumentPosition `json:"Position,omitempty"`
 
     // DTO container with a table element.
     RowsCount *int32 `json:"RowsCount,omitempty"`
@@ -45,4 +56,5 @@ type ITableInsert interface {
 func (TableInsert) IsTableInsert() bool {
     return true
 }
+
 

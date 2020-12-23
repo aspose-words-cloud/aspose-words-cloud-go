@@ -37,10 +37,3 @@ const (
     REMOVEEMPTYPARAGRAPHS ReportBuildOptions = "RemoveEmptyParagraphs"
     INLINEERRORMESSAGES ReportBuildOptions = "InlineErrorMessages"
 )
-type IReportBuildOptions interface {
-    IsReportBuildOptions() bool
-}
-func (ReportBuildOptions) IsReportBuildOptions() bool {
-    return true
-}
-

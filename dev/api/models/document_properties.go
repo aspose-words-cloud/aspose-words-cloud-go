@@ -28,9 +28,17 @@
 package models
 
 // The collection of document properties.
+type DocumentPropertiesResult struct {
+    // The collection of document properties.
+    Link WordsApiLinkResult `json:"Link,omitempty"`
+
+    // The collection of document properties.
+    List []DocumentPropertyResult `json:"List,omitempty"`
+}
+
 type DocumentProperties struct {
     // The collection of document properties.
-    Link *WordsApiLink `json:"Link,omitempty"`
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // The collection of document properties.
     List []DocumentProperty `json:"List,omitempty"`
@@ -46,3 +54,5 @@ func (DocumentProperties) IsDocumentProperties() bool {
 func (DocumentProperties) IsLinkElement() bool {
     return true
 }
+
+

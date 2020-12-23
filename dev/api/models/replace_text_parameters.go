@@ -28,6 +28,23 @@
 package models
 
 // Class for document replace text request building.
+type ReplaceTextParametersResult struct {
+    // Class for document replace text request building.
+    IsMatchCase bool `json:"IsMatchCase,omitempty"`
+
+    // Class for document replace text request building.
+    IsMatchWholeWord bool `json:"IsMatchWholeWord,omitempty"`
+
+    // Class for document replace text request building.
+    IsOldValueRegex bool `json:"IsOldValueRegex,omitempty"`
+
+    // Class for document replace text request building.
+    NewValue string `json:"NewValue,omitempty"`
+
+    // Class for document replace text request building.
+    OldValue string `json:"OldValue,omitempty"`
+}
+
 type ReplaceTextParameters struct {
     // Class for document replace text request building.
     IsMatchCase *bool `json:"IsMatchCase,omitempty"`
@@ -51,4 +68,5 @@ type IReplaceTextParameters interface {
 func (ReplaceTextParameters) IsReplaceTextParameters() bool {
     return true
 }
+
 

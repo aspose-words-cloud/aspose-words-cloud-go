@@ -30,19 +30,9 @@ package models
 // The REST response with a collection of DrawingObjects.
 type DrawingObjectsResponse struct {
     // The REST response with a collection of DrawingObjects.
-    RequestId *string `json:"RequestId,omitempty"`
+    RequestId string `json:"RequestId,omitempty"`
 
     // The REST response with a collection of DrawingObjects.
-    DrawingObjects *DrawingObjectCollection `json:"DrawingObjects,omitempty"`
+    DrawingObjects DrawingObjectCollectionResult `json:"DrawingObjects,omitempty"`
 }
 
-type IDrawingObjectsResponse interface {
-    IsDrawingObjectsResponse() bool
-}
-func (DrawingObjectsResponse) IsDrawingObjectsResponse() bool {
-    return true
-}
-
-func (DrawingObjectsResponse) IsWordsResponse() bool {
-    return true
-}

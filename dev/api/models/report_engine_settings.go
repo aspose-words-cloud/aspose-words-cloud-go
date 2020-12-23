@@ -28,15 +28,29 @@
 package models
 
 // Report engine settings.
+type ReportEngineSettingsResult struct {
+    // Report engine settings.
+    CsvDataLoadOptions CsvDataLoadOptionsResult `json:"CsvDataLoadOptions,omitempty"`
+
+    // Report engine settings.
+    DataSourceName string `json:"DataSourceName,omitempty"`
+
+    // Report engine settings.
+    DataSourceType string `json:"DataSourceType,omitempty"`
+
+    // Report engine settings.
+    ReportBuildOptions []string `json:"ReportBuildOptions,omitempty"`
+}
+
 type ReportEngineSettings struct {
     // Report engine settings.
-    CsvDataLoadOptions *CsvDataLoadOptions `json:"CsvDataLoadOptions,omitempty"`
+    CsvDataLoadOptions ICsvDataLoadOptions `json:"CsvDataLoadOptions,omitempty"`
 
     // Report engine settings.
     DataSourceName *string `json:"DataSourceName,omitempty"`
 
     // Report engine settings.
-    DataSourceType string `json:"DataSourceType,omitempty"`
+    DataSourceType *string `json:"DataSourceType,omitempty"`
 
     // Report engine settings.
     ReportBuildOptions []string `json:"ReportBuildOptions,omitempty"`
@@ -48,4 +62,5 @@ type IReportEngineSettings interface {
 func (ReportEngineSettings) IsReportEngineSettings() bool {
     return true
 }
+
 

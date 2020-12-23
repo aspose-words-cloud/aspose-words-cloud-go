@@ -28,6 +28,14 @@
 package models
 
 // Class for insert watermark text request building.
+type WatermarkTextResult struct {
+    // Class for insert watermark text request building.
+    RotationAngle float64 `json:"RotationAngle,omitempty"`
+
+    // Class for insert watermark text request building.
+    Text string `json:"Text,omitempty"`
+}
+
 type WatermarkText struct {
     // Class for insert watermark text request building.
     RotationAngle *float64 `json:"RotationAngle,omitempty"`
@@ -42,4 +50,5 @@ type IWatermarkText interface {
 func (WatermarkText) IsWatermarkText() bool {
     return true
 }
+
 

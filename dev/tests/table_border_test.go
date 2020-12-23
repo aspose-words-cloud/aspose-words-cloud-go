@@ -49,7 +49,13 @@ func Test_TableBorder_GetBorders(t *testing.T) {
         "nodePath": "tables/1/rows/0/cells/0",
         "folder": remoteDataFolder,
     }
-    actual, _, err := client.WordsApi.GetBorders(ctx, remoteFileName, options)
+
+    request := &models.GetBordersRequest{
+        Name: ToStringPointer(remoteFileName),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.GetBorders(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -59,7 +65,7 @@ func Test_TableBorder_GetBorders(t *testing.T) {
     assert.NotNil(t, actual.Borders.List, "Validate GetBorders response.");
     assert.Equal(t, 6, len(actual.Borders.List), "Validate GetBorders response.");
     assert.NotNil(t, actual.Borders.List[0].Color, "Validate GetBorders response.");
-    assert.Equal(t, "#000000", *actual.Borders.List[0].Color.Web, "Validate GetBorders response.");
+    assert.Equal(t, "#000000", actual.Borders.List[0].Color.Web, "Validate GetBorders response.");
 }
 
 // Test for getting border.
@@ -77,7 +83,14 @@ func Test_TableBorder_GetBorder(t *testing.T) {
         "nodePath": "tables/1/rows/0/cells/0",
         "folder": remoteDataFolder,
     }
-    actual, _, err := client.WordsApi.GetBorder(ctx, remoteFileName, "left", options)
+
+    request := &models.GetBorderRequest{
+        Name: ToStringPointer(remoteFileName),
+        BorderType: ToStringPointer("left"),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.GetBorder(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -85,7 +98,7 @@ func Test_TableBorder_GetBorder(t *testing.T) {
 
     assert.NotNil(t, actual.Border, "Validate GetBorder response.");
     assert.NotNil(t, actual.Border.Color, "Validate GetBorder response.");
-    assert.Equal(t, "#000000", *actual.Border.Color.Web, "Validate GetBorder response.");
+    assert.Equal(t, "#000000", actual.Border.Color.Web, "Validate GetBorder response.");
 }
 
 // Test for deleting borders.
@@ -103,7 +116,13 @@ func Test_TableBorder_DeleteBorders(t *testing.T) {
         "nodePath": "tables/1/rows/0/cells/0",
         "folder": remoteDataFolder,
     }
-    actual, _, err := client.WordsApi.DeleteBorders(ctx, remoteFileName, options)
+
+    request := &models.DeleteBordersRequest{
+        Name: ToStringPointer(remoteFileName),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.DeleteBorders(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -113,7 +132,7 @@ func Test_TableBorder_DeleteBorders(t *testing.T) {
     assert.NotNil(t, actual.Borders.List, "Validate DeleteBorders response.");
     assert.Equal(t, 6, len(actual.Borders.List), "Validate DeleteBorders response.");
     assert.NotNil(t, actual.Borders.List[0].Color, "Validate DeleteBorders response.");
-    assert.Equal(t, "", *actual.Borders.List[0].Color.Web, "Validate DeleteBorders response.");
+    assert.Equal(t, "", actual.Borders.List[0].Color.Web, "Validate DeleteBorders response.");
 }
 
 // Test for deleting border.
@@ -131,7 +150,14 @@ func Test_TableBorder_DeleteBorder(t *testing.T) {
         "nodePath": "tables/1/rows/0/cells/0",
         "folder": remoteDataFolder,
     }
-    actual, _, err := client.WordsApi.DeleteBorder(ctx, remoteFileName, "left", options)
+
+    request := &models.DeleteBorderRequest{
+        Name: ToStringPointer(remoteFileName),
+        BorderType: ToStringPointer("left"),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.DeleteBorder(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -139,7 +165,7 @@ func Test_TableBorder_DeleteBorder(t *testing.T) {
 
     assert.NotNil(t, actual.Border, "Validate DeleteBorder response.");
     assert.NotNil(t, actual.Border.Color, "Validate DeleteBorder response.");
-    assert.Equal(t, "", *actual.Border.Color.Web, "Validate DeleteBorder response.");
+    assert.Equal(t, "", actual.Border.Color.Web, "Validate DeleteBorder response.");
 }
 
 // Test for updating border.
@@ -156,10 +182,10 @@ func Test_TableBorder_UpdateBorder(t *testing.T) {
         Web: ToStringPointer("#AABBCC"),
     }
     requestBorderProperties := models.Border{
-        BorderType: "Left",
-        Color: &requestBorderPropertiesColor,
+        BorderType: ToStringPointer("Left"),
+        Color: requestBorderPropertiesColor,
         DistanceFromText: ToFloat64Pointer(6.0),
-        LineStyle: "DashDotStroker",
+        LineStyle: ToStringPointer("DashDotStroker"),
         LineWidth: ToFloat64Pointer(2.0),
         Shadow: ToBoolPointer(true),
     }
@@ -168,7 +194,15 @@ func Test_TableBorder_UpdateBorder(t *testing.T) {
         "nodePath": "tables/1/rows/0/cells/0",
         "folder": remoteDataFolder,
     }
-    actual, _, err := client.WordsApi.UpdateBorder(ctx, remoteFileName, requestBorderProperties, "left", options)
+
+    request := &models.UpdateBorderRequest{
+        Name: ToStringPointer(remoteFileName),
+        BorderProperties: requestBorderProperties,
+        BorderType: ToStringPointer("left"),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.UpdateBorder(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -176,8 +210,8 @@ func Test_TableBorder_UpdateBorder(t *testing.T) {
 
     assert.NotNil(t, actual.Border, "Validate UpdateBorder response.");
     assert.NotNil(t, actual.Border.Color, "Validate UpdateBorder response.");
-    assert.Equal(t, "#AABBCC", *actual.Border.Color.Web, "Validate UpdateBorder response.");
-    assert.Equal(t, 6.0, *actual.Border.DistanceFromText, "Validate UpdateBorder response.");
-    assert.Equal(t, 2.0, *actual.Border.LineWidth, "Validate UpdateBorder response.");
-    assert.True(t, *actual.Border.Shadow, "Validate UpdateBorder response.");
+    assert.Equal(t, "#AABBCC", actual.Border.Color.Web, "Validate UpdateBorder response.");
+    assert.Equal(t, 6.0, actual.Border.DistanceFromText, "Validate UpdateBorder response.");
+    assert.Equal(t, 2.0, actual.Border.LineWidth, "Validate UpdateBorder response.");
+    assert.True(t, actual.Border.Shadow, "Validate UpdateBorder response.");
 }

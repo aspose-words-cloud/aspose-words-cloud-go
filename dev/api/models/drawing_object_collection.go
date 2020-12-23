@@ -28,9 +28,17 @@
 package models
 
 // DTO container with a collection of DrawingObjects links.
+type DrawingObjectCollectionResult struct {
+    // DTO container with a collection of DrawingObjects links.
+    Link WordsApiLinkResult `json:"Link,omitempty"`
+
+    // DTO container with a collection of DrawingObjects links.
+    List []LinkElementResult `json:"List,omitempty"`
+}
+
 type DrawingObjectCollection struct {
     // DTO container with a collection of DrawingObjects links.
-    Link *WordsApiLink `json:"Link,omitempty"`
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // DTO container with a collection of DrawingObjects links.
     List []LinkElement `json:"List,omitempty"`
@@ -46,3 +54,5 @@ func (DrawingObjectCollection) IsDrawingObjectCollection() bool {
 func (DrawingObjectCollection) IsLinkElement() bool {
     return true
 }
+
+

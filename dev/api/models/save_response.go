@@ -30,19 +30,9 @@ package models
 // The REST response with a save result.
 type SaveResponse struct {
     // The REST response with a save result.
-    RequestId *string `json:"RequestId,omitempty"`
+    RequestId string `json:"RequestId,omitempty"`
 
     // The REST response with a save result.
-    SaveResult *SaveResult `json:"SaveResult,omitempty"`
+    SaveResult SaveResultResult `json:"SaveResult,omitempty"`
 }
 
-type ISaveResponse interface {
-    IsSaveResponse() bool
-}
-func (SaveResponse) IsSaveResponse() bool {
-    return true
-}
-
-func (SaveResponse) IsWordsResponse() bool {
-    return true
-}

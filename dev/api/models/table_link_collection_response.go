@@ -30,19 +30,9 @@ package models
 // The REST response with a collection of tables.
 type TableLinkCollectionResponse struct {
     // The REST response with a collection of tables.
-    RequestId *string `json:"RequestId,omitempty"`
+    RequestId string `json:"RequestId,omitempty"`
 
     // The REST response with a collection of tables.
-    Tables *TableLinkCollection `json:"Tables,omitempty"`
+    Tables TableLinkCollectionResult `json:"Tables,omitempty"`
 }
 
-type ITableLinkCollectionResponse interface {
-    IsTableLinkCollectionResponse() bool
-}
-func (TableLinkCollectionResponse) IsTableLinkCollectionResponse() bool {
-    return true
-}
-
-func (TableLinkCollectionResponse) IsWordsResponse() bool {
-    return true
-}

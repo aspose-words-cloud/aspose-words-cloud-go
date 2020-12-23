@@ -43,13 +43,21 @@ func Test_BuildReport_BuildReportOnline(t *testing.T) {
     localDataFile := ReadFile(t, reportingFolder + "/ReportData.json")
 
     requestReportEngineSettings := models.ReportEngineSettings{
-        DataSourceType: "Json",
+        DataSourceType: ToStringPointer("Json"),
         DataSourceName: ToStringPointer("persons"),
     }
 
     options := map[string]interface{}{
     }
-    _, err := client.WordsApi.BuildReportOnline(ctx, OpenFile(t, reportingFolder + "/" + localDocumentFile), localDataFile, requestReportEngineSettings, options)
+
+    request := &models.BuildReportOnlineRequest{
+        Template: OpenFile(t, reportingFolder + "/" + localDocumentFile),
+        Data: ToStringPointer(localDataFile),
+        ReportEngineSettings: requestReportEngineSettings,
+        Optionals: options,
+    }
+
+    _, err := client.WordsApi.BuildReportOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -74,19 +82,27 @@ func Test_BuildReport_BuildReport(t *testing.T) {
         "RemoveEmptyParagraphs",
     }
     requestReportEngineSettings := models.ReportEngineSettings{
-        DataSourceType: "Json",
+        DataSourceType: ToStringPointer("Json"),
         ReportBuildOptions: requestReportEngineSettingsReportBuildOptions,
     }
 
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    actual, _, err := client.WordsApi.BuildReport(ctx, remoteFileName, localDataFile, requestReportEngineSettings, options)
+
+    request := &models.BuildReportRequest{
+        Name: ToStringPointer(remoteFileName),
+        Data: ToStringPointer(localDataFile),
+        ReportEngineSettings: requestReportEngineSettings,
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.BuildReport(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
 
     assert.NotNil(t, actual.Document, "Validate BuildReport response.");
-    assert.Equal(t, "TestBuildReport.docx", *actual.Document.FileName, "Validate BuildReport response.");
+    assert.Equal(t, "TestBuildReport.docx", actual.Document.FileName, "Validate BuildReport response.");
 }

@@ -30,25 +30,15 @@ package models
 // The REST response with data on system, additional and custom fonts, available for document processing.
 type AvailableFontsResponse struct {
     // The REST response with data on system, additional and custom fonts, available for document processing.
-    RequestId *string `json:"RequestId,omitempty"`
+    RequestId string `json:"RequestId,omitempty"`
 
     // The REST response with data on system, additional and custom fonts, available for document processing.
-    AdditionalFonts []FontInfo `json:"AdditionalFonts,omitempty"`
+    AdditionalFonts []FontInfoResult `json:"AdditionalFonts,omitempty"`
 
     // The REST response with data on system, additional and custom fonts, available for document processing.
-    CustomFonts []FontInfo `json:"CustomFonts,omitempty"`
+    CustomFonts []FontInfoResult `json:"CustomFonts,omitempty"`
 
     // The REST response with data on system, additional and custom fonts, available for document processing.
-    SystemFonts []FontInfo `json:"SystemFonts,omitempty"`
+    SystemFonts []FontInfoResult `json:"SystemFonts,omitempty"`
 }
 
-type IAvailableFontsResponse interface {
-    IsAvailableFontsResponse() bool
-}
-func (AvailableFontsResponse) IsAvailableFontsResponse() bool {
-    return true
-}
-
-func (AvailableFontsResponse) IsWordsResponse() bool {
-    return true
-}

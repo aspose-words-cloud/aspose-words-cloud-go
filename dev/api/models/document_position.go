@@ -28,9 +28,17 @@
 package models
 
 // DTO container with a position in the document tree.
+type DocumentPositionResult struct {
+    // DTO container with a position in the document tree.
+    Node NodeLinkResult `json:"Node,omitempty"`
+
+    // DTO container with a position in the document tree.
+    Offset int32 `json:"Offset,omitempty"`
+}
+
 type DocumentPosition struct {
     // DTO container with a position in the document tree.
-    Node *NodeLink `json:"Node,omitempty"`
+    Node INodeLink `json:"Node,omitempty"`
 
     // DTO container with a position in the document tree.
     Offset *int32 `json:"Offset,omitempty"`
@@ -42,4 +50,5 @@ type IDocumentPosition interface {
 func (DocumentPosition) IsDocumentPosition() bool {
     return true
 }
+
 

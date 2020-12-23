@@ -30,19 +30,9 @@ package models
 // The REST response with a result of the modification operations for the revisions collection (now these are acceptAll and rejectAll).
 type RevisionsModificationResponse struct {
     // The REST response with a result of the modification operations for the revisions collection (now these are acceptAll and rejectAll).
-    RequestId *string `json:"RequestId,omitempty"`
+    RequestId string `json:"RequestId,omitempty"`
 
     // The REST response with a result of the modification operations for the revisions collection (now these are acceptAll and rejectAll).
-    Result *ModificationOperationResult `json:"Result,omitempty"`
+    Result ModificationOperationResultResult `json:"Result,omitempty"`
 }
 
-type IRevisionsModificationResponse interface {
-    IsRevisionsModificationResponse() bool
-}
-func (RevisionsModificationResponse) IsRevisionsModificationResponse() bool {
-    return true
-}
-
-func (RevisionsModificationResponse) IsWordsResponse() bool {
-    return true
-}

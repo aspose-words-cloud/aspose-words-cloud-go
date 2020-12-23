@@ -30,19 +30,9 @@ package models
 // The REST response with a collection of borders.
 type BordersResponse struct {
     // The REST response with a collection of borders.
-    RequestId *string `json:"RequestId,omitempty"`
+    RequestId string `json:"RequestId,omitempty"`
 
     // The REST response with a collection of borders.
-    Borders *BordersCollection `json:"Borders,omitempty"`
+    Borders BordersCollectionResult `json:"Borders,omitempty"`
 }
 
-type IBordersResponse interface {
-    IsBordersResponse() bool
-}
-func (BordersResponse) IsBordersResponse() bool {
-    return true
-}
-
-func (BordersResponse) IsWordsResponse() bool {
-    return true
-}

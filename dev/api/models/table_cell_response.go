@@ -30,19 +30,9 @@ package models
 // The REST response with a table cell.
 type TableCellResponse struct {
     // The REST response with a table cell.
-    RequestId *string `json:"RequestId,omitempty"`
+    RequestId string `json:"RequestId,omitempty"`
 
     // The REST response with a table cell.
-    Cell *TableCell `json:"Cell,omitempty"`
+    Cell TableCellResult `json:"Cell,omitempty"`
 }
 
-type ITableCellResponse interface {
-    IsTableCellResponse() bool
-}
-func (TableCellResponse) IsTableCellResponse() bool {
-    return true
-}
-
-func (TableCellResponse) IsWordsResponse() bool {
-    return true
-}

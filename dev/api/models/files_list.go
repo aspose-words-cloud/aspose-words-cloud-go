@@ -28,6 +28,11 @@
 package models
 
 // Files list.
+type FilesListResult struct {
+    // Files list.
+    Value []StorageFileResult `json:"Value,omitempty"`
+}
+
 type FilesList struct {
     // Files list.
     Value []StorageFile `json:"Value,omitempty"`
@@ -39,4 +44,5 @@ type IFilesList interface {
 func (FilesList) IsFilesList() bool {
     return true
 }
+
 

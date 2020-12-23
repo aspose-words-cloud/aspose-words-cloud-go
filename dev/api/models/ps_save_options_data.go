@@ -28,9 +28,65 @@
 package models
 
 // Container class for ps save options.
-type PsSaveOptionsData struct {
+type PsSaveOptionsDataResult struct {
     // Container class for ps save options.
     Dml3DEffectsRenderingMode string `json:"Dml3DEffectsRenderingMode,omitempty"`
+
+    // Container class for ps save options.
+    DmlEffectsRenderingMode string `json:"DmlEffectsRenderingMode,omitempty"`
+
+    // Container class for ps save options.
+    DmlRenderingMode string `json:"DmlRenderingMode,omitempty"`
+
+    // Container class for ps save options.
+    FileName string `json:"FileName,omitempty"`
+
+    // Container class for ps save options.
+    SaveFormat string `json:"SaveFormat,omitempty"`
+
+    // Container class for ps save options.
+    UpdateFields bool `json:"UpdateFields,omitempty"`
+
+    // Container class for ps save options.
+    UpdateLastPrintedProperty bool `json:"UpdateLastPrintedProperty,omitempty"`
+
+    // Container class for ps save options.
+    UpdateLastSavedTimeProperty bool `json:"UpdateLastSavedTimeProperty,omitempty"`
+
+    // Container class for ps save options.
+    UpdateSdtContent bool `json:"UpdateSdtContent,omitempty"`
+
+    // Container class for ps save options.
+    ZipOutput bool `json:"ZipOutput,omitempty"`
+
+    // Container class for ps save options.
+    ColorMode string `json:"ColorMode,omitempty"`
+
+    // Container class for ps save options.
+    JpegQuality int32 `json:"JpegQuality,omitempty"`
+
+    // Container class for ps save options.
+    MetafileRenderingOptions MetafileRenderingOptionsDataResult `json:"MetafileRenderingOptions,omitempty"`
+
+    // Container class for ps save options.
+    NumeralFormat string `json:"NumeralFormat,omitempty"`
+
+    // Container class for ps save options.
+    OptimizeOutput bool `json:"OptimizeOutput,omitempty"`
+
+    // Container class for ps save options.
+    PageCount int32 `json:"PageCount,omitempty"`
+
+    // Container class for ps save options.
+    PageIndex int32 `json:"PageIndex,omitempty"`
+
+    // Container class for ps save options.
+    UseBookFoldPrintingSettings bool `json:"UseBookFoldPrintingSettings,omitempty"`
+}
+
+type PsSaveOptionsData struct {
+    // Container class for ps save options.
+    Dml3DEffectsRenderingMode *string `json:"Dml3DEffectsRenderingMode,omitempty"`
 
     // Container class for ps save options.
     DmlEffectsRenderingMode *string `json:"DmlEffectsRenderingMode,omitempty"`
@@ -66,7 +122,7 @@ type PsSaveOptionsData struct {
     JpegQuality *int32 `json:"JpegQuality,omitempty"`
 
     // Container class for ps save options.
-    MetafileRenderingOptions *MetafileRenderingOptionsData `json:"MetafileRenderingOptions,omitempty"`
+    MetafileRenderingOptions IMetafileRenderingOptionsData `json:"MetafileRenderingOptions,omitempty"`
 
     // Container class for ps save options.
     NumeralFormat *string `json:"NumeralFormat,omitempty"`
@@ -94,3 +150,5 @@ func (PsSaveOptionsData) IsPsSaveOptionsData() bool {
 func (PsSaveOptionsData) IsFixedPageSaveOptionsData() bool {
     return true
 }
+
+

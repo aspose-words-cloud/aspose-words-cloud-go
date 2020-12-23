@@ -30,19 +30,9 @@ package models
 // The REST response with a range's text.
 type RangeTextResponse struct {
     // The REST response with a range's text.
-    RequestId *string `json:"RequestId,omitempty"`
+    RequestId string `json:"RequestId,omitempty"`
 
     // The REST response with a range's text.
-    Text *string `json:"Text,omitempty"`
+    Text string `json:"Text,omitempty"`
 }
 
-type IRangeTextResponse interface {
-    IsRangeTextResponse() bool
-}
-func (RangeTextResponse) IsRangeTextResponse() bool {
-    return true
-}
-
-func (RangeTextResponse) IsWordsResponse() bool {
-    return true
-}

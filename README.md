@@ -16,6 +16,11 @@ Feel free to explore the [Developer's Guide](https://docs.aspose.cloud/display/w
 - Add & remove watermarks and protection.
 - Read & write access to Document Object Model.
 
+## Enhancements in Version 20.12
+
+- Refactoring of Co SDK, all API method signatures are changed
+- Added Batch API feature
+
 ## Enhancements in Version 20.11
 
 - In configuration json file appSid / appKey has been replaced to clientId / clientSecret.

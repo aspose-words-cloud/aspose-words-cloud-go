@@ -48,7 +48,13 @@ func Test_Styles_GetStyles(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    actual, _, err := client.WordsApi.GetStyles(ctx, remoteFileName, options)
+
+    request := &models.GetStylesRequest{
+        Name: ToStringPointer(remoteFileName),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.GetStyles(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -56,7 +62,7 @@ func Test_Styles_GetStyles(t *testing.T) {
 
     assert.NotNil(t, actual.Styles, "Validate GetStyles response.");
     assert.Equal(t, 22, len(actual.Styles), "Validate GetStyles response.");
-    assert.Equal(t, "Default Paragraph Font", *actual.Styles[0].Name, "Validate GetStyles response.");
+    assert.Equal(t, "Default Paragraph Font", actual.Styles[0].Name, "Validate GetStyles response.");
 }
 
 // Test for getting style from document.
@@ -73,14 +79,21 @@ func Test_Styles_GetStyle(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    actual, _, err := client.WordsApi.GetStyle(ctx, remoteFileName, "Heading 1", options)
+
+    request := &models.GetStyleRequest{
+        Name: ToStringPointer(remoteFileName),
+        StyleName: ToStringPointer("Heading 1"),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.GetStyle(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
 
     assert.NotNil(t, actual.Style, "Validate GetStyle response.");
-    assert.Equal(t, "Heading 1", *actual.Style.Name, "Validate GetStyle response.");
+    assert.Equal(t, "Heading 1", actual.Style.Name, "Validate GetStyle response.");
 }
 
 // Test for updating style from document.
@@ -100,14 +113,22 @@ func Test_Styles_UpdateStyle(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    actual, _, err := client.WordsApi.UpdateStyle(ctx, remoteFileName, requestStyleUpdate, "Heading 1", options)
+
+    request := &models.UpdateStyleRequest{
+        Name: ToStringPointer(remoteFileName),
+        StyleUpdate: requestStyleUpdate,
+        StyleName: ToStringPointer("Heading 1"),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.UpdateStyle(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
 
     assert.NotNil(t, actual.Style, "Validate UpdateStyle response.");
-    assert.Equal(t, "My Style", *actual.Style.Name, "Validate UpdateStyle response.");
+    assert.Equal(t, "My Style", actual.Style.Name, "Validate UpdateStyle response.");
 }
 
 // Test for inserting style from document.
@@ -122,20 +143,27 @@ func Test_Styles_InsertStyle(t *testing.T) {
 
     requestStyleInsert := models.StyleInsert{
         StyleName: ToStringPointer("My Style"),
-        StyleType: "Paragraph",
+        StyleType: ToStringPointer("Paragraph"),
     }
 
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    actual, _, err := client.WordsApi.InsertStyle(ctx, remoteFileName, requestStyleInsert, options)
+
+    request := &models.InsertStyleRequest{
+        Name: ToStringPointer(remoteFileName),
+        StyleInsert: requestStyleInsert,
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.InsertStyle(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
 
     assert.NotNil(t, actual.Style, "Validate InsertStyle response.");
-    assert.Equal(t, "My Style", *actual.Style.Name, "Validate InsertStyle response.");
+    assert.Equal(t, "My Style", actual.Style.Name, "Validate InsertStyle response.");
 }
 
 // Test for coping style from document.
@@ -155,14 +183,21 @@ func Test_Styles_CopyStyle(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    actual, _, err := client.WordsApi.CopyStyle(ctx, remoteFileName, requestStyleCopy, options)
+
+    request := &models.CopyStyleRequest{
+        Name: ToStringPointer(remoteFileName),
+        StyleCopy: requestStyleCopy,
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.CopyStyle(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
 
     assert.NotNil(t, actual.Style, "Validate CopyStyle response.");
-    assert.Equal(t, "Heading 1_0", *actual.Style.Name, "Validate CopyStyle response.");
+    assert.Equal(t, "Heading 1_0", actual.Style.Name, "Validate CopyStyle response.");
 }
 
 // Test for getting style from document element.
@@ -179,14 +214,21 @@ func Test_Styles_GetStyleFromDocumentElement(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    actual, _, err := client.WordsApi.GetStyleFromDocumentElement(ctx, remoteFileName, "paragraphs/1/paragraphFormat", options)
+
+    request := &models.GetStyleFromDocumentElementRequest{
+        Name: ToStringPointer(remoteFileName),
+        StyledNodePath: ToStringPointer("paragraphs/1/paragraphFormat"),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.GetStyleFromDocumentElement(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
 
     assert.NotNil(t, actual.Style, "Validate GetStyleFromDocumentElement response.");
-    assert.Equal(t, "TOC 1", *actual.Style.Name, "Validate GetStyleFromDocumentElement response.");
+    assert.Equal(t, "TOC 1", actual.Style.Name, "Validate GetStyleFromDocumentElement response.");
 }
 
 // Test for applying style to document element.
@@ -206,7 +248,15 @@ func Test_Styles_ApplyStyleToDocumentElement(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, _, err := client.WordsApi.ApplyStyleToDocumentElement(ctx, remoteFileName, requestStyleApply, "paragraphs/1/paragraphFormat", options)
+
+    request := &models.ApplyStyleToDocumentElementRequest{
+        Name: ToStringPointer(remoteFileName),
+        StyleApply: requestStyleApply,
+        StyledNodePath: ToStringPointer("paragraphs/1/paragraphFormat"),
+        Optionals: options,
+    }
+
+    _, _, err := client.WordsApi.ApplyStyleToDocumentElement(ctx, request)
 
     if err != nil {
         t.Error(err)

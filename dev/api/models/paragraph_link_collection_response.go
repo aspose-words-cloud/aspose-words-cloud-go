@@ -30,19 +30,9 @@ package models
 // The REST response with a collection of paragraphs.
 type ParagraphLinkCollectionResponse struct {
     // The REST response with a collection of paragraphs.
-    RequestId *string `json:"RequestId,omitempty"`
+    RequestId string `json:"RequestId,omitempty"`
 
     // The REST response with a collection of paragraphs.
-    Paragraphs *ParagraphLinkCollection `json:"Paragraphs,omitempty"`
+    Paragraphs ParagraphLinkCollectionResult `json:"Paragraphs,omitempty"`
 }
 
-type IParagraphLinkCollectionResponse interface {
-    IsParagraphLinkCollectionResponse() bool
-}
-func (ParagraphLinkCollectionResponse) IsParagraphLinkCollectionResponse() bool {
-    return true
-}
-
-func (ParagraphLinkCollectionResponse) IsWordsResponse() bool {
-    return true
-}

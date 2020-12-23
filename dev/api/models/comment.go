@@ -27,32 +27,54 @@
 
 package models
 
-import (
-    "time"
-)
-
 // DTO container with a comment.
+type CommentResult struct {
+    // DTO container with a comment.
+    Link WordsApiLinkResult `json:"Link,omitempty"`
+
+    // DTO container with a comment.
+    Author string `json:"Author,omitempty"`
+
+    // DTO container with a comment.
+    Content StoryChildNodesResult `json:"Content,omitempty"`
+
+    // DTO container with a comment.
+    DateTime Time `json:"DateTime,omitempty"`
+
+    // DTO container with a comment.
+    Initial string `json:"Initial,omitempty"`
+
+    // DTO container with a comment.
+    RangeEnd DocumentPositionResult `json:"RangeEnd,omitempty"`
+
+    // DTO container with a comment.
+    RangeStart DocumentPositionResult `json:"RangeStart,omitempty"`
+
+    // DTO container with a comment.
+    Text string `json:"Text,omitempty"`
+}
+
 type Comment struct {
     // DTO container with a comment.
-    Link *WordsApiLink `json:"Link,omitempty"`
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // DTO container with a comment.
     Author *string `json:"Author,omitempty"`
 
     // DTO container with a comment.
-    Content *StoryChildNodes `json:"Content,omitempty"`
+    Content IStoryChildNodes `json:"Content,omitempty"`
 
     // DTO container with a comment.
-    DateTime time.Time `json:"DateTime,omitempty"`
+    DateTime *Time `json:"DateTime,omitempty"`
 
     // DTO container with a comment.
     Initial *string `json:"Initial,omitempty"`
 
     // DTO container with a comment.
-    RangeEnd *DocumentPosition `json:"RangeEnd,omitempty"`
+    RangeEnd IDocumentPosition `json:"RangeEnd,omitempty"`
 
     // DTO container with a comment.
-    RangeStart *DocumentPosition `json:"RangeStart,omitempty"`
+    RangeStart IDocumentPosition `json:"RangeStart,omitempty"`
 
     // DTO container with a comment.
     Text *string `json:"Text,omitempty"`
@@ -68,3 +90,5 @@ func (Comment) IsComment() bool {
 func (Comment) IsCommentLink() bool {
     return true
 }
+
+

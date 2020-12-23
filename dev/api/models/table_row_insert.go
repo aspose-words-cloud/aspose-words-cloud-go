@@ -28,6 +28,14 @@
 package models
 
 // DTO container with a table row element.
+type TableRowInsertResult struct {
+    // DTO container with a table row element.
+    ColumnsCount int32 `json:"ColumnsCount,omitempty"`
+
+    // DTO container with a table row element.
+    InsertAfter int32 `json:"InsertAfter,omitempty"`
+}
+
 type TableRowInsert struct {
     // DTO container with a table row element.
     ColumnsCount *int32 `json:"ColumnsCount,omitempty"`
@@ -42,4 +50,5 @@ type ITableRowInsert interface {
 func (TableRowInsert) IsTableRowInsert() bool {
     return true
 }
+
 

@@ -30,19 +30,9 @@ package models
 // The REST response with a page setup of a section.
 type SectionPageSetupResponse struct {
     // The REST response with a page setup of a section.
-    RequestId *string `json:"RequestId,omitempty"`
+    RequestId string `json:"RequestId,omitempty"`
 
     // The REST response with a page setup of a section.
-    PageSetup *PageSetup `json:"PageSetup,omitempty"`
+    PageSetup PageSetupResult `json:"PageSetup,omitempty"`
 }
 
-type ISectionPageSetupResponse interface {
-    IsSectionPageSetupResponse() bool
-}
-func (SectionPageSetupResponse) IsSectionPageSetupResponse() bool {
-    return true
-}
-
-func (SectionPageSetupResponse) IsWordsResponse() bool {
-    return true
-}

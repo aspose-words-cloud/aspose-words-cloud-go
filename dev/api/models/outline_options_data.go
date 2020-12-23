@@ -28,6 +28,26 @@
 package models
 
 // Container class for outline options.
+type OutlineOptionsDataResult struct {
+    // Container class for outline options.
+    BookmarksOutlineLevels []BookmarksOutlineLevelDataResult `json:"BookmarksOutlineLevels,omitempty"`
+
+    // Container class for outline options.
+    CreateMissingOutlineLevels bool `json:"CreateMissingOutlineLevels,omitempty"`
+
+    // Container class for outline options.
+    CreateOutlinesForHeadingsInTables bool `json:"CreateOutlinesForHeadingsInTables,omitempty"`
+
+    // Container class for outline options.
+    DefaultBookmarksOutlineLevel int32 `json:"DefaultBookmarksOutlineLevel,omitempty"`
+
+    // Container class for outline options.
+    ExpandedOutlineLevels int32 `json:"ExpandedOutlineLevels,omitempty"`
+
+    // Container class for outline options.
+    HeadingsOutlineLevels int32 `json:"HeadingsOutlineLevels,omitempty"`
+}
+
 type OutlineOptionsData struct {
     // Container class for outline options.
     BookmarksOutlineLevels []BookmarksOutlineLevelData `json:"BookmarksOutlineLevels,omitempty"`
@@ -54,4 +74,5 @@ type IOutlineOptionsData interface {
 func (OutlineOptionsData) IsOutlineOptionsData() bool {
     return true
 }
+
 

@@ -28,9 +28,134 @@
 package models
 
 // DTO container with a font element.
+type FontResult struct {
+    // DTO container with a font element.
+    Link WordsApiLinkResult `json:"Link,omitempty"`
+
+    // DTO container with a font element.
+    AllCaps bool `json:"AllCaps,omitempty"`
+
+    // DTO container with a font element.
+    Bidi bool `json:"Bidi,omitempty"`
+
+    // DTO container with a font element.
+    Bold bool `json:"Bold,omitempty"`
+
+    // DTO container with a font element.
+    BoldBi bool `json:"BoldBi,omitempty"`
+
+    // DTO container with a font element.
+    Border BorderResult `json:"Border,omitempty"`
+
+    // DTO container with a font element.
+    Color XmlColorResult `json:"Color,omitempty"`
+
+    // DTO container with a font element.
+    ComplexScript bool `json:"ComplexScript,omitempty"`
+
+    // DTO container with a font element.
+    DoubleStrikeThrough bool `json:"DoubleStrikeThrough,omitempty"`
+
+    // DTO container with a font element.
+    Emboss bool `json:"Emboss,omitempty"`
+
+    // DTO container with a font element.
+    Engrave bool `json:"Engrave,omitempty"`
+
+    // DTO container with a font element.
+    Hidden bool `json:"Hidden,omitempty"`
+
+    // DTO container with a font element.
+    HighlightColor XmlColorResult `json:"HighlightColor,omitempty"`
+
+    // DTO container with a font element.
+    Italic bool `json:"Italic,omitempty"`
+
+    // DTO container with a font element.
+    ItalicBi bool `json:"ItalicBi,omitempty"`
+
+    // DTO container with a font element.
+    Kerning float64 `json:"Kerning,omitempty"`
+
+    // DTO container with a font element.
+    LocaleId int32 `json:"LocaleId,omitempty"`
+
+    // DTO container with a font element.
+    LocaleIdBi int32 `json:"LocaleIdBi,omitempty"`
+
+    // DTO container with a font element.
+    LocaleIdFarEast int32 `json:"LocaleIdFarEast,omitempty"`
+
+    // DTO container with a font element.
+    Name string `json:"Name,omitempty"`
+
+    // DTO container with a font element.
+    NameAscii string `json:"NameAscii,omitempty"`
+
+    // DTO container with a font element.
+    NameBi string `json:"NameBi,omitempty"`
+
+    // DTO container with a font element.
+    NameFarEast string `json:"NameFarEast,omitempty"`
+
+    // DTO container with a font element.
+    NameOther string `json:"NameOther,omitempty"`
+
+    // DTO container with a font element.
+    NoProofing bool `json:"NoProofing,omitempty"`
+
+    // DTO container with a font element.
+    Outline bool `json:"Outline,omitempty"`
+
+    // DTO container with a font element.
+    Position float64 `json:"Position,omitempty"`
+
+    // DTO container with a font element.
+    Scaling int32 `json:"Scaling,omitempty"`
+
+    // DTO container with a font element.
+    Shadow bool `json:"Shadow,omitempty"`
+
+    // DTO container with a font element.
+    Size float64 `json:"Size,omitempty"`
+
+    // DTO container with a font element.
+    SizeBi float64 `json:"SizeBi,omitempty"`
+
+    // DTO container with a font element.
+    SmallCaps bool `json:"SmallCaps,omitempty"`
+
+    // DTO container with a font element.
+    Spacing float64 `json:"Spacing,omitempty"`
+
+    // DTO container with a font element.
+    StrikeThrough bool `json:"StrikeThrough,omitempty"`
+
+    // DTO container with a font element.
+    StyleIdentifier string `json:"StyleIdentifier,omitempty"`
+
+    // DTO container with a font element.
+    StyleName string `json:"StyleName,omitempty"`
+
+    // DTO container with a font element.
+    Subscript bool `json:"Subscript,omitempty"`
+
+    // DTO container with a font element.
+    Superscript bool `json:"Superscript,omitempty"`
+
+    // DTO container with a font element.
+    TextEffect string `json:"TextEffect,omitempty"`
+
+    // DTO container with a font element.
+    Underline string `json:"Underline,omitempty"`
+
+    // DTO container with a font element.
+    UnderlineColor XmlColorResult `json:"UnderlineColor,omitempty"`
+}
+
 type Font struct {
     // DTO container with a font element.
-    Link *WordsApiLink `json:"Link,omitempty"`
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // DTO container with a font element.
     AllCaps *bool `json:"AllCaps,omitempty"`
@@ -45,10 +170,10 @@ type Font struct {
     BoldBi *bool `json:"BoldBi,omitempty"`
 
     // DTO container with a font element.
-    Border *Border `json:"Border,omitempty"`
+    Border IBorder `json:"Border,omitempty"`
 
     // DTO container with a font element.
-    Color *XmlColor `json:"Color,omitempty"`
+    Color IXmlColor `json:"Color,omitempty"`
 
     // DTO container with a font element.
     ComplexScript *bool `json:"ComplexScript,omitempty"`
@@ -66,7 +191,7 @@ type Font struct {
     Hidden *bool `json:"Hidden,omitempty"`
 
     // DTO container with a font element.
-    HighlightColor *XmlColor `json:"HighlightColor,omitempty"`
+    HighlightColor IXmlColor `json:"HighlightColor,omitempty"`
 
     // DTO container with a font element.
     Italic *bool `json:"Italic,omitempty"`
@@ -132,7 +257,7 @@ type Font struct {
     StrikeThrough *bool `json:"StrikeThrough,omitempty"`
 
     // DTO container with a font element.
-    StyleIdentifier string `json:"StyleIdentifier,omitempty"`
+    StyleIdentifier *string `json:"StyleIdentifier,omitempty"`
 
     // DTO container with a font element.
     StyleName *string `json:"StyleName,omitempty"`
@@ -144,13 +269,13 @@ type Font struct {
     Superscript *bool `json:"Superscript,omitempty"`
 
     // DTO container with a font element.
-    TextEffect string `json:"TextEffect,omitempty"`
+    TextEffect *string `json:"TextEffect,omitempty"`
 
     // DTO container with a font element.
-    Underline string `json:"Underline,omitempty"`
+    Underline *string `json:"Underline,omitempty"`
 
     // DTO container with a font element.
-    UnderlineColor *XmlColor `json:"UnderlineColor,omitempty"`
+    UnderlineColor IXmlColor `json:"UnderlineColor,omitempty"`
 }
 
 type IFont interface {
@@ -163,3 +288,5 @@ func (Font) IsFont() bool {
 func (Font) IsLinkElement() bool {
     return true
 }
+
+

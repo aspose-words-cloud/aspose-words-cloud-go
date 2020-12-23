@@ -30,19 +30,9 @@ package models
 // The REST response with a collection of mail merge fields.
 type FieldNamesResponse struct {
     // The REST response with a collection of mail merge fields.
-    RequestId *string `json:"RequestId,omitempty"`
+    RequestId string `json:"RequestId,omitempty"`
 
     // The REST response with a collection of mail merge fields.
-    FieldNames *FieldNames `json:"FieldNames,omitempty"`
+    FieldNames FieldNamesResult `json:"FieldNames,omitempty"`
 }
 
-type IFieldNamesResponse interface {
-    IsFieldNamesResponse() bool
-}
-func (FieldNamesResponse) IsFieldNamesResponse() bool {
-    return true
-}
-
-func (FieldNamesResponse) IsWordsResponse() bool {
-    return true
-}

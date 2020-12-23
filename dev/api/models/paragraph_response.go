@@ -30,19 +30,9 @@ package models
 // The REST response with a paragraph.
 type ParagraphResponse struct {
     // The REST response with a paragraph.
-    RequestId *string `json:"RequestId,omitempty"`
+    RequestId string `json:"RequestId,omitempty"`
 
     // The REST response with a paragraph.
-    Paragraph *Paragraph `json:"Paragraph,omitempty"`
+    Paragraph ParagraphResult `json:"Paragraph,omitempty"`
 }
 
-type IParagraphResponse interface {
-    IsParagraphResponse() bool
-}
-func (ParagraphResponse) IsParagraphResponse() bool {
-    return true
-}
-
-func (ParagraphResponse) IsWordsResponse() bool {
-    return true
-}

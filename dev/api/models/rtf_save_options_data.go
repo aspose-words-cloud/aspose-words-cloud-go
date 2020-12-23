@@ -28,9 +28,53 @@
 package models
 
 // Container class for rtf save options.
-type RtfSaveOptionsData struct {
+type RtfSaveOptionsDataResult struct {
     // Container class for rtf save options.
     Dml3DEffectsRenderingMode string `json:"Dml3DEffectsRenderingMode,omitempty"`
+
+    // Container class for rtf save options.
+    DmlEffectsRenderingMode string `json:"DmlEffectsRenderingMode,omitempty"`
+
+    // Container class for rtf save options.
+    DmlRenderingMode string `json:"DmlRenderingMode,omitempty"`
+
+    // Container class for rtf save options.
+    FileName string `json:"FileName,omitempty"`
+
+    // Container class for rtf save options.
+    SaveFormat string `json:"SaveFormat,omitempty"`
+
+    // Container class for rtf save options.
+    UpdateFields bool `json:"UpdateFields,omitempty"`
+
+    // Container class for rtf save options.
+    UpdateLastPrintedProperty bool `json:"UpdateLastPrintedProperty,omitempty"`
+
+    // Container class for rtf save options.
+    UpdateLastSavedTimeProperty bool `json:"UpdateLastSavedTimeProperty,omitempty"`
+
+    // Container class for rtf save options.
+    UpdateSdtContent bool `json:"UpdateSdtContent,omitempty"`
+
+    // Container class for rtf save options.
+    ZipOutput bool `json:"ZipOutput,omitempty"`
+
+    // Container class for rtf save options.
+    ExportCompactSize bool `json:"ExportCompactSize,omitempty"`
+
+    // Container class for rtf save options.
+    ExportImagesForOldReaders bool `json:"ExportImagesForOldReaders,omitempty"`
+
+    // Container class for rtf save options.
+    PrettyFormat bool `json:"PrettyFormat,omitempty"`
+
+    // Container class for rtf save options.
+    SaveImagesAsWmf bool `json:"SaveImagesAsWmf,omitempty"`
+}
+
+type RtfSaveOptionsData struct {
+    // Container class for rtf save options.
+    Dml3DEffectsRenderingMode *string `json:"Dml3DEffectsRenderingMode,omitempty"`
 
     // Container class for rtf save options.
     DmlEffectsRenderingMode *string `json:"DmlEffectsRenderingMode,omitempty"`
@@ -82,3 +126,5 @@ func (RtfSaveOptionsData) IsRtfSaveOptionsData() bool {
 func (RtfSaveOptionsData) IsSaveOptionsData() bool {
     return true
 }
+
+

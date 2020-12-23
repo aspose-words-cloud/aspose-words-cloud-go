@@ -30,19 +30,9 @@ package models
 // The REST response with a style.
 type StyleResponse struct {
     // The REST response with a style.
-    RequestId *string `json:"RequestId,omitempty"`
+    RequestId string `json:"RequestId,omitempty"`
 
     // The REST response with a style.
-    Style *Style `json:"Style,omitempty"`
+    Style StyleResult `json:"Style,omitempty"`
 }
 
-type IStyleResponse interface {
-    IsStyleResponse() bool
-}
-func (StyleResponse) IsStyleResponse() bool {
-    return true
-}
-
-func (StyleResponse) IsWordsResponse() bool {
-    return true
-}

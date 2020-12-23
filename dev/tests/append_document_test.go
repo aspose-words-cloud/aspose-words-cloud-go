@@ -59,12 +59,19 @@ func Test_AppendDocument_AppendDocument(t *testing.T) {
         "folder": remoteDataFolder,
         "destFileName": baseTestOutPath + "/" + remoteFileName,
     }
-    actual, _, err := client.WordsApi.AppendDocument(ctx, remoteFileName, requestDocumentList, options)
+
+    request := &models.AppendDocumentRequest{
+        Name: ToStringPointer(remoteFileName),
+        DocumentList: requestDocumentList,
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.AppendDocument(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
 
     assert.NotNil(t, actual.Document, "Validate AppendDocument response.");
-    assert.Equal(t, "TestAppendDocument.docx", *actual.Document.FileName, "Validate AppendDocument response.");
+    assert.Equal(t, "TestAppendDocument.docx", actual.Document.FileName, "Validate AppendDocument response.");
 }

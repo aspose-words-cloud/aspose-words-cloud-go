@@ -28,12 +28,20 @@
 package models
 
 // Contains data for load web document.
+type LoadWebDocumentDataResult struct {
+    // Contains data for load web document.
+    LoadingDocumentUrl string `json:"LoadingDocumentUrl,omitempty"`
+
+    // Contains data for load web document.
+    SaveOptions SaveOptionsDataResult `json:"SaveOptions,omitempty"`
+}
+
 type LoadWebDocumentData struct {
     // Contains data for load web document.
     LoadingDocumentUrl *string `json:"LoadingDocumentUrl,omitempty"`
 
     // Contains data for load web document.
-    SaveOptions *SaveOptionsData `json:"SaveOptions,omitempty"`
+    SaveOptions ISaveOptionsData `json:"SaveOptions,omitempty"`
 }
 
 type ILoadWebDocumentData interface {
@@ -42,4 +50,5 @@ type ILoadWebDocumentData interface {
 func (LoadWebDocumentData) IsLoadWebDocumentData() bool {
     return true
 }
+
 

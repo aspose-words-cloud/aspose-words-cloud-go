@@ -30,19 +30,9 @@ package models
 // The REST response with a collection of lists, contained in the document.
 type ListsResponse struct {
     // The REST response with a collection of lists, contained in the document.
-    RequestId *string `json:"RequestId,omitempty"`
+    RequestId string `json:"RequestId,omitempty"`
 
     // The REST response with a collection of lists, contained in the document.
-    Lists *Lists `json:"Lists,omitempty"`
+    Lists ListsResult `json:"Lists,omitempty"`
 }
 
-type IListsResponse interface {
-    IsListsResponse() bool
-}
-func (ListsResponse) IsListsResponse() bool {
-    return true
-}
-
-func (ListsResponse) IsWordsResponse() bool {
-    return true
-}

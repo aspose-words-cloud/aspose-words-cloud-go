@@ -49,7 +49,13 @@ func Test_Table_GetTables(t *testing.T) {
         "nodePath": "",
         "folder": remoteDataFolder,
     }
-    actual, _, err := client.WordsApi.GetTables(ctx, remoteFileName, options)
+
+    request := &models.GetTablesRequest{
+        Name: ToStringPointer(remoteFileName),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.GetTables(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -58,7 +64,7 @@ func Test_Table_GetTables(t *testing.T) {
     assert.NotNil(t, actual.Tables, "Validate GetTables response.");
     assert.NotNil(t, actual.Tables.TableLinkList, "Validate GetTables response.");
     assert.Equal(t, 5, len(actual.Tables.TableLinkList), "Validate GetTables response.");
-    assert.Equal(t, "0.0.1", *actual.Tables.TableLinkList[0].NodeId, "Validate GetTables response.");
+    assert.Equal(t, "0.0.1", actual.Tables.TableLinkList[0].NodeId, "Validate GetTables response.");
 }
 
 // Test for getting tables without node path.
@@ -75,7 +81,13 @@ func Test_Table_GetTablesWithoutNodePath(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    actual, _, err := client.WordsApi.GetTables(ctx, remoteFileName, options)
+
+    request := &models.GetTablesRequest{
+        Name: ToStringPointer(remoteFileName),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.GetTables(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -84,7 +96,7 @@ func Test_Table_GetTablesWithoutNodePath(t *testing.T) {
     assert.NotNil(t, actual.Tables, "Validate GetTablesWithoutNodePath response.");
     assert.NotNil(t, actual.Tables.TableLinkList, "Validate GetTablesWithoutNodePath response.");
     assert.Equal(t, 5, len(actual.Tables.TableLinkList), "Validate GetTablesWithoutNodePath response.");
-    assert.Equal(t, "0.0.1", *actual.Tables.TableLinkList[0].NodeId, "Validate GetTablesWithoutNodePath response.");
+    assert.Equal(t, "0.0.1", actual.Tables.TableLinkList[0].NodeId, "Validate GetTablesWithoutNodePath response.");
 }
 
 // Test for getting table.
@@ -102,7 +114,14 @@ func Test_Table_GetTable(t *testing.T) {
         "nodePath": "",
         "folder": remoteDataFolder,
     }
-    actual, _, err := client.WordsApi.GetTable(ctx, remoteFileName, int32(1), options)
+
+    request := &models.GetTableRequest{
+        Name: ToStringPointer(remoteFileName),
+        Index: ToInt32Pointer(int32(1)),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.GetTable(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -129,7 +148,14 @@ func Test_Table_GetTableWithoutNodePath(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    actual, _, err := client.WordsApi.GetTable(ctx, remoteFileName, int32(1), options)
+
+    request := &models.GetTableRequest{
+        Name: ToStringPointer(remoteFileName),
+        Index: ToInt32Pointer(int32(1)),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.GetTable(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -157,7 +183,14 @@ func Test_Table_DeleteTable(t *testing.T) {
         "nodePath": "",
         "folder": remoteDataFolder,
     }
-    _, err := client.WordsApi.DeleteTable(ctx, remoteFileName, int32(1), options)
+
+    request := &models.DeleteTableRequest{
+        Name: ToStringPointer(remoteFileName),
+        Index: ToInt32Pointer(int32(1)),
+        Optionals: options,
+    }
+
+    _, err := client.WordsApi.DeleteTable(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -179,7 +212,14 @@ func Test_Table_DeleteTableWithoutNodePath(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, err := client.WordsApi.DeleteTable(ctx, remoteFileName, int32(1), options)
+
+    request := &models.DeleteTableRequest{
+        Name: ToStringPointer(remoteFileName),
+        Index: ToInt32Pointer(int32(1)),
+        Optionals: options,
+    }
+
+    _, err := client.WordsApi.DeleteTable(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -198,15 +238,22 @@ func Test_Table_InsertTable(t *testing.T) {
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
     requestTable := models.TableInsert{
-        ColumnsCount: ToIn32Pointer(int32(5)),
-        RowsCount: ToIn32Pointer(int32(4)),
+        ColumnsCount: ToInt32Pointer(int32(5)),
+        RowsCount: ToInt32Pointer(int32(4)),
     }
 
     options := map[string]interface{}{
         "nodePath": "",
         "folder": remoteDataFolder,
     }
-    actual, _, err := client.WordsApi.InsertTable(ctx, remoteFileName, requestTable, options)
+
+    request := &models.InsertTableRequest{
+        Name: ToStringPointer(remoteFileName),
+        Table: requestTable,
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.InsertTable(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -230,14 +277,21 @@ func Test_Table_InsertTableWithoutNodePath(t *testing.T) {
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
     requestTable := models.TableInsert{
-        ColumnsCount: ToIn32Pointer(int32(5)),
-        RowsCount: ToIn32Pointer(int32(4)),
+        ColumnsCount: ToInt32Pointer(int32(5)),
+        RowsCount: ToInt32Pointer(int32(4)),
     }
 
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    actual, _, err := client.WordsApi.InsertTable(ctx, remoteFileName, requestTable, options)
+
+    request := &models.InsertTableRequest{
+        Name: ToStringPointer(remoteFileName),
+        Table: requestTable,
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.InsertTable(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -265,14 +319,21 @@ func Test_Table_GetTableProperties(t *testing.T) {
         "nodePath": "",
         "folder": remoteDataFolder,
     }
-    actual, _, err := client.WordsApi.GetTableProperties(ctx, remoteFileName, int32(1), options)
+
+    request := &models.GetTablePropertiesRequest{
+        Name: ToStringPointer(remoteFileName),
+        Index: ToInt32Pointer(int32(1)),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.GetTableProperties(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
 
     assert.NotNil(t, actual.Properties, "Validate GetTableProperties response.");
-    assert.Equal(t, "Table Grid", *actual.Properties.StyleName, "Validate GetTableProperties response.");
+    assert.Equal(t, "Table Grid", actual.Properties.StyleName, "Validate GetTableProperties response.");
 }
 
 // Test for getting document properties without node path.
@@ -289,14 +350,21 @@ func Test_Table_GetTablePropertiesWithoutNodePath(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    actual, _, err := client.WordsApi.GetTableProperties(ctx, remoteFileName, int32(1), options)
+
+    request := &models.GetTablePropertiesRequest{
+        Name: ToStringPointer(remoteFileName),
+        Index: ToInt32Pointer(int32(1)),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.GetTableProperties(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
 
     assert.NotNil(t, actual.Properties, "Validate GetTablePropertiesWithoutNodePath response.");
-    assert.Equal(t, "Table Grid", *actual.Properties.StyleName, "Validate GetTablePropertiesWithoutNodePath response.");
+    assert.Equal(t, "Table Grid", actual.Properties.StyleName, "Validate GetTablePropertiesWithoutNodePath response.");
 }
 
 // Test for updating table properties.
@@ -310,29 +378,37 @@ func Test_Table_UpdateTableProperties(t *testing.T) {
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
     requestProperties := models.TableProperties{
-        Alignment: "Right",
+        Alignment: ToStringPointer("Right"),
         AllowAutoFit: ToBoolPointer(false),
         Bidi: ToBoolPointer(true),
         BottomPadding: ToFloat64Pointer(1),
         CellSpacing: ToFloat64Pointer(2.0),
-        StyleOptions: "ColumnBands",
+        StyleOptions: ToStringPointer("ColumnBands"),
     }
 
     options := map[string]interface{}{
         "nodePath": "",
         "folder": remoteDataFolder,
     }
-    actual, _, err := client.WordsApi.UpdateTableProperties(ctx, remoteFileName, requestProperties, int32(1), options)
+
+    request := &models.UpdateTablePropertiesRequest{
+        Name: ToStringPointer(remoteFileName),
+        Properties: requestProperties,
+        Index: ToInt32Pointer(int32(1)),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.UpdateTableProperties(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
 
     assert.NotNil(t, actual.Properties, "Validate UpdateTableProperties response.");
-    assert.False(t, *actual.Properties.AllowAutoFit, "Validate UpdateTableProperties response.");
-    assert.True(t, *actual.Properties.Bidi, "Validate UpdateTableProperties response.");
-    assert.Equal(t, 1.0, *actual.Properties.BottomPadding, "Validate UpdateTableProperties response.");
-    assert.Equal(t, 2.0, *actual.Properties.CellSpacing, "Validate UpdateTableProperties response.");
+    assert.False(t, actual.Properties.AllowAutoFit, "Validate UpdateTableProperties response.");
+    assert.True(t, actual.Properties.Bidi, "Validate UpdateTableProperties response.");
+    assert.Equal(t, 1.0, actual.Properties.BottomPadding, "Validate UpdateTableProperties response.");
+    assert.Equal(t, 2.0, actual.Properties.CellSpacing, "Validate UpdateTableProperties response.");
 }
 
 // Test for updating table properties without node path.
@@ -346,28 +422,36 @@ func Test_Table_UpdateTablePropertiesWithoutNodePath(t *testing.T) {
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
     requestProperties := models.TableProperties{
-        Alignment: "Right",
+        Alignment: ToStringPointer("Right"),
         AllowAutoFit: ToBoolPointer(false),
         Bidi: ToBoolPointer(true),
         BottomPadding: ToFloat64Pointer(1.0),
         CellSpacing: ToFloat64Pointer(2.0),
-        StyleOptions: "ColumnBands",
+        StyleOptions: ToStringPointer("ColumnBands"),
     }
 
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    actual, _, err := client.WordsApi.UpdateTableProperties(ctx, remoteFileName, requestProperties, int32(1), options)
+
+    request := &models.UpdateTablePropertiesRequest{
+        Name: ToStringPointer(remoteFileName),
+        Properties: requestProperties,
+        Index: ToInt32Pointer(int32(1)),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.UpdateTableProperties(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
 
     assert.NotNil(t, actual.Properties, "Validate UpdateTablePropertiesWithoutNodePath response.");
-    assert.False(t, *actual.Properties.AllowAutoFit, "Validate UpdateTablePropertiesWithoutNodePath response.");
-    assert.True(t, *actual.Properties.Bidi, "Validate UpdateTablePropertiesWithoutNodePath response.");
-    assert.Equal(t, 1.0, *actual.Properties.BottomPadding, "Validate UpdateTablePropertiesWithoutNodePath response.");
-    assert.Equal(t, 2.0, *actual.Properties.CellSpacing, "Validate UpdateTablePropertiesWithoutNodePath response.");
+    assert.False(t, actual.Properties.AllowAutoFit, "Validate UpdateTablePropertiesWithoutNodePath response.");
+    assert.True(t, actual.Properties.Bidi, "Validate UpdateTablePropertiesWithoutNodePath response.");
+    assert.Equal(t, 1.0, actual.Properties.BottomPadding, "Validate UpdateTablePropertiesWithoutNodePath response.");
+    assert.Equal(t, 2.0, actual.Properties.CellSpacing, "Validate UpdateTablePropertiesWithoutNodePath response.");
 }
 
 // Test for getting table row.
@@ -384,7 +468,15 @@ func Test_Table_GetTableRow(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    actual, _, err := client.WordsApi.GetTableRow(ctx, remoteFileName, "tables/1", int32(0), options)
+
+    request := &models.GetTableRowRequest{
+        Name: ToStringPointer(remoteFileName),
+        TablePath: ToStringPointer("tables/1"),
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.GetTableRow(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -409,7 +501,15 @@ func Test_Table_DeleteTableRow(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, err := client.WordsApi.DeleteTableRow(ctx, remoteFileName, "tables/1", int32(0), options)
+
+    request := &models.DeleteTableRowRequest{
+        Name: ToStringPointer(remoteFileName),
+        TablePath: ToStringPointer("tables/1"),
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    _, err := client.WordsApi.DeleteTableRow(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -428,13 +528,21 @@ func Test_Table_InsertTableRow(t *testing.T) {
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
     requestRow := models.TableRowInsert{
-        ColumnsCount: ToIn32Pointer(int32(5)),
+        ColumnsCount: ToInt32Pointer(int32(5)),
     }
 
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    actual, _, err := client.WordsApi.InsertTableRow(ctx, remoteFileName, requestRow, "sections/0/tables/2", options)
+
+    request := &models.InsertTableRowRequest{
+        Name: ToStringPointer(remoteFileName),
+        Row: requestRow,
+        TablePath: ToStringPointer("sections/0/tables/2"),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.InsertTableRow(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -459,14 +567,22 @@ func Test_Table_GetTableRowFormat(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    actual, _, err := client.WordsApi.GetTableRowFormat(ctx, remoteFileName, "sections/0/tables/2", int32(0), options)
+
+    request := &models.GetTableRowFormatRequest{
+        Name: ToStringPointer(remoteFileName),
+        TablePath: ToStringPointer("sections/0/tables/2"),
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.GetTableRowFormat(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
 
     assert.NotNil(t, actual.RowFormat, "Validate GetTableRowFormat response.");
-    assert.True(t, *actual.RowFormat.AllowBreakAcrossPages, "Validate GetTableRowFormat response.");
+    assert.True(t, actual.RowFormat.AllowBreakAcrossPages, "Validate GetTableRowFormat response.");
 }
 
 // Test updating row format.
@@ -483,22 +599,31 @@ func Test_Table_UpdateTableRowFormat(t *testing.T) {
         AllowBreakAcrossPages: ToBoolPointer(true),
         HeadingFormat: ToBoolPointer(true),
         Height: ToFloat64Pointer(10.0),
-        HeightRule: "Exactly",
+        HeightRule: ToStringPointer("Exactly"),
     }
 
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    actual, _, err := client.WordsApi.UpdateTableRowFormat(ctx, remoteFileName, requestFormat, "sections/0/tables/2", int32(0), options)
+
+    request := &models.UpdateTableRowFormatRequest{
+        Name: ToStringPointer(remoteFileName),
+        Format: requestFormat,
+        TablePath: ToStringPointer("sections/0/tables/2"),
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.UpdateTableRowFormat(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
 
     assert.NotNil(t, actual.RowFormat, "Validate UpdateTableRowFormat response.");
-    assert.True(t, *actual.RowFormat.AllowBreakAcrossPages, "Validate UpdateTableRowFormat response.");
-    assert.True(t, *actual.RowFormat.HeadingFormat, "Validate UpdateTableRowFormat response.");
-    assert.Equal(t, 10.0, *actual.RowFormat.Height, "Validate UpdateTableRowFormat response.");
+    assert.True(t, actual.RowFormat.AllowBreakAcrossPages, "Validate UpdateTableRowFormat response.");
+    assert.True(t, actual.RowFormat.HeadingFormat, "Validate UpdateTableRowFormat response.");
+    assert.Equal(t, 10.0, actual.RowFormat.Height, "Validate UpdateTableRowFormat response.");
 }
 
 // Test for getting table cell.
@@ -515,14 +640,22 @@ func Test_Table_GetTableCell(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    actual, _, err := client.WordsApi.GetTableCell(ctx, remoteFileName, "sections/0/tables/2/rows/0", int32(0), options)
+
+    request := &models.GetTableCellRequest{
+        Name: ToStringPointer(remoteFileName),
+        TableRowPath: ToStringPointer("sections/0/tables/2/rows/0"),
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.GetTableCell(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
 
     assert.NotNil(t, actual.Cell, "Validate GetTableCell response.");
-    assert.Equal(t, "0.0.5.0.0", *actual.Cell.NodeId, "Validate GetTableCell response.");
+    assert.Equal(t, "0.0.5.0.0", actual.Cell.NodeId, "Validate GetTableCell response.");
 }
 
 // Test for deleting cell.
@@ -539,7 +672,15 @@ func Test_Table_DeleteTableCell(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, err := client.WordsApi.DeleteTableCell(ctx, remoteFileName, "sections/0/tables/2/rows/0", int32(0), options)
+
+    request := &models.DeleteTableCellRequest{
+        Name: ToStringPointer(remoteFileName),
+        TableRowPath: ToStringPointer("sections/0/tables/2/rows/0"),
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    _, err := client.WordsApi.DeleteTableCell(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -563,14 +704,22 @@ func Test_Table_InsertTableCell(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    actual, _, err := client.WordsApi.InsertTableCell(ctx, remoteFileName, requestCell, "sections/0/tables/2/rows/0", options)
+
+    request := &models.InsertTableCellRequest{
+        Name: ToStringPointer(remoteFileName),
+        Cell: requestCell,
+        TableRowPath: ToStringPointer("sections/0/tables/2/rows/0"),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.InsertTableCell(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
 
     assert.NotNil(t, actual.Cell, "Validate InsertTableCell response.");
-    assert.Equal(t, "0.0.5.0.3", *actual.Cell.NodeId, "Validate InsertTableCell response.");
+    assert.Equal(t, "0.0.5.0.3", actual.Cell.NodeId, "Validate InsertTableCell response.");
 }
 
 // Test for getting cell format.
@@ -587,14 +736,22 @@ func Test_Table_GetTableCellFormat(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    actual, _, err := client.WordsApi.GetTableCellFormat(ctx, remoteFileName, "sections/0/tables/2/rows/0", int32(0), options)
+
+    request := &models.GetTableCellFormatRequest{
+        Name: ToStringPointer(remoteFileName),
+        TableRowPath: ToStringPointer("sections/0/tables/2/rows/0"),
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.GetTableCellFormat(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
 
     assert.NotNil(t, actual.CellFormat, "Validate GetTableCellFormat response.");
-    assert.True(t, *actual.CellFormat.WrapText, "Validate GetTableCellFormat response.");
+    assert.True(t, actual.CellFormat.WrapText, "Validate GetTableCellFormat response.");
 }
 
 // Test for updating cell format.
@@ -610,23 +767,32 @@ func Test_Table_UpdateTableCellFormat(t *testing.T) {
     requestFormat := models.TableCellFormat{
         BottomPadding: ToFloat64Pointer(5.0),
         FitText: ToBoolPointer(true),
-        HorizontalMerge: "First",
+        HorizontalMerge: ToStringPointer("First"),
         WrapText: ToBoolPointer(true),
     }
 
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    actual, _, err := client.WordsApi.UpdateTableCellFormat(ctx, remoteFileName, requestFormat, "sections/0/tables/2/rows/0", int32(0), options)
+
+    request := &models.UpdateTableCellFormatRequest{
+        Name: ToStringPointer(remoteFileName),
+        Format: requestFormat,
+        TableRowPath: ToStringPointer("sections/0/tables/2/rows/0"),
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.UpdateTableCellFormat(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
 
     assert.NotNil(t, actual.CellFormat, "Validate UpdateTableCellFormat response.");
-    assert.Equal(t, 5.0, *actual.CellFormat.BottomPadding, "Validate UpdateTableCellFormat response.");
-    assert.True(t, *actual.CellFormat.FitText, "Validate UpdateTableCellFormat response.");
-    assert.True(t, *actual.CellFormat.WrapText, "Validate UpdateTableCellFormat response.");
+    assert.Equal(t, 5.0, actual.CellFormat.BottomPadding, "Validate UpdateTableCellFormat response.");
+    assert.True(t, actual.CellFormat.FitText, "Validate UpdateTableCellFormat response.");
+    assert.True(t, actual.CellFormat.WrapText, "Validate UpdateTableCellFormat response.");
 }
 
 // Test for table rendering.
@@ -644,7 +810,15 @@ func Test_Table_RenderTable(t *testing.T) {
         "nodePath": "",
         "folder": remoteDataFolder,
     }
-    _, err := client.WordsApi.RenderTable(ctx, remoteFileName, "png", int32(0), options)
+
+    request := &models.RenderTableRequest{
+        Name: ToStringPointer(remoteFileName),
+        Format: ToStringPointer("png"),
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    _, err := client.WordsApi.RenderTable(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -666,7 +840,15 @@ func Test_Table_RenderTableWithoutNodePath(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, err := client.WordsApi.RenderTable(ctx, remoteFileName, "png", int32(0), options)
+
+    request := &models.RenderTableRequest{
+        Name: ToStringPointer(remoteFileName),
+        Format: ToStringPointer("png"),
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    _, err := client.WordsApi.RenderTable(ctx, request)
 
     if err != nil {
         t.Error(err)

@@ -10,10 +10,10 @@
  *  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  *  copies of the Software, and to permit persons to whom the Software is
  *  furnished to do so, subject to the following conditions:
- *
+ * 
  *  The above copyright notice and this permission notice shall be included in all
  *  copies or substantial portions of the Software.
- *
+ * 
  *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -28,81 +28,86 @@
 package api_test
 
 import (
-	"context"
-	"os"
-	"path/filepath"
-	"strings"
-	"testing"
+    "context"
+    "os"
+    "path/filepath"
+    "strings"
+    "testing"
 
-	"github.com/aspose-words-cloud/aspose-words-cloud-go/dev/api"
-	"github.com/aspose-words-cloud/aspose-words-cloud-go/dev/api/models"
-	"github.com/stretchr/testify/assert"
+    "github.com/aspose-words-cloud/aspose-words-cloud-go/dev/api"
+    "github.com/aspose-words-cloud/aspose-words-cloud-go/dev/api/models"
+    "github.com/stretchr/testify/assert"
 )
 
 func TestClientIdAndClientSecret(t *testing.T) {
-	p := []struct {
-		clientId     string
-		clientSecret string
-	}{
-		{"", "x"},
-		{"x", ""},
-	}
-	for _, cp := range p {
-		config := models.Configuration{
-			ClientId:     cp.clientId,
-			ClientSecret: cp.clientSecret,
-		}
-		_, err := api.NewAPIClient(&config)
+    p := []struct {
+        clientId string
+        clientSecret string
+    }{
+        {"", "x"},
+        {"x", ""},
+    }
+    for _, cp := range p {
+        config := models.Configuration{
+            ClientId: cp.clientId,
+            ClientSecret: cp.clientSecret,
+        }
+        _, err := api.NewAPIClient(&config)
 
-		assert.Error(t, err)
-	}
+        assert.Error(t, err)
+    }
 }
 
 func TestBaseUrl(t *testing.T) {
-	config := models.Configuration{
-		ClientId:     "x",
-		ClientSecret: "x",
-		BaseUrl:      "x",
-	}
-	_, err := api.NewAPIClient(&config)
+    config := models.Configuration{
+        ClientId:  "x",
+        ClientSecret:  "x",
+        BaseUrl: "x",
+    }
+    _, err := api.NewAPIClient(&config)
 
-	assert.Error(t, err)
+    assert.Error(t, err)
 }
 
 func TestWrongClientSecret(t *testing.T) {
-	config := ReadConfiguration(t)
-	config.ClientSecret = "x"
-	_, _, err := api.CreateWordsApi(config)
+    config := ReadConfiguration(t)
+    config.ClientSecret = "x"
+    _, _, err := api.CreateWordsApi(config)
 
-	assert.Error(t, err)
+    assert.Error(t, err)
 }
 
 func TestWrongClientId(t *testing.T) {
-	config := ReadConfiguration(t)
-	config.ClientId = "x"
-	_, _, err := api.CreateWordsApi(config)
+    config := ReadConfiguration(t)
+    config.ClientId = "x"
+    _, _, err := api.CreateWordsApi(config)
 
-	assert.Error(t, err)
+    assert.Error(t, err)
 }
 
 func TestUnathorizedAccess(t *testing.T) {
-	config := ReadConfiguration(t)
-	config.DebugMode = true
-	client, err := api.NewAPIClient(config)
+    config := ReadConfiguration(t)
+    client, err := api.NewAPIClient(config)
 
-	if err != nil {
-		t.Error(err)
+    if err != nil {
+        t.Error(err)
+    }
+
+    format := "pdf"
+    localFilePath := GetLocalPath(filepath.Join("DocumentActions", "ConvertDocument"), "test_uploadfile.docx")
+    document, fileErr := os.Open(localFilePath)
+    if fileErr != nil {
+        t.Error(fileErr)
+    }
+
+	request := &models.ConvertDocumentRequest{
+		Document: document,
+		Format:   ToStringPointer(format),
 	}
 
-	format := "pdf"
-	localFilePath := GetLocalPath(filepath.Join("DocumentActions", "ConvertDocument"), "test_uploadfile.docx")
-	document, fileErr := os.Open(localFilePath)
-	if fileErr != nil {
-		t.Error(fileErr)
-	}
+	_, err = client.WordsApi.ConvertDocument(context.Background(), request)
 
-	_, err = client.WordsApi.ConvertDocument(context.Background(), document, format, nil)
-
-	assert.Error(t, err)
-	assert.True(t, strings.Contains(err.Error(), "ClientId is undefined. Please check authorization."))
+    assert.Error(t, err)
+    assert.True(t, strings.Contains(err.Error(), "ClientId is undefined. Please check authorization."))
 }
+

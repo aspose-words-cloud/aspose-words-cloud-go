@@ -28,6 +28,11 @@
 package models
 
 // DTO container with a Range element.
+type RangeDocumentResult struct {
+    // DTO container with a Range element.
+    DocumentName string `json:"DocumentName,omitempty"`
+}
+
 type RangeDocument struct {
     // DTO container with a Range element.
     DocumentName *string `json:"DocumentName,omitempty"`
@@ -39,4 +44,5 @@ type IRangeDocument interface {
 func (RangeDocument) IsRangeDocument() bool {
     return true
 }
+
 

@@ -28,7 +28,7 @@
 package models
 
 // Allows to specify additional System.Drawing.Graphics quality options.
-type GraphicsQualityOptionsData struct {
+type GraphicsQualityOptionsDataResult struct {
     // Allows to specify additional System.Drawing.Graphics quality options.
     CompositingMode string `json:"CompositingMode,omitempty"`
 
@@ -42,10 +42,30 @@ type GraphicsQualityOptionsData struct {
     SmoothingMode string `json:"SmoothingMode,omitempty"`
 
     // Allows to specify additional System.Drawing.Graphics quality options.
-    StringFormat *StringFormatData `json:"StringFormat,omitempty"`
+    StringFormat StringFormatDataResult `json:"StringFormat,omitempty"`
 
     // Allows to specify additional System.Drawing.Graphics quality options.
     TextRenderingHint string `json:"TextRenderingHint,omitempty"`
+}
+
+type GraphicsQualityOptionsData struct {
+    // Allows to specify additional System.Drawing.Graphics quality options.
+    CompositingMode *string `json:"CompositingMode,omitempty"`
+
+    // Allows to specify additional System.Drawing.Graphics quality options.
+    CompositingQuality *string `json:"CompositingQuality,omitempty"`
+
+    // Allows to specify additional System.Drawing.Graphics quality options.
+    InterpolationMode *string `json:"InterpolationMode,omitempty"`
+
+    // Allows to specify additional System.Drawing.Graphics quality options.
+    SmoothingMode *string `json:"SmoothingMode,omitempty"`
+
+    // Allows to specify additional System.Drawing.Graphics quality options.
+    StringFormat IStringFormatData `json:"StringFormat,omitempty"`
+
+    // Allows to specify additional System.Drawing.Graphics quality options.
+    TextRenderingHint *string `json:"TextRenderingHint,omitempty"`
 }
 
 type IGraphicsQualityOptionsData interface {
@@ -54,4 +74,5 @@ type IGraphicsQualityOptionsData interface {
 func (GraphicsQualityOptionsData) IsGraphicsQualityOptionsData() bool {
     return true
 }
+
 

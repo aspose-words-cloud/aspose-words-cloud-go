@@ -30,19 +30,9 @@ package models
 // The REST response with a HeaderFooter.
 type HeaderFooterResponse struct {
     // The REST response with a HeaderFooter.
-    RequestId *string `json:"RequestId,omitempty"`
+    RequestId string `json:"RequestId,omitempty"`
 
     // The REST response with a HeaderFooter.
-    HeaderFooter *HeaderFooter `json:"HeaderFooter,omitempty"`
+    HeaderFooter HeaderFooterResult `json:"HeaderFooter,omitempty"`
 }
 
-type IHeaderFooterResponse interface {
-    IsHeaderFooterResponse() bool
-}
-func (HeaderFooterResponse) IsHeaderFooterResponse() bool {
-    return true
-}
-
-func (HeaderFooterResponse) IsWordsResponse() bool {
-    return true
-}

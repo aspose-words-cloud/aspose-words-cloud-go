@@ -30,19 +30,9 @@ package models
 // The REST response with a result of document splitting.
 type SplitDocumentResponse struct {
     // The REST response with a result of document splitting.
-    RequestId *string `json:"RequestId,omitempty"`
+    RequestId string `json:"RequestId,omitempty"`
 
     // The REST response with a result of document splitting.
-    SplitResult *SplitDocumentResult `json:"SplitResult,omitempty"`
+    SplitResult SplitDocumentResultResult `json:"SplitResult,omitempty"`
 }
 
-type ISplitDocumentResponse interface {
-    IsSplitDocumentResponse() bool
-}
-func (SplitDocumentResponse) IsSplitDocumentResponse() bool {
-    return true
-}
-
-func (SplitDocumentResponse) IsWordsResponse() bool {
-    return true
-}

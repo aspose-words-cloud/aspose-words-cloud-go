@@ -28,12 +28,12 @@
 package models
 
 // Drawing object element for update.
-type DrawingObjectUpdate struct {
+type DrawingObjectUpdateResult struct {
     // Drawing object element for update.
-    Height *float64 `json:"Height,omitempty"`
+    Height float64 `json:"Height,omitempty"`
 
     // Drawing object element for update.
-    Left *float64 `json:"Left,omitempty"`
+    Left float64 `json:"Left,omitempty"`
 
     // Drawing object element for update.
     RelativeHorizontalPosition string `json:"RelativeHorizontalPosition,omitempty"`
@@ -42,13 +42,36 @@ type DrawingObjectUpdate struct {
     RelativeVerticalPosition string `json:"RelativeVerticalPosition,omitempty"`
 
     // Drawing object element for update.
+    Top float64 `json:"Top,omitempty"`
+
+    // Drawing object element for update.
+    Width float64 `json:"Width,omitempty"`
+
+    // Drawing object element for update.
+    WrapType string `json:"WrapType,omitempty"`
+}
+
+type DrawingObjectUpdate struct {
+    // Drawing object element for update.
+    Height *float64 `json:"Height,omitempty"`
+
+    // Drawing object element for update.
+    Left *float64 `json:"Left,omitempty"`
+
+    // Drawing object element for update.
+    RelativeHorizontalPosition *string `json:"RelativeHorizontalPosition,omitempty"`
+
+    // Drawing object element for update.
+    RelativeVerticalPosition *string `json:"RelativeVerticalPosition,omitempty"`
+
+    // Drawing object element for update.
     Top *float64 `json:"Top,omitempty"`
 
     // Drawing object element for update.
     Width *float64 `json:"Width,omitempty"`
 
     // Drawing object element for update.
-    WrapType string `json:"WrapType,omitempty"`
+    WrapType *string `json:"WrapType,omitempty"`
 }
 
 type IDrawingObjectUpdate interface {
@@ -57,4 +80,5 @@ type IDrawingObjectUpdate interface {
 func (DrawingObjectUpdate) IsDrawingObjectUpdate() bool {
     return true
 }
+
 

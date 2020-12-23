@@ -59,15 +59,23 @@ func TestReadmeCode(t *testing.T) {
 
     // upload test.docx to a cloud
     // remote.docx is a name in the cloud
-    file, _ := os.Open(localFilePath)
-    wordsApi.UploadFile(ctx, file, remotePath, nil)
+        file, _ := os.Open(localFilePath)
+    uploadRequest := &models.UploadFileRequest{
+        FileContent: file,
+        Path: &remotePath,
+    }
+    wordsApi.UploadFile(ctx, uploadRequest)
 
     // get a text for the first paragraph of the first section
     options := map[string]interface{}{
         "folder": remoteFolder,
     }
+    request := &models.GetParagraphsRequest{
+        Name: &remoteName,
+        Optionals: options,
+    }
 
-    result, _, _ := wordsApi.GetParagraphs(ctx, remoteName, options)
+    result, _, _ := wordsApi.GetParagraphs(ctx, request)
 
     fmt.Println(result.Paragraphs.ParagraphLinkList[0].Text)
 

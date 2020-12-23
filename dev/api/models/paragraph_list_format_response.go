@@ -30,19 +30,9 @@ package models
 // The REST response with a list format for a paragraph.
 type ParagraphListFormatResponse struct {
     // The REST response with a list format for a paragraph.
-    RequestId *string `json:"RequestId,omitempty"`
+    RequestId string `json:"RequestId,omitempty"`
 
     // The REST response with a list format for a paragraph.
-    ListFormat *ListFormat `json:"ListFormat,omitempty"`
+    ListFormat ListFormatResult `json:"ListFormat,omitempty"`
 }
 
-type IParagraphListFormatResponse interface {
-    IsParagraphListFormatResponse() bool
-}
-func (ParagraphListFormatResponse) IsParagraphListFormatResponse() bool {
-    return true
-}
-
-func (ParagraphListFormatResponse) IsWordsResponse() bool {
-    return true
-}

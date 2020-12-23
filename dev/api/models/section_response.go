@@ -30,19 +30,9 @@ package models
 // The REST response with a section.
 type SectionResponse struct {
     // The REST response with a section.
-    RequestId *string `json:"RequestId,omitempty"`
+    RequestId string `json:"RequestId,omitempty"`
 
     // The REST response with a section.
-    Section *Section `json:"Section,omitempty"`
+    Section SectionResult `json:"Section,omitempty"`
 }
 
-type ISectionResponse interface {
-    IsSectionResponse() bool
-}
-func (SectionResponse) IsSectionResponse() bool {
-    return true
-}
-
-func (SectionResponse) IsWordsResponse() bool {
-    return true
-}

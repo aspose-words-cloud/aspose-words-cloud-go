@@ -28,15 +28,26 @@
 package models
 
 // Result of splitting document.
+type SplitDocumentResultResult struct {
+    // Result of splitting document.
+    Pages []FileLinkResult `json:"Pages,omitempty"`
+
+    // Result of splitting document.
+    SourceDocument FileLinkResult `json:"SourceDocument,omitempty"`
+
+    // Result of splitting document.
+    ZippedPages FileLinkResult `json:"ZippedPages,omitempty"`
+}
+
 type SplitDocumentResult struct {
     // Result of splitting document.
     Pages []FileLink `json:"Pages,omitempty"`
 
     // Result of splitting document.
-    SourceDocument *FileLink `json:"SourceDocument,omitempty"`
+    SourceDocument IFileLink `json:"SourceDocument,omitempty"`
 
     // Result of splitting document.
-    ZippedPages *FileLink `json:"ZippedPages,omitempty"`
+    ZippedPages IFileLink `json:"ZippedPages,omitempty"`
 }
 
 type ISplitDocumentResult interface {
@@ -45,4 +56,5 @@ type ISplitDocumentResult interface {
 func (SplitDocumentResult) IsSplitDocumentResult() bool {
     return true
 }
+
 

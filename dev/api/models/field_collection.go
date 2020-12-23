@@ -28,9 +28,17 @@
 package models
 
 // DTO container with a collection of fields.
+type FieldCollectionResult struct {
+    // DTO container with a collection of fields.
+    Link WordsApiLinkResult `json:"Link,omitempty"`
+
+    // DTO container with a collection of fields.
+    List []FieldResult `json:"List,omitempty"`
+}
+
 type FieldCollection struct {
     // DTO container with a collection of fields.
-    Link *WordsApiLink `json:"Link,omitempty"`
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // DTO container with a collection of fields.
     List []Field `json:"List,omitempty"`
@@ -46,3 +54,5 @@ func (FieldCollection) IsFieldCollection() bool {
 func (FieldCollection) IsLinkElement() bool {
     return true
 }
+
+
