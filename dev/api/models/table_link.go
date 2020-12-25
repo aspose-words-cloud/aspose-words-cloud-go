@@ -28,9 +28,17 @@
 package models
 
 // Table link element.
+type TableLinkResult struct {
+    // Table link element.
+    Link WordsApiLinkResult `json:"Link,omitempty"`
+
+    // Table link element.
+    NodeId string `json:"NodeId,omitempty"`
+}
+
 type TableLink struct {
     // Table link element.
-    Link *WordsApiLink `json:"Link,omitempty"`
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // Table link element.
     NodeId *string `json:"NodeId,omitempty"`
@@ -46,3 +54,5 @@ func (TableLink) IsTableLink() bool {
 func (TableLink) IsNodeLink() bool {
     return true
 }
+
+

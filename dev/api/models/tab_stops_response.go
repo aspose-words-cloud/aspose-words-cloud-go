@@ -30,19 +30,9 @@ package models
 // The REST response with an array of tab stops.
 type TabStopsResponse struct {
     // The REST response with an array of tab stops.
-    RequestId *string `json:"RequestId,omitempty"`
+    RequestId string `json:"RequestId,omitempty"`
 
     // The REST response with an array of tab stops.
-    TabStops []TabStop `json:"TabStops,omitempty"`
+    TabStops []TabStopResult `json:"TabStops,omitempty"`
 }
 
-type ITabStopsResponse interface {
-    IsTabStopsResponse() bool
-}
-func (TabStopsResponse) IsTabStopsResponse() bool {
-    return true
-}
-
-func (TabStopsResponse) IsWordsResponse() bool {
-    return true
-}

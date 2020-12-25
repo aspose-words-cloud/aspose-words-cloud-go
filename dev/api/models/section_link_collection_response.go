@@ -30,19 +30,9 @@ package models
 // The REST response with a collection of sections.
 type SectionLinkCollectionResponse struct {
     // The REST response with a collection of sections.
-    RequestId *string `json:"RequestId,omitempty"`
+    RequestId string `json:"RequestId,omitempty"`
 
     // The REST response with a collection of sections.
-    Sections *SectionLinkCollection `json:"Sections,omitempty"`
+    Sections SectionLinkCollectionResult `json:"Sections,omitempty"`
 }
 
-type ISectionLinkCollectionResponse interface {
-    IsSectionLinkCollectionResponse() bool
-}
-func (SectionLinkCollectionResponse) IsSectionLinkCollectionResponse() bool {
-    return true
-}
-
-func (SectionLinkCollectionResponse) IsWordsResponse() bool {
-    return true
-}

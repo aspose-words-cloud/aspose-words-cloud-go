@@ -28,9 +28,56 @@
 package models
 
 // FormField text input element.
+type FormFieldTextInputResult struct {
+    // FormField text input element.
+    Link WordsApiLinkResult `json:"Link,omitempty"`
+
+    // FormField text input element.
+    NodeId string `json:"NodeId,omitempty"`
+
+    // FormField text input element.
+    CalculateOnExit bool `json:"CalculateOnExit,omitempty"`
+
+    // FormField text input element.
+    Enabled bool `json:"Enabled,omitempty"`
+
+    // FormField text input element.
+    EntryMacro string `json:"EntryMacro,omitempty"`
+
+    // FormField text input element.
+    ExitMacro string `json:"ExitMacro,omitempty"`
+
+    // FormField text input element.
+    HelpText string `json:"HelpText,omitempty"`
+
+    // FormField text input element.
+    Name string `json:"Name,omitempty"`
+
+    // FormField text input element.
+    OwnHelp bool `json:"OwnHelp,omitempty"`
+
+    // FormField text input element.
+    OwnStatus bool `json:"OwnStatus,omitempty"`
+
+    // FormField text input element.
+    StatusText string `json:"StatusText,omitempty"`
+
+    // FormField text input element.
+    MaxLength int32 `json:"MaxLength,omitempty"`
+
+    // FormField text input element.
+    TextInputDefault string `json:"TextInputDefault,omitempty"`
+
+    // FormField text input element.
+    TextInputFormat string `json:"TextInputFormat,omitempty"`
+
+    // FormField text input element.
+    TextInputType string `json:"TextInputType,omitempty"`
+}
+
 type FormFieldTextInput struct {
     // FormField text input element.
-    Link *WordsApiLink `json:"Link,omitempty"`
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // FormField text input element.
     NodeId *string `json:"NodeId,omitempty"`
@@ -72,7 +119,7 @@ type FormFieldTextInput struct {
     TextInputFormat *string `json:"TextInputFormat,omitempty"`
 
     // FormField text input element.
-    TextInputType string `json:"TextInputType,omitempty"`
+    TextInputType *string `json:"TextInputType,omitempty"`
 }
 
 type IFormFieldTextInput interface {
@@ -85,3 +132,5 @@ func (FormFieldTextInput) IsFormFieldTextInput() bool {
 func (FormFieldTextInput) IsFormField() bool {
     return true
 }
+
+

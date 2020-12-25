@@ -27,17 +27,30 @@
 
 package models
 
-import (
-    "time"
-)
-
 // File or folder information.
+type StorageFileResult struct {
+    // File or folder information.
+    IsFolder bool `json:"IsFolder,omitempty"`
+
+    // File or folder information.
+    ModifiedDate Time `json:"ModifiedDate,omitempty"`
+
+    // File or folder information.
+    Name string `json:"Name,omitempty"`
+
+    // File or folder information.
+    Path string `json:"Path,omitempty"`
+
+    // File or folder information.
+    Size int32 `json:"Size,omitempty"`
+}
+
 type StorageFile struct {
     // File or folder information.
     IsFolder *bool `json:"IsFolder,omitempty"`
 
     // File or folder information.
-    ModifiedDate time.Time `json:"ModifiedDate,omitempty"`
+    ModifiedDate *Time `json:"ModifiedDate,omitempty"`
 
     // File or folder information.
     Name *string `json:"Name,omitempty"`
@@ -55,4 +68,5 @@ type IStorageFile interface {
 func (StorageFile) IsStorageFile() bool {
     return true
 }
+
 

@@ -27,23 +27,33 @@
 
 package models
 
-import (
-    "time"
-)
-
 // Container class for compare documents.
+type CompareDataResult struct {
+    // Container class for compare documents.
+    Author string `json:"Author,omitempty"`
+
+    // Container class for compare documents.
+    CompareOptions CompareOptionsResult `json:"CompareOptions,omitempty"`
+
+    // Container class for compare documents.
+    ComparingWithDocument string `json:"ComparingWithDocument,omitempty"`
+
+    // Container class for compare documents.
+    DateTime Time `json:"DateTime,omitempty"`
+}
+
 type CompareData struct {
     // Container class for compare documents.
     Author *string `json:"Author,omitempty"`
 
     // Container class for compare documents.
-    CompareOptions *CompareOptions `json:"CompareOptions,omitempty"`
+    CompareOptions ICompareOptions `json:"CompareOptions,omitempty"`
 
     // Container class for compare documents.
     ComparingWithDocument *string `json:"ComparingWithDocument,omitempty"`
 
     // Container class for compare documents.
-    DateTime time.Time `json:"DateTime,omitempty"`
+    DateTime *Time `json:"DateTime,omitempty"`
 }
 
 type ICompareData interface {
@@ -52,4 +62,5 @@ type ICompareData interface {
 func (CompareData) IsCompareData() bool {
     return true
 }
+
 

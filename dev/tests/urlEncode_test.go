@@ -30,6 +30,7 @@ package api_test
 import (
     "path"
     "testing"
+    "github.com/aspose-words-cloud/aspose-words-cloud-go/dev/api/models"
 )
 
 func TestUrlEncode(t *testing.T) {
@@ -44,7 +45,12 @@ func TestUrlEncode(t *testing.T) {
 
     client, ctx := UploadFileToStorage(t, localFilePath, path.Join(remoteFolder, remoteName))
 
-    _, err := client.WordsApi.DeleteSection(ctx, remoteName, int32(sectionIndex), options)
+    request := &models.DeleteSectionRequest{
+        Name: ToStringPointer(remoteName),
+        SectionIndex: ToInt32Pointer(int32(sectionIndex)),
+        Optionals: options,
+    }
+    _, err := client.WordsApi.DeleteSection(ctx, request)
 
     if err != nil {
         t.Error(err)

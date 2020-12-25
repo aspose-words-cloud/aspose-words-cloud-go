@@ -28,9 +28,20 @@
 package models
 
 // Field link.
+type FieldLinkResult struct {
+    // Field link.
+    Link WordsApiLinkResult `json:"Link,omitempty"`
+
+    // Field link.
+    NodeId string `json:"NodeId,omitempty"`
+
+    // Field link.
+    FieldCode string `json:"FieldCode,omitempty"`
+}
+
 type FieldLink struct {
     // Field link.
-    Link *WordsApiLink `json:"Link,omitempty"`
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // Field link.
     NodeId *string `json:"NodeId,omitempty"`
@@ -49,3 +60,5 @@ func (FieldLink) IsFieldLink() bool {
 func (FieldLink) IsNodeLink() bool {
     return true
 }
+
+

@@ -31,6 +31,7 @@ package api_test
 import (
     "github.com/stretchr/testify/assert"
     "testing"
+    "github.com/aspose-words-cloud/aspose-words-cloud-go/dev/api/models"
 )
 
 // Test for create folder.
@@ -42,7 +43,13 @@ func Test_Folder_CreateFolder(t *testing.T) {
 
     options := map[string]interface{}{
     }
-    _, err := client.WordsApi.CreateFolder(ctx, remoteDataFolder + "/TestCreateFolder", options)
+
+    request := &models.CreateFolderRequest{
+        Path: ToStringPointer(remoteDataFolder + "/TestCreateFolder"),
+        Optionals: options,
+    }
+
+    _, err := client.WordsApi.CreateFolder(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -63,7 +70,13 @@ func Test_Folder_DeleteFolder(t *testing.T) {
 
     options := map[string]interface{}{
     }
-    _, err := client.WordsApi.DeleteFolder(ctx, testDeleteFolder, options)
+
+    request := &models.DeleteFolderRequest{
+        Path: ToStringPointer(testDeleteFolder),
+        Optionals: options,
+    }
+
+    _, err := client.WordsApi.DeleteFolder(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -80,7 +93,13 @@ func Test_Folder_GetFilesList(t *testing.T) {
 
     options := map[string]interface{}{
     }
-    actual, _, err := client.WordsApi.GetFilesList(ctx, remoteDataFolder, options)
+
+    request := &models.GetFilesListRequest{
+        Path: ToStringPointer(remoteDataFolder),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.GetFilesList(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -102,7 +121,14 @@ func Test_Folder_CopyFolder(t *testing.T) {
 
     options := map[string]interface{}{
     }
-    _, err := client.WordsApi.CopyFolder(ctx, folderToCopy + "Dest", folderToCopy + "Src", options)
+
+    request := &models.CopyFolderRequest{
+        DestPath: ToStringPointer(folderToCopy + "Dest"),
+        SrcPath: ToStringPointer(folderToCopy + "Src"),
+        Optionals: options,
+    }
+
+    _, err := client.WordsApi.CopyFolder(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -122,7 +148,14 @@ func Test_Folder_MoveFolder(t *testing.T) {
 
     options := map[string]interface{}{
     }
-    _, err := client.WordsApi.MoveFolder(ctx, baseTestOutPath + "/TestMoveFolderDest_" + CreateRandomGuid(), remoteDataFolder + "/TestMoveFolderSrc", options)
+
+    request := &models.MoveFolderRequest{
+        DestPath: ToStringPointer(baseTestOutPath + "/TestMoveFolderDest_" + CreateRandomGuid()),
+        SrcPath: ToStringPointer(remoteDataFolder + "/TestMoveFolderSrc"),
+        Optionals: options,
+    }
+
+    _, err := client.WordsApi.MoveFolder(ctx, request)
 
     if err != nil {
         t.Error(err)

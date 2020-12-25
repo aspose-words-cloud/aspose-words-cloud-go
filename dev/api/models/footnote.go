@@ -28,21 +28,44 @@
 package models
 
 // DTO container with a footnote.
-type Footnote struct {
+type FootnoteResult struct {
     // DTO container with a footnote.
-    Link *WordsApiLink `json:"Link,omitempty"`
+    Link WordsApiLinkResult `json:"Link,omitempty"`
 
     // DTO container with a footnote.
-    NodeId *string `json:"NodeId,omitempty"`
+    NodeId string `json:"NodeId,omitempty"`
 
     // DTO container with a footnote.
-    Content *StoryChildNodes `json:"Content,omitempty"`
+    Content StoryChildNodesResult `json:"Content,omitempty"`
 
     // DTO container with a footnote.
     FootnoteType string `json:"FootnoteType,omitempty"`
 
     // DTO container with a footnote.
-    Position *DocumentPosition `json:"Position,omitempty"`
+    Position DocumentPositionResult `json:"Position,omitempty"`
+
+    // DTO container with a footnote.
+    ReferenceMark string `json:"ReferenceMark,omitempty"`
+
+    // DTO container with a footnote.
+    Text string `json:"Text,omitempty"`
+}
+
+type Footnote struct {
+    // DTO container with a footnote.
+    Link IWordsApiLink `json:"Link,omitempty"`
+
+    // DTO container with a footnote.
+    NodeId *string `json:"NodeId,omitempty"`
+
+    // DTO container with a footnote.
+    Content IStoryChildNodes `json:"Content,omitempty"`
+
+    // DTO container with a footnote.
+    FootnoteType *string `json:"FootnoteType,omitempty"`
+
+    // DTO container with a footnote.
+    Position IDocumentPosition `json:"Position,omitempty"`
 
     // DTO container with a footnote.
     ReferenceMark *string `json:"ReferenceMark,omitempty"`
@@ -61,3 +84,5 @@ func (Footnote) IsFootnote() bool {
 func (Footnote) IsFootnoteLink() bool {
     return true
 }
+
+

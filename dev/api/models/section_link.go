@@ -28,9 +28,17 @@
 package models
 
 // Section link element.
+type SectionLinkResult struct {
+    // Section link element.
+    Link WordsApiLinkResult `json:"Link,omitempty"`
+
+    // Section link element.
+    NodeId string `json:"NodeId,omitempty"`
+}
+
 type SectionLink struct {
     // Section link element.
-    Link *WordsApiLink `json:"Link,omitempty"`
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // Section link element.
     NodeId *string `json:"NodeId,omitempty"`
@@ -46,3 +54,5 @@ func (SectionLink) IsSectionLink() bool {
 func (SectionLink) IsNodeLink() bool {
     return true
 }
+
+

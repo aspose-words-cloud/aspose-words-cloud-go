@@ -44,13 +44,20 @@ func Test_Compatibility_OptimizeDocument(t *testing.T) {
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
     requestOptions := models.OptimizationOptions{
-        MsWordVersion: "Word2002",
+        MsWordVersion: ToStringPointer("Word2002"),
     }
 
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, err := client.WordsApi.OptimizeDocument(ctx, remoteFileName, requestOptions, options)
+
+    request := &models.OptimizeDocumentRequest{
+        Name: ToStringPointer(remoteFileName),
+        Options: requestOptions,
+        Optionals: options,
+    }
+
+    _, err := client.WordsApi.OptimizeDocument(ctx, request)
 
     if err != nil {
         t.Error(err)

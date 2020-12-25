@@ -30,6 +30,7 @@ package api_test
 
 import (
     "testing"
+    "github.com/aspose-words-cloud/aspose-words-cloud-go/dev/api/models"
 )
 
 // Test for getting document with specified format.
@@ -46,7 +47,14 @@ func Test_DocumentWithFormat_GetDocumentWithFormat(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, err := client.WordsApi.GetDocumentWithFormat(ctx, remoteFileName, "text", options)
+
+    request := &models.GetDocumentWithFormatRequest{
+        Name: ToStringPointer(remoteFileName),
+        Format: ToStringPointer("text"),
+        Optionals: options,
+    }
+
+    _, err := client.WordsApi.GetDocumentWithFormat(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -69,7 +77,14 @@ func Test_DocumentWithFormat_GetDocumentWithFormatAndOutPath(t *testing.T) {
         "folder": remoteDataFolder,
         "outPath": baseTestOutPath + "/TestGetDocumentWithFormatAndOutPath.text",
     }
-    _, err := client.WordsApi.GetDocumentWithFormat(ctx, remoteFileName, "text", options)
+
+    request := &models.GetDocumentWithFormatRequest{
+        Name: ToStringPointer(remoteFileName),
+        Format: ToStringPointer("text"),
+        Optionals: options,
+    }
+
+    _, err := client.WordsApi.GetDocumentWithFormat(ctx, request)
 
     if err != nil {
         t.Error(err)

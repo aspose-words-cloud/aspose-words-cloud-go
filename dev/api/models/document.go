@@ -28,9 +28,29 @@
 package models
 
 // Represents Words document DTO.
+type DocumentResult struct {
+    // Represents Words document DTO.
+    DocumentProperties DocumentPropertiesResult `json:"DocumentProperties,omitempty"`
+
+    // Represents Words document DTO.
+    FileName string `json:"FileName,omitempty"`
+
+    // Represents Words document DTO.
+    IsEncrypted bool `json:"IsEncrypted,omitempty"`
+
+    // Represents Words document DTO.
+    IsSigned bool `json:"IsSigned,omitempty"`
+
+    // Represents Words document DTO.
+    Links []LinkResult `json:"Links,omitempty"`
+
+    // Represents Words document DTO.
+    SourceFormat string `json:"SourceFormat,omitempty"`
+}
+
 type Document struct {
     // Represents Words document DTO.
-    DocumentProperties *DocumentProperties `json:"DocumentProperties,omitempty"`
+    DocumentProperties IDocumentProperties `json:"DocumentProperties,omitempty"`
 
     // Represents Words document DTO.
     FileName *string `json:"FileName,omitempty"`
@@ -45,7 +65,7 @@ type Document struct {
     Links []Link `json:"Links,omitempty"`
 
     // Represents Words document DTO.
-    SourceFormat string `json:"SourceFormat,omitempty"`
+    SourceFormat *string `json:"SourceFormat,omitempty"`
 }
 
 type IDocument interface {
@@ -54,4 +74,5 @@ type IDocument interface {
 func (Document) IsDocument() bool {
     return true
 }
+
 

@@ -28,7 +28,7 @@
 package models
 
 // Allows to specify System.Drawing.StringFormat options.
-type StringFormatData struct {
+type StringFormatDataResult struct {
     // Allows to specify System.Drawing.StringFormat options.
     Alignment string `json:"Alignment,omitempty"`
 
@@ -45,10 +45,28 @@ type StringFormatData struct {
     Trimming string `json:"Trimming,omitempty"`
 }
 
+type StringFormatData struct {
+    // Allows to specify System.Drawing.StringFormat options.
+    Alignment *string `json:"Alignment,omitempty"`
+
+    // Allows to specify System.Drawing.StringFormat options.
+    FormatFlags *string `json:"FormatFlags,omitempty"`
+
+    // Allows to specify System.Drawing.StringFormat options.
+    HotkeyPrefix *string `json:"HotkeyPrefix,omitempty"`
+
+    // Allows to specify System.Drawing.StringFormat options.
+    LineAlignment *string `json:"LineAlignment,omitempty"`
+
+    // Allows to specify System.Drawing.StringFormat options.
+    Trimming *string `json:"Trimming,omitempty"`
+}
+
 type IStringFormatData interface {
     IsStringFormatData() bool
 }
 func (StringFormatData) IsStringFormatData() bool {
     return true
 }
+
 

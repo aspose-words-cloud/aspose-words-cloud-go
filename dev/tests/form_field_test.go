@@ -49,7 +49,7 @@ func Test_FormField_UpdateFormField(t *testing.T) {
         Enabled: ToBoolPointer(true),
         CalculateOnExit: ToBoolPointer(true),
         StatusText: ToStringPointer(""),
-        TextInputType: "Regular",
+        TextInputType: ToStringPointer("Regular"),
         TextInputDefault: ToStringPointer("No name"),
     }
 
@@ -58,15 +58,23 @@ func Test_FormField_UpdateFormField(t *testing.T) {
         "folder": remoteDataFolder,
         "destFileName": baseTestOutPath + "/" + remoteFileName,
     }
-    actual, _, err := client.WordsApi.UpdateFormField(ctx, remoteFileName, requestFormField, int32(0), options)
+
+    request := &models.UpdateFormFieldRequest{
+        Name: ToStringPointer(remoteFileName),
+        FormField: requestFormField,
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.UpdateFormField(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
 
     assert.NotNil(t, actual.FormField, "Validate UpdateFormField response.");
-    assert.Equal(t, "FullName", *actual.FormField.Name, "Validate UpdateFormField response.");
-    assert.Equal(t, "", *actual.FormField.StatusText, "Validate UpdateFormField response.");
+    assert.Equal(t, "FullName", actual.FormField.Name, "Validate UpdateFormField response.");
+    assert.Equal(t, "", actual.FormField.StatusText, "Validate UpdateFormField response.");
 }
 
 // Test for posting form field without node path.
@@ -84,7 +92,7 @@ func Test_FormField_UpdateFormFieldWithoutNodePath(t *testing.T) {
         Enabled: ToBoolPointer(true),
         CalculateOnExit: ToBoolPointer(true),
         StatusText: ToStringPointer(""),
-        TextInputType: "Regular",
+        TextInputType: ToStringPointer("Regular"),
         TextInputDefault: ToStringPointer("No name"),
     }
 
@@ -92,15 +100,23 @@ func Test_FormField_UpdateFormFieldWithoutNodePath(t *testing.T) {
         "folder": remoteDataFolder,
         "destFileName": baseTestOutPath + "/" + remoteFileName,
     }
-    actual, _, err := client.WordsApi.UpdateFormField(ctx, remoteFileName, requestFormField, int32(0), options)
+
+    request := &models.UpdateFormFieldRequest{
+        Name: ToStringPointer(remoteFileName),
+        FormField: requestFormField,
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.UpdateFormField(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
 
     assert.NotNil(t, actual.FormField, "Validate UpdateFormFieldWithoutNodePath response.");
-    assert.Equal(t, "FullName", *actual.FormField.Name, "Validate UpdateFormFieldWithoutNodePath response.");
-    assert.Equal(t, "", *actual.FormField.StatusText, "Validate UpdateFormFieldWithoutNodePath response.");
+    assert.Equal(t, "FullName", actual.FormField.Name, "Validate UpdateFormFieldWithoutNodePath response.");
+    assert.Equal(t, "", actual.FormField.StatusText, "Validate UpdateFormFieldWithoutNodePath response.");
 }
 
 // Test for getting form field.
@@ -118,14 +134,21 @@ func Test_FormField_GetFormField(t *testing.T) {
         "nodePath": "sections/0",
         "folder": remoteDataFolder,
     }
-    actual, _, err := client.WordsApi.GetFormField(ctx, remoteFileName, int32(0), options)
+
+    request := &models.GetFormFieldRequest{
+        Name: ToStringPointer(remoteFileName),
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.GetFormField(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
 
     assert.NotNil(t, actual.FormField, "Validate GetFormField response.");
-    assert.Equal(t, "FullName", *actual.FormField.Name, "Validate GetFormField response.");
+    assert.Equal(t, "FullName", actual.FormField.Name, "Validate GetFormField response.");
 }
 
 // Test for getting form field without node path.
@@ -142,14 +165,21 @@ func Test_FormField_GetFormFieldWithoutNodePath(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    actual, _, err := client.WordsApi.GetFormField(ctx, remoteFileName, int32(0), options)
+
+    request := &models.GetFormFieldRequest{
+        Name: ToStringPointer(remoteFileName),
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.GetFormField(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
 
     assert.NotNil(t, actual.FormField, "Validate GetFormFieldWithoutNodePath response.");
-    assert.Equal(t, "FullName", *actual.FormField.Name, "Validate GetFormFieldWithoutNodePath response.");
+    assert.Equal(t, "FullName", actual.FormField.Name, "Validate GetFormFieldWithoutNodePath response.");
 }
 
 // Test for getting form fields.
@@ -167,7 +197,13 @@ func Test_FormField_GetFormFields(t *testing.T) {
         "nodePath": "sections/0",
         "folder": remoteDataFolder,
     }
-    actual, _, err := client.WordsApi.GetFormFields(ctx, remoteFileName, options)
+
+    request := &models.GetFormFieldsRequest{
+        Name: ToStringPointer(remoteFileName),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.GetFormFields(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -176,7 +212,7 @@ func Test_FormField_GetFormFields(t *testing.T) {
     assert.NotNil(t, actual.FormFields, "Validate GetFormFields response.");
     assert.NotNil(t, actual.FormFields.List, "Validate GetFormFields response.");
     assert.Equal(t, 5, len(actual.FormFields.List), "Validate GetFormFields response.");
-    assert.Equal(t, "FullName", *actual.FormFields.List[0].Name, "Validate GetFormFields response.");
+    assert.Equal(t, "FullName", actual.FormFields.List[0].Name, "Validate GetFormFields response.");
 }
 
 // Test for getting form fields without node path.
@@ -193,7 +229,13 @@ func Test_FormField_GetFormFieldsWithoutNodePath(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    actual, _, err := client.WordsApi.GetFormFields(ctx, remoteFileName, options)
+
+    request := &models.GetFormFieldsRequest{
+        Name: ToStringPointer(remoteFileName),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.GetFormFields(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -202,7 +244,7 @@ func Test_FormField_GetFormFieldsWithoutNodePath(t *testing.T) {
     assert.NotNil(t, actual.FormFields, "Validate GetFormFieldsWithoutNodePath response.");
     assert.NotNil(t, actual.FormFields.List, "Validate GetFormFieldsWithoutNodePath response.");
     assert.Equal(t, 5, len(actual.FormFields.List), "Validate GetFormFieldsWithoutNodePath response.");
-    assert.Equal(t, "FullName", *actual.FormFields.List[0].Name, "Validate GetFormFieldsWithoutNodePath response.");
+    assert.Equal(t, "FullName", actual.FormFields.List[0].Name, "Validate GetFormFieldsWithoutNodePath response.");
 }
 
 // Test for insert form field without node path.
@@ -219,7 +261,7 @@ func Test_FormField_InsertFormField(t *testing.T) {
         Enabled: ToBoolPointer(true),
         CalculateOnExit: ToBoolPointer(true),
         StatusText: ToStringPointer(""),
-        TextInputType: "Regular",
+        TextInputType: ToStringPointer("Regular"),
         TextInputDefault: ToStringPointer("123"),
         TextInputFormat: ToStringPointer("UPPERCASE"),
     }
@@ -229,15 +271,22 @@ func Test_FormField_InsertFormField(t *testing.T) {
         "folder": remoteDataFolder,
         "destFileName": baseTestOutPath + "/" + remoteFileName,
     }
-    actual, _, err := client.WordsApi.InsertFormField(ctx, remoteFileName, requestFormField, options)
+
+    request := &models.InsertFormFieldRequest{
+        Name: ToStringPointer(remoteFileName),
+        FormField: requestFormField,
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.InsertFormField(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
 
     assert.NotNil(t, actual.FormField, "Validate InsertFormField response.");
-    assert.Equal(t, "FullName", *actual.FormField.Name, "Validate InsertFormField response.");
-    assert.Equal(t, "", *actual.FormField.StatusText, "Validate InsertFormField response.");
+    assert.Equal(t, "FullName", actual.FormField.Name, "Validate InsertFormField response.");
+    assert.Equal(t, "", actual.FormField.StatusText, "Validate InsertFormField response.");
 }
 
 // Test for insert form field without node path.
@@ -254,7 +303,7 @@ func Test_FormField_InsertFormFieldWithoutNodePath(t *testing.T) {
         Enabled: ToBoolPointer(true),
         CalculateOnExit: ToBoolPointer(true),
         StatusText: ToStringPointer(""),
-        TextInputType: "Regular",
+        TextInputType: ToStringPointer("Regular"),
         TextInputDefault: ToStringPointer("123"),
         TextInputFormat: ToStringPointer("UPPERCASE"),
     }
@@ -263,15 +312,22 @@ func Test_FormField_InsertFormFieldWithoutNodePath(t *testing.T) {
         "folder": remoteDataFolder,
         "destFileName": baseTestOutPath + "/" + remoteFileName,
     }
-    actual, _, err := client.WordsApi.InsertFormField(ctx, remoteFileName, requestFormField, options)
+
+    request := &models.InsertFormFieldRequest{
+        Name: ToStringPointer(remoteFileName),
+        FormField: requestFormField,
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.InsertFormField(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
 
     assert.NotNil(t, actual.FormField, "Validate InsertFormFieldWithoutNodePath response.");
-    assert.Equal(t, "FullName", *actual.FormField.Name, "Validate InsertFormFieldWithoutNodePath response.");
-    assert.Equal(t, "", *actual.FormField.StatusText, "Validate InsertFormFieldWithoutNodePath response.");
+    assert.Equal(t, "FullName", actual.FormField.Name, "Validate InsertFormFieldWithoutNodePath response.");
+    assert.Equal(t, "", actual.FormField.StatusText, "Validate InsertFormFieldWithoutNodePath response.");
 }
 
 // Test for deleting form field.
@@ -290,7 +346,14 @@ func Test_FormField_DeleteFormField(t *testing.T) {
         "folder": remoteDataFolder,
         "destFileName": baseTestOutPath + "/" + remoteFileName,
     }
-    _, err := client.WordsApi.DeleteFormField(ctx, remoteFileName, int32(0), options)
+
+    request := &models.DeleteFormFieldRequest{
+        Name: ToStringPointer(remoteFileName),
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    _, err := client.WordsApi.DeleteFormField(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -313,7 +376,14 @@ func Test_FormField_DeleteFormFieldWithoutNodePath(t *testing.T) {
         "folder": remoteDataFolder,
         "destFileName": baseTestOutPath + "/" + remoteFileName,
     }
-    _, err := client.WordsApi.DeleteFormField(ctx, remoteFileName, int32(0), options)
+
+    request := &models.DeleteFormFieldRequest{
+        Name: ToStringPointer(remoteFileName),
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    _, err := client.WordsApi.DeleteFormField(ctx, request)
 
     if err != nil {
         t.Error(err)

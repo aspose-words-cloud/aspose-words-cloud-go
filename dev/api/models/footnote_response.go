@@ -30,19 +30,9 @@ package models
 // The REST response with a footnote.
 type FootnoteResponse struct {
     // The REST response with a footnote.
-    RequestId *string `json:"RequestId,omitempty"`
+    RequestId string `json:"RequestId,omitempty"`
 
     // The REST response with a footnote.
-    Footnote *Footnote `json:"Footnote,omitempty"`
+    Footnote FootnoteResult `json:"Footnote,omitempty"`
 }
 
-type IFootnoteResponse interface {
-    IsFootnoteResponse() bool
-}
-func (FootnoteResponse) IsFootnoteResponse() bool {
-    return true
-}
-
-func (FootnoteResponse) IsWordsResponse() bool {
-    return true
-}

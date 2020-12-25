@@ -28,6 +28,20 @@
 package models
 
 // DTO container with font info.
+type FontInfoResult struct {
+    // DTO container with font info.
+    FilePath string `json:"FilePath,omitempty"`
+
+    // DTO container with font info.
+    FontFamilyName string `json:"FontFamilyName,omitempty"`
+
+    // DTO container with font info.
+    FullFontName string `json:"FullFontName,omitempty"`
+
+    // DTO container with font info.
+    Version string `json:"Version,omitempty"`
+}
+
 type FontInfo struct {
     // DTO container with font info.
     FilePath *string `json:"FilePath,omitempty"`
@@ -48,4 +62,5 @@ type IFontInfo interface {
 func (FontInfo) IsFontInfo() bool {
     return true
 }
+
 

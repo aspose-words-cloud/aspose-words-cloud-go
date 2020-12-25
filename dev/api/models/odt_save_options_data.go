@@ -28,9 +28,53 @@
 package models
 
 // Container class for odt/ott save options.
-type OdtSaveOptionsData struct {
+type OdtSaveOptionsDataResult struct {
     // Container class for odt/ott save options.
     Dml3DEffectsRenderingMode string `json:"Dml3DEffectsRenderingMode,omitempty"`
+
+    // Container class for odt/ott save options.
+    DmlEffectsRenderingMode string `json:"DmlEffectsRenderingMode,omitempty"`
+
+    // Container class for odt/ott save options.
+    DmlRenderingMode string `json:"DmlRenderingMode,omitempty"`
+
+    // Container class for odt/ott save options.
+    FileName string `json:"FileName,omitempty"`
+
+    // Container class for odt/ott save options.
+    SaveFormat string `json:"SaveFormat,omitempty"`
+
+    // Container class for odt/ott save options.
+    UpdateFields bool `json:"UpdateFields,omitempty"`
+
+    // Container class for odt/ott save options.
+    UpdateLastPrintedProperty bool `json:"UpdateLastPrintedProperty,omitempty"`
+
+    // Container class for odt/ott save options.
+    UpdateLastSavedTimeProperty bool `json:"UpdateLastSavedTimeProperty,omitempty"`
+
+    // Container class for odt/ott save options.
+    UpdateSdtContent bool `json:"UpdateSdtContent,omitempty"`
+
+    // Container class for odt/ott save options.
+    ZipOutput bool `json:"ZipOutput,omitempty"`
+
+    // Container class for odt/ott save options.
+    IsStrictSchema11 bool `json:"IsStrictSchema11,omitempty"`
+
+    // Container class for odt/ott save options.
+    MeasureUnit string `json:"MeasureUnit,omitempty"`
+
+    // Container class for odt/ott save options.
+    Password string `json:"Password,omitempty"`
+
+    // Container class for odt/ott save options.
+    PrettyFormat bool `json:"PrettyFormat,omitempty"`
+}
+
+type OdtSaveOptionsData struct {
+    // Container class for odt/ott save options.
+    Dml3DEffectsRenderingMode *string `json:"Dml3DEffectsRenderingMode,omitempty"`
 
     // Container class for odt/ott save options.
     DmlEffectsRenderingMode *string `json:"DmlEffectsRenderingMode,omitempty"`
@@ -63,7 +107,7 @@ type OdtSaveOptionsData struct {
     IsStrictSchema11 *bool `json:"IsStrictSchema11,omitempty"`
 
     // Container class for odt/ott save options.
-    MeasureUnit string `json:"MeasureUnit,omitempty"`
+    MeasureUnit *string `json:"MeasureUnit,omitempty"`
 
     // Container class for odt/ott save options.
     Password *string `json:"Password,omitempty"`
@@ -82,3 +126,5 @@ func (OdtSaveOptionsData) IsOdtSaveOptionsData() bool {
 func (OdtSaveOptionsData) IsSaveOptionsData() bool {
     return true
 }
+
+

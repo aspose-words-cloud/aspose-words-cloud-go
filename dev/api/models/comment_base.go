@@ -27,26 +27,42 @@
 
 package models
 
-import (
-    "time"
-)
-
 // Comment.
+type CommentBaseResult struct {
+    // Comment.
+    Author string `json:"Author,omitempty"`
+
+    // Comment.
+    DateTime Time `json:"DateTime,omitempty"`
+
+    // Comment.
+    Initial string `json:"Initial,omitempty"`
+
+    // Comment.
+    RangeEnd DocumentPositionResult `json:"RangeEnd,omitempty"`
+
+    // Comment.
+    RangeStart DocumentPositionResult `json:"RangeStart,omitempty"`
+
+    // Comment.
+    Text string `json:"Text,omitempty"`
+}
+
 type CommentBase struct {
     // Comment.
     Author *string `json:"Author,omitempty"`
 
     // Comment.
-    DateTime time.Time `json:"DateTime,omitempty"`
+    DateTime *Time `json:"DateTime,omitempty"`
 
     // Comment.
     Initial *string `json:"Initial,omitempty"`
 
     // Comment.
-    RangeEnd *DocumentPosition `json:"RangeEnd,omitempty"`
+    RangeEnd IDocumentPosition `json:"RangeEnd,omitempty"`
 
     // Comment.
-    RangeStart *DocumentPosition `json:"RangeStart,omitempty"`
+    RangeStart IDocumentPosition `json:"RangeStart,omitempty"`
 
     // Comment.
     Text *string `json:"Text,omitempty"`
@@ -58,4 +74,5 @@ type ICommentBase interface {
 func (CommentBase) IsCommentBase() bool {
     return true
 }
+
 

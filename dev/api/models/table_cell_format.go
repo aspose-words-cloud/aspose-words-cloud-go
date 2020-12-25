@@ -28,9 +28,50 @@
 package models
 
 // DTO container with all formatting for a table row.
+type TableCellFormatResult struct {
+    // DTO container with all formatting for a table row.
+    Link WordsApiLinkResult `json:"Link,omitempty"`
+
+    // DTO container with all formatting for a table row.
+    BottomPadding float64 `json:"BottomPadding,omitempty"`
+
+    // DTO container with all formatting for a table row.
+    FitText bool `json:"FitText,omitempty"`
+
+    // DTO container with all formatting for a table row.
+    HorizontalMerge string `json:"HorizontalMerge,omitempty"`
+
+    // DTO container with all formatting for a table row.
+    LeftPadding float64 `json:"LeftPadding,omitempty"`
+
+    // DTO container with all formatting for a table row.
+    Orientation string `json:"Orientation,omitempty"`
+
+    // DTO container with all formatting for a table row.
+    PreferredWidth PreferredWidthResult `json:"PreferredWidth,omitempty"`
+
+    // DTO container with all formatting for a table row.
+    RightPadding float64 `json:"RightPadding,omitempty"`
+
+    // DTO container with all formatting for a table row.
+    TopPadding float64 `json:"TopPadding,omitempty"`
+
+    // DTO container with all formatting for a table row.
+    VerticalAlignment string `json:"VerticalAlignment,omitempty"`
+
+    // DTO container with all formatting for a table row.
+    VerticalMerge string `json:"VerticalMerge,omitempty"`
+
+    // DTO container with all formatting for a table row.
+    Width float64 `json:"Width,omitempty"`
+
+    // DTO container with all formatting for a table row.
+    WrapText bool `json:"WrapText,omitempty"`
+}
+
 type TableCellFormat struct {
     // DTO container with all formatting for a table row.
-    Link *WordsApiLink `json:"Link,omitempty"`
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // DTO container with all formatting for a table row.
     BottomPadding *float64 `json:"BottomPadding,omitempty"`
@@ -39,16 +80,16 @@ type TableCellFormat struct {
     FitText *bool `json:"FitText,omitempty"`
 
     // DTO container with all formatting for a table row.
-    HorizontalMerge string `json:"HorizontalMerge,omitempty"`
+    HorizontalMerge *string `json:"HorizontalMerge,omitempty"`
 
     // DTO container with all formatting for a table row.
     LeftPadding *float64 `json:"LeftPadding,omitempty"`
 
     // DTO container with all formatting for a table row.
-    Orientation string `json:"Orientation,omitempty"`
+    Orientation *string `json:"Orientation,omitempty"`
 
     // DTO container with all formatting for a table row.
-    PreferredWidth *PreferredWidth `json:"PreferredWidth,omitempty"`
+    PreferredWidth IPreferredWidth `json:"PreferredWidth,omitempty"`
 
     // DTO container with all formatting for a table row.
     RightPadding *float64 `json:"RightPadding,omitempty"`
@@ -57,10 +98,10 @@ type TableCellFormat struct {
     TopPadding *float64 `json:"TopPadding,omitempty"`
 
     // DTO container with all formatting for a table row.
-    VerticalAlignment string `json:"VerticalAlignment,omitempty"`
+    VerticalAlignment *string `json:"VerticalAlignment,omitempty"`
 
     // DTO container with all formatting for a table row.
-    VerticalMerge string `json:"VerticalMerge,omitempty"`
+    VerticalMerge *string `json:"VerticalMerge,omitempty"`
 
     // DTO container with all formatting for a table row.
     Width *float64 `json:"Width,omitempty"`
@@ -79,3 +120,5 @@ func (TableCellFormat) IsTableCellFormat() bool {
 func (TableCellFormat) IsLinkElement() bool {
     return true
 }
+
+

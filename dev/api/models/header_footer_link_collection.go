@@ -28,9 +28,17 @@
 package models
 
 // The collection of HeaderFooter's links.
+type HeaderFooterLinkCollectionResult struct {
+    // The collection of HeaderFooter's links.
+    Link WordsApiLinkResult `json:"Link,omitempty"`
+
+    // The collection of HeaderFooter's links.
+    List []HeaderFooterLinkResult `json:"List,omitempty"`
+}
+
 type HeaderFooterLinkCollection struct {
     // The collection of HeaderFooter's links.
-    Link *WordsApiLink `json:"Link,omitempty"`
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // The collection of HeaderFooter's links.
     List []HeaderFooterLink `json:"List,omitempty"`
@@ -46,3 +54,5 @@ func (HeaderFooterLinkCollection) IsHeaderFooterLinkCollection() bool {
 func (HeaderFooterLinkCollection) IsLinkElement() bool {
     return true
 }
+
+

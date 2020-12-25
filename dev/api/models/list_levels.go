@@ -28,9 +28,17 @@
 package models
 
 // DTO container with a single document list.
+type ListLevelsResult struct {
+    // DTO container with a single document list.
+    Link WordsApiLinkResult `json:"Link,omitempty"`
+
+    // DTO container with a single document list.
+    ListLevel []ListLevelResult `json:"ListLevel,omitempty"`
+}
+
 type ListLevels struct {
     // DTO container with a single document list.
-    Link *WordsApiLink `json:"Link,omitempty"`
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // DTO container with a single document list.
     ListLevel []ListLevel `json:"ListLevel,omitempty"`
@@ -46,3 +54,5 @@ func (ListLevels) IsListLevels() bool {
 func (ListLevels) IsLinkElement() bool {
     return true
 }
+
+

@@ -30,19 +30,9 @@ package models
 // The REST response with the formatting properties of a paragraph.
 type ParagraphFormatResponse struct {
     // The REST response with the formatting properties of a paragraph.
-    RequestId *string `json:"RequestId,omitempty"`
+    RequestId string `json:"RequestId,omitempty"`
 
     // The REST response with the formatting properties of a paragraph.
-    ParagraphFormat *ParagraphFormat `json:"ParagraphFormat,omitempty"`
+    ParagraphFormat ParagraphFormatResult `json:"ParagraphFormat,omitempty"`
 }
 
-type IParagraphFormatResponse interface {
-    IsParagraphFormatResponse() bool
-}
-func (ParagraphFormatResponse) IsParagraphFormatResponse() bool {
-    return true
-}
-
-func (ParagraphFormatResponse) IsWordsResponse() bool {
-    return true
-}

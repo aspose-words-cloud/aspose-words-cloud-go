@@ -30,19 +30,9 @@ package models
 // The REST response with a collection of OfficeMath objects.
 type OfficeMathObjectsResponse struct {
     // The REST response with a collection of OfficeMath objects.
-    RequestId *string `json:"RequestId,omitempty"`
+    RequestId string `json:"RequestId,omitempty"`
 
     // The REST response with a collection of OfficeMath objects.
-    OfficeMathObjects *OfficeMathObjectsCollection `json:"OfficeMathObjects,omitempty"`
+    OfficeMathObjects OfficeMathObjectsCollectionResult `json:"OfficeMathObjects,omitempty"`
 }
 
-type IOfficeMathObjectsResponse interface {
-    IsOfficeMathObjectsResponse() bool
-}
-func (OfficeMathObjectsResponse) IsOfficeMathObjectsResponse() bool {
-    return true
-}
-
-func (OfficeMathObjectsResponse) IsWordsResponse() bool {
-    return true
-}

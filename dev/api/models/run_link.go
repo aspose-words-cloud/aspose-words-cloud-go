@@ -28,9 +28,20 @@
 package models
 
 // Run link element.
+type RunLinkResult struct {
+    // Run link element.
+    Link WordsApiLinkResult `json:"Link,omitempty"`
+
+    // Run link element.
+    NodeId string `json:"NodeId,omitempty"`
+
+    // Run link element.
+    Text string `json:"Text,omitempty"`
+}
+
 type RunLink struct {
     // Run link element.
-    Link *WordsApiLink `json:"Link,omitempty"`
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // Run link element.
     NodeId *string `json:"NodeId,omitempty"`
@@ -49,3 +60,5 @@ func (RunLink) IsRunLink() bool {
 func (RunLink) IsNodeLink() bool {
     return true
 }
+
+

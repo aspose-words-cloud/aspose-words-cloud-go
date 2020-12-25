@@ -28,9 +28,14 @@
 package models
 
 // Insert document to document list.
-type ListInsert struct {
+type ListInsertResult struct {
     // Insert document to document list.
     Template string `json:"Template,omitempty"`
+}
+
+type ListInsert struct {
+    // Insert document to document list.
+    Template *string `json:"Template,omitempty"`
 }
 
 type IListInsert interface {
@@ -39,4 +44,5 @@ type IListInsert interface {
 func (ListInsert) IsListInsert() bool {
     return true
 }
+
 

@@ -30,19 +30,9 @@ package models
 // The REST response with a Run element.
 type RunResponse struct {
     // The REST response with a Run element.
-    RequestId *string `json:"RequestId,omitempty"`
+    RequestId string `json:"RequestId,omitempty"`
 
     // The REST response with a Run element.
-    Run *Run `json:"Run,omitempty"`
+    Run RunResult `json:"Run,omitempty"`
 }
 
-type IRunResponse interface {
-    IsRunResponse() bool
-}
-func (RunResponse) IsRunResponse() bool {
-    return true
-}
-
-func (RunResponse) IsWordsResponse() bool {
-    return true
-}

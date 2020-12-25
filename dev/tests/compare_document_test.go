@@ -51,19 +51,26 @@ func Test_CompareDocument_CompareDocument(t *testing.T) {
     requestCompareData := models.CompareData{
         Author: ToStringPointer("author"),
         ComparingWithDocument: ToStringPointer(remoteFolder + "/" + remoteName2),
-        DateTime: CreateTime(2015, 10, 26, 0, 0, 0),
+        DateTime: ToTimePointer(CreateTime(2015, 10, 26, 0, 0, 0)),
     }
 
     options := map[string]interface{}{
         "folder": remoteFolder,
         "destFileName": baseTestOutPath + "/TestCompareDocumentOut.doc",
     }
-    actual, _, err := client.WordsApi.CompareDocument(ctx, remoteName1, requestCompareData, options)
+
+    request := &models.CompareDocumentRequest{
+        Name: ToStringPointer(remoteName1),
+        CompareData: requestCompareData,
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.CompareDocument(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
 
     assert.NotNil(t, actual.Document, "Validate CompareDocument response.");
-    assert.Equal(t, "TestCompareDocumentOut.doc", *actual.Document.FileName, "Validate CompareDocument response.");
+    assert.Equal(t, "TestCompareDocumentOut.doc", actual.Document.FileName, "Validate CompareDocument response.");
 }

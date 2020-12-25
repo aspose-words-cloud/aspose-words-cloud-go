@@ -30,19 +30,9 @@ package models
 // The REST response with a hyperlink.
 type HyperlinkResponse struct {
     // The REST response with a hyperlink.
-    RequestId *string `json:"RequestId,omitempty"`
+    RequestId string `json:"RequestId,omitempty"`
 
     // The REST response with a hyperlink.
-    Hyperlink *Hyperlink `json:"Hyperlink,omitempty"`
+    Hyperlink HyperlinkResult `json:"Hyperlink,omitempty"`
 }
 
-type IHyperlinkResponse interface {
-    IsHyperlinkResponse() bool
-}
-func (HyperlinkResponse) IsHyperlinkResponse() bool {
-    return true
-}
-
-func (HyperlinkResponse) IsWordsResponse() bool {
-    return true
-}

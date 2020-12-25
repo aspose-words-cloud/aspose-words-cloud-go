@@ -52,7 +52,14 @@ func Test_ConvertDocument_SaveAs(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteFolder,
     }
-    actual, _, err := client.WordsApi.SaveAs(ctx, remoteName, requestSaveOptionsData, options)
+
+    request := &models.SaveAsRequest{
+        Name: ToStringPointer(remoteName),
+        SaveOptionsData: requestSaveOptionsData,
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.SaveAs(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -81,7 +88,14 @@ func Test_ConvertDocument_SaveAsDocx(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteFolder,
     }
-    actual, _, err := client.WordsApi.SaveAs(ctx, remoteName, requestSaveOptionsData, options)
+
+    request := &models.SaveAsRequest{
+        Name: ToStringPointer(remoteName),
+        SaveOptionsData: requestSaveOptionsData,
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.SaveAs(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -109,7 +123,14 @@ func Test_ConvertDocument_SaveAsTiff(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteFolder,
     }
-    actual, _, err := client.WordsApi.SaveAsTiff(ctx, remoteName, requestSaveOptions, options)
+
+    request := &models.SaveAsTiffRequest{
+        Name: ToStringPointer(remoteName),
+        SaveOptions: requestSaveOptions,
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.SaveAsTiff(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -128,7 +149,14 @@ func Test_ConvertDocument_ConvertDocument(t *testing.T) {
 
     options := map[string]interface{}{
     }
-    _, err := client.WordsApi.ConvertDocument(ctx, OpenFile(t, localFolder + "/test_uploadfile.docx"), "pdf", options)
+
+    request := &models.ConvertDocumentRequest{
+        Document: OpenFile(t, localFolder + "/test_uploadfile.docx"),
+        Format: ToStringPointer("pdf"),
+        Optionals: options,
+    }
+
+    _, err := client.WordsApi.ConvertDocument(ctx, request)
 
     if err != nil {
         t.Error(err)

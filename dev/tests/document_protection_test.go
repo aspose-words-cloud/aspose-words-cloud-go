@@ -53,14 +53,56 @@ func Test_DocumentProtection_ProtectDocument(t *testing.T) {
         "folder": remoteDataFolder,
         "destFileName": baseTestOutPath + "/" + remoteFileName,
     }
-    actual, _, err := client.WordsApi.ProtectDocument(ctx, remoteFileName, requestProtectionRequest, options)
+
+    request := &models.ProtectDocumentRequest{
+        Name: ToStringPointer(remoteFileName),
+        ProtectionRequest: requestProtectionRequest,
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.ProtectDocument(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
 
     assert.NotNil(t, actual.ProtectionData, "Validate ProtectDocument response.");
-    assert.Equal(t, "ReadOnly", *actual.ProtectionData.ProtectionType, "Validate ProtectDocument response.");
+    assert.Equal(t, "ReadOnly", actual.ProtectionData.ProtectionType, "Validate ProtectDocument response.");
+}
+
+// Test for changing document protection.
+func Test_DocumentProtection_ChangeDocumentProtection(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/DocumentProtection"
+    localFilePath := "DocumentActions/DocumentProtection/SampleProtectedBlankWordDocument.docx"
+    remoteFileName := "TestChangeDocumentProtection.docx"
+
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFilePath), remoteDataFolder + "/" + remoteFileName)
+
+    requestProtectionRequest := models.ProtectionRequest{
+        Password: ToStringPointer("aspose"),
+        ProtectionType: ToStringPointer("AllowOnlyComments"),
+    }
+
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+
+    request := &models.ProtectDocumentRequest{
+        Name: ToStringPointer(remoteFileName),
+        ProtectionRequest: requestProtectionRequest,
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.ProtectDocument(ctx, request)
+
+    if err != nil {
+        t.Error(err)
+    }
+
+    assert.NotNil(t, actual.ProtectionData, "Validate ChangeDocumentProtection response.");
+    assert.Equal(t, "AllowOnlyComments", actual.ProtectionData.ProtectionType, "Validate ChangeDocumentProtection response.");
 }
 
 // Test for getting document protection.
@@ -77,14 +119,20 @@ func Test_DocumentProtection_GetDocumentProtection(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    actual, _, err := client.WordsApi.GetDocumentProtection(ctx, remoteFileName, options)
+
+    request := &models.GetDocumentProtectionRequest{
+        Name: ToStringPointer(remoteFileName),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.GetDocumentProtection(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
 
     assert.NotNil(t, actual.ProtectionData, "Validate GetDocumentProtection response.");
-    assert.Equal(t, "ReadOnly", *actual.ProtectionData.ProtectionType, "Validate GetDocumentProtection response.");
+    assert.Equal(t, "ReadOnly", actual.ProtectionData.ProtectionType, "Validate GetDocumentProtection response.");
 }
 
 // Test for deleting unprotect document.
@@ -104,12 +152,19 @@ func Test_DocumentProtection_DeleteUnprotectDocument(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    actual, _, err := client.WordsApi.UnprotectDocument(ctx, remoteFileName, requestProtectionRequest, options)
+
+    request := &models.UnprotectDocumentRequest{
+        Name: ToStringPointer(remoteFileName),
+        ProtectionRequest: requestProtectionRequest,
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.UnprotectDocument(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
 
     assert.NotNil(t, actual.ProtectionData, "Validate DeleteUnprotectDocument response.");
-    assert.Equal(t, "NoProtection", *actual.ProtectionData.ProtectionType, "Validate DeleteUnprotectDocument response.");
+    assert.Equal(t, "NoProtection", actual.ProtectionData.ProtectionType, "Validate DeleteUnprotectDocument response.");
 }

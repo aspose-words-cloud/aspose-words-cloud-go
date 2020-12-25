@@ -30,25 +30,15 @@ package models
 // The REST response with data on multi-class text classification.
 type ClassificationResponse struct {
     // The REST response with data on multi-class text classification.
-    RequestId *string `json:"RequestId,omitempty"`
+    RequestId string `json:"RequestId,omitempty"`
 
     // The REST response with data on multi-class text classification.
-    BestClassName *string `json:"BestClassName,omitempty"`
+    BestClassName string `json:"BestClassName,omitempty"`
 
     // The REST response with data on multi-class text classification.
-    BestClassProbability *float64 `json:"BestClassProbability,omitempty"`
+    BestClassProbability float64 `json:"BestClassProbability,omitempty"`
 
     // The REST response with data on multi-class text classification.
-    BestResults []ClassificationResult `json:"BestResults,omitempty"`
+    BestResults []ClassificationResultResult `json:"BestResults,omitempty"`
 }
 
-type IClassificationResponse interface {
-    IsClassificationResponse() bool
-}
-func (ClassificationResponse) IsClassificationResponse() bool {
-    return true
-}
-
-func (ClassificationResponse) IsWordsResponse() bool {
-    return true
-}

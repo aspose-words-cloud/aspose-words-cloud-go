@@ -48,7 +48,13 @@ func Test_DocumentProperties_GetDocumentProperties(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    actual, _, err := client.WordsApi.GetDocumentProperties(ctx, remoteFileName, options)
+
+    request := &models.GetDocumentPropertiesRequest{
+        Name: ToStringPointer(remoteFileName),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.GetDocumentProperties(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -58,8 +64,8 @@ func Test_DocumentProperties_GetDocumentProperties(t *testing.T) {
     assert.NotNil(t, actual.DocumentProperties.List, "Validate GetDocumentProperties response.");
     assert.Equal(t, 24, len(actual.DocumentProperties.List), "Validate GetDocumentProperties response.");
     assert.NotNil(t, actual.DocumentProperties.List[0], "Validate GetDocumentProperties response.");
-    assert.Equal(t, "Author", *actual.DocumentProperties.List[0].Name, "Validate GetDocumentProperties response.");
-    assert.Equal(t, "", *actual.DocumentProperties.List[0].Value, "Validate GetDocumentProperties response.");
+    assert.Equal(t, "Author", actual.DocumentProperties.List[0].Name, "Validate GetDocumentProperties response.");
+    assert.Equal(t, "", actual.DocumentProperties.List[0].Value, "Validate GetDocumentProperties response.");
 }
 
 // A test for GetDocumentProperty.
@@ -76,15 +82,22 @@ func Test_DocumentProperties_GetDocumentProperty(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    actual, _, err := client.WordsApi.GetDocumentProperty(ctx, remoteFileName, "Author", options)
+
+    request := &models.GetDocumentPropertyRequest{
+        Name: ToStringPointer(remoteFileName),
+        PropertyName: ToStringPointer("Author"),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.GetDocumentProperty(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
 
     assert.NotNil(t, actual.DocumentProperty, "Validate GetDocumentProperty response.");
-    assert.Equal(t, "Author", *actual.DocumentProperty.Name, "Validate GetDocumentProperty response.");
-    assert.Equal(t, "", *actual.DocumentProperty.Value, "Validate GetDocumentProperty response.");
+    assert.Equal(t, "Author", actual.DocumentProperty.Name, "Validate GetDocumentProperty response.");
+    assert.Equal(t, "", actual.DocumentProperty.Value, "Validate GetDocumentProperty response.");
 }
 
 // Test for deleting document property.
@@ -102,7 +115,14 @@ func Test_DocumentProperties_DeleteDocumentProperty(t *testing.T) {
         "folder": remoteDataFolder,
         "destFileName": baseTestOutPath + "/" + remoteFileName,
     }
-    _, err := client.WordsApi.DeleteDocumentProperty(ctx, remoteFileName, "testProp", options)
+
+    request := &models.DeleteDocumentPropertyRequest{
+        Name: ToStringPointer(remoteFileName),
+        PropertyName: ToStringPointer("testProp"),
+        Optionals: options,
+    }
+
+    _, err := client.WordsApi.DeleteDocumentProperty(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -128,13 +148,21 @@ func Test_DocumentProperties_UpdateDocumentProperty(t *testing.T) {
         "folder": remoteDataFolder,
         "destFileName": baseTestOutPath + "/" + remoteFileName,
     }
-    actual, _, err := client.WordsApi.CreateOrUpdateDocumentProperty(ctx, remoteFileName, "AsposeAuthor", requestProperty, options)
+
+    request := &models.CreateOrUpdateDocumentPropertyRequest{
+        Name: ToStringPointer(remoteFileName),
+        PropertyName: ToStringPointer("AsposeAuthor"),
+        Property: requestProperty,
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.CreateOrUpdateDocumentProperty(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
 
     assert.NotNil(t, actual.DocumentProperty, "Validate UpdateDocumentProperty response.");
-    assert.Equal(t, "AsposeAuthor", *actual.DocumentProperty.Name, "Validate UpdateDocumentProperty response.");
-    assert.Equal(t, "Imran Anwar", *actual.DocumentProperty.Value, "Validate UpdateDocumentProperty response.");
+    assert.Equal(t, "AsposeAuthor", actual.DocumentProperty.Name, "Validate UpdateDocumentProperty response.");
+    assert.Equal(t, "Imran Anwar", actual.DocumentProperty.Value, "Validate UpdateDocumentProperty response.");
 }

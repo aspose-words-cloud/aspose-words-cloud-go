@@ -30,19 +30,9 @@ package models
 // The REST response with a collection of fields.
 type FieldsResponse struct {
     // The REST response with a collection of fields.
-    RequestId *string `json:"RequestId,omitempty"`
+    RequestId string `json:"RequestId,omitempty"`
 
     // The REST response with a collection of fields.
-    Fields *FieldCollection `json:"Fields,omitempty"`
+    Fields FieldCollectionResult `json:"Fields,omitempty"`
 }
 
-type IFieldsResponse interface {
-    IsFieldsResponse() bool
-}
-func (FieldsResponse) IsFieldsResponse() bool {
-    return true
-}
-
-func (FieldsResponse) IsWordsResponse() bool {
-    return true
-}

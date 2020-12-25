@@ -28,9 +28,17 @@
 package models
 
 // DTO container with a preferred width value.
-type PreferredWidth struct {
+type PreferredWidthResult struct {
     // DTO container with a preferred width value.
     Type string `json:"Type,omitempty"`
+
+    // DTO container with a preferred width value.
+    Value float64 `json:"Value,omitempty"`
+}
+
+type PreferredWidth struct {
+    // DTO container with a preferred width value.
+    Type *string `json:"Type,omitempty"`
 
     // DTO container with a preferred width value.
     Value *float64 `json:"Value,omitempty"`
@@ -42,4 +50,5 @@ type IPreferredWidth interface {
 func (PreferredWidth) IsPreferredWidth() bool {
     return true
 }
+
 

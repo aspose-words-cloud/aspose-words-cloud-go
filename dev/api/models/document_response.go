@@ -30,19 +30,9 @@ package models
 // The REST response with a document description.
 type DocumentResponse struct {
     // The REST response with a document description.
-    RequestId *string `json:"RequestId,omitempty"`
+    RequestId string `json:"RequestId,omitempty"`
 
     // The REST response with a document description.
-    Document *Document `json:"Document,omitempty"`
+    Document DocumentResult `json:"Document,omitempty"`
 }
 
-type IDocumentResponse interface {
-    IsDocumentResponse() bool
-}
-func (DocumentResponse) IsDocumentResponse() bool {
-    return true
-}
-
-func (DocumentResponse) IsWordsResponse() bool {
-    return true
-}

@@ -31,6 +31,7 @@ package api_test
 import (
     "github.com/stretchr/testify/assert"
     "testing"
+    "github.com/aspose-words-cloud/aspose-words-cloud-go/dev/api/models"
 )
 
 // Test for putting new fields.
@@ -44,7 +45,13 @@ func Test_MailMergeFileds_GetDocumentFieldNamesOnline(t *testing.T) {
     options := map[string]interface{}{
         "useNonMergeFields": true,
     }
-    actual, _, err := client.WordsApi.GetDocumentFieldNamesOnline(ctx, OpenFile(t, mailMergeFolder + "/" + localDocumentFile), options)
+
+    request := &models.GetDocumentFieldNamesOnlineRequest{
+        Template: OpenFile(t, mailMergeFolder + "/" + localDocumentFile),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.GetDocumentFieldNamesOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -69,7 +76,13 @@ func Test_MailMergeFileds_GetDocumentFieldNames(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    actual, _, err := client.WordsApi.GetDocumentFieldNames(ctx, remoteFileName, options)
+
+    request := &models.GetDocumentFieldNamesRequest{
+        Name: ToStringPointer(remoteFileName),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.GetDocumentFieldNames(ctx, request)
 
     if err != nil {
         t.Error(err)

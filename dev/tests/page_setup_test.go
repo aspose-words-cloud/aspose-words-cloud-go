@@ -48,14 +48,21 @@ func Test_PageSetup_GetSectionPageSetup(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    actual, _, err := client.WordsApi.GetSectionPageSetup(ctx, remoteFileName, int32(0), options)
+
+    request := &models.GetSectionPageSetupRequest{
+        Name: ToStringPointer(remoteFileName),
+        SectionIndex: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.GetSectionPageSetup(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
 
     assert.NotNil(t, actual.PageSetup, "Validate GetSectionPageSetup response.");
-    assert.Equal(t, int32(1), *actual.PageSetup.LineStartingNumber, "Validate GetSectionPageSetup response.");
+    assert.Equal(t, int32(1), actual.PageSetup.LineStartingNumber, "Validate GetSectionPageSetup response.");
 }
 
 // Test for updating page settings.
@@ -71,21 +78,29 @@ func Test_PageSetup_UpdateSectionPageSetup(t *testing.T) {
     requestPageSetup := models.PageSetup{
         RtlGutter: ToBoolPointer(true),
         LeftMargin: ToFloat64Pointer(10.0),
-        Orientation: "Landscape",
-        PaperSize: "A5",
+        Orientation: ToStringPointer("Landscape"),
+        PaperSize: ToStringPointer("A5"),
     }
 
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    actual, _, err := client.WordsApi.UpdateSectionPageSetup(ctx, remoteFileName, int32(0), requestPageSetup, options)
+
+    request := &models.UpdateSectionPageSetupRequest{
+        Name: ToStringPointer(remoteFileName),
+        SectionIndex: ToInt32Pointer(int32(0)),
+        PageSetup: requestPageSetup,
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.UpdateSectionPageSetup(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
 
     assert.NotNil(t, actual.PageSetup, "Validate UpdateSectionPageSetup response.");
-    assert.True(t, *actual.PageSetup.RtlGutter, "Validate UpdateSectionPageSetup response.");
+    assert.True(t, actual.PageSetup.RtlGutter, "Validate UpdateSectionPageSetup response.");
 
 
 }
@@ -104,7 +119,15 @@ func Test_PageSetup_GetRenderPage(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, err := client.WordsApi.RenderPage(ctx, remoteFileName, int32(1), "bmp", options)
+
+    request := &models.RenderPageRequest{
+        Name: ToStringPointer(remoteFileName),
+        PageIndex: ToInt32Pointer(int32(1)),
+        Format: ToStringPointer("bmp"),
+        Optionals: options,
+    }
+
+    _, err := client.WordsApi.RenderPage(ctx, request)
 
     if err != nil {
         t.Error(err)

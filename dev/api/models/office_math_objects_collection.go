@@ -28,9 +28,17 @@
 package models
 
 // DTO container with a collection of OfficeMath objects.
+type OfficeMathObjectsCollectionResult struct {
+    // DTO container with a collection of OfficeMath objects.
+    Link WordsApiLinkResult `json:"Link,omitempty"`
+
+    // DTO container with a collection of OfficeMath objects.
+    List []OfficeMathObjectResult `json:"List,omitempty"`
+}
+
 type OfficeMathObjectsCollection struct {
     // DTO container with a collection of OfficeMath objects.
-    Link *WordsApiLink `json:"Link,omitempty"`
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // DTO container with a collection of OfficeMath objects.
     List []OfficeMathObject `json:"List,omitempty"`
@@ -46,3 +54,5 @@ func (OfficeMathObjectsCollection) IsOfficeMathObjectsCollection() bool {
 func (OfficeMathObjectsCollection) IsLinkElement() bool {
     return true
 }
+
+

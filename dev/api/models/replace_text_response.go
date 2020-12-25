@@ -30,22 +30,12 @@ package models
 // The REST response with a number of occurrences of the captured text in the document.
 type ReplaceTextResponse struct {
     // The REST response with a number of occurrences of the captured text in the document.
-    RequestId *string `json:"RequestId,omitempty"`
+    RequestId string `json:"RequestId,omitempty"`
 
     // The REST response with a number of occurrences of the captured text in the document.
-    DocumentLink *FileLink `json:"DocumentLink,omitempty"`
+    DocumentLink FileLinkResult `json:"DocumentLink,omitempty"`
 
     // The REST response with a number of occurrences of the captured text in the document.
-    Matches *int32 `json:"Matches,omitempty"`
+    Matches int32 `json:"Matches,omitempty"`
 }
 
-type IReplaceTextResponse interface {
-    IsReplaceTextResponse() bool
-}
-func (ReplaceTextResponse) IsReplaceTextResponse() bool {
-    return true
-}
-
-func (ReplaceTextResponse) IsWordsResponse() bool {
-    return true
-}

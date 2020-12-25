@@ -28,9 +28,17 @@
 package models
 
 // Collection of Hyperlink.
+type HyperlinksResult struct {
+    // Collection of Hyperlink.
+    Link WordsApiLinkResult `json:"Link,omitempty"`
+
+    // Collection of Hyperlink.
+    HyperlinkList []HyperlinkResult `json:"HyperlinkList,omitempty"`
+}
+
 type Hyperlinks struct {
     // Collection of Hyperlink.
-    Link *WordsApiLink `json:"Link,omitempty"`
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // Collection of Hyperlink.
     HyperlinkList []Hyperlink `json:"HyperlinkList,omitempty"`
@@ -46,3 +54,5 @@ func (Hyperlinks) IsHyperlinks() bool {
 func (Hyperlinks) IsLinkElement() bool {
     return true
 }
+
+

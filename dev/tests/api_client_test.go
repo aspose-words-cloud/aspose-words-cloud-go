@@ -31,6 +31,7 @@ import (
     "context"
     "os"
     "path/filepath"
+    "strings"
     "testing"
 
     "github.com/aspose-words-cloud/aspose-words-cloud-go/dev/api"
@@ -99,9 +100,14 @@ func TestUnathorizedAccess(t *testing.T) {
         t.Error(fileErr)
     }
 
-    _, err = client.WordsApi.ConvertDocument(context.Background(), document, format, nil)
+	request := &models.ConvertDocumentRequest{
+		Document: document,
+		Format:   ToStringPointer(format),
+	}
+
+	_, err = client.WordsApi.ConvertDocument(context.Background(), request)
 
     assert.Error(t, err)
-    assert.Equal(t, err.Error(), "Access is denied")
+    assert.True(t, strings.Contains(err.Error(), "ClientId is undefined. Please check authorization."))
 }
 

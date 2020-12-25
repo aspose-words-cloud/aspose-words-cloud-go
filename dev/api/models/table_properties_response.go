@@ -30,19 +30,9 @@ package models
 // The REST response with a table.
 type TablePropertiesResponse struct {
     // The REST response with a table.
-    RequestId *string `json:"RequestId,omitempty"`
+    RequestId string `json:"RequestId,omitempty"`
 
     // The REST response with a table.
-    Properties *TableProperties `json:"Properties,omitempty"`
+    Properties TablePropertiesResult `json:"Properties,omitempty"`
 }
 
-type ITablePropertiesResponse interface {
-    IsTablePropertiesResponse() bool
-}
-func (TablePropertiesResponse) IsTablePropertiesResponse() bool {
-    return true
-}
-
-func (TablePropertiesResponse) IsWordsResponse() bool {
-    return true
-}

@@ -27,14 +27,18 @@
 
 package models
 
-import (
-    "time"
-)
-
 // The error details.
+type ErrorDetailsResult struct {
+    // The error details.
+    ErrorDateTime Time `json:"ErrorDateTime,omitempty"`
+
+    // The error details.
+    RequestId string `json:"RequestId,omitempty"`
+}
+
 type ErrorDetails struct {
     // The error details.
-    ErrorDateTime time.Time `json:"ErrorDateTime,omitempty"`
+    ErrorDateTime *Time `json:"ErrorDateTime,omitempty"`
 
     // The error details.
     RequestId *string `json:"RequestId,omitempty"`
@@ -46,4 +50,5 @@ type IErrorDetails interface {
 func (ErrorDetails) IsErrorDetails() bool {
     return true
 }
+
 

@@ -31,6 +31,7 @@ package api_test
 import (
     "github.com/stretchr/testify/assert"
     "testing"
+    "github.com/aspose-words-cloud/aspose-words-cloud-go/dev/api/models"
 )
 
 // Test for getting headers and footers.
@@ -47,7 +48,14 @@ func Test_HeaderFooter_GetHeaderFooters(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    actual, _, err := client.WordsApi.GetHeaderFooters(ctx, remoteFileName, "", options)
+
+    request := &models.GetHeaderFootersRequest{
+        Name: ToStringPointer(remoteFileName),
+        SectionPath: ToStringPointer(""),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.GetHeaderFooters(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -72,7 +80,14 @@ func Test_HeaderFooter_GetHeaderFooter(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    actual, _, err := client.WordsApi.GetHeaderFooter(ctx, remoteFileName, int32(0), options)
+
+    request := &models.GetHeaderFooterRequest{
+        Name: ToStringPointer(remoteFileName),
+        HeaderFooterIndex: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.GetHeaderFooter(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -81,7 +96,7 @@ func Test_HeaderFooter_GetHeaderFooter(t *testing.T) {
     assert.NotNil(t, actual.HeaderFooter, "Validate GetHeaderFooter response.");
     assert.NotNil(t, actual.HeaderFooter.ChildNodes, "Validate GetHeaderFooter response.");
     assert.Equal(t, 1, len(actual.HeaderFooter.ChildNodes), "Validate GetHeaderFooter response.");
-    assert.Equal(t, "0.0.0", *actual.HeaderFooter.ChildNodes[0].NodeId, "Validate GetHeaderFooter response.");
+    assert.Equal(t, "0.0.0", actual.HeaderFooter.ChildNodes[0].NodeId, "Validate GetHeaderFooter response.");
 }
 
 // Test for getting headerfooter of section.
@@ -98,7 +113,15 @@ func Test_HeaderFooter_GetHeaderFooterOfSection(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    actual, _, err := client.WordsApi.GetHeaderFooterOfSection(ctx, remoteFileName, int32(0), int32(0), options)
+
+    request := &models.GetHeaderFooterOfSectionRequest{
+        Name: ToStringPointer(remoteFileName),
+        HeaderFooterIndex: ToInt32Pointer(int32(0)),
+        SectionIndex: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.GetHeaderFooterOfSection(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -107,7 +130,7 @@ func Test_HeaderFooter_GetHeaderFooterOfSection(t *testing.T) {
     assert.NotNil(t, actual.HeaderFooter, "Validate GetHeaderFooterOfSection response.");
     assert.NotNil(t, actual.HeaderFooter.ChildNodes, "Validate GetHeaderFooterOfSection response.");
     assert.Equal(t, 1, len(actual.HeaderFooter.ChildNodes), "Validate GetHeaderFooterOfSection response.");
-    assert.Equal(t, "0.0.0", *actual.HeaderFooter.ChildNodes[0].NodeId, "Validate GetHeaderFooterOfSection response.");
+    assert.Equal(t, "0.0.0", actual.HeaderFooter.ChildNodes[0].NodeId, "Validate GetHeaderFooterOfSection response.");
 }
 
 // Test for deleting headerfooter.
@@ -124,7 +147,15 @@ func Test_HeaderFooter_DeleteHeaderFooter(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, err := client.WordsApi.DeleteHeaderFooter(ctx, remoteFileName, "", int32(0), options)
+
+    request := &models.DeleteHeaderFooterRequest{
+        Name: ToStringPointer(remoteFileName),
+        SectionPath: ToStringPointer(""),
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    _, err := client.WordsApi.DeleteHeaderFooter(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -146,7 +177,14 @@ func Test_HeaderFooter_DeleteHeadersFooters(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, err := client.WordsApi.DeleteHeadersFooters(ctx, remoteFileName, "", options)
+
+    request := &models.DeleteHeadersFootersRequest{
+        Name: ToStringPointer(remoteFileName),
+        SectionPath: ToStringPointer(""),
+        Optionals: options,
+    }
+
+    _, err := client.WordsApi.DeleteHeadersFooters(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -168,7 +206,15 @@ func Test_HeaderFooter_InsertHeaderFooter(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    actual, _, err := client.WordsApi.InsertHeaderFooter(ctx, remoteFileName, "FooterEven", "", options)
+
+    request := &models.InsertHeaderFooterRequest{
+        Name: ToStringPointer(remoteFileName),
+        HeaderFooterType: ToStringPointer("FooterEven"),
+        SectionPath: ToStringPointer(""),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.InsertHeaderFooter(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -177,5 +223,5 @@ func Test_HeaderFooter_InsertHeaderFooter(t *testing.T) {
     assert.NotNil(t, actual.HeaderFooter, "Validate InsertHeaderFooter response.");
     assert.NotNil(t, actual.HeaderFooter.ChildNodes, "Validate InsertHeaderFooter response.");
     assert.Equal(t, 1, len(actual.HeaderFooter.ChildNodes), "Validate InsertHeaderFooter response.");
-    assert.Equal(t, "0.2.0", *actual.HeaderFooter.ChildNodes[0].NodeId, "Validate InsertHeaderFooter response.");
+    assert.Equal(t, "0.2.0", actual.HeaderFooter.ChildNodes[0].NodeId, "Validate InsertHeaderFooter response.");
 }

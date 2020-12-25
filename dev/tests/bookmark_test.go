@@ -48,7 +48,13 @@ func Test_Bookmark_GetBookmarks(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    actual, _, err := client.WordsApi.GetBookmarks(ctx, remoteFileName, options)
+
+    request := &models.GetBookmarksRequest{
+        Name: ToStringPointer(remoteFileName),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.GetBookmarks(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -56,7 +62,7 @@ func Test_Bookmark_GetBookmarks(t *testing.T) {
 
     assert.NotNil(t, actual.Bookmarks, "Validate GetBookmarks response.");
     assert.Equal(t, 3, len(actual.Bookmarks.BookmarkList), "Validate GetBookmarks response.");
-    assert.Equal(t, "aspose", *actual.Bookmarks.BookmarkList[1].Name, "Validate GetBookmarks response.");
+    assert.Equal(t, "aspose", actual.Bookmarks.BookmarkList[1].Name, "Validate GetBookmarks response.");
 }
 
 // Test for getting bookmark by specified name.
@@ -74,14 +80,21 @@ func Test_Bookmark_GetBookmarkByName(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    actual, _, err := client.WordsApi.GetBookmarkByName(ctx, remoteFileName, bookmarkName, options)
+
+    request := &models.GetBookmarkByNameRequest{
+        Name: ToStringPointer(remoteFileName),
+        BookmarkName: ToStringPointer(bookmarkName),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.GetBookmarkByName(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
 
     assert.NotNil(t, actual.Bookmark, "Validate GetBookmarkByName response.");
-    assert.Equal(t, bookmarkName, *actual.Bookmark.Name, "Validate GetBookmarkByName response.");
+    assert.Equal(t, bookmarkName, actual.Bookmark.Name, "Validate GetBookmarkByName response.");
 }
 
 // Test for updating existed bookmark.
@@ -105,13 +118,21 @@ func Test_Bookmark_UpdateBookmark(t *testing.T) {
         "folder": remoteDataFolder,
         "destFileName": baseTestOutPath + "/" + remoteFileName,
     }
-    actual, _, err := client.WordsApi.UpdateBookmark(ctx, remoteFileName, requestBookmarkData, bookmarkName, options)
+
+    request := &models.UpdateBookmarkRequest{
+        Name: ToStringPointer(remoteFileName),
+        BookmarkData: requestBookmarkData,
+        BookmarkName: ToStringPointer(bookmarkName),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.UpdateBookmark(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
 
     assert.NotNil(t, actual.Bookmark, "Validate UpdateBookmark response.");
-    assert.Equal(t, bookmarkName, *actual.Bookmark.Name, "Validate UpdateBookmark response.");
-    assert.Equal(t, bookmarkText, *actual.Bookmark.Text, "Validate UpdateBookmark response.");
+    assert.Equal(t, bookmarkName, actual.Bookmark.Name, "Validate UpdateBookmark response.");
+    assert.Equal(t, bookmarkText, actual.Bookmark.Text, "Validate UpdateBookmark response.");
 }

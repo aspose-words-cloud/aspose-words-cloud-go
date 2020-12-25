@@ -28,12 +28,26 @@
 package models
 
 // Footnote for update.
-type FootnoteUpdate struct {
+type FootnoteUpdateResult struct {
     // Footnote for update.
     FootnoteType string `json:"FootnoteType,omitempty"`
 
     // Footnote for update.
-    Position *DocumentPosition `json:"Position,omitempty"`
+    Position DocumentPositionResult `json:"Position,omitempty"`
+
+    // Footnote for update.
+    ReferenceMark string `json:"ReferenceMark,omitempty"`
+
+    // Footnote for update.
+    Text string `json:"Text,omitempty"`
+}
+
+type FootnoteUpdate struct {
+    // Footnote for update.
+    FootnoteType *string `json:"FootnoteType,omitempty"`
+
+    // Footnote for update.
+    Position IDocumentPosition `json:"Position,omitempty"`
 
     // Footnote for update.
     ReferenceMark *string `json:"ReferenceMark,omitempty"`
@@ -52,3 +66,5 @@ func (FootnoteUpdate) IsFootnoteUpdate() bool {
 func (FootnoteUpdate) IsFootnoteBase() bool {
     return true
 }
+
+

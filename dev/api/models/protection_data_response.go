@@ -30,22 +30,12 @@ package models
 // The REST response with data on document's protection.
 type ProtectionDataResponse struct {
     // The REST response with data on document's protection.
-    RequestId *string `json:"RequestId,omitempty"`
+    RequestId string `json:"RequestId,omitempty"`
 
     // The REST response with data on document's protection.
-    DocumentLink *FileLink `json:"DocumentLink,omitempty"`
+    DocumentLink FileLinkResult `json:"DocumentLink,omitempty"`
 
     // The REST response with data on document's protection.
-    ProtectionData *ProtectionData `json:"ProtectionData,omitempty"`
+    ProtectionData ProtectionDataResult `json:"ProtectionData,omitempty"`
 }
 
-type IProtectionDataResponse interface {
-    IsProtectionDataResponse() bool
-}
-func (ProtectionDataResponse) IsProtectionDataResponse() bool {
-    return true
-}
-
-func (ProtectionDataResponse) IsWordsResponse() bool {
-    return true
-}

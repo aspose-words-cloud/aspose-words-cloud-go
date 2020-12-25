@@ -49,13 +49,20 @@ func Test_Range_GetRangeText(t *testing.T) {
         "rangeEndIdentifier": "id0.0.1",
         "folder": remoteDataFolder,
     }
-    actual, _, err := client.WordsApi.GetRangeText(ctx, remoteFileName, "id0.0.0", options)
+
+    request := &models.GetRangeTextRequest{
+        Name: ToStringPointer(remoteFileName),
+        RangeStartIdentifier: ToStringPointer("id0.0.0"),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.GetRangeText(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
 
-    assert.Equal(t, "This is HEADER ", *actual.Text, "Validate GetRangeText response.");
+    assert.Equal(t, "This is HEADER ", actual.Text, "Validate GetRangeText response.");
 }
 
 // Test for removing the text for range.
@@ -73,14 +80,21 @@ func Test_Range_RemoveRange(t *testing.T) {
         "rangeEndIdentifier": "id0.0.1",
         "folder": remoteDataFolder,
     }
-    actual, _, err := client.WordsApi.RemoveRange(ctx, remoteFileName, "id0.0.0", options)
+
+    request := &models.RemoveRangeRequest{
+        Name: ToStringPointer(remoteFileName),
+        RangeStartIdentifier: ToStringPointer("id0.0.0"),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.RemoveRange(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
 
     assert.NotNil(t, actual.Document, "Validate RemoveRange response.");
-    assert.Equal(t, "TestRemoveRange.docx", *actual.Document.FileName, "Validate RemoveRange response.");
+    assert.Equal(t, "TestRemoveRange.docx", actual.Document.FileName, "Validate RemoveRange response.");
 }
 
 // Test for saving a range as a new document.
@@ -101,14 +115,22 @@ func Test_Range_SaveAsRange(t *testing.T) {
         "rangeEndIdentifier": "id0.0.1",
         "folder": remoteDataFolder,
     }
-    actual, _, err := client.WordsApi.SaveAsRange(ctx, remoteFileName, "id0.0.0", requestDocumentParameters, options)
+
+    request := &models.SaveAsRangeRequest{
+        Name: ToStringPointer(remoteFileName),
+        RangeStartIdentifier: ToStringPointer("id0.0.0"),
+        DocumentParameters: requestDocumentParameters,
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.SaveAsRange(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
 
     assert.NotNil(t, actual.Document, "Validate SaveAsRange response.");
-    assert.Equal(t, "NewDoc.docx", *actual.Document.FileName, "Validate SaveAsRange response.");
+    assert.Equal(t, "NewDoc.docx", actual.Document.FileName, "Validate SaveAsRange response.");
 }
 
 // Test for replacing text in range.
@@ -129,12 +151,20 @@ func Test_Range_ReplaceWithText(t *testing.T) {
         "rangeEndIdentifier": "id0.0.1",
         "folder": remoteDataFolder,
     }
-    actual, _, err := client.WordsApi.ReplaceWithText(ctx, remoteFileName, "id0.0.0", requestRangeText, options)
+
+    request := &models.ReplaceWithTextRequest{
+        Name: ToStringPointer(remoteFileName),
+        RangeStartIdentifier: ToStringPointer("id0.0.0"),
+        RangeText: requestRangeText,
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.ReplaceWithText(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
 
     assert.NotNil(t, actual.Document, "Validate ReplaceWithText response.");
-    assert.Equal(t, "TestReplaceWithText.docx", *actual.Document.FileName, "Validate ReplaceWithText response.");
+    assert.Equal(t, "TestReplaceWithText.docx", actual.Document.FileName, "Validate ReplaceWithText response.");
 }

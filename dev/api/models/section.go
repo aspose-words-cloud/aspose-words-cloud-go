@@ -28,24 +28,44 @@
 package models
 
 // DTO container with a section element.
+type SectionResult struct {
+    // DTO container with a section element.
+    Link WordsApiLinkResult `json:"Link,omitempty"`
+
+    // DTO container with a section element.
+    ChildNodes []NodeLinkResult `json:"ChildNodes,omitempty"`
+
+    // DTO container with a section element.
+    HeaderFooters LinkElementResult `json:"HeaderFooters,omitempty"`
+
+    // DTO container with a section element.
+    PageSetup LinkElementResult `json:"PageSetup,omitempty"`
+
+    // DTO container with a section element.
+    Paragraphs LinkElementResult `json:"Paragraphs,omitempty"`
+
+    // DTO container with a section element.
+    Tables LinkElementResult `json:"Tables,omitempty"`
+}
+
 type Section struct {
     // DTO container with a section element.
-    Link *WordsApiLink `json:"Link,omitempty"`
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // DTO container with a section element.
     ChildNodes []NodeLink `json:"ChildNodes,omitempty"`
 
     // DTO container with a section element.
-    HeaderFooters *LinkElement `json:"HeaderFooters,omitempty"`
+    HeaderFooters ILinkElement `json:"HeaderFooters,omitempty"`
 
     // DTO container with a section element.
-    PageSetup *LinkElement `json:"PageSetup,omitempty"`
+    PageSetup ILinkElement `json:"PageSetup,omitempty"`
 
     // DTO container with a section element.
-    Paragraphs *LinkElement `json:"Paragraphs,omitempty"`
+    Paragraphs ILinkElement `json:"Paragraphs,omitempty"`
 
     // DTO container with a section element.
-    Tables *LinkElement `json:"Tables,omitempty"`
+    Tables ILinkElement `json:"Tables,omitempty"`
 }
 
 type ISection interface {
@@ -58,3 +78,5 @@ func (Section) IsSection() bool {
 func (Section) IsLinkElement() bool {
     return true
 }
+
+

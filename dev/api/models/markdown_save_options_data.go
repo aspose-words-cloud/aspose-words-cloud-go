@@ -28,9 +28,56 @@
 package models
 
 // Container class for markdown save options.
-type MarkdownSaveOptionsData struct {
+type MarkdownSaveOptionsDataResult struct {
     // Container class for markdown save options.
     Dml3DEffectsRenderingMode string `json:"Dml3DEffectsRenderingMode,omitempty"`
+
+    // Container class for markdown save options.
+    DmlEffectsRenderingMode string `json:"DmlEffectsRenderingMode,omitempty"`
+
+    // Container class for markdown save options.
+    DmlRenderingMode string `json:"DmlRenderingMode,omitempty"`
+
+    // Container class for markdown save options.
+    FileName string `json:"FileName,omitempty"`
+
+    // Container class for markdown save options.
+    SaveFormat string `json:"SaveFormat,omitempty"`
+
+    // Container class for markdown save options.
+    UpdateFields bool `json:"UpdateFields,omitempty"`
+
+    // Container class for markdown save options.
+    UpdateLastPrintedProperty bool `json:"UpdateLastPrintedProperty,omitempty"`
+
+    // Container class for markdown save options.
+    UpdateLastSavedTimeProperty bool `json:"UpdateLastSavedTimeProperty,omitempty"`
+
+    // Container class for markdown save options.
+    UpdateSdtContent bool `json:"UpdateSdtContent,omitempty"`
+
+    // Container class for markdown save options.
+    ZipOutput bool `json:"ZipOutput,omitempty"`
+
+    // Container class for markdown save options.
+    Encoding string `json:"Encoding,omitempty"`
+
+    // Container class for markdown save options.
+    ExportHeadersFootersMode string `json:"ExportHeadersFootersMode,omitempty"`
+
+    // Container class for markdown save options.
+    ForcePageBreaks bool `json:"ForcePageBreaks,omitempty"`
+
+    // Container class for markdown save options.
+    ParagraphBreak string `json:"ParagraphBreak,omitempty"`
+
+    // Container class for markdown save options.
+    TableContentAlignment string `json:"TableContentAlignment,omitempty"`
+}
+
+type MarkdownSaveOptionsData struct {
+    // Container class for markdown save options.
+    Dml3DEffectsRenderingMode *string `json:"Dml3DEffectsRenderingMode,omitempty"`
 
     // Container class for markdown save options.
     DmlEffectsRenderingMode *string `json:"DmlEffectsRenderingMode,omitempty"`
@@ -63,7 +110,7 @@ type MarkdownSaveOptionsData struct {
     Encoding *string `json:"Encoding,omitempty"`
 
     // Container class for markdown save options.
-    ExportHeadersFootersMode string `json:"ExportHeadersFootersMode,omitempty"`
+    ExportHeadersFootersMode *string `json:"ExportHeadersFootersMode,omitempty"`
 
     // Container class for markdown save options.
     ForcePageBreaks *bool `json:"ForcePageBreaks,omitempty"`
@@ -72,7 +119,7 @@ type MarkdownSaveOptionsData struct {
     ParagraphBreak *string `json:"ParagraphBreak,omitempty"`
 
     // Container class for markdown save options.
-    TableContentAlignment string `json:"TableContentAlignment,omitempty"`
+    TableContentAlignment *string `json:"TableContentAlignment,omitempty"`
 }
 
 type IMarkdownSaveOptionsData interface {
@@ -85,3 +132,5 @@ func (MarkdownSaveOptionsData) IsMarkdownSaveOptionsData() bool {
 func (MarkdownSaveOptionsData) IsTxtSaveOptionsBaseData() bool {
     return true
 }
+
+

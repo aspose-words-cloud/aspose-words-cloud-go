@@ -28,9 +28,44 @@
 package models
 
 // Container class for wml save options.
-type WordMLSaveOptionsData struct {
+type WordMLSaveOptionsDataResult struct {
     // Container class for wml save options.
     Dml3DEffectsRenderingMode string `json:"Dml3DEffectsRenderingMode,omitempty"`
+
+    // Container class for wml save options.
+    DmlEffectsRenderingMode string `json:"DmlEffectsRenderingMode,omitempty"`
+
+    // Container class for wml save options.
+    DmlRenderingMode string `json:"DmlRenderingMode,omitempty"`
+
+    // Container class for wml save options.
+    FileName string `json:"FileName,omitempty"`
+
+    // Container class for wml save options.
+    SaveFormat string `json:"SaveFormat,omitempty"`
+
+    // Container class for wml save options.
+    UpdateFields bool `json:"UpdateFields,omitempty"`
+
+    // Container class for wml save options.
+    UpdateLastPrintedProperty bool `json:"UpdateLastPrintedProperty,omitempty"`
+
+    // Container class for wml save options.
+    UpdateLastSavedTimeProperty bool `json:"UpdateLastSavedTimeProperty,omitempty"`
+
+    // Container class for wml save options.
+    UpdateSdtContent bool `json:"UpdateSdtContent,omitempty"`
+
+    // Container class for wml save options.
+    ZipOutput bool `json:"ZipOutput,omitempty"`
+
+    // Container class for wml save options.
+    PrettyFormat bool `json:"PrettyFormat,omitempty"`
+}
+
+type WordMLSaveOptionsData struct {
+    // Container class for wml save options.
+    Dml3DEffectsRenderingMode *string `json:"Dml3DEffectsRenderingMode,omitempty"`
 
     // Container class for wml save options.
     DmlEffectsRenderingMode *string `json:"DmlEffectsRenderingMode,omitempty"`
@@ -73,3 +108,5 @@ func (WordMLSaveOptionsData) IsWordMLSaveOptionsData() bool {
 func (WordMLSaveOptionsData) IsSaveOptionsData() bool {
     return true
 }
+
+

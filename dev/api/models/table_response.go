@@ -30,19 +30,9 @@ package models
 // The REST response with a table.
 type TableResponse struct {
     // The REST response with a table.
-    RequestId *string `json:"RequestId,omitempty"`
+    RequestId string `json:"RequestId,omitempty"`
 
     // The REST response with a table.
-    Table *Table `json:"Table,omitempty"`
+    Table TableResult `json:"Table,omitempty"`
 }
 
-type ITableResponse interface {
-    IsTableResponse() bool
-}
-func (TableResponse) IsTableResponse() bool {
-    return true
-}
-
-func (TableResponse) IsWordsResponse() bool {
-    return true
-}

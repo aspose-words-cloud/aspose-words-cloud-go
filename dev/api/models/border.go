@@ -28,21 +28,44 @@
 package models
 
 // Represents a border of an object.
-type Border struct {
+type BorderResult struct {
     // Represents a border of an object.
-    Link *WordsApiLink `json:"Link,omitempty"`
+    Link WordsApiLinkResult `json:"Link,omitempty"`
 
     // Represents a border of an object.
     BorderType string `json:"BorderType,omitempty"`
 
     // Represents a border of an object.
-    Color *XmlColor `json:"Color,omitempty"`
+    Color XmlColorResult `json:"Color,omitempty"`
+
+    // Represents a border of an object.
+    DistanceFromText float64 `json:"DistanceFromText,omitempty"`
+
+    // Represents a border of an object.
+    LineStyle string `json:"LineStyle,omitempty"`
+
+    // Represents a border of an object.
+    LineWidth float64 `json:"LineWidth,omitempty"`
+
+    // Represents a border of an object.
+    Shadow bool `json:"Shadow,omitempty"`
+}
+
+type Border struct {
+    // Represents a border of an object.
+    Link IWordsApiLink `json:"Link,omitempty"`
+
+    // Represents a border of an object.
+    BorderType *string `json:"BorderType,omitempty"`
+
+    // Represents a border of an object.
+    Color IXmlColor `json:"Color,omitempty"`
 
     // Represents a border of an object.
     DistanceFromText *float64 `json:"DistanceFromText,omitempty"`
 
     // Represents a border of an object.
-    LineStyle string `json:"LineStyle,omitempty"`
+    LineStyle *string `json:"LineStyle,omitempty"`
 
     // Represents a border of an object.
     LineWidth *float64 `json:"LineWidth,omitempty"`
@@ -61,3 +84,5 @@ func (Border) IsBorder() bool {
 func (Border) IsLinkElement() bool {
     return true
 }
+
+

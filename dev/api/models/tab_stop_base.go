@@ -28,12 +28,23 @@
 package models
 
 // Base class for paragraph format tab stop DTO.
-type TabStopBase struct {
+type TabStopBaseResult struct {
     // Base class for paragraph format tab stop DTO.
     Alignment string `json:"Alignment,omitempty"`
 
     // Base class for paragraph format tab stop DTO.
     Leader string `json:"Leader,omitempty"`
+
+    // Base class for paragraph format tab stop DTO.
+    Position float64 `json:"Position,omitempty"`
+}
+
+type TabStopBase struct {
+    // Base class for paragraph format tab stop DTO.
+    Alignment *string `json:"Alignment,omitempty"`
+
+    // Base class for paragraph format tab stop DTO.
+    Leader *string `json:"Leader,omitempty"`
 
     // Base class for paragraph format tab stop DTO.
     Position *float64 `json:"Position,omitempty"`
@@ -45,4 +56,5 @@ type ITabStopBase interface {
 func (TabStopBase) IsTabStopBase() bool {
     return true
 }
+
 

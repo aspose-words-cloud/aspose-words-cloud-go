@@ -49,7 +49,13 @@ func Test_DrawingObjects_GetDocumentDrawingObjects(t *testing.T) {
         "nodePath": "sections/0",
         "folder": remoteDataFolder,
     }
-    actual, _, err := client.WordsApi.GetDocumentDrawingObjects(ctx, remoteFileName, options)
+
+    request := &models.GetDocumentDrawingObjectsRequest{
+        Name: ToStringPointer(remoteFileName),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.GetDocumentDrawingObjects(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -74,7 +80,13 @@ func Test_DrawingObjects_GetDocumentDrawingObjectsWithoutNodePath(t *testing.T) 
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    actual, _, err := client.WordsApi.GetDocumentDrawingObjects(ctx, remoteFileName, options)
+
+    request := &models.GetDocumentDrawingObjectsRequest{
+        Name: ToStringPointer(remoteFileName),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.GetDocumentDrawingObjects(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -100,14 +112,21 @@ func Test_DrawingObjects_GetDocumentDrawingObjectByIndex(t *testing.T) {
         "nodePath": "sections/0",
         "folder": remoteDataFolder,
     }
-    actual, _, err := client.WordsApi.GetDocumentDrawingObjectByIndex(ctx, remoteFileName, int32(0), options)
+
+    request := &models.GetDocumentDrawingObjectByIndexRequest{
+        Name: ToStringPointer(remoteFileName),
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.GetDocumentDrawingObjectByIndex(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
 
     assert.NotNil(t, actual.DrawingObject, "Validate GetDocumentDrawingObjectByIndex response.");
-    assert.Equal(t, 300.0, *actual.DrawingObject.Height, "Validate GetDocumentDrawingObjectByIndex response.");
+    assert.Equal(t, 300.0, actual.DrawingObject.Height, "Validate GetDocumentDrawingObjectByIndex response.");
 }
 
 // Test for getting drawing object by specified index without node path.
@@ -124,14 +143,21 @@ func Test_DrawingObjects_GetDocumentDrawingObjectByIndexWithoutNodePath(t *testi
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    actual, _, err := client.WordsApi.GetDocumentDrawingObjectByIndex(ctx, remoteFileName, int32(0), options)
+
+    request := &models.GetDocumentDrawingObjectByIndexRequest{
+        Name: ToStringPointer(remoteFileName),
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.GetDocumentDrawingObjectByIndex(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
 
     assert.NotNil(t, actual.DrawingObject, "Validate GetDocumentDrawingObjectByIndexWithoutNodePath response.");
-    assert.Equal(t, 300.0, *actual.DrawingObject.Height, "Validate GetDocumentDrawingObjectByIndexWithoutNodePath response.");
+    assert.Equal(t, 300.0, actual.DrawingObject.Height, "Validate GetDocumentDrawingObjectByIndexWithoutNodePath response.");
 }
 
 // Test for getting drawing object by specified index and format.
@@ -149,7 +175,15 @@ func Test_DrawingObjects_RenderDrawingObject(t *testing.T) {
         "nodePath": "sections/0",
         "folder": remoteDataFolder,
     }
-    _, err := client.WordsApi.RenderDrawingObject(ctx, remoteFileName, "png", int32(0), options)
+
+    request := &models.RenderDrawingObjectRequest{
+        Name: ToStringPointer(remoteFileName),
+        Format: ToStringPointer("png"),
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    _, err := client.WordsApi.RenderDrawingObject(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -171,7 +205,15 @@ func Test_DrawingObjects_RenderDrawingObjectWithoutNodePath(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, err := client.WordsApi.RenderDrawingObject(ctx, remoteFileName, "png", int32(0), options)
+
+    request := &models.RenderDrawingObjectRequest{
+        Name: ToStringPointer(remoteFileName),
+        Format: ToStringPointer("png"),
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    _, err := client.WordsApi.RenderDrawingObject(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -194,7 +236,14 @@ func Test_DrawingObjects_GetDocumentDrawingObjectImageData(t *testing.T) {
         "nodePath": "sections/0",
         "folder": remoteDataFolder,
     }
-    _, err := client.WordsApi.GetDocumentDrawingObjectImageData(ctx, remoteFileName, int32(0), options)
+
+    request := &models.GetDocumentDrawingObjectImageDataRequest{
+        Name: ToStringPointer(remoteFileName),
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    _, err := client.WordsApi.GetDocumentDrawingObjectImageData(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -216,7 +265,14 @@ func Test_DrawingObjects_GetDocumentDrawingObjectImageDataWithoutNodePath(t *tes
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, err := client.WordsApi.GetDocumentDrawingObjectImageData(ctx, remoteFileName, int32(0), options)
+
+    request := &models.GetDocumentDrawingObjectImageDataRequest{
+        Name: ToStringPointer(remoteFileName),
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    _, err := client.WordsApi.GetDocumentDrawingObjectImageData(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -239,7 +295,14 @@ func Test_DrawingObjects_GetDocumentDrawingObjectOleData(t *testing.T) {
         "nodePath": "sections/0",
         "folder": remoteDataFolder,
     }
-    _, err := client.WordsApi.GetDocumentDrawingObjectOleData(ctx, remoteFileName, int32(0), options)
+
+    request := &models.GetDocumentDrawingObjectOleDataRequest{
+        Name: ToStringPointer(remoteFileName),
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    _, err := client.WordsApi.GetDocumentDrawingObjectOleData(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -261,7 +324,14 @@ func Test_DrawingObjects_GetDocumentDrawingObjectOleDataWithoutNodePath(t *testi
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, err := client.WordsApi.GetDocumentDrawingObjectOleData(ctx, remoteFileName, int32(0), options)
+
+    request := &models.GetDocumentDrawingObjectOleDataRequest{
+        Name: ToStringPointer(remoteFileName),
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    _, err := client.WordsApi.GetDocumentDrawingObjectOleData(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -284,23 +354,31 @@ func Test_DrawingObjects_InsertDrawingObject(t *testing.T) {
         Left: ToFloat64Pointer(0.0),
         Top: ToFloat64Pointer(0.0),
         Width: ToFloat64Pointer(0.0),
-        RelativeHorizontalPosition: "Margin",
-        RelativeVerticalPosition: "Margin",
-        WrapType: "Inline",
+        RelativeHorizontalPosition: ToStringPointer("Margin"),
+        RelativeVerticalPosition: ToStringPointer("Margin"),
+        WrapType: ToStringPointer("Inline"),
     }
 
     options := map[string]interface{}{
         "nodePath": "",
         "folder": remoteDataFolder,
     }
-    actual, _, err := client.WordsApi.InsertDrawingObject(ctx, remoteFileName, requestDrawingObject, OpenFile(t, "Common/aspose-cloud.png"), options)
+
+    request := &models.InsertDrawingObjectRequest{
+        Name: ToStringPointer(remoteFileName),
+        DrawingObject: requestDrawingObject,
+        ImageFile: OpenFile(t, "Common/aspose-cloud.png"),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.InsertDrawingObject(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
 
     assert.NotNil(t, actual.DrawingObject, "Validate InsertDrawingObject response.");
-    assert.Equal(t, "0.3.7.1", *actual.DrawingObject.NodeId, "Validate InsertDrawingObject response.");
+    assert.Equal(t, "0.3.7.1", actual.DrawingObject.NodeId, "Validate InsertDrawingObject response.");
 }
 
 // Test for adding drawing object without node path.
@@ -318,22 +396,30 @@ func Test_DrawingObjects_InsertDrawingObjectWithoutNodePath(t *testing.T) {
         Left: ToFloat64Pointer(0.0),
         Top: ToFloat64Pointer(0.0),
         Width: ToFloat64Pointer(0.0),
-        RelativeHorizontalPosition: "Margin",
-        RelativeVerticalPosition: "Margin",
-        WrapType: "Inline",
+        RelativeHorizontalPosition: ToStringPointer("Margin"),
+        RelativeVerticalPosition: ToStringPointer("Margin"),
+        WrapType: ToStringPointer("Inline"),
     }
 
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    actual, _, err := client.WordsApi.InsertDrawingObject(ctx, remoteFileName, requestDrawingObject, OpenFile(t, "Common/aspose-cloud.png"), options)
+
+    request := &models.InsertDrawingObjectRequest{
+        Name: ToStringPointer(remoteFileName),
+        DrawingObject: requestDrawingObject,
+        ImageFile: OpenFile(t, "Common/aspose-cloud.png"),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.InsertDrawingObject(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
 
     assert.NotNil(t, actual.DrawingObject, "Validate InsertDrawingObjectWithoutNodePath response.");
-    assert.Equal(t, "0.3.7.1", *actual.DrawingObject.NodeId, "Validate InsertDrawingObjectWithoutNodePath response.");
+    assert.Equal(t, "0.3.7.1", actual.DrawingObject.NodeId, "Validate InsertDrawingObjectWithoutNodePath response.");
 }
 
 // Test for deleting drawing object.
@@ -351,7 +437,14 @@ func Test_DrawingObjects_DeleteDrawingObject(t *testing.T) {
         "nodePath": "",
         "folder": remoteDataFolder,
     }
-    _, err := client.WordsApi.DeleteDrawingObject(ctx, remoteFileName, int32(0), options)
+
+    request := &models.DeleteDrawingObjectRequest{
+        Name: ToStringPointer(remoteFileName),
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    _, err := client.WordsApi.DeleteDrawingObject(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -373,7 +466,14 @@ func Test_DrawingObjects_DeleteDrawingObjectWithoutNodePath(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, err := client.WordsApi.DeleteDrawingObject(ctx, remoteFileName, int32(0), options)
+
+    request := &models.DeleteDrawingObjectRequest{
+        Name: ToStringPointer(remoteFileName),
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    _, err := client.WordsApi.DeleteDrawingObject(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -399,14 +499,23 @@ func Test_DrawingObjects_UpdateDrawingObject(t *testing.T) {
         "nodePath": "",
         "folder": remoteDataFolder,
     }
-    actual, _, err := client.WordsApi.UpdateDrawingObject(ctx, remoteFileName, requestDrawingObject, OpenFile(t, "Common/aspose-cloud.png"), int32(0), options)
+
+    request := &models.UpdateDrawingObjectRequest{
+        Name: ToStringPointer(remoteFileName),
+        DrawingObject: requestDrawingObject,
+        ImageFile: OpenFile(t, "Common/aspose-cloud.png"),
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.UpdateDrawingObject(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
 
     assert.NotNil(t, actual.DrawingObject, "Validate UpdateDrawingObject response.");
-    assert.Equal(t, 1.0, *actual.DrawingObject.Left, "Validate UpdateDrawingObject response.");
+    assert.Equal(t, 1.0, actual.DrawingObject.Left, "Validate UpdateDrawingObject response.");
 }
 
 // Test for updating drawing object without node path.
@@ -426,12 +535,21 @@ func Test_DrawingObjects_UpdateDrawingObjectWithoutNodePath(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    actual, _, err := client.WordsApi.UpdateDrawingObject(ctx, remoteFileName, requestDrawingObject, OpenFile(t, "Common/aspose-cloud.png"), int32(0), options)
+
+    request := &models.UpdateDrawingObjectRequest{
+        Name: ToStringPointer(remoteFileName),
+        DrawingObject: requestDrawingObject,
+        ImageFile: OpenFile(t, "Common/aspose-cloud.png"),
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.UpdateDrawingObject(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
 
     assert.NotNil(t, actual.DrawingObject, "Validate UpdateDrawingObjectWithoutNodePath response.");
-    assert.Equal(t, 1.0, *actual.DrawingObject.Left, "Validate UpdateDrawingObjectWithoutNodePath response.");
+    assert.Equal(t, 1.0, actual.DrawingObject.Left, "Validate UpdateDrawingObjectWithoutNodePath response.");
 }

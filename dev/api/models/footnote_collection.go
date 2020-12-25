@@ -28,9 +28,17 @@
 package models
 
 // DTO container with a collection of footnotes.
+type FootnoteCollectionResult struct {
+    // DTO container with a collection of footnotes.
+    Link WordsApiLinkResult `json:"Link,omitempty"`
+
+    // DTO container with a collection of footnotes.
+    List []FootnoteResult `json:"List,omitempty"`
+}
+
 type FootnoteCollection struct {
     // DTO container with a collection of footnotes.
-    Link *WordsApiLink `json:"Link,omitempty"`
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // DTO container with a collection of footnotes.
     List []Footnote `json:"List,omitempty"`
@@ -46,3 +54,5 @@ func (FootnoteCollection) IsFootnoteCollection() bool {
 func (FootnoteCollection) IsLinkElement() bool {
     return true
 }
+
+

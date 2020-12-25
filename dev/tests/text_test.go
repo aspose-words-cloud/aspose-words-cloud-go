@@ -53,13 +53,20 @@ func Test_Text_ReplaceText(t *testing.T) {
         "folder": remoteDataFolder,
         "destFileName": baseTestOutPath + "/" + remoteFileName,
     }
-    actual, _, err := client.WordsApi.ReplaceText(ctx, remoteFileName, requestReplaceText, options)
+
+    request := &models.ReplaceTextRequest{
+        Name: ToStringPointer(remoteFileName),
+        ReplaceText: requestReplaceText,
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.ReplaceText(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
 
-    assert.Equal(t, int32(3), *actual.Matches, "Validate ReplaceText response.");
+    assert.Equal(t, int32(3), actual.Matches, "Validate ReplaceText response.");
 }
 
 // Test for searching.
@@ -76,7 +83,14 @@ func Test_Text_Search(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    actual, _, err := client.WordsApi.Search(ctx, remoteFileName, "aspose", options)
+
+    request := &models.SearchRequest{
+        Name: ToStringPointer(remoteFileName),
+        Pattern: ToStringPointer("aspose"),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.Search(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -86,5 +100,5 @@ func Test_Text_Search(t *testing.T) {
     assert.NotNil(t, actual.SearchResults.ResultsList, "Validate Search response.");
     assert.Equal(t, 23, len(actual.SearchResults.ResultsList), "Validate Search response.");
     assert.NotNil(t, actual.SearchResults.ResultsList[0].RangeStart, "Validate Search response.");
-    assert.Equal(t, int32(65), *actual.SearchResults.ResultsList[0].RangeStart.Offset, "Validate Search response.");
+    assert.Equal(t, int32(65), actual.SearchResults.ResultsList[0].RangeStart.Offset, "Validate Search response.");
 }

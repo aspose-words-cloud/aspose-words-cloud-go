@@ -48,7 +48,13 @@ func Test_Lists_GetLists(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    actual, _, err := client.WordsApi.GetLists(ctx, remoteFileName, options)
+
+    request := &models.GetListsRequest{
+        Name: ToStringPointer(remoteFileName),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.GetLists(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -57,7 +63,7 @@ func Test_Lists_GetLists(t *testing.T) {
     assert.NotNil(t, actual.Lists, "Validate GetLists response.");
     assert.NotNil(t, actual.Lists.ListInfo, "Validate GetLists response.");
     assert.Equal(t, 2, len(actual.Lists.ListInfo), "Validate GetLists response.");
-    assert.Equal(t, int32(1), *actual.Lists.ListInfo[0].ListId, "Validate GetLists response.");
+    assert.Equal(t, int32(1), actual.Lists.ListInfo[0].ListId, "Validate GetLists response.");
 }
 
 // Test for getting list from document.
@@ -74,14 +80,21 @@ func Test_Lists_GetList(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    actual, _, err := client.WordsApi.GetList(ctx, remoteFileName, int32(1), options)
+
+    request := &models.GetListRequest{
+        Name: ToStringPointer(remoteFileName),
+        ListId: ToInt32Pointer(int32(1)),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.GetList(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
 
     assert.NotNil(t, actual.List, "Validate GetList response.");
-    assert.Equal(t, int32(1), *actual.List.ListId, "Validate GetList response.");
+    assert.Equal(t, int32(1), actual.List.ListId, "Validate GetList response.");
 }
 
 // Test for updating list from document.
@@ -101,15 +114,23 @@ func Test_Lists_UpdateList(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    actual, _, err := client.WordsApi.UpdateList(ctx, remoteFileName, requestListUpdate, int32(1), options)
+
+    request := &models.UpdateListRequest{
+        Name: ToStringPointer(remoteFileName),
+        ListUpdate: requestListUpdate,
+        ListId: ToInt32Pointer(int32(1)),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.UpdateList(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
 
     assert.NotNil(t, actual.List, "Validate UpdateList response.");
-    assert.Equal(t, int32(1), *actual.List.ListId, "Validate UpdateList response.");
-    assert.True(t, *actual.List.IsRestartAtEachSection, "Validate UpdateList response.");
+    assert.Equal(t, int32(1), actual.List.ListId, "Validate UpdateList response.");
+    assert.True(t, actual.List.IsRestartAtEachSection, "Validate UpdateList response.");
 }
 
 // Test for updating list level from document.
@@ -123,13 +144,22 @@ func Test_Lists_UpdateListLevel(t *testing.T) {
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
     requestListUpdate := models.ListLevelUpdate{
-        Alignment: "Right",
+        Alignment: ToStringPointer("Right"),
     }
 
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    actual, _, err := client.WordsApi.UpdateListLevel(ctx, remoteFileName, requestListUpdate, int32(1), int32(1), options)
+
+    request := &models.UpdateListLevelRequest{
+        Name: ToStringPointer(remoteFileName),
+        ListUpdate: requestListUpdate,
+        ListId: ToInt32Pointer(int32(1)),
+        ListLevel: ToInt32Pointer(int32(1)),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.UpdateListLevel(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -153,18 +183,25 @@ func Test_Lists_InsertList(t *testing.T) {
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
     requestListInsert := models.ListInsert{
-        Template: "OutlineLegal",
+        Template: ToStringPointer("OutlineLegal"),
     }
 
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    actual, _, err := client.WordsApi.InsertList(ctx, remoteFileName, requestListInsert, options)
+
+    request := &models.InsertListRequest{
+        Name: ToStringPointer(remoteFileName),
+        ListInsert: requestListInsert,
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.InsertList(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
 
     assert.NotNil(t, actual.List, "Validate InsertList response.");
-    assert.Equal(t, int32(3), *actual.List.ListId, "Validate InsertList response.");
+    assert.Equal(t, int32(3), actual.List.ListId, "Validate InsertList response.");
 }

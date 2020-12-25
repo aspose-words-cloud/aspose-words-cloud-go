@@ -28,9 +28,80 @@
 package models
 
 // Container class for svg save options.
-type SvgSaveOptionsData struct {
+type SvgSaveOptionsDataResult struct {
     // Container class for svg save options.
     Dml3DEffectsRenderingMode string `json:"Dml3DEffectsRenderingMode,omitempty"`
+
+    // Container class for svg save options.
+    DmlEffectsRenderingMode string `json:"DmlEffectsRenderingMode,omitempty"`
+
+    // Container class for svg save options.
+    DmlRenderingMode string `json:"DmlRenderingMode,omitempty"`
+
+    // Container class for svg save options.
+    FileName string `json:"FileName,omitempty"`
+
+    // Container class for svg save options.
+    SaveFormat string `json:"SaveFormat,omitempty"`
+
+    // Container class for svg save options.
+    UpdateFields bool `json:"UpdateFields,omitempty"`
+
+    // Container class for svg save options.
+    UpdateLastPrintedProperty bool `json:"UpdateLastPrintedProperty,omitempty"`
+
+    // Container class for svg save options.
+    UpdateLastSavedTimeProperty bool `json:"UpdateLastSavedTimeProperty,omitempty"`
+
+    // Container class for svg save options.
+    UpdateSdtContent bool `json:"UpdateSdtContent,omitempty"`
+
+    // Container class for svg save options.
+    ZipOutput bool `json:"ZipOutput,omitempty"`
+
+    // Container class for svg save options.
+    ColorMode string `json:"ColorMode,omitempty"`
+
+    // Container class for svg save options.
+    JpegQuality int32 `json:"JpegQuality,omitempty"`
+
+    // Container class for svg save options.
+    MetafileRenderingOptions MetafileRenderingOptionsDataResult `json:"MetafileRenderingOptions,omitempty"`
+
+    // Container class for svg save options.
+    NumeralFormat string `json:"NumeralFormat,omitempty"`
+
+    // Container class for svg save options.
+    OptimizeOutput bool `json:"OptimizeOutput,omitempty"`
+
+    // Container class for svg save options.
+    PageCount int32 `json:"PageCount,omitempty"`
+
+    // Container class for svg save options.
+    PageIndex int32 `json:"PageIndex,omitempty"`
+
+    // Container class for svg save options.
+    ExportEmbeddedImages bool `json:"ExportEmbeddedImages,omitempty"`
+
+    // Container class for svg save options.
+    FitToViewPort bool `json:"FitToViewPort,omitempty"`
+
+    // Container class for svg save options.
+    ResourcesFolder string `json:"ResourcesFolder,omitempty"`
+
+    // Container class for svg save options.
+    ResourcesFolderAlias string `json:"ResourcesFolderAlias,omitempty"`
+
+    // Container class for svg save options.
+    ShowPageBorder bool `json:"ShowPageBorder,omitempty"`
+
+    // Container class for svg save options.
+    TextOutputMode string `json:"TextOutputMode,omitempty"`
+}
+
+type SvgSaveOptionsData struct {
+    // Container class for svg save options.
+    Dml3DEffectsRenderingMode *string `json:"Dml3DEffectsRenderingMode,omitempty"`
 
     // Container class for svg save options.
     DmlEffectsRenderingMode *string `json:"DmlEffectsRenderingMode,omitempty"`
@@ -66,7 +137,7 @@ type SvgSaveOptionsData struct {
     JpegQuality *int32 `json:"JpegQuality,omitempty"`
 
     // Container class for svg save options.
-    MetafileRenderingOptions *MetafileRenderingOptionsData `json:"MetafileRenderingOptions,omitempty"`
+    MetafileRenderingOptions IMetafileRenderingOptionsData `json:"MetafileRenderingOptions,omitempty"`
 
     // Container class for svg save options.
     NumeralFormat *string `json:"NumeralFormat,omitempty"`
@@ -109,3 +180,5 @@ func (SvgSaveOptionsData) IsSvgSaveOptionsData() bool {
 func (SvgSaveOptionsData) IsFixedPageSaveOptionsData() bool {
     return true
 }
+
+

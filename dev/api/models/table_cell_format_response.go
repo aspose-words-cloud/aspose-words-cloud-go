@@ -30,19 +30,9 @@ package models
 // The REST response with the formatting properties of a table cell.
 type TableCellFormatResponse struct {
     // The REST response with the formatting properties of a table cell.
-    RequestId *string `json:"RequestId,omitempty"`
+    RequestId string `json:"RequestId,omitempty"`
 
     // The REST response with the formatting properties of a table cell.
-    CellFormat *TableCellFormat `json:"CellFormat,omitempty"`
+    CellFormat TableCellFormatResult `json:"CellFormat,omitempty"`
 }
 
-type ITableCellFormatResponse interface {
-    IsTableCellFormatResponse() bool
-}
-func (TableCellFormatResponse) IsTableCellFormatResponse() bool {
-    return true
-}
-
-func (TableCellFormatResponse) IsWordsResponse() bool {
-    return true
-}

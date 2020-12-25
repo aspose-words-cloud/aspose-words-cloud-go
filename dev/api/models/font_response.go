@@ -30,19 +30,9 @@ package models
 // The REST response with a font.
 type FontResponse struct {
     // The REST response with a font.
-    RequestId *string `json:"RequestId,omitempty"`
+    RequestId string `json:"RequestId,omitempty"`
 
     // The REST response with a font.
-    Font *Font `json:"Font,omitempty"`
+    Font FontResult `json:"Font,omitempty"`
 }
 
-type IFontResponse interface {
-    IsFontResponse() bool
-}
-func (FontResponse) IsFontResponse() bool {
-    return true
-}
-
-func (FontResponse) IsWordsResponse() bool {
-    return true
-}

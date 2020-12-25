@@ -30,22 +30,12 @@ package models
 // The REST response with a regular expression pattern and a collection of search results.
 type SearchResponse struct {
     // The REST response with a regular expression pattern and a collection of search results.
-    RequestId *string `json:"RequestId,omitempty"`
+    RequestId string `json:"RequestId,omitempty"`
 
     // The REST response with a regular expression pattern and a collection of search results.
-    SearchingPattern *string `json:"SearchingPattern,omitempty"`
+    SearchingPattern string `json:"SearchingPattern,omitempty"`
 
     // The REST response with a regular expression pattern and a collection of search results.
-    SearchResults *SearchResultsCollection `json:"SearchResults,omitempty"`
+    SearchResults SearchResultsCollectionResult `json:"SearchResults,omitempty"`
 }
 
-type ISearchResponse interface {
-    IsSearchResponse() bool
-}
-func (SearchResponse) IsSearchResponse() bool {
-    return true
-}
-
-func (SearchResponse) IsWordsResponse() bool {
-    return true
-}

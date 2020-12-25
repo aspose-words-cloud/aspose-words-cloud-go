@@ -28,6 +28,20 @@
 package models
 
 // Represents a single document style properties to update.
+type StyleUpdateResult struct {
+    // Represents a single document style properties to update.
+    BaseStyleName string `json:"BaseStyleName,omitempty"`
+
+    // Represents a single document style properties to update.
+    IsQuickStyle bool `json:"IsQuickStyle,omitempty"`
+
+    // Represents a single document style properties to update.
+    Name string `json:"Name,omitempty"`
+
+    // Represents a single document style properties to update.
+    NextParagraphStyleName string `json:"NextParagraphStyleName,omitempty"`
+}
+
 type StyleUpdate struct {
     // Represents a single document style properties to update.
     BaseStyleName *string `json:"BaseStyleName,omitempty"`
@@ -48,4 +62,5 @@ type IStyleUpdate interface {
 func (StyleUpdate) IsStyleUpdate() bool {
     return true
 }
+
 

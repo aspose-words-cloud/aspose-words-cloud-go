@@ -28,9 +28,20 @@
 package models
 
 // Hyperlink element.
+type HyperlinkResult struct {
+    // Hyperlink element.
+    Link WordsApiLinkResult `json:"Link,omitempty"`
+
+    // Hyperlink element.
+    DisplayText string `json:"DisplayText,omitempty"`
+
+    // Hyperlink element.
+    Value string `json:"Value,omitempty"`
+}
+
 type Hyperlink struct {
     // Hyperlink element.
-    Link *WordsApiLink `json:"Link,omitempty"`
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // Hyperlink element.
     DisplayText *string `json:"DisplayText,omitempty"`
@@ -49,3 +60,5 @@ func (Hyperlink) IsHyperlink() bool {
 func (Hyperlink) IsLinkElement() bool {
     return true
 }
+
+

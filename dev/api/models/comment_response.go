@@ -30,19 +30,9 @@ package models
 // The REST response with a comment.
 type CommentResponse struct {
     // The REST response with a comment.
-    RequestId *string `json:"RequestId,omitempty"`
+    RequestId string `json:"RequestId,omitempty"`
 
     // The REST response with a comment.
-    Comment *Comment `json:"Comment,omitempty"`
+    Comment CommentResult `json:"Comment,omitempty"`
 }
 
-type ICommentResponse interface {
-    IsCommentResponse() bool
-}
-func (CommentResponse) IsCommentResponse() bool {
-    return true
-}
-
-func (CommentResponse) IsWordsResponse() bool {
-    return true
-}

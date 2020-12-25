@@ -50,7 +50,13 @@ func Test_Field_GetFields(t *testing.T) {
         "nodePath": "sections/0",
         "folder": remoteDataFolder,
     }
-    actual, _, err := client.WordsApi.GetFields(ctx, remoteFileName, options)
+
+    request := &models.GetFieldsRequest{
+        Name: ToStringPointer(remoteFileName),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.GetFields(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -59,7 +65,7 @@ func Test_Field_GetFields(t *testing.T) {
     assert.NotNil(t, actual.Fields, "Validate GetFields response.");
     assert.NotNil(t, actual.Fields.List, "Validate GetFields response.");
     assert.Equal(t, 1, len(actual.Fields.List), "Validate GetFields response.");
-    assert.Equal(t, "1", *actual.Fields.List[0].Result, "Validate GetFields response.");
+    assert.Equal(t, "1", actual.Fields.List[0].Result, "Validate GetFields response.");
 }
 
 // Test for getting fields without node path.
@@ -77,7 +83,13 @@ func Test_Field_GetFieldsWithoutNodePath(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    actual, _, err := client.WordsApi.GetFields(ctx, remoteFileName, options)
+
+    request := &models.GetFieldsRequest{
+        Name: ToStringPointer(remoteFileName),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.GetFields(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -86,7 +98,7 @@ func Test_Field_GetFieldsWithoutNodePath(t *testing.T) {
     assert.NotNil(t, actual.Fields, "Validate GetFieldsWithoutNodePath response.");
     assert.NotNil(t, actual.Fields.List, "Validate GetFieldsWithoutNodePath response.");
     assert.Equal(t, 1, len(actual.Fields.List), "Validate GetFieldsWithoutNodePath response.");
-    assert.Equal(t, "1", *actual.Fields.List[0].Result, "Validate GetFieldsWithoutNodePath response.");
+    assert.Equal(t, "1", actual.Fields.List[0].Result, "Validate GetFieldsWithoutNodePath response.");
 }
 
 // Test for getting field by index.
@@ -105,14 +117,21 @@ func Test_Field_GetField(t *testing.T) {
         "nodePath": "sections/0/paragraphs/0",
         "folder": remoteDataFolder,
     }
-    actual, _, err := client.WordsApi.GetField(ctx, remoteFileName, int32(0), options)
+
+    request := &models.GetFieldRequest{
+        Name: ToStringPointer(remoteFileName),
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.GetField(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
 
     assert.NotNil(t, actual.Field, "Validate GetField response.");
-    assert.Equal(t, "1", *actual.Field.Result, "Validate GetField response.");
+    assert.Equal(t, "1", actual.Field.Result, "Validate GetField response.");
 }
 
 // Test for getting field by index without node path.
@@ -130,14 +149,21 @@ func Test_Field_GetFieldWithoutNodePath(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    actual, _, err := client.WordsApi.GetField(ctx, remoteFileName, int32(0), options)
+
+    request := &models.GetFieldRequest{
+        Name: ToStringPointer(remoteFileName),
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.GetField(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
 
     assert.NotNil(t, actual.Field, "Validate GetFieldWithoutNodePath response.");
-    assert.Equal(t, "1", *actual.Field.Result, "Validate GetFieldWithoutNodePath response.");
+    assert.Equal(t, "1", actual.Field.Result, "Validate GetFieldWithoutNodePath response.");
 }
 
 // Test for putting field.
@@ -159,15 +185,22 @@ func Test_Field_InsertField(t *testing.T) {
         "nodePath": "sections/0/paragraphs/0",
         "folder": remoteDataFolder,
     }
-    actual, _, err := client.WordsApi.InsertField(ctx, remoteFileName, requestField, options)
+
+    request := &models.InsertFieldRequest{
+        Name: ToStringPointer(remoteFileName),
+        Field: requestField,
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.InsertField(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
 
     assert.NotNil(t, actual.Field, "Validate InsertField response.");
-    assert.Equal(t, "{ NUMPAGES }", *actual.Field.FieldCode, "Validate InsertField response.");
-    assert.Equal(t, "0.0.0.1", *actual.Field.NodeId, "Validate InsertField response.");
+    assert.Equal(t, "{ NUMPAGES }", actual.Field.FieldCode, "Validate InsertField response.");
+    assert.Equal(t, "0.0.0.1", actual.Field.NodeId, "Validate InsertField response.");
 }
 
 // Test for putting field without node path.
@@ -188,15 +221,22 @@ func Test_Field_InsertFieldWithoutNodePath(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    actual, _, err := client.WordsApi.InsertField(ctx, remoteFileName, requestField, options)
+
+    request := &models.InsertFieldRequest{
+        Name: ToStringPointer(remoteFileName),
+        Field: requestField,
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.InsertField(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
 
     assert.NotNil(t, actual.Field, "Validate InsertFieldWithoutNodePath response.");
-    assert.Equal(t, "{ NUMPAGES }", *actual.Field.FieldCode, "Validate InsertFieldWithoutNodePath response.");
-    assert.Equal(t, "5.0.22.0", *actual.Field.NodeId, "Validate InsertFieldWithoutNodePath response.");
+    assert.Equal(t, "{ NUMPAGES }", actual.Field.FieldCode, "Validate InsertFieldWithoutNodePath response.");
+    assert.Equal(t, "5.0.22.0", actual.Field.NodeId, "Validate InsertFieldWithoutNodePath response.");
 }
 
 // Test for posting field.
@@ -218,15 +258,23 @@ func Test_Field_UpdateField(t *testing.T) {
         "nodePath": "sections/0/paragraphs/0",
         "folder": remoteDataFolder,
     }
-    actual, _, err := client.WordsApi.UpdateField(ctx, remoteFileName, requestField, int32(0), options)
+
+    request := &models.UpdateFieldRequest{
+        Name: ToStringPointer(remoteFileName),
+        Field: requestField,
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.UpdateField(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
 
     assert.NotNil(t, actual.Field, "Validate UpdateField response.");
-    assert.Equal(t, "{ NUMPAGES }", *actual.Field.FieldCode, "Validate UpdateField response.");
-    assert.Equal(t, "0.0.0.0", *actual.Field.NodeId, "Validate UpdateField response.");
+    assert.Equal(t, "{ NUMPAGES }", actual.Field.FieldCode, "Validate UpdateField response.");
+    assert.Equal(t, "0.0.0.0", actual.Field.NodeId, "Validate UpdateField response.");
 }
 
 // Test for inserting page numbers field.
@@ -248,14 +296,21 @@ func Test_Field_InsertPageNumbers(t *testing.T) {
         "folder": remoteDataFolder,
         "destFileName": baseTestOutPath + "/" + remoteFileName,
     }
-    actual, _, err := client.WordsApi.InsertPageNumbers(ctx, remoteFileName, requestPageNumber, options)
+
+    request := &models.InsertPageNumbersRequest{
+        Name: ToStringPointer(remoteFileName),
+        PageNumber: requestPageNumber,
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.InsertPageNumbers(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
 
     assert.NotNil(t, actual.Document, "Validate InsertPageNumbers response.");
-    assert.Equal(t, "TestInsertPageNumbers.docx", *actual.Document.FileName, "Validate InsertPageNumbers response.");
+    assert.Equal(t, "TestInsertPageNumbers.docx", actual.Document.FileName, "Validate InsertPageNumbers response.");
 }
 
 // Test for deleting field.
@@ -274,7 +329,14 @@ func Test_Field_DeleteField(t *testing.T) {
         "nodePath": "sections/0/paragraphs/0",
         "folder": remoteDataFolder,
     }
-    _, err := client.WordsApi.DeleteField(ctx, remoteFileName, int32(0), options)
+
+    request := &models.DeleteFieldRequest{
+        Name: ToStringPointer(remoteFileName),
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    _, err := client.WordsApi.DeleteField(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -297,7 +359,14 @@ func Test_Field_DeleteFieldWithoutNodePath(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, err := client.WordsApi.DeleteField(ctx, remoteFileName, int32(0), options)
+
+    request := &models.DeleteFieldRequest{
+        Name: ToStringPointer(remoteFileName),
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    _, err := client.WordsApi.DeleteField(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -320,7 +389,13 @@ func Test_Field_DeleteParagraphFields(t *testing.T) {
         "nodePath": "paragraphs/0",
         "folder": remoteDataFolder,
     }
-    _, err := client.WordsApi.DeleteFields(ctx, remoteFileName, options)
+
+    request := &models.DeleteFieldsRequest{
+        Name: ToStringPointer(remoteFileName),
+        Optionals: options,
+    }
+
+    _, err := client.WordsApi.DeleteFields(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -342,7 +417,13 @@ func Test_Field_DeleteParagraphFieldsWithoutNodePath(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, err := client.WordsApi.DeleteFields(ctx, remoteFileName, options)
+
+    request := &models.DeleteFieldsRequest{
+        Name: ToStringPointer(remoteFileName),
+        Optionals: options,
+    }
+
+    _, err := client.WordsApi.DeleteFields(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -365,7 +446,13 @@ func Test_Field_DeleteSectionFields(t *testing.T) {
         "nodePath": "sections/0",
         "folder": remoteDataFolder,
     }
-    _, err := client.WordsApi.DeleteFields(ctx, remoteFileName, options)
+
+    request := &models.DeleteFieldsRequest{
+        Name: ToStringPointer(remoteFileName),
+        Optionals: options,
+    }
+
+    _, err := client.WordsApi.DeleteFields(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -387,7 +474,13 @@ func Test_Field_DeleteSectionFieldsWithoutNodePath(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    _, err := client.WordsApi.DeleteFields(ctx, remoteFileName, options)
+
+    request := &models.DeleteFieldsRequest{
+        Name: ToStringPointer(remoteFileName),
+        Optionals: options,
+    }
+
+    _, err := client.WordsApi.DeleteFields(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -410,7 +503,13 @@ func Test_Field_DeleteSectionParagraphFields(t *testing.T) {
         "nodePath": "sections/0/paragraphs/0",
         "folder": remoteDataFolder,
     }
-    _, err := client.WordsApi.DeleteFields(ctx, remoteFileName, options)
+
+    request := &models.DeleteFieldsRequest{
+        Name: ToStringPointer(remoteFileName),
+        Optionals: options,
+    }
+
+    _, err := client.WordsApi.DeleteFields(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -433,7 +532,13 @@ func Test_Field_DeleteDocumentFields(t *testing.T) {
         "nodePath": "",
         "folder": remoteDataFolder,
     }
-    _, err := client.WordsApi.DeleteFields(ctx, remoteFileName, options)
+
+    request := &models.DeleteFieldsRequest{
+        Name: ToStringPointer(remoteFileName),
+        Optionals: options,
+    }
+
+    _, err := client.WordsApi.DeleteFields(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -455,12 +560,18 @@ func Test_Field_UpdateDocumentFields(t *testing.T) {
     options := map[string]interface{}{
         "folder": remoteDataFolder,
     }
-    actual, _, err := client.WordsApi.UpdateFields(ctx, remoteFileName, options)
+
+    request := &models.UpdateFieldsRequest{
+        Name: ToStringPointer(remoteFileName),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.UpdateFields(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
 
     assert.NotNil(t, actual.Document, "Validate UpdateDocumentFields response.");
-    assert.Equal(t, "TestUpdateDocumentFields.docx", *actual.Document.FileName, "Validate UpdateDocumentFields response.");
+    assert.Equal(t, "TestUpdateDocumentFields.docx", actual.Document.FileName, "Validate UpdateDocumentFields response.");
 }

@@ -28,9 +28,14 @@
 package models
 
 // Comment link.
+type CommentLinkResult struct {
+    // Comment link.
+    Link WordsApiLinkResult `json:"Link,omitempty"`
+}
+
 type CommentLink struct {
     // Comment link.
-    Link *WordsApiLink `json:"Link,omitempty"`
+    Link IWordsApiLink `json:"Link,omitempty"`
 }
 
 type ICommentLink interface {
@@ -43,3 +48,5 @@ func (CommentLink) IsCommentLink() bool {
 func (CommentLink) IsLinkElement() bool {
     return true
 }
+
+

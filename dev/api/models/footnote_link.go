@@ -28,9 +28,17 @@
 package models
 
 // Footnote link.
+type FootnoteLinkResult struct {
+    // Footnote link.
+    Link WordsApiLinkResult `json:"Link,omitempty"`
+
+    // Footnote link.
+    NodeId string `json:"NodeId,omitempty"`
+}
+
 type FootnoteLink struct {
     // Footnote link.
-    Link *WordsApiLink `json:"Link,omitempty"`
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // Footnote link.
     NodeId *string `json:"NodeId,omitempty"`
@@ -46,3 +54,5 @@ func (FootnoteLink) IsFootnoteLink() bool {
 func (FootnoteLink) IsNodeLink() bool {
     return true
 }
+
+

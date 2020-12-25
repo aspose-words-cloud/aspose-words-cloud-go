@@ -28,6 +28,11 @@
 package models
 
 // Update document properties if document list.
+type ListUpdateResult struct {
+    // Update document properties if document list.
+    IsRestartAtEachSection bool `json:"IsRestartAtEachSection,omitempty"`
+}
+
 type ListUpdate struct {
     // Update document properties if document list.
     IsRestartAtEachSection *bool `json:"IsRestartAtEachSection,omitempty"`
@@ -39,4 +44,5 @@ type IListUpdate interface {
 func (ListUpdate) IsListUpdate() bool {
     return true
 }
+
 

@@ -28,21 +28,38 @@
 package models
 
 // DTO container with a section element.
-type HeaderFooter struct {
+type HeaderFooterResult struct {
     // DTO container with a section element.
-    Link *WordsApiLink `json:"Link,omitempty"`
+    Link WordsApiLinkResult `json:"Link,omitempty"`
 
     // DTO container with a section element.
     Type string `json:"Type,omitempty"`
 
     // DTO container with a section element.
+    ChildNodes []NodeLinkResult `json:"ChildNodes,omitempty"`
+
+    // DTO container with a section element.
+    DrawingObjects LinkElementResult `json:"DrawingObjects,omitempty"`
+
+    // DTO container with a section element.
+    Paragraphs LinkElementResult `json:"Paragraphs,omitempty"`
+}
+
+type HeaderFooter struct {
+    // DTO container with a section element.
+    Link IWordsApiLink `json:"Link,omitempty"`
+
+    // DTO container with a section element.
+    Type *string `json:"Type,omitempty"`
+
+    // DTO container with a section element.
     ChildNodes []NodeLink `json:"ChildNodes,omitempty"`
 
     // DTO container with a section element.
-    DrawingObjects *LinkElement `json:"DrawingObjects,omitempty"`
+    DrawingObjects ILinkElement `json:"DrawingObjects,omitempty"`
 
     // DTO container with a section element.
-    Paragraphs *LinkElement `json:"Paragraphs,omitempty"`
+    Paragraphs ILinkElement `json:"Paragraphs,omitempty"`
 }
 
 type IHeaderFooter interface {
@@ -55,3 +72,5 @@ func (HeaderFooter) IsHeaderFooter() bool {
 func (HeaderFooter) IsHeaderFooterLink() bool {
     return true
 }
+
+

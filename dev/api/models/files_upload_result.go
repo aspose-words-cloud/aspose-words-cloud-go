@@ -28,6 +28,14 @@
 package models
 
 // File upload result.
+type FilesUploadResultResult struct {
+    // File upload result.
+    Errors []ErrorResult `json:"Errors,omitempty"`
+
+    // File upload result.
+    Uploaded []string `json:"Uploaded,omitempty"`
+}
+
 type FilesUploadResult struct {
     // File upload result.
     Errors []Error `json:"Errors,omitempty"`
@@ -42,4 +50,5 @@ type IFilesUploadResult interface {
 func (FilesUploadResult) IsFilesUploadResult() bool {
     return true
 }
+
 

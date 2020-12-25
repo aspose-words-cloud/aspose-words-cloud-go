@@ -28,6 +28,14 @@
 package models
 
 // Field for update.
+type FieldUpdateResult struct {
+    // Field for update.
+    FieldCode string `json:"FieldCode,omitempty"`
+
+    // Field for update.
+    LocaleId string `json:"LocaleId,omitempty"`
+}
+
 type FieldUpdate struct {
     // Field for update.
     FieldCode *string `json:"FieldCode,omitempty"`
@@ -46,3 +54,5 @@ func (FieldUpdate) IsFieldUpdate() bool {
 func (FieldUpdate) IsFieldBase() bool {
     return true
 }
+
+
