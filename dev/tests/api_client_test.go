@@ -108,6 +108,5 @@ func TestUnathorizedAccess(t *testing.T) {
 	_, err = client.WordsApi.ConvertDocument(context.Background(), request)
 
     assert.Error(t, err)
-    assert.True(t, strings.Contains(err.Error(), "ClientId is undefined. Please check authorization."))
 }
 
