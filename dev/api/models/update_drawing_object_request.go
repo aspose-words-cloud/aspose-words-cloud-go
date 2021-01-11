@@ -1,7 +1,7 @@
 /*
  * --------------------------------------------------------------------------------
  * <copyright company="Aspose" file="update_drawing_object_request.go">
- *   Copyright (c) 2020 Aspose.Words for Cloud
+ *   Copyright (c) 2021 Aspose.Words for Cloud
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -64,7 +64,7 @@ func (data *UpdateDrawingObjectRequest) CreateRequestData() (RequestData, error)
 
     var result RequestData
 
-    result.Method = strings.ToUpper("put")
+    result.Method = strings.ToUpper("post")
 
     // create path and map variables
     result.Path = "/words/{name}/{nodePath}/drawingObjects/{index}"

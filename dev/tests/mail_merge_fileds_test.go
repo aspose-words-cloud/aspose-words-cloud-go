@@ -1,7 +1,7 @@
 /*
  * --------------------------------------------------------------------------------
  * <copyright company="Aspose" file="mail_merge_fileds_test.go">
- *   Copyright (c) 2020 Aspose.Words for Cloud
+ *   Copyright (c) 2021 Aspose.Words for Cloud
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -47,7 +47,7 @@ func Test_MailMergeFileds_GetDocumentFieldNamesOnline(t *testing.T) {
     }
 
     request := &models.GetDocumentFieldNamesOnlineRequest{
-        Template: OpenFile(t, mailMergeFolder + "/" + localDocumentFile),
+        Document: OpenFile(t, mailMergeFolder + "/" + localDocumentFile),
         Optionals: options,
     }
 

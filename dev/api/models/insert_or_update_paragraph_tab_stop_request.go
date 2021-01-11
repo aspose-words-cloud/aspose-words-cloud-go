@@ -1,7 +1,7 @@
 /*
  * --------------------------------------------------------------------------------
  * <copyright company="Aspose" file="insert_or_update_paragraph_tab_stop_request.go">
- *   Copyright (c) 2020 Aspose.Words for Cloud
+ *   Copyright (c) 2021 Aspose.Words for Cloud
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -39,10 +39,10 @@ import (
 type InsertOrUpdateParagraphTabStopRequest struct {
         // The filename of the input document.
         Name *string
-        // The properties of the paragraph tab stop.
-        Dto ITabStopInsert
         // Object index.
         Index *int32
+        // TabStopInsert dto.
+        TabStopInsertDto ITabStopInsert
     /* optional (nil or map[string]interface{}) with one or more of key / value pairs:
         key: "nodePath" value: (string) The path to the node in the document tree.
         key: "folder" value: (string) Original document folder.
@@ -141,7 +141,7 @@ func (data *InsertOrUpdateParagraphTabStopRequest) CreateRequestData() (RequestD
 
 
 
-    result.PostBody = &data.Dto
+    result.PostBody = &data.TabStopInsertDto
 
     return result, nil
 }

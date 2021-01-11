@@ -1,7 +1,7 @@
 /*
  * --------------------------------------------------------------------------------
  * <copyright company="Aspose" file="update_run_font_request.go">
- *   Copyright (c) 2020 Aspose.Words for Cloud
+ *   Copyright (c) 2021 Aspose.Words for Cloud
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -39,12 +39,12 @@ import (
 type UpdateRunFontRequest struct {
         // The filename of the input document.
         Name *string
-        // The font properties of a Run object.
-        FontDto IFont
         // The path to the paragraph in the document tree.
         ParagraphPath *string
         // Object index.
         Index *int32
+        // Font dto object.
+        FontDto IFont
     /* optional (nil or map[string]interface{}) with one or more of key / value pairs:
         key: "folder" value: (string) Original document folder.
         key: "storage" value: (string) Original document storage.
@@ -61,7 +61,7 @@ func (data *UpdateRunFontRequest) CreateRequestData() (RequestData, error) {
 
     var result RequestData
 
-    result.Method = strings.ToUpper("put")
+    result.Method = strings.ToUpper("post")
 
     // create path and map variables
     result.Path = "/words/{name}/{paragraphPath}/runs/{index}/font"

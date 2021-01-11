@@ -1,7 +1,7 @@
 /*
  * --------------------------------------------------------------------------------
  * <copyright company="Aspose" file="update_border_request.go">
- *   Copyright (c) 2020 Aspose.Words for Cloud
+ *   Copyright (c) 2021 Aspose.Words for Cloud
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -39,10 +39,10 @@ import (
 type UpdateBorderRequest struct {
         // The filename of the input document.
         Name *string
-        // The new border properties to update.
-        BorderProperties IBorder
         // Border type.
         BorderType *string
+        // Border properties.
+        BorderProperties IBorder
     /* optional (nil or map[string]interface{}) with one or more of key / value pairs:
         key: "nodePath" value: (string) The path to the node in the document tree.
         key: "folder" value: (string) Original document folder.
@@ -60,7 +60,7 @@ func (data *UpdateBorderRequest) CreateRequestData() (RequestData, error) {
 
     var result RequestData
 
-    result.Method = strings.ToUpper("put")
+    result.Method = strings.ToUpper("post")
 
     // create path and map variables
     result.Path = "/words/{name}/{nodePath}/borders/{borderType}"

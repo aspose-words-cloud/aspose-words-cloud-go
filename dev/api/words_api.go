@@ -1,7 +1,7 @@
 /*
  * --------------------------------------------------------------------------------
  * <copyright company="Aspose" file="words_api.go">
- *   Copyright (c) 2020 Aspose.Words for Cloud
+ *   Copyright (c) 2021 Aspose.Words for Cloud
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -77,7 +77,7 @@ func (a *WordsApiService) AcceptAllRevisions(ctx context.Context, data *models.A
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -86,12 +86,57 @@ func (a *WordsApiService) AcceptAllRevisions(ctx context.Context, data *models.A
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
     }
     if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Accepts all revisions in the document.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return AcceptAllRevisionsOnlineResponse*/
+func (a *WordsApiService) AcceptAllRevisionsOnline(ctx context.Context, data *models.AcceptAllRevisionsOnlineRequest) (AcceptAllRevisionsOnlineResponse*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+	if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
         return successPayload, response, err
     }
 
@@ -123,7 +168,7 @@ func (a *WordsApiService) AppendDocument(ctx context.Context, data *models.Appen
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -132,12 +177,57 @@ func (a *WordsApiService) AppendDocument(ctx context.Context, data *models.Appen
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
     }
     if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Appends documents to the original document.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return AppendDocumentOnlineResponse*/
+func (a *WordsApiService) AppendDocumentOnline(ctx context.Context, data *models.AppendDocumentOnlineRequest) (AppendDocumentOnlineResponse*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+	if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
         return successPayload, response, err
     }
 
@@ -169,7 +259,7 @@ func (a *WordsApiService) ApplyStyleToDocumentElement(ctx context.Context, data 
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -178,12 +268,57 @@ func (a *WordsApiService) ApplyStyleToDocumentElement(ctx context.Context, data 
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
     }
     if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Applies a style to the document node.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return ApplyStyleToDocumentElementOnlineResponse*/
+func (a *WordsApiService) ApplyStyleToDocumentElementOnline(ctx context.Context, data *models.ApplyStyleToDocumentElementOnlineRequest) (ApplyStyleToDocumentElementOnlineResponse*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+	if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
         return successPayload, response, err
     }
 
@@ -215,7 +350,7 @@ func (a *WordsApiService) BuildReport(ctx context.Context, data *models.BuildRep
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -224,7 +359,7 @@ func (a *WordsApiService) BuildReport(ctx context.Context, data *models.BuildRep
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
@@ -260,7 +395,7 @@ func (a *WordsApiService) BuildReportOnline(ctx context.Context, data *models.Bu
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return response, err
+        return nil, err
     }
     if response.StatusCode == 401 {
         return nil, errors.New("Access is denied")
@@ -269,7 +404,7 @@ func (a *WordsApiService) BuildReportOnline(ctx context.Context, data *models.Bu
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return response, err
+            return nil, err
         }
 
         return response, &apiError
@@ -302,7 +437,7 @@ func (a *WordsApiService) Classify(ctx context.Context, data *models.ClassifyReq
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -311,7 +446,7 @@ func (a *WordsApiService) Classify(ctx context.Context, data *models.ClassifyReq
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
@@ -348,7 +483,7 @@ func (a *WordsApiService) ClassifyDocument(ctx context.Context, data *models.Cla
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -357,7 +492,53 @@ func (a *WordsApiService) ClassifyDocument(ctx context.Context, data *models.Cla
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
+        }
+
+        return successPayload, response, &apiError
+    }
+    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Runs a multi-class text classification for the document.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return models.ClassificationResponse*/
+func (a *WordsApiService) ClassifyDocumentOnline(ctx context.Context, data *models.ClassifyDocumentOnlineRequest) (models.ClassificationResponse, *http.Response, error) {
+    var (
+        successPayload models.ClassificationResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
@@ -394,7 +575,7 @@ func (a *WordsApiService) CompareDocument(ctx context.Context, data *models.Comp
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -403,12 +584,57 @@ func (a *WordsApiService) CompareDocument(ctx context.Context, data *models.Comp
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
     }
     if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Compares two documents.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return CompareDocumentOnlineResponse*/
+func (a *WordsApiService) CompareDocumentOnline(ctx context.Context, data *models.CompareDocumentOnlineRequest) (CompareDocumentOnlineResponse*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+	if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
         return successPayload, response, err
     }
 
@@ -439,7 +665,7 @@ func (a *WordsApiService) ConvertDocument(ctx context.Context, data *models.Conv
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return response, err
+        return nil, err
     }
     if response.StatusCode == 401 {
         return nil, errors.New("Access is denied")
@@ -448,7 +674,7 @@ func (a *WordsApiService) ConvertDocument(ctx context.Context, data *models.Conv
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return response, err
+            return nil, err
         }
 
         return response, &apiError
@@ -480,7 +706,7 @@ func (a *WordsApiService) CopyFile(ctx context.Context, data *models.CopyFileReq
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return response, err
+        return nil, err
     }
     if response.StatusCode == 401 {
         return nil, errors.New("Access is denied")
@@ -489,7 +715,7 @@ func (a *WordsApiService) CopyFile(ctx context.Context, data *models.CopyFileReq
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return response, err
+            return nil, err
         }
 
         return response, &apiError
@@ -521,7 +747,7 @@ func (a *WordsApiService) CopyFolder(ctx context.Context, data *models.CopyFolde
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return response, err
+        return nil, err
     }
     if response.StatusCode == 401 {
         return nil, errors.New("Access is denied")
@@ -530,7 +756,7 @@ func (a *WordsApiService) CopyFolder(ctx context.Context, data *models.CopyFolde
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return response, err
+            return nil, err
         }
 
         return response, &apiError
@@ -563,7 +789,7 @@ func (a *WordsApiService) CopyStyle(ctx context.Context, data *models.CopyStyleR
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -572,12 +798,57 @@ func (a *WordsApiService) CopyStyle(ctx context.Context, data *models.CopyStyleR
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
     }
     if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Makes a copy of the style in the document.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return CopyStyleOnlineResponse*/
+func (a *WordsApiService) CopyStyleOnline(ctx context.Context, data *models.CopyStyleOnlineRequest) (CopyStyleOnlineResponse*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+	if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
         return successPayload, response, err
     }
 
@@ -609,7 +880,7 @@ func (a *WordsApiService) CreateDocument(ctx context.Context, data *models.Creat
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -618,7 +889,7 @@ func (a *WordsApiService) CreateDocument(ctx context.Context, data *models.Creat
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
@@ -654,7 +925,7 @@ func (a *WordsApiService) CreateFolder(ctx context.Context, data *models.CreateF
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return response, err
+        return nil, err
     }
     if response.StatusCode == 401 {
         return nil, errors.New("Access is denied")
@@ -663,7 +934,7 @@ func (a *WordsApiService) CreateFolder(ctx context.Context, data *models.CreateF
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return response, err
+            return nil, err
         }
 
         return response, &apiError
@@ -696,7 +967,7 @@ func (a *WordsApiService) CreateOrUpdateDocumentProperty(ctx context.Context, da
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -705,12 +976,57 @@ func (a *WordsApiService) CreateOrUpdateDocumentProperty(ctx context.Context, da
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
     }
     if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Adds a new or updates an existing document property.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return CreateOrUpdateDocumentPropertyOnlineResponse*/
+func (a *WordsApiService) CreateOrUpdateDocumentPropertyOnline(ctx context.Context, data *models.CreateOrUpdateDocumentPropertyOnlineRequest) (CreateOrUpdateDocumentPropertyOnlineResponse*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+	if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
         return successPayload, response, err
     }
 
@@ -742,7 +1058,7 @@ func (a *WordsApiService) DeleteAllParagraphTabStops(ctx context.Context, data *
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -751,12 +1067,57 @@ func (a *WordsApiService) DeleteAllParagraphTabStops(ctx context.Context, data *
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
     }
     if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Removes paragraph tab stops from the document node.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return DeleteAllParagraphTabStopsOnlineResponse*/
+func (a *WordsApiService) DeleteAllParagraphTabStopsOnline(ctx context.Context, data *models.DeleteAllParagraphTabStopsOnlineRequest) (DeleteAllParagraphTabStopsOnlineResponse*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+	if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
         return successPayload, response, err
     }
 
@@ -788,7 +1149,7 @@ func (a *WordsApiService) DeleteBorder(ctx context.Context, data *models.DeleteB
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -797,12 +1158,57 @@ func (a *WordsApiService) DeleteBorder(ctx context.Context, data *models.DeleteB
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
     }
     if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Removes a border from the document node.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return DeleteBorderOnlineResponse*/
+func (a *WordsApiService) DeleteBorderOnline(ctx context.Context, data *models.DeleteBorderOnlineRequest) (DeleteBorderOnlineResponse*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+	if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
         return successPayload, response, err
     }
 
@@ -834,7 +1240,7 @@ func (a *WordsApiService) DeleteBorders(ctx context.Context, data *models.Delete
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -843,12 +1249,57 @@ func (a *WordsApiService) DeleteBorders(ctx context.Context, data *models.Delete
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
     }
     if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Removes borders from the document node.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return DeleteBordersOnlineResponse*/
+func (a *WordsApiService) DeleteBordersOnline(ctx context.Context, data *models.DeleteBordersOnlineRequest) (DeleteBordersOnlineResponse*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+	if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
         return successPayload, response, err
     }
 
@@ -879,7 +1330,7 @@ func (a *WordsApiService) DeleteComment(ctx context.Context, data *models.Delete
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return response, err
+        return nil, err
     }
     if response.StatusCode == 401 {
         return nil, errors.New("Access is denied")
@@ -888,7 +1339,48 @@ func (a *WordsApiService) DeleteComment(ctx context.Context, data *models.Delete
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return response, err
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+    return response, err
+}
+
+/* WordsApiService Removes a comment from the document.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return http.Response.Body contains binary result data*/
+func (a *WordsApiService) DeleteCommentOnline(ctx context.Context, data *models.DeleteCommentOnlineRequest) (*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
         }
 
         return response, &apiError
@@ -920,7 +1412,7 @@ func (a *WordsApiService) DeleteDocumentProperty(ctx context.Context, data *mode
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return response, err
+        return nil, err
     }
     if response.StatusCode == 401 {
         return nil, errors.New("Access is denied")
@@ -929,7 +1421,48 @@ func (a *WordsApiService) DeleteDocumentProperty(ctx context.Context, data *mode
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return response, err
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+    return response, err
+}
+
+/* WordsApiService Removes a document property.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return http.Response.Body contains binary result data*/
+func (a *WordsApiService) DeleteDocumentPropertyOnline(ctx context.Context, data *models.DeleteDocumentPropertyOnlineRequest) (*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
         }
 
         return response, &apiError
@@ -961,7 +1494,7 @@ func (a *WordsApiService) DeleteDrawingObject(ctx context.Context, data *models.
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return response, err
+        return nil, err
     }
     if response.StatusCode == 401 {
         return nil, errors.New("Access is denied")
@@ -970,7 +1503,48 @@ func (a *WordsApiService) DeleteDrawingObject(ctx context.Context, data *models.
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return response, err
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+    return response, err
+}
+
+/* WordsApiService Removes a DrawingObject from the document node.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return http.Response.Body contains binary result data*/
+func (a *WordsApiService) DeleteDrawingObjectOnline(ctx context.Context, data *models.DeleteDrawingObjectOnlineRequest) (*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
         }
 
         return response, &apiError
@@ -1002,7 +1576,7 @@ func (a *WordsApiService) DeleteField(ctx context.Context, data *models.DeleteFi
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return response, err
+        return nil, err
     }
     if response.StatusCode == 401 {
         return nil, errors.New("Access is denied")
@@ -1011,7 +1585,48 @@ func (a *WordsApiService) DeleteField(ctx context.Context, data *models.DeleteFi
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return response, err
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+    return response, err
+}
+
+/* WordsApiService Removes a field from the document node.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return http.Response.Body contains binary result data*/
+func (a *WordsApiService) DeleteFieldOnline(ctx context.Context, data *models.DeleteFieldOnlineRequest) (*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
         }
 
         return response, &apiError
@@ -1043,7 +1658,7 @@ func (a *WordsApiService) DeleteFields(ctx context.Context, data *models.DeleteF
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return response, err
+        return nil, err
     }
     if response.StatusCode == 401 {
         return nil, errors.New("Access is denied")
@@ -1052,7 +1667,48 @@ func (a *WordsApiService) DeleteFields(ctx context.Context, data *models.DeleteF
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return response, err
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+    return response, err
+}
+
+/* WordsApiService Removes fields from the document node.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return http.Response.Body contains binary result data*/
+func (a *WordsApiService) DeleteFieldsOnline(ctx context.Context, data *models.DeleteFieldsOnlineRequest) (*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
         }
 
         return response, &apiError
@@ -1084,7 +1740,7 @@ func (a *WordsApiService) DeleteFile(ctx context.Context, data *models.DeleteFil
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return response, err
+        return nil, err
     }
     if response.StatusCode == 401 {
         return nil, errors.New("Access is denied")
@@ -1093,7 +1749,7 @@ func (a *WordsApiService) DeleteFile(ctx context.Context, data *models.DeleteFil
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return response, err
+            return nil, err
         }
 
         return response, &apiError
@@ -1125,7 +1781,7 @@ func (a *WordsApiService) DeleteFolder(ctx context.Context, data *models.DeleteF
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return response, err
+        return nil, err
     }
     if response.StatusCode == 401 {
         return nil, errors.New("Access is denied")
@@ -1134,7 +1790,7 @@ func (a *WordsApiService) DeleteFolder(ctx context.Context, data *models.DeleteF
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return response, err
+            return nil, err
         }
 
         return response, &apiError
@@ -1166,7 +1822,7 @@ func (a *WordsApiService) DeleteFootnote(ctx context.Context, data *models.Delet
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return response, err
+        return nil, err
     }
     if response.StatusCode == 401 {
         return nil, errors.New("Access is denied")
@@ -1175,7 +1831,48 @@ func (a *WordsApiService) DeleteFootnote(ctx context.Context, data *models.Delet
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return response, err
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+    return response, err
+}
+
+/* WordsApiService Removes a footnote from the document node.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return http.Response.Body contains binary result data*/
+func (a *WordsApiService) DeleteFootnoteOnline(ctx context.Context, data *models.DeleteFootnoteOnlineRequest) (*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
         }
 
         return response, &apiError
@@ -1207,7 +1904,7 @@ func (a *WordsApiService) DeleteFormField(ctx context.Context, data *models.Dele
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return response, err
+        return nil, err
     }
     if response.StatusCode == 401 {
         return nil, errors.New("Access is denied")
@@ -1216,7 +1913,48 @@ func (a *WordsApiService) DeleteFormField(ctx context.Context, data *models.Dele
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return response, err
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+    return response, err
+}
+
+/* WordsApiService Removes a form field from the document node.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return http.Response.Body contains binary result data*/
+func (a *WordsApiService) DeleteFormFieldOnline(ctx context.Context, data *models.DeleteFormFieldOnlineRequest) (*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
         }
 
         return response, &apiError
@@ -1248,7 +1986,7 @@ func (a *WordsApiService) DeleteHeaderFooter(ctx context.Context, data *models.D
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return response, err
+        return nil, err
     }
     if response.StatusCode == 401 {
         return nil, errors.New("Access is denied")
@@ -1257,7 +1995,48 @@ func (a *WordsApiService) DeleteHeaderFooter(ctx context.Context, data *models.D
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return response, err
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+    return response, err
+}
+
+/* WordsApiService Removes a HeaderFooter object from the document section.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return http.Response.Body contains binary result data*/
+func (a *WordsApiService) DeleteHeaderFooterOnline(ctx context.Context, data *models.DeleteHeaderFooterOnlineRequest) (*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
         }
 
         return response, &apiError
@@ -1289,7 +2068,7 @@ func (a *WordsApiService) DeleteHeadersFooters(ctx context.Context, data *models
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return response, err
+        return nil, err
     }
     if response.StatusCode == 401 {
         return nil, errors.New("Access is denied")
@@ -1298,7 +2077,48 @@ func (a *WordsApiService) DeleteHeadersFooters(ctx context.Context, data *models
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return response, err
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+    return response, err
+}
+
+/* WordsApiService Removes HeaderFooter objects from the document section.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return http.Response.Body contains binary result data*/
+func (a *WordsApiService) DeleteHeadersFootersOnline(ctx context.Context, data *models.DeleteHeadersFootersOnlineRequest) (*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
         }
 
         return response, &apiError
@@ -1330,7 +2150,7 @@ func (a *WordsApiService) DeleteMacros(ctx context.Context, data *models.DeleteM
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return response, err
+        return nil, err
     }
     if response.StatusCode == 401 {
         return nil, errors.New("Access is denied")
@@ -1339,7 +2159,48 @@ func (a *WordsApiService) DeleteMacros(ctx context.Context, data *models.DeleteM
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return response, err
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+    return response, err
+}
+
+/* WordsApiService Removes macros from the document.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return http.Response.Body contains binary result data*/
+func (a *WordsApiService) DeleteMacrosOnline(ctx context.Context, data *models.DeleteMacrosOnlineRequest) (*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
         }
 
         return response, &apiError
@@ -1371,7 +2232,7 @@ func (a *WordsApiService) DeleteOfficeMathObject(ctx context.Context, data *mode
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return response, err
+        return nil, err
     }
     if response.StatusCode == 401 {
         return nil, errors.New("Access is denied")
@@ -1380,7 +2241,48 @@ func (a *WordsApiService) DeleteOfficeMathObject(ctx context.Context, data *mode
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return response, err
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+    return response, err
+}
+
+/* WordsApiService Removes an OfficeMath object from the document node.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return http.Response.Body contains binary result data*/
+func (a *WordsApiService) DeleteOfficeMathObjectOnline(ctx context.Context, data *models.DeleteOfficeMathObjectOnlineRequest) (*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
         }
 
         return response, &apiError
@@ -1412,7 +2314,7 @@ func (a *WordsApiService) DeleteParagraph(ctx context.Context, data *models.Dele
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return response, err
+        return nil, err
     }
     if response.StatusCode == 401 {
         return nil, errors.New("Access is denied")
@@ -1421,7 +2323,7 @@ func (a *WordsApiService) DeleteParagraph(ctx context.Context, data *models.Dele
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return response, err
+            return nil, err
         }
 
         return response, &apiError
@@ -1454,7 +2356,7 @@ func (a *WordsApiService) DeleteParagraphListFormat(ctx context.Context, data *m
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -1463,7 +2365,7 @@ func (a *WordsApiService) DeleteParagraphListFormat(ctx context.Context, data *m
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
@@ -1473,6 +2375,92 @@ func (a *WordsApiService) DeleteParagraphListFormat(ctx context.Context, data *m
     }
 
     return successPayload, response, err
+}
+
+/* WordsApiService Removes the formatting properties of a paragraph list from the document node.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return DeleteParagraphListFormatOnlineResponse*/
+func (a *WordsApiService) DeleteParagraphListFormatOnline(ctx context.Context, data *models.DeleteParagraphListFormatOnlineRequest) (DeleteParagraphListFormatOnlineResponse*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+	if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Removes a paragraph from the document node.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return http.Response.Body contains binary result data*/
+func (a *WordsApiService) DeleteParagraphOnline(ctx context.Context, data *models.DeleteParagraphOnlineRequest) (*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+    return response, err
 }
 
 /* WordsApiService Removes a paragraph tab stop from the document node.
@@ -1500,7 +2488,7 @@ func (a *WordsApiService) DeleteParagraphTabStop(ctx context.Context, data *mode
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -1509,12 +2497,57 @@ func (a *WordsApiService) DeleteParagraphTabStop(ctx context.Context, data *mode
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
     }
     if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Removes a paragraph tab stop from the document node.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return DeleteParagraphTabStopOnlineResponse*/
+func (a *WordsApiService) DeleteParagraphTabStopOnline(ctx context.Context, data *models.DeleteParagraphTabStopOnlineRequest) (DeleteParagraphTabStopOnlineResponse*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+	if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
         return successPayload, response, err
     }
 
@@ -1545,7 +2578,7 @@ func (a *WordsApiService) DeleteRun(ctx context.Context, data *models.DeleteRunR
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return response, err
+        return nil, err
     }
     if response.StatusCode == 401 {
         return nil, errors.New("Access is denied")
@@ -1554,7 +2587,48 @@ func (a *WordsApiService) DeleteRun(ctx context.Context, data *models.DeleteRunR
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return response, err
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+    return response, err
+}
+
+/* WordsApiService Removes a Run object from the paragraph.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return http.Response.Body contains binary result data*/
+func (a *WordsApiService) DeleteRunOnline(ctx context.Context, data *models.DeleteRunOnlineRequest) (*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
         }
 
         return response, &apiError
@@ -1586,7 +2660,7 @@ func (a *WordsApiService) DeleteSection(ctx context.Context, data *models.Delete
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return response, err
+        return nil, err
     }
     if response.StatusCode == 401 {
         return nil, errors.New("Access is denied")
@@ -1595,7 +2669,48 @@ func (a *WordsApiService) DeleteSection(ctx context.Context, data *models.Delete
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return response, err
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+    return response, err
+}
+
+/* WordsApiService Removes a section from the document.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return http.Response.Body contains binary result data*/
+func (a *WordsApiService) DeleteSectionOnline(ctx context.Context, data *models.DeleteSectionOnlineRequest) (*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
         }
 
         return response, &apiError
@@ -1627,7 +2742,7 @@ func (a *WordsApiService) DeleteTable(ctx context.Context, data *models.DeleteTa
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return response, err
+        return nil, err
     }
     if response.StatusCode == 401 {
         return nil, errors.New("Access is denied")
@@ -1636,7 +2751,7 @@ func (a *WordsApiService) DeleteTable(ctx context.Context, data *models.DeleteTa
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return response, err
+            return nil, err
         }
 
         return response, &apiError
@@ -1668,7 +2783,7 @@ func (a *WordsApiService) DeleteTableCell(ctx context.Context, data *models.Dele
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return response, err
+        return nil, err
     }
     if response.StatusCode == 401 {
         return nil, errors.New("Access is denied")
@@ -1677,7 +2792,89 @@ func (a *WordsApiService) DeleteTableCell(ctx context.Context, data *models.Dele
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return response, err
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+    return response, err
+}
+
+/* WordsApiService Removes a cell from the table row.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return http.Response.Body contains binary result data*/
+func (a *WordsApiService) DeleteTableCellOnline(ctx context.Context, data *models.DeleteTableCellOnlineRequest) (*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+    return response, err
+}
+
+/* WordsApiService Removes a table from the document node.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return http.Response.Body contains binary result data*/
+func (a *WordsApiService) DeleteTableOnline(ctx context.Context, data *models.DeleteTableOnlineRequest) (*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
         }
 
         return response, &apiError
@@ -1709,7 +2906,7 @@ func (a *WordsApiService) DeleteTableRow(ctx context.Context, data *models.Delet
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return response, err
+        return nil, err
     }
     if response.StatusCode == 401 {
         return nil, errors.New("Access is denied")
@@ -1718,7 +2915,48 @@ func (a *WordsApiService) DeleteTableRow(ctx context.Context, data *models.Delet
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return response, err
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+    return response, err
+}
+
+/* WordsApiService Removes a row from the table.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return http.Response.Body contains binary result data*/
+func (a *WordsApiService) DeleteTableRowOnline(ctx context.Context, data *models.DeleteTableRowOnlineRequest) (*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
         }
 
         return response, &apiError
@@ -1751,7 +2989,7 @@ func (a *WordsApiService) DeleteWatermark(ctx context.Context, data *models.Dele
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -1760,12 +2998,57 @@ func (a *WordsApiService) DeleteWatermark(ctx context.Context, data *models.Dele
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
     }
     if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Removes a watermark from the document.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return DeleteWatermarkOnlineResponse*/
+func (a *WordsApiService) DeleteWatermarkOnline(ctx context.Context, data *models.DeleteWatermarkOnlineRequest) (DeleteWatermarkOnlineResponse*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+	if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
         return successPayload, response, err
     }
 
@@ -1796,7 +3079,7 @@ func (a *WordsApiService) DownloadFile(ctx context.Context, data *models.Downloa
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return response, err
+        return nil, err
     }
     if response.StatusCode == 401 {
         return nil, errors.New("Access is denied")
@@ -1805,7 +3088,7 @@ func (a *WordsApiService) DownloadFile(ctx context.Context, data *models.Downloa
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return response, err
+            return nil, err
         }
 
         return response, &apiError
@@ -1838,7 +3121,7 @@ func (a *WordsApiService) ExecuteMailMerge(ctx context.Context, data *models.Exe
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -1847,7 +3130,7 @@ func (a *WordsApiService) ExecuteMailMerge(ctx context.Context, data *models.Exe
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
@@ -1883,7 +3166,7 @@ func (a *WordsApiService) ExecuteMailMergeOnline(ctx context.Context, data *mode
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return response, err
+        return nil, err
     }
     if response.StatusCode == 401 {
         return nil, errors.New("Access is denied")
@@ -1892,7 +3175,7 @@ func (a *WordsApiService) ExecuteMailMergeOnline(ctx context.Context, data *mode
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return response, err
+            return nil, err
         }
 
         return response, &apiError
@@ -1925,7 +3208,7 @@ func (a *WordsApiService) GetAvailableFonts(ctx context.Context, data *models.Ge
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -1934,7 +3217,7 @@ func (a *WordsApiService) GetAvailableFonts(ctx context.Context, data *models.Ge
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
@@ -1971,7 +3254,7 @@ func (a *WordsApiService) GetBookmarkByName(ctx context.Context, data *models.Ge
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -1980,7 +3263,53 @@ func (a *WordsApiService) GetBookmarkByName(ctx context.Context, data *models.Ge
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
+        }
+
+        return successPayload, response, &apiError
+    }
+    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Reads a bookmark, specified by name, from the document.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return models.BookmarkResponse*/
+func (a *WordsApiService) GetBookmarkByNameOnline(ctx context.Context, data *models.GetBookmarkByNameOnlineRequest) (models.BookmarkResponse, *http.Response, error) {
+    var (
+        successPayload models.BookmarkResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
@@ -2017,7 +3346,7 @@ func (a *WordsApiService) GetBookmarks(ctx context.Context, data *models.GetBook
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -2026,7 +3355,53 @@ func (a *WordsApiService) GetBookmarks(ctx context.Context, data *models.GetBook
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
+        }
+
+        return successPayload, response, &apiError
+    }
+    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Reads bookmarks from the document.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return models.BookmarksResponse*/
+func (a *WordsApiService) GetBookmarksOnline(ctx context.Context, data *models.GetBookmarksOnlineRequest) (models.BookmarksResponse, *http.Response, error) {
+    var (
+        successPayload models.BookmarksResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
@@ -2063,7 +3438,7 @@ func (a *WordsApiService) GetBorder(ctx context.Context, data *models.GetBorderR
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -2072,7 +3447,53 @@ func (a *WordsApiService) GetBorder(ctx context.Context, data *models.GetBorderR
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
+        }
+
+        return successPayload, response, &apiError
+    }
+    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Reads a border from the document node.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return models.BorderResponse*/
+func (a *WordsApiService) GetBorderOnline(ctx context.Context, data *models.GetBorderOnlineRequest) (models.BorderResponse, *http.Response, error) {
+    var (
+        successPayload models.BorderResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
@@ -2109,7 +3530,7 @@ func (a *WordsApiService) GetBorders(ctx context.Context, data *models.GetBorder
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -2118,7 +3539,53 @@ func (a *WordsApiService) GetBorders(ctx context.Context, data *models.GetBorder
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
+        }
+
+        return successPayload, response, &apiError
+    }
+    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Reads borders from the document node.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return models.BordersResponse*/
+func (a *WordsApiService) GetBordersOnline(ctx context.Context, data *models.GetBordersOnlineRequest) (models.BordersResponse, *http.Response, error) {
+    var (
+        successPayload models.BordersResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
@@ -2155,7 +3622,7 @@ func (a *WordsApiService) GetComment(ctx context.Context, data *models.GetCommen
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -2164,7 +3631,53 @@ func (a *WordsApiService) GetComment(ctx context.Context, data *models.GetCommen
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
+        }
+
+        return successPayload, response, &apiError
+    }
+    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Reads a comment from the document.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return models.CommentResponse*/
+func (a *WordsApiService) GetCommentOnline(ctx context.Context, data *models.GetCommentOnlineRequest) (models.CommentResponse, *http.Response, error) {
+    var (
+        successPayload models.CommentResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
@@ -2201,7 +3714,7 @@ func (a *WordsApiService) GetComments(ctx context.Context, data *models.GetComme
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -2210,7 +3723,53 @@ func (a *WordsApiService) GetComments(ctx context.Context, data *models.GetComme
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
+        }
+
+        return successPayload, response, &apiError
+    }
+    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Reads comments from the document.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return models.CommentsResponse*/
+func (a *WordsApiService) GetCommentsOnline(ctx context.Context, data *models.GetCommentsOnlineRequest) (models.CommentsResponse, *http.Response, error) {
+    var (
+        successPayload models.CommentsResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
@@ -2247,7 +3806,7 @@ func (a *WordsApiService) GetDocument(ctx context.Context, data *models.GetDocum
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -2256,7 +3815,7 @@ func (a *WordsApiService) GetDocument(ctx context.Context, data *models.GetDocum
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
@@ -2293,7 +3852,7 @@ func (a *WordsApiService) GetDocumentDrawingObjectByIndex(ctx context.Context, d
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -2302,7 +3861,53 @@ func (a *WordsApiService) GetDocumentDrawingObjectByIndex(ctx context.Context, d
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
+        }
+
+        return successPayload, response, &apiError
+    }
+    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Reads a DrawingObject from the document node.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return models.DrawingObjectResponse*/
+func (a *WordsApiService) GetDocumentDrawingObjectByIndexOnline(ctx context.Context, data *models.GetDocumentDrawingObjectByIndexOnlineRequest) (models.DrawingObjectResponse, *http.Response, error) {
+    var (
+        successPayload models.DrawingObjectResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
@@ -2338,7 +3943,7 @@ func (a *WordsApiService) GetDocumentDrawingObjectImageData(ctx context.Context,
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return response, err
+        return nil, err
     }
     if response.StatusCode == 401 {
         return nil, errors.New("Access is denied")
@@ -2347,7 +3952,48 @@ func (a *WordsApiService) GetDocumentDrawingObjectImageData(ctx context.Context,
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return response, err
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+    return response, err
+}
+
+/* WordsApiService Reads image data of a DrawingObject from the document node.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return http.Response.Body contains binary result data*/
+func (a *WordsApiService) GetDocumentDrawingObjectImageDataOnline(ctx context.Context, data *models.GetDocumentDrawingObjectImageDataOnlineRequest) (*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
         }
 
         return response, &apiError
@@ -2379,7 +4025,7 @@ func (a *WordsApiService) GetDocumentDrawingObjectOleData(ctx context.Context, d
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return response, err
+        return nil, err
     }
     if response.StatusCode == 401 {
         return nil, errors.New("Access is denied")
@@ -2388,7 +4034,48 @@ func (a *WordsApiService) GetDocumentDrawingObjectOleData(ctx context.Context, d
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return response, err
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+    return response, err
+}
+
+/* WordsApiService Reads OLE data of a DrawingObject from the document node.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return http.Response.Body contains binary result data*/
+func (a *WordsApiService) GetDocumentDrawingObjectOleDataOnline(ctx context.Context, data *models.GetDocumentDrawingObjectOleDataOnlineRequest) (*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
         }
 
         return response, &apiError
@@ -2421,7 +4108,7 @@ func (a *WordsApiService) GetDocumentDrawingObjects(ctx context.Context, data *m
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -2430,7 +4117,53 @@ func (a *WordsApiService) GetDocumentDrawingObjects(ctx context.Context, data *m
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
+        }
+
+        return successPayload, response, &apiError
+    }
+    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Reads DrawingObjects from the document node.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return models.DrawingObjectsResponse*/
+func (a *WordsApiService) GetDocumentDrawingObjectsOnline(ctx context.Context, data *models.GetDocumentDrawingObjectsOnlineRequest) (models.DrawingObjectsResponse, *http.Response, error) {
+    var (
+        successPayload models.DrawingObjectsResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
@@ -2467,7 +4200,7 @@ func (a *WordsApiService) GetDocumentFieldNames(ctx context.Context, data *model
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -2476,7 +4209,7 @@ func (a *WordsApiService) GetDocumentFieldNames(ctx context.Context, data *model
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
@@ -2513,7 +4246,7 @@ func (a *WordsApiService) GetDocumentFieldNamesOnline(ctx context.Context, data 
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -2522,7 +4255,7 @@ func (a *WordsApiService) GetDocumentFieldNamesOnline(ctx context.Context, data 
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
@@ -2559,7 +4292,7 @@ func (a *WordsApiService) GetDocumentHyperlinkByIndex(ctx context.Context, data 
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -2568,7 +4301,53 @@ func (a *WordsApiService) GetDocumentHyperlinkByIndex(ctx context.Context, data 
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
+        }
+
+        return successPayload, response, &apiError
+    }
+    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Reads a hyperlink from the document.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return models.HyperlinkResponse*/
+func (a *WordsApiService) GetDocumentHyperlinkByIndexOnline(ctx context.Context, data *models.GetDocumentHyperlinkByIndexOnlineRequest) (models.HyperlinkResponse, *http.Response, error) {
+    var (
+        successPayload models.HyperlinkResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
@@ -2605,7 +4384,7 @@ func (a *WordsApiService) GetDocumentHyperlinks(ctx context.Context, data *model
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -2614,7 +4393,53 @@ func (a *WordsApiService) GetDocumentHyperlinks(ctx context.Context, data *model
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
+        }
+
+        return successPayload, response, &apiError
+    }
+    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Reads hyperlinks from the document.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return models.HyperlinksResponse*/
+func (a *WordsApiService) GetDocumentHyperlinksOnline(ctx context.Context, data *models.GetDocumentHyperlinksOnlineRequest) (models.HyperlinksResponse, *http.Response, error) {
+    var (
+        successPayload models.HyperlinksResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
@@ -2651,7 +4476,7 @@ func (a *WordsApiService) GetDocumentProperties(ctx context.Context, data *model
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -2660,7 +4485,53 @@ func (a *WordsApiService) GetDocumentProperties(ctx context.Context, data *model
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
+        }
+
+        return successPayload, response, &apiError
+    }
+    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Reads document properties.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return models.DocumentPropertiesResponse*/
+func (a *WordsApiService) GetDocumentPropertiesOnline(ctx context.Context, data *models.GetDocumentPropertiesOnlineRequest) (models.DocumentPropertiesResponse, *http.Response, error) {
+    var (
+        successPayload models.DocumentPropertiesResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
@@ -2697,7 +4568,7 @@ func (a *WordsApiService) GetDocumentProperty(ctx context.Context, data *models.
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -2706,7 +4577,53 @@ func (a *WordsApiService) GetDocumentProperty(ctx context.Context, data *models.
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
+        }
+
+        return successPayload, response, &apiError
+    }
+    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Reads a document property.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return models.DocumentPropertyResponse*/
+func (a *WordsApiService) GetDocumentPropertyOnline(ctx context.Context, data *models.GetDocumentPropertyOnlineRequest) (models.DocumentPropertyResponse, *http.Response, error) {
+    var (
+        successPayload models.DocumentPropertyResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
@@ -2743,7 +4660,7 @@ func (a *WordsApiService) GetDocumentProtection(ctx context.Context, data *model
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -2752,7 +4669,53 @@ func (a *WordsApiService) GetDocumentProtection(ctx context.Context, data *model
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
+        }
+
+        return successPayload, response, &apiError
+    }
+    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Reads protection properties from the document.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return models.ProtectionDataResponse*/
+func (a *WordsApiService) GetDocumentProtectionOnline(ctx context.Context, data *models.GetDocumentProtectionOnlineRequest) (models.ProtectionDataResponse, *http.Response, error) {
+    var (
+        successPayload models.ProtectionDataResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
@@ -2789,7 +4752,7 @@ func (a *WordsApiService) GetDocumentStatistics(ctx context.Context, data *model
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -2798,7 +4761,53 @@ func (a *WordsApiService) GetDocumentStatistics(ctx context.Context, data *model
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
+        }
+
+        return successPayload, response, &apiError
+    }
+    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Reads document statistics.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return models.StatDataResponse*/
+func (a *WordsApiService) GetDocumentStatisticsOnline(ctx context.Context, data *models.GetDocumentStatisticsOnlineRequest) (models.StatDataResponse, *http.Response, error) {
+    var (
+        successPayload models.StatDataResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
@@ -2834,7 +4843,7 @@ func (a *WordsApiService) GetDocumentWithFormat(ctx context.Context, data *model
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return response, err
+        return nil, err
     }
     if response.StatusCode == 401 {
         return nil, errors.New("Access is denied")
@@ -2843,7 +4852,7 @@ func (a *WordsApiService) GetDocumentWithFormat(ctx context.Context, data *model
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return response, err
+            return nil, err
         }
 
         return response, &apiError
@@ -2876,7 +4885,7 @@ func (a *WordsApiService) GetField(ctx context.Context, data *models.GetFieldReq
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -2885,7 +4894,53 @@ func (a *WordsApiService) GetField(ctx context.Context, data *models.GetFieldReq
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
+        }
+
+        return successPayload, response, &apiError
+    }
+    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Reads a field from the document node.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return models.FieldResponse*/
+func (a *WordsApiService) GetFieldOnline(ctx context.Context, data *models.GetFieldOnlineRequest) (models.FieldResponse, *http.Response, error) {
+    var (
+        successPayload models.FieldResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
@@ -2922,7 +4977,7 @@ func (a *WordsApiService) GetFields(ctx context.Context, data *models.GetFieldsR
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -2931,7 +4986,53 @@ func (a *WordsApiService) GetFields(ctx context.Context, data *models.GetFieldsR
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
+        }
+
+        return successPayload, response, &apiError
+    }
+    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Reads fields from the document node.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return models.FieldsResponse*/
+func (a *WordsApiService) GetFieldsOnline(ctx context.Context, data *models.GetFieldsOnlineRequest) (models.FieldsResponse, *http.Response, error) {
+    var (
+        successPayload models.FieldsResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
@@ -2968,7 +5069,7 @@ func (a *WordsApiService) GetFilesList(ctx context.Context, data *models.GetFile
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -2977,7 +5078,7 @@ func (a *WordsApiService) GetFilesList(ctx context.Context, data *models.GetFile
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
@@ -3014,7 +5115,7 @@ func (a *WordsApiService) GetFootnote(ctx context.Context, data *models.GetFootn
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -3023,7 +5124,53 @@ func (a *WordsApiService) GetFootnote(ctx context.Context, data *models.GetFootn
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
+        }
+
+        return successPayload, response, &apiError
+    }
+    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Reads a footnote from the document node.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return models.FootnoteResponse*/
+func (a *WordsApiService) GetFootnoteOnline(ctx context.Context, data *models.GetFootnoteOnlineRequest) (models.FootnoteResponse, *http.Response, error) {
+    var (
+        successPayload models.FootnoteResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
@@ -3060,7 +5207,7 @@ func (a *WordsApiService) GetFootnotes(ctx context.Context, data *models.GetFoot
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -3069,7 +5216,53 @@ func (a *WordsApiService) GetFootnotes(ctx context.Context, data *models.GetFoot
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
+        }
+
+        return successPayload, response, &apiError
+    }
+    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Reads footnotes from the document node.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return models.FootnotesResponse*/
+func (a *WordsApiService) GetFootnotesOnline(ctx context.Context, data *models.GetFootnotesOnlineRequest) (models.FootnotesResponse, *http.Response, error) {
+    var (
+        successPayload models.FootnotesResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
@@ -3106,7 +5299,7 @@ func (a *WordsApiService) GetFormField(ctx context.Context, data *models.GetForm
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -3115,7 +5308,53 @@ func (a *WordsApiService) GetFormField(ctx context.Context, data *models.GetForm
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
+        }
+
+        return successPayload, response, &apiError
+    }
+    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Reads a form field from the document node.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return models.FormFieldResponse*/
+func (a *WordsApiService) GetFormFieldOnline(ctx context.Context, data *models.GetFormFieldOnlineRequest) (models.FormFieldResponse, *http.Response, error) {
+    var (
+        successPayload models.FormFieldResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
@@ -3152,7 +5391,7 @@ func (a *WordsApiService) GetFormFields(ctx context.Context, data *models.GetFor
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -3161,7 +5400,53 @@ func (a *WordsApiService) GetFormFields(ctx context.Context, data *models.GetFor
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
+        }
+
+        return successPayload, response, &apiError
+    }
+    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Reads form fields from the document node.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return models.FormFieldsResponse*/
+func (a *WordsApiService) GetFormFieldsOnline(ctx context.Context, data *models.GetFormFieldsOnlineRequest) (models.FormFieldsResponse, *http.Response, error) {
+    var (
+        successPayload models.FormFieldsResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
@@ -3198,7 +5483,7 @@ func (a *WordsApiService) GetHeaderFooter(ctx context.Context, data *models.GetH
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -3207,7 +5492,7 @@ func (a *WordsApiService) GetHeaderFooter(ctx context.Context, data *models.GetH
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
@@ -3244,7 +5529,7 @@ func (a *WordsApiService) GetHeaderFooterOfSection(ctx context.Context, data *mo
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -3253,7 +5538,99 @@ func (a *WordsApiService) GetHeaderFooterOfSection(ctx context.Context, data *mo
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
+        }
+
+        return successPayload, response, &apiError
+    }
+    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Reads a HeaderFooter object from the document section.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return models.HeaderFooterResponse*/
+func (a *WordsApiService) GetHeaderFooterOfSectionOnline(ctx context.Context, data *models.GetHeaderFooterOfSectionOnlineRequest) (models.HeaderFooterResponse, *http.Response, error) {
+    var (
+        successPayload models.HeaderFooterResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return successPayload, nil, err
+        }
+
+        return successPayload, response, &apiError
+    }
+    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Reads a HeaderFooter object from the document.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return models.HeaderFooterResponse*/
+func (a *WordsApiService) GetHeaderFooterOnline(ctx context.Context, data *models.GetHeaderFooterOnlineRequest) (models.HeaderFooterResponse, *http.Response, error) {
+    var (
+        successPayload models.HeaderFooterResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
@@ -3290,7 +5667,7 @@ func (a *WordsApiService) GetHeaderFooters(ctx context.Context, data *models.Get
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -3299,7 +5676,53 @@ func (a *WordsApiService) GetHeaderFooters(ctx context.Context, data *models.Get
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
+        }
+
+        return successPayload, response, &apiError
+    }
+    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Reads HeaderFooter objects from the document section.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return models.HeaderFootersResponse*/
+func (a *WordsApiService) GetHeaderFootersOnline(ctx context.Context, data *models.GetHeaderFootersOnlineRequest) (models.HeaderFootersResponse, *http.Response, error) {
+    var (
+        successPayload models.HeaderFootersResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
@@ -3336,7 +5759,7 @@ func (a *WordsApiService) GetList(ctx context.Context, data *models.GetListReque
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -3345,7 +5768,53 @@ func (a *WordsApiService) GetList(ctx context.Context, data *models.GetListReque
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
+        }
+
+        return successPayload, response, &apiError
+    }
+    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Reads a list from the document.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return models.ListResponse*/
+func (a *WordsApiService) GetListOnline(ctx context.Context, data *models.GetListOnlineRequest) (models.ListResponse, *http.Response, error) {
+    var (
+        successPayload models.ListResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
@@ -3382,7 +5851,7 @@ func (a *WordsApiService) GetLists(ctx context.Context, data *models.GetListsReq
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -3391,7 +5860,53 @@ func (a *WordsApiService) GetLists(ctx context.Context, data *models.GetListsReq
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
+        }
+
+        return successPayload, response, &apiError
+    }
+    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Reads lists from the document.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return models.ListsResponse*/
+func (a *WordsApiService) GetListsOnline(ctx context.Context, data *models.GetListsOnlineRequest) (models.ListsResponse, *http.Response, error) {
+    var (
+        successPayload models.ListsResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
@@ -3428,7 +5943,7 @@ func (a *WordsApiService) GetOfficeMathObject(ctx context.Context, data *models.
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -3437,7 +5952,53 @@ func (a *WordsApiService) GetOfficeMathObject(ctx context.Context, data *models.
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
+        }
+
+        return successPayload, response, &apiError
+    }
+    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Reads an OfficeMath object from the document node.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return models.OfficeMathObjectResponse*/
+func (a *WordsApiService) GetOfficeMathObjectOnline(ctx context.Context, data *models.GetOfficeMathObjectOnlineRequest) (models.OfficeMathObjectResponse, *http.Response, error) {
+    var (
+        successPayload models.OfficeMathObjectResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
@@ -3474,7 +6035,7 @@ func (a *WordsApiService) GetOfficeMathObjects(ctx context.Context, data *models
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -3483,7 +6044,53 @@ func (a *WordsApiService) GetOfficeMathObjects(ctx context.Context, data *models
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
+        }
+
+        return successPayload, response, &apiError
+    }
+    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Reads OfficeMath objects from the document node.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return models.OfficeMathObjectsResponse*/
+func (a *WordsApiService) GetOfficeMathObjectsOnline(ctx context.Context, data *models.GetOfficeMathObjectsOnlineRequest) (models.OfficeMathObjectsResponse, *http.Response, error) {
+    var (
+        successPayload models.OfficeMathObjectsResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
@@ -3520,7 +6127,7 @@ func (a *WordsApiService) GetParagraph(ctx context.Context, data *models.GetPara
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -3529,7 +6136,7 @@ func (a *WordsApiService) GetParagraph(ctx context.Context, data *models.GetPara
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
@@ -3566,7 +6173,7 @@ func (a *WordsApiService) GetParagraphFormat(ctx context.Context, data *models.G
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -3575,7 +6182,53 @@ func (a *WordsApiService) GetParagraphFormat(ctx context.Context, data *models.G
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
+        }
+
+        return successPayload, response, &apiError
+    }
+    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Reads the formatting properties of a paragraph from the document node.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return models.ParagraphFormatResponse*/
+func (a *WordsApiService) GetParagraphFormatOnline(ctx context.Context, data *models.GetParagraphFormatOnlineRequest) (models.ParagraphFormatResponse, *http.Response, error) {
+    var (
+        successPayload models.ParagraphFormatResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
@@ -3612,7 +6265,7 @@ func (a *WordsApiService) GetParagraphListFormat(ctx context.Context, data *mode
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -3621,7 +6274,99 @@ func (a *WordsApiService) GetParagraphListFormat(ctx context.Context, data *mode
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
+        }
+
+        return successPayload, response, &apiError
+    }
+    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Reads the formatting properties of a paragraph list from the document node.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return models.ParagraphListFormatResponse*/
+func (a *WordsApiService) GetParagraphListFormatOnline(ctx context.Context, data *models.GetParagraphListFormatOnlineRequest) (models.ParagraphListFormatResponse, *http.Response, error) {
+    var (
+        successPayload models.ParagraphListFormatResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return successPayload, nil, err
+        }
+
+        return successPayload, response, &apiError
+    }
+    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Reads a paragraph from the document node.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return models.ParagraphResponse*/
+func (a *WordsApiService) GetParagraphOnline(ctx context.Context, data *models.GetParagraphOnlineRequest) (models.ParagraphResponse, *http.Response, error) {
+    var (
+        successPayload models.ParagraphResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
@@ -3658,7 +6403,7 @@ func (a *WordsApiService) GetParagraphs(ctx context.Context, data *models.GetPar
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -3667,7 +6412,53 @@ func (a *WordsApiService) GetParagraphs(ctx context.Context, data *models.GetPar
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
+        }
+
+        return successPayload, response, &apiError
+    }
+    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Reads paragraphs from the document node.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return models.ParagraphLinkCollectionResponse*/
+func (a *WordsApiService) GetParagraphsOnline(ctx context.Context, data *models.GetParagraphsOnlineRequest) (models.ParagraphLinkCollectionResponse, *http.Response, error) {
+    var (
+        successPayload models.ParagraphLinkCollectionResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
@@ -3704,7 +6495,7 @@ func (a *WordsApiService) GetParagraphTabStops(ctx context.Context, data *models
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -3713,7 +6504,53 @@ func (a *WordsApiService) GetParagraphTabStops(ctx context.Context, data *models
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
+        }
+
+        return successPayload, response, &apiError
+    }
+    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Reads paragraph tab stops from the document node.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return models.TabStopsResponse*/
+func (a *WordsApiService) GetParagraphTabStopsOnline(ctx context.Context, data *models.GetParagraphTabStopsOnlineRequest) (models.TabStopsResponse, *http.Response, error) {
+    var (
+        successPayload models.TabStopsResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
@@ -3750,7 +6587,7 @@ func (a *WordsApiService) GetRangeText(ctx context.Context, data *models.GetRang
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -3759,7 +6596,53 @@ func (a *WordsApiService) GetRangeText(ctx context.Context, data *models.GetRang
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
+        }
+
+        return successPayload, response, &apiError
+    }
+    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Reads range text from the document.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return models.RangeTextResponse*/
+func (a *WordsApiService) GetRangeTextOnline(ctx context.Context, data *models.GetRangeTextOnlineRequest) (models.RangeTextResponse, *http.Response, error) {
+    var (
+        successPayload models.RangeTextResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
@@ -3796,7 +6679,7 @@ func (a *WordsApiService) GetRun(ctx context.Context, data *models.GetRunRequest
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -3805,7 +6688,7 @@ func (a *WordsApiService) GetRun(ctx context.Context, data *models.GetRunRequest
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
@@ -3842,7 +6725,7 @@ func (a *WordsApiService) GetRunFont(ctx context.Context, data *models.GetRunFon
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -3851,7 +6734,99 @@ func (a *WordsApiService) GetRunFont(ctx context.Context, data *models.GetRunFon
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
+        }
+
+        return successPayload, response, &apiError
+    }
+    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Reads the font properties of a Run object from the paragraph.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return models.FontResponse*/
+func (a *WordsApiService) GetRunFontOnline(ctx context.Context, data *models.GetRunFontOnlineRequest) (models.FontResponse, *http.Response, error) {
+    var (
+        successPayload models.FontResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return successPayload, nil, err
+        }
+
+        return successPayload, response, &apiError
+    }
+    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Reads a Run object from the paragraph.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return models.RunResponse*/
+func (a *WordsApiService) GetRunOnline(ctx context.Context, data *models.GetRunOnlineRequest) (models.RunResponse, *http.Response, error) {
+    var (
+        successPayload models.RunResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
@@ -3888,7 +6863,7 @@ func (a *WordsApiService) GetRuns(ctx context.Context, data *models.GetRunsReque
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -3897,7 +6872,53 @@ func (a *WordsApiService) GetRuns(ctx context.Context, data *models.GetRunsReque
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
+        }
+
+        return successPayload, response, &apiError
+    }
+    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Reads Run objects from the paragraph.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return models.RunsResponse*/
+func (a *WordsApiService) GetRunsOnline(ctx context.Context, data *models.GetRunsOnlineRequest) (models.RunsResponse, *http.Response, error) {
+    var (
+        successPayload models.RunsResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
@@ -3934,7 +6955,7 @@ func (a *WordsApiService) GetSection(ctx context.Context, data *models.GetSectio
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -3943,7 +6964,53 @@ func (a *WordsApiService) GetSection(ctx context.Context, data *models.GetSectio
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
+        }
+
+        return successPayload, response, &apiError
+    }
+    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Reads a section from the document.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return models.SectionResponse*/
+func (a *WordsApiService) GetSectionOnline(ctx context.Context, data *models.GetSectionOnlineRequest) (models.SectionResponse, *http.Response, error) {
+    var (
+        successPayload models.SectionResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
@@ -3980,7 +7047,7 @@ func (a *WordsApiService) GetSectionPageSetup(ctx context.Context, data *models.
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -3989,7 +7056,53 @@ func (a *WordsApiService) GetSectionPageSetup(ctx context.Context, data *models.
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
+        }
+
+        return successPayload, response, &apiError
+    }
+    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Reads the page setup of a section from the document.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return models.SectionPageSetupResponse*/
+func (a *WordsApiService) GetSectionPageSetupOnline(ctx context.Context, data *models.GetSectionPageSetupOnlineRequest) (models.SectionPageSetupResponse, *http.Response, error) {
+    var (
+        successPayload models.SectionPageSetupResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
@@ -4026,7 +7139,7 @@ func (a *WordsApiService) GetSections(ctx context.Context, data *models.GetSecti
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -4035,7 +7148,53 @@ func (a *WordsApiService) GetSections(ctx context.Context, data *models.GetSecti
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
+        }
+
+        return successPayload, response, &apiError
+    }
+    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Reads sections from the document.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return models.SectionLinkCollectionResponse*/
+func (a *WordsApiService) GetSectionsOnline(ctx context.Context, data *models.GetSectionsOnlineRequest) (models.SectionLinkCollectionResponse, *http.Response, error) {
+    var (
+        successPayload models.SectionLinkCollectionResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
@@ -4072,7 +7231,7 @@ func (a *WordsApiService) GetStyle(ctx context.Context, data *models.GetStyleReq
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -4081,7 +7240,7 @@ func (a *WordsApiService) GetStyle(ctx context.Context, data *models.GetStyleReq
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
@@ -4118,7 +7277,7 @@ func (a *WordsApiService) GetStyleFromDocumentElement(ctx context.Context, data 
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -4127,7 +7286,99 @@ func (a *WordsApiService) GetStyleFromDocumentElement(ctx context.Context, data 
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
+        }
+
+        return successPayload, response, &apiError
+    }
+    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Reads a style from the document node.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return models.StyleResponse*/
+func (a *WordsApiService) GetStyleFromDocumentElementOnline(ctx context.Context, data *models.GetStyleFromDocumentElementOnlineRequest) (models.StyleResponse, *http.Response, error) {
+    var (
+        successPayload models.StyleResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return successPayload, nil, err
+        }
+
+        return successPayload, response, &apiError
+    }
+    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Reads a style from the document.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return models.StyleResponse*/
+func (a *WordsApiService) GetStyleOnline(ctx context.Context, data *models.GetStyleOnlineRequest) (models.StyleResponse, *http.Response, error) {
+    var (
+        successPayload models.StyleResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
@@ -4164,7 +7415,7 @@ func (a *WordsApiService) GetStyles(ctx context.Context, data *models.GetStylesR
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -4173,7 +7424,53 @@ func (a *WordsApiService) GetStyles(ctx context.Context, data *models.GetStylesR
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
+        }
+
+        return successPayload, response, &apiError
+    }
+    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Reads styles from the document.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return models.StylesResponse*/
+func (a *WordsApiService) GetStylesOnline(ctx context.Context, data *models.GetStylesOnlineRequest) (models.StylesResponse, *http.Response, error) {
+    var (
+        successPayload models.StylesResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
@@ -4210,7 +7507,7 @@ func (a *WordsApiService) GetTable(ctx context.Context, data *models.GetTableReq
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -4219,7 +7516,7 @@ func (a *WordsApiService) GetTable(ctx context.Context, data *models.GetTableReq
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
@@ -4256,7 +7553,7 @@ func (a *WordsApiService) GetTableCell(ctx context.Context, data *models.GetTabl
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -4265,7 +7562,7 @@ func (a *WordsApiService) GetTableCell(ctx context.Context, data *models.GetTabl
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
@@ -4302,7 +7599,7 @@ func (a *WordsApiService) GetTableCellFormat(ctx context.Context, data *models.G
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -4311,7 +7608,145 @@ func (a *WordsApiService) GetTableCellFormat(ctx context.Context, data *models.G
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
+        }
+
+        return successPayload, response, &apiError
+    }
+    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Reads the formatting properties of a table cell.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return models.TableCellFormatResponse*/
+func (a *WordsApiService) GetTableCellFormatOnline(ctx context.Context, data *models.GetTableCellFormatOnlineRequest) (models.TableCellFormatResponse, *http.Response, error) {
+    var (
+        successPayload models.TableCellFormatResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return successPayload, nil, err
+        }
+
+        return successPayload, response, &apiError
+    }
+    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Reads a cell from the table row.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return models.TableCellResponse*/
+func (a *WordsApiService) GetTableCellOnline(ctx context.Context, data *models.GetTableCellOnlineRequest) (models.TableCellResponse, *http.Response, error) {
+    var (
+        successPayload models.TableCellResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return successPayload, nil, err
+        }
+
+        return successPayload, response, &apiError
+    }
+    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Reads a table from the document node.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return models.TableResponse*/
+func (a *WordsApiService) GetTableOnline(ctx context.Context, data *models.GetTableOnlineRequest) (models.TableResponse, *http.Response, error) {
+    var (
+        successPayload models.TableResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
@@ -4348,7 +7783,7 @@ func (a *WordsApiService) GetTableProperties(ctx context.Context, data *models.G
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -4357,7 +7792,53 @@ func (a *WordsApiService) GetTableProperties(ctx context.Context, data *models.G
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
+        }
+
+        return successPayload, response, &apiError
+    }
+    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Reads properties of a table from the document node.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return models.TablePropertiesResponse*/
+func (a *WordsApiService) GetTablePropertiesOnline(ctx context.Context, data *models.GetTablePropertiesOnlineRequest) (models.TablePropertiesResponse, *http.Response, error) {
+    var (
+        successPayload models.TablePropertiesResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
@@ -4394,7 +7875,7 @@ func (a *WordsApiService) GetTableRow(ctx context.Context, data *models.GetTable
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -4403,7 +7884,7 @@ func (a *WordsApiService) GetTableRow(ctx context.Context, data *models.GetTable
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
@@ -4440,7 +7921,7 @@ func (a *WordsApiService) GetTableRowFormat(ctx context.Context, data *models.Ge
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -4449,7 +7930,99 @@ func (a *WordsApiService) GetTableRowFormat(ctx context.Context, data *models.Ge
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
+        }
+
+        return successPayload, response, &apiError
+    }
+    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Reads the formatting properties of a table row.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return models.TableRowFormatResponse*/
+func (a *WordsApiService) GetTableRowFormatOnline(ctx context.Context, data *models.GetTableRowFormatOnlineRequest) (models.TableRowFormatResponse, *http.Response, error) {
+    var (
+        successPayload models.TableRowFormatResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return successPayload, nil, err
+        }
+
+        return successPayload, response, &apiError
+    }
+    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Reads a row from the table.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return models.TableRowResponse*/
+func (a *WordsApiService) GetTableRowOnline(ctx context.Context, data *models.GetTableRowOnlineRequest) (models.TableRowResponse, *http.Response, error) {
+    var (
+        successPayload models.TableRowResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
@@ -4486,7 +8059,7 @@ func (a *WordsApiService) GetTables(ctx context.Context, data *models.GetTablesR
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -4495,7 +8068,53 @@ func (a *WordsApiService) GetTables(ctx context.Context, data *models.GetTablesR
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
+        }
+
+        return successPayload, response, &apiError
+    }
+    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Reads tables from the document node.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return models.TableLinkCollectionResponse*/
+func (a *WordsApiService) GetTablesOnline(ctx context.Context, data *models.GetTablesOnlineRequest) (models.TableLinkCollectionResponse, *http.Response, error) {
+    var (
+        successPayload models.TableLinkCollectionResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
@@ -4532,7 +8151,7 @@ func (a *WordsApiService) InsertComment(ctx context.Context, data *models.Insert
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -4541,12 +8160,57 @@ func (a *WordsApiService) InsertComment(ctx context.Context, data *models.Insert
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
     }
     if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Inserts a new comment to the document.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return InsertCommentOnlineResponse*/
+func (a *WordsApiService) InsertCommentOnline(ctx context.Context, data *models.InsertCommentOnlineRequest) (InsertCommentOnlineResponse*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+	if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
         return successPayload, response, err
     }
 
@@ -4578,7 +8242,7 @@ func (a *WordsApiService) InsertDrawingObject(ctx context.Context, data *models.
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -4587,12 +8251,57 @@ func (a *WordsApiService) InsertDrawingObject(ctx context.Context, data *models.
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
     }
     if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Inserts a new DrawingObject to the document node.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return InsertDrawingObjectOnlineResponse*/
+func (a *WordsApiService) InsertDrawingObjectOnline(ctx context.Context, data *models.InsertDrawingObjectOnlineRequest) (InsertDrawingObjectOnlineResponse*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+	if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
         return successPayload, response, err
     }
 
@@ -4624,7 +8333,7 @@ func (a *WordsApiService) InsertField(ctx context.Context, data *models.InsertFi
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -4633,12 +8342,57 @@ func (a *WordsApiService) InsertField(ctx context.Context, data *models.InsertFi
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
     }
     if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Inserts a new field to the document node.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return InsertFieldOnlineResponse*/
+func (a *WordsApiService) InsertFieldOnline(ctx context.Context, data *models.InsertFieldOnlineRequest) (InsertFieldOnlineResponse*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+	if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
         return successPayload, response, err
     }
 
@@ -4670,7 +8424,7 @@ func (a *WordsApiService) InsertFootnote(ctx context.Context, data *models.Inser
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -4679,12 +8433,57 @@ func (a *WordsApiService) InsertFootnote(ctx context.Context, data *models.Inser
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
     }
     if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Inserts a new footnote to the document node.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return InsertFootnoteOnlineResponse*/
+func (a *WordsApiService) InsertFootnoteOnline(ctx context.Context, data *models.InsertFootnoteOnlineRequest) (InsertFootnoteOnlineResponse*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+	if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
         return successPayload, response, err
     }
 
@@ -4716,7 +8515,7 @@ func (a *WordsApiService) InsertFormField(ctx context.Context, data *models.Inse
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -4725,12 +8524,57 @@ func (a *WordsApiService) InsertFormField(ctx context.Context, data *models.Inse
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
     }
     if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Inserts a new form field to the document node.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return InsertFormFieldOnlineResponse*/
+func (a *WordsApiService) InsertFormFieldOnline(ctx context.Context, data *models.InsertFormFieldOnlineRequest) (InsertFormFieldOnlineResponse*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+	if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
         return successPayload, response, err
     }
 
@@ -4762,7 +8606,7 @@ func (a *WordsApiService) InsertHeaderFooter(ctx context.Context, data *models.I
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -4771,12 +8615,57 @@ func (a *WordsApiService) InsertHeaderFooter(ctx context.Context, data *models.I
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
     }
     if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Inserts a new HeaderFooter object to the document section.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return InsertHeaderFooterOnlineResponse*/
+func (a *WordsApiService) InsertHeaderFooterOnline(ctx context.Context, data *models.InsertHeaderFooterOnlineRequest) (InsertHeaderFooterOnlineResponse*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+	if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
         return successPayload, response, err
     }
 
@@ -4808,7 +8697,7 @@ func (a *WordsApiService) InsertList(ctx context.Context, data *models.InsertLis
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -4817,12 +8706,57 @@ func (a *WordsApiService) InsertList(ctx context.Context, data *models.InsertLis
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
     }
     if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Inserts a new list to the document.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return InsertListOnlineResponse*/
+func (a *WordsApiService) InsertListOnline(ctx context.Context, data *models.InsertListOnlineRequest) (InsertListOnlineResponse*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+	if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
         return successPayload, response, err
     }
 
@@ -4854,7 +8788,7 @@ func (a *WordsApiService) InsertOrUpdateParagraphTabStop(ctx context.Context, da
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -4863,12 +8797,57 @@ func (a *WordsApiService) InsertOrUpdateParagraphTabStop(ctx context.Context, da
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
     }
     if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Inserts a new or updates an existing paragraph tab stop in the document node.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return InsertOrUpdateParagraphTabStopOnlineResponse*/
+func (a *WordsApiService) InsertOrUpdateParagraphTabStopOnline(ctx context.Context, data *models.InsertOrUpdateParagraphTabStopOnlineRequest) (InsertOrUpdateParagraphTabStopOnlineResponse*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+	if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
         return successPayload, response, err
     }
 
@@ -4900,7 +8879,7 @@ func (a *WordsApiService) InsertPageNumbers(ctx context.Context, data *models.In
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -4909,12 +8888,57 @@ func (a *WordsApiService) InsertPageNumbers(ctx context.Context, data *models.In
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
     }
     if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Inserts page numbers to the document.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return InsertPageNumbersOnlineResponse*/
+func (a *WordsApiService) InsertPageNumbersOnline(ctx context.Context, data *models.InsertPageNumbersOnlineRequest) (InsertPageNumbersOnlineResponse*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+	if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
         return successPayload, response, err
     }
 
@@ -4946,7 +8970,7 @@ func (a *WordsApiService) InsertParagraph(ctx context.Context, data *models.Inse
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -4955,12 +8979,57 @@ func (a *WordsApiService) InsertParagraph(ctx context.Context, data *models.Inse
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
     }
     if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Inserts a new paragraph to the document node.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return InsertParagraphOnlineResponse*/
+func (a *WordsApiService) InsertParagraphOnline(ctx context.Context, data *models.InsertParagraphOnlineRequest) (InsertParagraphOnlineResponse*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+	if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
         return successPayload, response, err
     }
 
@@ -4992,7 +9061,7 @@ func (a *WordsApiService) InsertRun(ctx context.Context, data *models.InsertRunR
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -5001,12 +9070,57 @@ func (a *WordsApiService) InsertRun(ctx context.Context, data *models.InsertRunR
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
     }
     if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Inserts a new Run object to the paragraph.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return InsertRunOnlineResponse*/
+func (a *WordsApiService) InsertRunOnline(ctx context.Context, data *models.InsertRunOnlineRequest) (InsertRunOnlineResponse*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+	if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
         return successPayload, response, err
     }
 
@@ -5038,7 +9152,7 @@ func (a *WordsApiService) InsertStyle(ctx context.Context, data *models.InsertSt
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -5047,12 +9161,57 @@ func (a *WordsApiService) InsertStyle(ctx context.Context, data *models.InsertSt
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
     }
     if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Inserts a new style to the document.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return InsertStyleOnlineResponse*/
+func (a *WordsApiService) InsertStyleOnline(ctx context.Context, data *models.InsertStyleOnlineRequest) (InsertStyleOnlineResponse*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+	if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
         return successPayload, response, err
     }
 
@@ -5084,7 +9243,7 @@ func (a *WordsApiService) InsertTable(ctx context.Context, data *models.InsertTa
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -5093,7 +9252,7 @@ func (a *WordsApiService) InsertTable(ctx context.Context, data *models.InsertTa
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
@@ -5130,7 +9289,7 @@ func (a *WordsApiService) InsertTableCell(ctx context.Context, data *models.Inse
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -5139,12 +9298,102 @@ func (a *WordsApiService) InsertTableCell(ctx context.Context, data *models.Inse
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
     }
     if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Inserts a new cell to the table row.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return InsertTableCellOnlineResponse*/
+func (a *WordsApiService) InsertTableCellOnline(ctx context.Context, data *models.InsertTableCellOnlineRequest) (InsertTableCellOnlineResponse*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+	if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Inserts a new table to the document node.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return InsertTableOnlineResponse*/
+func (a *WordsApiService) InsertTableOnline(ctx context.Context, data *models.InsertTableOnlineRequest) (InsertTableOnlineResponse*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+	if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
         return successPayload, response, err
     }
 
@@ -5176,7 +9425,7 @@ func (a *WordsApiService) InsertTableRow(ctx context.Context, data *models.Inser
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -5185,12 +9434,57 @@ func (a *WordsApiService) InsertTableRow(ctx context.Context, data *models.Inser
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
     }
     if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Inserts a new row to the table.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return InsertTableRowOnlineResponse*/
+func (a *WordsApiService) InsertTableRowOnline(ctx context.Context, data *models.InsertTableRowOnlineRequest) (InsertTableRowOnlineResponse*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+	if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
         return successPayload, response, err
     }
 
@@ -5222,7 +9516,7 @@ func (a *WordsApiService) InsertWatermarkImage(ctx context.Context, data *models
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -5231,12 +9525,57 @@ func (a *WordsApiService) InsertWatermarkImage(ctx context.Context, data *models
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
     }
     if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Inserts a new watermark image to the document.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return InsertWatermarkImageOnlineResponse*/
+func (a *WordsApiService) InsertWatermarkImageOnline(ctx context.Context, data *models.InsertWatermarkImageOnlineRequest) (InsertWatermarkImageOnlineResponse*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+	if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
         return successPayload, response, err
     }
 
@@ -5268,7 +9607,7 @@ func (a *WordsApiService) InsertWatermarkText(ctx context.Context, data *models.
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -5277,12 +9616,57 @@ func (a *WordsApiService) InsertWatermarkText(ctx context.Context, data *models.
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
     }
     if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Inserts a new watermark text to the document.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return InsertWatermarkTextOnlineResponse*/
+func (a *WordsApiService) InsertWatermarkTextOnline(ctx context.Context, data *models.InsertWatermarkTextOnlineRequest) (InsertWatermarkTextOnlineResponse*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+	if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
         return successPayload, response, err
     }
 
@@ -5314,7 +9698,7 @@ func (a *WordsApiService) LoadWebDocument(ctx context.Context, data *models.Load
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -5323,7 +9707,7 @@ func (a *WordsApiService) LoadWebDocument(ctx context.Context, data *models.Load
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
@@ -5359,7 +9743,7 @@ func (a *WordsApiService) MoveFile(ctx context.Context, data *models.MoveFileReq
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return response, err
+        return nil, err
     }
     if response.StatusCode == 401 {
         return nil, errors.New("Access is denied")
@@ -5368,7 +9752,7 @@ func (a *WordsApiService) MoveFile(ctx context.Context, data *models.MoveFileReq
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return response, err
+            return nil, err
         }
 
         return response, &apiError
@@ -5400,7 +9784,7 @@ func (a *WordsApiService) MoveFolder(ctx context.Context, data *models.MoveFolde
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return response, err
+        return nil, err
     }
     if response.StatusCode == 401 {
         return nil, errors.New("Access is denied")
@@ -5409,7 +9793,7 @@ func (a *WordsApiService) MoveFolder(ctx context.Context, data *models.MoveFolde
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return response, err
+            return nil, err
         }
 
         return response, &apiError
@@ -5441,7 +9825,7 @@ func (a *WordsApiService) OptimizeDocument(ctx context.Context, data *models.Opt
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return response, err
+        return nil, err
     }
     if response.StatusCode == 401 {
         return nil, errors.New("Access is denied")
@@ -5450,7 +9834,48 @@ func (a *WordsApiService) OptimizeDocument(ctx context.Context, data *models.Opt
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return response, err
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+    return response, err
+}
+
+/* WordsApiService Applies document content optimization options, specific to a particular versions of Microsoft Word.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return http.Response.Body contains binary result data*/
+func (a *WordsApiService) OptimizeDocumentOnline(ctx context.Context, data *models.OptimizeDocumentOnlineRequest) (*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
         }
 
         return response, &apiError
@@ -5483,7 +9908,7 @@ func (a *WordsApiService) ProtectDocument(ctx context.Context, data *models.Prot
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -5492,12 +9917,57 @@ func (a *WordsApiService) ProtectDocument(ctx context.Context, data *models.Prot
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
     }
     if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Adds protection to the document.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return ProtectDocumentOnlineResponse*/
+func (a *WordsApiService) ProtectDocumentOnline(ctx context.Context, data *models.ProtectDocumentOnlineRequest) (ProtectDocumentOnlineResponse*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+	if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
         return successPayload, response, err
     }
 
@@ -5529,7 +9999,7 @@ func (a *WordsApiService) RejectAllRevisions(ctx context.Context, data *models.R
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -5538,12 +10008,57 @@ func (a *WordsApiService) RejectAllRevisions(ctx context.Context, data *models.R
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
     }
     if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Rejects all revisions in the document.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return RejectAllRevisionsOnlineResponse*/
+func (a *WordsApiService) RejectAllRevisionsOnline(ctx context.Context, data *models.RejectAllRevisionsOnlineRequest) (RejectAllRevisionsOnlineResponse*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+	if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
         return successPayload, response, err
     }
 
@@ -5575,7 +10090,7 @@ func (a *WordsApiService) RemoveRange(ctx context.Context, data *models.RemoveRa
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -5584,12 +10099,57 @@ func (a *WordsApiService) RemoveRange(ctx context.Context, data *models.RemoveRa
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
     }
     if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Removes a range from the document.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return RemoveRangeOnlineResponse*/
+func (a *WordsApiService) RemoveRangeOnline(ctx context.Context, data *models.RemoveRangeOnlineRequest) (RemoveRangeOnlineResponse*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+	if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
         return successPayload, response, err
     }
 
@@ -5620,7 +10180,7 @@ func (a *WordsApiService) RenderDrawingObject(ctx context.Context, data *models.
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return response, err
+        return nil, err
     }
     if response.StatusCode == 401 {
         return nil, errors.New("Access is denied")
@@ -5629,12 +10189,57 @@ func (a *WordsApiService) RenderDrawingObject(ctx context.Context, data *models.
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return response, err
+            return nil, err
         }
 
         return response, &apiError
     }
     return response, err
+}
+
+/* WordsApiService Renders a DrawingObject to the specified format.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return RenderDrawingObjectOnlineResponse*/
+func (a *WordsApiService) RenderDrawingObjectOnline(ctx context.Context, data *models.RenderDrawingObjectOnlineRequest) (RenderDrawingObjectOnlineResponse*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+	if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
 }
 
 /* WordsApiService Renders an OfficeMath object to the specified format.
@@ -5661,7 +10266,7 @@ func (a *WordsApiService) RenderMathObject(ctx context.Context, data *models.Ren
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return response, err
+        return nil, err
     }
     if response.StatusCode == 401 {
         return nil, errors.New("Access is denied")
@@ -5670,12 +10275,57 @@ func (a *WordsApiService) RenderMathObject(ctx context.Context, data *models.Ren
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return response, err
+            return nil, err
         }
 
         return response, &apiError
     }
     return response, err
+}
+
+/* WordsApiService Renders an OfficeMath object to the specified format.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return RenderMathObjectOnlineResponse*/
+func (a *WordsApiService) RenderMathObjectOnline(ctx context.Context, data *models.RenderMathObjectOnlineRequest) (RenderMathObjectOnlineResponse*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+	if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
 }
 
 /* WordsApiService Renders a page to the specified format.
@@ -5702,7 +10352,7 @@ func (a *WordsApiService) RenderPage(ctx context.Context, data *models.RenderPag
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return response, err
+        return nil, err
     }
     if response.StatusCode == 401 {
         return nil, errors.New("Access is denied")
@@ -5711,7 +10361,48 @@ func (a *WordsApiService) RenderPage(ctx context.Context, data *models.RenderPag
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return response, err
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+    return response, err
+}
+
+/* WordsApiService Renders a page to the specified format.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return http.Response.Body contains binary result data*/
+func (a *WordsApiService) RenderPageOnline(ctx context.Context, data *models.RenderPageOnlineRequest) (*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
         }
 
         return response, &apiError
@@ -5743,7 +10434,7 @@ func (a *WordsApiService) RenderParagraph(ctx context.Context, data *models.Rend
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return response, err
+        return nil, err
     }
     if response.StatusCode == 401 {
         return nil, errors.New("Access is denied")
@@ -5752,12 +10443,57 @@ func (a *WordsApiService) RenderParagraph(ctx context.Context, data *models.Rend
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return response, err
+            return nil, err
         }
 
         return response, &apiError
     }
     return response, err
+}
+
+/* WordsApiService Renders a paragraph to the specified format.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return RenderParagraphOnlineResponse*/
+func (a *WordsApiService) RenderParagraphOnline(ctx context.Context, data *models.RenderParagraphOnlineRequest) (RenderParagraphOnlineResponse*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+	if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
 }
 
 /* WordsApiService Renders a table to the specified format.
@@ -5784,7 +10520,7 @@ func (a *WordsApiService) RenderTable(ctx context.Context, data *models.RenderTa
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return response, err
+        return nil, err
     }
     if response.StatusCode == 401 {
         return nil, errors.New("Access is denied")
@@ -5793,12 +10529,57 @@ func (a *WordsApiService) RenderTable(ctx context.Context, data *models.RenderTa
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return response, err
+            return nil, err
         }
 
         return response, &apiError
     }
     return response, err
+}
+
+/* WordsApiService Renders a table to the specified format.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return RenderTableOnlineResponse*/
+func (a *WordsApiService) RenderTableOnline(ctx context.Context, data *models.RenderTableOnlineRequest) (RenderTableOnlineResponse*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+	if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
 }
 
 /* WordsApiService Replaces text in the document.
@@ -5826,7 +10607,7 @@ func (a *WordsApiService) ReplaceText(ctx context.Context, data *models.ReplaceT
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -5835,12 +10616,57 @@ func (a *WordsApiService) ReplaceText(ctx context.Context, data *models.ReplaceT
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
     }
     if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Replaces text in the document.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return ReplaceTextOnlineResponse*/
+func (a *WordsApiService) ReplaceTextOnline(ctx context.Context, data *models.ReplaceTextOnlineRequest) (ReplaceTextOnlineResponse*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+	if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
         return successPayload, response, err
     }
 
@@ -5872,7 +10698,7 @@ func (a *WordsApiService) ReplaceWithText(ctx context.Context, data *models.Repl
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -5881,12 +10707,57 @@ func (a *WordsApiService) ReplaceWithText(ctx context.Context, data *models.Repl
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
     }
     if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Replaces a range with text in the document.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return ReplaceWithTextOnlineResponse*/
+func (a *WordsApiService) ReplaceWithTextOnline(ctx context.Context, data *models.ReplaceWithTextOnlineRequest) (ReplaceWithTextOnlineResponse*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+	if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
         return successPayload, response, err
     }
 
@@ -5917,7 +10788,7 @@ func (a *WordsApiService) ResetCache(ctx context.Context, data *models.ResetCach
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return response, err
+        return nil, err
     }
     if response.StatusCode == 401 {
         return nil, errors.New("Access is denied")
@@ -5926,7 +10797,7 @@ func (a *WordsApiService) ResetCache(ctx context.Context, data *models.ResetCach
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return response, err
+            return nil, err
         }
 
         return response, &apiError
@@ -5959,7 +10830,7 @@ func (a *WordsApiService) SaveAs(ctx context.Context, data *models.SaveAsRequest
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -5968,12 +10839,57 @@ func (a *WordsApiService) SaveAs(ctx context.Context, data *models.SaveAsRequest
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
     }
     if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Converts a document in cloud storage to the specified format.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return SaveAsOnlineResponse*/
+func (a *WordsApiService) SaveAsOnline(ctx context.Context, data *models.SaveAsOnlineRequest) (SaveAsOnlineResponse*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+	if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
         return successPayload, response, err
     }
 
@@ -6005,7 +10921,7 @@ func (a *WordsApiService) SaveAsRange(ctx context.Context, data *models.SaveAsRa
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -6014,12 +10930,57 @@ func (a *WordsApiService) SaveAsRange(ctx context.Context, data *models.SaveAsRa
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
     }
     if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Saves a range as a new document.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return SaveAsRangeOnlineResponse*/
+func (a *WordsApiService) SaveAsRangeOnline(ctx context.Context, data *models.SaveAsRangeOnlineRequest) (SaveAsRangeOnlineResponse*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+	if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
         return successPayload, response, err
     }
 
@@ -6051,7 +11012,7 @@ func (a *WordsApiService) SaveAsTiff(ctx context.Context, data *models.SaveAsTif
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -6060,12 +11021,57 @@ func (a *WordsApiService) SaveAsTiff(ctx context.Context, data *models.SaveAsTif
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
     }
     if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Converts a document in cloud storage to TIFF format using detailed conversion settings.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return SaveAsTiffOnlineResponse*/
+func (a *WordsApiService) SaveAsTiffOnline(ctx context.Context, data *models.SaveAsTiffOnlineRequest) (SaveAsTiffOnlineResponse*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+	if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
         return successPayload, response, err
     }
 
@@ -6097,7 +11103,7 @@ func (a *WordsApiService) Search(ctx context.Context, data *models.SearchRequest
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -6106,7 +11112,53 @@ func (a *WordsApiService) Search(ctx context.Context, data *models.SearchRequest
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
+        }
+
+        return successPayload, response, &apiError
+    }
+    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Searches text, specified by the regular expression, in the document.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return models.SearchResponse*/
+func (a *WordsApiService) SearchOnline(ctx context.Context, data *models.SearchOnlineRequest) (models.SearchResponse, *http.Response, error) {
+    var (
+        successPayload models.SearchResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
@@ -6143,7 +11195,7 @@ func (a *WordsApiService) SplitDocument(ctx context.Context, data *models.SplitD
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -6152,12 +11204,57 @@ func (a *WordsApiService) SplitDocument(ctx context.Context, data *models.SplitD
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
     }
     if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Splits a document into parts and saves them in the specified format.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return SplitDocumentOnlineResponse*/
+func (a *WordsApiService) SplitDocumentOnline(ctx context.Context, data *models.SplitDocumentOnlineRequest) (SplitDocumentOnlineResponse*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+	if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
         return successPayload, response, err
     }
 
@@ -6189,7 +11286,7 @@ func (a *WordsApiService) UnprotectDocument(ctx context.Context, data *models.Un
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -6198,12 +11295,57 @@ func (a *WordsApiService) UnprotectDocument(ctx context.Context, data *models.Un
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
     }
     if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Removes protection from the document.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return UnprotectDocumentOnlineResponse*/
+func (a *WordsApiService) UnprotectDocumentOnline(ctx context.Context, data *models.UnprotectDocumentOnlineRequest) (UnprotectDocumentOnlineResponse*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+	if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
         return successPayload, response, err
     }
 
@@ -6235,7 +11377,7 @@ func (a *WordsApiService) UpdateBookmark(ctx context.Context, data *models.Updat
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -6244,12 +11386,57 @@ func (a *WordsApiService) UpdateBookmark(ctx context.Context, data *models.Updat
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
     }
     if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Updates a bookmark in the document.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return UpdateBookmarkOnlineResponse*/
+func (a *WordsApiService) UpdateBookmarkOnline(ctx context.Context, data *models.UpdateBookmarkOnlineRequest) (UpdateBookmarkOnlineResponse*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+	if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
         return successPayload, response, err
     }
 
@@ -6281,7 +11468,7 @@ func (a *WordsApiService) UpdateBorder(ctx context.Context, data *models.UpdateB
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -6290,12 +11477,57 @@ func (a *WordsApiService) UpdateBorder(ctx context.Context, data *models.UpdateB
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
     }
     if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Updates a border in the document node.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return UpdateBorderOnlineResponse*/
+func (a *WordsApiService) UpdateBorderOnline(ctx context.Context, data *models.UpdateBorderOnlineRequest) (UpdateBorderOnlineResponse*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+	if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
         return successPayload, response, err
     }
 
@@ -6327,7 +11559,7 @@ func (a *WordsApiService) UpdateComment(ctx context.Context, data *models.Update
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -6336,12 +11568,57 @@ func (a *WordsApiService) UpdateComment(ctx context.Context, data *models.Update
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
     }
     if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Updates a comment in the document.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return UpdateCommentOnlineResponse*/
+func (a *WordsApiService) UpdateCommentOnline(ctx context.Context, data *models.UpdateCommentOnlineRequest) (UpdateCommentOnlineResponse*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+	if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
         return successPayload, response, err
     }
 
@@ -6373,7 +11650,7 @@ func (a *WordsApiService) UpdateDrawingObject(ctx context.Context, data *models.
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -6382,12 +11659,57 @@ func (a *WordsApiService) UpdateDrawingObject(ctx context.Context, data *models.
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
     }
     if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Updates a DrawingObject in the document node.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return UpdateDrawingObjectOnlineResponse*/
+func (a *WordsApiService) UpdateDrawingObjectOnline(ctx context.Context, data *models.UpdateDrawingObjectOnlineRequest) (UpdateDrawingObjectOnlineResponse*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+	if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
         return successPayload, response, err
     }
 
@@ -6419,7 +11741,7 @@ func (a *WordsApiService) UpdateField(ctx context.Context, data *models.UpdateFi
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -6428,12 +11750,57 @@ func (a *WordsApiService) UpdateField(ctx context.Context, data *models.UpdateFi
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
     }
     if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Updates a field in the document node.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return UpdateFieldOnlineResponse*/
+func (a *WordsApiService) UpdateFieldOnline(ctx context.Context, data *models.UpdateFieldOnlineRequest) (UpdateFieldOnlineResponse*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+	if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
         return successPayload, response, err
     }
 
@@ -6465,7 +11832,7 @@ func (a *WordsApiService) UpdateFields(ctx context.Context, data *models.UpdateF
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -6474,12 +11841,57 @@ func (a *WordsApiService) UpdateFields(ctx context.Context, data *models.UpdateF
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
     }
     if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Reevaluates field values in the document.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return UpdateFieldsOnlineResponse*/
+func (a *WordsApiService) UpdateFieldsOnline(ctx context.Context, data *models.UpdateFieldsOnlineRequest) (UpdateFieldsOnlineResponse*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+	if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
         return successPayload, response, err
     }
 
@@ -6511,7 +11923,7 @@ func (a *WordsApiService) UpdateFootnote(ctx context.Context, data *models.Updat
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -6520,12 +11932,57 @@ func (a *WordsApiService) UpdateFootnote(ctx context.Context, data *models.Updat
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
     }
     if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Updates a footnote in the document node.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return UpdateFootnoteOnlineResponse*/
+func (a *WordsApiService) UpdateFootnoteOnline(ctx context.Context, data *models.UpdateFootnoteOnlineRequest) (UpdateFootnoteOnlineResponse*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+	if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
         return successPayload, response, err
     }
 
@@ -6557,7 +12014,7 @@ func (a *WordsApiService) UpdateFormField(ctx context.Context, data *models.Upda
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -6566,12 +12023,57 @@ func (a *WordsApiService) UpdateFormField(ctx context.Context, data *models.Upda
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
     }
     if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Updates a form field in the document node.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return UpdateFormFieldOnlineResponse*/
+func (a *WordsApiService) UpdateFormFieldOnline(ctx context.Context, data *models.UpdateFormFieldOnlineRequest) (UpdateFormFieldOnlineResponse*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+	if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
         return successPayload, response, err
     }
 
@@ -6603,7 +12105,7 @@ func (a *WordsApiService) UpdateList(ctx context.Context, data *models.UpdateLis
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -6612,7 +12114,7 @@ func (a *WordsApiService) UpdateList(ctx context.Context, data *models.UpdateLis
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
@@ -6649,7 +12151,7 @@ func (a *WordsApiService) UpdateListLevel(ctx context.Context, data *models.Upda
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -6658,12 +12160,102 @@ func (a *WordsApiService) UpdateListLevel(ctx context.Context, data *models.Upda
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
     }
     if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Updates the level of a List element in the document.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return UpdateListLevelOnlineResponse*/
+func (a *WordsApiService) UpdateListLevelOnline(ctx context.Context, data *models.UpdateListLevelOnlineRequest) (UpdateListLevelOnlineResponse*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+	if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Updates a list in the document.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return UpdateListOnlineResponse*/
+func (a *WordsApiService) UpdateListOnline(ctx context.Context, data *models.UpdateListOnlineRequest) (UpdateListOnlineResponse*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+	if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
         return successPayload, response, err
     }
 
@@ -6695,7 +12287,7 @@ func (a *WordsApiService) UpdateParagraphFormat(ctx context.Context, data *model
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -6704,12 +12296,57 @@ func (a *WordsApiService) UpdateParagraphFormat(ctx context.Context, data *model
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
     }
     if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Updates the formatting properties of a paragraph in the document node.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return UpdateParagraphFormatOnlineResponse*/
+func (a *WordsApiService) UpdateParagraphFormatOnline(ctx context.Context, data *models.UpdateParagraphFormatOnlineRequest) (UpdateParagraphFormatOnlineResponse*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+	if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
         return successPayload, response, err
     }
 
@@ -6741,7 +12378,7 @@ func (a *WordsApiService) UpdateParagraphListFormat(ctx context.Context, data *m
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -6750,12 +12387,57 @@ func (a *WordsApiService) UpdateParagraphListFormat(ctx context.Context, data *m
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
     }
     if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Updates the formatting properties of a paragraph list in the document node.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return UpdateParagraphListFormatOnlineResponse*/
+func (a *WordsApiService) UpdateParagraphListFormatOnline(ctx context.Context, data *models.UpdateParagraphListFormatOnlineRequest) (UpdateParagraphListFormatOnlineResponse*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+	if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
         return successPayload, response, err
     }
 
@@ -6787,7 +12469,7 @@ func (a *WordsApiService) UpdateRun(ctx context.Context, data *models.UpdateRunR
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -6796,7 +12478,7 @@ func (a *WordsApiService) UpdateRun(ctx context.Context, data *models.UpdateRunR
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
@@ -6833,7 +12515,7 @@ func (a *WordsApiService) UpdateRunFont(ctx context.Context, data *models.Update
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -6842,12 +12524,102 @@ func (a *WordsApiService) UpdateRunFont(ctx context.Context, data *models.Update
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
     }
     if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Updates the font properties of a Run object in the paragraph.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return UpdateRunFontOnlineResponse*/
+func (a *WordsApiService) UpdateRunFontOnline(ctx context.Context, data *models.UpdateRunFontOnlineRequest) (UpdateRunFontOnlineResponse*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+	if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Updates a Run object in the paragraph.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return UpdateRunOnlineResponse*/
+func (a *WordsApiService) UpdateRunOnline(ctx context.Context, data *models.UpdateRunOnlineRequest) (UpdateRunOnlineResponse*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+	if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
         return successPayload, response, err
     }
 
@@ -6879,7 +12651,7 @@ func (a *WordsApiService) UpdateSectionPageSetup(ctx context.Context, data *mode
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -6888,12 +12660,57 @@ func (a *WordsApiService) UpdateSectionPageSetup(ctx context.Context, data *mode
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
     }
     if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Updates the page setup of a section in the document.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return UpdateSectionPageSetupOnlineResponse*/
+func (a *WordsApiService) UpdateSectionPageSetupOnline(ctx context.Context, data *models.UpdateSectionPageSetupOnlineRequest) (UpdateSectionPageSetupOnlineResponse*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+	if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
         return successPayload, response, err
     }
 
@@ -6925,7 +12742,7 @@ func (a *WordsApiService) UpdateStyle(ctx context.Context, data *models.UpdateSt
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -6934,12 +12751,57 @@ func (a *WordsApiService) UpdateStyle(ctx context.Context, data *models.UpdateSt
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
     }
     if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Updates a style in the document.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return UpdateStyleOnlineResponse*/
+func (a *WordsApiService) UpdateStyleOnline(ctx context.Context, data *models.UpdateStyleOnlineRequest) (UpdateStyleOnlineResponse*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+	if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
         return successPayload, response, err
     }
 
@@ -6971,7 +12833,7 @@ func (a *WordsApiService) UpdateTableCellFormat(ctx context.Context, data *model
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -6980,12 +12842,57 @@ func (a *WordsApiService) UpdateTableCellFormat(ctx context.Context, data *model
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
     }
     if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Updates the formatting properties of a cell in the table row.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return UpdateTableCellFormatOnlineResponse*/
+func (a *WordsApiService) UpdateTableCellFormatOnline(ctx context.Context, data *models.UpdateTableCellFormatOnlineRequest) (UpdateTableCellFormatOnlineResponse*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+	if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
         return successPayload, response, err
     }
 
@@ -7017,7 +12924,7 @@ func (a *WordsApiService) UpdateTableProperties(ctx context.Context, data *model
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -7026,12 +12933,57 @@ func (a *WordsApiService) UpdateTableProperties(ctx context.Context, data *model
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
     }
     if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Updates properties of a table in the document node.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return UpdateTablePropertiesOnlineResponse*/
+func (a *WordsApiService) UpdateTablePropertiesOnline(ctx context.Context, data *models.UpdateTablePropertiesOnlineRequest) (UpdateTablePropertiesOnlineResponse*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+	if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
         return successPayload, response, err
     }
 
@@ -7063,7 +13015,7 @@ func (a *WordsApiService) UpdateTableRowFormat(ctx context.Context, data *models
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -7072,12 +13024,57 @@ func (a *WordsApiService) UpdateTableRowFormat(ctx context.Context, data *models
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError
     }
     if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Updates the formatting properties of a table row.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return UpdateTableRowFormatOnlineResponse*/
+func (a *WordsApiService) UpdateTableRowFormatOnline(ctx context.Context, data *models.UpdateTableRowFormatOnlineRequest) (UpdateTableRowFormatOnlineResponse*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+    defer response.Body.Close()
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+	if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
         return successPayload, response, err
     }
 
@@ -7109,7 +13106,7 @@ func (a *WordsApiService) UploadFile(ctx context.Context, data *models.UploadFil
     defer response.Body.Close()
 
     if err != nil || response == nil {
-        return successPayload, response, err
+        return successPayload, nil, err
     }
     if response.StatusCode == 401 {
         return successPayload, nil, errors.New("Access is denied")
@@ -7118,7 +13115,7 @@ func (a *WordsApiService) UploadFile(ctx context.Context, data *models.UploadFil
         var apiError models.WordsApiErrorResponse;
 
         if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-            return successPayload, response, err
+            return successPayload, nil, err
         }
 
         return successPayload, response, &apiError

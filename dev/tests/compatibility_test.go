@@ -1,7 +1,7 @@
 /*
  * --------------------------------------------------------------------------------
  * <copyright company="Aspose" file="compatibility_test.go">
- *   Copyright (c) 2020 Aspose.Words for Cloud
+ *   Copyright (c) 2021 Aspose.Words for Cloud
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -58,6 +58,33 @@ func Test_Compatibility_OptimizeDocument(t *testing.T) {
     }
 
     _, err := client.WordsApi.OptimizeDocument(ctx, request)
+
+    if err != nil {
+        t.Error(err)
+    }
+
+}
+
+// Test for optimize document to specific MS Word version.
+func Test_Compatibility_OptimizeDocumentOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "Common/test_multi_pages.docx"
+
+    requestOptions := models.OptimizationOptions{
+        MsWordVersion: ToStringPointer("Word2002"),
+    }
+
+    options := map[string]interface{}{
+    }
+
+    request := &models.OptimizeDocumentOnlineRequest{
+        Document: OpenFile(t, localFile),
+        Options: requestOptions,
+        Optionals: options,
+    }
+
+    _, , _, err := client.WordsApi.OptimizeDocumentOnline(ctx, request)
 
     if err != nil {
         t.Error(err)

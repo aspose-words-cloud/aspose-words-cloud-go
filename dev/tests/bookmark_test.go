@@ -1,7 +1,7 @@
 /*
  * --------------------------------------------------------------------------------
  * <copyright company="Aspose" file="bookmark_test.go">
- *   Copyright (c) 2020 Aspose.Words for Cloud
+ *   Copyright (c) 2021 Aspose.Words for Cloud
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -29,7 +29,6 @@
 package api_test
 
 import (
-    "github.com/stretchr/testify/assert"
     "testing"
     "github.com/aspose-words-cloud/aspose-words-cloud-go/dev/api/models"
 )
@@ -54,15 +53,35 @@ func Test_Bookmark_GetBookmarks(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.GetBookmarks(ctx, request)
+    _, _, err := client.WordsApi.GetBookmarks(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.Bookmarks, "Validate GetBookmarks response.");
-    assert.Equal(t, 3, len(actual.Bookmarks.BookmarkList), "Validate GetBookmarks response.");
-    assert.Equal(t, "aspose", actual.Bookmarks.BookmarkList[1].Name, "Validate GetBookmarks response.");
+}
+
+// Test for getting bookmarks from document online.
+func Test_Bookmark_GetBookmarksOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "Common/test_multi_pages.docx"
+
+
+    options := map[string]interface{}{
+    }
+
+    request := &models.GetBookmarksOnlineRequest{
+        Document: OpenFile(t, localFile),
+        Optionals: options,
+    }
+
+    _, _, err := client.WordsApi.GetBookmarksOnline(ctx, request)
+
+    if err != nil {
+        t.Error(err)
+    }
+
 }
 
 // Test for getting bookmark by specified name.
@@ -71,8 +90,8 @@ func Test_Bookmark_GetBookmarkByName(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Bookmarks"
     localFile := "Common/test_multi_pages.docx"
-    remoteFileName := "TestGetDocumentBookmarkByName.docx"
     bookmarkName := "aspose"
+    remoteFileName := "TestGetDocumentBookmarkByName.docx"
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
@@ -87,14 +106,37 @@ func Test_Bookmark_GetBookmarkByName(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.GetBookmarkByName(ctx, request)
+    _, _, err := client.WordsApi.GetBookmarkByName(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.Bookmark, "Validate GetBookmarkByName response.");
-    assert.Equal(t, bookmarkName, actual.Bookmark.Name, "Validate GetBookmarkByName response.");
+}
+
+// Test for getting bookmark by specified name online.
+func Test_Bookmark_GetBookmarkByNameOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "Common/test_multi_pages.docx"
+    bookmarkName := "aspose"
+
+
+    options := map[string]interface{}{
+    }
+
+    request := &models.GetBookmarkByNameOnlineRequest{
+        Document: OpenFile(t, localFile),
+        BookmarkName: ToStringPointer(bookmarkName),
+        Optionals: options,
+    }
+
+    _, _, err := client.WordsApi.GetBookmarkByNameOnline(ctx, request)
+
+    if err != nil {
+        t.Error(err)
+    }
+
 }
 
 // Test for updating existed bookmark.
@@ -103,8 +145,8 @@ func Test_Bookmark_UpdateBookmark(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Bookmarks"
     localFile := "Common/test_multi_pages.docx"
-    remoteFileName := "TestUpdateDocumentBookmark.docx"
     bookmarkName := "aspose"
+    remoteFileName := "TestUpdateDocumentBookmark.docx"
     bookmarkText := "This will be the text for Aspose"
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
@@ -121,18 +163,47 @@ func Test_Bookmark_UpdateBookmark(t *testing.T) {
 
     request := &models.UpdateBookmarkRequest{
         Name: ToStringPointer(remoteFileName),
-        BookmarkData: requestBookmarkData,
         BookmarkName: ToStringPointer(bookmarkName),
+        BookmarkData: requestBookmarkData,
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.UpdateBookmark(ctx, request)
+    _, _, err := client.WordsApi.UpdateBookmark(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.Bookmark, "Validate UpdateBookmark response.");
-    assert.Equal(t, bookmarkName, actual.Bookmark.Name, "Validate UpdateBookmark response.");
-    assert.Equal(t, bookmarkText, actual.Bookmark.Text, "Validate UpdateBookmark response.");
+}
+
+// Test for updating existed bookmark online.
+func Test_Bookmark_UpdateBookmarkOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "Common/test_multi_pages.docx"
+    bookmarkName := "aspose"
+    remoteFileName := "TestUpdateDocumentBookmark.docx"
+
+    requestBookmarkData := models.BookmarkData{
+        Name: ToStringPointer(bookmarkName),
+        Text: ToStringPointer("This will be the text for Aspose"),
+    }
+
+    options := map[string]interface{}{
+        "destFileName": baseTestOutPath + "/" + remoteFileName,
+    }
+
+    request := &models.UpdateBookmarkOnlineRequest{
+        Document: OpenFile(t, localFile),
+        BookmarkName: ToStringPointer(bookmarkName),
+        BookmarkData: requestBookmarkData,
+        Optionals: options,
+    }
+
+    _,err := client.WordsApi.UpdateBookmarkOnline(ctx, request)
+
+    if err != nil {
+        t.Error(err)
+    }
+
 }

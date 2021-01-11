@@ -1,7 +1,7 @@
 /*
  * --------------------------------------------------------------------------------
  * <copyright company="Aspose" file="insert_footnote_request.go">
- *   Copyright (c) 2020 Aspose.Words for Cloud
+ *   Copyright (c) 2021 Aspose.Words for Cloud
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -39,7 +39,7 @@ import (
 type InsertFootnoteRequest struct {
         // The filename of the input document.
         Name *string
-        // The properties of the footnote.
+        // Footnote data.
         FootnoteDto IFootnoteInsert
     /* optional (nil or map[string]interface{}) with one or more of key / value pairs:
         key: "nodePath" value: (string) The path to the node in the document tree.

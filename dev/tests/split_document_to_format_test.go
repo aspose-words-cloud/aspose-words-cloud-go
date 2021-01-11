@@ -1,7 +1,7 @@
 /*
  * --------------------------------------------------------------------------------
  * <copyright company="Aspose" file="split_document_to_format_test.go">
- *   Copyright (c) 2020 Aspose.Words for Cloud
+ *   Copyright (c) 2021 Aspose.Words for Cloud
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -67,4 +67,31 @@ func Test_SplitDocumentToFormat_SplitDocument(t *testing.T) {
     assert.NotNil(t, actual.SplitResult, "Validate SplitDocument response.");
     assert.NotNil(t, actual.SplitResult.Pages, "Validate SplitDocument response.");
     assert.Equal(t, 2, len(actual.SplitResult.Pages), "Validate SplitDocument response.");
+}
+
+// Test for document splitting online.
+func Test_SplitDocumentToFormat_SplitDocumentOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "Common/test_multi_pages.docx"
+
+
+    options := map[string]interface{}{
+        "destFileName": baseTestOutPath + "/TestSplitDocument.text",
+        "from": int32(1),
+        "to": int32(2),
+    }
+
+    request := &models.SplitDocumentOnlineRequest{
+        Document: OpenFile(t, localFile),
+        Format: ToStringPointer("text"),
+        Optionals: options,
+    }
+
+    _,err := client.WordsApi.SplitDocumentOnline(ctx, request)
+
+    if err != nil {
+        t.Error(err)
+    }
+
 }
