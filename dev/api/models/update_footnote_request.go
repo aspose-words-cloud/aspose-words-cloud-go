@@ -60,7 +60,7 @@ func (data *UpdateFootnoteRequest) CreateRequestData() (RequestData, error) {
 
     var result RequestData
 
-    result.Method = strings.ToUpper("post")
+    result.Method = strings.ToUpper("put")
 
     // create path and map variables
     result.Path = "/words/{name}/{nodePath}/footnotes/{index}"

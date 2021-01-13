@@ -247,7 +247,7 @@ func Test_DrawingObjects_RenderDrawingObjectOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _,err := client.WordsApi.RenderDrawingObjectOnline(ctx, request)
+    _, , _, err := client.WordsApi.RenderDrawingObjectOnline(ctx, request)
 
     if err != nil {
         t.Error(err)

@@ -61,7 +61,7 @@ func (data *UpdateTableCellFormatRequest) CreateRequestData() (RequestData, erro
 
     var result RequestData
 
-    result.Method = strings.ToUpper("post")
+    result.Method = strings.ToUpper("put")
 
     // create path and map variables
     result.Path = "/words/{name}/{tableRowPath}/cells/{index}/cellformat"

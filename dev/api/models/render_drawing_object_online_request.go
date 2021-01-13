@@ -34,7 +34,6 @@ import (
 	"net/url"
 	"strings"
     "io"
-    "encoding/json"
 )
 
 // RenderDrawingObjectOnlineRequest contains request data for WordsApiService.RenderDrawingObjectOnline method.
@@ -148,10 +147,5 @@ func (data *RenderDrawingObjectOnlineRequest) CreateRequestData() (RequestData, 
 }
 
 func (data *RenderDrawingObjectOnlineRequest) CreateResponse(reader io.Reader) (response interface{}, err error) {
-    var successPayload RenderDrawingObjectOnlineResponse
-            if err = json.NewDecoder(reader).Decode(&successPayload); err != nil {
-                return nil, err
-            }
-
-            return successPayload, err
+            return reader, nil
 }

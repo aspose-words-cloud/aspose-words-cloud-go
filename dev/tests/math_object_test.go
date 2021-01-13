@@ -260,7 +260,7 @@ func Test_MathObject_RenderMathObjectOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _,err := client.WordsApi.RenderMathObjectOnline(ctx, request)
+    _, , _, err := client.WordsApi.RenderMathObjectOnline(ctx, request)
 
     if err != nil {
         t.Error(err)

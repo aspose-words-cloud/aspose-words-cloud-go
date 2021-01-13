@@ -594,7 +594,7 @@ func Test_Paragraph_RenderParagraphOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _,err := client.WordsApi.RenderParagraphOnline(ctx, request)
+    _, , _, err := client.WordsApi.RenderParagraphOnline(ctx, request)
 
     if err != nil {
         t.Error(err)

@@ -34,7 +34,6 @@ import (
 	"net/url"
 	"strings"
     "io"
-    "encoding/json"
 )
 
 // RenderMathObjectOnlineRequest contains request data for WordsApiService.RenderMathObjectOnline method.
@@ -148,10 +147,5 @@ func (data *RenderMathObjectOnlineRequest) CreateRequestData() (RequestData, err
 }
 
 func (data *RenderMathObjectOnlineRequest) CreateResponse(reader io.Reader) (response interface{}, err error) {
-    var successPayload RenderMathObjectOnlineResponse
-            if err = json.NewDecoder(reader).Decode(&successPayload); err != nil {
-                return nil, err
-            }
-
-            return successPayload, err
+            return reader, nil
 }

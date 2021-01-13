@@ -60,7 +60,7 @@ func (data *UpdateTablePropertiesRequest) CreateRequestData() (RequestData, erro
 
     var result RequestData
 
-    result.Method = strings.ToUpper("post")
+    result.Method = strings.ToUpper("put")
 
     // create path and map variables
     result.Path = "/words/{name}/{nodePath}/tables/{index}/properties"

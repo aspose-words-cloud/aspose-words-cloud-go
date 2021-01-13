@@ -34,7 +34,6 @@ import (
 	"net/url"
 	"strings"
     "io"
-    "encoding/json"
 )
 
 // RenderParagraphOnlineRequest contains request data for WordsApiService.RenderParagraphOnline method.
@@ -148,10 +147,5 @@ func (data *RenderParagraphOnlineRequest) CreateRequestData() (RequestData, erro
 }
 
 func (data *RenderParagraphOnlineRequest) CreateResponse(reader io.Reader) (response interface{}, err error) {
-    var successPayload RenderParagraphOnlineResponse
-            if err = json.NewDecoder(reader).Decode(&successPayload); err != nil {
-                return nil, err
-            }
-
-            return successPayload, err
+            return reader, nil
 }

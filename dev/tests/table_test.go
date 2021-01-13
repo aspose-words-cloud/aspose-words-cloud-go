@@ -1275,7 +1275,7 @@ func Test_Table_RenderTableOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _,err := client.WordsApi.RenderTableOnline(ctx, request)
+    _, , _, err := client.WordsApi.RenderTableOnline(ctx, request)
 
     if err != nil {
         t.Error(err)

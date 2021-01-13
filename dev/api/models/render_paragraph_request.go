@@ -58,7 +58,7 @@ func (data *RenderParagraphRequest) CreateRequestData() (RequestData, error) {
 
     var result RequestData
 
-    result.Method = strings.ToUpper("post")
+    result.Method = strings.ToUpper("get")
 
     // create path and map variables
     result.Path = "/words/{name}/{nodePath}/paragraphs/{index}/render"

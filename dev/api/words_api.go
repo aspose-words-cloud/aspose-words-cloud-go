@@ -10200,8 +10200,8 @@ func (a *WordsApiService) RenderDrawingObject(ctx context.Context, data *models.
 /* WordsApiService Renders a DrawingObject to the specified format.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  * @data operation request data.
-@return RenderDrawingObjectOnlineResponse*/
-func (a *WordsApiService) RenderDrawingObjectOnline(ctx context.Context, data *models.RenderDrawingObjectOnlineRequest) (RenderDrawingObjectOnlineResponse*http.Response, error) {
+@return http.Response.Body contains binary result data*/
+func (a *WordsApiService) RenderDrawingObjectOnline(ctx context.Context, data *models.RenderDrawingObjectOnlineRequest) (*http.Response, error) {
     var (
     )
 
@@ -10235,11 +10235,7 @@ func (a *WordsApiService) RenderDrawingObjectOnline(ctx context.Context, data *m
 
         return response, &apiError
     }
-	if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
-        return successPayload, response, err
-    }
-
-    return successPayload, response, err
+    return response, err
 }
 
 /* WordsApiService Renders an OfficeMath object to the specified format.
@@ -10286,8 +10282,8 @@ func (a *WordsApiService) RenderMathObject(ctx context.Context, data *models.Ren
 /* WordsApiService Renders an OfficeMath object to the specified format.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  * @data operation request data.
-@return RenderMathObjectOnlineResponse*/
-func (a *WordsApiService) RenderMathObjectOnline(ctx context.Context, data *models.RenderMathObjectOnlineRequest) (RenderMathObjectOnlineResponse*http.Response, error) {
+@return http.Response.Body contains binary result data*/
+func (a *WordsApiService) RenderMathObjectOnline(ctx context.Context, data *models.RenderMathObjectOnlineRequest) (*http.Response, error) {
     var (
     )
 
@@ -10321,11 +10317,7 @@ func (a *WordsApiService) RenderMathObjectOnline(ctx context.Context, data *mode
 
         return response, &apiError
     }
-	if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
-        return successPayload, response, err
-    }
-
-    return successPayload, response, err
+    return response, err
 }
 
 /* WordsApiService Renders a page to the specified format.
@@ -10454,8 +10446,8 @@ func (a *WordsApiService) RenderParagraph(ctx context.Context, data *models.Rend
 /* WordsApiService Renders a paragraph to the specified format.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  * @data operation request data.
-@return RenderParagraphOnlineResponse*/
-func (a *WordsApiService) RenderParagraphOnline(ctx context.Context, data *models.RenderParagraphOnlineRequest) (RenderParagraphOnlineResponse*http.Response, error) {
+@return http.Response.Body contains binary result data*/
+func (a *WordsApiService) RenderParagraphOnline(ctx context.Context, data *models.RenderParagraphOnlineRequest) (*http.Response, error) {
     var (
     )
 
@@ -10489,11 +10481,7 @@ func (a *WordsApiService) RenderParagraphOnline(ctx context.Context, data *model
 
         return response, &apiError
     }
-	if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
-        return successPayload, response, err
-    }
-
-    return successPayload, response, err
+    return response, err
 }
 
 /* WordsApiService Renders a table to the specified format.
@@ -10540,8 +10528,8 @@ func (a *WordsApiService) RenderTable(ctx context.Context, data *models.RenderTa
 /* WordsApiService Renders a table to the specified format.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  * @data operation request data.
-@return RenderTableOnlineResponse*/
-func (a *WordsApiService) RenderTableOnline(ctx context.Context, data *models.RenderTableOnlineRequest) (RenderTableOnlineResponse*http.Response, error) {
+@return http.Response.Body contains binary result data*/
+func (a *WordsApiService) RenderTableOnline(ctx context.Context, data *models.RenderTableOnlineRequest) (*http.Response, error) {
     var (
     )
 
@@ -10575,11 +10563,7 @@ func (a *WordsApiService) RenderTableOnline(ctx context.Context, data *models.Re
 
         return response, &apiError
     }
-	if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
-        return successPayload, response, err
-    }
-
-    return successPayload, response, err
+    return response, err
 }
 
 /* WordsApiService Replaces text in the document.

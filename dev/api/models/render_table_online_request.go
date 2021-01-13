@@ -34,7 +34,6 @@ import (
 	"net/url"
 	"strings"
     "io"
-    "encoding/json"
 )
 
 // RenderTableOnlineRequest contains request data for WordsApiService.RenderTableOnline method.
@@ -148,10 +147,5 @@ func (data *RenderTableOnlineRequest) CreateRequestData() (RequestData, error) {
 }
 
 func (data *RenderTableOnlineRequest) CreateResponse(reader io.Reader) (response interface{}, err error) {
-    var successPayload RenderTableOnlineResponse
-            if err = json.NewDecoder(reader).Decode(&successPayload); err != nil {
-                return nil, err
-            }
-
-            return successPayload, err
+            return reader, nil
 }
