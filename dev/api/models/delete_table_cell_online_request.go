@@ -61,7 +61,7 @@ func (data *DeleteTableCellOnlineRequest) CreateRequestData() (RequestData, erro
     result.Method = strings.ToUpper("put")
 
     // create path and map variables
-    result.Path = "/words/online/delete/{name}/{tableRowPath}/cells/{index}"
+    result.Path = "/words/online/delete/{tableRowPath}/cells/{index}"
     result.Path = strings.Replace(result.Path, "{"+"tableRowPath"+"}", fmt.Sprintf("%v", *data.TableRowPath), -1)
     result.Path = strings.Replace(result.Path, "{"+"index"+"}", fmt.Sprintf("%v", *data.Index), -1)
 

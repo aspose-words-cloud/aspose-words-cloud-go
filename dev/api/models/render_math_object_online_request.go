@@ -62,7 +62,7 @@ func (data *RenderMathObjectOnlineRequest) CreateRequestData() (RequestData, err
     result.Method = strings.ToUpper("put")
 
     // create path and map variables
-    result.Path = "/words/online/get/{name}/{nodePath}/OfficeMathObjects/{index}/render"
+    result.Path = "/words/online/get/{nodePath}/OfficeMathObjects/{index}/render"
     result.Path = strings.Replace(result.Path, "{"+"index"+"}", fmt.Sprintf("%v", *data.Index), -1)
     result.Path = strings.Replace(result.Path, "{"+"nodePath"+"}", fmt.Sprintf("%v", data.Optionals["nodePath"]), -1)
 

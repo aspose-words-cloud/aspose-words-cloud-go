@@ -58,7 +58,7 @@ func (data *GetParagraphOnlineRequest) CreateRequestData() (RequestData, error) 
     result.Method = strings.ToUpper("put")
 
     // create path and map variables
-    result.Path = "/words/online/get/{name}/{nodePath}/paragraphs/{index}"
+    result.Path = "/words/online/get/{nodePath}/paragraphs/{index}"
     result.Path = strings.Replace(result.Path, "{"+"index"+"}", fmt.Sprintf("%v", *data.Index), -1)
     result.Path = strings.Replace(result.Path, "{"+"nodePath"+"}", fmt.Sprintf("%v", data.Optionals["nodePath"]), -1)
 

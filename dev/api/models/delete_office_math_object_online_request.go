@@ -60,7 +60,7 @@ func (data *DeleteOfficeMathObjectOnlineRequest) CreateRequestData() (RequestDat
     result.Method = strings.ToUpper("put")
 
     // create path and map variables
-    result.Path = "/words/online/delete/{name}/{nodePath}/OfficeMathObjects/{index}"
+    result.Path = "/words/online/delete/{nodePath}/OfficeMathObjects/{index}"
     result.Path = strings.Replace(result.Path, "{"+"index"+"}", fmt.Sprintf("%v", *data.Index), -1)
     result.Path = strings.Replace(result.Path, "{"+"nodePath"+"}", fmt.Sprintf("%v", data.Optionals["nodePath"]), -1)
 

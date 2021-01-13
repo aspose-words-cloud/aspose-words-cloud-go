@@ -59,7 +59,7 @@ func (data *GetTableRowOnlineRequest) CreateRequestData() (RequestData, error) {
     result.Method = strings.ToUpper("put")
 
     // create path and map variables
-    result.Path = "/words/online/get/{name}/{tablePath}/rows/{index}"
+    result.Path = "/words/online/get/{tablePath}/rows/{index}"
     result.Path = strings.Replace(result.Path, "{"+"tablePath"+"}", fmt.Sprintf("%v", *data.TablePath), -1)
     result.Path = strings.Replace(result.Path, "{"+"index"+"}", fmt.Sprintf("%v", *data.Index), -1)
 

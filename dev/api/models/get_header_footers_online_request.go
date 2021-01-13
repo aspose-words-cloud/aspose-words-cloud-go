@@ -58,7 +58,7 @@ func (data *GetHeaderFootersOnlineRequest) CreateRequestData() (RequestData, err
     result.Method = strings.ToUpper("put")
 
     // create path and map variables
-    result.Path = "/words/online/get/{name}/{sectionPath}/headersfooters"
+    result.Path = "/words/online/get/{sectionPath}/headersfooters"
     result.Path = strings.Replace(result.Path, "{"+"sectionPath"+"}", fmt.Sprintf("%v", *data.SectionPath), -1)
 
     result.Path = strings.Replace(result.Path, "/<nil>", "", -1)

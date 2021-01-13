@@ -56,7 +56,7 @@ func (data *GetDocumentDrawingObjectsOnlineRequest) CreateRequestData() (Request
     result.Method = strings.ToUpper("put")
 
     // create path and map variables
-    result.Path = "/words/online/get/{name}/{nodePath}/drawingObjects"
+    result.Path = "/words/online/get/{nodePath}/drawingObjects"
     result.Path = strings.Replace(result.Path, "{"+"nodePath"+"}", fmt.Sprintf("%v", data.Optionals["nodePath"]), -1)
 
     result.Path = strings.Replace(result.Path, "/<nil>", "", -1)

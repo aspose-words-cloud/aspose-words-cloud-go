@@ -64,7 +64,7 @@ func (data *UpdateRunOnlineRequest) CreateRequestData() (RequestData, error) {
     result.Method = strings.ToUpper("put")
 
     // create path and map variables
-    result.Path = "/words/online/put/{name}/{paragraphPath}/runs/{index}"
+    result.Path = "/words/online/put/{paragraphPath}/runs/{index}"
     result.Path = strings.Replace(result.Path, "{"+"paragraphPath"+"}", fmt.Sprintf("%v", *data.ParagraphPath), -1)
     result.Path = strings.Replace(result.Path, "{"+"index"+"}", fmt.Sprintf("%v", *data.Index), -1)
 

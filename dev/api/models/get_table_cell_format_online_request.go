@@ -59,7 +59,7 @@ func (data *GetTableCellFormatOnlineRequest) CreateRequestData() (RequestData, e
     result.Method = strings.ToUpper("put")
 
     // create path and map variables
-    result.Path = "/words/online/get/{name}/{tableRowPath}/cells/{index}/cellformat"
+    result.Path = "/words/online/get/{tableRowPath}/cells/{index}/cellformat"
     result.Path = strings.Replace(result.Path, "{"+"tableRowPath"+"}", fmt.Sprintf("%v", *data.TableRowPath), -1)
     result.Path = strings.Replace(result.Path, "{"+"index"+"}", fmt.Sprintf("%v", *data.Index), -1)
 

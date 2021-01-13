@@ -63,7 +63,7 @@ func (data *UpdateFieldOnlineRequest) CreateRequestData() (RequestData, error) {
     result.Method = strings.ToUpper("put")
 
     // create path and map variables
-    result.Path = "/words/online/put/{name}/{nodePath}/fields/{index}"
+    result.Path = "/words/online/put/{nodePath}/fields/{index}"
     result.Path = strings.Replace(result.Path, "{"+"index"+"}", fmt.Sprintf("%v", *data.Index), -1)
     result.Path = strings.Replace(result.Path, "{"+"nodePath"+"}", fmt.Sprintf("%v", data.Optionals["nodePath"]), -1)
 

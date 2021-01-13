@@ -58,7 +58,7 @@ func (data *DeleteFieldsOnlineRequest) CreateRequestData() (RequestData, error) 
     result.Method = strings.ToUpper("put")
 
     // create path and map variables
-    result.Path = "/words/online/delete/{name}/{nodePath}/fields"
+    result.Path = "/words/online/delete/{nodePath}/fields"
     result.Path = strings.Replace(result.Path, "{"+"nodePath"+"}", fmt.Sprintf("%v", data.Optionals["nodePath"]), -1)
 
     result.Path = strings.Replace(result.Path, "/<nil>", "", -1)

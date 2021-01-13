@@ -61,7 +61,7 @@ func (data *InsertOrUpdateParagraphTabStopOnlineRequest) CreateRequestData() (Re
     result.Method = strings.ToUpper("put")
 
     // create path and map variables
-    result.Path = "/words/online/post/{name}/{nodePath}/paragraphs/{index}/tabstops"
+    result.Path = "/words/online/post/{nodePath}/paragraphs/{index}/tabstops"
     result.Path = strings.Replace(result.Path, "{"+"index"+"}", fmt.Sprintf("%v", *data.Index), -1)
     result.Path = strings.Replace(result.Path, "{"+"nodePath"+"}", fmt.Sprintf("%v", data.Optionals["nodePath"]), -1)
 

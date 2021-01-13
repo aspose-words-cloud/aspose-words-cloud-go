@@ -62,7 +62,7 @@ func (data *InsertTableRowOnlineRequest) CreateRequestData() (RequestData, error
     result.Method = strings.ToUpper("put")
 
     // create path and map variables
-    result.Path = "/words/online/post/{name}/{tablePath}/rows"
+    result.Path = "/words/online/post/{tablePath}/rows"
     result.Path = strings.Replace(result.Path, "{"+"tablePath"+"}", fmt.Sprintf("%v", *data.TablePath), -1)
 
     result.Path = strings.Replace(result.Path, "/<nil>", "", -1)

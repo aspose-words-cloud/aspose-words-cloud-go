@@ -61,7 +61,7 @@ func (data *DeleteParagraphListFormatOnlineRequest) CreateRequestData() (Request
     result.Method = strings.ToUpper("put")
 
     // create path and map variables
-    result.Path = "/words/online/delete/{name}/{nodePath}/paragraphs/{index}/listFormat"
+    result.Path = "/words/online/delete/{nodePath}/paragraphs/{index}/listFormat"
     result.Path = strings.Replace(result.Path, "{"+"index"+"}", fmt.Sprintf("%v", *data.Index), -1)
     result.Path = strings.Replace(result.Path, "{"+"nodePath"+"}", fmt.Sprintf("%v", data.Optionals["nodePath"]), -1)
 

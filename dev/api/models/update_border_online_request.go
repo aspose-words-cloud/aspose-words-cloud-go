@@ -63,7 +63,7 @@ func (data *UpdateBorderOnlineRequest) CreateRequestData() (RequestData, error) 
     result.Method = strings.ToUpper("put")
 
     // create path and map variables
-    result.Path = "/words/online/put/{name}/{nodePath}/borders/{borderType}"
+    result.Path = "/words/online/put/{nodePath}/borders/{borderType}"
     result.Path = strings.Replace(result.Path, "{"+"borderType"+"}", fmt.Sprintf("%v", *data.BorderType), -1)
     result.Path = strings.Replace(result.Path, "{"+"nodePath"+"}", fmt.Sprintf("%v", data.Optionals["nodePath"]), -1)
 

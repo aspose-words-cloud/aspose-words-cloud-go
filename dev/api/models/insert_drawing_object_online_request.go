@@ -63,7 +63,7 @@ func (data *InsertDrawingObjectOnlineRequest) CreateRequestData() (RequestData, 
     result.Method = strings.ToUpper("put")
 
     // create path and map variables
-    result.Path = "/words/online/post/{name}/{nodePath}/drawingObjects"
+    result.Path = "/words/online/post/{nodePath}/drawingObjects"
     result.Path = strings.Replace(result.Path, "{"+"nodePath"+"}", fmt.Sprintf("%v", data.Optionals["nodePath"]), -1)
 
     result.Path = strings.Replace(result.Path, "/<nil>", "", -1)

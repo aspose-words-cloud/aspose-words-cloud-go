@@ -58,7 +58,7 @@ func (data *GetTablePropertiesOnlineRequest) CreateRequestData() (RequestData, e
     result.Method = strings.ToUpper("put")
 
     // create path and map variables
-    result.Path = "/words/online/get/{name}/{nodePath}/tables/{index}/properties"
+    result.Path = "/words/online/get/{nodePath}/tables/{index}/properties"
     result.Path = strings.Replace(result.Path, "{"+"index"+"}", fmt.Sprintf("%v", *data.Index), -1)
     result.Path = strings.Replace(result.Path, "{"+"nodePath"+"}", fmt.Sprintf("%v", data.Optionals["nodePath"]), -1)
 

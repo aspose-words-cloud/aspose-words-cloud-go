@@ -57,7 +57,7 @@ func (data *GetStyleFromDocumentElementOnlineRequest) CreateRequestData() (Reque
     result.Method = strings.ToUpper("put")
 
     // create path and map variables
-    result.Path = "/words/online/get/{name}/{styledNodePath}/style"
+    result.Path = "/words/online/get/{styledNodePath}/style"
     result.Path = strings.Replace(result.Path, "{"+"styledNodePath"+"}", fmt.Sprintf("%v", *data.StyledNodePath), -1)
 
     result.Path = strings.Replace(result.Path, "/<nil>", "", -1)

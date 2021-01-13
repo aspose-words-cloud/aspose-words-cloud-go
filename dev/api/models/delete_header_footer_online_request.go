@@ -61,7 +61,7 @@ func (data *DeleteHeaderFooterOnlineRequest) CreateRequestData() (RequestData, e
     result.Method = strings.ToUpper("put")
 
     // create path and map variables
-    result.Path = "/words/online/delete/{name}/{sectionPath}/headersfooters/{index}"
+    result.Path = "/words/online/delete/{sectionPath}/headersfooters/{index}"
     result.Path = strings.Replace(result.Path, "{"+"sectionPath"+"}", fmt.Sprintf("%v", *data.SectionPath), -1)
     result.Path = strings.Replace(result.Path, "{"+"index"+"}", fmt.Sprintf("%v", *data.Index), -1)
 

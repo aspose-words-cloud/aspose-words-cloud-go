@@ -56,7 +56,7 @@ func (data *GetFootnotesOnlineRequest) CreateRequestData() (RequestData, error) 
     result.Method = strings.ToUpper("put")
 
     // create path and map variables
-    result.Path = "/words/online/get/{name}/{nodePath}/footnotes"
+    result.Path = "/words/online/get/{nodePath}/footnotes"
     result.Path = strings.Replace(result.Path, "{"+"nodePath"+"}", fmt.Sprintf("%v", data.Optionals["nodePath"]), -1)
 
     result.Path = strings.Replace(result.Path, "/<nil>", "", -1)
