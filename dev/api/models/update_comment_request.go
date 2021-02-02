@@ -1,7 +1,7 @@
 /*
  * --------------------------------------------------------------------------------
  * <copyright company="Aspose" file="update_comment_request.go">
- *   Copyright (c) 2021 Aspose.Words for Cloud
+ *   Copyright (c) 2020 Aspose.Words for Cloud
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -41,7 +41,7 @@ type UpdateCommentRequest struct {
         Name *string
         // The index of the comment.
         CommentIndex *int32
-        // Comment data.
+        // The properties of the comment.
         Comment ICommentUpdate
     /* optional (nil or map[string]interface{}) with one or more of key / value pairs:
         key: "folder" value: (string) Original document folder.

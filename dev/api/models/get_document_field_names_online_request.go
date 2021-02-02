@@ -1,7 +1,7 @@
 /*
  * --------------------------------------------------------------------------------
  * <copyright company="Aspose" file="get_document_field_names_online_request.go">
- *   Copyright (c) 2021 Aspose.Words for Cloud
+ *   Copyright (c) 2020 Aspose.Words for Cloud
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -38,11 +38,9 @@ import (
 
 // GetDocumentFieldNamesOnlineRequest contains request data for WordsApiService.GetDocumentFieldNamesOnline method.
 type GetDocumentFieldNamesOnlineRequest struct {
-        // The document.
-        Document *os.File
+        // File with template.
+        Template *os.File
     /* optional (nil or map[string]interface{}) with one or more of key / value pairs:
-        key: "loadEncoding" value: (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
-        key: "password" value: (string) Password for opening an encrypted document.
         key: "useNonMergeFields" value: (bool) The flag indicating whether to use non merge fields. If true, result includes "mustache" field names. */
     Optionals map[string]interface{}
 }
@@ -55,7 +53,7 @@ func (data *GetDocumentFieldNamesOnlineRequest) CreateRequestData() (RequestData
     result.Method = strings.ToUpper("put")
 
     // create path and map variables
-    result.Path = "/words/online/get/mailMerge/FieldNames"
+    result.Path = "/words/mailMerge/FieldNames"
 
     result.Path = strings.Replace(result.Path, "/<nil>", "", -1)
     result.Path = strings.Replace(result.Path, "//", "/", -1)
@@ -64,24 +62,8 @@ func (data *GetDocumentFieldNamesOnlineRequest) CreateRequestData() (RequestData
     result.QueryParams = url.Values{}
     result.FormParams = make([]FormParamContainer, 0)
 
-    if err := typeCheckParameter(data.Optionals["loadEncoding"], "string", "data.Optionals[loadEncoding]"); err != nil {
-        return result, err
-    }
-    if err := typeCheckParameter(data.Optionals["password"], "string", "data.Optionals[password]"); err != nil {
-        return result, err
-    }
     if err := typeCheckParameter(data.Optionals["useNonMergeFields"], "bool", "data.Optionals[useNonMergeFields]"); err != nil {
         return result, err
-    }
-
-
-    if localVarTempParam, localVarOk := data.Optionals["loadEncoding"].(string); localVarOk {
-        result.QueryParams.Add("LoadEncoding", parameterToString(localVarTempParam, ""))
-    }
-
-
-    if localVarTempParam, localVarOk := data.Optionals["password"].(string); localVarOk {
-        result.QueryParams.Add("Password", parameterToString(localVarTempParam, ""))
     }
 
 
@@ -112,11 +94,11 @@ func (data *GetDocumentFieldNamesOnlineRequest) CreateRequestData() (RequestData
     }
 
 
-    _document := data.Document
-    if _document != nil {
-        fbs, _ := ioutil.ReadAll(_document)
-        _document.Close()
-        result.FormParams = append(result.FormParams, NewFileFormParamContainer("document", fbs))
+    _template := data.Template
+    if _template != nil {
+        fbs, _ := ioutil.ReadAll(_template)
+        _template.Close()
+        result.FormParams = append(result.FormParams, NewFileFormParamContainer("template", fbs))
     }
 
 

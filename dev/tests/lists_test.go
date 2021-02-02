@@ -1,7 +1,7 @@
 /*
  * --------------------------------------------------------------------------------
  * <copyright company="Aspose" file="lists_test.go">
- *   Copyright (c) 2021 Aspose.Words for Cloud
+ *   Copyright (c) 2020 Aspose.Words for Cloud
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -66,29 +66,6 @@ func Test_Lists_GetLists(t *testing.T) {
     assert.Equal(t, int32(1), actual.Lists.ListInfo[0].ListId, "Validate GetLists response.");
 }
 
-// Test for getting lists from document online.
-func Test_Lists_GetListsOnline(t *testing.T) {
-    config := ReadConfiguration(t)
-    client, ctx := PrepareTest(t, config)
-    localFile := "DocumentElements/Lists/ListsGet.doc"
-
-
-    options := map[string]interface{}{
-    }
-
-    request := &models.GetListsOnlineRequest{
-        Document: OpenFile(t, localFile),
-        Optionals: options,
-    }
-
-    _, _, err := client.WordsApi.GetListsOnline(ctx, request)
-
-    if err != nil {
-        t.Error(err)
-    }
-
-}
-
 // Test for getting list from document.
 func Test_Lists_GetList(t *testing.T) {
     config := ReadConfiguration(t)
@@ -120,30 +97,6 @@ func Test_Lists_GetList(t *testing.T) {
     assert.Equal(t, int32(1), actual.List.ListId, "Validate GetList response.");
 }
 
-// Test for getting list from document online.
-func Test_Lists_GetListOnline(t *testing.T) {
-    config := ReadConfiguration(t)
-    client, ctx := PrepareTest(t, config)
-    localFile := "DocumentElements/Lists/ListsGet.doc"
-
-
-    options := map[string]interface{}{
-    }
-
-    request := &models.GetListOnlineRequest{
-        Document: OpenFile(t, localFile),
-        ListId: ToInt32Pointer(int32(1)),
-        Optionals: options,
-    }
-
-    _, _, err := client.WordsApi.GetListOnline(ctx, request)
-
-    if err != nil {
-        t.Error(err)
-    }
-
-}
-
 // Test for updating list from document.
 func Test_Lists_UpdateList(t *testing.T) {
     config := ReadConfiguration(t)
@@ -164,48 +117,20 @@ func Test_Lists_UpdateList(t *testing.T) {
 
     request := &models.UpdateListRequest{
         Name: ToStringPointer(remoteFileName),
-        ListId: ToInt32Pointer(int32(1)),
         ListUpdate: requestListUpdate,
+        ListId: ToInt32Pointer(int32(1)),
         Optionals: options,
     }
 
-    _, _, err := client.WordsApi.UpdateList(ctx, request)
+    actual, _, err := client.WordsApi.UpdateList(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
 
-}
-
-// Test for updating list from document online.
-func Test_Lists_UpdateListOnline(t *testing.T) {
-    config := ReadConfiguration(t)
-    client, ctx := PrepareTest(t, config)
-    localFile := "DocumentElements/Lists/ListsGet.doc"
-
-    requestListUpdate := models.ListUpdate{
-        IsRestartAtEachSection: ToBoolPointer(true),
-    }
-
-    options := map[string]interface{}{
-    }
-
-    request := &models.UpdateListOnlineRequest{
-        Document: OpenFile(t, localFile),
-        ListId: ToInt32Pointer(int32(1)),
-        ListUpdate: requestListUpdate,
-        Optionals: options,
-    }
-
-    actualerr := client.WordsApi.UpdateListOnline(ctx, request)
-
-    if err != nil {
-        t.Error(err)
-    }
-
-    assert.NotNil(t, actual.Model.List, "Validate UpdateListOnline response.");
-    assert.Equal(t, int32(1), actual.Model.List.ListId, "Validate UpdateListOnline response.");
-    assert.True(t, actual.Model.List.IsRestartAtEachSection, "Validate UpdateListOnline response.");
+    assert.NotNil(t, actual.List, "Validate UpdateList response.");
+    assert.Equal(t, int32(1), actual.List.ListId, "Validate UpdateList response.");
+    assert.True(t, actual.List.IsRestartAtEachSection, "Validate UpdateList response.");
 }
 
 // Test for updating list level from document.
@@ -228,51 +153,22 @@ func Test_Lists_UpdateListLevel(t *testing.T) {
 
     request := &models.UpdateListLevelRequest{
         Name: ToStringPointer(remoteFileName),
+        ListUpdate: requestListUpdate,
         ListId: ToInt32Pointer(int32(1)),
         ListLevel: ToInt32Pointer(int32(1)),
-        ListUpdate: requestListUpdate,
         Optionals: options,
     }
 
-    _, _, err := client.WordsApi.UpdateListLevel(ctx, request)
+    actual, _, err := client.WordsApi.UpdateListLevel(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
 
-}
-
-// Test for updating list level from document online.
-func Test_Lists_UpdateListLevelOnline(t *testing.T) {
-    config := ReadConfiguration(t)
-    client, ctx := PrepareTest(t, config)
-    localFile := "DocumentElements/Lists/ListsGet.doc"
-
-    requestListUpdate := models.ListLevelUpdate{
-        Alignment: ToStringPointer("Right"),
-    }
-
-    options := map[string]interface{}{
-    }
-
-    request := &models.UpdateListLevelOnlineRequest{
-        Document: OpenFile(t, localFile),
-        ListId: ToInt32Pointer(int32(1)),
-        ListUpdate: requestListUpdate,
-        ListLevel: ToInt32Pointer(int32(1)),
-        Optionals: options,
-    }
-
-    actualerr := client.WordsApi.UpdateListLevelOnline(ctx, request)
-
-    if err != nil {
-        t.Error(err)
-    }
-
-    assert.NotNil(t, actual.Model.List, "Validate UpdateListLevelOnline response.");
-    assert.NotNil(t, actual.Model.List.ListLevels, "Validate UpdateListLevelOnline response.");
-    assert.NotNil(t, actual.Model.List.ListLevels.ListLevel, "Validate UpdateListLevelOnline response.");
-    assert.Equal(t, 9, len(actual.Model.List.ListLevels.ListLevel), "Validate UpdateListLevelOnline response.");
+    assert.NotNil(t, actual.List, "Validate UpdateListLevel response.");
+    assert.NotNil(t, actual.List.ListLevels, "Validate UpdateListLevel response.");
+    assert.NotNil(t, actual.List.ListLevels.ListLevel, "Validate UpdateListLevel response.");
+    assert.Equal(t, 9, len(actual.List.ListLevels.ListLevel), "Validate UpdateListLevel response.");
 
 }
 
@@ -308,31 +204,4 @@ func Test_Lists_InsertList(t *testing.T) {
 
     assert.NotNil(t, actual.List, "Validate InsertList response.");
     assert.Equal(t, int32(3), actual.List.ListId, "Validate InsertList response.");
-}
-
-// Test for inserting list from document online.
-func Test_Lists_InsertListOnline(t *testing.T) {
-    config := ReadConfiguration(t)
-    client, ctx := PrepareTest(t, config)
-    localFile := "DocumentElements/Lists/ListsGet.doc"
-
-    requestListInsert := models.ListInsert{
-        Template: ToStringPointer("OutlineLegal"),
-    }
-
-    options := map[string]interface{}{
-    }
-
-    request := &models.InsertListOnlineRequest{
-        Document: OpenFile(t, localFile),
-        ListInsert: requestListInsert,
-        Optionals: options,
-    }
-
-    _,err := client.WordsApi.InsertListOnline(ctx, request)
-
-    if err != nil {
-        t.Error(err)
-    }
-
 }

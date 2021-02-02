@@ -1,7 +1,7 @@
 /*
  * --------------------------------------------------------------------------------
  * <copyright company="Aspose" file="classification_test.go">
- *   Copyright (c) 2021 Aspose.Words for Cloud
+ *   Copyright (c) 2020 Aspose.Words for Cloud
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -76,7 +76,7 @@ func Test_Classification_ClassifyDocument(t *testing.T) {
     }
 
     request := &models.ClassifyDocumentRequest{
-        Name: ToStringPointer(remoteFileName),
+        DocumentName: ToStringPointer(remoteFileName),
         Optionals: options,
     }
 
@@ -89,28 +89,4 @@ func Test_Classification_ClassifyDocument(t *testing.T) {
     assert.Equal(t, "Hobbies_&_Interests", actual.BestClassName, "Validate ClassifyDocument response.");
     assert.NotNil(t, actual.BestResults, "Validate ClassifyDocument response.");
     assert.Equal(t, 3, len(actual.BestResults), "Validate ClassifyDocument response.");
-}
-
-// Test for document classification online.
-func Test_Classification_ClassifyDocumentOnline(t *testing.T) {
-    config := ReadConfiguration(t)
-    client, ctx := PrepareTest(t, config)
-    localFile := "Common/test_multi_pages.docx"
-
-
-    options := map[string]interface{}{
-        "bestClassesCount": "3",
-    }
-
-    request := &models.ClassifyDocumentOnlineRequest{
-        Document: OpenFile(t, localFile),
-        Optionals: options,
-    }
-
-    _, _, err := client.WordsApi.ClassifyDocumentOnline(ctx, request)
-
-    if err != nil {
-        t.Error(err)
-    }
-
 }

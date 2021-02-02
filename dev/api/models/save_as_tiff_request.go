@@ -1,7 +1,7 @@
 /*
  * --------------------------------------------------------------------------------
  * <copyright company="Aspose" file="save_as_tiff_request.go">
- *   Copyright (c) 2021 Aspose.Words for Cloud
+ *   Copyright (c) 2020 Aspose.Words for Cloud
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -39,7 +39,7 @@ import (
 type SaveAsTiffRequest struct {
         // The filename of the input document.
         Name *string
-        // Tiff save options.
+        // The save options to TIFF format.
         SaveOptions ITiffSaveOptionsData
     /* optional (nil or map[string]interface{}) with one or more of key / value pairs:
         key: "folder" value: (string) Original document folder.

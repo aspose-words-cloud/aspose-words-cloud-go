@@ -1,7 +1,7 @@
 /*
  * --------------------------------------------------------------------------------
  * <copyright company="Aspose" file="classify_document_request.go">
- *   Copyright (c) 2021 Aspose.Words for Cloud
+ *   Copyright (c) 2020 Aspose.Words for Cloud
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -37,8 +37,8 @@ import (
 
 // ClassifyDocumentRequest contains request data for WordsApiService.ClassifyDocument method.
 type ClassifyDocumentRequest struct {
-        // The document name.
-        Name *string
+        // The filename of the input document.
+        DocumentName *string
     /* optional (nil or map[string]interface{}) with one or more of key / value pairs:
         key: "folder" value: (string) Original document folder.
         key: "storage" value: (string) Original document storage.
@@ -57,8 +57,8 @@ func (data *ClassifyDocumentRequest) CreateRequestData() (RequestData, error) {
     result.Method = strings.ToUpper("get")
 
     // create path and map variables
-    result.Path = "/words/{name}/classify"
-    result.Path = strings.Replace(result.Path, "{"+"name"+"}", fmt.Sprintf("%v", *data.Name), -1)
+    result.Path = "/words/{documentName}/classify"
+    result.Path = strings.Replace(result.Path, "{"+"documentName"+"}", fmt.Sprintf("%v", *data.DocumentName), -1)
 
     result.Path = strings.Replace(result.Path, "/<nil>", "", -1)
     result.Path = strings.Replace(result.Path, "//", "/", -1)

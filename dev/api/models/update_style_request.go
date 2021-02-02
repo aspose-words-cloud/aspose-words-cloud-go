@@ -1,7 +1,7 @@
 /*
  * --------------------------------------------------------------------------------
  * <copyright company="Aspose" file="update_style_request.go">
- *   Copyright (c) 2021 Aspose.Words for Cloud
+ *   Copyright (c) 2020 Aspose.Words for Cloud
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -39,10 +39,10 @@ import (
 type UpdateStyleRequest struct {
         // The filename of the input document.
         Name *string
+        // The properties of the style.
+        StyleUpdate IStyleUpdate
         // The name of the style.
         StyleName *string
-        // Style properties to update.
-        StyleUpdate IStyleUpdate
     /* optional (nil or map[string]interface{}) with one or more of key / value pairs:
         key: "folder" value: (string) Original document folder.
         key: "storage" value: (string) Original document storage.

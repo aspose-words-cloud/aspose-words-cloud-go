@@ -1,7 +1,7 @@
 /*
  * --------------------------------------------------------------------------------
  * <copyright company="Aspose" file="api_client.go">
- *   Copyright (c) 2021 Aspose.Words for Cloud
+ *   Copyright (c) 2020 Aspose.Words for Cloud
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -59,7 +59,7 @@ var (
     xmlCheck = regexp.MustCompile("(?i:[application|text]/xml)")
 )
 
-// APIClient manages communication with the Aspose.Words for Cloud API Reference API v21.1
+// APIClient manages communication with the Aspose.Words for Cloud API Reference API v20.12
 // In most cases there should be only one, shared, APIClient.
 type APIClient struct {
     cfg 	*models.Configuration

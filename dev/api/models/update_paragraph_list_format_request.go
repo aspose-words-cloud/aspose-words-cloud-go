@@ -1,7 +1,7 @@
 /*
  * --------------------------------------------------------------------------------
  * <copyright company="Aspose" file="update_paragraph_list_format_request.go">
- *   Copyright (c) 2021 Aspose.Words for Cloud
+ *   Copyright (c) 2020 Aspose.Words for Cloud
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -39,10 +39,10 @@ import (
 type UpdateParagraphListFormatRequest struct {
         // The filename of the input document.
         Name *string
+        // The formatting properties of a paragraph list.
+        Dto IListFormatUpdate
         // Object index.
         Index *int32
-        // ListFormatUpdate dto.
-        ListFormatDto IListFormatUpdate
     /* optional (nil or map[string]interface{}) with one or more of key / value pairs:
         key: "nodePath" value: (string) The path to the node in the document tree.
         key: "folder" value: (string) Original document folder.
@@ -159,7 +159,7 @@ func (data *UpdateParagraphListFormatRequest) CreateRequestData() (RequestData, 
 
 
 
-    result.PostBody = &data.ListFormatDto
+    result.PostBody = &data.Dto
 
     return result, nil
 }

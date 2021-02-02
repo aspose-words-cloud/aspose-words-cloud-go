@@ -1,7 +1,7 @@
 /*
  * --------------------------------------------------------------------------------
  * <copyright company="Aspose" file="build_report_test.go">
- *   Copyright (c) 2021 Aspose.Words for Cloud
+ *   Copyright (c) 2020 Aspose.Words for Cloud
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -57,7 +57,7 @@ func Test_BuildReport_BuildReportOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, , _, err := client.WordsApi.BuildReportOnline(ctx, request)
+    _, err := client.WordsApi.BuildReportOnline(ctx, request)
 
     if err != nil {
         t.Error(err)

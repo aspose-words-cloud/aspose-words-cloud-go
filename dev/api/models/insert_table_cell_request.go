@@ -1,7 +1,7 @@
 /*
  * --------------------------------------------------------------------------------
  * <copyright company="Aspose" file="insert_table_cell_request.go">
- *   Copyright (c) 2021 Aspose.Words for Cloud
+ *   Copyright (c) 2020 Aspose.Words for Cloud
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -39,10 +39,10 @@ import (
 type InsertTableCellRequest struct {
         // The filename of the input document.
         Name *string
+        // The properties of the cell.
+        Cell ITableCellInsert
         // The path to the table row in the document tree.
         TableRowPath *string
-        // Table cell parameters.
-        Cell ITableCellInsert
     /* optional (nil or map[string]interface{}) with one or more of key / value pairs:
         key: "folder" value: (string) Original document folder.
         key: "storage" value: (string) Original document storage.

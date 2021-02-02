@@ -1,7 +1,7 @@
 /*
  * --------------------------------------------------------------------------------
  * <copyright company="Aspose" file="form_field_test.go">
- *   Copyright (c) 2021 Aspose.Words for Cloud
+ *   Copyright (c) 2020 Aspose.Words for Cloud
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -61,8 +61,8 @@ func Test_FormField_UpdateFormField(t *testing.T) {
 
     request := &models.UpdateFormFieldRequest{
         Name: ToStringPointer(remoteFileName),
-        Index: ToInt32Pointer(int32(0)),
         FormField: requestFormField,
+        Index: ToInt32Pointer(int32(0)),
         Optionals: options,
     }
 
@@ -75,40 +75,6 @@ func Test_FormField_UpdateFormField(t *testing.T) {
     assert.NotNil(t, actual.FormField, "Validate UpdateFormField response.");
     assert.Equal(t, "FullName", actual.FormField.Name, "Validate UpdateFormField response.");
     assert.Equal(t, "", actual.FormField.StatusText, "Validate UpdateFormField response.");
-}
-
-// Test for posting form field online.
-func Test_FormField_UpdateFormFieldOnline(t *testing.T) {
-    config := ReadConfiguration(t)
-    client, ctx := PrepareTest(t, config)
-    fieldFolder := "DocumentElements/FormFields"
-
-    requestFormField := models.FormFieldTextInput{
-        Name: ToStringPointer("FullName"),
-        Enabled: ToBoolPointer(true),
-        CalculateOnExit: ToBoolPointer(true),
-        StatusText: ToStringPointer(""),
-        TextInputType: ToStringPointer("Regular"),
-        TextInputDefault: ToStringPointer("No name"),
-    }
-
-    options := map[string]interface{}{
-        "nodePath": "sections/0",
-    }
-
-    request := &models.UpdateFormFieldOnlineRequest{
-        Document: OpenFile(t, fieldFolder + "/FormFilled.docx"),
-        FormField: requestFormField,
-        Index: ToInt32Pointer(int32(0)),
-        Optionals: options,
-    }
-
-    _,err := client.WordsApi.UpdateFormFieldOnline(ctx, request)
-
-    if err != nil {
-        t.Error(err)
-    }
-
 }
 
 // Test for posting form field without node path.
@@ -137,8 +103,8 @@ func Test_FormField_UpdateFormFieldWithoutNodePath(t *testing.T) {
 
     request := &models.UpdateFormFieldRequest{
         Name: ToStringPointer(remoteFileName),
-        Index: ToInt32Pointer(int32(0)),
         FormField: requestFormField,
+        Index: ToInt32Pointer(int32(0)),
         Optionals: options,
     }
 
@@ -183,31 +149,6 @@ func Test_FormField_GetFormField(t *testing.T) {
 
     assert.NotNil(t, actual.FormField, "Validate GetFormField response.");
     assert.Equal(t, "FullName", actual.FormField.Name, "Validate GetFormField response.");
-}
-
-// Test for getting form field online.
-func Test_FormField_GetFormFieldOnline(t *testing.T) {
-    config := ReadConfiguration(t)
-    client, ctx := PrepareTest(t, config)
-    fieldFolder := "DocumentElements/FormFields"
-
-
-    options := map[string]interface{}{
-        "nodePath": "sections/0",
-    }
-
-    request := &models.GetFormFieldOnlineRequest{
-        Document: OpenFile(t, fieldFolder + "/FormFilled.docx"),
-        Index: ToInt32Pointer(int32(0)),
-        Optionals: options,
-    }
-
-    _, _, err := client.WordsApi.GetFormFieldOnline(ctx, request)
-
-    if err != nil {
-        t.Error(err)
-    }
-
 }
 
 // Test for getting form field without node path.
@@ -272,30 +213,6 @@ func Test_FormField_GetFormFields(t *testing.T) {
     assert.NotNil(t, actual.FormFields.List, "Validate GetFormFields response.");
     assert.Equal(t, 5, len(actual.FormFields.List), "Validate GetFormFields response.");
     assert.Equal(t, "FullName", actual.FormFields.List[0].Name, "Validate GetFormFields response.");
-}
-
-// Test for getting form fields online.
-func Test_FormField_GetFormFieldsOnline(t *testing.T) {
-    config := ReadConfiguration(t)
-    client, ctx := PrepareTest(t, config)
-    fieldFolder := "DocumentElements/FormFields"
-
-
-    options := map[string]interface{}{
-        "nodePath": "sections/0",
-    }
-
-    request := &models.GetFormFieldsOnlineRequest{
-        Document: OpenFile(t, fieldFolder + "/FormFilled.docx"),
-        Optionals: options,
-    }
-
-    _, _, err := client.WordsApi.GetFormFieldsOnline(ctx, request)
-
-    if err != nil {
-        t.Error(err)
-    }
-
 }
 
 // Test for getting form fields without node path.
@@ -372,40 +289,6 @@ func Test_FormField_InsertFormField(t *testing.T) {
     assert.Equal(t, "", actual.FormField.StatusText, "Validate InsertFormField response.");
 }
 
-// Test for insert form field without node path online.
-func Test_FormField_InsertFormFieldOnline(t *testing.T) {
-    config := ReadConfiguration(t)
-    client, ctx := PrepareTest(t, config)
-    fieldFolder := "DocumentElements/FormFields"
-
-    requestFormField := models.FormFieldTextInput{
-        Name: ToStringPointer("FullName"),
-        Enabled: ToBoolPointer(true),
-        CalculateOnExit: ToBoolPointer(true),
-        StatusText: ToStringPointer(""),
-        TextInputType: ToStringPointer("Regular"),
-        TextInputDefault: ToStringPointer("123"),
-        TextInputFormat: ToStringPointer("UPPERCASE"),
-    }
-
-    options := map[string]interface{}{
-        "nodePath": "sections/0/paragraphs/0",
-    }
-
-    request := &models.InsertFormFieldOnlineRequest{
-        Document: OpenFile(t, fieldFolder + "/FormFilled.docx"),
-        FormField: requestFormField,
-        Optionals: options,
-    }
-
-    _,err := client.WordsApi.InsertFormFieldOnline(ctx, request)
-
-    if err != nil {
-        t.Error(err)
-    }
-
-}
-
 // Test for insert form field without node path.
 func Test_FormField_InsertFormFieldWithoutNodePath(t *testing.T) {
     config := ReadConfiguration(t)
@@ -471,31 +354,6 @@ func Test_FormField_DeleteFormField(t *testing.T) {
     }
 
     _, err := client.WordsApi.DeleteFormField(ctx, request)
-
-    if err != nil {
-        t.Error(err)
-    }
-
-}
-
-// Test for deleting form field online.
-func Test_FormField_DeleteFormFieldOnline(t *testing.T) {
-    config := ReadConfiguration(t)
-    client, ctx := PrepareTest(t, config)
-    fieldFolder := "DocumentElements/FormFields"
-
-
-    options := map[string]interface{}{
-        "nodePath": "sections/0",
-    }
-
-    request := &models.DeleteFormFieldOnlineRequest{
-        Document: OpenFile(t, fieldFolder + "/FormFilled.docx"),
-        Index: ToInt32Pointer(int32(0)),
-        Optionals: options,
-    }
-
-    _, , _, err := client.WordsApi.DeleteFormFieldOnline(ctx, request)
 
     if err != nil {
         t.Error(err)

@@ -1,7 +1,7 @@
 /*
  * --------------------------------------------------------------------------------
  * <copyright company="Aspose" file="document_statistics_test.go">
- *   Copyright (c) 2021 Aspose.Words for Cloud
+ *   Copyright (c) 2020 Aspose.Words for Cloud
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -62,27 +62,4 @@ func Test_DocumentStatistics_GetDocumentStatistics(t *testing.T) {
 
     assert.NotNil(t, actual.StatData, "Validate GetDocumentStatistics response.");
     assert.Equal(t, int32(10), actual.StatData.WordCount, "Validate GetDocumentStatistics response.");
-}
-
-// Test for document classification online.
-func Test_DocumentStatistics_GetDocumentStatisticsOnline(t *testing.T) {
-    config := ReadConfiguration(t)
-    client, ctx := PrepareTest(t, config)
-    localFile := "Common/test_multi_pages.docx"
-
-
-    options := map[string]interface{}{
-    }
-
-    request := &models.GetDocumentStatisticsOnlineRequest{
-        Document: OpenFile(t, localFile),
-        Optionals: options,
-    }
-
-    _, _, err := client.WordsApi.GetDocumentStatisticsOnline(ctx, request)
-
-    if err != nil {
-        t.Error(err)
-    }
-
 }

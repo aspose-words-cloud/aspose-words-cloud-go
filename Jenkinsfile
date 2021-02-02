@@ -40,6 +40,7 @@ node('win2019') {
             }
         }
 	} finally {
+		bat 'docker system prune -f'
 		deleteDir()
 	}
 }

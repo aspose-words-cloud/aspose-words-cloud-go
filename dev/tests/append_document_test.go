@@ -1,7 +1,7 @@
 /*
  * --------------------------------------------------------------------------------
  * <copyright company="Aspose" file="append_document_test.go">
- *   Copyright (c) 2021 Aspose.Words for Cloud
+ *   Copyright (c) 2020 Aspose.Words for Cloud
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -74,42 +74,4 @@ func Test_AppendDocument_AppendDocument(t *testing.T) {
 
     assert.NotNil(t, actual.Document, "Validate AppendDocument response.");
     assert.Equal(t, "TestAppendDocument.docx", actual.Document.FileName, "Validate AppendDocument response.");
-}
-
-// Test for appending document online.
-func Test_AppendDocument_AppendDocumentOnline(t *testing.T) {
-    config := ReadConfiguration(t)
-    client, ctx := PrepareTest(t, config)
-    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentActions/AppendDocument"
-    localFile := "Common/test_multi_pages.docx"
-    remoteFileName := "TestAppendDocument.docx"
-
-    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
-
-    requestDocumentListDocumentEntries0 := models.DocumentEntry{
-        Href: ToStringPointer(remoteDataFolder + "/" + remoteFileName),
-        ImportFormatMode: ToStringPointer("KeepSourceFormatting"),
-    }
-    requestDocumentListDocumentEntries := []models.DocumentEntry{
-        requestDocumentListDocumentEntries0,
-    }
-    requestDocumentList := models.DocumentEntryList{
-        DocumentEntries: requestDocumentListDocumentEntries,
-    }
-
-    options := map[string]interface{}{
-    }
-
-    request := &models.AppendDocumentOnlineRequest{
-        Document: OpenFile(t, localFile),
-        DocumentList: requestDocumentList,
-        Optionals: options,
-    }
-
-    _,err := client.WordsApi.AppendDocumentOnline(ctx, request)
-
-    if err != nil {
-        t.Error(err)
-    }
-
 }

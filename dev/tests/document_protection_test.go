@@ -1,7 +1,7 @@
 /*
  * --------------------------------------------------------------------------------
  * <copyright company="Aspose" file="document_protection_test.go">
- *   Copyright (c) 2021 Aspose.Words for Cloud
+ *   Copyright (c) 2020 Aspose.Words for Cloud
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -70,31 +70,39 @@ func Test_DocumentProtection_ProtectDocument(t *testing.T) {
     assert.Equal(t, "ReadOnly", actual.ProtectionData.ProtectionType, "Validate ProtectDocument response.");
 }
 
-// Test for setting document protection.
-func Test_DocumentProtection_ProtectDocumentOnline(t *testing.T) {
+// Test for changing document protection.
+func Test_DocumentProtection_ChangeDocumentProtection(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
-    localFile := "Common/test_multi_pages.docx"
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/DocumentProtection"
+    localFilePath := "DocumentActions/DocumentProtection/SampleProtectedBlankWordDocument.docx"
+    remoteFileName := "TestChangeDocumentProtection.docx"
+
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFilePath), remoteDataFolder + "/" + remoteFileName)
 
     requestProtectionRequest := models.ProtectionRequest{
-        NewPassword: ToStringPointer("123"),
+        Password: ToStringPointer("aspose"),
+        ProtectionType: ToStringPointer("AllowOnlyComments"),
     }
 
     options := map[string]interface{}{
+        "folder": remoteDataFolder,
     }
 
-    request := &models.ProtectDocumentOnlineRequest{
-        Document: OpenFile(t, localFile),
+    request := &models.ProtectDocumentRequest{
+        Name: ToStringPointer(remoteFileName),
         ProtectionRequest: requestProtectionRequest,
         Optionals: options,
     }
 
-    _,err := client.WordsApi.ProtectDocumentOnline(ctx, request)
+    actual, _, err := client.WordsApi.ProtectDocument(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
 
+    assert.NotNil(t, actual.ProtectionData, "Validate ChangeDocumentProtection response.");
+    assert.Equal(t, "AllowOnlyComments", actual.ProtectionData.ProtectionType, "Validate ChangeDocumentProtection response.");
 }
 
 // Test for getting document protection.
@@ -117,35 +125,14 @@ func Test_DocumentProtection_GetDocumentProtection(t *testing.T) {
         Optionals: options,
     }
 
-    _, _, err := client.WordsApi.GetDocumentProtection(ctx, request)
+    actual, _, err := client.WordsApi.GetDocumentProtection(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
 
-}
-
-// Test for getting document protection.
-func Test_DocumentProtection_GetDocumentProtectionOnline(t *testing.T) {
-    config := ReadConfiguration(t)
-    client, ctx := PrepareTest(t, config)
-    localFile := "Common/test_multi_pages.docx"
-
-
-    options := map[string]interface{}{
-    }
-
-    request := &models.GetDocumentProtectionOnlineRequest{
-        Document: OpenFile(t, localFile),
-        Optionals: options,
-    }
-
-    _, _, err := client.WordsApi.GetDocumentProtectionOnline(ctx, request)
-
-    if err != nil {
-        t.Error(err)
-    }
-
+    assert.NotNil(t, actual.ProtectionData, "Validate GetDocumentProtection response.");
+    assert.Equal(t, "ReadOnly", actual.ProtectionData.ProtectionType, "Validate GetDocumentProtection response.");
 }
 
 // Test for deleting unprotect document.
@@ -180,31 +167,4 @@ func Test_DocumentProtection_DeleteUnprotectDocument(t *testing.T) {
 
     assert.NotNil(t, actual.ProtectionData, "Validate DeleteUnprotectDocument response.");
     assert.Equal(t, "NoProtection", actual.ProtectionData.ProtectionType, "Validate DeleteUnprotectDocument response.");
-}
-
-// Test for deleting unprotect document.
-func Test_DocumentProtection_DeleteUnprotectDocumentOnline(t *testing.T) {
-    config := ReadConfiguration(t)
-    client, ctx := PrepareTest(t, config)
-    localFilePath := "DocumentActions/DocumentProtection/SampleProtectedBlankWordDocument.docx"
-
-    requestProtectionRequest := models.ProtectionRequest{
-        Password: ToStringPointer("aspose"),
-    }
-
-    options := map[string]interface{}{
-    }
-
-    request := &models.UnprotectDocumentOnlineRequest{
-        Document: OpenFile(t, localFilePath),
-        ProtectionRequest: requestProtectionRequest,
-        Optionals: options,
-    }
-
-    _,err := client.WordsApi.UnprotectDocumentOnline(ctx, request)
-
-    if err != nil {
-        t.Error(err)
-    }
-
 }

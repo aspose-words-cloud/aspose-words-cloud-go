@@ -1,7 +1,7 @@
 /*
  * --------------------------------------------------------------------------------
  * <copyright company="Aspose" file="replace_with_text_request.go">
- *   Copyright (c) 2021 Aspose.Words for Cloud
+ *   Copyright (c) 2020 Aspose.Words for Cloud
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -41,7 +41,7 @@ type ReplaceWithTextRequest struct {
         Name *string
         // The range start identifier.
         RangeStartIdentifier *string
-        // Model with text for replacement.
+        // The text replacement properties.
         RangeText IReplaceRange
     /* optional (nil or map[string]interface{}) with one or more of key / value pairs:
         key: "rangeEndIdentifier" value: (string) The range end identifier.

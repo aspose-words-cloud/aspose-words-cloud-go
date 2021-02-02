@@ -1,7 +1,7 @@
 /*
  * --------------------------------------------------------------------------------
  * <copyright company="Aspose" file="header_footer_test.go">
- *   Copyright (c) 2021 Aspose.Words for Cloud
+ *   Copyright (c) 2020 Aspose.Words for Cloud
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -66,30 +66,6 @@ func Test_HeaderFooter_GetHeaderFooters(t *testing.T) {
     assert.Equal(t, 6, len(actual.HeaderFooters.List), "Validate GetHeaderFooters response.");
 }
 
-// Test for getting headers and footers online.
-func Test_HeaderFooter_GetHeaderFootersOnline(t *testing.T) {
-    config := ReadConfiguration(t)
-    client, ctx := PrepareTest(t, config)
-    localFile := "DocumentElements/HeaderFooters/HeadersFooters.doc"
-
-
-    options := map[string]interface{}{
-    }
-
-    request := &models.GetHeaderFootersOnlineRequest{
-        Document: OpenFile(t, localFile),
-        SectionPath: ToStringPointer(""),
-        Optionals: options,
-    }
-
-    _, _, err := client.WordsApi.GetHeaderFootersOnline(ctx, request)
-
-    if err != nil {
-        t.Error(err)
-    }
-
-}
-
 // Test for getting headerfooter.
 func Test_HeaderFooter_GetHeaderFooter(t *testing.T) {
     config := ReadConfiguration(t)
@@ -121,30 +97,6 @@ func Test_HeaderFooter_GetHeaderFooter(t *testing.T) {
     assert.NotNil(t, actual.HeaderFooter.ChildNodes, "Validate GetHeaderFooter response.");
     assert.Equal(t, 1, len(actual.HeaderFooter.ChildNodes), "Validate GetHeaderFooter response.");
     assert.Equal(t, "0.0.0", actual.HeaderFooter.ChildNodes[0].NodeId, "Validate GetHeaderFooter response.");
-}
-
-// Test for getting headerfooter online.
-func Test_HeaderFooter_GetHeaderFooterOnline(t *testing.T) {
-    config := ReadConfiguration(t)
-    client, ctx := PrepareTest(t, config)
-    localFile := "DocumentElements/HeaderFooters/HeadersFooters.doc"
-
-
-    options := map[string]interface{}{
-    }
-
-    request := &models.GetHeaderFooterOnlineRequest{
-        Document: OpenFile(t, localFile),
-        HeaderFooterIndex: ToInt32Pointer(int32(0)),
-        Optionals: options,
-    }
-
-    _, _, err := client.WordsApi.GetHeaderFooterOnline(ctx, request)
-
-    if err != nil {
-        t.Error(err)
-    }
-
 }
 
 // Test for getting headerfooter of section.
@@ -181,31 +133,6 @@ func Test_HeaderFooter_GetHeaderFooterOfSection(t *testing.T) {
     assert.Equal(t, "0.0.0", actual.HeaderFooter.ChildNodes[0].NodeId, "Validate GetHeaderFooterOfSection response.");
 }
 
-// Test for getting headerfooter of section online.
-func Test_HeaderFooter_GetHeaderFooterOfSectionOnline(t *testing.T) {
-    config := ReadConfiguration(t)
-    client, ctx := PrepareTest(t, config)
-    localFile := "DocumentElements/HeaderFooters/HeadersFooters.doc"
-
-
-    options := map[string]interface{}{
-    }
-
-    request := &models.GetHeaderFooterOfSectionOnlineRequest{
-        Document: OpenFile(t, localFile),
-        HeaderFooterIndex: ToInt32Pointer(int32(0)),
-        SectionIndex: ToInt32Pointer(int32(0)),
-        Optionals: options,
-    }
-
-    _, _, err := client.WordsApi.GetHeaderFooterOfSectionOnline(ctx, request)
-
-    if err != nil {
-        t.Error(err)
-    }
-
-}
-
 // Test for deleting headerfooter.
 func Test_HeaderFooter_DeleteHeaderFooter(t *testing.T) {
     config := ReadConfiguration(t)
@@ -229,31 +156,6 @@ func Test_HeaderFooter_DeleteHeaderFooter(t *testing.T) {
     }
 
     _, err := client.WordsApi.DeleteHeaderFooter(ctx, request)
-
-    if err != nil {
-        t.Error(err)
-    }
-
-}
-
-// Test for deleting headerfooter online.
-func Test_HeaderFooter_DeleteHeaderFooterOnline(t *testing.T) {
-    config := ReadConfiguration(t)
-    client, ctx := PrepareTest(t, config)
-    localFile := "DocumentElements/HeaderFooters/HeadersFooters.doc"
-
-
-    options := map[string]interface{}{
-    }
-
-    request := &models.DeleteHeaderFooterOnlineRequest{
-        Document: OpenFile(t, localFile),
-        SectionPath: ToStringPointer(""),
-        Index: ToInt32Pointer(int32(0)),
-        Optionals: options,
-    }
-
-    _, , _, err := client.WordsApi.DeleteHeaderFooterOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -290,30 +192,6 @@ func Test_HeaderFooter_DeleteHeadersFooters(t *testing.T) {
 
 }
 
-// Test for deleting headerfooters online.
-func Test_HeaderFooter_DeleteHeadersFootersOnline(t *testing.T) {
-    config := ReadConfiguration(t)
-    client, ctx := PrepareTest(t, config)
-    localFile := "DocumentElements/HeaderFooters/HeadersFooters.doc"
-
-
-    options := map[string]interface{}{
-    }
-
-    request := &models.DeleteHeadersFootersOnlineRequest{
-        Document: OpenFile(t, localFile),
-        SectionPath: ToStringPointer(""),
-        Optionals: options,
-    }
-
-    _, , _, err := client.WordsApi.DeleteHeadersFootersOnline(ctx, request)
-
-    if err != nil {
-        t.Error(err)
-    }
-
-}
-
 // Test for adding headerfooters.
 func Test_HeaderFooter_InsertHeaderFooter(t *testing.T) {
     config := ReadConfiguration(t)
@@ -331,44 +209,19 @@ func Test_HeaderFooter_InsertHeaderFooter(t *testing.T) {
 
     request := &models.InsertHeaderFooterRequest{
         Name: ToStringPointer(remoteFileName),
-        SectionPath: ToStringPointer(""),
         HeaderFooterType: ToStringPointer("FooterEven"),
+        SectionPath: ToStringPointer(""),
         Optionals: options,
     }
 
-    _, _, err := client.WordsApi.InsertHeaderFooter(ctx, request)
+    actual, _, err := client.WordsApi.InsertHeaderFooter(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
 
-}
-
-// Test for adding headerfooters online.
-func Test_HeaderFooter_InsertHeaderFooterOnline(t *testing.T) {
-    config := ReadConfiguration(t)
-    client, ctx := PrepareTest(t, config)
-    localFile := "DocumentElements/HeaderFooters/HeadersFooters.doc"
-
-
-    options := map[string]interface{}{
-    }
-
-    request := &models.InsertHeaderFooterOnlineRequest{
-        Document: OpenFile(t, localFile),
-        SectionPath: ToStringPointer(""),
-        HeaderFooterType: ToStringPointer("FooterEven"),
-        Optionals: options,
-    }
-
-    actualerr := client.WordsApi.InsertHeaderFooterOnline(ctx, request)
-
-    if err != nil {
-        t.Error(err)
-    }
-
-    assert.NotNil(t, actual.Model.HeaderFooter, "Validate InsertHeaderFooterOnline response.");
-    assert.NotNil(t, actual.Model.HeaderFooter.ChildNodes, "Validate InsertHeaderFooterOnline response.");
-    assert.Equal(t, 1, len(actual.Model.HeaderFooter.ChildNodes), "Validate InsertHeaderFooterOnline response.");
-    assert.Equal(t, "0.2.0", actual.Model.HeaderFooter.ChildNodes[0].NodeId, "Validate InsertHeaderFooterOnline response.");
+    assert.NotNil(t, actual.HeaderFooter, "Validate InsertHeaderFooter response.");
+    assert.NotNil(t, actual.HeaderFooter.ChildNodes, "Validate InsertHeaderFooter response.");
+    assert.Equal(t, 1, len(actual.HeaderFooter.ChildNodes), "Validate InsertHeaderFooter response.");
+    assert.Equal(t, "0.2.0", actual.HeaderFooter.ChildNodes[0].NodeId, "Validate InsertHeaderFooter response.");
 }

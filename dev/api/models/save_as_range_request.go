@@ -1,7 +1,7 @@
 /*
  * --------------------------------------------------------------------------------
  * <copyright company="Aspose" file="save_as_range_request.go">
- *   Copyright (c) 2021 Aspose.Words for Cloud
+ *   Copyright (c) 2020 Aspose.Words for Cloud
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -41,7 +41,7 @@ type SaveAsRangeRequest struct {
         Name *string
         // The range start identifier.
         RangeStartIdentifier *string
-        // Parameters of a new document.
+        // The parameters of a new document.
         DocumentParameters IRangeDocument
     /* optional (nil or map[string]interface{}) with one or more of key / value pairs:
         key: "rangeEndIdentifier" value: (string) The range end identifier.

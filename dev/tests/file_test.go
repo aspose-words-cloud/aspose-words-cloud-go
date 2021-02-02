@@ -1,7 +1,7 @@
 /*
  * --------------------------------------------------------------------------------
  * <copyright company="Aspose" file="file_test.go">
- *   Copyright (c) 2021 Aspose.Words for Cloud
+ *   Copyright (c) 2020 Aspose.Words for Cloud
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -165,7 +165,7 @@ func Test_File_DownloadFile(t *testing.T) {
         Optionals: options,
     }
 
-    _, , _, err := client.WordsApi.DownloadFile(ctx, request)
+    _, err := client.WordsApi.DownloadFile(ctx, request)
 
     if err != nil {
         t.Error(err)

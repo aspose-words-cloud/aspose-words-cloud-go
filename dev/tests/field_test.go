@@ -1,7 +1,7 @@
 /*
  * --------------------------------------------------------------------------------
  * <copyright company="Aspose" file="field_test.go">
- *   Copyright (c) 2021 Aspose.Words for Cloud
+ *   Copyright (c) 2020 Aspose.Words for Cloud
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -68,30 +68,6 @@ func Test_Field_GetFields(t *testing.T) {
     assert.Equal(t, "1", actual.Fields.List[0].Result, "Validate GetFields response.");
 }
 
-// Test for getting fields online.
-func Test_Field_GetFieldsOnline(t *testing.T) {
-    config := ReadConfiguration(t)
-    client, ctx := PrepareTest(t, config)
-    fieldFolder := "DocumentElements/Fields"
-
-
-    options := map[string]interface{}{
-        "nodePath": "sections/0",
-    }
-
-    request := &models.GetFieldsOnlineRequest{
-        Document: OpenFile(t, fieldFolder + "/GetField.docx"),
-        Optionals: options,
-    }
-
-    _, _, err := client.WordsApi.GetFieldsOnline(ctx, request)
-
-    if err != nil {
-        t.Error(err)
-    }
-
-}
-
 // Test for getting fields without node path.
 func Test_Field_GetFieldsWithoutNodePath(t *testing.T) {
     config := ReadConfiguration(t)
@@ -156,31 +132,6 @@ func Test_Field_GetField(t *testing.T) {
 
     assert.NotNil(t, actual.Field, "Validate GetField response.");
     assert.Equal(t, "1", actual.Field.Result, "Validate GetField response.");
-}
-
-// Test for getting field by index online.
-func Test_Field_GetFieldOnline(t *testing.T) {
-    config := ReadConfiguration(t)
-    client, ctx := PrepareTest(t, config)
-    fieldFolder := "DocumentElements/Fields"
-
-
-    options := map[string]interface{}{
-        "nodePath": "sections/0/paragraphs/0",
-    }
-
-    request := &models.GetFieldOnlineRequest{
-        Document: OpenFile(t, fieldFolder + "/GetField.docx"),
-        Index: ToInt32Pointer(int32(0)),
-        Optionals: options,
-    }
-
-    _, _, err := client.WordsApi.GetFieldOnline(ctx, request)
-
-    if err != nil {
-        t.Error(err)
-    }
-
 }
 
 // Test for getting field by index without node path.
@@ -252,34 +203,6 @@ func Test_Field_InsertField(t *testing.T) {
     assert.Equal(t, "0.0.0.1", actual.Field.NodeId, "Validate InsertField response.");
 }
 
-// Test for putting field online.
-func Test_Field_InsertFieldOnline(t *testing.T) {
-    config := ReadConfiguration(t)
-    client, ctx := PrepareTest(t, config)
-    fieldFolder := "DocumentElements/Fields"
-
-    requestField := models.FieldInsert{
-        FieldCode: ToStringPointer("{ NUMPAGES }"),
-    }
-
-    options := map[string]interface{}{
-        "nodePath": "sections/0/paragraphs/0",
-    }
-
-    request := &models.InsertFieldOnlineRequest{
-        Document: OpenFile(t, fieldFolder + "/GetField.docx"),
-        Field: requestField,
-        Optionals: options,
-    }
-
-    _,err := client.WordsApi.InsertFieldOnline(ctx, request)
-
-    if err != nil {
-        t.Error(err)
-    }
-
-}
-
 // Test for putting field without node path.
 func Test_Field_InsertFieldWithoutNodePath(t *testing.T) {
     config := ReadConfiguration(t)
@@ -338,8 +261,8 @@ func Test_Field_UpdateField(t *testing.T) {
 
     request := &models.UpdateFieldRequest{
         Name: ToStringPointer(remoteFileName),
-        Index: ToInt32Pointer(int32(0)),
         Field: requestField,
+        Index: ToInt32Pointer(int32(0)),
         Optionals: options,
     }
 
@@ -352,35 +275,6 @@ func Test_Field_UpdateField(t *testing.T) {
     assert.NotNil(t, actual.Field, "Validate UpdateField response.");
     assert.Equal(t, "{ NUMPAGES }", actual.Field.FieldCode, "Validate UpdateField response.");
     assert.Equal(t, "0.0.0.0", actual.Field.NodeId, "Validate UpdateField response.");
-}
-
-// Test for posting field online.
-func Test_Field_UpdateFieldOnline(t *testing.T) {
-    config := ReadConfiguration(t)
-    client, ctx := PrepareTest(t, config)
-    fieldFolder := "DocumentElements/Fields"
-
-    requestField := models.FieldUpdate{
-        FieldCode: ToStringPointer("{ NUMPAGES }"),
-    }
-
-    options := map[string]interface{}{
-        "nodePath": "sections/0/paragraphs/0",
-    }
-
-    request := &models.UpdateFieldOnlineRequest{
-        Document: OpenFile(t, fieldFolder + "/GetField.docx"),
-        Field: requestField,
-        Index: ToInt32Pointer(int32(0)),
-        Optionals: options,
-    }
-
-    _,err := client.WordsApi.UpdateFieldOnline(ctx, request)
-
-    if err != nil {
-        t.Error(err)
-    }
-
 }
 
 // Test for inserting page numbers field.
@@ -419,34 +313,6 @@ func Test_Field_InsertPageNumbers(t *testing.T) {
     assert.Equal(t, "TestInsertPageNumbers.docx", actual.Document.FileName, "Validate InsertPageNumbers response.");
 }
 
-// Test for inserting page numbers field online.
-func Test_Field_InsertPageNumbersOnline(t *testing.T) {
-    config := ReadConfiguration(t)
-    client, ctx := PrepareTest(t, config)
-    localFileName := "test_multi_pages.docx"
-
-    requestPageNumber := models.PageNumber{
-        Alignment: ToStringPointer("center"),
-        Format: ToStringPointer("{PAGE} of {NUMPAGES}"),
-    }
-
-    options := map[string]interface{}{
-    }
-
-    request := &models.InsertPageNumbersOnlineRequest{
-        Document: OpenFile(t, "Common/" + localFileName),
-        PageNumber: requestPageNumber,
-        Optionals: options,
-    }
-
-    _,err := client.WordsApi.InsertPageNumbersOnline(ctx, request)
-
-    if err != nil {
-        t.Error(err)
-    }
-
-}
-
 // Test for deleting field.
 func Test_Field_DeleteField(t *testing.T) {
     config := ReadConfiguration(t)
@@ -471,31 +337,6 @@ func Test_Field_DeleteField(t *testing.T) {
     }
 
     _, err := client.WordsApi.DeleteField(ctx, request)
-
-    if err != nil {
-        t.Error(err)
-    }
-
-}
-
-// Test for deleting field online.
-func Test_Field_DeleteFieldOnline(t *testing.T) {
-    config := ReadConfiguration(t)
-    client, ctx := PrepareTest(t, config)
-    fieldFolder := "DocumentElements/Fields"
-
-
-    options := map[string]interface{}{
-        "nodePath": "sections/0/paragraphs/0",
-    }
-
-    request := &models.DeleteFieldOnlineRequest{
-        Document: OpenFile(t, fieldFolder + "/GetField.docx"),
-        Index: ToInt32Pointer(int32(0)),
-        Optionals: options,
-    }
-
-    _, , _, err := client.WordsApi.DeleteFieldOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -705,30 +546,6 @@ func Test_Field_DeleteDocumentFields(t *testing.T) {
 
 }
 
-// Test for deleting fields online.
-func Test_Field_DeleteDocumentFieldsOnline(t *testing.T) {
-    config := ReadConfiguration(t)
-    client, ctx := PrepareTest(t, config)
-    localFileName := "Common/test_multi_pages.docx"
-
-
-    options := map[string]interface{}{
-        "nodePath": "",
-    }
-
-    request := &models.DeleteFieldsOnlineRequest{
-        Document: OpenFile(t, localFileName),
-        Optionals: options,
-    }
-
-    _, , _, err := client.WordsApi.DeleteFieldsOnline(ctx, request)
-
-    if err != nil {
-        t.Error(err)
-    }
-
-}
-
 // Test for posting updated fields.
 func Test_Field_UpdateDocumentFields(t *testing.T) {
     config := ReadConfiguration(t)
@@ -757,27 +574,4 @@ func Test_Field_UpdateDocumentFields(t *testing.T) {
 
     assert.NotNil(t, actual.Document, "Validate UpdateDocumentFields response.");
     assert.Equal(t, "TestUpdateDocumentFields.docx", actual.Document.FileName, "Validate UpdateDocumentFields response.");
-}
-
-// Test for posting updated fields online.
-func Test_Field_UpdateDocumentFieldsOnline(t *testing.T) {
-    config := ReadConfiguration(t)
-    client, ctx := PrepareTest(t, config)
-    localFile := "Common/test_multi_pages.docx"
-
-
-    options := map[string]interface{}{
-    }
-
-    request := &models.UpdateFieldsOnlineRequest{
-        Document: OpenFile(t, localFile),
-        Optionals: options,
-    }
-
-    _,err := client.WordsApi.UpdateFieldsOnline(ctx, request)
-
-    if err != nil {
-        t.Error(err)
-    }
-
 }

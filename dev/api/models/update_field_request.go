@@ -1,7 +1,7 @@
 /*
  * --------------------------------------------------------------------------------
  * <copyright company="Aspose" file="update_field_request.go">
- *   Copyright (c) 2021 Aspose.Words for Cloud
+ *   Copyright (c) 2020 Aspose.Words for Cloud
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -39,10 +39,10 @@ import (
 type UpdateFieldRequest struct {
         // The filename of the input document.
         Name *string
+        // The properties of the field.
+        Field IFieldUpdate
         // Object index.
         Index *int32
-        // Field data.
-        Field IFieldUpdate
     /* optional (nil or map[string]interface{}) with one or more of key / value pairs:
         key: "nodePath" value: (string) The path to the node in the document tree.
         key: "folder" value: (string) Original document folder.

@@ -1,7 +1,7 @@
 /*
  * --------------------------------------------------------------------------------
  * <copyright company="Aspose" file="macros_test.go">
- *   Copyright (c) 2021 Aspose.Words for Cloud
+ *   Copyright (c) 2020 Aspose.Words for Cloud
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -54,29 +54,6 @@ func Test_Macros_DeleteMacros(t *testing.T) {
     }
 
     _, err := client.WordsApi.DeleteMacros(ctx, request)
-
-    if err != nil {
-        t.Error(err)
-    }
-
-}
-
-// Test for deleting macros online.
-func Test_Macros_DeleteMacrosOnline(t *testing.T) {
-    config := ReadConfiguration(t)
-    client, ctx := PrepareTest(t, config)
-    localFile := "Common/test_multi_pages.docx"
-
-
-    options := map[string]interface{}{
-    }
-
-    request := &models.DeleteMacrosOnlineRequest{
-        Document: OpenFile(t, localFile),
-        Optionals: options,
-    }
-
-    _, , _, err := client.WordsApi.DeleteMacrosOnline(ctx, request)
 
     if err != nil {
         t.Error(err)

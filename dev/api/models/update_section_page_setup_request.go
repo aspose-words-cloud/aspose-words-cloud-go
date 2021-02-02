@@ -1,7 +1,7 @@
 /*
  * --------------------------------------------------------------------------------
  * <copyright company="Aspose" file="update_section_page_setup_request.go">
- *   Copyright (c) 2021 Aspose.Words for Cloud
+ *   Copyright (c) 2020 Aspose.Words for Cloud
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -41,7 +41,7 @@ type UpdateSectionPageSetupRequest struct {
         Name *string
         // The index of the section.
         SectionIndex *int32
-        // Page setup properties dto.
+        // The properties of the page setup.
         PageSetup IPageSetup
     /* optional (nil or map[string]interface{}) with one or more of key / value pairs:
         key: "folder" value: (string) Original document folder.

@@ -1,7 +1,7 @@
 /*
  * --------------------------------------------------------------------------------
  * <copyright company="Aspose" file="create_document_request.go">
- *   Copyright (c) 2021 Aspose.Words for Cloud
+ *   Copyright (c) 2020 Aspose.Words for Cloud
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -37,9 +37,9 @@ import (
 // CreateDocumentRequest contains request data for WordsApiService.CreateDocument method.
 type CreateDocumentRequest struct {
     /* optional (nil or map[string]interface{}) with one or more of key / value pairs:
+        key: "storage" value: (string) Original document storage.
         key: "fileName" value: (string) The filename of the document.
-        key: "folder" value: (string) The path to the document folder.
-        key: "storage" value: (string) Original document storage. */
+        key: "folder" value: (string) The path to the document folder. */
     Optionals map[string]interface{}
 }
 
@@ -60,14 +60,19 @@ func (data *CreateDocumentRequest) CreateRequestData() (RequestData, error) {
     result.QueryParams = url.Values{}
     result.FormParams = make([]FormParamContainer, 0)
 
+    if err := typeCheckParameter(data.Optionals["storage"], "string", "data.Optionals[storage]"); err != nil {
+        return result, err
+    }
     if err := typeCheckParameter(data.Optionals["fileName"], "string", "data.Optionals[fileName]"); err != nil {
         return result, err
     }
     if err := typeCheckParameter(data.Optionals["folder"], "string", "data.Optionals[folder]"); err != nil {
         return result, err
     }
-    if err := typeCheckParameter(data.Optionals["storage"], "string", "data.Optionals[storage]"); err != nil {
-        return result, err
+
+
+    if localVarTempParam, localVarOk := data.Optionals["storage"].(string); localVarOk {
+        result.QueryParams.Add("Storage", parameterToString(localVarTempParam, ""))
     }
 
 
@@ -78,11 +83,6 @@ func (data *CreateDocumentRequest) CreateRequestData() (RequestData, error) {
 
     if localVarTempParam, localVarOk := data.Optionals["folder"].(string); localVarOk {
         result.QueryParams.Add("Folder", parameterToString(localVarTempParam, ""))
-    }
-
-
-    if localVarTempParam, localVarOk := data.Optionals["storage"].(string); localVarOk {
-        result.QueryParams.Add("Storage", parameterToString(localVarTempParam, ""))
     }
 
 

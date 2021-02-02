@@ -1,7 +1,7 @@
 /*
  * --------------------------------------------------------------------------------
  * <copyright company="Aspose" file="update_bookmark_request.go">
- *   Copyright (c) 2021 Aspose.Words for Cloud
+ *   Copyright (c) 2020 Aspose.Words for Cloud
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -39,10 +39,10 @@ import (
 type UpdateBookmarkRequest struct {
         // The filename of the input document.
         Name *string
+        // The properties of the bookmark.
+        BookmarkData IBookmarkData
         // The name of the bookmark.
         BookmarkName *string
-        // Bookmark data.
-        BookmarkData IBookmarkData
     /* optional (nil or map[string]interface{}) with one or more of key / value pairs:
         key: "folder" value: (string) Original document folder.
         key: "storage" value: (string) Original document storage.

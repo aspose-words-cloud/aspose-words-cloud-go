@@ -1,7 +1,7 @@
 /*
  * --------------------------------------------------------------------------------
  * <copyright company="Aspose" file="convert_document_request.go">
- *   Copyright (c) 2021 Aspose.Words for Cloud
+ *   Copyright (c) 2020 Aspose.Words for Cloud
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -42,9 +42,9 @@ type ConvertDocumentRequest struct {
         // The format to convert.
         Format *string
     /* optional (nil or map[string]interface{}) with one or more of key / value pairs:
+        key: "storage" value: (string) Original document storage.
         key: "outPath" value: (string) The path to the output document on a local storage.
         key: "fileNameFieldValue" value: (string) The filename of the output document, that will be used when the resulting document has a dynamic field {filename}. If it is not set, the "sourceFilename" will be used instead.
-        key: "storage" value: (string) Original document storage.
         key: "fontsLocation" value: (string) Folder in filestorage with custom fonts. */
     Optionals map[string]interface{}
 }
@@ -66,13 +66,13 @@ func (data *ConvertDocumentRequest) CreateRequestData() (RequestData, error) {
     result.QueryParams = url.Values{}
     result.FormParams = make([]FormParamContainer, 0)
 
+    if err := typeCheckParameter(data.Optionals["storage"], "string", "data.Optionals[storage]"); err != nil {
+        return result, err
+    }
     if err := typeCheckParameter(data.Optionals["outPath"], "string", "data.Optionals[outPath]"); err != nil {
         return result, err
     }
     if err := typeCheckParameter(data.Optionals["fileNameFieldValue"], "string", "data.Optionals[fileNameFieldValue]"); err != nil {
-        return result, err
-    }
-    if err := typeCheckParameter(data.Optionals["storage"], "string", "data.Optionals[storage]"); err != nil {
         return result, err
     }
     if err := typeCheckParameter(data.Optionals["fontsLocation"], "string", "data.Optionals[fontsLocation]"); err != nil {
@@ -83,6 +83,11 @@ func (data *ConvertDocumentRequest) CreateRequestData() (RequestData, error) {
     result.QueryParams.Add("Format", parameterToString(*data.Format, ""))
 
 
+    if localVarTempParam, localVarOk := data.Optionals["storage"].(string); localVarOk {
+        result.QueryParams.Add("Storage", parameterToString(localVarTempParam, ""))
+    }
+
+
     if localVarTempParam, localVarOk := data.Optionals["outPath"].(string); localVarOk {
         result.QueryParams.Add("OutPath", parameterToString(localVarTempParam, ""))
     }
@@ -90,11 +95,6 @@ func (data *ConvertDocumentRequest) CreateRequestData() (RequestData, error) {
 
     if localVarTempParam, localVarOk := data.Optionals["fileNameFieldValue"].(string); localVarOk {
         result.QueryParams.Add("FileNameFieldValue", parameterToString(localVarTempParam, ""))
-    }
-
-
-    if localVarTempParam, localVarOk := data.Optionals["storage"].(string); localVarOk {
-        result.QueryParams.Add("Storage", parameterToString(localVarTempParam, ""))
     }
 
 
