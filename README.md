@@ -16,9 +16,10 @@ Feel free to explore the [Developer's Guide](https://docs.aspose.cloud/display/w
 - Add & remove watermarks and protection.
 - Read & write access to Document Object Model.
 
-## Enhancements in Version 20.12
+## Enhancements in Version 21.1
 
-- Refactoring of Co SDK, all API method signatures are changed
+- Added online version for all API methods
+- Refactoring of Go SDK, all API method signatures are changed
 - Added Batch API feature
 
 ## Enhancements in Version 20.11

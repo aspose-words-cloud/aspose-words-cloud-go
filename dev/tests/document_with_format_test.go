@@ -1,7 +1,7 @@
 /*
  * --------------------------------------------------------------------------------
  * <copyright company="Aspose" file="document_with_format_test.go">
- *   Copyright (c) 2020 Aspose.Words for Cloud
+ *   Copyright (c) 2021 Aspose.Words for Cloud
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -54,7 +54,7 @@ func Test_DocumentWithFormat_GetDocumentWithFormat(t *testing.T) {
         Optionals: options,
     }
 
-    _, err := client.WordsApi.GetDocumentWithFormat(ctx, request)
+    _, , _, err := client.WordsApi.GetDocumentWithFormat(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -84,7 +84,7 @@ func Test_DocumentWithFormat_GetDocumentWithFormatAndOutPath(t *testing.T) {
         Optionals: options,
     }
 
-    _, err := client.WordsApi.GetDocumentWithFormat(ctx, request)
+    _, , _, err := client.WordsApi.GetDocumentWithFormat(ctx, request)
 
     if err != nil {
         t.Error(err)

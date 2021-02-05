@@ -1,7 +1,7 @@
 /*
  * --------------------------------------------------------------------------------
  * <copyright company="Aspose" file="append_document_request.go">
- *   Copyright (c) 2020 Aspose.Words for Cloud
+ *   Copyright (c) 2021 Aspose.Words for Cloud
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -39,7 +39,7 @@ import (
 type AppendDocumentRequest struct {
         // The filename of the input document.
         Name *string
-        // The collection of documents to append.
+        // <see cref="DocumentEntryList"/> with a list of documents to append.
         DocumentList IDocumentEntryList
     /* optional (nil or map[string]interface{}) with one or more of key / value pairs:
         key: "folder" value: (string) Original document folder.

@@ -1,7 +1,7 @@
 /*
  * --------------------------------------------------------------------------------
  * <copyright company="Aspose" file="update_run_request.go">
- *   Copyright (c) 2020 Aspose.Words for Cloud
+ *   Copyright (c) 2021 Aspose.Words for Cloud
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -39,12 +39,12 @@ import (
 type UpdateRunRequest struct {
         // The filename of the input document.
         Name *string
-        // The properties of the Run object.
-        Run IRunUpdate
         // The path to the paragraph in the document tree.
         ParagraphPath *string
         // Object index.
         Index *int32
+        // Run data.
+        Run IRunUpdate
     /* optional (nil or map[string]interface{}) with one or more of key / value pairs:
         key: "folder" value: (string) Original document folder.
         key: "storage" value: (string) Original document storage.

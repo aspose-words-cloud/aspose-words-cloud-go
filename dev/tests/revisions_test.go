@@ -1,7 +1,7 @@
 /*
  * --------------------------------------------------------------------------------
  * <copyright company="Aspose" file="revisions_test.go">
- *   Copyright (c) 2020 Aspose.Words for Cloud
+ *   Copyright (c) 2021 Aspose.Words for Cloud
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -65,6 +65,29 @@ func Test_Revisions_AcceptAllRevisions(t *testing.T) {
     assert.NotNil(t, actual.Result.Dest, "Validate AcceptAllRevisions response.");
 }
 
+// Test for accepting revisions in document online.
+func Test_Revisions_AcceptAllRevisionsOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "Common/test_multi_pages.docx"
+
+
+    options := map[string]interface{}{
+    }
+
+    request := &models.AcceptAllRevisionsOnlineRequest{
+        Document: OpenFile(t, localFile),
+        Optionals: options,
+    }
+
+    _,err := client.WordsApi.AcceptAllRevisionsOnline(ctx, request)
+
+    if err != nil {
+        t.Error(err)
+    }
+
+}
+
 // Test for rejecting revisions in document.
 func Test_Revisions_RejectAllRevisions(t *testing.T) {
     config := ReadConfiguration(t)
@@ -94,4 +117,27 @@ func Test_Revisions_RejectAllRevisions(t *testing.T) {
 
     assert.NotNil(t, actual.Result, "Validate RejectAllRevisions response.");
     assert.NotNil(t, actual.Result.Dest, "Validate RejectAllRevisions response.");
+}
+
+// Test for rejecting revisions in document online.
+func Test_Revisions_RejectAllRevisionsOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "Common/test_multi_pages.docx"
+
+
+    options := map[string]interface{}{
+    }
+
+    request := &models.RejectAllRevisionsOnlineRequest{
+        Document: OpenFile(t, localFile),
+        Optionals: options,
+    }
+
+    _,err := client.WordsApi.RejectAllRevisionsOnline(ctx, request)
+
+    if err != nil {
+        t.Error(err)
+    }
+
 }

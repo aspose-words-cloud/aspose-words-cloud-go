@@ -1,7 +1,7 @@
 /*
  * --------------------------------------------------------------------------------
  * <copyright company="Aspose" file="apply_style_to_document_element_request.go">
- *   Copyright (c) 2020 Aspose.Words for Cloud
+ *   Copyright (c) 2021 Aspose.Words for Cloud
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -39,10 +39,10 @@ import (
 type ApplyStyleToDocumentElementRequest struct {
         // The filename of the input document.
         Name *string
-        // The style to apply.
-        StyleApply IStyleApply
         // The path to the node in the document tree, that supports styles: ParagraphFormat, List, ListLevel, Table.
         StyledNodePath *string
+        // Style to apply.
+        StyleApply IStyleApply
     /* optional (nil or map[string]interface{}) with one or more of key / value pairs:
         key: "folder" value: (string) Original document folder.
         key: "storage" value: (string) Original document storage.

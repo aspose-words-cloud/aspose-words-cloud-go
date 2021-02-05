@@ -1,7 +1,7 @@
 /*
  * --------------------------------------------------------------------------------
  * <copyright company="Aspose" file="table_test.go">
- *   Copyright (c) 2020 Aspose.Words for Cloud
+ *   Copyright (c) 2021 Aspose.Words for Cloud
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -65,6 +65,30 @@ func Test_Table_GetTables(t *testing.T) {
     assert.NotNil(t, actual.Tables.TableLinkList, "Validate GetTables response.");
     assert.Equal(t, 5, len(actual.Tables.TableLinkList), "Validate GetTables response.");
     assert.Equal(t, "0.0.1", actual.Tables.TableLinkList[0].NodeId, "Validate GetTables response.");
+}
+
+// Test for getting tables online.
+func Test_Table_GetTablesOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "DocumentElements/Tables/TablesGet.docx"
+
+
+    options := map[string]interface{}{
+        "nodePath": "",
+    }
+
+    request := &models.GetTablesOnlineRequest{
+        Document: OpenFile(t, localFile),
+        Optionals: options,
+    }
+
+    _, _, err := client.WordsApi.GetTablesOnline(ctx, request)
+
+    if err != nil {
+        t.Error(err)
+    }
+
 }
 
 // Test for getting tables without node path.
@@ -134,6 +158,31 @@ func Test_Table_GetTable(t *testing.T) {
     assert.Equal(t, 2, len(actual.Table.TableRowList[0].TableCellList), "Validate GetTable response.");
 }
 
+// Test for getting table online.
+func Test_Table_GetTableOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "DocumentElements/Tables/TablesGet.docx"
+
+
+    options := map[string]interface{}{
+        "nodePath": "",
+    }
+
+    request := &models.GetTableOnlineRequest{
+        Document: OpenFile(t, localFile),
+        Index: ToInt32Pointer(int32(1)),
+        Optionals: options,
+    }
+
+    _, _, err := client.WordsApi.GetTableOnline(ctx, request)
+
+    if err != nil {
+        t.Error(err)
+    }
+
+}
+
 // Test for getting table without node path.
 func Test_Table_GetTableWithoutNodePath(t *testing.T) {
     config := ReadConfiguration(t)
@@ -191,6 +240,31 @@ func Test_Table_DeleteTable(t *testing.T) {
     }
 
     _, err := client.WordsApi.DeleteTable(ctx, request)
+
+    if err != nil {
+        t.Error(err)
+    }
+
+}
+
+// Test for deleting table online.
+func Test_Table_DeleteTableOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "DocumentElements/Tables/TablesGet.docx"
+
+
+    options := map[string]interface{}{
+        "nodePath": "",
+    }
+
+    request := &models.DeleteTableOnlineRequest{
+        Document: OpenFile(t, localFile),
+        Index: ToInt32Pointer(int32(1)),
+        Optionals: options,
+    }
+
+    _, , _, err := client.WordsApi.DeleteTableOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -266,6 +340,35 @@ func Test_Table_InsertTable(t *testing.T) {
     assert.Equal(t, 5, len(actual.Table.TableRowList[0].TableCellList), "Validate InsertTable response.");
 }
 
+// Test for adding table online.
+func Test_Table_InsertTableOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "DocumentElements/Tables/TablesGet.docx"
+
+    requestTable := models.TableInsert{
+        ColumnsCount: ToInt32Pointer(int32(5)),
+        RowsCount: ToInt32Pointer(int32(4)),
+    }
+
+    options := map[string]interface{}{
+        "nodePath": "",
+    }
+
+    request := &models.InsertTableOnlineRequest{
+        Document: OpenFile(t, localFile),
+        Table: requestTable,
+        Optionals: options,
+    }
+
+    _,err := client.WordsApi.InsertTableOnline(ctx, request)
+
+    if err != nil {
+        t.Error(err)
+    }
+
+}
+
 // Test for adding table without node path.
 func Test_Table_InsertTableWithoutNodePath(t *testing.T) {
     config := ReadConfiguration(t)
@@ -336,6 +439,31 @@ func Test_Table_GetTableProperties(t *testing.T) {
     assert.Equal(t, "Table Grid", actual.Properties.StyleName, "Validate GetTableProperties response.");
 }
 
+// Test for getting document properties online.
+func Test_Table_GetTablePropertiesOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "DocumentElements/Tables/TablesGet.docx"
+
+
+    options := map[string]interface{}{
+        "nodePath": "",
+    }
+
+    request := &models.GetTablePropertiesOnlineRequest{
+        Document: OpenFile(t, localFile),
+        Index: ToInt32Pointer(int32(1)),
+        Optionals: options,
+    }
+
+    _, _, err := client.WordsApi.GetTablePropertiesOnline(ctx, request)
+
+    if err != nil {
+        t.Error(err)
+    }
+
+}
+
 // Test for getting document properties without node path.
 func Test_Table_GetTablePropertiesWithoutNodePath(t *testing.T) {
     config := ReadConfiguration(t)
@@ -393,8 +521,8 @@ func Test_Table_UpdateTableProperties(t *testing.T) {
 
     request := &models.UpdateTablePropertiesRequest{
         Name: ToStringPointer(remoteFileName),
-        Properties: requestProperties,
         Index: ToInt32Pointer(int32(1)),
+        Properties: requestProperties,
         Optionals: options,
     }
 
@@ -409,6 +537,40 @@ func Test_Table_UpdateTableProperties(t *testing.T) {
     assert.True(t, actual.Properties.Bidi, "Validate UpdateTableProperties response.");
     assert.Equal(t, 1.0, actual.Properties.BottomPadding, "Validate UpdateTableProperties response.");
     assert.Equal(t, 2.0, actual.Properties.CellSpacing, "Validate UpdateTableProperties response.");
+}
+
+// Test for updating table properties online.
+func Test_Table_UpdateTablePropertiesOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "DocumentElements/Tables/TablesGet.docx"
+
+    requestProperties := models.TableProperties{
+        Alignment: ToStringPointer("Right"),
+        AllowAutoFit: ToBoolPointer(false),
+        Bidi: ToBoolPointer(true),
+        BottomPadding: ToFloat64Pointer(1),
+        CellSpacing: ToFloat64Pointer(2),
+        StyleOptions: ToStringPointer("ColumnBands"),
+    }
+
+    options := map[string]interface{}{
+        "nodePath": "",
+    }
+
+    request := &models.UpdateTablePropertiesOnlineRequest{
+        Document: OpenFile(t, localFile),
+        Properties: requestProperties,
+        Index: ToInt32Pointer(int32(1)),
+        Optionals: options,
+    }
+
+    _,err := client.WordsApi.UpdateTablePropertiesOnline(ctx, request)
+
+    if err != nil {
+        t.Error(err)
+    }
+
 }
 
 // Test for updating table properties without node path.
@@ -436,8 +598,8 @@ func Test_Table_UpdateTablePropertiesWithoutNodePath(t *testing.T) {
 
     request := &models.UpdateTablePropertiesRequest{
         Name: ToStringPointer(remoteFileName),
-        Properties: requestProperties,
         Index: ToInt32Pointer(int32(1)),
+        Properties: requestProperties,
         Optionals: options,
     }
 
@@ -487,6 +649,31 @@ func Test_Table_GetTableRow(t *testing.T) {
     assert.Equal(t, 2, len(actual.Row.TableCellList), "Validate GetTableRow response.");
 }
 
+// Test for getting table row online.
+func Test_Table_GetTableRowOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "DocumentElements/Tables/TablesGet.docx"
+
+
+    options := map[string]interface{}{
+    }
+
+    request := &models.GetTableRowOnlineRequest{
+        Document: OpenFile(t, localFile),
+        TablePath: ToStringPointer("tables/1"),
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    _, _, err := client.WordsApi.GetTableRowOnline(ctx, request)
+
+    if err != nil {
+        t.Error(err)
+    }
+
+}
+
 // Test for deleting table row.
 func Test_Table_DeleteTableRow(t *testing.T) {
     config := ReadConfiguration(t)
@@ -517,6 +704,31 @@ func Test_Table_DeleteTableRow(t *testing.T) {
 
 }
 
+// Test for deleting table row online.
+func Test_Table_DeleteTableRowOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "DocumentElements/Tables/TablesGet.docx"
+
+
+    options := map[string]interface{}{
+    }
+
+    request := &models.DeleteTableRowOnlineRequest{
+        Document: OpenFile(t, localFile),
+        TablePath: ToStringPointer("tables/1"),
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    _, , _, err := client.WordsApi.DeleteTableRowOnline(ctx, request)
+
+    if err != nil {
+        t.Error(err)
+    }
+
+}
+
 // Test for adding row.
 func Test_Table_InsertTableRow(t *testing.T) {
     config := ReadConfiguration(t)
@@ -537,8 +749,8 @@ func Test_Table_InsertTableRow(t *testing.T) {
 
     request := &models.InsertTableRowRequest{
         Name: ToStringPointer(remoteFileName),
-        Row: requestRow,
         TablePath: ToStringPointer("sections/0/tables/2"),
+        Row: requestRow,
         Optionals: options,
     }
 
@@ -551,6 +763,34 @@ func Test_Table_InsertTableRow(t *testing.T) {
     assert.NotNil(t, actual.Row, "Validate InsertTableRow response.");
     assert.NotNil(t, actual.Row.TableCellList, "Validate InsertTableRow response.");
     assert.Equal(t, 5, len(actual.Row.TableCellList), "Validate InsertTableRow response.");
+}
+
+// Test for adding row online.
+func Test_Table_InsertTableRowOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "DocumentElements/Tables/TablesGet.docx"
+
+    requestRow := models.TableRowInsert{
+        ColumnsCount: ToInt32Pointer(int32(5)),
+    }
+
+    options := map[string]interface{}{
+    }
+
+    request := &models.InsertTableRowOnlineRequest{
+        Document: OpenFile(t, localFile),
+        TablePath: ToStringPointer("sections/0/tables/2"),
+        Row: requestRow,
+        Optionals: options,
+    }
+
+    _,err := client.WordsApi.InsertTableRowOnline(ctx, request)
+
+    if err != nil {
+        t.Error(err)
+    }
+
 }
 
 // Test for getting row format.
@@ -585,6 +825,31 @@ func Test_Table_GetTableRowFormat(t *testing.T) {
     assert.True(t, actual.RowFormat.AllowBreakAcrossPages, "Validate GetTableRowFormat response.");
 }
 
+// Test for getting row format online.
+func Test_Table_GetTableRowFormatOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "DocumentElements/Tables/TablesGet.docx"
+
+
+    options := map[string]interface{}{
+    }
+
+    request := &models.GetTableRowFormatOnlineRequest{
+        Document: OpenFile(t, localFile),
+        TablePath: ToStringPointer("sections/0/tables/2"),
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    _, _, err := client.WordsApi.GetTableRowFormatOnline(ctx, request)
+
+    if err != nil {
+        t.Error(err)
+    }
+
+}
+
 // Test updating row format.
 func Test_Table_UpdateTableRowFormat(t *testing.T) {
     config := ReadConfiguration(t)
@@ -608,9 +873,9 @@ func Test_Table_UpdateTableRowFormat(t *testing.T) {
 
     request := &models.UpdateTableRowFormatRequest{
         Name: ToStringPointer(remoteFileName),
-        Format: requestFormat,
         TablePath: ToStringPointer("sections/0/tables/2"),
         Index: ToInt32Pointer(int32(0)),
+        Format: requestFormat,
         Optionals: options,
     }
 
@@ -624,6 +889,38 @@ func Test_Table_UpdateTableRowFormat(t *testing.T) {
     assert.True(t, actual.RowFormat.AllowBreakAcrossPages, "Validate UpdateTableRowFormat response.");
     assert.True(t, actual.RowFormat.HeadingFormat, "Validate UpdateTableRowFormat response.");
     assert.Equal(t, 10.0, actual.RowFormat.Height, "Validate UpdateTableRowFormat response.");
+}
+
+// Test updating row format online.
+func Test_Table_UpdateTableRowFormatOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "DocumentElements/Tables/TablesGet.docx"
+
+    requestFormat := models.TableRowFormat{
+        AllowBreakAcrossPages: ToBoolPointer(true),
+        HeadingFormat: ToBoolPointer(true),
+        Height: ToFloat64Pointer(10),
+        HeightRule: ToStringPointer("Auto"),
+    }
+
+    options := map[string]interface{}{
+    }
+
+    request := &models.UpdateTableRowFormatOnlineRequest{
+        Document: OpenFile(t, localFile),
+        TablePath: ToStringPointer("sections/0/tables/2"),
+        Format: requestFormat,
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    _,err := client.WordsApi.UpdateTableRowFormatOnline(ctx, request)
+
+    if err != nil {
+        t.Error(err)
+    }
+
 }
 
 // Test for getting table cell.
@@ -658,6 +955,31 @@ func Test_Table_GetTableCell(t *testing.T) {
     assert.Equal(t, "0.0.5.0.0", actual.Cell.NodeId, "Validate GetTableCell response.");
 }
 
+// Test for getting table cell online.
+func Test_Table_GetTableCellOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "DocumentElements/Tables/TablesGet.docx"
+
+
+    options := map[string]interface{}{
+    }
+
+    request := &models.GetTableCellOnlineRequest{
+        Document: OpenFile(t, localFile),
+        TableRowPath: ToStringPointer("sections/0/tables/2/rows/0"),
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    _, _, err := client.WordsApi.GetTableCellOnline(ctx, request)
+
+    if err != nil {
+        t.Error(err)
+    }
+
+}
+
 // Test for deleting cell.
 func Test_Table_DeleteTableCell(t *testing.T) {
     config := ReadConfiguration(t)
@@ -688,6 +1010,31 @@ func Test_Table_DeleteTableCell(t *testing.T) {
 
 }
 
+// Test for deleting cell online.
+func Test_Table_DeleteTableCellOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "DocumentElements/Tables/TablesGet.docx"
+
+
+    options := map[string]interface{}{
+    }
+
+    request := &models.DeleteTableCellOnlineRequest{
+        Document: OpenFile(t, localFile),
+        TableRowPath: ToStringPointer("sections/0/tables/2/rows/0"),
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    _, , _, err := client.WordsApi.DeleteTableCellOnline(ctx, request)
+
+    if err != nil {
+        t.Error(err)
+    }
+
+}
+
 // Test for adding cell.
 func Test_Table_InsertTableCell(t *testing.T) {
     config := ReadConfiguration(t)
@@ -707,8 +1054,8 @@ func Test_Table_InsertTableCell(t *testing.T) {
 
     request := &models.InsertTableCellRequest{
         Name: ToStringPointer(remoteFileName),
-        Cell: requestCell,
         TableRowPath: ToStringPointer("sections/0/tables/2/rows/0"),
+        Cell: requestCell,
         Optionals: options,
     }
 
@@ -720,6 +1067,33 @@ func Test_Table_InsertTableCell(t *testing.T) {
 
     assert.NotNil(t, actual.Cell, "Validate InsertTableCell response.");
     assert.Equal(t, "0.0.5.0.3", actual.Cell.NodeId, "Validate InsertTableCell response.");
+}
+
+// Test for adding cell online.
+func Test_Table_InsertTableCellOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "DocumentElements/Tables/TablesGet.docx"
+
+    requestCell := models.TableCellInsert{
+    }
+
+    options := map[string]interface{}{
+    }
+
+    request := &models.InsertTableCellOnlineRequest{
+        Document: OpenFile(t, localFile),
+        TableRowPath: ToStringPointer("sections/0/tables/2/rows/0"),
+        Cell: requestCell,
+        Optionals: options,
+    }
+
+    _,err := client.WordsApi.InsertTableCellOnline(ctx, request)
+
+    if err != nil {
+        t.Error(err)
+    }
+
 }
 
 // Test for getting cell format.
@@ -754,6 +1128,31 @@ func Test_Table_GetTableCellFormat(t *testing.T) {
     assert.True(t, actual.CellFormat.WrapText, "Validate GetTableCellFormat response.");
 }
 
+// Test for getting cell format online.
+func Test_Table_GetTableCellFormatOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "DocumentElements/Tables/TablesGet.docx"
+
+
+    options := map[string]interface{}{
+    }
+
+    request := &models.GetTableCellFormatOnlineRequest{
+        Document: OpenFile(t, localFile),
+        TableRowPath: ToStringPointer("sections/0/tables/2/rows/0"),
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    _, _, err := client.WordsApi.GetTableCellFormatOnline(ctx, request)
+
+    if err != nil {
+        t.Error(err)
+    }
+
+}
+
 // Test for updating cell format.
 func Test_Table_UpdateTableCellFormat(t *testing.T) {
     config := ReadConfiguration(t)
@@ -777,9 +1176,9 @@ func Test_Table_UpdateTableCellFormat(t *testing.T) {
 
     request := &models.UpdateTableCellFormatRequest{
         Name: ToStringPointer(remoteFileName),
-        Format: requestFormat,
         TableRowPath: ToStringPointer("sections/0/tables/2/rows/0"),
         Index: ToInt32Pointer(int32(0)),
+        Format: requestFormat,
         Optionals: options,
     }
 
@@ -793,6 +1192,38 @@ func Test_Table_UpdateTableCellFormat(t *testing.T) {
     assert.Equal(t, 5.0, actual.CellFormat.BottomPadding, "Validate UpdateTableCellFormat response.");
     assert.True(t, actual.CellFormat.FitText, "Validate UpdateTableCellFormat response.");
     assert.True(t, actual.CellFormat.WrapText, "Validate UpdateTableCellFormat response.");
+}
+
+// Test for updating cell format online.
+func Test_Table_UpdateTableCellFormatOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "DocumentElements/Tables/TablesGet.docx"
+
+    requestFormat := models.TableCellFormat{
+        BottomPadding: ToFloat64Pointer(5),
+        FitText: ToBoolPointer(true),
+        HorizontalMerge: ToStringPointer("First"),
+        WrapText: ToBoolPointer(true),
+    }
+
+    options := map[string]interface{}{
+    }
+
+    request := &models.UpdateTableCellFormatOnlineRequest{
+        Document: OpenFile(t, localFile),
+        TableRowPath: ToStringPointer("sections/0/tables/2/rows/0"),
+        Format: requestFormat,
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    _,err := client.WordsApi.UpdateTableCellFormatOnline(ctx, request)
+
+    if err != nil {
+        t.Error(err)
+    }
+
 }
 
 // Test for table rendering.
@@ -818,7 +1249,33 @@ func Test_Table_RenderTable(t *testing.T) {
         Optionals: options,
     }
 
-    _, err := client.WordsApi.RenderTable(ctx, request)
+    _, , _, err := client.WordsApi.RenderTable(ctx, request)
+
+    if err != nil {
+        t.Error(err)
+    }
+
+}
+
+// Test for table rendering.
+func Test_Table_RenderTableOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "DocumentElements/Tables/TablesGet.docx"
+
+
+    options := map[string]interface{}{
+        "nodePath": "",
+    }
+
+    request := &models.RenderTableOnlineRequest{
+        Document: OpenFile(t, localFile),
+        Format: ToStringPointer("png"),
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    _, , _, err := client.WordsApi.RenderTableOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -848,7 +1305,7 @@ func Test_Table_RenderTableWithoutNodePath(t *testing.T) {
         Optionals: options,
     }
 
-    _, err := client.WordsApi.RenderTable(ctx, request)
+    _, , _, err := client.WordsApi.RenderTable(ctx, request)
 
     if err != nil {
         t.Error(err)

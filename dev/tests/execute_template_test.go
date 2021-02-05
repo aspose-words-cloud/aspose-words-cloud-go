@@ -1,7 +1,7 @@
 /*
  * --------------------------------------------------------------------------------
  * <copyright company="Aspose" file="execute_template_test.go">
- *   Copyright (c) 2020 Aspose.Words for Cloud
+ *   Copyright (c) 2021 Aspose.Words for Cloud
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -86,7 +86,7 @@ func Test_ExecuteTemplate_ExecuteTemplateOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, err := client.WordsApi.ExecuteMailMergeOnline(ctx, request)
+    _, , _, err := client.WordsApi.ExecuteMailMergeOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
