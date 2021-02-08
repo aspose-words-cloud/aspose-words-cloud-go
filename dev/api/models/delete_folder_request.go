@@ -36,7 +36,7 @@ import (
 
 // DeleteFolderRequest contains request data for WordsApiService.DeleteFolder method.
 type DeleteFolderRequest struct {
-        // Folder path e.g. /Folder1s.
+        // Folder path e.g. '/folder'.
         Path *string
     /* optional (nil or map[string]interface{}) with one or more of key / value pairs:
         key: "storageName" value: (string) Storage name.

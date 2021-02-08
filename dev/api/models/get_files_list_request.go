@@ -37,7 +37,7 @@ import (
 
 // GetFilesListRequest contains request data for WordsApiService.GetFilesList method.
 type GetFilesListRequest struct {
-        // Folder path e.g. /Folder1.
+        // Folder path e.g. '/folder'.
         Path *string
     /* optional (nil or map[string]interface{}) with one or more of key / value pairs:
         key: "storageName" value: (string) Storage name. */

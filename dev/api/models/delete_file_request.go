@@ -36,7 +36,7 @@ import (
 
 // DeleteFileRequest contains request data for WordsApiService.DeleteFile method.
 type DeleteFileRequest struct {
-        // Path of the file including file name and extension e.g. /Folder1/file.ext.
+        // Path of the file including the file name and extension e.g. /folder1/file.ext.
         Path *string
     /* optional (nil or map[string]interface{}) with one or more of key / value pairs:
         key: "storageName" value: (string) Storage name.
