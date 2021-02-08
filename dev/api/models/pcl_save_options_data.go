@@ -30,6 +30,9 @@ package models
 // Container class for pcl save options.
 type PclSaveOptionsDataResult struct {
     // Container class for pcl save options.
+    AllowEmbeddingPostScriptFonts bool `json:"AllowEmbeddingPostScriptFonts,omitempty"`
+
+    // Container class for pcl save options.
     Dml3DEffectsRenderingMode string `json:"Dml3DEffectsRenderingMode,omitempty"`
 
     // Container class for pcl save options.
@@ -88,6 +91,9 @@ type PclSaveOptionsDataResult struct {
 }
 
 type PclSaveOptionsData struct {
+    // Container class for pcl save options.
+    AllowEmbeddingPostScriptFonts *bool `json:"AllowEmbeddingPostScriptFonts,omitempty"`
+
     // Container class for pcl save options.
     Dml3DEffectsRenderingMode *string `json:"Dml3DEffectsRenderingMode,omitempty"`
 

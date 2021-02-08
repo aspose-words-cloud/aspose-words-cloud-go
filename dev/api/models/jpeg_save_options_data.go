@@ -30,6 +30,9 @@ package models
 // Container class for jpeg save options.
 type JpegSaveOptionsDataResult struct {
     // Container class for jpeg save options.
+    AllowEmbeddingPostScriptFonts bool `json:"AllowEmbeddingPostScriptFonts,omitempty"`
+
+    // Container class for jpeg save options.
     Dml3DEffectsRenderingMode string `json:"Dml3DEffectsRenderingMode,omitempty"`
 
     // Container class for jpeg save options.
@@ -121,6 +124,9 @@ type JpegSaveOptionsDataResult struct {
 }
 
 type JpegSaveOptionsData struct {
+    // Container class for jpeg save options.
+    AllowEmbeddingPostScriptFonts *bool `json:"AllowEmbeddingPostScriptFonts,omitempty"`
+
     // Container class for jpeg save options.
     Dml3DEffectsRenderingMode *string `json:"Dml3DEffectsRenderingMode,omitempty"`
 

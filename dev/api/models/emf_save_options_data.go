@@ -30,6 +30,9 @@ package models
 // Container class for emf save options.
 type EmfSaveOptionsDataResult struct {
     // Container class for emf save options.
+    AllowEmbeddingPostScriptFonts bool `json:"AllowEmbeddingPostScriptFonts,omitempty"`
+
+    // Container class for emf save options.
     Dml3DEffectsRenderingMode string `json:"Dml3DEffectsRenderingMode,omitempty"`
 
     // Container class for emf save options.
@@ -121,6 +124,9 @@ type EmfSaveOptionsDataResult struct {
 }
 
 type EmfSaveOptionsData struct {
+    // Container class for emf save options.
+    AllowEmbeddingPostScriptFonts *bool `json:"AllowEmbeddingPostScriptFonts,omitempty"`
+
     // Container class for emf save options.
     Dml3DEffectsRenderingMode *string `json:"Dml3DEffectsRenderingMode,omitempty"`
 

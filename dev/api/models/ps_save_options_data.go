@@ -30,6 +30,9 @@ package models
 // Container class for ps save options.
 type PsSaveOptionsDataResult struct {
     // Container class for ps save options.
+    AllowEmbeddingPostScriptFonts bool `json:"AllowEmbeddingPostScriptFonts,omitempty"`
+
+    // Container class for ps save options.
     Dml3DEffectsRenderingMode string `json:"Dml3DEffectsRenderingMode,omitempty"`
 
     // Container class for ps save options.
@@ -85,6 +88,9 @@ type PsSaveOptionsDataResult struct {
 }
 
 type PsSaveOptionsData struct {
+    // Container class for ps save options.
+    AllowEmbeddingPostScriptFonts *bool `json:"AllowEmbeddingPostScriptFonts,omitempty"`
+
     // Container class for ps save options.
     Dml3DEffectsRenderingMode *string `json:"Dml3DEffectsRenderingMode,omitempty"`
 

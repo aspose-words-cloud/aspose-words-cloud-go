@@ -30,6 +30,9 @@ package models
 // Container class for docx/docm/dotx/dotm/flatopc save options.
 type OoxmlSaveOptionsDataResult struct {
     // Container class for docx/docm/dotx/dotm/flatopc save options.
+    AllowEmbeddingPostScriptFonts bool `json:"AllowEmbeddingPostScriptFonts,omitempty"`
+
+    // Container class for docx/docm/dotx/dotm/flatopc save options.
     Dml3DEffectsRenderingMode string `json:"Dml3DEffectsRenderingMode,omitempty"`
 
     // Container class for docx/docm/dotx/dotm/flatopc save options.
@@ -73,6 +76,9 @@ type OoxmlSaveOptionsDataResult struct {
 }
 
 type OoxmlSaveOptionsData struct {
+    // Container class for docx/docm/dotx/dotm/flatopc save options.
+    AllowEmbeddingPostScriptFonts *bool `json:"AllowEmbeddingPostScriptFonts,omitempty"`
+
     // Container class for docx/docm/dotx/dotm/flatopc save options.
     Dml3DEffectsRenderingMode *string `json:"Dml3DEffectsRenderingMode,omitempty"`
 

@@ -30,6 +30,9 @@ package models
 // Container class for gif save options.
 type GifSaveOptionsDataResult struct {
     // Container class for gif save options.
+    AllowEmbeddingPostScriptFonts bool `json:"AllowEmbeddingPostScriptFonts,omitempty"`
+
+    // Container class for gif save options.
     Dml3DEffectsRenderingMode string `json:"Dml3DEffectsRenderingMode,omitempty"`
 
     // Container class for gif save options.
@@ -121,6 +124,9 @@ type GifSaveOptionsDataResult struct {
 }
 
 type GifSaveOptionsData struct {
+    // Container class for gif save options.
+    AllowEmbeddingPostScriptFonts *bool `json:"AllowEmbeddingPostScriptFonts,omitempty"`
+
     // Container class for gif save options.
     Dml3DEffectsRenderingMode *string `json:"Dml3DEffectsRenderingMode,omitempty"`
 

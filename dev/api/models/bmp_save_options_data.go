@@ -30,6 +30,9 @@ package models
 // Container class for bmp save options.
 type BmpSaveOptionsDataResult struct {
     // Container class for bmp save options.
+    AllowEmbeddingPostScriptFonts bool `json:"AllowEmbeddingPostScriptFonts,omitempty"`
+
+    // Container class for bmp save options.
     Dml3DEffectsRenderingMode string `json:"Dml3DEffectsRenderingMode,omitempty"`
 
     // Container class for bmp save options.
@@ -121,6 +124,9 @@ type BmpSaveOptionsDataResult struct {
 }
 
 type BmpSaveOptionsData struct {
+    // Container class for bmp save options.
+    AllowEmbeddingPostScriptFonts *bool `json:"AllowEmbeddingPostScriptFonts,omitempty"`
+
     // Container class for bmp save options.
     Dml3DEffectsRenderingMode *string `json:"Dml3DEffectsRenderingMode,omitempty"`
 

@@ -30,6 +30,9 @@ package models
 // Container class for tiff save options.
 type TiffSaveOptionsDataResult struct {
     // Container class for tiff save options.
+    AllowEmbeddingPostScriptFonts bool `json:"AllowEmbeddingPostScriptFonts,omitempty"`
+
+    // Container class for tiff save options.
     Dml3DEffectsRenderingMode string `json:"Dml3DEffectsRenderingMode,omitempty"`
 
     // Container class for tiff save options.
@@ -130,6 +133,9 @@ type TiffSaveOptionsDataResult struct {
 }
 
 type TiffSaveOptionsData struct {
+    // Container class for tiff save options.
+    AllowEmbeddingPostScriptFonts *bool `json:"AllowEmbeddingPostScriptFonts,omitempty"`
+
     // Container class for tiff save options.
     Dml3DEffectsRenderingMode *string `json:"Dml3DEffectsRenderingMode,omitempty"`
 

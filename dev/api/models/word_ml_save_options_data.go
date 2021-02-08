@@ -30,6 +30,9 @@ package models
 // Container class for wml save options.
 type WordMLSaveOptionsDataResult struct {
     // Container class for wml save options.
+    AllowEmbeddingPostScriptFonts bool `json:"AllowEmbeddingPostScriptFonts,omitempty"`
+
+    // Container class for wml save options.
     Dml3DEffectsRenderingMode string `json:"Dml3DEffectsRenderingMode,omitempty"`
 
     // Container class for wml save options.
@@ -64,6 +67,9 @@ type WordMLSaveOptionsDataResult struct {
 }
 
 type WordMLSaveOptionsData struct {
+    // Container class for wml save options.
+    AllowEmbeddingPostScriptFonts *bool `json:"AllowEmbeddingPostScriptFonts,omitempty"`
+
     // Container class for wml save options.
     Dml3DEffectsRenderingMode *string `json:"Dml3DEffectsRenderingMode,omitempty"`
 

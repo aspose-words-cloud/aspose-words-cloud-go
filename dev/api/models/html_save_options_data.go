@@ -30,6 +30,9 @@ package models
 // Container class for html save options.
 type HtmlSaveOptionsDataResult struct {
     // Container class for html save options.
+    AllowEmbeddingPostScriptFonts bool `json:"AllowEmbeddingPostScriptFonts,omitempty"`
+
+    // Container class for html save options.
     Dml3DEffectsRenderingMode string `json:"Dml3DEffectsRenderingMode,omitempty"`
 
     // Container class for html save options.
@@ -178,6 +181,9 @@ type HtmlSaveOptionsDataResult struct {
 }
 
 type HtmlSaveOptionsData struct {
+    // Container class for html save options.
+    AllowEmbeddingPostScriptFonts *bool `json:"AllowEmbeddingPostScriptFonts,omitempty"`
+
     // Container class for html save options.
     Dml3DEffectsRenderingMode *string `json:"Dml3DEffectsRenderingMode,omitempty"`
 

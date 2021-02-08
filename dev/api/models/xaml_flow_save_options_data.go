@@ -30,6 +30,9 @@ package models
 // Container class for xaml flow save options.
 type XamlFlowSaveOptionsDataResult struct {
     // Container class for xaml flow save options.
+    AllowEmbeddingPostScriptFonts bool `json:"AllowEmbeddingPostScriptFonts,omitempty"`
+
+    // Container class for xaml flow save options.
     Dml3DEffectsRenderingMode string `json:"Dml3DEffectsRenderingMode,omitempty"`
 
     // Container class for xaml flow save options.
@@ -67,6 +70,9 @@ type XamlFlowSaveOptionsDataResult struct {
 }
 
 type XamlFlowSaveOptionsData struct {
+    // Container class for xaml flow save options.
+    AllowEmbeddingPostScriptFonts *bool `json:"AllowEmbeddingPostScriptFonts,omitempty"`
+
     // Container class for xaml flow save options.
     Dml3DEffectsRenderingMode *string `json:"Dml3DEffectsRenderingMode,omitempty"`
 

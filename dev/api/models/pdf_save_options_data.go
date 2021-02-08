@@ -30,6 +30,9 @@ package models
 // Container class for pdf save options.
 type PdfSaveOptionsDataResult struct {
     // Container class for pdf save options.
+    AllowEmbeddingPostScriptFonts bool `json:"AllowEmbeddingPostScriptFonts,omitempty"`
+
+    // Container class for pdf save options.
     Dml3DEffectsRenderingMode string `json:"Dml3DEffectsRenderingMode,omitempty"`
 
     // Container class for pdf save options.
@@ -157,6 +160,9 @@ type PdfSaveOptionsDataResult struct {
 }
 
 type PdfSaveOptionsData struct {
+    // Container class for pdf save options.
+    AllowEmbeddingPostScriptFonts *bool `json:"AllowEmbeddingPostScriptFonts,omitempty"`
+
     // Container class for pdf save options.
     Dml3DEffectsRenderingMode *string `json:"Dml3DEffectsRenderingMode,omitempty"`
 

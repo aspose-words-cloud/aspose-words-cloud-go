@@ -30,6 +30,9 @@ package models
 // Container class for markdown save options.
 type MarkdownSaveOptionsDataResult struct {
     // Container class for markdown save options.
+    AllowEmbeddingPostScriptFonts bool `json:"AllowEmbeddingPostScriptFonts,omitempty"`
+
+    // Container class for markdown save options.
     Dml3DEffectsRenderingMode string `json:"Dml3DEffectsRenderingMode,omitempty"`
 
     // Container class for markdown save options.
@@ -76,6 +79,9 @@ type MarkdownSaveOptionsDataResult struct {
 }
 
 type MarkdownSaveOptionsData struct {
+    // Container class for markdown save options.
+    AllowEmbeddingPostScriptFonts *bool `json:"AllowEmbeddingPostScriptFonts,omitempty"`
+
     // Container class for markdown save options.
     Dml3DEffectsRenderingMode *string `json:"Dml3DEffectsRenderingMode,omitempty"`
 

@@ -30,6 +30,9 @@ package models
 // Container class for fixed html save options.
 type HtmlFixedSaveOptionsDataResult struct {
     // Container class for fixed html save options.
+    AllowEmbeddingPostScriptFonts bool `json:"AllowEmbeddingPostScriptFonts,omitempty"`
+
+    // Container class for fixed html save options.
     Dml3DEffectsRenderingMode string `json:"Dml3DEffectsRenderingMode,omitempty"`
 
     // Container class for fixed html save options.
@@ -124,6 +127,9 @@ type HtmlFixedSaveOptionsDataResult struct {
 }
 
 type HtmlFixedSaveOptionsData struct {
+    // Container class for fixed html save options.
+    AllowEmbeddingPostScriptFonts *bool `json:"AllowEmbeddingPostScriptFonts,omitempty"`
+
     // Container class for fixed html save options.
     Dml3DEffectsRenderingMode *string `json:"Dml3DEffectsRenderingMode,omitempty"`
 

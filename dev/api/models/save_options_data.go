@@ -30,6 +30,9 @@ package models
 // base container class for save options data.
 type SaveOptionsDataResult struct {
     // base container class for save options data.
+    AllowEmbeddingPostScriptFonts bool `json:"AllowEmbeddingPostScriptFonts,omitempty"`
+
+    // base container class for save options data.
     Dml3DEffectsRenderingMode string `json:"Dml3DEffectsRenderingMode,omitempty"`
 
     // base container class for save options data.
@@ -61,6 +64,9 @@ type SaveOptionsDataResult struct {
 }
 
 type SaveOptionsData struct {
+    // base container class for save options data.
+    AllowEmbeddingPostScriptFonts *bool `json:"AllowEmbeddingPostScriptFonts,omitempty"`
+
     // base container class for save options data.
     Dml3DEffectsRenderingMode *string `json:"Dml3DEffectsRenderingMode,omitempty"`
 

@@ -30,6 +30,9 @@ package models
 // Container class for svg save options.
 type SvgSaveOptionsDataResult struct {
     // Container class for svg save options.
+    AllowEmbeddingPostScriptFonts bool `json:"AllowEmbeddingPostScriptFonts,omitempty"`
+
+    // Container class for svg save options.
     Dml3DEffectsRenderingMode string `json:"Dml3DEffectsRenderingMode,omitempty"`
 
     // Container class for svg save options.
@@ -100,6 +103,9 @@ type SvgSaveOptionsDataResult struct {
 }
 
 type SvgSaveOptionsData struct {
+    // Container class for svg save options.
+    AllowEmbeddingPostScriptFonts *bool `json:"AllowEmbeddingPostScriptFonts,omitempty"`
+
     // Container class for svg save options.
     Dml3DEffectsRenderingMode *string `json:"Dml3DEffectsRenderingMode,omitempty"`
 
