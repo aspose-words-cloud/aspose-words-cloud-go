@@ -99,7 +99,7 @@ func Test_Folder_GetFilesList(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.GetFilesList(ctx, request)
+    actual, err := client.WordsApi.GetFilesList(ctx, request)
 
     if err != nil {
         t.Error(err)

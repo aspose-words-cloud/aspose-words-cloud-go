@@ -66,7 +66,7 @@ func Test_AppendDocument_AppendDocument(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.AppendDocument(ctx, request)
+    actual, err := client.WordsApi.AppendDocument(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -106,7 +106,7 @@ func Test_AppendDocument_AppendDocumentOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _,err := client.WordsApi.AppendDocumentOnline(ctx, request)
+    _err := client.WordsApi.AppendDocumentOnline(ctx, request)
 
     if err != nil {
         t.Error(err)

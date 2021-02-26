@@ -54,7 +54,7 @@ func Test_Lists_GetLists(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.GetLists(ctx, request)
+    actual, err := client.WordsApi.GetLists(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -81,7 +81,7 @@ func Test_Lists_GetListsOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, _, err := client.WordsApi.GetListsOnline(ctx, request)
+    _, err := client.WordsApi.GetListsOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -110,7 +110,7 @@ func Test_Lists_GetList(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.GetList(ctx, request)
+    actual, err := client.WordsApi.GetList(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -136,7 +136,7 @@ func Test_Lists_GetListOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, _, err := client.WordsApi.GetListOnline(ctx, request)
+    _, err := client.WordsApi.GetListOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -169,7 +169,7 @@ func Test_Lists_UpdateList(t *testing.T) {
         Optionals: options,
     }
 
-    _, _, err := client.WordsApi.UpdateList(ctx, request)
+    _, err := client.WordsApi.UpdateList(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -234,7 +234,7 @@ func Test_Lists_UpdateListLevel(t *testing.T) {
         Optionals: options,
     }
 
-    _, _, err := client.WordsApi.UpdateListLevel(ctx, request)
+    _, err := client.WordsApi.UpdateListLevel(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -300,7 +300,7 @@ func Test_Lists_InsertList(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.InsertList(ctx, request)
+    actual, err := client.WordsApi.InsertList(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -329,7 +329,7 @@ func Test_Lists_InsertListOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _,err := client.WordsApi.InsertListOnline(ctx, request)
+    _err := client.WordsApi.InsertListOnline(ctx, request)
 
     if err != nil {
         t.Error(err)

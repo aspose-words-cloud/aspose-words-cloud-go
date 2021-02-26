@@ -62,7 +62,7 @@ func Test_Font_GetAvailableFonts(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.GetAvailableFonts(ctx, request)
+    actual, err := client.WordsApi.GetAvailableFonts(ctx, request)
 
     if err != nil {
         t.Error(err)

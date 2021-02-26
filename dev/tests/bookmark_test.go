@@ -53,7 +53,7 @@ func Test_Bookmark_GetBookmarks(t *testing.T) {
         Optionals: options,
     }
 
-    _, _, err := client.WordsApi.GetBookmarks(ctx, request)
+    _, err := client.WordsApi.GetBookmarks(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -76,7 +76,7 @@ func Test_Bookmark_GetBookmarksOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, _, err := client.WordsApi.GetBookmarksOnline(ctx, request)
+    _, err := client.WordsApi.GetBookmarksOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -106,7 +106,7 @@ func Test_Bookmark_GetBookmarkByName(t *testing.T) {
         Optionals: options,
     }
 
-    _, _, err := client.WordsApi.GetBookmarkByName(ctx, request)
+    _, err := client.WordsApi.GetBookmarkByName(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -131,7 +131,7 @@ func Test_Bookmark_GetBookmarkByNameOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, _, err := client.WordsApi.GetBookmarkByNameOnline(ctx, request)
+    _, err := client.WordsApi.GetBookmarkByNameOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -168,7 +168,7 @@ func Test_Bookmark_UpdateBookmark(t *testing.T) {
         Optionals: options,
     }
 
-    _, _, err := client.WordsApi.UpdateBookmark(ctx, request)
+    _, err := client.WordsApi.UpdateBookmark(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -200,7 +200,7 @@ func Test_Bookmark_UpdateBookmarkOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _,err := client.WordsApi.UpdateBookmarkOnline(ctx, request)
+    _err := client.WordsApi.UpdateBookmarkOnline(ctx, request)
 
     if err != nil {
         t.Error(err)

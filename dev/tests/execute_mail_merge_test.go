@@ -52,7 +52,7 @@ func Test_ExecuteMailMerge_ExecuteMailMergeOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, , _, err := client.WordsApi.ExecuteMailMergeOnline(ctx, request)
+    _, err := client.WordsApi.ExecuteMailMergeOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -85,7 +85,7 @@ func Test_ExecuteMailMerge_ExecuteMailMerge(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.ExecuteMailMerge(ctx, request)
+    actual, err := client.WordsApi.ExecuteMailMerge(ctx, request)
 
     if err != nil {
         t.Error(err)

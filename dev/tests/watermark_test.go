@@ -59,7 +59,7 @@ func Test_Watermark_InsertWatermarkImage(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.InsertWatermarkImage(ctx, request)
+    actual, err := client.WordsApi.InsertWatermarkImage(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -85,7 +85,7 @@ func Test_Watermark_InsertWatermarkImageOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _,err := client.WordsApi.InsertWatermarkImageOnline(ctx, request)
+    _err := client.WordsApi.InsertWatermarkImageOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -119,7 +119,7 @@ func Test_Watermark_InsertWatermarkText(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.InsertWatermarkText(ctx, request)
+    actual, err := client.WordsApi.InsertWatermarkText(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -149,7 +149,7 @@ func Test_Watermark_InsertWatermarkTextOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _,err := client.WordsApi.InsertWatermarkTextOnline(ctx, request)
+    _err := client.WordsApi.InsertWatermarkTextOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -178,7 +178,7 @@ func Test_Watermark_DeleteWatermark(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.DeleteWatermark(ctx, request)
+    actual, err := client.WordsApi.DeleteWatermark(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -203,7 +203,7 @@ func Test_Watermark_DeleteWatermarkOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _,err := client.WordsApi.DeleteWatermarkOnline(ctx, request)
+    _err := client.WordsApi.DeleteWatermarkOnline(ctx, request)
 
     if err != nil {
         t.Error(err)

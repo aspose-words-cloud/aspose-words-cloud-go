@@ -56,7 +56,7 @@ func Test_Field_GetFields(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.GetFields(ctx, request)
+    actual, err := client.WordsApi.GetFields(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -84,7 +84,7 @@ func Test_Field_GetFieldsOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, _, err := client.WordsApi.GetFieldsOnline(ctx, request)
+    _, err := client.WordsApi.GetFieldsOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -113,7 +113,7 @@ func Test_Field_GetFieldsWithoutNodePath(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.GetFields(ctx, request)
+    actual, err := client.WordsApi.GetFields(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -148,7 +148,7 @@ func Test_Field_GetField(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.GetField(ctx, request)
+    actual, err := client.WordsApi.GetField(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -175,7 +175,7 @@ func Test_Field_GetFieldOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, _, err := client.WordsApi.GetFieldOnline(ctx, request)
+    _, err := client.WordsApi.GetFieldOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -205,7 +205,7 @@ func Test_Field_GetFieldWithoutNodePath(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.GetField(ctx, request)
+    actual, err := client.WordsApi.GetField(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -241,7 +241,7 @@ func Test_Field_InsertField(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.InsertField(ctx, request)
+    actual, err := client.WordsApi.InsertField(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -272,7 +272,7 @@ func Test_Field_InsertFieldOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _,err := client.WordsApi.InsertFieldOnline(ctx, request)
+    _err := client.WordsApi.InsertFieldOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -305,7 +305,7 @@ func Test_Field_InsertFieldWithoutNodePath(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.InsertField(ctx, request)
+    actual, err := client.WordsApi.InsertField(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -343,7 +343,7 @@ func Test_Field_UpdateField(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.UpdateField(ctx, request)
+    actual, err := client.WordsApi.UpdateField(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -375,7 +375,7 @@ func Test_Field_UpdateFieldOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _,err := client.WordsApi.UpdateFieldOnline(ctx, request)
+    _err := client.WordsApi.UpdateFieldOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -409,7 +409,7 @@ func Test_Field_InsertPageNumbers(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.InsertPageNumbers(ctx, request)
+    actual, err := client.WordsApi.InsertPageNumbers(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -439,7 +439,7 @@ func Test_Field_InsertPageNumbersOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _,err := client.WordsApi.InsertPageNumbersOnline(ctx, request)
+    _err := client.WordsApi.InsertPageNumbersOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -495,7 +495,7 @@ func Test_Field_DeleteFieldOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, , _, err := client.WordsApi.DeleteFieldOnline(ctx, request)
+    _, err := client.WordsApi.DeleteFieldOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -721,7 +721,7 @@ func Test_Field_DeleteDocumentFieldsOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, , _, err := client.WordsApi.DeleteFieldsOnline(ctx, request)
+    _, err := client.WordsApi.DeleteFieldsOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -749,7 +749,7 @@ func Test_Field_UpdateDocumentFields(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.UpdateFields(ctx, request)
+    actual, err := client.WordsApi.UpdateFields(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -774,7 +774,7 @@ func Test_Field_UpdateDocumentFieldsOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _,err := client.WordsApi.UpdateFieldsOnline(ctx, request)
+    _err := client.WordsApi.UpdateFieldsOnline(ctx, request)
 
     if err != nil {
         t.Error(err)

@@ -55,7 +55,7 @@ func Test_Comment_GetComment(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.GetComment(ctx, request)
+    actual, err := client.WordsApi.GetComment(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -81,7 +81,7 @@ func Test_Comment_GetCommentOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, _, err := client.WordsApi.GetCommentOnline(ctx, request)
+    _, err := client.WordsApi.GetCommentOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -109,7 +109,7 @@ func Test_Comment_GetComments(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.GetComments(ctx, request)
+    actual, err := client.WordsApi.GetComments(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -136,7 +136,7 @@ func Test_Comment_GetCommentsOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, _, err := client.WordsApi.GetCommentsOnline(ctx, request)
+    _, err := client.WordsApi.GetCommentsOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -186,7 +186,7 @@ func Test_Comment_InsertComment(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.InsertComment(ctx, request)
+    actual, err := client.WordsApi.InsertComment(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -236,7 +236,7 @@ func Test_Comment_InsertCommentOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _,err := client.WordsApi.InsertCommentOnline(ctx, request)
+    _err := client.WordsApi.InsertCommentOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -287,7 +287,7 @@ func Test_Comment_UpdateComment(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.UpdateComment(ctx, request)
+    actual, err := client.WordsApi.UpdateComment(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -338,7 +338,7 @@ func Test_Comment_UpdateCommentOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _,err := client.WordsApi.UpdateCommentOnline(ctx, request)
+    _err := client.WordsApi.UpdateCommentOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -392,7 +392,7 @@ func Test_Comment_DeleteCommentOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, , _, err := client.WordsApi.DeleteCommentOnline(ctx, request)
+    _, err := client.WordsApi.DeleteCommentOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -444,7 +444,7 @@ func Test_Comment_DeleteCommentsOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, , _, err := client.WordsApi.DeleteCommentsOnline(ctx, request)
+    _, err := client.WordsApi.DeleteCommentsOnline(ctx, request)
 
     if err != nil {
         t.Error(err)

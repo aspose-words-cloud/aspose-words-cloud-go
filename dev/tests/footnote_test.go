@@ -60,7 +60,7 @@ func Test_Footnote_InsertFootnote(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.InsertFootnote(ctx, request)
+    actual, err := client.WordsApi.InsertFootnote(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -92,7 +92,7 @@ func Test_Footnote_InsertFootnoteOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _,err := client.WordsApi.InsertFootnoteOnline(ctx, request)
+    _err := client.WordsApi.InsertFootnoteOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -125,7 +125,7 @@ func Test_Footnote_InsertFootnoteWithoutNodePath(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.InsertFootnote(ctx, request)
+    actual, err := client.WordsApi.InsertFootnote(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -183,7 +183,7 @@ func Test_Footnote_DeleteFootnoteOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, , _, err := client.WordsApi.DeleteFootnoteOnline(ctx, request)
+    _, err := client.WordsApi.DeleteFootnoteOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -241,7 +241,7 @@ func Test_Footnote_GetFootnotes(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.GetFootnotes(ctx, request)
+    actual, err := client.WordsApi.GetFootnotes(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -269,7 +269,7 @@ func Test_Footnote_GetFootnotesOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, _, err := client.WordsApi.GetFootnotesOnline(ctx, request)
+    _, err := client.WordsApi.GetFootnotesOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -297,7 +297,7 @@ func Test_Footnote_GetFootnotesWithoutNodePath(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.GetFootnotes(ctx, request)
+    actual, err := client.WordsApi.GetFootnotes(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -331,7 +331,7 @@ func Test_Footnote_GetFootnote(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.GetFootnote(ctx, request)
+    actual, err := client.WordsApi.GetFootnote(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -358,7 +358,7 @@ func Test_Footnote_GetFootnoteOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, _, err := client.WordsApi.GetFootnoteOnline(ctx, request)
+    _, err := client.WordsApi.GetFootnoteOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -387,7 +387,7 @@ func Test_Footnote_GetFootnoteWithoutNodePath(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.GetFootnote(ctx, request)
+    actual, err := client.WordsApi.GetFootnote(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -423,7 +423,7 @@ func Test_Footnote_UpdateFootnote(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.UpdateFootnote(ctx, request)
+    actual, err := client.WordsApi.UpdateFootnote(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -454,7 +454,7 @@ func Test_Footnote_UpdateFootnoteOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _,err := client.WordsApi.UpdateFootnoteOnline(ctx, request)
+    _err := client.WordsApi.UpdateFootnoteOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -487,7 +487,7 @@ func Test_Footnote_UpdateFootnoteWithoutNodePath(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.UpdateFootnote(ctx, request)
+    actual, err := client.WordsApi.UpdateFootnote(ctx, request)
 
     if err != nil {
         t.Error(err)

@@ -60,7 +60,7 @@ func Test_DocumentProtection_ProtectDocument(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.ProtectDocument(ctx, request)
+    actual, err := client.WordsApi.ProtectDocument(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -89,7 +89,7 @@ func Test_DocumentProtection_ProtectDocumentOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _,err := client.WordsApi.ProtectDocumentOnline(ctx, request)
+    _err := client.WordsApi.ProtectDocumentOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -117,7 +117,7 @@ func Test_DocumentProtection_GetDocumentProtection(t *testing.T) {
         Optionals: options,
     }
 
-    _, _, err := client.WordsApi.GetDocumentProtection(ctx, request)
+    _, err := client.WordsApi.GetDocumentProtection(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -140,7 +140,7 @@ func Test_DocumentProtection_GetDocumentProtectionOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, _, err := client.WordsApi.GetDocumentProtectionOnline(ctx, request)
+    _, err := client.WordsApi.GetDocumentProtectionOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -172,7 +172,7 @@ func Test_DocumentProtection_DeleteUnprotectDocument(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.UnprotectDocument(ctx, request)
+    actual, err := client.WordsApi.UnprotectDocument(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -201,7 +201,7 @@ func Test_DocumentProtection_DeleteUnprotectDocumentOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _,err := client.WordsApi.UnprotectDocumentOnline(ctx, request)
+    _err := client.WordsApi.UnprotectDocumentOnline(ctx, request)
 
     if err != nil {
         t.Error(err)

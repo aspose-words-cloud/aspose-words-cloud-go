@@ -55,7 +55,7 @@ func Test_Hyperlink_GetDocumentHyperlinkByIndex(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.GetDocumentHyperlinkByIndex(ctx, request)
+    actual, err := client.WordsApi.GetDocumentHyperlinkByIndex(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -81,7 +81,7 @@ func Test_Hyperlink_GetDocumentHyperlinkByIndexOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, _, err := client.WordsApi.GetDocumentHyperlinkByIndexOnline(ctx, request)
+    _, err := client.WordsApi.GetDocumentHyperlinkByIndexOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -109,7 +109,7 @@ func Test_Hyperlink_GetDocumentHyperlinks(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.GetDocumentHyperlinks(ctx, request)
+    actual, err := client.WordsApi.GetDocumentHyperlinks(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -136,7 +136,7 @@ func Test_Hyperlink_GetDocumentHyperlinksOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, _, err := client.WordsApi.GetDocumentHyperlinksOnline(ctx, request)
+    _, err := client.WordsApi.GetDocumentHyperlinksOnline(ctx, request)
 
     if err != nil {
         t.Error(err)

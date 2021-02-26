@@ -58,7 +58,7 @@ func Test_SplitDocumentToFormat_SplitDocument(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.SplitDocument(ctx, request)
+    actual, err := client.WordsApi.SplitDocument(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -88,7 +88,7 @@ func Test_SplitDocumentToFormat_SplitDocumentOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _,err := client.WordsApi.SplitDocumentOnline(ctx, request)
+    _err := client.WordsApi.SplitDocumentOnline(ctx, request)
 
     if err != nil {
         t.Error(err)

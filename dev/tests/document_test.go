@@ -54,7 +54,7 @@ func Test_Document_GetDocument(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.GetDocument(ctx, request)
+    actual, err := client.WordsApi.GetDocument(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -81,7 +81,7 @@ func Test_Document_CreateDocument(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.CreateDocument(ctx, request)
+    actual, err := client.WordsApi.CreateDocument(ctx, request)
 
     if err != nil {
         t.Error(err)

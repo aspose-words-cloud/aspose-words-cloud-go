@@ -55,7 +55,7 @@ func Test_Revisions_AcceptAllRevisions(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.AcceptAllRevisions(ctx, request)
+    actual, err := client.WordsApi.AcceptAllRevisions(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -80,7 +80,7 @@ func Test_Revisions_AcceptAllRevisionsOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _,err := client.WordsApi.AcceptAllRevisionsOnline(ctx, request)
+    _err := client.WordsApi.AcceptAllRevisionsOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -109,7 +109,7 @@ func Test_Revisions_RejectAllRevisions(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.RejectAllRevisions(ctx, request)
+    actual, err := client.WordsApi.RejectAllRevisions(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -134,7 +134,7 @@ func Test_Revisions_RejectAllRevisionsOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _,err := client.WordsApi.RejectAllRevisionsOnline(ctx, request)
+    _err := client.WordsApi.RejectAllRevisionsOnline(ctx, request)
 
     if err != nil {
         t.Error(err)

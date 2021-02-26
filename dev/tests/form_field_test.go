@@ -66,7 +66,7 @@ func Test_FormField_UpdateFormField(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.UpdateFormField(ctx, request)
+    actual, err := client.WordsApi.UpdateFormField(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -103,7 +103,7 @@ func Test_FormField_UpdateFormFieldOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _,err := client.WordsApi.UpdateFormFieldOnline(ctx, request)
+    _err := client.WordsApi.UpdateFormFieldOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -142,7 +142,7 @@ func Test_FormField_UpdateFormFieldWithoutNodePath(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.UpdateFormField(ctx, request)
+    actual, err := client.WordsApi.UpdateFormField(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -175,7 +175,7 @@ func Test_FormField_GetFormField(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.GetFormField(ctx, request)
+    actual, err := client.WordsApi.GetFormField(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -202,7 +202,7 @@ func Test_FormField_GetFormFieldOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, _, err := client.WordsApi.GetFormFieldOnline(ctx, request)
+    _, err := client.WordsApi.GetFormFieldOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -231,7 +231,7 @@ func Test_FormField_GetFormFieldWithoutNodePath(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.GetFormField(ctx, request)
+    actual, err := client.WordsApi.GetFormField(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -262,7 +262,7 @@ func Test_FormField_GetFormFields(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.GetFormFields(ctx, request)
+    actual, err := client.WordsApi.GetFormFields(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -290,7 +290,7 @@ func Test_FormField_GetFormFieldsOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, _, err := client.WordsApi.GetFormFieldsOnline(ctx, request)
+    _, err := client.WordsApi.GetFormFieldsOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -318,7 +318,7 @@ func Test_FormField_GetFormFieldsWithoutNodePath(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.GetFormFields(ctx, request)
+    actual, err := client.WordsApi.GetFormFields(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -361,7 +361,7 @@ func Test_FormField_InsertFormField(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.InsertFormField(ctx, request)
+    actual, err := client.WordsApi.InsertFormField(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -398,7 +398,7 @@ func Test_FormField_InsertFormFieldOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _,err := client.WordsApi.InsertFormFieldOnline(ctx, request)
+    _err := client.WordsApi.InsertFormFieldOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -436,7 +436,7 @@ func Test_FormField_InsertFormFieldWithoutNodePath(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.InsertFormField(ctx, request)
+    actual, err := client.WordsApi.InsertFormField(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -495,7 +495,7 @@ func Test_FormField_DeleteFormFieldOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, , _, err := client.WordsApi.DeleteFormFieldOnline(ctx, request)
+    _, err := client.WordsApi.DeleteFormFieldOnline(ctx, request)
 
     if err != nil {
         t.Error(err)

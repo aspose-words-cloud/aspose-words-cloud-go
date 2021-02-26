@@ -54,7 +54,7 @@ func Test_DrawingObjects_GetDocumentDrawingObjects(t *testing.T) {
         Optionals: options,
     }
 
-    _, _, err := client.WordsApi.GetDocumentDrawingObjects(ctx, request)
+    _, err := client.WordsApi.GetDocumentDrawingObjects(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -78,7 +78,7 @@ func Test_DrawingObjects_GetDocumentDrawingObjectsOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, _, err := client.WordsApi.GetDocumentDrawingObjectsOnline(ctx, request)
+    _, err := client.WordsApi.GetDocumentDrawingObjectsOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -106,7 +106,7 @@ func Test_DrawingObjects_GetDocumentDrawingObjectsWithoutNodePath(t *testing.T) 
         Optionals: options,
     }
 
-    _, _, err := client.WordsApi.GetDocumentDrawingObjects(ctx, request)
+    _, err := client.WordsApi.GetDocumentDrawingObjects(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -136,7 +136,7 @@ func Test_DrawingObjects_GetDocumentDrawingObjectByIndex(t *testing.T) {
         Optionals: options,
     }
 
-    _, _, err := client.WordsApi.GetDocumentDrawingObjectByIndex(ctx, request)
+    _, err := client.WordsApi.GetDocumentDrawingObjectByIndex(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -161,7 +161,7 @@ func Test_DrawingObjects_GetDocumentDrawingObjectByIndexOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, _, err := client.WordsApi.GetDocumentDrawingObjectByIndexOnline(ctx, request)
+    _, err := client.WordsApi.GetDocumentDrawingObjectByIndexOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -190,7 +190,7 @@ func Test_DrawingObjects_GetDocumentDrawingObjectByIndexWithoutNodePath(t *testi
         Optionals: options,
     }
 
-    _, _, err := client.WordsApi.GetDocumentDrawingObjectByIndex(ctx, request)
+    _, err := client.WordsApi.GetDocumentDrawingObjectByIndex(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -221,7 +221,7 @@ func Test_DrawingObjects_RenderDrawingObject(t *testing.T) {
         Optionals: options,
     }
 
-    _, , _, err := client.WordsApi.RenderDrawingObject(ctx, request)
+    _, err := client.WordsApi.RenderDrawingObject(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -247,7 +247,7 @@ func Test_DrawingObjects_RenderDrawingObjectOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, , _, err := client.WordsApi.RenderDrawingObjectOnline(ctx, request)
+    _, err := client.WordsApi.RenderDrawingObjectOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -277,7 +277,7 @@ func Test_DrawingObjects_RenderDrawingObjectWithoutNodePath(t *testing.T) {
         Optionals: options,
     }
 
-    _, , _, err := client.WordsApi.RenderDrawingObject(ctx, request)
+    _, err := client.WordsApi.RenderDrawingObject(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -307,7 +307,7 @@ func Test_DrawingObjects_GetDocumentDrawingObjectImageData(t *testing.T) {
         Optionals: options,
     }
 
-    _, , _, err := client.WordsApi.GetDocumentDrawingObjectImageData(ctx, request)
+    _, err := client.WordsApi.GetDocumentDrawingObjectImageData(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -332,7 +332,7 @@ func Test_DrawingObjects_GetDocumentDrawingObjectImageDataOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, , _, err := client.WordsApi.GetDocumentDrawingObjectImageDataOnline(ctx, request)
+    _, err := client.WordsApi.GetDocumentDrawingObjectImageDataOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -361,7 +361,7 @@ func Test_DrawingObjects_GetDocumentDrawingObjectImageDataWithoutNodePath(t *tes
         Optionals: options,
     }
 
-    _, , _, err := client.WordsApi.GetDocumentDrawingObjectImageData(ctx, request)
+    _, err := client.WordsApi.GetDocumentDrawingObjectImageData(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -391,7 +391,7 @@ func Test_DrawingObjects_GetDocumentDrawingObjectOleData(t *testing.T) {
         Optionals: options,
     }
 
-    _, , _, err := client.WordsApi.GetDocumentDrawingObjectOleData(ctx, request)
+    _, err := client.WordsApi.GetDocumentDrawingObjectOleData(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -416,7 +416,7 @@ func Test_DrawingObjects_GetDocumentDrawingObjectOleDataOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, , _, err := client.WordsApi.GetDocumentDrawingObjectOleDataOnline(ctx, request)
+    _, err := client.WordsApi.GetDocumentDrawingObjectOleDataOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -445,7 +445,7 @@ func Test_DrawingObjects_GetDocumentDrawingObjectOleDataWithoutNodePath(t *testi
         Optionals: options,
     }
 
-    _, , _, err := client.WordsApi.GetDocumentDrawingObjectOleData(ctx, request)
+    _, err := client.WordsApi.GetDocumentDrawingObjectOleData(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -485,7 +485,7 @@ func Test_DrawingObjects_InsertDrawingObject(t *testing.T) {
         Optionals: options,
     }
 
-    _, _, err := client.WordsApi.InsertDrawingObject(ctx, request)
+    _, err := client.WordsApi.InsertDrawingObject(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -520,7 +520,7 @@ func Test_DrawingObjects_InsertDrawingObjectOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _,err := client.WordsApi.InsertDrawingObjectOnline(ctx, request)
+    _err := client.WordsApi.InsertDrawingObjectOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -559,7 +559,7 @@ func Test_DrawingObjects_InsertDrawingObjectWithoutNodePath(t *testing.T) {
         Optionals: options,
     }
 
-    _, _, err := client.WordsApi.InsertDrawingObject(ctx, request)
+    _, err := client.WordsApi.InsertDrawingObject(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -614,7 +614,7 @@ func Test_DrawingObjects_DeleteDrawingObjectOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, , _, err := client.WordsApi.DeleteDrawingObjectOnline(ctx, request)
+    _, err := client.WordsApi.DeleteDrawingObjectOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -678,7 +678,7 @@ func Test_DrawingObjects_UpdateDrawingObject(t *testing.T) {
         Optionals: options,
     }
 
-    _, _, err := client.WordsApi.UpdateDrawingObject(ctx, request)
+    _, err := client.WordsApi.UpdateDrawingObject(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -708,7 +708,7 @@ func Test_DrawingObjects_UpdateDrawingObjectOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _,err := client.WordsApi.UpdateDrawingObjectOnline(ctx, request)
+    _err := client.WordsApi.UpdateDrawingObjectOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -742,7 +742,7 @@ func Test_DrawingObjects_UpdateDrawingObjectWithoutNodePath(t *testing.T) {
         Optionals: options,
     }
 
-    _, _, err := client.WordsApi.UpdateDrawingObject(ctx, request)
+    _, err := client.WordsApi.UpdateDrawingObject(ctx, request)
 
     if err != nil {
         t.Error(err)

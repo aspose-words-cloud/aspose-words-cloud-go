@@ -59,7 +59,7 @@ func Test_LoadWebDocument_LoadWebDocument(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.LoadWebDocument(ctx, request)
+    actual, err := client.WordsApi.LoadWebDocument(ctx, request)
 
     if err != nil {
         t.Error(err)

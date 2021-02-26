@@ -76,7 +76,7 @@ func Test_Macros_DeleteMacrosOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, , _, err := client.WordsApi.DeleteMacrosOnline(ctx, request)
+    _, err := client.WordsApi.DeleteMacrosOnline(ctx, request)
 
     if err != nil {
         t.Error(err)

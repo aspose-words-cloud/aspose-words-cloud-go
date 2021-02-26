@@ -55,7 +55,7 @@ func Test_Section_GetSection(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.GetSection(ctx, request)
+    actual, err := client.WordsApi.GetSection(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -83,7 +83,7 @@ func Test_Section_GetSectionOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, _, err := client.WordsApi.GetSectionOnline(ctx, request)
+    _, err := client.WordsApi.GetSectionOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -111,7 +111,7 @@ func Test_Section_GetSections(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.GetSections(ctx, request)
+    actual, err := client.WordsApi.GetSections(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -138,7 +138,7 @@ func Test_Section_GetSectionsOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, _, err := client.WordsApi.GetSectionsOnline(ctx, request)
+    _, err := client.WordsApi.GetSectionsOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -191,7 +191,7 @@ func Test_Section_DeleteSectionOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, , _, err := client.WordsApi.DeleteSectionOnline(ctx, request)
+    _, err := client.WordsApi.DeleteSectionOnline(ctx, request)
 
     if err != nil {
         t.Error(err)

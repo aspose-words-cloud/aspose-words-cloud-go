@@ -54,7 +54,7 @@ func Test_DocumentWithFormat_GetDocumentWithFormat(t *testing.T) {
         Optionals: options,
     }
 
-    _, , _, err := client.WordsApi.GetDocumentWithFormat(ctx, request)
+    _, err := client.WordsApi.GetDocumentWithFormat(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -84,7 +84,7 @@ func Test_DocumentWithFormat_GetDocumentWithFormatAndOutPath(t *testing.T) {
         Optionals: options,
     }
 
-    _, , _, err := client.WordsApi.GetDocumentWithFormat(ctx, request)
+    _, err := client.WordsApi.GetDocumentWithFormat(ctx, request)
 
     if err != nil {
         t.Error(err)
