@@ -55,7 +55,7 @@ func Test_MathObject_GetOfficeMathObjects(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.GetOfficeMathObjects(ctx, request)
+    actual, err := client.WordsApi.GetOfficeMathObjects(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -83,7 +83,7 @@ func Test_MathObject_GetOfficeMathObjectsOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, _, err := client.WordsApi.GetOfficeMathObjectsOnline(ctx, request)
+    _, err := client.WordsApi.GetOfficeMathObjectsOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -111,7 +111,7 @@ func Test_MathObject_GetOfficeMathObjectsWithoutNodePath(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.GetOfficeMathObjects(ctx, request)
+    actual, err := client.WordsApi.GetOfficeMathObjects(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -145,7 +145,7 @@ func Test_MathObject_GetOfficeMathObject(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.GetOfficeMathObject(ctx, request)
+    actual, err := client.WordsApi.GetOfficeMathObject(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -172,7 +172,7 @@ func Test_MathObject_GetOfficeMathObjectOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, _, err := client.WordsApi.GetOfficeMathObjectOnline(ctx, request)
+    _, err := client.WordsApi.GetOfficeMathObjectOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -201,7 +201,7 @@ func Test_MathObject_GetOfficeMathObjectWithoutNodePath(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.GetOfficeMathObject(ctx, request)
+    actual, err := client.WordsApi.GetOfficeMathObject(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -234,7 +234,7 @@ func Test_MathObject_RenderMathObject(t *testing.T) {
         Optionals: options,
     }
 
-    _, , _, err := client.WordsApi.RenderMathObject(ctx, request)
+    _, err := client.WordsApi.RenderMathObject(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -260,7 +260,7 @@ func Test_MathObject_RenderMathObjectOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, , _, err := client.WordsApi.RenderMathObjectOnline(ctx, request)
+    _, err := client.WordsApi.RenderMathObjectOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -290,7 +290,7 @@ func Test_MathObject_RenderMathObjectWithoutNodePath(t *testing.T) {
         Optionals: options,
     }
 
-    _, , _, err := client.WordsApi.RenderMathObject(ctx, request)
+    _, err := client.WordsApi.RenderMathObject(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -345,7 +345,7 @@ func Test_MathObject_DeleteOfficeMathObjectOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, , _, err := client.WordsApi.DeleteOfficeMathObjectOnline(ctx, request)
+    _, err := client.WordsApi.DeleteOfficeMathObjectOnline(ctx, request)
 
     if err != nil {
         t.Error(err)

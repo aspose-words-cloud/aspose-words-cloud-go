@@ -48,7 +48,7 @@ func Test_Classification_Classify(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.Classify(ctx, request)
+    actual, err := client.WordsApi.Classify(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -80,7 +80,7 @@ func Test_Classification_ClassifyDocument(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.ClassifyDocument(ctx, request)
+    actual, err := client.WordsApi.ClassifyDocument(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -107,7 +107,7 @@ func Test_Classification_ClassifyDocumentOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, _, err := client.WordsApi.ClassifyDocumentOnline(ctx, request)
+    _, err := client.WordsApi.ClassifyDocumentOnline(ctx, request)
 
     if err != nil {
         t.Error(err)

@@ -60,7 +60,7 @@ func Test_Run_UpdateRun(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.UpdateRun(ctx, request)
+    actual, err := client.WordsApi.UpdateRun(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -91,7 +91,7 @@ func Test_Run_UpdateRunOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _,err := client.WordsApi.UpdateRunOnline(ctx, request)
+    _err := client.WordsApi.UpdateRunOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -124,7 +124,7 @@ func Test_Run_InsertRun(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.InsertRun(ctx, request)
+    actual, err := client.WordsApi.InsertRun(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -155,7 +155,7 @@ func Test_Run_InsertRunOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _,err := client.WordsApi.InsertRunOnline(ctx, request)
+    _err := client.WordsApi.InsertRunOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -210,7 +210,7 @@ func Test_Run_DeleteRunOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, , _, err := client.WordsApi.DeleteRunOnline(ctx, request)
+    _, err := client.WordsApi.DeleteRunOnline(ctx, request)
 
     if err != nil {
         t.Error(err)

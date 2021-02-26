@@ -59,7 +59,7 @@ func Test_ConvertDocument_SaveAs(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.SaveAs(ctx, request)
+    actual, err := client.WordsApi.SaveAs(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -89,7 +89,7 @@ func Test_ConvertDocument_SaveAsOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _,err := client.WordsApi.SaveAsOnline(ctx, request)
+    _err := client.WordsApi.SaveAsOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -123,7 +123,7 @@ func Test_ConvertDocument_SaveAsDocx(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.SaveAs(ctx, request)
+    actual, err := client.WordsApi.SaveAs(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -158,7 +158,7 @@ func Test_ConvertDocument_SaveAsTiff(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.SaveAsTiff(ctx, request)
+    actual, err := client.WordsApi.SaveAsTiff(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -188,7 +188,7 @@ func Test_ConvertDocument_SaveAsTiffOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _,err := client.WordsApi.SaveAsTiffOnline(ctx, request)
+    _err := client.WordsApi.SaveAsTiffOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -212,7 +212,7 @@ func Test_ConvertDocument_ConvertDocument(t *testing.T) {
         Optionals: options,
     }
 
-    _, , _, err := client.WordsApi.ConvertDocument(ctx, request)
+    _, err := client.WordsApi.ConvertDocument(ctx, request)
 
     if err != nil {
         t.Error(err)

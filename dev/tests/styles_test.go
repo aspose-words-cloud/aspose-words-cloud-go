@@ -54,7 +54,7 @@ func Test_Styles_GetStyles(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.GetStyles(ctx, request)
+    actual, err := client.WordsApi.GetStyles(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -80,7 +80,7 @@ func Test_Styles_GetStylesOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, _, err := client.WordsApi.GetStylesOnline(ctx, request)
+    _, err := client.WordsApi.GetStylesOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -109,7 +109,7 @@ func Test_Styles_GetStyle(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.GetStyle(ctx, request)
+    actual, err := client.WordsApi.GetStyle(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -135,7 +135,7 @@ func Test_Styles_GetStyleOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, _, err := client.WordsApi.GetStyleOnline(ctx, request)
+    _, err := client.WordsApi.GetStyleOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -168,7 +168,7 @@ func Test_Styles_UpdateStyle(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.UpdateStyle(ctx, request)
+    actual, err := client.WordsApi.UpdateStyle(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -198,7 +198,7 @@ func Test_Styles_UpdateStyleOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _,err := client.WordsApi.UpdateStyleOnline(ctx, request)
+    _err := client.WordsApi.UpdateStyleOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -231,7 +231,7 @@ func Test_Styles_InsertStyle(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.InsertStyle(ctx, request)
+    actual, err := client.WordsApi.InsertStyle(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -261,7 +261,7 @@ func Test_Styles_InsertStyleOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _,err := client.WordsApi.InsertStyleOnline(ctx, request)
+    _err := client.WordsApi.InsertStyleOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -293,7 +293,7 @@ func Test_Styles_CopyStyle(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.CopyStyle(ctx, request)
+    actual, err := client.WordsApi.CopyStyle(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -322,7 +322,7 @@ func Test_Styles_CopyStyleOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _,err := client.WordsApi.CopyStyleOnline(ctx, request)
+    _err := client.WordsApi.CopyStyleOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -351,7 +351,7 @@ func Test_Styles_GetStyleFromDocumentElement(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.GetStyleFromDocumentElement(ctx, request)
+    actual, err := client.WordsApi.GetStyleFromDocumentElement(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -377,7 +377,7 @@ func Test_Styles_GetStyleFromDocumentElementOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, _, err := client.WordsApi.GetStyleFromDocumentElementOnline(ctx, request)
+    _, err := client.WordsApi.GetStyleFromDocumentElementOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -410,7 +410,7 @@ func Test_Styles_ApplyStyleToDocumentElement(t *testing.T) {
         Optionals: options,
     }
 
-    _, _, err := client.WordsApi.ApplyStyleToDocumentElement(ctx, request)
+    _, err := client.WordsApi.ApplyStyleToDocumentElement(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -438,7 +438,7 @@ func Test_Styles_ApplyStyleToDocumentElementOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _,err := client.WordsApi.ApplyStyleToDocumentElementOnline(ctx, request)
+    _err := client.WordsApi.ApplyStyleToDocumentElementOnline(ctx, request)
 
     if err != nil {
         t.Error(err)

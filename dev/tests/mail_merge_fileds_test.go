@@ -51,7 +51,7 @@ func Test_MailMergeFileds_GetDocumentFieldNamesOnline(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.GetDocumentFieldNamesOnline(ctx, request)
+    actual, err := client.WordsApi.GetDocumentFieldNamesOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -82,7 +82,7 @@ func Test_MailMergeFileds_GetDocumentFieldNames(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.GetDocumentFieldNames(ctx, request)
+    actual, err := client.WordsApi.GetDocumentFieldNames(ctx, request)
 
     if err != nil {
         t.Error(err)

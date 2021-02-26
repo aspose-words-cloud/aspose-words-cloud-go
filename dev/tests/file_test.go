@@ -52,7 +52,7 @@ func Test_File_UploadFile(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.UploadFile(ctx, request)
+    actual, err := client.WordsApi.UploadFile(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -165,7 +165,7 @@ func Test_File_DownloadFile(t *testing.T) {
         Optionals: options,
     }
 
-    _, , _, err := client.WordsApi.DownloadFile(ctx, request)
+    _, err := client.WordsApi.DownloadFile(ctx, request)
 
     if err != nil {
         t.Error(err)

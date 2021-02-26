@@ -55,7 +55,7 @@ func Test_PageSetup_GetSectionPageSetup(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.GetSectionPageSetup(ctx, request)
+    actual, err := client.WordsApi.GetSectionPageSetup(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -81,7 +81,7 @@ func Test_PageSetup_GetSectionPageSetupOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, _, err := client.WordsApi.GetSectionPageSetupOnline(ctx, request)
+    _, err := client.WordsApi.GetSectionPageSetupOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -117,7 +117,7 @@ func Test_PageSetup_UpdateSectionPageSetup(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.UpdateSectionPageSetup(ctx, request)
+    actual, err := client.WordsApi.UpdateSectionPageSetup(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -152,7 +152,7 @@ func Test_PageSetup_UpdateSectionPageSetupOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _,err := client.WordsApi.UpdateSectionPageSetupOnline(ctx, request)
+    _err := client.WordsApi.UpdateSectionPageSetupOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -182,7 +182,7 @@ func Test_PageSetup_GetRenderPage(t *testing.T) {
         Optionals: options,
     }
 
-    _, , _, err := client.WordsApi.RenderPage(ctx, request)
+    _, err := client.WordsApi.RenderPage(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -207,7 +207,7 @@ func Test_PageSetup_GetRenderPageOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, , _, err := client.WordsApi.RenderPageOnline(ctx, request)
+    _, err := client.WordsApi.RenderPageOnline(ctx, request)
 
     if err != nil {
         t.Error(err)

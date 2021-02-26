@@ -56,7 +56,7 @@ func Test_Range_GetRangeText(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.GetRangeText(ctx, request)
+    actual, err := client.WordsApi.GetRangeText(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -82,7 +82,7 @@ func Test_Range_GetRangeTextOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, _, err := client.WordsApi.GetRangeTextOnline(ctx, request)
+    _, err := client.WordsApi.GetRangeTextOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -112,7 +112,7 @@ func Test_Range_RemoveRange(t *testing.T) {
         Optionals: options,
     }
 
-    _, _, err := client.WordsApi.RemoveRange(ctx, request)
+    _, err := client.WordsApi.RemoveRange(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -137,7 +137,7 @@ func Test_Range_RemoveRangeOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _,err := client.WordsApi.RemoveRangeOnline(ctx, request)
+    _err := client.WordsApi.RemoveRangeOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -171,7 +171,7 @@ func Test_Range_SaveAsRange(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.SaveAsRange(ctx, request)
+    actual, err := client.WordsApi.SaveAsRange(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -203,7 +203,7 @@ func Test_Range_SaveAsRangeOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _,err := client.WordsApi.SaveAsRangeOnline(ctx, request)
+    _err := client.WordsApi.SaveAsRangeOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -237,7 +237,7 @@ func Test_Range_ReplaceWithText(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.ReplaceWithText(ctx, request)
+    actual, err := client.WordsApi.ReplaceWithText(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -268,7 +268,7 @@ func Test_Range_ReplaceWithTextOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _,err := client.WordsApi.ReplaceWithTextOnline(ctx, request)
+    _err := client.WordsApi.ReplaceWithTextOnline(ctx, request)
 
     if err != nil {
         t.Error(err)

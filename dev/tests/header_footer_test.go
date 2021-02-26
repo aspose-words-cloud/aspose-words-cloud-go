@@ -55,7 +55,7 @@ func Test_HeaderFooter_GetHeaderFooters(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.GetHeaderFooters(ctx, request)
+    actual, err := client.WordsApi.GetHeaderFooters(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -82,7 +82,7 @@ func Test_HeaderFooter_GetHeaderFootersOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, _, err := client.WordsApi.GetHeaderFootersOnline(ctx, request)
+    _, err := client.WordsApi.GetHeaderFootersOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -111,7 +111,7 @@ func Test_HeaderFooter_GetHeaderFooter(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.GetHeaderFooter(ctx, request)
+    actual, err := client.WordsApi.GetHeaderFooter(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -139,7 +139,7 @@ func Test_HeaderFooter_GetHeaderFooterOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, _, err := client.WordsApi.GetHeaderFooterOnline(ctx, request)
+    _, err := client.WordsApi.GetHeaderFooterOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -169,7 +169,7 @@ func Test_HeaderFooter_GetHeaderFooterOfSection(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.GetHeaderFooterOfSection(ctx, request)
+    actual, err := client.WordsApi.GetHeaderFooterOfSection(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -198,7 +198,7 @@ func Test_HeaderFooter_GetHeaderFooterOfSectionOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, _, err := client.WordsApi.GetHeaderFooterOfSectionOnline(ctx, request)
+    _, err := client.WordsApi.GetHeaderFooterOfSectionOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -253,7 +253,7 @@ func Test_HeaderFooter_DeleteHeaderFooterOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, , _, err := client.WordsApi.DeleteHeaderFooterOnline(ctx, request)
+    _, err := client.WordsApi.DeleteHeaderFooterOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -306,7 +306,7 @@ func Test_HeaderFooter_DeleteHeadersFootersOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, , _, err := client.WordsApi.DeleteHeadersFootersOnline(ctx, request)
+    _, err := client.WordsApi.DeleteHeadersFootersOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -336,7 +336,7 @@ func Test_HeaderFooter_InsertHeaderFooter(t *testing.T) {
         Optionals: options,
     }
 
-    _, _, err := client.WordsApi.InsertHeaderFooter(ctx, request)
+    _, err := client.WordsApi.InsertHeaderFooter(ctx, request)
 
     if err != nil {
         t.Error(err)

@@ -54,7 +54,7 @@ func Test_DocumentStatistics_GetDocumentStatistics(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.GetDocumentStatistics(ctx, request)
+    actual, err := client.WordsApi.GetDocumentStatistics(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -79,7 +79,7 @@ func Test_DocumentStatistics_GetDocumentStatisticsOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, _, err := client.WordsApi.GetDocumentStatisticsOnline(ctx, request)
+    _, err := client.WordsApi.GetDocumentStatisticsOnline(ctx, request)
 
     if err != nil {
         t.Error(err)

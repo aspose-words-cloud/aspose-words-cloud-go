@@ -57,7 +57,7 @@ func Test_BuildReport_BuildReportOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, , _, err := client.WordsApi.BuildReportOnline(ctx, request)
+    _, err := client.WordsApi.BuildReportOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -97,7 +97,7 @@ func Test_BuildReport_BuildReport(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.BuildReport(ctx, request)
+    actual, err := client.WordsApi.BuildReport(ctx, request)
 
     if err != nil {
         t.Error(err)

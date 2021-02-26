@@ -56,7 +56,7 @@ func Test_Paragraph_GetDocumentParagraphByIndex(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.GetParagraph(ctx, request)
+    actual, err := client.WordsApi.GetParagraph(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -83,7 +83,7 @@ func Test_Paragraph_GetDocumentParagraphOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, _, err := client.WordsApi.GetParagraphOnline(ctx, request)
+    _, err := client.WordsApi.GetParagraphOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -112,7 +112,7 @@ func Test_Paragraph_GetDocumentParagraphByIndexWithoutNodePath(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.GetParagraph(ctx, request)
+    actual, err := client.WordsApi.GetParagraph(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -143,7 +143,7 @@ func Test_Paragraph_GetDocumentParagraphs(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.GetParagraphs(ctx, request)
+    actual, err := client.WordsApi.GetParagraphs(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -171,7 +171,7 @@ func Test_Paragraph_GetDocumentParagraphsOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, _, err := client.WordsApi.GetParagraphsOnline(ctx, request)
+    _, err := client.WordsApi.GetParagraphsOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -199,7 +199,7 @@ func Test_Paragraph_GetDocumentParagraphsWithoutNodePath(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.GetParagraphs(ctx, request)
+    actual, err := client.WordsApi.GetParagraphs(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -233,7 +233,7 @@ func Test_Paragraph_GetDocumentParagraphRun(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.GetRun(ctx, request)
+    actual, err := client.WordsApi.GetRun(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -260,7 +260,7 @@ func Test_Paragraph_GetDocumentParagraphRunOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, _, err := client.WordsApi.GetRunOnline(ctx, request)
+    _, err := client.WordsApi.GetRunOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -290,7 +290,7 @@ func Test_Paragraph_GetDocumentParagraphRunFont(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.GetRunFont(ctx, request)
+    actual, err := client.WordsApi.GetRunFont(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -317,7 +317,7 @@ func Test_Paragraph_GetDocumentParagraphRunFontOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, _, err := client.WordsApi.GetRunFontOnline(ctx, request)
+    _, err := client.WordsApi.GetRunFontOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -346,7 +346,7 @@ func Test_Paragraph_GetParagraphRuns(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.GetRuns(ctx, request)
+    actual, err := client.WordsApi.GetRuns(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -374,7 +374,7 @@ func Test_Paragraph_GetParagraphRunsOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, _, err := client.WordsApi.GetRunsOnline(ctx, request)
+    _, err := client.WordsApi.GetRunsOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -409,7 +409,7 @@ func Test_Paragraph_UpdateRunFont(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.UpdateRunFont(ctx, request)
+    actual, err := client.WordsApi.UpdateRunFont(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -440,7 +440,7 @@ func Test_Paragraph_UpdateRunFontOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _,err := client.WordsApi.UpdateRunFontOnline(ctx, request)
+    _err := client.WordsApi.UpdateRunFontOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -473,7 +473,7 @@ func Test_Paragraph_InsertParagraph(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.InsertParagraph(ctx, request)
+    actual, err := client.WordsApi.InsertParagraph(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -503,7 +503,7 @@ func Test_Paragraph_InsertParagraphOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _,err := client.WordsApi.InsertParagraphOnline(ctx, request)
+    _err := client.WordsApi.InsertParagraphOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -535,7 +535,7 @@ func Test_Paragraph_InsertParagraphWithoutNodePath(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.InsertParagraph(ctx, request)
+    actual, err := client.WordsApi.InsertParagraph(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -568,7 +568,7 @@ func Test_Paragraph_RenderParagraph(t *testing.T) {
         Optionals: options,
     }
 
-    _, , _, err := client.WordsApi.RenderParagraph(ctx, request)
+    _, err := client.WordsApi.RenderParagraph(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -594,7 +594,7 @@ func Test_Paragraph_RenderParagraphOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, , _, err := client.WordsApi.RenderParagraphOnline(ctx, request)
+    _, err := client.WordsApi.RenderParagraphOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -624,7 +624,7 @@ func Test_Paragraph_RenderParagraphWithoutNodePath(t *testing.T) {
         Optionals: options,
     }
 
-    _, , _, err := client.WordsApi.RenderParagraph(ctx, request)
+    _, err := client.WordsApi.RenderParagraph(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -654,7 +654,7 @@ func Test_Paragraph_GetParagraphFormat(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.GetParagraphFormat(ctx, request)
+    actual, err := client.WordsApi.GetParagraphFormat(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -681,7 +681,7 @@ func Test_Paragraph_GetParagraphFormatOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, _, err := client.WordsApi.GetParagraphFormatOnline(ctx, request)
+    _, err := client.WordsApi.GetParagraphFormatOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -710,7 +710,7 @@ func Test_Paragraph_GetParagraphFormatWithoutNodePath(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.GetParagraphFormat(ctx, request)
+    actual, err := client.WordsApi.GetParagraphFormat(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -746,7 +746,7 @@ func Test_Paragraph_UpdateParagraphFormat(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.UpdateParagraphFormat(ctx, request)
+    actual, err := client.WordsApi.UpdateParagraphFormat(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -777,7 +777,7 @@ func Test_Paragraph_UpdateParagraphFormatOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _,err := client.WordsApi.UpdateParagraphFormatOnline(ctx, request)
+    _err := client.WordsApi.UpdateParagraphFormatOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -832,7 +832,7 @@ func Test_Paragraph_DeleteParagraphOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, , _, err := client.WordsApi.DeleteParagraphOnline(ctx, request)
+    _, err := client.WordsApi.DeleteParagraphOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -891,7 +891,7 @@ func Test_Paragraph_GetParagraphListFormat(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.GetParagraphListFormat(ctx, request)
+    actual, err := client.WordsApi.GetParagraphListFormat(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -918,7 +918,7 @@ func Test_Paragraph_GetParagraphListFormatOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, _, err := client.WordsApi.GetParagraphListFormatOnline(ctx, request)
+    _, err := client.WordsApi.GetParagraphListFormatOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -947,7 +947,7 @@ func Test_Paragraph_GetParagraphListFormatWithoutNodePath(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.GetParagraphListFormat(ctx, request)
+    actual, err := client.WordsApi.GetParagraphListFormat(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -983,7 +983,7 @@ func Test_Paragraph_UpdateParagraphListFormat(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.UpdateParagraphListFormat(ctx, request)
+    actual, err := client.WordsApi.UpdateParagraphListFormat(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -1014,7 +1014,7 @@ func Test_Paragraph_UpdateParagraphListFormatOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _,err := client.WordsApi.UpdateParagraphListFormatOnline(ctx, request)
+    _err := client.WordsApi.UpdateParagraphListFormatOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -1047,7 +1047,7 @@ func Test_Paragraph_UpdateParagraphListFormatWithoutNodePath(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.UpdateParagraphListFormat(ctx, request)
+    actual, err := client.WordsApi.UpdateParagraphListFormat(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -1079,7 +1079,7 @@ func Test_Paragraph_DeleteParagraphListFormat(t *testing.T) {
         Optionals: options,
     }
 
-    _, _, err := client.WordsApi.DeleteParagraphListFormat(ctx, request)
+    _, err := client.WordsApi.DeleteParagraphListFormat(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -1104,7 +1104,7 @@ func Test_Paragraph_DeleteParagraphListFormatOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _,err := client.WordsApi.DeleteParagraphListFormatOnline(ctx, request)
+    _err := client.WordsApi.DeleteParagraphListFormatOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -1133,7 +1133,7 @@ func Test_Paragraph_DeleteParagraphListFormatWithoutNodePath(t *testing.T) {
         Optionals: options,
     }
 
-    _, _, err := client.WordsApi.DeleteParagraphListFormat(ctx, request)
+    _, err := client.WordsApi.DeleteParagraphListFormat(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -1163,7 +1163,7 @@ func Test_Paragraph_GetParagraphTabStops(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.GetParagraphTabStops(ctx, request)
+    actual, err := client.WordsApi.GetParagraphTabStops(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -1191,7 +1191,7 @@ func Test_Paragraph_GetParagraphTabStopsOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, _, err := client.WordsApi.GetParagraphTabStopsOnline(ctx, request)
+    _, err := client.WordsApi.GetParagraphTabStopsOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -1220,7 +1220,7 @@ func Test_Paragraph_GetParagraphTabStopsWithoutNodePath(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.GetParagraphTabStops(ctx, request)
+    actual, err := client.WordsApi.GetParagraphTabStops(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -1259,7 +1259,7 @@ func Test_Paragraph_InsertParagraphTabStops(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.InsertOrUpdateParagraphTabStop(ctx, request)
+    actual, err := client.WordsApi.InsertOrUpdateParagraphTabStop(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -1295,7 +1295,7 @@ func Test_Paragraph_InsertParagraphTabStopsOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _,err := client.WordsApi.InsertOrUpdateParagraphTabStopOnline(ctx, request)
+    _err := client.WordsApi.InsertOrUpdateParagraphTabStopOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -1330,7 +1330,7 @@ func Test_Paragraph_InsertParagraphTabStopsWithoutNodePath(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.InsertOrUpdateParagraphTabStop(ctx, request)
+    actual, err := client.WordsApi.InsertOrUpdateParagraphTabStop(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -1365,7 +1365,7 @@ func Test_Paragraph_DeleteAllParagraphTabStops(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.DeleteAllParagraphTabStops(ctx, request)
+    actual, err := client.WordsApi.DeleteAllParagraphTabStops(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -1392,7 +1392,7 @@ func Test_Paragraph_DeleteAllParagraphTabStopsOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _,err := client.WordsApi.DeleteAllParagraphTabStopsOnline(ctx, request)
+    _err := client.WordsApi.DeleteAllParagraphTabStopsOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -1421,7 +1421,7 @@ func Test_Paragraph_DeleteAllParagraphTabStopsWithoutNodePath(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.DeleteAllParagraphTabStops(ctx, request)
+    actual, err := client.WordsApi.DeleteAllParagraphTabStops(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -1454,7 +1454,7 @@ func Test_Paragraph_DeleteParagraphTabStop(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.DeleteParagraphTabStop(ctx, request)
+    actual, err := client.WordsApi.DeleteParagraphTabStop(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -1482,7 +1482,7 @@ func Test_Paragraph_DeleteParagraphTabStopOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _,err := client.WordsApi.DeleteParagraphTabStopOnline(ctx, request)
+    _err := client.WordsApi.DeleteParagraphTabStopOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -1512,7 +1512,7 @@ func Test_Paragraph_DeleteParagraphTabStopWithoutNodePath(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.DeleteParagraphTabStop(ctx, request)
+    actual, err := client.WordsApi.DeleteParagraphTabStop(ctx, request)
 
     if err != nil {
         t.Error(err)

@@ -60,7 +60,7 @@ func Test_Text_ReplaceText(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.ReplaceText(ctx, request)
+    actual, err := client.WordsApi.ReplaceText(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -89,7 +89,7 @@ func Test_Text_ReplaceTextOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _,err := client.WordsApi.ReplaceTextOnline(ctx, request)
+    _err := client.WordsApi.ReplaceTextOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -118,7 +118,7 @@ func Test_Text_Search(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.Search(ctx, request)
+    actual, err := client.WordsApi.Search(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -147,7 +147,7 @@ func Test_Text_SearchOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, _, err := client.WordsApi.SearchOnline(ctx, request)
+    _, err := client.WordsApi.SearchOnline(ctx, request)
 
     if err != nil {
         t.Error(err)

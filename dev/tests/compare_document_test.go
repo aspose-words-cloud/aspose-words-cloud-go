@@ -65,7 +65,7 @@ func Test_CompareDocument_CompareDocument(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.CompareDocument(ctx, request)
+    actual, err := client.WordsApi.CompareDocument(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -103,7 +103,7 @@ func Test_CompareDocument_CompareDocumentOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _,err := client.WordsApi.CompareDocumentOnline(ctx, request)
+    _err := client.WordsApi.CompareDocumentOnline(ctx, request)
 
     if err != nil {
         t.Error(err)

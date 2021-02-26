@@ -58,7 +58,7 @@ func Test_ExecuteTemplate_ExecuteTemplate(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.ExecuteMailMerge(ctx, request)
+    actual, err := client.WordsApi.ExecuteMailMerge(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -86,7 +86,7 @@ func Test_ExecuteTemplate_ExecuteTemplateOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, , _, err := client.WordsApi.ExecuteMailMergeOnline(ctx, request)
+    _, err := client.WordsApi.ExecuteMailMergeOnline(ctx, request)
 
     if err != nil {
         t.Error(err)

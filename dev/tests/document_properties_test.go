@@ -54,7 +54,7 @@ func Test_DocumentProperties_GetDocumentProperties(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.GetDocumentProperties(ctx, request)
+    actual, err := client.WordsApi.GetDocumentProperties(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -83,7 +83,7 @@ func Test_DocumentProperties_GetDocumentPropertiesOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, _, err := client.WordsApi.GetDocumentPropertiesOnline(ctx, request)
+    _, err := client.WordsApi.GetDocumentPropertiesOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -112,7 +112,7 @@ func Test_DocumentProperties_GetDocumentProperty(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.GetDocumentProperty(ctx, request)
+    actual, err := client.WordsApi.GetDocumentProperty(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -139,7 +139,7 @@ func Test_DocumentProperties_GetDocumentPropertyOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, _, err := client.WordsApi.GetDocumentPropertyOnline(ctx, request)
+    _, err := client.WordsApi.GetDocumentPropertyOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -193,7 +193,7 @@ func Test_DocumentProperties_DeleteDocumentPropertyOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, , _, err := client.WordsApi.DeleteDocumentPropertyOnline(ctx, request)
+    _, err := client.WordsApi.DeleteDocumentPropertyOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -227,7 +227,7 @@ func Test_DocumentProperties_UpdateDocumentProperty(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.CreateOrUpdateDocumentProperty(ctx, request)
+    actual, err := client.WordsApi.CreateOrUpdateDocumentProperty(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -258,7 +258,7 @@ func Test_DocumentProperties_UpdateDocumentPropertyOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _,err := client.WordsApi.CreateOrUpdateDocumentPropertyOnline(ctx, request)
+    _err := client.WordsApi.CreateOrUpdateDocumentPropertyOnline(ctx, request)
 
     if err != nil {
         t.Error(err)

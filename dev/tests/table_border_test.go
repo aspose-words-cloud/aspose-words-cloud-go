@@ -55,7 +55,7 @@ func Test_TableBorder_GetBorders(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.GetBorders(ctx, request)
+    actual, err := client.WordsApi.GetBorders(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -84,7 +84,7 @@ func Test_TableBorder_GetBordersOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, _, err := client.WordsApi.GetBordersOnline(ctx, request)
+    _, err := client.WordsApi.GetBordersOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -114,7 +114,7 @@ func Test_TableBorder_GetBorder(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.GetBorder(ctx, request)
+    actual, err := client.WordsApi.GetBorder(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -142,7 +142,7 @@ func Test_TableBorder_GetBorderOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, _, err := client.WordsApi.GetBorderOnline(ctx, request)
+    _, err := client.WordsApi.GetBorderOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -171,7 +171,7 @@ func Test_TableBorder_DeleteBorders(t *testing.T) {
         Optionals: options,
     }
 
-    _, _, err := client.WordsApi.DeleteBorders(ctx, request)
+    _, err := client.WordsApi.DeleteBorders(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -195,7 +195,7 @@ func Test_TableBorder_DeleteBordersOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _,err := client.WordsApi.DeleteBordersOnline(ctx, request)
+    _err := client.WordsApi.DeleteBordersOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -225,7 +225,7 @@ func Test_TableBorder_DeleteBorder(t *testing.T) {
         Optionals: options,
     }
 
-    _, _, err := client.WordsApi.DeleteBorder(ctx, request)
+    _, err := client.WordsApi.DeleteBorder(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -250,7 +250,7 @@ func Test_TableBorder_DeleteBorderOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _,err := client.WordsApi.DeleteBorderOnline(ctx, request)
+    _err := client.WordsApi.DeleteBorderOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -292,7 +292,7 @@ func Test_TableBorder_UpdateBorder(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.UpdateBorder(ctx, request)
+    actual, err := client.WordsApi.UpdateBorder(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -335,7 +335,7 @@ func Test_TableBorder_UpdateBorderOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _,err := client.WordsApi.UpdateBorderOnline(ctx, request)
+    _err := client.WordsApi.UpdateBorderOnline(ctx, request)
 
     if err != nil {
         t.Error(err)

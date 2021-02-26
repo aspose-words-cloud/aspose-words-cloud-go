@@ -55,7 +55,7 @@ func Test_Table_GetTables(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.GetTables(ctx, request)
+    actual, err := client.WordsApi.GetTables(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -83,7 +83,7 @@ func Test_Table_GetTablesOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, _, err := client.WordsApi.GetTablesOnline(ctx, request)
+    _, err := client.WordsApi.GetTablesOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -111,7 +111,7 @@ func Test_Table_GetTablesWithoutNodePath(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.GetTables(ctx, request)
+    actual, err := client.WordsApi.GetTables(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -145,7 +145,7 @@ func Test_Table_GetTable(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.GetTable(ctx, request)
+    actual, err := client.WordsApi.GetTable(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -175,7 +175,7 @@ func Test_Table_GetTableOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, _, err := client.WordsApi.GetTableOnline(ctx, request)
+    _, err := client.WordsApi.GetTableOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -204,7 +204,7 @@ func Test_Table_GetTableWithoutNodePath(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.GetTable(ctx, request)
+    actual, err := client.WordsApi.GetTable(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -264,7 +264,7 @@ func Test_Table_DeleteTableOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, , _, err := client.WordsApi.DeleteTableOnline(ctx, request)
+    _, err := client.WordsApi.DeleteTableOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -327,7 +327,7 @@ func Test_Table_InsertTable(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.InsertTable(ctx, request)
+    actual, err := client.WordsApi.InsertTable(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -361,7 +361,7 @@ func Test_Table_InsertTableOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _,err := client.WordsApi.InsertTableOnline(ctx, request)
+    _err := client.WordsApi.InsertTableOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -394,7 +394,7 @@ func Test_Table_InsertTableWithoutNodePath(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.InsertTable(ctx, request)
+    actual, err := client.WordsApi.InsertTable(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -429,7 +429,7 @@ func Test_Table_GetTableProperties(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.GetTableProperties(ctx, request)
+    actual, err := client.WordsApi.GetTableProperties(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -456,7 +456,7 @@ func Test_Table_GetTablePropertiesOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, _, err := client.WordsApi.GetTablePropertiesOnline(ctx, request)
+    _, err := client.WordsApi.GetTablePropertiesOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -485,7 +485,7 @@ func Test_Table_GetTablePropertiesWithoutNodePath(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.GetTableProperties(ctx, request)
+    actual, err := client.WordsApi.GetTableProperties(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -526,7 +526,7 @@ func Test_Table_UpdateTableProperties(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.UpdateTableProperties(ctx, request)
+    actual, err := client.WordsApi.UpdateTableProperties(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -565,7 +565,7 @@ func Test_Table_UpdateTablePropertiesOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _,err := client.WordsApi.UpdateTablePropertiesOnline(ctx, request)
+    _err := client.WordsApi.UpdateTablePropertiesOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -603,7 +603,7 @@ func Test_Table_UpdateTablePropertiesWithoutNodePath(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.UpdateTableProperties(ctx, request)
+    actual, err := client.WordsApi.UpdateTableProperties(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -638,7 +638,7 @@ func Test_Table_GetTableRow(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.GetTableRow(ctx, request)
+    actual, err := client.WordsApi.GetTableRow(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -666,7 +666,7 @@ func Test_Table_GetTableRowOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, _, err := client.WordsApi.GetTableRowOnline(ctx, request)
+    _, err := client.WordsApi.GetTableRowOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -721,7 +721,7 @@ func Test_Table_DeleteTableRowOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, , _, err := client.WordsApi.DeleteTableRowOnline(ctx, request)
+    _, err := client.WordsApi.DeleteTableRowOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -754,7 +754,7 @@ func Test_Table_InsertTableRow(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.InsertTableRow(ctx, request)
+    actual, err := client.WordsApi.InsertTableRow(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -785,7 +785,7 @@ func Test_Table_InsertTableRowOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _,err := client.WordsApi.InsertTableRowOnline(ctx, request)
+    _err := client.WordsApi.InsertTableRowOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -815,7 +815,7 @@ func Test_Table_GetTableRowFormat(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.GetTableRowFormat(ctx, request)
+    actual, err := client.WordsApi.GetTableRowFormat(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -842,7 +842,7 @@ func Test_Table_GetTableRowFormatOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, _, err := client.WordsApi.GetTableRowFormatOnline(ctx, request)
+    _, err := client.WordsApi.GetTableRowFormatOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -879,7 +879,7 @@ func Test_Table_UpdateTableRowFormat(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.UpdateTableRowFormat(ctx, request)
+    actual, err := client.WordsApi.UpdateTableRowFormat(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -915,7 +915,7 @@ func Test_Table_UpdateTableRowFormatOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _,err := client.WordsApi.UpdateTableRowFormatOnline(ctx, request)
+    _err := client.WordsApi.UpdateTableRowFormatOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -945,7 +945,7 @@ func Test_Table_GetTableCell(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.GetTableCell(ctx, request)
+    actual, err := client.WordsApi.GetTableCell(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -972,7 +972,7 @@ func Test_Table_GetTableCellOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, _, err := client.WordsApi.GetTableCellOnline(ctx, request)
+    _, err := client.WordsApi.GetTableCellOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -1027,7 +1027,7 @@ func Test_Table_DeleteTableCellOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, , _, err := client.WordsApi.DeleteTableCellOnline(ctx, request)
+    _, err := client.WordsApi.DeleteTableCellOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -1059,7 +1059,7 @@ func Test_Table_InsertTableCell(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.InsertTableCell(ctx, request)
+    actual, err := client.WordsApi.InsertTableCell(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -1088,7 +1088,7 @@ func Test_Table_InsertTableCellOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _,err := client.WordsApi.InsertTableCellOnline(ctx, request)
+    _err := client.WordsApi.InsertTableCellOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -1118,7 +1118,7 @@ func Test_Table_GetTableCellFormat(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.GetTableCellFormat(ctx, request)
+    actual, err := client.WordsApi.GetTableCellFormat(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -1145,7 +1145,7 @@ func Test_Table_GetTableCellFormatOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, _, err := client.WordsApi.GetTableCellFormatOnline(ctx, request)
+    _, err := client.WordsApi.GetTableCellFormatOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -1182,7 +1182,7 @@ func Test_Table_UpdateTableCellFormat(t *testing.T) {
         Optionals: options,
     }
 
-    actual, _, err := client.WordsApi.UpdateTableCellFormat(ctx, request)
+    actual, err := client.WordsApi.UpdateTableCellFormat(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -1218,7 +1218,7 @@ func Test_Table_UpdateTableCellFormatOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _,err := client.WordsApi.UpdateTableCellFormatOnline(ctx, request)
+    _err := client.WordsApi.UpdateTableCellFormatOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -1249,7 +1249,7 @@ func Test_Table_RenderTable(t *testing.T) {
         Optionals: options,
     }
 
-    _, , _, err := client.WordsApi.RenderTable(ctx, request)
+    _, err := client.WordsApi.RenderTable(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -1275,7 +1275,7 @@ func Test_Table_RenderTableOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, , _, err := client.WordsApi.RenderTableOnline(ctx, request)
+    _, err := client.WordsApi.RenderTableOnline(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -1305,7 +1305,7 @@ func Test_Table_RenderTableWithoutNodePath(t *testing.T) {
         Optionals: options,
     }
 
-    _, , _, err := client.WordsApi.RenderTable(ctx, request)
+    _, err := client.WordsApi.RenderTable(ctx, request)
 
     if err != nil {
         t.Error(err)
