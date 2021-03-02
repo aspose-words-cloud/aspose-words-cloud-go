@@ -59,7 +59,7 @@ func Test_Watermark_InsertWatermarkImage(t *testing.T) {
         Optionals: options,
     }
 
-    actual, err := client.WordsApi.InsertWatermarkImage(ctx, request)
+    actual, _, err := client.WordsApi.InsertWatermarkImage(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -69,29 +69,9 @@ func Test_Watermark_InsertWatermarkImage(t *testing.T) {
     assert.Equal(t, "TestInsertWatermarkImage.docx", actual.Document.FileName, "Validate InsertWatermarkImage response.");
 }
 
-// Test for adding watermark image online.
-func Test_Watermark_InsertWatermarkImageOnline(t *testing.T) {
-    config := ReadConfiguration(t)
-    client, ctx := PrepareTest(t, config)
-    localFile := "Common/test_multi_pages.docx"
 
 
-    options := map[string]interface{}{
-    }
 
-    request := &models.InsertWatermarkImageOnlineRequest{
-        Document: OpenFile(t, localFile),
-        ImageFile: OpenFile(t, "Common/aspose-cloud.png"),
-        Optionals: options,
-    }
-
-    _err := client.WordsApi.InsertWatermarkImageOnline(ctx, request)
-
-    if err != nil {
-        t.Error(err)
-    }
-
-}
 
 // Test for adding watermark text.
 func Test_Watermark_InsertWatermarkText(t *testing.T) {
@@ -119,7 +99,7 @@ func Test_Watermark_InsertWatermarkText(t *testing.T) {
         Optionals: options,
     }
 
-    actual, err := client.WordsApi.InsertWatermarkText(ctx, request)
+    actual, _, err := client.WordsApi.InsertWatermarkText(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -129,33 +109,9 @@ func Test_Watermark_InsertWatermarkText(t *testing.T) {
     assert.Equal(t, "TestInsertWatermarkText.docx", actual.Document.FileName, "Validate InsertWatermarkText response.");
 }
 
-// Test for adding watermark text online.
-func Test_Watermark_InsertWatermarkTextOnline(t *testing.T) {
-    config := ReadConfiguration(t)
-    client, ctx := PrepareTest(t, config)
-    localFile := "Common/test_multi_pages.docx"
 
-    requestWatermarkText := models.WatermarkText{
-        Text: ToStringPointer("This is the text"),
-        RotationAngle: ToFloat64Pointer(90),
-    }
 
-    options := map[string]interface{}{
-    }
 
-    request := &models.InsertWatermarkTextOnlineRequest{
-        Document: OpenFile(t, localFile),
-        WatermarkText: requestWatermarkText,
-        Optionals: options,
-    }
-
-    _err := client.WordsApi.InsertWatermarkTextOnline(ctx, request)
-
-    if err != nil {
-        t.Error(err)
-    }
-
-}
 
 // Test for deleting watermark.
 func Test_Watermark_DeleteWatermark(t *testing.T) {
@@ -178,7 +134,7 @@ func Test_Watermark_DeleteWatermark(t *testing.T) {
         Optionals: options,
     }
 
-    actual, err := client.WordsApi.DeleteWatermark(ctx, request)
+    actual, _, err := client.WordsApi.DeleteWatermark(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -188,25 +144,5 @@ func Test_Watermark_DeleteWatermark(t *testing.T) {
     assert.Equal(t, "TestDeleteWatermark.docx", actual.Document.FileName, "Validate DeleteWatermark response.");
 }
 
-// Test for deleting watermark online.
-func Test_Watermark_DeleteWatermarkOnline(t *testing.T) {
-    config := ReadConfiguration(t)
-    client, ctx := PrepareTest(t, config)
-    localFile := "Common/test_multi_pages.docx"
 
 
-    options := map[string]interface{}{
-    }
-
-    request := &models.DeleteWatermarkOnlineRequest{
-        Document: OpenFile(t, localFile),
-        Optionals: options,
-    }
-
-    _err := client.WordsApi.DeleteWatermarkOnline(ctx, request)
-
-    if err != nil {
-        t.Error(err)
-    }
-
-}

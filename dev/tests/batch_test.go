@@ -28,7 +28,7 @@
 package api_test
 
 import (
-	"os"
+	// "os"
 	"reflect"
 	"testing"
 
@@ -43,11 +43,11 @@ func Test_BatchRequest(t *testing.T) {
 
 	remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Paragraphs"
 	localFile := "Common/test_multi_pages.docx"
-	reportingFolder := "DocumentActions/Reporting"
+	// reportingFolder := "DocumentActions/Reporting"
 	remoteFileName := "TestGetDocumentParagraphByIndex.docx"
 
-	localDocumentFile := "ReportTemplate.docx"
-	localDataFile := reportingFolder + "/ReportData.json"
+	// localDocumentFile := "ReportTemplate.docx"
+	// localDataFile := reportingFolder + "/ReportData.json"
 
 	UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder+"/"+remoteFileName)
 
@@ -84,6 +84,7 @@ func Test_BatchRequest(t *testing.T) {
 		},
 	}
 
+/*
 	templateFile, err := os.Open(GetLocalFile(reportingFolder + "/" + localDocumentFile))
 	if err != nil {
 		t.Error(err)
@@ -107,4 +108,14 @@ func Test_BatchRequest(t *testing.T) {
 	assert.Equal(t, "ParagraphResponse", reflect.TypeOf(actual[2]).Name(), "Validate InsertParagraph response.")
 	assert.Nil(t, actual[3], "Validate DeleteParagraph response.")
 	assert.Equal(t, "Reader", reflect.TypeOf(actual[4]).Elem().Name(), "Validate BuildReportOnline response.")
+*/
+
+	actual, _, err := client.WordsApi.Batch(ctx, request1, request2, request3, request4)
+
+	assert.Nil(t, err, err)
+	assert.True(t, len(actual) == 4)
+	assert.Equal(t, "ParagraphLinkCollectionResponse", reflect.TypeOf(actual[0]).Name(), "Validate GetParagraphs response.")
+	assert.Equal(t, "ParagraphResponse", reflect.TypeOf(actual[1]).Name(), "Validate GetParagraph response.")
+	assert.Equal(t, "ParagraphResponse", reflect.TypeOf(actual[2]).Name(), "Validate InsertParagraph response.")
+	assert.Nil(t, actual[3], "Validate DeleteParagraph response.")
 }

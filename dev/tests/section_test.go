@@ -55,7 +55,7 @@ func Test_Section_GetSection(t *testing.T) {
         Optionals: options,
     }
 
-    actual, err := client.WordsApi.GetSection(ctx, request)
+    actual, _, err := client.WordsApi.GetSection(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -67,29 +67,9 @@ func Test_Section_GetSection(t *testing.T) {
     assert.Equal(t, "0.3.0", actual.Section.ChildNodes[0].NodeId, "Validate GetSection response.");
 }
 
-// Test for getting section by index online.
-func Test_Section_GetSectionOnline(t *testing.T) {
-    config := ReadConfiguration(t)
-    client, ctx := PrepareTest(t, config)
-    localFile := "Common/test_multi_pages.docx"
 
 
-    options := map[string]interface{}{
-    }
 
-    request := &models.GetSectionOnlineRequest{
-        Document: OpenFile(t, localFile),
-        SectionIndex: ToInt32Pointer(int32(0)),
-        Optionals: options,
-    }
-
-    _, err := client.WordsApi.GetSectionOnline(ctx, request)
-
-    if err != nil {
-        t.Error(err)
-    }
-
-}
 
 // Test for getting sections.
 func Test_Section_GetSections(t *testing.T) {
@@ -111,7 +91,7 @@ func Test_Section_GetSections(t *testing.T) {
         Optionals: options,
     }
 
-    actual, err := client.WordsApi.GetSections(ctx, request)
+    actual, _, err := client.WordsApi.GetSections(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -123,28 +103,9 @@ func Test_Section_GetSections(t *testing.T) {
     assert.Equal(t, "0", actual.Sections.SectionLinkList[0].NodeId, "Validate GetSections response.");
 }
 
-// Test for getting sections online.
-func Test_Section_GetSectionsOnline(t *testing.T) {
-    config := ReadConfiguration(t)
-    client, ctx := PrepareTest(t, config)
-    localFile := "Common/test_multi_pages.docx"
 
 
-    options := map[string]interface{}{
-    }
 
-    request := &models.GetSectionsOnlineRequest{
-        Document: OpenFile(t, localFile),
-        Optionals: options,
-    }
-
-    _, err := client.WordsApi.GetSectionsOnline(ctx, request)
-
-    if err != nil {
-        t.Error(err)
-    }
-
-}
 
 // Test for delete a section.
 func Test_Section_DeleteSection(t *testing.T) {
@@ -167,7 +128,7 @@ func Test_Section_DeleteSection(t *testing.T) {
         Optionals: options,
     }
 
-    _, err := client.WordsApi.DeleteSection(ctx, request)
+_, err := client.WordsApi.DeleteSection(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -175,26 +136,5 @@ func Test_Section_DeleteSection(t *testing.T) {
 
 }
 
-// Test for delete a section online.
-func Test_Section_DeleteSectionOnline(t *testing.T) {
-    config := ReadConfiguration(t)
-    client, ctx := PrepareTest(t, config)
-    localFile := "Common/test_multi_pages.docx"
 
 
-    options := map[string]interface{}{
-    }
-
-    request := &models.DeleteSectionOnlineRequest{
-        Document: OpenFile(t, localFile),
-        SectionIndex: ToInt32Pointer(int32(0)),
-        Optionals: options,
-    }
-
-    _, err := client.WordsApi.DeleteSectionOnline(ctx, request)
-
-    if err != nil {
-        t.Error(err)
-    }
-
-}

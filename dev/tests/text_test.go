@@ -60,7 +60,7 @@ func Test_Text_ReplaceText(t *testing.T) {
         Optionals: options,
     }
 
-    actual, err := client.WordsApi.ReplaceText(ctx, request)
+    actual, _, err := client.WordsApi.ReplaceText(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -69,33 +69,9 @@ func Test_Text_ReplaceText(t *testing.T) {
     assert.Equal(t, int32(3), actual.Matches, "Validate ReplaceText response.");
 }
 
-// Test for replacing text online.
-func Test_Text_ReplaceTextOnline(t *testing.T) {
-    config := ReadConfiguration(t)
-    client, ctx := PrepareTest(t, config)
-    localFile := "Common/test_multi_pages.docx"
 
-    requestReplaceText := models.ReplaceTextParameters{
-        OldValue: ToStringPointer("aspose"),
-        NewValue: ToStringPointer("aspose new"),
-    }
 
-    options := map[string]interface{}{
-    }
 
-    request := &models.ReplaceTextOnlineRequest{
-        Document: OpenFile(t, localFile),
-        ReplaceText: requestReplaceText,
-        Optionals: options,
-    }
-
-    _err := client.WordsApi.ReplaceTextOnline(ctx, request)
-
-    if err != nil {
-        t.Error(err)
-    }
-
-}
 
 // Test for searching.
 func Test_Text_Search(t *testing.T) {
@@ -118,7 +94,7 @@ func Test_Text_Search(t *testing.T) {
         Optionals: options,
     }
 
-    actual, err := client.WordsApi.Search(ctx, request)
+    actual, _, err := client.WordsApi.Search(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -131,26 +107,5 @@ func Test_Text_Search(t *testing.T) {
     assert.Equal(t, int32(65), actual.SearchResults.ResultsList[0].RangeStart.Offset, "Validate Search response.");
 }
 
-// Test for searching online.
-func Test_Text_SearchOnline(t *testing.T) {
-    config := ReadConfiguration(t)
-    client, ctx := PrepareTest(t, config)
-    localFile := "DocumentElements/Text/SampleWordDocument.docx"
 
 
-    options := map[string]interface{}{
-    }
-
-    request := &models.SearchOnlineRequest{
-        Document: OpenFile(t, localFile),
-        Pattern: ToStringPointer("aspose"),
-        Optionals: options,
-    }
-
-    _, err := client.WordsApi.SearchOnline(ctx, request)
-
-    if err != nil {
-        t.Error(err)
-    }
-
-}

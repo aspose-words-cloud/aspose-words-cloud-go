@@ -55,7 +55,7 @@ func Test_MathObject_GetOfficeMathObjects(t *testing.T) {
         Optionals: options,
     }
 
-    actual, err := client.WordsApi.GetOfficeMathObjects(ctx, request)
+    actual, _, err := client.WordsApi.GetOfficeMathObjects(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -67,29 +67,9 @@ func Test_MathObject_GetOfficeMathObjects(t *testing.T) {
     assert.Equal(t, "0.0.0.0", actual.OfficeMathObjects.List[0].NodeId, "Validate GetOfficeMathObjects response.");
 }
 
-// Test for getting mathObjects online.
-func Test_MathObject_GetOfficeMathObjectsOnline(t *testing.T) {
-    config := ReadConfiguration(t)
-    client, ctx := PrepareTest(t, config)
-    localFile := "DocumentElements/MathObjects/MathObjects.docx"
 
 
-    options := map[string]interface{}{
-        "nodePath": "",
-    }
 
-    request := &models.GetOfficeMathObjectsOnlineRequest{
-        Document: OpenFile(t, localFile),
-        Optionals: options,
-    }
-
-    _, err := client.WordsApi.GetOfficeMathObjectsOnline(ctx, request)
-
-    if err != nil {
-        t.Error(err)
-    }
-
-}
 
 // Test for getting mathObjects without node path.
 func Test_MathObject_GetOfficeMathObjectsWithoutNodePath(t *testing.T) {
@@ -111,7 +91,7 @@ func Test_MathObject_GetOfficeMathObjectsWithoutNodePath(t *testing.T) {
         Optionals: options,
     }
 
-    actual, err := client.WordsApi.GetOfficeMathObjects(ctx, request)
+    actual, _, err := client.WordsApi.GetOfficeMathObjects(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -122,6 +102,8 @@ func Test_MathObject_GetOfficeMathObjectsWithoutNodePath(t *testing.T) {
     assert.Equal(t, 16, len(actual.OfficeMathObjects.List), "Validate GetOfficeMathObjectsWithoutNodePath response.");
     assert.Equal(t, "0.0.0.0", actual.OfficeMathObjects.List[0].NodeId, "Validate GetOfficeMathObjectsWithoutNodePath response.");
 }
+
+
 
 // Test for getting mathObject.
 func Test_MathObject_GetOfficeMathObject(t *testing.T) {
@@ -145,7 +127,7 @@ func Test_MathObject_GetOfficeMathObject(t *testing.T) {
         Optionals: options,
     }
 
-    actual, err := client.WordsApi.GetOfficeMathObject(ctx, request)
+    actual, _, err := client.WordsApi.GetOfficeMathObject(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -155,30 +137,9 @@ func Test_MathObject_GetOfficeMathObject(t *testing.T) {
     assert.Equal(t, "0.0.0.0", actual.OfficeMathObject.NodeId, "Validate GetOfficeMathObject response.");
 }
 
-// Test for getting mathObject online.
-func Test_MathObject_GetOfficeMathObjectOnline(t *testing.T) {
-    config := ReadConfiguration(t)
-    client, ctx := PrepareTest(t, config)
-    localFile := "DocumentElements/MathObjects/MathObjects.docx"
 
 
-    options := map[string]interface{}{
-        "nodePath": "",
-    }
 
-    request := &models.GetOfficeMathObjectOnlineRequest{
-        Document: OpenFile(t, localFile),
-        Index: ToInt32Pointer(int32(0)),
-        Optionals: options,
-    }
-
-    _, err := client.WordsApi.GetOfficeMathObjectOnline(ctx, request)
-
-    if err != nil {
-        t.Error(err)
-    }
-
-}
 
 // Test for getting mathObject without node path.
 func Test_MathObject_GetOfficeMathObjectWithoutNodePath(t *testing.T) {
@@ -201,7 +162,7 @@ func Test_MathObject_GetOfficeMathObjectWithoutNodePath(t *testing.T) {
         Optionals: options,
     }
 
-    actual, err := client.WordsApi.GetOfficeMathObject(ctx, request)
+    actual, _, err := client.WordsApi.GetOfficeMathObject(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -210,6 +171,8 @@ func Test_MathObject_GetOfficeMathObjectWithoutNodePath(t *testing.T) {
     assert.NotNil(t, actual.OfficeMathObject, "Validate GetOfficeMathObjectWithoutNodePath response.");
     assert.Equal(t, "0.0.0.0", actual.OfficeMathObject.NodeId, "Validate GetOfficeMathObjectWithoutNodePath response.");
 }
+
+
 
 // Test for rendering mathObject.
 func Test_MathObject_RenderMathObject(t *testing.T) {
@@ -234,7 +197,7 @@ func Test_MathObject_RenderMathObject(t *testing.T) {
         Optionals: options,
     }
 
-    _, err := client.WordsApi.RenderMathObject(ctx, request)
+_, err := client.WordsApi.RenderMathObject(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -242,31 +205,9 @@ func Test_MathObject_RenderMathObject(t *testing.T) {
 
 }
 
-// Test for rendering mathObject.
-func Test_MathObject_RenderMathObjectOnline(t *testing.T) {
-    config := ReadConfiguration(t)
-    client, ctx := PrepareTest(t, config)
-    localFile := "DocumentElements/MathObjects/MathObjects.docx"
 
 
-    options := map[string]interface{}{
-        "nodePath": "",
-    }
 
-    request := &models.RenderMathObjectOnlineRequest{
-        Document: OpenFile(t, localFile),
-        Format: ToStringPointer("png"),
-        Index: ToInt32Pointer(int32(0)),
-        Optionals: options,
-    }
-
-    _, err := client.WordsApi.RenderMathObjectOnline(ctx, request)
-
-    if err != nil {
-        t.Error(err)
-    }
-
-}
 
 // Test for rendering mathObject without node path.
 func Test_MathObject_RenderMathObjectWithoutNodePath(t *testing.T) {
@@ -290,13 +231,15 @@ func Test_MathObject_RenderMathObjectWithoutNodePath(t *testing.T) {
         Optionals: options,
     }
 
-    _, err := client.WordsApi.RenderMathObject(ctx, request)
+_, err := client.WordsApi.RenderMathObject(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
 
 }
+
+
 
 // Test for deleting mathObject.
 func Test_MathObject_DeleteOfficeMathObject(t *testing.T) {
@@ -320,7 +263,7 @@ func Test_MathObject_DeleteOfficeMathObject(t *testing.T) {
         Optionals: options,
     }
 
-    _, err := client.WordsApi.DeleteOfficeMathObject(ctx, request)
+_, err := client.WordsApi.DeleteOfficeMathObject(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -328,30 +271,9 @@ func Test_MathObject_DeleteOfficeMathObject(t *testing.T) {
 
 }
 
-// Test for deleting mathObject online.
-func Test_MathObject_DeleteOfficeMathObjectOnline(t *testing.T) {
-    config := ReadConfiguration(t)
-    client, ctx := PrepareTest(t, config)
-    localFile := "DocumentElements/MathObjects/MathObjects.docx"
 
 
-    options := map[string]interface{}{
-        "nodePath": "",
-    }
 
-    request := &models.DeleteOfficeMathObjectOnlineRequest{
-        Document: OpenFile(t, localFile),
-        Index: ToInt32Pointer(int32(0)),
-        Optionals: options,
-    }
-
-    _, err := client.WordsApi.DeleteOfficeMathObjectOnline(ctx, request)
-
-    if err != nil {
-        t.Error(err)
-    }
-
-}
 
 // Test for deleting mathObject without node path.
 func Test_MathObject_DeleteOfficeMathObjectWithoutNodePath(t *testing.T) {
@@ -374,10 +296,11 @@ func Test_MathObject_DeleteOfficeMathObjectWithoutNodePath(t *testing.T) {
         Optionals: options,
     }
 
-    _, err := client.WordsApi.DeleteOfficeMathObject(ctx, request)
+_, err := client.WordsApi.DeleteOfficeMathObject(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
 
 }
+

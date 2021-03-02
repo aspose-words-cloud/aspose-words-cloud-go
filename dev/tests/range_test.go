@@ -56,7 +56,7 @@ func Test_Range_GetRangeText(t *testing.T) {
         Optionals: options,
     }
 
-    actual, err := client.WordsApi.GetRangeText(ctx, request)
+    actual, _, err := client.WordsApi.GetRangeText(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -65,30 +65,9 @@ func Test_Range_GetRangeText(t *testing.T) {
     assert.Equal(t, "This is HEADER ", actual.Text, "Validate GetRangeText response.");
 }
 
-// Test for getting the text from range online.
-func Test_Range_GetRangeTextOnline(t *testing.T) {
-    config := ReadConfiguration(t)
-    client, ctx := PrepareTest(t, config)
-    localFile := "DocumentElements/Range/RangeGet.doc"
 
 
-    options := map[string]interface{}{
-        "rangeEndIdentifier": "id0.0.1",
-    }
 
-    request := &models.GetRangeTextOnlineRequest{
-        Document: OpenFile(t, localFile),
-        RangeStartIdentifier: ToStringPointer("id0.0.0"),
-        Optionals: options,
-    }
-
-    _, err := client.WordsApi.GetRangeTextOnline(ctx, request)
-
-    if err != nil {
-        t.Error(err)
-    }
-
-}
 
 // Test for removing the text for range.
 func Test_Range_RemoveRange(t *testing.T) {
@@ -112,7 +91,7 @@ func Test_Range_RemoveRange(t *testing.T) {
         Optionals: options,
     }
 
-    _, err := client.WordsApi.RemoveRange(ctx, request)
+    _, _, err := client.WordsApi.RemoveRange(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -120,30 +99,9 @@ func Test_Range_RemoveRange(t *testing.T) {
 
 }
 
-// Test for removing the text for range online.
-func Test_Range_RemoveRangeOnline(t *testing.T) {
-    config := ReadConfiguration(t)
-    client, ctx := PrepareTest(t, config)
-    localFile := "DocumentElements/Range/RangeGet.doc"
 
 
-    options := map[string]interface{}{
-        "rangeEndIdentifier": "id0.0.1",
-    }
 
-    request := &models.RemoveRangeOnlineRequest{
-        Document: OpenFile(t, localFile),
-        RangeStartIdentifier: ToStringPointer("id0.0.0"),
-        Optionals: options,
-    }
-
-    _err := client.WordsApi.RemoveRangeOnline(ctx, request)
-
-    if err != nil {
-        t.Error(err)
-    }
-
-}
 
 // Test for saving a range as a new document.
 func Test_Range_SaveAsRange(t *testing.T) {
@@ -171,7 +129,7 @@ func Test_Range_SaveAsRange(t *testing.T) {
         Optionals: options,
     }
 
-    actual, err := client.WordsApi.SaveAsRange(ctx, request)
+    actual, _, err := client.WordsApi.SaveAsRange(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -181,35 +139,9 @@ func Test_Range_SaveAsRange(t *testing.T) {
     assert.Equal(t, "NewDoc.docx", actual.Document.FileName, "Validate SaveAsRange response.");
 }
 
-// Test for saving a range as a new document online.
-func Test_Range_SaveAsRangeOnline(t *testing.T) {
-    config := ReadConfiguration(t)
-    client, ctx := PrepareTest(t, config)
-    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Range"
-    localFile := "DocumentElements/Range/RangeGet.doc"
 
-    requestDocumentParameters := models.RangeDocument{
-        DocumentName: ToStringPointer(remoteDataFolder + "/NewDoc.docx"),
-    }
 
-    options := map[string]interface{}{
-        "rangeEndIdentifier": "id0.0.1",
-    }
 
-    request := &models.SaveAsRangeOnlineRequest{
-        Document: OpenFile(t, localFile),
-        RangeStartIdentifier: ToStringPointer("id0.0.0"),
-        DocumentParameters: requestDocumentParameters,
-        Optionals: options,
-    }
-
-    _err := client.WordsApi.SaveAsRangeOnline(ctx, request)
-
-    if err != nil {
-        t.Error(err)
-    }
-
-}
 
 // Test for replacing text in range.
 func Test_Range_ReplaceWithText(t *testing.T) {
@@ -237,7 +169,7 @@ func Test_Range_ReplaceWithText(t *testing.T) {
         Optionals: options,
     }
 
-    actual, err := client.WordsApi.ReplaceWithText(ctx, request)
+    actual, _, err := client.WordsApi.ReplaceWithText(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -247,31 +179,5 @@ func Test_Range_ReplaceWithText(t *testing.T) {
     assert.Equal(t, "TestReplaceWithText.docx", actual.Document.FileName, "Validate ReplaceWithText response.");
 }
 
-// Test for replacing text in range online.
-func Test_Range_ReplaceWithTextOnline(t *testing.T) {
-    config := ReadConfiguration(t)
-    client, ctx := PrepareTest(t, config)
-    localFile := "DocumentElements/Range/RangeGet.doc"
 
-    requestRangeText := models.ReplaceRange{
-        Text: ToStringPointer("Replaced header"),
-    }
 
-    options := map[string]interface{}{
-        "rangeEndIdentifier": "id0.0.1",
-    }
-
-    request := &models.ReplaceWithTextOnlineRequest{
-        Document: OpenFile(t, localFile),
-        RangeStartIdentifier: ToStringPointer("id0.0.0"),
-        RangeText: requestRangeText,
-        Optionals: options,
-    }
-
-    _err := client.WordsApi.ReplaceWithTextOnline(ctx, request)
-
-    if err != nil {
-        t.Error(err)
-    }
-
-}

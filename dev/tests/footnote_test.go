@@ -60,7 +60,7 @@ func Test_Footnote_InsertFootnote(t *testing.T) {
         Optionals: options,
     }
 
-    actual, err := client.WordsApi.InsertFootnote(ctx, request)
+    actual, _, err := client.WordsApi.InsertFootnote(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -71,34 +71,9 @@ func Test_Footnote_InsertFootnote(t *testing.T) {
     assert.Equal(t, " test endnote" + "\r\n", actual.Footnote.Text, "Validate InsertFootnote response.");
 }
 
-// Test for adding footnote online.
-func Test_Footnote_InsertFootnoteOnline(t *testing.T) {
-    config := ReadConfiguration(t)
-    client, ctx := PrepareTest(t, config)
-    footnoteFolder := "DocumentElements/Footnotes"
 
-    requestFootnoteDto := models.FootnoteInsert{
-        FootnoteType: ToStringPointer("Endnote"),
-        Text: ToStringPointer("test endnote"),
-    }
 
-    options := map[string]interface{}{
-        "nodePath": "",
-    }
 
-    request := &models.InsertFootnoteOnlineRequest{
-        Document: OpenFile(t, footnoteFolder + "/Footnote.doc"),
-        FootnoteDto: requestFootnoteDto,
-        Optionals: options,
-    }
-
-    _err := client.WordsApi.InsertFootnoteOnline(ctx, request)
-
-    if err != nil {
-        t.Error(err)
-    }
-
-}
 
 // Test for adding footnote without node path.
 func Test_Footnote_InsertFootnoteWithoutNodePath(t *testing.T) {
@@ -125,7 +100,7 @@ func Test_Footnote_InsertFootnoteWithoutNodePath(t *testing.T) {
         Optionals: options,
     }
 
-    actual, err := client.WordsApi.InsertFootnote(ctx, request)
+    actual, _, err := client.WordsApi.InsertFootnote(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -135,6 +110,8 @@ func Test_Footnote_InsertFootnoteWithoutNodePath(t *testing.T) {
     assert.Equal(t, "0.1.7.1", actual.Footnote.NodeId, "Validate InsertFootnoteWithoutNodePath response.");
     assert.Equal(t, " test endnote" + "\r\n", actual.Footnote.Text, "Validate InsertFootnoteWithoutNodePath response.");
 }
+
+
 
 // Test for deleting footnote.
 func Test_Footnote_DeleteFootnote(t *testing.T) {
@@ -158,7 +135,7 @@ func Test_Footnote_DeleteFootnote(t *testing.T) {
         Optionals: options,
     }
 
-    _, err := client.WordsApi.DeleteFootnote(ctx, request)
+_, err := client.WordsApi.DeleteFootnote(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -166,30 +143,9 @@ func Test_Footnote_DeleteFootnote(t *testing.T) {
 
 }
 
-// Test for deleting footnote online.
-func Test_Footnote_DeleteFootnoteOnline(t *testing.T) {
-    config := ReadConfiguration(t)
-    client, ctx := PrepareTest(t, config)
-    footnoteFolder := "DocumentElements/Footnotes"
 
 
-    options := map[string]interface{}{
-        "nodePath": "",
-    }
 
-    request := &models.DeleteFootnoteOnlineRequest{
-        Document: OpenFile(t, footnoteFolder + "/Footnote.doc"),
-        Index: ToInt32Pointer(int32(0)),
-        Optionals: options,
-    }
-
-    _, err := client.WordsApi.DeleteFootnoteOnline(ctx, request)
-
-    if err != nil {
-        t.Error(err)
-    }
-
-}
 
 // Test for deleting footnote without node path.
 func Test_Footnote_DeleteFootnoteWithoutNodePath(t *testing.T) {
@@ -212,13 +168,15 @@ func Test_Footnote_DeleteFootnoteWithoutNodePath(t *testing.T) {
         Optionals: options,
     }
 
-    _, err := client.WordsApi.DeleteFootnote(ctx, request)
+_, err := client.WordsApi.DeleteFootnote(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
 
 }
+
+
 
 // Test for getting footnotes.
 func Test_Footnote_GetFootnotes(t *testing.T) {
@@ -241,7 +199,7 @@ func Test_Footnote_GetFootnotes(t *testing.T) {
         Optionals: options,
     }
 
-    actual, err := client.WordsApi.GetFootnotes(ctx, request)
+    actual, _, err := client.WordsApi.GetFootnotes(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -253,29 +211,9 @@ func Test_Footnote_GetFootnotes(t *testing.T) {
     assert.Equal(t, " Footnote 1." + "\r\n", actual.Footnotes.List[0].Text, "Validate GetFootnotes response.");
 }
 
-// Test for getting footnotes online.
-func Test_Footnote_GetFootnotesOnline(t *testing.T) {
-    config := ReadConfiguration(t)
-    client, ctx := PrepareTest(t, config)
-    footnoteFolder := "DocumentElements/Footnotes"
 
 
-    options := map[string]interface{}{
-        "nodePath": "",
-    }
 
-    request := &models.GetFootnotesOnlineRequest{
-        Document: OpenFile(t, footnoteFolder + "/Footnote.doc"),
-        Optionals: options,
-    }
-
-    _, err := client.WordsApi.GetFootnotesOnline(ctx, request)
-
-    if err != nil {
-        t.Error(err)
-    }
-
-}
 
 // Test for getting footnotes without node path.
 func Test_Footnote_GetFootnotesWithoutNodePath(t *testing.T) {
@@ -297,7 +235,7 @@ func Test_Footnote_GetFootnotesWithoutNodePath(t *testing.T) {
         Optionals: options,
     }
 
-    actual, err := client.WordsApi.GetFootnotes(ctx, request)
+    actual, _, err := client.WordsApi.GetFootnotes(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -308,6 +246,8 @@ func Test_Footnote_GetFootnotesWithoutNodePath(t *testing.T) {
     assert.Equal(t, 6, len(actual.Footnotes.List), "Validate GetFootnotesWithoutNodePath response.");
     assert.Equal(t, " Footnote 1." + "\r\n", actual.Footnotes.List[0].Text, "Validate GetFootnotesWithoutNodePath response.");
 }
+
+
 
 // Test for getting footnote.
 func Test_Footnote_GetFootnote(t *testing.T) {
@@ -331,7 +271,7 @@ func Test_Footnote_GetFootnote(t *testing.T) {
         Optionals: options,
     }
 
-    actual, err := client.WordsApi.GetFootnote(ctx, request)
+    actual, _, err := client.WordsApi.GetFootnote(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -341,30 +281,9 @@ func Test_Footnote_GetFootnote(t *testing.T) {
     assert.Equal(t, " Footnote 1." + "\r\n", actual.Footnote.Text, "Validate GetFootnote response.");
 }
 
-// Test for getting footnote online.
-func Test_Footnote_GetFootnoteOnline(t *testing.T) {
-    config := ReadConfiguration(t)
-    client, ctx := PrepareTest(t, config)
-    footnoteFolder := "DocumentElements/Footnotes"
 
 
-    options := map[string]interface{}{
-        "nodePath": "",
-    }
 
-    request := &models.GetFootnoteOnlineRequest{
-        Document: OpenFile(t, footnoteFolder + "/Footnote.doc"),
-        Index: ToInt32Pointer(int32(0)),
-        Optionals: options,
-    }
-
-    _, err := client.WordsApi.GetFootnoteOnline(ctx, request)
-
-    if err != nil {
-        t.Error(err)
-    }
-
-}
 
 // Test for getting footnote without node path.
 func Test_Footnote_GetFootnoteWithoutNodePath(t *testing.T) {
@@ -387,7 +306,7 @@ func Test_Footnote_GetFootnoteWithoutNodePath(t *testing.T) {
         Optionals: options,
     }
 
-    actual, err := client.WordsApi.GetFootnote(ctx, request)
+    actual, _, err := client.WordsApi.GetFootnote(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -396,6 +315,8 @@ func Test_Footnote_GetFootnoteWithoutNodePath(t *testing.T) {
     assert.NotNil(t, actual.Footnote, "Validate GetFootnoteWithoutNodePath response.");
     assert.Equal(t, " Footnote 1." + "\r\n", actual.Footnote.Text, "Validate GetFootnoteWithoutNodePath response.");
 }
+
+
 
 // Test for updating footnote.
 func Test_Footnote_UpdateFootnote(t *testing.T) {
@@ -423,7 +344,7 @@ func Test_Footnote_UpdateFootnote(t *testing.T) {
         Optionals: options,
     }
 
-    actual, err := client.WordsApi.UpdateFootnote(ctx, request)
+    actual, _, err := client.WordsApi.UpdateFootnote(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -433,34 +354,9 @@ func Test_Footnote_UpdateFootnote(t *testing.T) {
     assert.Equal(t, " new text is here" + "\r\n", actual.Footnote.Text, "Validate UpdateFootnote response.");
 }
 
-// Test for updating footnote online.
-func Test_Footnote_UpdateFootnoteOnline(t *testing.T) {
-    config := ReadConfiguration(t)
-    client, ctx := PrepareTest(t, config)
-    footnoteFolder := "DocumentElements/Footnotes"
 
-    requestFootnoteDto := models.FootnoteUpdate{
-        Text: ToStringPointer("new text is here"),
-    }
 
-    options := map[string]interface{}{
-        "nodePath": "",
-    }
 
-    request := &models.UpdateFootnoteOnlineRequest{
-        Document: OpenFile(t, footnoteFolder + "/Footnote.doc"),
-        FootnoteDto: requestFootnoteDto,
-        Index: ToInt32Pointer(int32(0)),
-        Optionals: options,
-    }
-
-    _err := client.WordsApi.UpdateFootnoteOnline(ctx, request)
-
-    if err != nil {
-        t.Error(err)
-    }
-
-}
 
 // Test for updating footnote without node path.
 func Test_Footnote_UpdateFootnoteWithoutNodePath(t *testing.T) {
@@ -487,7 +383,7 @@ func Test_Footnote_UpdateFootnoteWithoutNodePath(t *testing.T) {
         Optionals: options,
     }
 
-    actual, err := client.WordsApi.UpdateFootnote(ctx, request)
+    actual, _, err := client.WordsApi.UpdateFootnote(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -496,3 +392,4 @@ func Test_Footnote_UpdateFootnoteWithoutNodePath(t *testing.T) {
     assert.NotNil(t, actual.Footnote, "Validate UpdateFootnoteWithoutNodePath response.");
     assert.Equal(t, " new text is here" + "\r\n", actual.Footnote.Text, "Validate UpdateFootnoteWithoutNodePath response.");
 }
+

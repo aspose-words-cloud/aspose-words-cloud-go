@@ -60,7 +60,7 @@ func Test_Run_UpdateRun(t *testing.T) {
         Optionals: options,
     }
 
-    actual, err := client.WordsApi.UpdateRun(ctx, request)
+    actual, _, err := client.WordsApi.UpdateRun(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -70,34 +70,9 @@ func Test_Run_UpdateRun(t *testing.T) {
     assert.Equal(t, "run with text", actual.Run.Text, "Validate UpdateRun response.");
 }
 
-// Test for updating run online.
-func Test_Run_UpdateRunOnline(t *testing.T) {
-    config := ReadConfiguration(t)
-    client, ctx := PrepareTest(t, config)
-    localFile := "DocumentElements/Runs/Run.doc"
 
-    requestRun := models.RunUpdate{
-        Text: ToStringPointer("run with text"),
-    }
 
-    options := map[string]interface{}{
-    }
 
-    request := &models.UpdateRunOnlineRequest{
-        Document: OpenFile(t, localFile),
-        ParagraphPath: ToStringPointer("paragraphs/1"),
-        Run: requestRun,
-        Index: ToInt32Pointer(int32(0)),
-        Optionals: options,
-    }
-
-    _err := client.WordsApi.UpdateRunOnline(ctx, request)
-
-    if err != nil {
-        t.Error(err)
-    }
-
-}
 
 // Test for adding run.
 func Test_Run_InsertRun(t *testing.T) {
@@ -124,7 +99,7 @@ func Test_Run_InsertRun(t *testing.T) {
         Optionals: options,
     }
 
-    actual, err := client.WordsApi.InsertRun(ctx, request)
+    actual, _, err := client.WordsApi.InsertRun(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -135,33 +110,9 @@ func Test_Run_InsertRun(t *testing.T) {
     assert.Equal(t, "0.0.1.3", actual.Run.NodeId, "Validate InsertRun response.");
 }
 
-// Test for adding run online.
-func Test_Run_InsertRunOnline(t *testing.T) {
-    config := ReadConfiguration(t)
-    client, ctx := PrepareTest(t, config)
-    localFile := "DocumentElements/Runs/Run.doc"
 
-    requestRun := models.RunInsert{
-        Text: ToStringPointer("run with text"),
-    }
 
-    options := map[string]interface{}{
-    }
 
-    request := &models.InsertRunOnlineRequest{
-        Document: OpenFile(t, localFile),
-        ParagraphPath: ToStringPointer("paragraphs/1"),
-        Run: requestRun,
-        Optionals: options,
-    }
-
-    _err := client.WordsApi.InsertRunOnline(ctx, request)
-
-    if err != nil {
-        t.Error(err)
-    }
-
-}
 
 // Test for deleting run.
 func Test_Run_DeleteRun(t *testing.T) {
@@ -185,7 +136,7 @@ func Test_Run_DeleteRun(t *testing.T) {
         Optionals: options,
     }
 
-    _, err := client.WordsApi.DeleteRun(ctx, request)
+_, err := client.WordsApi.DeleteRun(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -193,27 +144,5 @@ func Test_Run_DeleteRun(t *testing.T) {
 
 }
 
-// Test for deleting run online.
-func Test_Run_DeleteRunOnline(t *testing.T) {
-    config := ReadConfiguration(t)
-    client, ctx := PrepareTest(t, config)
-    localFile := "DocumentElements/Runs/Run.doc"
 
 
-    options := map[string]interface{}{
-    }
-
-    request := &models.DeleteRunOnlineRequest{
-        Document: OpenFile(t, localFile),
-        ParagraphPath: ToStringPointer("paragraphs/1"),
-        Index: ToInt32Pointer(int32(0)),
-        Optionals: options,
-    }
-
-    _, err := client.WordsApi.DeleteRunOnline(ctx, request)
-
-    if err != nil {
-        t.Error(err)
-    }
-
-}
