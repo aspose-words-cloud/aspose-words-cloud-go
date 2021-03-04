@@ -71,6 +71,12 @@ func GetLocalFile(filePath string) string {
 	return filepath.Join(currentFolder, "testdata", filePath)
 }
 
+func GetExamplesDir() string {
+	_, currentFilePath, _, _ := runtime.Caller(0)
+	currentFolder := filepath.Dir(currentFilePath)
+	return filepath.Join(currentFolder, "examplesdata")
+}
+
 func ReadFile(t *testing.T, path string) (result string) {
 	data, err := ioutil.ReadFile(GetLocalFile(path))
 	if err != nil {
