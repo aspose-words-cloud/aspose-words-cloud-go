@@ -1,4 +1,7 @@
-import "github.com/aspose-words-cloud/aspose-words-cloud-go/dev/api/models"
+import (
+    "os"
+    "github.com/aspose-words-cloud/aspose-words-cloud-go/dev/api/models"
+)
 
 documentsDir := "..."
 config, _ := models.NewConfiguration("config.json")

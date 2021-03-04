@@ -27,6 +27,7 @@
 package api_test
 
 import (
+    "os"
     "testing"
     "github.com/aspose-words-cloud/aspose-words-cloud-go/dev/api/models"
 )
