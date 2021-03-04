@@ -42,7 +42,7 @@ func Test_File_UploadFile(t *testing.T) {
     localFile := "Common/test_multi_pages.docx"
     remoteFileName := "TestUploadFile.docx"
 
-    fileContentFileData := OpenFile(t, localFile);
+    fileContentFileData := OpenFile(t, localFile)
 
     options := map[string]interface{}{
     }

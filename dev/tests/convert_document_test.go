@@ -156,7 +156,7 @@ func Test_ConvertDocument_ConvertDocument(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFolder := "DocumentActions/ConvertDocument"
 
-    documentFileData := OpenFile(t, localFolder + "/test_uploadfile.docx");
+    documentFileData := OpenFile(t, localFolder + "/test_uploadfile.docx")
 
     options := map[string]interface{}{
     }
