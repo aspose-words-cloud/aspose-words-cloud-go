@@ -48,6 +48,9 @@ type EmfSaveOptionsDataResult struct {
     SaveFormat string `json:"SaveFormat,omitempty"`
 
     // Container class for emf save options.
+    UpdateCreatedTimeProperty bool `json:"UpdateCreatedTimeProperty,omitempty"`
+
+    // Container class for emf save options.
     UpdateFields bool `json:"UpdateFields,omitempty"`
 
     // Container class for emf save options.
@@ -141,6 +144,9 @@ type EmfSaveOptionsData struct {
 
     // Container class for emf save options.
     SaveFormat *string `json:"SaveFormat,omitempty"`
+
+    // Container class for emf save options.
+    UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Container class for emf save options.
     UpdateFields *bool `json:"UpdateFields,omitempty"`

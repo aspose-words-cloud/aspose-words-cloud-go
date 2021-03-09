@@ -48,6 +48,9 @@ type DocSaveOptionsDataResult struct {
     SaveFormat string `json:"SaveFormat,omitempty"`
 
     // Container class for doc/dot save options.
+    UpdateCreatedTimeProperty bool `json:"UpdateCreatedTimeProperty,omitempty"`
+
+    // Container class for doc/dot save options.
     UpdateFields bool `json:"UpdateFields,omitempty"`
 
     // Container class for doc/dot save options.
@@ -93,6 +96,9 @@ type DocSaveOptionsData struct {
 
     // Container class for doc/dot save options.
     SaveFormat *string `json:"SaveFormat,omitempty"`
+
+    // Container class for doc/dot save options.
+    UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Container class for doc/dot save options.
     UpdateFields *bool `json:"UpdateFields,omitempty"`

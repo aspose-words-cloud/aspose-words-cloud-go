@@ -48,6 +48,9 @@ type BmpSaveOptionsDataResult struct {
     SaveFormat string `json:"SaveFormat,omitempty"`
 
     // Container class for bmp save options.
+    UpdateCreatedTimeProperty bool `json:"UpdateCreatedTimeProperty,omitempty"`
+
+    // Container class for bmp save options.
     UpdateFields bool `json:"UpdateFields,omitempty"`
 
     // Container class for bmp save options.
@@ -141,6 +144,9 @@ type BmpSaveOptionsData struct {
 
     // Container class for bmp save options.
     SaveFormat *string `json:"SaveFormat,omitempty"`
+
+    // Container class for bmp save options.
+    UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Container class for bmp save options.
     UpdateFields *bool `json:"UpdateFields,omitempty"`

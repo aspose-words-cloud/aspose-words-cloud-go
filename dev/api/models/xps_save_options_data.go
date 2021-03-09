@@ -48,6 +48,9 @@ type XpsSaveOptionsDataResult struct {
     SaveFormat string `json:"SaveFormat,omitempty"`
 
     // Container class for xps save options.
+    UpdateCreatedTimeProperty bool `json:"UpdateCreatedTimeProperty,omitempty"`
+
+    // Container class for xps save options.
     UpdateFields bool `json:"UpdateFields,omitempty"`
 
     // Container class for xps save options.
@@ -114,6 +117,9 @@ type XpsSaveOptionsData struct {
 
     // Container class for xps save options.
     SaveFormat *string `json:"SaveFormat,omitempty"`
+
+    // Container class for xps save options.
+    UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Container class for xps save options.
     UpdateFields *bool `json:"UpdateFields,omitempty"`

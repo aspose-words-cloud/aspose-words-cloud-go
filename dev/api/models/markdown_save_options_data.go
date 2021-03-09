@@ -48,6 +48,9 @@ type MarkdownSaveOptionsDataResult struct {
     SaveFormat string `json:"SaveFormat,omitempty"`
 
     // Container class for markdown save options.
+    UpdateCreatedTimeProperty bool `json:"UpdateCreatedTimeProperty,omitempty"`
+
+    // Container class for markdown save options.
     UpdateFields bool `json:"UpdateFields,omitempty"`
 
     // Container class for markdown save options.
@@ -96,6 +99,9 @@ type MarkdownSaveOptionsData struct {
 
     // Container class for markdown save options.
     SaveFormat *string `json:"SaveFormat,omitempty"`
+
+    // Container class for markdown save options.
+    UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Container class for markdown save options.
     UpdateFields *bool `json:"UpdateFields,omitempty"`

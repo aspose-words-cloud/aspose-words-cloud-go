@@ -48,6 +48,9 @@ type PsSaveOptionsDataResult struct {
     SaveFormat string `json:"SaveFormat,omitempty"`
 
     // Container class for ps save options.
+    UpdateCreatedTimeProperty bool `json:"UpdateCreatedTimeProperty,omitempty"`
+
+    // Container class for ps save options.
     UpdateFields bool `json:"UpdateFields,omitempty"`
 
     // Container class for ps save options.
@@ -105,6 +108,9 @@ type PsSaveOptionsData struct {
 
     // Container class for ps save options.
     SaveFormat *string `json:"SaveFormat,omitempty"`
+
+    // Container class for ps save options.
+    UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Container class for ps save options.
     UpdateFields *bool `json:"UpdateFields,omitempty"`

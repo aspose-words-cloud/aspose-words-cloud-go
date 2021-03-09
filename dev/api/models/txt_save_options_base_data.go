@@ -48,6 +48,9 @@ type TxtSaveOptionsBaseDataResult struct {
     SaveFormat string `json:"SaveFormat,omitempty"`
 
     // Base class for save options of text formats.
+    UpdateCreatedTimeProperty bool `json:"UpdateCreatedTimeProperty,omitempty"`
+
+    // Base class for save options of text formats.
     UpdateFields bool `json:"UpdateFields,omitempty"`
 
     // Base class for save options of text formats.
@@ -93,6 +96,9 @@ type TxtSaveOptionsBaseData struct {
 
     // Base class for save options of text formats.
     SaveFormat *string `json:"SaveFormat,omitempty"`
+
+    // Base class for save options of text formats.
+    UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Base class for save options of text formats.
     UpdateFields *bool `json:"UpdateFields,omitempty"`

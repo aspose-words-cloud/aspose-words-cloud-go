@@ -48,6 +48,9 @@ type OoxmlSaveOptionsDataResult struct {
     SaveFormat string `json:"SaveFormat,omitempty"`
 
     // Container class for docx/docm/dotx/dotm/flatopc save options.
+    UpdateCreatedTimeProperty bool `json:"UpdateCreatedTimeProperty,omitempty"`
+
+    // Container class for docx/docm/dotx/dotm/flatopc save options.
     UpdateFields bool `json:"UpdateFields,omitempty"`
 
     // Container class for docx/docm/dotx/dotm/flatopc save options.
@@ -93,6 +96,9 @@ type OoxmlSaveOptionsData struct {
 
     // Container class for docx/docm/dotx/dotm/flatopc save options.
     SaveFormat *string `json:"SaveFormat,omitempty"`
+
+    // Container class for docx/docm/dotx/dotm/flatopc save options.
+    UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Container class for docx/docm/dotx/dotm/flatopc save options.
     UpdateFields *bool `json:"UpdateFields,omitempty"`

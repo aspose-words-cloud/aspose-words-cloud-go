@@ -48,6 +48,9 @@ type SvgSaveOptionsDataResult struct {
     SaveFormat string `json:"SaveFormat,omitempty"`
 
     // Container class for svg save options.
+    UpdateCreatedTimeProperty bool `json:"UpdateCreatedTimeProperty,omitempty"`
+
+    // Container class for svg save options.
     UpdateFields bool `json:"UpdateFields,omitempty"`
 
     // Container class for svg save options.
@@ -120,6 +123,9 @@ type SvgSaveOptionsData struct {
 
     // Container class for svg save options.
     SaveFormat *string `json:"SaveFormat,omitempty"`
+
+    // Container class for svg save options.
+    UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Container class for svg save options.
     UpdateFields *bool `json:"UpdateFields,omitempty"`

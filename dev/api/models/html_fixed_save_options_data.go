@@ -48,6 +48,9 @@ type HtmlFixedSaveOptionsDataResult struct {
     SaveFormat string `json:"SaveFormat,omitempty"`
 
     // Container class for fixed html save options.
+    UpdateCreatedTimeProperty bool `json:"UpdateCreatedTimeProperty,omitempty"`
+
+    // Container class for fixed html save options.
     UpdateFields bool `json:"UpdateFields,omitempty"`
 
     // Container class for fixed html save options.
@@ -144,6 +147,9 @@ type HtmlFixedSaveOptionsData struct {
 
     // Container class for fixed html save options.
     SaveFormat *string `json:"SaveFormat,omitempty"`
+
+    // Container class for fixed html save options.
+    UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Container class for fixed html save options.
     UpdateFields *bool `json:"UpdateFields,omitempty"`

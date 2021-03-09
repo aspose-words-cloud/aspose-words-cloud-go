@@ -48,6 +48,9 @@ type PclSaveOptionsDataResult struct {
     SaveFormat string `json:"SaveFormat,omitempty"`
 
     // Container class for pcl save options.
+    UpdateCreatedTimeProperty bool `json:"UpdateCreatedTimeProperty,omitempty"`
+
+    // Container class for pcl save options.
     UpdateFields bool `json:"UpdateFields,omitempty"`
 
     // Container class for pcl save options.
@@ -108,6 +111,9 @@ type PclSaveOptionsData struct {
 
     // Container class for pcl save options.
     SaveFormat *string `json:"SaveFormat,omitempty"`
+
+    // Container class for pcl save options.
+    UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Container class for pcl save options.
     UpdateFields *bool `json:"UpdateFields,omitempty"`

@@ -48,6 +48,9 @@ type GifSaveOptionsDataResult struct {
     SaveFormat string `json:"SaveFormat,omitempty"`
 
     // Container class for gif save options.
+    UpdateCreatedTimeProperty bool `json:"UpdateCreatedTimeProperty,omitempty"`
+
+    // Container class for gif save options.
     UpdateFields bool `json:"UpdateFields,omitempty"`
 
     // Container class for gif save options.
@@ -141,6 +144,9 @@ type GifSaveOptionsData struct {
 
     // Container class for gif save options.
     SaveFormat *string `json:"SaveFormat,omitempty"`
+
+    // Container class for gif save options.
+    UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Container class for gif save options.
     UpdateFields *bool `json:"UpdateFields,omitempty"`

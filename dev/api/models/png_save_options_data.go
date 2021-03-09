@@ -48,6 +48,9 @@ type PngSaveOptionsDataResult struct {
     SaveFormat string `json:"SaveFormat,omitempty"`
 
     // Container class for png save options.
+    UpdateCreatedTimeProperty bool `json:"UpdateCreatedTimeProperty,omitempty"`
+
+    // Container class for png save options.
     UpdateFields bool `json:"UpdateFields,omitempty"`
 
     // Container class for png save options.
@@ -141,6 +144,9 @@ type PngSaveOptionsData struct {
 
     // Container class for png save options.
     SaveFormat *string `json:"SaveFormat,omitempty"`
+
+    // Container class for png save options.
+    UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Container class for png save options.
     UpdateFields *bool `json:"UpdateFields,omitempty"`

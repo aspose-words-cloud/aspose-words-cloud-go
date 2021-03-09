@@ -48,6 +48,9 @@ type WordMLSaveOptionsDataResult struct {
     SaveFormat string `json:"SaveFormat,omitempty"`
 
     // Container class for wml save options.
+    UpdateCreatedTimeProperty bool `json:"UpdateCreatedTimeProperty,omitempty"`
+
+    // Container class for wml save options.
     UpdateFields bool `json:"UpdateFields,omitempty"`
 
     // Container class for wml save options.
@@ -84,6 +87,9 @@ type WordMLSaveOptionsData struct {
 
     // Container class for wml save options.
     SaveFormat *string `json:"SaveFormat,omitempty"`
+
+    // Container class for wml save options.
+    UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Container class for wml save options.
     UpdateFields *bool `json:"UpdateFields,omitempty"`

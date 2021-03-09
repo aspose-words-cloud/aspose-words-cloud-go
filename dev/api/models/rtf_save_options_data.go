@@ -48,6 +48,9 @@ type RtfSaveOptionsDataResult struct {
     SaveFormat string `json:"SaveFormat,omitempty"`
 
     // Container class for rtf save options.
+    UpdateCreatedTimeProperty bool `json:"UpdateCreatedTimeProperty,omitempty"`
+
+    // Container class for rtf save options.
     UpdateFields bool `json:"UpdateFields,omitempty"`
 
     // Container class for rtf save options.
@@ -93,6 +96,9 @@ type RtfSaveOptionsData struct {
 
     // Container class for rtf save options.
     SaveFormat *string `json:"SaveFormat,omitempty"`
+
+    // Container class for rtf save options.
+    UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Container class for rtf save options.
     UpdateFields *bool `json:"UpdateFields,omitempty"`

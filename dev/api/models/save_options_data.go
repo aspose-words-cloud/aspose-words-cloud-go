@@ -48,6 +48,9 @@ type SaveOptionsDataResult struct {
     SaveFormat string `json:"SaveFormat,omitempty"`
 
     // base container class for save options data.
+    UpdateCreatedTimeProperty bool `json:"UpdateCreatedTimeProperty,omitempty"`
+
+    // base container class for save options data.
     UpdateFields bool `json:"UpdateFields,omitempty"`
 
     // base container class for save options data.
@@ -81,6 +84,9 @@ type SaveOptionsData struct {
 
     // base container class for save options data.
     SaveFormat *string `json:"SaveFormat,omitempty"`
+
+    // base container class for save options data.
+    UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // base container class for save options data.
     UpdateFields *bool `json:"UpdateFields,omitempty"`

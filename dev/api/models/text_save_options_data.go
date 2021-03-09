@@ -48,6 +48,9 @@ type TextSaveOptionsDataResult struct {
     SaveFormat string `json:"SaveFormat,omitempty"`
 
     // Container class for text save options.
+    UpdateCreatedTimeProperty bool `json:"UpdateCreatedTimeProperty,omitempty"`
+
+    // Container class for text save options.
     UpdateFields bool `json:"UpdateFields,omitempty"`
 
     // Container class for text save options.
@@ -102,6 +105,9 @@ type TextSaveOptionsData struct {
 
     // Container class for text save options.
     SaveFormat *string `json:"SaveFormat,omitempty"`
+
+    // Container class for text save options.
+    UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Container class for text save options.
     UpdateFields *bool `json:"UpdateFields,omitempty"`

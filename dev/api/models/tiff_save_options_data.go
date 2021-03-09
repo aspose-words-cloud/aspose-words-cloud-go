@@ -48,6 +48,9 @@ type TiffSaveOptionsDataResult struct {
     SaveFormat string `json:"SaveFormat,omitempty"`
 
     // Container class for tiff save options.
+    UpdateCreatedTimeProperty bool `json:"UpdateCreatedTimeProperty,omitempty"`
+
+    // Container class for tiff save options.
     UpdateFields bool `json:"UpdateFields,omitempty"`
 
     // Container class for tiff save options.
@@ -150,6 +153,9 @@ type TiffSaveOptionsData struct {
 
     // Container class for tiff save options.
     SaveFormat *string `json:"SaveFormat,omitempty"`
+
+    // Container class for tiff save options.
+    UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Container class for tiff save options.
     UpdateFields *bool `json:"UpdateFields,omitempty"`

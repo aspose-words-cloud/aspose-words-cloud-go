@@ -48,6 +48,9 @@ type XamlFixedSaveOptionsDataResult struct {
     SaveFormat string `json:"SaveFormat,omitempty"`
 
     // Container class for xaml fixed save options.
+    UpdateCreatedTimeProperty bool `json:"UpdateCreatedTimeProperty,omitempty"`
+
+    // Container class for xaml fixed save options.
     UpdateFields bool `json:"UpdateFields,omitempty"`
 
     // Container class for xaml fixed save options.
@@ -108,6 +111,9 @@ type XamlFixedSaveOptionsData struct {
 
     // Container class for xaml fixed save options.
     SaveFormat *string `json:"SaveFormat,omitempty"`
+
+    // Container class for xaml fixed save options.
+    UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Container class for xaml fixed save options.
     UpdateFields *bool `json:"UpdateFields,omitempty"`

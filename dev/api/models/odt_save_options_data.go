@@ -48,6 +48,9 @@ type OdtSaveOptionsDataResult struct {
     SaveFormat string `json:"SaveFormat,omitempty"`
 
     // Container class for odt/ott save options.
+    UpdateCreatedTimeProperty bool `json:"UpdateCreatedTimeProperty,omitempty"`
+
+    // Container class for odt/ott save options.
     UpdateFields bool `json:"UpdateFields,omitempty"`
 
     // Container class for odt/ott save options.
@@ -93,6 +96,9 @@ type OdtSaveOptionsData struct {
 
     // Container class for odt/ott save options.
     SaveFormat *string `json:"SaveFormat,omitempty"`
+
+    // Container class for odt/ott save options.
+    UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Container class for odt/ott save options.
     UpdateFields *bool `json:"UpdateFields,omitempty"`

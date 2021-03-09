@@ -48,6 +48,9 @@ type PdfSaveOptionsDataResult struct {
     SaveFormat string `json:"SaveFormat,omitempty"`
 
     // Container class for pdf save options.
+    UpdateCreatedTimeProperty bool `json:"UpdateCreatedTimeProperty,omitempty"`
+
+    // Container class for pdf save options.
     UpdateFields bool `json:"UpdateFields,omitempty"`
 
     // Container class for pdf save options.
@@ -177,6 +180,9 @@ type PdfSaveOptionsData struct {
 
     // Container class for pdf save options.
     SaveFormat *string `json:"SaveFormat,omitempty"`
+
+    // Container class for pdf save options.
+    UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Container class for pdf save options.
     UpdateFields *bool `json:"UpdateFields,omitempty"`

@@ -48,6 +48,9 @@ type ImageSaveOptionsDataResult struct {
     SaveFormat string `json:"SaveFormat,omitempty"`
 
     // Container abstract class for image save options.
+    UpdateCreatedTimeProperty bool `json:"UpdateCreatedTimeProperty,omitempty"`
+
+    // Container abstract class for image save options.
     UpdateFields bool `json:"UpdateFields,omitempty"`
 
     // Container abstract class for image save options.
@@ -141,6 +144,9 @@ type ImageSaveOptionsData struct {
 
     // Container abstract class for image save options.
     SaveFormat *string `json:"SaveFormat,omitempty"`
+
+    // Container abstract class for image save options.
+    UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Container abstract class for image save options.
     UpdateFields *bool `json:"UpdateFields,omitempty"`

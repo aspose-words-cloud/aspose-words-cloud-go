@@ -48,6 +48,9 @@ type EpubSaveOptionsDataResult struct {
     SaveFormat string `json:"SaveFormat,omitempty"`
 
     // Container class for epub save options.
+    UpdateCreatedTimeProperty bool `json:"UpdateCreatedTimeProperty,omitempty"`
+
+    // Container class for epub save options.
     UpdateFields bool `json:"UpdateFields,omitempty"`
 
     // Container class for epub save options.
@@ -201,6 +204,9 @@ type EpubSaveOptionsData struct {
 
     // Container class for epub save options.
     SaveFormat *string `json:"SaveFormat,omitempty"`
+
+    // Container class for epub save options.
+    UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Container class for epub save options.
     UpdateFields *bool `json:"UpdateFields,omitempty"`

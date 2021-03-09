@@ -48,6 +48,9 @@ type JpegSaveOptionsDataResult struct {
     SaveFormat string `json:"SaveFormat,omitempty"`
 
     // Container class for jpeg save options.
+    UpdateCreatedTimeProperty bool `json:"UpdateCreatedTimeProperty,omitempty"`
+
+    // Container class for jpeg save options.
     UpdateFields bool `json:"UpdateFields,omitempty"`
 
     // Container class for jpeg save options.
@@ -141,6 +144,9 @@ type JpegSaveOptionsData struct {
 
     // Container class for jpeg save options.
     SaveFormat *string `json:"SaveFormat,omitempty"`
+
+    // Container class for jpeg save options.
+    UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Container class for jpeg save options.
     UpdateFields *bool `json:"UpdateFields,omitempty"`
