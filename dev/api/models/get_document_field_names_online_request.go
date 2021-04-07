@@ -1,4 +1,4 @@
-/*
+﻿/*
  * --------------------------------------------------------------------------------
  * <copyright company="Aspose" file="get_document_field_names_online_request.go">
  *   Copyright (c) 2021 Aspose.Words for Cloud

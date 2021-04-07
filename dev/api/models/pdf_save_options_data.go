@@ -1,4 +1,4 @@
-/*
+﻿/*
  * --------------------------------------------------------------------------------
  * <copyright company="Aspose" file="pdf_save_options_data.go">
  *   Copyright (c) 2021 Aspose.Words for Cloud
@@ -109,9 +109,6 @@ type PdfSaveOptionsDataResult struct {
 
     // Container class for pdf save options.
     EncryptionDetails PdfEncryptionDetailsDataResult `json:"EncryptionDetails,omitempty"`
-
-    // Container class for pdf save options.
-    EscapeUri bool `json:"EscapeUri,omitempty"`
 
     // Container class for pdf save options.
     ExportDocumentStructure bool `json:"ExportDocumentStructure,omitempty"`
@@ -243,9 +240,6 @@ type PdfSaveOptionsData struct {
 
     // Container class for pdf save options.
     EncryptionDetails IPdfEncryptionDetailsData `json:"EncryptionDetails,omitempty"`
-
-    // Container class for pdf save options.
-    EscapeUri *bool `json:"EscapeUri,omitempty"`
 
     // Container class for pdf save options.
     ExportDocumentStructure *bool `json:"ExportDocumentStructure,omitempty"`
