@@ -33,6 +33,9 @@ type ImageSaveOptionsDataResult struct {
     AllowEmbeddingPostScriptFonts bool `json:"AllowEmbeddingPostScriptFonts,omitempty"`
 
     // Container abstract class for image save options.
+    CustomTimeZoneInfoData TimeZoneInfoDataResult `json:"CustomTimeZoneInfoData,omitempty"`
+
+    // Container abstract class for image save options.
     Dml3DEffectsRenderingMode string `json:"Dml3DEffectsRenderingMode,omitempty"`
 
     // Container abstract class for image save options.
@@ -129,6 +132,9 @@ type ImageSaveOptionsDataResult struct {
 type ImageSaveOptionsData struct {
     // Container abstract class for image save options.
     AllowEmbeddingPostScriptFonts *bool `json:"AllowEmbeddingPostScriptFonts,omitempty"`
+
+    // Container abstract class for image save options.
+    CustomTimeZoneInfoData ITimeZoneInfoData `json:"CustomTimeZoneInfoData,omitempty"`
 
     // Container abstract class for image save options.
     Dml3DEffectsRenderingMode *string `json:"Dml3DEffectsRenderingMode,omitempty"`

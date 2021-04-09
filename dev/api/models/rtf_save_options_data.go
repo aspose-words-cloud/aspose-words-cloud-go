@@ -33,6 +33,9 @@ type RtfSaveOptionsDataResult struct {
     AllowEmbeddingPostScriptFonts bool `json:"AllowEmbeddingPostScriptFonts,omitempty"`
 
     // Container class for rtf save options.
+    CustomTimeZoneInfoData TimeZoneInfoDataResult `json:"CustomTimeZoneInfoData,omitempty"`
+
+    // Container class for rtf save options.
     Dml3DEffectsRenderingMode string `json:"Dml3DEffectsRenderingMode,omitempty"`
 
     // Container class for rtf save options.
@@ -81,6 +84,9 @@ type RtfSaveOptionsDataResult struct {
 type RtfSaveOptionsData struct {
     // Container class for rtf save options.
     AllowEmbeddingPostScriptFonts *bool `json:"AllowEmbeddingPostScriptFonts,omitempty"`
+
+    // Container class for rtf save options.
+    CustomTimeZoneInfoData ITimeZoneInfoData `json:"CustomTimeZoneInfoData,omitempty"`
 
     // Container class for rtf save options.
     Dml3DEffectsRenderingMode *string `json:"Dml3DEffectsRenderingMode,omitempty"`

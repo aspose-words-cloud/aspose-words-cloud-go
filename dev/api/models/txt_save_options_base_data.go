@@ -33,6 +33,9 @@ type TxtSaveOptionsBaseDataResult struct {
     AllowEmbeddingPostScriptFonts bool `json:"AllowEmbeddingPostScriptFonts,omitempty"`
 
     // Base class for save options of text formats.
+    CustomTimeZoneInfoData TimeZoneInfoDataResult `json:"CustomTimeZoneInfoData,omitempty"`
+
+    // Base class for save options of text formats.
     Dml3DEffectsRenderingMode string `json:"Dml3DEffectsRenderingMode,omitempty"`
 
     // Base class for save options of text formats.
@@ -81,6 +84,9 @@ type TxtSaveOptionsBaseDataResult struct {
 type TxtSaveOptionsBaseData struct {
     // Base class for save options of text formats.
     AllowEmbeddingPostScriptFonts *bool `json:"AllowEmbeddingPostScriptFonts,omitempty"`
+
+    // Base class for save options of text formats.
+    CustomTimeZoneInfoData ITimeZoneInfoData `json:"CustomTimeZoneInfoData,omitempty"`
 
     // Base class for save options of text formats.
     Dml3DEffectsRenderingMode *string `json:"Dml3DEffectsRenderingMode,omitempty"`
