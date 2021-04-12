@@ -1,4 +1,4 @@
-﻿/*
+/*
  * --------------------------------------------------------------------------------
  * <copyright company="Aspose" file="insert_watermark_image_request.go">
  *   Copyright (c) 2021 Aspose.Words for Cloud
@@ -53,7 +53,7 @@ type InsertWatermarkImageRequest struct {
         key: "revisionAuthor" value: (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
         key: "revisionDateTime" value: (string) The date and time to use for revisions.
         key: "rotationAngle" value: (float64) The rotation angle of the watermark.
-        key: "image" value: (string) The filename of the image. If the parameter value is missing — the image data is expected in the request content. */
+        key: "image" value: (string) The filename of the image. If the parameter value is missing � the image data is expected in the request content. */
     Optionals map[string]interface{}
 }
 

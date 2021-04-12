@@ -1,4 +1,4 @@
-Ôªø/*
+/*
  * --------------------------------------------------------------------------------
  * <copyright company="Aspose" file="urlEncode_test.go">
  *   Copyright (c) 2021 Aspose.Words for Cloud
@@ -37,7 +37,7 @@ func TestUrlEncode(t *testing.T) {
 
     localFilePath := commonTestFile
     remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Section")
-    remoteName := "[‚ÄúTest_Two,_Inc.‚Äù]-_83(b)Election([‚ÄúBill_Gates‚Äù]).docx"
+    remoteName := "[ìTest_Two,_Inc.î]-_83(b)Election([ìBill_Gatesî]).docx"
     sectionIndex := 0
     options := map[string]interface{}{
         "folder": remoteFolder,

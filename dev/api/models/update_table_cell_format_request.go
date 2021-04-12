@@ -1,4 +1,4 @@
-﻿/*
+/*
  * --------------------------------------------------------------------------------
  * <copyright company="Aspose" file="update_table_cell_format_request.go">
  *   Copyright (c) 2021 Aspose.Words for Cloud

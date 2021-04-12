@@ -1,4 +1,4 @@
-﻿/*
+/*
  * --------------------------------------------------------------------------------
  * <copyright company="Aspose" file="report_engine_settings.go">
  *   Copyright (c) 2021 Aspose.Words for Cloud

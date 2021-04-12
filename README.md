@@ -1,4 +1,4 @@
-﻿Aspose.Wors Cloud SDK for Go wraps Aspose.Words REST API so you could seamlessly integrate Microsoft Word® document generation, manipulation, conversion & inspection features into your own Go applications.
+Aspose.Wors Cloud SDK for Go wraps Aspose.Words REST API so you could seamlessly integrate Microsoft Word� document generation, manipulation, conversion & inspection features into your own Go applications.
 
 # Word Document Processing in the Cloud
 

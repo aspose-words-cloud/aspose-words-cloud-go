@@ -1,4 +1,4 @@
-﻿/*
+/*
  * --------------------------------------------------------------------------------
  * <copyright company="Aspose" file="storage_file.go">
  *   Copyright (c) 2021 Aspose.Words for Cloud

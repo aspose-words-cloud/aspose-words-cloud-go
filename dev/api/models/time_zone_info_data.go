@@ -1,4 +1,4 @@
-﻿/*
+/*
  * --------------------------------------------------------------------------------
  * <copyright company="Aspose" file="time_zone_info_data.go">
  *   Copyright (c) 2021 Aspose.Words for Cloud

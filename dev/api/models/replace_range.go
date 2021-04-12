@@ -1,4 +1,4 @@
-﻿/*
+/*
  * --------------------------------------------------------------------------------
  * <copyright company="Aspose" file="replace_range.go">
  *   Copyright (c) 2021 Aspose.Words for Cloud
