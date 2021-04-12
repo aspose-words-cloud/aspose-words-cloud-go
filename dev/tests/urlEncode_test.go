@@ -37,7 +37,7 @@ func TestUrlEncode(t *testing.T) {
 
     localFilePath := commonTestFile
     remoteFolder := path.Join(remoteBaseTestDataFolder, "DocumentElements", "Section")
-    remoteName := "[“Test_Two,_Inc.”]-_83(b)Election([“Bill_Gates”]).docx"
+    remoteName := "[â€œTest_Two,_Inc.â€]-_83(b)Election([â€œBill_Gatesâ€]).docx"
     sectionIndex := 0
     options := map[string]interface{}{
         "folder": remoteFolder,
