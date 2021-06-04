@@ -30,6 +30,9 @@ package models
 // DTO container with compare documents options.
 type CompareOptionsResult struct {
     // DTO container with compare documents options.
+    AcceptAllRevisionsBeforeComparison bool `json:"AcceptAllRevisionsBeforeComparison,omitempty"`
+
+    // DTO container with compare documents options.
     IgnoreCaseChanges bool `json:"IgnoreCaseChanges,omitempty"`
 
     // DTO container with compare documents options.
@@ -58,6 +61,9 @@ type CompareOptionsResult struct {
 }
 
 type CompareOptions struct {
+    // DTO container with compare documents options.
+    AcceptAllRevisionsBeforeComparison *bool `json:"AcceptAllRevisionsBeforeComparison,omitempty"`
+
     // DTO container with compare documents options.
     IgnoreCaseChanges *bool `json:"IgnoreCaseChanges,omitempty"`
 
