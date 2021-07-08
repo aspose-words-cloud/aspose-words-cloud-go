@@ -27,24 +27,23 @@
 
 package models
 
-
 import (
-    "io"
     "fmt"
 	"net/url"
 	"strings"
+    "io"
 )
-
 
 // DeleteFolderRequest contains request data for WordsApiService.DeleteFolder method.
 type DeleteFolderRequest struct {
         // Folder path e.g. '/folder'.
         Path *string
     /* optional (nil or map[string]interface{}) with one or more of key / value pairs:
-        key: "storageName" value: (string) Storage name.
-        key: "recursive" value: (bool) Enable to delete folders, subfolders and files. */
+        key: "storageName" value: (*string) Storage name.
+        key: "recursive" value: (*bool) Enable to delete folders, subfolders and files. */
     Optionals map[string]interface{}
 }
+
 
 func (data *DeleteFolderRequest) CreateRequestData() (RequestData, error) {
 
@@ -108,8 +107,6 @@ func (data *DeleteFolderRequest) CreateRequestData() (RequestData, error) {
     return result, nil
 }
 
-
-func (data *DeleteFolderRequest) CreateResponse(reader io.Reader) (result interface{}, err error) {
-
+func (data *DeleteFolderRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
         return nil, nil
 }

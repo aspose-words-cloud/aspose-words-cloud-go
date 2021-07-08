@@ -49,15 +49,13 @@ func Test_Folder_CreateFolder(t *testing.T) {
         Optionals: options,
     }
 
-_, err := client.WordsApi.CreateFolder(ctx, request)
+    _, err := client.WordsApi.CreateFolder(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
 
 }
-
-
 
 // Test for delete folder.
 func Test_Folder_DeleteFolder(t *testing.T) {
@@ -78,15 +76,13 @@ func Test_Folder_DeleteFolder(t *testing.T) {
         Optionals: options,
     }
 
-_, err := client.WordsApi.DeleteFolder(ctx, request)
+    _, err := client.WordsApi.DeleteFolder(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
 
 }
-
-
 
 // Test for get file list of folder.
 func Test_Folder_GetFilesList(t *testing.T) {
@@ -104,15 +100,12 @@ func Test_Folder_GetFilesList(t *testing.T) {
     }
 
     actual, _, err := client.WordsApi.GetFilesList(ctx, request)
-
     if err != nil {
         t.Error(err)
     }
 
     assert.NotNil(t, actual.Value, "Validate GetFilesList response.");
 }
-
-
 
 // Test for copy folder.
 func Test_Folder_CopyFolder(t *testing.T) {
@@ -134,15 +127,13 @@ func Test_Folder_CopyFolder(t *testing.T) {
         Optionals: options,
     }
 
-_, err := client.WordsApi.CopyFolder(ctx, request)
+    _, err := client.WordsApi.CopyFolder(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
 
 }
-
-
 
 // Test for move folder.
 func Test_Folder_MoveFolder(t *testing.T) {
@@ -163,11 +154,10 @@ func Test_Folder_MoveFolder(t *testing.T) {
         Optionals: options,
     }
 
-_, err := client.WordsApi.MoveFolder(ctx, request)
+    _, err := client.WordsApi.MoveFolder(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
 
 }
-

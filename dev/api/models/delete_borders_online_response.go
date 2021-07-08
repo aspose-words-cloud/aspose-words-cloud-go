@@ -33,9 +33,9 @@ package models
 // Removes borders from the document node.
 type DeleteBordersOnlineResponse struct {
     // The response model.
-    Model BordersResponse `json:"Model,omitempty"`
+    Model  BordersResponse  `json:"Model,omitempty"`
 
 
     // The document after modification.
-    Document io.Reader `json:"Document,omitempty"`
+    Document  io.ReadCloser   `json:"Document,omitempty"`
 }

@@ -27,28 +27,27 @@
 
 package models
 
-
 import (
-    "io"
     "fmt"
 	"net/url"
 	"strings"
+    "io"
     "encoding/json"
 )
-
 
 // GetFormFieldsRequest contains request data for WordsApiService.GetFormFields method.
 type GetFormFieldsRequest struct {
         // The filename of the input document.
         Name *string
     /* optional (nil or map[string]interface{}) with one or more of key / value pairs:
-        key: "nodePath" value: (string) The path to the node in the document tree.
-        key: "folder" value: (string) Original document folder.
-        key: "storage" value: (string) Original document storage.
-        key: "loadEncoding" value: (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
-        key: "password" value: (string) Password for opening an encrypted document. */
+        key: "nodePath" value: (*string) The path to the node in the document tree.
+        key: "folder" value: (*string) Original document folder.
+        key: "storage" value: (*string) Original document storage.
+        key: "loadEncoding" value: (*string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
+        key: "password" value: (*string) Password for opening an encrypted document. */
     Optionals map[string]interface{}
 }
+
 
 func (data *GetFormFieldsRequest) CreateRequestData() (RequestData, error) {
 
@@ -132,12 +131,10 @@ func (data *GetFormFieldsRequest) CreateRequestData() (RequestData, error) {
     return result, nil
 }
 
-
-func (data *GetFormFieldsRequest) CreateResponse(reader io.Reader) (result interface{}, err error) {
-
+func (data *GetFormFieldsRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
             var successPayload FormFieldsResponse
             if err = json.NewDecoder(reader).Decode(&successPayload); err != nil {
-                return successPayload, err
+                return nil, err
             }
 
             return successPayload, err

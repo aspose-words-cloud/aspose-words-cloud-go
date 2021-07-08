@@ -27,24 +27,23 @@
 
 package models
 
-
 import (
-    "io"
     "fmt"
 	"net/url"
 	"strings"
+    "io"
 )
-
 
 // DownloadFileRequest contains request data for WordsApiService.DownloadFile method.
 type DownloadFileRequest struct {
         // Path of the file including the file name and extension e.g. /folder1/file.ext.
         Path *string
     /* optional (nil or map[string]interface{}) with one or more of key / value pairs:
-        key: "storageName" value: (string) Storage name.
-        key: "versionId" value: (string) File version ID to download. */
+        key: "storageName" value: (*string) Storage name.
+        key: "versionId" value: (*string) File version ID to download. */
     Optionals map[string]interface{}
 }
+
 
 func (data *DownloadFileRequest) CreateRequestData() (RequestData, error) {
 
@@ -108,8 +107,6 @@ func (data *DownloadFileRequest) CreateRequestData() (RequestData, error) {
     return result, nil
 }
 
-
-func (data *DownloadFileRequest) CreateResponse(reader io.Reader) (result interface{}, err error) {
-
+func (data *DownloadFileRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
             return reader, nil
 }

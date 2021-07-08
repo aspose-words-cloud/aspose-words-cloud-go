@@ -27,15 +27,13 @@
 
 package models
 
-
 import (
-    "io"
     "fmt"
 	"net/url"
 	"strings"
+    "io"
     "encoding/json"
 )
-
 
 // ReplaceTextRequest contains request data for WordsApiService.ReplaceText method.
 type ReplaceTextRequest struct {
@@ -44,15 +42,16 @@ type ReplaceTextRequest struct {
         // The replace operation settings.
         ReplaceText IReplaceTextParameters
     /* optional (nil or map[string]interface{}) with one or more of key / value pairs:
-        key: "folder" value: (string) Original document folder.
-        key: "storage" value: (string) Original document storage.
-        key: "loadEncoding" value: (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
-        key: "password" value: (string) Password for opening an encrypted document.
-        key: "destFileName" value: (string) Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.
-        key: "revisionAuthor" value: (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
-        key: "revisionDateTime" value: (string) The date and time to use for revisions. */
+        key: "folder" value: (*string) Original document folder.
+        key: "storage" value: (*string) Original document storage.
+        key: "loadEncoding" value: (*string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
+        key: "password" value: (*string) Password for opening an encrypted document.
+        key: "destFileName" value: (*string) Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.
+        key: "revisionAuthor" value: (*string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
+        key: "revisionDateTime" value: (*string) The date and time to use for revisions. */
     Optionals map[string]interface{}
 }
+
 
 func (data *ReplaceTextRequest) CreateRequestData() (RequestData, error) {
 
@@ -157,12 +156,10 @@ func (data *ReplaceTextRequest) CreateRequestData() (RequestData, error) {
     return result, nil
 }
 
-
-func (data *ReplaceTextRequest) CreateResponse(reader io.Reader) (result interface{}, err error) {
-
+func (data *ReplaceTextRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
             var successPayload ReplaceTextResponse
             if err = json.NewDecoder(reader).Decode(&successPayload); err != nil {
-                return successPayload, err
+                return nil, err
             }
 
             return successPayload, err

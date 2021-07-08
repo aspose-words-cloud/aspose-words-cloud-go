@@ -34,6 +34,36 @@ import (
     "github.com/aspose-words-cloud/aspose-words-cloud-go/dev/api/models"
 )
 
+// Test for build report online.
+func Test_BuildReport_BuildReportOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    reportingFolder := "DocumentActions/Reporting"
+    localDocumentFile := "ReportTemplate.docx"
+    localDataFile := ReadFile(t, reportingFolder + "/ReportData.json")
+
+    requestReportEngineSettings := models.ReportEngineSettings{
+        DataSourceType: ToStringPointer("Json"),
+        DataSourceName: ToStringPointer("persons"),
+    }
+
+    options := map[string]interface{}{
+    }
+
+    request := &models.BuildReportOnlineRequest{
+        Template: OpenFile(t, reportingFolder + "/" + localDocumentFile),
+        Data: ToStringPointer(localDataFile),
+        ReportEngineSettings: requestReportEngineSettings,
+        Optionals: options,
+    }
+
+    _, err := client.WordsApi.BuildReportOnline(ctx, request)
+    if err != nil {
+        t.Error(err)
+    }
+
+}
+
 // Test for build report.
 func Test_BuildReport_BuildReport(t *testing.T) {
     config := ReadConfiguration(t)
@@ -67,7 +97,6 @@ func Test_BuildReport_BuildReport(t *testing.T) {
     }
 
     actual, _, err := client.WordsApi.BuildReport(ctx, request)
-
     if err != nil {
         t.Error(err)
     }
@@ -75,4 +104,3 @@ func Test_BuildReport_BuildReport(t *testing.T) {
     assert.NotNil(t, actual.Document, "Validate BuildReport response.");
     assert.Equal(t, "TestBuildReport.docx", actual.Document.FileName, "Validate BuildReport response.");
 }
-

@@ -33,9 +33,9 @@ package models
 // Adds a new or updates an existing document property.
 type CreateOrUpdateDocumentPropertyOnlineResponse struct {
     // The response model.
-    Model DocumentPropertyResponse `json:"Model,omitempty"`
+    Model  DocumentPropertyResponse  `json:"Model,omitempty"`
 
 
     // The document after modification.
-    Document io.Reader `json:"Document,omitempty"`
+    Document  io.ReadCloser   `json:"Document,omitempty"`
 }

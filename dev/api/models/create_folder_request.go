@@ -27,23 +27,22 @@
 
 package models
 
-
 import (
-    "io"
     "fmt"
 	"net/url"
 	"strings"
+    "io"
 )
-
 
 // CreateFolderRequest contains request data for WordsApiService.CreateFolder method.
 type CreateFolderRequest struct {
         // Target folder's path e.g. Folder1/Folder2/. The folders will be created recursively.
         Path *string
     /* optional (nil or map[string]interface{}) with one or more of key / value pairs:
-        key: "storageName" value: (string) Storage name. */
+        key: "storageName" value: (*string) Storage name. */
     Optionals map[string]interface{}
 }
+
 
 func (data *CreateFolderRequest) CreateRequestData() (RequestData, error) {
 
@@ -99,8 +98,6 @@ func (data *CreateFolderRequest) CreateRequestData() (RequestData, error) {
     return result, nil
 }
 
-
-func (data *CreateFolderRequest) CreateResponse(reader io.Reader) (result interface{}, err error) {
-
+func (data *CreateFolderRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
         return nil, nil
 }

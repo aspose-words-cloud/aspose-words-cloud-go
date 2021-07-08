@@ -33,9 +33,9 @@ package models
 // Rejects all revisions in the document.
 type RejectAllRevisionsOnlineResponse struct {
     // The response model.
-    Model RevisionsModificationResponse `json:"Model,omitempty"`
+    Model  RevisionsModificationResponse  `json:"Model,omitempty"`
 
 
     // The document after modification.
-    Document io.Reader `json:"Document,omitempty"`
+    Document  io.ReadCloser   `json:"Document,omitempty"`
 }

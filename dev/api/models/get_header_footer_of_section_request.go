@@ -27,15 +27,13 @@
 
 package models
 
-
 import (
-    "io"
     "fmt"
 	"net/url"
 	"strings"
+    "io"
     "encoding/json"
 )
-
 
 // GetHeaderFooterOfSectionRequest contains request data for WordsApiService.GetHeaderFooterOfSection method.
 type GetHeaderFooterOfSectionRequest struct {
@@ -46,13 +44,14 @@ type GetHeaderFooterOfSectionRequest struct {
         // The index of the section.
         SectionIndex *int32
     /* optional (nil or map[string]interface{}) with one or more of key / value pairs:
-        key: "folder" value: (string) Original document folder.
-        key: "storage" value: (string) Original document storage.
-        key: "loadEncoding" value: (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
-        key: "password" value: (string) Password for opening an encrypted document.
-        key: "filterByType" value: (string) The list of HeaderFooter types. */
+        key: "folder" value: (*string) Original document folder.
+        key: "storage" value: (*string) Original document storage.
+        key: "loadEncoding" value: (*string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
+        key: "password" value: (*string) Password for opening an encrypted document.
+        key: "filterByType" value: (*string) The list of HeaderFooter types. */
     Optionals map[string]interface{}
 }
+
 
 func (data *GetHeaderFooterOfSectionRequest) CreateRequestData() (RequestData, error) {
 
@@ -142,12 +141,10 @@ func (data *GetHeaderFooterOfSectionRequest) CreateRequestData() (RequestData, e
     return result, nil
 }
 
-
-func (data *GetHeaderFooterOfSectionRequest) CreateResponse(reader io.Reader) (result interface{}, err error) {
-
+func (data *GetHeaderFooterOfSectionRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
             var successPayload HeaderFooterResponse
             if err = json.NewDecoder(reader).Decode(&successPayload); err != nil {
-                return successPayload, err
+                return nil, err
             }
 
             return successPayload, err

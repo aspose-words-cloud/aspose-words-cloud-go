@@ -39,7 +39,7 @@ import (
 // RequestInterface ia implemented all Words API requests
 type RequestInterface interface {
 	CreateRequestData() (request RequestData, err error)
-    CreateResponse(reader io.Reader) (response interface{}, err error)
+    CreateResponse(reader io.Reader, boundary string) (response interface{}, err error)
 }
 
 // RequestData contains requst data

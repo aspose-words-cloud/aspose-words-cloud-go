@@ -27,14 +27,12 @@
 
 package models
 
-
 import (
-    "io"
     "fmt"
 	"net/url"
 	"strings"
+    "io"
 )
-
 
 // GetDocumentWithFormatRequest contains request data for WordsApiService.GetDocumentWithFormat method.
 type GetDocumentWithFormatRequest struct {
@@ -43,14 +41,15 @@ type GetDocumentWithFormatRequest struct {
         // The destination format.
         Format *string
     /* optional (nil or map[string]interface{}) with one or more of key / value pairs:
-        key: "folder" value: (string) Original document folder.
-        key: "storage" value: (string) Original document storage.
-        key: "loadEncoding" value: (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
-        key: "password" value: (string) Password for opening an encrypted document.
-        key: "outPath" value: (string) The path to the output document.
-        key: "fontsLocation" value: (string) Folder in filestorage with custom fonts. */
+        key: "folder" value: (*string) Original document folder.
+        key: "storage" value: (*string) Original document storage.
+        key: "loadEncoding" value: (*string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
+        key: "password" value: (*string) Password for opening an encrypted document.
+        key: "outPath" value: (*string) The path to the output document.
+        key: "fontsLocation" value: (*string) Folder in filestorage with custom fonts. */
     Optionals map[string]interface{}
 }
+
 
 func (data *GetDocumentWithFormatRequest) CreateRequestData() (RequestData, error) {
 
@@ -149,8 +148,6 @@ func (data *GetDocumentWithFormatRequest) CreateRequestData() (RequestData, erro
     return result, nil
 }
 
-
-func (data *GetDocumentWithFormatRequest) CreateResponse(reader io.Reader) (result interface{}, err error) {
-
+func (data *GetDocumentWithFormatRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
             return reader, nil
 }

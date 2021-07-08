@@ -33,9 +33,9 @@ package models
 // Updates the font properties of a Run object in the paragraph.
 type UpdateRunFontOnlineResponse struct {
     // The response model.
-    Model FontResponse `json:"Model,omitempty"`
+    Model  FontResponse  `json:"Model,omitempty"`
 
 
     // The document after modification.
-    Document io.Reader `json:"Document,omitempty"`
+    Document  io.ReadCloser   `json:"Document,omitempty"`
 }

@@ -33,9 +33,9 @@ package models
 // Updates a Run object in the paragraph.
 type UpdateRunOnlineResponse struct {
     // The response model.
-    Model RunResponse `json:"Model,omitempty"`
+    Model  RunResponse  `json:"Model,omitempty"`
 
 
     // The document after modification.
-    Document io.Reader `json:"Document,omitempty"`
+    Document  io.ReadCloser   `json:"Document,omitempty"`
 }

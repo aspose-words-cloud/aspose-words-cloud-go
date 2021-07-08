@@ -33,9 +33,9 @@ package models
 // Updates a bookmark in the document.
 type UpdateBookmarkOnlineResponse struct {
     // The response model.
-    Model BookmarkResponse `json:"Model,omitempty"`
+    Model  BookmarkResponse  `json:"Model,omitempty"`
 
 
     // The document after modification.
-    Document io.Reader `json:"Document,omitempty"`
+    Document  io.ReadCloser   `json:"Document,omitempty"`
 }

@@ -33,9 +33,9 @@ package models
 // Updates a list in the document.
 type UpdateListOnlineResponse struct {
     // The response model.
-    Model ListResponse `json:"Model,omitempty"`
+    Model  ListResponse  `json:"Model,omitempty"`
 
 
     // The document after modification.
-    Document io.Reader `json:"Document,omitempty"`
+    Document  io.ReadCloser   `json:"Document,omitempty"`
 }

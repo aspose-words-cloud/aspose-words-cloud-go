@@ -27,28 +27,26 @@
 
 package models
 
-
 import (
-    "io"
     "fmt"
 	"io/ioutil"
-    "os"
 	"net/url"
 	"strings"
+    "io"
     "encoding/json"
 )
-
 
 // UploadFileRequest contains request data for WordsApiService.UploadFile method.
 type UploadFileRequest struct {
         // File to upload.
-        FileContent *os.File
+        FileContent io.ReadCloser
         // Path where to upload including filename and extension e.g. /file.ext or /Folder 1/file.ext If the content is multipart and path does not contains the file name it tries to get them from filename parameter from Content-Disposition header.
         Path *string
     /* optional (nil or map[string]interface{}) with one or more of key / value pairs:
-        key: "storageName" value: (string) Storage name. */
+        key: "storageName" value: (*string) Storage name. */
     Optionals map[string]interface{}
 }
+
 
 func (data *UploadFileRequest) CreateRequestData() (RequestData, error) {
 
@@ -111,12 +109,10 @@ func (data *UploadFileRequest) CreateRequestData() (RequestData, error) {
     return result, nil
 }
 
-
-func (data *UploadFileRequest) CreateResponse(reader io.Reader) (result interface{}, err error) {
-
+func (data *UploadFileRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
             var successPayload FilesUploadResult
             if err = json.NewDecoder(reader).Decode(&successPayload); err != nil {
-                return successPayload, err
+                return nil, err
             }
 
             return successPayload, err

@@ -33,9 +33,9 @@ package models
 // Applies a style to the document node.
 type ApplyStyleToDocumentElementOnlineResponse struct {
     // The response model.
-    Model WordsResponse `json:"Model,omitempty"`
+    Model  WordsResponse  `json:"Model,omitempty"`
 
 
     // The document after modification.
-    Document io.Reader `json:"Document,omitempty"`
+    Document  io.ReadCloser   `json:"Document,omitempty"`
 }

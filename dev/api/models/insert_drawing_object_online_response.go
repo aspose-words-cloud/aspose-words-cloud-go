@@ -33,9 +33,9 @@ package models
 // Inserts a new DrawingObject to the document node.
 type InsertDrawingObjectOnlineResponse struct {
     // The response model.
-    Model DrawingObjectResponse `json:"Model,omitempty"`
+    Model  DrawingObjectResponse  `json:"Model,omitempty"`
 
 
     // The document after modification.
-    Document io.Reader `json:"Document,omitempty"`
+    Document  io.ReadCloser   `json:"Document,omitempty"`
 }

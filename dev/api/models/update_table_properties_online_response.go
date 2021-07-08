@@ -33,9 +33,9 @@ package models
 // Updates properties of a table in the document node.
 type UpdateTablePropertiesOnlineResponse struct {
     // The response model.
-    Model TablePropertiesResponse `json:"Model,omitempty"`
+    Model  TablePropertiesResponse  `json:"Model,omitempty"`
 
 
     // The document after modification.
-    Document io.Reader `json:"Document,omitempty"`
+    Document  io.ReadCloser   `json:"Document,omitempty"`
 }

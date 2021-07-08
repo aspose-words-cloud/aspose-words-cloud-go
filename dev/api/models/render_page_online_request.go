@@ -27,6 +27,110 @@
 
 package models
 
+import (
+    "fmt"
+	"io/ioutil"
+	"net/url"
+	"strings"
+    "io"
+)
+
 // RenderPageOnlineRequest contains request data for WordsApiService.RenderPageOnline method.
 type RenderPageOnlineRequest struct {
+        // The document.
+        Document io.ReadCloser
+        // The index of the page.
+        PageIndex *int32
+        // The destination format.
+        Format *string
+    /* optional (nil or map[string]interface{}) with one or more of key / value pairs:
+        key: "loadEncoding" value: (*string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
+        key: "password" value: (*string) Password for opening an encrypted document.
+        key: "fontsLocation" value: (*string) Folder in filestorage with custom fonts. */
+    Optionals map[string]interface{}
+}
+
+
+func (data *RenderPageOnlineRequest) CreateRequestData() (RequestData, error) {
+
+    var result RequestData
+
+    result.Method = strings.ToUpper("put")
+
+    // create path and map variables
+    result.Path = "/words/online/get/pages/{pageIndex}/render"
+    result.Path = strings.Replace(result.Path, "{"+"pageIndex"+"}", fmt.Sprintf("%v", *data.PageIndex), -1)
+
+    result.Path = strings.Replace(result.Path, "/<nil>", "", -1)
+    result.Path = strings.Replace(result.Path, "//", "/", -1)
+
+    result.HeaderParams = make(map[string]string)
+    result.QueryParams = url.Values{}
+    result.FormParams = make([]FormParamContainer, 0)
+
+    if err := typeCheckParameter(data.Optionals["loadEncoding"], "string", "data.Optionals[loadEncoding]"); err != nil {
+        return result, err
+    }
+    if err := typeCheckParameter(data.Optionals["password"], "string", "data.Optionals[password]"); err != nil {
+        return result, err
+    }
+    if err := typeCheckParameter(data.Optionals["fontsLocation"], "string", "data.Optionals[fontsLocation]"); err != nil {
+        return result, err
+    }
+
+
+    result.QueryParams.Add("Format", parameterToString(*data.Format, ""))
+
+
+    if localVarTempParam, localVarOk := data.Optionals["loadEncoding"].(string); localVarOk {
+        result.QueryParams.Add("LoadEncoding", parameterToString(localVarTempParam, ""))
+    }
+
+
+    if localVarTempParam, localVarOk := data.Optionals["password"].(string); localVarOk {
+        result.QueryParams.Add("Password", parameterToString(localVarTempParam, ""))
+    }
+
+
+    if localVarTempParam, localVarOk := data.Optionals["fontsLocation"].(string); localVarOk {
+        result.QueryParams.Add("FontsLocation", parameterToString(localVarTempParam, ""))
+    }
+
+
+    // to determine the Content-Type header
+    localVarHttpContentTypes := []string{ "multipart/form-data", }
+
+    // set Content-Type header
+    localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
+    if localVarHttpContentType != "" {
+        result.HeaderParams["Content-Type"] = localVarHttpContentType
+    }
+
+    // to determine the Accept header
+    localVarHttpHeaderAccepts := []string{
+        "application/xml",
+        "application/json",
+    }
+
+    // set Accept header
+    localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
+    if localVarHttpHeaderAccept != "" {
+        result.HeaderParams["Accept"] = localVarHttpHeaderAccept
+    }
+
+
+    _document := data.Document
+    if _document != nil {
+        fbs, _ := ioutil.ReadAll(_document)
+        _document.Close()
+        result.FormParams = append(result.FormParams, NewFileFormParamContainer("document", fbs))
+    }
+
+
+
+    return result, nil
+}
+
+func (data *RenderPageOnlineRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
+            return reader, nil
 }

@@ -34,6 +34,31 @@ import (
     "github.com/aspose-words-cloud/aspose-words-cloud-go/dev/api/models"
 )
 
+// Test for executing mail merge online.
+func Test_ExecuteMailMerge_ExecuteMailMergeOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    mailMergeFolder := "DocumentActions/MailMerge"
+    localDocumentFile := "SampleExecuteTemplate.docx"
+    localDataFile := "SampleExecuteTemplateData.txt"
+
+
+    options := map[string]interface{}{
+    }
+
+    request := &models.ExecuteMailMergeOnlineRequest{
+        Template: OpenFile(t, mailMergeFolder + "/" + localDocumentFile),
+        Data: OpenFile(t, mailMergeFolder + "/" + localDataFile),
+        Optionals: options,
+    }
+
+    _, err := client.WordsApi.ExecuteMailMergeOnline(ctx, request)
+    if err != nil {
+        t.Error(err)
+    }
+
+}
+
 // Test for executing mail merge.
 func Test_ExecuteMailMerge_ExecuteMailMerge(t *testing.T) {
     config := ReadConfiguration(t)
@@ -60,7 +85,6 @@ func Test_ExecuteMailMerge_ExecuteMailMerge(t *testing.T) {
     }
 
     actual, _, err := client.WordsApi.ExecuteMailMerge(ctx, request)
-
     if err != nil {
         t.Error(err)
     }
@@ -68,4 +92,3 @@ func Test_ExecuteMailMerge_ExecuteMailMerge(t *testing.T) {
     assert.NotNil(t, actual.Document, "Validate ExecuteMailMerge response.");
     assert.Equal(t, "TestExecuteMailMerge.docx", actual.Document.FileName, "Validate ExecuteMailMerge response.");
 }
-

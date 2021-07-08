@@ -33,9 +33,9 @@ package models
 // Updates a border in the document node.
 type UpdateBorderOnlineResponse struct {
     // The response model.
-    Model BorderResponse `json:"Model,omitempty"`
+    Model  BorderResponse  `json:"Model,omitempty"`
 
 
     // The document after modification.
-    Document io.Reader `json:"Document,omitempty"`
+    Document  io.ReadCloser   `json:"Document,omitempty"`
 }

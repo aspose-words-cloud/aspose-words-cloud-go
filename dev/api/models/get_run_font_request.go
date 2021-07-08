@@ -27,15 +27,13 @@
 
 package models
 
-
 import (
-    "io"
     "fmt"
 	"net/url"
 	"strings"
+    "io"
     "encoding/json"
 )
-
 
 // GetRunFontRequest contains request data for WordsApiService.GetRunFont method.
 type GetRunFontRequest struct {
@@ -46,12 +44,13 @@ type GetRunFontRequest struct {
         // Object index.
         Index *int32
     /* optional (nil or map[string]interface{}) with one or more of key / value pairs:
-        key: "folder" value: (string) Original document folder.
-        key: "storage" value: (string) Original document storage.
-        key: "loadEncoding" value: (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
-        key: "password" value: (string) Password for opening an encrypted document. */
+        key: "folder" value: (*string) Original document folder.
+        key: "storage" value: (*string) Original document storage.
+        key: "loadEncoding" value: (*string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
+        key: "password" value: (*string) Password for opening an encrypted document. */
     Optionals map[string]interface{}
 }
+
 
 func (data *GetRunFontRequest) CreateRequestData() (RequestData, error) {
 
@@ -133,12 +132,10 @@ func (data *GetRunFontRequest) CreateRequestData() (RequestData, error) {
     return result, nil
 }
 
-
-func (data *GetRunFontRequest) CreateResponse(reader io.Reader) (result interface{}, err error) {
-
+func (data *GetRunFontRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
             var successPayload FontResponse
             if err = json.NewDecoder(reader).Decode(&successPayload); err != nil {
-                return successPayload, err
+                return nil, err
             }
 
             return successPayload, err

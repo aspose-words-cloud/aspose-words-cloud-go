@@ -37,6 +37,7 @@ import (
     "io"
     "io/ioutil"
     "log"
+    "mime"
     "mime/multipart"
     "net/http"
     "net/http/httputil"
@@ -456,4 +457,26 @@ func CreateWordsApi(config *models.Configuration) (wordsApi *WordsApiService, ct
     }
 
     return client.WordsApi, ctx, err
+}
+
+func GetBoundary(response *http.Response) string {
+    return getBoundary(response.Header.Get("Content-Type"));
+}
+
+func GetPartBoundary(response *multipart.Part) string {
+    return getBoundary(response.Header.Get("Content-Type"));
+}
+
+func getBoundary(contentHeader string) string {
+	if contentHeader == "" {
+		return ""
+	}
+
+	_, params, err := mime.ParseMediaType(contentHeader)
+
+	if err != nil {
+		return ""
+	}
+
+	return params["boundary"]
 }

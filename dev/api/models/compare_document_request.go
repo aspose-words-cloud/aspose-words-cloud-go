@@ -27,15 +27,13 @@
 
 package models
 
-
 import (
-    "io"
     "fmt"
 	"net/url"
 	"strings"
+    "io"
     "encoding/json"
 )
-
 
 // CompareDocumentRequest contains request data for WordsApiService.CompareDocument method.
 type CompareDocumentRequest struct {
@@ -44,13 +42,14 @@ type CompareDocumentRequest struct {
         // Compare data.
         CompareData ICompareData
     /* optional (nil or map[string]interface{}) with one or more of key / value pairs:
-        key: "folder" value: (string) Original document folder.
-        key: "storage" value: (string) Original document storage.
-        key: "loadEncoding" value: (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
-        key: "password" value: (string) Password for opening an encrypted document.
-        key: "destFileName" value: (string) Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document. */
+        key: "folder" value: (*string) Original document folder.
+        key: "storage" value: (*string) Original document storage.
+        key: "loadEncoding" value: (*string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
+        key: "password" value: (*string) Password for opening an encrypted document.
+        key: "destFileName" value: (*string) Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document. */
     Optionals map[string]interface{}
 }
+
 
 func (data *CompareDocumentRequest) CreateRequestData() (RequestData, error) {
 
@@ -139,12 +138,10 @@ func (data *CompareDocumentRequest) CreateRequestData() (RequestData, error) {
     return result, nil
 }
 
-
-func (data *CompareDocumentRequest) CreateResponse(reader io.Reader) (result interface{}, err error) {
-
+func (data *CompareDocumentRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
             var successPayload DocumentResponse
             if err = json.NewDecoder(reader).Decode(&successPayload); err != nil {
-                return successPayload, err
+                return nil, err
             }
 
             return successPayload, err

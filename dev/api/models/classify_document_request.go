@@ -27,29 +27,28 @@
 
 package models
 
-
 import (
-    "io"
     "fmt"
 	"net/url"
 	"strings"
+    "io"
     "encoding/json"
 )
-
 
 // ClassifyDocumentRequest contains request data for WordsApiService.ClassifyDocument method.
 type ClassifyDocumentRequest struct {
         // The document name.
         Name *string
     /* optional (nil or map[string]interface{}) with one or more of key / value pairs:
-        key: "folder" value: (string) Original document folder.
-        key: "storage" value: (string) Original document storage.
-        key: "loadEncoding" value: (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
-        key: "password" value: (string) Password for opening an encrypted document.
-        key: "bestClassesCount" value: (string) The number of the best classes to return.
-        key: "taxonomy" value: (string) The taxonomy to use. */
+        key: "folder" value: (*string) Original document folder.
+        key: "storage" value: (*string) Original document storage.
+        key: "loadEncoding" value: (*string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
+        key: "password" value: (*string) Password for opening an encrypted document.
+        key: "bestClassesCount" value: (*string) The number of the best classes to return.
+        key: "taxonomy" value: (*string) The taxonomy to use. */
     Optionals map[string]interface{}
 }
+
 
 func (data *ClassifyDocumentRequest) CreateRequestData() (RequestData, error) {
 
@@ -145,12 +144,10 @@ func (data *ClassifyDocumentRequest) CreateRequestData() (RequestData, error) {
     return result, nil
 }
 
-
-func (data *ClassifyDocumentRequest) CreateResponse(reader io.Reader) (result interface{}, err error) {
-
+func (data *ClassifyDocumentRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
             var successPayload ClassificationResponse
             if err = json.NewDecoder(reader).Decode(&successPayload); err != nil {
-                return successPayload, err
+                return nil, err
             }
 
             return successPayload, err

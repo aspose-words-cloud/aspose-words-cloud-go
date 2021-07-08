@@ -27,17 +27,16 @@
 
 package models
 
-
 import (
-    "io"
 	"net/url"
 	"strings"
+    "io"
 )
-
 
 // ResetCacheRequest contains request data for WordsApiService.ResetCache method.
 type ResetCacheRequest struct {
 }
+
 
 func (data *ResetCacheRequest) CreateRequestData() (RequestData, error) {
 
@@ -84,8 +83,6 @@ func (data *ResetCacheRequest) CreateRequestData() (RequestData, error) {
     return result, nil
 }
 
-
-func (data *ResetCacheRequest) CreateResponse(reader io.Reader) (result interface{}, err error) {
-
+func (data *ResetCacheRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
         return nil, nil
 }

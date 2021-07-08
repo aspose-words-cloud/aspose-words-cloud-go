@@ -55,7 +55,6 @@ func Test_DocumentProperties_GetDocumentProperties(t *testing.T) {
     }
 
     actual, _, err := client.WordsApi.GetDocumentProperties(ctx, request)
-
     if err != nil {
         t.Error(err)
     }
@@ -68,9 +67,27 @@ func Test_DocumentProperties_GetDocumentProperties(t *testing.T) {
     assert.Equal(t, "", actual.DocumentProperties.List[0].Value, "Validate GetDocumentProperties response.");
 }
 
+// Test for getting document properties online.
+func Test_DocumentProperties_GetDocumentPropertiesOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "Common/test_multi_pages.docx"
 
 
+    options := map[string]interface{}{
+    }
 
+    request := &models.GetDocumentPropertiesOnlineRequest{
+        Document: OpenFile(t, localFile),
+        Optionals: options,
+    }
+
+    _, _, err := client.WordsApi.GetDocumentPropertiesOnline(ctx, request)
+    if err != nil {
+        t.Error(err)
+    }
+
+}
 
 // A test for GetDocumentProperty.
 func Test_DocumentProperties_GetDocumentProperty(t *testing.T) {
@@ -94,7 +111,6 @@ func Test_DocumentProperties_GetDocumentProperty(t *testing.T) {
     }
 
     actual, _, err := client.WordsApi.GetDocumentProperty(ctx, request)
-
     if err != nil {
         t.Error(err)
     }
@@ -104,9 +120,28 @@ func Test_DocumentProperties_GetDocumentProperty(t *testing.T) {
     assert.Equal(t, "", actual.DocumentProperty.Value, "Validate GetDocumentProperty response.");
 }
 
+// A test for GetDocumentProperty online.
+func Test_DocumentProperties_GetDocumentPropertyOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "Common/test_multi_pages.docx"
 
 
+    options := map[string]interface{}{
+    }
 
+    request := &models.GetDocumentPropertyOnlineRequest{
+        Document: OpenFile(t, localFile),
+        PropertyName: ToStringPointer("Author"),
+        Optionals: options,
+    }
+
+    _, _, err := client.WordsApi.GetDocumentPropertyOnline(ctx, request)
+    if err != nil {
+        t.Error(err)
+    }
+
+}
 
 // Test for deleting document property.
 func Test_DocumentProperties_DeleteDocumentProperty(t *testing.T) {
@@ -130,7 +165,7 @@ func Test_DocumentProperties_DeleteDocumentProperty(t *testing.T) {
         Optionals: options,
     }
 
-_, err := client.WordsApi.DeleteDocumentProperty(ctx, request)
+    _, err := client.WordsApi.DeleteDocumentProperty(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -138,9 +173,28 @@ _, err := client.WordsApi.DeleteDocumentProperty(ctx, request)
 
 }
 
+// Test for deleting document property online.
+func Test_DocumentProperties_DeleteDocumentPropertyOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "Common/test_multi_pages.docx"
 
 
+    options := map[string]interface{}{
+    }
 
+    request := &models.DeleteDocumentPropertyOnlineRequest{
+        Document: OpenFile(t, localFile),
+        PropertyName: ToStringPointer("testProp"),
+        Optionals: options,
+    }
+
+    _, err := client.WordsApi.DeleteDocumentPropertyOnline(ctx, request)
+    if err != nil {
+        t.Error(err)
+    }
+
+}
 
 // Test for updating document property.
 func Test_DocumentProperties_UpdateDocumentProperty(t *testing.T) {
@@ -169,7 +223,6 @@ func Test_DocumentProperties_UpdateDocumentProperty(t *testing.T) {
     }
 
     actual, _, err := client.WordsApi.CreateOrUpdateDocumentProperty(ctx, request)
-
     if err != nil {
         t.Error(err)
     }
@@ -179,5 +232,29 @@ func Test_DocumentProperties_UpdateDocumentProperty(t *testing.T) {
     assert.Equal(t, "Imran Anwar", actual.DocumentProperty.Value, "Validate UpdateDocumentProperty response.");
 }
 
+// Test for updating document property online.
+func Test_DocumentProperties_UpdateDocumentPropertyOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "Common/test_multi_pages.docx"
 
+    requestProperty := models.DocumentPropertyCreateOrUpdate{
+        Value: ToStringPointer("Imran Anwar"),
+    }
 
+    options := map[string]interface{}{
+    }
+
+    request := &models.CreateOrUpdateDocumentPropertyOnlineRequest{
+        Document: OpenFile(t, localFile),
+        PropertyName: ToStringPointer("AsposeAuthor"),
+        Property: requestProperty,
+        Optionals: options,
+    }
+
+    _, _, err := client.WordsApi.CreateOrUpdateDocumentPropertyOnline(ctx, request)
+    if err != nil {
+        t.Error(err)
+    }
+
+}

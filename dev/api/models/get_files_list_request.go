@@ -27,24 +27,23 @@
 
 package models
 
-
 import (
-    "io"
     "fmt"
 	"net/url"
 	"strings"
+    "io"
     "encoding/json"
 )
-
 
 // GetFilesListRequest contains request data for WordsApiService.GetFilesList method.
 type GetFilesListRequest struct {
         // Folder path e.g. '/folder'.
         Path *string
     /* optional (nil or map[string]interface{}) with one or more of key / value pairs:
-        key: "storageName" value: (string) Storage name. */
+        key: "storageName" value: (*string) Storage name. */
     Optionals map[string]interface{}
 }
+
 
 func (data *GetFilesListRequest) CreateRequestData() (RequestData, error) {
 
@@ -100,12 +99,10 @@ func (data *GetFilesListRequest) CreateRequestData() (RequestData, error) {
     return result, nil
 }
 
-
-func (data *GetFilesListRequest) CreateResponse(reader io.Reader) (result interface{}, err error) {
-
+func (data *GetFilesListRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
             var successPayload FilesList
             if err = json.NewDecoder(reader).Decode(&successPayload); err != nil {
-                return successPayload, err
+                return nil, err
             }
 
             return successPayload, err

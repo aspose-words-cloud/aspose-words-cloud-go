@@ -33,9 +33,9 @@ package models
 // Removes protection from the document.
 type UnprotectDocumentOnlineResponse struct {
     // The response model.
-    Model ProtectionDataResponse `json:"Model,omitempty"`
+    Model  ProtectionDataResponse  `json:"Model,omitempty"`
 
 
     // The document after modification.
-    Document io.Reader `json:"Document,omitempty"`
+    Document  io.ReadCloser   `json:"Document,omitempty"`
 }

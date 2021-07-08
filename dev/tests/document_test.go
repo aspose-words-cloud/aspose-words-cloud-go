@@ -55,7 +55,6 @@ func Test_Document_GetDocument(t *testing.T) {
     }
 
     actual, _, err := client.WordsApi.GetDocument(ctx, request)
-
     if err != nil {
         t.Error(err)
     }
@@ -63,8 +62,6 @@ func Test_Document_GetDocument(t *testing.T) {
     assert.NotNil(t, actual.Document, "Validate GetDocument response.");
     assert.Equal(t, "TestGetDocument.docx", actual.Document.FileName, "Validate GetDocument response.");
 }
-
-
 
 // Test for creating word document.
 func Test_Document_CreateDocument(t *testing.T) {
@@ -84,7 +81,6 @@ func Test_Document_CreateDocument(t *testing.T) {
     }
 
     actual, _, err := client.WordsApi.CreateDocument(ctx, request)
-
     if err != nil {
         t.Error(err)
     }
@@ -92,4 +88,3 @@ func Test_Document_CreateDocument(t *testing.T) {
     assert.NotNil(t, actual.Document, "Validate CreateDocument response.");
     assert.Equal(t, "TestCreateDocument.doc", actual.Document.FileName, "Validate CreateDocument response.");
 }
-

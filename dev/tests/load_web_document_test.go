@@ -60,7 +60,6 @@ func Test_LoadWebDocument_LoadWebDocument(t *testing.T) {
     }
 
     actual, _, err := client.WordsApi.LoadWebDocument(ctx, request)
-
     if err != nil {
         t.Error(err)
     }
@@ -69,4 +68,3 @@ func Test_LoadWebDocument_LoadWebDocument(t *testing.T) {
     assert.NotNil(t, actual.SaveResult.DestDocument, "Validate LoadWebDocument response.");
     assert.Equal(t, "google.doc", actual.SaveResult.DestDocument.Href, "Validate LoadWebDocument response.");
 }
-

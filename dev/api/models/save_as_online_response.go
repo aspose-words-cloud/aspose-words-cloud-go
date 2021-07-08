@@ -33,9 +33,9 @@ package models
 // Converts a document in cloud storage to the specified format.
 type SaveAsOnlineResponse struct {
     // The response model.
-    Model SaveResponse `json:"Model,omitempty"`
+    Model  SaveResponse  `json:"Model,omitempty"`
 
 
     // The document after modification.
-    Document io.Reader `json:"Document,omitempty"`
+    Document  io.ReadCloser   `json:"Document,omitempty"`
 }

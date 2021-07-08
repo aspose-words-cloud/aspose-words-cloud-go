@@ -27,17 +27,14 @@
 
 package models
 
-
 import (
-    "io"
     "fmt"
 	"io/ioutil"
-    "os"
 	"net/url"
 	"strings"
+    "io"
     "encoding/json"
 )
-
 
 // UpdateDrawingObjectRequest contains request data for WordsApiService.UpdateDrawingObject method.
 type UpdateDrawingObjectRequest struct {
@@ -46,20 +43,21 @@ type UpdateDrawingObjectRequest struct {
         // Drawing object parameters.
         DrawingObject IDrawingObjectUpdate
         // File with image.
-        ImageFile *os.File
+        ImageFile io.ReadCloser
         // Object index.
         Index *int32
     /* optional (nil or map[string]interface{}) with one or more of key / value pairs:
-        key: "nodePath" value: (string) The path to the node in the document tree.
-        key: "folder" value: (string) Original document folder.
-        key: "storage" value: (string) Original document storage.
-        key: "loadEncoding" value: (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
-        key: "password" value: (string) Password for opening an encrypted document.
-        key: "destFileName" value: (string) Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.
-        key: "revisionAuthor" value: (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
-        key: "revisionDateTime" value: (string) The date and time to use for revisions. */
+        key: "nodePath" value: (*string) The path to the node in the document tree.
+        key: "folder" value: (*string) Original document folder.
+        key: "storage" value: (*string) Original document storage.
+        key: "loadEncoding" value: (*string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
+        key: "password" value: (*string) Password for opening an encrypted document.
+        key: "destFileName" value: (*string) Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.
+        key: "revisionAuthor" value: (*string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
+        key: "revisionDateTime" value: (*string) The date and time to use for revisions. */
     Optionals map[string]interface{}
 }
+
 
 func (data *UpdateDrawingObjectRequest) CreateRequestData() (RequestData, error) {
 
@@ -178,12 +176,10 @@ func (data *UpdateDrawingObjectRequest) CreateRequestData() (RequestData, error)
     return result, nil
 }
 
-
-func (data *UpdateDrawingObjectRequest) CreateResponse(reader io.Reader) (result interface{}, err error) {
-
+func (data *UpdateDrawingObjectRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
             var successPayload DrawingObjectResponse
             if err = json.NewDecoder(reader).Decode(&successPayload); err != nil {
-                return successPayload, err
+                return nil, err
             }
 
             return successPayload, err

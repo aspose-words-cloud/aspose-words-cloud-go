@@ -27,14 +27,12 @@
 
 package models
 
-
 import (
-    "io"
     "fmt"
 	"net/url"
 	"strings"
+    "io"
 )
-
 
 // RenderTableRequest contains request data for WordsApiService.RenderTable method.
 type RenderTableRequest struct {
@@ -45,15 +43,16 @@ type RenderTableRequest struct {
         // Object index.
         Index *int32
     /* optional (nil or map[string]interface{}) with one or more of key / value pairs:
-        key: "nodePath" value: (string) The path to the node in the document tree.
-        key: "folder" value: (string) Original document folder.
-        key: "storage" value: (string) Original document storage.
-        key: "loadEncoding" value: (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
-        key: "password" value: (string) Password for opening an encrypted document.
-        key: "destFileName" value: (string) Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.
-        key: "fontsLocation" value: (string) Folder in filestorage with custom fonts. */
+        key: "nodePath" value: (*string) The path to the node in the document tree.
+        key: "folder" value: (*string) Original document folder.
+        key: "storage" value: (*string) Original document storage.
+        key: "loadEncoding" value: (*string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
+        key: "password" value: (*string) Password for opening an encrypted document.
+        key: "destFileName" value: (*string) Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.
+        key: "fontsLocation" value: (*string) Folder in filestorage with custom fonts. */
     Optionals map[string]interface{}
 }
+
 
 func (data *RenderTableRequest) CreateRequestData() (RequestData, error) {
 
@@ -157,8 +156,6 @@ func (data *RenderTableRequest) CreateRequestData() (RequestData, error) {
     return result, nil
 }
 
-
-func (data *RenderTableRequest) CreateResponse(reader io.Reader) (result interface{}, err error) {
-
+func (data *RenderTableRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
             return reader, nil
 }

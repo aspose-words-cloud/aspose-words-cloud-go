@@ -33,9 +33,9 @@ package models
 // Makes a copy of the style in the document.
 type CopyStyleOnlineResponse struct {
     // The response model.
-    Model StyleResponse `json:"Model,omitempty"`
+    Model  StyleResponse  `json:"Model,omitempty"`
 
 
     // The document after modification.
-    Document io.Reader `json:"Document,omitempty"`
+    Document  io.ReadCloser   `json:"Document,omitempty"`
 }

@@ -27,23 +27,22 @@
 
 package models
 
-
 import (
-    "io"
 	"net/url"
 	"strings"
+    "io"
     "encoding/json"
 )
-
 
 // ClassifyRequest contains request data for WordsApiService.Classify method.
 type ClassifyRequest struct {
         // The text to classify.
         Text *string
     /* optional (nil or map[string]interface{}) with one or more of key / value pairs:
-        key: "bestClassesCount" value: (string) The number of the best classes to return. */
+        key: "bestClassesCount" value: (*string) The number of the best classes to return. */
     Optionals map[string]interface{}
 }
+
 
 func (data *ClassifyRequest) CreateRequestData() (RequestData, error) {
 
@@ -99,12 +98,10 @@ func (data *ClassifyRequest) CreateRequestData() (RequestData, error) {
     return result, nil
 }
 
-
-func (data *ClassifyRequest) CreateResponse(reader io.Reader) (result interface{}, err error) {
-
+func (data *ClassifyRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
             var successPayload ClassificationResponse
             if err = json.NewDecoder(reader).Decode(&successPayload); err != nil {
-                return successPayload, err
+                return nil, err
             }
 
             return successPayload, err

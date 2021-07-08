@@ -27,23 +27,22 @@
 
 package models
 
-
 import (
-    "io"
 	"net/url"
 	"strings"
+    "io"
     "encoding/json"
 )
-
 
 // CreateDocumentRequest contains request data for WordsApiService.CreateDocument method.
 type CreateDocumentRequest struct {
     /* optional (nil or map[string]interface{}) with one or more of key / value pairs:
-        key: "fileName" value: (string) The filename of the document.
-        key: "folder" value: (string) The path to the document folder.
-        key: "storage" value: (string) Original document storage. */
+        key: "fileName" value: (*string) The filename of the document.
+        key: "folder" value: (*string) The path to the document folder.
+        key: "storage" value: (*string) Original document storage. */
     Optionals map[string]interface{}
 }
+
 
 func (data *CreateDocumentRequest) CreateRequestData() (RequestData, error) {
 
@@ -114,12 +113,10 @@ func (data *CreateDocumentRequest) CreateRequestData() (RequestData, error) {
     return result, nil
 }
 
-
-func (data *CreateDocumentRequest) CreateResponse(reader io.Reader) (result interface{}, err error) {
-
+func (data *CreateDocumentRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
             var successPayload DocumentResponse
             if err = json.NewDecoder(reader).Decode(&successPayload); err != nil {
-                return successPayload, err
+                return nil, err
             }
 
             return successPayload, err

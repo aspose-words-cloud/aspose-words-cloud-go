@@ -27,35 +27,33 @@
 
 package models
 
-
 import (
-    "io"
     "fmt"
 	"io/ioutil"
-    "os"
 	"net/url"
 	"strings"
+    "io"
     "encoding/json"
 )
-
 
 // InsertWatermarkImageRequest contains request data for WordsApiService.InsertWatermarkImage method.
 type InsertWatermarkImageRequest struct {
         // The filename of the input document.
         Name *string
     /* optional (nil or map[string]interface{}) with one or more of key / value pairs:
-        key: "imageFile" value: (*os.File) File with image.
-        key: "folder" value: (string) Original document folder.
-        key: "storage" value: (string) Original document storage.
-        key: "loadEncoding" value: (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
-        key: "password" value: (string) Password for opening an encrypted document.
-        key: "destFileName" value: (string) Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.
-        key: "revisionAuthor" value: (string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
-        key: "revisionDateTime" value: (string) The date and time to use for revisions.
-        key: "rotationAngle" value: (float64) The rotation angle of the watermark.
-        key: "image" value: (string) The filename of the image. If the parameter value is missing — the image data is expected in the request content. */
+        key: "imageFile" value: (io.ReadCloser) File with image.
+        key: "folder" value: (*string) Original document folder.
+        key: "storage" value: (*string) Original document storage.
+        key: "loadEncoding" value: (*string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
+        key: "password" value: (*string) Password for opening an encrypted document.
+        key: "destFileName" value: (*string) Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.
+        key: "revisionAuthor" value: (*string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
+        key: "revisionDateTime" value: (*string) The date and time to use for revisions.
+        key: "rotationAngle" value: (*float64) The rotation angle of the watermark.
+        key: "image" value: (*string) The filename of the image. If the parameter value is missing — the image data is expected in the request content. */
     Optionals map[string]interface{}
 }
+
 
 func (data *InsertWatermarkImageRequest) CreateRequestData() (RequestData, error) {
 
@@ -170,8 +168,8 @@ func (data *InsertWatermarkImageRequest) CreateRequestData() (RequestData, error
     }
 
 
-    var imageFile (*os.File)
-    if localVarTempParam, localVarOk := data.Optionals["imageFile"].(*os.File); localVarOk {
+    var imageFile (io.ReadCloser)
+    if localVarTempParam, localVarOk := data.Optionals["imageFile"].(io.ReadCloser); localVarOk {
         imageFile = localVarTempParam
     }
     _imageFile := imageFile
@@ -186,12 +184,10 @@ func (data *InsertWatermarkImageRequest) CreateRequestData() (RequestData, error
     return result, nil
 }
 
-
-func (data *InsertWatermarkImageRequest) CreateResponse(reader io.Reader) (result interface{}, err error) {
-
+func (data *InsertWatermarkImageRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
             var successPayload DocumentResponse
             if err = json.NewDecoder(reader).Decode(&successPayload); err != nil {
-                return successPayload, err
+                return nil, err
             }
 
             return successPayload, err

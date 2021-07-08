@@ -27,15 +27,13 @@
 
 package models
 
-
 import (
-    "io"
     "fmt"
 	"net/url"
 	"strings"
+    "io"
     "encoding/json"
 )
-
 
 // GetFieldRequest contains request data for WordsApiService.GetField method.
 type GetFieldRequest struct {
@@ -44,13 +42,14 @@ type GetFieldRequest struct {
         // Object index.
         Index *int32
     /* optional (nil or map[string]interface{}) with one or more of key / value pairs:
-        key: "nodePath" value: (string) The path to the node in the document tree.
-        key: "folder" value: (string) Original document folder.
-        key: "storage" value: (string) Original document storage.
-        key: "loadEncoding" value: (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
-        key: "password" value: (string) Password for opening an encrypted document. */
+        key: "nodePath" value: (*string) The path to the node in the document tree.
+        key: "folder" value: (*string) Original document folder.
+        key: "storage" value: (*string) Original document storage.
+        key: "loadEncoding" value: (*string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
+        key: "password" value: (*string) Password for opening an encrypted document. */
     Optionals map[string]interface{}
 }
+
 
 func (data *GetFieldRequest) CreateRequestData() (RequestData, error) {
 
@@ -135,12 +134,10 @@ func (data *GetFieldRequest) CreateRequestData() (RequestData, error) {
     return result, nil
 }
 
-
-func (data *GetFieldRequest) CreateResponse(reader io.Reader) (result interface{}, err error) {
-
+func (data *GetFieldRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
             var successPayload FieldResponse
             if err = json.NewDecoder(reader).Decode(&successPayload); err != nil {
-                return successPayload, err
+                return nil, err
             }
 
             return successPayload, err

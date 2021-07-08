@@ -33,9 +33,9 @@ package models
 // Updates the formatting properties of a table row.
 type UpdateTableRowFormatOnlineResponse struct {
     // The response model.
-    Model TableRowFormatResponse `json:"Model,omitempty"`
+    Model  TableRowFormatResponse  `json:"Model,omitempty"`
 
 
     // The document after modification.
-    Document io.Reader `json:"Document,omitempty"`
+    Document  io.ReadCloser   `json:"Document,omitempty"`
 }

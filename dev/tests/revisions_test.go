@@ -56,7 +56,6 @@ func Test_Revisions_AcceptAllRevisions(t *testing.T) {
     }
 
     actual, _, err := client.WordsApi.AcceptAllRevisions(ctx, request)
-
     if err != nil {
         t.Error(err)
     }
@@ -65,9 +64,31 @@ func Test_Revisions_AcceptAllRevisions(t *testing.T) {
     assert.NotNil(t, actual.Result.Dest, "Validate AcceptAllRevisions response.");
 }
 
+// Test for accepting revisions in document online.
+func Test_Revisions_AcceptAllRevisionsOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "Common/test_multi_pages.docx"
 
 
+    options := map[string]interface{}{
+    }
 
+    request := &models.AcceptAllRevisionsOnlineRequest{
+        Document: OpenFile(t, localFile),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.AcceptAllRevisionsOnline(ctx, request)
+    if err != nil {
+        t.Error(err)
+    }
+
+    assert.NotNil(t, actual.Document, "Validate AcceptAllRevisionsOnline response.");
+    assert.NotNil(t, actual.Model, "Validate AcceptAllRevisionsOnline response.");
+    assert.NotNil(t, actual.Model.Result, "Validate AcceptAllRevisionsOnline response.");
+    assert.NotNil(t, actual.Model.Result.Dest, "Validate AcceptAllRevisionsOnline response.");
+}
 
 // Test for rejecting revisions in document.
 func Test_Revisions_RejectAllRevisions(t *testing.T) {
@@ -91,7 +112,6 @@ func Test_Revisions_RejectAllRevisions(t *testing.T) {
     }
 
     actual, _, err := client.WordsApi.RejectAllRevisions(ctx, request)
-
     if err != nil {
         t.Error(err)
     }
@@ -100,5 +120,28 @@ func Test_Revisions_RejectAllRevisions(t *testing.T) {
     assert.NotNil(t, actual.Result.Dest, "Validate RejectAllRevisions response.");
 }
 
+// Test for rejecting revisions in document online.
+func Test_Revisions_RejectAllRevisionsOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "Common/test_multi_pages.docx"
 
 
+    options := map[string]interface{}{
+    }
+
+    request := &models.RejectAllRevisionsOnlineRequest{
+        Document: OpenFile(t, localFile),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.RejectAllRevisionsOnline(ctx, request)
+    if err != nil {
+        t.Error(err)
+    }
+
+    assert.NotNil(t, actual.Document, "Validate RejectAllRevisionsOnline response.");
+    assert.NotNil(t, actual.Model, "Validate RejectAllRevisionsOnline response.");
+    assert.NotNil(t, actual.Model.Result, "Validate RejectAllRevisionsOnline response.");
+    assert.NotNil(t, actual.Model.Result.Dest, "Validate RejectAllRevisionsOnline response.");
+}

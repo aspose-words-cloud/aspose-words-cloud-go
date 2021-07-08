@@ -27,29 +27,27 @@
 
 package models
 
-
 import (
-    "io"
 	"io/ioutil"
-    "os"
 	"net/url"
 	"strings"
+    "io"
 )
-
 
 // ConvertDocumentRequest contains request data for WordsApiService.ConvertDocument method.
 type ConvertDocumentRequest struct {
         // Converting document.
-        Document *os.File
+        Document io.ReadCloser
         // The format to convert.
         Format *string
     /* optional (nil or map[string]interface{}) with one or more of key / value pairs:
-        key: "outPath" value: (string) The path to the output document on a local storage.
-        key: "fileNameFieldValue" value: (string) The filename of the output document, that will be used when the resulting document has a dynamic field {filename}. If it is not set, the "sourceFilename" will be used instead.
-        key: "storage" value: (string) Original document storage.
-        key: "fontsLocation" value: (string) Folder in filestorage with custom fonts. */
+        key: "outPath" value: (*string) The path to the output document on a local storage.
+        key: "fileNameFieldValue" value: (*string) The filename of the output document, that will be used when the resulting document has a dynamic field {filename}. If it is not set, the "sourceFilename" will be used instead.
+        key: "storage" value: (*string) Original document storage.
+        key: "fontsLocation" value: (*string) Folder in filestorage with custom fonts. */
     Optionals map[string]interface{}
 }
+
 
 func (data *ConvertDocumentRequest) CreateRequestData() (RequestData, error) {
 
@@ -138,8 +136,6 @@ func (data *ConvertDocumentRequest) CreateRequestData() (RequestData, error) {
     return result, nil
 }
 
-
-func (data *ConvertDocumentRequest) CreateResponse(reader io.Reader) (result interface{}, err error) {
-
+func (data *ConvertDocumentRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
             return reader, nil
 }

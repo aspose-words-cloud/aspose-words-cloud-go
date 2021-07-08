@@ -27,6 +27,93 @@
 
 package models
 
+import (
+	"io/ioutil"
+	"net/url"
+	"strings"
+    "io"
+)
+
 // BuildReportOnlineRequest contains request data for WordsApiService.BuildReportOnline method.
 type BuildReportOnlineRequest struct {
+        // File with template.
+        Template io.ReadCloser
+        // A string providing a data to populate the specified template. The string must be of one of the following types: xml, json, csv.
+        Data *string
+        // An object providing a settings of report engine.
+        ReportEngineSettings IReportEngineSettings
+    /* optional (nil or map[string]interface{}) with one or more of key / value pairs:
+        key: "documentFileName" value: (*string) The filename of the output document, that will be used when the resulting document has a dynamic field {filename}. If it is not set, the "template" will be used instead. */
+    Optionals map[string]interface{}
+}
+
+
+func (data *BuildReportOnlineRequest) CreateRequestData() (RequestData, error) {
+
+    var result RequestData
+
+    result.Method = strings.ToUpper("put")
+
+    // create path and map variables
+    result.Path = "/words/buildReport"
+
+    result.Path = strings.Replace(result.Path, "/<nil>", "", -1)
+    result.Path = strings.Replace(result.Path, "//", "/", -1)
+
+    result.HeaderParams = make(map[string]string)
+    result.QueryParams = url.Values{}
+    result.FormParams = make([]FormParamContainer, 0)
+
+    if err := typeCheckParameter(data.Optionals["documentFileName"], "string", "data.Optionals[documentFileName]"); err != nil {
+        return result, err
+    }
+
+
+    if localVarTempParam, localVarOk := data.Optionals["documentFileName"].(string); localVarOk {
+        result.QueryParams.Add("DocumentFileName", parameterToString(localVarTempParam, ""))
+    }
+
+
+    // to determine the Content-Type header
+    localVarHttpContentTypes := []string{ "multipart/form-data", }
+
+    // set Content-Type header
+    localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
+    if localVarHttpContentType != "" {
+        result.HeaderParams["Content-Type"] = localVarHttpContentType
+    }
+
+    // to determine the Accept header
+    localVarHttpHeaderAccepts := []string{
+        "application/xml",
+        "application/json",
+    }
+
+    // set Accept header
+    localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
+    if localVarHttpHeaderAccept != "" {
+        result.HeaderParams["Accept"] = localVarHttpHeaderAccept
+    }
+
+
+    _template := data.Template
+    if _template != nil {
+        fbs, _ := ioutil.ReadAll(_template)
+        _template.Close()
+        result.FormParams = append(result.FormParams, NewFileFormParamContainer("template", fbs))
+    }
+
+
+    result.FormParams = append(result.FormParams, NewTextFormParamContainer("Data", parameterToString(data.Data, "")))
+
+
+    result.FormParams = append(result.FormParams, NewTextFormParamContainer("ReportEngineSettings", parameterToString(data.ReportEngineSettings, "")))
+
+
+
+    return result, nil
+}
+
+func (data *BuildReportOnlineRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
+            return reader, nil
 }

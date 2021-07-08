@@ -42,19 +42,17 @@ func Test_File_UploadFile(t *testing.T) {
     localFile := "Common/test_multi_pages.docx"
     remoteFileName := "TestUploadFile.docx"
 
-    fileContentFileData := OpenFile(t, localFile)
 
     options := map[string]interface{}{
     }
 
     request := &models.UploadFileRequest{
-        FileContent: fileContentFileData,
+        FileContent: OpenFile(t, localFile),
         Path: ToStringPointer(remoteDataFolder + "/" + remoteFileName),
         Optionals: options,
     }
 
     actual, _, err := client.WordsApi.UploadFile(ctx, request)
-
     if err != nil {
         t.Error(err)
     }
@@ -63,8 +61,6 @@ func Test_File_UploadFile(t *testing.T) {
     assert.Equal(t, 1, len(actual.Uploaded), "Validate UploadFile response.");
     assert.Equal(t, "TestUploadFile.docx", actual.Uploaded[0], "Validate UploadFile response.");
 }
-
-
 
 // Test for copy file.
 func Test_File_CopyFile(t *testing.T) {
@@ -86,15 +82,13 @@ func Test_File_CopyFile(t *testing.T) {
         Optionals: options,
     }
 
-_, err := client.WordsApi.CopyFile(ctx, request)
+    _, err := client.WordsApi.CopyFile(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
 
 }
-
-
 
 // Test for move file.
 func Test_File_MoveFile(t *testing.T) {
@@ -116,15 +110,13 @@ func Test_File_MoveFile(t *testing.T) {
         Optionals: options,
     }
 
-_, err := client.WordsApi.MoveFile(ctx, request)
+    _, err := client.WordsApi.MoveFile(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
 
 }
-
-
 
 // Test for delete file.
 func Test_File_DeleteFile(t *testing.T) {
@@ -145,15 +137,13 @@ func Test_File_DeleteFile(t *testing.T) {
         Optionals: options,
     }
 
-_, err := client.WordsApi.DeleteFile(ctx, request)
+    _, err := client.WordsApi.DeleteFile(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
 
 }
-
-
 
 // Test for download file.
 func Test_File_DownloadFile(t *testing.T) {
@@ -174,11 +164,9 @@ func Test_File_DownloadFile(t *testing.T) {
         Optionals: options,
     }
 
-_, err := client.WordsApi.DownloadFile(ctx, request)
-
+    _, err := client.WordsApi.DownloadFile(ctx, request)
     if err != nil {
         t.Error(err)
     }
 
 }
-

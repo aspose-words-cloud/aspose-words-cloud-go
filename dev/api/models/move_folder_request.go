@@ -27,14 +27,12 @@
 
 package models
 
-
 import (
-    "io"
     "fmt"
 	"net/url"
 	"strings"
+    "io"
 )
-
 
 // MoveFolderRequest contains request data for WordsApiService.MoveFolder method.
 type MoveFolderRequest struct {
@@ -43,10 +41,11 @@ type MoveFolderRequest struct {
         // Source folder path e.g. /Folder1.
         SrcPath *string
     /* optional (nil or map[string]interface{}) with one or more of key / value pairs:
-        key: "srcStorageName" value: (string) Source storage name.
-        key: "destStorageName" value: (string) Destination storage name. */
+        key: "srcStorageName" value: (*string) Source storage name.
+        key: "destStorageName" value: (*string) Destination storage name. */
     Optionals map[string]interface{}
 }
+
 
 func (data *MoveFolderRequest) CreateRequestData() (RequestData, error) {
 
@@ -113,8 +112,6 @@ func (data *MoveFolderRequest) CreateRequestData() (RequestData, error) {
     return result, nil
 }
 
-
-func (data *MoveFolderRequest) CreateResponse(reader io.Reader) (result interface{}, err error) {
-
+func (data *MoveFolderRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
         return nil, nil
 }

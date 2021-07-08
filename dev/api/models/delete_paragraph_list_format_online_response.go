@@ -33,9 +33,9 @@ package models
 // Removes the formatting properties of a paragraph list from the document node.
 type DeleteParagraphListFormatOnlineResponse struct {
     // The response model.
-    Model ParagraphListFormatResponse `json:"Model,omitempty"`
+    Model  ParagraphListFormatResponse  `json:"Model,omitempty"`
 
 
     // The document after modification.
-    Document io.Reader `json:"Document,omitempty"`
+    Document  io.ReadCloser   `json:"Document,omitempty"`
 }

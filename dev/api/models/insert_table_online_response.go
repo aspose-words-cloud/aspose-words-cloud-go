@@ -33,9 +33,9 @@ package models
 // Inserts a new table to the document node.
 type InsertTableOnlineResponse struct {
     // The response model.
-    Model TableResponse `json:"Model,omitempty"`
+    Model  TableResponse  `json:"Model,omitempty"`
 
 
     // The document after modification.
-    Document io.Reader `json:"Document,omitempty"`
+    Document  io.ReadCloser   `json:"Document,omitempty"`
 }

@@ -42,15 +42,13 @@ func Test_Font_ResetCache(t *testing.T) {
     request := &models.ResetCacheRequest{
     }
 
-_, err := client.WordsApi.ResetCache(ctx, request)
+    _, err := client.WordsApi.ResetCache(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
 
 }
-
-
 
 // Test for GetAvailableFonts resource.
 func Test_Font_GetAvailableFonts(t *testing.T) {
@@ -65,11 +63,9 @@ func Test_Font_GetAvailableFonts(t *testing.T) {
     }
 
     actual, _, err := client.WordsApi.GetAvailableFonts(ctx, request)
-
     if err != nil {
         t.Error(err)
     }
 
     assert.NotNil(t, actual.SystemFonts, "Validate GetAvailableFonts response.");
 }
-

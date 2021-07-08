@@ -33,9 +33,9 @@ package models
 // Converts a document in cloud storage to TIFF format using detailed conversion settings.
 type SaveAsTiffOnlineResponse struct {
     // The response model.
-    Model SaveResponse `json:"Model,omitempty"`
+    Model  SaveResponse  `json:"Model,omitempty"`
 
 
     // The document after modification.
-    Document io.Reader `json:"Document,omitempty"`
+    Document  io.ReadCloser   `json:"Document,omitempty"`
 }

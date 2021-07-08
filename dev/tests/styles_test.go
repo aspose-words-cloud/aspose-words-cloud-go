@@ -55,7 +55,6 @@ func Test_Styles_GetStyles(t *testing.T) {
     }
 
     actual, _, err := client.WordsApi.GetStyles(ctx, request)
-
     if err != nil {
         t.Error(err)
     }
@@ -65,9 +64,27 @@ func Test_Styles_GetStyles(t *testing.T) {
     assert.Equal(t, "Default Paragraph Font", actual.Styles[0].Name, "Validate GetStyles response.");
 }
 
+// Test for getting styles from document online.
+func Test_Styles_GetStylesOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "DocumentElements/Styles/GetStyles.docx"
 
 
+    options := map[string]interface{}{
+    }
 
+    request := &models.GetStylesOnlineRequest{
+        Document: OpenFile(t, localFile),
+        Optionals: options,
+    }
+
+    _, _, err := client.WordsApi.GetStylesOnline(ctx, request)
+    if err != nil {
+        t.Error(err)
+    }
+
+}
 
 // Test for getting style from document.
 func Test_Styles_GetStyle(t *testing.T) {
@@ -91,7 +108,6 @@ func Test_Styles_GetStyle(t *testing.T) {
     }
 
     actual, _, err := client.WordsApi.GetStyle(ctx, request)
-
     if err != nil {
         t.Error(err)
     }
@@ -100,9 +116,28 @@ func Test_Styles_GetStyle(t *testing.T) {
     assert.Equal(t, "Heading 1", actual.Style.Name, "Validate GetStyle response.");
 }
 
+// Test for getting style from document online.
+func Test_Styles_GetStyleOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "DocumentElements/Styles/GetStyles.docx"
 
 
+    options := map[string]interface{}{
+    }
 
+    request := &models.GetStyleOnlineRequest{
+        Document: OpenFile(t, localFile),
+        StyleName: ToStringPointer("Heading 1"),
+        Optionals: options,
+    }
+
+    _, _, err := client.WordsApi.GetStyleOnline(ctx, request)
+    if err != nil {
+        t.Error(err)
+    }
+
+}
 
 // Test for updating style from document.
 func Test_Styles_UpdateStyle(t *testing.T) {
@@ -130,7 +165,6 @@ func Test_Styles_UpdateStyle(t *testing.T) {
     }
 
     actual, _, err := client.WordsApi.UpdateStyle(ctx, request)
-
     if err != nil {
         t.Error(err)
     }
@@ -139,9 +173,32 @@ func Test_Styles_UpdateStyle(t *testing.T) {
     assert.Equal(t, "My Style", actual.Style.Name, "Validate UpdateStyle response.");
 }
 
+// Test for updating style from document online.
+func Test_Styles_UpdateStyleOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "DocumentElements/Styles/GetStyles.docx"
 
+    requestStyleUpdate := models.StyleUpdate{
+        Name: ToStringPointer("My Style"),
+    }
 
+    options := map[string]interface{}{
+    }
 
+    request := &models.UpdateStyleOnlineRequest{
+        Document: OpenFile(t, localFile),
+        StyleName: ToStringPointer("Heading 1"),
+        StyleUpdate: requestStyleUpdate,
+        Optionals: options,
+    }
+
+    _, _, err := client.WordsApi.UpdateStyleOnline(ctx, request)
+    if err != nil {
+        t.Error(err)
+    }
+
+}
 
 // Test for inserting style from document.
 func Test_Styles_InsertStyle(t *testing.T) {
@@ -169,7 +226,6 @@ func Test_Styles_InsertStyle(t *testing.T) {
     }
 
     actual, _, err := client.WordsApi.InsertStyle(ctx, request)
-
     if err != nil {
         t.Error(err)
     }
@@ -178,9 +234,32 @@ func Test_Styles_InsertStyle(t *testing.T) {
     assert.Equal(t, "My Style", actual.Style.Name, "Validate InsertStyle response.");
 }
 
+// Test for inserting style from document online.
+func Test_Styles_InsertStyleOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "DocumentElements/Styles/GetStyles.docx"
 
+    requestStyleInsert := models.StyleInsert{
+        StyleName: ToStringPointer("My Style"),
+        StyleType: ToStringPointer("Paragraph"),
+    }
 
+    options := map[string]interface{}{
+    }
 
+    request := &models.InsertStyleOnlineRequest{
+        Document: OpenFile(t, localFile),
+        StyleInsert: requestStyleInsert,
+        Optionals: options,
+    }
+
+    _, _, err := client.WordsApi.InsertStyleOnline(ctx, request)
+    if err != nil {
+        t.Error(err)
+    }
+
+}
 
 // Test for coping style from document.
 func Test_Styles_CopyStyle(t *testing.T) {
@@ -207,7 +286,6 @@ func Test_Styles_CopyStyle(t *testing.T) {
     }
 
     actual, _, err := client.WordsApi.CopyStyle(ctx, request)
-
     if err != nil {
         t.Error(err)
     }
@@ -216,9 +294,31 @@ func Test_Styles_CopyStyle(t *testing.T) {
     assert.Equal(t, "Heading 1_0", actual.Style.Name, "Validate CopyStyle response.");
 }
 
+// Test for coping style from document online.
+func Test_Styles_CopyStyleOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "DocumentElements/Styles/GetStyles.docx"
 
+    requestStyleCopy := models.StyleCopy{
+        StyleName: ToStringPointer("Heading 1"),
+    }
 
+    options := map[string]interface{}{
+    }
 
+    request := &models.CopyStyleOnlineRequest{
+        Document: OpenFile(t, localFile),
+        StyleCopy: requestStyleCopy,
+        Optionals: options,
+    }
+
+    _, _, err := client.WordsApi.CopyStyleOnline(ctx, request)
+    if err != nil {
+        t.Error(err)
+    }
+
+}
 
 // Test for getting style from document element.
 func Test_Styles_GetStyleFromDocumentElement(t *testing.T) {
@@ -242,7 +342,6 @@ func Test_Styles_GetStyleFromDocumentElement(t *testing.T) {
     }
 
     actual, _, err := client.WordsApi.GetStyleFromDocumentElement(ctx, request)
-
     if err != nil {
         t.Error(err)
     }
@@ -251,9 +350,28 @@ func Test_Styles_GetStyleFromDocumentElement(t *testing.T) {
     assert.Equal(t, "TOC 1", actual.Style.Name, "Validate GetStyleFromDocumentElement response.");
 }
 
+// Test for getting style from document element online.
+func Test_Styles_GetStyleFromDocumentElementOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "DocumentElements/Styles/GetStyles.docx"
 
 
+    options := map[string]interface{}{
+    }
 
+    request := &models.GetStyleFromDocumentElementOnlineRequest{
+        Document: OpenFile(t, localFile),
+        StyledNodePath: ToStringPointer("paragraphs/1/paragraphFormat"),
+        Optionals: options,
+    }
+
+    _, _, err := client.WordsApi.GetStyleFromDocumentElementOnline(ctx, request)
+    if err != nil {
+        t.Error(err)
+    }
+
+}
 
 // Test for applying style to document element.
 func Test_Styles_ApplyStyleToDocumentElement(t *testing.T) {
@@ -281,12 +399,35 @@ func Test_Styles_ApplyStyleToDocumentElement(t *testing.T) {
     }
 
     _, _, err := client.WordsApi.ApplyStyleToDocumentElement(ctx, request)
-
     if err != nil {
         t.Error(err)
     }
 
 }
 
+// Test for applying style to document element online.
+func Test_Styles_ApplyStyleToDocumentElementOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "DocumentElements/Styles/GetStyles.docx"
 
+    requestStyleApply := models.StyleApply{
+        StyleName: ToStringPointer("Heading 1"),
+    }
 
+    options := map[string]interface{}{
+    }
+
+    request := &models.ApplyStyleToDocumentElementOnlineRequest{
+        Document: OpenFile(t, localFile),
+        StyledNodePath: ToStringPointer("paragraphs/1/paragraphFormat"),
+        StyleApply: requestStyleApply,
+        Optionals: options,
+    }
+
+    _, _, err := client.WordsApi.ApplyStyleToDocumentElementOnline(ctx, request)
+    if err != nil {
+        t.Error(err)
+    }
+
+}

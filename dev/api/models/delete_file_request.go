@@ -27,24 +27,23 @@
 
 package models
 
-
 import (
-    "io"
     "fmt"
 	"net/url"
 	"strings"
+    "io"
 )
-
 
 // DeleteFileRequest contains request data for WordsApiService.DeleteFile method.
 type DeleteFileRequest struct {
         // Path of the file including the file name and extension e.g. /folder1/file.ext.
         Path *string
     /* optional (nil or map[string]interface{}) with one or more of key / value pairs:
-        key: "storageName" value: (string) Storage name.
-        key: "versionId" value: (string) File version ID to delete. */
+        key: "storageName" value: (*string) Storage name.
+        key: "versionId" value: (*string) File version ID to delete. */
     Optionals map[string]interface{}
 }
+
 
 func (data *DeleteFileRequest) CreateRequestData() (RequestData, error) {
 
@@ -108,8 +107,6 @@ func (data *DeleteFileRequest) CreateRequestData() (RequestData, error) {
     return result, nil
 }
 
-
-func (data *DeleteFileRequest) CreateResponse(reader io.Reader) (result interface{}, err error) {
-
+func (data *DeleteFileRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
         return nil, nil
 }

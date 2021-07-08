@@ -27,15 +27,13 @@
 
 package models
 
-
 import (
-    "io"
     "fmt"
 	"net/url"
 	"strings"
+    "io"
     "encoding/json"
 )
-
 
 // GetRunsRequest contains request data for WordsApiService.GetRuns method.
 type GetRunsRequest struct {
@@ -44,12 +42,13 @@ type GetRunsRequest struct {
         // The path to the paragraph in the document tree.
         ParagraphPath *string
     /* optional (nil or map[string]interface{}) with one or more of key / value pairs:
-        key: "folder" value: (string) Original document folder.
-        key: "storage" value: (string) Original document storage.
-        key: "loadEncoding" value: (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
-        key: "password" value: (string) Password for opening an encrypted document. */
+        key: "folder" value: (*string) Original document folder.
+        key: "storage" value: (*string) Original document storage.
+        key: "loadEncoding" value: (*string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
+        key: "password" value: (*string) Password for opening an encrypted document. */
     Optionals map[string]interface{}
 }
+
 
 func (data *GetRunsRequest) CreateRequestData() (RequestData, error) {
 
@@ -130,12 +129,10 @@ func (data *GetRunsRequest) CreateRequestData() (RequestData, error) {
     return result, nil
 }
 
-
-func (data *GetRunsRequest) CreateResponse(reader io.Reader) (result interface{}, err error) {
-
+func (data *GetRunsRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
             var successPayload RunsResponse
             if err = json.NewDecoder(reader).Decode(&successPayload); err != nil {
-                return successPayload, err
+                return nil, err
             }
 
             return successPayload, err

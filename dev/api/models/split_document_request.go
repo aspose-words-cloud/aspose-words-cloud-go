@@ -27,15 +27,13 @@
 
 package models
 
-
 import (
-    "io"
     "fmt"
 	"net/url"
 	"strings"
+    "io"
     "encoding/json"
 )
-
 
 // SplitDocumentRequest contains request data for WordsApiService.SplitDocument method.
 type SplitDocumentRequest struct {
@@ -44,17 +42,18 @@ type SplitDocumentRequest struct {
         // The format to split.
         Format *string
     /* optional (nil or map[string]interface{}) with one or more of key / value pairs:
-        key: "folder" value: (string) Original document folder.
-        key: "storage" value: (string) Original document storage.
-        key: "loadEncoding" value: (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
-        key: "password" value: (string) Password for opening an encrypted document.
-        key: "destFileName" value: (string) Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.
-        key: "from" value: (int32) The start page.
-        key: "to" value: (int32) The end page.
-        key: "zipOutput" value: (bool) The flag indicating whether to ZIP the output.
-        key: "fontsLocation" value: (string) Folder in filestorage with custom fonts. */
+        key: "folder" value: (*string) Original document folder.
+        key: "storage" value: (*string) Original document storage.
+        key: "loadEncoding" value: (*string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
+        key: "password" value: (*string) Password for opening an encrypted document.
+        key: "destFileName" value: (*string) Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.
+        key: "from" value: (*int32) The start page.
+        key: "to" value: (*int32) The end page.
+        key: "zipOutput" value: (*bool) The flag indicating whether to ZIP the output.
+        key: "fontsLocation" value: (*string) Folder in filestorage with custom fonts. */
     Optionals map[string]interface{}
 }
+
 
 func (data *SplitDocumentRequest) CreateRequestData() (RequestData, error) {
 
@@ -177,12 +176,10 @@ func (data *SplitDocumentRequest) CreateRequestData() (RequestData, error) {
     return result, nil
 }
 
-
-func (data *SplitDocumentRequest) CreateResponse(reader io.Reader) (result interface{}, err error) {
-
+func (data *SplitDocumentRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
             var successPayload SplitDocumentResponse
             if err = json.NewDecoder(reader).Decode(&successPayload); err != nil {
-                return successPayload, err
+                return nil, err
             }
 
             return successPayload, err

@@ -65,16 +65,16 @@ func GetLocalPath(folderPath string, filename string) string {
 	return filepath.Join(currentFolder, "testdata", folderPath, filename)
 }
 
-func GetLocalFile(filePath string) string {
-	_, currentFilePath, _, _ := runtime.Caller(0)
-	currentFolder := filepath.Dir(currentFilePath)
-	return filepath.Join(currentFolder, "testdata", filePath)
-}
-
 func GetExamplesDir() string {
 	_, currentFilePath, _, _ := runtime.Caller(0)
 	currentFolder := filepath.Dir(currentFilePath)
 	return filepath.Join(currentFolder, "examplesdata")
+}
+
+func GetLocalFile(filePath string) string {
+	_, currentFilePath, _, _ := runtime.Caller(0)
+	currentFolder := filepath.Dir(currentFilePath)
+	return filepath.Join(currentFolder, "testdata", filePath)
 }
 
 func ReadFile(t *testing.T, path string) (result string) {

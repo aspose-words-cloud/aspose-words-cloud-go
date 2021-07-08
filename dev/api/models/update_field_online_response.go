@@ -33,9 +33,9 @@ package models
 // Updates a field in the document node.
 type UpdateFieldOnlineResponse struct {
     // The response model.
-    Model FieldResponse `json:"Model,omitempty"`
+    Model  FieldResponse  `json:"Model,omitempty"`
 
 
     // The document after modification.
-    Document io.Reader `json:"Document,omitempty"`
+    Document  io.ReadCloser   `json:"Document,omitempty"`
 }

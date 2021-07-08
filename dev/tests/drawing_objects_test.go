@@ -55,16 +55,34 @@ func Test_DrawingObjects_GetDocumentDrawingObjects(t *testing.T) {
     }
 
     _, _, err := client.WordsApi.GetDocumentDrawingObjects(ctx, request)
-
     if err != nil {
         t.Error(err)
     }
 
 }
 
+// Test for getting drawing objects from document online.
+func Test_DrawingObjects_GetDocumentDrawingObjectsOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "Common/test_multi_pages.docx"
 
 
+    options := map[string]interface{}{
+        "nodePath": "sections/0",
+    }
 
+    request := &models.GetDocumentDrawingObjectsOnlineRequest{
+        Document: OpenFile(t, localFile),
+        Optionals: options,
+    }
+
+    _, _, err := client.WordsApi.GetDocumentDrawingObjectsOnline(ctx, request)
+    if err != nil {
+        t.Error(err)
+    }
+
+}
 
 // Test for getting drawing objects from document without node path.
 func Test_DrawingObjects_GetDocumentDrawingObjectsWithoutNodePath(t *testing.T) {
@@ -87,14 +105,11 @@ func Test_DrawingObjects_GetDocumentDrawingObjectsWithoutNodePath(t *testing.T) 
     }
 
     _, _, err := client.WordsApi.GetDocumentDrawingObjects(ctx, request)
-
     if err != nil {
         t.Error(err)
     }
 
 }
-
-
 
 // Test for getting drawing object by specified index.
 func Test_DrawingObjects_GetDocumentDrawingObjectByIndex(t *testing.T) {
@@ -119,16 +134,35 @@ func Test_DrawingObjects_GetDocumentDrawingObjectByIndex(t *testing.T) {
     }
 
     _, _, err := client.WordsApi.GetDocumentDrawingObjectByIndex(ctx, request)
-
     if err != nil {
         t.Error(err)
     }
 
 }
 
+// Test for getting drawing object by specified index online.
+func Test_DrawingObjects_GetDocumentDrawingObjectByIndexOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "Common/test_multi_pages.docx"
 
 
+    options := map[string]interface{}{
+        "nodePath": "sections/0",
+    }
 
+    request := &models.GetDocumentDrawingObjectByIndexOnlineRequest{
+        Document: OpenFile(t, localFile),
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    _, _, err := client.WordsApi.GetDocumentDrawingObjectByIndexOnline(ctx, request)
+    if err != nil {
+        t.Error(err)
+    }
+
+}
 
 // Test for getting drawing object by specified index without node path.
 func Test_DrawingObjects_GetDocumentDrawingObjectByIndexWithoutNodePath(t *testing.T) {
@@ -152,14 +186,11 @@ func Test_DrawingObjects_GetDocumentDrawingObjectByIndexWithoutNodePath(t *testi
     }
 
     _, _, err := client.WordsApi.GetDocumentDrawingObjectByIndex(ctx, request)
-
     if err != nil {
         t.Error(err)
     }
 
 }
-
-
 
 // Test for getting drawing object by specified index and format.
 func Test_DrawingObjects_RenderDrawingObject(t *testing.T) {
@@ -184,17 +215,37 @@ func Test_DrawingObjects_RenderDrawingObject(t *testing.T) {
         Optionals: options,
     }
 
-_, err := client.WordsApi.RenderDrawingObject(ctx, request)
-
+    _, err := client.WordsApi.RenderDrawingObject(ctx, request)
     if err != nil {
         t.Error(err)
     }
 
 }
 
+// Test for getting drawing object by specified index and format online.
+func Test_DrawingObjects_RenderDrawingObjectOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "Common/test_multi_pages.docx"
 
 
+    options := map[string]interface{}{
+        "nodePath": "sections/0",
+    }
 
+    request := &models.RenderDrawingObjectOnlineRequest{
+        Document: OpenFile(t, localFile),
+        Format: ToStringPointer("png"),
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    _, err := client.WordsApi.RenderDrawingObjectOnline(ctx, request)
+    if err != nil {
+        t.Error(err)
+    }
+
+}
 
 // Test for getting drawing object by specified index and format without node path.
 func Test_DrawingObjects_RenderDrawingObjectWithoutNodePath(t *testing.T) {
@@ -218,15 +269,12 @@ func Test_DrawingObjects_RenderDrawingObjectWithoutNodePath(t *testing.T) {
         Optionals: options,
     }
 
-_, err := client.WordsApi.RenderDrawingObject(ctx, request)
-
+    _, err := client.WordsApi.RenderDrawingObject(ctx, request)
     if err != nil {
         t.Error(err)
     }
 
 }
-
-
 
 // Test for reading drawing object's image data.
 func Test_DrawingObjects_GetDocumentDrawingObjectImageData(t *testing.T) {
@@ -250,17 +298,36 @@ func Test_DrawingObjects_GetDocumentDrawingObjectImageData(t *testing.T) {
         Optionals: options,
     }
 
-_, err := client.WordsApi.GetDocumentDrawingObjectImageData(ctx, request)
-
+    _, err := client.WordsApi.GetDocumentDrawingObjectImageData(ctx, request)
     if err != nil {
         t.Error(err)
     }
 
 }
 
+// Test for reading drawing object's image data online.
+func Test_DrawingObjects_GetDocumentDrawingObjectImageDataOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "Common/test_multi_pages.docx"
 
 
+    options := map[string]interface{}{
+        "nodePath": "sections/0",
+    }
 
+    request := &models.GetDocumentDrawingObjectImageDataOnlineRequest{
+        Document: OpenFile(t, localFile),
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    _, err := client.WordsApi.GetDocumentDrawingObjectImageDataOnline(ctx, request)
+    if err != nil {
+        t.Error(err)
+    }
+
+}
 
 // Test for reading drawing object's image data without node path.
 func Test_DrawingObjects_GetDocumentDrawingObjectImageDataWithoutNodePath(t *testing.T) {
@@ -283,15 +350,12 @@ func Test_DrawingObjects_GetDocumentDrawingObjectImageDataWithoutNodePath(t *tes
         Optionals: options,
     }
 
-_, err := client.WordsApi.GetDocumentDrawingObjectImageData(ctx, request)
-
+    _, err := client.WordsApi.GetDocumentDrawingObjectImageData(ctx, request)
     if err != nil {
         t.Error(err)
     }
 
 }
-
-
 
 // Test for getting drawing object OLE data.
 func Test_DrawingObjects_GetDocumentDrawingObjectOleData(t *testing.T) {
@@ -315,17 +379,36 @@ func Test_DrawingObjects_GetDocumentDrawingObjectOleData(t *testing.T) {
         Optionals: options,
     }
 
-_, err := client.WordsApi.GetDocumentDrawingObjectOleData(ctx, request)
-
+    _, err := client.WordsApi.GetDocumentDrawingObjectOleData(ctx, request)
     if err != nil {
         t.Error(err)
     }
 
 }
 
+// Test for getting drawing object OLE data online.
+func Test_DrawingObjects_GetDocumentDrawingObjectOleDataOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localDrawingFile := "DocumentElements/DrawingObjects/sample_EmbeddedOLE.docx"
 
 
+    options := map[string]interface{}{
+        "nodePath": "sections/0",
+    }
 
+    request := &models.GetDocumentDrawingObjectOleDataOnlineRequest{
+        Document: OpenFile(t, localDrawingFile),
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    _, err := client.WordsApi.GetDocumentDrawingObjectOleDataOnline(ctx, request)
+    if err != nil {
+        t.Error(err)
+    }
+
+}
 
 // Test for getting drawing object OLE data without node path.
 func Test_DrawingObjects_GetDocumentDrawingObjectOleDataWithoutNodePath(t *testing.T) {
@@ -348,15 +431,12 @@ func Test_DrawingObjects_GetDocumentDrawingObjectOleDataWithoutNodePath(t *testi
         Optionals: options,
     }
 
-_, err := client.WordsApi.GetDocumentDrawingObjectOleData(ctx, request)
-
+    _, err := client.WordsApi.GetDocumentDrawingObjectOleData(ctx, request)
     if err != nil {
         t.Error(err)
     }
 
 }
-
-
 
 // Test for adding drawing object.
 func Test_DrawingObjects_InsertDrawingObject(t *testing.T) {
@@ -368,7 +448,6 @@ func Test_DrawingObjects_InsertDrawingObject(t *testing.T) {
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-    imageFileFileData := OpenFile(t, "Common/aspose-cloud.png")
     requestDrawingObject := models.DrawingObjectInsert{
         Height: ToFloat64Pointer(0),
         Left: ToFloat64Pointer(0),
@@ -387,21 +466,50 @@ func Test_DrawingObjects_InsertDrawingObject(t *testing.T) {
     request := &models.InsertDrawingObjectRequest{
         Name: ToStringPointer(remoteFileName),
         DrawingObject: requestDrawingObject,
-        ImageFile: imageFileFileData,
+        ImageFile: OpenFile(t, "Common/aspose-cloud.png"),
         Optionals: options,
     }
 
     _, _, err := client.WordsApi.InsertDrawingObject(ctx, request)
-
     if err != nil {
         t.Error(err)
     }
 
 }
 
+// Test for adding drawing object online.
+func Test_DrawingObjects_InsertDrawingObjectOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "Common/test_multi_pages.docx"
 
+    requestDrawingObject := models.DrawingObjectInsert{
+        Height: ToFloat64Pointer(0),
+        Left: ToFloat64Pointer(0),
+        Top: ToFloat64Pointer(0),
+        Width: ToFloat64Pointer(0),
+        RelativeHorizontalPosition: ToStringPointer("Margin"),
+        RelativeVerticalPosition: ToStringPointer("Margin"),
+        WrapType: ToStringPointer("Inline"),
+    }
 
+    options := map[string]interface{}{
+        "nodePath": "",
+    }
 
+    request := &models.InsertDrawingObjectOnlineRequest{
+        Document: OpenFile(t, localFile),
+        DrawingObject: requestDrawingObject,
+        ImageFile: OpenFile(t, "Common/aspose-cloud.png"),
+        Optionals: options,
+    }
+
+    _, _, err := client.WordsApi.InsertDrawingObjectOnline(ctx, request)
+    if err != nil {
+        t.Error(err)
+    }
+
+}
 
 // Test for adding drawing object without node path.
 func Test_DrawingObjects_InsertDrawingObjectWithoutNodePath(t *testing.T) {
@@ -413,7 +521,6 @@ func Test_DrawingObjects_InsertDrawingObjectWithoutNodePath(t *testing.T) {
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-    imageFileFileData := OpenFile(t, "Common/aspose-cloud.png")
     requestDrawingObject := models.DrawingObjectInsert{
         Height: ToFloat64Pointer(0),
         Left: ToFloat64Pointer(0),
@@ -431,19 +538,16 @@ func Test_DrawingObjects_InsertDrawingObjectWithoutNodePath(t *testing.T) {
     request := &models.InsertDrawingObjectRequest{
         Name: ToStringPointer(remoteFileName),
         DrawingObject: requestDrawingObject,
-        ImageFile: imageFileFileData,
+        ImageFile: OpenFile(t, "Common/aspose-cloud.png"),
         Optionals: options,
     }
 
     _, _, err := client.WordsApi.InsertDrawingObject(ctx, request)
-
     if err != nil {
         t.Error(err)
     }
 
 }
-
-
 
 // Test for deleting drawing object.
 func Test_DrawingObjects_DeleteDrawingObject(t *testing.T) {
@@ -467,7 +571,7 @@ func Test_DrawingObjects_DeleteDrawingObject(t *testing.T) {
         Optionals: options,
     }
 
-_, err := client.WordsApi.DeleteDrawingObject(ctx, request)
+    _, err := client.WordsApi.DeleteDrawingObject(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -475,9 +579,29 @@ _, err := client.WordsApi.DeleteDrawingObject(ctx, request)
 
 }
 
+// Test for deleting drawing object online.
+func Test_DrawingObjects_DeleteDrawingObjectOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "Common/test_multi_pages.docx"
 
 
+    options := map[string]interface{}{
+        "nodePath": "",
+    }
 
+    request := &models.DeleteDrawingObjectOnlineRequest{
+        Document: OpenFile(t, localFile),
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    _, err := client.WordsApi.DeleteDrawingObjectOnline(ctx, request)
+    if err != nil {
+        t.Error(err)
+    }
+
+}
 
 // Test for deleting drawing object without node path.
 func Test_DrawingObjects_DeleteDrawingObjectWithoutNodePath(t *testing.T) {
@@ -500,15 +624,13 @@ func Test_DrawingObjects_DeleteDrawingObjectWithoutNodePath(t *testing.T) {
         Optionals: options,
     }
 
-_, err := client.WordsApi.DeleteDrawingObject(ctx, request)
+    _, err := client.WordsApi.DeleteDrawingObject(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
 
 }
-
-
 
 // Test for updating drawing object.
 func Test_DrawingObjects_UpdateDrawingObject(t *testing.T) {
@@ -520,7 +642,6 @@ func Test_DrawingObjects_UpdateDrawingObject(t *testing.T) {
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-    imageFileFileData := OpenFile(t, "Common/aspose-cloud.png")
     requestDrawingObject := models.DrawingObjectUpdate{
         Left: ToFloat64Pointer(0),
     }
@@ -533,22 +654,46 @@ func Test_DrawingObjects_UpdateDrawingObject(t *testing.T) {
     request := &models.UpdateDrawingObjectRequest{
         Name: ToStringPointer(remoteFileName),
         DrawingObject: requestDrawingObject,
-        ImageFile: imageFileFileData,
+        ImageFile: OpenFile(t, "Common/aspose-cloud.png"),
         Index: ToInt32Pointer(int32(0)),
         Optionals: options,
     }
 
     _, _, err := client.WordsApi.UpdateDrawingObject(ctx, request)
-
     if err != nil {
         t.Error(err)
     }
 
 }
 
+// Test for updating drawing object online.
+func Test_DrawingObjects_UpdateDrawingObjectOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "Common/test_multi_pages.docx"
 
+    requestDrawingObject := models.DrawingObjectUpdate{
+        Left: ToFloat64Pointer(0),
+    }
 
+    options := map[string]interface{}{
+        "nodePath": "",
+    }
 
+    request := &models.UpdateDrawingObjectOnlineRequest{
+        Document: OpenFile(t, localFile),
+        DrawingObject: requestDrawingObject,
+        ImageFile: OpenFile(t, "Common/aspose-cloud.png"),
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    _, _, err := client.WordsApi.UpdateDrawingObjectOnline(ctx, request)
+    if err != nil {
+        t.Error(err)
+    }
+
+}
 
 // Test for updating drawing object without node path.
 func Test_DrawingObjects_UpdateDrawingObjectWithoutNodePath(t *testing.T) {
@@ -560,7 +705,6 @@ func Test_DrawingObjects_UpdateDrawingObjectWithoutNodePath(t *testing.T) {
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-    imageFileFileData := OpenFile(t, "Common/aspose-cloud.png")
     requestDrawingObject := models.DrawingObjectUpdate{
         Left: ToFloat64Pointer(0),
     }
@@ -572,16 +716,14 @@ func Test_DrawingObjects_UpdateDrawingObjectWithoutNodePath(t *testing.T) {
     request := &models.UpdateDrawingObjectRequest{
         Name: ToStringPointer(remoteFileName),
         DrawingObject: requestDrawingObject,
-        ImageFile: imageFileFileData,
+        ImageFile: OpenFile(t, "Common/aspose-cloud.png"),
         Index: ToInt32Pointer(int32(0)),
         Optionals: options,
     }
 
     _, _, err := client.WordsApi.UpdateDrawingObject(ctx, request)
-
     if err != nil {
         t.Error(err)
     }
 
 }
-

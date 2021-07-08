@@ -33,9 +33,9 @@ package models
 // Inserts a new form field to the document node.
 type InsertFormFieldOnlineResponse struct {
     // The response model.
-    Model FormFieldResponse `json:"Model,omitempty"`
+    Model  FormFieldResponse  `json:"Model,omitempty"`
 
 
     // The document after modification.
-    Document io.Reader `json:"Document,omitempty"`
+    Document  io.ReadCloser   `json:"Document,omitempty"`
 }

@@ -27,15 +27,13 @@
 
 package models
 
-
 import (
-    "io"
     "fmt"
 	"net/url"
 	"strings"
+    "io"
     "encoding/json"
 )
-
 
 // GetHeaderFootersRequest contains request data for WordsApiService.GetHeaderFooters method.
 type GetHeaderFootersRequest struct {
@@ -44,13 +42,14 @@ type GetHeaderFootersRequest struct {
         // The path to the section in the document tree.
         SectionPath *string
     /* optional (nil or map[string]interface{}) with one or more of key / value pairs:
-        key: "folder" value: (string) Original document folder.
-        key: "storage" value: (string) Original document storage.
-        key: "loadEncoding" value: (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
-        key: "password" value: (string) Password for opening an encrypted document.
-        key: "filterByType" value: (string) The list of HeaderFooter types. */
+        key: "folder" value: (*string) Original document folder.
+        key: "storage" value: (*string) Original document storage.
+        key: "loadEncoding" value: (*string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
+        key: "password" value: (*string) Password for opening an encrypted document.
+        key: "filterByType" value: (*string) The list of HeaderFooter types. */
     Optionals map[string]interface{}
 }
+
 
 func (data *GetHeaderFootersRequest) CreateRequestData() (RequestData, error) {
 
@@ -139,12 +138,10 @@ func (data *GetHeaderFootersRequest) CreateRequestData() (RequestData, error) {
     return result, nil
 }
 
-
-func (data *GetHeaderFootersRequest) CreateResponse(reader io.Reader) (result interface{}, err error) {
-
+func (data *GetHeaderFootersRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
             var successPayload HeaderFootersResponse
             if err = json.NewDecoder(reader).Decode(&successPayload); err != nil {
-                return successPayload, err
+                return nil, err
             }
 
             return successPayload, err

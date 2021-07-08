@@ -59,7 +59,6 @@ func Test_ExecuteTemplate_ExecuteTemplate(t *testing.T) {
     }
 
     actual, _, err := client.WordsApi.ExecuteMailMerge(ctx, request)
-
     if err != nil {
         t.Error(err)
     }
@@ -68,5 +67,27 @@ func Test_ExecuteTemplate_ExecuteTemplate(t *testing.T) {
     assert.Equal(t, "TestExecuteTemplate.docx", actual.Document.FileName, "Validate ExecuteTemplate response.");
 }
 
+// Test for execute template online.
+func Test_ExecuteTemplate_ExecuteTemplateOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    mailMergeFolder := "DocumentActions/MailMerge"
+    localDocumentFile := "SampleMailMergeTemplate.docx"
+    localDataFile := "SampleExecuteTemplateData.txt"
 
 
+    options := map[string]interface{}{
+    }
+
+    request := &models.ExecuteMailMergeOnlineRequest{
+        Template: OpenFile(t, mailMergeFolder + "/" + localDocumentFile),
+        Data: OpenFile(t, mailMergeFolder + "/" + localDataFile),
+        Optionals: options,
+    }
+
+    _, err := client.WordsApi.ExecuteMailMergeOnline(ctx, request)
+    if err != nil {
+        t.Error(err)
+    }
+
+}

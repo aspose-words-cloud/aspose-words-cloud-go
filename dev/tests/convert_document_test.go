@@ -60,7 +60,6 @@ func Test_ConvertDocument_SaveAs(t *testing.T) {
     }
 
     actual, _, err := client.WordsApi.SaveAs(ctx, request)
-
     if err != nil {
         t.Error(err)
     }
@@ -69,9 +68,32 @@ func Test_ConvertDocument_SaveAs(t *testing.T) {
     assert.NotNil(t, actual.SaveResult.DestDocument, "Validate SaveAs response.");
 }
 
+// Test for converting document online to one of the available formats.
+func Test_ConvertDocument_SaveAsOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localName := "test_multi_pages.docx"
 
+    requestSaveOptionsData := models.SaveOptionsData{
+        SaveFormat: ToStringPointer("pdf"),
+        FileName: ToStringPointer(baseTestOutPath + "/TestSaveAs.pdf"),
+    }
 
+    options := map[string]interface{}{
+    }
 
+    request := &models.SaveAsOnlineRequest{
+        Document: OpenFile(t, "Common/" + localName),
+        SaveOptionsData: requestSaveOptionsData,
+        Optionals: options,
+    }
+
+    _, _, err := client.WordsApi.SaveAsOnline(ctx, request)
+    if err != nil {
+        t.Error(err)
+    }
+
+}
 
 // Test for converting document to one of the available formats.
 func Test_ConvertDocument_SaveAsDocx(t *testing.T) {
@@ -100,7 +122,6 @@ func Test_ConvertDocument_SaveAsDocx(t *testing.T) {
     }
 
     actual, _, err := client.WordsApi.SaveAs(ctx, request)
-
     if err != nil {
         t.Error(err)
     }
@@ -108,8 +129,6 @@ func Test_ConvertDocument_SaveAsDocx(t *testing.T) {
     assert.NotNil(t, actual.SaveResult, "Validate SaveAsDocx response.");
     assert.NotNil(t, actual.SaveResult.DestDocument, "Validate SaveAsDocx response.");
 }
-
-
 
 // Test for converting document to one of the available formats.
 func Test_ConvertDocument_SaveAsTiff(t *testing.T) {
@@ -137,7 +156,6 @@ func Test_ConvertDocument_SaveAsTiff(t *testing.T) {
     }
 
     actual, _, err := client.WordsApi.SaveAsTiff(ctx, request)
-
     if err != nil {
         t.Error(err)
     }
@@ -146,9 +164,32 @@ func Test_ConvertDocument_SaveAsTiff(t *testing.T) {
     assert.NotNil(t, actual.SaveResult.DestDocument, "Validate SaveAsTiff response.");
 }
 
+// Test for converting document to one of the available formats.
+func Test_ConvertDocument_SaveAsTiffOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localName := "test_multi_pages.docx"
 
+    requestSaveOptions := models.TiffSaveOptionsData{
+        SaveFormat: ToStringPointer("tiff"),
+        FileName: ToStringPointer(baseTestOutPath + "/abc.tiff"),
+    }
 
+    options := map[string]interface{}{
+    }
 
+    request := &models.SaveAsTiffOnlineRequest{
+        Document: OpenFile(t, "Common/" + localName),
+        SaveOptions: requestSaveOptions,
+        Optionals: options,
+    }
+
+    _, _, err := client.WordsApi.SaveAsTiffOnline(ctx, request)
+    if err != nil {
+        t.Error(err)
+    }
+
+}
 
 // A test for ConvertDocument.
 func Test_ConvertDocument_ConvertDocument(t *testing.T) {
@@ -156,22 +197,19 @@ func Test_ConvertDocument_ConvertDocument(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFolder := "DocumentActions/ConvertDocument"
 
-    documentFileData := OpenFile(t, localFolder + "/test_uploadfile.docx")
 
     options := map[string]interface{}{
     }
 
     request := &models.ConvertDocumentRequest{
-        Document: documentFileData,
+        Document: OpenFile(t, localFolder + "/test_uploadfile.docx"),
         Format: ToStringPointer("pdf"),
         Optionals: options,
     }
 
-_, err := client.WordsApi.ConvertDocument(ctx, request)
-
+    _, err := client.WordsApi.ConvertDocument(ctx, request)
     if err != nil {
         t.Error(err)
     }
 
 }
-

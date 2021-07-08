@@ -27,15 +27,13 @@
 
 package models
 
-
 import (
-    "io"
     "fmt"
 	"net/url"
 	"strings"
+    "io"
     "encoding/json"
 )
-
 
 // SaveAsTiffRequest contains request data for WordsApiService.SaveAsTiff method.
 type SaveAsTiffRequest struct {
@@ -44,30 +42,31 @@ type SaveAsTiffRequest struct {
         // Tiff save options.
         SaveOptions ITiffSaveOptionsData
     /* optional (nil or map[string]interface{}) with one or more of key / value pairs:
-        key: "folder" value: (string) Original document folder.
-        key: "storage" value: (string) Original document storage.
-        key: "loadEncoding" value: (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
-        key: "password" value: (string) Password for opening an encrypted document.
-        key: "useAntiAliasing" value: (bool) The flag indicating whether to use antialiasing.
-        key: "useHighQualityRendering" value: (bool) The flag indicating whether to use high quality.
-        key: "imageBrightness" value: (float64) The level of brightness for the generated images.
-        key: "imageColorMode" value: (string) The color mode for the generated images.
-        key: "imageContrast" value: (float64) The contrast for the generated images.
-        key: "numeralFormat" value: (string) The images numeral format.
-        key: "pageCount" value: (int32) The number of pages to render.
-        key: "pageIndex" value: (int32) The index of the page to start rendering.
-        key: "paperColor" value: (string) The background image color.
-        key: "pixelFormat" value: (string) The pixel format of the generated images.
-        key: "resolution" value: (float64) The resolution of the generated images.
-        key: "scale" value: (float64) The zoom factor for the generated images.
-        key: "tiffCompression" value: (string) The compression tipe.
-        key: "dmlRenderingMode" value: (string) The optional dml rendering mode. The default value is Fallback.
-        key: "dmlEffectsRenderingMode" value: (string) The optional dml effects rendering mode. The default value is Simplified.
-        key: "tiffBinarizationMethod" value: (string) The optional TIFF binarization method. Possible values are: FloydSteinbergDithering, Threshold.
-        key: "zipOutput" value: (bool) The flag indicating whether to ZIP the output.
-        key: "fontsLocation" value: (string) Folder in filestorage with custom fonts. */
+        key: "folder" value: (*string) Original document folder.
+        key: "storage" value: (*string) Original document storage.
+        key: "loadEncoding" value: (*string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
+        key: "password" value: (*string) Password for opening an encrypted document.
+        key: "useAntiAliasing" value: (*bool) The flag indicating whether to use antialiasing.
+        key: "useHighQualityRendering" value: (*bool) The flag indicating whether to use high quality.
+        key: "imageBrightness" value: (*float64) The level of brightness for the generated images.
+        key: "imageColorMode" value: (*string) The color mode for the generated images.
+        key: "imageContrast" value: (*float64) The contrast for the generated images.
+        key: "numeralFormat" value: (*string) The images numeral format.
+        key: "pageCount" value: (*int32) The number of pages to render.
+        key: "pageIndex" value: (*int32) The index of the page to start rendering.
+        key: "paperColor" value: (*string) The background image color.
+        key: "pixelFormat" value: (*string) The pixel format of the generated images.
+        key: "resolution" value: (*float64) The resolution of the generated images.
+        key: "scale" value: (*float64) The zoom factor for the generated images.
+        key: "tiffCompression" value: (*string) The compression tipe.
+        key: "dmlRenderingMode" value: (*string) The optional dml rendering mode. The default value is Fallback.
+        key: "dmlEffectsRenderingMode" value: (*string) The optional dml effects rendering mode. The default value is Simplified.
+        key: "tiffBinarizationMethod" value: (*string) The optional TIFF binarization method. Possible values are: FloydSteinbergDithering, Threshold.
+        key: "zipOutput" value: (*bool) The flag indicating whether to ZIP the output.
+        key: "fontsLocation" value: (*string) Folder in filestorage with custom fonts. */
     Optionals map[string]interface{}
 }
+
 
 func (data *SaveAsTiffRequest) CreateRequestData() (RequestData, error) {
 
@@ -292,12 +291,10 @@ func (data *SaveAsTiffRequest) CreateRequestData() (RequestData, error) {
     return result, nil
 }
 
-
-func (data *SaveAsTiffRequest) CreateResponse(reader io.Reader) (result interface{}, err error) {
-
+func (data *SaveAsTiffRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
             var successPayload SaveResponse
             if err = json.NewDecoder(reader).Decode(&successPayload); err != nil {
-                return successPayload, err
+                return nil, err
             }
 
             return successPayload, err

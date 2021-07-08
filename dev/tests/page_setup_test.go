@@ -56,7 +56,6 @@ func Test_PageSetup_GetSectionPageSetup(t *testing.T) {
     }
 
     actual, _, err := client.WordsApi.GetSectionPageSetup(ctx, request)
-
     if err != nil {
         t.Error(err)
     }
@@ -65,9 +64,28 @@ func Test_PageSetup_GetSectionPageSetup(t *testing.T) {
     assert.Equal(t, int32(1), actual.PageSetup.LineStartingNumber, "Validate GetSectionPageSetup response.");
 }
 
+// Test for getting page settings online.
+func Test_PageSetup_GetSectionPageSetupOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "Common/test_multi_pages.docx"
 
 
+    options := map[string]interface{}{
+    }
 
+    request := &models.GetSectionPageSetupOnlineRequest{
+        Document: OpenFile(t, localFile),
+        SectionIndex: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    _, _, err := client.WordsApi.GetSectionPageSetupOnline(ctx, request)
+    if err != nil {
+        t.Error(err)
+    }
+
+}
 
 // Test for updating page settings.
 func Test_PageSetup_UpdateSectionPageSetup(t *testing.T) {
@@ -98,7 +116,6 @@ func Test_PageSetup_UpdateSectionPageSetup(t *testing.T) {
     }
 
     actual, _, err := client.WordsApi.UpdateSectionPageSetup(ctx, request)
-
     if err != nil {
         t.Error(err)
     }
@@ -109,9 +126,35 @@ func Test_PageSetup_UpdateSectionPageSetup(t *testing.T) {
 
 }
 
+// Test for updating page settings online.
+func Test_PageSetup_UpdateSectionPageSetupOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "Common/test_multi_pages.docx"
 
+    requestPageSetup := models.PageSetup{
+        RtlGutter: ToBoolPointer(true),
+        LeftMargin: ToFloat64Pointer(10),
+        Orientation: ToStringPointer("Landscape"),
+        PaperSize: ToStringPointer("A5"),
+    }
 
+    options := map[string]interface{}{
+    }
 
+    request := &models.UpdateSectionPageSetupOnlineRequest{
+        Document: OpenFile(t, localFile),
+        SectionIndex: ToInt32Pointer(int32(0)),
+        PageSetup: requestPageSetup,
+        Optionals: options,
+    }
+
+    _, _, err := client.WordsApi.UpdateSectionPageSetupOnline(ctx, request)
+    if err != nil {
+        t.Error(err)
+    }
+
+}
 
 // Test for page rendering.
 func Test_PageSetup_GetRenderPage(t *testing.T) {
@@ -135,13 +178,33 @@ func Test_PageSetup_GetRenderPage(t *testing.T) {
         Optionals: options,
     }
 
-_, err := client.WordsApi.RenderPage(ctx, request)
-
+    _, err := client.WordsApi.RenderPage(ctx, request)
     if err != nil {
         t.Error(err)
     }
 
 }
 
+// Test for page rendering.
+func Test_PageSetup_GetRenderPageOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localTextFile := "DocumentElements/Text/SampleWordDocument.docx"
 
 
+    options := map[string]interface{}{
+    }
+
+    request := &models.RenderPageOnlineRequest{
+        Document: OpenFile(t, localTextFile),
+        PageIndex: ToInt32Pointer(int32(1)),
+        Format: ToStringPointer("bmp"),
+        Optionals: options,
+    }
+
+    _, err := client.WordsApi.RenderPageOnline(ctx, request)
+    if err != nil {
+        t.Error(err)
+    }
+
+}

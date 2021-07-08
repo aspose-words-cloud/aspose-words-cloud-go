@@ -33,9 +33,9 @@ package models
 // Updates the level of a List element in the document.
 type UpdateListLevelOnlineResponse struct {
     // The response model.
-    Model ListResponse `json:"Model,omitempty"`
+    Model  ListResponse  `json:"Model,omitempty"`
 
 
     // The document after modification.
-    Document io.Reader `json:"Document,omitempty"`
+    Document  io.ReadCloser   `json:"Document,omitempty"`
 }

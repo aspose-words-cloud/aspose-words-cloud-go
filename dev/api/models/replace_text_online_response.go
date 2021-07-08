@@ -33,9 +33,9 @@ package models
 // Replaces text in the document.
 type ReplaceTextOnlineResponse struct {
     // The response model.
-    Model ReplaceTextResponse `json:"Model,omitempty"`
+    Model  ReplaceTextResponse  `json:"Model,omitempty"`
 
 
     // The document after modification.
-    Document io.Reader `json:"Document,omitempty"`
+    Document  io.ReadCloser   `json:"Document,omitempty"`
 }

@@ -33,9 +33,9 @@ package models
 // Inserts a new cell to the table row.
 type InsertTableCellOnlineResponse struct {
     // The response model.
-    Model TableCellResponse `json:"Model,omitempty"`
+    Model  TableCellResponse  `json:"Model,omitempty"`
 
 
     // The document after modification.
-    Document io.Reader `json:"Document,omitempty"`
+    Document  io.ReadCloser   `json:"Document,omitempty"`
 }

@@ -33,9 +33,9 @@ package models
 // Inserts a new paragraph to the document node.
 type InsertParagraphOnlineResponse struct {
     // The response model.
-    Model ParagraphResponse `json:"Model,omitempty"`
+    Model  ParagraphResponse  `json:"Model,omitempty"`
 
 
     // The document after modification.
-    Document io.Reader `json:"Document,omitempty"`
+    Document  io.ReadCloser   `json:"Document,omitempty"`
 }

@@ -61,7 +61,6 @@ func Test_DocumentProtection_ProtectDocument(t *testing.T) {
     }
 
     actual, _, err := client.WordsApi.ProtectDocument(ctx, request)
-
     if err != nil {
         t.Error(err)
     }
@@ -70,9 +69,31 @@ func Test_DocumentProtection_ProtectDocument(t *testing.T) {
     assert.Equal(t, "ReadOnly", actual.ProtectionData.ProtectionType, "Validate ProtectDocument response.");
 }
 
+// Test for setting document protection.
+func Test_DocumentProtection_ProtectDocumentOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "Common/test_multi_pages.docx"
 
+    requestProtectionRequest := models.ProtectionRequest{
+        NewPassword: ToStringPointer("123"),
+    }
 
+    options := map[string]interface{}{
+    }
 
+    request := &models.ProtectDocumentOnlineRequest{
+        Document: OpenFile(t, localFile),
+        ProtectionRequest: requestProtectionRequest,
+        Optionals: options,
+    }
+
+    _, _, err := client.WordsApi.ProtectDocumentOnline(ctx, request)
+    if err != nil {
+        t.Error(err)
+    }
+
+}
 
 // Test for getting document protection.
 func Test_DocumentProtection_GetDocumentProtection(t *testing.T) {
@@ -95,16 +116,33 @@ func Test_DocumentProtection_GetDocumentProtection(t *testing.T) {
     }
 
     _, _, err := client.WordsApi.GetDocumentProtection(ctx, request)
-
     if err != nil {
         t.Error(err)
     }
 
 }
 
+// Test for getting document protection.
+func Test_DocumentProtection_GetDocumentProtectionOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "Common/test_multi_pages.docx"
 
 
+    options := map[string]interface{}{
+    }
 
+    request := &models.GetDocumentProtectionOnlineRequest{
+        Document: OpenFile(t, localFile),
+        Optionals: options,
+    }
+
+    _, _, err := client.WordsApi.GetDocumentProtectionOnline(ctx, request)
+    if err != nil {
+        t.Error(err)
+    }
+
+}
 
 // Test for deleting unprotect document.
 func Test_DocumentProtection_DeleteUnprotectDocument(t *testing.T) {
@@ -131,7 +169,6 @@ func Test_DocumentProtection_DeleteUnprotectDocument(t *testing.T) {
     }
 
     actual, _, err := client.WordsApi.UnprotectDocument(ctx, request)
-
     if err != nil {
         t.Error(err)
     }
@@ -140,5 +177,28 @@ func Test_DocumentProtection_DeleteUnprotectDocument(t *testing.T) {
     assert.Equal(t, "NoProtection", actual.ProtectionData.ProtectionType, "Validate DeleteUnprotectDocument response.");
 }
 
+// Test for deleting unprotect document.
+func Test_DocumentProtection_DeleteUnprotectDocumentOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFilePath := "DocumentActions/DocumentProtection/SampleProtectedBlankWordDocument.docx"
 
+    requestProtectionRequest := models.ProtectionRequest{
+        Password: ToStringPointer("aspose"),
+    }
 
+    options := map[string]interface{}{
+    }
+
+    request := &models.UnprotectDocumentOnlineRequest{
+        Document: OpenFile(t, localFilePath),
+        ProtectionRequest: requestProtectionRequest,
+        Optionals: options,
+    }
+
+    _, _, err := client.WordsApi.UnprotectDocumentOnline(ctx, request)
+    if err != nil {
+        t.Error(err)
+    }
+
+}

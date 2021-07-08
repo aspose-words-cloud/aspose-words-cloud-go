@@ -27,15 +27,13 @@
 
 package models
 
-
 import (
-    "io"
     "fmt"
 	"net/url"
 	"strings"
+    "io"
     "encoding/json"
 )
-
 
 // GetCommentRequest contains request data for WordsApiService.GetComment method.
 type GetCommentRequest struct {
@@ -44,12 +42,13 @@ type GetCommentRequest struct {
         // The index of the comment.
         CommentIndex *int32
     /* optional (nil or map[string]interface{}) with one or more of key / value pairs:
-        key: "folder" value: (string) Original document folder.
-        key: "storage" value: (string) Original document storage.
-        key: "loadEncoding" value: (string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
-        key: "password" value: (string) Password for opening an encrypted document. */
+        key: "folder" value: (*string) Original document folder.
+        key: "storage" value: (*string) Original document storage.
+        key: "loadEncoding" value: (*string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
+        key: "password" value: (*string) Password for opening an encrypted document. */
     Optionals map[string]interface{}
 }
+
 
 func (data *GetCommentRequest) CreateRequestData() (RequestData, error) {
 
@@ -130,12 +129,10 @@ func (data *GetCommentRequest) CreateRequestData() (RequestData, error) {
     return result, nil
 }
 
-
-func (data *GetCommentRequest) CreateResponse(reader io.Reader) (result interface{}, err error) {
-
+func (data *GetCommentRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
             var successPayload CommentResponse
             if err = json.NewDecoder(reader).Decode(&successPayload); err != nil {
-                return successPayload, err
+                return nil, err
             }
 
             return successPayload, err

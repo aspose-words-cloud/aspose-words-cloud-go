@@ -27,14 +27,12 @@
 
 package models
 
-
 import (
-    "io"
     "fmt"
 	"net/url"
 	"strings"
+    "io"
 )
-
 
 // MoveFileRequest contains request data for WordsApiService.MoveFile method.
 type MoveFileRequest struct {
@@ -43,11 +41,12 @@ type MoveFileRequest struct {
         // Source file's path e.g. '/Folder 1/file.ext' or '/Bucket/Folder 1/file.ext'.
         SrcPath *string
     /* optional (nil or map[string]interface{}) with one or more of key / value pairs:
-        key: "srcStorageName" value: (string) Source storage name.
-        key: "destStorageName" value: (string) Destination storage name.
-        key: "versionId" value: (string) File version ID to move. */
+        key: "srcStorageName" value: (*string) Source storage name.
+        key: "destStorageName" value: (*string) Destination storage name.
+        key: "versionId" value: (*string) File version ID to move. */
     Optionals map[string]interface{}
 }
+
 
 func (data *MoveFileRequest) CreateRequestData() (RequestData, error) {
 
@@ -122,8 +121,6 @@ func (data *MoveFileRequest) CreateRequestData() (RequestData, error) {
     return result, nil
 }
 
-
-func (data *MoveFileRequest) CreateResponse(reader io.Reader) (result interface{}, err error) {
-
+func (data *MoveFileRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
         return nil, nil
 }

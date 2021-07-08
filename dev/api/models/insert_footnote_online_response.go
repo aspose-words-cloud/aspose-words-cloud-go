@@ -33,9 +33,9 @@ package models
 // Inserts a new footnote to the document node.
 type InsertFootnoteOnlineResponse struct {
     // The response model.
-    Model FootnoteResponse `json:"Model,omitempty"`
+    Model  FootnoteResponse  `json:"Model,omitempty"`
 
 
     // The document after modification.
-    Document io.Reader `json:"Document,omitempty"`
+    Document  io.ReadCloser   `json:"Document,omitempty"`
 }

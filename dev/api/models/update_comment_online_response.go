@@ -33,9 +33,9 @@ package models
 // Updates a comment in the document.
 type UpdateCommentOnlineResponse struct {
     // The response model.
-    Model CommentResponse `json:"Model,omitempty"`
+    Model  CommentResponse  `json:"Model,omitempty"`
 
 
     // The document after modification.
-    Document io.Reader `json:"Document,omitempty"`
+    Document  io.ReadCloser   `json:"Document,omitempty"`
 }

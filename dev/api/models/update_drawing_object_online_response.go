@@ -33,9 +33,9 @@ package models
 // Updates a DrawingObject in the document node.
 type UpdateDrawingObjectOnlineResponse struct {
     // The response model.
-    Model DrawingObjectResponse `json:"Model,omitempty"`
+    Model  DrawingObjectResponse  `json:"Model,omitempty"`
 
 
     // The document after modification.
-    Document io.Reader `json:"Document,omitempty"`
+    Document  io.ReadCloser   `json:"Document,omitempty"`
 }

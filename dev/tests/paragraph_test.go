@@ -57,7 +57,6 @@ func Test_Paragraph_GetDocumentParagraphByIndex(t *testing.T) {
     }
 
     actual, _, err := client.WordsApi.GetParagraph(ctx, request)
-
     if err != nil {
         t.Error(err)
     }
@@ -66,9 +65,29 @@ func Test_Paragraph_GetDocumentParagraphByIndex(t *testing.T) {
     assert.Equal(t, "0.0.0", actual.Paragraph.NodeId, "Validate GetDocumentParagraphByIndex response.");
 }
 
+// Test for getting paragraph online.
+func Test_Paragraph_GetDocumentParagraphOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "Common/test_multi_pages.docx"
 
 
+    options := map[string]interface{}{
+        "nodePath": "sections/0",
+    }
 
+    request := &models.GetParagraphOnlineRequest{
+        Document: OpenFile(t, localFile),
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    _, _, err := client.WordsApi.GetParagraphOnline(ctx, request)
+    if err != nil {
+        t.Error(err)
+    }
+
+}
 
 // Test for getting paragraph without node path.
 func Test_Paragraph_GetDocumentParagraphByIndexWithoutNodePath(t *testing.T) {
@@ -92,7 +111,6 @@ func Test_Paragraph_GetDocumentParagraphByIndexWithoutNodePath(t *testing.T) {
     }
 
     actual, _, err := client.WordsApi.GetParagraph(ctx, request)
-
     if err != nil {
         t.Error(err)
     }
@@ -100,8 +118,6 @@ func Test_Paragraph_GetDocumentParagraphByIndexWithoutNodePath(t *testing.T) {
     assert.NotNil(t, actual.Paragraph, "Validate GetDocumentParagraphByIndexWithoutNodePath response.");
     assert.Equal(t, "0.0.0", actual.Paragraph.NodeId, "Validate GetDocumentParagraphByIndexWithoutNodePath response.");
 }
-
-
 
 // Test for getting all paragraphs.
 func Test_Paragraph_GetDocumentParagraphs(t *testing.T) {
@@ -125,7 +141,6 @@ func Test_Paragraph_GetDocumentParagraphs(t *testing.T) {
     }
 
     actual, _, err := client.WordsApi.GetParagraphs(ctx, request)
-
     if err != nil {
         t.Error(err)
     }
@@ -136,9 +151,28 @@ func Test_Paragraph_GetDocumentParagraphs(t *testing.T) {
     assert.Equal(t, "Page 1 of 3", actual.Paragraphs.ParagraphLinkList[0].Text, "Validate GetDocumentParagraphs response.");
 }
 
+// Test for getting all paragraphs online.
+func Test_Paragraph_GetDocumentParagraphsOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "Common/test_multi_pages.docx"
 
 
+    options := map[string]interface{}{
+        "nodePath": "sections/0",
+    }
 
+    request := &models.GetParagraphsOnlineRequest{
+        Document: OpenFile(t, localFile),
+        Optionals: options,
+    }
+
+    _, _, err := client.WordsApi.GetParagraphsOnline(ctx, request)
+    if err != nil {
+        t.Error(err)
+    }
+
+}
 
 // Test for getting all paragraphs without node path.
 func Test_Paragraph_GetDocumentParagraphsWithoutNodePath(t *testing.T) {
@@ -161,7 +195,6 @@ func Test_Paragraph_GetDocumentParagraphsWithoutNodePath(t *testing.T) {
     }
 
     actual, _, err := client.WordsApi.GetParagraphs(ctx, request)
-
     if err != nil {
         t.Error(err)
     }
@@ -171,8 +204,6 @@ func Test_Paragraph_GetDocumentParagraphsWithoutNodePath(t *testing.T) {
     assert.Equal(t, 15, len(actual.Paragraphs.ParagraphLinkList), "Validate GetDocumentParagraphsWithoutNodePath response.");
     assert.Equal(t, "Page 1 of 3", actual.Paragraphs.ParagraphLinkList[0].Text, "Validate GetDocumentParagraphsWithoutNodePath response.");
 }
-
-
 
 // Test for getting paragraph run.
 func Test_Paragraph_GetDocumentParagraphRun(t *testing.T) {
@@ -197,7 +228,6 @@ func Test_Paragraph_GetDocumentParagraphRun(t *testing.T) {
     }
 
     actual, _, err := client.WordsApi.GetRun(ctx, request)
-
     if err != nil {
         t.Error(err)
     }
@@ -206,9 +236,29 @@ func Test_Paragraph_GetDocumentParagraphRun(t *testing.T) {
     assert.Equal(t, "Page ", actual.Run.Text, "Validate GetDocumentParagraphRun response.");
 }
 
+// Test for getting paragraph run online.
+func Test_Paragraph_GetDocumentParagraphRunOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "Common/test_multi_pages.docx"
 
 
+    options := map[string]interface{}{
+    }
 
+    request := &models.GetRunOnlineRequest{
+        Document: OpenFile(t, localFile),
+        ParagraphPath: ToStringPointer("paragraphs/0"),
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    _, _, err := client.WordsApi.GetRunOnline(ctx, request)
+    if err != nil {
+        t.Error(err)
+    }
+
+}
 
 // Test for getting paragraph run font.
 func Test_Paragraph_GetDocumentParagraphRunFont(t *testing.T) {
@@ -233,7 +283,6 @@ func Test_Paragraph_GetDocumentParagraphRunFont(t *testing.T) {
     }
 
     actual, _, err := client.WordsApi.GetRunFont(ctx, request)
-
     if err != nil {
         t.Error(err)
     }
@@ -242,9 +291,29 @@ func Test_Paragraph_GetDocumentParagraphRunFont(t *testing.T) {
     assert.Equal(t, "Times New Roman", actual.Font.Name, "Validate GetDocumentParagraphRunFont response.");
 }
 
+// Test for getting paragraph run font online.
+func Test_Paragraph_GetDocumentParagraphRunFontOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "Common/test_multi_pages.docx"
 
 
+    options := map[string]interface{}{
+    }
 
+    request := &models.GetRunFontOnlineRequest{
+        Document: OpenFile(t, localFile),
+        ParagraphPath: ToStringPointer("paragraphs/0"),
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    _, _, err := client.WordsApi.GetRunFontOnline(ctx, request)
+    if err != nil {
+        t.Error(err)
+    }
+
+}
 
 // Test for getting paragraph runs.
 func Test_Paragraph_GetParagraphRuns(t *testing.T) {
@@ -268,7 +337,6 @@ func Test_Paragraph_GetParagraphRuns(t *testing.T) {
     }
 
     actual, _, err := client.WordsApi.GetRuns(ctx, request)
-
     if err != nil {
         t.Error(err)
     }
@@ -279,9 +347,28 @@ func Test_Paragraph_GetParagraphRuns(t *testing.T) {
     assert.Equal(t, "Page ", actual.Runs.List[0].Text, "Validate GetParagraphRuns response.");
 }
 
+// Test for getting paragraph runs online.
+func Test_Paragraph_GetParagraphRunsOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "Common/test_multi_pages.docx"
 
 
+    options := map[string]interface{}{
+    }
 
+    request := &models.GetRunsOnlineRequest{
+        Document: OpenFile(t, localFile),
+        ParagraphPath: ToStringPointer("sections/0/paragraphs/0"),
+        Optionals: options,
+    }
+
+    _, _, err := client.WordsApi.GetRunsOnline(ctx, request)
+    if err != nil {
+        t.Error(err)
+    }
+
+}
 
 // Test for updating paragraph run font.
 func Test_Paragraph_UpdateRunFont(t *testing.T) {
@@ -311,7 +398,6 @@ func Test_Paragraph_UpdateRunFont(t *testing.T) {
     }
 
     actual, _, err := client.WordsApi.UpdateRunFont(ctx, request)
-
     if err != nil {
         t.Error(err)
     }
@@ -320,9 +406,33 @@ func Test_Paragraph_UpdateRunFont(t *testing.T) {
     assert.True(t, actual.Font.Bold, "Validate UpdateRunFont response.");
 }
 
+// Test for updating paragraph run font online.
+func Test_Paragraph_UpdateRunFontOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "Common/test_multi_pages.docx"
 
+    requestFontDto := models.Font{
+        Bold: ToBoolPointer(true),
+    }
 
+    options := map[string]interface{}{
+    }
 
+    request := &models.UpdateRunFontOnlineRequest{
+        Document: OpenFile(t, localFile),
+        ParagraphPath: ToStringPointer("paragraphs/0"),
+        FontDto: requestFontDto,
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    _, _, err := client.WordsApi.UpdateRunFontOnline(ctx, request)
+    if err != nil {
+        t.Error(err)
+    }
+
+}
 
 // Test for adding paragraph.
 func Test_Paragraph_InsertParagraph(t *testing.T) {
@@ -350,7 +460,6 @@ func Test_Paragraph_InsertParagraph(t *testing.T) {
     }
 
     actual, _, err := client.WordsApi.InsertParagraph(ctx, request)
-
     if err != nil {
         t.Error(err)
     }
@@ -359,9 +468,32 @@ func Test_Paragraph_InsertParagraph(t *testing.T) {
     assert.Equal(t, "0.3.8", actual.Paragraph.NodeId, "Validate InsertParagraph response.");
 }
 
+// Test for adding paragraph online.
+func Test_Paragraph_InsertParagraphOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "Common/test_multi_pages.docx"
 
+    requestParagraph := models.ParagraphInsert{
+        Text: ToStringPointer("This is a new paragraph for your document"),
+    }
 
+    options := map[string]interface{}{
+        "nodePath": "sections/0",
+    }
 
+    request := &models.InsertParagraphOnlineRequest{
+        Document: OpenFile(t, localFile),
+        Paragraph: requestParagraph,
+        Optionals: options,
+    }
+
+    _, _, err := client.WordsApi.InsertParagraphOnline(ctx, request)
+    if err != nil {
+        t.Error(err)
+    }
+
+}
 
 // Test for adding paragraph without node path.
 func Test_Paragraph_InsertParagraphWithoutNodePath(t *testing.T) {
@@ -388,7 +520,6 @@ func Test_Paragraph_InsertParagraphWithoutNodePath(t *testing.T) {
     }
 
     actual, _, err := client.WordsApi.InsertParagraph(ctx, request)
-
     if err != nil {
         t.Error(err)
     }
@@ -396,8 +527,6 @@ func Test_Paragraph_InsertParagraphWithoutNodePath(t *testing.T) {
     assert.NotNil(t, actual.Paragraph, "Validate InsertParagraphWithoutNodePath response.");
     assert.Equal(t, "0.3.8", actual.Paragraph.NodeId, "Validate InsertParagraphWithoutNodePath response.");
 }
-
-
 
 // Test for paragraph rendering.
 func Test_Paragraph_RenderParagraph(t *testing.T) {
@@ -422,17 +551,37 @@ func Test_Paragraph_RenderParagraph(t *testing.T) {
         Optionals: options,
     }
 
-_, err := client.WordsApi.RenderParagraph(ctx, request)
-
+    _, err := client.WordsApi.RenderParagraph(ctx, request)
     if err != nil {
         t.Error(err)
     }
 
 }
 
+// Test for paragraph rendering.
+func Test_Paragraph_RenderParagraphOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "Common/test_multi_pages.docx"
 
 
+    options := map[string]interface{}{
+        "nodePath": "",
+    }
 
+    request := &models.RenderParagraphOnlineRequest{
+        Document: OpenFile(t, localFile),
+        Format: ToStringPointer("png"),
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    _, err := client.WordsApi.RenderParagraphOnline(ctx, request)
+    if err != nil {
+        t.Error(err)
+    }
+
+}
 
 // Test for paragraph rendering without node path.
 func Test_Paragraph_RenderParagraphWithoutNodePath(t *testing.T) {
@@ -456,15 +605,12 @@ func Test_Paragraph_RenderParagraphWithoutNodePath(t *testing.T) {
         Optionals: options,
     }
 
-_, err := client.WordsApi.RenderParagraph(ctx, request)
-
+    _, err := client.WordsApi.RenderParagraph(ctx, request)
     if err != nil {
         t.Error(err)
     }
 
 }
-
-
 
 // Test for getting paragraph format settings.
 func Test_Paragraph_GetParagraphFormat(t *testing.T) {
@@ -489,7 +635,6 @@ func Test_Paragraph_GetParagraphFormat(t *testing.T) {
     }
 
     actual, _, err := client.WordsApi.GetParagraphFormat(ctx, request)
-
     if err != nil {
         t.Error(err)
     }
@@ -498,9 +643,29 @@ func Test_Paragraph_GetParagraphFormat(t *testing.T) {
     assert.Equal(t, "Normal", actual.ParagraphFormat.StyleName, "Validate GetParagraphFormat response.");
 }
 
+// Test for getting paragraph format settings online.
+func Test_Paragraph_GetParagraphFormatOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "Common/test_multi_pages.docx"
 
 
+    options := map[string]interface{}{
+        "nodePath": "",
+    }
 
+    request := &models.GetParagraphFormatOnlineRequest{
+        Document: OpenFile(t, localFile),
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    _, _, err := client.WordsApi.GetParagraphFormatOnline(ctx, request)
+    if err != nil {
+        t.Error(err)
+    }
+
+}
 
 // Test for getting paragraph format settings without node path.
 func Test_Paragraph_GetParagraphFormatWithoutNodePath(t *testing.T) {
@@ -524,7 +689,6 @@ func Test_Paragraph_GetParagraphFormatWithoutNodePath(t *testing.T) {
     }
 
     actual, _, err := client.WordsApi.GetParagraphFormat(ctx, request)
-
     if err != nil {
         t.Error(err)
     }
@@ -532,8 +696,6 @@ func Test_Paragraph_GetParagraphFormatWithoutNodePath(t *testing.T) {
     assert.NotNil(t, actual.ParagraphFormat, "Validate GetParagraphFormatWithoutNodePath response.");
     assert.Equal(t, "Normal", actual.ParagraphFormat.StyleName, "Validate GetParagraphFormatWithoutNodePath response.");
 }
-
-
 
 // Test for updating  paragraph format settings.
 func Test_Paragraph_UpdateParagraphFormat(t *testing.T) {
@@ -562,7 +724,6 @@ func Test_Paragraph_UpdateParagraphFormat(t *testing.T) {
     }
 
     actual, _, err := client.WordsApi.UpdateParagraphFormat(ctx, request)
-
     if err != nil {
         t.Error(err)
     }
@@ -571,9 +732,33 @@ func Test_Paragraph_UpdateParagraphFormat(t *testing.T) {
 
 }
 
+// Test for updating  paragraph format settings online.
+func Test_Paragraph_UpdateParagraphFormatOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "Common/test_multi_pages.docx"
 
+    requestParagraphFormatDto := models.ParagraphFormatUpdate{
+        Alignment: ToStringPointer("Right"),
+    }
 
+    options := map[string]interface{}{
+        "nodePath": "",
+    }
 
+    request := &models.UpdateParagraphFormatOnlineRequest{
+        Document: OpenFile(t, localFile),
+        ParagraphFormatDto: requestParagraphFormatDto,
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    _, _, err := client.WordsApi.UpdateParagraphFormatOnline(ctx, request)
+    if err != nil {
+        t.Error(err)
+    }
+
+}
 
 // Test for deleting  a paragraph.
 func Test_Paragraph_DeleteParagraph(t *testing.T) {
@@ -597,7 +782,7 @@ func Test_Paragraph_DeleteParagraph(t *testing.T) {
         Optionals: options,
     }
 
-_, err := client.WordsApi.DeleteParagraph(ctx, request)
+    _, err := client.WordsApi.DeleteParagraph(ctx, request)
 
     if err != nil {
         t.Error(err)
@@ -605,9 +790,29 @@ _, err := client.WordsApi.DeleteParagraph(ctx, request)
 
 }
 
+// Test for deleting  a paragraph online.
+func Test_Paragraph_DeleteParagraphOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "Common/test_multi_pages.docx"
 
 
+    options := map[string]interface{}{
+        "nodePath": "",
+    }
 
+    request := &models.DeleteParagraphOnlineRequest{
+        Document: OpenFile(t, localFile),
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    _, err := client.WordsApi.DeleteParagraphOnline(ctx, request)
+    if err != nil {
+        t.Error(err)
+    }
+
+}
 
 // Test for deleting  a paragraph without node path.
 func Test_Paragraph_DeleteParagraphWithoutNodePath(t *testing.T) {
@@ -630,15 +835,13 @@ func Test_Paragraph_DeleteParagraphWithoutNodePath(t *testing.T) {
         Optionals: options,
     }
 
-_, err := client.WordsApi.DeleteParagraph(ctx, request)
+    _, err := client.WordsApi.DeleteParagraph(ctx, request)
 
     if err != nil {
         t.Error(err)
     }
 
 }
-
-
 
 // Test for getting paragraph list format.
 func Test_Paragraph_GetParagraphListFormat(t *testing.T) {
@@ -663,7 +866,6 @@ func Test_Paragraph_GetParagraphListFormat(t *testing.T) {
     }
 
     actual, _, err := client.WordsApi.GetParagraphListFormat(ctx, request)
-
     if err != nil {
         t.Error(err)
     }
@@ -672,9 +874,29 @@ func Test_Paragraph_GetParagraphListFormat(t *testing.T) {
     assert.Equal(t, int32(1), actual.ListFormat.ListId, "Validate GetParagraphListFormat response.");
 }
 
+// Test for getting paragraph list format online.
+func Test_Paragraph_GetParagraphListFormatOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    listFolder := "DocumentElements/ParagraphListFormat"
 
 
+    options := map[string]interface{}{
+        "nodePath": "",
+    }
 
+    request := &models.GetParagraphListFormatOnlineRequest{
+        Document: OpenFile(t, listFolder + "/ParagraphGetListFormat.doc"),
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    _, _, err := client.WordsApi.GetParagraphListFormatOnline(ctx, request)
+    if err != nil {
+        t.Error(err)
+    }
+
+}
 
 // Test for getting paragraph list format without node path.
 func Test_Paragraph_GetParagraphListFormatWithoutNodePath(t *testing.T) {
@@ -698,7 +920,6 @@ func Test_Paragraph_GetParagraphListFormatWithoutNodePath(t *testing.T) {
     }
 
     actual, _, err := client.WordsApi.GetParagraphListFormat(ctx, request)
-
     if err != nil {
         t.Error(err)
     }
@@ -706,8 +927,6 @@ func Test_Paragraph_GetParagraphListFormatWithoutNodePath(t *testing.T) {
     assert.NotNil(t, actual.ListFormat, "Validate GetParagraphListFormatWithoutNodePath response.");
     assert.Equal(t, int32(1), actual.ListFormat.ListId, "Validate GetParagraphListFormatWithoutNodePath response.");
 }
-
-
 
 // Test for updating paragraph list format.
 func Test_Paragraph_UpdateParagraphListFormat(t *testing.T) {
@@ -736,7 +955,6 @@ func Test_Paragraph_UpdateParagraphListFormat(t *testing.T) {
     }
 
     actual, _, err := client.WordsApi.UpdateParagraphListFormat(ctx, request)
-
     if err != nil {
         t.Error(err)
     }
@@ -745,9 +963,33 @@ func Test_Paragraph_UpdateParagraphListFormat(t *testing.T) {
     assert.Equal(t, int32(2), actual.ListFormat.ListId, "Validate UpdateParagraphListFormat response.");
 }
 
+// Test for updating paragraph list format online.
+func Test_Paragraph_UpdateParagraphListFormatOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    listFolder := "DocumentElements/ParagraphListFormat"
 
+    requestListFormatDto := models.ListFormatUpdate{
+        ListId: ToInt32Pointer(int32(2)),
+    }
 
+    options := map[string]interface{}{
+        "nodePath": "",
+    }
 
+    request := &models.UpdateParagraphListFormatOnlineRequest{
+        Document: OpenFile(t, listFolder + "/ParagraphUpdateListFormat.doc"),
+        ListFormatDto: requestListFormatDto,
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    _, _, err := client.WordsApi.UpdateParagraphListFormatOnline(ctx, request)
+    if err != nil {
+        t.Error(err)
+    }
+
+}
 
 // Test for updating paragraph list format without node path.
 func Test_Paragraph_UpdateParagraphListFormatWithoutNodePath(t *testing.T) {
@@ -775,7 +1017,6 @@ func Test_Paragraph_UpdateParagraphListFormatWithoutNodePath(t *testing.T) {
     }
 
     actual, _, err := client.WordsApi.UpdateParagraphListFormat(ctx, request)
-
     if err != nil {
         t.Error(err)
     }
@@ -783,8 +1024,6 @@ func Test_Paragraph_UpdateParagraphListFormatWithoutNodePath(t *testing.T) {
     assert.NotNil(t, actual.ListFormat, "Validate UpdateParagraphListFormatWithoutNodePath response.");
     assert.Equal(t, int32(2), actual.ListFormat.ListId, "Validate UpdateParagraphListFormatWithoutNodePath response.");
 }
-
-
 
 // Test for deleting paragraph list format.
 func Test_Paragraph_DeleteParagraphListFormat(t *testing.T) {
@@ -809,16 +1048,35 @@ func Test_Paragraph_DeleteParagraphListFormat(t *testing.T) {
     }
 
     _, _, err := client.WordsApi.DeleteParagraphListFormat(ctx, request)
-
     if err != nil {
         t.Error(err)
     }
 
 }
 
+// Test for deleting paragraph list format online.
+func Test_Paragraph_DeleteParagraphListFormatOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    listFolder := "DocumentElements/ParagraphListFormat"
 
 
+    options := map[string]interface{}{
+        "nodePath": "",
+    }
 
+    request := &models.DeleteParagraphListFormatOnlineRequest{
+        Document: OpenFile(t, listFolder + "/ParagraphDeleteListFormat.doc"),
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    _, _, err := client.WordsApi.DeleteParagraphListFormatOnline(ctx, request)
+    if err != nil {
+        t.Error(err)
+    }
+
+}
 
 // Test for deleting paragraph list format without node path.
 func Test_Paragraph_DeleteParagraphListFormatWithoutNodePath(t *testing.T) {
@@ -842,14 +1100,11 @@ func Test_Paragraph_DeleteParagraphListFormatWithoutNodePath(t *testing.T) {
     }
 
     _, _, err := client.WordsApi.DeleteParagraphListFormat(ctx, request)
-
     if err != nil {
         t.Error(err)
     }
 
 }
-
-
 
 // Test for getting paragraph tab stops.
 func Test_Paragraph_GetParagraphTabStops(t *testing.T) {
@@ -874,7 +1129,6 @@ func Test_Paragraph_GetParagraphTabStops(t *testing.T) {
     }
 
     actual, _, err := client.WordsApi.GetParagraphTabStops(ctx, request)
-
     if err != nil {
         t.Error(err)
     }
@@ -884,9 +1138,29 @@ func Test_Paragraph_GetParagraphTabStops(t *testing.T) {
     assert.Equal(t, 72.0, actual.TabStops[0].Position, "Validate GetParagraphTabStops response.");
 }
 
+// Test for getting paragraph tab stops online.
+func Test_Paragraph_GetParagraphTabStopsOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    tabStopFolder := "DocumentElements/Paragraphs"
 
 
+    options := map[string]interface{}{
+        "nodePath": "",
+    }
 
+    request := &models.GetParagraphTabStopsOnlineRequest{
+        Document: OpenFile(t, tabStopFolder + "/ParagraphTabStops.docx"),
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    _, _, err := client.WordsApi.GetParagraphTabStopsOnline(ctx, request)
+    if err != nil {
+        t.Error(err)
+    }
+
+}
 
 // Test for getting paragraph tab stops without node path.
 func Test_Paragraph_GetParagraphTabStopsWithoutNodePath(t *testing.T) {
@@ -910,7 +1184,6 @@ func Test_Paragraph_GetParagraphTabStopsWithoutNodePath(t *testing.T) {
     }
 
     actual, _, err := client.WordsApi.GetParagraphTabStops(ctx, request)
-
     if err != nil {
         t.Error(err)
     }
@@ -919,8 +1192,6 @@ func Test_Paragraph_GetParagraphTabStopsWithoutNodePath(t *testing.T) {
     assert.Equal(t, 2, len(actual.TabStops), "Validate GetParagraphTabStopsWithoutNodePath response.");
     assert.Equal(t, 72.0, actual.TabStops[0].Position, "Validate GetParagraphTabStopsWithoutNodePath response.");
 }
-
-
 
 // Test for inserting paragraph tab stop.
 func Test_Paragraph_InsertParagraphTabStops(t *testing.T) {
@@ -951,7 +1222,6 @@ func Test_Paragraph_InsertParagraphTabStops(t *testing.T) {
     }
 
     actual, _, err := client.WordsApi.InsertOrUpdateParagraphTabStop(ctx, request)
-
     if err != nil {
         t.Error(err)
     }
@@ -963,9 +1233,35 @@ func Test_Paragraph_InsertParagraphTabStops(t *testing.T) {
 
 }
 
+// Test for inserting paragraph tab stop online.
+func Test_Paragraph_InsertParagraphTabStopsOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    tabStopFolder := "DocumentElements/Paragraphs"
 
+    requestTabStopInsertDto := models.TabStopInsert{
+        Alignment: ToStringPointer("Left"),
+        Leader: ToStringPointer("None"),
+        Position: ToFloat64Pointer(72),
+    }
 
+    options := map[string]interface{}{
+        "nodePath": "",
+    }
 
+    request := &models.InsertOrUpdateParagraphTabStopOnlineRequest{
+        Document: OpenFile(t, tabStopFolder + "/ParagraphTabStops.docx"),
+        TabStopInsertDto: requestTabStopInsertDto,
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    _, _, err := client.WordsApi.InsertOrUpdateParagraphTabStopOnline(ctx, request)
+    if err != nil {
+        t.Error(err)
+    }
+
+}
 
 // Test for inserting paragraph tab stop without node path.
 func Test_Paragraph_InsertParagraphTabStopsWithoutNodePath(t *testing.T) {
@@ -995,7 +1291,6 @@ func Test_Paragraph_InsertParagraphTabStopsWithoutNodePath(t *testing.T) {
     }
 
     actual, _, err := client.WordsApi.InsertOrUpdateParagraphTabStop(ctx, request)
-
     if err != nil {
         t.Error(err)
     }
@@ -1006,8 +1301,6 @@ func Test_Paragraph_InsertParagraphTabStopsWithoutNodePath(t *testing.T) {
 
 
 }
-
-
 
 // Test for deleting all paragraph tab stops.
 func Test_Paragraph_DeleteAllParagraphTabStops(t *testing.T) {
@@ -1032,7 +1325,6 @@ func Test_Paragraph_DeleteAllParagraphTabStops(t *testing.T) {
     }
 
     actual, _, err := client.WordsApi.DeleteAllParagraphTabStops(ctx, request)
-
     if err != nil {
         t.Error(err)
     }
@@ -1041,9 +1333,29 @@ func Test_Paragraph_DeleteAllParagraphTabStops(t *testing.T) {
     assert.Equal(t, 0, len(actual.TabStops), "Validate DeleteAllParagraphTabStops response.");
 }
 
+// Test for deleting all paragraph tab stops online.
+func Test_Paragraph_DeleteAllParagraphTabStopsOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    tabStopFolder := "DocumentElements/Paragraphs"
 
 
+    options := map[string]interface{}{
+        "nodePath": "",
+    }
 
+    request := &models.DeleteAllParagraphTabStopsOnlineRequest{
+        Document: OpenFile(t, tabStopFolder + "/ParagraphTabStops.docx"),
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    _, _, err := client.WordsApi.DeleteAllParagraphTabStopsOnline(ctx, request)
+    if err != nil {
+        t.Error(err)
+    }
+
+}
 
 // Test for deleting all paragraph tab stops without node path.
 func Test_Paragraph_DeleteAllParagraphTabStopsWithoutNodePath(t *testing.T) {
@@ -1067,7 +1379,6 @@ func Test_Paragraph_DeleteAllParagraphTabStopsWithoutNodePath(t *testing.T) {
     }
 
     actual, _, err := client.WordsApi.DeleteAllParagraphTabStops(ctx, request)
-
     if err != nil {
         t.Error(err)
     }
@@ -1075,8 +1386,6 @@ func Test_Paragraph_DeleteAllParagraphTabStopsWithoutNodePath(t *testing.T) {
     assert.NotNil(t, actual.TabStops, "Validate DeleteAllParagraphTabStopsWithoutNodePath response.");
     assert.Equal(t, 0, len(actual.TabStops), "Validate DeleteAllParagraphTabStopsWithoutNodePath response.");
 }
-
-
 
 // Test for deleting a tab stops.
 func Test_Paragraph_DeleteParagraphTabStop(t *testing.T) {
@@ -1102,7 +1411,6 @@ func Test_Paragraph_DeleteParagraphTabStop(t *testing.T) {
     }
 
     actual, _, err := client.WordsApi.DeleteParagraphTabStop(ctx, request)
-
     if err != nil {
         t.Error(err)
     }
@@ -1111,9 +1419,30 @@ func Test_Paragraph_DeleteParagraphTabStop(t *testing.T) {
     assert.Equal(t, 1, len(actual.TabStops), "Validate DeleteParagraphTabStop response.");
 }
 
+// Test for deleting a tab stops online.
+func Test_Paragraph_DeleteParagraphTabStopOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    tabStopFolder := "DocumentElements/Paragraphs"
 
 
+    options := map[string]interface{}{
+        "nodePath": "",
+    }
 
+    request := &models.DeleteParagraphTabStopOnlineRequest{
+        Document: OpenFile(t, tabStopFolder + "/ParagraphTabStops.docx"),
+        Position: ToFloat64Pointer(72.0),
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    _, _, err := client.WordsApi.DeleteParagraphTabStopOnline(ctx, request)
+    if err != nil {
+        t.Error(err)
+    }
+
+}
 
 // Test for deleting a tab stops without node path.
 func Test_Paragraph_DeleteParagraphTabStopWithoutNodePath(t *testing.T) {
@@ -1138,7 +1467,6 @@ func Test_Paragraph_DeleteParagraphTabStopWithoutNodePath(t *testing.T) {
     }
 
     actual, _, err := client.WordsApi.DeleteParagraphTabStop(ctx, request)
-
     if err != nil {
         t.Error(err)
     }
@@ -1146,4 +1474,3 @@ func Test_Paragraph_DeleteParagraphTabStopWithoutNodePath(t *testing.T) {
     assert.NotNil(t, actual.TabStops, "Validate DeleteParagraphTabStopWithoutNodePath response.");
     assert.Equal(t, 1, len(actual.TabStops), "Validate DeleteParagraphTabStopWithoutNodePath response.");
 }
-
