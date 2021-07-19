@@ -48,6 +48,9 @@ type ImageSaveOptionsDataResult struct {
     FileName string `json:"FileName,omitempty"`
 
     // Container abstract class for image save options.
+    ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
+
+    // Container abstract class for image save options.
     SaveFormat string `json:"SaveFormat,omitempty"`
 
     // Container abstract class for image save options.
@@ -147,6 +150,9 @@ type ImageSaveOptionsData struct {
 
     // Container abstract class for image save options.
     FileName *string `json:"FileName,omitempty"`
+
+    // Container abstract class for image save options.
+    ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
 
     // Container abstract class for image save options.
     SaveFormat *string `json:"SaveFormat,omitempty"`

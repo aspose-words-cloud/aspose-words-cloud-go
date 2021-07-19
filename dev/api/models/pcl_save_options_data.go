@@ -48,6 +48,9 @@ type PclSaveOptionsDataResult struct {
     FileName string `json:"FileName,omitempty"`
 
     // Container class for pcl save options.
+    ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
+
+    // Container class for pcl save options.
     SaveFormat string `json:"SaveFormat,omitempty"`
 
     // Container class for pcl save options.
@@ -114,6 +117,9 @@ type PclSaveOptionsData struct {
 
     // Container class for pcl save options.
     FileName *string `json:"FileName,omitempty"`
+
+    // Container class for pcl save options.
+    ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for pcl save options.
     SaveFormat *string `json:"SaveFormat,omitempty"`

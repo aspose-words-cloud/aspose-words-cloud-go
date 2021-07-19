@@ -48,6 +48,9 @@ type XamlFlowSaveOptionsDataResult struct {
     FileName string `json:"FileName,omitempty"`
 
     // Container class for xaml flow save options.
+    ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
+
+    // Container class for xaml flow save options.
     SaveFormat string `json:"SaveFormat,omitempty"`
 
     // Container class for xaml flow save options.
@@ -93,6 +96,9 @@ type XamlFlowSaveOptionsData struct {
 
     // Container class for xaml flow save options.
     FileName *string `json:"FileName,omitempty"`
+
+    // Container class for xaml flow save options.
+    ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for xaml flow save options.
     SaveFormat *string `json:"SaveFormat,omitempty"`

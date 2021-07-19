@@ -48,6 +48,9 @@ type HtmlFixedSaveOptionsDataResult struct {
     FileName string `json:"FileName,omitempty"`
 
     // Container class for fixed html save options.
+    ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
+
+    // Container class for fixed html save options.
     SaveFormat string `json:"SaveFormat,omitempty"`
 
     // Container class for fixed html save options.
@@ -150,6 +153,9 @@ type HtmlFixedSaveOptionsData struct {
 
     // Container class for fixed html save options.
     FileName *string `json:"FileName,omitempty"`
+
+    // Container class for fixed html save options.
+    ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for fixed html save options.
     SaveFormat *string `json:"SaveFormat,omitempty"`

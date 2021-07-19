@@ -48,6 +48,9 @@ type XamlFixedSaveOptionsDataResult struct {
     FileName string `json:"FileName,omitempty"`
 
     // Container class for xaml fixed save options.
+    ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
+
+    // Container class for xaml fixed save options.
     SaveFormat string `json:"SaveFormat,omitempty"`
 
     // Container class for xaml fixed save options.
@@ -114,6 +117,9 @@ type XamlFixedSaveOptionsData struct {
 
     // Container class for xaml fixed save options.
     FileName *string `json:"FileName,omitempty"`
+
+    // Container class for xaml fixed save options.
+    ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for xaml fixed save options.
     SaveFormat *string `json:"SaveFormat,omitempty"`

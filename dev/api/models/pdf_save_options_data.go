@@ -48,6 +48,9 @@ type PdfSaveOptionsDataResult struct {
     FileName string `json:"FileName,omitempty"`
 
     // Container class for pdf save options.
+    ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
+
+    // Container class for pdf save options.
     SaveFormat string `json:"SaveFormat,omitempty"`
 
     // Container class for pdf save options.
@@ -180,6 +183,9 @@ type PdfSaveOptionsData struct {
 
     // Container class for pdf save options.
     FileName *string `json:"FileName,omitempty"`
+
+    // Container class for pdf save options.
+    ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for pdf save options.
     SaveFormat *string `json:"SaveFormat,omitempty"`

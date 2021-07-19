@@ -40,10 +40,10 @@ func Test_Examples_AcceptAllRevisions(t *testing.T) {
     fileName := "test_doc.docx"
 
     // Upload original document to cloud storage.
-    fileContentFileData, _ := os.Open(documentsDir + "/" + fileName)
+    requestFileContentFileData, _ := os.Open(documentsDir + "/" + fileName)
     uploadFileRequestOptions := map[string]interface{}{}
     uploadFileRequest := &models.UploadFileRequest{
-        FileContent: fileContentFileData,
+        FileContent: requestFileContentFileData,
         Path: ToStringPointer(fileName),
         Optionals: uploadFileRequestOptions,
     }
@@ -61,3 +61,26 @@ func Test_Examples_AcceptAllRevisions(t *testing.T) {
 
 
 // func Test_Examples_AcceptAllRevisionsOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
+
+
+
+func Test_Examples_UpdateBookmark(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    remoteFileName:= "Sample.docx"
+    bookmarkName:= "aspose"
+
+    requestBookmarkData := models.BookmarkData{
+        Name: ToStringPointer(bookmarkName),
+        Text: ToStringPointer(bookmarkText),
+    }
+    updateBookmarkOptions := map[string]interface{}{"destFileName": baseTestOutPath + "/" + remoteFileName,}
+    updateBookmark := &models.UpdateBookmarkRequest{
+        Name: ToStringPointer(remoteFileName),
+        BookmarkName: ToStringPointer(bookmarkName),
+        BookmarkData: requestBookmarkData,
+        Optionals: updateBookmarkOptions,
+    }
+    _, _, _ = wordsApi.UpdateBookmark(ctx, updateBookmark)
+}

@@ -48,6 +48,9 @@ type JpegSaveOptionsDataResult struct {
     FileName string `json:"FileName,omitempty"`
 
     // Container class for jpeg save options.
+    ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
+
+    // Container class for jpeg save options.
     SaveFormat string `json:"SaveFormat,omitempty"`
 
     // Container class for jpeg save options.
@@ -147,6 +150,9 @@ type JpegSaveOptionsData struct {
 
     // Container class for jpeg save options.
     FileName *string `json:"FileName,omitempty"`
+
+    // Container class for jpeg save options.
+    ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for jpeg save options.
     SaveFormat *string `json:"SaveFormat,omitempty"`
