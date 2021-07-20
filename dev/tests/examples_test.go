@@ -71,15 +71,15 @@ func Test_Examples_UpdateBookmark(t *testing.T) {
     remoteFileName:= "Sample.docx"
     bookmarkName:= "aspose"
 
-    requestBookmarkData := models.BookmarkData{
+    testBookmarkData := models.BookmarkData{
         Name: ToStringPointer(bookmarkName),
-        Text: ToStringPointer(bookmarkText),
+        Text: ToStringPointer("New Bookmark Text"),
     }
-    updateBookmarkOptions := map[string]interface{}{"destFileName": baseTestOutPath + "/" + remoteFileName,}
+    updateBookmarkOptions := map[string]interface{}{}
     updateBookmark := &models.UpdateBookmarkRequest{
         Name: ToStringPointer(remoteFileName),
         BookmarkName: ToStringPointer(bookmarkName),
-        BookmarkData: requestBookmarkData,
+        BookmarkData: testBookmarkData,
         Optionals: updateBookmarkOptions,
     }
     _, _, _ = wordsApi.UpdateBookmark(ctx, updateBookmark)
