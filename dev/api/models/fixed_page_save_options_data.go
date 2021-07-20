@@ -48,6 +48,9 @@ type FixedPageSaveOptionsDataResult struct {
     FileName string `json:"FileName,omitempty"`
 
     // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
+    ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
+
+    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
     SaveFormat string `json:"SaveFormat,omitempty"`
 
     // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
@@ -108,6 +111,9 @@ type FixedPageSaveOptionsData struct {
 
     // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
     FileName *string `json:"FileName,omitempty"`
+
+    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
+    ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
 
     // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
     SaveFormat *string `json:"SaveFormat,omitempty"`

@@ -48,6 +48,9 @@ type PsSaveOptionsDataResult struct {
     FileName string `json:"FileName,omitempty"`
 
     // Container class for ps save options.
+    ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
+
+    // Container class for ps save options.
     SaveFormat string `json:"SaveFormat,omitempty"`
 
     // Container class for ps save options.
@@ -111,6 +114,9 @@ type PsSaveOptionsData struct {
 
     // Container class for ps save options.
     FileName *string `json:"FileName,omitempty"`
+
+    // Container class for ps save options.
+    ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for ps save options.
     SaveFormat *string `json:"SaveFormat,omitempty"`

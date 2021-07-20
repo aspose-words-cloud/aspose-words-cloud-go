@@ -48,6 +48,9 @@ type RtfSaveOptionsDataResult struct {
     FileName string `json:"FileName,omitempty"`
 
     // Container class for rtf save options.
+    ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
+
+    // Container class for rtf save options.
     SaveFormat string `json:"SaveFormat,omitempty"`
 
     // Container class for rtf save options.
@@ -99,6 +102,9 @@ type RtfSaveOptionsData struct {
 
     // Container class for rtf save options.
     FileName *string `json:"FileName,omitempty"`
+
+    // Container class for rtf save options.
+    ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for rtf save options.
     SaveFormat *string `json:"SaveFormat,omitempty"`

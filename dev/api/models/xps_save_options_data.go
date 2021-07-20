@@ -48,6 +48,9 @@ type XpsSaveOptionsDataResult struct {
     FileName string `json:"FileName,omitempty"`
 
     // Container class for xps save options.
+    ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
+
+    // Container class for xps save options.
     SaveFormat string `json:"SaveFormat,omitempty"`
 
     // Container class for xps save options.
@@ -120,6 +123,9 @@ type XpsSaveOptionsData struct {
 
     // Container class for xps save options.
     FileName *string `json:"FileName,omitempty"`
+
+    // Container class for xps save options.
+    ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for xps save options.
     SaveFormat *string `json:"SaveFormat,omitempty"`

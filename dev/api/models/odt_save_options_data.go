@@ -48,6 +48,9 @@ type OdtSaveOptionsDataResult struct {
     FileName string `json:"FileName,omitempty"`
 
     // Container class for odt/ott save options.
+    ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
+
+    // Container class for odt/ott save options.
     SaveFormat string `json:"SaveFormat,omitempty"`
 
     // Container class for odt/ott save options.
@@ -99,6 +102,9 @@ type OdtSaveOptionsData struct {
 
     // Container class for odt/ott save options.
     FileName *string `json:"FileName,omitempty"`
+
+    // Container class for odt/ott save options.
+    ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for odt/ott save options.
     SaveFormat *string `json:"SaveFormat,omitempty"`
