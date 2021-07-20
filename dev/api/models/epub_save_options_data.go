@@ -48,6 +48,9 @@ type EpubSaveOptionsDataResult struct {
     FileName string `json:"FileName,omitempty"`
 
     // Container class for epub save options.
+    ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
+
+    // Container class for epub save options.
     SaveFormat string `json:"SaveFormat,omitempty"`
 
     // Container class for epub save options.
@@ -207,6 +210,9 @@ type EpubSaveOptionsData struct {
 
     // Container class for epub save options.
     FileName *string `json:"FileName,omitempty"`
+
+    // Container class for epub save options.
+    ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for epub save options.
     SaveFormat *string `json:"SaveFormat,omitempty"`

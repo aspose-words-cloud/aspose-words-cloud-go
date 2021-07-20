@@ -1,0 +1,17 @@
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+remoteFileName:= "Sample.docx"
+bookmarkName:= "aspose"
+
+testBookmarkData := models.BookmarkData{
+    Name: ToStringPointer(bookmarkName),
+    Text: ToStringPointer("New Bookmark Text"),
+}
+updateBookmarkOptions := map[string]interface{}{}
+updateBookmark := &models.UpdateBookmarkRequest{
+    Name: ToStringPointer(remoteFileName),
+    BookmarkName: ToStringPointer(bookmarkName),
+    BookmarkData: testBookmarkData,
+    Optionals: updateBookmarkOptions,
+}
+_, _, _ = wordsApi.UpdateBookmark(ctx, updateBookmark)

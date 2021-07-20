@@ -48,6 +48,9 @@ type TextSaveOptionsDataResult struct {
     FileName string `json:"FileName,omitempty"`
 
     // Container class for text save options.
+    ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
+
+    // Container class for text save options.
     SaveFormat string `json:"SaveFormat,omitempty"`
 
     // Container class for text save options.
@@ -84,6 +87,9 @@ type TextSaveOptionsDataResult struct {
     AddBidiMarks bool `json:"AddBidiMarks,omitempty"`
 
     // Container class for text save options.
+    MaxCharactersPerLine int32 `json:"MaxCharactersPerLine,omitempty"`
+
+    // Container class for text save options.
     PreserveTableLayout bool `json:"PreserveTableLayout,omitempty"`
 
     // Container class for text save options.
@@ -108,6 +114,9 @@ type TextSaveOptionsData struct {
 
     // Container class for text save options.
     FileName *string `json:"FileName,omitempty"`
+
+    // Container class for text save options.
+    ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for text save options.
     SaveFormat *string `json:"SaveFormat,omitempty"`
@@ -144,6 +153,9 @@ type TextSaveOptionsData struct {
 
     // Container class for text save options.
     AddBidiMarks *bool `json:"AddBidiMarks,omitempty"`
+
+    // Container class for text save options.
+    MaxCharactersPerLine *int32 `json:"MaxCharactersPerLine,omitempty"`
 
     // Container class for text save options.
     PreserveTableLayout *bool `json:"PreserveTableLayout,omitempty"`
