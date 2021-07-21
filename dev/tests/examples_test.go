@@ -61,26 +61,3 @@ func Test_Examples_AcceptAllRevisions(t *testing.T) {
 
 
 // func Test_Examples_AcceptAllRevisionsOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
-
-func Test_Examples_UpdateBookmark(t *testing.T) {
-    config := ReadConfiguration(t)
-    client, ctx := PrepareTest(t, config)
-    wordsApi := client.WordsApi
-    remoteFileName:= "Sample.docx"
-    bookmarkName:= "aspose"
-
-    testBookmarkData := models.BookmarkData{
-        Name: ToStringPointer(bookmarkName),
-        Text: ToStringPointer("New Bookmark Text"),
-    }
-    updateBookmarkOptions := map[string]interface{}{}
-    updateBookmark := &models.UpdateBookmarkRequest{
-        Name: ToStringPointer(remoteFileName),
-        BookmarkName: ToStringPointer(bookmarkName),
-        BookmarkData: testBookmarkData,
-        Optionals: updateBookmarkOptions,
-    }
-    _, _, _ = wordsApi.UpdateBookmark(ctx, updateBookmark)
-}
