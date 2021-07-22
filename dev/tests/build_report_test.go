@@ -42,7 +42,7 @@ func Test_BuildReport_BuildReportOnline(t *testing.T) {
     localDocumentFile := "ReportTemplate.docx"
     localDataFile := ReadFile(t, reportingFolder + "/ReportData.json")
 
-    reportEngineSettings := models.ReportEngineSettings{
+    requestReportEngineSettings := models.ReportEngineSettings{
         DataSourceType: ToStringPointer("Json"),
         DataSourceName: ToStringPointer("persons"),
     }
@@ -53,7 +53,7 @@ func Test_BuildReport_BuildReportOnline(t *testing.T) {
     request := &models.BuildReportOnlineRequest{
         Template: OpenFile(t, reportingFolder + "/" + localDocumentFile),
         Data: ToStringPointer(localDataFile),
-        ReportEngineSettings: reportEngineSettings,
+        ReportEngineSettings: requestReportEngineSettings,
         Optionals: options,
     }
 
@@ -76,13 +76,13 @@ func Test_BuildReport_BuildReport(t *testing.T) {
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(reportingFolder + "/" + localDocumentFile), remoteDataFolder + "/" + remoteFileName)
 
-    reportEngineSettingsReportBuildOptions := []string{
+    requestReportEngineSettingsReportBuildOptions := []string{
         "AllowMissingMembers",
         "RemoveEmptyParagraphs",
     }
-    reportEngineSettings := models.ReportEngineSettings{
+    requestReportEngineSettings := models.ReportEngineSettings{
         DataSourceType: ToStringPointer("Json"),
-        ReportBuildOptions: reportEngineSettingsReportBuildOptions,
+        ReportBuildOptions: requestReportEngineSettingsReportBuildOptions,
     }
 
     options := map[string]interface{}{
@@ -92,7 +92,7 @@ func Test_BuildReport_BuildReport(t *testing.T) {
     request := &models.BuildReportRequest{
         Name: ToStringPointer(remoteFileName),
         Data: ToStringPointer(localDataFile),
-        ReportEngineSettings: reportEngineSettings,
+        ReportEngineSettings: requestReportEngineSettings,
         Optionals: options,
     }
 

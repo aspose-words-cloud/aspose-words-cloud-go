@@ -44,7 +44,7 @@ func Test_Run_UpdateRun(t *testing.T) {
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-    run := models.RunUpdate{
+    requestRun := models.RunUpdate{
         Text: ToStringPointer("run with text"),
     }
 
@@ -56,7 +56,7 @@ func Test_Run_UpdateRun(t *testing.T) {
         Name: ToStringPointer(remoteFileName),
         ParagraphPath: ToStringPointer("paragraphs/1"),
         Index: ToInt32Pointer(int32(0)),
-        Run: run,
+        Run: requestRun,
         Optionals: options,
     }
 
@@ -75,7 +75,7 @@ func Test_Run_UpdateRunOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "DocumentElements/Runs/Run.doc"
 
-    run := models.RunUpdate{
+    requestRun := models.RunUpdate{
         Text: ToStringPointer("run with text"),
     }
 
@@ -85,7 +85,7 @@ func Test_Run_UpdateRunOnline(t *testing.T) {
     request := &models.UpdateRunOnlineRequest{
         Document: OpenFile(t, localFile),
         ParagraphPath: ToStringPointer("paragraphs/1"),
-        Run: run,
+        Run: requestRun,
         Index: ToInt32Pointer(int32(0)),
         Optionals: options,
     }
@@ -107,7 +107,7 @@ func Test_Run_InsertRun(t *testing.T) {
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-    run := models.RunInsert{
+    requestRun := models.RunInsert{
         Text: ToStringPointer("run with text"),
     }
 
@@ -118,7 +118,7 @@ func Test_Run_InsertRun(t *testing.T) {
     request := &models.InsertRunRequest{
         Name: ToStringPointer(remoteFileName),
         ParagraphPath: ToStringPointer("paragraphs/1"),
-        Run: run,
+        Run: requestRun,
         Optionals: options,
     }
 
@@ -138,7 +138,7 @@ func Test_Run_InsertRunOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "DocumentElements/Runs/Run.doc"
 
-    run := models.RunInsert{
+    requestRun := models.RunInsert{
         Text: ToStringPointer("run with text"),
     }
 
@@ -148,7 +148,7 @@ func Test_Run_InsertRunOnline(t *testing.T) {
     request := &models.InsertRunOnlineRequest{
         Document: OpenFile(t, localFile),
         ParagraphPath: ToStringPointer("paragraphs/1"),
-        Run: run,
+        Run: requestRun,
         Optionals: options,
     }
 

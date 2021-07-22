@@ -206,7 +206,7 @@ func Test_DocumentProperties_UpdateDocumentProperty(t *testing.T) {
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-    property := models.DocumentPropertyCreateOrUpdate{
+    requestProperty := models.DocumentPropertyCreateOrUpdate{
         Value: ToStringPointer("Imran Anwar"),
     }
 
@@ -218,7 +218,7 @@ func Test_DocumentProperties_UpdateDocumentProperty(t *testing.T) {
     request := &models.CreateOrUpdateDocumentPropertyRequest{
         Name: ToStringPointer(remoteFileName),
         PropertyName: ToStringPointer("AsposeAuthor"),
-        Property: property,
+        Property: requestProperty,
         Optionals: options,
     }
 
@@ -238,7 +238,7 @@ func Test_DocumentProperties_UpdateDocumentPropertyOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "Common/test_multi_pages.docx"
 
-    property := models.DocumentPropertyCreateOrUpdate{
+    requestProperty := models.DocumentPropertyCreateOrUpdate{
         Value: ToStringPointer("Imran Anwar"),
     }
 
@@ -248,7 +248,7 @@ func Test_DocumentProperties_UpdateDocumentPropertyOnline(t *testing.T) {
     request := &models.CreateOrUpdateDocumentPropertyOnlineRequest{
         Document: OpenFile(t, localFile),
         PropertyName: ToStringPointer("AsposeAuthor"),
-        Property: property,
+        Property: requestProperty,
         Optionals: options,
     }
 

@@ -101,7 +101,7 @@ func Test_Watermark_InsertWatermarkText(t *testing.T) {
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-    watermarkText := models.WatermarkText{
+    requestWatermarkText := models.WatermarkText{
         Text: ToStringPointer("This is the text"),
         RotationAngle: ToFloat64Pointer(90.0),
     }
@@ -113,7 +113,7 @@ func Test_Watermark_InsertWatermarkText(t *testing.T) {
 
     request := &models.InsertWatermarkTextRequest{
         Name: ToStringPointer(remoteFileName),
-        WatermarkText: watermarkText,
+        WatermarkText: requestWatermarkText,
         Optionals: options,
     }
 
@@ -132,7 +132,7 @@ func Test_Watermark_InsertWatermarkTextOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "Common/test_multi_pages.docx"
 
-    watermarkText := models.WatermarkText{
+    requestWatermarkText := models.WatermarkText{
         Text: ToStringPointer("This is the text"),
         RotationAngle: ToFloat64Pointer(90),
     }
@@ -142,7 +142,7 @@ func Test_Watermark_InsertWatermarkTextOnline(t *testing.T) {
 
     request := &models.InsertWatermarkTextOnlineRequest{
         Document: OpenFile(t, localFile),
-        WatermarkText: watermarkText,
+        WatermarkText: requestWatermarkText,
         Optionals: options,
     }
 

@@ -44,15 +44,15 @@ func Test_AppendDocument_AppendDocument(t *testing.T) {
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-    documentListDocumentEntries0 := models.DocumentEntry{
+    requestDocumentListDocumentEntries0 := models.DocumentEntry{
         Href: ToStringPointer(remoteDataFolder + "/" + remoteFileName),
         ImportFormatMode: ToStringPointer("KeepSourceFormatting"),
     }
-    documentListDocumentEntries := []models.DocumentEntry{
-        documentListDocumentEntries0,
+    requestDocumentListDocumentEntries := []models.DocumentEntry{
+        requestDocumentListDocumentEntries0,
     }
-    documentList := models.DocumentEntryList{
-        DocumentEntries: documentListDocumentEntries,
+    requestDocumentList := models.DocumentEntryList{
+        DocumentEntries: requestDocumentListDocumentEntries,
     }
 
     options := map[string]interface{}{
@@ -62,7 +62,7 @@ func Test_AppendDocument_AppendDocument(t *testing.T) {
 
     request := &models.AppendDocumentRequest{
         Name: ToStringPointer(remoteFileName),
-        DocumentList: documentList,
+        DocumentList: requestDocumentList,
         Optionals: options,
     }
 
@@ -85,15 +85,15 @@ func Test_AppendDocument_AppendDocumentOnline(t *testing.T) {
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-    documentListDocumentEntries0 := models.DocumentEntry{
+    requestDocumentListDocumentEntries0 := models.DocumentEntry{
         Href: ToStringPointer(remoteDataFolder + "/" + remoteFileName),
         ImportFormatMode: ToStringPointer("KeepSourceFormatting"),
     }
-    documentListDocumentEntries := []models.DocumentEntry{
-        documentListDocumentEntries0,
+    requestDocumentListDocumentEntries := []models.DocumentEntry{
+        requestDocumentListDocumentEntries0,
     }
-    documentList := models.DocumentEntryList{
-        DocumentEntries: documentListDocumentEntries,
+    requestDocumentList := models.DocumentEntryList{
+        DocumentEntries: requestDocumentListDocumentEntries,
     }
 
     options := map[string]interface{}{
@@ -101,7 +101,7 @@ func Test_AppendDocument_AppendDocumentOnline(t *testing.T) {
 
     request := &models.AppendDocumentOnlineRequest{
         Document: OpenFile(t, localFile),
-        DocumentList: documentList,
+        DocumentList: requestDocumentList,
         Optionals: options,
     }
 

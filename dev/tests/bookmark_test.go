@@ -147,7 +147,7 @@ func Test_Bookmark_UpdateBookmark(t *testing.T) {
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-    bookmarkData := models.BookmarkData{
+    requestBookmarkData := models.BookmarkData{
         Name: ToStringPointer(bookmarkName),
         Text: ToStringPointer(bookmarkText),
     }
@@ -160,7 +160,7 @@ func Test_Bookmark_UpdateBookmark(t *testing.T) {
     request := &models.UpdateBookmarkRequest{
         Name: ToStringPointer(remoteFileName),
         BookmarkName: ToStringPointer(bookmarkName),
-        BookmarkData: bookmarkData,
+        BookmarkData: requestBookmarkData,
         Optionals: options,
     }
 
@@ -179,7 +179,7 @@ func Test_Bookmark_UpdateBookmarkOnline(t *testing.T) {
     bookmarkName := "aspose"
     remoteFileName := "TestUpdateDocumentBookmark.docx"
 
-    bookmarkData := models.BookmarkData{
+    requestBookmarkData := models.BookmarkData{
         Name: ToStringPointer(bookmarkName),
         Text: ToStringPointer("This will be the text for Aspose"),
     }
@@ -191,7 +191,7 @@ func Test_Bookmark_UpdateBookmarkOnline(t *testing.T) {
     request := &models.UpdateBookmarkOnlineRequest{
         Document: OpenFile(t, localFile),
         BookmarkName: ToStringPointer(bookmarkName),
-        BookmarkData: bookmarkData,
+        BookmarkData: requestBookmarkData,
         Optionals: options,
     }
 

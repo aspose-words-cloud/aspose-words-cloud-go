@@ -260,12 +260,12 @@ func Test_TableBorder_UpdateBorder(t *testing.T) {
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-    borderPropertiesColor := models.XmlColor{
+    requestBorderPropertiesColor := models.XmlColor{
         Web: ToStringPointer("#AABBCC"),
     }
-    borderProperties := models.Border{
+    requestBorderProperties := models.Border{
         BorderType: ToStringPointer("Left"),
-        Color: borderPropertiesColor,
+        Color: requestBorderPropertiesColor,
         DistanceFromText: ToFloat64Pointer(6.0),
         LineStyle: ToStringPointer("DashDotStroker"),
         LineWidth: ToFloat64Pointer(2.0),
@@ -280,7 +280,7 @@ func Test_TableBorder_UpdateBorder(t *testing.T) {
     request := &models.UpdateBorderRequest{
         Name: ToStringPointer(remoteFileName),
         BorderType: ToStringPointer("left"),
-        BorderProperties: borderProperties,
+        BorderProperties: requestBorderProperties,
         Optionals: options,
     }
 
@@ -303,12 +303,12 @@ func Test_TableBorder_UpdateBorderOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "DocumentElements/Tables/TablesGet.docx"
 
-    borderPropertiesColor := models.XmlColor{
+    requestBorderPropertiesColor := models.XmlColor{
         Web: ToStringPointer("#AABBCC"),
     }
-    borderProperties := models.Border{
+    requestBorderProperties := models.Border{
         BorderType: ToStringPointer("Left"),
-        Color: borderPropertiesColor,
+        Color: requestBorderPropertiesColor,
         DistanceFromText: ToFloat64Pointer(6),
         LineStyle: ToStringPointer("DashDotStroker"),
         LineWidth: ToFloat64Pointer(2),
@@ -321,7 +321,7 @@ func Test_TableBorder_UpdateBorderOnline(t *testing.T) {
 
     request := &models.UpdateBorderOnlineRequest{
         Document: OpenFile(t, localFile),
-        BorderProperties: borderProperties,
+        BorderProperties: requestBorderProperties,
         BorderType: ToStringPointer("left"),
         Optionals: options,
     }

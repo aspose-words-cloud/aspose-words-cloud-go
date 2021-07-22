@@ -44,7 +44,7 @@ func Test_Text_ReplaceText(t *testing.T) {
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-    replaceText := models.ReplaceTextParameters{
+    requestReplaceText := models.ReplaceTextParameters{
         OldValue: ToStringPointer("Testing"),
         NewValue: ToStringPointer("Aspose testing"),
     }
@@ -56,7 +56,7 @@ func Test_Text_ReplaceText(t *testing.T) {
 
     request := &models.ReplaceTextRequest{
         Name: ToStringPointer(remoteFileName),
-        ReplaceText: replaceText,
+        ReplaceText: requestReplaceText,
         Optionals: options,
     }
 
@@ -74,7 +74,7 @@ func Test_Text_ReplaceTextOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "Common/test_multi_pages.docx"
 
-    replaceText := models.ReplaceTextParameters{
+    requestReplaceText := models.ReplaceTextParameters{
         OldValue: ToStringPointer("aspose"),
         NewValue: ToStringPointer("aspose new"),
     }
@@ -84,7 +84,7 @@ func Test_Text_ReplaceTextOnline(t *testing.T) {
 
     request := &models.ReplaceTextOnlineRequest{
         Document: OpenFile(t, localFile),
-        ReplaceText: replaceText,
+        ReplaceText: requestReplaceText,
         Optionals: options,
     }
 

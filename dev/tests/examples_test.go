@@ -40,10 +40,10 @@ func Test_Examples_AcceptAllRevisions(t *testing.T) {
     fileName := "test_doc.docx"
 
     // Upload original document to cloud storage.
-    fileContentFileData, _ := os.Open(documentsDir + "/" + fileName)
+    requestFileContentFileData, _ := os.Open(documentsDir + "/" + fileName)
     uploadFileRequestOptions := map[string]interface{}{}
     uploadFileRequest := &models.UploadFileRequest{
-        FileContent: fileContentFileData,
+        FileContent: requestFileContentFileData,
         Path: ToStringPointer(fileName),
         Optionals: uploadFileRequestOptions,
     }

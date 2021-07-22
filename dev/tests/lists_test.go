@@ -150,7 +150,7 @@ func Test_Lists_UpdateList(t *testing.T) {
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-    listUpdate := models.ListUpdate{
+    requestListUpdate := models.ListUpdate{
         IsRestartAtEachSection: ToBoolPointer(true),
     }
 
@@ -161,7 +161,7 @@ func Test_Lists_UpdateList(t *testing.T) {
     request := &models.UpdateListRequest{
         Name: ToStringPointer(remoteFileName),
         ListId: ToInt32Pointer(int32(1)),
-        ListUpdate: listUpdate,
+        ListUpdate: requestListUpdate,
         Optionals: options,
     }
 
@@ -178,7 +178,7 @@ func Test_Lists_UpdateListOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "DocumentElements/Lists/ListsGet.doc"
 
-    listUpdate := models.ListUpdate{
+    requestListUpdate := models.ListUpdate{
         IsRestartAtEachSection: ToBoolPointer(true),
     }
 
@@ -188,7 +188,7 @@ func Test_Lists_UpdateListOnline(t *testing.T) {
     request := &models.UpdateListOnlineRequest{
         Document: OpenFile(t, localFile),
         ListId: ToInt32Pointer(int32(1)),
-        ListUpdate: listUpdate,
+        ListUpdate: requestListUpdate,
         Optionals: options,
     }
 
@@ -212,7 +212,7 @@ func Test_Lists_UpdateListLevel(t *testing.T) {
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-    listUpdate := models.ListLevelUpdate{
+    requestListUpdate := models.ListLevelUpdate{
         Alignment: ToStringPointer("Right"),
     }
 
@@ -224,7 +224,7 @@ func Test_Lists_UpdateListLevel(t *testing.T) {
         Name: ToStringPointer(remoteFileName),
         ListId: ToInt32Pointer(int32(1)),
         ListLevel: ToInt32Pointer(int32(1)),
-        ListUpdate: listUpdate,
+        ListUpdate: requestListUpdate,
         Optionals: options,
     }
 
@@ -241,7 +241,7 @@ func Test_Lists_UpdateListLevelOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "DocumentElements/Lists/ListsGet.doc"
 
-    listUpdate := models.ListLevelUpdate{
+    requestListUpdate := models.ListLevelUpdate{
         Alignment: ToStringPointer("Right"),
     }
 
@@ -251,7 +251,7 @@ func Test_Lists_UpdateListLevelOnline(t *testing.T) {
     request := &models.UpdateListLevelOnlineRequest{
         Document: OpenFile(t, localFile),
         ListId: ToInt32Pointer(int32(1)),
-        ListUpdate: listUpdate,
+        ListUpdate: requestListUpdate,
         ListLevel: ToInt32Pointer(int32(1)),
         Optionals: options,
     }
@@ -278,7 +278,7 @@ func Test_Lists_InsertList(t *testing.T) {
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-    listInsert := models.ListInsert{
+    requestListInsert := models.ListInsert{
         Template: ToStringPointer("OutlineLegal"),
     }
 
@@ -288,7 +288,7 @@ func Test_Lists_InsertList(t *testing.T) {
 
     request := &models.InsertListRequest{
         Name: ToStringPointer(remoteFileName),
-        ListInsert: listInsert,
+        ListInsert: requestListInsert,
         Optionals: options,
     }
 
@@ -307,7 +307,7 @@ func Test_Lists_InsertListOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "DocumentElements/Lists/ListsGet.doc"
 
-    listInsert := models.ListInsert{
+    requestListInsert := models.ListInsert{
         Template: ToStringPointer("OutlineLegal"),
     }
 
@@ -316,7 +316,7 @@ func Test_Lists_InsertListOnline(t *testing.T) {
 
     request := &models.InsertListOnlineRequest{
         Document: OpenFile(t, localFile),
-        ListInsert: listInsert,
+        ListInsert: requestListInsert,
         Optionals: options,
     }
 

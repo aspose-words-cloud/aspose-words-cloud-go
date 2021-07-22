@@ -448,7 +448,7 @@ func Test_DrawingObjects_InsertDrawingObject(t *testing.T) {
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-    drawingObject := models.DrawingObjectInsert{
+    requestDrawingObject := models.DrawingObjectInsert{
         Height: ToFloat64Pointer(0),
         Left: ToFloat64Pointer(0),
         Top: ToFloat64Pointer(0),
@@ -465,7 +465,7 @@ func Test_DrawingObjects_InsertDrawingObject(t *testing.T) {
 
     request := &models.InsertDrawingObjectRequest{
         Name: ToStringPointer(remoteFileName),
-        DrawingObject: drawingObject,
+        DrawingObject: requestDrawingObject,
         ImageFile: OpenFile(t, "Common/aspose-cloud.png"),
         Optionals: options,
     }
@@ -483,7 +483,7 @@ func Test_DrawingObjects_InsertDrawingObjectOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "Common/test_multi_pages.docx"
 
-    drawingObject := models.DrawingObjectInsert{
+    requestDrawingObject := models.DrawingObjectInsert{
         Height: ToFloat64Pointer(0),
         Left: ToFloat64Pointer(0),
         Top: ToFloat64Pointer(0),
@@ -499,7 +499,7 @@ func Test_DrawingObjects_InsertDrawingObjectOnline(t *testing.T) {
 
     request := &models.InsertDrawingObjectOnlineRequest{
         Document: OpenFile(t, localFile),
-        DrawingObject: drawingObject,
+        DrawingObject: requestDrawingObject,
         ImageFile: OpenFile(t, "Common/aspose-cloud.png"),
         Optionals: options,
     }
@@ -521,7 +521,7 @@ func Test_DrawingObjects_InsertDrawingObjectWithoutNodePath(t *testing.T) {
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-    drawingObject := models.DrawingObjectInsert{
+    requestDrawingObject := models.DrawingObjectInsert{
         Height: ToFloat64Pointer(0),
         Left: ToFloat64Pointer(0),
         Top: ToFloat64Pointer(0),
@@ -537,7 +537,7 @@ func Test_DrawingObjects_InsertDrawingObjectWithoutNodePath(t *testing.T) {
 
     request := &models.InsertDrawingObjectRequest{
         Name: ToStringPointer(remoteFileName),
-        DrawingObject: drawingObject,
+        DrawingObject: requestDrawingObject,
         ImageFile: OpenFile(t, "Common/aspose-cloud.png"),
         Optionals: options,
     }
@@ -642,7 +642,7 @@ func Test_DrawingObjects_UpdateDrawingObject(t *testing.T) {
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-    drawingObject := models.DrawingObjectUpdate{
+    requestDrawingObject := models.DrawingObjectUpdate{
         Left: ToFloat64Pointer(0),
     }
 
@@ -653,7 +653,7 @@ func Test_DrawingObjects_UpdateDrawingObject(t *testing.T) {
 
     request := &models.UpdateDrawingObjectRequest{
         Name: ToStringPointer(remoteFileName),
-        DrawingObject: drawingObject,
+        DrawingObject: requestDrawingObject,
         ImageFile: OpenFile(t, "Common/aspose-cloud.png"),
         Index: ToInt32Pointer(int32(0)),
         Optionals: options,
@@ -672,7 +672,7 @@ func Test_DrawingObjects_UpdateDrawingObjectOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "Common/test_multi_pages.docx"
 
-    drawingObject := models.DrawingObjectUpdate{
+    requestDrawingObject := models.DrawingObjectUpdate{
         Left: ToFloat64Pointer(0),
     }
 
@@ -682,7 +682,7 @@ func Test_DrawingObjects_UpdateDrawingObjectOnline(t *testing.T) {
 
     request := &models.UpdateDrawingObjectOnlineRequest{
         Document: OpenFile(t, localFile),
-        DrawingObject: drawingObject,
+        DrawingObject: requestDrawingObject,
         ImageFile: OpenFile(t, "Common/aspose-cloud.png"),
         Index: ToInt32Pointer(int32(0)),
         Optionals: options,
@@ -705,7 +705,7 @@ func Test_DrawingObjects_UpdateDrawingObjectWithoutNodePath(t *testing.T) {
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-    drawingObject := models.DrawingObjectUpdate{
+    requestDrawingObject := models.DrawingObjectUpdate{
         Left: ToFloat64Pointer(0),
     }
 
@@ -715,7 +715,7 @@ func Test_DrawingObjects_UpdateDrawingObjectWithoutNodePath(t *testing.T) {
 
     request := &models.UpdateDrawingObjectRequest{
         Name: ToStringPointer(remoteFileName),
-        DrawingObject: drawingObject,
+        DrawingObject: requestDrawingObject,
         ImageFile: OpenFile(t, "Common/aspose-cloud.png"),
         Index: ToInt32Pointer(int32(0)),
         Optionals: options,
