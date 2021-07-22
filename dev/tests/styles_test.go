@@ -149,7 +149,7 @@ func Test_Styles_UpdateStyle(t *testing.T) {
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-    requestStyleUpdate := models.StyleUpdate{
+    styleUpdate := models.StyleUpdate{
         Name: ToStringPointer("My Style"),
     }
 
@@ -160,7 +160,7 @@ func Test_Styles_UpdateStyle(t *testing.T) {
     request := &models.UpdateStyleRequest{
         Name: ToStringPointer(remoteFileName),
         StyleName: ToStringPointer("Heading 1"),
-        StyleUpdate: requestStyleUpdate,
+        StyleUpdate: styleUpdate,
         Optionals: options,
     }
 
@@ -179,7 +179,7 @@ func Test_Styles_UpdateStyleOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "DocumentElements/Styles/GetStyles.docx"
 
-    requestStyleUpdate := models.StyleUpdate{
+    styleUpdate := models.StyleUpdate{
         Name: ToStringPointer("My Style"),
     }
 
@@ -189,7 +189,7 @@ func Test_Styles_UpdateStyleOnline(t *testing.T) {
     request := &models.UpdateStyleOnlineRequest{
         Document: OpenFile(t, localFile),
         StyleName: ToStringPointer("Heading 1"),
-        StyleUpdate: requestStyleUpdate,
+        StyleUpdate: styleUpdate,
         Optionals: options,
     }
 
@@ -210,7 +210,7 @@ func Test_Styles_InsertStyle(t *testing.T) {
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-    requestStyleInsert := models.StyleInsert{
+    styleInsert := models.StyleInsert{
         StyleName: ToStringPointer("My Style"),
         StyleType: ToStringPointer("Paragraph"),
     }
@@ -221,7 +221,7 @@ func Test_Styles_InsertStyle(t *testing.T) {
 
     request := &models.InsertStyleRequest{
         Name: ToStringPointer(remoteFileName),
-        StyleInsert: requestStyleInsert,
+        StyleInsert: styleInsert,
         Optionals: options,
     }
 
@@ -240,7 +240,7 @@ func Test_Styles_InsertStyleOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "DocumentElements/Styles/GetStyles.docx"
 
-    requestStyleInsert := models.StyleInsert{
+    styleInsert := models.StyleInsert{
         StyleName: ToStringPointer("My Style"),
         StyleType: ToStringPointer("Paragraph"),
     }
@@ -250,7 +250,7 @@ func Test_Styles_InsertStyleOnline(t *testing.T) {
 
     request := &models.InsertStyleOnlineRequest{
         Document: OpenFile(t, localFile),
-        StyleInsert: requestStyleInsert,
+        StyleInsert: styleInsert,
         Optionals: options,
     }
 
@@ -271,7 +271,7 @@ func Test_Styles_CopyStyle(t *testing.T) {
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-    requestStyleCopy := models.StyleCopy{
+    styleCopy := models.StyleCopy{
         StyleName: ToStringPointer("Heading 1"),
     }
 
@@ -281,7 +281,7 @@ func Test_Styles_CopyStyle(t *testing.T) {
 
     request := &models.CopyStyleRequest{
         Name: ToStringPointer(remoteFileName),
-        StyleCopy: requestStyleCopy,
+        StyleCopy: styleCopy,
         Optionals: options,
     }
 
@@ -300,7 +300,7 @@ func Test_Styles_CopyStyleOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "DocumentElements/Styles/GetStyles.docx"
 
-    requestStyleCopy := models.StyleCopy{
+    styleCopy := models.StyleCopy{
         StyleName: ToStringPointer("Heading 1"),
     }
 
@@ -309,7 +309,7 @@ func Test_Styles_CopyStyleOnline(t *testing.T) {
 
     request := &models.CopyStyleOnlineRequest{
         Document: OpenFile(t, localFile),
-        StyleCopy: requestStyleCopy,
+        StyleCopy: styleCopy,
         Optionals: options,
     }
 
@@ -383,7 +383,7 @@ func Test_Styles_ApplyStyleToDocumentElement(t *testing.T) {
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-    requestStyleApply := models.StyleApply{
+    styleApply := models.StyleApply{
         StyleName: ToStringPointer("Heading 1"),
     }
 
@@ -394,7 +394,7 @@ func Test_Styles_ApplyStyleToDocumentElement(t *testing.T) {
     request := &models.ApplyStyleToDocumentElementRequest{
         Name: ToStringPointer(remoteFileName),
         StyledNodePath: ToStringPointer("paragraphs/1/paragraphFormat"),
-        StyleApply: requestStyleApply,
+        StyleApply: styleApply,
         Optionals: options,
     }
 
@@ -411,7 +411,7 @@ func Test_Styles_ApplyStyleToDocumentElementOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "DocumentElements/Styles/GetStyles.docx"
 
-    requestStyleApply := models.StyleApply{
+    styleApply := models.StyleApply{
         StyleName: ToStringPointer("Heading 1"),
     }
 
@@ -421,7 +421,7 @@ func Test_Styles_ApplyStyleToDocumentElementOnline(t *testing.T) {
     request := &models.ApplyStyleToDocumentElementOnlineRequest{
         Document: OpenFile(t, localFile),
         StyledNodePath: ToStringPointer("paragraphs/1/paragraphFormat"),
-        StyleApply: requestStyleApply,
+        StyleApply: styleApply,
         Optionals: options,
     }
 

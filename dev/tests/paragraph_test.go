@@ -380,7 +380,7 @@ func Test_Paragraph_UpdateRunFont(t *testing.T) {
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-    requestFontDto := models.Font{
+    fontDto := models.Font{
         Bold: ToBoolPointer(true),
     }
 
@@ -393,7 +393,7 @@ func Test_Paragraph_UpdateRunFont(t *testing.T) {
         Name: ToStringPointer(remoteFileName),
         ParagraphPath: ToStringPointer("paragraphs/0"),
         Index: ToInt32Pointer(int32(0)),
-        FontDto: requestFontDto,
+        FontDto: fontDto,
         Optionals: options,
     }
 
@@ -412,7 +412,7 @@ func Test_Paragraph_UpdateRunFontOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "Common/test_multi_pages.docx"
 
-    requestFontDto := models.Font{
+    fontDto := models.Font{
         Bold: ToBoolPointer(true),
     }
 
@@ -422,7 +422,7 @@ func Test_Paragraph_UpdateRunFontOnline(t *testing.T) {
     request := &models.UpdateRunFontOnlineRequest{
         Document: OpenFile(t, localFile),
         ParagraphPath: ToStringPointer("paragraphs/0"),
-        FontDto: requestFontDto,
+        FontDto: fontDto,
         Index: ToInt32Pointer(int32(0)),
         Optionals: options,
     }
@@ -444,7 +444,7 @@ func Test_Paragraph_InsertParagraph(t *testing.T) {
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-    requestParagraph := models.ParagraphInsert{
+    paragraph := models.ParagraphInsert{
         Text: ToStringPointer("This is a new paragraph for your document"),
     }
 
@@ -455,7 +455,7 @@ func Test_Paragraph_InsertParagraph(t *testing.T) {
 
     request := &models.InsertParagraphRequest{
         Name: ToStringPointer(remoteFileName),
-        Paragraph: requestParagraph,
+        Paragraph: paragraph,
         Optionals: options,
     }
 
@@ -474,7 +474,7 @@ func Test_Paragraph_InsertParagraphOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "Common/test_multi_pages.docx"
 
-    requestParagraph := models.ParagraphInsert{
+    paragraph := models.ParagraphInsert{
         Text: ToStringPointer("This is a new paragraph for your document"),
     }
 
@@ -484,7 +484,7 @@ func Test_Paragraph_InsertParagraphOnline(t *testing.T) {
 
     request := &models.InsertParagraphOnlineRequest{
         Document: OpenFile(t, localFile),
-        Paragraph: requestParagraph,
+        Paragraph: paragraph,
         Optionals: options,
     }
 
@@ -505,7 +505,7 @@ func Test_Paragraph_InsertParagraphWithoutNodePath(t *testing.T) {
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-    requestParagraph := models.ParagraphInsert{
+    paragraph := models.ParagraphInsert{
         Text: ToStringPointer("This is a new paragraph for your document"),
     }
 
@@ -515,7 +515,7 @@ func Test_Paragraph_InsertParagraphWithoutNodePath(t *testing.T) {
 
     request := &models.InsertParagraphRequest{
         Name: ToStringPointer(remoteFileName),
-        Paragraph: requestParagraph,
+        Paragraph: paragraph,
         Optionals: options,
     }
 
@@ -707,7 +707,7 @@ func Test_Paragraph_UpdateParagraphFormat(t *testing.T) {
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-    requestParagraphFormatDto := models.ParagraphFormatUpdate{
+    paragraphFormatDto := models.ParagraphFormatUpdate{
         Alignment: ToStringPointer("Right"),
     }
 
@@ -719,7 +719,7 @@ func Test_Paragraph_UpdateParagraphFormat(t *testing.T) {
     request := &models.UpdateParagraphFormatRequest{
         Name: ToStringPointer(remoteFileName),
         Index: ToInt32Pointer(int32(0)),
-        ParagraphFormatDto: requestParagraphFormatDto,
+        ParagraphFormatDto: paragraphFormatDto,
         Optionals: options,
     }
 
@@ -738,7 +738,7 @@ func Test_Paragraph_UpdateParagraphFormatOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "Common/test_multi_pages.docx"
 
-    requestParagraphFormatDto := models.ParagraphFormatUpdate{
+    paragraphFormatDto := models.ParagraphFormatUpdate{
         Alignment: ToStringPointer("Right"),
     }
 
@@ -748,7 +748,7 @@ func Test_Paragraph_UpdateParagraphFormatOnline(t *testing.T) {
 
     request := &models.UpdateParagraphFormatOnlineRequest{
         Document: OpenFile(t, localFile),
-        ParagraphFormatDto: requestParagraphFormatDto,
+        ParagraphFormatDto: paragraphFormatDto,
         Index: ToInt32Pointer(int32(0)),
         Optionals: options,
     }
@@ -938,7 +938,7 @@ func Test_Paragraph_UpdateParagraphListFormat(t *testing.T) {
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(listFolder + "/ParagraphUpdateListFormat.doc"), remoteDataFolder + "/" + remoteFileName)
 
-    requestListFormatDto := models.ListFormatUpdate{
+    listFormatDto := models.ListFormatUpdate{
         ListId: ToInt32Pointer(int32(2)),
     }
 
@@ -950,7 +950,7 @@ func Test_Paragraph_UpdateParagraphListFormat(t *testing.T) {
     request := &models.UpdateParagraphListFormatRequest{
         Name: ToStringPointer(remoteFileName),
         Index: ToInt32Pointer(int32(0)),
-        ListFormatDto: requestListFormatDto,
+        ListFormatDto: listFormatDto,
         Optionals: options,
     }
 
@@ -969,7 +969,7 @@ func Test_Paragraph_UpdateParagraphListFormatOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     listFolder := "DocumentElements/ParagraphListFormat"
 
-    requestListFormatDto := models.ListFormatUpdate{
+    listFormatDto := models.ListFormatUpdate{
         ListId: ToInt32Pointer(int32(2)),
     }
 
@@ -979,7 +979,7 @@ func Test_Paragraph_UpdateParagraphListFormatOnline(t *testing.T) {
 
     request := &models.UpdateParagraphListFormatOnlineRequest{
         Document: OpenFile(t, listFolder + "/ParagraphUpdateListFormat.doc"),
-        ListFormatDto: requestListFormatDto,
+        ListFormatDto: listFormatDto,
         Index: ToInt32Pointer(int32(0)),
         Optionals: options,
     }
@@ -1001,7 +1001,7 @@ func Test_Paragraph_UpdateParagraphListFormatWithoutNodePath(t *testing.T) {
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(listFolder + "/ParagraphUpdateListFormat.doc"), remoteDataFolder + "/" + remoteFileName)
 
-    requestListFormatDto := models.ListFormatUpdate{
+    listFormatDto := models.ListFormatUpdate{
         ListId: ToInt32Pointer(int32(2)),
     }
 
@@ -1012,7 +1012,7 @@ func Test_Paragraph_UpdateParagraphListFormatWithoutNodePath(t *testing.T) {
     request := &models.UpdateParagraphListFormatRequest{
         Name: ToStringPointer(remoteFileName),
         Index: ToInt32Pointer(int32(0)),
-        ListFormatDto: requestListFormatDto,
+        ListFormatDto: listFormatDto,
         Optionals: options,
     }
 
@@ -1203,7 +1203,7 @@ func Test_Paragraph_InsertParagraphTabStops(t *testing.T) {
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(tabStopFolder + "/ParagraphTabStops.docx"), remoteDataFolder + "/" + remoteFileName)
 
-    requestTabStopInsertDto := models.TabStopInsert{
+    tabStopInsertDto := models.TabStopInsert{
         Alignment: ToStringPointer("Left"),
         Leader: ToStringPointer("None"),
         Position: ToFloat64Pointer(100.0),
@@ -1217,7 +1217,7 @@ func Test_Paragraph_InsertParagraphTabStops(t *testing.T) {
     request := &models.InsertOrUpdateParagraphTabStopRequest{
         Name: ToStringPointer(remoteFileName),
         Index: ToInt32Pointer(int32(0)),
-        TabStopInsertDto: requestTabStopInsertDto,
+        TabStopInsertDto: tabStopInsertDto,
         Optionals: options,
     }
 
@@ -1239,7 +1239,7 @@ func Test_Paragraph_InsertParagraphTabStopsOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     tabStopFolder := "DocumentElements/Paragraphs"
 
-    requestTabStopInsertDto := models.TabStopInsert{
+    tabStopInsertDto := models.TabStopInsert{
         Alignment: ToStringPointer("Left"),
         Leader: ToStringPointer("None"),
         Position: ToFloat64Pointer(72),
@@ -1251,7 +1251,7 @@ func Test_Paragraph_InsertParagraphTabStopsOnline(t *testing.T) {
 
     request := &models.InsertOrUpdateParagraphTabStopOnlineRequest{
         Document: OpenFile(t, tabStopFolder + "/ParagraphTabStops.docx"),
-        TabStopInsertDto: requestTabStopInsertDto,
+        TabStopInsertDto: tabStopInsertDto,
         Index: ToInt32Pointer(int32(0)),
         Optionals: options,
     }
@@ -1273,7 +1273,7 @@ func Test_Paragraph_InsertParagraphTabStopsWithoutNodePath(t *testing.T) {
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(tabStopFolder + "/ParagraphTabStops.docx"), remoteDataFolder + "/" + remoteFileName)
 
-    requestTabStopInsertDto := models.TabStopInsert{
+    tabStopInsertDto := models.TabStopInsert{
         Alignment: ToStringPointer("Left"),
         Leader: ToStringPointer("None"),
         Position: ToFloat64Pointer(100.0),
@@ -1286,7 +1286,7 @@ func Test_Paragraph_InsertParagraphTabStopsWithoutNodePath(t *testing.T) {
     request := &models.InsertOrUpdateParagraphTabStopRequest{
         Name: ToStringPointer(remoteFileName),
         Index: ToInt32Pointer(int32(0)),
-        TabStopInsertDto: requestTabStopInsertDto,
+        TabStopInsertDto: tabStopInsertDto,
         Optionals: options,
     }
 

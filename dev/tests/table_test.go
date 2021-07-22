@@ -304,7 +304,7 @@ func Test_Table_InsertTable(t *testing.T) {
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-    requestTable := models.TableInsert{
+    table := models.TableInsert{
         ColumnsCount: ToInt32Pointer(int32(5)),
         RowsCount: ToInt32Pointer(int32(4)),
     }
@@ -316,7 +316,7 @@ func Test_Table_InsertTable(t *testing.T) {
 
     request := &models.InsertTableRequest{
         Name: ToStringPointer(remoteFileName),
-        Table: requestTable,
+        Table: table,
         Optionals: options,
     }
 
@@ -338,7 +338,7 @@ func Test_Table_InsertTableOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "DocumentElements/Tables/TablesGet.docx"
 
-    requestTable := models.TableInsert{
+    table := models.TableInsert{
         ColumnsCount: ToInt32Pointer(int32(5)),
         RowsCount: ToInt32Pointer(int32(4)),
     }
@@ -349,7 +349,7 @@ func Test_Table_InsertTableOnline(t *testing.T) {
 
     request := &models.InsertTableOnlineRequest{
         Document: OpenFile(t, localFile),
-        Table: requestTable,
+        Table: table,
         Optionals: options,
     }
 
@@ -370,7 +370,7 @@ func Test_Table_InsertTableWithoutNodePath(t *testing.T) {
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-    requestTable := models.TableInsert{
+    table := models.TableInsert{
         ColumnsCount: ToInt32Pointer(int32(5)),
         RowsCount: ToInt32Pointer(int32(4)),
     }
@@ -381,7 +381,7 @@ func Test_Table_InsertTableWithoutNodePath(t *testing.T) {
 
     request := &models.InsertTableRequest{
         Name: ToStringPointer(remoteFileName),
-        Table: requestTable,
+        Table: table,
         Optionals: options,
     }
 
@@ -492,7 +492,7 @@ func Test_Table_UpdateTableProperties(t *testing.T) {
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-    requestProperties := models.TableProperties{
+    properties := models.TableProperties{
         Alignment: ToStringPointer("Right"),
         AllowAutoFit: ToBoolPointer(false),
         Bidi: ToBoolPointer(true),
@@ -509,7 +509,7 @@ func Test_Table_UpdateTableProperties(t *testing.T) {
     request := &models.UpdateTablePropertiesRequest{
         Name: ToStringPointer(remoteFileName),
         Index: ToInt32Pointer(int32(1)),
-        Properties: requestProperties,
+        Properties: properties,
         Optionals: options,
     }
 
@@ -531,7 +531,7 @@ func Test_Table_UpdateTablePropertiesOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "DocumentElements/Tables/TablesGet.docx"
 
-    requestProperties := models.TableProperties{
+    properties := models.TableProperties{
         Alignment: ToStringPointer("Right"),
         AllowAutoFit: ToBoolPointer(false),
         Bidi: ToBoolPointer(true),
@@ -546,7 +546,7 @@ func Test_Table_UpdateTablePropertiesOnline(t *testing.T) {
 
     request := &models.UpdateTablePropertiesOnlineRequest{
         Document: OpenFile(t, localFile),
-        Properties: requestProperties,
+        Properties: properties,
         Index: ToInt32Pointer(int32(1)),
         Optionals: options,
     }
@@ -568,7 +568,7 @@ func Test_Table_UpdateTablePropertiesWithoutNodePath(t *testing.T) {
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-    requestProperties := models.TableProperties{
+    properties := models.TableProperties{
         Alignment: ToStringPointer("Right"),
         AllowAutoFit: ToBoolPointer(false),
         Bidi: ToBoolPointer(true),
@@ -584,7 +584,7 @@ func Test_Table_UpdateTablePropertiesWithoutNodePath(t *testing.T) {
     request := &models.UpdateTablePropertiesRequest{
         Name: ToStringPointer(remoteFileName),
         Index: ToInt32Pointer(int32(1)),
-        Properties: requestProperties,
+        Properties: properties,
         Optionals: options,
     }
 
@@ -720,7 +720,7 @@ func Test_Table_InsertTableRow(t *testing.T) {
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-    requestRow := models.TableRowInsert{
+    row := models.TableRowInsert{
         ColumnsCount: ToInt32Pointer(int32(5)),
     }
 
@@ -731,7 +731,7 @@ func Test_Table_InsertTableRow(t *testing.T) {
     request := &models.InsertTableRowRequest{
         Name: ToStringPointer(remoteFileName),
         TablePath: ToStringPointer("sections/0/tables/2"),
-        Row: requestRow,
+        Row: row,
         Optionals: options,
     }
 
@@ -751,7 +751,7 @@ func Test_Table_InsertTableRowOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "DocumentElements/Tables/TablesGet.docx"
 
-    requestRow := models.TableRowInsert{
+    row := models.TableRowInsert{
         ColumnsCount: ToInt32Pointer(int32(5)),
     }
 
@@ -761,7 +761,7 @@ func Test_Table_InsertTableRowOnline(t *testing.T) {
     request := &models.InsertTableRowOnlineRequest{
         Document: OpenFile(t, localFile),
         TablePath: ToStringPointer("sections/0/tables/2"),
-        Row: requestRow,
+        Row: row,
         Optionals: options,
     }
 
@@ -837,7 +837,7 @@ func Test_Table_UpdateTableRowFormat(t *testing.T) {
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-    requestFormat := models.TableRowFormat{
+    format := models.TableRowFormat{
         AllowBreakAcrossPages: ToBoolPointer(true),
         HeadingFormat: ToBoolPointer(true),
         Height: ToFloat64Pointer(10.0),
@@ -852,7 +852,7 @@ func Test_Table_UpdateTableRowFormat(t *testing.T) {
         Name: ToStringPointer(remoteFileName),
         TablePath: ToStringPointer("sections/0/tables/2"),
         Index: ToInt32Pointer(int32(0)),
-        Format: requestFormat,
+        Format: format,
         Optionals: options,
     }
 
@@ -873,7 +873,7 @@ func Test_Table_UpdateTableRowFormatOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "DocumentElements/Tables/TablesGet.docx"
 
-    requestFormat := models.TableRowFormat{
+    format := models.TableRowFormat{
         AllowBreakAcrossPages: ToBoolPointer(true),
         HeadingFormat: ToBoolPointer(true),
         Height: ToFloat64Pointer(10),
@@ -886,7 +886,7 @@ func Test_Table_UpdateTableRowFormatOnline(t *testing.T) {
     request := &models.UpdateTableRowFormatOnlineRequest{
         Document: OpenFile(t, localFile),
         TablePath: ToStringPointer("sections/0/tables/2"),
-        Format: requestFormat,
+        Format: format,
         Index: ToInt32Pointer(int32(0)),
         Optionals: options,
     }
@@ -1017,7 +1017,7 @@ func Test_Table_InsertTableCell(t *testing.T) {
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-    requestCell := models.TableCellInsert{
+    cell := models.TableCellInsert{
     }
 
     options := map[string]interface{}{
@@ -1027,7 +1027,7 @@ func Test_Table_InsertTableCell(t *testing.T) {
     request := &models.InsertTableCellRequest{
         Name: ToStringPointer(remoteFileName),
         TableRowPath: ToStringPointer("sections/0/tables/2/rows/0"),
-        Cell: requestCell,
+        Cell: cell,
         Optionals: options,
     }
 
@@ -1046,7 +1046,7 @@ func Test_Table_InsertTableCellOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "DocumentElements/Tables/TablesGet.docx"
 
-    requestCell := models.TableCellInsert{
+    cell := models.TableCellInsert{
     }
 
     options := map[string]interface{}{
@@ -1055,7 +1055,7 @@ func Test_Table_InsertTableCellOnline(t *testing.T) {
     request := &models.InsertTableCellOnlineRequest{
         Document: OpenFile(t, localFile),
         TableRowPath: ToStringPointer("sections/0/tables/2/rows/0"),
-        Cell: requestCell,
+        Cell: cell,
         Optionals: options,
     }
 
@@ -1131,7 +1131,7 @@ func Test_Table_UpdateTableCellFormat(t *testing.T) {
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-    requestFormat := models.TableCellFormat{
+    format := models.TableCellFormat{
         BottomPadding: ToFloat64Pointer(5.0),
         FitText: ToBoolPointer(true),
         HorizontalMerge: ToStringPointer("First"),
@@ -1146,7 +1146,7 @@ func Test_Table_UpdateTableCellFormat(t *testing.T) {
         Name: ToStringPointer(remoteFileName),
         TableRowPath: ToStringPointer("sections/0/tables/2/rows/0"),
         Index: ToInt32Pointer(int32(0)),
-        Format: requestFormat,
+        Format: format,
         Optionals: options,
     }
 
@@ -1167,7 +1167,7 @@ func Test_Table_UpdateTableCellFormatOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "DocumentElements/Tables/TablesGet.docx"
 
-    requestFormat := models.TableCellFormat{
+    format := models.TableCellFormat{
         BottomPadding: ToFloat64Pointer(5),
         FitText: ToBoolPointer(true),
         HorizontalMerge: ToStringPointer("First"),
@@ -1180,7 +1180,7 @@ func Test_Table_UpdateTableCellFormatOnline(t *testing.T) {
     request := &models.UpdateTableCellFormatOnlineRequest{
         Document: OpenFile(t, localFile),
         TableRowPath: ToStringPointer("sections/0/tables/2/rows/0"),
-        Format: requestFormat,
+        Format: format,
         Index: ToInt32Pointer(int32(0)),
         Optionals: options,
     }

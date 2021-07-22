@@ -38,7 +38,7 @@ import (
 func Test_LoadWebDocument_LoadWebDocument(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
-    requestDataSaveOptions := models.SaveOptionsData{
+    dataSaveOptions := models.SaveOptionsData{
         FileName: ToStringPointer("google.doc"),
         SaveFormat: ToStringPointer("doc"),
         DmlEffectsRenderingMode: ToStringPointer("1"),
@@ -46,16 +46,16 @@ func Test_LoadWebDocument_LoadWebDocument(t *testing.T) {
         UpdateSdtContent: ToBoolPointer(false),
         ZipOutput: ToBoolPointer(false),
     }
-    requestData := models.LoadWebDocumentData{
+    data := models.LoadWebDocumentData{
         LoadingDocumentUrl: ToStringPointer("http://google.com"),
-        SaveOptions: requestDataSaveOptions,
+        SaveOptions: dataSaveOptions,
     }
 
     options := map[string]interface{}{
     }
 
     request := &models.LoadWebDocumentRequest{
-        Data: requestData,
+        Data: data,
         Optionals: options,
     }
 

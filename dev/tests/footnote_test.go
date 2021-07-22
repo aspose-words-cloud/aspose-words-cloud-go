@@ -44,7 +44,7 @@ func Test_Footnote_InsertFootnote(t *testing.T) {
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(footnoteFolder + "/Footnote.doc"), remoteDataFolder + "/" + remoteFileName)
 
-    requestFootnoteDto := models.FootnoteInsert{
+    footnoteDto := models.FootnoteInsert{
         FootnoteType: ToStringPointer("Endnote"),
         Text: ToStringPointer("test endnote"),
     }
@@ -56,7 +56,7 @@ func Test_Footnote_InsertFootnote(t *testing.T) {
 
     request := &models.InsertFootnoteRequest{
         Name: ToStringPointer(remoteFileName),
-        FootnoteDto: requestFootnoteDto,
+        FootnoteDto: footnoteDto,
         Optionals: options,
     }
 
@@ -76,7 +76,7 @@ func Test_Footnote_InsertFootnoteOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     footnoteFolder := "DocumentElements/Footnotes"
 
-    requestFootnoteDto := models.FootnoteInsert{
+    footnoteDto := models.FootnoteInsert{
         FootnoteType: ToStringPointer("Endnote"),
         Text: ToStringPointer("test endnote"),
     }
@@ -87,7 +87,7 @@ func Test_Footnote_InsertFootnoteOnline(t *testing.T) {
 
     request := &models.InsertFootnoteOnlineRequest{
         Document: OpenFile(t, footnoteFolder + "/Footnote.doc"),
-        FootnoteDto: requestFootnoteDto,
+        FootnoteDto: footnoteDto,
         Optionals: options,
     }
 
@@ -108,7 +108,7 @@ func Test_Footnote_InsertFootnoteWithoutNodePath(t *testing.T) {
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(footnoteFolder + "/Footnote.doc"), remoteDataFolder + "/" + remoteFileName)
 
-    requestFootnoteDto := models.FootnoteInsert{
+    footnoteDto := models.FootnoteInsert{
         FootnoteType: ToStringPointer("Endnote"),
         Text: ToStringPointer("test endnote"),
     }
@@ -119,7 +119,7 @@ func Test_Footnote_InsertFootnoteWithoutNodePath(t *testing.T) {
 
     request := &models.InsertFootnoteRequest{
         Name: ToStringPointer(remoteFileName),
-        FootnoteDto: requestFootnoteDto,
+        FootnoteDto: footnoteDto,
         Optionals: options,
     }
 
@@ -397,7 +397,7 @@ func Test_Footnote_UpdateFootnote(t *testing.T) {
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(footnoteFolder + "/Footnote.doc"), remoteDataFolder + "/" + remoteFileName)
 
-    requestFootnoteDto := models.FootnoteUpdate{
+    footnoteDto := models.FootnoteUpdate{
         Text: ToStringPointer("new text is here"),
     }
 
@@ -409,7 +409,7 @@ func Test_Footnote_UpdateFootnote(t *testing.T) {
     request := &models.UpdateFootnoteRequest{
         Name: ToStringPointer(remoteFileName),
         Index: ToInt32Pointer(int32(0)),
-        FootnoteDto: requestFootnoteDto,
+        FootnoteDto: footnoteDto,
         Optionals: options,
     }
 
@@ -428,7 +428,7 @@ func Test_Footnote_UpdateFootnoteOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     footnoteFolder := "DocumentElements/Footnotes"
 
-    requestFootnoteDto := models.FootnoteUpdate{
+    footnoteDto := models.FootnoteUpdate{
         Text: ToStringPointer("new text is here"),
     }
 
@@ -438,7 +438,7 @@ func Test_Footnote_UpdateFootnoteOnline(t *testing.T) {
 
     request := &models.UpdateFootnoteOnlineRequest{
         Document: OpenFile(t, footnoteFolder + "/Footnote.doc"),
-        FootnoteDto: requestFootnoteDto,
+        FootnoteDto: footnoteDto,
         Index: ToInt32Pointer(int32(0)),
         Optionals: options,
     }
@@ -460,7 +460,7 @@ func Test_Footnote_UpdateFootnoteWithoutNodePath(t *testing.T) {
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(footnoteFolder + "/Footnote.doc"), remoteDataFolder + "/" + remoteFileName)
 
-    requestFootnoteDto := models.FootnoteUpdate{
+    footnoteDto := models.FootnoteUpdate{
         Text: ToStringPointer("new text is here"),
     }
 
@@ -471,7 +471,7 @@ func Test_Footnote_UpdateFootnoteWithoutNodePath(t *testing.T) {
     request := &models.UpdateFootnoteRequest{
         Name: ToStringPointer(remoteFileName),
         Index: ToInt32Pointer(int32(0)),
-        FootnoteDto: requestFootnoteDto,
+        FootnoteDto: footnoteDto,
         Optionals: options,
     }
 

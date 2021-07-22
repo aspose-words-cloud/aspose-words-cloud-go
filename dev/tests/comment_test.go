@@ -150,23 +150,23 @@ func Test_Comment_InsertComment(t *testing.T) {
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-    requestCommentRangeStartNode := models.NodeLink{
+    commentRangeStartNode := models.NodeLink{
         NodeId: ToStringPointer("0.3.0.3"),
     }
-    requestCommentRangeStart := models.DocumentPosition{
-        Node: requestCommentRangeStartNode,
+    commentRangeStart := models.DocumentPosition{
+        Node: commentRangeStartNode,
         Offset: ToInt32Pointer(int32(0)),
     }
-    requestCommentRangeEndNode := models.NodeLink{
+    commentRangeEndNode := models.NodeLink{
         NodeId: ToStringPointer("0.3.0.3"),
     }
-    requestCommentRangeEnd := models.DocumentPosition{
-        Node: requestCommentRangeEndNode,
+    commentRangeEnd := models.DocumentPosition{
+        Node: commentRangeEndNode,
         Offset: ToInt32Pointer(int32(0)),
     }
-    requestComment := models.CommentInsert{
-        RangeStart: requestCommentRangeStart,
-        RangeEnd: requestCommentRangeEnd,
+    comment := models.CommentInsert{
+        RangeStart: commentRangeStart,
+        RangeEnd: commentRangeEnd,
         Initial: ToStringPointer("IA"),
         Author: ToStringPointer("Imran Anwar"),
         Text: ToStringPointer("A new Comment"),
@@ -178,7 +178,7 @@ func Test_Comment_InsertComment(t *testing.T) {
 
     request := &models.InsertCommentRequest{
         Name: ToStringPointer(remoteFileName),
-        Comment: requestComment,
+        Comment: comment,
         Optionals: options,
     }
 
@@ -200,23 +200,23 @@ func Test_Comment_InsertCommentOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "Common/test_multi_pages.docx"
 
-    requestCommentRangeStartNode := models.NodeLink{
+    commentRangeStartNode := models.NodeLink{
         NodeId: ToStringPointer("0.3.0.3"),
     }
-    requestCommentRangeStart := models.DocumentPosition{
-        Node: requestCommentRangeStartNode,
+    commentRangeStart := models.DocumentPosition{
+        Node: commentRangeStartNode,
         Offset: ToInt32Pointer(int32(0)),
     }
-    requestCommentRangeEndNode := models.NodeLink{
+    commentRangeEndNode := models.NodeLink{
         NodeId: ToStringPointer("0.3.0.3"),
     }
-    requestCommentRangeEnd := models.DocumentPosition{
-        Node: requestCommentRangeEndNode,
+    commentRangeEnd := models.DocumentPosition{
+        Node: commentRangeEndNode,
         Offset: ToInt32Pointer(int32(0)),
     }
-    requestComment := models.CommentInsert{
-        RangeStart: requestCommentRangeStart,
-        RangeEnd: requestCommentRangeEnd,
+    comment := models.CommentInsert{
+        RangeStart: commentRangeStart,
+        RangeEnd: commentRangeEnd,
         Initial: ToStringPointer("IA"),
         Author: ToStringPointer("Imran Anwar"),
         Text: ToStringPointer("A new Comment"),
@@ -227,7 +227,7 @@ func Test_Comment_InsertCommentOnline(t *testing.T) {
 
     request := &models.InsertCommentOnlineRequest{
         Document: OpenFile(t, localFile),
-        Comment: requestComment,
+        Comment: comment,
         Optionals: options,
     }
 
@@ -248,23 +248,23 @@ func Test_Comment_UpdateComment(t *testing.T) {
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-    requestCommentRangeStartNode := models.NodeLink{
+    commentRangeStartNode := models.NodeLink{
         NodeId: ToStringPointer("0.3.0"),
     }
-    requestCommentRangeStart := models.DocumentPosition{
-        Node: requestCommentRangeStartNode,
+    commentRangeStart := models.DocumentPosition{
+        Node: commentRangeStartNode,
         Offset: ToInt32Pointer(int32(0)),
     }
-    requestCommentRangeEndNode := models.NodeLink{
+    commentRangeEndNode := models.NodeLink{
         NodeId: ToStringPointer("0.3.0"),
     }
-    requestCommentRangeEnd := models.DocumentPosition{
-        Node: requestCommentRangeEndNode,
+    commentRangeEnd := models.DocumentPosition{
+        Node: commentRangeEndNode,
         Offset: ToInt32Pointer(int32(0)),
     }
-    requestComment := models.CommentUpdate{
-        RangeStart: requestCommentRangeStart,
-        RangeEnd: requestCommentRangeEnd,
+    comment := models.CommentUpdate{
+        RangeStart: commentRangeStart,
+        RangeEnd: commentRangeEnd,
         Initial: ToStringPointer("IA"),
         Author: ToStringPointer("Imran Anwar"),
         Text: ToStringPointer("A new Comment"),
@@ -277,7 +277,7 @@ func Test_Comment_UpdateComment(t *testing.T) {
     request := &models.UpdateCommentRequest{
         Name: ToStringPointer(remoteFileName),
         CommentIndex: ToInt32Pointer(int32(0)),
-        Comment: requestComment,
+        Comment: comment,
         Optionals: options,
     }
 
@@ -299,23 +299,23 @@ func Test_Comment_UpdateCommentOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "Common/test_multi_pages.docx"
 
-    requestCommentRangeStartNode := models.NodeLink{
+    commentRangeStartNode := models.NodeLink{
         NodeId: ToStringPointer("0.3.0"),
     }
-    requestCommentRangeStart := models.DocumentPosition{
-        Node: requestCommentRangeStartNode,
+    commentRangeStart := models.DocumentPosition{
+        Node: commentRangeStartNode,
         Offset: ToInt32Pointer(int32(0)),
     }
-    requestCommentRangeEndNode := models.NodeLink{
+    commentRangeEndNode := models.NodeLink{
         NodeId: ToStringPointer("0.3.0"),
     }
-    requestCommentRangeEnd := models.DocumentPosition{
-        Node: requestCommentRangeEndNode,
+    commentRangeEnd := models.DocumentPosition{
+        Node: commentRangeEndNode,
         Offset: ToInt32Pointer(int32(0)),
     }
-    requestComment := models.CommentUpdate{
-        RangeStart: requestCommentRangeStart,
-        RangeEnd: requestCommentRangeEnd,
+    comment := models.CommentUpdate{
+        RangeStart: commentRangeStart,
+        RangeEnd: commentRangeEnd,
         Initial: ToStringPointer("IA"),
         Author: ToStringPointer("Imran Anwar"),
         Text: ToStringPointer("A new Comment"),
@@ -327,7 +327,7 @@ func Test_Comment_UpdateCommentOnline(t *testing.T) {
     request := &models.UpdateCommentOnlineRequest{
         Document: OpenFile(t, localFile),
         CommentIndex: ToInt32Pointer(int32(0)),
-        Comment: requestComment,
+        Comment: comment,
         Optionals: options,
     }
 

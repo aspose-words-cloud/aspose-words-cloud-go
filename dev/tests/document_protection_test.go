@@ -44,7 +44,7 @@ func Test_DocumentProtection_ProtectDocument(t *testing.T) {
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-    requestProtectionRequest := models.ProtectionRequest{
+    protectionRequest := models.ProtectionRequest{
         Password: ToStringPointer("123"),
         ProtectionType: ToStringPointer("ReadOnly"),
     }
@@ -56,7 +56,7 @@ func Test_DocumentProtection_ProtectDocument(t *testing.T) {
 
     request := &models.ProtectDocumentRequest{
         Name: ToStringPointer(remoteFileName),
-        ProtectionRequest: requestProtectionRequest,
+        ProtectionRequest: protectionRequest,
         Optionals: options,
     }
 
@@ -75,7 +75,7 @@ func Test_DocumentProtection_ProtectDocumentOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "Common/test_multi_pages.docx"
 
-    requestProtectionRequest := models.ProtectionRequest{
+    protectionRequest := models.ProtectionRequest{
         NewPassword: ToStringPointer("123"),
     }
 
@@ -84,7 +84,7 @@ func Test_DocumentProtection_ProtectDocumentOnline(t *testing.T) {
 
     request := &models.ProtectDocumentOnlineRequest{
         Document: OpenFile(t, localFile),
-        ProtectionRequest: requestProtectionRequest,
+        ProtectionRequest: protectionRequest,
         Optionals: options,
     }
 
@@ -154,7 +154,7 @@ func Test_DocumentProtection_DeleteUnprotectDocument(t *testing.T) {
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFilePath), remoteDataFolder + "/" + remoteFileName)
 
-    requestProtectionRequest := models.ProtectionRequest{
+    protectionRequest := models.ProtectionRequest{
         Password: ToStringPointer("aspose"),
     }
 
@@ -164,7 +164,7 @@ func Test_DocumentProtection_DeleteUnprotectDocument(t *testing.T) {
 
     request := &models.UnprotectDocumentRequest{
         Name: ToStringPointer(remoteFileName),
-        ProtectionRequest: requestProtectionRequest,
+        ProtectionRequest: protectionRequest,
         Optionals: options,
     }
 
@@ -183,7 +183,7 @@ func Test_DocumentProtection_DeleteUnprotectDocumentOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFilePath := "DocumentActions/DocumentProtection/SampleProtectedBlankWordDocument.docx"
 
-    requestProtectionRequest := models.ProtectionRequest{
+    protectionRequest := models.ProtectionRequest{
         Password: ToStringPointer("aspose"),
     }
 
@@ -192,7 +192,7 @@ func Test_DocumentProtection_DeleteUnprotectDocumentOnline(t *testing.T) {
 
     request := &models.UnprotectDocumentOnlineRequest{
         Document: OpenFile(t, localFilePath),
-        ProtectionRequest: requestProtectionRequest,
+        ProtectionRequest: protectionRequest,
         Optionals: options,
     }
 

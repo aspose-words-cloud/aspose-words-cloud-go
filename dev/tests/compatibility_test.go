@@ -43,7 +43,7 @@ func Test_Compatibility_OptimizeDocument(t *testing.T) {
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-    requestOptions := models.OptimizationOptions{
+    options := models.OptimizationOptions{
         MsWordVersion: ToStringPointer("Word2002"),
     }
 
@@ -53,7 +53,7 @@ func Test_Compatibility_OptimizeDocument(t *testing.T) {
 
     request := &models.OptimizeDocumentRequest{
         Name: ToStringPointer(remoteFileName),
-        Options: requestOptions,
+        Options: options,
         Optionals: options,
     }
 
@@ -71,7 +71,7 @@ func Test_Compatibility_OptimizeDocumentOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "Common/test_multi_pages.docx"
 
-    requestOptions := models.OptimizationOptions{
+    options := models.OptimizationOptions{
         MsWordVersion: ToStringPointer("Word2002"),
     }
 
@@ -80,7 +80,7 @@ func Test_Compatibility_OptimizeDocumentOnline(t *testing.T) {
 
     request := &models.OptimizeDocumentOnlineRequest{
         Document: OpenFile(t, localFile),
-        Options: requestOptions,
+        Options: options,
         Optionals: options,
     }
 

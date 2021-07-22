@@ -220,7 +220,7 @@ func Test_Field_InsertField(t *testing.T) {
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(textFolder + "/" + localFileName), remoteDataFolder + "/" + remoteFileName)
 
-    requestField := models.FieldInsert{
+    field := models.FieldInsert{
         FieldCode: ToStringPointer("{ NUMPAGES }"),
     }
 
@@ -231,7 +231,7 @@ func Test_Field_InsertField(t *testing.T) {
 
     request := &models.InsertFieldRequest{
         Name: ToStringPointer(remoteFileName),
-        Field: requestField,
+        Field: field,
         Optionals: options,
     }
 
@@ -251,7 +251,7 @@ func Test_Field_InsertFieldOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     fieldFolder := "DocumentElements/Fields"
 
-    requestField := models.FieldInsert{
+    field := models.FieldInsert{
         FieldCode: ToStringPointer("{ NUMPAGES }"),
     }
 
@@ -261,7 +261,7 @@ func Test_Field_InsertFieldOnline(t *testing.T) {
 
     request := &models.InsertFieldOnlineRequest{
         Document: OpenFile(t, fieldFolder + "/GetField.docx"),
-        Field: requestField,
+        Field: field,
         Optionals: options,
     }
 
@@ -283,7 +283,7 @@ func Test_Field_InsertFieldWithoutNodePath(t *testing.T) {
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(textFolder + "/" + localFileName), remoteDataFolder + "/" + remoteFileName)
 
-    requestField := models.FieldInsert{
+    field := models.FieldInsert{
         FieldCode: ToStringPointer("{ NUMPAGES }"),
     }
 
@@ -293,7 +293,7 @@ func Test_Field_InsertFieldWithoutNodePath(t *testing.T) {
 
     request := &models.InsertFieldRequest{
         Name: ToStringPointer(remoteFileName),
-        Field: requestField,
+        Field: field,
         Optionals: options,
     }
 
@@ -318,7 +318,7 @@ func Test_Field_UpdateField(t *testing.T) {
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(fieldFolder + "/" + localFileName), remoteDataFolder + "/" + remoteFileName)
 
-    requestField := models.FieldUpdate{
+    field := models.FieldUpdate{
         FieldCode: ToStringPointer("{ NUMPAGES }"),
     }
 
@@ -330,7 +330,7 @@ func Test_Field_UpdateField(t *testing.T) {
     request := &models.UpdateFieldRequest{
         Name: ToStringPointer(remoteFileName),
         Index: ToInt32Pointer(int32(0)),
-        Field: requestField,
+        Field: field,
         Optionals: options,
     }
 
@@ -350,7 +350,7 @@ func Test_Field_UpdateFieldOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     fieldFolder := "DocumentElements/Fields"
 
-    requestField := models.FieldUpdate{
+    field := models.FieldUpdate{
         FieldCode: ToStringPointer("{ NUMPAGES }"),
     }
 
@@ -360,7 +360,7 @@ func Test_Field_UpdateFieldOnline(t *testing.T) {
 
     request := &models.UpdateFieldOnlineRequest{
         Document: OpenFile(t, fieldFolder + "/GetField.docx"),
-        Field: requestField,
+        Field: field,
         Index: ToInt32Pointer(int32(0)),
         Optionals: options,
     }
@@ -382,7 +382,7 @@ func Test_Field_InsertPageNumbers(t *testing.T) {
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile("Common/" + localFileName), remoteDataFolder + "/" + remoteFileName)
 
-    requestPageNumber := models.PageNumber{
+    pageNumber := models.PageNumber{
         Alignment: ToStringPointer("center"),
         Format: ToStringPointer("{PAGE} of {NUMPAGES}"),
     }
@@ -394,7 +394,7 @@ func Test_Field_InsertPageNumbers(t *testing.T) {
 
     request := &models.InsertPageNumbersRequest{
         Name: ToStringPointer(remoteFileName),
-        PageNumber: requestPageNumber,
+        PageNumber: pageNumber,
         Optionals: options,
     }
 
@@ -413,7 +413,7 @@ func Test_Field_InsertPageNumbersOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFileName := "test_multi_pages.docx"
 
-    requestPageNumber := models.PageNumber{
+    pageNumber := models.PageNumber{
         Alignment: ToStringPointer("center"),
         Format: ToStringPointer("{PAGE} of {NUMPAGES}"),
     }
@@ -423,7 +423,7 @@ func Test_Field_InsertPageNumbersOnline(t *testing.T) {
 
     request := &models.InsertPageNumbersOnlineRequest{
         Document: OpenFile(t, "Common/" + localFileName),
-        PageNumber: requestPageNumber,
+        PageNumber: pageNumber,
         Optionals: options,
     }
 

@@ -44,7 +44,7 @@ func Test_FormField_UpdateFormField(t *testing.T) {
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(fieldFolder + "/FormFilled.docx"), remoteDataFolder + "/" + remoteFileName)
 
-    requestFormField := models.FormFieldTextInput{
+    formField := models.FormFieldTextInput{
         Name: ToStringPointer("FullName"),
         Enabled: ToBoolPointer(true),
         CalculateOnExit: ToBoolPointer(true),
@@ -62,7 +62,7 @@ func Test_FormField_UpdateFormField(t *testing.T) {
     request := &models.UpdateFormFieldRequest{
         Name: ToStringPointer(remoteFileName),
         Index: ToInt32Pointer(int32(0)),
-        FormField: requestFormField,
+        FormField: formField,
         Optionals: options,
     }
 
@@ -82,7 +82,7 @@ func Test_FormField_UpdateFormFieldOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     fieldFolder := "DocumentElements/FormFields"
 
-    requestFormField := models.FormFieldTextInput{
+    formField := models.FormFieldTextInput{
         Name: ToStringPointer("FullName"),
         Enabled: ToBoolPointer(true),
         CalculateOnExit: ToBoolPointer(true),
@@ -97,7 +97,7 @@ func Test_FormField_UpdateFormFieldOnline(t *testing.T) {
 
     request := &models.UpdateFormFieldOnlineRequest{
         Document: OpenFile(t, fieldFolder + "/FormFilled.docx"),
-        FormField: requestFormField,
+        FormField: formField,
         Index: ToInt32Pointer(int32(0)),
         Optionals: options,
     }
@@ -119,7 +119,7 @@ func Test_FormField_UpdateFormFieldWithoutNodePath(t *testing.T) {
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(fieldFolder + "/FormFilled.docx"), remoteDataFolder + "/" + remoteFileName)
 
-    requestFormField := models.FormFieldTextInput{
+    formField := models.FormFieldTextInput{
         Name: ToStringPointer("FullName"),
         Enabled: ToBoolPointer(true),
         CalculateOnExit: ToBoolPointer(true),
@@ -136,7 +136,7 @@ func Test_FormField_UpdateFormFieldWithoutNodePath(t *testing.T) {
     request := &models.UpdateFormFieldRequest{
         Name: ToStringPointer(remoteFileName),
         Index: ToInt32Pointer(int32(0)),
-        FormField: requestFormField,
+        FormField: formField,
         Optionals: options,
     }
 
@@ -330,7 +330,7 @@ func Test_FormField_InsertFormField(t *testing.T) {
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile("Common/test_multi_pages.docx"), remoteDataFolder + "/" + remoteFileName)
 
-    requestFormField := models.FormFieldTextInput{
+    formField := models.FormFieldTextInput{
         Name: ToStringPointer("FullName"),
         Enabled: ToBoolPointer(true),
         CalculateOnExit: ToBoolPointer(true),
@@ -348,7 +348,7 @@ func Test_FormField_InsertFormField(t *testing.T) {
 
     request := &models.InsertFormFieldRequest{
         Name: ToStringPointer(remoteFileName),
-        FormField: requestFormField,
+        FormField: formField,
         Optionals: options,
     }
 
@@ -368,7 +368,7 @@ func Test_FormField_InsertFormFieldOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     fieldFolder := "DocumentElements/FormFields"
 
-    requestFormField := models.FormFieldTextInput{
+    formField := models.FormFieldTextInput{
         Name: ToStringPointer("FullName"),
         Enabled: ToBoolPointer(true),
         CalculateOnExit: ToBoolPointer(true),
@@ -384,7 +384,7 @@ func Test_FormField_InsertFormFieldOnline(t *testing.T) {
 
     request := &models.InsertFormFieldOnlineRequest{
         Document: OpenFile(t, fieldFolder + "/FormFilled.docx"),
-        FormField: requestFormField,
+        FormField: formField,
         Optionals: options,
     }
 
@@ -404,7 +404,7 @@ func Test_FormField_InsertFormFieldWithoutNodePath(t *testing.T) {
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile("Common/test_multi_pages.docx"), remoteDataFolder + "/" + remoteFileName)
 
-    requestFormField := models.FormFieldTextInput{
+    formField := models.FormFieldTextInput{
         Name: ToStringPointer("FullName"),
         Enabled: ToBoolPointer(true),
         CalculateOnExit: ToBoolPointer(true),
@@ -421,7 +421,7 @@ func Test_FormField_InsertFormFieldWithoutNodePath(t *testing.T) {
 
     request := &models.InsertFormFieldRequest{
         Name: ToStringPointer(remoteFileName),
-        FormField: requestFormField,
+        FormField: formField,
         Optionals: options,
     }
 

@@ -97,7 +97,7 @@ func Test_PageSetup_UpdateSectionPageSetup(t *testing.T) {
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-    requestPageSetup := models.PageSetup{
+    pageSetup := models.PageSetup{
         RtlGutter: ToBoolPointer(true),
         LeftMargin: ToFloat64Pointer(10.0),
         Orientation: ToStringPointer("Landscape"),
@@ -111,7 +111,7 @@ func Test_PageSetup_UpdateSectionPageSetup(t *testing.T) {
     request := &models.UpdateSectionPageSetupRequest{
         Name: ToStringPointer(remoteFileName),
         SectionIndex: ToInt32Pointer(int32(0)),
-        PageSetup: requestPageSetup,
+        PageSetup: pageSetup,
         Optionals: options,
     }
 
@@ -132,7 +132,7 @@ func Test_PageSetup_UpdateSectionPageSetupOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "Common/test_multi_pages.docx"
 
-    requestPageSetup := models.PageSetup{
+    pageSetup := models.PageSetup{
         RtlGutter: ToBoolPointer(true),
         LeftMargin: ToFloat64Pointer(10),
         Orientation: ToStringPointer("Landscape"),
@@ -145,7 +145,7 @@ func Test_PageSetup_UpdateSectionPageSetupOnline(t *testing.T) {
     request := &models.UpdateSectionPageSetupOnlineRequest{
         Document: OpenFile(t, localFile),
         SectionIndex: ToInt32Pointer(int32(0)),
-        PageSetup: requestPageSetup,
+        PageSetup: pageSetup,
         Optionals: options,
     }
 
