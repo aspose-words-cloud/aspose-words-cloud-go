@@ -7077,6 +7077,55 @@ func (a *WordsApiService) GetParagraphTabStopsOnline(ctx context.Context, data *
     return successPayload, response, err
 }
 
+/* WordsApiService Get assymetric public key.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return models.PublicKeyResponse*/
+func (a *WordsApiService) GetPublicKey(ctx context.Context, data *models.GetPublicKeyRequest) (models.PublicKeyResponse, *http.Response, error) {
+    var (
+        successPayload models.PublicKeyResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+
+    defer response.Body.Close()
+   
+
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return successPayload, nil, err
+        }
+
+        return successPayload, response, &apiError
+    }
+    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
 /* WordsApiService Reads range text from the document.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  * @data operation request data.
