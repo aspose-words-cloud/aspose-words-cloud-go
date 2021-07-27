@@ -47,7 +47,7 @@ func Test_MailMergeFileds_GetDocumentFieldNamesOnline(t *testing.T) {
     }
 
     request := &models.GetDocumentFieldNamesOnlineRequest{
-        Document: OpenFile(t, mailMergeFolder + "/" + localDocumentFile),
+        Template: OpenFile(t, mailMergeFolder + "/" + localDocumentFile),
         Optionals: options,
     }
 
