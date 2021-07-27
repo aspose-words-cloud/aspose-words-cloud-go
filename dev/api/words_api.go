@@ -11735,7 +11735,7 @@ func (a *WordsApiService) SaveAs(ctx context.Context, data *models.SaveAsRequest
     return successPayload, response, err
 }
 
-/* WordsApiService Converts a document in cloud storage to the specified format.
+/* WordsApiService Converts a document to the specified format.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  * @data operation request data.
 @return SaveAsOnlineResponse*/
@@ -11935,7 +11935,7 @@ func (a *WordsApiService) SaveAsTiff(ctx context.Context, data *models.SaveAsTif
     return successPayload, response, err
 }
 
-/* WordsApiService Converts a document in cloud storage to TIFF format using detailed conversion settings.
+/* WordsApiService Converts a document to TIFF format using detailed conversion settings.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  * @data operation request data.
 @return SaveAsTiffOnlineResponse*/

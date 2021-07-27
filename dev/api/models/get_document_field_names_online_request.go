@@ -37,8 +37,8 @@ import (
 
 // GetDocumentFieldNamesOnlineRequest contains request data for WordsApiService.GetDocumentFieldNamesOnline method.
 type GetDocumentFieldNamesOnlineRequest struct {
-        // The document.
-        Document io.ReadCloser
+        // The template document.
+        Template io.ReadCloser
     /* optional (nil or map[string]interface{}) with one or more of key / value pairs:
         key: "loadEncoding" value: (*string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
         key: "password" value: (*string) Password for opening an encrypted document.
@@ -111,11 +111,11 @@ func (data *GetDocumentFieldNamesOnlineRequest) CreateRequestData() (RequestData
     }
 
 
-    _document := data.Document
-    if _document != nil {
-        fbs, _ := ioutil.ReadAll(_document)
-        _document.Close()
-        result.FormParams = append(result.FormParams, NewFileFormParamContainer("document", fbs))
+    _template := data.Template
+    if _template != nil {
+        fbs, _ := ioutil.ReadAll(_template)
+        _template.Close()
+        result.FormParams = append(result.FormParams, NewFileFormParamContainer("template", fbs))
     }
 
 

@@ -38,7 +38,7 @@ import (
 
 // AppendDocumentOnlineRequest contains request data for WordsApiService.AppendDocumentOnline method.
 type AppendDocumentOnlineRequest struct {
-        // The document.
+        // Original document.
         Document io.ReadCloser
         // <see cref="DocumentEntryList"/> with a list of documents to append.
         DocumentList IDocumentEntryList

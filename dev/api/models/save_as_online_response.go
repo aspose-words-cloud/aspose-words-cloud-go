@@ -30,7 +30,7 @@ package models
  import "io" 
 
 // SaveAsOnlineResponse struct
-// Converts a document in cloud storage to the specified format.
+// Converts a document to the specified format.
 type SaveAsOnlineResponse struct {
     // The response model.
     Model  SaveResponse  `json:"Model,omitempty"`

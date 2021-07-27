@@ -30,7 +30,7 @@ package models
  import "io" 
 
 // SaveAsTiffOnlineResponse struct
-// Converts a document in cloud storage to TIFF format using detailed conversion settings.
+// Converts a document to TIFF format using detailed conversion settings.
 type SaveAsTiffOnlineResponse struct {
     // The response model.
     Model  SaveResponse  `json:"Model,omitempty"`
