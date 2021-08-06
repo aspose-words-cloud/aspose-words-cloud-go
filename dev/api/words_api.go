@@ -1584,6 +1584,178 @@ func (a *WordsApiService) DeleteCommentsOnline(ctx context.Context, data *models
     return response, err
 }
 
+/* WordsApiService Removes the custom xml part from the document.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return */
+func (a *WordsApiService) DeleteCustomXmlPart(ctx context.Context, data *models.DeleteCustomXmlPartRequest) (*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+
+   
+
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+    return response, err
+}
+
+/* WordsApiService Removes the custom xml part from the document.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return http.Response.Body contains binary result data*/
+func (a *WordsApiService) DeleteCustomXmlPartOnline(ctx context.Context, data *models.DeleteCustomXmlPartOnlineRequest) (*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+
+   
+
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+    return response, err
+}
+
+/* WordsApiService Removes all custom xml parts from the document.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return */
+func (a *WordsApiService) DeleteCustomXmlParts(ctx context.Context, data *models.DeleteCustomXmlPartsRequest) (*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+
+   
+
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+    return response, err
+}
+
+/* WordsApiService Removes all custom xml parts from the document.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return http.Response.Body contains binary result data*/
+func (a *WordsApiService) DeleteCustomXmlPartsOnline(ctx context.Context, data *models.DeleteCustomXmlPartsOnlineRequest) (*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+
+   
+
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+    return response, err
+}
+
 /* WordsApiService Removes a document property.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  * @data operation request data.
@@ -4076,6 +4248,202 @@ func (a *WordsApiService) GetComments(ctx context.Context, data *models.GetComme
 func (a *WordsApiService) GetCommentsOnline(ctx context.Context, data *models.GetCommentsOnlineRequest) (models.CommentsResponse, *http.Response, error) {
     var (
         successPayload models.CommentsResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+
+    defer response.Body.Close()
+   
+
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return successPayload, nil, err
+        }
+
+        return successPayload, response, &apiError
+    }
+    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Reads the custom xml part from the document.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return models.CustomXmlPartResponse*/
+func (a *WordsApiService) GetCustomXmlPart(ctx context.Context, data *models.GetCustomXmlPartRequest) (models.CustomXmlPartResponse, *http.Response, error) {
+    var (
+        successPayload models.CustomXmlPartResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+
+    defer response.Body.Close()
+   
+
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return successPayload, nil, err
+        }
+
+        return successPayload, response, &apiError
+    }
+    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Reads the custom xml part from the document.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return models.CustomXmlPartResponse*/
+func (a *WordsApiService) GetCustomXmlPartOnline(ctx context.Context, data *models.GetCustomXmlPartOnlineRequest) (models.CustomXmlPartResponse, *http.Response, error) {
+    var (
+        successPayload models.CustomXmlPartResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+
+    defer response.Body.Close()
+   
+
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return successPayload, nil, err
+        }
+
+        return successPayload, response, &apiError
+    }
+    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Reads custom xml parts from the document.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return models.CustomXmlPartsResponse*/
+func (a *WordsApiService) GetCustomXmlParts(ctx context.Context, data *models.GetCustomXmlPartsRequest) (models.CustomXmlPartsResponse, *http.Response, error) {
+    var (
+        successPayload models.CustomXmlPartsResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+
+    defer response.Body.Close()
+   
+
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return successPayload, nil, err
+        }
+
+        return successPayload, response, &apiError
+    }
+    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Reads custom xml parts from the document.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return models.CustomXmlPartsResponse*/
+func (a *WordsApiService) GetCustomXmlPartsOnline(ctx context.Context, data *models.GetCustomXmlPartsOnlineRequest) (models.CustomXmlPartsResponse, *http.Response, error) {
+    var (
+        successPayload models.CustomXmlPartsResponse
     )
 
     requestData, err := data.CreateRequestData();
@@ -8892,6 +9260,106 @@ func (a *WordsApiService) InsertCommentOnline(ctx context.Context, data *models.
     return result.(models.InsertCommentOnlineResponse), response, err
 }
 
+/* WordsApiService Inserts a new custom xml part to the document.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return models.CustomXmlPartResponse*/
+func (a *WordsApiService) InsertCustomXmlPart(ctx context.Context, data *models.InsertCustomXmlPartRequest) (models.CustomXmlPartResponse, *http.Response, error) {
+    var (
+        successPayload models.CustomXmlPartResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+
+    defer response.Body.Close()
+   
+
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return successPayload, nil, err
+        }
+
+        return successPayload, response, &apiError
+    }
+    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Inserts a new custom xml part to the document.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return InsertCustomXmlPartOnlineResponse*/
+func (a *WordsApiService) InsertCustomXmlPartOnline(ctx context.Context, data *models.InsertCustomXmlPartOnlineRequest) (models.InsertCustomXmlPartOnlineResponse, *http.Response, error) {
+    var (
+        successPayload models.InsertCustomXmlPartOnlineResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+
+   
+
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return successPayload, nil, err
+        }
+
+        return successPayload, response, &apiError
+    }
+    boundary := GetBoundary(response)
+    result, err := data.CreateResponse(response.Body, boundary)
+
+	if err != nil {
+        return successPayload, response, err
+    }
+
+    return result.(models.InsertCustomXmlPartOnlineResponse), response, err
+}
+
 /* WordsApiService Inserts a new DrawingObject to the document node.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  * @data operation request data.
@@ -12582,6 +13050,106 @@ func (a *WordsApiService) UpdateCommentOnline(ctx context.Context, data *models.
     }
 
     return result.(models.UpdateCommentOnlineResponse), response, err
+}
+
+/* WordsApiService Updates the custom xml part in the document.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return models.CustomXmlPartResponse*/
+func (a *WordsApiService) UpdateCustomXmlPart(ctx context.Context, data *models.UpdateCustomXmlPartRequest) (models.CustomXmlPartResponse, *http.Response, error) {
+    var (
+        successPayload models.CustomXmlPartResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+
+    defer response.Body.Close()
+   
+
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return successPayload, nil, err
+        }
+
+        return successPayload, response, &apiError
+    }
+    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Updates the custom xml part in the document.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return UpdateCustomXmlPartOnlineResponse*/
+func (a *WordsApiService) UpdateCustomXmlPartOnline(ctx context.Context, data *models.UpdateCustomXmlPartOnlineRequest) (models.UpdateCustomXmlPartOnlineResponse, *http.Response, error) {
+    var (
+        successPayload models.UpdateCustomXmlPartOnlineResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+
+   
+
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return successPayload, nil, err
+        }
+
+        return successPayload, response, &apiError
+    }
+    boundary := GetBoundary(response)
+    result, err := data.CreateResponse(response.Body, boundary)
+
+	if err != nil {
+        return successPayload, response, err
+    }
+
+    return result.(models.UpdateCustomXmlPartOnlineResponse), response, err
 }
 
 /* WordsApiService Updates a DrawingObject in the document node.
