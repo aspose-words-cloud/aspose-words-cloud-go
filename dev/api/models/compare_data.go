@@ -40,6 +40,9 @@ type CompareDataResult struct {
 
     // Container class for compare documents.
     DateTime Time `json:"DateTime,omitempty"`
+
+    // Container class for compare documents.
+    ResultDocumentFormat string `json:"ResultDocumentFormat,omitempty"`
 }
 
 type CompareData struct {
@@ -54,6 +57,9 @@ type CompareData struct {
 
     // Container class for compare documents.
     DateTime *Time `json:"DateTime,omitempty"`
+
+    // Container class for compare documents.
+    ResultDocumentFormat *string `json:"ResultDocumentFormat,omitempty"`
 }
 
 type ICompareData interface {
