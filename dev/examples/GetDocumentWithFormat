@@ -1,0 +1,9 @@
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestOptions := map[string]interface{}{"outPath": "/TestGetDocumentWithFormatAndOutPath.text",}
+request := &models.GetDocumentWithFormatRequest{
+    Name: ToStringPointer("Sample.docx"),
+    Format: ToStringPointer("text"),
+    Optionals: requestOptions,
+}
+_, _ = wordsApi.GetDocumentWithFormat(ctx, request)

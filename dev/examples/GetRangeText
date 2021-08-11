@@ -1,0 +1,9 @@
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestOptions := map[string]interface{}{"rangeEndIdentifier": "id0.0.1",}
+request := &models.GetRangeTextRequest{
+    Name: ToStringPointer("Sample.docx"),
+    RangeStartIdentifier: ToStringPointer("id0.0.0"),
+    Optionals: requestOptions,
+}
+_, _, _ = wordsApi.GetRangeText(ctx, request)

@@ -1,0 +1,15 @@
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+remoteFileName:= "Sample.docx"
+
+requestReplaceText := models.ReplaceTextParameters{
+    OldValue: ToStringPointer("Testing"),
+    NewValue: ToStringPointer("Aspose testing"),
+}
+replaceRequestOptions := map[string]interface{}{"destFileName": remoteFileName,}
+replaceRequest := &models.ReplaceTextRequest{
+    Name: ToStringPointer(remoteFileName),
+    ReplaceText: requestReplaceText,
+    Optionals: replaceRequestOptions,
+}
+_, _, _ = wordsApi.ReplaceText(ctx, replaceRequest)

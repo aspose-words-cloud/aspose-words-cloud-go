@@ -1,0 +1,13 @@
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestCustomXmlPart := models.CustomXmlPartInsert{
+    Id: ToStringPointer("hello"),
+    Data: ToStringPointer("<data>Hello world</data>"),
+}
+insertRequestOptions := map[string]interface{}{}
+insertRequest := &models.InsertCustomXmlPartRequest{
+    Name: ToStringPointer("Sample.docx"),
+    CustomXmlPart: requestCustomXmlPart,
+    Optionals: insertRequestOptions,
+}
+_, _, _ = wordsApi.InsertCustomXmlPart(ctx, insertRequest)

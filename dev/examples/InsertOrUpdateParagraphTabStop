@@ -1,0 +1,15 @@
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestTabStopInsertDto := models.TabStopInsert{
+    Alignment: ToStringPointer("Left"),
+    Leader: ToStringPointer("None"),
+    Position: ToFloat64Pointer(100.0),
+}
+insertRequestOptions := map[string]interface{}{}
+insertRequest := &models.InsertOrUpdateParagraphTabStopRequest{
+    Name: ToStringPointer("Sample.docx"),
+    Index: ToInt32Pointer(int32(0)),
+    TabStopInsertDto: requestTabStopInsertDto,
+    Optionals: insertRequestOptions,
+}
+_, _, _ = wordsApi.InsertOrUpdateParagraphTabStop(ctx, insertRequest)

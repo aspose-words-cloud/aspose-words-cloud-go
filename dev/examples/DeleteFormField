@@ -1,0 +1,11 @@
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+remoteFileName:= "Sample.docx"
+
+deleteRequestOptions := map[string]interface{}{"destFileName": remoteFileName,}
+deleteRequest := &models.DeleteFormFieldRequest{
+    Name: ToStringPointer(remoteFileName),
+    Index: ToInt32Pointer(int32(0)),
+    Optionals: deleteRequestOptions,
+}
+_, _ = wordsApi.DeleteFormField(ctx, deleteRequest)

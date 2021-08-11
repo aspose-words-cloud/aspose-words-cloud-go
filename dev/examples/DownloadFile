@@ -1,0 +1,8 @@
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+downloadRequestOptions := map[string]interface{}{}
+downloadRequest := &models.DownloadFileRequest{
+    Path: ToStringPointer("Sample.docx"),
+    Optionals: downloadRequestOptions,
+}
+_, _ = wordsApi.DownloadFile(ctx, downloadRequest)

@@ -1,0 +1,9 @@
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestOptions := map[string]interface{}{}
+request := &models.GetRunsRequest{
+    Name: ToStringPointer("Sample.docx"),
+    ParagraphPath: ToStringPointer("sections/0/paragraphs/0"),
+    Optionals: requestOptions,
+}
+_, _, _ = wordsApi.GetRuns(ctx, request)

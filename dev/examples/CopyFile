@@ -1,0 +1,9 @@
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+copyRequestOptions := map[string]interface{}{}
+copyRequest := &models.CopyFileRequest{
+    DestPath: ToStringPointer("/TestCopyFileDest.docx"),
+    SrcPath: ToStringPointer("Sample.docx"),
+    Optionals: copyRequestOptions,
+}
+_, _ = wordsApi.CopyFile(ctx, copyRequest)

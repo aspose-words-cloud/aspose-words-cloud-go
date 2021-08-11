@@ -1,0 +1,8 @@
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+deleteRequestOptions := map[string]interface{}{}
+deleteRequest := &models.DeleteMacrosRequest{
+    Name: ToStringPointer("Sample.docx"),
+    Optionals: deleteRequestOptions,
+}
+_, _ = wordsApi.DeleteMacros(ctx, deleteRequest)

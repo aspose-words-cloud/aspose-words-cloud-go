@@ -1,0 +1,9 @@
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestOptions := map[string]interface{}{}
+request := &models.GetStyleFromDocumentElementRequest{
+    Name: ToStringPointer("Sample.docx"),
+    StyledNodePath: ToStringPointer("paragraphs/1/paragraphFormat"),
+    Optionals: requestOptions,
+}
+_, _, _ = wordsApi.GetStyleFromDocumentElement(ctx, request)

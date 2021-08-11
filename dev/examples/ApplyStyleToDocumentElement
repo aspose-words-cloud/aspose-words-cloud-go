@@ -1,0 +1,13 @@
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestStyleApply := models.StyleApply{
+    StyleName: ToStringPointer("Heading 1"),
+}
+applyStyleRequestOptions := map[string]interface{}{}
+applyStyleRequest := &models.ApplyStyleToDocumentElementRequest{
+    Name: ToStringPointer("Sample.docx"),
+    StyledNodePath: ToStringPointer("paragraphs/1/paragraphFormat"),
+    StyleApply: requestStyleApply,
+    Optionals: applyStyleRequestOptions,
+}
+_, _, _ = wordsApi.ApplyStyleToDocumentElement(ctx, applyStyleRequest)

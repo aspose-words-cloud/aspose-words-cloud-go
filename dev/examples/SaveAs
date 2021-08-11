@@ -1,0 +1,13 @@
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestSaveOptionsData := models.SaveOptionsData{
+    SaveFormat: ToStringPointer("docx"),
+    FileName: ToStringPointer("/TestSaveAsFromPdfToDoc.docx"),
+}
+saveRequestOptions := map[string]interface{}{}
+saveRequest := &models.SaveAsRequest{
+    Name: ToStringPointer("Sample.docx"),
+    SaveOptionsData: requestSaveOptionsData,
+    Optionals: saveRequestOptions,
+}
+_, _, _ = wordsApi.SaveAs(ctx, saveRequest)

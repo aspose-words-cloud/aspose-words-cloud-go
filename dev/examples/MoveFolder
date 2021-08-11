@@ -1,0 +1,9 @@
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+moveRequestOptions := map[string]interface{}{}
+moveRequest := &models.MoveFolderRequest{
+    DestPath: ToStringPointer("/TestMoveFolderDest_Sample"),
+    SrcPath: ToStringPointer("/TestMoveFolderSrc"),
+    Optionals: moveRequestOptions,
+}
+_, _ = wordsApi.MoveFolder(ctx, moveRequest)

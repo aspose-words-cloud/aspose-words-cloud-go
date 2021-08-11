@@ -1,0 +1,13 @@
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestFootnoteDto := models.FootnoteUpdate{
+    Text: ToStringPointer("new text is here"),
+}
+updateRequestOptions := map[string]interface{}{}
+updateRequest := &models.UpdateFootnoteRequest{
+    Name: ToStringPointer("Sample.docx"),
+    Index: ToInt32Pointer(int32(0)),
+    FootnoteDto: requestFootnoteDto,
+    Optionals: updateRequestOptions,
+}
+_, _, _ = wordsApi.UpdateFootnote(ctx, updateRequest)

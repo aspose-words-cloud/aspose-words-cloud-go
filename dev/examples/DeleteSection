@@ -1,0 +1,9 @@
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+deleteRequestOptions := map[string]interface{}{}
+deleteRequest := &models.DeleteSectionRequest{
+    Name: ToStringPointer("Sample.docx"),
+    SectionIndex: ToInt32Pointer(int32(0)),
+    Optionals: deleteRequestOptions,
+}
+_, _ = wordsApi.DeleteSection(ctx, deleteRequest)

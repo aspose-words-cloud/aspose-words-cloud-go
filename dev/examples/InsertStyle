@@ -1,0 +1,13 @@
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestStyleInsert := models.StyleInsert{
+    StyleName: ToStringPointer("My Style"),
+    StyleType: ToStringPointer("Paragraph"),
+}
+insertRequestOptions := map[string]interface{}{}
+insertRequest := &models.InsertStyleRequest{
+    Name: ToStringPointer("Sample.docx"),
+    StyleInsert: requestStyleInsert,
+    Optionals: insertRequestOptions,
+}
+_, _, _ = wordsApi.InsertStyle(ctx, insertRequest)

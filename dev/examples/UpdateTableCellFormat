@@ -1,0 +1,17 @@
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestFormat := models.TableCellFormat{
+    BottomPadding: ToFloat64Pointer(5.0),
+    FitText: ToBoolPointer(true),
+    HorizontalMerge: ToStringPointer("First"),
+    WrapText: ToBoolPointer(true),
+}
+updateRequestOptions := map[string]interface{}{}
+updateRequest := &models.UpdateTableCellFormatRequest{
+    Name: ToStringPointer("Sample.docx"),
+    TableRowPath: ToStringPointer("sections/0/tables/2/rows/0"),
+    Index: ToInt32Pointer(int32(0)),
+    Format: requestFormat,
+    Optionals: updateRequestOptions,
+}
+_, _, _ = wordsApi.UpdateTableCellFormat(ctx, updateRequest)

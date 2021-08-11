@@ -1,0 +1,8 @@
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+deleteRequestOptions := map[string]interface{}{"nodePath": "tables/1/rows/0/cells/0",}
+deleteRequest := &models.DeleteBordersRequest{
+    Name: ToStringPointer("Sample.docx"),
+    Optionals: deleteRequestOptions,
+}
+_, _, _ = wordsApi.DeleteBorders(ctx, deleteRequest)

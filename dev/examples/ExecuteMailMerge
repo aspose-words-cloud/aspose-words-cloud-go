@@ -1,0 +1,11 @@
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+remoteFileName:= "Sample.docx"
+
+mailMergeRequestOptions := map[string]interface{}{"data": "TestExecuteTemplateData.txt",
+"destFileName": remoteFileName,}
+mailMergeRequest := &models.ExecuteMailMergeRequest{
+    Name: ToStringPointer(remoteFileName),
+    Optionals: mailMergeRequestOptions,
+}
+_, _, _ = wordsApi.ExecuteMailMerge(ctx, mailMergeRequest)

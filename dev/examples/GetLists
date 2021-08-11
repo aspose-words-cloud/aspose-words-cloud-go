@@ -1,0 +1,8 @@
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestOptions := map[string]interface{}{}
+request := &models.GetListsRequest{
+    Name: ToStringPointer("TestGetLists.doc"),
+    Optionals: requestOptions,
+}
+_, _, _ = wordsApi.GetLists(ctx, request)

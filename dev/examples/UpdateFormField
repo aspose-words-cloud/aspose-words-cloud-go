@@ -1,0 +1,20 @@
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+remoteFileName:= "Sample.docx"
+
+requestFormField := models.FormFieldTextInput{
+    Name: ToStringPointer("FullName"),
+    Enabled: ToBoolPointer(true),
+    CalculateOnExit: ToBoolPointer(true),
+    StatusText: ToStringPointer(""),
+    TextInputType: ToStringPointer("Regular"),
+    TextInputDefault: ToStringPointer("No name"),
+}
+updateRequestOptions := map[string]interface{}{"destFileName": remoteFileName,}
+updateRequest := &models.UpdateFormFieldRequest{
+    Name: ToStringPointer(remoteFileName),
+    Index: ToInt32Pointer(int32(0)),
+    FormField: requestFormField,
+    Optionals: updateRequestOptions,
+}
+_, _, _ = wordsApi.UpdateFormField(ctx, updateRequest)

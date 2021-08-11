@@ -1,0 +1,9 @@
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+removeRequestOptions := map[string]interface{}{"rangeEndIdentifier": "id0.0.1",}
+removeRequest := &models.RemoveRangeRequest{
+    Name: ToStringPointer("Sample.docx"),
+    RangeStartIdentifier: ToStringPointer("id0.0.0"),
+    Optionals: removeRequestOptions,
+}
+_, _, _ = wordsApi.RemoveRange(ctx, removeRequest)

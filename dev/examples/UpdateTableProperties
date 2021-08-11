@@ -1,0 +1,18 @@
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestProperties := models.TableProperties{
+    Alignment: ToStringPointer("Right"),
+    AllowAutoFit: ToBoolPointer(false),
+    Bidi: ToBoolPointer(true),
+    BottomPadding: ToFloat64Pointer(1.0),
+    CellSpacing: ToFloat64Pointer(2.0),
+    StyleOptions: ToStringPointer("ColumnBands"),
+}
+updateRequestOptions := map[string]interface{}{}
+updateRequest := &models.UpdateTablePropertiesRequest{
+    Name: ToStringPointer("Sample.docx"),
+    Index: ToInt32Pointer(int32(1)),
+    Properties: requestProperties,
+    Optionals: updateRequestOptions,
+}
+_, _, _ = wordsApi.UpdateTableProperties(ctx, updateRequest)

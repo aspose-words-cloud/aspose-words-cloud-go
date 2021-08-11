@@ -1,0 +1,9 @@
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestOptions := map[string]interface{}{}
+request := &models.GetSectionPageSetupRequest{
+    Name: ToStringPointer("Sample.docx"),
+    SectionIndex: ToInt32Pointer(int32(0)),
+    Optionals: requestOptions,
+}
+_, _, _ = wordsApi.GetSectionPageSetup(ctx, request)

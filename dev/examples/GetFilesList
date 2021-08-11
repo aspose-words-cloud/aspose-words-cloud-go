@@ -1,0 +1,8 @@
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestOptions := map[string]interface{}{}
+request := &models.GetFilesListRequest{
+    Path: ToStringPointer(""),
+    Optionals: requestOptions,
+}
+_, _, _ = wordsApi.GetFilesList(ctx, request)

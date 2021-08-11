@@ -1,0 +1,18 @@
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestReportEngineSettingsReportBuildOptions := []string{
+    "AllowMissingMembers",
+    "RemoveEmptyParagraphs",
+}
+requestReportEngineSettings := models.ReportEngineSettings{
+    DataSourceType: ToStringPointer("Json"),
+    ReportBuildOptions: requestReportEngineSettingsReportBuildOptions,
+}
+buildReportRequestOptions := map[string]interface{}{}
+buildReportRequest := &models.BuildReportRequest{
+    Name: ToStringPointer("Sample.docx"),
+    Data: ToStringPointer("Data.json"),
+    ReportEngineSettings: requestReportEngineSettings,
+    Optionals: buildReportRequestOptions,
+}
+_, _, _ = wordsApi.BuildReport(ctx, buildReportRequest)

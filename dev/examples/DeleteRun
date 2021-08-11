@@ -1,0 +1,10 @@
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+deleteRequestOptions := map[string]interface{}{}
+deleteRequest := &models.DeleteRunRequest{
+    Name: ToStringPointer("Sample.docx"),
+    ParagraphPath: ToStringPointer("paragraphs/1"),
+    Index: ToInt32Pointer(int32(0)),
+    Optionals: deleteRequestOptions,
+}
+_, _ = wordsApi.DeleteRun(ctx, deleteRequest)

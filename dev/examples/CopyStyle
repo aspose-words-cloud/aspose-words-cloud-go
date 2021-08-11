@@ -1,0 +1,12 @@
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestStyleCopy := models.StyleCopy{
+    StyleName: ToStringPointer("Heading 1"),
+}
+copyRequestOptions := map[string]interface{}{}
+copyRequest := &models.CopyStyleRequest{
+    Name: ToStringPointer("Sample.docx"),
+    StyleCopy: requestStyleCopy,
+    Optionals: copyRequestOptions,
+}
+_, _, _ = wordsApi.CopyStyle(ctx, copyRequest)

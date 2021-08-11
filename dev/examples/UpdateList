@@ -1,0 +1,13 @@
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestListUpdate := models.ListUpdate{
+    IsRestartAtEachSection: ToBoolPointer(true),
+}
+updateRequestOptions := map[string]interface{}{}
+updateRequest := &models.UpdateListRequest{
+    Name: ToStringPointer("TestGetLists.doc"),
+    ListId: ToInt32Pointer(int32(1)),
+    ListUpdate: requestListUpdate,
+    Optionals: updateRequestOptions,
+}
+_, _, _ = wordsApi.UpdateList(ctx, updateRequest)

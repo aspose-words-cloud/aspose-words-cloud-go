@@ -1,0 +1,9 @@
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestOptions := map[string]interface{}{}
+request := &models.GetBookmarkByNameRequest{
+    Name: ToStringPointer("Sample.docx"),
+    BookmarkName: ToStringPointer("aspose"),
+    Optionals: requestOptions,
+}
+_, _, _ = wordsApi.GetBookmarkByName(ctx, request)

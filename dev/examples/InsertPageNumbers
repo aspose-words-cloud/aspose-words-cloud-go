@@ -1,0 +1,15 @@
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+remoteFileName:= "Sample.docx"
+
+requestPageNumber := models.PageNumber{
+    Alignment: ToStringPointer("center"),
+    Format: ToStringPointer("{PAGE} of {NUMPAGES}"),
+}
+insertRequestOptions := map[string]interface{}{"destFileName": remoteFileName,}
+insertRequest := &models.InsertPageNumbersRequest{
+    Name: ToStringPointer(remoteFileName),
+    PageNumber: requestPageNumber,
+    Optionals: insertRequestOptions,
+}
+_, _, _ = wordsApi.InsertPageNumbers(ctx, insertRequest)

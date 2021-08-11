@@ -1,0 +1,21 @@
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+remoteFileName:= "Sample.docx"
+
+requestDocumentListDocumentEntries0 := models.DocumentEntry{
+    Href: ToStringPointer(remoteFileName),
+    ImportFormatMode: ToStringPointer("KeepSourceFormatting"),
+}
+requestDocumentListDocumentEntries := []models.DocumentEntry{
+    requestDocumentListDocumentEntries0,
+}
+requestDocumentList := models.DocumentEntryList{
+    DocumentEntries: requestDocumentListDocumentEntries,
+}
+appendRequestOptions := map[string]interface{}{"destFileName": remoteFileName,}
+appendRequest := &models.AppendDocumentRequest{
+    Name: ToStringPointer(remoteFileName),
+    DocumentList: requestDocumentList,
+    Optionals: appendRequestOptions,
+}
+_, _, _ = wordsApi.AppendDocument(ctx, appendRequest)

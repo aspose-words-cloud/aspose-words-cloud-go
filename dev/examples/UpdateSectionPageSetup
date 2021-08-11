@@ -1,0 +1,16 @@
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestPageSetup := models.PageSetup{
+    RtlGutter: ToBoolPointer(true),
+    LeftMargin: ToFloat64Pointer(10.0),
+    Orientation: ToStringPointer("Landscape"),
+    PaperSize: ToStringPointer("A5"),
+}
+updateRequestOptions := map[string]interface{}{}
+updateRequest := &models.UpdateSectionPageSetupRequest{
+    Name: ToStringPointer("Sample.docx"),
+    SectionIndex: ToInt32Pointer(int32(0)),
+    PageSetup: requestPageSetup,
+    Optionals: updateRequestOptions,
+}
+_, _, _ = wordsApi.UpdateSectionPageSetup(ctx, updateRequest)

@@ -1,0 +1,13 @@
+documentsDir := "..."
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+remoteFileName:= "Sample.docx"
+
+insertRequestOptions := map[string]interface{}{"imageFile": nil,
+"destFileName": remoteFileName,
+"image": "Sample.png",}
+insertRequest := &models.InsertWatermarkImageRequest{
+    Name: ToStringPointer(remoteFileName),
+    Optionals: insertRequestOptions,
+}
+_, _, _ = wordsApi.InsertWatermarkImage(ctx, insertRequest)

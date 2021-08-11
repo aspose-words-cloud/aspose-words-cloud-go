@@ -1,0 +1,9 @@
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestOptions := map[string]interface{}{}
+request := &models.GetHeaderFootersRequest{
+    Name: ToStringPointer("Sample.docx"),
+    SectionPath: ToStringPointer(""),
+    Optionals: requestOptions,
+}
+_, _, _ = wordsApi.GetHeaderFooters(ctx, request)

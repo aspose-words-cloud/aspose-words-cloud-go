@@ -1,0 +1,9 @@
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+deleteRequestOptions := map[string]interface{}{}
+deleteRequest := &models.DeleteDrawingObjectRequest{
+    Name: ToStringPointer("Sample.docx"),
+    Index: ToInt32Pointer(int32(0)),
+    Optionals: deleteRequestOptions,
+}
+_, _ = wordsApi.DeleteDrawingObject(ctx, deleteRequest)

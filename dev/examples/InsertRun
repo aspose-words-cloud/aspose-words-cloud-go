@@ -1,0 +1,13 @@
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestRun := models.RunInsert{
+    Text: ToStringPointer("run with text"),
+}
+insertRequestOptions := map[string]interface{}{}
+insertRequest := &models.InsertRunRequest{
+    Name: ToStringPointer("Sample.docx"),
+    ParagraphPath: ToStringPointer("paragraphs/1"),
+    Run: requestRun,
+    Optionals: insertRequestOptions,
+}
+_, _, _ = wordsApi.InsertRun(ctx, insertRequest)

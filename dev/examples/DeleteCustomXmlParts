@@ -1,0 +1,10 @@
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+remoteFileName:= "Sample.docx"
+
+deleteRequestOptions := map[string]interface{}{"destFileName": remoteFileName,}
+deleteRequest := &models.DeleteCustomXmlPartsRequest{
+    Name: ToStringPointer(remoteFileName),
+    Optionals: deleteRequestOptions,
+}
+_, _ = wordsApi.DeleteCustomXmlParts(ctx, deleteRequest)

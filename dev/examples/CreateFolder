@@ -1,0 +1,8 @@
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+createRequestOptions := map[string]interface{}{}
+createRequest := &models.CreateFolderRequest{
+    Path: ToStringPointer("/TestCreateFolder"),
+    Optionals: createRequestOptions,
+}
+_, _ = wordsApi.CreateFolder(ctx, createRequest)

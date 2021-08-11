@@ -1,0 +1,8 @@
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestOptions := map[string]interface{}{}
+request := &models.GetFormFieldsRequest{
+    Name: ToStringPointer("Sample.docx"),
+    Optionals: requestOptions,
+}
+_, _, _ = wordsApi.GetFormFields(ctx, request)

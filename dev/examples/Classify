@@ -1,0 +1,8 @@
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+classifyRequestOptions := map[string]interface{}{"bestClassesCount": "3",}
+classifyRequest := &models.ClassifyRequest{
+    Text: ToStringPointer("Try text classification"),
+    Optionals: classifyRequestOptions,
+}
+_, _, _ = wordsApi.Classify(ctx, classifyRequest)

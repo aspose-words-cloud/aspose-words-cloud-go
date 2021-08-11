@@ -1,0 +1,13 @@
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestDocumentParameters := models.RangeDocument{
+    DocumentName: ToStringPointer("/NewDoc.docx"),
+}
+saveRequestOptions := map[string]interface{}{"rangeEndIdentifier": "id0.0.1",}
+saveRequest := &models.SaveAsRangeRequest{
+    Name: ToStringPointer("Sample.docx"),
+    RangeStartIdentifier: ToStringPointer("id0.0.0"),
+    DocumentParameters: requestDocumentParameters,
+    Optionals: saveRequestOptions,
+}
+_, _, _ = wordsApi.SaveAsRange(ctx, saveRequest)

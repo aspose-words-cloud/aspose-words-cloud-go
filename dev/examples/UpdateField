@@ -1,0 +1,13 @@
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestField := models.FieldUpdate{
+    FieldCode: ToStringPointer("{ NUMPAGES }"),
+}
+updateRequestOptions := map[string]interface{}{"nodePath": "sections/0/paragraphs/0",}
+updateRequest := &models.UpdateFieldRequest{
+    Name: ToStringPointer("Sample.docx"),
+    Index: ToInt32Pointer(int32(0)),
+    Field: requestField,
+    Optionals: updateRequestOptions,
+}
+_, _, _ = wordsApi.UpdateField(ctx, updateRequest)

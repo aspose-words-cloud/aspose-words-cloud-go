@@ -1,0 +1,13 @@
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestFootnoteDto := models.FootnoteInsert{
+    FootnoteType: ToStringPointer("Endnote"),
+    Text: ToStringPointer("test endnote"),
+}
+insertRequestOptions := map[string]interface{}{}
+insertRequest := &models.InsertFootnoteRequest{
+    Name: ToStringPointer("Sample.docx"),
+    FootnoteDto: requestFootnoteDto,
+    Optionals: insertRequestOptions,
+}
+_, _, _ = wordsApi.InsertFootnote(ctx, insertRequest)

@@ -1,0 +1,8 @@
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+updateRequestOptions := map[string]interface{}{}
+updateRequest := &models.UpdateFieldsRequest{
+    Name: ToStringPointer("Sample.docx"),
+    Optionals: updateRequestOptions,
+}
+_, _, _ = wordsApi.UpdateFields(ctx, updateRequest)

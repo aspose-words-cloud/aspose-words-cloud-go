@@ -1,0 +1,9 @@
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+moveRequestOptions := map[string]interface{}{}
+moveRequest := &models.MoveFileRequest{
+    DestPath: ToStringPointer("/TestMoveFileDest_Sample.docx"),
+    SrcPath: ToStringPointer("Sample.docx"),
+    Optionals: moveRequestOptions,
+}
+_, _ = wordsApi.MoveFile(ctx, moveRequest)

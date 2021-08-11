@@ -1,0 +1,9 @@
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestOptions := map[string]interface{}{"nodePath": "tables/1/rows/0/cells/0",}
+request := &models.GetBorderRequest{
+    Name: ToStringPointer("Sample.docx"),
+    BorderType: ToStringPointer("left"),
+    Optionals: requestOptions,
+}
+_, _, _ = wordsApi.GetBorder(ctx, request)

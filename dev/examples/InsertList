@@ -1,0 +1,12 @@
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestListInsert := models.ListInsert{
+    Template: ToStringPointer("OutlineLegal"),
+}
+insertRequestOptions := map[string]interface{}{}
+insertRequest := &models.InsertListRequest{
+    Name: ToStringPointer("TestGetLists.doc"),
+    ListInsert: requestListInsert,
+    Optionals: insertRequestOptions,
+}
+_, _, _ = wordsApi.InsertList(ctx, insertRequest)

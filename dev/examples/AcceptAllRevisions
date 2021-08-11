@@ -1,27 +1,10 @@
-import (
-    "os"
-    "github.com/aspose-words-cloud/aspose-words-cloud-go/dev/api/models"
-)
-
-documentsDir := "..."
 config, _ := models.NewConfiguration("config.json")
 wordsApi, ctx, _ := api.CreateWordsApi(config)
-fileName := "test_doc.docx"
+remoteFileName:= "Sample.docx"
 
-// Upload original document to cloud storage.
-requestFileContentFileData, _ := os.Open(documentsDir + "/" + fileName)
-uploadFileRequestOptions := map[string]interface{}{}
-uploadFileRequest := &models.UploadFileRequest{
-    FileContent: requestFileContentFileData,
-    Path: ToStringPointer(fileName),
-    Optionals: uploadFileRequestOptions,
+acceptRequestOptions := map[string]interface{}{"destFileName": remoteFileName,}
+acceptRequest := &models.AcceptAllRevisionsRequest{
+    Name: ToStringPointer(remoteFileName),
+    Optionals: acceptRequestOptions,
 }
-_, _, _ = wordsApi.UploadFile(ctx, uploadFileRequest)
-
-// Calls AcceptAllRevisions method for document in cloud.
-requestOptions := map[string]interface{}{}
-request := &models.AcceptAllRevisionsRequest{
-    Name: ToStringPointer(fileName),
-    Optionals: requestOptions,
-}
-_, _, _ = wordsApi.AcceptAllRevisions(ctx, request)
+_, _, _ = wordsApi.AcceptAllRevisions(ctx, acceptRequest)

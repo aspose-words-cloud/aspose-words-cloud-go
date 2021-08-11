@@ -1,0 +1,8 @@
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+deleteRequestOptions := map[string]interface{}{"nodePath": "",}
+deleteRequest := &models.DeleteFieldsRequest{
+    Name: ToStringPointer("Sample.docx"),
+    Optionals: deleteRequestOptions,
+}
+_, _ = wordsApi.DeleteFields(ctx, deleteRequest)

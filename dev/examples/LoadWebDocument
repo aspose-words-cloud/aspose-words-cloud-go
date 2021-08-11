@@ -1,0 +1,20 @@
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestDataSaveOptions := models.SaveOptionsData{
+    FileName: ToStringPointer("google.doc"),
+    SaveFormat: ToStringPointer("doc"),
+    DmlEffectsRenderingMode: ToStringPointer("1"),
+    DmlRenderingMode: ToStringPointer("1"),
+    UpdateSdtContent: ToBoolPointer(false),
+    ZipOutput: ToBoolPointer(false),
+}
+requestData := models.LoadWebDocumentData{
+    LoadingDocumentUrl: ToStringPointer("http://google.com"),
+    SaveOptions: requestDataSaveOptions,
+}
+loadRequestOptions := map[string]interface{}{}
+loadRequest := &models.LoadWebDocumentRequest{
+    Data: requestData,
+    Optionals: loadRequestOptions,
+}
+_, _, _ = wordsApi.LoadWebDocument(ctx, loadRequest)

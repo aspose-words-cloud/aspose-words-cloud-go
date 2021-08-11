@@ -1,0 +1,5 @@
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+resetRequest := &models.ResetCacheRequest{
+}
+_, _ = wordsApi.ResetCache(ctx, resetRequest)

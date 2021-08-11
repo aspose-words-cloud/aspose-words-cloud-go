@@ -1,0 +1,13 @@
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestRangeText := models.ReplaceRange{
+    Text: ToStringPointer("Replaced header"),
+}
+replaceRequestOptions := map[string]interface{}{"rangeEndIdentifier": "id0.0.1",}
+replaceRequest := &models.ReplaceWithTextRequest{
+    Name: ToStringPointer("Sample.docx"),
+    RangeStartIdentifier: ToStringPointer("id0.0.0"),
+    RangeText: requestRangeText,
+    Optionals: replaceRequestOptions,
+}
+_, _, _ = wordsApi.ReplaceWithText(ctx, replaceRequest)

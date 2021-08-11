@@ -1,0 +1,9 @@
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+searchRequestOptions := map[string]interface{}{}
+searchRequest := &models.SearchRequest{
+    Name: ToStringPointer("Sample.docx"),
+    Pattern: ToStringPointer("aspose"),
+    Optionals: searchRequestOptions,
+}
+_, _, _ = wordsApi.Search(ctx, searchRequest)

@@ -1,0 +1,13 @@
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestSaveOptions := models.TiffSaveOptionsData{
+    SaveFormat: ToStringPointer("tiff"),
+    FileName: ToStringPointer("/abc.tiff"),
+}
+saveRequestOptions := map[string]interface{}{}
+saveRequest := &models.SaveAsTiffRequest{
+    Name: ToStringPointer("Sample.docx"),
+    SaveOptions: requestSaveOptions,
+    Optionals: saveRequestOptions,
+}
+_, _, _ = wordsApi.SaveAsTiff(ctx, saveRequest)

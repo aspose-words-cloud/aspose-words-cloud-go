@@ -1,0 +1,13 @@
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestRow := models.TableRowInsert{
+    ColumnsCount: ToInt32Pointer(int32(5)),
+}
+insertRequestOptions := map[string]interface{}{}
+insertRequest := &models.InsertTableRowRequest{
+    Name: ToStringPointer("Sample.docx"),
+    TablePath: ToStringPointer("sections/0/tables/2"),
+    Row: requestRow,
+    Optionals: insertRequestOptions,
+}
+_, _, _ = wordsApi.InsertTableRow(ctx, insertRequest)

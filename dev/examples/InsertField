@@ -1,0 +1,12 @@
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestField := models.FieldInsert{
+    FieldCode: ToStringPointer("{ NUMPAGES }"),
+}
+insertRequestOptions := map[string]interface{}{}
+insertRequest := &models.InsertFieldRequest{
+    Name: ToStringPointer("Sample.docx"),
+    Field: requestField,
+    Optionals: insertRequestOptions,
+}
+_, _, _ = wordsApi.InsertField(ctx, insertRequest)

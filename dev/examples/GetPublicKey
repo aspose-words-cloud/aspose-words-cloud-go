@@ -1,0 +1,5 @@
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+request := &models.GetPublicKeyRequest{
+}
+_, _, _ = wordsApi.GetPublicKey(ctx, request)

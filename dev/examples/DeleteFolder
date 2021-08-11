@@ -1,0 +1,8 @@
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+deleteRequestOptions := map[string]interface{}{}
+deleteRequest := &models.DeleteFolderRequest{
+    Path: ToStringPointer(""),
+    Optionals: deleteRequestOptions,
+}
+_, _ = wordsApi.DeleteFolder(ctx, deleteRequest)

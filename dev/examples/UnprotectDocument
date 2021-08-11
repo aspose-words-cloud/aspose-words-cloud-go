@@ -1,0 +1,12 @@
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestProtectionRequest := models.ProtectionRequest{
+    Password: ToStringPointer("aspose"),
+}
+unprotectRequestOptions := map[string]interface{}{}
+unprotectRequest := &models.UnprotectDocumentRequest{
+    Name: ToStringPointer("Sample.docx"),
+    ProtectionRequest: requestProtectionRequest,
+    Optionals: unprotectRequestOptions,
+}
+_, _, _ = wordsApi.UnprotectDocument(ctx, unprotectRequest)

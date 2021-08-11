@@ -1,0 +1,13 @@
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestStyleUpdate := models.StyleUpdate{
+    Name: ToStringPointer("My Style"),
+}
+updateRequestOptions := map[string]interface{}{}
+updateRequest := &models.UpdateStyleRequest{
+    Name: ToStringPointer("Sample.docx"),
+    StyleName: ToStringPointer("Heading 1"),
+    StyleUpdate: requestStyleUpdate,
+    Optionals: updateRequestOptions,
+}
+_, _, _ = wordsApi.UpdateStyle(ctx, updateRequest)

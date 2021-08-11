@@ -1,0 +1,11 @@
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+splitRequestOptions := map[string]interface{}{"destFileName": "/TestSplitDocument.text",
+"from": int32(1),
+"to": int32(2),}
+splitRequest := &models.SplitDocumentRequest{
+    Name: ToStringPointer("Sample.docx"),
+    Format: ToStringPointer("text"),
+    Optionals: splitRequestOptions,
+}
+_, _, _ = wordsApi.SplitDocument(ctx, splitRequest)

@@ -1,0 +1,10 @@
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+deleteRequestOptions := map[string]interface{}{}
+deleteRequest := &models.DeleteHeaderFooterRequest{
+    Name: ToStringPointer("Sample.docx"),
+    SectionPath: ToStringPointer(""),
+    Index: ToInt32Pointer(int32(0)),
+    Optionals: deleteRequestOptions,
+}
+_, _ = wordsApi.DeleteHeaderFooter(ctx, deleteRequest)

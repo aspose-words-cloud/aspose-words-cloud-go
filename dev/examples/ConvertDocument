@@ -1,0 +1,11 @@
+documentsDir := "..."
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestDocumentFileData, _ := os.Open(documentsDir + "/" + "/test_uploadfile.docx")
+convertRequestOptions := map[string]interface{}{}
+convertRequest := &models.ConvertDocumentRequest{
+    Document: requestDocumentFileData,
+    Format: ToStringPointer("pdf"),
+    Optionals: convertRequestOptions,
+}
+_, _ = wordsApi.ConvertDocument(ctx, convertRequest)

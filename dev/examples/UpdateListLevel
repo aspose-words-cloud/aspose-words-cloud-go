@@ -1,0 +1,14 @@
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestListUpdate := models.ListLevelUpdate{
+    Alignment: ToStringPointer("Right"),
+}
+updateRequestOptions := map[string]interface{}{}
+updateRequest := &models.UpdateListLevelRequest{
+    Name: ToStringPointer("TestGetLists.doc"),
+    ListId: ToInt32Pointer(int32(1)),
+    ListLevel: ToInt32Pointer(int32(1)),
+    ListUpdate: requestListUpdate,
+    Optionals: updateRequestOptions,
+}
+_, _, _ = wordsApi.UpdateListLevel(ctx, updateRequest)

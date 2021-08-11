@@ -1,0 +1,17 @@
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestFormat := models.TableRowFormat{
+    AllowBreakAcrossPages: ToBoolPointer(true),
+    HeadingFormat: ToBoolPointer(true),
+    Height: ToFloat64Pointer(10.0),
+    HeightRule: ToStringPointer("Exactly"),
+}
+updateRequestOptions := map[string]interface{}{}
+updateRequest := &models.UpdateTableRowFormatRequest{
+    Name: ToStringPointer("Sample.docx"),
+    TablePath: ToStringPointer("sections/0/tables/2"),
+    Index: ToInt32Pointer(int32(0)),
+    Format: requestFormat,
+    Optionals: updateRequestOptions,
+}
+_, _, _ = wordsApi.UpdateTableRowFormat(ctx, updateRequest)

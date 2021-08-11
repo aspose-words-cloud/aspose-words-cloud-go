@@ -1,0 +1,16 @@
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+remoteFileName:= "Sample.docx"
+
+requestFontDto := models.Font{
+    Bold: ToBoolPointer(true),
+}
+updateRequestOptions := map[string]interface{}{"destFileName": remoteFileName,}
+updateRequest := &models.UpdateRunFontRequest{
+    Name: ToStringPointer(remoteFileName),
+    ParagraphPath: ToStringPointer("paragraphs/0"),
+    Index: ToInt32Pointer(int32(0)),
+    FontDto: requestFontDto,
+    Optionals: updateRequestOptions,
+}
+_, _, _ = wordsApi.UpdateRunFont(ctx, updateRequest)

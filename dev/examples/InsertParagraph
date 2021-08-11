@@ -1,0 +1,12 @@
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestParagraph := models.ParagraphInsert{
+    Text: ToStringPointer("This is a new paragraph for your document"),
+}
+insertRequestOptions := map[string]interface{}{}
+insertRequest := &models.InsertParagraphRequest{
+    Name: ToStringPointer("Sample.docx"),
+    Paragraph: requestParagraph,
+    Optionals: insertRequestOptions,
+}
+_, _, _ = wordsApi.InsertParagraph(ctx, insertRequest)

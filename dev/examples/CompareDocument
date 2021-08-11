@@ -1,0 +1,14 @@
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestCompareData := models.CompareData{
+    Author: ToStringPointer("author"),
+    ComparingWithDocument: ToStringPointer("TestCompareDocument2.doc"),
+    DateTime: ToTimePointer(CreateTime(2015, 10, 26, 0, 0, 0)),
+}
+compareRequestOptions := map[string]interface{}{"destFileName": "/TestCompareDocumentOut.doc",}
+compareRequest := &models.CompareDocumentRequest{
+    Name: ToStringPointer("TestCompareDocument1.doc"),
+    CompareData: requestCompareData,
+    Optionals: compareRequestOptions,
+}
+_, _, _ = wordsApi.CompareDocument(ctx, compareRequest)

@@ -1,0 +1,21 @@
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestBorderPropertiesColor := models.XmlColor{
+    Web: ToStringPointer("#AABBCC"),
+}
+requestBorderProperties := models.Border{
+    BorderType: ToStringPointer("Left"),
+    Color: requestBorderPropertiesColor,
+    DistanceFromText: ToFloat64Pointer(6.0),
+    LineStyle: ToStringPointer("DashDotStroker"),
+    LineWidth: ToFloat64Pointer(2.0),
+    Shadow: ToBoolPointer(true),
+}
+updateRequestOptions := map[string]interface{}{"nodePath": "tables/1/rows/0/cells/0",}
+updateRequest := &models.UpdateBorderRequest{
+    Name: ToStringPointer("Sample.docx"),
+    BorderType: ToStringPointer("left"),
+    BorderProperties: requestBorderProperties,
+    Optionals: updateRequestOptions,
+}
+_, _, _ = wordsApi.UpdateBorder(ctx, updateRequest)

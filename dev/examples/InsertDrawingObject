@@ -1,0 +1,21 @@
+documentsDir := "..."
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestImageFileFileData, _ := os.Open(documentsDir + "/" + "Common/aspose-cloud.png")
+requestDrawingObject := models.DrawingObjectInsert{
+    Height: ToFloat64Pointer(0),
+    Left: ToFloat64Pointer(0),
+    Top: ToFloat64Pointer(0),
+    Width: ToFloat64Pointer(0),
+    RelativeHorizontalPosition: ToStringPointer("Margin"),
+    RelativeVerticalPosition: ToStringPointer("Margin"),
+    WrapType: ToStringPointer("Inline"),
+}
+insertRequestOptions := map[string]interface{}{}
+insertRequest := &models.InsertDrawingObjectRequest{
+    Name: ToStringPointer("Sample.docx"),
+    DrawingObject: requestDrawingObject,
+    ImageFile: requestImageFileFileData,
+    Optionals: insertRequestOptions,
+}
+_, _, _ = wordsApi.InsertDrawingObject(ctx, insertRequest)

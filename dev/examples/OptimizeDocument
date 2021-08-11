@@ -1,0 +1,12 @@
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestOptions := models.OptimizationOptions{
+    MsWordVersion: ToStringPointer("Word2002"),
+}
+optimizeRequestOptions := map[string]interface{}{}
+optimizeRequest := &models.OptimizeDocumentRequest{
+    Name: ToStringPointer("Sample.docx"),
+    Options: requestOptions,
+    Optionals: optimizeRequestOptions,
+}
+_, _ = wordsApi.OptimizeDocument(ctx, optimizeRequest)

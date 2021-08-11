@@ -1,0 +1,13 @@
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestTable := models.TableInsert{
+    ColumnsCount: ToInt32Pointer(int32(5)),
+    RowsCount: ToInt32Pointer(int32(4)),
+}
+insertRequestOptions := map[string]interface{}{}
+insertRequest := &models.InsertTableRequest{
+    Name: ToStringPointer("Sample.docx"),
+    Table: requestTable,
+    Optionals: insertRequestOptions,
+}
+_, _, _ = wordsApi.InsertTable(ctx, insertRequest)
