@@ -195,7 +195,7 @@ func Test_Examples_ConvertDocument(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
     wordsApi := client.WordsApi
-    requestDocumentFileData, _ := os.Open(documentsDir + "/" + "/test_uploadfile.docx")
+    requestDocumentFileData, _ := os.Open(documentsDir + "/" + "Sample.docx")
     convertRequestOptions := map[string]interface{}{}
     convertRequest := &models.ConvertDocumentRequest{
         Document: requestDocumentFileData,
@@ -514,7 +514,7 @@ func Test_Examples_DeleteFields(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
     wordsApi := client.WordsApi
-    deleteRequestOptions := map[string]interface{}{"nodePath": "",}
+    deleteRequestOptions := map[string]interface{}{}
     deleteRequest := &models.DeleteFieldsRequest{
         Name: ToStringPointer("Sample.docx"),
         Optionals: deleteRequestOptions,
@@ -3137,7 +3137,7 @@ func Test_Examples_UpdateParagraphFormat(t *testing.T) {
     requestParagraphFormatDto := models.ParagraphFormatUpdate{
         Alignment: ToStringPointer("Right"),
     }
-    updateRequestOptions := map[string]interface{}{"nodePath": "",}
+    updateRequestOptions := map[string]interface{}{}
     updateRequest := &models.UpdateParagraphFormatRequest{
         Name: ToStringPointer("Sample.docx"),
         Index: ToInt32Pointer(int32(0)),

@@ -3,7 +3,7 @@ wordsApi, ctx, _ := api.CreateWordsApi(config)
 requestParagraphFormatDto := models.ParagraphFormatUpdate{
     Alignment: ToStringPointer("Right"),
 }
-updateRequestOptions := map[string]interface{}{"nodePath": "",}
+updateRequestOptions := map[string]interface{}{}
 updateRequest := &models.UpdateParagraphFormatRequest{
     Name: ToStringPointer("Sample.docx"),
     Index: ToInt32Pointer(int32(0)),

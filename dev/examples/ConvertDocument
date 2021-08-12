@@ -1,7 +1,7 @@
 documentsDir := "..."
 config, _ := models.NewConfiguration("config.json")
 wordsApi, ctx, _ := api.CreateWordsApi(config)
-requestDocumentFileData, _ := os.Open(documentsDir + "/" + "/test_uploadfile.docx")
+requestDocumentFileData, _ := os.Open(documentsDir + "/" + "Sample.docx")
 convertRequestOptions := map[string]interface{}{}
 convertRequest := &models.ConvertDocumentRequest{
     Document: requestDocumentFileData,
