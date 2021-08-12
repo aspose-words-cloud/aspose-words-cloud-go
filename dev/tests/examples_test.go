@@ -2845,6 +2845,7 @@ func Test_Examples_UpdateBookmark(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
     wordsApi := client.WordsApi
+    bookmarkName:= "aspose"
     remoteFileName:= "Sample.docx"
 
     requestBookmarkData := models.BookmarkData{

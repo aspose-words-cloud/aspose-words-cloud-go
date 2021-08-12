@@ -1,5 +1,6 @@
 config, _ := models.NewConfiguration("config.json")
 wordsApi, ctx, _ := api.CreateWordsApi(config)
+bookmarkName:= "aspose"
 remoteFileName:= "Sample.docx"
 
 requestBookmarkData := models.BookmarkData{
