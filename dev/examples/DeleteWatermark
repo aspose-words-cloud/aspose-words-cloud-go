@@ -1,10 +1,8 @@
 config, _ := models.NewConfiguration("config.json")
 wordsApi, ctx, _ := api.CreateWordsApi(config)
-remoteFileName:= "Sample.docx"
-
-deleteRequestOptions := map[string]interface{}{"destFileName": remoteFileName,}
+deleteRequestOptions := map[string]interface{}{}
 deleteRequest := &models.DeleteWatermarkRequest{
-    Name: ToStringPointer(remoteFileName),
+    Name: ToStringPointer("Sample.docx"),
     Optionals: deleteRequestOptions,
 }
 _, _, _ = wordsApi.DeleteWatermark(ctx, deleteRequest)

@@ -1,14 +1,12 @@
 config, _ := models.NewConfiguration("config.json")
 wordsApi, ctx, _ := api.CreateWordsApi(config)
-remoteFileName:= "Sample.docx"
-
 requestProtectionRequest := models.ProtectionRequest{
     Password: ToStringPointer("123"),
     ProtectionType: ToStringPointer("ReadOnly"),
 }
-protectRequestOptions := map[string]interface{}{"destFileName": remoteFileName,}
+protectRequestOptions := map[string]interface{}{}
 protectRequest := &models.ProtectDocumentRequest{
-    Name: ToStringPointer(remoteFileName),
+    Name: ToStringPointer("Sample.docx"),
     ProtectionRequest: requestProtectionRequest,
     Optionals: protectRequestOptions,
 }

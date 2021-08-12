@@ -1,13 +1,11 @@
 config, _ := models.NewConfiguration("config.json")
 wordsApi, ctx, _ := api.CreateWordsApi(config)
-remoteFileName:= "Sample.docx"
-
 requestProperty := models.DocumentPropertyCreateOrUpdate{
     Value: ToStringPointer("Imran Anwar"),
 }
-createRequestOptions := map[string]interface{}{"destFileName": remoteFileName,}
+createRequestOptions := map[string]interface{}{}
 createRequest := &models.CreateOrUpdateDocumentPropertyRequest{
-    Name: ToStringPointer(remoteFileName),
+    Name: ToStringPointer("Sample.docx"),
     PropertyName: ToStringPointer("AsposeAuthor"),
     Property: requestProperty,
     Optionals: createRequestOptions,

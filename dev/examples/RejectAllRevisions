@@ -1,10 +1,8 @@
 config, _ := models.NewConfiguration("config.json")
 wordsApi, ctx, _ := api.CreateWordsApi(config)
-remoteFileName:= "Sample.docx"
-
-rejectRequestOptions := map[string]interface{}{"destFileName": remoteFileName,}
+rejectRequestOptions := map[string]interface{}{}
 rejectRequest := &models.RejectAllRevisionsRequest{
-    Name: ToStringPointer(remoteFileName),
+    Name: ToStringPointer("Sample.docx"),
     Optionals: rejectRequestOptions,
 }
 _, _, _ = wordsApi.RejectAllRevisions(ctx, rejectRequest)

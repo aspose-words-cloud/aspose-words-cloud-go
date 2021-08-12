@@ -12,7 +12,7 @@ requestDocumentListDocumentEntries := []models.DocumentEntry{
 requestDocumentList := models.DocumentEntryList{
     DocumentEntries: requestDocumentListDocumentEntries,
 }
-appendRequestOptions := map[string]interface{}{"destFileName": remoteFileName,}
+appendRequestOptions := map[string]interface{}{}
 appendRequest := &models.AppendDocumentRequest{
     Name: ToStringPointer(remoteFileName),
     DocumentList: requestDocumentList,

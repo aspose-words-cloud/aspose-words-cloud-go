@@ -36,11 +36,9 @@ func Test_Examples_AcceptAllRevisions(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
     wordsApi := client.WordsApi
-    remoteFileName:= "Sample.docx"
-
-    acceptRequestOptions := map[string]interface{}{"destFileName": remoteFileName,}
+    acceptRequestOptions := map[string]interface{}{}
     acceptRequest := &models.AcceptAllRevisionsRequest{
-        Name: ToStringPointer(remoteFileName),
+        Name: ToStringPointer("Sample.docx"),
         Optionals: acceptRequestOptions,
     }
     _, _, _ = wordsApi.AcceptAllRevisions(ctx, acceptRequest)
@@ -68,7 +66,7 @@ func Test_Examples_AppendDocument(t *testing.T) {
     requestDocumentList := models.DocumentEntryList{
         DocumentEntries: requestDocumentListDocumentEntries,
     }
-    appendRequestOptions := map[string]interface{}{"destFileName": remoteFileName,}
+    appendRequestOptions := map[string]interface{}{}
     appendRequest := &models.AppendDocumentRequest{
         Name: ToStringPointer(remoteFileName),
         DocumentList: requestDocumentList,
@@ -292,14 +290,12 @@ func Test_Examples_CreateOrUpdateDocumentProperty(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
     wordsApi := client.WordsApi
-    remoteFileName:= "Sample.docx"
-
     requestProperty := models.DocumentPropertyCreateOrUpdate{
         Value: ToStringPointer("Imran Anwar"),
     }
-    createRequestOptions := map[string]interface{}{"destFileName": remoteFileName,}
+    createRequestOptions := map[string]interface{}{}
     createRequest := &models.CreateOrUpdateDocumentPropertyRequest{
-        Name: ToStringPointer(remoteFileName),
+        Name: ToStringPointer("Sample.docx"),
         PropertyName: ToStringPointer("AsposeAuthor"),
         Property: requestProperty,
         Optionals: createRequestOptions,
@@ -373,11 +369,9 @@ func Test_Examples_DeleteComment(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
     wordsApi := client.WordsApi
-    remoteFileName:= "Sample.docx"
-
-    deleteRequestOptions := map[string]interface{}{"destFileName": remoteFileName,}
+    deleteRequestOptions := map[string]interface{}{}
     deleteRequest := &models.DeleteCommentRequest{
-        Name: ToStringPointer(remoteFileName),
+        Name: ToStringPointer("Sample.docx"),
         CommentIndex: ToInt32Pointer(int32(0)),
         Optionals: deleteRequestOptions,
     }
@@ -394,11 +388,9 @@ func Test_Examples_DeleteComments(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
     wordsApi := client.WordsApi
-    remoteFileName:= "Sample.docx"
-
-    deleteRequestOptions := map[string]interface{}{"destFileName": remoteFileName,}
+    deleteRequestOptions := map[string]interface{}{}
     deleteRequest := &models.DeleteCommentsRequest{
-        Name: ToStringPointer(remoteFileName),
+        Name: ToStringPointer("Sample.docx"),
         Optionals: deleteRequestOptions,
     }
     _, _ = wordsApi.DeleteComments(ctx, deleteRequest)
@@ -414,11 +406,9 @@ func Test_Examples_DeleteCustomXmlPart(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
     wordsApi := client.WordsApi
-    remoteFileName:= "Sample.docx"
-
-    deleteRequestOptions := map[string]interface{}{"destFileName": remoteFileName,}
+    deleteRequestOptions := map[string]interface{}{}
     deleteRequest := &models.DeleteCustomXmlPartRequest{
-        Name: ToStringPointer(remoteFileName),
+        Name: ToStringPointer("Sample.docx"),
         CustomXmlPartIndex: ToInt32Pointer(int32(0)),
         Optionals: deleteRequestOptions,
     }
@@ -435,11 +425,9 @@ func Test_Examples_DeleteCustomXmlParts(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
     wordsApi := client.WordsApi
-    remoteFileName:= "Sample.docx"
-
-    deleteRequestOptions := map[string]interface{}{"destFileName": remoteFileName,}
+    deleteRequestOptions := map[string]interface{}{}
     deleteRequest := &models.DeleteCustomXmlPartsRequest{
-        Name: ToStringPointer(remoteFileName),
+        Name: ToStringPointer("Sample.docx"),
         Optionals: deleteRequestOptions,
     }
     _, _ = wordsApi.DeleteCustomXmlParts(ctx, deleteRequest)
@@ -455,11 +443,9 @@ func Test_Examples_DeleteDocumentProperty(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
     wordsApi := client.WordsApi
-    remoteFileName:= "Sample.docx"
-
-    deleteRequestOptions := map[string]interface{}{"destFileName": remoteFileName,}
+    deleteRequestOptions := map[string]interface{}{}
     deleteRequest := &models.DeleteDocumentPropertyRequest{
-        Name: ToStringPointer(remoteFileName),
+        Name: ToStringPointer("Sample.docx"),
         PropertyName: ToStringPointer("testProp"),
         Optionals: deleteRequestOptions,
     }
@@ -579,11 +565,9 @@ func Test_Examples_DeleteFormField(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
     wordsApi := client.WordsApi
-    remoteFileName:= "Sample.docx"
-
-    deleteRequestOptions := map[string]interface{}{"destFileName": remoteFileName,}
+    deleteRequestOptions := map[string]interface{}{}
     deleteRequest := &models.DeleteFormFieldRequest{
-        Name: ToStringPointer(remoteFileName),
+        Name: ToStringPointer("Sample.docx"),
         Index: ToInt32Pointer(int32(0)),
         Optionals: deleteRequestOptions,
     }
@@ -832,11 +816,9 @@ func Test_Examples_DeleteWatermark(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
     wordsApi := client.WordsApi
-    remoteFileName:= "Sample.docx"
-
-    deleteRequestOptions := map[string]interface{}{"destFileName": remoteFileName,}
+    deleteRequestOptions := map[string]interface{}{}
     deleteRequest := &models.DeleteWatermarkRequest{
-        Name: ToStringPointer(remoteFileName),
+        Name: ToStringPointer("Sample.docx"),
         Optionals: deleteRequestOptions,
     }
     _, _, _ = wordsApi.DeleteWatermark(ctx, deleteRequest)
@@ -866,12 +848,9 @@ func Test_Examples_ExecuteMailMerge(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
     wordsApi := client.WordsApi
-    remoteFileName:= "Sample.docx"
-
-    mailMergeRequestOptions := map[string]interface{}{"data": "TestExecuteTemplateData.txt",
-    "destFileName": remoteFileName,}
+    mailMergeRequestOptions := map[string]interface{}{"data": "TestExecuteTemplateData.txt",}
     mailMergeRequest := &models.ExecuteMailMergeRequest{
-        Name: ToStringPointer(remoteFileName),
+        Name: ToStringPointer("Sample.docx"),
         Optionals: mailMergeRequestOptions,
     }
     _, _, _ = wordsApi.ExecuteMailMerge(ctx, mailMergeRequest)
@@ -2107,8 +2086,6 @@ func Test_Examples_InsertFormField(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
     wordsApi := client.WordsApi
-    remoteFileName:= "Sample.docx"
-
     requestFormField := models.FormFieldTextInput{
         Name: ToStringPointer("FullName"),
         Enabled: ToBoolPointer(true),
@@ -2118,9 +2095,9 @@ func Test_Examples_InsertFormField(t *testing.T) {
         TextInputDefault: ToStringPointer("123"),
         TextInputFormat: ToStringPointer("UPPERCASE"),
     }
-    insertRequestOptions := map[string]interface{}{"destFileName": remoteFileName,}
+    insertRequestOptions := map[string]interface{}{}
     insertRequest := &models.InsertFormFieldRequest{
-        Name: ToStringPointer(remoteFileName),
+        Name: ToStringPointer("Sample.docx"),
         FormField: requestFormField,
         Optionals: insertRequestOptions,
     }
@@ -2204,15 +2181,13 @@ func Test_Examples_InsertPageNumbers(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
     wordsApi := client.WordsApi
-    remoteFileName:= "Sample.docx"
-
     requestPageNumber := models.PageNumber{
         Alignment: ToStringPointer("center"),
         Format: ToStringPointer("{PAGE} of {NUMPAGES}"),
     }
-    insertRequestOptions := map[string]interface{}{"destFileName": remoteFileName,}
+    insertRequestOptions := map[string]interface{}{}
     insertRequest := &models.InsertPageNumbersRequest{
-        Name: ToStringPointer(remoteFileName),
+        Name: ToStringPointer("Sample.docx"),
         PageNumber: requestPageNumber,
         Optionals: insertRequestOptions,
     }
@@ -2366,13 +2341,10 @@ func Test_Examples_InsertWatermarkImage(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
     wordsApi := client.WordsApi
-    remoteFileName:= "Sample.docx"
-
     insertRequestOptions := map[string]interface{}{"imageFile": nil,
-    "destFileName": remoteFileName,
     "image": "Sample.png",}
     insertRequest := &models.InsertWatermarkImageRequest{
-        Name: ToStringPointer(remoteFileName),
+        Name: ToStringPointer("Sample.docx"),
         Optionals: insertRequestOptions,
     }
     _, _, _ = wordsApi.InsertWatermarkImage(ctx, insertRequest)
@@ -2388,15 +2360,13 @@ func Test_Examples_InsertWatermarkText(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
     wordsApi := client.WordsApi
-    remoteFileName:= "Sample.docx"
-
     requestWatermarkText := models.WatermarkText{
         Text: ToStringPointer("This is the text"),
         RotationAngle: ToFloat64Pointer(90.0),
     }
-    insertRequestOptions := map[string]interface{}{"destFileName": remoteFileName,}
+    insertRequestOptions := map[string]interface{}{}
     insertRequest := &models.InsertWatermarkTextRequest{
-        Name: ToStringPointer(remoteFileName),
+        Name: ToStringPointer("Sample.docx"),
         WatermarkText: requestWatermarkText,
         Optionals: insertRequestOptions,
     }
@@ -2491,15 +2461,13 @@ func Test_Examples_ProtectDocument(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
     wordsApi := client.WordsApi
-    remoteFileName:= "Sample.docx"
-
     requestProtectionRequest := models.ProtectionRequest{
         Password: ToStringPointer("123"),
         ProtectionType: ToStringPointer("ReadOnly"),
     }
-    protectRequestOptions := map[string]interface{}{"destFileName": remoteFileName,}
+    protectRequestOptions := map[string]interface{}{}
     protectRequest := &models.ProtectDocumentRequest{
-        Name: ToStringPointer(remoteFileName),
+        Name: ToStringPointer("Sample.docx"),
         ProtectionRequest: requestProtectionRequest,
         Optionals: protectRequestOptions,
     }
@@ -2516,11 +2484,9 @@ func Test_Examples_RejectAllRevisions(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
     wordsApi := client.WordsApi
-    remoteFileName:= "Sample.docx"
-
-    rejectRequestOptions := map[string]interface{}{"destFileName": remoteFileName,}
+    rejectRequestOptions := map[string]interface{}{}
     rejectRequest := &models.RejectAllRevisionsRequest{
-        Name: ToStringPointer(remoteFileName),
+        Name: ToStringPointer("Sample.docx"),
         Optionals: rejectRequestOptions,
     }
     _, _, _ = wordsApi.RejectAllRevisions(ctx, rejectRequest)
@@ -2655,15 +2621,13 @@ func Test_Examples_ReplaceText(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
     wordsApi := client.WordsApi
-    remoteFileName:= "Sample.docx"
-
     requestReplaceText := models.ReplaceTextParameters{
         OldValue: ToStringPointer("Testing"),
         NewValue: ToStringPointer("Aspose testing"),
     }
-    replaceRequestOptions := map[string]interface{}{"destFileName": remoteFileName,}
+    replaceRequestOptions := map[string]interface{}{}
     replaceRequest := &models.ReplaceTextRequest{
-        Name: ToStringPointer(remoteFileName),
+        Name: ToStringPointer("Sample.docx"),
         ReplaceText: requestReplaceText,
         Optionals: replaceRequestOptions,
     }
@@ -2846,15 +2810,14 @@ func Test_Examples_UpdateBookmark(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     wordsApi := client.WordsApi
     bookmarkName:= "aspose"
-    remoteFileName:= "Sample.docx"
 
     requestBookmarkData := models.BookmarkData{
         Name: ToStringPointer(bookmarkName),
         Text: ToStringPointer("This will be the text for Aspose"),
     }
-    updateRequestOptions := map[string]interface{}{"destFileName": remoteFileName,}
+    updateRequestOptions := map[string]interface{}{}
     updateRequest := &models.UpdateBookmarkRequest{
-        Name: ToStringPointer(remoteFileName),
+        Name: ToStringPointer("Sample.docx"),
         BookmarkName: ToStringPointer(bookmarkName),
         BookmarkData: requestBookmarkData,
         Optionals: updateRequestOptions,
@@ -3057,8 +3020,6 @@ func Test_Examples_UpdateFormField(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
     wordsApi := client.WordsApi
-    remoteFileName:= "Sample.docx"
-
     requestFormField := models.FormFieldTextInput{
         Name: ToStringPointer("FullName"),
         Enabled: ToBoolPointer(true),
@@ -3067,9 +3028,9 @@ func Test_Examples_UpdateFormField(t *testing.T) {
         TextInputType: ToStringPointer("Regular"),
         TextInputDefault: ToStringPointer("No name"),
     }
-    updateRequestOptions := map[string]interface{}{"destFileName": remoteFileName,}
+    updateRequestOptions := map[string]interface{}{}
     updateRequest := &models.UpdateFormFieldRequest{
-        Name: ToStringPointer(remoteFileName),
+        Name: ToStringPointer("Sample.docx"),
         Index: ToInt32Pointer(int32(0)),
         FormField: requestFormField,
         Optionals: updateRequestOptions,
@@ -3200,14 +3161,12 @@ func Test_Examples_UpdateRunFont(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
     wordsApi := client.WordsApi
-    remoteFileName:= "Sample.docx"
-
     requestFontDto := models.Font{
         Bold: ToBoolPointer(true),
     }
-    updateRequestOptions := map[string]interface{}{"destFileName": remoteFileName,}
+    updateRequestOptions := map[string]interface{}{}
     updateRequest := &models.UpdateRunFontRequest{
-        Name: ToStringPointer(remoteFileName),
+        Name: ToStringPointer("Sample.docx"),
         ParagraphPath: ToStringPointer("paragraphs/0"),
         Index: ToInt32Pointer(int32(0)),
         FontDto: requestFontDto,

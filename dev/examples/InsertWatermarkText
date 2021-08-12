@@ -1,14 +1,12 @@
 config, _ := models.NewConfiguration("config.json")
 wordsApi, ctx, _ := api.CreateWordsApi(config)
-remoteFileName:= "Sample.docx"
-
 requestWatermarkText := models.WatermarkText{
     Text: ToStringPointer("This is the text"),
     RotationAngle: ToFloat64Pointer(90.0),
 }
-insertRequestOptions := map[string]interface{}{"destFileName": remoteFileName,}
+insertRequestOptions := map[string]interface{}{}
 insertRequest := &models.InsertWatermarkTextRequest{
-    Name: ToStringPointer(remoteFileName),
+    Name: ToStringPointer("Sample.docx"),
     WatermarkText: requestWatermarkText,
     Optionals: insertRequestOptions,
 }
