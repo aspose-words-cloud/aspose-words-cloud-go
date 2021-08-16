@@ -127,6 +127,7 @@ func Test_CompareDocument_CompareTwoDocumentOnline(t *testing.T) {
         DateTime: ToTimePointer(CreateTime(2015, 10, 26, 0, 0, 0)),
     }
 
+
     options := map[string]interface{}{
         "comparingDocument": OpenFile(t, localFolder + "/" + localName2),
         "destFileName": baseTestOutPath + "/TestCompareDocumentOut.doc",

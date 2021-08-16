@@ -458,6 +458,7 @@ func Test_DrawingObjects_InsertDrawingObject(t *testing.T) {
         WrapType: ToStringPointer("Inline"),
     }
 
+
     options := map[string]interface{}{
         "nodePath": "",
         "folder": remoteDataFolder,
@@ -492,6 +493,7 @@ func Test_DrawingObjects_InsertDrawingObjectOnline(t *testing.T) {
         RelativeVerticalPosition: ToStringPointer("Margin"),
         WrapType: ToStringPointer("Inline"),
     }
+
 
     options := map[string]interface{}{
         "nodePath": "",
@@ -530,6 +532,7 @@ func Test_DrawingObjects_InsertDrawingObjectWithoutNodePath(t *testing.T) {
         RelativeVerticalPosition: ToStringPointer("Margin"),
         WrapType: ToStringPointer("Inline"),
     }
+
 
     options := map[string]interface{}{
         "folder": remoteDataFolder,
@@ -646,6 +649,7 @@ func Test_DrawingObjects_UpdateDrawingObject(t *testing.T) {
         Left: ToFloat64Pointer(0),
     }
 
+
     options := map[string]interface{}{
         "nodePath": "",
         "folder": remoteDataFolder,
@@ -675,6 +679,7 @@ func Test_DrawingObjects_UpdateDrawingObjectOnline(t *testing.T) {
     requestDrawingObject := models.DrawingObjectUpdate{
         Left: ToFloat64Pointer(0),
     }
+
 
     options := map[string]interface{}{
         "nodePath": "",
@@ -708,6 +713,7 @@ func Test_DrawingObjects_UpdateDrawingObjectWithoutNodePath(t *testing.T) {
     requestDrawingObject := models.DrawingObjectUpdate{
         Left: ToFloat64Pointer(0),
     }
+
 
     options := map[string]interface{}{
         "folder": remoteDataFolder,
