@@ -71,6 +71,7 @@ func Test_Compatibility_OptimizeDocumentOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "Common/test_multi_pages.docx"
 
+    requestDocument := OpenFile(t, localFile)
     requestOptions := models.OptimizationOptions{
         MsWordVersion: ToStringPointer("Word2002"),
     }
@@ -79,7 +80,7 @@ func Test_Compatibility_OptimizeDocumentOnline(t *testing.T) {
     }
 
     request := &models.OptimizeDocumentOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         Options: requestOptions,
         Optionals: options,
     }

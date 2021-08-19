@@ -75,6 +75,7 @@ func Test_Run_UpdateRunOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "DocumentElements/Runs/Run.doc"
 
+    requestDocument := OpenFile(t, localFile)
     requestRun := models.RunUpdate{
         Text: ToStringPointer("run with text"),
     }
@@ -83,7 +84,7 @@ func Test_Run_UpdateRunOnline(t *testing.T) {
     }
 
     request := &models.UpdateRunOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         ParagraphPath: ToStringPointer("paragraphs/1"),
         Run: requestRun,
         Index: ToInt32Pointer(int32(0)),
@@ -138,6 +139,7 @@ func Test_Run_InsertRunOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "DocumentElements/Runs/Run.doc"
 
+    requestDocument := OpenFile(t, localFile)
     requestRun := models.RunInsert{
         Text: ToStringPointer("run with text"),
     }
@@ -146,7 +148,7 @@ func Test_Run_InsertRunOnline(t *testing.T) {
     }
 
     request := &models.InsertRunOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         ParagraphPath: ToStringPointer("paragraphs/1"),
         Run: requestRun,
         Optionals: options,
@@ -195,12 +197,13 @@ func Test_Run_DeleteRunOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "DocumentElements/Runs/Run.doc"
 
+    requestDocument := OpenFile(t, localFile)
 
     options := map[string]interface{}{
     }
 
     request := &models.DeleteRunOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         ParagraphPath: ToStringPointer("paragraphs/1"),
         Index: ToInt32Pointer(int32(0)),
         Optionals: options,

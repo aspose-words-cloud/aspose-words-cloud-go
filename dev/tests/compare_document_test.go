@@ -86,6 +86,7 @@ func Test_CompareDocument_CompareDocumentOnline(t *testing.T) {
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFolder + "/" + localName2), remoteFolder + "/" + remoteName2)
 
+    requestDocument := OpenFile(t, localFolder + "/" + localName1)
     requestCompareData := models.CompareData{
         Author: ToStringPointer("author"),
         ComparingWithDocument: ToStringPointer(remoteFolder + "/" + remoteName2),
@@ -97,7 +98,7 @@ func Test_CompareDocument_CompareDocumentOnline(t *testing.T) {
     }
 
     request := &models.CompareDocumentOnlineRequest{
-        Document: OpenFile(t, localFolder + "/" + localName1),
+        Document: requestDocument,
         CompareData: requestCompareData,
         Optionals: options,
     }
@@ -121,20 +122,21 @@ func Test_CompareDocument_CompareTwoDocumentOnline(t *testing.T) {
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFolder + "/" + localName2), remoteFolder + "/" + remoteName2)
 
+    requestDocument := OpenFile(t, localFolder + "/" + localName1)
     requestCompareData := models.CompareData{
         Author: ToStringPointer("author"),
         ComparingWithDocument: ToStringPointer(remoteFolder + "/" + remoteName2),
         DateTime: ToTimePointer(CreateTime(2015, 10, 26, 0, 0, 0)),
     }
-
+    requestComparingDocument := OpenFile(t, localFolder + "/" + localName2)
 
     options := map[string]interface{}{
-        "comparingDocument": OpenFile(t, localFolder + "/" + localName2),
+        "comparingDocument": requestComparingDocument,
         "destFileName": baseTestOutPath + "/TestCompareDocumentOut.doc",
     }
 
     request := &models.CompareDocumentOnlineRequest{
-        Document: OpenFile(t, localFolder + "/" + localName1),
+        Document: requestDocument,
         CompareData: requestCompareData,
         Optionals: options,
     }

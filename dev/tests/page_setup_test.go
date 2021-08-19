@@ -70,12 +70,13 @@ func Test_PageSetup_GetSectionPageSetupOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "Common/test_multi_pages.docx"
 
+    requestDocument := OpenFile(t, localFile)
 
     options := map[string]interface{}{
     }
 
     request := &models.GetSectionPageSetupOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         SectionIndex: ToInt32Pointer(int32(0)),
         Optionals: options,
     }
@@ -132,6 +133,7 @@ func Test_PageSetup_UpdateSectionPageSetupOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "Common/test_multi_pages.docx"
 
+    requestDocument := OpenFile(t, localFile)
     requestPageSetup := models.PageSetup{
         RtlGutter: ToBoolPointer(true),
         LeftMargin: ToFloat64Pointer(10),
@@ -143,7 +145,7 @@ func Test_PageSetup_UpdateSectionPageSetupOnline(t *testing.T) {
     }
 
     request := &models.UpdateSectionPageSetupOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         SectionIndex: ToInt32Pointer(int32(0)),
         PageSetup: requestPageSetup,
         Optionals: options,
@@ -191,12 +193,13 @@ func Test_PageSetup_GetRenderPageOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localTextFile := "DocumentElements/Text/SampleWordDocument.docx"
 
+    requestDocument := OpenFile(t, localTextFile)
 
     options := map[string]interface{}{
     }
 
     request := &models.RenderPageOnlineRequest{
-        Document: OpenFile(t, localTextFile),
+        Document: requestDocument,
         PageIndex: ToInt32Pointer(int32(1)),
         Format: ToStringPointer("bmp"),
         Optionals: options,

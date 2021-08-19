@@ -74,6 +74,7 @@ func Test_Text_ReplaceTextOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "Common/test_multi_pages.docx"
 
+    requestDocument := OpenFile(t, localFile)
     requestReplaceText := models.ReplaceTextParameters{
         OldValue: ToStringPointer("aspose"),
         NewValue: ToStringPointer("aspose new"),
@@ -83,7 +84,7 @@ func Test_Text_ReplaceTextOnline(t *testing.T) {
     }
 
     request := &models.ReplaceTextOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         ReplaceText: requestReplaceText,
         Optionals: options,
     }
@@ -134,12 +135,13 @@ func Test_Text_SearchOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "DocumentElements/Text/SampleWordDocument.docx"
 
+    requestDocument := OpenFile(t, localFile)
 
     options := map[string]interface{}{
     }
 
     request := &models.SearchOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         Pattern: ToStringPointer("aspose"),
         Optionals: options,
     }

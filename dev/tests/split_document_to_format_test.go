@@ -74,6 +74,7 @@ func Test_SplitDocumentToFormat_SplitDocumentOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "Common/test_multi_pages.docx"
 
+    requestDocument := OpenFile(t, localFile)
 
     options := map[string]interface{}{
         "destFileName": baseTestOutPath + "/TestSplitDocument.text",
@@ -82,7 +83,7 @@ func Test_SplitDocumentToFormat_SplitDocumentOnline(t *testing.T) {
     }
 
     request := &models.SplitDocumentOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         Format: ToStringPointer("text"),
         Optionals: options,
     }

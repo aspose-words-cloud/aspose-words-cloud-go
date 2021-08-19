@@ -71,12 +71,13 @@ func Test_HeaderFooter_GetHeaderFootersOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "DocumentElements/HeaderFooters/HeadersFooters.doc"
 
+    requestDocument := OpenFile(t, localFile)
 
     options := map[string]interface{}{
     }
 
     request := &models.GetHeaderFootersOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         SectionPath: ToStringPointer(""),
         Optionals: options,
     }
@@ -126,12 +127,13 @@ func Test_HeaderFooter_GetHeaderFooterOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "DocumentElements/HeaderFooters/HeadersFooters.doc"
 
+    requestDocument := OpenFile(t, localFile)
 
     options := map[string]interface{}{
     }
 
     request := &models.GetHeaderFooterOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         HeaderFooterIndex: ToInt32Pointer(int32(0)),
         Optionals: options,
     }
@@ -182,12 +184,13 @@ func Test_HeaderFooter_GetHeaderFooterOfSectionOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "DocumentElements/HeaderFooters/HeadersFooters.doc"
 
+    requestDocument := OpenFile(t, localFile)
 
     options := map[string]interface{}{
     }
 
     request := &models.GetHeaderFooterOfSectionOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         HeaderFooterIndex: ToInt32Pointer(int32(0)),
         SectionIndex: ToInt32Pointer(int32(0)),
         Optionals: options,
@@ -236,12 +239,13 @@ func Test_HeaderFooter_DeleteHeaderFooterOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "DocumentElements/HeaderFooters/HeadersFooters.doc"
 
+    requestDocument := OpenFile(t, localFile)
 
     options := map[string]interface{}{
     }
 
     request := &models.DeleteHeaderFooterOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         SectionPath: ToStringPointer(""),
         Index: ToInt32Pointer(int32(0)),
         Optionals: options,
@@ -289,12 +293,13 @@ func Test_HeaderFooter_DeleteHeadersFootersOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "DocumentElements/HeaderFooters/HeadersFooters.doc"
 
+    requestDocument := OpenFile(t, localFile)
 
     options := map[string]interface{}{
     }
 
     request := &models.DeleteHeadersFootersOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         SectionPath: ToStringPointer(""),
         Optionals: options,
     }
@@ -341,12 +346,13 @@ func Test_HeaderFooter_InsertHeaderFooterOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "DocumentElements/HeaderFooters/HeadersFooters.doc"
 
+    requestDocument := OpenFile(t, localFile)
 
     options := map[string]interface{}{
     }
 
     request := &models.InsertHeaderFooterOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         SectionPath: ToStringPointer(""),
         HeaderFooterType: ToStringPointer("FooterEven"),
         Optionals: options,

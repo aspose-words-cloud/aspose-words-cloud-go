@@ -67,13 +67,14 @@ func Test_DrawingObjects_GetDocumentDrawingObjectsOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "Common/test_multi_pages.docx"
 
+    requestDocument := OpenFile(t, localFile)
 
     options := map[string]interface{}{
         "nodePath": "sections/0",
     }
 
     request := &models.GetDocumentDrawingObjectsOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         Optionals: options,
     }
 
@@ -146,13 +147,14 @@ func Test_DrawingObjects_GetDocumentDrawingObjectByIndexOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "Common/test_multi_pages.docx"
 
+    requestDocument := OpenFile(t, localFile)
 
     options := map[string]interface{}{
         "nodePath": "sections/0",
     }
 
     request := &models.GetDocumentDrawingObjectByIndexOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         Index: ToInt32Pointer(int32(0)),
         Optionals: options,
     }
@@ -228,13 +230,14 @@ func Test_DrawingObjects_RenderDrawingObjectOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "Common/test_multi_pages.docx"
 
+    requestDocument := OpenFile(t, localFile)
 
     options := map[string]interface{}{
         "nodePath": "sections/0",
     }
 
     request := &models.RenderDrawingObjectOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         Format: ToStringPointer("png"),
         Index: ToInt32Pointer(int32(0)),
         Optionals: options,
@@ -311,13 +314,14 @@ func Test_DrawingObjects_GetDocumentDrawingObjectImageDataOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "Common/test_multi_pages.docx"
 
+    requestDocument := OpenFile(t, localFile)
 
     options := map[string]interface{}{
         "nodePath": "sections/0",
     }
 
     request := &models.GetDocumentDrawingObjectImageDataOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         Index: ToInt32Pointer(int32(0)),
         Optionals: options,
     }
@@ -392,13 +396,14 @@ func Test_DrawingObjects_GetDocumentDrawingObjectOleDataOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localDrawingFile := "DocumentElements/DrawingObjects/sample_EmbeddedOLE.docx"
 
+    requestDocument := OpenFile(t, localDrawingFile)
 
     options := map[string]interface{}{
         "nodePath": "sections/0",
     }
 
     request := &models.GetDocumentDrawingObjectOleDataOnlineRequest{
-        Document: OpenFile(t, localDrawingFile),
+        Document: requestDocument,
         Index: ToInt32Pointer(int32(0)),
         Optionals: options,
     }
@@ -457,7 +462,7 @@ func Test_DrawingObjects_InsertDrawingObject(t *testing.T) {
         RelativeVerticalPosition: ToStringPointer("Margin"),
         WrapType: ToStringPointer("Inline"),
     }
-
+    requestImageFile := OpenFile(t, "Common/aspose-cloud.png")
 
     options := map[string]interface{}{
         "nodePath": "",
@@ -467,7 +472,7 @@ func Test_DrawingObjects_InsertDrawingObject(t *testing.T) {
     request := &models.InsertDrawingObjectRequest{
         Name: ToStringPointer(remoteFileName),
         DrawingObject: requestDrawingObject,
-        ImageFile: OpenFile(t, "Common/aspose-cloud.png"),
+        ImageFile: requestImageFile,
         Optionals: options,
     }
 
@@ -484,6 +489,7 @@ func Test_DrawingObjects_InsertDrawingObjectOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "Common/test_multi_pages.docx"
 
+    requestDocument := OpenFile(t, localFile)
     requestDrawingObject := models.DrawingObjectInsert{
         Height: ToFloat64Pointer(0),
         Left: ToFloat64Pointer(0),
@@ -493,16 +499,16 @@ func Test_DrawingObjects_InsertDrawingObjectOnline(t *testing.T) {
         RelativeVerticalPosition: ToStringPointer("Margin"),
         WrapType: ToStringPointer("Inline"),
     }
-
+    requestImageFile := OpenFile(t, "Common/aspose-cloud.png")
 
     options := map[string]interface{}{
         "nodePath": "",
     }
 
     request := &models.InsertDrawingObjectOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         DrawingObject: requestDrawingObject,
-        ImageFile: OpenFile(t, "Common/aspose-cloud.png"),
+        ImageFile: requestImageFile,
         Optionals: options,
     }
 
@@ -532,7 +538,7 @@ func Test_DrawingObjects_InsertDrawingObjectWithoutNodePath(t *testing.T) {
         RelativeVerticalPosition: ToStringPointer("Margin"),
         WrapType: ToStringPointer("Inline"),
     }
-
+    requestImageFile := OpenFile(t, "Common/aspose-cloud.png")
 
     options := map[string]interface{}{
         "folder": remoteDataFolder,
@@ -541,7 +547,7 @@ func Test_DrawingObjects_InsertDrawingObjectWithoutNodePath(t *testing.T) {
     request := &models.InsertDrawingObjectRequest{
         Name: ToStringPointer(remoteFileName),
         DrawingObject: requestDrawingObject,
-        ImageFile: OpenFile(t, "Common/aspose-cloud.png"),
+        ImageFile: requestImageFile,
         Optionals: options,
     }
 
@@ -588,13 +594,14 @@ func Test_DrawingObjects_DeleteDrawingObjectOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "Common/test_multi_pages.docx"
 
+    requestDocument := OpenFile(t, localFile)
 
     options := map[string]interface{}{
         "nodePath": "",
     }
 
     request := &models.DeleteDrawingObjectOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         Index: ToInt32Pointer(int32(0)),
         Optionals: options,
     }
@@ -648,7 +655,7 @@ func Test_DrawingObjects_UpdateDrawingObject(t *testing.T) {
     requestDrawingObject := models.DrawingObjectUpdate{
         Left: ToFloat64Pointer(0),
     }
-
+    requestImageFile := OpenFile(t, "Common/aspose-cloud.png")
 
     options := map[string]interface{}{
         "nodePath": "",
@@ -658,7 +665,7 @@ func Test_DrawingObjects_UpdateDrawingObject(t *testing.T) {
     request := &models.UpdateDrawingObjectRequest{
         Name: ToStringPointer(remoteFileName),
         DrawingObject: requestDrawingObject,
-        ImageFile: OpenFile(t, "Common/aspose-cloud.png"),
+        ImageFile: requestImageFile,
         Index: ToInt32Pointer(int32(0)),
         Optionals: options,
     }
@@ -676,19 +683,20 @@ func Test_DrawingObjects_UpdateDrawingObjectOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "Common/test_multi_pages.docx"
 
+    requestDocument := OpenFile(t, localFile)
     requestDrawingObject := models.DrawingObjectUpdate{
         Left: ToFloat64Pointer(0),
     }
-
+    requestImageFile := OpenFile(t, "Common/aspose-cloud.png")
 
     options := map[string]interface{}{
         "nodePath": "",
     }
 
     request := &models.UpdateDrawingObjectOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         DrawingObject: requestDrawingObject,
-        ImageFile: OpenFile(t, "Common/aspose-cloud.png"),
+        ImageFile: requestImageFile,
         Index: ToInt32Pointer(int32(0)),
         Optionals: options,
     }
@@ -713,7 +721,7 @@ func Test_DrawingObjects_UpdateDrawingObjectWithoutNodePath(t *testing.T) {
     requestDrawingObject := models.DrawingObjectUpdate{
         Left: ToFloat64Pointer(0),
     }
-
+    requestImageFile := OpenFile(t, "Common/aspose-cloud.png")
 
     options := map[string]interface{}{
         "folder": remoteDataFolder,
@@ -722,7 +730,7 @@ func Test_DrawingObjects_UpdateDrawingObjectWithoutNodePath(t *testing.T) {
     request := &models.UpdateDrawingObjectRequest{
         Name: ToStringPointer(remoteFileName),
         DrawingObject: requestDrawingObject,
-        ImageFile: OpenFile(t, "Common/aspose-cloud.png"),
+        ImageFile: requestImageFile,
         Index: ToInt32Pointer(int32(0)),
         Optionals: options,
     }
