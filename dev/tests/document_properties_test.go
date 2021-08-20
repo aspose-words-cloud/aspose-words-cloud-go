@@ -73,12 +73,13 @@ func Test_DocumentProperties_GetDocumentPropertiesOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "Common/test_multi_pages.docx"
 
+    requestDocument := OpenFile(t, localFile)
 
     options := map[string]interface{}{
     }
 
     request := &models.GetDocumentPropertiesOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         Optionals: options,
     }
 
@@ -126,12 +127,13 @@ func Test_DocumentProperties_GetDocumentPropertyOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "Common/test_multi_pages.docx"
 
+    requestDocument := OpenFile(t, localFile)
 
     options := map[string]interface{}{
     }
 
     request := &models.GetDocumentPropertyOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         PropertyName: ToStringPointer("Author"),
         Optionals: options,
     }
@@ -179,12 +181,13 @@ func Test_DocumentProperties_DeleteDocumentPropertyOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "Common/test_multi_pages.docx"
 
+    requestDocument := OpenFile(t, localFile)
 
     options := map[string]interface{}{
     }
 
     request := &models.DeleteDocumentPropertyOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         PropertyName: ToStringPointer("testProp"),
         Optionals: options,
     }
@@ -238,6 +241,7 @@ func Test_DocumentProperties_UpdateDocumentPropertyOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "Common/test_multi_pages.docx"
 
+    requestDocument := OpenFile(t, localFile)
     requestProperty := models.DocumentPropertyCreateOrUpdate{
         Value: ToStringPointer("Imran Anwar"),
     }
@@ -246,7 +250,7 @@ func Test_DocumentProperties_UpdateDocumentPropertyOnline(t *testing.T) {
     }
 
     request := &models.CreateOrUpdateDocumentPropertyOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         PropertyName: ToStringPointer("AsposeAuthor"),
         Property: requestProperty,
         Optionals: options,

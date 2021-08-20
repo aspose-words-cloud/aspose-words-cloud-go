@@ -42,6 +42,7 @@ func Test_BuildReport_BuildReportOnline(t *testing.T) {
     localDocumentFile := "ReportTemplate.docx"
     localDataFile := ReadFile(t, reportingFolder + "/ReportData.json")
 
+    requestTemplate := OpenFile(t, reportingFolder + "/" + localDocumentFile)
     requestReportEngineSettings := models.ReportEngineSettings{
         DataSourceType: ToStringPointer("Json"),
         DataSourceName: ToStringPointer("persons"),
@@ -51,7 +52,7 @@ func Test_BuildReport_BuildReportOnline(t *testing.T) {
     }
 
     request := &models.BuildReportOnlineRequest{
-        Template: OpenFile(t, reportingFolder + "/" + localDocumentFile),
+        Template: requestTemplate,
         Data: ToStringPointer(localDataFile),
         ReportEngineSettings: requestReportEngineSettings,
         Optionals: options,

@@ -66,12 +66,13 @@ func Test_Bookmark_GetBookmarksOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "Common/test_multi_pages.docx"
 
+    requestDocument := OpenFile(t, localFile)
 
     options := map[string]interface{}{
     }
 
     request := &models.GetBookmarksOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         Optionals: options,
     }
 
@@ -118,12 +119,13 @@ func Test_Bookmark_GetBookmarkByNameOnline(t *testing.T) {
     localFile := "Common/test_multi_pages.docx"
     bookmarkName := "aspose"
 
+    requestDocument := OpenFile(t, localFile)
 
     options := map[string]interface{}{
     }
 
     request := &models.GetBookmarkByNameOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         BookmarkName: ToStringPointer(bookmarkName),
         Optionals: options,
     }
@@ -179,6 +181,7 @@ func Test_Bookmark_UpdateBookmarkOnline(t *testing.T) {
     bookmarkName := "aspose"
     remoteFileName := "TestUpdateDocumentBookmark.docx"
 
+    requestDocument := OpenFile(t, localFile)
     requestBookmarkData := models.BookmarkData{
         Name: ToStringPointer(bookmarkName),
         Text: ToStringPointer("This will be the text for Aspose"),
@@ -189,7 +192,7 @@ func Test_Bookmark_UpdateBookmarkOnline(t *testing.T) {
     }
 
     request := &models.UpdateBookmarkOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         BookmarkName: ToStringPointer(bookmarkName),
         BookmarkData: requestBookmarkData,
         Optionals: options,

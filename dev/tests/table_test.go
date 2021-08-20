@@ -72,13 +72,14 @@ func Test_Table_GetTablesOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "DocumentElements/Tables/TablesGet.docx"
 
+    requestDocument := OpenFile(t, localFile)
 
     options := map[string]interface{}{
         "nodePath": "",
     }
 
     request := &models.GetTablesOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         Optionals: options,
     }
 
@@ -160,13 +161,14 @@ func Test_Table_GetTableOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "DocumentElements/Tables/TablesGet.docx"
 
+    requestDocument := OpenFile(t, localFile)
 
     options := map[string]interface{}{
         "nodePath": "",
     }
 
     request := &models.GetTableOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         Index: ToInt32Pointer(int32(1)),
         Optionals: options,
     }
@@ -247,13 +249,14 @@ func Test_Table_DeleteTableOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "DocumentElements/Tables/TablesGet.docx"
 
+    requestDocument := OpenFile(t, localFile)
 
     options := map[string]interface{}{
         "nodePath": "",
     }
 
     request := &models.DeleteTableOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         Index: ToInt32Pointer(int32(1)),
         Optionals: options,
     }
@@ -338,6 +341,7 @@ func Test_Table_InsertTableOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "DocumentElements/Tables/TablesGet.docx"
 
+    requestDocument := OpenFile(t, localFile)
     requestTable := models.TableInsert{
         ColumnsCount: ToInt32Pointer(int32(5)),
         RowsCount: ToInt32Pointer(int32(4)),
@@ -348,7 +352,7 @@ func Test_Table_InsertTableOnline(t *testing.T) {
     }
 
     request := &models.InsertTableOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         Table: requestTable,
         Optionals: options,
     }
@@ -434,13 +438,14 @@ func Test_Table_GetTablePropertiesOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "DocumentElements/Tables/TablesGet.docx"
 
+    requestDocument := OpenFile(t, localFile)
 
     options := map[string]interface{}{
         "nodePath": "",
     }
 
     request := &models.GetTablePropertiesOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         Index: ToInt32Pointer(int32(1)),
         Optionals: options,
     }
@@ -531,6 +536,7 @@ func Test_Table_UpdateTablePropertiesOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "DocumentElements/Tables/TablesGet.docx"
 
+    requestDocument := OpenFile(t, localFile)
     requestProperties := models.TableProperties{
         Alignment: ToStringPointer("Right"),
         AllowAutoFit: ToBoolPointer(false),
@@ -545,7 +551,7 @@ func Test_Table_UpdateTablePropertiesOnline(t *testing.T) {
     }
 
     request := &models.UpdateTablePropertiesOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         Properties: requestProperties,
         Index: ToInt32Pointer(int32(1)),
         Optionals: options,
@@ -638,12 +644,13 @@ func Test_Table_GetTableRowOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "DocumentElements/Tables/TablesGet.docx"
 
+    requestDocument := OpenFile(t, localFile)
 
     options := map[string]interface{}{
     }
 
     request := &models.GetTableRowOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         TablePath: ToStringPointer("tables/1"),
         Index: ToInt32Pointer(int32(0)),
         Optionals: options,
@@ -692,12 +699,13 @@ func Test_Table_DeleteTableRowOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "DocumentElements/Tables/TablesGet.docx"
 
+    requestDocument := OpenFile(t, localFile)
 
     options := map[string]interface{}{
     }
 
     request := &models.DeleteTableRowOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         TablePath: ToStringPointer("tables/1"),
         Index: ToInt32Pointer(int32(0)),
         Optionals: options,
@@ -751,6 +759,7 @@ func Test_Table_InsertTableRowOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "DocumentElements/Tables/TablesGet.docx"
 
+    requestDocument := OpenFile(t, localFile)
     requestRow := models.TableRowInsert{
         ColumnsCount: ToInt32Pointer(int32(5)),
     }
@@ -759,7 +768,7 @@ func Test_Table_InsertTableRowOnline(t *testing.T) {
     }
 
     request := &models.InsertTableRowOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         TablePath: ToStringPointer("sections/0/tables/2"),
         Row: requestRow,
         Optionals: options,
@@ -809,12 +818,13 @@ func Test_Table_GetTableRowFormatOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "DocumentElements/Tables/TablesGet.docx"
 
+    requestDocument := OpenFile(t, localFile)
 
     options := map[string]interface{}{
     }
 
     request := &models.GetTableRowFormatOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         TablePath: ToStringPointer("sections/0/tables/2"),
         Index: ToInt32Pointer(int32(0)),
         Optionals: options,
@@ -873,6 +883,7 @@ func Test_Table_UpdateTableRowFormatOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "DocumentElements/Tables/TablesGet.docx"
 
+    requestDocument := OpenFile(t, localFile)
     requestFormat := models.TableRowFormat{
         AllowBreakAcrossPages: ToBoolPointer(true),
         HeadingFormat: ToBoolPointer(true),
@@ -884,7 +895,7 @@ func Test_Table_UpdateTableRowFormatOnline(t *testing.T) {
     }
 
     request := &models.UpdateTableRowFormatOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         TablePath: ToStringPointer("sections/0/tables/2"),
         Format: requestFormat,
         Index: ToInt32Pointer(int32(0)),
@@ -935,12 +946,13 @@ func Test_Table_GetTableCellOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "DocumentElements/Tables/TablesGet.docx"
 
+    requestDocument := OpenFile(t, localFile)
 
     options := map[string]interface{}{
     }
 
     request := &models.GetTableCellOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         TableRowPath: ToStringPointer("sections/0/tables/2/rows/0"),
         Index: ToInt32Pointer(int32(0)),
         Optionals: options,
@@ -989,12 +1001,13 @@ func Test_Table_DeleteTableCellOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "DocumentElements/Tables/TablesGet.docx"
 
+    requestDocument := OpenFile(t, localFile)
 
     options := map[string]interface{}{
     }
 
     request := &models.DeleteTableCellOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         TableRowPath: ToStringPointer("sections/0/tables/2/rows/0"),
         Index: ToInt32Pointer(int32(0)),
         Optionals: options,
@@ -1046,6 +1059,7 @@ func Test_Table_InsertTableCellOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "DocumentElements/Tables/TablesGet.docx"
 
+    requestDocument := OpenFile(t, localFile)
     requestCell := models.TableCellInsert{
     }
 
@@ -1053,7 +1067,7 @@ func Test_Table_InsertTableCellOnline(t *testing.T) {
     }
 
     request := &models.InsertTableCellOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         TableRowPath: ToStringPointer("sections/0/tables/2/rows/0"),
         Cell: requestCell,
         Optionals: options,
@@ -1103,12 +1117,13 @@ func Test_Table_GetTableCellFormatOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "DocumentElements/Tables/TablesGet.docx"
 
+    requestDocument := OpenFile(t, localFile)
 
     options := map[string]interface{}{
     }
 
     request := &models.GetTableCellFormatOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         TableRowPath: ToStringPointer("sections/0/tables/2/rows/0"),
         Index: ToInt32Pointer(int32(0)),
         Optionals: options,
@@ -1167,6 +1182,7 @@ func Test_Table_UpdateTableCellFormatOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "DocumentElements/Tables/TablesGet.docx"
 
+    requestDocument := OpenFile(t, localFile)
     requestFormat := models.TableCellFormat{
         BottomPadding: ToFloat64Pointer(5),
         FitText: ToBoolPointer(true),
@@ -1178,7 +1194,7 @@ func Test_Table_UpdateTableCellFormatOnline(t *testing.T) {
     }
 
     request := &models.UpdateTableCellFormatOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         TableRowPath: ToStringPointer("sections/0/tables/2/rows/0"),
         Format: requestFormat,
         Index: ToInt32Pointer(int32(0)),
@@ -1228,13 +1244,14 @@ func Test_Table_RenderTableOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "DocumentElements/Tables/TablesGet.docx"
 
+    requestDocument := OpenFile(t, localFile)
 
     options := map[string]interface{}{
         "nodePath": "",
     }
 
     request := &models.RenderTableOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         Format: ToStringPointer("png"),
         Index: ToInt32Pointer(int32(0)),
         Optionals: options,

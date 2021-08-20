@@ -70,12 +70,13 @@ func Test_Hyperlink_GetDocumentHyperlinkByIndexOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "Common/test_doc.docx"
 
+    requestDocument := OpenFile(t, localFile)
 
     options := map[string]interface{}{
     }
 
     request := &models.GetDocumentHyperlinkByIndexOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         HyperlinkIndex: ToInt32Pointer(int32(0)),
         Optionals: options,
     }
@@ -124,12 +125,13 @@ func Test_Hyperlink_GetDocumentHyperlinksOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "Common/test_doc.docx"
 
+    requestDocument := OpenFile(t, localFile)
 
     options := map[string]interface{}{
     }
 
     request := &models.GetDocumentHyperlinksOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         Optionals: options,
     }
 

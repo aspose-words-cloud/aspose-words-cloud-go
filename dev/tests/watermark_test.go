@@ -74,13 +74,15 @@ func Test_Watermark_InsertWatermarkImageOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "Common/test_multi_pages.docx"
 
+    requestDocument := OpenFile(t, localFile)
+    requestImageFile := OpenFile(t, "Common/aspose-cloud.png")
 
     options := map[string]interface{}{
     }
 
     request := &models.InsertWatermarkImageOnlineRequest{
-        Document: OpenFile(t, localFile),
-        ImageFile: OpenFile(t, "Common/aspose-cloud.png"),
+        Document: requestDocument,
+        ImageFile: requestImageFile,
         Optionals: options,
     }
 
@@ -132,6 +134,7 @@ func Test_Watermark_InsertWatermarkTextOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "Common/test_multi_pages.docx"
 
+    requestDocument := OpenFile(t, localFile)
     requestWatermarkText := models.WatermarkText{
         Text: ToStringPointer("This is the text"),
         RotationAngle: ToFloat64Pointer(90),
@@ -141,7 +144,7 @@ func Test_Watermark_InsertWatermarkTextOnline(t *testing.T) {
     }
 
     request := &models.InsertWatermarkTextOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         WatermarkText: requestWatermarkText,
         Optionals: options,
     }
@@ -189,12 +192,13 @@ func Test_Watermark_DeleteWatermarkOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "Common/test_multi_pages.docx"
 
+    requestDocument := OpenFile(t, localFile)
 
     options := map[string]interface{}{
     }
 
     request := &models.DeleteWatermarkOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         Optionals: options,
     }
 

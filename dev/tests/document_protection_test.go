@@ -75,6 +75,7 @@ func Test_DocumentProtection_ProtectDocumentOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "Common/test_multi_pages.docx"
 
+    requestDocument := OpenFile(t, localFile)
     requestProtectionRequest := models.ProtectionRequest{
         NewPassword: ToStringPointer("123"),
     }
@@ -83,7 +84,7 @@ func Test_DocumentProtection_ProtectDocumentOnline(t *testing.T) {
     }
 
     request := &models.ProtectDocumentOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         ProtectionRequest: requestProtectionRequest,
         Optionals: options,
     }
@@ -128,12 +129,13 @@ func Test_DocumentProtection_GetDocumentProtectionOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "Common/test_multi_pages.docx"
 
+    requestDocument := OpenFile(t, localFile)
 
     options := map[string]interface{}{
     }
 
     request := &models.GetDocumentProtectionOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         Optionals: options,
     }
 
@@ -183,6 +185,7 @@ func Test_DocumentProtection_DeleteUnprotectDocumentOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFilePath := "DocumentActions/DocumentProtection/SampleProtectedBlankWordDocument.docx"
 
+    requestDocument := OpenFile(t, localFilePath)
     requestProtectionRequest := models.ProtectionRequest{
         Password: ToStringPointer("aspose"),
     }
@@ -191,7 +194,7 @@ func Test_DocumentProtection_DeleteUnprotectDocumentOnline(t *testing.T) {
     }
 
     request := &models.UnprotectDocumentOnlineRequest{
-        Document: OpenFile(t, localFilePath),
+        Document: requestDocument,
         ProtectionRequest: requestProtectionRequest,
         Optionals: options,
     }

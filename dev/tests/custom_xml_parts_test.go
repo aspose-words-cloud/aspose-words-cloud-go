@@ -71,12 +71,13 @@ func Test_CustomXmlParts_GetCustomXmlPartOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "DocumentElements/CustomXmlParts/MultipleCustomXmlParts.docx"
 
+    requestDocument := OpenFile(t, localFile)
 
     options := map[string]interface{}{
     }
 
     request := &models.GetCustomXmlPartOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         CustomXmlPartIndex: ToInt32Pointer(int32(0)),
         Optionals: options,
     }
@@ -129,12 +130,13 @@ func Test_CustomXmlParts_GetCustomXmlPartsOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "DocumentElements/CustomXmlParts/MultipleCustomXmlParts.docx"
 
+    requestDocument := OpenFile(t, localFile)
 
     options := map[string]interface{}{
     }
 
     request := &models.GetCustomXmlPartsOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         Optionals: options,
     }
 
@@ -191,6 +193,7 @@ func Test_CustomXmlParts_InsertCustomXmlPartOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "DocumentElements/CustomXmlParts/MultipleCustomXmlParts.docx"
 
+    requestDocument := OpenFile(t, localFile)
     requestCustomXmlPart := models.CustomXmlPartInsert{
         Id: ToStringPointer("hello"),
         Data: ToStringPointer("<data>Hello world</data>"),
@@ -200,7 +203,7 @@ func Test_CustomXmlParts_InsertCustomXmlPartOnline(t *testing.T) {
     }
 
     request := &models.InsertCustomXmlPartOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         CustomXmlPart: requestCustomXmlPart,
         Optionals: options,
     }
@@ -256,6 +259,7 @@ func Test_CustomXmlParts_UpdateCustomXmlPartOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "DocumentElements/CustomXmlParts/MultipleCustomXmlParts.docx"
 
+    requestDocument := OpenFile(t, localFile)
     requestCustomXmlPart := models.CustomXmlPartUpdate{
         Data: ToStringPointer("<data>Hello world</data>"),
     }
@@ -264,7 +268,7 @@ func Test_CustomXmlParts_UpdateCustomXmlPartOnline(t *testing.T) {
     }
 
     request := &models.UpdateCustomXmlPartOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         CustomXmlPartIndex: ToInt32Pointer(int32(0)),
         CustomXmlPart: requestCustomXmlPart,
         Optionals: options,
@@ -316,12 +320,13 @@ func Test_CustomXmlParts_DeleteCustomXmlPartOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "DocumentElements/CustomXmlParts/MultipleCustomXmlParts.docx"
 
+    requestDocument := OpenFile(t, localFile)
 
     options := map[string]interface{}{
     }
 
     request := &models.DeleteCustomXmlPartOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         CustomXmlPartIndex: ToInt32Pointer(int32(0)),
         Optionals: options,
     }
@@ -368,12 +373,13 @@ func Test_CustomXmlParts_DeleteCustomXmlPartsOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "DocumentElements/CustomXmlParts/MultipleCustomXmlParts.docx"
 
+    requestDocument := OpenFile(t, localFile)
 
     options := map[string]interface{}{
     }
 
     request := &models.DeleteCustomXmlPartsOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         Optionals: options,
     }
 

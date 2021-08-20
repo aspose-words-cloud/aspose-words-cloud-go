@@ -85,6 +85,7 @@ func Test_AppendDocument_AppendDocumentOnline(t *testing.T) {
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
+    requestDocument := OpenFile(t, localFile)
     requestDocumentListDocumentEntries0 := models.DocumentEntry{
         Href: ToStringPointer(remoteDataFolder + "/" + remoteFileName),
         ImportFormatMode: ToStringPointer("KeepSourceFormatting"),
@@ -100,7 +101,7 @@ func Test_AppendDocument_AppendDocumentOnline(t *testing.T) {
     }
 
     request := &models.AppendDocumentOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         DocumentList: requestDocumentList,
         Optionals: options,
     }
