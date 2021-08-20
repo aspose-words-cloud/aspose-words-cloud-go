@@ -60,6 +60,20 @@ func Test_Examples_AcceptAllRevisions(t *testing.T) {
     _, _, _ = wordsApi.AcceptAllRevisions(ctx, request)
 }
 
+func Test_Examples_AcceptAllRevisionsOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    UploadNextFileToStorage(t, ctx, client, documentsDir + "/test_doc.docx", "test_doc.docx")
+    wordsApi := client.WordsApi
+    fileName := "test_doc.docx"
 
-
-// func Test_Examples_AcceptAllRevisionsOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
+    // Calls AcceptAllRevisionsOnline method for document in cloud.
+    requestDocument, _ := os.Open(documentsDir + "/" + fileName)
+    requestOptions := map[string]interface{}{}
+    request := &models.AcceptAllRevisionsOnlineRequest{
+        Document: requestDocument,
+        Optionals: requestOptions,
+    }
+    _, _, _ = wordsApi.AcceptAllRevisionsOnline(ctx, request)
+}

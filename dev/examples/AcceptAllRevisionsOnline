@@ -1,1 +1,12 @@
-// ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+fileName := "test_doc.docx"
+
+// Calls AcceptAllRevisionsOnline method for document in cloud.
+requestDocument, _ := os.Open(fileName)
+requestOptions := map[string]interface{}{}
+request := &models.AcceptAllRevisionsOnlineRequest{
+    Document: requestDocument,
+    Optionals: requestOptions,
+}
+_, _, _ = wordsApi.AcceptAllRevisionsOnline(ctx, request)
