@@ -48,6 +48,9 @@ type EmfSaveOptionsDataResult struct {
     FileName string `json:"FileName,omitempty"`
 
     // Container class for emf save options.
+    FlatOpcXmlMappingOnly bool `json:"FlatOpcXmlMappingOnly,omitempty"`
+
+    // Container class for emf save options.
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for emf save options.
@@ -150,6 +153,9 @@ type EmfSaveOptionsData struct {
 
     // Container class for emf save options.
     FileName *string `json:"FileName,omitempty"`
+
+    // Container class for emf save options.
+    FlatOpcXmlMappingOnly *bool `json:"FlatOpcXmlMappingOnly,omitempty"`
 
     // Container class for emf save options.
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`

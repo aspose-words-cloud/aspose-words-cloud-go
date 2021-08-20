@@ -48,6 +48,9 @@ type SvgSaveOptionsDataResult struct {
     FileName string `json:"FileName,omitempty"`
 
     // Container class for svg save options.
+    FlatOpcXmlMappingOnly bool `json:"FlatOpcXmlMappingOnly,omitempty"`
+
+    // Container class for svg save options.
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for svg save options.
@@ -129,6 +132,9 @@ type SvgSaveOptionsData struct {
 
     // Container class for svg save options.
     FileName *string `json:"FileName,omitempty"`
+
+    // Container class for svg save options.
+    FlatOpcXmlMappingOnly *bool `json:"FlatOpcXmlMappingOnly,omitempty"`
 
     // Container class for svg save options.
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`

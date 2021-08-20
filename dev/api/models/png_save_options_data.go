@@ -48,6 +48,9 @@ type PngSaveOptionsDataResult struct {
     FileName string `json:"FileName,omitempty"`
 
     // Container class for png save options.
+    FlatOpcXmlMappingOnly bool `json:"FlatOpcXmlMappingOnly,omitempty"`
+
+    // Container class for png save options.
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for png save options.
@@ -150,6 +153,9 @@ type PngSaveOptionsData struct {
 
     // Container class for png save options.
     FileName *string `json:"FileName,omitempty"`
+
+    // Container class for png save options.
+    FlatOpcXmlMappingOnly *bool `json:"FlatOpcXmlMappingOnly,omitempty"`
 
     // Container class for png save options.
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`

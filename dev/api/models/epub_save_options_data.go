@@ -48,6 +48,9 @@ type EpubSaveOptionsDataResult struct {
     FileName string `json:"FileName,omitempty"`
 
     // Container class for epub save options.
+    FlatOpcXmlMappingOnly bool `json:"FlatOpcXmlMappingOnly,omitempty"`
+
+    // Container class for epub save options.
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for epub save options.
@@ -210,6 +213,9 @@ type EpubSaveOptionsData struct {
 
     // Container class for epub save options.
     FileName *string `json:"FileName,omitempty"`
+
+    // Container class for epub save options.
+    FlatOpcXmlMappingOnly *bool `json:"FlatOpcXmlMappingOnly,omitempty"`
 
     // Container class for epub save options.
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`

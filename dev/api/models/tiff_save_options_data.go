@@ -48,6 +48,9 @@ type TiffSaveOptionsDataResult struct {
     FileName string `json:"FileName,omitempty"`
 
     // Container class for tiff save options.
+    FlatOpcXmlMappingOnly bool `json:"FlatOpcXmlMappingOnly,omitempty"`
+
+    // Container class for tiff save options.
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for tiff save options.
@@ -159,6 +162,9 @@ type TiffSaveOptionsData struct {
 
     // Container class for tiff save options.
     FileName *string `json:"FileName,omitempty"`
+
+    // Container class for tiff save options.
+    FlatOpcXmlMappingOnly *bool `json:"FlatOpcXmlMappingOnly,omitempty"`
 
     // Container class for tiff save options.
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`

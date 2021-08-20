@@ -48,6 +48,9 @@ type PdfSaveOptionsDataResult struct {
     FileName string `json:"FileName,omitempty"`
 
     // Container class for pdf save options.
+    FlatOpcXmlMappingOnly bool `json:"FlatOpcXmlMappingOnly,omitempty"`
+
+    // Container class for pdf save options.
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for pdf save options.
@@ -120,6 +123,9 @@ type PdfSaveOptionsDataResult struct {
     ExportDocumentStructure bool `json:"ExportDocumentStructure,omitempty"`
 
     // Container class for pdf save options.
+    ExportLanguageToSpanTag bool `json:"ExportLanguageToSpanTag,omitempty"`
+
+    // Container class for pdf save options.
     FontEmbeddingMode string `json:"FontEmbeddingMode,omitempty"`
 
     // Container class for pdf save options.
@@ -183,6 +189,9 @@ type PdfSaveOptionsData struct {
 
     // Container class for pdf save options.
     FileName *string `json:"FileName,omitempty"`
+
+    // Container class for pdf save options.
+    FlatOpcXmlMappingOnly *bool `json:"FlatOpcXmlMappingOnly,omitempty"`
 
     // Container class for pdf save options.
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
@@ -255,6 +264,9 @@ type PdfSaveOptionsData struct {
 
     // Container class for pdf save options.
     ExportDocumentStructure *bool `json:"ExportDocumentStructure,omitempty"`
+
+    // Container class for pdf save options.
+    ExportLanguageToSpanTag *bool `json:"ExportLanguageToSpanTag,omitempty"`
 
     // Container class for pdf save options.
     FontEmbeddingMode *string `json:"FontEmbeddingMode,omitempty"`
