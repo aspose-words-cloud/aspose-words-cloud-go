@@ -1,1 +1,15 @@
-// ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestTemplate, _ := os.Open("Sample.docx")
+requestReportEngineSettings := models.ReportEngineSettings{
+    DataSourceType: ToStringPointer("Json"),
+    DataSourceName: ToStringPointer("persons"),
+}
+buildReportRequestOptions := map[string]interface{}{}
+buildReportRequest := &models.BuildReportOnlineRequest{
+    Template: requestTemplate,
+    Data: ToStringPointer("Data.json"),
+    ReportEngineSettings: requestReportEngineSettings,
+    Optionals: buildReportRequestOptions,
+}
+_, _ = wordsApi.BuildReportOnline(ctx, buildReportRequest)

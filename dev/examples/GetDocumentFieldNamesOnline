@@ -1,1 +1,9 @@
-// ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestTemplate, _ := os.Open("Sample.docx")
+requestOptions := map[string]interface{}{"useNonMergeFields": true,}
+request := &models.GetDocumentFieldNamesOnlineRequest{
+    Template: requestTemplate,
+    Optionals: requestOptions,
+}
+_, _, _ = wordsApi.GetDocumentFieldNamesOnline(ctx, request)

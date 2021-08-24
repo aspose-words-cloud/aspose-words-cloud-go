@@ -1,1 +1,20 @@
-// ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestDocument, _ := os.Open("Sample.docx")
+requestDocumentListDocumentEntries0 := models.DocumentEntry{
+    Href: ToStringPointer("Sample.docx"),
+    ImportFormatMode: ToStringPointer("KeepSourceFormatting"),
+}
+requestDocumentListDocumentEntries := []models.DocumentEntry{
+    requestDocumentListDocumentEntries0,
+}
+requestDocumentList := models.DocumentEntryList{
+    DocumentEntries: requestDocumentListDocumentEntries,
+}
+appendRequestOptions := map[string]interface{}{}
+appendRequest := &models.AppendDocumentOnlineRequest{
+    Document: requestDocument,
+    DocumentList: requestDocumentList,
+    Optionals: appendRequestOptions,
+}
+_, _, _ = wordsApi.AppendDocumentOnline(ctx, appendRequest)

@@ -1,1 +1,13 @@
-// ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestDocument, _ := os.Open("Sample.docx")
+requestCell := models.TableCellInsert{
+}
+insertRequestOptions := map[string]interface{}{}
+insertRequest := &models.InsertTableCellOnlineRequest{
+    Document: requestDocument,
+    TableRowPath: ToStringPointer("sections/0/tables/2/rows/0"),
+    Cell: requestCell,
+    Optionals: insertRequestOptions,
+}
+_, _, _ = wordsApi.InsertTableCellOnline(ctx, insertRequest)

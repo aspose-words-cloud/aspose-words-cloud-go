@@ -1,1 +1,11 @@
-// ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestDocument, _ := os.Open("Sample.doc")
+insertRequestOptions := map[string]interface{}{}
+insertRequest := &models.InsertHeaderFooterOnlineRequest{
+    Document: requestDocument,
+    SectionPath: ToStringPointer(""),
+    HeaderFooterType: ToStringPointer("FooterEven"),
+    Optionals: insertRequestOptions,
+}
+_, _, _ = wordsApi.InsertHeaderFooterOnline(ctx, insertRequest)

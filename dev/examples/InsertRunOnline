@@ -1,1 +1,14 @@
-// ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestDocument, _ := os.Open("Sample.doc")
+requestRun := models.RunInsert{
+    Text: ToStringPointer("run with text"),
+}
+insertRequestOptions := map[string]interface{}{}
+insertRequest := &models.InsertRunOnlineRequest{
+    Document: requestDocument,
+    ParagraphPath: ToStringPointer("paragraphs/1"),
+    Run: requestRun,
+    Optionals: insertRequestOptions,
+}
+_, _, _ = wordsApi.InsertRunOnline(ctx, insertRequest)

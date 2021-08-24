@@ -41,13 +41,14 @@ func Test_MailMergeFileds_GetDocumentFieldNamesOnline(t *testing.T) {
     mailMergeFolder := "DocumentActions/MailMerge"
     localDocumentFile := "SampleExecuteTemplate.docx"
 
+    requestTemplate := OpenFile(t, mailMergeFolder + "/" + localDocumentFile)
 
     options := map[string]interface{}{
         "useNonMergeFields": true,
     }
 
     request := &models.GetDocumentFieldNamesOnlineRequest{
-        Template: OpenFile(t, mailMergeFolder + "/" + localDocumentFile),
+        Template: requestTemplate,
         Optionals: options,
     }
 

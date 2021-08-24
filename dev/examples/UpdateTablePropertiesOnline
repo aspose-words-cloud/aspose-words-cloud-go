@@ -1,1 +1,19 @@
-// ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestDocument, _ := os.Open("Sample.docx")
+requestProperties := models.TableProperties{
+    Alignment: ToStringPointer("Right"),
+    AllowAutoFit: ToBoolPointer(false),
+    Bidi: ToBoolPointer(true),
+    BottomPadding: ToFloat64Pointer(1),
+    CellSpacing: ToFloat64Pointer(2),
+    StyleOptions: ToStringPointer("ColumnBands"),
+}
+updateRequestOptions := map[string]interface{}{}
+updateRequest := &models.UpdateTablePropertiesOnlineRequest{
+    Document: requestDocument,
+    Properties: requestProperties,
+    Index: ToInt32Pointer(int32(1)),
+    Optionals: updateRequestOptions,
+}
+_, _, _ = wordsApi.UpdateTablePropertiesOnline(ctx, updateRequest)

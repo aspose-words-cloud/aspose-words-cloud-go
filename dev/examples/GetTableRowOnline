@@ -1,1 +1,11 @@
-// ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestDocument, _ := os.Open("Sample.docx")
+requestOptions := map[string]interface{}{}
+request := &models.GetTableRowOnlineRequest{
+    Document: requestDocument,
+    TablePath: ToStringPointer("tables/1"),
+    Index: ToInt32Pointer(int32(0)),
+    Optionals: requestOptions,
+}
+_, _, _ = wordsApi.GetTableRowOnline(ctx, request)

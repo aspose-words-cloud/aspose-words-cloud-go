@@ -1,1 +1,10 @@
-// ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestDocument, _ := os.Open("Sample.doc")
+deleteRequestOptions := map[string]interface{}{}
+deleteRequest := &models.DeleteHeadersFootersOnlineRequest{
+    Document: requestDocument,
+    SectionPath: ToStringPointer(""),
+    Optionals: deleteRequestOptions,
+}
+_, _ = wordsApi.DeleteHeadersFootersOnline(ctx, deleteRequest)

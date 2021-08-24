@@ -1,1 +1,13 @@
-// ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestDocument, _ := os.Open("Sample.docx")
+requestOptions := models.OptimizationOptions{
+    MsWordVersion: ToStringPointer("Word2002"),
+}
+optimizeRequestOptions := map[string]interface{}{}
+optimizeRequest := &models.OptimizeDocumentOnlineRequest{
+    Document: requestDocument,
+    Options: requestOptions,
+    Optionals: optimizeRequestOptions,
+}
+_, _ = wordsApi.OptimizeDocumentOnline(ctx, optimizeRequest)

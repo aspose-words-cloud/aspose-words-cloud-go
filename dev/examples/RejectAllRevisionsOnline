@@ -1,1 +1,9 @@
-// ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestDocument, _ := os.Open("Sample.docx")
+rejectRequestOptions := map[string]interface{}{}
+rejectRequest := &models.RejectAllRevisionsOnlineRequest{
+    Document: requestDocument,
+    Optionals: rejectRequestOptions,
+}
+_, _, _ = wordsApi.RejectAllRevisionsOnline(ctx, rejectRequest)

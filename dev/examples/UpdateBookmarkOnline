@@ -1,1 +1,17 @@
-// ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+bookmarkName:= "aspose"
+
+requestDocument, _ := os.Open("Sample.docx")
+requestBookmarkData := models.BookmarkData{
+    Name: ToStringPointer(bookmarkName),
+    Text: ToStringPointer("This will be the text for Aspose"),
+}
+updateRequestOptions := map[string]interface{}{"destFileName": "Sample.docx",}
+updateRequest := &models.UpdateBookmarkOnlineRequest{
+    Document: requestDocument,
+    BookmarkName: ToStringPointer(bookmarkName),
+    BookmarkData: requestBookmarkData,
+    Optionals: updateRequestOptions,
+}
+_, _, _ = wordsApi.UpdateBookmarkOnline(ctx, updateRequest)

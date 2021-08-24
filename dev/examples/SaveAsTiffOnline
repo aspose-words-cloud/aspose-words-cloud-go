@@ -1,1 +1,14 @@
-// ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestDocument, _ := os.Open("Common/test_multi_pages.docx")
+requestSaveOptions := models.TiffSaveOptionsData{
+    SaveFormat: ToStringPointer("tiff"),
+    FileName: ToStringPointer("/abc.tiff"),
+}
+saveRequestOptions := map[string]interface{}{}
+saveRequest := &models.SaveAsTiffOnlineRequest{
+    Document: requestDocument,
+    SaveOptions: requestSaveOptions,
+    Optionals: saveRequestOptions,
+}
+_, _, _ = wordsApi.SaveAsTiffOnline(ctx, saveRequest)

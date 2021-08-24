@@ -1,1 +1,14 @@
-// ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestDocument, _ := os.Open("Sample.doc")
+requestFootnoteDto := models.FootnoteInsert{
+    FootnoteType: ToStringPointer("Endnote"),
+    Text: ToStringPointer("test endnote"),
+}
+insertRequestOptions := map[string]interface{}{}
+insertRequest := &models.InsertFootnoteOnlineRequest{
+    Document: requestDocument,
+    FootnoteDto: requestFootnoteDto,
+    Optionals: insertRequestOptions,
+}
+_, _, _ = wordsApi.InsertFootnoteOnline(ctx, insertRequest)

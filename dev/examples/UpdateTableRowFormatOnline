@@ -1,1 +1,18 @@
-// ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestDocument, _ := os.Open("Sample.docx")
+requestFormat := models.TableRowFormat{
+    AllowBreakAcrossPages: ToBoolPointer(true),
+    HeadingFormat: ToBoolPointer(true),
+    Height: ToFloat64Pointer(10),
+    HeightRule: ToStringPointer("Auto"),
+}
+updateRequestOptions := map[string]interface{}{}
+updateRequest := &models.UpdateTableRowFormatOnlineRequest{
+    Document: requestDocument,
+    TablePath: ToStringPointer("sections/0/tables/2"),
+    Format: requestFormat,
+    Index: ToInt32Pointer(int32(0)),
+    Optionals: updateRequestOptions,
+}
+_, _, _ = wordsApi.UpdateTableRowFormatOnline(ctx, updateRequest)

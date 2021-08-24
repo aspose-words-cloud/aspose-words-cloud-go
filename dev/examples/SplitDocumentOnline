@@ -1,1 +1,12 @@
-// ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestDocument, _ := os.Open("Sample.docx")
+splitRequestOptions := map[string]interface{}{"destFileName": "/TestSplitDocument.text",
+"from": int32(1),
+"to": int32(2),}
+splitRequest := &models.SplitDocumentOnlineRequest{
+    Document: requestDocument,
+    Format: ToStringPointer("text"),
+    Optionals: splitRequestOptions,
+}
+_, _, _ = wordsApi.SplitDocumentOnline(ctx, splitRequest)

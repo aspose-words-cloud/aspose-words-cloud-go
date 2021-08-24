@@ -1,1 +1,11 @@
-// ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestDocument, _ := os.Open("Sample.docx")
+requestImageFile, _ := os.Open("Common/aspose-cloud.png")
+insertRequestOptions := map[string]interface{}{}
+insertRequest := &models.InsertWatermarkImageOnlineRequest{
+    Document: requestDocument,
+    ImageFile: requestImageFile,
+    Optionals: insertRequestOptions,
+}
+_, _, _ = wordsApi.InsertWatermarkImageOnline(ctx, insertRequest)

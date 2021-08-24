@@ -1,1 +1,10 @@
-// ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestDocument, _ := os.Open("Sample.docx")
+searchRequestOptions := map[string]interface{}{}
+searchRequest := &models.SearchOnlineRequest{
+    Document: requestDocument,
+    Pattern: ToStringPointer("aspose"),
+    Optionals: searchRequestOptions,
+}
+_, _, _ = wordsApi.SearchOnline(ctx, searchRequest)

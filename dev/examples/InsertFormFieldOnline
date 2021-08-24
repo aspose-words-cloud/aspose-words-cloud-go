@@ -1,1 +1,19 @@
-// ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestDocument, _ := os.Open("Sample.docx")
+requestFormField := models.FormFieldTextInput{
+    Name: ToStringPointer("FullName"),
+    Enabled: ToBoolPointer(true),
+    CalculateOnExit: ToBoolPointer(true),
+    StatusText: ToStringPointer(""),
+    TextInputType: ToStringPointer("Regular"),
+    TextInputDefault: ToStringPointer("123"),
+    TextInputFormat: ToStringPointer("UPPERCASE"),
+}
+insertRequestOptions := map[string]interface{}{"nodePath": "sections/0/paragraphs/0",}
+insertRequest := &models.InsertFormFieldOnlineRequest{
+    Document: requestDocument,
+    FormField: requestFormField,
+    Optionals: insertRequestOptions,
+}
+_, _, _ = wordsApi.InsertFormFieldOnline(ctx, insertRequest)

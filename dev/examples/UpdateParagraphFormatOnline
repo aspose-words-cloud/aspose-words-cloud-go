@@ -1,1 +1,14 @@
-// ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestDocument, _ := os.Open("Sample.docx")
+requestParagraphFormatDto := models.ParagraphFormatUpdate{
+    Alignment: ToStringPointer("Right"),
+}
+updateRequestOptions := map[string]interface{}{}
+updateRequest := &models.UpdateParagraphFormatOnlineRequest{
+    Document: requestDocument,
+    ParagraphFormatDto: requestParagraphFormatDto,
+    Index: ToInt32Pointer(int32(0)),
+    Optionals: updateRequestOptions,
+}
+_, _, _ = wordsApi.UpdateParagraphFormatOnline(ctx, updateRequest)

@@ -1,1 +1,22 @@
-// ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestDocument, _ := os.Open("Sample.docx")
+requestBorderPropertiesColor := models.XmlColor{
+    Web: ToStringPointer("#AABBCC"),
+}
+requestBorderProperties := models.Border{
+    BorderType: ToStringPointer("Left"),
+    Color: requestBorderPropertiesColor,
+    DistanceFromText: ToFloat64Pointer(6),
+    LineStyle: ToStringPointer("DashDotStroker"),
+    LineWidth: ToFloat64Pointer(2),
+    Shadow: ToBoolPointer(true),
+}
+updateRequestOptions := map[string]interface{}{"nodePath": "tables/1/rows/0/cells/0",}
+updateRequest := &models.UpdateBorderOnlineRequest{
+    Document: requestDocument,
+    BorderProperties: requestBorderProperties,
+    BorderType: ToStringPointer("left"),
+    Optionals: updateRequestOptions,
+}
+_, _, _ = wordsApi.UpdateBorderOnline(ctx, updateRequest)

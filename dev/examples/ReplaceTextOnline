@@ -1,1 +1,14 @@
-// ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestDocument, _ := os.Open("Sample.docx")
+requestReplaceText := models.ReplaceTextParameters{
+    OldValue: ToStringPointer("aspose"),
+    NewValue: ToStringPointer("aspose new"),
+}
+replaceRequestOptions := map[string]interface{}{}
+replaceRequest := &models.ReplaceTextOnlineRequest{
+    Document: requestDocument,
+    ReplaceText: requestReplaceText,
+    Optionals: replaceRequestOptions,
+}
+_, _, _ = wordsApi.ReplaceTextOnline(ctx, replaceRequest)

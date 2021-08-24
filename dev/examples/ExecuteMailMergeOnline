@@ -1,1 +1,11 @@
-// ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestTemplate, _ := os.Open("TestExecuteTemplate.doc")
+requestData, _ := os.Open("TestExecuteTemplateData.txt")
+mailMergeRequestOptions := map[string]interface{}{}
+mailMergeRequest := &models.ExecuteMailMergeOnlineRequest{
+    Template: requestTemplate,
+    Data: requestData,
+    Optionals: mailMergeRequestOptions,
+}
+_, _ = wordsApi.ExecuteMailMergeOnline(ctx, mailMergeRequest)

@@ -1,1 +1,16 @@
-// ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestDocument, _ := os.Open("Sample.docx")
+requestDrawingObject := models.DrawingObjectUpdate{
+    Left: ToFloat64Pointer(0),
+}
+requestImageFile, _ := os.Open("Common/aspose-cloud.png")
+updateRequestOptions := map[string]interface{}{}
+updateRequest := &models.UpdateDrawingObjectOnlineRequest{
+    Document: requestDocument,
+    DrawingObject: requestDrawingObject,
+    ImageFile: requestImageFile,
+    Index: ToInt32Pointer(int32(0)),
+    Optionals: updateRequestOptions,
+}
+_, _, _ = wordsApi.UpdateDrawingObjectOnline(ctx, updateRequest)

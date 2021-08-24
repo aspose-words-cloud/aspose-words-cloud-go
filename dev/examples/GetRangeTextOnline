@@ -1,1 +1,10 @@
-// ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestDocument, _ := os.Open("Sample.doc")
+requestOptions := map[string]interface{}{"rangeEndIdentifier": "id0.0.1",}
+request := &models.GetRangeTextOnlineRequest{
+    Document: requestDocument,
+    RangeStartIdentifier: ToStringPointer("id0.0.0"),
+    Optionals: requestOptions,
+}
+_, _, _ = wordsApi.GetRangeTextOnline(ctx, request)

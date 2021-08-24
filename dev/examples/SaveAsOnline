@@ -1,1 +1,14 @@
-// ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestDocument, _ := os.Open("Common/test_multi_pages.docx")
+requestSaveOptionsData := models.SaveOptionsData{
+    SaveFormat: ToStringPointer("pdf"),
+    FileName: ToStringPointer("/TestSaveAs.pdf"),
+}
+saveRequestOptions := map[string]interface{}{}
+saveRequest := &models.SaveAsOnlineRequest{
+    Document: requestDocument,
+    SaveOptionsData: requestSaveOptionsData,
+    Optionals: saveRequestOptions,
+}
+_, _, _ = wordsApi.SaveAsOnline(ctx, saveRequest)

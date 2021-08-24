@@ -1,1 +1,10 @@
-// ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestDocument, _ := os.Open("Sample.docx")
+requestOptions := map[string]interface{}{"nodePath": "sections/0",}
+request := &models.GetFormFieldOnlineRequest{
+    Document: requestDocument,
+    Index: ToInt32Pointer(int32(0)),
+    Optionals: requestOptions,
+}
+_, _, _ = wordsApi.GetFormFieldOnline(ctx, request)

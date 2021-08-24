@@ -1,1 +1,9 @@
-// ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestDocument, _ := os.Open("Sample.docx")
+deleteRequestOptions := map[string]interface{}{"nodePath": "tables/1/rows/0/cells/0",}
+deleteRequest := &models.DeleteBordersOnlineRequest{
+    Document: requestDocument,
+    Optionals: deleteRequestOptions,
+}
+_, _, _ = wordsApi.DeleteBordersOnline(ctx, deleteRequest)

@@ -70,13 +70,14 @@ func Test_Range_GetRangeTextOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "DocumentElements/Range/RangeGet.doc"
 
+    requestDocument := OpenFile(t, localFile)
 
     options := map[string]interface{}{
         "rangeEndIdentifier": "id0.0.1",
     }
 
     request := &models.GetRangeTextOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         RangeStartIdentifier: ToStringPointer("id0.0.0"),
         Optionals: options,
     }
@@ -123,13 +124,14 @@ func Test_Range_RemoveRangeOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "DocumentElements/Range/RangeGet.doc"
 
+    requestDocument := OpenFile(t, localFile)
 
     options := map[string]interface{}{
         "rangeEndIdentifier": "id0.0.1",
     }
 
     request := &models.RemoveRangeOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         RangeStartIdentifier: ToStringPointer("id0.0.0"),
         Optionals: options,
     }
@@ -183,6 +185,7 @@ func Test_Range_SaveAsRangeOnline(t *testing.T) {
     remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Range"
     localFile := "DocumentElements/Range/RangeGet.doc"
 
+    requestDocument := OpenFile(t, localFile)
     requestDocumentParameters := models.RangeDocument{
         DocumentName: ToStringPointer(remoteDataFolder + "/NewDoc.docx"),
     }
@@ -192,7 +195,7 @@ func Test_Range_SaveAsRangeOnline(t *testing.T) {
     }
 
     request := &models.SaveAsRangeOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         RangeStartIdentifier: ToStringPointer("id0.0.0"),
         DocumentParameters: requestDocumentParameters,
         Optionals: options,
@@ -246,6 +249,7 @@ func Test_Range_ReplaceWithTextOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "DocumentElements/Range/RangeGet.doc"
 
+    requestDocument := OpenFile(t, localFile)
     requestRangeText := models.ReplaceRange{
         Text: ToStringPointer("Replaced header"),
     }
@@ -255,7 +259,7 @@ func Test_Range_ReplaceWithTextOnline(t *testing.T) {
     }
 
     request := &models.ReplaceWithTextOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         RangeStartIdentifier: ToStringPointer("id0.0.0"),
         RangeText: requestRangeText,
         Optionals: options,

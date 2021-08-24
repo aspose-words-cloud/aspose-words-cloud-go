@@ -1,1 +1,31 @@
-// ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestDocument, _ := os.Open("Sample.docx")
+requestCommentRangeStartNode := models.NodeLink{
+    NodeId: ToStringPointer("0.3.0.3"),
+}
+requestCommentRangeStart := models.DocumentPosition{
+    Node: requestCommentRangeStartNode,
+    Offset: ToInt32Pointer(int32(0)),
+}
+requestCommentRangeEndNode := models.NodeLink{
+    NodeId: ToStringPointer("0.3.0.3"),
+}
+requestCommentRangeEnd := models.DocumentPosition{
+    Node: requestCommentRangeEndNode,
+    Offset: ToInt32Pointer(int32(0)),
+}
+requestComment := models.CommentInsert{
+    RangeStart: requestCommentRangeStart,
+    RangeEnd: requestCommentRangeEnd,
+    Initial: ToStringPointer("IA"),
+    Author: ToStringPointer("Imran Anwar"),
+    Text: ToStringPointer("A new Comment"),
+}
+insertRequestOptions := map[string]interface{}{}
+insertRequest := &models.InsertCommentOnlineRequest{
+    Document: requestDocument,
+    Comment: requestComment,
+    Optionals: insertRequestOptions,
+}
+_, _, _ = wordsApi.InsertCommentOnline(ctx, insertRequest)

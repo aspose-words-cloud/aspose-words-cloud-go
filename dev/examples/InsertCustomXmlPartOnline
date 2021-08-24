@@ -1,1 +1,14 @@
-// ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestDocument, _ := os.Open("Sample.docx")
+requestCustomXmlPart := models.CustomXmlPartInsert{
+    Id: ToStringPointer("hello"),
+    Data: ToStringPointer("<data>Hello world</data>"),
+}
+insertRequestOptions := map[string]interface{}{}
+insertRequest := &models.InsertCustomXmlPartOnlineRequest{
+    Document: requestDocument,
+    CustomXmlPart: requestCustomXmlPart,
+    Optionals: insertRequestOptions,
+}
+_, _, _ = wordsApi.InsertCustomXmlPartOnline(ctx, insertRequest)

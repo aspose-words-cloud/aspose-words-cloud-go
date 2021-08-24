@@ -33,22 +33,46 @@ import (
 )
 
 func Test_Examples_AcceptAllRevisions(t *testing.T) {
+    documentsDir := GetExamplesDir()
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
     wordsApi := client.WordsApi
-    acceptRequestOptions := map[string]interface{}{}
-    acceptRequest := &models.AcceptAllRevisionsRequest{
-        Name: ToStringPointer("Sample.docx"),
-        Optionals: acceptRequestOptions,
+    fileName := "test_doc.docx"
+
+    // Upload original document to cloud storage.
+    myVar1, _ := os.Open(documentsDir + "/" + fileName)
+    myVar2 := fileName
+    uploadFileRequestOptions := map[string]interface{}{}
+    uploadFileRequest := &models.UploadFileRequest{
+        FileContent: myVar1,
+        Path: ToStringPointer(myVar2),
+        Optionals: uploadFileRequestOptions,
     }
-    _, _, _ = wordsApi.AcceptAllRevisions(ctx, acceptRequest)
+    _, _, _ = wordsApi.UploadFile(ctx, uploadFileRequest)
+
+    // Calls AcceptAllRevisions method for document in cloud.
+    myVar3 := fileName
+    requestOptions := map[string]interface{}{}
+    request := &models.AcceptAllRevisionsRequest{
+        Name: ToStringPointer(myVar3),
+        Optionals: requestOptions,
+    }
+    _, _, _ = wordsApi.AcceptAllRevisions(ctx, request)
 }
 
-
-
-// func Test_Examples_AcceptAllRevisionsOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_AcceptAllRevisionsOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    acceptRequestOptions := map[string]interface{}{}
+    acceptRequest := &models.AcceptAllRevisionsOnlineRequest{
+        Document: requestDocument,
+        Optionals: acceptRequestOptions,
+    }
+    _, _, _ = wordsApi.AcceptAllRevisionsOnline(ctx, acceptRequest)
+}
 
 func Test_Examples_AppendDocument(t *testing.T) {
     config := ReadConfiguration(t)
@@ -75,11 +99,30 @@ func Test_Examples_AppendDocument(t *testing.T) {
     _, _, _ = wordsApi.AppendDocument(ctx, appendRequest)
 }
 
-
-
-// func Test_Examples_AppendDocumentOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_AppendDocumentOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestDocumentListDocumentEntries0 := models.DocumentEntry{
+        Href: ToStringPointer("Sample.docx"),
+        ImportFormatMode: ToStringPointer("KeepSourceFormatting"),
+    }
+    requestDocumentListDocumentEntries := []models.DocumentEntry{
+        requestDocumentListDocumentEntries0,
+    }
+    requestDocumentList := models.DocumentEntryList{
+        DocumentEntries: requestDocumentListDocumentEntries,
+    }
+    appendRequestOptions := map[string]interface{}{}
+    appendRequest := &models.AppendDocumentOnlineRequest{
+        Document: requestDocument,
+        DocumentList: requestDocumentList,
+        Optionals: appendRequestOptions,
+    }
+    _, _, _ = wordsApi.AppendDocumentOnline(ctx, appendRequest)
+}
 
 func Test_Examples_ApplyStyleToDocumentElement(t *testing.T) {
     config := ReadConfiguration(t)
@@ -98,11 +141,24 @@ func Test_Examples_ApplyStyleToDocumentElement(t *testing.T) {
     _, _, _ = wordsApi.ApplyStyleToDocumentElement(ctx, applyStyleRequest)
 }
 
-
-
-// func Test_Examples_ApplyStyleToDocumentElementOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_ApplyStyleToDocumentElementOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestStyleApply := models.StyleApply{
+        StyleName: ToStringPointer("Heading 1"),
+    }
+    applyStyleRequestOptions := map[string]interface{}{}
+    applyStyleRequest := &models.ApplyStyleToDocumentElementOnlineRequest{
+        Document: requestDocument,
+        StyledNodePath: ToStringPointer("paragraphs/1/paragraphFormat"),
+        StyleApply: requestStyleApply,
+        Optionals: applyStyleRequestOptions,
+    }
+    _, _, _ = wordsApi.ApplyStyleToDocumentElementOnline(ctx, applyStyleRequest)
+}
 
 func Test_Examples_BuildReport(t *testing.T) {
     config := ReadConfiguration(t)
@@ -126,11 +182,25 @@ func Test_Examples_BuildReport(t *testing.T) {
     _, _, _ = wordsApi.BuildReport(ctx, buildReportRequest)
 }
 
-
-
-// func Test_Examples_BuildReportOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_BuildReportOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestTemplate, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestReportEngineSettings := models.ReportEngineSettings{
+        DataSourceType: ToStringPointer("Json"),
+        DataSourceName: ToStringPointer("persons"),
+    }
+    buildReportRequestOptions := map[string]interface{}{}
+    buildReportRequest := &models.BuildReportOnlineRequest{
+        Template: requestTemplate,
+        Data: ToStringPointer("Data.json"),
+        ReportEngineSettings: requestReportEngineSettings,
+        Optionals: buildReportRequestOptions,
+    }
+    _, _ = wordsApi.BuildReportOnline(ctx, buildReportRequest)
+}
 
 func Test_Examples_Classify(t *testing.T) {
     config := ReadConfiguration(t)
@@ -144,8 +214,6 @@ func Test_Examples_Classify(t *testing.T) {
     _, _, _ = wordsApi.Classify(ctx, classifyRequest)
 }
 
-
-
 func Test_Examples_ClassifyDocument(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
@@ -158,11 +226,19 @@ func Test_Examples_ClassifyDocument(t *testing.T) {
     _, _, _ = wordsApi.ClassifyDocument(ctx, classifyRequest)
 }
 
-
-
-// func Test_Examples_ClassifyDocumentOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_ClassifyDocumentOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    classifyRequestOptions := map[string]interface{}{"bestClassesCount": "3",}
+    classifyRequest := &models.ClassifyDocumentOnlineRequest{
+        Document: requestDocument,
+        Optionals: classifyRequestOptions,
+    }
+    _, _, _ = wordsApi.ClassifyDocumentOnline(ctx, classifyRequest)
+}
 
 func Test_Examples_CompareDocument(t *testing.T) {
     config := ReadConfiguration(t)
@@ -182,28 +258,42 @@ func Test_Examples_CompareDocument(t *testing.T) {
     _, _, _ = wordsApi.CompareDocument(ctx, compareRequest)
 }
 
-
-
-// func Test_Examples_CompareDocumentOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_CompareDocumentOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "compareTestDoc1.doc")
+    requestCompareData := models.CompareData{
+        Author: ToStringPointer("author"),
+        ComparingWithDocument: ToStringPointer("TestCompareDocument2.doc"),
+        DateTime: ToTimePointer(CreateTime(2015, 10, 26, 0, 0, 0)),
+    }
+    requestComparingDocument, _ := os.Open(documentsDir + "/" + "compareTestDoc2.doc")
+    compareRequestOptions := map[string]interface{}{"comparingDocument": requestComparingDocument,
+    "destFileName": "/TestCompareDocumentOut.doc",}
+    compareRequest := &models.CompareDocumentOnlineRequest{
+        Document: requestDocument,
+        CompareData: requestCompareData,
+        Optionals: compareRequestOptions,
+    }
+    _, _, _ = wordsApi.CompareDocumentOnline(ctx, compareRequest)
+}
 
 func Test_Examples_ConvertDocument(t *testing.T) {
     documentsDir := GetExamplesDir()
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
     wordsApi := client.WordsApi
-    requestDocumentFileData, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
     convertRequestOptions := map[string]interface{}{}
     convertRequest := &models.ConvertDocumentRequest{
-        Document: requestDocumentFileData,
+        Document: requestDocument,
         Format: ToStringPointer("pdf"),
         Optionals: convertRequestOptions,
     }
     _, _ = wordsApi.ConvertDocument(ctx, convertRequest)
 }
-
-
 
 func Test_Examples_CopyFile(t *testing.T) {
     config := ReadConfiguration(t)
@@ -217,8 +307,6 @@ func Test_Examples_CopyFile(t *testing.T) {
     }
     _, _ = wordsApi.CopyFile(ctx, copyRequest)
 }
-
-
 
 func Test_Examples_CopyFolder(t *testing.T) {
     config := ReadConfiguration(t)
@@ -234,8 +322,6 @@ func Test_Examples_CopyFolder(t *testing.T) {
     }
     _, _ = wordsApi.CopyFolder(ctx, copyRequest)
 }
-
-
 
 func Test_Examples_CopyStyle(t *testing.T) {
     config := ReadConfiguration(t)
@@ -253,11 +339,23 @@ func Test_Examples_CopyStyle(t *testing.T) {
     _, _, _ = wordsApi.CopyStyle(ctx, copyRequest)
 }
 
-
-
-// func Test_Examples_CopyStyleOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_CopyStyleOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestStyleCopy := models.StyleCopy{
+        StyleName: ToStringPointer("Heading 1"),
+    }
+    copyRequestOptions := map[string]interface{}{}
+    copyRequest := &models.CopyStyleOnlineRequest{
+        Document: requestDocument,
+        StyleCopy: requestStyleCopy,
+        Optionals: copyRequestOptions,
+    }
+    _, _, _ = wordsApi.CopyStyleOnline(ctx, copyRequest)
+}
 
 func Test_Examples_CreateDocument(t *testing.T) {
     config := ReadConfiguration(t)
@@ -270,8 +368,6 @@ func Test_Examples_CreateDocument(t *testing.T) {
     _, _, _ = wordsApi.CreateDocument(ctx, createRequest)
 }
 
-
-
 func Test_Examples_CreateFolder(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
@@ -283,8 +379,6 @@ func Test_Examples_CreateFolder(t *testing.T) {
     }
     _, _ = wordsApi.CreateFolder(ctx, createRequest)
 }
-
-
 
 func Test_Examples_CreateOrUpdateDocumentProperty(t *testing.T) {
     config := ReadConfiguration(t)
@@ -303,11 +397,24 @@ func Test_Examples_CreateOrUpdateDocumentProperty(t *testing.T) {
     _, _, _ = wordsApi.CreateOrUpdateDocumentProperty(ctx, createRequest)
 }
 
-
-
-// func Test_Examples_CreateOrUpdateDocumentPropertyOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_CreateOrUpdateDocumentPropertyOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestProperty := models.DocumentPropertyCreateOrUpdate{
+        Value: ToStringPointer("Imran Anwar"),
+    }
+    createRequestOptions := map[string]interface{}{}
+    createRequest := &models.CreateOrUpdateDocumentPropertyOnlineRequest{
+        Document: requestDocument,
+        PropertyName: ToStringPointer("AsposeAuthor"),
+        Property: requestProperty,
+        Optionals: createRequestOptions,
+    }
+    _, _, _ = wordsApi.CreateOrUpdateDocumentPropertyOnline(ctx, createRequest)
+}
 
 func Test_Examples_DeleteAllParagraphTabStops(t *testing.T) {
     config := ReadConfiguration(t)
@@ -322,11 +429,20 @@ func Test_Examples_DeleteAllParagraphTabStops(t *testing.T) {
     _, _, _ = wordsApi.DeleteAllParagraphTabStops(ctx, deleteRequest)
 }
 
-
-
-// func Test_Examples_DeleteAllParagraphTabStopsOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_DeleteAllParagraphTabStopsOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    deleteRequestOptions := map[string]interface{}{}
+    deleteRequest := &models.DeleteAllParagraphTabStopsOnlineRequest{
+        Document: requestDocument,
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: deleteRequestOptions,
+    }
+    _, _, _ = wordsApi.DeleteAllParagraphTabStopsOnline(ctx, deleteRequest)
+}
 
 func Test_Examples_DeleteBorder(t *testing.T) {
     config := ReadConfiguration(t)
@@ -341,11 +457,20 @@ func Test_Examples_DeleteBorder(t *testing.T) {
     _, _, _ = wordsApi.DeleteBorder(ctx, deleteRequest)
 }
 
-
-
-// func Test_Examples_DeleteBorderOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_DeleteBorderOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    deleteRequestOptions := map[string]interface{}{"nodePath": "tables/1/rows/0/cells/0",}
+    deleteRequest := &models.DeleteBorderOnlineRequest{
+        Document: requestDocument,
+        BorderType: ToStringPointer("left"),
+        Optionals: deleteRequestOptions,
+    }
+    _, _, _ = wordsApi.DeleteBorderOnline(ctx, deleteRequest)
+}
 
 func Test_Examples_DeleteBorders(t *testing.T) {
     config := ReadConfiguration(t)
@@ -359,11 +484,19 @@ func Test_Examples_DeleteBorders(t *testing.T) {
     _, _, _ = wordsApi.DeleteBorders(ctx, deleteRequest)
 }
 
-
-
-// func Test_Examples_DeleteBordersOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_DeleteBordersOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    deleteRequestOptions := map[string]interface{}{"nodePath": "tables/1/rows/0/cells/0",}
+    deleteRequest := &models.DeleteBordersOnlineRequest{
+        Document: requestDocument,
+        Optionals: deleteRequestOptions,
+    }
+    _, _, _ = wordsApi.DeleteBordersOnline(ctx, deleteRequest)
+}
 
 func Test_Examples_DeleteComment(t *testing.T) {
     config := ReadConfiguration(t)
@@ -378,11 +511,20 @@ func Test_Examples_DeleteComment(t *testing.T) {
     _, _ = wordsApi.DeleteComment(ctx, deleteRequest)
 }
 
-
-
-// func Test_Examples_DeleteCommentOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_DeleteCommentOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    deleteRequestOptions := map[string]interface{}{}
+    deleteRequest := &models.DeleteCommentOnlineRequest{
+        Document: requestDocument,
+        CommentIndex: ToInt32Pointer(int32(0)),
+        Optionals: deleteRequestOptions,
+    }
+    _, _ = wordsApi.DeleteCommentOnline(ctx, deleteRequest)
+}
 
 func Test_Examples_DeleteComments(t *testing.T) {
     config := ReadConfiguration(t)
@@ -396,11 +538,19 @@ func Test_Examples_DeleteComments(t *testing.T) {
     _, _ = wordsApi.DeleteComments(ctx, deleteRequest)
 }
 
-
-
-// func Test_Examples_DeleteCommentsOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_DeleteCommentsOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    deleteRequestOptions := map[string]interface{}{}
+    deleteRequest := &models.DeleteCommentsOnlineRequest{
+        Document: requestDocument,
+        Optionals: deleteRequestOptions,
+    }
+    _, _ = wordsApi.DeleteCommentsOnline(ctx, deleteRequest)
+}
 
 func Test_Examples_DeleteCustomXmlPart(t *testing.T) {
     config := ReadConfiguration(t)
@@ -415,11 +565,20 @@ func Test_Examples_DeleteCustomXmlPart(t *testing.T) {
     _, _ = wordsApi.DeleteCustomXmlPart(ctx, deleteRequest)
 }
 
-
-
-// func Test_Examples_DeleteCustomXmlPartOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_DeleteCustomXmlPartOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    deleteRequestOptions := map[string]interface{}{}
+    deleteRequest := &models.DeleteCustomXmlPartOnlineRequest{
+        Document: requestDocument,
+        CustomXmlPartIndex: ToInt32Pointer(int32(0)),
+        Optionals: deleteRequestOptions,
+    }
+    _, _ = wordsApi.DeleteCustomXmlPartOnline(ctx, deleteRequest)
+}
 
 func Test_Examples_DeleteCustomXmlParts(t *testing.T) {
     config := ReadConfiguration(t)
@@ -433,11 +592,19 @@ func Test_Examples_DeleteCustomXmlParts(t *testing.T) {
     _, _ = wordsApi.DeleteCustomXmlParts(ctx, deleteRequest)
 }
 
-
-
-// func Test_Examples_DeleteCustomXmlPartsOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_DeleteCustomXmlPartsOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    deleteRequestOptions := map[string]interface{}{}
+    deleteRequest := &models.DeleteCustomXmlPartsOnlineRequest{
+        Document: requestDocument,
+        Optionals: deleteRequestOptions,
+    }
+    _, _ = wordsApi.DeleteCustomXmlPartsOnline(ctx, deleteRequest)
+}
 
 func Test_Examples_DeleteDocumentProperty(t *testing.T) {
     config := ReadConfiguration(t)
@@ -452,11 +619,20 @@ func Test_Examples_DeleteDocumentProperty(t *testing.T) {
     _, _ = wordsApi.DeleteDocumentProperty(ctx, deleteRequest)
 }
 
-
-
-// func Test_Examples_DeleteDocumentPropertyOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_DeleteDocumentPropertyOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    deleteRequestOptions := map[string]interface{}{}
+    deleteRequest := &models.DeleteDocumentPropertyOnlineRequest{
+        Document: requestDocument,
+        PropertyName: ToStringPointer("testProp"),
+        Optionals: deleteRequestOptions,
+    }
+    _, _ = wordsApi.DeleteDocumentPropertyOnline(ctx, deleteRequest)
+}
 
 func Test_Examples_DeleteDrawingObject(t *testing.T) {
     config := ReadConfiguration(t)
@@ -471,11 +647,20 @@ func Test_Examples_DeleteDrawingObject(t *testing.T) {
     _, _ = wordsApi.DeleteDrawingObject(ctx, deleteRequest)
 }
 
-
-
-// func Test_Examples_DeleteDrawingObjectOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_DeleteDrawingObjectOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    deleteRequestOptions := map[string]interface{}{}
+    deleteRequest := &models.DeleteDrawingObjectOnlineRequest{
+        Document: requestDocument,
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: deleteRequestOptions,
+    }
+    _, _ = wordsApi.DeleteDrawingObjectOnline(ctx, deleteRequest)
+}
 
 func Test_Examples_DeleteField(t *testing.T) {
     config := ReadConfiguration(t)
@@ -490,11 +675,20 @@ func Test_Examples_DeleteField(t *testing.T) {
     _, _ = wordsApi.DeleteField(ctx, deleteRequest)
 }
 
-
-
-// func Test_Examples_DeleteFieldOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_DeleteFieldOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    deleteRequestOptions := map[string]interface{}{"nodePath": "sections/0/paragraphs/0",}
+    deleteRequest := &models.DeleteFieldOnlineRequest{
+        Document: requestDocument,
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: deleteRequestOptions,
+    }
+    _, _ = wordsApi.DeleteFieldOnline(ctx, deleteRequest)
+}
 
 func Test_Examples_DeleteFields(t *testing.T) {
     config := ReadConfiguration(t)
@@ -508,11 +702,19 @@ func Test_Examples_DeleteFields(t *testing.T) {
     _, _ = wordsApi.DeleteFields(ctx, deleteRequest)
 }
 
-
-
-// func Test_Examples_DeleteFieldsOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_DeleteFieldsOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    deleteRequestOptions := map[string]interface{}{}
+    deleteRequest := &models.DeleteFieldsOnlineRequest{
+        Document: requestDocument,
+        Optionals: deleteRequestOptions,
+    }
+    _, _ = wordsApi.DeleteFieldsOnline(ctx, deleteRequest)
+}
 
 func Test_Examples_DeleteFile(t *testing.T) {
     config := ReadConfiguration(t)
@@ -526,8 +728,6 @@ func Test_Examples_DeleteFile(t *testing.T) {
     _, _ = wordsApi.DeleteFile(ctx, deleteRequest)
 }
 
-
-
 func Test_Examples_DeleteFolder(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
@@ -539,8 +739,6 @@ func Test_Examples_DeleteFolder(t *testing.T) {
     }
     _, _ = wordsApi.DeleteFolder(ctx, deleteRequest)
 }
-
-
 
 func Test_Examples_DeleteFootnote(t *testing.T) {
     config := ReadConfiguration(t)
@@ -555,11 +753,20 @@ func Test_Examples_DeleteFootnote(t *testing.T) {
     _, _ = wordsApi.DeleteFootnote(ctx, deleteRequest)
 }
 
-
-
-// func Test_Examples_DeleteFootnoteOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_DeleteFootnoteOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.doc")
+    deleteRequestOptions := map[string]interface{}{}
+    deleteRequest := &models.DeleteFootnoteOnlineRequest{
+        Document: requestDocument,
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: deleteRequestOptions,
+    }
+    _, _ = wordsApi.DeleteFootnoteOnline(ctx, deleteRequest)
+}
 
 func Test_Examples_DeleteFormField(t *testing.T) {
     config := ReadConfiguration(t)
@@ -574,11 +781,20 @@ func Test_Examples_DeleteFormField(t *testing.T) {
     _, _ = wordsApi.DeleteFormField(ctx, deleteRequest)
 }
 
-
-
-// func Test_Examples_DeleteFormFieldOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_DeleteFormFieldOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    deleteRequestOptions := map[string]interface{}{"nodePath": "sections/0",}
+    deleteRequest := &models.DeleteFormFieldOnlineRequest{
+        Document: requestDocument,
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: deleteRequestOptions,
+    }
+    _, _ = wordsApi.DeleteFormFieldOnline(ctx, deleteRequest)
+}
 
 func Test_Examples_DeleteHeaderFooter(t *testing.T) {
     config := ReadConfiguration(t)
@@ -594,11 +810,21 @@ func Test_Examples_DeleteHeaderFooter(t *testing.T) {
     _, _ = wordsApi.DeleteHeaderFooter(ctx, deleteRequest)
 }
 
-
-
-// func Test_Examples_DeleteHeaderFooterOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_DeleteHeaderFooterOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.doc")
+    deleteRequestOptions := map[string]interface{}{}
+    deleteRequest := &models.DeleteHeaderFooterOnlineRequest{
+        Document: requestDocument,
+        SectionPath: ToStringPointer(""),
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: deleteRequestOptions,
+    }
+    _, _ = wordsApi.DeleteHeaderFooterOnline(ctx, deleteRequest)
+}
 
 func Test_Examples_DeleteHeadersFooters(t *testing.T) {
     config := ReadConfiguration(t)
@@ -613,11 +839,20 @@ func Test_Examples_DeleteHeadersFooters(t *testing.T) {
     _, _ = wordsApi.DeleteHeadersFooters(ctx, deleteRequest)
 }
 
-
-
-// func Test_Examples_DeleteHeadersFootersOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_DeleteHeadersFootersOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.doc")
+    deleteRequestOptions := map[string]interface{}{}
+    deleteRequest := &models.DeleteHeadersFootersOnlineRequest{
+        Document: requestDocument,
+        SectionPath: ToStringPointer(""),
+        Optionals: deleteRequestOptions,
+    }
+    _, _ = wordsApi.DeleteHeadersFootersOnline(ctx, deleteRequest)
+}
 
 func Test_Examples_DeleteMacros(t *testing.T) {
     config := ReadConfiguration(t)
@@ -631,11 +866,19 @@ func Test_Examples_DeleteMacros(t *testing.T) {
     _, _ = wordsApi.DeleteMacros(ctx, deleteRequest)
 }
 
-
-
-// func Test_Examples_DeleteMacrosOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_DeleteMacrosOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    deleteRequestOptions := map[string]interface{}{}
+    deleteRequest := &models.DeleteMacrosOnlineRequest{
+        Document: requestDocument,
+        Optionals: deleteRequestOptions,
+    }
+    _, _ = wordsApi.DeleteMacrosOnline(ctx, deleteRequest)
+}
 
 func Test_Examples_DeleteOfficeMathObject(t *testing.T) {
     config := ReadConfiguration(t)
@@ -650,11 +893,20 @@ func Test_Examples_DeleteOfficeMathObject(t *testing.T) {
     _, _ = wordsApi.DeleteOfficeMathObject(ctx, deleteRequest)
 }
 
-
-
-// func Test_Examples_DeleteOfficeMathObjectOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_DeleteOfficeMathObjectOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    deleteRequestOptions := map[string]interface{}{}
+    deleteRequest := &models.DeleteOfficeMathObjectOnlineRequest{
+        Document: requestDocument,
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: deleteRequestOptions,
+    }
+    _, _ = wordsApi.DeleteOfficeMathObjectOnline(ctx, deleteRequest)
+}
 
 func Test_Examples_DeleteParagraph(t *testing.T) {
     config := ReadConfiguration(t)
@@ -669,8 +921,6 @@ func Test_Examples_DeleteParagraph(t *testing.T) {
     _, _ = wordsApi.DeleteParagraph(ctx, deleteRequest)
 }
 
-
-
 func Test_Examples_DeleteParagraphListFormat(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
@@ -684,15 +934,35 @@ func Test_Examples_DeleteParagraphListFormat(t *testing.T) {
     _, _, _ = wordsApi.DeleteParagraphListFormat(ctx, deleteRequest)
 }
 
+func Test_Examples_DeleteParagraphListFormatOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.doc")
+    deleteRequestOptions := map[string]interface{}{}
+    deleteRequest := &models.DeleteParagraphListFormatOnlineRequest{
+        Document: requestDocument,
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: deleteRequestOptions,
+    }
+    _, _, _ = wordsApi.DeleteParagraphListFormatOnline(ctx, deleteRequest)
+}
 
-
-// func Test_Examples_DeleteParagraphListFormatOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
-
-// func Test_Examples_DeleteParagraphOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_DeleteParagraphOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    deleteRequestOptions := map[string]interface{}{}
+    deleteRequest := &models.DeleteParagraphOnlineRequest{
+        Document: requestDocument,
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: deleteRequestOptions,
+    }
+    _, _ = wordsApi.DeleteParagraphOnline(ctx, deleteRequest)
+}
 
 func Test_Examples_DeleteParagraphTabStop(t *testing.T) {
     config := ReadConfiguration(t)
@@ -708,11 +978,21 @@ func Test_Examples_DeleteParagraphTabStop(t *testing.T) {
     _, _, _ = wordsApi.DeleteParagraphTabStop(ctx, deleteRequest)
 }
 
-
-
-// func Test_Examples_DeleteParagraphTabStopOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_DeleteParagraphTabStopOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    deleteRequestOptions := map[string]interface{}{}
+    deleteRequest := &models.DeleteParagraphTabStopOnlineRequest{
+        Document: requestDocument,
+        Position: ToFloat64Pointer(72.0),
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: deleteRequestOptions,
+    }
+    _, _, _ = wordsApi.DeleteParagraphTabStopOnline(ctx, deleteRequest)
+}
 
 func Test_Examples_DeleteRun(t *testing.T) {
     config := ReadConfiguration(t)
@@ -728,11 +1008,21 @@ func Test_Examples_DeleteRun(t *testing.T) {
     _, _ = wordsApi.DeleteRun(ctx, deleteRequest)
 }
 
-
-
-// func Test_Examples_DeleteRunOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_DeleteRunOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.doc")
+    deleteRequestOptions := map[string]interface{}{}
+    deleteRequest := &models.DeleteRunOnlineRequest{
+        Document: requestDocument,
+        ParagraphPath: ToStringPointer("paragraphs/1"),
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: deleteRequestOptions,
+    }
+    _, _ = wordsApi.DeleteRunOnline(ctx, deleteRequest)
+}
 
 func Test_Examples_DeleteSection(t *testing.T) {
     config := ReadConfiguration(t)
@@ -747,11 +1037,20 @@ func Test_Examples_DeleteSection(t *testing.T) {
     _, _ = wordsApi.DeleteSection(ctx, deleteRequest)
 }
 
-
-
-// func Test_Examples_DeleteSectionOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_DeleteSectionOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    deleteRequestOptions := map[string]interface{}{}
+    deleteRequest := &models.DeleteSectionOnlineRequest{
+        Document: requestDocument,
+        SectionIndex: ToInt32Pointer(int32(0)),
+        Optionals: deleteRequestOptions,
+    }
+    _, _ = wordsApi.DeleteSectionOnline(ctx, deleteRequest)
+}
 
 func Test_Examples_DeleteTable(t *testing.T) {
     config := ReadConfiguration(t)
@@ -765,8 +1064,6 @@ func Test_Examples_DeleteTable(t *testing.T) {
     }
     _, _ = wordsApi.DeleteTable(ctx, deleteRequest)
 }
-
-
 
 func Test_Examples_DeleteTableCell(t *testing.T) {
     config := ReadConfiguration(t)
@@ -782,15 +1079,36 @@ func Test_Examples_DeleteTableCell(t *testing.T) {
     _, _ = wordsApi.DeleteTableCell(ctx, deleteRequest)
 }
 
+func Test_Examples_DeleteTableCellOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    deleteRequestOptions := map[string]interface{}{}
+    deleteRequest := &models.DeleteTableCellOnlineRequest{
+        Document: requestDocument,
+        TableRowPath: ToStringPointer("sections/0/tables/2/rows/0"),
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: deleteRequestOptions,
+    }
+    _, _ = wordsApi.DeleteTableCellOnline(ctx, deleteRequest)
+}
 
-
-// func Test_Examples_DeleteTableCellOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
-
-// func Test_Examples_DeleteTableOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_DeleteTableOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    deleteRequestOptions := map[string]interface{}{}
+    deleteRequest := &models.DeleteTableOnlineRequest{
+        Document: requestDocument,
+        Index: ToInt32Pointer(int32(1)),
+        Optionals: deleteRequestOptions,
+    }
+    _, _ = wordsApi.DeleteTableOnline(ctx, deleteRequest)
+}
 
 func Test_Examples_DeleteTableRow(t *testing.T) {
     config := ReadConfiguration(t)
@@ -806,11 +1124,21 @@ func Test_Examples_DeleteTableRow(t *testing.T) {
     _, _ = wordsApi.DeleteTableRow(ctx, deleteRequest)
 }
 
-
-
-// func Test_Examples_DeleteTableRowOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_DeleteTableRowOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    deleteRequestOptions := map[string]interface{}{}
+    deleteRequest := &models.DeleteTableRowOnlineRequest{
+        Document: requestDocument,
+        TablePath: ToStringPointer("tables/1"),
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: deleteRequestOptions,
+    }
+    _, _ = wordsApi.DeleteTableRowOnline(ctx, deleteRequest)
+}
 
 func Test_Examples_DeleteWatermark(t *testing.T) {
     config := ReadConfiguration(t)
@@ -824,11 +1152,19 @@ func Test_Examples_DeleteWatermark(t *testing.T) {
     _, _, _ = wordsApi.DeleteWatermark(ctx, deleteRequest)
 }
 
-
-
-// func Test_Examples_DeleteWatermarkOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_DeleteWatermarkOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    deleteRequestOptions := map[string]interface{}{}
+    deleteRequest := &models.DeleteWatermarkOnlineRequest{
+        Document: requestDocument,
+        Optionals: deleteRequestOptions,
+    }
+    _, _, _ = wordsApi.DeleteWatermarkOnline(ctx, deleteRequest)
+}
 
 func Test_Examples_DownloadFile(t *testing.T) {
     config := ReadConfiguration(t)
@@ -842,8 +1178,6 @@ func Test_Examples_DownloadFile(t *testing.T) {
     _, _ = wordsApi.DownloadFile(ctx, downloadRequest)
 }
 
-
-
 func Test_Examples_ExecuteMailMerge(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
@@ -856,11 +1190,21 @@ func Test_Examples_ExecuteMailMerge(t *testing.T) {
     _, _, _ = wordsApi.ExecuteMailMerge(ctx, mailMergeRequest)
 }
 
-
-
-// func Test_Examples_ExecuteMailMergeOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_ExecuteMailMergeOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestTemplate, _ := os.Open(documentsDir + "/" + "TestExecuteTemplate.doc")
+    requestData, _ := os.Open(documentsDir + "/" + "TestExecuteTemplateData.txt")
+    mailMergeRequestOptions := map[string]interface{}{}
+    mailMergeRequest := &models.ExecuteMailMergeOnlineRequest{
+        Template: requestTemplate,
+        Data: requestData,
+        Optionals: mailMergeRequestOptions,
+    }
+    _, _ = wordsApi.ExecuteMailMergeOnline(ctx, mailMergeRequest)
+}
 
 func Test_Examples_GetAvailableFonts(t *testing.T) {
     config := ReadConfiguration(t)
@@ -872,8 +1216,6 @@ func Test_Examples_GetAvailableFonts(t *testing.T) {
     }
     _, _, _ = wordsApi.GetAvailableFonts(ctx, request)
 }
-
-
 
 func Test_Examples_GetBookmarkByName(t *testing.T) {
     config := ReadConfiguration(t)
@@ -888,11 +1230,20 @@ func Test_Examples_GetBookmarkByName(t *testing.T) {
     _, _, _ = wordsApi.GetBookmarkByName(ctx, request)
 }
 
-
-
-// func Test_Examples_GetBookmarkByNameOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_GetBookmarkByNameOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestOptions := map[string]interface{}{}
+    request := &models.GetBookmarkByNameOnlineRequest{
+        Document: requestDocument,
+        BookmarkName: ToStringPointer("aspose"),
+        Optionals: requestOptions,
+    }
+    _, _, _ = wordsApi.GetBookmarkByNameOnline(ctx, request)
+}
 
 func Test_Examples_GetBookmarks(t *testing.T) {
     config := ReadConfiguration(t)
@@ -906,11 +1257,19 @@ func Test_Examples_GetBookmarks(t *testing.T) {
     _, _, _ = wordsApi.GetBookmarks(ctx, request)
 }
 
-
-
-// func Test_Examples_GetBookmarksOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_GetBookmarksOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestOptions := map[string]interface{}{}
+    request := &models.GetBookmarksOnlineRequest{
+        Document: requestDocument,
+        Optionals: requestOptions,
+    }
+    _, _, _ = wordsApi.GetBookmarksOnline(ctx, request)
+}
 
 func Test_Examples_GetBorder(t *testing.T) {
     config := ReadConfiguration(t)
@@ -925,11 +1284,20 @@ func Test_Examples_GetBorder(t *testing.T) {
     _, _, _ = wordsApi.GetBorder(ctx, request)
 }
 
-
-
-// func Test_Examples_GetBorderOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_GetBorderOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestOptions := map[string]interface{}{"nodePath": "tables/1/rows/0/cells/0",}
+    request := &models.GetBorderOnlineRequest{
+        Document: requestDocument,
+        BorderType: ToStringPointer("left"),
+        Optionals: requestOptions,
+    }
+    _, _, _ = wordsApi.GetBorderOnline(ctx, request)
+}
 
 func Test_Examples_GetBorders(t *testing.T) {
     config := ReadConfiguration(t)
@@ -943,11 +1311,19 @@ func Test_Examples_GetBorders(t *testing.T) {
     _, _, _ = wordsApi.GetBorders(ctx, request)
 }
 
-
-
-// func Test_Examples_GetBordersOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_GetBordersOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestOptions := map[string]interface{}{"nodePath": "tables/1/rows/0/cells/0",}
+    request := &models.GetBordersOnlineRequest{
+        Document: requestDocument,
+        Optionals: requestOptions,
+    }
+    _, _, _ = wordsApi.GetBordersOnline(ctx, request)
+}
 
 func Test_Examples_GetComment(t *testing.T) {
     config := ReadConfiguration(t)
@@ -962,11 +1338,20 @@ func Test_Examples_GetComment(t *testing.T) {
     _, _, _ = wordsApi.GetComment(ctx, request)
 }
 
-
-
-// func Test_Examples_GetCommentOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_GetCommentOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestOptions := map[string]interface{}{}
+    request := &models.GetCommentOnlineRequest{
+        Document: requestDocument,
+        CommentIndex: ToInt32Pointer(int32(0)),
+        Optionals: requestOptions,
+    }
+    _, _, _ = wordsApi.GetCommentOnline(ctx, request)
+}
 
 func Test_Examples_GetComments(t *testing.T) {
     config := ReadConfiguration(t)
@@ -980,11 +1365,19 @@ func Test_Examples_GetComments(t *testing.T) {
     _, _, _ = wordsApi.GetComments(ctx, request)
 }
 
-
-
-// func Test_Examples_GetCommentsOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_GetCommentsOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestOptions := map[string]interface{}{}
+    request := &models.GetCommentsOnlineRequest{
+        Document: requestDocument,
+        Optionals: requestOptions,
+    }
+    _, _, _ = wordsApi.GetCommentsOnline(ctx, request)
+}
 
 func Test_Examples_GetCustomXmlPart(t *testing.T) {
     config := ReadConfiguration(t)
@@ -999,11 +1392,20 @@ func Test_Examples_GetCustomXmlPart(t *testing.T) {
     _, _, _ = wordsApi.GetCustomXmlPart(ctx, request)
 }
 
-
-
-// func Test_Examples_GetCustomXmlPartOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_GetCustomXmlPartOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestOptions := map[string]interface{}{}
+    request := &models.GetCustomXmlPartOnlineRequest{
+        Document: requestDocument,
+        CustomXmlPartIndex: ToInt32Pointer(int32(0)),
+        Optionals: requestOptions,
+    }
+    _, _, _ = wordsApi.GetCustomXmlPartOnline(ctx, request)
+}
 
 func Test_Examples_GetCustomXmlParts(t *testing.T) {
     config := ReadConfiguration(t)
@@ -1017,11 +1419,19 @@ func Test_Examples_GetCustomXmlParts(t *testing.T) {
     _, _, _ = wordsApi.GetCustomXmlParts(ctx, request)
 }
 
-
-
-// func Test_Examples_GetCustomXmlPartsOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_GetCustomXmlPartsOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestOptions := map[string]interface{}{}
+    request := &models.GetCustomXmlPartsOnlineRequest{
+        Document: requestDocument,
+        Optionals: requestOptions,
+    }
+    _, _, _ = wordsApi.GetCustomXmlPartsOnline(ctx, request)
+}
 
 func Test_Examples_GetDocument(t *testing.T) {
     config := ReadConfiguration(t)
@@ -1034,8 +1444,6 @@ func Test_Examples_GetDocument(t *testing.T) {
     }
     _, _, _ = wordsApi.GetDocument(ctx, request)
 }
-
-
 
 func Test_Examples_GetDocumentDrawingObjectByIndex(t *testing.T) {
     config := ReadConfiguration(t)
@@ -1050,11 +1458,20 @@ func Test_Examples_GetDocumentDrawingObjectByIndex(t *testing.T) {
     _, _, _ = wordsApi.GetDocumentDrawingObjectByIndex(ctx, request)
 }
 
-
-
-// func Test_Examples_GetDocumentDrawingObjectByIndexOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_GetDocumentDrawingObjectByIndexOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestOptions := map[string]interface{}{"nodePath": "sections/0",}
+    request := &models.GetDocumentDrawingObjectByIndexOnlineRequest{
+        Document: requestDocument,
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: requestOptions,
+    }
+    _, _, _ = wordsApi.GetDocumentDrawingObjectByIndexOnline(ctx, request)
+}
 
 func Test_Examples_GetDocumentDrawingObjectImageData(t *testing.T) {
     config := ReadConfiguration(t)
@@ -1069,11 +1486,20 @@ func Test_Examples_GetDocumentDrawingObjectImageData(t *testing.T) {
     _, _ = wordsApi.GetDocumentDrawingObjectImageData(ctx, request)
 }
 
-
-
-// func Test_Examples_GetDocumentDrawingObjectImageDataOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_GetDocumentDrawingObjectImageDataOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestOptions := map[string]interface{}{"nodePath": "sections/0",}
+    request := &models.GetDocumentDrawingObjectImageDataOnlineRequest{
+        Document: requestDocument,
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: requestOptions,
+    }
+    _, _ = wordsApi.GetDocumentDrawingObjectImageDataOnline(ctx, request)
+}
 
 func Test_Examples_GetDocumentDrawingObjectOleData(t *testing.T) {
     config := ReadConfiguration(t)
@@ -1088,11 +1514,20 @@ func Test_Examples_GetDocumentDrawingObjectOleData(t *testing.T) {
     _, _ = wordsApi.GetDocumentDrawingObjectOleData(ctx, request)
 }
 
-
-
-// func Test_Examples_GetDocumentDrawingObjectOleDataOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_GetDocumentDrawingObjectOleDataOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestOptions := map[string]interface{}{"nodePath": "sections/0",}
+    request := &models.GetDocumentDrawingObjectOleDataOnlineRequest{
+        Document: requestDocument,
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: requestOptions,
+    }
+    _, _ = wordsApi.GetDocumentDrawingObjectOleDataOnline(ctx, request)
+}
 
 func Test_Examples_GetDocumentDrawingObjects(t *testing.T) {
     config := ReadConfiguration(t)
@@ -1106,11 +1541,19 @@ func Test_Examples_GetDocumentDrawingObjects(t *testing.T) {
     _, _, _ = wordsApi.GetDocumentDrawingObjects(ctx, request)
 }
 
-
-
-// func Test_Examples_GetDocumentDrawingObjectsOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_GetDocumentDrawingObjectsOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestOptions := map[string]interface{}{"nodePath": "sections/0",}
+    request := &models.GetDocumentDrawingObjectsOnlineRequest{
+        Document: requestDocument,
+        Optionals: requestOptions,
+    }
+    _, _, _ = wordsApi.GetDocumentDrawingObjectsOnline(ctx, request)
+}
 
 func Test_Examples_GetDocumentFieldNames(t *testing.T) {
     config := ReadConfiguration(t)
@@ -1124,11 +1567,19 @@ func Test_Examples_GetDocumentFieldNames(t *testing.T) {
     _, _, _ = wordsApi.GetDocumentFieldNames(ctx, request)
 }
 
-
-
-// func Test_Examples_GetDocumentFieldNamesOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_GetDocumentFieldNamesOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestTemplate, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestOptions := map[string]interface{}{"useNonMergeFields": true,}
+    request := &models.GetDocumentFieldNamesOnlineRequest{
+        Template: requestTemplate,
+        Optionals: requestOptions,
+    }
+    _, _, _ = wordsApi.GetDocumentFieldNamesOnline(ctx, request)
+}
 
 func Test_Examples_GetDocumentHyperlinkByIndex(t *testing.T) {
     config := ReadConfiguration(t)
@@ -1143,11 +1594,20 @@ func Test_Examples_GetDocumentHyperlinkByIndex(t *testing.T) {
     _, _, _ = wordsApi.GetDocumentHyperlinkByIndex(ctx, request)
 }
 
-
-
-// func Test_Examples_GetDocumentHyperlinkByIndexOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_GetDocumentHyperlinkByIndexOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestOptions := map[string]interface{}{}
+    request := &models.GetDocumentHyperlinkByIndexOnlineRequest{
+        Document: requestDocument,
+        HyperlinkIndex: ToInt32Pointer(int32(0)),
+        Optionals: requestOptions,
+    }
+    _, _, _ = wordsApi.GetDocumentHyperlinkByIndexOnline(ctx, request)
+}
 
 func Test_Examples_GetDocumentHyperlinks(t *testing.T) {
     config := ReadConfiguration(t)
@@ -1161,11 +1621,19 @@ func Test_Examples_GetDocumentHyperlinks(t *testing.T) {
     _, _, _ = wordsApi.GetDocumentHyperlinks(ctx, request)
 }
 
-
-
-// func Test_Examples_GetDocumentHyperlinksOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_GetDocumentHyperlinksOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestOptions := map[string]interface{}{}
+    request := &models.GetDocumentHyperlinksOnlineRequest{
+        Document: requestDocument,
+        Optionals: requestOptions,
+    }
+    _, _, _ = wordsApi.GetDocumentHyperlinksOnline(ctx, request)
+}
 
 func Test_Examples_GetDocumentProperties(t *testing.T) {
     config := ReadConfiguration(t)
@@ -1179,11 +1647,19 @@ func Test_Examples_GetDocumentProperties(t *testing.T) {
     _, _, _ = wordsApi.GetDocumentProperties(ctx, request)
 }
 
-
-
-// func Test_Examples_GetDocumentPropertiesOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_GetDocumentPropertiesOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestOptions := map[string]interface{}{}
+    request := &models.GetDocumentPropertiesOnlineRequest{
+        Document: requestDocument,
+        Optionals: requestOptions,
+    }
+    _, _, _ = wordsApi.GetDocumentPropertiesOnline(ctx, request)
+}
 
 func Test_Examples_GetDocumentProperty(t *testing.T) {
     config := ReadConfiguration(t)
@@ -1198,11 +1674,20 @@ func Test_Examples_GetDocumentProperty(t *testing.T) {
     _, _, _ = wordsApi.GetDocumentProperty(ctx, request)
 }
 
-
-
-// func Test_Examples_GetDocumentPropertyOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_GetDocumentPropertyOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestOptions := map[string]interface{}{}
+    request := &models.GetDocumentPropertyOnlineRequest{
+        Document: requestDocument,
+        PropertyName: ToStringPointer("Author"),
+        Optionals: requestOptions,
+    }
+    _, _, _ = wordsApi.GetDocumentPropertyOnline(ctx, request)
+}
 
 func Test_Examples_GetDocumentProtection(t *testing.T) {
     config := ReadConfiguration(t)
@@ -1216,11 +1701,19 @@ func Test_Examples_GetDocumentProtection(t *testing.T) {
     _, _, _ = wordsApi.GetDocumentProtection(ctx, request)
 }
 
-
-
-// func Test_Examples_GetDocumentProtectionOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_GetDocumentProtectionOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestOptions := map[string]interface{}{}
+    request := &models.GetDocumentProtectionOnlineRequest{
+        Document: requestDocument,
+        Optionals: requestOptions,
+    }
+    _, _, _ = wordsApi.GetDocumentProtectionOnline(ctx, request)
+}
 
 func Test_Examples_GetDocumentStatistics(t *testing.T) {
     config := ReadConfiguration(t)
@@ -1234,11 +1727,19 @@ func Test_Examples_GetDocumentStatistics(t *testing.T) {
     _, _, _ = wordsApi.GetDocumentStatistics(ctx, request)
 }
 
-
-
-// func Test_Examples_GetDocumentStatisticsOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_GetDocumentStatisticsOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestOptions := map[string]interface{}{}
+    request := &models.GetDocumentStatisticsOnlineRequest{
+        Document: requestDocument,
+        Optionals: requestOptions,
+    }
+    _, _, _ = wordsApi.GetDocumentStatisticsOnline(ctx, request)
+}
 
 func Test_Examples_GetDocumentWithFormat(t *testing.T) {
     config := ReadConfiguration(t)
@@ -1253,8 +1754,6 @@ func Test_Examples_GetDocumentWithFormat(t *testing.T) {
     _, _ = wordsApi.GetDocumentWithFormat(ctx, request)
 }
 
-
-
 func Test_Examples_GetField(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
@@ -1268,11 +1767,20 @@ func Test_Examples_GetField(t *testing.T) {
     _, _, _ = wordsApi.GetField(ctx, request)
 }
 
-
-
-// func Test_Examples_GetFieldOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_GetFieldOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestOptions := map[string]interface{}{"nodePath": "sections/0/paragraphs/0",}
+    request := &models.GetFieldOnlineRequest{
+        Document: requestDocument,
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: requestOptions,
+    }
+    _, _, _ = wordsApi.GetFieldOnline(ctx, request)
+}
 
 func Test_Examples_GetFields(t *testing.T) {
     config := ReadConfiguration(t)
@@ -1286,11 +1794,19 @@ func Test_Examples_GetFields(t *testing.T) {
     _, _, _ = wordsApi.GetFields(ctx, request)
 }
 
-
-
-// func Test_Examples_GetFieldsOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_GetFieldsOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestOptions := map[string]interface{}{"nodePath": "sections/0",}
+    request := &models.GetFieldsOnlineRequest{
+        Document: requestDocument,
+        Optionals: requestOptions,
+    }
+    _, _, _ = wordsApi.GetFieldsOnline(ctx, request)
+}
 
 func Test_Examples_GetFilesList(t *testing.T) {
     config := ReadConfiguration(t)
@@ -1303,8 +1819,6 @@ func Test_Examples_GetFilesList(t *testing.T) {
     }
     _, _, _ = wordsApi.GetFilesList(ctx, request)
 }
-
-
 
 func Test_Examples_GetFootnote(t *testing.T) {
     config := ReadConfiguration(t)
@@ -1319,11 +1833,20 @@ func Test_Examples_GetFootnote(t *testing.T) {
     _, _, _ = wordsApi.GetFootnote(ctx, request)
 }
 
-
-
-// func Test_Examples_GetFootnoteOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_GetFootnoteOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.doc")
+    requestOptions := map[string]interface{}{}
+    request := &models.GetFootnoteOnlineRequest{
+        Document: requestDocument,
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: requestOptions,
+    }
+    _, _, _ = wordsApi.GetFootnoteOnline(ctx, request)
+}
 
 func Test_Examples_GetFootnotes(t *testing.T) {
     config := ReadConfiguration(t)
@@ -1337,11 +1860,19 @@ func Test_Examples_GetFootnotes(t *testing.T) {
     _, _, _ = wordsApi.GetFootnotes(ctx, request)
 }
 
-
-
-// func Test_Examples_GetFootnotesOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_GetFootnotesOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.doc")
+    requestOptions := map[string]interface{}{}
+    request := &models.GetFootnotesOnlineRequest{
+        Document: requestDocument,
+        Optionals: requestOptions,
+    }
+    _, _, _ = wordsApi.GetFootnotesOnline(ctx, request)
+}
 
 func Test_Examples_GetFormField(t *testing.T) {
     config := ReadConfiguration(t)
@@ -1356,11 +1887,20 @@ func Test_Examples_GetFormField(t *testing.T) {
     _, _, _ = wordsApi.GetFormField(ctx, request)
 }
 
-
-
-// func Test_Examples_GetFormFieldOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_GetFormFieldOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestOptions := map[string]interface{}{"nodePath": "sections/0",}
+    request := &models.GetFormFieldOnlineRequest{
+        Document: requestDocument,
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: requestOptions,
+    }
+    _, _, _ = wordsApi.GetFormFieldOnline(ctx, request)
+}
 
 func Test_Examples_GetFormFields(t *testing.T) {
     config := ReadConfiguration(t)
@@ -1374,11 +1914,19 @@ func Test_Examples_GetFormFields(t *testing.T) {
     _, _, _ = wordsApi.GetFormFields(ctx, request)
 }
 
-
-
-// func Test_Examples_GetFormFieldsOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_GetFormFieldsOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestOptions := map[string]interface{}{"nodePath": "sections/0",}
+    request := &models.GetFormFieldsOnlineRequest{
+        Document: requestDocument,
+        Optionals: requestOptions,
+    }
+    _, _, _ = wordsApi.GetFormFieldsOnline(ctx, request)
+}
 
 func Test_Examples_GetHeaderFooter(t *testing.T) {
     config := ReadConfiguration(t)
@@ -1392,8 +1940,6 @@ func Test_Examples_GetHeaderFooter(t *testing.T) {
     }
     _, _, _ = wordsApi.GetHeaderFooter(ctx, request)
 }
-
-
 
 func Test_Examples_GetHeaderFooterOfSection(t *testing.T) {
     config := ReadConfiguration(t)
@@ -1409,15 +1955,36 @@ func Test_Examples_GetHeaderFooterOfSection(t *testing.T) {
     _, _, _ = wordsApi.GetHeaderFooterOfSection(ctx, request)
 }
 
+func Test_Examples_GetHeaderFooterOfSectionOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.doc")
+    requestOptions := map[string]interface{}{}
+    request := &models.GetHeaderFooterOfSectionOnlineRequest{
+        Document: requestDocument,
+        HeaderFooterIndex: ToInt32Pointer(int32(0)),
+        SectionIndex: ToInt32Pointer(int32(0)),
+        Optionals: requestOptions,
+    }
+    _, _, _ = wordsApi.GetHeaderFooterOfSectionOnline(ctx, request)
+}
 
-
-// func Test_Examples_GetHeaderFooterOfSectionOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
-
-// func Test_Examples_GetHeaderFooterOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_GetHeaderFooterOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.doc")
+    requestOptions := map[string]interface{}{}
+    request := &models.GetHeaderFooterOnlineRequest{
+        Document: requestDocument,
+        HeaderFooterIndex: ToInt32Pointer(int32(0)),
+        Optionals: requestOptions,
+    }
+    _, _, _ = wordsApi.GetHeaderFooterOnline(ctx, request)
+}
 
 func Test_Examples_GetHeaderFooters(t *testing.T) {
     config := ReadConfiguration(t)
@@ -1432,11 +1999,20 @@ func Test_Examples_GetHeaderFooters(t *testing.T) {
     _, _, _ = wordsApi.GetHeaderFooters(ctx, request)
 }
 
-
-
-// func Test_Examples_GetHeaderFootersOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_GetHeaderFootersOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.doc")
+    requestOptions := map[string]interface{}{}
+    request := &models.GetHeaderFootersOnlineRequest{
+        Document: requestDocument,
+        SectionPath: ToStringPointer(""),
+        Optionals: requestOptions,
+    }
+    _, _, _ = wordsApi.GetHeaderFootersOnline(ctx, request)
+}
 
 func Test_Examples_GetList(t *testing.T) {
     config := ReadConfiguration(t)
@@ -1451,11 +2027,20 @@ func Test_Examples_GetList(t *testing.T) {
     _, _, _ = wordsApi.GetList(ctx, request)
 }
 
-
-
-// func Test_Examples_GetListOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_GetListOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.doc")
+    requestOptions := map[string]interface{}{}
+    request := &models.GetListOnlineRequest{
+        Document: requestDocument,
+        ListId: ToInt32Pointer(int32(1)),
+        Optionals: requestOptions,
+    }
+    _, _, _ = wordsApi.GetListOnline(ctx, request)
+}
 
 func Test_Examples_GetLists(t *testing.T) {
     config := ReadConfiguration(t)
@@ -1469,11 +2054,19 @@ func Test_Examples_GetLists(t *testing.T) {
     _, _, _ = wordsApi.GetLists(ctx, request)
 }
 
-
-
-// func Test_Examples_GetListsOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_GetListsOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.doc")
+    requestOptions := map[string]interface{}{}
+    request := &models.GetListsOnlineRequest{
+        Document: requestDocument,
+        Optionals: requestOptions,
+    }
+    _, _, _ = wordsApi.GetListsOnline(ctx, request)
+}
 
 func Test_Examples_GetOfficeMathObject(t *testing.T) {
     config := ReadConfiguration(t)
@@ -1488,11 +2081,20 @@ func Test_Examples_GetOfficeMathObject(t *testing.T) {
     _, _, _ = wordsApi.GetOfficeMathObject(ctx, request)
 }
 
-
-
-// func Test_Examples_GetOfficeMathObjectOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_GetOfficeMathObjectOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestOptions := map[string]interface{}{}
+    request := &models.GetOfficeMathObjectOnlineRequest{
+        Document: requestDocument,
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: requestOptions,
+    }
+    _, _, _ = wordsApi.GetOfficeMathObjectOnline(ctx, request)
+}
 
 func Test_Examples_GetOfficeMathObjects(t *testing.T) {
     config := ReadConfiguration(t)
@@ -1506,11 +2108,19 @@ func Test_Examples_GetOfficeMathObjects(t *testing.T) {
     _, _, _ = wordsApi.GetOfficeMathObjects(ctx, request)
 }
 
-
-
-// func Test_Examples_GetOfficeMathObjectsOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_GetOfficeMathObjectsOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestOptions := map[string]interface{}{}
+    request := &models.GetOfficeMathObjectsOnlineRequest{
+        Document: requestDocument,
+        Optionals: requestOptions,
+    }
+    _, _, _ = wordsApi.GetOfficeMathObjectsOnline(ctx, request)
+}
 
 func Test_Examples_GetParagraph(t *testing.T) {
     config := ReadConfiguration(t)
@@ -1525,8 +2135,6 @@ func Test_Examples_GetParagraph(t *testing.T) {
     _, _, _ = wordsApi.GetParagraph(ctx, request)
 }
 
-
-
 func Test_Examples_GetParagraphFormat(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
@@ -1540,11 +2148,20 @@ func Test_Examples_GetParagraphFormat(t *testing.T) {
     _, _, _ = wordsApi.GetParagraphFormat(ctx, request)
 }
 
-
-
-// func Test_Examples_GetParagraphFormatOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_GetParagraphFormatOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestOptions := map[string]interface{}{}
+    request := &models.GetParagraphFormatOnlineRequest{
+        Document: requestDocument,
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: requestOptions,
+    }
+    _, _, _ = wordsApi.GetParagraphFormatOnline(ctx, request)
+}
 
 func Test_Examples_GetParagraphListFormat(t *testing.T) {
     config := ReadConfiguration(t)
@@ -1559,15 +2176,35 @@ func Test_Examples_GetParagraphListFormat(t *testing.T) {
     _, _, _ = wordsApi.GetParagraphListFormat(ctx, request)
 }
 
+func Test_Examples_GetParagraphListFormatOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.doc")
+    requestOptions := map[string]interface{}{}
+    request := &models.GetParagraphListFormatOnlineRequest{
+        Document: requestDocument,
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: requestOptions,
+    }
+    _, _, _ = wordsApi.GetParagraphListFormatOnline(ctx, request)
+}
 
-
-// func Test_Examples_GetParagraphListFormatOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
-
-// func Test_Examples_GetParagraphOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_GetParagraphOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestOptions := map[string]interface{}{"nodePath": "sections/0",}
+    request := &models.GetParagraphOnlineRequest{
+        Document: requestDocument,
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: requestOptions,
+    }
+    _, _, _ = wordsApi.GetParagraphOnline(ctx, request)
+}
 
 func Test_Examples_GetParagraphs(t *testing.T) {
     config := ReadConfiguration(t)
@@ -1581,11 +2218,19 @@ func Test_Examples_GetParagraphs(t *testing.T) {
     _, _, _ = wordsApi.GetParagraphs(ctx, request)
 }
 
-
-
-// func Test_Examples_GetParagraphsOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_GetParagraphsOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestOptions := map[string]interface{}{"nodePath": "sections/0",}
+    request := &models.GetParagraphsOnlineRequest{
+        Document: requestDocument,
+        Optionals: requestOptions,
+    }
+    _, _, _ = wordsApi.GetParagraphsOnline(ctx, request)
+}
 
 func Test_Examples_GetParagraphTabStops(t *testing.T) {
     config := ReadConfiguration(t)
@@ -1600,11 +2245,20 @@ func Test_Examples_GetParagraphTabStops(t *testing.T) {
     _, _, _ = wordsApi.GetParagraphTabStops(ctx, request)
 }
 
-
-
-// func Test_Examples_GetParagraphTabStopsOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_GetParagraphTabStopsOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestOptions := map[string]interface{}{}
+    request := &models.GetParagraphTabStopsOnlineRequest{
+        Document: requestDocument,
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: requestOptions,
+    }
+    _, _, _ = wordsApi.GetParagraphTabStopsOnline(ctx, request)
+}
 
 func Test_Examples_GetPublicKey(t *testing.T) {
     config := ReadConfiguration(t)
@@ -1614,8 +2268,6 @@ func Test_Examples_GetPublicKey(t *testing.T) {
     }
     _, _, _ = wordsApi.GetPublicKey(ctx, request)
 }
-
-
 
 func Test_Examples_GetRangeText(t *testing.T) {
     config := ReadConfiguration(t)
@@ -1630,11 +2282,20 @@ func Test_Examples_GetRangeText(t *testing.T) {
     _, _, _ = wordsApi.GetRangeText(ctx, request)
 }
 
-
-
-// func Test_Examples_GetRangeTextOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_GetRangeTextOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.doc")
+    requestOptions := map[string]interface{}{"rangeEndIdentifier": "id0.0.1",}
+    request := &models.GetRangeTextOnlineRequest{
+        Document: requestDocument,
+        RangeStartIdentifier: ToStringPointer("id0.0.0"),
+        Optionals: requestOptions,
+    }
+    _, _, _ = wordsApi.GetRangeTextOnline(ctx, request)
+}
 
 func Test_Examples_GetRun(t *testing.T) {
     config := ReadConfiguration(t)
@@ -1650,8 +2311,6 @@ func Test_Examples_GetRun(t *testing.T) {
     _, _, _ = wordsApi.GetRun(ctx, request)
 }
 
-
-
 func Test_Examples_GetRunFont(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
@@ -1666,15 +2325,37 @@ func Test_Examples_GetRunFont(t *testing.T) {
     _, _, _ = wordsApi.GetRunFont(ctx, request)
 }
 
+func Test_Examples_GetRunFontOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestOptions := map[string]interface{}{}
+    request := &models.GetRunFontOnlineRequest{
+        Document: requestDocument,
+        ParagraphPath: ToStringPointer("paragraphs/0"),
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: requestOptions,
+    }
+    _, _, _ = wordsApi.GetRunFontOnline(ctx, request)
+}
 
-
-// func Test_Examples_GetRunFontOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
-
-// func Test_Examples_GetRunOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_GetRunOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestOptions := map[string]interface{}{}
+    request := &models.GetRunOnlineRequest{
+        Document: requestDocument,
+        ParagraphPath: ToStringPointer("paragraphs/0"),
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: requestOptions,
+    }
+    _, _, _ = wordsApi.GetRunOnline(ctx, request)
+}
 
 func Test_Examples_GetRuns(t *testing.T) {
     config := ReadConfiguration(t)
@@ -1689,11 +2370,20 @@ func Test_Examples_GetRuns(t *testing.T) {
     _, _, _ = wordsApi.GetRuns(ctx, request)
 }
 
-
-
-// func Test_Examples_GetRunsOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_GetRunsOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestOptions := map[string]interface{}{}
+    request := &models.GetRunsOnlineRequest{
+        Document: requestDocument,
+        ParagraphPath: ToStringPointer("sections/0/paragraphs/0"),
+        Optionals: requestOptions,
+    }
+    _, _, _ = wordsApi.GetRunsOnline(ctx, request)
+}
 
 func Test_Examples_GetSection(t *testing.T) {
     config := ReadConfiguration(t)
@@ -1708,11 +2398,20 @@ func Test_Examples_GetSection(t *testing.T) {
     _, _, _ = wordsApi.GetSection(ctx, request)
 }
 
-
-
-// func Test_Examples_GetSectionOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_GetSectionOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestOptions := map[string]interface{}{}
+    request := &models.GetSectionOnlineRequest{
+        Document: requestDocument,
+        SectionIndex: ToInt32Pointer(int32(0)),
+        Optionals: requestOptions,
+    }
+    _, _, _ = wordsApi.GetSectionOnline(ctx, request)
+}
 
 func Test_Examples_GetSectionPageSetup(t *testing.T) {
     config := ReadConfiguration(t)
@@ -1727,11 +2426,20 @@ func Test_Examples_GetSectionPageSetup(t *testing.T) {
     _, _, _ = wordsApi.GetSectionPageSetup(ctx, request)
 }
 
-
-
-// func Test_Examples_GetSectionPageSetupOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_GetSectionPageSetupOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestOptions := map[string]interface{}{}
+    request := &models.GetSectionPageSetupOnlineRequest{
+        Document: requestDocument,
+        SectionIndex: ToInt32Pointer(int32(0)),
+        Optionals: requestOptions,
+    }
+    _, _, _ = wordsApi.GetSectionPageSetupOnline(ctx, request)
+}
 
 func Test_Examples_GetSections(t *testing.T) {
     config := ReadConfiguration(t)
@@ -1745,11 +2453,19 @@ func Test_Examples_GetSections(t *testing.T) {
     _, _, _ = wordsApi.GetSections(ctx, request)
 }
 
-
-
-// func Test_Examples_GetSectionsOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_GetSectionsOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestOptions := map[string]interface{}{}
+    request := &models.GetSectionsOnlineRequest{
+        Document: requestDocument,
+        Optionals: requestOptions,
+    }
+    _, _, _ = wordsApi.GetSectionsOnline(ctx, request)
+}
 
 func Test_Examples_GetStyle(t *testing.T) {
     config := ReadConfiguration(t)
@@ -1764,8 +2480,6 @@ func Test_Examples_GetStyle(t *testing.T) {
     _, _, _ = wordsApi.GetStyle(ctx, request)
 }
 
-
-
 func Test_Examples_GetStyleFromDocumentElement(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
@@ -1779,15 +2493,35 @@ func Test_Examples_GetStyleFromDocumentElement(t *testing.T) {
     _, _, _ = wordsApi.GetStyleFromDocumentElement(ctx, request)
 }
 
+func Test_Examples_GetStyleFromDocumentElementOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestOptions := map[string]interface{}{}
+    request := &models.GetStyleFromDocumentElementOnlineRequest{
+        Document: requestDocument,
+        StyledNodePath: ToStringPointer("paragraphs/1/paragraphFormat"),
+        Optionals: requestOptions,
+    }
+    _, _, _ = wordsApi.GetStyleFromDocumentElementOnline(ctx, request)
+}
 
-
-// func Test_Examples_GetStyleFromDocumentElementOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
-
-// func Test_Examples_GetStyleOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_GetStyleOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestOptions := map[string]interface{}{}
+    request := &models.GetStyleOnlineRequest{
+        Document: requestDocument,
+        StyleName: ToStringPointer("Heading 1"),
+        Optionals: requestOptions,
+    }
+    _, _, _ = wordsApi.GetStyleOnline(ctx, request)
+}
 
 func Test_Examples_GetStyles(t *testing.T) {
     config := ReadConfiguration(t)
@@ -1801,11 +2535,19 @@ func Test_Examples_GetStyles(t *testing.T) {
     _, _, _ = wordsApi.GetStyles(ctx, request)
 }
 
-
-
-// func Test_Examples_GetStylesOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_GetStylesOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestOptions := map[string]interface{}{}
+    request := &models.GetStylesOnlineRequest{
+        Document: requestDocument,
+        Optionals: requestOptions,
+    }
+    _, _, _ = wordsApi.GetStylesOnline(ctx, request)
+}
 
 func Test_Examples_GetTable(t *testing.T) {
     config := ReadConfiguration(t)
@@ -1819,8 +2561,6 @@ func Test_Examples_GetTable(t *testing.T) {
     }
     _, _, _ = wordsApi.GetTable(ctx, request)
 }
-
-
 
 func Test_Examples_GetTableCell(t *testing.T) {
     config := ReadConfiguration(t)
@@ -1836,8 +2576,6 @@ func Test_Examples_GetTableCell(t *testing.T) {
     _, _, _ = wordsApi.GetTableCell(ctx, request)
 }
 
-
-
 func Test_Examples_GetTableCellFormat(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
@@ -1852,19 +2590,52 @@ func Test_Examples_GetTableCellFormat(t *testing.T) {
     _, _, _ = wordsApi.GetTableCellFormat(ctx, request)
 }
 
+func Test_Examples_GetTableCellFormatOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestOptions := map[string]interface{}{}
+    request := &models.GetTableCellFormatOnlineRequest{
+        Document: requestDocument,
+        TableRowPath: ToStringPointer("sections/0/tables/2/rows/0"),
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: requestOptions,
+    }
+    _, _, _ = wordsApi.GetTableCellFormatOnline(ctx, request)
+}
 
+func Test_Examples_GetTableCellOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestOptions := map[string]interface{}{}
+    request := &models.GetTableCellOnlineRequest{
+        Document: requestDocument,
+        TableRowPath: ToStringPointer("sections/0/tables/2/rows/0"),
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: requestOptions,
+    }
+    _, _, _ = wordsApi.GetTableCellOnline(ctx, request)
+}
 
-// func Test_Examples_GetTableCellFormatOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
-
-// func Test_Examples_GetTableCellOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
-
-// func Test_Examples_GetTableOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_GetTableOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestOptions := map[string]interface{}{}
+    request := &models.GetTableOnlineRequest{
+        Document: requestDocument,
+        Index: ToInt32Pointer(int32(1)),
+        Optionals: requestOptions,
+    }
+    _, _, _ = wordsApi.GetTableOnline(ctx, request)
+}
 
 func Test_Examples_GetTableProperties(t *testing.T) {
     config := ReadConfiguration(t)
@@ -1879,11 +2650,20 @@ func Test_Examples_GetTableProperties(t *testing.T) {
     _, _, _ = wordsApi.GetTableProperties(ctx, request)
 }
 
-
-
-// func Test_Examples_GetTablePropertiesOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_GetTablePropertiesOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestOptions := map[string]interface{}{}
+    request := &models.GetTablePropertiesOnlineRequest{
+        Document: requestDocument,
+        Index: ToInt32Pointer(int32(1)),
+        Optionals: requestOptions,
+    }
+    _, _, _ = wordsApi.GetTablePropertiesOnline(ctx, request)
+}
 
 func Test_Examples_GetTableRow(t *testing.T) {
     config := ReadConfiguration(t)
@@ -1899,8 +2679,6 @@ func Test_Examples_GetTableRow(t *testing.T) {
     _, _, _ = wordsApi.GetTableRow(ctx, request)
 }
 
-
-
 func Test_Examples_GetTableRowFormat(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
@@ -1915,15 +2693,37 @@ func Test_Examples_GetTableRowFormat(t *testing.T) {
     _, _, _ = wordsApi.GetTableRowFormat(ctx, request)
 }
 
+func Test_Examples_GetTableRowFormatOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestOptions := map[string]interface{}{}
+    request := &models.GetTableRowFormatOnlineRequest{
+        Document: requestDocument,
+        TablePath: ToStringPointer("sections/0/tables/2"),
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: requestOptions,
+    }
+    _, _, _ = wordsApi.GetTableRowFormatOnline(ctx, request)
+}
 
-
-// func Test_Examples_GetTableRowFormatOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
-
-// func Test_Examples_GetTableRowOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_GetTableRowOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestOptions := map[string]interface{}{}
+    request := &models.GetTableRowOnlineRequest{
+        Document: requestDocument,
+        TablePath: ToStringPointer("tables/1"),
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: requestOptions,
+    }
+    _, _, _ = wordsApi.GetTableRowOnline(ctx, request)
+}
 
 func Test_Examples_GetTables(t *testing.T) {
     config := ReadConfiguration(t)
@@ -1937,11 +2737,19 @@ func Test_Examples_GetTables(t *testing.T) {
     _, _, _ = wordsApi.GetTables(ctx, request)
 }
 
-
-
-// func Test_Examples_GetTablesOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_GetTablesOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestOptions := map[string]interface{}{}
+    request := &models.GetTablesOnlineRequest{
+        Document: requestDocument,
+        Optionals: requestOptions,
+    }
+    _, _, _ = wordsApi.GetTablesOnline(ctx, request)
+}
 
 func Test_Examples_InsertComment(t *testing.T) {
     config := ReadConfiguration(t)
@@ -1977,11 +2785,41 @@ func Test_Examples_InsertComment(t *testing.T) {
     _, _, _ = wordsApi.InsertComment(ctx, insertRequest)
 }
 
-
-
-// func Test_Examples_InsertCommentOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_InsertCommentOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestCommentRangeStartNode := models.NodeLink{
+        NodeId: ToStringPointer("0.3.0.3"),
+    }
+    requestCommentRangeStart := models.DocumentPosition{
+        Node: requestCommentRangeStartNode,
+        Offset: ToInt32Pointer(int32(0)),
+    }
+    requestCommentRangeEndNode := models.NodeLink{
+        NodeId: ToStringPointer("0.3.0.3"),
+    }
+    requestCommentRangeEnd := models.DocumentPosition{
+        Node: requestCommentRangeEndNode,
+        Offset: ToInt32Pointer(int32(0)),
+    }
+    requestComment := models.CommentInsert{
+        RangeStart: requestCommentRangeStart,
+        RangeEnd: requestCommentRangeEnd,
+        Initial: ToStringPointer("IA"),
+        Author: ToStringPointer("Imran Anwar"),
+        Text: ToStringPointer("A new Comment"),
+    }
+    insertRequestOptions := map[string]interface{}{}
+    insertRequest := &models.InsertCommentOnlineRequest{
+        Document: requestDocument,
+        Comment: requestComment,
+        Optionals: insertRequestOptions,
+    }
+    _, _, _ = wordsApi.InsertCommentOnline(ctx, insertRequest)
+}
 
 func Test_Examples_InsertCustomXmlPart(t *testing.T) {
     config := ReadConfiguration(t)
@@ -2000,18 +2838,30 @@ func Test_Examples_InsertCustomXmlPart(t *testing.T) {
     _, _, _ = wordsApi.InsertCustomXmlPart(ctx, insertRequest)
 }
 
-
-
-// func Test_Examples_InsertCustomXmlPartOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_InsertCustomXmlPartOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestCustomXmlPart := models.CustomXmlPartInsert{
+        Id: ToStringPointer("hello"),
+        Data: ToStringPointer("<data>Hello world</data>"),
+    }
+    insertRequestOptions := map[string]interface{}{}
+    insertRequest := &models.InsertCustomXmlPartOnlineRequest{
+        Document: requestDocument,
+        CustomXmlPart: requestCustomXmlPart,
+        Optionals: insertRequestOptions,
+    }
+    _, _, _ = wordsApi.InsertCustomXmlPartOnline(ctx, insertRequest)
+}
 
 func Test_Examples_InsertDrawingObject(t *testing.T) {
     documentsDir := GetExamplesDir()
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
     wordsApi := client.WordsApi
-    requestImageFileFileData, _ := os.Open(documentsDir + "/" + "Common/aspose-cloud.png")
     requestDrawingObject := models.DrawingObjectInsert{
         Height: ToFloat64Pointer(0),
         Left: ToFloat64Pointer(0),
@@ -2021,21 +2871,42 @@ func Test_Examples_InsertDrawingObject(t *testing.T) {
         RelativeVerticalPosition: ToStringPointer("Margin"),
         WrapType: ToStringPointer("Inline"),
     }
+    requestImageFile, _ := os.Open(documentsDir + "/" + "Common/aspose-cloud.png")
     insertRequestOptions := map[string]interface{}{}
     insertRequest := &models.InsertDrawingObjectRequest{
         Name: ToStringPointer("Sample.docx"),
         DrawingObject: requestDrawingObject,
-        ImageFile: requestImageFileFileData,
+        ImageFile: requestImageFile,
         Optionals: insertRequestOptions,
     }
     _, _, _ = wordsApi.InsertDrawingObject(ctx, insertRequest)
 }
 
-
-
-// func Test_Examples_InsertDrawingObjectOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_InsertDrawingObjectOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestDrawingObject := models.DrawingObjectInsert{
+        Height: ToFloat64Pointer(0),
+        Left: ToFloat64Pointer(0),
+        Top: ToFloat64Pointer(0),
+        Width: ToFloat64Pointer(0),
+        RelativeHorizontalPosition: ToStringPointer("Margin"),
+        RelativeVerticalPosition: ToStringPointer("Margin"),
+        WrapType: ToStringPointer("Inline"),
+    }
+    requestImageFile, _ := os.Open(documentsDir + "/" + "Common/aspose-cloud.png")
+    insertRequestOptions := map[string]interface{}{}
+    insertRequest := &models.InsertDrawingObjectOnlineRequest{
+        Document: requestDocument,
+        DrawingObject: requestDrawingObject,
+        ImageFile: requestImageFile,
+        Optionals: insertRequestOptions,
+    }
+    _, _, _ = wordsApi.InsertDrawingObjectOnline(ctx, insertRequest)
+}
 
 func Test_Examples_InsertField(t *testing.T) {
     config := ReadConfiguration(t)
@@ -2053,11 +2924,23 @@ func Test_Examples_InsertField(t *testing.T) {
     _, _, _ = wordsApi.InsertField(ctx, insertRequest)
 }
 
-
-
-// func Test_Examples_InsertFieldOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_InsertFieldOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestField := models.FieldInsert{
+        FieldCode: ToStringPointer("{ NUMPAGES }"),
+    }
+    insertRequestOptions := map[string]interface{}{"nodePath": "sections/0/paragraphs/0",}
+    insertRequest := &models.InsertFieldOnlineRequest{
+        Document: requestDocument,
+        Field: requestField,
+        Optionals: insertRequestOptions,
+    }
+    _, _, _ = wordsApi.InsertFieldOnline(ctx, insertRequest)
+}
 
 func Test_Examples_InsertFootnote(t *testing.T) {
     config := ReadConfiguration(t)
@@ -2076,11 +2959,24 @@ func Test_Examples_InsertFootnote(t *testing.T) {
     _, _, _ = wordsApi.InsertFootnote(ctx, insertRequest)
 }
 
-
-
-// func Test_Examples_InsertFootnoteOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_InsertFootnoteOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.doc")
+    requestFootnoteDto := models.FootnoteInsert{
+        FootnoteType: ToStringPointer("Endnote"),
+        Text: ToStringPointer("test endnote"),
+    }
+    insertRequestOptions := map[string]interface{}{}
+    insertRequest := &models.InsertFootnoteOnlineRequest{
+        Document: requestDocument,
+        FootnoteDto: requestFootnoteDto,
+        Optionals: insertRequestOptions,
+    }
+    _, _, _ = wordsApi.InsertFootnoteOnline(ctx, insertRequest)
+}
 
 func Test_Examples_InsertFormField(t *testing.T) {
     config := ReadConfiguration(t)
@@ -2104,11 +3000,29 @@ func Test_Examples_InsertFormField(t *testing.T) {
     _, _, _ = wordsApi.InsertFormField(ctx, insertRequest)
 }
 
-
-
-// func Test_Examples_InsertFormFieldOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_InsertFormFieldOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestFormField := models.FormFieldTextInput{
+        Name: ToStringPointer("FullName"),
+        Enabled: ToBoolPointer(true),
+        CalculateOnExit: ToBoolPointer(true),
+        StatusText: ToStringPointer(""),
+        TextInputType: ToStringPointer("Regular"),
+        TextInputDefault: ToStringPointer("123"),
+        TextInputFormat: ToStringPointer("UPPERCASE"),
+    }
+    insertRequestOptions := map[string]interface{}{"nodePath": "sections/0/paragraphs/0",}
+    insertRequest := &models.InsertFormFieldOnlineRequest{
+        Document: requestDocument,
+        FormField: requestFormField,
+        Optionals: insertRequestOptions,
+    }
+    _, _, _ = wordsApi.InsertFormFieldOnline(ctx, insertRequest)
+}
 
 func Test_Examples_InsertHeaderFooter(t *testing.T) {
     config := ReadConfiguration(t)
@@ -2124,11 +3038,21 @@ func Test_Examples_InsertHeaderFooter(t *testing.T) {
     _, _, _ = wordsApi.InsertHeaderFooter(ctx, insertRequest)
 }
 
-
-
-// func Test_Examples_InsertHeaderFooterOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_InsertHeaderFooterOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.doc")
+    insertRequestOptions := map[string]interface{}{}
+    insertRequest := &models.InsertHeaderFooterOnlineRequest{
+        Document: requestDocument,
+        SectionPath: ToStringPointer(""),
+        HeaderFooterType: ToStringPointer("FooterEven"),
+        Optionals: insertRequestOptions,
+    }
+    _, _, _ = wordsApi.InsertHeaderFooterOnline(ctx, insertRequest)
+}
 
 func Test_Examples_InsertList(t *testing.T) {
     config := ReadConfiguration(t)
@@ -2146,11 +3070,23 @@ func Test_Examples_InsertList(t *testing.T) {
     _, _, _ = wordsApi.InsertList(ctx, insertRequest)
 }
 
-
-
-// func Test_Examples_InsertListOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_InsertListOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.doc")
+    requestListInsert := models.ListInsert{
+        Template: ToStringPointer("OutlineLegal"),
+    }
+    insertRequestOptions := map[string]interface{}{}
+    insertRequest := &models.InsertListOnlineRequest{
+        Document: requestDocument,
+        ListInsert: requestListInsert,
+        Optionals: insertRequestOptions,
+    }
+    _, _, _ = wordsApi.InsertListOnline(ctx, insertRequest)
+}
 
 func Test_Examples_InsertOrUpdateParagraphTabStop(t *testing.T) {
     config := ReadConfiguration(t)
@@ -2171,11 +3107,26 @@ func Test_Examples_InsertOrUpdateParagraphTabStop(t *testing.T) {
     _, _, _ = wordsApi.InsertOrUpdateParagraphTabStop(ctx, insertRequest)
 }
 
-
-
-// func Test_Examples_InsertOrUpdateParagraphTabStopOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_InsertOrUpdateParagraphTabStopOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestTabStopInsertDto := models.TabStopInsert{
+        Alignment: ToStringPointer("Left"),
+        Leader: ToStringPointer("None"),
+        Position: ToFloat64Pointer(72),
+    }
+    insertRequestOptions := map[string]interface{}{}
+    insertRequest := &models.InsertOrUpdateParagraphTabStopOnlineRequest{
+        Document: requestDocument,
+        TabStopInsertDto: requestTabStopInsertDto,
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: insertRequestOptions,
+    }
+    _, _, _ = wordsApi.InsertOrUpdateParagraphTabStopOnline(ctx, insertRequest)
+}
 
 func Test_Examples_InsertPageNumbers(t *testing.T) {
     config := ReadConfiguration(t)
@@ -2194,11 +3145,24 @@ func Test_Examples_InsertPageNumbers(t *testing.T) {
     _, _, _ = wordsApi.InsertPageNumbers(ctx, insertRequest)
 }
 
-
-
-// func Test_Examples_InsertPageNumbersOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_InsertPageNumbersOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Common/Sample.docx")
+    requestPageNumber := models.PageNumber{
+        Alignment: ToStringPointer("center"),
+        Format: ToStringPointer("{PAGE} of {NUMPAGES}"),
+    }
+    insertRequestOptions := map[string]interface{}{}
+    insertRequest := &models.InsertPageNumbersOnlineRequest{
+        Document: requestDocument,
+        PageNumber: requestPageNumber,
+        Optionals: insertRequestOptions,
+    }
+    _, _, _ = wordsApi.InsertPageNumbersOnline(ctx, insertRequest)
+}
 
 func Test_Examples_InsertParagraph(t *testing.T) {
     config := ReadConfiguration(t)
@@ -2216,11 +3180,23 @@ func Test_Examples_InsertParagraph(t *testing.T) {
     _, _, _ = wordsApi.InsertParagraph(ctx, insertRequest)
 }
 
-
-
-// func Test_Examples_InsertParagraphOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_InsertParagraphOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestParagraph := models.ParagraphInsert{
+        Text: ToStringPointer("This is a new paragraph for your document"),
+    }
+    insertRequestOptions := map[string]interface{}{"nodePath": "sections/0",}
+    insertRequest := &models.InsertParagraphOnlineRequest{
+        Document: requestDocument,
+        Paragraph: requestParagraph,
+        Optionals: insertRequestOptions,
+    }
+    _, _, _ = wordsApi.InsertParagraphOnline(ctx, insertRequest)
+}
 
 func Test_Examples_InsertRun(t *testing.T) {
     config := ReadConfiguration(t)
@@ -2239,11 +3215,24 @@ func Test_Examples_InsertRun(t *testing.T) {
     _, _, _ = wordsApi.InsertRun(ctx, insertRequest)
 }
 
-
-
-// func Test_Examples_InsertRunOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_InsertRunOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.doc")
+    requestRun := models.RunInsert{
+        Text: ToStringPointer("run with text"),
+    }
+    insertRequestOptions := map[string]interface{}{}
+    insertRequest := &models.InsertRunOnlineRequest{
+        Document: requestDocument,
+        ParagraphPath: ToStringPointer("paragraphs/1"),
+        Run: requestRun,
+        Optionals: insertRequestOptions,
+    }
+    _, _, _ = wordsApi.InsertRunOnline(ctx, insertRequest)
+}
 
 func Test_Examples_InsertStyle(t *testing.T) {
     config := ReadConfiguration(t)
@@ -2262,11 +3251,24 @@ func Test_Examples_InsertStyle(t *testing.T) {
     _, _, _ = wordsApi.InsertStyle(ctx, insertRequest)
 }
 
-
-
-// func Test_Examples_InsertStyleOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_InsertStyleOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestStyleInsert := models.StyleInsert{
+        StyleName: ToStringPointer("My Style"),
+        StyleType: ToStringPointer("Paragraph"),
+    }
+    insertRequestOptions := map[string]interface{}{}
+    insertRequest := &models.InsertStyleOnlineRequest{
+        Document: requestDocument,
+        StyleInsert: requestStyleInsert,
+        Optionals: insertRequestOptions,
+    }
+    _, _, _ = wordsApi.InsertStyleOnline(ctx, insertRequest)
+}
 
 func Test_Examples_InsertTable(t *testing.T) {
     config := ReadConfiguration(t)
@@ -2285,8 +3287,6 @@ func Test_Examples_InsertTable(t *testing.T) {
     _, _, _ = wordsApi.InsertTable(ctx, insertRequest)
 }
 
-
-
 func Test_Examples_InsertTableCell(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
@@ -2303,15 +3303,42 @@ func Test_Examples_InsertTableCell(t *testing.T) {
     _, _, _ = wordsApi.InsertTableCell(ctx, insertRequest)
 }
 
+func Test_Examples_InsertTableCellOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestCell := models.TableCellInsert{
+    }
+    insertRequestOptions := map[string]interface{}{}
+    insertRequest := &models.InsertTableCellOnlineRequest{
+        Document: requestDocument,
+        TableRowPath: ToStringPointer("sections/0/tables/2/rows/0"),
+        Cell: requestCell,
+        Optionals: insertRequestOptions,
+    }
+    _, _, _ = wordsApi.InsertTableCellOnline(ctx, insertRequest)
+}
 
-
-// func Test_Examples_InsertTableCellOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
-
-// func Test_Examples_InsertTableOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_InsertTableOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestTable := models.TableInsert{
+        ColumnsCount: ToInt32Pointer(int32(5)),
+        RowsCount: ToInt32Pointer(int32(4)),
+    }
+    insertRequestOptions := map[string]interface{}{}
+    insertRequest := &models.InsertTableOnlineRequest{
+        Document: requestDocument,
+        Table: requestTable,
+        Optionals: insertRequestOptions,
+    }
+    _, _, _ = wordsApi.InsertTableOnline(ctx, insertRequest)
+}
 
 func Test_Examples_InsertTableRow(t *testing.T) {
     config := ReadConfiguration(t)
@@ -2330,11 +3357,24 @@ func Test_Examples_InsertTableRow(t *testing.T) {
     _, _, _ = wordsApi.InsertTableRow(ctx, insertRequest)
 }
 
-
-
-// func Test_Examples_InsertTableRowOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_InsertTableRowOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestRow := models.TableRowInsert{
+        ColumnsCount: ToInt32Pointer(int32(5)),
+    }
+    insertRequestOptions := map[string]interface{}{}
+    insertRequest := &models.InsertTableRowOnlineRequest{
+        Document: requestDocument,
+        TablePath: ToStringPointer("sections/0/tables/2"),
+        Row: requestRow,
+        Optionals: insertRequestOptions,
+    }
+    _, _, _ = wordsApi.InsertTableRowOnline(ctx, insertRequest)
+}
 
 func Test_Examples_InsertWatermarkImage(t *testing.T) {
     documentsDir := GetExamplesDir()
@@ -2350,11 +3390,21 @@ func Test_Examples_InsertWatermarkImage(t *testing.T) {
     _, _, _ = wordsApi.InsertWatermarkImage(ctx, insertRequest)
 }
 
-
-
-// func Test_Examples_InsertWatermarkImageOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_InsertWatermarkImageOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestImageFile, _ := os.Open(documentsDir + "/" + "Common/aspose-cloud.png")
+    insertRequestOptions := map[string]interface{}{}
+    insertRequest := &models.InsertWatermarkImageOnlineRequest{
+        Document: requestDocument,
+        ImageFile: requestImageFile,
+        Optionals: insertRequestOptions,
+    }
+    _, _, _ = wordsApi.InsertWatermarkImageOnline(ctx, insertRequest)
+}
 
 func Test_Examples_InsertWatermarkText(t *testing.T) {
     config := ReadConfiguration(t)
@@ -2373,11 +3423,24 @@ func Test_Examples_InsertWatermarkText(t *testing.T) {
     _, _, _ = wordsApi.InsertWatermarkText(ctx, insertRequest)
 }
 
-
-
-// func Test_Examples_InsertWatermarkTextOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_InsertWatermarkTextOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestWatermarkText := models.WatermarkText{
+        Text: ToStringPointer("This is the text"),
+        RotationAngle: ToFloat64Pointer(90),
+    }
+    insertRequestOptions := map[string]interface{}{}
+    insertRequest := &models.InsertWatermarkTextOnlineRequest{
+        Document: requestDocument,
+        WatermarkText: requestWatermarkText,
+        Optionals: insertRequestOptions,
+    }
+    _, _, _ = wordsApi.InsertWatermarkTextOnline(ctx, insertRequest)
+}
 
 func Test_Examples_LoadWebDocument(t *testing.T) {
     config := ReadConfiguration(t)
@@ -2403,8 +3466,6 @@ func Test_Examples_LoadWebDocument(t *testing.T) {
     _, _, _ = wordsApi.LoadWebDocument(ctx, loadRequest)
 }
 
-
-
 func Test_Examples_MoveFile(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
@@ -2418,8 +3479,6 @@ func Test_Examples_MoveFile(t *testing.T) {
     _, _ = wordsApi.MoveFile(ctx, moveRequest)
 }
 
-
-
 func Test_Examples_MoveFolder(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
@@ -2432,8 +3491,6 @@ func Test_Examples_MoveFolder(t *testing.T) {
     }
     _, _ = wordsApi.MoveFolder(ctx, moveRequest)
 }
-
-
 
 func Test_Examples_OptimizeDocument(t *testing.T) {
     config := ReadConfiguration(t)
@@ -2451,11 +3508,23 @@ func Test_Examples_OptimizeDocument(t *testing.T) {
     _, _ = wordsApi.OptimizeDocument(ctx, optimizeRequest)
 }
 
-
-
-// func Test_Examples_OptimizeDocumentOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_OptimizeDocumentOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestOptions := models.OptimizationOptions{
+        MsWordVersion: ToStringPointer("Word2002"),
+    }
+    optimizeRequestOptions := map[string]interface{}{}
+    optimizeRequest := &models.OptimizeDocumentOnlineRequest{
+        Document: requestDocument,
+        Options: requestOptions,
+        Optionals: optimizeRequestOptions,
+    }
+    _, _ = wordsApi.OptimizeDocumentOnline(ctx, optimizeRequest)
+}
 
 func Test_Examples_ProtectDocument(t *testing.T) {
     config := ReadConfiguration(t)
@@ -2474,11 +3543,23 @@ func Test_Examples_ProtectDocument(t *testing.T) {
     _, _, _ = wordsApi.ProtectDocument(ctx, protectRequest)
 }
 
-
-
-// func Test_Examples_ProtectDocumentOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_ProtectDocumentOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestProtectionRequest := models.ProtectionRequest{
+        NewPassword: ToStringPointer("123"),
+    }
+    protectRequestOptions := map[string]interface{}{}
+    protectRequest := &models.ProtectDocumentOnlineRequest{
+        Document: requestDocument,
+        ProtectionRequest: requestProtectionRequest,
+        Optionals: protectRequestOptions,
+    }
+    _, _, _ = wordsApi.ProtectDocumentOnline(ctx, protectRequest)
+}
 
 func Test_Examples_RejectAllRevisions(t *testing.T) {
     config := ReadConfiguration(t)
@@ -2492,11 +3573,19 @@ func Test_Examples_RejectAllRevisions(t *testing.T) {
     _, _, _ = wordsApi.RejectAllRevisions(ctx, rejectRequest)
 }
 
-
-
-// func Test_Examples_RejectAllRevisionsOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_RejectAllRevisionsOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    rejectRequestOptions := map[string]interface{}{}
+    rejectRequest := &models.RejectAllRevisionsOnlineRequest{
+        Document: requestDocument,
+        Optionals: rejectRequestOptions,
+    }
+    _, _, _ = wordsApi.RejectAllRevisionsOnline(ctx, rejectRequest)
+}
 
 func Test_Examples_RemoveRange(t *testing.T) {
     config := ReadConfiguration(t)
@@ -2511,11 +3600,20 @@ func Test_Examples_RemoveRange(t *testing.T) {
     _, _, _ = wordsApi.RemoveRange(ctx, removeRequest)
 }
 
-
-
-// func Test_Examples_RemoveRangeOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_RemoveRangeOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.doc")
+    removeRequestOptions := map[string]interface{}{"rangeEndIdentifier": "id0.0.1",}
+    removeRequest := &models.RemoveRangeOnlineRequest{
+        Document: requestDocument,
+        RangeStartIdentifier: ToStringPointer("id0.0.0"),
+        Optionals: removeRequestOptions,
+    }
+    _, _, _ = wordsApi.RemoveRangeOnline(ctx, removeRequest)
+}
 
 func Test_Examples_RenderDrawingObject(t *testing.T) {
     config := ReadConfiguration(t)
@@ -2531,11 +3629,21 @@ func Test_Examples_RenderDrawingObject(t *testing.T) {
     _, _ = wordsApi.RenderDrawingObject(ctx, renderRequest)
 }
 
-
-
-// func Test_Examples_RenderDrawingObjectOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_RenderDrawingObjectOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    renderRequestOptions := map[string]interface{}{"nodePath": "sections/0",}
+    renderRequest := &models.RenderDrawingObjectOnlineRequest{
+        Document: requestDocument,
+        Format: ToStringPointer("png"),
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: renderRequestOptions,
+    }
+    _, _ = wordsApi.RenderDrawingObjectOnline(ctx, renderRequest)
+}
 
 func Test_Examples_RenderMathObject(t *testing.T) {
     config := ReadConfiguration(t)
@@ -2551,11 +3659,21 @@ func Test_Examples_RenderMathObject(t *testing.T) {
     _, _ = wordsApi.RenderMathObject(ctx, renderRequest)
 }
 
-
-
-// func Test_Examples_RenderMathObjectOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_RenderMathObjectOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    renderRequestOptions := map[string]interface{}{}
+    renderRequest := &models.RenderMathObjectOnlineRequest{
+        Document: requestDocument,
+        Format: ToStringPointer("png"),
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: renderRequestOptions,
+    }
+    _, _ = wordsApi.RenderMathObjectOnline(ctx, renderRequest)
+}
 
 func Test_Examples_RenderPage(t *testing.T) {
     config := ReadConfiguration(t)
@@ -2571,11 +3689,21 @@ func Test_Examples_RenderPage(t *testing.T) {
     _, _ = wordsApi.RenderPage(ctx, renderRequest)
 }
 
-
-
-// func Test_Examples_RenderPageOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_RenderPageOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    renderRequestOptions := map[string]interface{}{}
+    renderRequest := &models.RenderPageOnlineRequest{
+        Document: requestDocument,
+        PageIndex: ToInt32Pointer(int32(1)),
+        Format: ToStringPointer("bmp"),
+        Optionals: renderRequestOptions,
+    }
+    _, _ = wordsApi.RenderPageOnline(ctx, renderRequest)
+}
 
 func Test_Examples_RenderParagraph(t *testing.T) {
     config := ReadConfiguration(t)
@@ -2591,11 +3719,21 @@ func Test_Examples_RenderParagraph(t *testing.T) {
     _, _ = wordsApi.RenderParagraph(ctx, renderRequest)
 }
 
-
-
-// func Test_Examples_RenderParagraphOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_RenderParagraphOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    renderRequestOptions := map[string]interface{}{}
+    renderRequest := &models.RenderParagraphOnlineRequest{
+        Document: requestDocument,
+        Format: ToStringPointer("png"),
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: renderRequestOptions,
+    }
+    _, _ = wordsApi.RenderParagraphOnline(ctx, renderRequest)
+}
 
 func Test_Examples_RenderTable(t *testing.T) {
     config := ReadConfiguration(t)
@@ -2611,11 +3749,21 @@ func Test_Examples_RenderTable(t *testing.T) {
     _, _ = wordsApi.RenderTable(ctx, renderRequest)
 }
 
-
-
-// func Test_Examples_RenderTableOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_RenderTableOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    renderRequestOptions := map[string]interface{}{}
+    renderRequest := &models.RenderTableOnlineRequest{
+        Document: requestDocument,
+        Format: ToStringPointer("png"),
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: renderRequestOptions,
+    }
+    _, _ = wordsApi.RenderTableOnline(ctx, renderRequest)
+}
 
 func Test_Examples_ReplaceText(t *testing.T) {
     config := ReadConfiguration(t)
@@ -2634,11 +3782,24 @@ func Test_Examples_ReplaceText(t *testing.T) {
     _, _, _ = wordsApi.ReplaceText(ctx, replaceRequest)
 }
 
-
-
-// func Test_Examples_ReplaceTextOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_ReplaceTextOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestReplaceText := models.ReplaceTextParameters{
+        OldValue: ToStringPointer("aspose"),
+        NewValue: ToStringPointer("aspose new"),
+    }
+    replaceRequestOptions := map[string]interface{}{}
+    replaceRequest := &models.ReplaceTextOnlineRequest{
+        Document: requestDocument,
+        ReplaceText: requestReplaceText,
+        Optionals: replaceRequestOptions,
+    }
+    _, _, _ = wordsApi.ReplaceTextOnline(ctx, replaceRequest)
+}
 
 func Test_Examples_ReplaceWithText(t *testing.T) {
     config := ReadConfiguration(t)
@@ -2657,11 +3818,24 @@ func Test_Examples_ReplaceWithText(t *testing.T) {
     _, _, _ = wordsApi.ReplaceWithText(ctx, replaceRequest)
 }
 
-
-
-// func Test_Examples_ReplaceWithTextOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_ReplaceWithTextOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.doc")
+    requestRangeText := models.ReplaceRange{
+        Text: ToStringPointer("Replaced header"),
+    }
+    replaceRequestOptions := map[string]interface{}{"rangeEndIdentifier": "id0.0.1",}
+    replaceRequest := &models.ReplaceWithTextOnlineRequest{
+        Document: requestDocument,
+        RangeStartIdentifier: ToStringPointer("id0.0.0"),
+        RangeText: requestRangeText,
+        Optionals: replaceRequestOptions,
+    }
+    _, _, _ = wordsApi.ReplaceWithTextOnline(ctx, replaceRequest)
+}
 
 func Test_Examples_ResetCache(t *testing.T) {
     config := ReadConfiguration(t)
@@ -2671,8 +3845,6 @@ func Test_Examples_ResetCache(t *testing.T) {
     }
     _, _ = wordsApi.ResetCache(ctx, resetRequest)
 }
-
-
 
 func Test_Examples_SaveAs(t *testing.T) {
     config := ReadConfiguration(t)
@@ -2691,11 +3863,24 @@ func Test_Examples_SaveAs(t *testing.T) {
     _, _, _ = wordsApi.SaveAs(ctx, saveRequest)
 }
 
-
-
-// func Test_Examples_SaveAsOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_SaveAsOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Common/test_multi_pages.docx")
+    requestSaveOptionsData := models.SaveOptionsData{
+        SaveFormat: ToStringPointer("pdf"),
+        FileName: ToStringPointer("/TestSaveAs.pdf"),
+    }
+    saveRequestOptions := map[string]interface{}{}
+    saveRequest := &models.SaveAsOnlineRequest{
+        Document: requestDocument,
+        SaveOptionsData: requestSaveOptionsData,
+        Optionals: saveRequestOptions,
+    }
+    _, _, _ = wordsApi.SaveAsOnline(ctx, saveRequest)
+}
 
 func Test_Examples_SaveAsRange(t *testing.T) {
     config := ReadConfiguration(t)
@@ -2714,11 +3899,24 @@ func Test_Examples_SaveAsRange(t *testing.T) {
     _, _, _ = wordsApi.SaveAsRange(ctx, saveRequest)
 }
 
-
-
-// func Test_Examples_SaveAsRangeOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_SaveAsRangeOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.doc")
+    requestDocumentParameters := models.RangeDocument{
+        DocumentName: ToStringPointer("/NewDoc.docx"),
+    }
+    saveRequestOptions := map[string]interface{}{"rangeEndIdentifier": "id0.0.1",}
+    saveRequest := &models.SaveAsRangeOnlineRequest{
+        Document: requestDocument,
+        RangeStartIdentifier: ToStringPointer("id0.0.0"),
+        DocumentParameters: requestDocumentParameters,
+        Optionals: saveRequestOptions,
+    }
+    _, _, _ = wordsApi.SaveAsRangeOnline(ctx, saveRequest)
+}
 
 func Test_Examples_SaveAsTiff(t *testing.T) {
     config := ReadConfiguration(t)
@@ -2737,11 +3935,24 @@ func Test_Examples_SaveAsTiff(t *testing.T) {
     _, _, _ = wordsApi.SaveAsTiff(ctx, saveRequest)
 }
 
-
-
-// func Test_Examples_SaveAsTiffOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_SaveAsTiffOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Common/test_multi_pages.docx")
+    requestSaveOptions := models.TiffSaveOptionsData{
+        SaveFormat: ToStringPointer("tiff"),
+        FileName: ToStringPointer("/abc.tiff"),
+    }
+    saveRequestOptions := map[string]interface{}{}
+    saveRequest := &models.SaveAsTiffOnlineRequest{
+        Document: requestDocument,
+        SaveOptions: requestSaveOptions,
+        Optionals: saveRequestOptions,
+    }
+    _, _, _ = wordsApi.SaveAsTiffOnline(ctx, saveRequest)
+}
 
 func Test_Examples_Search(t *testing.T) {
     config := ReadConfiguration(t)
@@ -2756,11 +3967,20 @@ func Test_Examples_Search(t *testing.T) {
     _, _, _ = wordsApi.Search(ctx, searchRequest)
 }
 
-
-
-// func Test_Examples_SearchOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_SearchOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    searchRequestOptions := map[string]interface{}{}
+    searchRequest := &models.SearchOnlineRequest{
+        Document: requestDocument,
+        Pattern: ToStringPointer("aspose"),
+        Optionals: searchRequestOptions,
+    }
+    _, _, _ = wordsApi.SearchOnline(ctx, searchRequest)
+}
 
 func Test_Examples_SplitDocument(t *testing.T) {
     config := ReadConfiguration(t)
@@ -2777,11 +3997,22 @@ func Test_Examples_SplitDocument(t *testing.T) {
     _, _, _ = wordsApi.SplitDocument(ctx, splitRequest)
 }
 
-
-
-// func Test_Examples_SplitDocumentOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_SplitDocumentOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    splitRequestOptions := map[string]interface{}{"destFileName": "/TestSplitDocument.text",
+    "from": int32(1),
+    "to": int32(2),}
+    splitRequest := &models.SplitDocumentOnlineRequest{
+        Document: requestDocument,
+        Format: ToStringPointer("text"),
+        Optionals: splitRequestOptions,
+    }
+    _, _, _ = wordsApi.SplitDocumentOnline(ctx, splitRequest)
+}
 
 func Test_Examples_UnprotectDocument(t *testing.T) {
     config := ReadConfiguration(t)
@@ -2799,11 +4030,23 @@ func Test_Examples_UnprotectDocument(t *testing.T) {
     _, _, _ = wordsApi.UnprotectDocument(ctx, unprotectRequest)
 }
 
-
-
-// func Test_Examples_UnprotectDocumentOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_UnprotectDocumentOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestProtectionRequest := models.ProtectionRequest{
+        Password: ToStringPointer("aspose"),
+    }
+    unprotectRequestOptions := map[string]interface{}{}
+    unprotectRequest := &models.UnprotectDocumentOnlineRequest{
+        Document: requestDocument,
+        ProtectionRequest: requestProtectionRequest,
+        Optionals: unprotectRequestOptions,
+    }
+    _, _, _ = wordsApi.UnprotectDocumentOnline(ctx, unprotectRequest)
+}
 
 func Test_Examples_UpdateBookmark(t *testing.T) {
     config := ReadConfiguration(t)
@@ -2825,11 +4068,27 @@ func Test_Examples_UpdateBookmark(t *testing.T) {
     _, _, _ = wordsApi.UpdateBookmark(ctx, updateRequest)
 }
 
+func Test_Examples_UpdateBookmarkOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    bookmarkName:= "aspose"
 
-
-// func Test_Examples_UpdateBookmarkOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestBookmarkData := models.BookmarkData{
+        Name: ToStringPointer(bookmarkName),
+        Text: ToStringPointer("This will be the text for Aspose"),
+    }
+    updateRequestOptions := map[string]interface{}{"destFileName": "Sample.docx",}
+    updateRequest := &models.UpdateBookmarkOnlineRequest{
+        Document: requestDocument,
+        BookmarkName: ToStringPointer(bookmarkName),
+        BookmarkData: requestBookmarkData,
+        Optionals: updateRequestOptions,
+    }
+    _, _, _ = wordsApi.UpdateBookmarkOnline(ctx, updateRequest)
+}
 
 func Test_Examples_UpdateBorder(t *testing.T) {
     config := ReadConfiguration(t)
@@ -2856,11 +4115,32 @@ func Test_Examples_UpdateBorder(t *testing.T) {
     _, _, _ = wordsApi.UpdateBorder(ctx, updateRequest)
 }
 
-
-
-// func Test_Examples_UpdateBorderOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_UpdateBorderOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestBorderPropertiesColor := models.XmlColor{
+        Web: ToStringPointer("#AABBCC"),
+    }
+    requestBorderProperties := models.Border{
+        BorderType: ToStringPointer("Left"),
+        Color: requestBorderPropertiesColor,
+        DistanceFromText: ToFloat64Pointer(6),
+        LineStyle: ToStringPointer("DashDotStroker"),
+        LineWidth: ToFloat64Pointer(2),
+        Shadow: ToBoolPointer(true),
+    }
+    updateRequestOptions := map[string]interface{}{"nodePath": "tables/1/rows/0/cells/0",}
+    updateRequest := &models.UpdateBorderOnlineRequest{
+        Document: requestDocument,
+        BorderProperties: requestBorderProperties,
+        BorderType: ToStringPointer("left"),
+        Optionals: updateRequestOptions,
+    }
+    _, _, _ = wordsApi.UpdateBorderOnline(ctx, updateRequest)
+}
 
 func Test_Examples_UpdateComment(t *testing.T) {
     config := ReadConfiguration(t)
@@ -2897,11 +4177,42 @@ func Test_Examples_UpdateComment(t *testing.T) {
     _, _, _ = wordsApi.UpdateComment(ctx, updateRequest)
 }
 
-
-
-// func Test_Examples_UpdateCommentOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_UpdateCommentOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestCommentRangeStartNode := models.NodeLink{
+        NodeId: ToStringPointer("0.3.0"),
+    }
+    requestCommentRangeStart := models.DocumentPosition{
+        Node: requestCommentRangeStartNode,
+        Offset: ToInt32Pointer(int32(0)),
+    }
+    requestCommentRangeEndNode := models.NodeLink{
+        NodeId: ToStringPointer("0.3.0"),
+    }
+    requestCommentRangeEnd := models.DocumentPosition{
+        Node: requestCommentRangeEndNode,
+        Offset: ToInt32Pointer(int32(0)),
+    }
+    requestComment := models.CommentUpdate{
+        RangeStart: requestCommentRangeStart,
+        RangeEnd: requestCommentRangeEnd,
+        Initial: ToStringPointer("IA"),
+        Author: ToStringPointer("Imran Anwar"),
+        Text: ToStringPointer("A new Comment"),
+    }
+    updateRequestOptions := map[string]interface{}{}
+    updateRequest := &models.UpdateCommentOnlineRequest{
+        Document: requestDocument,
+        CommentIndex: ToInt32Pointer(int32(0)),
+        Comment: requestComment,
+        Optionals: updateRequestOptions,
+    }
+    _, _, _ = wordsApi.UpdateCommentOnline(ctx, updateRequest)
+}
 
 func Test_Examples_UpdateCustomXmlPart(t *testing.T) {
     config := ReadConfiguration(t)
@@ -2920,37 +4231,65 @@ func Test_Examples_UpdateCustomXmlPart(t *testing.T) {
     _, _, _ = wordsApi.UpdateCustomXmlPart(ctx, updateRequest)
 }
 
-
-
-// func Test_Examples_UpdateCustomXmlPartOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_UpdateCustomXmlPartOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestCustomXmlPart := models.CustomXmlPartUpdate{
+        Data: ToStringPointer("<data>Hello world</data>"),
+    }
+    updateRequestOptions := map[string]interface{}{}
+    updateRequest := &models.UpdateCustomXmlPartOnlineRequest{
+        Document: requestDocument,
+        CustomXmlPartIndex: ToInt32Pointer(int32(0)),
+        CustomXmlPart: requestCustomXmlPart,
+        Optionals: updateRequestOptions,
+    }
+    _, _, _ = wordsApi.UpdateCustomXmlPartOnline(ctx, updateRequest)
+}
 
 func Test_Examples_UpdateDrawingObject(t *testing.T) {
     documentsDir := GetExamplesDir()
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
     wordsApi := client.WordsApi
-    requestImageFileFileData, _ := os.Open(documentsDir + "/" + "Common/aspose-cloud.png")
     requestDrawingObject := models.DrawingObjectUpdate{
         Left: ToFloat64Pointer(0),
     }
+    requestImageFile, _ := os.Open(documentsDir + "/" + "Common/aspose-cloud.png")
     updateRequestOptions := map[string]interface{}{}
     updateRequest := &models.UpdateDrawingObjectRequest{
         Name: ToStringPointer("Sample.docx"),
         DrawingObject: requestDrawingObject,
-        ImageFile: requestImageFileFileData,
+        ImageFile: requestImageFile,
         Index: ToInt32Pointer(int32(0)),
         Optionals: updateRequestOptions,
     }
     _, _, _ = wordsApi.UpdateDrawingObject(ctx, updateRequest)
 }
 
-
-
-// func Test_Examples_UpdateDrawingObjectOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_UpdateDrawingObjectOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestDrawingObject := models.DrawingObjectUpdate{
+        Left: ToFloat64Pointer(0),
+    }
+    requestImageFile, _ := os.Open(documentsDir + "/" + "Common/aspose-cloud.png")
+    updateRequestOptions := map[string]interface{}{}
+    updateRequest := &models.UpdateDrawingObjectOnlineRequest{
+        Document: requestDocument,
+        DrawingObject: requestDrawingObject,
+        ImageFile: requestImageFile,
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: updateRequestOptions,
+    }
+    _, _, _ = wordsApi.UpdateDrawingObjectOnline(ctx, updateRequest)
+}
 
 func Test_Examples_UpdateField(t *testing.T) {
     config := ReadConfiguration(t)
@@ -2969,11 +4308,24 @@ func Test_Examples_UpdateField(t *testing.T) {
     _, _, _ = wordsApi.UpdateField(ctx, updateRequest)
 }
 
-
-
-// func Test_Examples_UpdateFieldOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_UpdateFieldOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestField := models.FieldUpdate{
+        FieldCode: ToStringPointer("{ NUMPAGES }"),
+    }
+    updateRequestOptions := map[string]interface{}{"nodePath": "sections/0/paragraphs/0",}
+    updateRequest := &models.UpdateFieldOnlineRequest{
+        Document: requestDocument,
+        Field: requestField,
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: updateRequestOptions,
+    }
+    _, _, _ = wordsApi.UpdateFieldOnline(ctx, updateRequest)
+}
 
 func Test_Examples_UpdateFields(t *testing.T) {
     config := ReadConfiguration(t)
@@ -2987,11 +4339,19 @@ func Test_Examples_UpdateFields(t *testing.T) {
     _, _, _ = wordsApi.UpdateFields(ctx, updateRequest)
 }
 
-
-
-// func Test_Examples_UpdateFieldsOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_UpdateFieldsOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    updateRequestOptions := map[string]interface{}{}
+    updateRequest := &models.UpdateFieldsOnlineRequest{
+        Document: requestDocument,
+        Optionals: updateRequestOptions,
+    }
+    _, _, _ = wordsApi.UpdateFieldsOnline(ctx, updateRequest)
+}
 
 func Test_Examples_UpdateFootnote(t *testing.T) {
     config := ReadConfiguration(t)
@@ -3010,11 +4370,24 @@ func Test_Examples_UpdateFootnote(t *testing.T) {
     _, _, _ = wordsApi.UpdateFootnote(ctx, updateRequest)
 }
 
-
-
-// func Test_Examples_UpdateFootnoteOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_UpdateFootnoteOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.doc")
+    requestFootnoteDto := models.FootnoteUpdate{
+        Text: ToStringPointer("new text is here"),
+    }
+    updateRequestOptions := map[string]interface{}{}
+    updateRequest := &models.UpdateFootnoteOnlineRequest{
+        Document: requestDocument,
+        FootnoteDto: requestFootnoteDto,
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: updateRequestOptions,
+    }
+    _, _, _ = wordsApi.UpdateFootnoteOnline(ctx, updateRequest)
+}
 
 func Test_Examples_UpdateFormField(t *testing.T) {
     config := ReadConfiguration(t)
@@ -3038,11 +4411,29 @@ func Test_Examples_UpdateFormField(t *testing.T) {
     _, _, _ = wordsApi.UpdateFormField(ctx, updateRequest)
 }
 
-
-
-// func Test_Examples_UpdateFormFieldOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_UpdateFormFieldOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestFormField := models.FormFieldTextInput{
+        Name: ToStringPointer("FullName"),
+        Enabled: ToBoolPointer(true),
+        CalculateOnExit: ToBoolPointer(true),
+        StatusText: ToStringPointer(""),
+        TextInputType: ToStringPointer("Regular"),
+        TextInputDefault: ToStringPointer("No name"),
+    }
+    updateRequestOptions := map[string]interface{}{"nodePath": "sections/0",}
+    updateRequest := &models.UpdateFormFieldOnlineRequest{
+        Document: requestDocument,
+        FormField: requestFormField,
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: updateRequestOptions,
+    }
+    _, _, _ = wordsApi.UpdateFormFieldOnline(ctx, updateRequest)
+}
 
 func Test_Examples_UpdateList(t *testing.T) {
     config := ReadConfiguration(t)
@@ -3060,8 +4451,6 @@ func Test_Examples_UpdateList(t *testing.T) {
     }
     _, _, _ = wordsApi.UpdateList(ctx, updateRequest)
 }
-
-
 
 func Test_Examples_UpdateListLevel(t *testing.T) {
     config := ReadConfiguration(t)
@@ -3081,15 +4470,44 @@ func Test_Examples_UpdateListLevel(t *testing.T) {
     _, _, _ = wordsApi.UpdateListLevel(ctx, updateRequest)
 }
 
+func Test_Examples_UpdateListLevelOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.doc")
+    requestListUpdate := models.ListLevelUpdate{
+        Alignment: ToStringPointer("Right"),
+    }
+    updateRequestOptions := map[string]interface{}{}
+    updateRequest := &models.UpdateListLevelOnlineRequest{
+        Document: requestDocument,
+        ListId: ToInt32Pointer(int32(1)),
+        ListUpdate: requestListUpdate,
+        ListLevel: ToInt32Pointer(int32(1)),
+        Optionals: updateRequestOptions,
+    }
+    _, _, _ = wordsApi.UpdateListLevelOnline(ctx, updateRequest)
+}
 
-
-// func Test_Examples_UpdateListLevelOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
-
-// func Test_Examples_UpdateListOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_UpdateListOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.doc")
+    requestListUpdate := models.ListUpdate{
+        IsRestartAtEachSection: ToBoolPointer(true),
+    }
+    updateRequestOptions := map[string]interface{}{}
+    updateRequest := &models.UpdateListOnlineRequest{
+        Document: requestDocument,
+        ListId: ToInt32Pointer(int32(1)),
+        ListUpdate: requestListUpdate,
+        Optionals: updateRequestOptions,
+    }
+    _, _, _ = wordsApi.UpdateListOnline(ctx, updateRequest)
+}
 
 func Test_Examples_UpdateParagraphFormat(t *testing.T) {
     config := ReadConfiguration(t)
@@ -3108,11 +4526,24 @@ func Test_Examples_UpdateParagraphFormat(t *testing.T) {
     _, _, _ = wordsApi.UpdateParagraphFormat(ctx, updateRequest)
 }
 
-
-
-// func Test_Examples_UpdateParagraphFormatOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_UpdateParagraphFormatOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestParagraphFormatDto := models.ParagraphFormatUpdate{
+        Alignment: ToStringPointer("Right"),
+    }
+    updateRequestOptions := map[string]interface{}{}
+    updateRequest := &models.UpdateParagraphFormatOnlineRequest{
+        Document: requestDocument,
+        ParagraphFormatDto: requestParagraphFormatDto,
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: updateRequestOptions,
+    }
+    _, _, _ = wordsApi.UpdateParagraphFormatOnline(ctx, updateRequest)
+}
 
 func Test_Examples_UpdateParagraphListFormat(t *testing.T) {
     config := ReadConfiguration(t)
@@ -3131,11 +4562,24 @@ func Test_Examples_UpdateParagraphListFormat(t *testing.T) {
     _, _, _ = wordsApi.UpdateParagraphListFormat(ctx, updateRequest)
 }
 
-
-
-// func Test_Examples_UpdateParagraphListFormatOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_UpdateParagraphListFormatOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.doc")
+    requestListFormatDto := models.ListFormatUpdate{
+        ListId: ToInt32Pointer(int32(2)),
+    }
+    updateRequestOptions := map[string]interface{}{}
+    updateRequest := &models.UpdateParagraphListFormatOnlineRequest{
+        Document: requestDocument,
+        ListFormatDto: requestListFormatDto,
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: updateRequestOptions,
+    }
+    _, _, _ = wordsApi.UpdateParagraphListFormatOnline(ctx, updateRequest)
+}
 
 func Test_Examples_UpdateRun(t *testing.T) {
     config := ReadConfiguration(t)
@@ -3155,8 +4599,6 @@ func Test_Examples_UpdateRun(t *testing.T) {
     _, _, _ = wordsApi.UpdateRun(ctx, updateRequest)
 }
 
-
-
 func Test_Examples_UpdateRunFont(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
@@ -3175,15 +4617,45 @@ func Test_Examples_UpdateRunFont(t *testing.T) {
     _, _, _ = wordsApi.UpdateRunFont(ctx, updateRequest)
 }
 
+func Test_Examples_UpdateRunFontOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestFontDto := models.Font{
+        Bold: ToBoolPointer(true),
+    }
+    updateRequestOptions := map[string]interface{}{}
+    updateRequest := &models.UpdateRunFontOnlineRequest{
+        Document: requestDocument,
+        ParagraphPath: ToStringPointer("paragraphs/0"),
+        FontDto: requestFontDto,
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: updateRequestOptions,
+    }
+    _, _, _ = wordsApi.UpdateRunFontOnline(ctx, updateRequest)
+}
 
-
-// func Test_Examples_UpdateRunFontOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
-
-// func Test_Examples_UpdateRunOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_UpdateRunOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.doc")
+    requestRun := models.RunUpdate{
+        Text: ToStringPointer("run with text"),
+    }
+    updateRequestOptions := map[string]interface{}{}
+    updateRequest := &models.UpdateRunOnlineRequest{
+        Document: requestDocument,
+        ParagraphPath: ToStringPointer("paragraphs/1"),
+        Run: requestRun,
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: updateRequestOptions,
+    }
+    _, _, _ = wordsApi.UpdateRunOnline(ctx, updateRequest)
+}
 
 func Test_Examples_UpdateSectionPageSetup(t *testing.T) {
     config := ReadConfiguration(t)
@@ -3205,11 +4677,27 @@ func Test_Examples_UpdateSectionPageSetup(t *testing.T) {
     _, _, _ = wordsApi.UpdateSectionPageSetup(ctx, updateRequest)
 }
 
-
-
-// func Test_Examples_UpdateSectionPageSetupOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_UpdateSectionPageSetupOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestPageSetup := models.PageSetup{
+        RtlGutter: ToBoolPointer(true),
+        LeftMargin: ToFloat64Pointer(10),
+        Orientation: ToStringPointer("Landscape"),
+        PaperSize: ToStringPointer("A5"),
+    }
+    updateRequestOptions := map[string]interface{}{}
+    updateRequest := &models.UpdateSectionPageSetupOnlineRequest{
+        Document: requestDocument,
+        SectionIndex: ToInt32Pointer(int32(0)),
+        PageSetup: requestPageSetup,
+        Optionals: updateRequestOptions,
+    }
+    _, _, _ = wordsApi.UpdateSectionPageSetupOnline(ctx, updateRequest)
+}
 
 func Test_Examples_UpdateStyle(t *testing.T) {
     config := ReadConfiguration(t)
@@ -3228,11 +4716,24 @@ func Test_Examples_UpdateStyle(t *testing.T) {
     _, _, _ = wordsApi.UpdateStyle(ctx, updateRequest)
 }
 
-
-
-// func Test_Examples_UpdateStyleOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_UpdateStyleOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestStyleUpdate := models.StyleUpdate{
+        Name: ToStringPointer("My Style"),
+    }
+    updateRequestOptions := map[string]interface{}{}
+    updateRequest := &models.UpdateStyleOnlineRequest{
+        Document: requestDocument,
+        StyleName: ToStringPointer("Heading 1"),
+        StyleUpdate: requestStyleUpdate,
+        Optionals: updateRequestOptions,
+    }
+    _, _, _ = wordsApi.UpdateStyleOnline(ctx, updateRequest)
+}
 
 func Test_Examples_UpdateTableCellFormat(t *testing.T) {
     config := ReadConfiguration(t)
@@ -3255,11 +4756,28 @@ func Test_Examples_UpdateTableCellFormat(t *testing.T) {
     _, _, _ = wordsApi.UpdateTableCellFormat(ctx, updateRequest)
 }
 
-
-
-// func Test_Examples_UpdateTableCellFormatOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_UpdateTableCellFormatOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestFormat := models.TableCellFormat{
+        BottomPadding: ToFloat64Pointer(5),
+        FitText: ToBoolPointer(true),
+        HorizontalMerge: ToStringPointer("First"),
+        WrapText: ToBoolPointer(true),
+    }
+    updateRequestOptions := map[string]interface{}{}
+    updateRequest := &models.UpdateTableCellFormatOnlineRequest{
+        Document: requestDocument,
+        TableRowPath: ToStringPointer("sections/0/tables/2/rows/0"),
+        Format: requestFormat,
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: updateRequestOptions,
+    }
+    _, _, _ = wordsApi.UpdateTableCellFormatOnline(ctx, updateRequest)
+}
 
 func Test_Examples_UpdateTableProperties(t *testing.T) {
     config := ReadConfiguration(t)
@@ -3283,11 +4801,29 @@ func Test_Examples_UpdateTableProperties(t *testing.T) {
     _, _, _ = wordsApi.UpdateTableProperties(ctx, updateRequest)
 }
 
-
-
-// func Test_Examples_UpdateTablePropertiesOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_UpdateTablePropertiesOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestProperties := models.TableProperties{
+        Alignment: ToStringPointer("Right"),
+        AllowAutoFit: ToBoolPointer(false),
+        Bidi: ToBoolPointer(true),
+        BottomPadding: ToFloat64Pointer(1),
+        CellSpacing: ToFloat64Pointer(2),
+        StyleOptions: ToStringPointer("ColumnBands"),
+    }
+    updateRequestOptions := map[string]interface{}{}
+    updateRequest := &models.UpdateTablePropertiesOnlineRequest{
+        Document: requestDocument,
+        Properties: requestProperties,
+        Index: ToInt32Pointer(int32(1)),
+        Optionals: updateRequestOptions,
+    }
+    _, _, _ = wordsApi.UpdateTablePropertiesOnline(ctx, updateRequest)
+}
 
 func Test_Examples_UpdateTableRowFormat(t *testing.T) {
     config := ReadConfiguration(t)
@@ -3310,21 +4846,38 @@ func Test_Examples_UpdateTableRowFormat(t *testing.T) {
     _, _, _ = wordsApi.UpdateTableRowFormat(ctx, updateRequest)
 }
 
-
-
-// func Test_Examples_UpdateTableRowFormatOnline(t *testing.T) => ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
-
-
+func Test_Examples_UpdateTableRowFormatOnline(t *testing.T) {
+    documentsDir := GetExamplesDir()
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    wordsApi := client.WordsApi
+    requestDocument, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestFormat := models.TableRowFormat{
+        AllowBreakAcrossPages: ToBoolPointer(true),
+        HeadingFormat: ToBoolPointer(true),
+        Height: ToFloat64Pointer(10),
+        HeightRule: ToStringPointer("Auto"),
+    }
+    updateRequestOptions := map[string]interface{}{}
+    updateRequest := &models.UpdateTableRowFormatOnlineRequest{
+        Document: requestDocument,
+        TablePath: ToStringPointer("sections/0/tables/2"),
+        Format: requestFormat,
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: updateRequestOptions,
+    }
+    _, _, _ = wordsApi.UpdateTableRowFormatOnline(ctx, updateRequest)
+}
 
 func Test_Examples_UploadFile(t *testing.T) {
     documentsDir := GetExamplesDir()
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
     wordsApi := client.WordsApi
-    requestFileContentFileData, _ := os.Open(documentsDir + "/" + "Sample.docx")
+    requestFileContent, _ := os.Open(documentsDir + "/" + "Sample.docx")
     uploadRequestOptions := map[string]interface{}{}
     uploadRequest := &models.UploadFileRequest{
-        FileContent: requestFileContentFileData,
+        FileContent: requestFileContent,
         Path: ToStringPointer("Sample.docx"),
         Optionals: uploadRequestOptions,
     }

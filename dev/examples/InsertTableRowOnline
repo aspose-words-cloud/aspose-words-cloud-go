@@ -1,1 +1,14 @@
-// ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestDocument, _ := os.Open("Sample.docx")
+requestRow := models.TableRowInsert{
+    ColumnsCount: ToInt32Pointer(int32(5)),
+}
+insertRequestOptions := map[string]interface{}{}
+insertRequest := &models.InsertTableRowOnlineRequest{
+    Document: requestDocument,
+    TablePath: ToStringPointer("sections/0/tables/2"),
+    Row: requestRow,
+    Optionals: insertRequestOptions,
+}
+_, _, _ = wordsApi.InsertTableRowOnline(ctx, insertRequest)

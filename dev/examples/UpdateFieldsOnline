@@ -1,1 +1,9 @@
-// ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestDocument, _ := os.Open("Sample.docx")
+updateRequestOptions := map[string]interface{}{}
+updateRequest := &models.UpdateFieldsOnlineRequest{
+    Document: requestDocument,
+    Optionals: updateRequestOptions,
+}
+_, _, _ = wordsApi.UpdateFieldsOnline(ctx, updateRequest)

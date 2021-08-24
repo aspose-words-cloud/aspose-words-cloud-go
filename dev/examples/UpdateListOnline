@@ -1,1 +1,14 @@
-// ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestDocument, _ := os.Open("Sample.doc")
+requestListUpdate := models.ListUpdate{
+    IsRestartAtEachSection: ToBoolPointer(true),
+}
+updateRequestOptions := map[string]interface{}{}
+updateRequest := &models.UpdateListOnlineRequest{
+    Document: requestDocument,
+    ListId: ToInt32Pointer(int32(1)),
+    ListUpdate: requestListUpdate,
+    Optionals: updateRequestOptions,
+}
+_, _, _ = wordsApi.UpdateListOnline(ctx, updateRequest)

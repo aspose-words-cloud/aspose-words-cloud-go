@@ -1,1 +1,14 @@
-// ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestDocument, _ := os.Open("Sample.docx")
+requestProperty := models.DocumentPropertyCreateOrUpdate{
+    Value: ToStringPointer("Imran Anwar"),
+}
+createRequestOptions := map[string]interface{}{}
+createRequest := &models.CreateOrUpdateDocumentPropertyOnlineRequest{
+    Document: requestDocument,
+    PropertyName: ToStringPointer("AsposeAuthor"),
+    Property: requestProperty,
+    Optionals: createRequestOptions,
+}
+_, _, _ = wordsApi.CreateOrUpdateDocumentPropertyOnline(ctx, createRequest)

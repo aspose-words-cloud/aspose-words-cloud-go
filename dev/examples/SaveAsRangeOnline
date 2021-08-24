@@ -1,1 +1,14 @@
-// ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestDocument, _ := os.Open("Sample.doc")
+requestDocumentParameters := models.RangeDocument{
+    DocumentName: ToStringPointer("/NewDoc.docx"),
+}
+saveRequestOptions := map[string]interface{}{"rangeEndIdentifier": "id0.0.1",}
+saveRequest := &models.SaveAsRangeOnlineRequest{
+    Document: requestDocument,
+    RangeStartIdentifier: ToStringPointer("id0.0.0"),
+    DocumentParameters: requestDocumentParameters,
+    Optionals: saveRequestOptions,
+}
+_, _, _ = wordsApi.SaveAsRangeOnline(ctx, saveRequest)

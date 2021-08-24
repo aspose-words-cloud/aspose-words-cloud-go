@@ -1,1 +1,14 @@
-// ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestDocument, _ := os.Open("Common/Sample.docx")
+requestPageNumber := models.PageNumber{
+    Alignment: ToStringPointer("center"),
+    Format: ToStringPointer("{PAGE} of {NUMPAGES}"),
+}
+insertRequestOptions := map[string]interface{}{}
+insertRequest := &models.InsertPageNumbersOnlineRequest{
+    Document: requestDocument,
+    PageNumber: requestPageNumber,
+    Optionals: insertRequestOptions,
+}
+_, _, _ = wordsApi.InsertPageNumbersOnline(ctx, insertRequest)

@@ -1,1 +1,13 @@
-// ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestDocument, _ := os.Open("Sample.docx")
+requestParagraph := models.ParagraphInsert{
+    Text: ToStringPointer("This is a new paragraph for your document"),
+}
+insertRequestOptions := map[string]interface{}{"nodePath": "sections/0",}
+insertRequest := &models.InsertParagraphOnlineRequest{
+    Document: requestDocument,
+    Paragraph: requestParagraph,
+    Optionals: insertRequestOptions,
+}
+_, _, _ = wordsApi.InsertParagraphOnline(ctx, insertRequest)

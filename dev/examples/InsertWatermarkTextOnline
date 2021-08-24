@@ -1,1 +1,14 @@
-// ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestDocument, _ := os.Open("Sample.docx")
+requestWatermarkText := models.WatermarkText{
+    Text: ToStringPointer("This is the text"),
+    RotationAngle: ToFloat64Pointer(90),
+}
+insertRequestOptions := map[string]interface{}{}
+insertRequest := &models.InsertWatermarkTextOnlineRequest{
+    Document: requestDocument,
+    WatermarkText: requestWatermarkText,
+    Optionals: insertRequestOptions,
+}
+_, _, _ = wordsApi.InsertWatermarkTextOnline(ctx, insertRequest)

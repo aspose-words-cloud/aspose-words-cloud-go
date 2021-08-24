@@ -1,1 +1,16 @@
-// ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestDocument, _ := os.Open("Sample.docx")
+requestTabStopInsertDto := models.TabStopInsert{
+    Alignment: ToStringPointer("Left"),
+    Leader: ToStringPointer("None"),
+    Position: ToFloat64Pointer(72),
+}
+insertRequestOptions := map[string]interface{}{}
+insertRequest := &models.InsertOrUpdateParagraphTabStopOnlineRequest{
+    Document: requestDocument,
+    TabStopInsertDto: requestTabStopInsertDto,
+    Index: ToInt32Pointer(int32(0)),
+    Optionals: insertRequestOptions,
+}
+_, _, _ = wordsApi.InsertOrUpdateParagraphTabStopOnline(ctx, insertRequest)

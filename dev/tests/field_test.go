@@ -73,13 +73,14 @@ func Test_Field_GetFieldsOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     fieldFolder := "DocumentElements/Fields"
 
+    requestDocument := OpenFile(t, fieldFolder + "/GetField.docx")
 
     options := map[string]interface{}{
         "nodePath": "sections/0",
     }
 
     request := &models.GetFieldsOnlineRequest{
-        Document: OpenFile(t, fieldFolder + "/GetField.docx"),
+        Document: requestDocument,
         Optionals: options,
     }
 
@@ -160,13 +161,14 @@ func Test_Field_GetFieldOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     fieldFolder := "DocumentElements/Fields"
 
+    requestDocument := OpenFile(t, fieldFolder + "/GetField.docx")
 
     options := map[string]interface{}{
         "nodePath": "sections/0/paragraphs/0",
     }
 
     request := &models.GetFieldOnlineRequest{
-        Document: OpenFile(t, fieldFolder + "/GetField.docx"),
+        Document: requestDocument,
         Index: ToInt32Pointer(int32(0)),
         Optionals: options,
     }
@@ -251,6 +253,7 @@ func Test_Field_InsertFieldOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     fieldFolder := "DocumentElements/Fields"
 
+    requestDocument := OpenFile(t, fieldFolder + "/GetField.docx")
     requestField := models.FieldInsert{
         FieldCode: ToStringPointer("{ NUMPAGES }"),
     }
@@ -260,7 +263,7 @@ func Test_Field_InsertFieldOnline(t *testing.T) {
     }
 
     request := &models.InsertFieldOnlineRequest{
-        Document: OpenFile(t, fieldFolder + "/GetField.docx"),
+        Document: requestDocument,
         Field: requestField,
         Optionals: options,
     }
@@ -350,6 +353,7 @@ func Test_Field_UpdateFieldOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     fieldFolder := "DocumentElements/Fields"
 
+    requestDocument := OpenFile(t, fieldFolder + "/GetField.docx")
     requestField := models.FieldUpdate{
         FieldCode: ToStringPointer("{ NUMPAGES }"),
     }
@@ -359,7 +363,7 @@ func Test_Field_UpdateFieldOnline(t *testing.T) {
     }
 
     request := &models.UpdateFieldOnlineRequest{
-        Document: OpenFile(t, fieldFolder + "/GetField.docx"),
+        Document: requestDocument,
         Field: requestField,
         Index: ToInt32Pointer(int32(0)),
         Optionals: options,
@@ -413,6 +417,7 @@ func Test_Field_InsertPageNumbersOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFileName := "test_multi_pages.docx"
 
+    requestDocument := OpenFile(t, "Common/" + localFileName)
     requestPageNumber := models.PageNumber{
         Alignment: ToStringPointer("center"),
         Format: ToStringPointer("{PAGE} of {NUMPAGES}"),
@@ -422,7 +427,7 @@ func Test_Field_InsertPageNumbersOnline(t *testing.T) {
     }
 
     request := &models.InsertPageNumbersOnlineRequest{
-        Document: OpenFile(t, "Common/" + localFileName),
+        Document: requestDocument,
         PageNumber: requestPageNumber,
         Optionals: options,
     }
@@ -471,13 +476,14 @@ func Test_Field_DeleteFieldOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     fieldFolder := "DocumentElements/Fields"
 
+    requestDocument := OpenFile(t, fieldFolder + "/GetField.docx")
 
     options := map[string]interface{}{
         "nodePath": "sections/0/paragraphs/0",
     }
 
     request := &models.DeleteFieldOnlineRequest{
-        Document: OpenFile(t, fieldFolder + "/GetField.docx"),
+        Document: requestDocument,
         Index: ToInt32Pointer(int32(0)),
         Optionals: options,
     }
@@ -697,13 +703,14 @@ func Test_Field_DeleteDocumentFieldsOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFileName := "Common/test_multi_pages.docx"
 
+    requestDocument := OpenFile(t, localFileName)
 
     options := map[string]interface{}{
         "nodePath": "",
     }
 
     request := &models.DeleteFieldsOnlineRequest{
-        Document: OpenFile(t, localFileName),
+        Document: requestDocument,
         Optionals: options,
     }
 
@@ -749,12 +756,13 @@ func Test_Field_UpdateDocumentFieldsOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "Common/test_multi_pages.docx"
 
+    requestDocument := OpenFile(t, localFile)
 
     options := map[string]interface{}{
     }
 
     request := &models.UpdateFieldsOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         Optionals: options,
     }
 

@@ -1,1 +1,17 @@
-// ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestDocument, _ := os.Open("compareTestDoc1.doc")
+requestCompareData := models.CompareData{
+    Author: ToStringPointer("author"),
+    ComparingWithDocument: ToStringPointer("TestCompareDocument2.doc"),
+    DateTime: ToTimePointer(CreateTime(2015, 10, 26, 0, 0, 0)),
+}
+requestComparingDocument, _ := os.Open("compareTestDoc2.doc")
+compareRequestOptions := map[string]interface{}{"comparingDocument": requestComparingDocument,
+"destFileName": "/TestCompareDocumentOut.doc",}
+compareRequest := &models.CompareDocumentOnlineRequest{
+    Document: requestDocument,
+    CompareData: requestCompareData,
+    Optionals: compareRequestOptions,
+}
+_, _, _ = wordsApi.CompareDocumentOnline(ctx, compareRequest)

@@ -1,1 +1,9 @@
-// ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestDocument, _ := os.Open("Sample.docx")
+requestOptions := map[string]interface{}{}
+request := &models.GetBookmarksOnlineRequest{
+    Document: requestDocument,
+    Optionals: requestOptions,
+}
+_, _, _ = wordsApi.GetBookmarksOnline(ctx, request)

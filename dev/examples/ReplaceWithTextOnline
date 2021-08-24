@@ -1,1 +1,14 @@
-// ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestDocument, _ := os.Open("Sample.doc")
+requestRangeText := models.ReplaceRange{
+    Text: ToStringPointer("Replaced header"),
+}
+replaceRequestOptions := map[string]interface{}{"rangeEndIdentifier": "id0.0.1",}
+replaceRequest := &models.ReplaceWithTextOnlineRequest{
+    Document: requestDocument,
+    RangeStartIdentifier: ToStringPointer("id0.0.0"),
+    RangeText: requestRangeText,
+    Optionals: replaceRequestOptions,
+}
+_, _, _ = wordsApi.ReplaceWithTextOnline(ctx, replaceRequest)

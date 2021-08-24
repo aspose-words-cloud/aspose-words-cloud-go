@@ -1,1 +1,9 @@
-// ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestDocument, _ := os.Open("Sample.docx")
+classifyRequestOptions := map[string]interface{}{"bestClassesCount": "3",}
+classifyRequest := &models.ClassifyDocumentOnlineRequest{
+    Document: requestDocument,
+    Optionals: classifyRequestOptions,
+}
+_, _, _ = wordsApi.ClassifyDocumentOnline(ctx, classifyRequest)

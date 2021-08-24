@@ -1,1 +1,18 @@
-// ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestDocument, _ := os.Open("Sample.docx")
+requestFormat := models.TableCellFormat{
+    BottomPadding: ToFloat64Pointer(5),
+    FitText: ToBoolPointer(true),
+    HorizontalMerge: ToStringPointer("First"),
+    WrapText: ToBoolPointer(true),
+}
+updateRequestOptions := map[string]interface{}{}
+updateRequest := &models.UpdateTableCellFormatOnlineRequest{
+    Document: requestDocument,
+    TableRowPath: ToStringPointer("sections/0/tables/2/rows/0"),
+    Format: requestFormat,
+    Index: ToInt32Pointer(int32(0)),
+    Optionals: updateRequestOptions,
+}
+_, _, _ = wordsApi.UpdateTableCellFormatOnline(ctx, updateRequest)

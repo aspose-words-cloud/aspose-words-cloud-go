@@ -1,1 +1,9 @@
-// ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestDocument, _ := os.Open("Sample.docx")
+requestOptions := map[string]interface{}{"nodePath": "sections/0",}
+request := &models.GetParagraphsOnlineRequest{
+    Document: requestDocument,
+    Optionals: requestOptions,
+}
+_, _, _ = wordsApi.GetParagraphsOnline(ctx, request)

@@ -1,1 +1,17 @@
-// ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestDocument, _ := os.Open("Sample.docx")
+requestPageSetup := models.PageSetup{
+    RtlGutter: ToBoolPointer(true),
+    LeftMargin: ToFloat64Pointer(10),
+    Orientation: ToStringPointer("Landscape"),
+    PaperSize: ToStringPointer("A5"),
+}
+updateRequestOptions := map[string]interface{}{}
+updateRequest := &models.UpdateSectionPageSetupOnlineRequest{
+    Document: requestDocument,
+    SectionIndex: ToInt32Pointer(int32(0)),
+    PageSetup: requestPageSetup,
+    Optionals: updateRequestOptions,
+}
+_, _, _ = wordsApi.UpdateSectionPageSetupOnline(ctx, updateRequest)

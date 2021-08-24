@@ -1,1 +1,14 @@
-// ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestDocument, _ := os.Open("Sample.docx")
+requestStyleApply := models.StyleApply{
+    StyleName: ToStringPointer("Heading 1"),
+}
+applyStyleRequestOptions := map[string]interface{}{}
+applyStyleRequest := &models.ApplyStyleToDocumentElementOnlineRequest{
+    Document: requestDocument,
+    StyledNodePath: ToStringPointer("paragraphs/1/paragraphFormat"),
+    StyleApply: requestStyleApply,
+    Optionals: applyStyleRequestOptions,
+}
+_, _, _ = wordsApi.ApplyStyleToDocumentElementOnline(ctx, applyStyleRequest)

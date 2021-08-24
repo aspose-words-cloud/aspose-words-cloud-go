@@ -1,1 +1,21 @@
-// ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestDocument, _ := os.Open("Sample.docx")
+requestDrawingObject := models.DrawingObjectInsert{
+    Height: ToFloat64Pointer(0),
+    Left: ToFloat64Pointer(0),
+    Top: ToFloat64Pointer(0),
+    Width: ToFloat64Pointer(0),
+    RelativeHorizontalPosition: ToStringPointer("Margin"),
+    RelativeVerticalPosition: ToStringPointer("Margin"),
+    WrapType: ToStringPointer("Inline"),
+}
+requestImageFile, _ := os.Open("Common/aspose-cloud.png")
+insertRequestOptions := map[string]interface{}{}
+insertRequest := &models.InsertDrawingObjectOnlineRequest{
+    Document: requestDocument,
+    DrawingObject: requestDrawingObject,
+    ImageFile: requestImageFile,
+    Optionals: insertRequestOptions,
+}
+_, _, _ = wordsApi.InsertDrawingObjectOnline(ctx, insertRequest)

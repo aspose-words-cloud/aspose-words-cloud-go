@@ -1,1 +1,13 @@
-// ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestDocument, _ := os.Open("Sample.doc")
+requestListInsert := models.ListInsert{
+    Template: ToStringPointer("OutlineLegal"),
+}
+insertRequestOptions := map[string]interface{}{}
+insertRequest := &models.InsertListOnlineRequest{
+    Document: requestDocument,
+    ListInsert: requestListInsert,
+    Optionals: insertRequestOptions,
+}
+_, _, _ = wordsApi.InsertListOnline(ctx, insertRequest)

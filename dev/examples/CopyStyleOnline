@@ -1,1 +1,13 @@
-// ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestDocument, _ := os.Open("Sample.docx")
+requestStyleCopy := models.StyleCopy{
+    StyleName: ToStringPointer("Heading 1"),
+}
+copyRequestOptions := map[string]interface{}{}
+copyRequest := &models.CopyStyleOnlineRequest{
+    Document: requestDocument,
+    StyleCopy: requestStyleCopy,
+    Optionals: copyRequestOptions,
+}
+_, _, _ = wordsApi.CopyStyleOnline(ctx, copyRequest)

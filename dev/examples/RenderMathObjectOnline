@@ -1,1 +1,11 @@
-// ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestDocument, _ := os.Open("Sample.docx")
+renderRequestOptions := map[string]interface{}{}
+renderRequest := &models.RenderMathObjectOnlineRequest{
+    Document: requestDocument,
+    Format: ToStringPointer("png"),
+    Index: ToInt32Pointer(int32(0)),
+    Optionals: renderRequestOptions,
+}
+_, _ = wordsApi.RenderMathObjectOnline(ctx, renderRequest)

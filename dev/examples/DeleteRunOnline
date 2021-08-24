@@ -1,1 +1,11 @@
-// ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestDocument, _ := os.Open("Sample.doc")
+deleteRequestOptions := map[string]interface{}{}
+deleteRequest := &models.DeleteRunOnlineRequest{
+    Document: requestDocument,
+    ParagraphPath: ToStringPointer("paragraphs/1"),
+    Index: ToInt32Pointer(int32(0)),
+    Optionals: deleteRequestOptions,
+}
+_, _ = wordsApi.DeleteRunOnline(ctx, deleteRequest)

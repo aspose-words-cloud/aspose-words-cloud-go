@@ -1,10 +1,9 @@
-documentsDir := "..."
 config, _ := models.NewConfiguration("config.json")
 wordsApi, ctx, _ := api.CreateWordsApi(config)
-requestFileContentFileData, _ := os.Open(documentsDir + "/" + "Sample.docx")
+requestFileContent, _ := os.Open("Sample.docx")
 uploadRequestOptions := map[string]interface{}{}
 uploadRequest := &models.UploadFileRequest{
-    FileContent: requestFileContentFileData,
+    FileContent: requestFileContent,
     Path: ToStringPointer("Sample.docx"),
     Optionals: uploadRequestOptions,
 }

@@ -82,6 +82,7 @@ func Test_FormField_UpdateFormFieldOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     fieldFolder := "DocumentElements/FormFields"
 
+    requestDocument := OpenFile(t, fieldFolder + "/FormFilled.docx")
     requestFormField := models.FormFieldTextInput{
         Name: ToStringPointer("FullName"),
         Enabled: ToBoolPointer(true),
@@ -96,7 +97,7 @@ func Test_FormField_UpdateFormFieldOnline(t *testing.T) {
     }
 
     request := &models.UpdateFormFieldOnlineRequest{
-        Document: OpenFile(t, fieldFolder + "/FormFilled.docx"),
+        Document: requestDocument,
         FormField: requestFormField,
         Index: ToInt32Pointer(int32(0)),
         Optionals: options,
@@ -187,13 +188,14 @@ func Test_FormField_GetFormFieldOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     fieldFolder := "DocumentElements/FormFields"
 
+    requestDocument := OpenFile(t, fieldFolder + "/FormFilled.docx")
 
     options := map[string]interface{}{
         "nodePath": "sections/0",
     }
 
     request := &models.GetFormFieldOnlineRequest{
-        Document: OpenFile(t, fieldFolder + "/FormFilled.docx"),
+        Document: requestDocument,
         Index: ToInt32Pointer(int32(0)),
         Optionals: options,
     }
@@ -273,13 +275,14 @@ func Test_FormField_GetFormFieldsOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     fieldFolder := "DocumentElements/FormFields"
 
+    requestDocument := OpenFile(t, fieldFolder + "/FormFilled.docx")
 
     options := map[string]interface{}{
         "nodePath": "sections/0",
     }
 
     request := &models.GetFormFieldsOnlineRequest{
-        Document: OpenFile(t, fieldFolder + "/FormFilled.docx"),
+        Document: requestDocument,
         Optionals: options,
     }
 
@@ -368,6 +371,7 @@ func Test_FormField_InsertFormFieldOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     fieldFolder := "DocumentElements/FormFields"
 
+    requestDocument := OpenFile(t, fieldFolder + "/FormFilled.docx")
     requestFormField := models.FormFieldTextInput{
         Name: ToStringPointer("FullName"),
         Enabled: ToBoolPointer(true),
@@ -383,7 +387,7 @@ func Test_FormField_InsertFormFieldOnline(t *testing.T) {
     }
 
     request := &models.InsertFormFieldOnlineRequest{
-        Document: OpenFile(t, fieldFolder + "/FormFilled.docx"),
+        Document: requestDocument,
         FormField: requestFormField,
         Optionals: options,
     }
@@ -472,13 +476,14 @@ func Test_FormField_DeleteFormFieldOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     fieldFolder := "DocumentElements/FormFields"
 
+    requestDocument := OpenFile(t, fieldFolder + "/FormFilled.docx")
 
     options := map[string]interface{}{
         "nodePath": "sections/0",
     }
 
     request := &models.DeleteFormFieldOnlineRequest{
-        Document: OpenFile(t, fieldFolder + "/FormFilled.docx"),
+        Document: requestDocument,
         Index: ToInt32Pointer(int32(0)),
         Optionals: options,
     }

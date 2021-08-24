@@ -1,1 +1,14 @@
-// ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestDocument, _ := os.Open("Sample.docx")
+requestStyleUpdate := models.StyleUpdate{
+    Name: ToStringPointer("My Style"),
+}
+updateRequestOptions := map[string]interface{}{}
+updateRequest := &models.UpdateStyleOnlineRequest{
+    Document: requestDocument,
+    StyleName: ToStringPointer("Heading 1"),
+    StyleUpdate: requestStyleUpdate,
+    Optionals: updateRequestOptions,
+}
+_, _, _ = wordsApi.UpdateStyleOnline(ctx, updateRequest)

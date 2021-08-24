@@ -1,1 +1,13 @@
-// ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestDocument, _ := os.Open("Sample.docx")
+requestProtectionRequest := models.ProtectionRequest{
+    NewPassword: ToStringPointer("123"),
+}
+protectRequestOptions := map[string]interface{}{}
+protectRequest := &models.ProtectDocumentOnlineRequest{
+    Document: requestDocument,
+    ProtectionRequest: requestProtectionRequest,
+    Optionals: protectRequestOptions,
+}
+_, _, _ = wordsApi.ProtectDocumentOnline(ctx, protectRequest)

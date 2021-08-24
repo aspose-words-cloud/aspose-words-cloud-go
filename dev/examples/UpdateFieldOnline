@@ -1,1 +1,14 @@
-// ONLINE METHODS NOT SUPPORTED AT THIS MOMENT
+config, _ := models.NewConfiguration("config.json")
+wordsApi, ctx, _ := api.CreateWordsApi(config)
+requestDocument, _ := os.Open("Sample.docx")
+requestField := models.FieldUpdate{
+    FieldCode: ToStringPointer("{ NUMPAGES }"),
+}
+updateRequestOptions := map[string]interface{}{"nodePath": "sections/0/paragraphs/0",}
+updateRequest := &models.UpdateFieldOnlineRequest{
+    Document: requestDocument,
+    Field: requestField,
+    Index: ToInt32Pointer(int32(0)),
+    Optionals: updateRequestOptions,
+}
+_, _, _ = wordsApi.UpdateFieldOnline(ctx, updateRequest)

@@ -1,15 +1,14 @@
-documentsDir := "..."
 config, _ := models.NewConfiguration("config.json")
 wordsApi, ctx, _ := api.CreateWordsApi(config)
-requestImageFileFileData, _ := os.Open(documentsDir + "/" + "Common/aspose-cloud.png")
 requestDrawingObject := models.DrawingObjectUpdate{
     Left: ToFloat64Pointer(0),
 }
+requestImageFile, _ := os.Open("Common/aspose-cloud.png")
 updateRequestOptions := map[string]interface{}{}
 updateRequest := &models.UpdateDrawingObjectRequest{
     Name: ToStringPointer("Sample.docx"),
     DrawingObject: requestDrawingObject,
-    ImageFile: requestImageFileFileData,
+    ImageFile: requestImageFile,
     Index: ToInt32Pointer(int32(0)),
     Optionals: updateRequestOptions,
 }
