@@ -75,13 +75,15 @@ func Test_ExecuteTemplate_ExecuteTemplateOnline(t *testing.T) {
     localDocumentFile := "SampleMailMergeTemplate.docx"
     localDataFile := "SampleExecuteTemplateData.txt"
 
+    requestTemplate := OpenFile(t, mailMergeFolder + "/" + localDocumentFile)
+    requestData := OpenFile(t, mailMergeFolder + "/" + localDataFile)
 
     options := map[string]interface{}{
     }
 
     request := &models.ExecuteMailMergeOnlineRequest{
-        Template: OpenFile(t, mailMergeFolder + "/" + localDocumentFile),
-        Data: OpenFile(t, mailMergeFolder + "/" + localDataFile),
+        Template: requestTemplate,
+        Data: requestData,
         Optionals: options,
     }
 

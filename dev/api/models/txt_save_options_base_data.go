@@ -48,6 +48,9 @@ type TxtSaveOptionsBaseDataResult struct {
     FileName string `json:"FileName,omitempty"`
 
     // Base class for save options of text formats.
+    FlatOpcXmlMappingOnly bool `json:"FlatOpcXmlMappingOnly,omitempty"`
+
+    // Base class for save options of text formats.
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // Base class for save options of text formats.
@@ -102,6 +105,9 @@ type TxtSaveOptionsBaseData struct {
 
     // Base class for save options of text formats.
     FileName *string `json:"FileName,omitempty"`
+
+    // Base class for save options of text formats.
+    FlatOpcXmlMappingOnly *bool `json:"FlatOpcXmlMappingOnly,omitempty"`
 
     // Base class for save options of text formats.
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`

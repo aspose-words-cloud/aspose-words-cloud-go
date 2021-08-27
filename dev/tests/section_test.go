@@ -72,12 +72,13 @@ func Test_Section_GetSectionOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "Common/test_multi_pages.docx"
 
+    requestDocument := OpenFile(t, localFile)
 
     options := map[string]interface{}{
     }
 
     request := &models.GetSectionOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         SectionIndex: ToInt32Pointer(int32(0)),
         Optionals: options,
     }
@@ -126,12 +127,13 @@ func Test_Section_GetSectionsOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "Common/test_multi_pages.docx"
 
+    requestDocument := OpenFile(t, localFile)
 
     options := map[string]interface{}{
     }
 
     request := &models.GetSectionsOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         Optionals: options,
     }
 
@@ -177,12 +179,13 @@ func Test_Section_DeleteSectionOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "Common/test_multi_pages.docx"
 
+    requestDocument := OpenFile(t, localFile)
 
     options := map[string]interface{}{
     }
 
     request := &models.DeleteSectionOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         SectionIndex: ToInt32Pointer(int32(0)),
         Optionals: options,
     }

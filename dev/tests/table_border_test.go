@@ -73,13 +73,14 @@ func Test_TableBorder_GetBordersOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "DocumentElements/Tables/TablesGet.docx"
 
+    requestDocument := OpenFile(t, localFile)
 
     options := map[string]interface{}{
         "nodePath": "tables/1/rows/0/cells/0",
     }
 
     request := &models.GetBordersOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         Optionals: options,
     }
 
@@ -128,13 +129,14 @@ func Test_TableBorder_GetBorderOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "DocumentElements/Tables/TablesGet.docx"
 
+    requestDocument := OpenFile(t, localFile)
 
     options := map[string]interface{}{
         "nodePath": "tables/1/rows/0/cells/0",
     }
 
     request := &models.GetBorderOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         BorderType: ToStringPointer("left"),
         Optionals: options,
     }
@@ -180,13 +182,14 @@ func Test_TableBorder_DeleteBordersOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "DocumentElements/Tables/TablesGet.docx"
 
+    requestDocument := OpenFile(t, localFile)
 
     options := map[string]interface{}{
         "nodePath": "tables/1/rows/0/cells/0",
     }
 
     request := &models.DeleteBordersOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         Optionals: options,
     }
 
@@ -232,13 +235,14 @@ func Test_TableBorder_DeleteBorderOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "DocumentElements/Tables/TablesGet.docx"
 
+    requestDocument := OpenFile(t, localFile)
 
     options := map[string]interface{}{
         "nodePath": "tables/1/rows/0/cells/0",
     }
 
     request := &models.DeleteBorderOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         BorderType: ToStringPointer("left"),
         Optionals: options,
     }
@@ -303,6 +307,7 @@ func Test_TableBorder_UpdateBorderOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "DocumentElements/Tables/TablesGet.docx"
 
+    requestDocument := OpenFile(t, localFile)
     requestBorderPropertiesColor := models.XmlColor{
         Web: ToStringPointer("#AABBCC"),
     }
@@ -320,7 +325,7 @@ func Test_TableBorder_UpdateBorderOnline(t *testing.T) {
     }
 
     request := &models.UpdateBorderOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         BorderProperties: requestBorderProperties,
         BorderType: ToStringPointer("left"),
         Optionals: options,

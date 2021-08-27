@@ -48,6 +48,9 @@ type SaveOptionsDataResult struct {
     FileName string `json:"FileName,omitempty"`
 
     // base container class for save options data.
+    FlatOpcXmlMappingOnly bool `json:"FlatOpcXmlMappingOnly,omitempty"`
+
+    // base container class for save options data.
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // base container class for save options data.
@@ -90,6 +93,9 @@ type SaveOptionsData struct {
 
     // base container class for save options data.
     FileName *string `json:"FileName,omitempty"`
+
+    // base container class for save options data.
+    FlatOpcXmlMappingOnly *bool `json:"FlatOpcXmlMappingOnly,omitempty"`
 
     // base container class for save options data.
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`

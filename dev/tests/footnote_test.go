@@ -76,6 +76,7 @@ func Test_Footnote_InsertFootnoteOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     footnoteFolder := "DocumentElements/Footnotes"
 
+    requestDocument := OpenFile(t, footnoteFolder + "/Footnote.doc")
     requestFootnoteDto := models.FootnoteInsert{
         FootnoteType: ToStringPointer("Endnote"),
         Text: ToStringPointer("test endnote"),
@@ -86,7 +87,7 @@ func Test_Footnote_InsertFootnoteOnline(t *testing.T) {
     }
 
     request := &models.InsertFootnoteOnlineRequest{
-        Document: OpenFile(t, footnoteFolder + "/Footnote.doc"),
+        Document: requestDocument,
         FootnoteDto: requestFootnoteDto,
         Optionals: options,
     }
@@ -169,13 +170,14 @@ func Test_Footnote_DeleteFootnoteOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     footnoteFolder := "DocumentElements/Footnotes"
 
+    requestDocument := OpenFile(t, footnoteFolder + "/Footnote.doc")
 
     options := map[string]interface{}{
         "nodePath": "",
     }
 
     request := &models.DeleteFootnoteOnlineRequest{
-        Document: OpenFile(t, footnoteFolder + "/Footnote.doc"),
+        Document: requestDocument,
         Index: ToInt32Pointer(int32(0)),
         Optionals: options,
     }
@@ -254,13 +256,14 @@ func Test_Footnote_GetFootnotesOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     footnoteFolder := "DocumentElements/Footnotes"
 
+    requestDocument := OpenFile(t, footnoteFolder + "/Footnote.doc")
 
     options := map[string]interface{}{
         "nodePath": "",
     }
 
     request := &models.GetFootnotesOnlineRequest{
-        Document: OpenFile(t, footnoteFolder + "/Footnote.doc"),
+        Document: requestDocument,
         Optionals: options,
     }
 
@@ -339,13 +342,14 @@ func Test_Footnote_GetFootnoteOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     footnoteFolder := "DocumentElements/Footnotes"
 
+    requestDocument := OpenFile(t, footnoteFolder + "/Footnote.doc")
 
     options := map[string]interface{}{
         "nodePath": "",
     }
 
     request := &models.GetFootnoteOnlineRequest{
-        Document: OpenFile(t, footnoteFolder + "/Footnote.doc"),
+        Document: requestDocument,
         Index: ToInt32Pointer(int32(0)),
         Optionals: options,
     }
@@ -428,6 +432,7 @@ func Test_Footnote_UpdateFootnoteOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     footnoteFolder := "DocumentElements/Footnotes"
 
+    requestDocument := OpenFile(t, footnoteFolder + "/Footnote.doc")
     requestFootnoteDto := models.FootnoteUpdate{
         Text: ToStringPointer("new text is here"),
     }
@@ -437,7 +442,7 @@ func Test_Footnote_UpdateFootnoteOnline(t *testing.T) {
     }
 
     request := &models.UpdateFootnoteOnlineRequest{
-        Document: OpenFile(t, footnoteFolder + "/Footnote.doc"),
+        Document: requestDocument,
         FootnoteDto: requestFootnoteDto,
         Index: ToInt32Pointer(int32(0)),
         Optionals: options,

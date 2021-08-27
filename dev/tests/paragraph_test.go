@@ -71,13 +71,14 @@ func Test_Paragraph_GetDocumentParagraphOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "Common/test_multi_pages.docx"
 
+    requestDocument := OpenFile(t, localFile)
 
     options := map[string]interface{}{
         "nodePath": "sections/0",
     }
 
     request := &models.GetParagraphOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         Index: ToInt32Pointer(int32(0)),
         Optionals: options,
     }
@@ -157,13 +158,14 @@ func Test_Paragraph_GetDocumentParagraphsOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "Common/test_multi_pages.docx"
 
+    requestDocument := OpenFile(t, localFile)
 
     options := map[string]interface{}{
         "nodePath": "sections/0",
     }
 
     request := &models.GetParagraphsOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         Optionals: options,
     }
 
@@ -242,12 +244,13 @@ func Test_Paragraph_GetDocumentParagraphRunOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "Common/test_multi_pages.docx"
 
+    requestDocument := OpenFile(t, localFile)
 
     options := map[string]interface{}{
     }
 
     request := &models.GetRunOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         ParagraphPath: ToStringPointer("paragraphs/0"),
         Index: ToInt32Pointer(int32(0)),
         Optionals: options,
@@ -297,12 +300,13 @@ func Test_Paragraph_GetDocumentParagraphRunFontOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "Common/test_multi_pages.docx"
 
+    requestDocument := OpenFile(t, localFile)
 
     options := map[string]interface{}{
     }
 
     request := &models.GetRunFontOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         ParagraphPath: ToStringPointer("paragraphs/0"),
         Index: ToInt32Pointer(int32(0)),
         Optionals: options,
@@ -353,12 +357,13 @@ func Test_Paragraph_GetParagraphRunsOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "Common/test_multi_pages.docx"
 
+    requestDocument := OpenFile(t, localFile)
 
     options := map[string]interface{}{
     }
 
     request := &models.GetRunsOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         ParagraphPath: ToStringPointer("sections/0/paragraphs/0"),
         Optionals: options,
     }
@@ -412,6 +417,7 @@ func Test_Paragraph_UpdateRunFontOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "Common/test_multi_pages.docx"
 
+    requestDocument := OpenFile(t, localFile)
     requestFontDto := models.Font{
         Bold: ToBoolPointer(true),
     }
@@ -420,7 +426,7 @@ func Test_Paragraph_UpdateRunFontOnline(t *testing.T) {
     }
 
     request := &models.UpdateRunFontOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         ParagraphPath: ToStringPointer("paragraphs/0"),
         FontDto: requestFontDto,
         Index: ToInt32Pointer(int32(0)),
@@ -474,6 +480,7 @@ func Test_Paragraph_InsertParagraphOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "Common/test_multi_pages.docx"
 
+    requestDocument := OpenFile(t, localFile)
     requestParagraph := models.ParagraphInsert{
         Text: ToStringPointer("This is a new paragraph for your document"),
     }
@@ -483,7 +490,7 @@ func Test_Paragraph_InsertParagraphOnline(t *testing.T) {
     }
 
     request := &models.InsertParagraphOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         Paragraph: requestParagraph,
         Optionals: options,
     }
@@ -564,13 +571,14 @@ func Test_Paragraph_RenderParagraphOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "Common/test_multi_pages.docx"
 
+    requestDocument := OpenFile(t, localFile)
 
     options := map[string]interface{}{
         "nodePath": "",
     }
 
     request := &models.RenderParagraphOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         Format: ToStringPointer("png"),
         Index: ToInt32Pointer(int32(0)),
         Optionals: options,
@@ -649,13 +657,14 @@ func Test_Paragraph_GetParagraphFormatOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "Common/test_multi_pages.docx"
 
+    requestDocument := OpenFile(t, localFile)
 
     options := map[string]interface{}{
         "nodePath": "",
     }
 
     request := &models.GetParagraphFormatOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         Index: ToInt32Pointer(int32(0)),
         Optionals: options,
     }
@@ -738,6 +747,7 @@ func Test_Paragraph_UpdateParagraphFormatOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "Common/test_multi_pages.docx"
 
+    requestDocument := OpenFile(t, localFile)
     requestParagraphFormatDto := models.ParagraphFormatUpdate{
         Alignment: ToStringPointer("Right"),
     }
@@ -747,7 +757,7 @@ func Test_Paragraph_UpdateParagraphFormatOnline(t *testing.T) {
     }
 
     request := &models.UpdateParagraphFormatOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         ParagraphFormatDto: requestParagraphFormatDto,
         Index: ToInt32Pointer(int32(0)),
         Optionals: options,
@@ -796,13 +806,14 @@ func Test_Paragraph_DeleteParagraphOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "Common/test_multi_pages.docx"
 
+    requestDocument := OpenFile(t, localFile)
 
     options := map[string]interface{}{
         "nodePath": "",
     }
 
     request := &models.DeleteParagraphOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         Index: ToInt32Pointer(int32(0)),
         Optionals: options,
     }
@@ -880,13 +891,14 @@ func Test_Paragraph_GetParagraphListFormatOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     listFolder := "DocumentElements/ParagraphListFormat"
 
+    requestDocument := OpenFile(t, listFolder + "/ParagraphGetListFormat.doc")
 
     options := map[string]interface{}{
         "nodePath": "",
     }
 
     request := &models.GetParagraphListFormatOnlineRequest{
-        Document: OpenFile(t, listFolder + "/ParagraphGetListFormat.doc"),
+        Document: requestDocument,
         Index: ToInt32Pointer(int32(0)),
         Optionals: options,
     }
@@ -969,6 +981,7 @@ func Test_Paragraph_UpdateParagraphListFormatOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     listFolder := "DocumentElements/ParagraphListFormat"
 
+    requestDocument := OpenFile(t, listFolder + "/ParagraphUpdateListFormat.doc")
     requestListFormatDto := models.ListFormatUpdate{
         ListId: ToInt32Pointer(int32(2)),
     }
@@ -978,7 +991,7 @@ func Test_Paragraph_UpdateParagraphListFormatOnline(t *testing.T) {
     }
 
     request := &models.UpdateParagraphListFormatOnlineRequest{
-        Document: OpenFile(t, listFolder + "/ParagraphUpdateListFormat.doc"),
+        Document: requestDocument,
         ListFormatDto: requestListFormatDto,
         Index: ToInt32Pointer(int32(0)),
         Optionals: options,
@@ -1060,13 +1073,14 @@ func Test_Paragraph_DeleteParagraphListFormatOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     listFolder := "DocumentElements/ParagraphListFormat"
 
+    requestDocument := OpenFile(t, listFolder + "/ParagraphDeleteListFormat.doc")
 
     options := map[string]interface{}{
         "nodePath": "",
     }
 
     request := &models.DeleteParagraphListFormatOnlineRequest{
-        Document: OpenFile(t, listFolder + "/ParagraphDeleteListFormat.doc"),
+        Document: requestDocument,
         Index: ToInt32Pointer(int32(0)),
         Optionals: options,
     }
@@ -1144,13 +1158,14 @@ func Test_Paragraph_GetParagraphTabStopsOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     tabStopFolder := "DocumentElements/Paragraphs"
 
+    requestDocument := OpenFile(t, tabStopFolder + "/ParagraphTabStops.docx")
 
     options := map[string]interface{}{
         "nodePath": "",
     }
 
     request := &models.GetParagraphTabStopsOnlineRequest{
-        Document: OpenFile(t, tabStopFolder + "/ParagraphTabStops.docx"),
+        Document: requestDocument,
         Index: ToInt32Pointer(int32(0)),
         Optionals: options,
     }
@@ -1239,6 +1254,7 @@ func Test_Paragraph_InsertParagraphTabStopsOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     tabStopFolder := "DocumentElements/Paragraphs"
 
+    requestDocument := OpenFile(t, tabStopFolder + "/ParagraphTabStops.docx")
     requestTabStopInsertDto := models.TabStopInsert{
         Alignment: ToStringPointer("Left"),
         Leader: ToStringPointer("None"),
@@ -1250,7 +1266,7 @@ func Test_Paragraph_InsertParagraphTabStopsOnline(t *testing.T) {
     }
 
     request := &models.InsertOrUpdateParagraphTabStopOnlineRequest{
-        Document: OpenFile(t, tabStopFolder + "/ParagraphTabStops.docx"),
+        Document: requestDocument,
         TabStopInsertDto: requestTabStopInsertDto,
         Index: ToInt32Pointer(int32(0)),
         Optionals: options,
@@ -1339,13 +1355,14 @@ func Test_Paragraph_DeleteAllParagraphTabStopsOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     tabStopFolder := "DocumentElements/Paragraphs"
 
+    requestDocument := OpenFile(t, tabStopFolder + "/ParagraphTabStops.docx")
 
     options := map[string]interface{}{
         "nodePath": "",
     }
 
     request := &models.DeleteAllParagraphTabStopsOnlineRequest{
-        Document: OpenFile(t, tabStopFolder + "/ParagraphTabStops.docx"),
+        Document: requestDocument,
         Index: ToInt32Pointer(int32(0)),
         Optionals: options,
     }
@@ -1425,13 +1442,14 @@ func Test_Paragraph_DeleteParagraphTabStopOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     tabStopFolder := "DocumentElements/Paragraphs"
 
+    requestDocument := OpenFile(t, tabStopFolder + "/ParagraphTabStops.docx")
 
     options := map[string]interface{}{
         "nodePath": "",
     }
 
     request := &models.DeleteParagraphTabStopOnlineRequest{
-        Document: OpenFile(t, tabStopFolder + "/ParagraphTabStops.docx"),
+        Document: requestDocument,
         Position: ToFloat64Pointer(72.0),
         Index: ToInt32Pointer(int32(0)),
         Optionals: options,

@@ -48,6 +48,9 @@ type TextSaveOptionsDataResult struct {
     FileName string `json:"FileName,omitempty"`
 
     // Container class for text save options.
+    FlatOpcXmlMappingOnly bool `json:"FlatOpcXmlMappingOnly,omitempty"`
+
+    // Container class for text save options.
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for text save options.
@@ -114,6 +117,9 @@ type TextSaveOptionsData struct {
 
     // Container class for text save options.
     FileName *string `json:"FileName,omitempty"`
+
+    // Container class for text save options.
+    FlatOpcXmlMappingOnly *bool `json:"FlatOpcXmlMappingOnly,omitempty"`
 
     // Container class for text save options.
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`

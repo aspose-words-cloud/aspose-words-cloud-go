@@ -70,12 +70,13 @@ func Test_Comment_GetCommentOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "Common/test_multi_pages.docx"
 
+    requestDocument := OpenFile(t, localFile)
 
     options := map[string]interface{}{
     }
 
     request := &models.GetCommentOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         CommentIndex: ToInt32Pointer(int32(0)),
         Optionals: options,
     }
@@ -124,12 +125,13 @@ func Test_Comment_GetCommentsOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "Common/test_multi_pages.docx"
 
+    requestDocument := OpenFile(t, localFile)
 
     options := map[string]interface{}{
     }
 
     request := &models.GetCommentsOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         Optionals: options,
     }
 
@@ -200,6 +202,7 @@ func Test_Comment_InsertCommentOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "Common/test_multi_pages.docx"
 
+    requestDocument := OpenFile(t, localFile)
     requestCommentRangeStartNode := models.NodeLink{
         NodeId: ToStringPointer("0.3.0.3"),
     }
@@ -226,7 +229,7 @@ func Test_Comment_InsertCommentOnline(t *testing.T) {
     }
 
     request := &models.InsertCommentOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         Comment: requestComment,
         Optionals: options,
     }
@@ -299,6 +302,7 @@ func Test_Comment_UpdateCommentOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "Common/test_multi_pages.docx"
 
+    requestDocument := OpenFile(t, localFile)
     requestCommentRangeStartNode := models.NodeLink{
         NodeId: ToStringPointer("0.3.0"),
     }
@@ -325,7 +329,7 @@ func Test_Comment_UpdateCommentOnline(t *testing.T) {
     }
 
     request := &models.UpdateCommentOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         CommentIndex: ToInt32Pointer(int32(0)),
         Comment: requestComment,
         Optionals: options,
@@ -374,12 +378,13 @@ func Test_Comment_DeleteCommentOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "Common/test_multi_pages.docx"
 
+    requestDocument := OpenFile(t, localFile)
 
     options := map[string]interface{}{
     }
 
     request := &models.DeleteCommentOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         CommentIndex: ToInt32Pointer(int32(0)),
         Optionals: options,
     }
@@ -426,12 +431,13 @@ func Test_Comment_DeleteCommentsOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "Common/test_multi_pages.docx"
 
+    requestDocument := OpenFile(t, localFile)
 
     options := map[string]interface{}{
     }
 
     request := &models.DeleteCommentsOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         Optionals: options,
     }
 

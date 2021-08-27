@@ -48,6 +48,9 @@ type MhtmlSaveOptionsDataResult struct {
     FileName string `json:"FileName,omitempty"`
 
     // Container class for mhtml save options.
+    FlatOpcXmlMappingOnly bool `json:"FlatOpcXmlMappingOnly,omitempty"`
+
+    // Container class for mhtml save options.
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for mhtml save options.
@@ -210,6 +213,9 @@ type MhtmlSaveOptionsData struct {
 
     // Container class for mhtml save options.
     FileName *string `json:"FileName,omitempty"`
+
+    // Container class for mhtml save options.
+    FlatOpcXmlMappingOnly *bool `json:"FlatOpcXmlMappingOnly,omitempty"`
 
     // Container class for mhtml save options.
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`

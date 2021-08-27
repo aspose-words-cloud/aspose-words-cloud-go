@@ -48,6 +48,9 @@ type DocSaveOptionsDataResult struct {
     FileName string `json:"FileName,omitempty"`
 
     // Container class for doc/dot save options.
+    FlatOpcXmlMappingOnly bool `json:"FlatOpcXmlMappingOnly,omitempty"`
+
+    // Container class for doc/dot save options.
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for doc/dot save options.
@@ -102,6 +105,9 @@ type DocSaveOptionsData struct {
 
     // Container class for doc/dot save options.
     FileName *string `json:"FileName,omitempty"`
+
+    // Container class for doc/dot save options.
+    FlatOpcXmlMappingOnly *bool `json:"FlatOpcXmlMappingOnly,omitempty"`
 
     // Container class for doc/dot save options.
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`

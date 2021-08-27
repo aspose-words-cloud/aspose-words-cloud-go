@@ -72,13 +72,14 @@ func Test_MathObject_GetOfficeMathObjectsOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "DocumentElements/MathObjects/MathObjects.docx"
 
+    requestDocument := OpenFile(t, localFile)
 
     options := map[string]interface{}{
         "nodePath": "",
     }
 
     request := &models.GetOfficeMathObjectsOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         Optionals: options,
     }
 
@@ -157,13 +158,14 @@ func Test_MathObject_GetOfficeMathObjectOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "DocumentElements/MathObjects/MathObjects.docx"
 
+    requestDocument := OpenFile(t, localFile)
 
     options := map[string]interface{}{
         "nodePath": "",
     }
 
     request := &models.GetOfficeMathObjectOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         Index: ToInt32Pointer(int32(0)),
         Optionals: options,
     }
@@ -241,13 +243,14 @@ func Test_MathObject_RenderMathObjectOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "DocumentElements/MathObjects/MathObjects.docx"
 
+    requestDocument := OpenFile(t, localFile)
 
     options := map[string]interface{}{
         "nodePath": "",
     }
 
     request := &models.RenderMathObjectOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         Format: ToStringPointer("png"),
         Index: ToInt32Pointer(int32(0)),
         Optionals: options,
@@ -325,13 +328,14 @@ func Test_MathObject_DeleteOfficeMathObjectOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "DocumentElements/MathObjects/MathObjects.docx"
 
+    requestDocument := OpenFile(t, localFile)
 
     options := map[string]interface{}{
         "nodePath": "",
     }
 
     request := &models.DeleteOfficeMathObjectOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         Index: ToInt32Pointer(int32(0)),
         Optionals: options,
     }

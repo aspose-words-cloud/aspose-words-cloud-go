@@ -71,12 +71,13 @@ func Test_Lists_GetListsOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "DocumentElements/Lists/ListsGet.doc"
 
+    requestDocument := OpenFile(t, localFile)
 
     options := map[string]interface{}{
     }
 
     request := &models.GetListsOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         Optionals: options,
     }
 
@@ -123,12 +124,13 @@ func Test_Lists_GetListOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "DocumentElements/Lists/ListsGet.doc"
 
+    requestDocument := OpenFile(t, localFile)
 
     options := map[string]interface{}{
     }
 
     request := &models.GetListOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         ListId: ToInt32Pointer(int32(1)),
         Optionals: options,
     }
@@ -178,6 +180,7 @@ func Test_Lists_UpdateListOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "DocumentElements/Lists/ListsGet.doc"
 
+    requestDocument := OpenFile(t, localFile)
     requestListUpdate := models.ListUpdate{
         IsRestartAtEachSection: ToBoolPointer(true),
     }
@@ -186,7 +189,7 @@ func Test_Lists_UpdateListOnline(t *testing.T) {
     }
 
     request := &models.UpdateListOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         ListId: ToInt32Pointer(int32(1)),
         ListUpdate: requestListUpdate,
         Optionals: options,
@@ -241,6 +244,7 @@ func Test_Lists_UpdateListLevelOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "DocumentElements/Lists/ListsGet.doc"
 
+    requestDocument := OpenFile(t, localFile)
     requestListUpdate := models.ListLevelUpdate{
         Alignment: ToStringPointer("Right"),
     }
@@ -249,7 +253,7 @@ func Test_Lists_UpdateListLevelOnline(t *testing.T) {
     }
 
     request := &models.UpdateListLevelOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         ListId: ToInt32Pointer(int32(1)),
         ListUpdate: requestListUpdate,
         ListLevel: ToInt32Pointer(int32(1)),
@@ -307,6 +311,7 @@ func Test_Lists_InsertListOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     localFile := "DocumentElements/Lists/ListsGet.doc"
 
+    requestDocument := OpenFile(t, localFile)
     requestListInsert := models.ListInsert{
         Template: ToStringPointer("OutlineLegal"),
     }
@@ -315,7 +320,7 @@ func Test_Lists_InsertListOnline(t *testing.T) {
     }
 
     request := &models.InsertListOnlineRequest{
-        Document: OpenFile(t, localFile),
+        Document: requestDocument,
         ListInsert: requestListInsert,
         Optionals: options,
     }
