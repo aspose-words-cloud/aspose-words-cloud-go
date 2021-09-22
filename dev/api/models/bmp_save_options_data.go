@@ -96,9 +96,6 @@ type BmpSaveOptionsDataResult struct {
     PageIndex int32 `json:"PageIndex,omitempty"`
 
     // Container class for bmp save options.
-    GraphicsQualityOptions GraphicsQualityOptionsDataResult `json:"GraphicsQualityOptions,omitempty"`
-
-    // Container class for bmp save options.
     HorizontalResolution float64 `json:"HorizontalResolution,omitempty"`
 
     // Container class for bmp save options.
@@ -201,9 +198,6 @@ type BmpSaveOptionsData struct {
 
     // Container class for bmp save options.
     PageIndex *int32 `json:"PageIndex,omitempty"`
-
-    // Container class for bmp save options.
-    GraphicsQualityOptions IGraphicsQualityOptionsData `json:"GraphicsQualityOptions,omitempty"`
 
     // Container class for bmp save options.
     HorizontalResolution *float64 `json:"HorizontalResolution,omitempty"`

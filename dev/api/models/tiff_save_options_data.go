@@ -96,9 +96,6 @@ type TiffSaveOptionsDataResult struct {
     PageIndex int32 `json:"PageIndex,omitempty"`
 
     // Container class for tiff save options.
-    GraphicsQualityOptions GraphicsQualityOptionsDataResult `json:"GraphicsQualityOptions,omitempty"`
-
-    // Container class for tiff save options.
     HorizontalResolution float64 `json:"HorizontalResolution,omitempty"`
 
     // Container class for tiff save options.
@@ -210,9 +207,6 @@ type TiffSaveOptionsData struct {
 
     // Container class for tiff save options.
     PageIndex *int32 `json:"PageIndex,omitempty"`
-
-    // Container class for tiff save options.
-    GraphicsQualityOptions IGraphicsQualityOptionsData `json:"GraphicsQualityOptions,omitempty"`
 
     // Container class for tiff save options.
     HorizontalResolution *float64 `json:"HorizontalResolution,omitempty"`

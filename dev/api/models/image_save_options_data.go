@@ -96,9 +96,6 @@ type ImageSaveOptionsDataResult struct {
     PageIndex int32 `json:"PageIndex,omitempty"`
 
     // Container abstract class for image save options.
-    GraphicsQualityOptions GraphicsQualityOptionsDataResult `json:"GraphicsQualityOptions,omitempty"`
-
-    // Container abstract class for image save options.
     HorizontalResolution float64 `json:"HorizontalResolution,omitempty"`
 
     // Container abstract class for image save options.
@@ -201,9 +198,6 @@ type ImageSaveOptionsData struct {
 
     // Container abstract class for image save options.
     PageIndex *int32 `json:"PageIndex,omitempty"`
-
-    // Container abstract class for image save options.
-    GraphicsQualityOptions IGraphicsQualityOptionsData `json:"GraphicsQualityOptions,omitempty"`
 
     // Container abstract class for image save options.
     HorizontalResolution *float64 `json:"HorizontalResolution,omitempty"`

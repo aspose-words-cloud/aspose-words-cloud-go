@@ -96,9 +96,6 @@ type EmfSaveOptionsDataResult struct {
     PageIndex int32 `json:"PageIndex,omitempty"`
 
     // Container class for emf save options.
-    GraphicsQualityOptions GraphicsQualityOptionsDataResult `json:"GraphicsQualityOptions,omitempty"`
-
-    // Container class for emf save options.
     HorizontalResolution float64 `json:"HorizontalResolution,omitempty"`
 
     // Container class for emf save options.
@@ -201,9 +198,6 @@ type EmfSaveOptionsData struct {
 
     // Container class for emf save options.
     PageIndex *int32 `json:"PageIndex,omitempty"`
-
-    // Container class for emf save options.
-    GraphicsQualityOptions IGraphicsQualityOptionsData `json:"GraphicsQualityOptions,omitempty"`
 
     // Container class for emf save options.
     HorizontalResolution *float64 `json:"HorizontalResolution,omitempty"`
