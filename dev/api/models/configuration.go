@@ -57,6 +57,9 @@ var (
 
 	// ContextclientSecret takes an ClientSecret as authentication for the request
  	ContextClientSecret = contextKey("clientsecret")
+
+	 // ContextPasswordEncryptionKey takes a RSA key to encrypt passwords
+	 ContextPasswordEncryptionKey = "rsakey"
 )
 
 // BasicAuth provides basic http authentication to a request passed via context using ContextBasicAuth 

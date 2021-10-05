@@ -44,6 +44,7 @@ import (
 
     "github.com/aspose-words-cloud/aspose-words-cloud-go/dev/api"
     "github.com/aspose-words-cloud/aspose-words-cloud-go/dev/api/models"
+    "github.com/stretchr/testify/assert"
 )
 
 var remoteBaseTestDataFolder string = "Temp/SdkTests/Go/TestData"
@@ -307,4 +308,34 @@ func TestCreateWordsApi(t *testing.T) {
 
 func StringHasPrefix(str string, prefix string) bool {
 	return strings.HasPrefix(str, prefix)
+}
+
+func Test_Encrypted_Document(t *testing.T) {
+	config := ReadConfiguration(t)
+	client, ctx := PrepareTest(t, config)
+	remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Paragraphs"
+	localFile := "Common/DocWithPassword.docx"
+	remoteFileName := "TestGetEncryptedDocumentParagraphs.docx"
+
+	UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder+"/"+remoteFileName)
+
+	options := map[string]interface{}{
+		"nodePath": "sections/0",
+		"folder":   remoteDataFolder,
+		"password": "12345",
+	}
+
+	request := &models.GetParagraphsRequest{
+		Name:      ToStringPointer(remoteFileName),
+		Optionals: options,
+	}
+
+	actual, _, err := client.WordsApi.GetParagraphs(ctx, request)
+	if err != nil {
+		t.Error(err)
+	}
+
+	assert.NotNil(t, actual.Paragraphs, "Validate GetDocumentParagraphs response.")
+	assert.NotNil(t, actual.Paragraphs.ParagraphLinkList, "Validate GetDocumentParagraphs response.")
+	assert.Equal(t, 2, len(actual.Paragraphs.ParagraphLinkList), "Validate GetDocumentParagraphs response.")
 }
