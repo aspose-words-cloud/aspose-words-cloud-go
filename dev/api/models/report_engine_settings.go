@@ -39,7 +39,13 @@ type ReportEngineSettingsResult struct {
     DataSourceType string `json:"DataSourceType,omitempty"`
 
     // Report engine settings.
+    JsonDataLoadOptions JsonDataLoadOptionsResult `json:"JsonDataLoadOptions,omitempty"`
+
+    // Report engine settings.
     ReportBuildOptions []string `json:"ReportBuildOptions,omitempty"`
+
+    // Report engine settings.
+    XmlDataLoadOptions XmlDataLoadOptionsResult `json:"XmlDataLoadOptions,omitempty"`
 }
 
 type ReportEngineSettings struct {
@@ -53,7 +59,13 @@ type ReportEngineSettings struct {
     DataSourceType *string `json:"DataSourceType,omitempty"`
 
     // Report engine settings.
+    JsonDataLoadOptions IJsonDataLoadOptions `json:"JsonDataLoadOptions,omitempty"`
+
+    // Report engine settings.
     ReportBuildOptions []string `json:"ReportBuildOptions,omitempty"`
+
+    // Report engine settings.
+    XmlDataLoadOptions IXmlDataLoadOptions `json:"XmlDataLoadOptions,omitempty"`
 }
 
 type IReportEngineSettings interface {
