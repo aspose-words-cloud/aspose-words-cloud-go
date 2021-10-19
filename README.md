@@ -16,6 +16,13 @@ Feel free to explore the [Developer's Guide](https://docs.aspose.cloud/display/w
 - Add & remove watermarks and protection.
 - Read & write access to Document Object Model.
 
+## Enhancements in Version 21.10
+
+- Removed 'GraphicsQualityOptions' image save option as it no longer supported.
+- Added query parameter 'displayIntermediateResults' for batch requests. If 'false', the last response in batch will be returned only. Default is 'true'
+- Added 'JsonDataLoadOptions' and 'XmlDataLoadOptions' to 'ReportEngineSettings'
+
+
 ## Enhancements in Version 21.8
 
 - Added new api methods to get, insert, update or delete custom xml parts from documents.
@@ -170,11 +177,11 @@ Firstly, create an account at [Aspose for Cloud](https://dashboard.aspose.cloud/
 
 From Visual Stuio Code:
 
-	Add "github.com/aspose-words-cloud/aspose-words-cloud-go/v2109/api" and "github.com/aspose-words-cloud/aspose-words-cloud-go/v2109/api/models" in the import section of your code
+	Add "github.com/aspose-words-cloud/aspose-words-cloud-go/v2007/api" and "github.com/aspose-words-cloud/aspose-words-cloud-go/v2007/api/models" in the import section of your code
 
 From the command line:
 
-	go get -v github.com/aspose-words-cloud/aspose-words-cloud-go/v2109/api
+	go get -v github.com/aspose-words-cloud/aspose-words-cloud-go/2007/api
 
 The complete source code is available at [GitHub Repository](https://github.com/aspose-words-cloud/aspose-words-cloud-go).
 

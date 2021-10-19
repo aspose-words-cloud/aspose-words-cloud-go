@@ -30,6 +30,10 @@ package api
 import (
     "bytes"
     "context"
+	"crypto/rand"
+	"crypto/rsa"
+	"encoding/base64"
+	"encoding/binary"
     "encoding/json"
     "encoding/xml"
     "errors"
@@ -37,6 +41,7 @@ import (
     "io"
     "io/ioutil"
     "log"
+	"math/big"
     "mime"
     "mime/multipart"
     "net/http"
@@ -51,8 +56,8 @@ import (
     "time"
     "unicode/utf8"
 
-    "golang.org/x/oauth2"
     "github.com/aspose-words-cloud/aspose-words-cloud-go/dev/api/models"
+    "golang.org/x/oauth2"
 )
 
 var (
@@ -60,7 +65,7 @@ var (
     xmlCheck = regexp.MustCompile("(?i:[application|text]/xml)")
 )
 
-// APIClient manages communication with the Aspose.Words for Cloud API Reference API v21.9
+// APIClient manages communication with the Aspose.Words for Cloud API Reference API v21.10
 // In most cases there should be only one, shared, APIClient.
 type APIClient struct {
     cfg 	*models.Configuration
@@ -189,7 +194,41 @@ func (c *APIClient) NewContextWithToken(ctx context.Context) (ctxWithToken conte
         return nil, err
     }
 
-    return context.WithValue(ctx, models.ContextAccessToken, result.AccessToken), nil
+
+	contextWithToken := context.WithValue(ctx, models.ContextAccessToken, result.AccessToken)
+
+	rsaKeyData, _, err := c.WordsApi.GetPublicKey(contextWithToken, &models.GetPublicKeyRequest{})
+
+	if err != nil {
+		return nil, err
+	}
+
+    exponentBytes, err := base64.StdEncoding.DecodeString(rsaKeyData.Exponent) 
+
+	if err != nil {
+		return nil, err
+	}
+
+	var eBytes []byte
+	if len(exponentBytes) < 8 {
+		eBytes = make([]byte, 8-len(exponentBytes), 8)
+		eBytes = append(eBytes, exponentBytes...)
+	} else {
+		eBytes = exponentBytes
+	}
+
+	modulusBytes, err := base64.StdEncoding.DecodeString(rsaKeyData.Modulus)
+
+	if err != nil {
+		return nil, err
+	}
+
+	publicKey := rsa.PublicKey{
+		N: big.NewInt(0).SetBytes(modulusBytes),
+		E: int(binary.BigEndian.Uint64(eBytes)),
+	}
+
+	return context.WithValue(contextWithToken, models.ContextPasswordEncryptionKey, publicKey), nil
 }
 
 // prepareRequest build the request
@@ -255,7 +294,17 @@ func (c *APIClient) prepareRequest (
     query := url.Query()
     for k, v := range data.QueryParams {
         for _, iv := range v {
-            query.Add(k, iv)
+            if k == "Password" && iv != "" {
+                encrypted, err := encrypt(ctx, iv)
+
+                if err != nil {
+                    return nil, err
+                }
+
+                query.Add("encryptedPassword", encrypted)
+            } else  {
+                query.Add(k, iv)
+            }
         }
     }
 
@@ -316,6 +365,23 @@ func (c *APIClient) prepareRequest (
     return request, nil
 }
 
+// encrypt string with RSA key from context
+func encrypt(ctx context.Context, data string) (string, error) {
+
+    if ctx.Value(models.ContextPasswordEncryptionKey) == nil {
+        return "", errors.New("Context doesn't contain RSA key")
+    }
+
+    key := ctx.Value(models.ContextPasswordEncryptionKey).(rsa.PublicKey)
+
+    encrypted, err := rsa.EncryptPKCS1v15(rand.Reader, &key, []byte(data))
+
+    if err != nil {
+        return "", err
+    }
+
+    return base64.StdEncoding.EncodeToString(encrypted), nil
+}
 
 // Add a file to the multipart request
 func addFile(w *multipart.Writer, fieldName, path string) error {
