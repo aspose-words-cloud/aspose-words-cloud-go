@@ -14806,7 +14806,23 @@ func (a *WordsApiService) UploadFile(ctx context.Context, data *models.UploadFil
  * @param ctx context.Context for authentication, logging, tracing, etc.
  * @requests to be called as one call.
 @return array of results */
+/* WordsApiService Batch request.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @requests to be called as one call.
+@return array of results */
 func (a *WordsApiService) Batch(ctx context.Context, requests ...models.BatchPartRequest) ([]interface{}, *http.Response, error) {
+	return a.batch(ctx, false, requests)
+}
+
+/* WordsApiService Batch request without intermediate results.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @requests to be called as one call.
+@return array with one element (a result of last executed request). */
+func (a *WordsApiService) BatchWithoutIntermidiateResults(ctx context.Context, requests ...models.BatchPartRequest) ([]interface{}, *http.Response, error) {
+	return a.batch(ctx, true, requests)
+}
+
+func (a *WordsApiService) batch(ctx context.Context, withoutIntermediateResults bool, requests []models.BatchPartRequest) ([]interface{}, *http.Response, error) {
 
 	if requests == nil || len(requests) == 0 {
 		return nil, nil, errors.New("The Batch method requires one or more requests.")
@@ -14880,7 +14896,12 @@ func (a *WordsApiService) Batch(ctx context.Context, requests ...models.BatchPar
 		writer.Close()
 	}()
 
-	request, err := http.NewRequest("PUT", a.client.cfg.BaseUrl+"/words/batch", reader)
+    url := a.client.cfg.BaseUrl+"/words/batch"
+    if withoutIntermediateResults {
+        url = url + "?displayIntermediateResults=false"
+    }
+
+	request, err := http.NewRequest("PUT", url, reader)
 	if err != nil {
 		return nil, nil, err
 	}
