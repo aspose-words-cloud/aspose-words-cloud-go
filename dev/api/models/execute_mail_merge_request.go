@@ -41,6 +41,7 @@ type ExecuteMailMergeRequest struct {
         Name *string
     /* optional (nil or map[string]interface{}) with one or more of key / value pairs:
         key: "data" value: (*string) Mail merge data.
+        key: "options" value: (IFieldOptions) Mail merge options.
         key: "folder" value: (*string) Original document folder.
         key: "storage" value: (*string) Original document storage.
         key: "loadEncoding" value: (*string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
@@ -172,6 +173,11 @@ func (data *ExecuteMailMergeRequest) CreateRequestData() (RequestData, error) {
 
     if localVarTempParam, localVarOk := data.Optionals["data"].(string); localVarOk {
         result.FormParams = append(result.FormParams, NewTextFormParamContainer("Data", parameterToString(localVarTempParam, "")))
+    }
+
+
+    if localVarTempParam, localVarOk := data.Optionals["options"].(models.FieldOptions); localVarOk {
+        result.FormParams = append(result.FormParams, NewTextFormParamContainer("Options", parameterToString(localVarTempParam, "")))
     }
 
 
