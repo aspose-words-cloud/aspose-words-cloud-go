@@ -129,7 +129,7 @@ func (data *ExecuteMailMergeOnlineRequest) CreateRequestData() (RequestData, err
     }
 
 
-    if localVarTempParam, localVarOk := data.Optionals["options"].(models.FieldOptions); localVarOk {
+    if localVarTempParam, localVarOk := data.Optionals["options"].(FieldOptions); localVarOk {
         result.FormParams = append(result.FormParams, NewTextFormParamContainer("Options", parameterToString(localVarTempParam, "")))
     }
 
