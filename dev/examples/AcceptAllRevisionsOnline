@@ -1,6 +1,6 @@
 config, _ := models.NewConfiguration("config.json")
 wordsApi, ctx, _ := api.CreateWordsApi(config)
-fileName := "test_doc.docx"
+fileName:= "test_doc.docx"
 
 // Calls AcceptAllRevisionsOnline method for document in cloud.
 requestDocument, _ := os.Open(fileName)
