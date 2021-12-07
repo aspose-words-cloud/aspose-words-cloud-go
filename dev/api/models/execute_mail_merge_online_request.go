@@ -41,7 +41,7 @@ type ExecuteMailMergeOnlineRequest struct {
         // File with mailmerge data.
         Data io.ReadCloser
     /* optional (nil or map[string]interface{}) with one or more of key / value pairs:
-        key: "options" value: (IFieldOptions) Mail merge options.
+        key: "options" value: (IFieldOptions) Field options.
         key: "withRegions" value: (*bool) The flag indicating whether to execute Mail Merge operation with regions.
         key: "cleanup" value: (*string) The cleanup options.
         key: "documentFileName" value: (*string) The filename of the output document, that will be used when the resulting document has a dynamic field {filename}. If it is not set, the "template" will be used instead. */

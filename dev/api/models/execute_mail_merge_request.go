@@ -41,7 +41,7 @@ type ExecuteMailMergeRequest struct {
         Name *string
     /* optional (nil or map[string]interface{}) with one or more of key / value pairs:
         key: "data" value: (*string) Mail merge data.
-        key: "options" value: (IFieldOptions) Mail merge options.
+        key: "options" value: (IFieldOptions) Field options.
         key: "folder" value: (*string) Original document folder.
         key: "storage" value: (*string) Original document storage.
         key: "loadEncoding" value: (*string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.

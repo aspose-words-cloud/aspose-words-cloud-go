@@ -36,4 +36,5 @@ const (
     ALLOWMISSINGMEMBERS ReportBuildOptions = "AllowMissingMembers"
     REMOVEEMPTYPARAGRAPHS ReportBuildOptions = "RemoveEmptyParagraphs"
     INLINEERRORMESSAGES ReportBuildOptions = "InlineErrorMessages"
+    USELEGACYHEADERFOOTERVISITING ReportBuildOptions = "UseLegacyHeaderFooterVisiting"
 )
