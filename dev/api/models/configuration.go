@@ -33,6 +33,7 @@ import (
 	"net/http"
 	"net/url"
 	"path"
+    "time"
 )
 
 // contextKeys are used to identify the type of value in the context.
@@ -81,6 +82,7 @@ type Configuration struct {
 	DebugMode     bool              `json:"DebugMode,omitempty"`
 	DefaultHeader map[string]string `json:"DefaultHeader,omitempty"`
 	HttpClient    *http.Client
+    Timeout       time.Duration
 }
 
 func NewConfiguration(configFilePath string) (pConfig *Configuration, err error) {
@@ -94,7 +96,7 @@ func NewConfiguration(configFilePath string) (pConfig *Configuration, err error)
 	cfg := Configuration{
 		BaseUrl:       "https://api.aspose.cloud",
 		DebugMode:     false,
-		DefaultHeader: map[string]string{"x-aspose-client": "go sdk", "x-aspose-client-version": "21.11"},
+		DefaultHeader: map[string]string{"x-aspose-client": "go sdk", "x-aspose-client-version": "21.12"},
 	}
 	err = json.Unmarshal(data, &cfg)
 
