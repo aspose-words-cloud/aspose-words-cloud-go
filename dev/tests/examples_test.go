@@ -37,7 +37,7 @@ func Test_Examples_AcceptAllRevisions(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
     wordsApi := client.WordsApi
-    fileName := "test_doc.docx"
+    fileName:= "test_doc.docx"
 
     // Upload original document to cloud storage.
     myVar1, _ := os.Open(documentsDir + "/" + fileName)
@@ -66,7 +66,7 @@ func Test_Examples_AcceptAllRevisionsOnline(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     UploadNextFileToStorage(t, ctx, client, documentsDir + "/test_doc.docx", "test_doc.docx")
     wordsApi := client.WordsApi
-    fileName := "test_doc.docx"
+    fileName:= "test_doc.docx"
 
     // Calls AcceptAllRevisionsOnline method for document in cloud.
     requestDocument, _ := os.Open(documentsDir + "/" + fileName)

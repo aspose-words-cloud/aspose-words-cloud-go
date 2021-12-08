@@ -65,7 +65,7 @@ var (
     xmlCheck = regexp.MustCompile("(?i:[application|text]/xml)")
 )
 
-// APIClient manages communication with the Aspose.Words for Cloud API Reference API v21.11
+// APIClient manages communication with the Aspose.Words for Cloud API Reference API v21.12
 // In most cases there should be only one, shared, APIClient.
 type APIClient struct {
     cfg 	*models.Configuration
@@ -89,6 +89,10 @@ func NewAPIClient(cfg *models.Configuration) (client *APIClient, err error) {
     if cfg.ClientId == "" {
         return nil, errors.New("ClientId must be non-empty string")
     }
+
+	if cfg.Timeout == 0 {
+		cfg.HttpClient.Timeout = cfg.Timeout
+	}
 
     if cfg.ClientSecret == "" {
         return nil, errors.New("ClientSecret must be non-empty string")

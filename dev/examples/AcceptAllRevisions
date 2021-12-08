@@ -5,7 +5,7 @@ import (
 
 config, _ := models.NewConfiguration("config.json")
 wordsApi, ctx, _ := api.CreateWordsApi(config)
-fileName := "test_doc.docx"
+fileName:= "test_doc.docx"
 
 // Upload original document to cloud storage.
 myVar1, _ := os.Open(fileName)
