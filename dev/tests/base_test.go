@@ -31,7 +31,6 @@ import (
     "bytes"
     "context"
     "crypto/rand"
-    "time"
     "fmt"
     "io/ioutil"
     "log"
@@ -41,6 +40,7 @@ import (
     "runtime"
     "strings"
     "testing"
+    "time"
 
     "github.com/aspose-words-cloud/aspose-words-cloud-go/dev/api"
     "github.com/aspose-words-cloud/aspose-words-cloud-go/dev/api/models"
@@ -121,6 +121,8 @@ func GetConfigFilePath() (path string) {
 }
 
 func PrepareTest(t *testing.T, config *models.Configuration) (apiClient *api.APIClient, ctx context.Context) {
+
+    config.Timeout = time.Minute
 	client, err := api.NewAPIClient(config)
 
 	if err != nil {
