@@ -6,11 +6,14 @@ properties([
 			[$class: 'StringParameterDefinition', name: 'apiUrl', defaultValue: 'https://api-qa.aspose.cloud', description: 'api url'],
             [$class: 'BooleanParameterDefinition', name: 'ignoreCiSkip', defaultValue: false, description: 'ignore CI Skip'],
             [$class: 'StringParameterDefinition', name: 'credentialsId', defaultValue: '6839cbe8-39fa-40c0-86ce-90706f0bae5d', description: 'credentials id'],
+            [$class: 'BooleanParameterDefinition', name: 'packageTesting', defaultValue: false, description: 'Testing package from repository without local sources. Used for prodhealthcheck'],
 		]
 	]
 ])
 
 def needToBuild = false
+def packageTesting = false
+def currentFolder = "dev"
 
 node('win2019') {
 	try {
@@ -21,26 +24,37 @@ node('win2019') {
                 bat 'git show -s HEAD > gitMessage'
                 def commitMessage = readFile('gitMessage').trim()
                 echo commitMessage
-                needToBuild = params.ignoreCiSkip || !commitMessage.contains('[ci skip]')               
+                needToBuild = params.ignoreCiSkip || !commitMessage.contains('[ci skip]')
+                packageTesting = params.packageTesting
                 bat 'git clean -fdx'
 			}
 		}
         
         if (needToBuild) {
-            gitlabCommitStatus("tests") {
-                stage('tests') {
-                    withCredentials([usernamePassword(credentialsId: params.credentialsId, passwordVariable: 'ClientSecret', usernameVariable: 'ClientId')]) {
-                        try {
-                            bat 'Scripts\\RunTestsInDocker.bat'
-                        } 
-                        finally {
-                            junit '**\\testReport.xml'
+            if (packageTesting) {
+                gitlabCommitStatus("health check tests") {
+                    stage('remove sources and redefine referencies'){
+                        currentFolder = powershell(returnStdout: true, script:"echo (Get-ChildItem -Path v* -Directory | Sort-Object -Property Name | Select -Last 1).Name").trim()
+                        bat "Scripts\\RunHealthCheckTestsInDocker.bat ${currentFolder}"
+                    }
+                }
+            }
+            else {
+                gitlabCommitStatus("tests") {
+                    stage('tests') {
+                        withCredentials([usernamePassword(credentialsId: params.credentialsId, passwordVariable: 'ClientSecret', usernameVariable: 'ClientId')]) {
+                            try {
+                                bat "Scripts\\RunTestsInDocker.bat"
+                            } 
+                            finally {
+                                junit '**\\testReport.xml'
+                            }
                         }
                     }
                 }
             }
         }
 	} finally {
-		deleteDir()
+		deleteDir( )
 	}
 }
