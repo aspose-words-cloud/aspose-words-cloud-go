@@ -6,4 +6,4 @@ move words_api.go api\words_api.go
 go mod edit -module github.com/aspose-words-cloud/aspose-words-cloud-go-testing
 go mod tidy
 cd ..
-Scripts\RunTestsStandalone.bat %1
+c:/sdk/Scripts/RunTestsStandalone.bat %1
