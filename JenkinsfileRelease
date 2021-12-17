@@ -40,6 +40,12 @@ node('win2019') {
 				}
 			}
 		}
+        
+		gitlabCommitStatus("announce a package") {
+			stage('announce a package') {
+                powershell 'echo (New-Object System.Net.WebClient).DownloadString("https://proxy.golang.org/github.com/aspose-words-cloud/aspose-words-cloud-go/@v/$env:SDK_VERSION.info")'
+            }
+        }
 	} finally {
 		deleteDir()
 	}
