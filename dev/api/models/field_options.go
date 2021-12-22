@@ -45,6 +45,9 @@ type FieldOptionsResult struct {
     FieldIndexFormat string `json:"FieldIndexFormat,omitempty"`
 
     // DTO for field options.
+    FieldUpdateCultureName string `json:"FieldUpdateCultureName,omitempty"`
+
+    // DTO for field options.
     FieldUpdateCultureSource string `json:"FieldUpdateCultureSource,omitempty"`
 
     // DTO for field options.
@@ -81,6 +84,9 @@ type FieldOptions struct {
 
     // DTO for field options.
     FieldIndexFormat *string `json:"FieldIndexFormat,omitempty"`
+
+    // DTO for field options.
+    FieldUpdateCultureName *string `json:"FieldUpdateCultureName,omitempty"`
 
     // DTO for field options.
     FieldUpdateCultureSource *string `json:"FieldUpdateCultureSource,omitempty"`
