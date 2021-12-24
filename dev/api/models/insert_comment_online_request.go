@@ -44,7 +44,8 @@ type InsertCommentOnlineRequest struct {
         Comment ICommentInsert
     /* optional (nil or map[string]interface{}) with one or more of key / value pairs:
         key: "loadEncoding" value: (*string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
-        key: "password" value: (*string) Password for opening an encrypted document.
+        key: "password" value: (*string) Password for opening an encrypted document. The password is provided as is (obsolete).
+        key: "encryptedPassword" value: (*string) Password for opening an encrypted document. The password must be encrypted on RSA public key provided by GetPublicKey() method and then encoded as base64 string.
         key: "destFileName" value: (*string) Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.
         key: "revisionAuthor" value: (*string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
         key: "revisionDateTime" value: (*string) The date and time to use for revisions. */
@@ -74,6 +75,9 @@ func (data *InsertCommentOnlineRequest) CreateRequestData() (RequestData, error)
     if err := typeCheckParameter(data.Optionals["password"], "string", "data.Optionals[password]"); err != nil {
         return result, err
     }
+    if err := typeCheckParameter(data.Optionals["encryptedPassword"], "string", "data.Optionals[encryptedPassword]"); err != nil {
+        return result, err
+    }
     if err := typeCheckParameter(data.Optionals["destFileName"], "string", "data.Optionals[destFileName]"); err != nil {
         return result, err
     }
@@ -92,6 +96,11 @@ func (data *InsertCommentOnlineRequest) CreateRequestData() (RequestData, error)
 
     if localVarTempParam, localVarOk := data.Optionals["password"].(string); localVarOk {
         result.QueryParams.Add("Password", parameterToString(localVarTempParam, ""))
+    }
+
+
+    if localVarTempParam, localVarOk := data.Optionals["encryptedPassword"].(string); localVarOk {
+        result.QueryParams.Add("EncryptedPassword", parameterToString(localVarTempParam, ""))
     }
 
 

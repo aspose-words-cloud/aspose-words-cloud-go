@@ -44,7 +44,8 @@ type SaveAsTiffOnlineRequest struct {
         SaveOptions ITiffSaveOptionsData
     /* optional (nil or map[string]interface{}) with one or more of key / value pairs:
         key: "loadEncoding" value: (*string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
-        key: "password" value: (*string) Password for opening an encrypted document.
+        key: "password" value: (*string) Password for opening an encrypted document. The password is provided as is (obsolete).
+        key: "encryptedPassword" value: (*string) Password for opening an encrypted document. The password must be encrypted on RSA public key provided by GetPublicKey() method and then encoded as base64 string.
         key: "useAntiAliasing" value: (*bool) The flag indicating whether to use antialiasing.
         key: "useHighQualityRendering" value: (*bool) The flag indicating whether to use high quality.
         key: "imageBrightness" value: (*float64) The level of brightness for the generated images.
@@ -87,6 +88,9 @@ func (data *SaveAsTiffOnlineRequest) CreateRequestData() (RequestData, error) {
         return result, err
     }
     if err := typeCheckParameter(data.Optionals["password"], "string", "data.Optionals[password]"); err != nil {
+        return result, err
+    }
+    if err := typeCheckParameter(data.Optionals["encryptedPassword"], "string", "data.Optionals[encryptedPassword]"); err != nil {
         return result, err
     }
     if err := typeCheckParameter(data.Optionals["useAntiAliasing"], "bool", "data.Optionals[useAntiAliasing]"); err != nil {
@@ -152,6 +156,11 @@ func (data *SaveAsTiffOnlineRequest) CreateRequestData() (RequestData, error) {
 
     if localVarTempParam, localVarOk := data.Optionals["password"].(string); localVarOk {
         result.QueryParams.Add("Password", parameterToString(localVarTempParam, ""))
+    }
+
+
+    if localVarTempParam, localVarOk := data.Optionals["encryptedPassword"].(string); localVarOk {
+        result.QueryParams.Add("EncryptedPassword", parameterToString(localVarTempParam, ""))
     }
 
 
