@@ -121,6 +121,12 @@ func atoi(in string) (int, error) {
 // callAPI do the request. 
 func (c *APIClient) callAPI(request *http.Request) (resp *http.Response, err error) {
 
+	defer func() {
+		if p := recover(); p != nil {
+			panic(fmt.Sprintf("request error: %v", p))
+		}
+	}()
+
     // log request
     if c.cfg.DebugMode {
         dumpRequest, err := httputil.DumpRequest(request, true)
@@ -134,7 +140,7 @@ func (c *APIClient) callAPI(request *http.Request) (resp *http.Response, err err
     response, err := c.cfg.HttpClient.Do(request)
 
     if err != nil {
-        return response, err
+        return response, fmt.Errorf("%s request error: %w", request.URL.String(), err)
     }
 
     if c.cfg.DebugMode {
