@@ -5,6 +5,7 @@ properties([
 node('win2019') {
 	try {
 		env.SDK_VERSION = powershell(returnStdout: true, script:'$re = (ConvertFrom-Json -InputObject (New-Object System.Net.WebClient).DownloadString("https://api.aspose.cloud/v4.0/words/swagger/spec")).info.version -match "^(\\d+)\\.(\\d+)"; $version = $matches[1] + ("{0:d2}" -f [int]$matches[2]); echo ("v" + $version + ".0.0")').trim()
+        env.SHORT_SDK_VERSION = powershell(returnStdout: true, script:'echo $env:SDK_VERSION.Substring(0,5)').trim()
 		
 		gitlabCommitStatus("checkout") {
 			stage('checkout'){
@@ -43,7 +44,8 @@ node('win2019') {
         
 		gitlabCommitStatus("announce a package") {
 			stage('announce a package') {
-                powershell 'echo (New-Object System.Net.WebClient).DownloadString("https://proxy.golang.org/github.com/aspose-words-cloud/aspose-words-cloud-go/@v/$env:SDK_VERSION.info")'
+                env.SHORT_SDK_VERSION = powershell(returnStdout: true, script:'echo $env:SDK_VERSION.Substring(0,5)').trim()
+                powershell 'echo (New-Object System.Net.WebClient).DownloadString("https://proxy.golang.org/github.com/aspose-words-cloud/aspose-words-cloud-go/$env:SHORT_SDK_VERSION/@v/$env:SDK_VERSION.info")'
             }
         }
 	} finally {
