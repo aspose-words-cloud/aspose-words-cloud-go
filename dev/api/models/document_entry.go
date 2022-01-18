@@ -1,7 +1,7 @@
 /*
  * --------------------------------------------------------------------------------
  * <copyright company="Aspose" file="document_entry.go">
- *   Copyright (c) 2021 Aspose.Words for Cloud
+ *   Copyright (c) 2022 Aspose.Words for Cloud
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -34,6 +34,9 @@ type DocumentEntryResult struct {
 
     // Represents a document which will be appended to the original resource document.
     ImportFormatMode string `json:"ImportFormatMode,omitempty"`
+
+    // Represents a document which will be appended to the original resource document.
+    Password string `json:"Password,omitempty"`
 }
 
 type DocumentEntry struct {
@@ -42,6 +45,9 @@ type DocumentEntry struct {
 
     // Represents a document which will be appended to the original resource document.
     ImportFormatMode *string `json:"ImportFormatMode,omitempty"`
+
+    // Represents a document which will be appended to the original resource document.
+    Password *string `json:"Password,omitempty"`
 }
 
 type IDocumentEntry interface {

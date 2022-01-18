@@ -1,7 +1,7 @@
 /*
  * --------------------------------------------------------------------------------
  * <copyright company="Aspose" file="configuration.go">
- *   Copyright (c) 2021 Aspose.Words for Cloud
+ *   Copyright (c) 2022 Aspose.Words for Cloud
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -96,7 +96,7 @@ func NewConfiguration(configFilePath string) (pConfig *Configuration, err error)
 	cfg := Configuration{
 		BaseUrl:       "https://api.aspose.cloud",
 		DebugMode:     false,
-		DefaultHeader: map[string]string{"x-aspose-client": "go sdk", "x-aspose-client-version": "21.12"},
+		DefaultHeader: map[string]string{"x-aspose-client": "go sdk", "x-aspose-client-version": "22.1"},
 	}
 	err = json.Unmarshal(data, &cfg)
 

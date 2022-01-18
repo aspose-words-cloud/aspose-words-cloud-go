@@ -1,7 +1,7 @@
 /*
  * --------------------------------------------------------------------------------
  * <copyright company="Aspose" file="get_document_statistics_request.go">
- *   Copyright (c) 2021 Aspose.Words for Cloud
+ *   Copyright (c) 2022 Aspose.Words for Cloud
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -43,7 +43,8 @@ type GetDocumentStatisticsRequest struct {
         key: "folder" value: (*string) Original document folder.
         key: "storage" value: (*string) Original document storage.
         key: "loadEncoding" value: (*string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
-        key: "password" value: (*string) Password for opening an encrypted document.
+        key: "password" value: (*string) Password of protected Word document. Use the parameter to pass a password via SDK. SDK encrypts it automatically. We don't recommend to use the parameter to pass a plain password for direct call of API.
+        key: "encryptedPassword" value: (*string) Password of protected Word document. Use the parameter to pass an encrypted password for direct calls of API. See SDK code for encyption details.
         key: "includeComments" value: (*bool) The flag indicating whether to include comments from the WordCount. The default value is "false".
         key: "includeFootnotes" value: (*bool) The flag indicating whether to include footnotes from the WordCount. The default value is "false".
         key: "includeTextInShapes" value: (*bool) The flag indicating whether to include shape's text from the WordCount. The default value is "false". */
@@ -80,6 +81,9 @@ func (data *GetDocumentStatisticsRequest) CreateRequestData() (RequestData, erro
     if err := typeCheckParameter(data.Optionals["password"], "string", "data.Optionals[password]"); err != nil {
         return result, err
     }
+    if err := typeCheckParameter(data.Optionals["encryptedPassword"], "string", "data.Optionals[encryptedPassword]"); err != nil {
+        return result, err
+    }
     if err := typeCheckParameter(data.Optionals["includeComments"], "bool", "data.Optionals[includeComments]"); err != nil {
         return result, err
     }
@@ -108,6 +112,11 @@ func (data *GetDocumentStatisticsRequest) CreateRequestData() (RequestData, erro
 
     if localVarTempParam, localVarOk := data.Optionals["password"].(string); localVarOk {
         result.QueryParams.Add("Password", parameterToString(localVarTempParam, ""))
+    }
+
+
+    if localVarTempParam, localVarOk := data.Optionals["encryptedPassword"].(string); localVarOk {
+        result.QueryParams.Add("EncryptedPassword", parameterToString(localVarTempParam, ""))
     }
 
 
