@@ -1,6 +1,6 @@
 /*
  * --------------------------------------------------------------------------------
- * <copyright company="Aspose" file="ps_save_options_data.go">
+ * <copyright company="Aspose" file="docx_save_options_data.go">
  *   Copyright (c) 2022 Aspose.Words for Cloud
  * </copyright>
  * <summary>
@@ -27,157 +27,133 @@
 
 package models
 
-// Container class for ps save options.
-type PsSaveOptionsDataResult struct {
-    // Container class for ps save options.
+// Container class for docx save options.
+type DocxSaveOptionsDataResult struct {
+    // Container class for docx save options.
     AllowEmbeddingPostScriptFonts bool `json:"AllowEmbeddingPostScriptFonts,omitempty"`
 
-    // Container class for ps save options.
+    // Container class for docx save options.
     CustomTimeZoneInfoData TimeZoneInfoDataResult `json:"CustomTimeZoneInfoData,omitempty"`
 
-    // Container class for ps save options.
+    // Container class for docx save options.
     Dml3DEffectsRenderingMode string `json:"Dml3DEffectsRenderingMode,omitempty"`
 
-    // Container class for ps save options.
+    // Container class for docx save options.
     DmlEffectsRenderingMode string `json:"DmlEffectsRenderingMode,omitempty"`
 
-    // Container class for ps save options.
+    // Container class for docx save options.
     DmlRenderingMode string `json:"DmlRenderingMode,omitempty"`
 
-    // Container class for ps save options.
+    // Container class for docx save options.
     FileName string `json:"FileName,omitempty"`
 
-    // Container class for ps save options.
+    // Container class for docx save options.
     FlatOpcXmlMappingOnly bool `json:"FlatOpcXmlMappingOnly,omitempty"`
 
-    // Container class for ps save options.
+    // Container class for docx save options.
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
-    // Container class for ps save options.
+    // Container class for docx save options.
     UpdateCreatedTimeProperty bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
-    // Container class for ps save options.
+    // Container class for docx save options.
     UpdateFields bool `json:"UpdateFields,omitempty"`
 
-    // Container class for ps save options.
+    // Container class for docx save options.
     UpdateLastPrintedProperty bool `json:"UpdateLastPrintedProperty,omitempty"`
 
-    // Container class for ps save options.
+    // Container class for docx save options.
     UpdateLastSavedTimeProperty bool `json:"UpdateLastSavedTimeProperty,omitempty"`
 
-    // Container class for ps save options.
+    // Container class for docx save options.
     UpdateSdtContent bool `json:"UpdateSdtContent,omitempty"`
 
-    // Container class for ps save options.
+    // Container class for docx save options.
     ZipOutput bool `json:"ZipOutput,omitempty"`
 
-    // Container class for ps save options.
-    ColorMode string `json:"ColorMode,omitempty"`
+    // Container class for docx save options.
+    Compliance string `json:"Compliance,omitempty"`
 
-    // Container class for ps save options.
-    JpegQuality int32 `json:"JpegQuality,omitempty"`
+    // Container class for docx save options.
+    CompressionLevel string `json:"CompressionLevel,omitempty"`
 
-    // Container class for ps save options.
-    MetafileRenderingOptions MetafileRenderingOptionsDataResult `json:"MetafileRenderingOptions,omitempty"`
+    // Container class for docx save options.
+    Password string `json:"Password,omitempty"`
 
-    // Container class for ps save options.
-    NumeralFormat string `json:"NumeralFormat,omitempty"`
+    // Container class for docx save options.
+    PrettyFormat bool `json:"PrettyFormat,omitempty"`
 
-    // Container class for ps save options.
-    OptimizeOutput bool `json:"OptimizeOutput,omitempty"`
-
-    // Container class for ps save options.
-    PageCount int32 `json:"PageCount,omitempty"`
-
-    // Container class for ps save options.
-    PageIndex int32 `json:"PageIndex,omitempty"`
-
-    // Container class for ps save options.
+    // Container class for docx save options.
     SaveFormat string `json:"SaveFormat,omitempty"`
-
-    // Container class for ps save options.
-    UseBookFoldPrintingSettings bool `json:"UseBookFoldPrintingSettings,omitempty"`
 }
 
-type PsSaveOptionsData struct {
-    // Container class for ps save options.
+type DocxSaveOptionsData struct {
+    // Container class for docx save options.
     AllowEmbeddingPostScriptFonts *bool `json:"AllowEmbeddingPostScriptFonts,omitempty"`
 
-    // Container class for ps save options.
+    // Container class for docx save options.
     CustomTimeZoneInfoData ITimeZoneInfoData `json:"CustomTimeZoneInfoData,omitempty"`
 
-    // Container class for ps save options.
+    // Container class for docx save options.
     Dml3DEffectsRenderingMode *string `json:"Dml3DEffectsRenderingMode,omitempty"`
 
-    // Container class for ps save options.
+    // Container class for docx save options.
     DmlEffectsRenderingMode *string `json:"DmlEffectsRenderingMode,omitempty"`
 
-    // Container class for ps save options.
+    // Container class for docx save options.
     DmlRenderingMode *string `json:"DmlRenderingMode,omitempty"`
 
-    // Container class for ps save options.
+    // Container class for docx save options.
     FileName *string `json:"FileName,omitempty"`
 
-    // Container class for ps save options.
+    // Container class for docx save options.
     FlatOpcXmlMappingOnly *bool `json:"FlatOpcXmlMappingOnly,omitempty"`
 
-    // Container class for ps save options.
+    // Container class for docx save options.
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
 
-    // Container class for ps save options.
+    // Container class for docx save options.
     UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
-    // Container class for ps save options.
+    // Container class for docx save options.
     UpdateFields *bool `json:"UpdateFields,omitempty"`
 
-    // Container class for ps save options.
+    // Container class for docx save options.
     UpdateLastPrintedProperty *bool `json:"UpdateLastPrintedProperty,omitempty"`
 
-    // Container class for ps save options.
+    // Container class for docx save options.
     UpdateLastSavedTimeProperty *bool `json:"UpdateLastSavedTimeProperty,omitempty"`
 
-    // Container class for ps save options.
+    // Container class for docx save options.
     UpdateSdtContent *bool `json:"UpdateSdtContent,omitempty"`
 
-    // Container class for ps save options.
+    // Container class for docx save options.
     ZipOutput *bool `json:"ZipOutput,omitempty"`
 
-    // Container class for ps save options.
-    ColorMode *string `json:"ColorMode,omitempty"`
+    // Container class for docx save options.
+    Compliance *string `json:"Compliance,omitempty"`
 
-    // Container class for ps save options.
-    JpegQuality *int32 `json:"JpegQuality,omitempty"`
+    // Container class for docx save options.
+    CompressionLevel *string `json:"CompressionLevel,omitempty"`
 
-    // Container class for ps save options.
-    MetafileRenderingOptions IMetafileRenderingOptionsData `json:"MetafileRenderingOptions,omitempty"`
+    // Container class for docx save options.
+    Password *string `json:"Password,omitempty"`
 
-    // Container class for ps save options.
-    NumeralFormat *string `json:"NumeralFormat,omitempty"`
+    // Container class for docx save options.
+    PrettyFormat *bool `json:"PrettyFormat,omitempty"`
 
-    // Container class for ps save options.
-    OptimizeOutput *bool `json:"OptimizeOutput,omitempty"`
-
-    // Container class for ps save options.
-    PageCount *int32 `json:"PageCount,omitempty"`
-
-    // Container class for ps save options.
-    PageIndex *int32 `json:"PageIndex,omitempty"`
-
-    // Container class for ps save options.
-    const SaveFormat *string `json:"SaveFormat,omitempty"` = "ps"
-
-    // Container class for ps save options.
-    UseBookFoldPrintingSettings *bool `json:"UseBookFoldPrintingSettings,omitempty"`
+    // Container class for docx save options.
+    const SaveFormat *string `json:"SaveFormat,omitempty"` = "docx"
 }
 
-type IPsSaveOptionsData interface {
-    IsPsSaveOptionsData() bool
+type IDocxSaveOptionsData interface {
+    IsDocxSaveOptionsData() bool
 }
-func (PsSaveOptionsData) IsPsSaveOptionsData() bool {
+func (DocxSaveOptionsData) IsDocxSaveOptionsData() bool {
     return true
 }
 
-func (PsSaveOptionsData) IsFixedPageSaveOptionsData() bool {
+func (DocxSaveOptionsData) IsOoxmlSaveOptionsData() bool {
     return true
 }
 

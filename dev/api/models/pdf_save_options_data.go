@@ -54,9 +54,6 @@ type PdfSaveOptionsDataResult struct {
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for pdf save options.
-    SaveFormat string `json:"SaveFormat,omitempty"`
-
-    // Container class for pdf save options.
     UpdateCreatedTimeProperty bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Container class for pdf save options.
@@ -156,6 +153,9 @@ type PdfSaveOptionsDataResult struct {
     PreserveFormFields bool `json:"PreserveFormFields,omitempty"`
 
     // Container class for pdf save options.
+    SaveFormat string `json:"SaveFormat,omitempty"`
+
+    // Container class for pdf save options.
     TextCompression string `json:"TextCompression,omitempty"`
 
     // Container class for pdf save options.
@@ -195,9 +195,6 @@ type PdfSaveOptionsData struct {
 
     // Container class for pdf save options.
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
-
-    // Container class for pdf save options.
-    SaveFormat *string `json:"SaveFormat,omitempty"`
 
     // Container class for pdf save options.
     UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
@@ -297,6 +294,9 @@ type PdfSaveOptionsData struct {
 
     // Container class for pdf save options.
     PreserveFormFields *bool `json:"PreserveFormFields,omitempty"`
+
+    // Container class for pdf save options.
+    const SaveFormat *string `json:"SaveFormat,omitempty"` = "pdf"
 
     // Container class for pdf save options.
     TextCompression *string `json:"TextCompression,omitempty"`

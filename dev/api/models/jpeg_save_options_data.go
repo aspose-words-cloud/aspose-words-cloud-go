@@ -54,9 +54,6 @@ type JpegSaveOptionsDataResult struct {
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for jpeg save options.
-    SaveFormat string `json:"SaveFormat,omitempty"`
-
-    // Container class for jpeg save options.
     UpdateCreatedTimeProperty bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Container class for jpeg save options.
@@ -130,6 +127,9 @@ type JpegSaveOptionsDataResult struct {
 
     // Container class for jpeg save options.
     VerticalResolution float64 `json:"VerticalResolution,omitempty"`
+
+    // Container class for jpeg save options.
+    SaveFormat string `json:"SaveFormat,omitempty"`
 }
 
 type JpegSaveOptionsData struct {
@@ -156,9 +156,6 @@ type JpegSaveOptionsData struct {
 
     // Container class for jpeg save options.
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
-
-    // Container class for jpeg save options.
-    SaveFormat *string `json:"SaveFormat,omitempty"`
 
     // Container class for jpeg save options.
     UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
@@ -234,6 +231,9 @@ type JpegSaveOptionsData struct {
 
     // Container class for jpeg save options.
     VerticalResolution *float64 `json:"VerticalResolution,omitempty"`
+
+    // Container class for jpeg save options.
+    const SaveFormat *string `json:"SaveFormat,omitempty"` = "jpeg"
 }
 
 type IJpegSaveOptionsData interface {

@@ -54,9 +54,6 @@ type EpubSaveOptionsDataResult struct {
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for epub save options.
-    SaveFormat string `json:"SaveFormat,omitempty"`
-
-    // Container class for epub save options.
     UpdateCreatedTimeProperty bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Container class for epub save options.
@@ -193,6 +190,9 @@ type EpubSaveOptionsDataResult struct {
 
     // Container class for epub save options.
     EpubNavigationMapLevel int32 `json:"EpubNavigationMapLevel,omitempty"`
+
+    // Container class for epub save options.
+    SaveFormat string `json:"SaveFormat,omitempty"`
 }
 
 type EpubSaveOptionsData struct {
@@ -219,9 +219,6 @@ type EpubSaveOptionsData struct {
 
     // Container class for epub save options.
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
-
-    // Container class for epub save options.
-    SaveFormat *string `json:"SaveFormat,omitempty"`
 
     // Container class for epub save options.
     UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
@@ -360,6 +357,9 @@ type EpubSaveOptionsData struct {
 
     // Container class for epub save options.
     EpubNavigationMapLevel *int32 `json:"EpubNavigationMapLevel,omitempty"`
+
+    // Container class for epub save options.
+    const SaveFormat *string `json:"SaveFormat,omitempty"` = "epub"
 }
 
 type IEpubSaveOptionsData interface {

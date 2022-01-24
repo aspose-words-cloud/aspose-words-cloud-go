@@ -54,9 +54,6 @@ type PclSaveOptionsDataResult struct {
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for pcl save options.
-    SaveFormat string `json:"SaveFormat,omitempty"`
-
-    // Container class for pcl save options.
     UpdateCreatedTimeProperty bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Container class for pcl save options.
@@ -100,6 +97,9 @@ type PclSaveOptionsDataResult struct {
 
     // Container class for pcl save options.
     RasterizeTransformedElements bool `json:"RasterizeTransformedElements,omitempty"`
+
+    // Container class for pcl save options.
+    SaveFormat string `json:"SaveFormat,omitempty"`
 }
 
 type PclSaveOptionsData struct {
@@ -126,9 +126,6 @@ type PclSaveOptionsData struct {
 
     // Container class for pcl save options.
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
-
-    // Container class for pcl save options.
-    SaveFormat *string `json:"SaveFormat,omitempty"`
 
     // Container class for pcl save options.
     UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
@@ -174,6 +171,9 @@ type PclSaveOptionsData struct {
 
     // Container class for pcl save options.
     RasterizeTransformedElements *bool `json:"RasterizeTransformedElements,omitempty"`
+
+    // Container class for pcl save options.
+    const SaveFormat *string `json:"SaveFormat,omitempty"` = "pcl"
 }
 
 type IPclSaveOptionsData interface {

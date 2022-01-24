@@ -54,9 +54,6 @@ type XamlFixedSaveOptionsDataResult struct {
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for xaml fixed save options.
-    SaveFormat string `json:"SaveFormat,omitempty"`
-
-    // Container class for xaml fixed save options.
     UpdateCreatedTimeProperty bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Container class for xaml fixed save options.
@@ -100,6 +97,9 @@ type XamlFixedSaveOptionsDataResult struct {
 
     // Container class for xaml fixed save options.
     ResourcesFolderAlias string `json:"ResourcesFolderAlias,omitempty"`
+
+    // Container class for xaml fixed save options.
+    SaveFormat string `json:"SaveFormat,omitempty"`
 }
 
 type XamlFixedSaveOptionsData struct {
@@ -126,9 +126,6 @@ type XamlFixedSaveOptionsData struct {
 
     // Container class for xaml fixed save options.
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
-
-    // Container class for xaml fixed save options.
-    SaveFormat *string `json:"SaveFormat,omitempty"`
 
     // Container class for xaml fixed save options.
     UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
@@ -174,6 +171,9 @@ type XamlFixedSaveOptionsData struct {
 
     // Container class for xaml fixed save options.
     ResourcesFolderAlias *string `json:"ResourcesFolderAlias,omitempty"`
+
+    // Container class for xaml fixed save options.
+    const SaveFormat *string `json:"SaveFormat,omitempty"` = "xamlfixed"
 }
 
 type IXamlFixedSaveOptionsData interface {

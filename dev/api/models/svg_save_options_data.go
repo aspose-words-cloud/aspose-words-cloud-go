@@ -54,9 +54,6 @@ type SvgSaveOptionsDataResult struct {
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for svg save options.
-    SaveFormat string `json:"SaveFormat,omitempty"`
-
-    // Container class for svg save options.
     UpdateCreatedTimeProperty bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Container class for svg save options.
@@ -108,6 +105,9 @@ type SvgSaveOptionsDataResult struct {
     ResourcesFolderAlias string `json:"ResourcesFolderAlias,omitempty"`
 
     // Container class for svg save options.
+    SaveFormat string `json:"SaveFormat,omitempty"`
+
+    // Container class for svg save options.
     ShowPageBorder bool `json:"ShowPageBorder,omitempty"`
 
     // Container class for svg save options.
@@ -138,9 +138,6 @@ type SvgSaveOptionsData struct {
 
     // Container class for svg save options.
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
-
-    // Container class for svg save options.
-    SaveFormat *string `json:"SaveFormat,omitempty"`
 
     // Container class for svg save options.
     UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
@@ -192,6 +189,9 @@ type SvgSaveOptionsData struct {
 
     // Container class for svg save options.
     ResourcesFolderAlias *string `json:"ResourcesFolderAlias,omitempty"`
+
+    // Container class for svg save options.
+    const SaveFormat *string `json:"SaveFormat,omitempty"` = "svg"
 
     // Container class for svg save options.
     ShowPageBorder *bool `json:"ShowPageBorder,omitempty"`

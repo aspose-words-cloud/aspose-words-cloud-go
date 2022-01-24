@@ -54,9 +54,6 @@ type MarkdownSaveOptionsDataResult struct {
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for markdown save options.
-    SaveFormat string `json:"SaveFormat,omitempty"`
-
-    // Container class for markdown save options.
     UpdateCreatedTimeProperty bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Container class for markdown save options.
@@ -85,6 +82,9 @@ type MarkdownSaveOptionsDataResult struct {
 
     // Container class for markdown save options.
     ParagraphBreak string `json:"ParagraphBreak,omitempty"`
+
+    // Container class for markdown save options.
+    SaveFormat string `json:"SaveFormat,omitempty"`
 
     // Container class for markdown save options.
     TableContentAlignment string `json:"TableContentAlignment,omitempty"`
@@ -116,9 +116,6 @@ type MarkdownSaveOptionsData struct {
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for markdown save options.
-    SaveFormat *string `json:"SaveFormat,omitempty"`
-
-    // Container class for markdown save options.
     UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Container class for markdown save options.
@@ -147,6 +144,9 @@ type MarkdownSaveOptionsData struct {
 
     // Container class for markdown save options.
     ParagraphBreak *string `json:"ParagraphBreak,omitempty"`
+
+    // Container class for markdown save options.
+    const SaveFormat *string `json:"SaveFormat,omitempty"` = "md"
 
     // Container class for markdown save options.
     TableContentAlignment *string `json:"TableContentAlignment,omitempty"`

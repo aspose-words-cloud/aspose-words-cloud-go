@@ -54,9 +54,6 @@ type MhtmlSaveOptionsDataResult struct {
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for mhtml save options.
-    SaveFormat string `json:"SaveFormat,omitempty"`
-
-    // Container class for mhtml save options.
     UpdateCreatedTimeProperty bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Container class for mhtml save options.
@@ -193,6 +190,9 @@ type MhtmlSaveOptionsDataResult struct {
 
     // Container class for mhtml save options.
     ExportCidUrlsForMhtmlResources bool `json:"ExportCidUrlsForMhtmlResources,omitempty"`
+
+    // Container class for mhtml save options.
+    SaveFormat string `json:"SaveFormat,omitempty"`
 }
 
 type MhtmlSaveOptionsData struct {
@@ -219,9 +219,6 @@ type MhtmlSaveOptionsData struct {
 
     // Container class for mhtml save options.
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
-
-    // Container class for mhtml save options.
-    SaveFormat *string `json:"SaveFormat,omitempty"`
 
     // Container class for mhtml save options.
     UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
@@ -360,6 +357,9 @@ type MhtmlSaveOptionsData struct {
 
     // Container class for mhtml save options.
     ExportCidUrlsForMhtmlResources *bool `json:"ExportCidUrlsForMhtmlResources,omitempty"`
+
+    // Container class for mhtml save options.
+    const SaveFormat *string `json:"SaveFormat,omitempty"` = "mht"
 }
 
 type IMhtmlSaveOptionsData interface {

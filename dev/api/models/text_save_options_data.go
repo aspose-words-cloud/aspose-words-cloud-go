@@ -54,9 +54,6 @@ type TextSaveOptionsDataResult struct {
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for text save options.
-    SaveFormat string `json:"SaveFormat,omitempty"`
-
-    // Container class for text save options.
     UpdateCreatedTimeProperty bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Container class for text save options.
@@ -96,6 +93,9 @@ type TextSaveOptionsDataResult struct {
     PreserveTableLayout bool `json:"PreserveTableLayout,omitempty"`
 
     // Container class for text save options.
+    SaveFormat string `json:"SaveFormat,omitempty"`
+
+    // Container class for text save options.
     SimplifyListLabels bool `json:"SimplifyListLabels,omitempty"`
 }
 
@@ -123,9 +123,6 @@ type TextSaveOptionsData struct {
 
     // Container class for text save options.
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
-
-    // Container class for text save options.
-    SaveFormat *string `json:"SaveFormat,omitempty"`
 
     // Container class for text save options.
     UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
@@ -165,6 +162,9 @@ type TextSaveOptionsData struct {
 
     // Container class for text save options.
     PreserveTableLayout *bool `json:"PreserveTableLayout,omitempty"`
+
+    // Container class for text save options.
+    const SaveFormat *string `json:"SaveFormat,omitempty"` = "txt"
 
     // Container class for text save options.
     SimplifyListLabels *bool `json:"SimplifyListLabels,omitempty"`

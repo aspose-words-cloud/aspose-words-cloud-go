@@ -54,9 +54,6 @@ type EmfSaveOptionsDataResult struct {
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for emf save options.
-    SaveFormat string `json:"SaveFormat,omitempty"`
-
-    // Container class for emf save options.
     UpdateCreatedTimeProperty bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Container class for emf save options.
@@ -130,6 +127,9 @@ type EmfSaveOptionsDataResult struct {
 
     // Container class for emf save options.
     VerticalResolution float64 `json:"VerticalResolution,omitempty"`
+
+    // Container class for emf save options.
+    SaveFormat string `json:"SaveFormat,omitempty"`
 }
 
 type EmfSaveOptionsData struct {
@@ -156,9 +156,6 @@ type EmfSaveOptionsData struct {
 
     // Container class for emf save options.
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
-
-    // Container class for emf save options.
-    SaveFormat *string `json:"SaveFormat,omitempty"`
 
     // Container class for emf save options.
     UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
@@ -234,6 +231,9 @@ type EmfSaveOptionsData struct {
 
     // Container class for emf save options.
     VerticalResolution *float64 `json:"VerticalResolution,omitempty"`
+
+    // Container class for emf save options.
+    const SaveFormat *string `json:"SaveFormat,omitempty"` = "emf"
 }
 
 type IEmfSaveOptionsData interface {

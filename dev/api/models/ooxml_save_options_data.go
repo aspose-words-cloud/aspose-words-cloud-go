@@ -113,7 +113,7 @@ type OoxmlSaveOptionsData struct {
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for docx/docm/dotx/dotm/flatopc save options.
-    SaveFormat *string `json:"SaveFormat,omitempty"`
+    const SaveFormat *string `json:"SaveFormat,omitempty"`
 
     // Container class for docx/docm/dotx/dotm/flatopc save options.
     UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`

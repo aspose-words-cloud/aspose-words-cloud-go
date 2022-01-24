@@ -158,7 +158,7 @@ type ImageSaveOptionsData struct {
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
 
     // Container abstract class for image save options.
-    SaveFormat *string `json:"SaveFormat,omitempty"`
+    const SaveFormat *string `json:"SaveFormat,omitempty"`
 
     // Container abstract class for image save options.
     UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`

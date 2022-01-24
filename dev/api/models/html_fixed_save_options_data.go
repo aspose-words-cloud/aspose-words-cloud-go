@@ -54,9 +54,6 @@ type HtmlFixedSaveOptionsDataResult struct {
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for fixed html save options.
-    SaveFormat string `json:"SaveFormat,omitempty"`
-
-    // Container class for fixed html save options.
     UpdateCreatedTimeProperty bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Container class for fixed html save options.
@@ -132,6 +129,9 @@ type HtmlFixedSaveOptionsDataResult struct {
     SaveFontFaceCssSeparately bool `json:"SaveFontFaceCssSeparately,omitempty"`
 
     // Container class for fixed html save options.
+    SaveFormat string `json:"SaveFormat,omitempty"`
+
+    // Container class for fixed html save options.
     ShowPageBorder bool `json:"ShowPageBorder,omitempty"`
 
     // Container class for fixed html save options.
@@ -162,9 +162,6 @@ type HtmlFixedSaveOptionsData struct {
 
     // Container class for fixed html save options.
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
-
-    // Container class for fixed html save options.
-    SaveFormat *string `json:"SaveFormat,omitempty"`
 
     // Container class for fixed html save options.
     UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
@@ -240,6 +237,9 @@ type HtmlFixedSaveOptionsData struct {
 
     // Container class for fixed html save options.
     SaveFontFaceCssSeparately *bool `json:"SaveFontFaceCssSeparately,omitempty"`
+
+    // Container class for fixed html save options.
+    const SaveFormat *string `json:"SaveFormat,omitempty"` = "htmlfixed"
 
     // Container class for fixed html save options.
     ShowPageBorder *bool `json:"ShowPageBorder,omitempty"`

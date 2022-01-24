@@ -54,9 +54,6 @@ type RtfSaveOptionsDataResult struct {
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for rtf save options.
-    SaveFormat string `json:"SaveFormat,omitempty"`
-
-    // Container class for rtf save options.
     UpdateCreatedTimeProperty bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Container class for rtf save options.
@@ -82,6 +79,9 @@ type RtfSaveOptionsDataResult struct {
 
     // Container class for rtf save options.
     PrettyFormat bool `json:"PrettyFormat,omitempty"`
+
+    // Container class for rtf save options.
+    SaveFormat string `json:"SaveFormat,omitempty"`
 
     // Container class for rtf save options.
     SaveImagesAsWmf bool `json:"SaveImagesAsWmf,omitempty"`
@@ -113,9 +113,6 @@ type RtfSaveOptionsData struct {
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for rtf save options.
-    SaveFormat *string `json:"SaveFormat,omitempty"`
-
-    // Container class for rtf save options.
     UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Container class for rtf save options.
@@ -141,6 +138,9 @@ type RtfSaveOptionsData struct {
 
     // Container class for rtf save options.
     PrettyFormat *bool `json:"PrettyFormat,omitempty"`
+
+    // Container class for rtf save options.
+    const SaveFormat *string `json:"SaveFormat,omitempty"` = "rtf"
 
     // Container class for rtf save options.
     SaveImagesAsWmf *bool `json:"SaveImagesAsWmf,omitempty"`

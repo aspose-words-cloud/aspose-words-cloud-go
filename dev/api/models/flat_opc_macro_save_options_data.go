@@ -1,6 +1,6 @@
 /*
  * --------------------------------------------------------------------------------
- * <copyright company="Aspose" file="ps_save_options_data.go">
+ * <copyright company="Aspose" file="flat_opc_macro_save_options_data.go">
  *   Copyright (c) 2022 Aspose.Words for Cloud
  * </copyright>
  * <summary>
@@ -27,157 +27,133 @@
 
 package models
 
-// Container class for ps save options.
-type PsSaveOptionsDataResult struct {
-    // Container class for ps save options.
+// Container class for fopc_macro save options.
+type FlatOpcMacroSaveOptionsDataResult struct {
+    // Container class for fopc_macro save options.
     AllowEmbeddingPostScriptFonts bool `json:"AllowEmbeddingPostScriptFonts,omitempty"`
 
-    // Container class for ps save options.
+    // Container class for fopc_macro save options.
     CustomTimeZoneInfoData TimeZoneInfoDataResult `json:"CustomTimeZoneInfoData,omitempty"`
 
-    // Container class for ps save options.
+    // Container class for fopc_macro save options.
     Dml3DEffectsRenderingMode string `json:"Dml3DEffectsRenderingMode,omitempty"`
 
-    // Container class for ps save options.
+    // Container class for fopc_macro save options.
     DmlEffectsRenderingMode string `json:"DmlEffectsRenderingMode,omitempty"`
 
-    // Container class for ps save options.
+    // Container class for fopc_macro save options.
     DmlRenderingMode string `json:"DmlRenderingMode,omitempty"`
 
-    // Container class for ps save options.
+    // Container class for fopc_macro save options.
     FileName string `json:"FileName,omitempty"`
 
-    // Container class for ps save options.
+    // Container class for fopc_macro save options.
     FlatOpcXmlMappingOnly bool `json:"FlatOpcXmlMappingOnly,omitempty"`
 
-    // Container class for ps save options.
+    // Container class for fopc_macro save options.
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
-    // Container class for ps save options.
+    // Container class for fopc_macro save options.
     UpdateCreatedTimeProperty bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
-    // Container class for ps save options.
+    // Container class for fopc_macro save options.
     UpdateFields bool `json:"UpdateFields,omitempty"`
 
-    // Container class for ps save options.
+    // Container class for fopc_macro save options.
     UpdateLastPrintedProperty bool `json:"UpdateLastPrintedProperty,omitempty"`
 
-    // Container class for ps save options.
+    // Container class for fopc_macro save options.
     UpdateLastSavedTimeProperty bool `json:"UpdateLastSavedTimeProperty,omitempty"`
 
-    // Container class for ps save options.
+    // Container class for fopc_macro save options.
     UpdateSdtContent bool `json:"UpdateSdtContent,omitempty"`
 
-    // Container class for ps save options.
+    // Container class for fopc_macro save options.
     ZipOutput bool `json:"ZipOutput,omitempty"`
 
-    // Container class for ps save options.
-    ColorMode string `json:"ColorMode,omitempty"`
+    // Container class for fopc_macro save options.
+    Compliance string `json:"Compliance,omitempty"`
 
-    // Container class for ps save options.
-    JpegQuality int32 `json:"JpegQuality,omitempty"`
+    // Container class for fopc_macro save options.
+    CompressionLevel string `json:"CompressionLevel,omitempty"`
 
-    // Container class for ps save options.
-    MetafileRenderingOptions MetafileRenderingOptionsDataResult `json:"MetafileRenderingOptions,omitempty"`
+    // Container class for fopc_macro save options.
+    Password string `json:"Password,omitempty"`
 
-    // Container class for ps save options.
-    NumeralFormat string `json:"NumeralFormat,omitempty"`
+    // Container class for fopc_macro save options.
+    PrettyFormat bool `json:"PrettyFormat,omitempty"`
 
-    // Container class for ps save options.
-    OptimizeOutput bool `json:"OptimizeOutput,omitempty"`
-
-    // Container class for ps save options.
-    PageCount int32 `json:"PageCount,omitempty"`
-
-    // Container class for ps save options.
-    PageIndex int32 `json:"PageIndex,omitempty"`
-
-    // Container class for ps save options.
+    // Container class for fopc_macro save options.
     SaveFormat string `json:"SaveFormat,omitempty"`
-
-    // Container class for ps save options.
-    UseBookFoldPrintingSettings bool `json:"UseBookFoldPrintingSettings,omitempty"`
 }
 
-type PsSaveOptionsData struct {
-    // Container class for ps save options.
+type FlatOpcMacroSaveOptionsData struct {
+    // Container class for fopc_macro save options.
     AllowEmbeddingPostScriptFonts *bool `json:"AllowEmbeddingPostScriptFonts,omitempty"`
 
-    // Container class for ps save options.
+    // Container class for fopc_macro save options.
     CustomTimeZoneInfoData ITimeZoneInfoData `json:"CustomTimeZoneInfoData,omitempty"`
 
-    // Container class for ps save options.
+    // Container class for fopc_macro save options.
     Dml3DEffectsRenderingMode *string `json:"Dml3DEffectsRenderingMode,omitempty"`
 
-    // Container class for ps save options.
+    // Container class for fopc_macro save options.
     DmlEffectsRenderingMode *string `json:"DmlEffectsRenderingMode,omitempty"`
 
-    // Container class for ps save options.
+    // Container class for fopc_macro save options.
     DmlRenderingMode *string `json:"DmlRenderingMode,omitempty"`
 
-    // Container class for ps save options.
+    // Container class for fopc_macro save options.
     FileName *string `json:"FileName,omitempty"`
 
-    // Container class for ps save options.
+    // Container class for fopc_macro save options.
     FlatOpcXmlMappingOnly *bool `json:"FlatOpcXmlMappingOnly,omitempty"`
 
-    // Container class for ps save options.
+    // Container class for fopc_macro save options.
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
 
-    // Container class for ps save options.
+    // Container class for fopc_macro save options.
     UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
-    // Container class for ps save options.
+    // Container class for fopc_macro save options.
     UpdateFields *bool `json:"UpdateFields,omitempty"`
 
-    // Container class for ps save options.
+    // Container class for fopc_macro save options.
     UpdateLastPrintedProperty *bool `json:"UpdateLastPrintedProperty,omitempty"`
 
-    // Container class for ps save options.
+    // Container class for fopc_macro save options.
     UpdateLastSavedTimeProperty *bool `json:"UpdateLastSavedTimeProperty,omitempty"`
 
-    // Container class for ps save options.
+    // Container class for fopc_macro save options.
     UpdateSdtContent *bool `json:"UpdateSdtContent,omitempty"`
 
-    // Container class for ps save options.
+    // Container class for fopc_macro save options.
     ZipOutput *bool `json:"ZipOutput,omitempty"`
 
-    // Container class for ps save options.
-    ColorMode *string `json:"ColorMode,omitempty"`
+    // Container class for fopc_macro save options.
+    Compliance *string `json:"Compliance,omitempty"`
 
-    // Container class for ps save options.
-    JpegQuality *int32 `json:"JpegQuality,omitempty"`
+    // Container class for fopc_macro save options.
+    CompressionLevel *string `json:"CompressionLevel,omitempty"`
 
-    // Container class for ps save options.
-    MetafileRenderingOptions IMetafileRenderingOptionsData `json:"MetafileRenderingOptions,omitempty"`
+    // Container class for fopc_macro save options.
+    Password *string `json:"Password,omitempty"`
 
-    // Container class for ps save options.
-    NumeralFormat *string `json:"NumeralFormat,omitempty"`
+    // Container class for fopc_macro save options.
+    PrettyFormat *bool `json:"PrettyFormat,omitempty"`
 
-    // Container class for ps save options.
-    OptimizeOutput *bool `json:"OptimizeOutput,omitempty"`
-
-    // Container class for ps save options.
-    PageCount *int32 `json:"PageCount,omitempty"`
-
-    // Container class for ps save options.
-    PageIndex *int32 `json:"PageIndex,omitempty"`
-
-    // Container class for ps save options.
-    const SaveFormat *string `json:"SaveFormat,omitempty"` = "ps"
-
-    // Container class for ps save options.
-    UseBookFoldPrintingSettings *bool `json:"UseBookFoldPrintingSettings,omitempty"`
+    // Container class for fopc_macro save options.
+    const SaveFormat *string `json:"SaveFormat,omitempty"` = "fopc_macro"
 }
 
-type IPsSaveOptionsData interface {
-    IsPsSaveOptionsData() bool
+type IFlatOpcMacroSaveOptionsData interface {
+    IsFlatOpcMacroSaveOptionsData() bool
 }
-func (PsSaveOptionsData) IsPsSaveOptionsData() bool {
+func (FlatOpcMacroSaveOptionsData) IsFlatOpcMacroSaveOptionsData() bool {
     return true
 }
 
-func (PsSaveOptionsData) IsFixedPageSaveOptionsData() bool {
+func (FlatOpcMacroSaveOptionsData) IsOoxmlSaveOptionsData() bool {
     return true
 }
 

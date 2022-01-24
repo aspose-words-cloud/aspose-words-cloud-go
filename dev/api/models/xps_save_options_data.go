@@ -54,9 +54,6 @@ type XpsSaveOptionsDataResult struct {
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for xps save options.
-    SaveFormat string `json:"SaveFormat,omitempty"`
-
-    // Container class for xps save options.
     UpdateCreatedTimeProperty bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Container class for xps save options.
@@ -105,6 +102,9 @@ type XpsSaveOptionsDataResult struct {
     OutlineOptions OutlineOptionsDataResult `json:"OutlineOptions,omitempty"`
 
     // Container class for xps save options.
+    SaveFormat string `json:"SaveFormat,omitempty"`
+
+    // Container class for xps save options.
     UseBookFoldPrintingSettings bool `json:"UseBookFoldPrintingSettings,omitempty"`
 }
 
@@ -132,9 +132,6 @@ type XpsSaveOptionsData struct {
 
     // Container class for xps save options.
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
-
-    // Container class for xps save options.
-    SaveFormat *string `json:"SaveFormat,omitempty"`
 
     // Container class for xps save options.
     UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
@@ -183,6 +180,9 @@ type XpsSaveOptionsData struct {
 
     // Container class for xps save options.
     OutlineOptions IOutlineOptionsData `json:"OutlineOptions,omitempty"`
+
+    // Container class for xps save options.
+    const SaveFormat *string `json:"SaveFormat,omitempty"` = "xps"
 
     // Container class for xps save options.
     UseBookFoldPrintingSettings *bool `json:"UseBookFoldPrintingSettings,omitempty"`

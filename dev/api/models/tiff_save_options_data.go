@@ -54,9 +54,6 @@ type TiffSaveOptionsDataResult struct {
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for tiff save options.
-    SaveFormat string `json:"SaveFormat,omitempty"`
-
-    // Container class for tiff save options.
     UpdateCreatedTimeProperty bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Container class for tiff save options.
@@ -132,6 +129,9 @@ type TiffSaveOptionsDataResult struct {
     VerticalResolution float64 `json:"VerticalResolution,omitempty"`
 
     // Container class for tiff save options.
+    SaveFormat string `json:"SaveFormat,omitempty"`
+
+    // Container class for tiff save options.
     ThresholdForFloydSteinbergDithering int32 `json:"ThresholdForFloydSteinbergDithering,omitempty"`
 
     // Container class for tiff save options.
@@ -165,9 +165,6 @@ type TiffSaveOptionsData struct {
 
     // Container class for tiff save options.
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
-
-    // Container class for tiff save options.
-    SaveFormat *string `json:"SaveFormat,omitempty"`
 
     // Container class for tiff save options.
     UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
@@ -243,6 +240,9 @@ type TiffSaveOptionsData struct {
 
     // Container class for tiff save options.
     VerticalResolution *float64 `json:"VerticalResolution,omitempty"`
+
+    // Container class for tiff save options.
+    const SaveFormat *string `json:"SaveFormat,omitempty"` = "tiff"
 
     // Container class for tiff save options.
     ThresholdForFloydSteinbergDithering *int32 `json:"ThresholdForFloydSteinbergDithering,omitempty"`

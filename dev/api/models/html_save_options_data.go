@@ -54,9 +54,6 @@ type HtmlSaveOptionsDataResult struct {
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for html save options.
-    SaveFormat string `json:"SaveFormat,omitempty"`
-
-    // Container class for html save options.
     UpdateCreatedTimeProperty bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Container class for html save options.
@@ -186,6 +183,9 @@ type HtmlSaveOptionsDataResult struct {
     ResourceFolderAlias string `json:"ResourceFolderAlias,omitempty"`
 
     // Container class for html save options.
+    SaveFormat string `json:"SaveFormat,omitempty"`
+
+    // Container class for html save options.
     ScaleImageToShapeSize bool `json:"ScaleImageToShapeSize,omitempty"`
 
     // Container class for html save options.
@@ -216,9 +216,6 @@ type HtmlSaveOptionsData struct {
 
     // Container class for html save options.
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
-
-    // Container class for html save options.
-    SaveFormat *string `json:"SaveFormat,omitempty"`
 
     // Container class for html save options.
     UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
@@ -348,6 +345,9 @@ type HtmlSaveOptionsData struct {
 
     // Container class for html save options.
     ResourceFolderAlias *string `json:"ResourceFolderAlias,omitempty"`
+
+    // Container class for html save options.
+    const SaveFormat *string `json:"SaveFormat,omitempty"` = "html"
 
     // Container class for html save options.
     ScaleImageToShapeSize *bool `json:"ScaleImageToShapeSize,omitempty"`

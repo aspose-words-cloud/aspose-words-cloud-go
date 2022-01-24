@@ -54,9 +54,6 @@ type DocSaveOptionsDataResult struct {
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for doc/dot save options.
-    SaveFormat string `json:"SaveFormat,omitempty"`
-
-    // Container class for doc/dot save options.
     UpdateCreatedTimeProperty bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Container class for doc/dot save options.
@@ -79,6 +76,9 @@ type DocSaveOptionsDataResult struct {
 
     // Container class for doc/dot save options.
     Password string `json:"Password,omitempty"`
+
+    // Container class for doc/dot save options.
+    SaveFormat string `json:"SaveFormat,omitempty"`
 
     // Container class for doc/dot save options.
     SavePictureBullet bool `json:"SavePictureBullet,omitempty"`
@@ -113,9 +113,6 @@ type DocSaveOptionsData struct {
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for doc/dot save options.
-    SaveFormat *string `json:"SaveFormat,omitempty"`
-
-    // Container class for doc/dot save options.
     UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Container class for doc/dot save options.
@@ -138,6 +135,9 @@ type DocSaveOptionsData struct {
 
     // Container class for doc/dot save options.
     Password *string `json:"Password,omitempty"`
+
+    // Container class for doc/dot save options.
+    const SaveFormat *string `json:"SaveFormat,omitempty"` = "doc"
 
     // Container class for doc/dot save options.
     SavePictureBullet *bool `json:"SavePictureBullet,omitempty"`

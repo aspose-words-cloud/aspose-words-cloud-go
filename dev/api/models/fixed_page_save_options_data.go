@@ -122,7 +122,7 @@ type FixedPageSaveOptionsData struct {
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
 
     // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
-    SaveFormat *string `json:"SaveFormat,omitempty"`
+    const SaveFormat *string `json:"SaveFormat,omitempty"`
 
     // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
     UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`

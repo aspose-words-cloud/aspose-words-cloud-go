@@ -1,6 +1,6 @@
 /*
  * --------------------------------------------------------------------------------
- * <copyright company="Aspose" file="ps_save_options_data.go">
+ * <copyright company="Aspose" file="xaml_flow_pack_save_options_data.go">
  *   Copyright (c) 2022 Aspose.Words for Cloud
  * </copyright>
  * <summary>
@@ -27,157 +27,121 @@
 
 package models
 
-// Container class for ps save options.
-type PsSaveOptionsDataResult struct {
-    // Container class for ps save options.
+// Container class for xamlflow_pack save options.
+type XamlFlowPackSaveOptionsDataResult struct {
+    // Container class for xamlflow_pack save options.
     AllowEmbeddingPostScriptFonts bool `json:"AllowEmbeddingPostScriptFonts,omitempty"`
 
-    // Container class for ps save options.
+    // Container class for xamlflow_pack save options.
     CustomTimeZoneInfoData TimeZoneInfoDataResult `json:"CustomTimeZoneInfoData,omitempty"`
 
-    // Container class for ps save options.
+    // Container class for xamlflow_pack save options.
     Dml3DEffectsRenderingMode string `json:"Dml3DEffectsRenderingMode,omitempty"`
 
-    // Container class for ps save options.
+    // Container class for xamlflow_pack save options.
     DmlEffectsRenderingMode string `json:"DmlEffectsRenderingMode,omitempty"`
 
-    // Container class for ps save options.
+    // Container class for xamlflow_pack save options.
     DmlRenderingMode string `json:"DmlRenderingMode,omitempty"`
 
-    // Container class for ps save options.
+    // Container class for xamlflow_pack save options.
     FileName string `json:"FileName,omitempty"`
 
-    // Container class for ps save options.
+    // Container class for xamlflow_pack save options.
     FlatOpcXmlMappingOnly bool `json:"FlatOpcXmlMappingOnly,omitempty"`
 
-    // Container class for ps save options.
+    // Container class for xamlflow_pack save options.
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
-    // Container class for ps save options.
+    // Container class for xamlflow_pack save options.
     UpdateCreatedTimeProperty bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
-    // Container class for ps save options.
+    // Container class for xamlflow_pack save options.
     UpdateFields bool `json:"UpdateFields,omitempty"`
 
-    // Container class for ps save options.
+    // Container class for xamlflow_pack save options.
     UpdateLastPrintedProperty bool `json:"UpdateLastPrintedProperty,omitempty"`
 
-    // Container class for ps save options.
+    // Container class for xamlflow_pack save options.
     UpdateLastSavedTimeProperty bool `json:"UpdateLastSavedTimeProperty,omitempty"`
 
-    // Container class for ps save options.
+    // Container class for xamlflow_pack save options.
     UpdateSdtContent bool `json:"UpdateSdtContent,omitempty"`
 
-    // Container class for ps save options.
+    // Container class for xamlflow_pack save options.
     ZipOutput bool `json:"ZipOutput,omitempty"`
 
-    // Container class for ps save options.
-    ColorMode string `json:"ColorMode,omitempty"`
+    // Container class for xamlflow_pack save options.
+    ImagesFolder string `json:"ImagesFolder,omitempty"`
 
-    // Container class for ps save options.
-    JpegQuality int32 `json:"JpegQuality,omitempty"`
+    // Container class for xamlflow_pack save options.
+    ImagesFolderAlias string `json:"ImagesFolderAlias,omitempty"`
 
-    // Container class for ps save options.
-    MetafileRenderingOptions MetafileRenderingOptionsDataResult `json:"MetafileRenderingOptions,omitempty"`
-
-    // Container class for ps save options.
-    NumeralFormat string `json:"NumeralFormat,omitempty"`
-
-    // Container class for ps save options.
-    OptimizeOutput bool `json:"OptimizeOutput,omitempty"`
-
-    // Container class for ps save options.
-    PageCount int32 `json:"PageCount,omitempty"`
-
-    // Container class for ps save options.
-    PageIndex int32 `json:"PageIndex,omitempty"`
-
-    // Container class for ps save options.
+    // Container class for xamlflow_pack save options.
     SaveFormat string `json:"SaveFormat,omitempty"`
-
-    // Container class for ps save options.
-    UseBookFoldPrintingSettings bool `json:"UseBookFoldPrintingSettings,omitempty"`
 }
 
-type PsSaveOptionsData struct {
-    // Container class for ps save options.
+type XamlFlowPackSaveOptionsData struct {
+    // Container class for xamlflow_pack save options.
     AllowEmbeddingPostScriptFonts *bool `json:"AllowEmbeddingPostScriptFonts,omitempty"`
 
-    // Container class for ps save options.
+    // Container class for xamlflow_pack save options.
     CustomTimeZoneInfoData ITimeZoneInfoData `json:"CustomTimeZoneInfoData,omitempty"`
 
-    // Container class for ps save options.
+    // Container class for xamlflow_pack save options.
     Dml3DEffectsRenderingMode *string `json:"Dml3DEffectsRenderingMode,omitempty"`
 
-    // Container class for ps save options.
+    // Container class for xamlflow_pack save options.
     DmlEffectsRenderingMode *string `json:"DmlEffectsRenderingMode,omitempty"`
 
-    // Container class for ps save options.
+    // Container class for xamlflow_pack save options.
     DmlRenderingMode *string `json:"DmlRenderingMode,omitempty"`
 
-    // Container class for ps save options.
+    // Container class for xamlflow_pack save options.
     FileName *string `json:"FileName,omitempty"`
 
-    // Container class for ps save options.
+    // Container class for xamlflow_pack save options.
     FlatOpcXmlMappingOnly *bool `json:"FlatOpcXmlMappingOnly,omitempty"`
 
-    // Container class for ps save options.
+    // Container class for xamlflow_pack save options.
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
 
-    // Container class for ps save options.
+    // Container class for xamlflow_pack save options.
     UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
-    // Container class for ps save options.
+    // Container class for xamlflow_pack save options.
     UpdateFields *bool `json:"UpdateFields,omitempty"`
 
-    // Container class for ps save options.
+    // Container class for xamlflow_pack save options.
     UpdateLastPrintedProperty *bool `json:"UpdateLastPrintedProperty,omitempty"`
 
-    // Container class for ps save options.
+    // Container class for xamlflow_pack save options.
     UpdateLastSavedTimeProperty *bool `json:"UpdateLastSavedTimeProperty,omitempty"`
 
-    // Container class for ps save options.
+    // Container class for xamlflow_pack save options.
     UpdateSdtContent *bool `json:"UpdateSdtContent,omitempty"`
 
-    // Container class for ps save options.
+    // Container class for xamlflow_pack save options.
     ZipOutput *bool `json:"ZipOutput,omitempty"`
 
-    // Container class for ps save options.
-    ColorMode *string `json:"ColorMode,omitempty"`
+    // Container class for xamlflow_pack save options.
+    ImagesFolder *string `json:"ImagesFolder,omitempty"`
 
-    // Container class for ps save options.
-    JpegQuality *int32 `json:"JpegQuality,omitempty"`
+    // Container class for xamlflow_pack save options.
+    ImagesFolderAlias *string `json:"ImagesFolderAlias,omitempty"`
 
-    // Container class for ps save options.
-    MetafileRenderingOptions IMetafileRenderingOptionsData `json:"MetafileRenderingOptions,omitempty"`
-
-    // Container class for ps save options.
-    NumeralFormat *string `json:"NumeralFormat,omitempty"`
-
-    // Container class for ps save options.
-    OptimizeOutput *bool `json:"OptimizeOutput,omitempty"`
-
-    // Container class for ps save options.
-    PageCount *int32 `json:"PageCount,omitempty"`
-
-    // Container class for ps save options.
-    PageIndex *int32 `json:"PageIndex,omitempty"`
-
-    // Container class for ps save options.
-    const SaveFormat *string `json:"SaveFormat,omitempty"` = "ps"
-
-    // Container class for ps save options.
-    UseBookFoldPrintingSettings *bool `json:"UseBookFoldPrintingSettings,omitempty"`
+    // Container class for xamlflow_pack save options.
+    const SaveFormat *string `json:"SaveFormat,omitempty"` = "xamlflow_pack"
 }
 
-type IPsSaveOptionsData interface {
-    IsPsSaveOptionsData() bool
+type IXamlFlowPackSaveOptionsData interface {
+    IsXamlFlowPackSaveOptionsData() bool
 }
-func (PsSaveOptionsData) IsPsSaveOptionsData() bool {
+func (XamlFlowPackSaveOptionsData) IsXamlFlowPackSaveOptionsData() bool {
     return true
 }
 
-func (PsSaveOptionsData) IsFixedPageSaveOptionsData() bool {
+func (XamlFlowPackSaveOptionsData) IsXamlFlowSaveOptionsData() bool {
     return true
 }
 

@@ -38,9 +38,8 @@ import (
 func Test_LoadWebDocument_LoadWebDocument(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
-    requestDataSaveOptions := models.SaveOptionsData{
+    requestDataSaveOptions := models.DocSaveOptionsData{
         FileName: ToStringPointer("google.doc"),
-        SaveFormat: ToStringPointer("doc"),
         DmlEffectsRenderingMode: ToStringPointer("1"),
         DmlRenderingMode: ToStringPointer("1"),
         UpdateSdtContent: ToBoolPointer(false),
