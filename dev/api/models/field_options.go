@@ -112,9 +112,15 @@ type FieldOptions struct {
 
 type IFieldOptions interface {
     IsFieldOptions() bool
+    Initialize()
 }
+
 func (FieldOptions) IsFieldOptions() bool {
     return true
+}
+
+
+func (obj *FieldOptions) Initialize() {
 }
 
 

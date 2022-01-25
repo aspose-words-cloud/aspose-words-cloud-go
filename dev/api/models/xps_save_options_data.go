@@ -182,7 +182,7 @@ type XpsSaveOptionsData struct {
     OutlineOptions IOutlineOptionsData `json:"OutlineOptions,omitempty"`
 
     // Container class for xps save options.
-    const SaveFormat *string `json:"SaveFormat,omitempty"` = "xps"
+    SaveFormat *string `json:"SaveFormat,omitempty"`
 
     // Container class for xps save options.
     UseBookFoldPrintingSettings *bool `json:"UseBookFoldPrintingSettings,omitempty"`
@@ -190,13 +190,25 @@ type XpsSaveOptionsData struct {
 
 type IXpsSaveOptionsData interface {
     IsXpsSaveOptionsData() bool
+    Initialize()
 }
+
 func (XpsSaveOptionsData) IsXpsSaveOptionsData() bool {
     return true
 }
 
 func (XpsSaveOptionsData) IsFixedPageSaveOptionsData() bool {
     return true
+}
+
+func (XpsSaveOptionsData) IsSaveOptionsData() bool {
+    return true
+}
+
+func (obj *XpsSaveOptionsData) Initialize() {
+    var _SaveFormat = "xps"
+    obj.SaveFormat = &_SaveFormat
+
 }
 
 

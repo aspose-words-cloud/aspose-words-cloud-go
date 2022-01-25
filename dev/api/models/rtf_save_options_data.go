@@ -140,7 +140,7 @@ type RtfSaveOptionsData struct {
     PrettyFormat *bool `json:"PrettyFormat,omitempty"`
 
     // Container class for rtf save options.
-    const SaveFormat *string `json:"SaveFormat,omitempty"` = "rtf"
+    SaveFormat *string `json:"SaveFormat,omitempty"`
 
     // Container class for rtf save options.
     SaveImagesAsWmf *bool `json:"SaveImagesAsWmf,omitempty"`
@@ -148,13 +148,21 @@ type RtfSaveOptionsData struct {
 
 type IRtfSaveOptionsData interface {
     IsRtfSaveOptionsData() bool
+    Initialize()
 }
+
 func (RtfSaveOptionsData) IsRtfSaveOptionsData() bool {
     return true
 }
 
 func (RtfSaveOptionsData) IsSaveOptionsData() bool {
     return true
+}
+
+func (obj *RtfSaveOptionsData) Initialize() {
+    var _SaveFormat = "rtf"
+    obj.SaveFormat = &_SaveFormat
+
 }
 
 

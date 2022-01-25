@@ -160,6 +160,7 @@ func (data *InsertStyleRequest) CreateRequestData() (RequestData, error) {
 
 
 
+    data.StyleInsert.Initialize()
     result.PostBody = &data.StyleInsert
 
     return result, nil

@@ -168,6 +168,7 @@ func (data *UpdateBorderRequest) CreateRequestData() (RequestData, error) {
 
 
 
+    data.BorderProperties.Initialize()
     result.PostBody = &data.BorderProperties
 
     return result, nil

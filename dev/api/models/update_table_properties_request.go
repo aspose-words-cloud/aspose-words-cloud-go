@@ -168,6 +168,7 @@ func (data *UpdateTablePropertiesRequest) CreateRequestData() (RequestData, erro
 
 
 
+    data.Properties.Initialize()
     result.PostBody = &data.Properties
 
     return result, nil

@@ -233,18 +233,34 @@ type PngSaveOptionsData struct {
     VerticalResolution *float64 `json:"VerticalResolution,omitempty"`
 
     // Container class for png save options.
-    const SaveFormat *string `json:"SaveFormat,omitempty"` = "png"
+    SaveFormat *string `json:"SaveFormat,omitempty"`
 }
 
 type IPngSaveOptionsData interface {
     IsPngSaveOptionsData() bool
+    Initialize()
 }
+
 func (PngSaveOptionsData) IsPngSaveOptionsData() bool {
     return true
 }
 
 func (PngSaveOptionsData) IsImageSaveOptionsData() bool {
     return true
+}
+
+func (PngSaveOptionsData) IsFixedPageSaveOptionsData() bool {
+    return true
+}
+
+func (PngSaveOptionsData) IsSaveOptionsData() bool {
+    return true
+}
+
+func (obj *PngSaveOptionsData) Initialize() {
+    var _SaveFormat = "png"
+    obj.SaveFormat = &_SaveFormat
+
 }
 
 

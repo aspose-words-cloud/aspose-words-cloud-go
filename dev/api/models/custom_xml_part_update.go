@@ -52,13 +52,26 @@ type CustomXmlPartUpdate struct {
 
 type ICustomXmlPartUpdate interface {
     IsCustomXmlPartUpdate() bool
+    Initialize()
 }
+
 func (CustomXmlPartUpdate) IsCustomXmlPartUpdate() bool {
     return true
 }
 
 func (CustomXmlPartUpdate) IsCustomXmlPart() bool {
     return true
+}
+
+func (CustomXmlPartUpdate) IsCustomXmlPartLink() bool {
+    return true
+}
+
+func (CustomXmlPartUpdate) IsLinkElement() bool {
+    return true
+}
+
+func (obj *CustomXmlPartUpdate) Initialize() {
 }
 
 

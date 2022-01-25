@@ -143,18 +143,30 @@ type FlatOpcTemplateSaveOptionsData struct {
     PrettyFormat *bool `json:"PrettyFormat,omitempty"`
 
     // Container class for fopc_template save options.
-    const SaveFormat *string `json:"SaveFormat,omitempty"` = "fopc_template"
+    SaveFormat *string `json:"SaveFormat,omitempty"`
 }
 
 type IFlatOpcTemplateSaveOptionsData interface {
     IsFlatOpcTemplateSaveOptionsData() bool
+    Initialize()
 }
+
 func (FlatOpcTemplateSaveOptionsData) IsFlatOpcTemplateSaveOptionsData() bool {
     return true
 }
 
 func (FlatOpcTemplateSaveOptionsData) IsOoxmlSaveOptionsData() bool {
     return true
+}
+
+func (FlatOpcTemplateSaveOptionsData) IsSaveOptionsData() bool {
+    return true
+}
+
+func (obj *FlatOpcTemplateSaveOptionsData) Initialize() {
+    var _SaveFormat = "fopc_template"
+    obj.SaveFormat = &_SaveFormat
+
 }
 
 

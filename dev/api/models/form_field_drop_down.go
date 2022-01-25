@@ -112,13 +112,26 @@ type FormFieldDropDown struct {
 
 type IFormFieldDropDown interface {
     IsFormFieldDropDown() bool
+    Initialize()
 }
+
 func (FormFieldDropDown) IsFormFieldDropDown() bool {
     return true
 }
 
 func (FormFieldDropDown) IsFormField() bool {
     return true
+}
+
+func (FormFieldDropDown) IsNodeLink() bool {
+    return true
+}
+
+func (FormFieldDropDown) IsLinkElement() bool {
+    return true
+}
+
+func (obj *FormFieldDropDown) Initialize() {
 }
 
 

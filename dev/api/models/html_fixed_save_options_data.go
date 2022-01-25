@@ -239,7 +239,7 @@ type HtmlFixedSaveOptionsData struct {
     SaveFontFaceCssSeparately *bool `json:"SaveFontFaceCssSeparately,omitempty"`
 
     // Container class for fixed html save options.
-    const SaveFormat *string `json:"SaveFormat,omitempty"` = "htmlfixed"
+    SaveFormat *string `json:"SaveFormat,omitempty"`
 
     // Container class for fixed html save options.
     ShowPageBorder *bool `json:"ShowPageBorder,omitempty"`
@@ -250,13 +250,25 @@ type HtmlFixedSaveOptionsData struct {
 
 type IHtmlFixedSaveOptionsData interface {
     IsHtmlFixedSaveOptionsData() bool
+    Initialize()
 }
+
 func (HtmlFixedSaveOptionsData) IsHtmlFixedSaveOptionsData() bool {
     return true
 }
 
 func (HtmlFixedSaveOptionsData) IsFixedPageSaveOptionsData() bool {
     return true
+}
+
+func (HtmlFixedSaveOptionsData) IsSaveOptionsData() bool {
+    return true
+}
+
+func (obj *HtmlFixedSaveOptionsData) Initialize() {
+    var _SaveFormat = "htmlfixed"
+    obj.SaveFormat = &_SaveFormat
+
 }
 
 

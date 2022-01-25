@@ -46,13 +46,22 @@ type SectionLink struct {
 
 type ISectionLink interface {
     IsSectionLink() bool
+    Initialize()
 }
+
 func (SectionLink) IsSectionLink() bool {
     return true
 }
 
 func (SectionLink) IsNodeLink() bool {
     return true
+}
+
+func (SectionLink) IsLinkElement() bool {
+    return true
+}
+
+func (obj *SectionLink) Initialize() {
 }
 
 

@@ -52,9 +52,15 @@ type SplitDocumentResult struct {
 
 type ISplitDocumentResult interface {
     IsSplitDocumentResult() bool
+    Initialize()
 }
+
 func (SplitDocumentResult) IsSplitDocumentResult() bool {
     return true
+}
+
+
+func (obj *SplitDocumentResult) Initialize() {
 }
 
 

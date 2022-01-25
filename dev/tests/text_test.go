@@ -56,7 +56,7 @@ func Test_Text_ReplaceText(t *testing.T) {
 
     request := &models.ReplaceTextRequest{
         Name: ToStringPointer(remoteFileName),
-        ReplaceText: requestReplaceText,
+        ReplaceText: &requestReplaceText,
         Optionals: options,
     }
 
@@ -85,7 +85,7 @@ func Test_Text_ReplaceTextOnline(t *testing.T) {
 
     request := &models.ReplaceTextOnlineRequest{
         Document: requestDocument,
-        ReplaceText: requestReplaceText,
+        ReplaceText: &requestReplaceText,
         Optionals: options,
     }
 

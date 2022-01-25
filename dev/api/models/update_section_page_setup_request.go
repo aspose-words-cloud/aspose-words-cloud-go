@@ -163,6 +163,7 @@ func (data *UpdateSectionPageSetupRequest) CreateRequestData() (RequestData, err
 
 
 
+    data.PageSetup.Initialize()
     result.PostBody = &data.PageSetup
 
     return result, nil

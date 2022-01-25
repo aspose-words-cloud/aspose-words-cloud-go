@@ -143,18 +143,30 @@ type DocmSaveOptionsData struct {
     PrettyFormat *bool `json:"PrettyFormat,omitempty"`
 
     // Container class for docm save options.
-    const SaveFormat *string `json:"SaveFormat,omitempty"` = "docm"
+    SaveFormat *string `json:"SaveFormat,omitempty"`
 }
 
 type IDocmSaveOptionsData interface {
     IsDocmSaveOptionsData() bool
+    Initialize()
 }
+
 func (DocmSaveOptionsData) IsDocmSaveOptionsData() bool {
     return true
 }
 
 func (DocmSaveOptionsData) IsOoxmlSaveOptionsData() bool {
     return true
+}
+
+func (DocmSaveOptionsData) IsSaveOptionsData() bool {
+    return true
+}
+
+func (obj *DocmSaveOptionsData) Initialize() {
+    var _SaveFormat = "docm"
+    obj.SaveFormat = &_SaveFormat
+
 }
 
 

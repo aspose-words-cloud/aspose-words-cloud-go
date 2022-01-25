@@ -101,7 +101,7 @@ type SaveOptionsData struct {
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
 
     // base container class for save options data.
-    const SaveFormat *string `json:"SaveFormat,omitempty"`
+    SaveFormat *string `json:"SaveFormat,omitempty"`
 
     // base container class for save options data.
     UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
@@ -124,9 +124,15 @@ type SaveOptionsData struct {
 
 type ISaveOptionsData interface {
     IsSaveOptionsData() bool
+    Initialize()
 }
+
 func (SaveOptionsData) IsSaveOptionsData() bool {
     return true
+}
+
+
+func (obj *SaveOptionsData) Initialize() {
 }
 
 

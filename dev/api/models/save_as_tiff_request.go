@@ -295,6 +295,7 @@ func (data *SaveAsTiffRequest) CreateRequestData() (RequestData, error) {
 
 
 
+    data.SaveOptions.Initialize()
     result.PostBody = &data.SaveOptions
 
     return result, nil

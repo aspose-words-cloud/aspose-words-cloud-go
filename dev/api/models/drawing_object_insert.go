@@ -82,9 +82,15 @@ type DrawingObjectInsert struct {
 
 type IDrawingObjectInsert interface {
     IsDrawingObjectInsert() bool
+    Initialize()
 }
+
 func (DrawingObjectInsert) IsDrawingObjectInsert() bool {
     return true
+}
+
+
+func (obj *DrawingObjectInsert) Initialize() {
 }
 
 

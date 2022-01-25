@@ -173,7 +173,7 @@ func Test_CustomXmlParts_InsertCustomXmlPart(t *testing.T) {
 
     request := &models.InsertCustomXmlPartRequest{
         Name: ToStringPointer(remoteFileName),
-        CustomXmlPart: requestCustomXmlPart,
+        CustomXmlPart: &requestCustomXmlPart,
         Optionals: options,
     }
 
@@ -204,7 +204,7 @@ func Test_CustomXmlParts_InsertCustomXmlPartOnline(t *testing.T) {
 
     request := &models.InsertCustomXmlPartOnlineRequest{
         Document: requestDocument,
-        CustomXmlPart: requestCustomXmlPart,
+        CustomXmlPart: &requestCustomXmlPart,
         Optionals: options,
     }
 
@@ -239,7 +239,7 @@ func Test_CustomXmlParts_UpdateCustomXmlPart(t *testing.T) {
     request := &models.UpdateCustomXmlPartRequest{
         Name: ToStringPointer(remoteFileName),
         CustomXmlPartIndex: ToInt32Pointer(int32(0)),
-        CustomXmlPart: requestCustomXmlPart,
+        CustomXmlPart: &requestCustomXmlPart,
         Optionals: options,
     }
 
@@ -270,7 +270,7 @@ func Test_CustomXmlParts_UpdateCustomXmlPartOnline(t *testing.T) {
     request := &models.UpdateCustomXmlPartOnlineRequest{
         Document: requestDocument,
         CustomXmlPartIndex: ToInt32Pointer(int32(0)),
-        CustomXmlPart: requestCustomXmlPart,
+        CustomXmlPart: &requestCustomXmlPart,
         Optionals: options,
     }
 

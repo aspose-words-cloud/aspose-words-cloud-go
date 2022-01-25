@@ -46,13 +46,18 @@ type FieldNames struct {
 
 type IFieldNames interface {
     IsFieldNames() bool
+    Initialize()
 }
+
 func (FieldNames) IsFieldNames() bool {
     return true
 }
 
 func (FieldNames) IsLinkElement() bool {
     return true
+}
+
+func (obj *FieldNames) Initialize() {
 }
 
 

@@ -163,6 +163,7 @@ func (data *UpdateCommentRequest) CreateRequestData() (RequestData, error) {
 
 
 
+    data.Comment.Initialize()
     result.PostBody = &data.Comment
 
     return result, nil

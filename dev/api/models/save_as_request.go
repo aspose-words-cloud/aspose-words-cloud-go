@@ -142,6 +142,7 @@ func (data *SaveAsRequest) CreateRequestData() (RequestData, error) {
 
 
 
+    data.SaveOptionsData.Initialize()
     result.PostBody = &data.SaveOptionsData
 
     return result, nil

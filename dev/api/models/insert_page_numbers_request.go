@@ -160,6 +160,7 @@ func (data *InsertPageNumbersRequest) CreateRequestData() (RequestData, error) {
 
 
 
+    data.PageNumber.Initialize()
     result.PostBody = &data.PageNumber
 
     return result, nil

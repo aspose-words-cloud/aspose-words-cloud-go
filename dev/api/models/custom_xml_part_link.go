@@ -40,13 +40,18 @@ type CustomXmlPartLink struct {
 
 type ICustomXmlPartLink interface {
     IsCustomXmlPartLink() bool
+    Initialize()
 }
+
 func (CustomXmlPartLink) IsCustomXmlPartLink() bool {
     return true
 }
 
 func (CustomXmlPartLink) IsLinkElement() bool {
     return true
+}
+
+func (obj *CustomXmlPartLink) Initialize() {
 }
 
 

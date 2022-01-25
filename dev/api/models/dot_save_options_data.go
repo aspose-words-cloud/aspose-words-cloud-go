@@ -143,18 +143,30 @@ type DotSaveOptionsData struct {
     SaveRoutingSlip *bool `json:"SaveRoutingSlip,omitempty"`
 
     // Container class for dot save options.
-    const SaveFormat *string `json:"SaveFormat,omitempty"` = "dot"
+    SaveFormat *string `json:"SaveFormat,omitempty"`
 }
 
 type IDotSaveOptionsData interface {
     IsDotSaveOptionsData() bool
+    Initialize()
 }
+
 func (DotSaveOptionsData) IsDotSaveOptionsData() bool {
     return true
 }
 
 func (DotSaveOptionsData) IsDocSaveOptionsData() bool {
     return true
+}
+
+func (DotSaveOptionsData) IsSaveOptionsData() bool {
+    return true
+}
+
+func (obj *DotSaveOptionsData) Initialize() {
+    var _SaveFormat = "dot"
+    obj.SaveFormat = &_SaveFormat
+
 }
 
 

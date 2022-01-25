@@ -166,6 +166,7 @@ func (data *UpdateRunRequest) CreateRequestData() (RequestData, error) {
 
 
 
+    data.Run.Initialize()
     result.PostBody = &data.Run
 
     return result, nil

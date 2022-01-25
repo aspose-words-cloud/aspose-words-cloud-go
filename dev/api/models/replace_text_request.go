@@ -160,6 +160,7 @@ func (data *ReplaceTextRequest) CreateRequestData() (RequestData, error) {
 
 
 
+    data.ReplaceText.Initialize()
     result.PostBody = &data.ReplaceText
 
     return result, nil

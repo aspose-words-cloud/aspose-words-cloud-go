@@ -106,13 +106,26 @@ type DrawingObject struct {
 
 type IDrawingObject interface {
     IsDrawingObject() bool
+    Initialize()
 }
+
 func (DrawingObject) IsDrawingObject() bool {
     return true
 }
 
 func (DrawingObject) IsDrawingObjectLink() bool {
     return true
+}
+
+func (DrawingObject) IsNodeLink() bool {
+    return true
+}
+
+func (DrawingObject) IsLinkElement() bool {
+    return true
+}
+
+func (obj *DrawingObject) Initialize() {
 }
 
 

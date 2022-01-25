@@ -159,6 +159,7 @@ func (data *OptimizeDocumentRequest) CreateRequestData() (RequestData, error) {
 
 
 
+    data.Options.Initialize()
     result.PostBody = &data.Options
 
     return result, nil

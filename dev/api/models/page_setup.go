@@ -214,13 +214,18 @@ type PageSetup struct {
 
 type IPageSetup interface {
     IsPageSetup() bool
+    Initialize()
 }
+
 func (PageSetup) IsPageSetup() bool {
     return true
 }
 
 func (PageSetup) IsLinkElement() bool {
     return true
+}
+
+func (obj *PageSetup) Initialize() {
 }
 
 

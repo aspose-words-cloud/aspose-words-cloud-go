@@ -62,7 +62,7 @@ func Test_AppendDocument_AppendDocument(t *testing.T) {
 
     request := &models.AppendDocumentRequest{
         Name: ToStringPointer(remoteFileName),
-        DocumentList: requestDocumentList,
+        DocumentList: &requestDocumentList,
         Optionals: options,
     }
 
@@ -102,7 +102,7 @@ func Test_AppendDocument_AppendDocumentOnline(t *testing.T) {
 
     request := &models.AppendDocumentOnlineRequest{
         Document: requestDocument,
-        DocumentList: requestDocumentList,
+        DocumentList: &requestDocumentList,
         Optionals: options,
     }
 

@@ -196,13 +196,18 @@ type ParagraphFormatBase struct {
 
 type IParagraphFormatBase interface {
     IsParagraphFormatBase() bool
+    Initialize()
 }
+
 func (ParagraphFormatBase) IsParagraphFormatBase() bool {
     return true
 }
 
 func (ParagraphFormatBase) IsLinkElement() bool {
     return true
+}
+
+func (obj *ParagraphFormatBase) Initialize() {
 }
 
 

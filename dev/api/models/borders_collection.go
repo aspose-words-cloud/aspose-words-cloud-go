@@ -46,13 +46,18 @@ type BordersCollection struct {
 
 type IBordersCollection interface {
     IsBordersCollection() bool
+    Initialize()
 }
+
 func (BordersCollection) IsBordersCollection() bool {
     return true
 }
 
 func (BordersCollection) IsLinkElement() bool {
     return true
+}
+
+func (obj *BordersCollection) Initialize() {
 }
 
 

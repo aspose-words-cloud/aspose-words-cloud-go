@@ -64,13 +64,26 @@ type Field struct {
 
 type IField interface {
     IsField() bool
+    Initialize()
 }
+
 func (Field) IsField() bool {
     return true
 }
 
 func (Field) IsFieldLink() bool {
     return true
+}
+
+func (Field) IsNodeLink() bool {
+    return true
+}
+
+func (Field) IsLinkElement() bool {
+    return true
+}
+
+func (obj *Field) Initialize() {
 }
 
 

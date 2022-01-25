@@ -143,18 +143,30 @@ type FlatOpcMacroSaveOptionsData struct {
     PrettyFormat *bool `json:"PrettyFormat,omitempty"`
 
     // Container class for fopc_macro save options.
-    const SaveFormat *string `json:"SaveFormat,omitempty"` = "fopc_macro"
+    SaveFormat *string `json:"SaveFormat,omitempty"`
 }
 
 type IFlatOpcMacroSaveOptionsData interface {
     IsFlatOpcMacroSaveOptionsData() bool
+    Initialize()
 }
+
 func (FlatOpcMacroSaveOptionsData) IsFlatOpcMacroSaveOptionsData() bool {
     return true
 }
 
 func (FlatOpcMacroSaveOptionsData) IsOoxmlSaveOptionsData() bool {
     return true
+}
+
+func (FlatOpcMacroSaveOptionsData) IsSaveOptionsData() bool {
+    return true
+}
+
+func (obj *FlatOpcMacroSaveOptionsData) Initialize() {
+    var _SaveFormat = "fopc_macro"
+    obj.SaveFormat = &_SaveFormat
+
 }
 
 

@@ -70,13 +70,26 @@ type OfficeMathObject struct {
 
 type IOfficeMathObject interface {
     IsOfficeMathObject() bool
+    Initialize()
 }
+
 func (OfficeMathObject) IsOfficeMathObject() bool {
     return true
 }
 
 func (OfficeMathObject) IsOfficeMathLink() bool {
     return true
+}
+
+func (OfficeMathObject) IsNodeLink() bool {
+    return true
+}
+
+func (OfficeMathObject) IsLinkElement() bool {
+    return true
+}
+
+func (obj *OfficeMathObject) Initialize() {
 }
 
 

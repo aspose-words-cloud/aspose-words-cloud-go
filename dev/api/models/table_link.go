@@ -46,13 +46,22 @@ type TableLink struct {
 
 type ITableLink interface {
     IsTableLink() bool
+    Initialize()
 }
+
 func (TableLink) IsTableLink() bool {
     return true
 }
 
 func (TableLink) IsNodeLink() bool {
     return true
+}
+
+func (TableLink) IsLinkElement() bool {
+    return true
+}
+
+func (obj *TableLink) Initialize() {
 }
 
 

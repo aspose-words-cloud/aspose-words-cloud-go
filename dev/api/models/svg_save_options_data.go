@@ -191,7 +191,7 @@ type SvgSaveOptionsData struct {
     ResourcesFolderAlias *string `json:"ResourcesFolderAlias,omitempty"`
 
     // Container class for svg save options.
-    const SaveFormat *string `json:"SaveFormat,omitempty"` = "svg"
+    SaveFormat *string `json:"SaveFormat,omitempty"`
 
     // Container class for svg save options.
     ShowPageBorder *bool `json:"ShowPageBorder,omitempty"`
@@ -202,13 +202,25 @@ type SvgSaveOptionsData struct {
 
 type ISvgSaveOptionsData interface {
     IsSvgSaveOptionsData() bool
+    Initialize()
 }
+
 func (SvgSaveOptionsData) IsSvgSaveOptionsData() bool {
     return true
 }
 
 func (SvgSaveOptionsData) IsFixedPageSaveOptionsData() bool {
     return true
+}
+
+func (SvgSaveOptionsData) IsSaveOptionsData() bool {
+    return true
+}
+
+func (obj *SvgSaveOptionsData) Initialize() {
+    var _SaveFormat = "svg"
+    obj.SaveFormat = &_SaveFormat
+
 }
 
 

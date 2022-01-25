@@ -165,6 +165,7 @@ func (data *InsertTableRequest) CreateRequestData() (RequestData, error) {
 
 
 
+    data.Table.Initialize()
     result.PostBody = &data.Table
 
     return result, nil

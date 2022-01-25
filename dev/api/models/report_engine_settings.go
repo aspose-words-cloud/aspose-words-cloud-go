@@ -70,9 +70,15 @@ type ReportEngineSettings struct {
 
 type IReportEngineSettings interface {
     IsReportEngineSettings() bool
+    Initialize()
 }
+
 func (ReportEngineSettings) IsReportEngineSettings() bool {
     return true
+}
+
+
+func (obj *ReportEngineSettings) Initialize() {
 }
 
 

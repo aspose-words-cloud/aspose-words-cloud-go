@@ -158,7 +158,7 @@ type ImageSaveOptionsData struct {
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
 
     // Container abstract class for image save options.
-    const SaveFormat *string `json:"SaveFormat,omitempty"`
+    SaveFormat *string `json:"SaveFormat,omitempty"`
 
     // Container abstract class for image save options.
     UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
@@ -238,13 +238,22 @@ type ImageSaveOptionsData struct {
 
 type IImageSaveOptionsData interface {
     IsImageSaveOptionsData() bool
+    Initialize()
 }
+
 func (ImageSaveOptionsData) IsImageSaveOptionsData() bool {
     return true
 }
 
 func (ImageSaveOptionsData) IsFixedPageSaveOptionsData() bool {
     return true
+}
+
+func (ImageSaveOptionsData) IsSaveOptionsData() bool {
+    return true
+}
+
+func (obj *ImageSaveOptionsData) Initialize() {
 }
 
 

@@ -160,6 +160,7 @@ func (data *InsertCustomXmlPartRequest) CreateRequestData() (RequestData, error)
 
 
 
+    data.CustomXmlPart.Initialize()
     result.PostBody = &data.CustomXmlPart
 
     return result, nil

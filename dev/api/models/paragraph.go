@@ -52,13 +52,22 @@ type Paragraph struct {
 
 type IParagraph interface {
     IsParagraph() bool
+    Initialize()
 }
+
 func (Paragraph) IsParagraph() bool {
     return true
 }
 
 func (Paragraph) IsNodeLink() bool {
     return true
+}
+
+func (Paragraph) IsLinkElement() bool {
+    return true
+}
+
+func (obj *Paragraph) Initialize() {
 }
 
 

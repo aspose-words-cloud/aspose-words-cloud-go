@@ -151,6 +151,7 @@ func (data *CompareDocumentRequest) CreateRequestData() (RequestData, error) {
 
 
 
+    data.CompareData.Initialize()
     result.PostBody = &data.CompareData
 
     return result, nil

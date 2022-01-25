@@ -233,18 +233,34 @@ type JpegSaveOptionsData struct {
     VerticalResolution *float64 `json:"VerticalResolution,omitempty"`
 
     // Container class for jpeg save options.
-    const SaveFormat *string `json:"SaveFormat,omitempty"` = "jpeg"
+    SaveFormat *string `json:"SaveFormat,omitempty"`
 }
 
 type IJpegSaveOptionsData interface {
     IsJpegSaveOptionsData() bool
+    Initialize()
 }
+
 func (JpegSaveOptionsData) IsJpegSaveOptionsData() bool {
     return true
 }
 
 func (JpegSaveOptionsData) IsImageSaveOptionsData() bool {
     return true
+}
+
+func (JpegSaveOptionsData) IsFixedPageSaveOptionsData() bool {
+    return true
+}
+
+func (JpegSaveOptionsData) IsSaveOptionsData() bool {
+    return true
+}
+
+func (obj *JpegSaveOptionsData) Initialize() {
+    var _SaveFormat = "jpeg"
+    obj.SaveFormat = &_SaveFormat
+
 }
 
 

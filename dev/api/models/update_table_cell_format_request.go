@@ -166,6 +166,7 @@ func (data *UpdateTableCellFormatRequest) CreateRequestData() (RequestData, erro
 
 
 
+    data.Format.Initialize()
     result.PostBody = &data.Format
 
     return result, nil

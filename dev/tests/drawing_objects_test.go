@@ -471,7 +471,7 @@ func Test_DrawingObjects_InsertDrawingObject(t *testing.T) {
 
     request := &models.InsertDrawingObjectRequest{
         Name: ToStringPointer(remoteFileName),
-        DrawingObject: requestDrawingObject,
+        DrawingObject: &requestDrawingObject,
         ImageFile: requestImageFile,
         Optionals: options,
     }
@@ -507,7 +507,7 @@ func Test_DrawingObjects_InsertDrawingObjectOnline(t *testing.T) {
 
     request := &models.InsertDrawingObjectOnlineRequest{
         Document: requestDocument,
-        DrawingObject: requestDrawingObject,
+        DrawingObject: &requestDrawingObject,
         ImageFile: requestImageFile,
         Optionals: options,
     }
@@ -546,7 +546,7 @@ func Test_DrawingObjects_InsertDrawingObjectWithoutNodePath(t *testing.T) {
 
     request := &models.InsertDrawingObjectRequest{
         Name: ToStringPointer(remoteFileName),
-        DrawingObject: requestDrawingObject,
+        DrawingObject: &requestDrawingObject,
         ImageFile: requestImageFile,
         Optionals: options,
     }
@@ -664,7 +664,7 @@ func Test_DrawingObjects_UpdateDrawingObject(t *testing.T) {
 
     request := &models.UpdateDrawingObjectRequest{
         Name: ToStringPointer(remoteFileName),
-        DrawingObject: requestDrawingObject,
+        DrawingObject: &requestDrawingObject,
         ImageFile: requestImageFile,
         Index: ToInt32Pointer(int32(0)),
         Optionals: options,
@@ -695,7 +695,7 @@ func Test_DrawingObjects_UpdateDrawingObjectOnline(t *testing.T) {
 
     request := &models.UpdateDrawingObjectOnlineRequest{
         Document: requestDocument,
-        DrawingObject: requestDrawingObject,
+        DrawingObject: &requestDrawingObject,
         ImageFile: requestImageFile,
         Index: ToInt32Pointer(int32(0)),
         Optionals: options,
@@ -729,7 +729,7 @@ func Test_DrawingObjects_UpdateDrawingObjectWithoutNodePath(t *testing.T) {
 
     request := &models.UpdateDrawingObjectRequest{
         Name: ToStringPointer(remoteFileName),
-        DrawingObject: requestDrawingObject,
+        DrawingObject: &requestDrawingObject,
         ImageFile: requestImageFile,
         Index: ToInt32Pointer(int32(0)),
         Optionals: options,

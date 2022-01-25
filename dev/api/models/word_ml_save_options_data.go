@@ -125,18 +125,26 @@ type WordMLSaveOptionsData struct {
     PrettyFormat *bool `json:"PrettyFormat,omitempty"`
 
     // Container class for wml save options.
-    const SaveFormat *string `json:"SaveFormat,omitempty"` = "wml"
+    SaveFormat *string `json:"SaveFormat,omitempty"`
 }
 
 type IWordMLSaveOptionsData interface {
     IsWordMLSaveOptionsData() bool
+    Initialize()
 }
+
 func (WordMLSaveOptionsData) IsWordMLSaveOptionsData() bool {
     return true
 }
 
 func (WordMLSaveOptionsData) IsSaveOptionsData() bool {
     return true
+}
+
+func (obj *WordMLSaveOptionsData) Initialize() {
+    var _SaveFormat = "wml"
+    obj.SaveFormat = &_SaveFormat
+
 }
 
 

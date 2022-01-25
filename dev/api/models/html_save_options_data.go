@@ -347,7 +347,7 @@ type HtmlSaveOptionsData struct {
     ResourceFolderAlias *string `json:"ResourceFolderAlias,omitempty"`
 
     // Container class for html save options.
-    const SaveFormat *string `json:"SaveFormat,omitempty"` = "html"
+    SaveFormat *string `json:"SaveFormat,omitempty"`
 
     // Container class for html save options.
     ScaleImageToShapeSize *bool `json:"ScaleImageToShapeSize,omitempty"`
@@ -358,13 +358,21 @@ type HtmlSaveOptionsData struct {
 
 type IHtmlSaveOptionsData interface {
     IsHtmlSaveOptionsData() bool
+    Initialize()
 }
+
 func (HtmlSaveOptionsData) IsHtmlSaveOptionsData() bool {
     return true
 }
 
 func (HtmlSaveOptionsData) IsSaveOptionsData() bool {
     return true
+}
+
+func (obj *HtmlSaveOptionsData) Initialize() {
+    var _SaveFormat = "html"
+    obj.SaveFormat = &_SaveFormat
+
 }
 
 

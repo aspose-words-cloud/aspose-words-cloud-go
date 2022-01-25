@@ -46,9 +46,15 @@ type ReplaceRangeDto struct {
 
 type IReplaceRangeDto interface {
     IsReplaceRangeDto() bool
+    Initialize()
 }
+
 func (ReplaceRangeDto) IsReplaceRangeDto() bool {
     return true
+}
+
+
+func (obj *ReplaceRangeDto) Initialize() {
 }
 
 

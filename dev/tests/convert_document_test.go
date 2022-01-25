@@ -54,7 +54,7 @@ func Test_ConvertDocument_SaveAs(t *testing.T) {
 
     request := &models.SaveAsRequest{
         Name: ToStringPointer(remoteName),
-        SaveOptionsData: requestSaveOptionsData,
+        SaveOptionsData: &requestSaveOptionsData,
         Optionals: options,
     }
 
@@ -83,7 +83,7 @@ func Test_ConvertDocument_SaveAsOnline(t *testing.T) {
 
     request := &models.SaveAsOnlineRequest{
         Document: requestDocument,
-        SaveOptionsData: requestSaveOptionsData,
+        SaveOptionsData: &requestSaveOptionsData,
         Optionals: options,
     }
 
@@ -115,7 +115,7 @@ func Test_ConvertDocument_SaveAsDocx(t *testing.T) {
 
     request := &models.SaveAsRequest{
         Name: ToStringPointer(remoteName),
-        SaveOptionsData: requestSaveOptionsData,
+        SaveOptionsData: &requestSaveOptionsData,
         Optionals: options,
     }
 
@@ -148,7 +148,7 @@ func Test_ConvertDocument_SaveAsTiff(t *testing.T) {
 
     request := &models.SaveAsTiffRequest{
         Name: ToStringPointer(remoteName),
-        SaveOptions: requestSaveOptions,
+        SaveOptions: &requestSaveOptions,
         Optionals: options,
     }
 
@@ -177,7 +177,7 @@ func Test_ConvertDocument_SaveAsTiffOnline(t *testing.T) {
 
     request := &models.SaveAsTiffOnlineRequest{
         Document: requestDocument,
-        SaveOptions: requestSaveOptions,
+        SaveOptions: &requestSaveOptions,
         Optionals: options,
     }
 

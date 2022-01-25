@@ -35,9 +35,15 @@ type FontDto struct {
 
 type IFontDto interface {
     IsFontDto() bool
+    Initialize()
 }
+
 func (FontDto) IsFontDto() bool {
     return true
+}
+
+
+func (obj *FontDto) Initialize() {
 }
 
 

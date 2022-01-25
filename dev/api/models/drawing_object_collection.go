@@ -46,13 +46,18 @@ type DrawingObjectCollection struct {
 
 type IDrawingObjectCollection interface {
     IsDrawingObjectCollection() bool
+    Initialize()
 }
+
 func (DrawingObjectCollection) IsDrawingObjectCollection() bool {
     return true
 }
 
 func (DrawingObjectCollection) IsLinkElement() bool {
     return true
+}
+
+func (obj *DrawingObjectCollection) Initialize() {
 }
 
 

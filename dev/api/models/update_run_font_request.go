@@ -166,6 +166,7 @@ func (data *UpdateRunFontRequest) CreateRequestData() (RequestData, error) {
 
 
 
+    data.FontDto.Initialize()
     result.PostBody = &data.FontDto
 
     return result, nil

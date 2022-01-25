@@ -165,6 +165,7 @@ func (data *InsertFootnoteRequest) CreateRequestData() (RequestData, error) {
 
 
 
+    data.FootnoteDto.Initialize()
     result.PostBody = &data.FootnoteDto
 
     return result, nil

@@ -46,13 +46,18 @@ type CommentsCollection struct {
 
 type ICommentsCollection interface {
     IsCommentsCollection() bool
+    Initialize()
 }
+
 func (CommentsCollection) IsCommentsCollection() bool {
     return true
 }
 
 func (CommentsCollection) IsLinkElement() bool {
     return true
+}
+
+func (obj *CommentsCollection) Initialize() {
 }
 
 

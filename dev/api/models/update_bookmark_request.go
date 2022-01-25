@@ -163,6 +163,7 @@ func (data *UpdateBookmarkRequest) CreateRequestData() (RequestData, error) {
 
 
 
+    data.BookmarkData.Initialize()
     result.PostBody = &data.BookmarkData
 
     return result, nil

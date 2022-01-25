@@ -46,13 +46,18 @@ type FormFieldCollection struct {
 
 type IFormFieldCollection interface {
     IsFormFieldCollection() bool
+    Initialize()
 }
+
 func (FormFieldCollection) IsFormFieldCollection() bool {
     return true
 }
 
 func (FormFieldCollection) IsLinkElement() bool {
     return true
+}
+
+func (obj *FormFieldCollection) Initialize() {
 }
 
 

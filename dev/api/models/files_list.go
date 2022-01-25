@@ -40,9 +40,15 @@ type FilesList struct {
 
 type IFilesList interface {
     IsFilesList() bool
+    Initialize()
 }
+
 func (FilesList) IsFilesList() bool {
     return true
+}
+
+
+func (obj *FilesList) Initialize() {
 }
 
 

@@ -67,9 +67,15 @@ type Link struct {
 
 type ILink interface {
     IsLink() bool
+    Initialize()
 }
+
 func (Link) IsLink() bool {
     return true
+}
+
+
+func (obj *Link) Initialize() {
 }
 
 

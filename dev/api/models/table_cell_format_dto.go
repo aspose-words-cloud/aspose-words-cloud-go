@@ -35,9 +35,15 @@ type TableCellFormatDto struct {
 
 type ITableCellFormatDto interface {
     IsTableCellFormatDto() bool
+    Initialize()
 }
+
 func (TableCellFormatDto) IsTableCellFormatDto() bool {
     return true
+}
+
+
+func (obj *TableCellFormatDto) Initialize() {
 }
 
 

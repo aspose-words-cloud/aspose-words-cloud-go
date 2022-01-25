@@ -163,6 +163,7 @@ func (data *InsertTableRowRequest) CreateRequestData() (RequestData, error) {
 
 
 
+    data.Row.Initialize()
     result.PostBody = &data.Row
 
     return result, nil

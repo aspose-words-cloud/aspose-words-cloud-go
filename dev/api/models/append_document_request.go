@@ -160,6 +160,7 @@ func (data *AppendDocumentRequest) CreateRequestData() (RequestData, error) {
 
 
 
+    data.DocumentList.Initialize()
     result.PostBody = &data.DocumentList
 
     return result, nil

@@ -160,6 +160,7 @@ func (data *CopyStyleRequest) CreateRequestData() (RequestData, error) {
 
 
 
+    data.StyleCopy.Initialize()
     result.PostBody = &data.StyleCopy
 
     return result, nil

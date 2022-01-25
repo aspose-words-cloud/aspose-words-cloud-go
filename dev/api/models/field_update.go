@@ -46,13 +46,18 @@ type FieldUpdate struct {
 
 type IFieldUpdate interface {
     IsFieldUpdate() bool
+    Initialize()
 }
+
 func (FieldUpdate) IsFieldUpdate() bool {
     return true
 }
 
 func (FieldUpdate) IsFieldBase() bool {
     return true
+}
+
+func (obj *FieldUpdate) Initialize() {
 }
 
 

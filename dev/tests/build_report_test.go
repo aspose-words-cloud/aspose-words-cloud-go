@@ -54,7 +54,7 @@ func Test_BuildReport_BuildReportOnline(t *testing.T) {
     request := &models.BuildReportOnlineRequest{
         Template: requestTemplate,
         Data: ToStringPointer(localDataFile),
-        ReportEngineSettings: requestReportEngineSettings,
+        ReportEngineSettings: &requestReportEngineSettings,
         Optionals: options,
     }
 
@@ -93,7 +93,7 @@ func Test_BuildReport_BuildReport(t *testing.T) {
     request := &models.BuildReportRequest{
         Name: ToStringPointer(remoteFileName),
         Data: ToStringPointer(localDataFile),
-        ReportEngineSettings: requestReportEngineSettings,
+        ReportEngineSettings: &requestReportEngineSettings,
         Optionals: options,
     }
 

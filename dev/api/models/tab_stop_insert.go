@@ -52,13 +52,18 @@ type TabStopInsert struct {
 
 type ITabStopInsert interface {
     IsTabStopInsert() bool
+    Initialize()
 }
+
 func (TabStopInsert) IsTabStopInsert() bool {
     return true
 }
 
 func (TabStopInsert) IsTabStopBase() bool {
     return true
+}
+
+func (obj *TabStopInsert) Initialize() {
 }
 
 

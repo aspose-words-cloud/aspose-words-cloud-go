@@ -280,13 +280,18 @@ type Font struct {
 
 type IFont interface {
     IsFont() bool
+    Initialize()
 }
+
 func (Font) IsFont() bool {
     return true
 }
 
 func (Font) IsLinkElement() bool {
     return true
+}
+
+func (obj *Font) Initialize() {
 }
 
 

@@ -164,7 +164,7 @@ type PsSaveOptionsData struct {
     PageIndex *int32 `json:"PageIndex,omitempty"`
 
     // Container class for ps save options.
-    const SaveFormat *string `json:"SaveFormat,omitempty"` = "ps"
+    SaveFormat *string `json:"SaveFormat,omitempty"`
 
     // Container class for ps save options.
     UseBookFoldPrintingSettings *bool `json:"UseBookFoldPrintingSettings,omitempty"`
@@ -172,13 +172,25 @@ type PsSaveOptionsData struct {
 
 type IPsSaveOptionsData interface {
     IsPsSaveOptionsData() bool
+    Initialize()
 }
+
 func (PsSaveOptionsData) IsPsSaveOptionsData() bool {
     return true
 }
 
 func (PsSaveOptionsData) IsFixedPageSaveOptionsData() bool {
     return true
+}
+
+func (PsSaveOptionsData) IsSaveOptionsData() bool {
+    return true
+}
+
+func (obj *PsSaveOptionsData) Initialize() {
+    var _SaveFormat = "ps"
+    obj.SaveFormat = &_SaveFormat
+
 }
 
 

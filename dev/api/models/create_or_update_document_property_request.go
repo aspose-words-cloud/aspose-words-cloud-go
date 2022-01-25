@@ -163,6 +163,7 @@ func (data *CreateOrUpdateDocumentPropertyRequest) CreateRequestData() (RequestD
 
 
 
+    data.Property.Initialize()
     result.PostBody = &data.Property
 
     return result, nil

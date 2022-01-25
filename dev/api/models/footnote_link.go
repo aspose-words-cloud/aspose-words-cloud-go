@@ -46,13 +46,22 @@ type FootnoteLink struct {
 
 type IFootnoteLink interface {
     IsFootnoteLink() bool
+    Initialize()
 }
+
 func (FootnoteLink) IsFootnoteLink() bool {
     return true
 }
 
 func (FootnoteLink) IsNodeLink() bool {
     return true
+}
+
+func (FootnoteLink) IsLinkElement() bool {
+    return true
+}
+
+func (obj *FootnoteLink) Initialize() {
 }
 
 

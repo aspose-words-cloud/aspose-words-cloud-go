@@ -40,9 +40,15 @@ type StoryChildNodes struct {
 
 type IStoryChildNodes interface {
     IsStoryChildNodes() bool
+    Initialize()
 }
+
 func (StoryChildNodes) IsStoryChildNodes() bool {
     return true
+}
+
+
+func (obj *StoryChildNodes) Initialize() {
 }
 
 

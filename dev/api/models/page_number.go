@@ -58,9 +58,15 @@ type PageNumber struct {
 
 type IPageNumber interface {
     IsPageNumber() bool
+    Initialize()
 }
+
 func (PageNumber) IsPageNumber() bool {
     return true
+}
+
+
+func (obj *PageNumber) Initialize() {
 }
 
 

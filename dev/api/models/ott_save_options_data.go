@@ -143,18 +143,30 @@ type OttSaveOptionsData struct {
     PrettyFormat *bool `json:"PrettyFormat,omitempty"`
 
     // Container class for ott save options.
-    const SaveFormat *string `json:"SaveFormat,omitempty"` = "ott"
+    SaveFormat *string `json:"SaveFormat,omitempty"`
 }
 
 type IOttSaveOptionsData interface {
     IsOttSaveOptionsData() bool
+    Initialize()
 }
+
 func (OttSaveOptionsData) IsOttSaveOptionsData() bool {
     return true
 }
 
 func (OttSaveOptionsData) IsOdtSaveOptionsData() bool {
     return true
+}
+
+func (OttSaveOptionsData) IsSaveOptionsData() bool {
+    return true
+}
+
+func (obj *OttSaveOptionsData) Initialize() {
+    var _SaveFormat = "ott"
+    obj.SaveFormat = &_SaveFormat
+
 }
 
 

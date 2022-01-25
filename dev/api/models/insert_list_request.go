@@ -160,6 +160,7 @@ func (data *InsertListRequest) CreateRequestData() (RequestData, error) {
 
 
 
+    data.ListInsert.Initialize()
     result.PostBody = &data.ListInsert
 
     return result, nil

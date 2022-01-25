@@ -46,9 +46,15 @@ type InfoAdditionalItem struct {
 
 type IInfoAdditionalItem interface {
     IsInfoAdditionalItem() bool
+    Initialize()
 }
+
 func (InfoAdditionalItem) IsInfoAdditionalItem() bool {
     return true
+}
+
+
+func (obj *InfoAdditionalItem) Initialize() {
 }
 
 

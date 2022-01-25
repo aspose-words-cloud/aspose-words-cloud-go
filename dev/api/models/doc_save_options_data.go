@@ -137,7 +137,7 @@ type DocSaveOptionsData struct {
     Password *string `json:"Password,omitempty"`
 
     // Container class for doc/dot save options.
-    const SaveFormat *string `json:"SaveFormat,omitempty"` = "doc"
+    SaveFormat *string `json:"SaveFormat,omitempty"`
 
     // Container class for doc/dot save options.
     SavePictureBullet *bool `json:"SavePictureBullet,omitempty"`
@@ -148,13 +148,21 @@ type DocSaveOptionsData struct {
 
 type IDocSaveOptionsData interface {
     IsDocSaveOptionsData() bool
+    Initialize()
 }
+
 func (DocSaveOptionsData) IsDocSaveOptionsData() bool {
     return true
 }
 
 func (DocSaveOptionsData) IsSaveOptionsData() bool {
     return true
+}
+
+func (obj *DocSaveOptionsData) Initialize() {
+    var _SaveFormat = "doc"
+    obj.SaveFormat = &_SaveFormat
+
 }
 
 

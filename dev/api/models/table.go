@@ -58,13 +58,22 @@ type Table struct {
 
 type ITable interface {
     IsTable() bool
+    Initialize()
 }
+
 func (Table) IsTable() bool {
     return true
 }
 
 func (Table) IsNodeLink() bool {
     return true
+}
+
+func (Table) IsLinkElement() bool {
+    return true
+}
+
+func (obj *Table) Initialize() {
 }
 
 

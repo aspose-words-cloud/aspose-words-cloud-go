@@ -46,9 +46,15 @@ type StyleInsert struct {
 
 type IStyleInsert interface {
     IsStyleInsert() bool
+    Initialize()
 }
+
 func (StyleInsert) IsStyleInsert() bool {
     return true
+}
+
+
+func (obj *StyleInsert) Initialize() {
 }
 
 

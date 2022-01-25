@@ -156,19 +156,19 @@ func Test_Comment_InsertComment(t *testing.T) {
         NodeId: ToStringPointer("0.3.0.3"),
     }
     requestCommentRangeStart := models.DocumentPosition{
-        Node: requestCommentRangeStartNode,
+        Node: &requestCommentRangeStartNode,
         Offset: ToInt32Pointer(int32(0)),
     }
     requestCommentRangeEndNode := models.NodeLink{
         NodeId: ToStringPointer("0.3.0.3"),
     }
     requestCommentRangeEnd := models.DocumentPosition{
-        Node: requestCommentRangeEndNode,
+        Node: &requestCommentRangeEndNode,
         Offset: ToInt32Pointer(int32(0)),
     }
     requestComment := models.CommentInsert{
-        RangeStart: requestCommentRangeStart,
-        RangeEnd: requestCommentRangeEnd,
+        RangeStart: &requestCommentRangeStart,
+        RangeEnd: &requestCommentRangeEnd,
         Initial: ToStringPointer("IA"),
         Author: ToStringPointer("Imran Anwar"),
         Text: ToStringPointer("A new Comment"),
@@ -180,7 +180,7 @@ func Test_Comment_InsertComment(t *testing.T) {
 
     request := &models.InsertCommentRequest{
         Name: ToStringPointer(remoteFileName),
-        Comment: requestComment,
+        Comment: &requestComment,
         Optionals: options,
     }
 
@@ -207,19 +207,19 @@ func Test_Comment_InsertCommentOnline(t *testing.T) {
         NodeId: ToStringPointer("0.3.0.3"),
     }
     requestCommentRangeStart := models.DocumentPosition{
-        Node: requestCommentRangeStartNode,
+        Node: &requestCommentRangeStartNode,
         Offset: ToInt32Pointer(int32(0)),
     }
     requestCommentRangeEndNode := models.NodeLink{
         NodeId: ToStringPointer("0.3.0.3"),
     }
     requestCommentRangeEnd := models.DocumentPosition{
-        Node: requestCommentRangeEndNode,
+        Node: &requestCommentRangeEndNode,
         Offset: ToInt32Pointer(int32(0)),
     }
     requestComment := models.CommentInsert{
-        RangeStart: requestCommentRangeStart,
-        RangeEnd: requestCommentRangeEnd,
+        RangeStart: &requestCommentRangeStart,
+        RangeEnd: &requestCommentRangeEnd,
         Initial: ToStringPointer("IA"),
         Author: ToStringPointer("Imran Anwar"),
         Text: ToStringPointer("A new Comment"),
@@ -230,7 +230,7 @@ func Test_Comment_InsertCommentOnline(t *testing.T) {
 
     request := &models.InsertCommentOnlineRequest{
         Document: requestDocument,
-        Comment: requestComment,
+        Comment: &requestComment,
         Optionals: options,
     }
 
@@ -255,19 +255,19 @@ func Test_Comment_UpdateComment(t *testing.T) {
         NodeId: ToStringPointer("0.3.0"),
     }
     requestCommentRangeStart := models.DocumentPosition{
-        Node: requestCommentRangeStartNode,
+        Node: &requestCommentRangeStartNode,
         Offset: ToInt32Pointer(int32(0)),
     }
     requestCommentRangeEndNode := models.NodeLink{
         NodeId: ToStringPointer("0.3.0"),
     }
     requestCommentRangeEnd := models.DocumentPosition{
-        Node: requestCommentRangeEndNode,
+        Node: &requestCommentRangeEndNode,
         Offset: ToInt32Pointer(int32(0)),
     }
     requestComment := models.CommentUpdate{
-        RangeStart: requestCommentRangeStart,
-        RangeEnd: requestCommentRangeEnd,
+        RangeStart: &requestCommentRangeStart,
+        RangeEnd: &requestCommentRangeEnd,
         Initial: ToStringPointer("IA"),
         Author: ToStringPointer("Imran Anwar"),
         Text: ToStringPointer("A new Comment"),
@@ -280,7 +280,7 @@ func Test_Comment_UpdateComment(t *testing.T) {
     request := &models.UpdateCommentRequest{
         Name: ToStringPointer(remoteFileName),
         CommentIndex: ToInt32Pointer(int32(0)),
-        Comment: requestComment,
+        Comment: &requestComment,
         Optionals: options,
     }
 
@@ -307,19 +307,19 @@ func Test_Comment_UpdateCommentOnline(t *testing.T) {
         NodeId: ToStringPointer("0.3.0"),
     }
     requestCommentRangeStart := models.DocumentPosition{
-        Node: requestCommentRangeStartNode,
+        Node: &requestCommentRangeStartNode,
         Offset: ToInt32Pointer(int32(0)),
     }
     requestCommentRangeEndNode := models.NodeLink{
         NodeId: ToStringPointer("0.3.0"),
     }
     requestCommentRangeEnd := models.DocumentPosition{
-        Node: requestCommentRangeEndNode,
+        Node: &requestCommentRangeEndNode,
         Offset: ToInt32Pointer(int32(0)),
     }
     requestComment := models.CommentUpdate{
-        RangeStart: requestCommentRangeStart,
-        RangeEnd: requestCommentRangeEnd,
+        RangeStart: &requestCommentRangeStart,
+        RangeEnd: &requestCommentRangeEnd,
         Initial: ToStringPointer("IA"),
         Author: ToStringPointer("Imran Anwar"),
         Text: ToStringPointer("A new Comment"),
@@ -331,7 +331,7 @@ func Test_Comment_UpdateCommentOnline(t *testing.T) {
     request := &models.UpdateCommentOnlineRequest{
         Document: requestDocument,
         CommentIndex: ToInt32Pointer(int32(0)),
-        Comment: requestComment,
+        Comment: &requestComment,
         Optionals: options,
     }
 

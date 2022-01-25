@@ -118,13 +118,26 @@ type FormFieldCheckbox struct {
 
 type IFormFieldCheckbox interface {
     IsFormFieldCheckbox() bool
+    Initialize()
 }
+
 func (FormFieldCheckbox) IsFormFieldCheckbox() bool {
     return true
 }
 
 func (FormFieldCheckbox) IsFormField() bool {
     return true
+}
+
+func (FormFieldCheckbox) IsNodeLink() bool {
+    return true
+}
+
+func (FormFieldCheckbox) IsLinkElement() bool {
+    return true
+}
+
+func (obj *FormFieldCheckbox) Initialize() {
 }
 
 

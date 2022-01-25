@@ -46,13 +46,18 @@ type FootnoteCollection struct {
 
 type IFootnoteCollection interface {
     IsFootnoteCollection() bool
+    Initialize()
 }
+
 func (FootnoteCollection) IsFootnoteCollection() bool {
     return true
 }
 
 func (FootnoteCollection) IsLinkElement() bool {
     return true
+}
+
+func (obj *FootnoteCollection) Initialize() {
 }
 
 

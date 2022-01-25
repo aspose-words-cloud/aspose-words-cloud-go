@@ -142,6 +142,7 @@ func (data *ProtectDocumentRequest) CreateRequestData() (RequestData, error) {
 
 
 
+    data.ProtectionRequest.Initialize()
     result.PostBody = &data.ProtectionRequest
 
     return result, nil

@@ -174,6 +174,7 @@ func (data *InsertParagraphRequest) CreateRequestData() (RequestData, error) {
 
 
 
+    data.Paragraph.Initialize()
     result.PostBody = &data.Paragraph
 
     return result, nil

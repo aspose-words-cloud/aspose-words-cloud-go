@@ -233,18 +233,34 @@ type BmpSaveOptionsData struct {
     VerticalResolution *float64 `json:"VerticalResolution,omitempty"`
 
     // Container class for bmp save options.
-    const SaveFormat *string `json:"SaveFormat,omitempty"` = "bmp"
+    SaveFormat *string `json:"SaveFormat,omitempty"`
 }
 
 type IBmpSaveOptionsData interface {
     IsBmpSaveOptionsData() bool
+    Initialize()
 }
+
 func (BmpSaveOptionsData) IsBmpSaveOptionsData() bool {
     return true
 }
 
 func (BmpSaveOptionsData) IsImageSaveOptionsData() bool {
     return true
+}
+
+func (BmpSaveOptionsData) IsFixedPageSaveOptionsData() bool {
+    return true
+}
+
+func (BmpSaveOptionsData) IsSaveOptionsData() bool {
+    return true
+}
+
+func (obj *BmpSaveOptionsData) Initialize() {
+    var _SaveFormat = "bmp"
+    obj.SaveFormat = &_SaveFormat
+
 }
 
 

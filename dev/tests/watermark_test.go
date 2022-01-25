@@ -115,7 +115,7 @@ func Test_Watermark_InsertWatermarkText(t *testing.T) {
 
     request := &models.InsertWatermarkTextRequest{
         Name: ToStringPointer(remoteFileName),
-        WatermarkText: requestWatermarkText,
+        WatermarkText: &requestWatermarkText,
         Optionals: options,
     }
 
@@ -145,7 +145,7 @@ func Test_Watermark_InsertWatermarkTextOnline(t *testing.T) {
 
     request := &models.InsertWatermarkTextOnlineRequest{
         Document: requestDocument,
-        WatermarkText: requestWatermarkText,
+        WatermarkText: &requestWatermarkText,
         Optionals: options,
     }
 

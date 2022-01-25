@@ -62,7 +62,7 @@ func Test_FormField_UpdateFormField(t *testing.T) {
     request := &models.UpdateFormFieldRequest{
         Name: ToStringPointer(remoteFileName),
         Index: ToInt32Pointer(int32(0)),
-        FormField: requestFormField,
+        FormField: &requestFormField,
         Optionals: options,
     }
 
@@ -98,7 +98,7 @@ func Test_FormField_UpdateFormFieldOnline(t *testing.T) {
 
     request := &models.UpdateFormFieldOnlineRequest{
         Document: requestDocument,
-        FormField: requestFormField,
+        FormField: &requestFormField,
         Index: ToInt32Pointer(int32(0)),
         Optionals: options,
     }
@@ -137,7 +137,7 @@ func Test_FormField_UpdateFormFieldWithoutNodePath(t *testing.T) {
     request := &models.UpdateFormFieldRequest{
         Name: ToStringPointer(remoteFileName),
         Index: ToInt32Pointer(int32(0)),
-        FormField: requestFormField,
+        FormField: &requestFormField,
         Optionals: options,
     }
 
@@ -351,7 +351,7 @@ func Test_FormField_InsertFormField(t *testing.T) {
 
     request := &models.InsertFormFieldRequest{
         Name: ToStringPointer(remoteFileName),
-        FormField: requestFormField,
+        FormField: &requestFormField,
         Optionals: options,
     }
 
@@ -388,7 +388,7 @@ func Test_FormField_InsertFormFieldOnline(t *testing.T) {
 
     request := &models.InsertFormFieldOnlineRequest{
         Document: requestDocument,
-        FormField: requestFormField,
+        FormField: &requestFormField,
         Optionals: options,
     }
 
@@ -425,7 +425,7 @@ func Test_FormField_InsertFormFieldWithoutNodePath(t *testing.T) {
 
     request := &models.InsertFormFieldRequest{
         Name: ToStringPointer(remoteFileName),
-        FormField: requestFormField,
+        FormField: &requestFormField,
         Optionals: options,
     }
 

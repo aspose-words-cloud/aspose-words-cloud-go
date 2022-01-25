@@ -58,9 +58,15 @@ type FootnoteBase struct {
 
 type IFootnoteBase interface {
     IsFootnoteBase() bool
+    Initialize()
 }
+
 func (FootnoteBase) IsFootnoteBase() bool {
     return true
+}
+
+
+func (obj *FootnoteBase) Initialize() {
 }
 
 

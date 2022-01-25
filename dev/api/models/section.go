@@ -70,13 +70,18 @@ type Section struct {
 
 type ISection interface {
     IsSection() bool
+    Initialize()
 }
+
 func (Section) IsSection() bool {
     return true
 }
 
 func (Section) IsLinkElement() bool {
     return true
+}
+
+func (obj *Section) Initialize() {
 }
 
 

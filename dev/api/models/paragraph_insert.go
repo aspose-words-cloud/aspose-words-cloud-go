@@ -40,9 +40,15 @@ type ParagraphInsert struct {
 
 type IParagraphInsert interface {
     IsParagraphInsert() bool
+    Initialize()
 }
+
 func (ParagraphInsert) IsParagraphInsert() bool {
     return true
+}
+
+
+func (obj *ParagraphInsert) Initialize() {
 }
 
 

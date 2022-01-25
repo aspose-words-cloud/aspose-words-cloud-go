@@ -168,6 +168,7 @@ func (data *UpdateParagraphFormatRequest) CreateRequestData() (RequestData, erro
 
 
 
+    data.ParagraphFormatDto.Initialize()
     result.PostBody = &data.ParagraphFormatDto
 
     return result, nil

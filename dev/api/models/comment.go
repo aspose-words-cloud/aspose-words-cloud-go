@@ -82,13 +82,22 @@ type Comment struct {
 
 type IComment interface {
     IsComment() bool
+    Initialize()
 }
+
 func (Comment) IsComment() bool {
     return true
 }
 
 func (Comment) IsCommentLink() bool {
     return true
+}
+
+func (Comment) IsLinkElement() bool {
+    return true
+}
+
+func (obj *Comment) Initialize() {
 }
 
 

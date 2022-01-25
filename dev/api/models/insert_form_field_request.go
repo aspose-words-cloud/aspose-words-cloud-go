@@ -174,6 +174,7 @@ func (data *InsertFormFieldRequest) CreateRequestData() (RequestData, error) {
 
 
 
+    data.FormField.Initialize()
     result.PostBody = &data.FormField
 
     return result, nil

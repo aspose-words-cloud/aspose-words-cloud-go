@@ -82,13 +82,18 @@ type ListInfo struct {
 
 type IListInfo interface {
     IsListInfo() bool
+    Initialize()
 }
+
 func (ListInfo) IsListInfo() bool {
     return true
 }
 
 func (ListInfo) IsLinkElement() bool {
     return true
+}
+
+func (obj *ListInfo) Initialize() {
 }
 
 

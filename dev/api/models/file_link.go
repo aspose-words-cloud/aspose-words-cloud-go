@@ -58,13 +58,18 @@ type FileLink struct {
 
 type IFileLink interface {
     IsFileLink() bool
+    Initialize()
 }
+
 func (FileLink) IsFileLink() bool {
     return true
 }
 
 func (FileLink) IsLink() bool {
     return true
+}
+
+func (obj *FileLink) Initialize() {
 }
 
 

@@ -46,13 +46,18 @@ type SearchResultsCollection struct {
 
 type ISearchResultsCollection interface {
     IsSearchResultsCollection() bool
+    Initialize()
 }
+
 func (SearchResultsCollection) IsSearchResultsCollection() bool {
     return true
 }
 
 func (SearchResultsCollection) IsLinkElement() bool {
     return true
+}
+
+func (obj *SearchResultsCollection) Initialize() {
 }
 
 

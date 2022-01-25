@@ -296,7 +296,7 @@ type PdfSaveOptionsData struct {
     PreserveFormFields *bool `json:"PreserveFormFields,omitempty"`
 
     // Container class for pdf save options.
-    const SaveFormat *string `json:"SaveFormat,omitempty"` = "pdf"
+    SaveFormat *string `json:"SaveFormat,omitempty"`
 
     // Container class for pdf save options.
     TextCompression *string `json:"TextCompression,omitempty"`
@@ -316,13 +316,25 @@ type PdfSaveOptionsData struct {
 
 type IPdfSaveOptionsData interface {
     IsPdfSaveOptionsData() bool
+    Initialize()
 }
+
 func (PdfSaveOptionsData) IsPdfSaveOptionsData() bool {
     return true
 }
 
 func (PdfSaveOptionsData) IsFixedPageSaveOptionsData() bool {
     return true
+}
+
+func (PdfSaveOptionsData) IsSaveOptionsData() bool {
+    return true
+}
+
+func (obj *PdfSaveOptionsData) Initialize() {
+    var _SaveFormat = "pdf"
+    obj.SaveFormat = &_SaveFormat
+
 }
 
 

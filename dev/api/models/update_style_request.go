@@ -163,6 +163,7 @@ func (data *UpdateStyleRequest) CreateRequestData() (RequestData, error) {
 
 
 
+    data.StyleUpdate.Initialize()
     result.PostBody = &data.StyleUpdate
 
     return result, nil

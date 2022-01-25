@@ -164,7 +164,7 @@ type TextSaveOptionsData struct {
     PreserveTableLayout *bool `json:"PreserveTableLayout,omitempty"`
 
     // Container class for text save options.
-    const SaveFormat *string `json:"SaveFormat,omitempty"` = "txt"
+    SaveFormat *string `json:"SaveFormat,omitempty"`
 
     // Container class for text save options.
     SimplifyListLabels *bool `json:"SimplifyListLabels,omitempty"`
@@ -172,13 +172,25 @@ type TextSaveOptionsData struct {
 
 type ITextSaveOptionsData interface {
     IsTextSaveOptionsData() bool
+    Initialize()
 }
+
 func (TextSaveOptionsData) IsTextSaveOptionsData() bool {
     return true
 }
 
 func (TextSaveOptionsData) IsTxtSaveOptionsBaseData() bool {
     return true
+}
+
+func (TextSaveOptionsData) IsSaveOptionsData() bool {
+    return true
+}
+
+func (obj *TextSaveOptionsData) Initialize() {
+    var _SaveFormat = "txt"
+    obj.SaveFormat = &_SaveFormat
+
 }
 
 

@@ -46,13 +46,18 @@ type DocumentProperties struct {
 
 type IDocumentProperties interface {
     IsDocumentProperties() bool
+    Initialize()
 }
+
 func (DocumentProperties) IsDocumentProperties() bool {
     return true
 }
 
 func (DocumentProperties) IsLinkElement() bool {
     return true
+}
+
+func (obj *DocumentProperties) Initialize() {
 }
 
 

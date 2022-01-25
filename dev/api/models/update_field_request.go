@@ -168,6 +168,7 @@ func (data *UpdateFieldRequest) CreateRequestData() (RequestData, error) {
 
 
 
+    data.Field.Initialize()
     result.PostBody = &data.Field
 
     return result, nil

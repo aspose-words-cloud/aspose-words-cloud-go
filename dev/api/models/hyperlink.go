@@ -52,13 +52,18 @@ type Hyperlink struct {
 
 type IHyperlink interface {
     IsHyperlink() bool
+    Initialize()
 }
+
 func (Hyperlink) IsHyperlink() bool {
     return true
 }
 
 func (Hyperlink) IsLinkElement() bool {
     return true
+}
+
+func (obj *Hyperlink) Initialize() {
 }
 
 

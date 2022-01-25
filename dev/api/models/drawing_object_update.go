@@ -76,9 +76,15 @@ type DrawingObjectUpdate struct {
 
 type IDrawingObjectUpdate interface {
     IsDrawingObjectUpdate() bool
+    Initialize()
 }
+
 func (DrawingObjectUpdate) IsDrawingObjectUpdate() bool {
     return true
+}
+
+
+func (obj *DrawingObjectUpdate) Initialize() {
 }
 
 

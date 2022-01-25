@@ -112,13 +112,18 @@ type TableCellFormat struct {
 
 type ITableCellFormat interface {
     IsTableCellFormat() bool
+    Initialize()
 }
+
 func (TableCellFormat) IsTableCellFormat() bool {
     return true
 }
 
 func (TableCellFormat) IsLinkElement() bool {
     return true
+}
+
+func (obj *TableCellFormat) Initialize() {
 }
 
 

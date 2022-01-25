@@ -47,14 +47,14 @@ func Test_LoadWebDocument_LoadWebDocument(t *testing.T) {
     }
     requestData := models.LoadWebDocumentData{
         LoadingDocumentUrl: ToStringPointer("http://google.com"),
-        SaveOptions: requestDataSaveOptions,
+        SaveOptions: &requestDataSaveOptions,
     }
 
     options := map[string]interface{}{
     }
 
     request := &models.LoadWebDocumentRequest{
-        Data: requestData,
+        Data: &requestData,
         Optionals: options,
     }
 

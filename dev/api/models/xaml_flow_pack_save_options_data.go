@@ -131,18 +131,30 @@ type XamlFlowPackSaveOptionsData struct {
     ImagesFolderAlias *string `json:"ImagesFolderAlias,omitempty"`
 
     // Container class for xamlflow_pack save options.
-    const SaveFormat *string `json:"SaveFormat,omitempty"` = "xamlflow_pack"
+    SaveFormat *string `json:"SaveFormat,omitempty"`
 }
 
 type IXamlFlowPackSaveOptionsData interface {
     IsXamlFlowPackSaveOptionsData() bool
+    Initialize()
 }
+
 func (XamlFlowPackSaveOptionsData) IsXamlFlowPackSaveOptionsData() bool {
     return true
 }
 
 func (XamlFlowPackSaveOptionsData) IsXamlFlowSaveOptionsData() bool {
     return true
+}
+
+func (XamlFlowPackSaveOptionsData) IsSaveOptionsData() bool {
+    return true
+}
+
+func (obj *XamlFlowPackSaveOptionsData) Initialize() {
+    var _SaveFormat = "xamlflow_pack"
+    obj.SaveFormat = &_SaveFormat
+
 }
 
 

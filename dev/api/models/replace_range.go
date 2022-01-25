@@ -46,9 +46,15 @@ type ReplaceRange struct {
 
 type IReplaceRange interface {
     IsReplaceRange() bool
+    Initialize()
 }
+
 func (ReplaceRange) IsReplaceRange() bool {
     return true
+}
+
+
+func (obj *ReplaceRange) Initialize() {
 }
 
 

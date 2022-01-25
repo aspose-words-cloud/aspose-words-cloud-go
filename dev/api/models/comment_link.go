@@ -40,13 +40,18 @@ type CommentLink struct {
 
 type ICommentLink interface {
     IsCommentLink() bool
+    Initialize()
 }
+
 func (CommentLink) IsCommentLink() bool {
     return true
 }
 
 func (CommentLink) IsLinkElement() bool {
     return true
+}
+
+func (obj *CommentLink) Initialize() {
 }
 
 

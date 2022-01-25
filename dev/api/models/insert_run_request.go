@@ -172,6 +172,7 @@ func (data *InsertRunRequest) CreateRequestData() (RequestData, error) {
 
 
 
+    data.Run.Initialize()
     result.PostBody = &data.Run
 
     return result, nil

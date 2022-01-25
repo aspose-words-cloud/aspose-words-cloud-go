@@ -64,9 +64,15 @@ type StorageFile struct {
 
 type IStorageFile interface {
     IsStorageFile() bool
+    Initialize()
 }
+
 func (StorageFile) IsStorageFile() bool {
     return true
+}
+
+
+func (obj *StorageFile) Initialize() {
 }
 
 

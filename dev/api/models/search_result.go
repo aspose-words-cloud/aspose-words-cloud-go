@@ -46,9 +46,15 @@ type SearchResult struct {
 
 type ISearchResult interface {
     IsSearchResult() bool
+    Initialize()
 }
+
 func (SearchResult) IsSearchResult() bool {
     return true
+}
+
+
+func (obj *SearchResult) Initialize() {
 }
 
 

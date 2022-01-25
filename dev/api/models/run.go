@@ -52,13 +52,26 @@ type Run struct {
 
 type IRun interface {
     IsRun() bool
+    Initialize()
 }
+
 func (Run) IsRun() bool {
     return true
 }
 
 func (Run) IsRunLink() bool {
     return true
+}
+
+func (Run) IsNodeLink() bool {
+    return true
+}
+
+func (Run) IsLinkElement() bool {
+    return true
+}
+
+func (obj *Run) Initialize() {
 }
 
 

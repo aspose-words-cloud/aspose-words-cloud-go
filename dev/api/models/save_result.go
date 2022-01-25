@@ -52,9 +52,15 @@ type SaveResult struct {
 
 type ISaveResult interface {
     IsSaveResult() bool
+    Initialize()
 }
+
 func (SaveResult) IsSaveResult() bool {
     return true
+}
+
+
+func (obj *SaveResult) Initialize() {
 }
 
 

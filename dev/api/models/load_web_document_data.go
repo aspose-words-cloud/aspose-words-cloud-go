@@ -46,9 +46,15 @@ type LoadWebDocumentData struct {
 
 type ILoadWebDocumentData interface {
     IsLoadWebDocumentData() bool
+    Initialize()
 }
+
 func (LoadWebDocumentData) IsLoadWebDocumentData() bool {
     return true
+}
+
+
+func (obj *LoadWebDocumentData) Initialize() {
 }
 
 

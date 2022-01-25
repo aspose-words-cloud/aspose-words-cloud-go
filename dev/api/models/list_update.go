@@ -40,9 +40,15 @@ type ListUpdate struct {
 
 type IListUpdate interface {
     IsListUpdate() bool
+    Initialize()
 }
+
 func (ListUpdate) IsListUpdate() bool {
     return true
+}
+
+
+func (obj *ListUpdate) Initialize() {
 }
 
 

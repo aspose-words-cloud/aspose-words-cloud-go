@@ -233,18 +233,34 @@ type EmfSaveOptionsData struct {
     VerticalResolution *float64 `json:"VerticalResolution,omitempty"`
 
     // Container class for emf save options.
-    const SaveFormat *string `json:"SaveFormat,omitempty"` = "emf"
+    SaveFormat *string `json:"SaveFormat,omitempty"`
 }
 
 type IEmfSaveOptionsData interface {
     IsEmfSaveOptionsData() bool
+    Initialize()
 }
+
 func (EmfSaveOptionsData) IsEmfSaveOptionsData() bool {
     return true
 }
 
 func (EmfSaveOptionsData) IsImageSaveOptionsData() bool {
     return true
+}
+
+func (EmfSaveOptionsData) IsFixedPageSaveOptionsData() bool {
+    return true
+}
+
+func (EmfSaveOptionsData) IsSaveOptionsData() bool {
+    return true
+}
+
+func (obj *EmfSaveOptionsData) Initialize() {
+    var _SaveFormat = "emf"
+    obj.SaveFormat = &_SaveFormat
+
 }
 
 

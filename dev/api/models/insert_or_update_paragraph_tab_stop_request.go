@@ -150,6 +150,7 @@ func (data *InsertOrUpdateParagraphTabStopRequest) CreateRequestData() (RequestD
 
 
 
+    data.TabStopInsertDto.Initialize()
     result.PostBody = &data.TabStopInsertDto
 
     return result, nil

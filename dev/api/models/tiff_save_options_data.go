@@ -242,7 +242,7 @@ type TiffSaveOptionsData struct {
     VerticalResolution *float64 `json:"VerticalResolution,omitempty"`
 
     // Container class for tiff save options.
-    const SaveFormat *string `json:"SaveFormat,omitempty"` = "tiff"
+    SaveFormat *string `json:"SaveFormat,omitempty"`
 
     // Container class for tiff save options.
     ThresholdForFloydSteinbergDithering *int32 `json:"ThresholdForFloydSteinbergDithering,omitempty"`
@@ -256,13 +256,29 @@ type TiffSaveOptionsData struct {
 
 type ITiffSaveOptionsData interface {
     IsTiffSaveOptionsData() bool
+    Initialize()
 }
+
 func (TiffSaveOptionsData) IsTiffSaveOptionsData() bool {
     return true
 }
 
 func (TiffSaveOptionsData) IsImageSaveOptionsData() bool {
     return true
+}
+
+func (TiffSaveOptionsData) IsFixedPageSaveOptionsData() bool {
+    return true
+}
+
+func (TiffSaveOptionsData) IsSaveOptionsData() bool {
+    return true
+}
+
+func (obj *TiffSaveOptionsData) Initialize() {
+    var _SaveFormat = "tiff"
+    obj.SaveFormat = &_SaveFormat
+
 }
 
 

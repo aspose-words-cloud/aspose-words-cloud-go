@@ -46,9 +46,15 @@ type ListFormatUpdate struct {
 
 type IListFormatUpdate interface {
     IsListFormatUpdate() bool
+    Initialize()
 }
+
 func (ListFormatUpdate) IsListFormatUpdate() bool {
     return true
+}
+
+
+func (obj *ListFormatUpdate) Initialize() {
 }
 
 

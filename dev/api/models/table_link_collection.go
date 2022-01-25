@@ -46,13 +46,18 @@ type TableLinkCollection struct {
 
 type ITableLinkCollection interface {
     IsTableLinkCollection() bool
+    Initialize()
 }
+
 func (TableLinkCollection) IsTableLinkCollection() bool {
     return true
 }
 
 func (TableLinkCollection) IsLinkElement() bool {
     return true
+}
+
+func (obj *TableLinkCollection) Initialize() {
 }
 
 

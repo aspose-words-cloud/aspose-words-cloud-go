@@ -124,13 +124,18 @@ type TableProperties struct {
 
 type ITableProperties interface {
     IsTableProperties() bool
+    Initialize()
 }
+
 func (TableProperties) IsTableProperties() bool {
     return true
 }
 
 func (TableProperties) IsLinkElement() bool {
     return true
+}
+
+func (obj *TableProperties) Initialize() {
 }
 
 

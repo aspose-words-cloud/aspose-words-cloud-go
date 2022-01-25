@@ -46,9 +46,15 @@ type WatermarkText struct {
 
 type IWatermarkText interface {
     IsWatermarkText() bool
+    Initialize()
 }
+
 func (WatermarkText) IsWatermarkText() bool {
     return true
+}
+
+
+func (obj *WatermarkText) Initialize() {
 }
 
 

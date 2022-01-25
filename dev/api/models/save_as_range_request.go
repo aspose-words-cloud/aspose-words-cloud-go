@@ -141,6 +141,7 @@ func (data *SaveAsRangeRequest) CreateRequestData() (RequestData, error) {
 
 
 
+    data.DocumentParameters.Initialize()
     result.PostBody = &data.DocumentParameters
 
     return result, nil

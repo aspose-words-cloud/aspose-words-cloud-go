@@ -46,13 +46,18 @@ type Bookmarks struct {
 
 type IBookmarks interface {
     IsBookmarks() bool
+    Initialize()
 }
+
 func (Bookmarks) IsBookmarks() bool {
     return true
 }
 
 func (Bookmarks) IsLinkElement() bool {
     return true
+}
+
+func (obj *Bookmarks) Initialize() {
 }
 
 

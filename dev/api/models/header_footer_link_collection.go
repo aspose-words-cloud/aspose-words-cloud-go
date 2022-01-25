@@ -46,13 +46,18 @@ type HeaderFooterLinkCollection struct {
 
 type IHeaderFooterLinkCollection interface {
     IsHeaderFooterLinkCollection() bool
+    Initialize()
 }
+
 func (HeaderFooterLinkCollection) IsHeaderFooterLinkCollection() bool {
     return true
 }
 
 func (HeaderFooterLinkCollection) IsLinkElement() bool {
     return true
+}
+
+func (obj *HeaderFooterLinkCollection) Initialize() {
 }
 
 

@@ -359,18 +359,30 @@ type EpubSaveOptionsData struct {
     EpubNavigationMapLevel *int32 `json:"EpubNavigationMapLevel,omitempty"`
 
     // Container class for epub save options.
-    const SaveFormat *string `json:"SaveFormat,omitempty"` = "epub"
+    SaveFormat *string `json:"SaveFormat,omitempty"`
 }
 
 type IEpubSaveOptionsData interface {
     IsEpubSaveOptionsData() bool
+    Initialize()
 }
+
 func (EpubSaveOptionsData) IsEpubSaveOptionsData() bool {
     return true
 }
 
 func (EpubSaveOptionsData) IsHtmlSaveOptionsData() bool {
     return true
+}
+
+func (EpubSaveOptionsData) IsSaveOptionsData() bool {
+    return true
+}
+
+func (obj *EpubSaveOptionsData) Initialize() {
+    var _SaveFormat = "epub"
+    obj.SaveFormat = &_SaveFormat
+
 }
 
 

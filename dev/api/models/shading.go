@@ -52,9 +52,15 @@ type Shading struct {
 
 type IShading interface {
     IsShading() bool
+    Initialize()
 }
+
 func (Shading) IsShading() bool {
     return true
+}
+
+
+func (obj *Shading) Initialize() {
 }
 
 

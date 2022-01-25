@@ -233,18 +233,34 @@ type GifSaveOptionsData struct {
     VerticalResolution *float64 `json:"VerticalResolution,omitempty"`
 
     // Container class for gif save options.
-    const SaveFormat *string `json:"SaveFormat,omitempty"` = "gif"
+    SaveFormat *string `json:"SaveFormat,omitempty"`
 }
 
 type IGifSaveOptionsData interface {
     IsGifSaveOptionsData() bool
+    Initialize()
 }
+
 func (GifSaveOptionsData) IsGifSaveOptionsData() bool {
     return true
 }
 
 func (GifSaveOptionsData) IsImageSaveOptionsData() bool {
     return true
+}
+
+func (GifSaveOptionsData) IsFixedPageSaveOptionsData() bool {
+    return true
+}
+
+func (GifSaveOptionsData) IsSaveOptionsData() bool {
+    return true
+}
+
+func (obj *GifSaveOptionsData) Initialize() {
+    var _SaveFormat = "gif"
+    obj.SaveFormat = &_SaveFormat
+
 }
 
 

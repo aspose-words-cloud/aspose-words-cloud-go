@@ -46,13 +46,18 @@ type Lists struct {
 
 type ILists interface {
     IsLists() bool
+    Initialize()
 }
+
 func (Lists) IsLists() bool {
     return true
 }
 
 func (Lists) IsLinkElement() bool {
     return true
+}
+
+func (obj *Lists) Initialize() {
 }
 
 

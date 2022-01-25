@@ -160,6 +160,7 @@ func (data *InsertWatermarkTextRequest) CreateRequestData() (RequestData, error)
 
 
 
+    data.WatermarkText.Initialize()
     result.PostBody = &data.WatermarkText
 
     return result, nil

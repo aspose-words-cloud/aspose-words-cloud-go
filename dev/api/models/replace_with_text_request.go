@@ -150,6 +150,7 @@ func (data *ReplaceWithTextRequest) CreateRequestData() (RequestData, error) {
 
 
 
+    data.RangeText.Initialize()
     result.PostBody = &data.RangeText
 
     return result, nil

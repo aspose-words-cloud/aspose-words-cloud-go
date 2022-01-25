@@ -359,18 +359,30 @@ type MhtmlSaveOptionsData struct {
     ExportCidUrlsForMhtmlResources *bool `json:"ExportCidUrlsForMhtmlResources,omitempty"`
 
     // Container class for mhtml save options.
-    const SaveFormat *string `json:"SaveFormat,omitempty"` = "mht"
+    SaveFormat *string `json:"SaveFormat,omitempty"`
 }
 
 type IMhtmlSaveOptionsData interface {
     IsMhtmlSaveOptionsData() bool
+    Initialize()
 }
+
 func (MhtmlSaveOptionsData) IsMhtmlSaveOptionsData() bool {
     return true
 }
 
 func (MhtmlSaveOptionsData) IsHtmlSaveOptionsData() bool {
     return true
+}
+
+func (MhtmlSaveOptionsData) IsSaveOptionsData() bool {
+    return true
+}
+
+func (obj *MhtmlSaveOptionsData) Initialize() {
+    var _SaveFormat = "mht"
+    obj.SaveFormat = &_SaveFormat
+
 }
 
 

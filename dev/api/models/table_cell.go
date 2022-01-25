@@ -52,13 +52,22 @@ type TableCell struct {
 
 type ITableCell interface {
     IsTableCell() bool
+    Initialize()
 }
+
 func (TableCell) IsTableCell() bool {
     return true
 }
 
 func (TableCell) IsNodeLink() bool {
     return true
+}
+
+func (TableCell) IsLinkElement() bool {
+    return true
+}
+
+func (obj *TableCell) Initialize() {
 }
 
 

@@ -46,13 +46,18 @@ type ParagraphLinkCollection struct {
 
 type IParagraphLinkCollection interface {
     IsParagraphLinkCollection() bool
+    Initialize()
 }
+
 func (ParagraphLinkCollection) IsParagraphLinkCollection() bool {
     return true
 }
 
 func (ParagraphLinkCollection) IsLinkElement() bool {
     return true
+}
+
+func (obj *ParagraphLinkCollection) Initialize() {
 }
 
 

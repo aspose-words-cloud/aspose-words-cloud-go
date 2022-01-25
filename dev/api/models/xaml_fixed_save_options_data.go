@@ -173,18 +173,30 @@ type XamlFixedSaveOptionsData struct {
     ResourcesFolderAlias *string `json:"ResourcesFolderAlias,omitempty"`
 
     // Container class for xaml fixed save options.
-    const SaveFormat *string `json:"SaveFormat,omitempty"` = "xamlfixed"
+    SaveFormat *string `json:"SaveFormat,omitempty"`
 }
 
 type IXamlFixedSaveOptionsData interface {
     IsXamlFixedSaveOptionsData() bool
+    Initialize()
 }
+
 func (XamlFixedSaveOptionsData) IsXamlFixedSaveOptionsData() bool {
     return true
 }
 
 func (XamlFixedSaveOptionsData) IsFixedPageSaveOptionsData() bool {
     return true
+}
+
+func (XamlFixedSaveOptionsData) IsSaveOptionsData() bool {
+    return true
+}
+
+func (obj *XamlFixedSaveOptionsData) Initialize() {
+    var _SaveFormat = "xamlfixed"
+    obj.SaveFormat = &_SaveFormat
+
 }
 
 

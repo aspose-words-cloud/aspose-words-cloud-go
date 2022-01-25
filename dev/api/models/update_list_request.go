@@ -163,6 +163,7 @@ func (data *UpdateListRequest) CreateRequestData() (RequestData, error) {
 
 
 
+    data.ListUpdate.Initialize()
     result.PostBody = &data.ListUpdate
 
     return result, nil

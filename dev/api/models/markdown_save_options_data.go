@@ -146,7 +146,7 @@ type MarkdownSaveOptionsData struct {
     ParagraphBreak *string `json:"ParagraphBreak,omitempty"`
 
     // Container class for markdown save options.
-    const SaveFormat *string `json:"SaveFormat,omitempty"` = "md"
+    SaveFormat *string `json:"SaveFormat,omitempty"`
 
     // Container class for markdown save options.
     TableContentAlignment *string `json:"TableContentAlignment,omitempty"`
@@ -154,13 +154,25 @@ type MarkdownSaveOptionsData struct {
 
 type IMarkdownSaveOptionsData interface {
     IsMarkdownSaveOptionsData() bool
+    Initialize()
 }
+
 func (MarkdownSaveOptionsData) IsMarkdownSaveOptionsData() bool {
     return true
 }
 
 func (MarkdownSaveOptionsData) IsTxtSaveOptionsBaseData() bool {
     return true
+}
+
+func (MarkdownSaveOptionsData) IsSaveOptionsData() bool {
+    return true
+}
+
+func (obj *MarkdownSaveOptionsData) Initialize() {
+    var _SaveFormat = "md"
+    obj.SaveFormat = &_SaveFormat
+
 }
 
 

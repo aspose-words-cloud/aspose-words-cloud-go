@@ -113,7 +113,7 @@ type TxtSaveOptionsBaseData struct {
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
 
     // Base class for save options of text formats.
-    const SaveFormat *string `json:"SaveFormat,omitempty"`
+    SaveFormat *string `json:"SaveFormat,omitempty"`
 
     // Base class for save options of text formats.
     UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
@@ -148,13 +148,18 @@ type TxtSaveOptionsBaseData struct {
 
 type ITxtSaveOptionsBaseData interface {
     IsTxtSaveOptionsBaseData() bool
+    Initialize()
 }
+
 func (TxtSaveOptionsBaseData) IsTxtSaveOptionsBaseData() bool {
     return true
 }
 
 func (TxtSaveOptionsBaseData) IsSaveOptionsData() bool {
     return true
+}
+
+func (obj *TxtSaveOptionsBaseData) Initialize() {
 }
 
 

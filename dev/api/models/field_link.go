@@ -52,13 +52,22 @@ type FieldLink struct {
 
 type IFieldLink interface {
     IsFieldLink() bool
+    Initialize()
 }
+
 func (FieldLink) IsFieldLink() bool {
     return true
 }
 
 func (FieldLink) IsNodeLink() bool {
     return true
+}
+
+func (FieldLink) IsLinkElement() bool {
+    return true
+}
+
+func (obj *FieldLink) Initialize() {
 }
 
 

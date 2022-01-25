@@ -163,6 +163,7 @@ func (data *ApplyStyleToDocumentElementRequest) CreateRequestData() (RequestData
 
 
 
+    data.StyleApply.Initialize()
     result.PostBody = &data.StyleApply
 
     return result, nil

@@ -64,13 +64,18 @@ type TableRowFormat struct {
 
 type ITableRowFormat interface {
     IsTableRowFormat() bool
+    Initialize()
 }
+
 func (TableRowFormat) IsTableRowFormat() bool {
     return true
 }
 
 func (TableRowFormat) IsLinkElement() bool {
     return true
+}
+
+func (obj *TableRowFormat) Initialize() {
 }
 
 

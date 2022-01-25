@@ -52,9 +52,15 @@ type DocumentEntry struct {
 
 type IDocumentEntry interface {
     IsDocumentEntry() bool
+    Initialize()
 }
+
 func (DocumentEntry) IsDocumentEntry() bool {
     return true
+}
+
+
+func (obj *DocumentEntry) Initialize() {
 }
 
 

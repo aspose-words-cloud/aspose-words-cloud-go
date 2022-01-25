@@ -93,6 +93,7 @@ func (data *LoadWebDocumentRequest) CreateRequestData() (RequestData, error) {
 
 
 
+    data.Data.Initialize()
     result.PostBody = &data.Data
 
     return result, nil

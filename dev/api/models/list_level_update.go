@@ -94,9 +94,15 @@ type ListLevelUpdate struct {
 
 type IListLevelUpdate interface {
     IsListLevelUpdate() bool
+    Initialize()
 }
+
 func (ListLevelUpdate) IsListLevelUpdate() bool {
     return true
+}
+
+
+func (obj *ListLevelUpdate) Initialize() {
 }
 
 

@@ -173,18 +173,30 @@ type PclSaveOptionsData struct {
     RasterizeTransformedElements *bool `json:"RasterizeTransformedElements,omitempty"`
 
     // Container class for pcl save options.
-    const SaveFormat *string `json:"SaveFormat,omitempty"` = "pcl"
+    SaveFormat *string `json:"SaveFormat,omitempty"`
 }
 
 type IPclSaveOptionsData interface {
     IsPclSaveOptionsData() bool
+    Initialize()
 }
+
 func (PclSaveOptionsData) IsPclSaveOptionsData() bool {
     return true
 }
 
 func (PclSaveOptionsData) IsFixedPageSaveOptionsData() bool {
     return true
+}
+
+func (PclSaveOptionsData) IsSaveOptionsData() bool {
+    return true
+}
+
+func (obj *PclSaveOptionsData) Initialize() {
+    var _SaveFormat = "pcl"
+    obj.SaveFormat = &_SaveFormat
+
 }
 
 
