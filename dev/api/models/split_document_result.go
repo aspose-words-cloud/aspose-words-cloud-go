@@ -61,6 +61,16 @@ func (SplitDocumentResult) IsSplitDocumentResult() bool {
 
 
 func (obj *SplitDocumentResult) Initialize() {
+    if (obj.SourceDocument != nil) {
+        obj.SourceDocument.Initialize()
+    }
+
+
+
+    if (obj.ZippedPages != nil) {
+        obj.ZippedPages.Initialize()
+    }
+
 }
 
 

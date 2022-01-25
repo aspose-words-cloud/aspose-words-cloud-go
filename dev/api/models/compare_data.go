@@ -73,6 +73,16 @@ func (CompareData) IsCompareData() bool {
 
 
 func (obj *CompareData) Initialize() {
+    if (obj.CompareOptions != nil) {
+        obj.CompareOptions.Initialize()
+    }
+
+
+
+
+
+
+
 }
 
 

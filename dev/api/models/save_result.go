@@ -61,6 +61,16 @@ func (SaveResult) IsSaveResult() bool {
 
 
 func (obj *SaveResult) Initialize() {
+    if (obj.DestDocument != nil) {
+        obj.DestDocument.Initialize()
+    }
+
+
+
+    if (obj.SourceDocument != nil) {
+        obj.SourceDocument.Initialize()
+    }
+
 }
 
 

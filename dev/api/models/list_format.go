@@ -70,6 +70,16 @@ func (ListFormat) IsLinkElement() bool {
 }
 
 func (obj *ListFormat) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+
+
+
+
+
+
 }
 
 

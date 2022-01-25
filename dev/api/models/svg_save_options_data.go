@@ -221,6 +221,64 @@ func (obj *SvgSaveOptionsData) Initialize() {
     var _SaveFormat = "svg"
     obj.SaveFormat = &_SaveFormat
 
+    if (obj.CustomTimeZoneInfoData != nil) {
+        obj.CustomTimeZoneInfoData.Initialize()
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    if (obj.MetafileRenderingOptions != nil) {
+        obj.MetafileRenderingOptions.Initialize()
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 

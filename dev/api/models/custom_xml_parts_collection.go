@@ -58,6 +58,12 @@ func (CustomXmlPartsCollection) IsLinkElement() bool {
 }
 
 func (obj *CustomXmlPartsCollection) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+
+
 }
 
 

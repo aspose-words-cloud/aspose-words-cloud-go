@@ -124,6 +124,42 @@ func (ListLevel) IsLinkElement() bool {
 }
 
 func (obj *ListLevel) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+
+
+
+
+    if (obj.Font != nil) {
+        obj.Font.Initialize()
+    }
+
+
+
+
+
+    if (obj.LinkedStyle != nil) {
+        obj.LinkedStyle.Initialize()
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 

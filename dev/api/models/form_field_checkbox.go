@@ -138,6 +138,36 @@ func (FormFieldCheckbox) IsLinkElement() bool {
 }
 
 func (obj *FormFieldCheckbox) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 

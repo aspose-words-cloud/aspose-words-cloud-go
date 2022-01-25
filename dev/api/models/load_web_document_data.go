@@ -55,6 +55,10 @@ func (LoadWebDocumentData) IsLoadWebDocumentData() bool {
 
 
 func (obj *LoadWebDocumentData) Initialize() {
+    if (obj.SaveOptions != nil) {
+        obj.SaveOptions.Initialize()
+    }
+
 }
 
 

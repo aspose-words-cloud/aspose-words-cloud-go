@@ -73,6 +73,18 @@ func (DocumentStatData) IsDocumentStatData() bool {
 
 
 func (obj *DocumentStatData) Initialize() {
+    if (obj.FootnotesStatData != nil) {
+        obj.FootnotesStatData.Initialize()
+    }
+
+
+
+
+
+
+
+
+
 }
 
 

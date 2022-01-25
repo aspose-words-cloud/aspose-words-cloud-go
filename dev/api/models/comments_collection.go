@@ -58,6 +58,12 @@ func (CommentsCollection) IsLinkElement() bool {
 }
 
 func (obj *CommentsCollection) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+
+
 }
 
 

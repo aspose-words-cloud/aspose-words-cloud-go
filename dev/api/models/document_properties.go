@@ -58,6 +58,12 @@ func (DocumentProperties) IsLinkElement() bool {
 }
 
 func (obj *DocumentProperties) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+
+
 }
 
 

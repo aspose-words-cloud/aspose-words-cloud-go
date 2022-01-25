@@ -58,6 +58,12 @@ func (Bookmarks) IsLinkElement() bool {
 }
 
 func (obj *Bookmarks) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+
+
 }
 
 

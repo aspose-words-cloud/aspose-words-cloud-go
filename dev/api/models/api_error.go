@@ -73,6 +73,12 @@ func (ApiError) IsApiError() bool {
 
 
 func (obj *ApiError) Initialize() {
+    if (obj.InnerError != nil) {
+        obj.InnerError.Initialize()
+    }
+
+
+
 }
 
 

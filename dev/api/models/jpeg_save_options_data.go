@@ -261,6 +261,76 @@ func (obj *JpegSaveOptionsData) Initialize() {
     var _SaveFormat = "jpeg"
     obj.SaveFormat = &_SaveFormat
 
+    if (obj.CustomTimeZoneInfoData != nil) {
+        obj.CustomTimeZoneInfoData.Initialize()
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    if (obj.MetafileRenderingOptions != nil) {
+        obj.MetafileRenderingOptions.Initialize()
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 

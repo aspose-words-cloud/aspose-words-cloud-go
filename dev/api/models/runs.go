@@ -58,6 +58,12 @@ func (Runs) IsLinkElement() bool {
 }
 
 func (obj *Runs) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+
+
 }
 
 

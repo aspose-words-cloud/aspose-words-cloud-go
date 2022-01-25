@@ -58,6 +58,12 @@ func (BordersCollection) IsLinkElement() bool {
 }
 
 func (obj *BordersCollection) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+
+
 }
 
 

@@ -167,6 +167,42 @@ func (obj *FlatOpcSaveOptionsData) Initialize() {
     var _SaveFormat = "fopc"
     obj.SaveFormat = &_SaveFormat
 
+    if (obj.CustomTimeZoneInfoData != nil) {
+        obj.CustomTimeZoneInfoData.Initialize()
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 

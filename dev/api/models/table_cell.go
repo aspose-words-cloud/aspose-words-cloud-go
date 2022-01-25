@@ -68,6 +68,14 @@ func (TableCell) IsLinkElement() bool {
 }
 
 func (obj *TableCell) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+
+
+
+
 }
 
 

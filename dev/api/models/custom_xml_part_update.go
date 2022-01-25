@@ -72,6 +72,14 @@ func (CustomXmlPartUpdate) IsLinkElement() bool {
 }
 
 func (obj *CustomXmlPartUpdate) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+
+
+
+
 }
 
 

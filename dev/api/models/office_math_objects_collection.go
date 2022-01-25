@@ -58,6 +58,12 @@ func (OfficeMathObjectsCollection) IsLinkElement() bool {
 }
 
 func (obj *OfficeMathObjectsCollection) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+
+
 }
 
 

@@ -132,6 +132,34 @@ func (FormFieldDropDown) IsLinkElement() bool {
 }
 
 func (obj *FormFieldDropDown) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 

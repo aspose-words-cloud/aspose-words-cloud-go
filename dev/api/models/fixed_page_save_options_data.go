@@ -178,6 +178,52 @@ func (FixedPageSaveOptionsData) IsSaveOptionsData() bool {
 }
 
 func (obj *FixedPageSaveOptionsData) Initialize() {
+    if (obj.CustomTimeZoneInfoData != nil) {
+        obj.CustomTimeZoneInfoData.Initialize()
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    if (obj.MetafileRenderingOptions != nil) {
+        obj.MetafileRenderingOptions.Initialize()
+    }
+
+
+
+
+
+
+
+
+
 }
 
 

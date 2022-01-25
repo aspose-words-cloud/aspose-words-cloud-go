@@ -58,6 +58,12 @@ func (FormFieldCollection) IsLinkElement() bool {
 }
 
 func (obj *FormFieldCollection) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+
+
 }
 
 

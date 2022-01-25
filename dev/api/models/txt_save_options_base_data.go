@@ -160,6 +160,42 @@ func (TxtSaveOptionsBaseData) IsSaveOptionsData() bool {
 }
 
 func (obj *TxtSaveOptionsBaseData) Initialize() {
+    if (obj.CustomTimeZoneInfoData != nil) {
+        obj.CustomTimeZoneInfoData.Initialize()
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 

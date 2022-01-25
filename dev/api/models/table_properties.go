@@ -136,6 +136,42 @@ func (TableProperties) IsLinkElement() bool {
 }
 
 func (obj *TableProperties) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    if (obj.PreferredWidth != nil) {
+        obj.PreferredWidth.Initialize()
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 

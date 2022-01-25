@@ -80,6 +80,26 @@ func (HeaderFooter) IsLinkElement() bool {
 }
 
 func (obj *HeaderFooter) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+
+
+
+
+
+
+    if (obj.DrawingObjects != nil) {
+        obj.DrawingObjects.Initialize()
+    }
+
+
+
+    if (obj.Paragraphs != nil) {
+        obj.Paragraphs.Initialize()
+    }
+
 }
 
 

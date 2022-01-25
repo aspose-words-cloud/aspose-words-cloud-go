@@ -98,6 +98,36 @@ func (Comment) IsLinkElement() bool {
 }
 
 func (obj *Comment) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+
+
+
+
+    if (obj.Content != nil) {
+        obj.Content.Initialize()
+    }
+
+
+
+
+
+
+
+    if (obj.RangeEnd != nil) {
+        obj.RangeEnd.Initialize()
+    }
+
+
+
+    if (obj.RangeStart != nil) {
+        obj.RangeStart.Initialize()
+    }
+
+
+
 }
 
 

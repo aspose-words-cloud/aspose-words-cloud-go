@@ -167,6 +167,42 @@ func (obj *FlatOpcTemplateMacroSaveOptionsData) Initialize() {
     var _SaveFormat = "fopc_template_macro"
     obj.SaveFormat = &_SaveFormat
 
+    if (obj.CustomTimeZoneInfoData != nil) {
+        obj.CustomTimeZoneInfoData.Initialize()
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 

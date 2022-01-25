@@ -58,6 +58,12 @@ func (Hyperlinks) IsLinkElement() bool {
 }
 
 func (obj *Hyperlinks) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+
+
 }
 
 

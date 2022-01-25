@@ -79,6 +79,18 @@ func (CommentBase) IsCommentBase() bool {
 
 
 func (obj *CommentBase) Initialize() {
+    if (obj.RangeEnd != nil) {
+        obj.RangeEnd.Initialize()
+    }
+
+
+
+    if (obj.RangeStart != nil) {
+        obj.RangeStart.Initialize()
+    }
+
+
+
 }
 
 

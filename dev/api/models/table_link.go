@@ -62,6 +62,12 @@ func (TableLink) IsLinkElement() bool {
 }
 
 func (obj *TableLink) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+
+
 }
 
 

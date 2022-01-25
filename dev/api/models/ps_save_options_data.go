@@ -191,6 +191,54 @@ func (obj *PsSaveOptionsData) Initialize() {
     var _SaveFormat = "ps"
     obj.SaveFormat = &_SaveFormat
 
+    if (obj.CustomTimeZoneInfoData != nil) {
+        obj.CustomTimeZoneInfoData.Initialize()
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    if (obj.MetafileRenderingOptions != nil) {
+        obj.MetafileRenderingOptions.Initialize()
+    }
+
+
+
+
+
+
+
+
+
+
+
 }
 
 

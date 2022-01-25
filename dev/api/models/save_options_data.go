@@ -133,6 +133,34 @@ func (SaveOptionsData) IsSaveOptionsData() bool {
 
 
 func (obj *SaveOptionsData) Initialize() {
+    if (obj.CustomTimeZoneInfoData != nil) {
+        obj.CustomTimeZoneInfoData.Initialize()
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 

@@ -116,6 +116,30 @@ func (FormField) IsLinkElement() bool {
 }
 
 func (obj *FormField) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 

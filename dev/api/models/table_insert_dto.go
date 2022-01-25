@@ -61,6 +61,12 @@ func (TableInsertDto) IsTableInsertDto() bool {
 
 
 func (obj *TableInsertDto) Initialize() {
+    if (obj.Position != nil) {
+        obj.Position.Initialize()
+    }
+
+
+
 }
 
 

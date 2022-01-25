@@ -70,6 +70,14 @@ func (FootnoteInsert) IsFootnoteBase() bool {
 }
 
 func (obj *FootnoteInsert) Initialize() {
+    if (obj.Position != nil) {
+        obj.Position.Initialize()
+    }
+
+
+
+
+
 }
 
 

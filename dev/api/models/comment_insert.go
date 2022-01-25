@@ -82,6 +82,18 @@ func (CommentInsert) IsCommentBase() bool {
 }
 
 func (obj *CommentInsert) Initialize() {
+    if (obj.RangeEnd != nil) {
+        obj.RangeEnd.Initialize()
+    }
+
+
+
+    if (obj.RangeStart != nil) {
+        obj.RangeStart.Initialize()
+    }
+
+
+
 }
 
 

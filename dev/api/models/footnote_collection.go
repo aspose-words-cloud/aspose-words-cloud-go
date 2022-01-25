@@ -58,6 +58,12 @@ func (FootnoteCollection) IsLinkElement() bool {
 }
 
 func (obj *FootnoteCollection) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+
+
 }
 
 

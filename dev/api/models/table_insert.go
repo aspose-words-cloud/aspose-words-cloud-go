@@ -61,6 +61,12 @@ func (TableInsert) IsTableInsert() bool {
 
 
 func (obj *TableInsert) Initialize() {
+    if (obj.Position != nil) {
+        obj.Position.Initialize()
+    }
+
+
+
 }
 
 

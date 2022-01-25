@@ -67,6 +67,14 @@ func (FootnoteBase) IsFootnoteBase() bool {
 
 
 func (obj *FootnoteBase) Initialize() {
+    if (obj.Position != nil) {
+        obj.Position.Initialize()
+    }
+
+
+
+
+
 }
 
 

@@ -58,6 +58,12 @@ func (TableLinkCollection) IsLinkElement() bool {
 }
 
 func (obj *TableLinkCollection) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+
+
 }
 
 

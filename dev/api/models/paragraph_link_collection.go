@@ -58,6 +58,12 @@ func (ParagraphLinkCollection) IsLinkElement() bool {
 }
 
 func (obj *ParagraphLinkCollection) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+
+
 }
 
 

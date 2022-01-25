@@ -58,6 +58,12 @@ func (Lists) IsLinkElement() bool {
 }
 
 func (obj *Lists) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+
+
 }
 
 

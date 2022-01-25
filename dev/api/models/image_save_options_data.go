@@ -254,6 +254,76 @@ func (ImageSaveOptionsData) IsSaveOptionsData() bool {
 }
 
 func (obj *ImageSaveOptionsData) Initialize() {
+    if (obj.CustomTimeZoneInfoData != nil) {
+        obj.CustomTimeZoneInfoData.Initialize()
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    if (obj.MetafileRenderingOptions != nil) {
+        obj.MetafileRenderingOptions.Initialize()
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 

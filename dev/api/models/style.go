@@ -118,6 +118,36 @@ func (Style) IsLinkElement() bool {
 }
 
 func (obj *Style) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+
+
+
+
+
+
+
+
+    if (obj.Font != nil) {
+        obj.Font.Initialize()
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 

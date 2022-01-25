@@ -124,6 +124,38 @@ func (TableCellFormat) IsLinkElement() bool {
 }
 
 func (obj *TableCellFormat) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    if (obj.PreferredWidth != nil) {
+        obj.PreferredWidth.Initialize()
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 

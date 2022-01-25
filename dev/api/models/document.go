@@ -79,6 +79,20 @@ func (Document) IsDocument() bool {
 
 
 func (obj *Document) Initialize() {
+    if (obj.DocumentProperties != nil) {
+        obj.DocumentProperties.Initialize()
+    }
+
+
+
+
+
+
+
+
+
+
+
 }
 
 

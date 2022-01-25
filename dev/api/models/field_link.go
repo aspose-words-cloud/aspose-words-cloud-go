@@ -68,6 +68,14 @@ func (FieldLink) IsLinkElement() bool {
 }
 
 func (obj *FieldLink) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+
+
+
+
 }
 
 

@@ -68,6 +68,14 @@ func (Paragraph) IsLinkElement() bool {
 }
 
 func (obj *Paragraph) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+
+
+
+
 }
 
 

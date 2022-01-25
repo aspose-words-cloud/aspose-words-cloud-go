@@ -58,6 +58,12 @@ func (SectionLinkCollection) IsLinkElement() bool {
 }
 
 func (obj *SectionLinkCollection) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+
+
 }
 
 

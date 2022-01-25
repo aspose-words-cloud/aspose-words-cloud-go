@@ -74,6 +74,20 @@ func (Table) IsLinkElement() bool {
 }
 
 func (obj *Table) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+
+
+
+
+    if (obj.TableProperties != nil) {
+        obj.TableProperties.Initialize()
+    }
+
+
+
 }
 
 

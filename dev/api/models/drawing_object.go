@@ -126,6 +126,40 @@ func (DrawingObject) IsLinkElement() bool {
 }
 
 func (obj *DrawingObject) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+
+
+
+
+
+
+    if (obj.ImageDataLink != nil) {
+        obj.ImageDataLink.Initialize()
+    }
+
+
+
+
+
+    if (obj.OleDataLink != nil) {
+        obj.OleDataLink.Initialize()
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 

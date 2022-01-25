@@ -58,6 +58,12 @@ func (HeaderFooterLink) IsLinkElement() bool {
 }
 
 func (obj *HeaderFooterLink) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+
+
 }
 
 

@@ -58,6 +58,12 @@ func (SearchResultsCollection) IsLinkElement() bool {
 }
 
 func (obj *SearchResultsCollection) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+
+
 }
 
 

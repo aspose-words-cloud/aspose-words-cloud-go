@@ -160,6 +160,42 @@ func (OoxmlSaveOptionsData) IsSaveOptionsData() bool {
 }
 
 func (obj *OoxmlSaveOptionsData) Initialize() {
+    if (obj.CustomTimeZoneInfoData != nil) {
+        obj.CustomTimeZoneInfoData.Initialize()
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 

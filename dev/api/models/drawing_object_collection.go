@@ -58,6 +58,12 @@ func (DrawingObjectCollection) IsLinkElement() bool {
 }
 
 func (obj *DrawingObjectCollection) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+
+
 }
 
 

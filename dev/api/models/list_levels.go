@@ -58,6 +58,12 @@ func (ListLevels) IsLinkElement() bool {
 }
 
 func (obj *ListLevels) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+
+
 }
 
 
