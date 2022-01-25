@@ -76,6 +76,10 @@ func (data *UpdateParagraphFormatRequest) CreateRequestData() (RequestData, erro
     result.QueryParams = url.Values{}
     result.FormParams = make([]FormParamContainer, 0)
 
+    if (data.ParagraphFormatDto != nil) {
+        data.ParagraphFormatDto.Initialize()
+    }
+
     if err := typeCheckParameter(data.Optionals["nodePath"], "string", "data.Optionals[nodePath]"); err != nil {
         return result, err
     }
@@ -168,7 +172,6 @@ func (data *UpdateParagraphFormatRequest) CreateRequestData() (RequestData, erro
 
 
 
-    data.ParagraphFormatDto.Initialize()
     result.PostBody = &data.ParagraphFormatDto
 
     return result, nil

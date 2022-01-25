@@ -74,6 +74,10 @@ func (data *UpdateStyleRequest) CreateRequestData() (RequestData, error) {
     result.QueryParams = url.Values{}
     result.FormParams = make([]FormParamContainer, 0)
 
+    if (data.StyleUpdate != nil) {
+        data.StyleUpdate.Initialize()
+    }
+
     if err := typeCheckParameter(data.Optionals["folder"], "string", "data.Optionals[folder]"); err != nil {
         return result, err
     }
@@ -163,7 +167,6 @@ func (data *UpdateStyleRequest) CreateRequestData() (RequestData, error) {
 
 
 
-    data.StyleUpdate.Initialize()
     result.PostBody = &data.StyleUpdate
 
     return result, nil

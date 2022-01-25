@@ -77,6 +77,10 @@ func (data *UpdateTableCellFormatRequest) CreateRequestData() (RequestData, erro
     result.QueryParams = url.Values{}
     result.FormParams = make([]FormParamContainer, 0)
 
+    if (data.Format != nil) {
+        data.Format.Initialize()
+    }
+
     if err := typeCheckParameter(data.Optionals["folder"], "string", "data.Optionals[folder]"); err != nil {
         return result, err
     }
@@ -166,7 +170,6 @@ func (data *UpdateTableCellFormatRequest) CreateRequestData() (RequestData, erro
 
 
 
-    data.Format.Initialize()
     result.PostBody = &data.Format
 
     return result, nil

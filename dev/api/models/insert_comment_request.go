@@ -71,6 +71,10 @@ func (data *InsertCommentRequest) CreateRequestData() (RequestData, error) {
     result.QueryParams = url.Values{}
     result.FormParams = make([]FormParamContainer, 0)
 
+    if (data.Comment != nil) {
+        data.Comment.Initialize()
+    }
+
     if err := typeCheckParameter(data.Optionals["folder"], "string", "data.Optionals[folder]"); err != nil {
         return result, err
     }
@@ -160,7 +164,6 @@ func (data *InsertCommentRequest) CreateRequestData() (RequestData, error) {
 
 
 
-    data.Comment.Initialize()
     result.PostBody = &data.Comment
 
     return result, nil

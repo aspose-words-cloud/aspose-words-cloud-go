@@ -66,6 +66,7 @@ func (data *GetDocumentStatisticsOnlineRequest) CreateRequestData() (RequestData
     result.QueryParams = url.Values{}
     result.FormParams = make([]FormParamContainer, 0)
 
+
     if err := typeCheckParameter(data.Optionals["loadEncoding"], "string", "data.Optionals[loadEncoding]"); err != nil {
         return result, err
     }

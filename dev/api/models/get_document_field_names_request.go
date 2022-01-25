@@ -67,6 +67,7 @@ func (data *GetDocumentFieldNamesRequest) CreateRequestData() (RequestData, erro
     result.QueryParams = url.Values{}
     result.FormParams = make([]FormParamContainer, 0)
 
+
     if err := typeCheckParameter(data.Optionals["folder"], "string", "data.Optionals[folder]"); err != nil {
         return result, err
     }

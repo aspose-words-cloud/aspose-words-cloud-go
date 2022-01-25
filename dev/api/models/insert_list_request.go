@@ -71,6 +71,10 @@ func (data *InsertListRequest) CreateRequestData() (RequestData, error) {
     result.QueryParams = url.Values{}
     result.FormParams = make([]FormParamContainer, 0)
 
+    if (data.ListInsert != nil) {
+        data.ListInsert.Initialize()
+    }
+
     if err := typeCheckParameter(data.Optionals["folder"], "string", "data.Optionals[folder]"); err != nil {
         return result, err
     }
@@ -160,7 +164,6 @@ func (data *InsertListRequest) CreateRequestData() (RequestData, error) {
 
 
 
-    data.ListInsert.Initialize()
     result.PostBody = &data.ListInsert
 
     return result, nil

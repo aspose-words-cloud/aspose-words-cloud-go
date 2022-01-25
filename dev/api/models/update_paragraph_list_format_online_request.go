@@ -75,6 +75,10 @@ func (data *UpdateParagraphListFormatOnlineRequest) CreateRequestData() (Request
     result.QueryParams = url.Values{}
     result.FormParams = make([]FormParamContainer, 0)
 
+    if (data.ListFormatDto != nil) {
+        data.ListFormatDto.Initialize()
+    }
+
     if err := typeCheckParameter(data.Optionals["nodePath"], "string", "data.Optionals[nodePath]"); err != nil {
         return result, err
     }

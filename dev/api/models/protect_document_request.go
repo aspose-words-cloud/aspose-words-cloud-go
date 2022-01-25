@@ -69,6 +69,10 @@ func (data *ProtectDocumentRequest) CreateRequestData() (RequestData, error) {
     result.QueryParams = url.Values{}
     result.FormParams = make([]FormParamContainer, 0)
 
+    if (data.ProtectionRequest != nil) {
+        data.ProtectionRequest.Initialize()
+    }
+
     if err := typeCheckParameter(data.Optionals["folder"], "string", "data.Optionals[folder]"); err != nil {
         return result, err
     }
@@ -142,7 +146,6 @@ func (data *ProtectDocumentRequest) CreateRequestData() (RequestData, error) {
 
 
 
-    data.ProtectionRequest.Initialize()
     result.PostBody = &data.ProtectionRequest
 
     return result, nil

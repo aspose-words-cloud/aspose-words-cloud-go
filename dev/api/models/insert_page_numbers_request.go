@@ -71,6 +71,10 @@ func (data *InsertPageNumbersRequest) CreateRequestData() (RequestData, error) {
     result.QueryParams = url.Values{}
     result.FormParams = make([]FormParamContainer, 0)
 
+    if (data.PageNumber != nil) {
+        data.PageNumber.Initialize()
+    }
+
     if err := typeCheckParameter(data.Optionals["folder"], "string", "data.Optionals[folder]"); err != nil {
         return result, err
     }
@@ -160,7 +164,6 @@ func (data *InsertPageNumbersRequest) CreateRequestData() (RequestData, error) {
 
 
 
-    data.PageNumber.Initialize()
     result.PostBody = &data.PageNumber
 
     return result, nil

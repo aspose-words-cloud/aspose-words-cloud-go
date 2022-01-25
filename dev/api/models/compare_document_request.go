@@ -70,6 +70,10 @@ func (data *CompareDocumentRequest) CreateRequestData() (RequestData, error) {
     result.QueryParams = url.Values{}
     result.FormParams = make([]FormParamContainer, 0)
 
+    if (data.CompareData != nil) {
+        data.CompareData.Initialize()
+    }
+
     if err := typeCheckParameter(data.Optionals["folder"], "string", "data.Optionals[folder]"); err != nil {
         return result, err
     }
@@ -151,7 +155,6 @@ func (data *CompareDocumentRequest) CreateRequestData() (RequestData, error) {
 
 
 
-    data.CompareData.Initialize()
     result.PostBody = &data.CompareData
 
     return result, nil

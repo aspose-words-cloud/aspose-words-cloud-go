@@ -73,6 +73,10 @@ func (data *UpdateSectionPageSetupOnlineRequest) CreateRequestData() (RequestDat
     result.QueryParams = url.Values{}
     result.FormParams = make([]FormParamContainer, 0)
 
+    if (data.PageSetup != nil) {
+        data.PageSetup.Initialize()
+    }
+
     if err := typeCheckParameter(data.Optionals["loadEncoding"], "string", "data.Optionals[loadEncoding]"); err != nil {
         return result, err
     }

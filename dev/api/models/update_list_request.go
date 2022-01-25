@@ -74,6 +74,10 @@ func (data *UpdateListRequest) CreateRequestData() (RequestData, error) {
     result.QueryParams = url.Values{}
     result.FormParams = make([]FormParamContainer, 0)
 
+    if (data.ListUpdate != nil) {
+        data.ListUpdate.Initialize()
+    }
+
     if err := typeCheckParameter(data.Optionals["folder"], "string", "data.Optionals[folder]"); err != nil {
         return result, err
     }
@@ -163,7 +167,6 @@ func (data *UpdateListRequest) CreateRequestData() (RequestData, error) {
 
 
 
-    data.ListUpdate.Initialize()
     result.PostBody = &data.ListUpdate
 
     return result, nil

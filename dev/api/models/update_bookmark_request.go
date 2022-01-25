@@ -74,6 +74,10 @@ func (data *UpdateBookmarkRequest) CreateRequestData() (RequestData, error) {
     result.QueryParams = url.Values{}
     result.FormParams = make([]FormParamContainer, 0)
 
+    if (data.BookmarkData != nil) {
+        data.BookmarkData.Initialize()
+    }
+
     if err := typeCheckParameter(data.Optionals["folder"], "string", "data.Optionals[folder]"); err != nil {
         return result, err
     }
@@ -163,7 +167,6 @@ func (data *UpdateBookmarkRequest) CreateRequestData() (RequestData, error) {
 
 
 
-    data.BookmarkData.Initialize()
     result.PostBody = &data.BookmarkData
 
     return result, nil

@@ -74,6 +74,10 @@ func (data *InsertParagraphRequest) CreateRequestData() (RequestData, error) {
     result.QueryParams = url.Values{}
     result.FormParams = make([]FormParamContainer, 0)
 
+    if (data.Paragraph != nil) {
+        data.Paragraph.Initialize()
+    }
+
     if err := typeCheckParameter(data.Optionals["nodePath"], "string", "data.Optionals[nodePath]"); err != nil {
         return result, err
     }
@@ -174,7 +178,6 @@ func (data *InsertParagraphRequest) CreateRequestData() (RequestData, error) {
 
 
 
-    data.Paragraph.Initialize()
     result.PostBody = &data.Paragraph
 
     return result, nil

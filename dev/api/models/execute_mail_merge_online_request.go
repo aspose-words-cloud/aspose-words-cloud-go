@@ -65,6 +65,10 @@ func (data *ExecuteMailMergeOnlineRequest) CreateRequestData() (RequestData, err
     result.QueryParams = url.Values{}
     result.FormParams = make([]FormParamContainer, 0)
 
+    if (data.Options != nil) {
+        data.Options.Initialize()
+    }
+
     if err := typeCheckParameter(data.Optionals["withRegions"], "bool", "data.Optionals[withRegions]"); err != nil {
         return result, err
     }

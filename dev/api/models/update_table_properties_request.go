@@ -76,6 +76,10 @@ func (data *UpdateTablePropertiesRequest) CreateRequestData() (RequestData, erro
     result.QueryParams = url.Values{}
     result.FormParams = make([]FormParamContainer, 0)
 
+    if (data.Properties != nil) {
+        data.Properties.Initialize()
+    }
+
     if err := typeCheckParameter(data.Optionals["nodePath"], "string", "data.Optionals[nodePath]"); err != nil {
         return result, err
     }
@@ -168,7 +172,6 @@ func (data *UpdateTablePropertiesRequest) CreateRequestData() (RequestData, erro
 
 
 
-    data.Properties.Initialize()
     result.PostBody = &data.Properties
 
     return result, nil

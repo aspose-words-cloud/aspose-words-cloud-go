@@ -73,6 +73,10 @@ func (data *InsertFootnoteRequest) CreateRequestData() (RequestData, error) {
     result.QueryParams = url.Values{}
     result.FormParams = make([]FormParamContainer, 0)
 
+    if (data.FootnoteDto != nil) {
+        data.FootnoteDto.Initialize()
+    }
+
     if err := typeCheckParameter(data.Optionals["nodePath"], "string", "data.Optionals[nodePath]"); err != nil {
         return result, err
     }
@@ -165,7 +169,6 @@ func (data *InsertFootnoteRequest) CreateRequestData() (RequestData, error) {
 
 
 
-    data.FootnoteDto.Initialize()
     result.PostBody = &data.FootnoteDto
 
     return result, nil

@@ -74,6 +74,10 @@ func (data *InsertTableCellRequest) CreateRequestData() (RequestData, error) {
     result.QueryParams = url.Values{}
     result.FormParams = make([]FormParamContainer, 0)
 
+    if (data.Cell != nil) {
+        data.Cell.Initialize()
+    }
+
     if err := typeCheckParameter(data.Optionals["folder"], "string", "data.Optionals[folder]"); err != nil {
         return result, err
     }
@@ -163,7 +167,6 @@ func (data *InsertTableCellRequest) CreateRequestData() (RequestData, error) {
 
 
 
-    data.Cell.Initialize()
     result.PostBody = &data.Cell
 
     return result, nil

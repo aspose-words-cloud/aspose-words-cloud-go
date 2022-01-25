@@ -69,6 +69,10 @@ func (data *InsertCustomXmlPartOnlineRequest) CreateRequestData() (RequestData, 
     result.QueryParams = url.Values{}
     result.FormParams = make([]FormParamContainer, 0)
 
+    if (data.CustomXmlPart != nil) {
+        data.CustomXmlPart.Initialize()
+    }
+
     if err := typeCheckParameter(data.Optionals["loadEncoding"], "string", "data.Optionals[loadEncoding]"); err != nil {
         return result, err
     }

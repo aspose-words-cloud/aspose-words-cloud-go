@@ -77,6 +77,10 @@ func (data *UpdateDrawingObjectOnlineRequest) CreateRequestData() (RequestData, 
     result.QueryParams = url.Values{}
     result.FormParams = make([]FormParamContainer, 0)
 
+    if (data.DrawingObject != nil) {
+        data.DrawingObject.Initialize()
+    }
+
     if err := typeCheckParameter(data.Optionals["nodePath"], "string", "data.Optionals[nodePath]"); err != nil {
         return result, err
     }

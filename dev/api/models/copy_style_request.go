@@ -71,6 +71,10 @@ func (data *CopyStyleRequest) CreateRequestData() (RequestData, error) {
     result.QueryParams = url.Values{}
     result.FormParams = make([]FormParamContainer, 0)
 
+    if (data.StyleCopy != nil) {
+        data.StyleCopy.Initialize()
+    }
+
     if err := typeCheckParameter(data.Optionals["folder"], "string", "data.Optionals[folder]"); err != nil {
         return result, err
     }
@@ -160,7 +164,6 @@ func (data *CopyStyleRequest) CreateRequestData() (RequestData, error) {
 
 
 
-    data.StyleCopy.Initialize()
     result.PostBody = &data.StyleCopy
 
     return result, nil

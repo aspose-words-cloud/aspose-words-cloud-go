@@ -71,6 +71,10 @@ func (data *ReplaceTextRequest) CreateRequestData() (RequestData, error) {
     result.QueryParams = url.Values{}
     result.FormParams = make([]FormParamContainer, 0)
 
+    if (data.ReplaceText != nil) {
+        data.ReplaceText.Initialize()
+    }
+
     if err := typeCheckParameter(data.Optionals["folder"], "string", "data.Optionals[folder]"); err != nil {
         return result, err
     }
@@ -160,7 +164,6 @@ func (data *ReplaceTextRequest) CreateRequestData() (RequestData, error) {
 
 
 
-    data.ReplaceText.Initialize()
     result.PostBody = &data.ReplaceText
 
     return result, nil
