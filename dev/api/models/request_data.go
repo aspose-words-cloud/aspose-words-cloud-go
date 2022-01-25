@@ -114,8 +114,17 @@ func parameterToString(obj interface{}, collectionFormat string) string {
         return strings.Trim(strings.Replace(fmt.Sprint(obj), " ", delimiter, -1), "[]")
     }
 
-    b, _ := json.Marshal(obj)
-	return string(b)
+    if reflect.TypeOf(obj).Kind() == reflect.Struct {
+        b, _ := json.Marshal(obj)
+        return string(b)
+    }
+
+    if reflect.TypeOf(obj).Kind() == reflect.Ptr {
+        b, _ := json.Marshal(obj)
+        return string(b)
+    }
+
+    return fmt.Sprintf("%v", obj)
 }
 
 // selectHeaderContentType select a content type from the available list.
