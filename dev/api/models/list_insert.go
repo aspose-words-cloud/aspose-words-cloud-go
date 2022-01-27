@@ -40,9 +40,15 @@ type ListInsert struct {
 
 type IListInsert interface {
     IsListInsert() bool
+    Initialize()
 }
+
 func (ListInsert) IsListInsert() bool {
     return true
+}
+
+
+func (obj *ListInsert) Initialize() {
 }
 
 

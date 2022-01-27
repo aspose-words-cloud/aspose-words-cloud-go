@@ -52,9 +52,27 @@ type Shading struct {
 
 type IShading interface {
     IsShading() bool
+    Initialize()
 }
+
 func (Shading) IsShading() bool {
     return true
+}
+
+
+func (obj *Shading) Initialize() {
+    if (obj.BackgroundPatternColor != nil) {
+        obj.BackgroundPatternColor.Initialize()
+    }
+
+
+
+    if (obj.ForegroundPatternColor != nil) {
+        obj.ForegroundPatternColor.Initialize()
+    }
+
+
+
 }
 
 

@@ -74,6 +74,10 @@ func (data *ApplyStyleToDocumentElementRequest) CreateRequestData() (RequestData
     result.QueryParams = url.Values{}
     result.FormParams = make([]FormParamContainer, 0)
 
+    if (data.StyleApply != nil) {
+        data.StyleApply.Initialize()
+    }
+
     if err := typeCheckParameter(data.Optionals["folder"], "string", "data.Optionals[folder]"); err != nil {
         return result, err
     }

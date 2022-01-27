@@ -52,13 +52,30 @@ type RunLink struct {
 
 type IRunLink interface {
     IsRunLink() bool
+    Initialize()
 }
+
 func (RunLink) IsRunLink() bool {
     return true
 }
 
 func (RunLink) IsNodeLink() bool {
     return true
+}
+
+func (RunLink) IsLinkElement() bool {
+    return true
+}
+
+func (obj *RunLink) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+
+
+
+
 }
 
 

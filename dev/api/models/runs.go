@@ -46,13 +46,24 @@ type Runs struct {
 
 type IRuns interface {
     IsRuns() bool
+    Initialize()
 }
+
 func (Runs) IsRuns() bool {
     return true
 }
 
 func (Runs) IsLinkElement() bool {
     return true
+}
+
+func (obj *Runs) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+
+
 }
 
 

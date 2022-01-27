@@ -40,13 +40,18 @@ type RunUpdate struct {
 
 type IRunUpdate interface {
     IsRunUpdate() bool
+    Initialize()
 }
+
 func (RunUpdate) IsRunUpdate() bool {
     return true
 }
 
 func (RunUpdate) IsRunBase() bool {
     return true
+}
+
+func (obj *RunUpdate) Initialize() {
 }
 
 

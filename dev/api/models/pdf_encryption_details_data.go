@@ -58,9 +58,15 @@ type PdfEncryptionDetailsData struct {
 
 type IPdfEncryptionDetailsData interface {
     IsPdfEncryptionDetailsData() bool
+    Initialize()
 }
+
 func (PdfEncryptionDetailsData) IsPdfEncryptionDetailsData() bool {
     return true
+}
+
+
+func (obj *PdfEncryptionDetailsData) Initialize() {
 }
 
 

@@ -35,9 +35,15 @@ type TablePropertiesDto struct {
 
 type ITablePropertiesDto interface {
     IsTablePropertiesDto() bool
+    Initialize()
 }
+
 func (TablePropertiesDto) IsTablePropertiesDto() bool {
     return true
+}
+
+
+func (obj *TablePropertiesDto) Initialize() {
 }
 
 

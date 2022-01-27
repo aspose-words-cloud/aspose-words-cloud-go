@@ -54,9 +54,6 @@ type XamlFlowSaveOptionsDataResult struct {
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for xaml flow save options.
-    SaveFormat string `json:"SaveFormat,omitempty"`
-
-    // Container class for xaml flow save options.
     UpdateCreatedTimeProperty bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Container class for xaml flow save options.
@@ -79,6 +76,9 @@ type XamlFlowSaveOptionsDataResult struct {
 
     // Container class for xaml flow save options.
     ImagesFolderAlias string `json:"ImagesFolderAlias,omitempty"`
+
+    // Container class for xaml flow save options.
+    SaveFormat string `json:"SaveFormat,omitempty"`
 }
 
 type XamlFlowSaveOptionsData struct {
@@ -107,9 +107,6 @@ type XamlFlowSaveOptionsData struct {
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for xaml flow save options.
-    SaveFormat *string `json:"SaveFormat,omitempty"`
-
-    // Container class for xaml flow save options.
     UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Container class for xaml flow save options.
@@ -132,17 +129,60 @@ type XamlFlowSaveOptionsData struct {
 
     // Container class for xaml flow save options.
     ImagesFolderAlias *string `json:"ImagesFolderAlias,omitempty"`
+
+    // Container class for xaml flow save options.
+    SaveFormat *string `json:"SaveFormat,omitempty"`
 }
 
 type IXamlFlowSaveOptionsData interface {
     IsXamlFlowSaveOptionsData() bool
+    Initialize()
 }
+
 func (XamlFlowSaveOptionsData) IsXamlFlowSaveOptionsData() bool {
     return true
 }
 
 func (XamlFlowSaveOptionsData) IsSaveOptionsData() bool {
     return true
+}
+
+func (obj *XamlFlowSaveOptionsData) Initialize() {
+    var _SaveFormat = "xamlflow"
+    obj.SaveFormat = &_SaveFormat
+
+    if (obj.CustomTimeZoneInfoData != nil) {
+        obj.CustomTimeZoneInfoData.Initialize()
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 

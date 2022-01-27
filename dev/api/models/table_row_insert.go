@@ -46,9 +46,15 @@ type TableRowInsert struct {
 
 type ITableRowInsert interface {
     IsTableRowInsert() bool
+    Initialize()
 }
+
 func (TableRowInsert) IsTableRowInsert() bool {
     return true
+}
+
+
+func (obj *TableRowInsert) Initialize() {
 }
 
 

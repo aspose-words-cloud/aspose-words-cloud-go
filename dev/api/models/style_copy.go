@@ -40,9 +40,15 @@ type StyleCopy struct {
 
 type IStyleCopy interface {
     IsStyleCopy() bool
+    Initialize()
 }
+
 func (StyleCopy) IsStyleCopy() bool {
     return true
+}
+
+
+func (obj *StyleCopy) Initialize() {
 }
 
 

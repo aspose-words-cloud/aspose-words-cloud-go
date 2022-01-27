@@ -112,7 +112,7 @@ func Test_PageSetup_UpdateSectionPageSetup(t *testing.T) {
     request := &models.UpdateSectionPageSetupRequest{
         Name: ToStringPointer(remoteFileName),
         SectionIndex: ToInt32Pointer(int32(0)),
-        PageSetup: requestPageSetup,
+        PageSetup: &requestPageSetup,
         Optionals: options,
     }
 
@@ -147,7 +147,7 @@ func Test_PageSetup_UpdateSectionPageSetupOnline(t *testing.T) {
     request := &models.UpdateSectionPageSetupOnlineRequest{
         Document: requestDocument,
         SectionIndex: ToInt32Pointer(int32(0)),
-        PageSetup: requestPageSetup,
+        PageSetup: &requestPageSetup,
         Optionals: options,
     }
 

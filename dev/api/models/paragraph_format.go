@@ -208,13 +208,86 @@ type ParagraphFormat struct {
 
 type IParagraphFormat interface {
     IsParagraphFormat() bool
+    Initialize()
 }
+
 func (ParagraphFormat) IsParagraphFormat() bool {
     return true
 }
 
 func (ParagraphFormat) IsParagraphFormatBase() bool {
     return true
+}
+
+func (ParagraphFormat) IsLinkElement() bool {
+    return true
+}
+
+func (obj *ParagraphFormat) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    if (obj.Shading != nil) {
+        obj.Shading.Initialize()
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 

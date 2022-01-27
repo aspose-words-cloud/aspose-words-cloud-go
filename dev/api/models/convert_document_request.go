@@ -65,6 +65,7 @@ func (data *ConvertDocumentRequest) CreateRequestData() (RequestData, error) {
     result.QueryParams = url.Values{}
     result.FormParams = make([]FormParamContainer, 0)
 
+
     if err := typeCheckParameter(data.Optionals["outPath"], "string", "data.Optionals[outPath]"); err != nil {
         return result, err
     }

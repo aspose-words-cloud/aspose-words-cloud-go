@@ -119,6 +119,11 @@ func parameterToString(obj interface{}, collectionFormat string) string {
         return string(b)
     }
 
+    if reflect.TypeOf(obj).Kind() == reflect.Ptr {
+        b, _ := json.Marshal(obj)
+        return string(b)
+    }
+
     return fmt.Sprintf("%v", obj)
 }
 

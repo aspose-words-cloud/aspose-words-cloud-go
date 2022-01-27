@@ -46,13 +46,28 @@ type OfficeMathLink struct {
 
 type IOfficeMathLink interface {
     IsOfficeMathLink() bool
+    Initialize()
 }
+
 func (OfficeMathLink) IsOfficeMathLink() bool {
     return true
 }
 
 func (OfficeMathLink) IsNodeLink() bool {
     return true
+}
+
+func (OfficeMathLink) IsLinkElement() bool {
+    return true
+}
+
+func (obj *OfficeMathLink) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+
+
 }
 
 

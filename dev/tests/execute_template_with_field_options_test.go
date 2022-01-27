@@ -50,7 +50,7 @@ func Test_ExecuteTemplateWithFieldOptions_ExecuteTemplateWithFieldOptions(t *tes
         Name: ToStringPointer("SdkTestUser"),
     }
     requestOptions := models.FieldOptions{
-        CurrentUser: requestOptionsCurrentUser,
+        CurrentUser: &requestOptionsCurrentUser,
     }
 
     options := map[string]interface{}{
@@ -88,7 +88,7 @@ func Test_ExecuteTemplateWithFieldOptions_ExecuteTemplateOnlineWithFieldOptions(
         Name: ToStringPointer("SdkTestUser"),
     }
     requestOptions := models.FieldOptions{
-        CurrentUser: requestOptionsCurrentUser,
+        CurrentUser: &requestOptionsCurrentUser,
     }
 
     options := map[string]interface{}{

@@ -163,7 +163,7 @@ func Test_Lists_UpdateList(t *testing.T) {
     request := &models.UpdateListRequest{
         Name: ToStringPointer(remoteFileName),
         ListId: ToInt32Pointer(int32(1)),
-        ListUpdate: requestListUpdate,
+        ListUpdate: &requestListUpdate,
         Optionals: options,
     }
 
@@ -191,7 +191,7 @@ func Test_Lists_UpdateListOnline(t *testing.T) {
     request := &models.UpdateListOnlineRequest{
         Document: requestDocument,
         ListId: ToInt32Pointer(int32(1)),
-        ListUpdate: requestListUpdate,
+        ListUpdate: &requestListUpdate,
         Optionals: options,
     }
 
@@ -227,7 +227,7 @@ func Test_Lists_UpdateListLevel(t *testing.T) {
         Name: ToStringPointer(remoteFileName),
         ListId: ToInt32Pointer(int32(1)),
         ListLevel: ToInt32Pointer(int32(1)),
-        ListUpdate: requestListUpdate,
+        ListUpdate: &requestListUpdate,
         Optionals: options,
     }
 
@@ -255,7 +255,7 @@ func Test_Lists_UpdateListLevelOnline(t *testing.T) {
     request := &models.UpdateListLevelOnlineRequest{
         Document: requestDocument,
         ListId: ToInt32Pointer(int32(1)),
-        ListUpdate: requestListUpdate,
+        ListUpdate: &requestListUpdate,
         ListLevel: ToInt32Pointer(int32(1)),
         Optionals: options,
     }
@@ -292,7 +292,7 @@ func Test_Lists_InsertList(t *testing.T) {
 
     request := &models.InsertListRequest{
         Name: ToStringPointer(remoteFileName),
-        ListInsert: requestListInsert,
+        ListInsert: &requestListInsert,
         Optionals: options,
     }
 
@@ -321,7 +321,7 @@ func Test_Lists_InsertListOnline(t *testing.T) {
 
     request := &models.InsertListOnlineRequest{
         Document: requestDocument,
-        ListInsert: requestListInsert,
+        ListInsert: &requestListInsert,
         Optionals: options,
     }
 

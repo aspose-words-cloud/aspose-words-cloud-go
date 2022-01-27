@@ -106,13 +106,60 @@ type DrawingObject struct {
 
 type IDrawingObject interface {
     IsDrawingObject() bool
+    Initialize()
 }
+
 func (DrawingObject) IsDrawingObject() bool {
     return true
 }
 
 func (DrawingObject) IsDrawingObjectLink() bool {
     return true
+}
+
+func (DrawingObject) IsNodeLink() bool {
+    return true
+}
+
+func (DrawingObject) IsLinkElement() bool {
+    return true
+}
+
+func (obj *DrawingObject) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+
+
+
+
+
+
+    if (obj.ImageDataLink != nil) {
+        obj.ImageDataLink.Initialize()
+    }
+
+
+
+
+
+    if (obj.OleDataLink != nil) {
+        obj.OleDataLink.Initialize()
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 

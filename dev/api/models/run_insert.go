@@ -40,13 +40,18 @@ type RunInsert struct {
 
 type IRunInsert interface {
     IsRunInsert() bool
+    Initialize()
 }
+
 func (RunInsert) IsRunInsert() bool {
     return true
 }
 
 func (RunInsert) IsRunBase() bool {
     return true
+}
+
+func (obj *RunInsert) Initialize() {
 }
 
 

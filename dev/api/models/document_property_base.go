@@ -40,9 +40,15 @@ type DocumentPropertyBase struct {
 
 type IDocumentPropertyBase interface {
     IsDocumentPropertyBase() bool
+    Initialize()
 }
+
 func (DocumentPropertyBase) IsDocumentPropertyBase() bool {
     return true
+}
+
+
+func (obj *DocumentPropertyBase) Initialize() {
 }
 
 

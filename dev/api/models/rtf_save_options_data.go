@@ -54,9 +54,6 @@ type RtfSaveOptionsDataResult struct {
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for rtf save options.
-    SaveFormat string `json:"SaveFormat,omitempty"`
-
-    // Container class for rtf save options.
     UpdateCreatedTimeProperty bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Container class for rtf save options.
@@ -82,6 +79,9 @@ type RtfSaveOptionsDataResult struct {
 
     // Container class for rtf save options.
     PrettyFormat bool `json:"PrettyFormat,omitempty"`
+
+    // Container class for rtf save options.
+    SaveFormat string `json:"SaveFormat,omitempty"`
 
     // Container class for rtf save options.
     SaveImagesAsWmf bool `json:"SaveImagesAsWmf,omitempty"`
@@ -113,9 +113,6 @@ type RtfSaveOptionsData struct {
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for rtf save options.
-    SaveFormat *string `json:"SaveFormat,omitempty"`
-
-    // Container class for rtf save options.
     UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Container class for rtf save options.
@@ -143,18 +140,65 @@ type RtfSaveOptionsData struct {
     PrettyFormat *bool `json:"PrettyFormat,omitempty"`
 
     // Container class for rtf save options.
+    SaveFormat *string `json:"SaveFormat,omitempty"`
+
+    // Container class for rtf save options.
     SaveImagesAsWmf *bool `json:"SaveImagesAsWmf,omitempty"`
 }
 
 type IRtfSaveOptionsData interface {
     IsRtfSaveOptionsData() bool
+    Initialize()
 }
+
 func (RtfSaveOptionsData) IsRtfSaveOptionsData() bool {
     return true
 }
 
 func (RtfSaveOptionsData) IsSaveOptionsData() bool {
     return true
+}
+
+func (obj *RtfSaveOptionsData) Initialize() {
+    var _SaveFormat = "rtf"
+    obj.SaveFormat = &_SaveFormat
+
+    if (obj.CustomTimeZoneInfoData != nil) {
+        obj.CustomTimeZoneInfoData.Initialize()
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 

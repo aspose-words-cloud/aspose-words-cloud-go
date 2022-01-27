@@ -46,9 +46,15 @@ type ErrorDetails struct {
 
 type IErrorDetails interface {
     IsErrorDetails() bool
+    Initialize()
 }
+
 func (ErrorDetails) IsErrorDetails() bool {
     return true
+}
+
+
+func (obj *ErrorDetails) Initialize() {
 }
 
 

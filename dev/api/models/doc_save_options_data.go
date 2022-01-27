@@ -54,9 +54,6 @@ type DocSaveOptionsDataResult struct {
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for doc/dot save options.
-    SaveFormat string `json:"SaveFormat,omitempty"`
-
-    // Container class for doc/dot save options.
     UpdateCreatedTimeProperty bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Container class for doc/dot save options.
@@ -79,6 +76,9 @@ type DocSaveOptionsDataResult struct {
 
     // Container class for doc/dot save options.
     Password string `json:"Password,omitempty"`
+
+    // Container class for doc/dot save options.
+    SaveFormat string `json:"SaveFormat,omitempty"`
 
     // Container class for doc/dot save options.
     SavePictureBullet bool `json:"SavePictureBullet,omitempty"`
@@ -113,9 +113,6 @@ type DocSaveOptionsData struct {
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for doc/dot save options.
-    SaveFormat *string `json:"SaveFormat,omitempty"`
-
-    // Container class for doc/dot save options.
     UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Container class for doc/dot save options.
@@ -140,6 +137,9 @@ type DocSaveOptionsData struct {
     Password *string `json:"Password,omitempty"`
 
     // Container class for doc/dot save options.
+    SaveFormat *string `json:"SaveFormat,omitempty"`
+
+    // Container class for doc/dot save options.
     SavePictureBullet *bool `json:"SavePictureBullet,omitempty"`
 
     // Container class for doc/dot save options.
@@ -148,13 +148,57 @@ type DocSaveOptionsData struct {
 
 type IDocSaveOptionsData interface {
     IsDocSaveOptionsData() bool
+    Initialize()
 }
+
 func (DocSaveOptionsData) IsDocSaveOptionsData() bool {
     return true
 }
 
 func (DocSaveOptionsData) IsSaveOptionsData() bool {
     return true
+}
+
+func (obj *DocSaveOptionsData) Initialize() {
+    var _SaveFormat = "doc"
+    obj.SaveFormat = &_SaveFormat
+
+    if (obj.CustomTimeZoneInfoData != nil) {
+        obj.CustomTimeZoneInfoData.Initialize()
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 

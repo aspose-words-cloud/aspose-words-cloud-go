@@ -58,9 +58,15 @@ type TimeZoneInfoData struct {
 
 type ITimeZoneInfoData interface {
     IsTimeZoneInfoData() bool
+    Initialize()
 }
+
 func (TimeZoneInfoData) IsTimeZoneInfoData() bool {
     return true
+}
+
+
+func (obj *TimeZoneInfoData) Initialize() {
 }
 
 

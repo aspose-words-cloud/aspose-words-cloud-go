@@ -69,6 +69,7 @@ func (data *GetRangeTextOnlineRequest) CreateRequestData() (RequestData, error) 
     result.QueryParams = url.Values{}
     result.FormParams = make([]FormParamContainer, 0)
 
+
     if err := typeCheckParameter(data.Optionals["rangeEndIdentifier"], "string", "data.Optionals[rangeEndIdentifier]"); err != nil {
         return result, err
     }

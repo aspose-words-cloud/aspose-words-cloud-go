@@ -54,9 +54,6 @@ type HtmlSaveOptionsDataResult struct {
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for html save options.
-    SaveFormat string `json:"SaveFormat,omitempty"`
-
-    // Container class for html save options.
     UpdateCreatedTimeProperty bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Container class for html save options.
@@ -186,6 +183,9 @@ type HtmlSaveOptionsDataResult struct {
     ResourceFolderAlias string `json:"ResourceFolderAlias,omitempty"`
 
     // Container class for html save options.
+    SaveFormat string `json:"SaveFormat,omitempty"`
+
+    // Container class for html save options.
     ScaleImageToShapeSize bool `json:"ScaleImageToShapeSize,omitempty"`
 
     // Container class for html save options.
@@ -216,9 +216,6 @@ type HtmlSaveOptionsData struct {
 
     // Container class for html save options.
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
-
-    // Container class for html save options.
-    SaveFormat *string `json:"SaveFormat,omitempty"`
 
     // Container class for html save options.
     UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
@@ -350,6 +347,9 @@ type HtmlSaveOptionsData struct {
     ResourceFolderAlias *string `json:"ResourceFolderAlias,omitempty"`
 
     // Container class for html save options.
+    SaveFormat *string `json:"SaveFormat,omitempty"`
+
+    // Container class for html save options.
     ScaleImageToShapeSize *bool `json:"ScaleImageToShapeSize,omitempty"`
 
     // Container class for html save options.
@@ -358,13 +358,127 @@ type HtmlSaveOptionsData struct {
 
 type IHtmlSaveOptionsData interface {
     IsHtmlSaveOptionsData() bool
+    Initialize()
 }
+
 func (HtmlSaveOptionsData) IsHtmlSaveOptionsData() bool {
     return true
 }
 
 func (HtmlSaveOptionsData) IsSaveOptionsData() bool {
     return true
+}
+
+func (obj *HtmlSaveOptionsData) Initialize() {
+    var _SaveFormat = "html"
+    obj.SaveFormat = &_SaveFormat
+
+    if (obj.CustomTimeZoneInfoData != nil) {
+        obj.CustomTimeZoneInfoData.Initialize()
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 

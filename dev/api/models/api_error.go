@@ -64,9 +64,15 @@ type ApiError struct {
 
 type IApiError interface {
     IsApiError() bool
+    Initialize()
 }
+
 func (ApiError) IsApiError() bool {
     return true
+}
+
+
+func (obj *ApiError) Initialize() {
 }
 
 

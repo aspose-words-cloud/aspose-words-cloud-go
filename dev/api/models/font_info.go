@@ -58,9 +58,15 @@ type FontInfo struct {
 
 type IFontInfo interface {
     IsFontInfo() bool
+    Initialize()
 }
+
 func (FontInfo) IsFontInfo() bool {
     return true
+}
+
+
+func (obj *FontInfo) Initialize() {
 }
 
 

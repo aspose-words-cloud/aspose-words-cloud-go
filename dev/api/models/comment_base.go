@@ -70,9 +70,27 @@ type CommentBase struct {
 
 type ICommentBase interface {
     IsCommentBase() bool
+    Initialize()
 }
+
 func (CommentBase) IsCommentBase() bool {
     return true
+}
+
+
+func (obj *CommentBase) Initialize() {
+    if (obj.RangeEnd != nil) {
+        obj.RangeEnd.Initialize()
+    }
+
+
+
+    if (obj.RangeStart != nil) {
+        obj.RangeStart.Initialize()
+    }
+
+
+
 }
 
 

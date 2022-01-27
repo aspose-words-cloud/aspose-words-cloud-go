@@ -221,7 +221,7 @@ func Test_DocumentProperties_UpdateDocumentProperty(t *testing.T) {
     request := &models.CreateOrUpdateDocumentPropertyRequest{
         Name: ToStringPointer(remoteFileName),
         PropertyName: ToStringPointer("AsposeAuthor"),
-        Property: requestProperty,
+        Property: &requestProperty,
         Optionals: options,
     }
 
@@ -252,7 +252,7 @@ func Test_DocumentProperties_UpdateDocumentPropertyOnline(t *testing.T) {
     request := &models.CreateOrUpdateDocumentPropertyOnlineRequest{
         Document: requestDocument,
         PropertyName: ToStringPointer("AsposeAuthor"),
-        Property: requestProperty,
+        Property: &requestProperty,
         Optionals: options,
     }
 

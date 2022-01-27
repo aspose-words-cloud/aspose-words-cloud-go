@@ -100,13 +100,46 @@ type FormField struct {
 
 type IFormField interface {
     IsFormField() bool
+    Initialize()
 }
+
 func (FormField) IsFormField() bool {
     return true
 }
 
 func (FormField) IsNodeLink() bool {
     return true
+}
+
+func (FormField) IsLinkElement() bool {
+    return true
+}
+
+func (obj *FormField) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 

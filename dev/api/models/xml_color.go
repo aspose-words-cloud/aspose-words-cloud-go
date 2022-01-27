@@ -46,9 +46,15 @@ type XmlColor struct {
 
 type IXmlColor interface {
     IsXmlColor() bool
+    Initialize()
 }
+
 func (XmlColor) IsXmlColor() bool {
     return true
+}
+
+
+func (obj *XmlColor) Initialize() {
 }
 
 

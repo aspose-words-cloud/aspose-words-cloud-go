@@ -64,13 +64,42 @@ type HeaderFooter struct {
 
 type IHeaderFooter interface {
     IsHeaderFooter() bool
+    Initialize()
 }
+
 func (HeaderFooter) IsHeaderFooter() bool {
     return true
 }
 
 func (HeaderFooter) IsHeaderFooterLink() bool {
     return true
+}
+
+func (HeaderFooter) IsLinkElement() bool {
+    return true
+}
+
+func (obj *HeaderFooter) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+
+
+
+
+
+
+    if (obj.DrawingObjects != nil) {
+        obj.DrawingObjects.Initialize()
+    }
+
+
+
+    if (obj.Paragraphs != nil) {
+        obj.Paragraphs.Initialize()
+    }
+
 }
 
 

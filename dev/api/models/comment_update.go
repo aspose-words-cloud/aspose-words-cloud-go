@@ -70,13 +70,30 @@ type CommentUpdate struct {
 
 type ICommentUpdate interface {
     IsCommentUpdate() bool
+    Initialize()
 }
+
 func (CommentUpdate) IsCommentUpdate() bool {
     return true
 }
 
 func (CommentUpdate) IsCommentBase() bool {
     return true
+}
+
+func (obj *CommentUpdate) Initialize() {
+    if (obj.RangeEnd != nil) {
+        obj.RangeEnd.Initialize()
+    }
+
+
+
+    if (obj.RangeStart != nil) {
+        obj.RangeStart.Initialize()
+    }
+
+
+
 }
 
 

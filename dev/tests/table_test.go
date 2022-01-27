@@ -319,7 +319,7 @@ func Test_Table_InsertTable(t *testing.T) {
 
     request := &models.InsertTableRequest{
         Name: ToStringPointer(remoteFileName),
-        Table: requestTable,
+        Table: &requestTable,
         Optionals: options,
     }
 
@@ -353,7 +353,7 @@ func Test_Table_InsertTableOnline(t *testing.T) {
 
     request := &models.InsertTableOnlineRequest{
         Document: requestDocument,
-        Table: requestTable,
+        Table: &requestTable,
         Optionals: options,
     }
 
@@ -385,7 +385,7 @@ func Test_Table_InsertTableWithoutNodePath(t *testing.T) {
 
     request := &models.InsertTableRequest{
         Name: ToStringPointer(remoteFileName),
-        Table: requestTable,
+        Table: &requestTable,
         Optionals: options,
     }
 
@@ -514,7 +514,7 @@ func Test_Table_UpdateTableProperties(t *testing.T) {
     request := &models.UpdateTablePropertiesRequest{
         Name: ToStringPointer(remoteFileName),
         Index: ToInt32Pointer(int32(1)),
-        Properties: requestProperties,
+        Properties: &requestProperties,
         Optionals: options,
     }
 
@@ -552,7 +552,7 @@ func Test_Table_UpdateTablePropertiesOnline(t *testing.T) {
 
     request := &models.UpdateTablePropertiesOnlineRequest{
         Document: requestDocument,
-        Properties: requestProperties,
+        Properties: &requestProperties,
         Index: ToInt32Pointer(int32(1)),
         Optionals: options,
     }
@@ -590,7 +590,7 @@ func Test_Table_UpdateTablePropertiesWithoutNodePath(t *testing.T) {
     request := &models.UpdateTablePropertiesRequest{
         Name: ToStringPointer(remoteFileName),
         Index: ToInt32Pointer(int32(1)),
-        Properties: requestProperties,
+        Properties: &requestProperties,
         Optionals: options,
     }
 
@@ -739,7 +739,7 @@ func Test_Table_InsertTableRow(t *testing.T) {
     request := &models.InsertTableRowRequest{
         Name: ToStringPointer(remoteFileName),
         TablePath: ToStringPointer("sections/0/tables/2"),
-        Row: requestRow,
+        Row: &requestRow,
         Optionals: options,
     }
 
@@ -770,7 +770,7 @@ func Test_Table_InsertTableRowOnline(t *testing.T) {
     request := &models.InsertTableRowOnlineRequest{
         Document: requestDocument,
         TablePath: ToStringPointer("sections/0/tables/2"),
-        Row: requestRow,
+        Row: &requestRow,
         Optionals: options,
     }
 
@@ -862,7 +862,7 @@ func Test_Table_UpdateTableRowFormat(t *testing.T) {
         Name: ToStringPointer(remoteFileName),
         TablePath: ToStringPointer("sections/0/tables/2"),
         Index: ToInt32Pointer(int32(0)),
-        Format: requestFormat,
+        Format: &requestFormat,
         Optionals: options,
     }
 
@@ -897,7 +897,7 @@ func Test_Table_UpdateTableRowFormatOnline(t *testing.T) {
     request := &models.UpdateTableRowFormatOnlineRequest{
         Document: requestDocument,
         TablePath: ToStringPointer("sections/0/tables/2"),
-        Format: requestFormat,
+        Format: &requestFormat,
         Index: ToInt32Pointer(int32(0)),
         Optionals: options,
     }
@@ -1040,7 +1040,7 @@ func Test_Table_InsertTableCell(t *testing.T) {
     request := &models.InsertTableCellRequest{
         Name: ToStringPointer(remoteFileName),
         TableRowPath: ToStringPointer("sections/0/tables/2/rows/0"),
-        Cell: requestCell,
+        Cell: &requestCell,
         Optionals: options,
     }
 
@@ -1069,7 +1069,7 @@ func Test_Table_InsertTableCellOnline(t *testing.T) {
     request := &models.InsertTableCellOnlineRequest{
         Document: requestDocument,
         TableRowPath: ToStringPointer("sections/0/tables/2/rows/0"),
-        Cell: requestCell,
+        Cell: &requestCell,
         Optionals: options,
     }
 
@@ -1161,7 +1161,7 @@ func Test_Table_UpdateTableCellFormat(t *testing.T) {
         Name: ToStringPointer(remoteFileName),
         TableRowPath: ToStringPointer("sections/0/tables/2/rows/0"),
         Index: ToInt32Pointer(int32(0)),
-        Format: requestFormat,
+        Format: &requestFormat,
         Optionals: options,
     }
 
@@ -1196,7 +1196,7 @@ func Test_Table_UpdateTableCellFormatOnline(t *testing.T) {
     request := &models.UpdateTableCellFormatOnlineRequest{
         Document: requestDocument,
         TableRowPath: ToStringPointer("sections/0/tables/2/rows/0"),
-        Format: requestFormat,
+        Format: &requestFormat,
         Index: ToInt32Pointer(int32(0)),
         Optionals: options,
     }

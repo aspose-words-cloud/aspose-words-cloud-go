@@ -64,9 +64,25 @@ type CompareData struct {
 
 type ICompareData interface {
     IsCompareData() bool
+    Initialize()
 }
+
 func (CompareData) IsCompareData() bool {
     return true
+}
+
+
+func (obj *CompareData) Initialize() {
+    if (obj.CompareOptions != nil) {
+        obj.CompareOptions.Initialize()
+    }
+
+
+
+
+
+
+
 }
 
 

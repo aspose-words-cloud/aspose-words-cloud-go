@@ -54,9 +54,6 @@ type PclSaveOptionsDataResult struct {
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for pcl save options.
-    SaveFormat string `json:"SaveFormat,omitempty"`
-
-    // Container class for pcl save options.
     UpdateCreatedTimeProperty bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Container class for pcl save options.
@@ -100,6 +97,9 @@ type PclSaveOptionsDataResult struct {
 
     // Container class for pcl save options.
     RasterizeTransformedElements bool `json:"RasterizeTransformedElements,omitempty"`
+
+    // Container class for pcl save options.
+    SaveFormat string `json:"SaveFormat,omitempty"`
 }
 
 type PclSaveOptionsData struct {
@@ -126,9 +126,6 @@ type PclSaveOptionsData struct {
 
     // Container class for pcl save options.
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
-
-    // Container class for pcl save options.
-    SaveFormat *string `json:"SaveFormat,omitempty"`
 
     // Container class for pcl save options.
     UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
@@ -174,17 +171,82 @@ type PclSaveOptionsData struct {
 
     // Container class for pcl save options.
     RasterizeTransformedElements *bool `json:"RasterizeTransformedElements,omitempty"`
+
+    // Container class for pcl save options.
+    SaveFormat *string `json:"SaveFormat,omitempty"`
 }
 
 type IPclSaveOptionsData interface {
     IsPclSaveOptionsData() bool
+    Initialize()
 }
+
 func (PclSaveOptionsData) IsPclSaveOptionsData() bool {
     return true
 }
 
 func (PclSaveOptionsData) IsFixedPageSaveOptionsData() bool {
     return true
+}
+
+func (PclSaveOptionsData) IsSaveOptionsData() bool {
+    return true
+}
+
+func (obj *PclSaveOptionsData) Initialize() {
+    var _SaveFormat = "pcl"
+    obj.SaveFormat = &_SaveFormat
+
+    if (obj.CustomTimeZoneInfoData != nil) {
+        obj.CustomTimeZoneInfoData.Initialize()
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    if (obj.MetafileRenderingOptions != nil) {
+        obj.MetafileRenderingOptions.Initialize()
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 

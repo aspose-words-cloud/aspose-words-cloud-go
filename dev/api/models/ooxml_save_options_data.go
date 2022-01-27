@@ -148,13 +148,54 @@ type OoxmlSaveOptionsData struct {
 
 type IOoxmlSaveOptionsData interface {
     IsOoxmlSaveOptionsData() bool
+    Initialize()
 }
+
 func (OoxmlSaveOptionsData) IsOoxmlSaveOptionsData() bool {
     return true
 }
 
 func (OoxmlSaveOptionsData) IsSaveOptionsData() bool {
     return true
+}
+
+func (obj *OoxmlSaveOptionsData) Initialize() {
+    if (obj.CustomTimeZoneInfoData != nil) {
+        obj.CustomTimeZoneInfoData.Initialize()
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 

@@ -46,9 +46,15 @@ type FieldBase struct {
 
 type IFieldBase interface {
     IsFieldBase() bool
+    Initialize()
 }
+
 func (FieldBase) IsFieldBase() bool {
     return true
+}
+
+
+func (obj *FieldBase) Initialize() {
 }
 
 

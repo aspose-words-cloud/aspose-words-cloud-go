@@ -40,9 +40,19 @@ type LinkElement struct {
 
 type ILinkElement interface {
     IsLinkElement() bool
+    Initialize()
 }
+
 func (LinkElement) IsLinkElement() bool {
     return true
+}
+
+
+func (obj *LinkElement) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
 }
 
 

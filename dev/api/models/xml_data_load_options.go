@@ -40,9 +40,15 @@ type XmlDataLoadOptions struct {
 
 type IXmlDataLoadOptions interface {
     IsXmlDataLoadOptions() bool
+    Initialize()
 }
+
 func (XmlDataLoadOptions) IsXmlDataLoadOptions() bool {
     return true
+}
+
+
+func (obj *XmlDataLoadOptions) Initialize() {
 }
 
 

@@ -52,9 +52,21 @@ type TableInsert struct {
 
 type ITableInsert interface {
     IsTableInsert() bool
+    Initialize()
 }
+
 func (TableInsert) IsTableInsert() bool {
     return true
+}
+
+
+func (obj *TableInsert) Initialize() {
+    if (obj.Position != nil) {
+        obj.Position.Initialize()
+    }
+
+
+
 }
 
 

@@ -69,6 +69,10 @@ func (data *InsertPageNumbersOnlineRequest) CreateRequestData() (RequestData, er
     result.QueryParams = url.Values{}
     result.FormParams = make([]FormParamContainer, 0)
 
+    if (data.PageNumber != nil) {
+        data.PageNumber.Initialize()
+    }
+
     if err := typeCheckParameter(data.Optionals["loadEncoding"], "string", "data.Optionals[loadEncoding]"); err != nil {
         return result, err
     }

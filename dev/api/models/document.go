@@ -70,9 +70,29 @@ type Document struct {
 
 type IDocument interface {
     IsDocument() bool
+    Initialize()
 }
+
 func (Document) IsDocument() bool {
     return true
+}
+
+
+func (obj *Document) Initialize() {
+    if (obj.DocumentProperties != nil) {
+        obj.DocumentProperties.Initialize()
+    }
+
+
+
+
+
+
+
+
+
+
+
 }
 
 

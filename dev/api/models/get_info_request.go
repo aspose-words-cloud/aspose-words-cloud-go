@@ -57,6 +57,7 @@ func (data *GetInfoRequest) CreateRequestData() (RequestData, error) {
 
 
 
+
     // to determine the Content-Type header
     localVarHttpContentTypes := []string{ "application/xml", "application/json", }
 

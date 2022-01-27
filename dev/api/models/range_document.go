@@ -40,9 +40,15 @@ type RangeDocument struct {
 
 type IRangeDocument interface {
     IsRangeDocument() bool
+    Initialize()
 }
+
 func (RangeDocument) IsRangeDocument() bool {
     return true
+}
+
+
+func (obj *RangeDocument) Initialize() {
 }
 
 

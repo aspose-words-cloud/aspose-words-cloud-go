@@ -269,7 +269,7 @@ func Test_TableBorder_UpdateBorder(t *testing.T) {
     }
     requestBorderProperties := models.Border{
         BorderType: ToStringPointer("Left"),
-        Color: requestBorderPropertiesColor,
+        Color: &requestBorderPropertiesColor,
         DistanceFromText: ToFloat64Pointer(6.0),
         LineStyle: ToStringPointer("DashDotStroker"),
         LineWidth: ToFloat64Pointer(2.0),
@@ -284,7 +284,7 @@ func Test_TableBorder_UpdateBorder(t *testing.T) {
     request := &models.UpdateBorderRequest{
         Name: ToStringPointer(remoteFileName),
         BorderType: ToStringPointer("left"),
-        BorderProperties: requestBorderProperties,
+        BorderProperties: &requestBorderProperties,
         Optionals: options,
     }
 
@@ -313,7 +313,7 @@ func Test_TableBorder_UpdateBorderOnline(t *testing.T) {
     }
     requestBorderProperties := models.Border{
         BorderType: ToStringPointer("Left"),
-        Color: requestBorderPropertiesColor,
+        Color: &requestBorderPropertiesColor,
         DistanceFromText: ToFloat64Pointer(6),
         LineStyle: ToStringPointer("DashDotStroker"),
         LineWidth: ToFloat64Pointer(2),
@@ -326,7 +326,7 @@ func Test_TableBorder_UpdateBorderOnline(t *testing.T) {
 
     request := &models.UpdateBorderOnlineRequest{
         Document: requestDocument,
-        BorderProperties: requestBorderProperties,
+        BorderProperties: &requestBorderProperties,
         BorderType: ToStringPointer("left"),
         Optionals: options,
     }

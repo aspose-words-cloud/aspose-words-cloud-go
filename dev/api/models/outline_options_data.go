@@ -70,9 +70,15 @@ type OutlineOptionsData struct {
 
 type IOutlineOptionsData interface {
     IsOutlineOptionsData() bool
+    Initialize()
 }
+
 func (OutlineOptionsData) IsOutlineOptionsData() bool {
     return true
+}
+
+
+func (obj *OutlineOptionsData) Initialize() {
 }
 
 

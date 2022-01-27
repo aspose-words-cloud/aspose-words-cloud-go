@@ -70,13 +70,30 @@ type CommentInsert struct {
 
 type ICommentInsert interface {
     IsCommentInsert() bool
+    Initialize()
 }
+
 func (CommentInsert) IsCommentInsert() bool {
     return true
 }
 
 func (CommentInsert) IsCommentBase() bool {
     return true
+}
+
+func (obj *CommentInsert) Initialize() {
+    if (obj.RangeEnd != nil) {
+        obj.RangeEnd.Initialize()
+    }
+
+
+
+    if (obj.RangeStart != nil) {
+        obj.RangeStart.Initialize()
+    }
+
+
+
 }
 
 

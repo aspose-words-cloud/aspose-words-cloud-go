@@ -124,9 +124,43 @@ type SaveOptionsData struct {
 
 type ISaveOptionsData interface {
     IsSaveOptionsData() bool
+    Initialize()
 }
+
 func (SaveOptionsData) IsSaveOptionsData() bool {
     return true
+}
+
+
+func (obj *SaveOptionsData) Initialize() {
+    if (obj.CustomTimeZoneInfoData != nil) {
+        obj.CustomTimeZoneInfoData.Initialize()
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 

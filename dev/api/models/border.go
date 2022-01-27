@@ -76,13 +76,38 @@ type Border struct {
 
 type IBorder interface {
     IsBorder() bool
+    Initialize()
 }
+
 func (Border) IsBorder() bool {
     return true
 }
 
 func (Border) IsLinkElement() bool {
     return true
+}
+
+func (obj *Border) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+
+
+
+
+    if (obj.Color != nil) {
+        obj.Color.Initialize()
+    }
+
+
+
+
+
+
+
+
+
 }
 
 

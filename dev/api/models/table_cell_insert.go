@@ -40,9 +40,15 @@ type TableCellInsert struct {
 
 type ITableCellInsert interface {
     IsTableCellInsert() bool
+    Initialize()
 }
+
 func (TableCellInsert) IsTableCellInsert() bool {
     return true
+}
+
+
+func (obj *TableCellInsert) Initialize() {
 }
 
 

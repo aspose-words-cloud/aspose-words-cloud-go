@@ -46,9 +46,15 @@ type DocumentEntryList struct {
 
 type IDocumentEntryList interface {
     IsDocumentEntryList() bool
+    Initialize()
 }
+
 func (DocumentEntryList) IsDocumentEntryList() bool {
     return true
+}
+
+
+func (obj *DocumentEntryList) Initialize() {
 }
 
 

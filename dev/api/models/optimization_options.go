@@ -40,9 +40,15 @@ type OptimizationOptions struct {
 
 type IOptimizationOptions interface {
     IsOptimizationOptions() bool
+    Initialize()
 }
+
 func (OptimizationOptions) IsOptimizationOptions() bool {
     return true
+}
+
+
+func (obj *OptimizationOptions) Initialize() {
 }
 
 

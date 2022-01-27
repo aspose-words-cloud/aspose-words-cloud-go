@@ -58,9 +58,15 @@ type CsvDataLoadOptions struct {
 
 type ICsvDataLoadOptions interface {
     IsCsvDataLoadOptions() bool
+    Initialize()
 }
+
 func (CsvDataLoadOptions) IsCsvDataLoadOptions() bool {
     return true
+}
+
+
+func (obj *CsvDataLoadOptions) Initialize() {
 }
 
 

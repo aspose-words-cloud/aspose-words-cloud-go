@@ -56,7 +56,7 @@ func Test_DocumentProtection_ProtectDocument(t *testing.T) {
 
     request := &models.ProtectDocumentRequest{
         Name: ToStringPointer(remoteFileName),
-        ProtectionRequest: requestProtectionRequest,
+        ProtectionRequest: &requestProtectionRequest,
         Optionals: options,
     }
 
@@ -85,7 +85,7 @@ func Test_DocumentProtection_ProtectDocumentOnline(t *testing.T) {
 
     request := &models.ProtectDocumentOnlineRequest{
         Document: requestDocument,
-        ProtectionRequest: requestProtectionRequest,
+        ProtectionRequest: &requestProtectionRequest,
         Optionals: options,
     }
 
@@ -166,7 +166,7 @@ func Test_DocumentProtection_DeleteUnprotectDocument(t *testing.T) {
 
     request := &models.UnprotectDocumentRequest{
         Name: ToStringPointer(remoteFileName),
-        ProtectionRequest: requestProtectionRequest,
+        ProtectionRequest: &requestProtectionRequest,
         Optionals: options,
     }
 
@@ -195,7 +195,7 @@ func Test_DocumentProtection_DeleteUnprotectDocumentOnline(t *testing.T) {
 
     request := &models.UnprotectDocumentOnlineRequest{
         Document: requestDocument,
-        ProtectionRequest: requestProtectionRequest,
+        ProtectionRequest: &requestProtectionRequest,
         Optionals: options,
     }
 

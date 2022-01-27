@@ -46,9 +46,21 @@ type DocumentPosition struct {
 
 type IDocumentPosition interface {
     IsDocumentPosition() bool
+    Initialize()
 }
+
 func (DocumentPosition) IsDocumentPosition() bool {
     return true
+}
+
+
+func (obj *DocumentPosition) Initialize() {
+    if (obj.Node != nil) {
+        obj.Node.Initialize()
+    }
+
+
+
 }
 
 
