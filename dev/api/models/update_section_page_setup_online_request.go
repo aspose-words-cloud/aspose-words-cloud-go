@@ -186,7 +186,10 @@ func (data *UpdateSectionPageSetupOnlineRequest) CreateResponse(reader io.Reader
         return successPayload, err
     }
 
-    successPayload.Document = part
+    successPayload.Document, err = ParsePartFilesCollection(part)
+    if err != nil {
+        return successPayload, err
+    }
 
 
     return successPayload, err

@@ -606,7 +606,7 @@ func Test_DrawingObjects_DeleteDrawingObjectOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, err := client.WordsApi.DeleteDrawingObjectOnline(ctx, request)
+    _, _, err := client.WordsApi.DeleteDrawingObjectOnline(ctx, request)
     if err != nil {
         t.Error(err)
     }

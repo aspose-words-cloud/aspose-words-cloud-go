@@ -27,15 +27,16 @@
 
 package models
 
- import "io" 
+import "io"
+
 
 // InsertFieldOnlineResponse struct
 // Inserts a new field to the document node.
 type InsertFieldOnlineResponse struct {
     // The response model.
-    Model  FieldResponse  `json:"Model,omitempty"`
+    Model FieldResponse `json:"Model,omitempty"`
 
 
     // The document after modification.
-    Document  io.ReadCloser   `json:"Document,omitempty"`
+    Document map[string]io.Reader `json:"Document,omitempty"`
 }

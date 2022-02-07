@@ -27,15 +27,16 @@
 
 package models
 
- import "io" 
+import "io"
+
 
 // UpdateFormFieldOnlineResponse struct
 // Updates a form field in the document node.
 type UpdateFormFieldOnlineResponse struct {
     // The response model.
-    Model  FormFieldResponse  `json:"Model,omitempty"`
+    Model FormFieldResponse `json:"Model,omitempty"`
 
 
     // The document after modification.
-    Document  io.ReadCloser   `json:"Document,omitempty"`
+    Document map[string]io.Reader `json:"Document,omitempty"`
 }

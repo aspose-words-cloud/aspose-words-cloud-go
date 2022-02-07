@@ -27,15 +27,16 @@
 
 package models
 
- import "io" 
+import "io"
+
 
 // UpdateSectionPageSetupOnlineResponse struct
 // Updates the page setup of a section in the document.
 type UpdateSectionPageSetupOnlineResponse struct {
     // The response model.
-    Model  SectionPageSetupResponse  `json:"Model,omitempty"`
+    Model SectionPageSetupResponse `json:"Model,omitempty"`
 
 
     // The document after modification.
-    Document  io.ReadCloser   `json:"Document,omitempty"`
+    Document map[string]io.Reader `json:"Document,omitempty"`
 }

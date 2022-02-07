@@ -27,15 +27,16 @@
 
 package models
 
- import "io" 
+import "io"
+
 
 // UpdateListLevelOnlineResponse struct
 // Updates the level of a List element in the document.
 type UpdateListLevelOnlineResponse struct {
     // The response model.
-    Model  ListResponse  `json:"Model,omitempty"`
+    Model ListResponse `json:"Model,omitempty"`
 
 
     // The document after modification.
-    Document  io.ReadCloser   `json:"Document,omitempty"`
+    Document map[string]io.Reader `json:"Document,omitempty"`
 }

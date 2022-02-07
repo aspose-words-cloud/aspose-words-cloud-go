@@ -27,15 +27,16 @@
 
 package models
 
- import "io" 
+import "io"
+
 
 // UpdateParagraphFormatOnlineResponse struct
 // Updates the formatting properties of a paragraph in the document node.
 type UpdateParagraphFormatOnlineResponse struct {
     // The response model.
-    Model  ParagraphFormatResponse  `json:"Model,omitempty"`
+    Model ParagraphFormatResponse `json:"Model,omitempty"`
 
 
     // The document after modification.
-    Document  io.ReadCloser   `json:"Document,omitempty"`
+    Document map[string]io.Reader `json:"Document,omitempty"`
 }

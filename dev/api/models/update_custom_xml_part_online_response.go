@@ -27,15 +27,16 @@
 
 package models
 
- import "io" 
+import "io"
+
 
 // UpdateCustomXmlPartOnlineResponse struct
 // Updates the custom xml part in the document.
 type UpdateCustomXmlPartOnlineResponse struct {
     // The response model.
-    Model  CustomXmlPartResponse  `json:"Model,omitempty"`
+    Model CustomXmlPartResponse `json:"Model,omitempty"`
 
 
     // The document after modification.
-    Document  io.ReadCloser   `json:"Document,omitempty"`
+    Document map[string]io.Reader `json:"Document,omitempty"`
 }

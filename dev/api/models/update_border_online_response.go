@@ -27,15 +27,16 @@
 
 package models
 
- import "io" 
+import "io"
+
 
 // UpdateBorderOnlineResponse struct
 // Updates a border in the document node.
 type UpdateBorderOnlineResponse struct {
     // The response model.
-    Model  BorderResponse  `json:"Model,omitempty"`
+    Model BorderResponse `json:"Model,omitempty"`
 
 
     // The document after modification.
-    Document  io.ReadCloser   `json:"Document,omitempty"`
+    Document map[string]io.Reader `json:"Document,omitempty"`
 }

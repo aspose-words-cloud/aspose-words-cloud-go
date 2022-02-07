@@ -27,15 +27,16 @@
 
 package models
 
- import "io" 
+import "io"
+
 
 // InsertTableRowOnlineResponse struct
 // Inserts a new row to the table.
 type InsertTableRowOnlineResponse struct {
     // The response model.
-    Model  TableRowResponse  `json:"Model,omitempty"`
+    Model TableRowResponse `json:"Model,omitempty"`
 
 
     // The document after modification.
-    Document  io.ReadCloser   `json:"Document,omitempty"`
+    Document map[string]io.Reader `json:"Document,omitempty"`
 }

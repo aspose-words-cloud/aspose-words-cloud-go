@@ -27,15 +27,16 @@
 
 package models
 
- import "io" 
+import "io"
+
 
 // SaveAsOnlineResponse struct
 // Converts a document to the specified format.
 type SaveAsOnlineResponse struct {
     // The response model.
-    Model  SaveResponse  `json:"Model,omitempty"`
+    Model SaveResponse `json:"Model,omitempty"`
 
 
     // The document after modification.
-    Document  io.ReadCloser   `json:"Document,omitempty"`
+    Document map[string]io.Reader `json:"Document,omitempty"`
 }

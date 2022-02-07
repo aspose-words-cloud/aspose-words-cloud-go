@@ -488,7 +488,7 @@ func Test_Field_DeleteFieldOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, err := client.WordsApi.DeleteFieldOnline(ctx, request)
+    _, _, err := client.WordsApi.DeleteFieldOnline(ctx, request)
     if err != nil {
         t.Error(err)
     }
@@ -714,7 +714,7 @@ func Test_Field_DeleteDocumentFieldsOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, err := client.WordsApi.DeleteFieldsOnline(ctx, request)
+    _, _, err := client.WordsApi.DeleteFieldsOnline(ctx, request)
     if err != nil {
         t.Error(err)
     }

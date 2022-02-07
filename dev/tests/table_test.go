@@ -261,7 +261,7 @@ func Test_Table_DeleteTableOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, err := client.WordsApi.DeleteTableOnline(ctx, request)
+    _, _, err := client.WordsApi.DeleteTableOnline(ctx, request)
     if err != nil {
         t.Error(err)
     }
@@ -711,7 +711,7 @@ func Test_Table_DeleteTableRowOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, err := client.WordsApi.DeleteTableRowOnline(ctx, request)
+    _, _, err := client.WordsApi.DeleteTableRowOnline(ctx, request)
     if err != nil {
         t.Error(err)
     }
@@ -1013,7 +1013,7 @@ func Test_Table_DeleteTableCellOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, err := client.WordsApi.DeleteTableCellOnline(ctx, request)
+    _, _, err := client.WordsApi.DeleteTableCellOnline(ctx, request)
     if err != nil {
         t.Error(err)
     }

@@ -30,26 +30,29 @@ package models
 import (
 	"encoding/json"
 	"fmt"
+	"io"
+	"mime"
+	"mime/multipart"
+	"net/http"
 	"net/url"
 	"reflect"
 	"strings"
-    "io"
 )
 
 // RequestInterface ia implemented all Words API requests
 type RequestInterface interface {
-	CreateRequestData() (request RequestData, err error)
+    CreateRequestData() (request RequestData, err error)
     CreateResponse(reader io.Reader, boundary string) (response interface{}, err error)
 }
 
 // RequestData contains requst data
 type RequestData struct {
-	Path         string
-	Method       string
-	PostBody     interface{}
-	HeaderParams map[string]string
-	QueryParams  url.Values
-	FormParams   []FormParamContainer
+    Path         string
+    Method       string
+    PostBody     interface{}
+    HeaderParams map[string]string
+    QueryParams  url.Values
+    FormParams   []FormParamContainer
 }
 
 type FormParamContainer struct {
@@ -105,10 +108,10 @@ func parameterToString(obj interface{}, collectionFormat string) string {
         delimiter = ","
     }
 
-	if reflect.TypeOf(obj) == reflect.TypeOf((*string)(nil)) {
-		sp := obj.(*string)
-		return *sp
-	}
+    if reflect.TypeOf(obj) == reflect.TypeOf((*string)(nil)) {
+        sp := obj.(*string)
+        return *sp
+    }
 
     if reflect.TypeOf(obj).Kind() == reflect.Slice {
         return strings.Trim(strings.Replace(fmt.Sprint(obj), " ", delimiter, -1), "[]")
@@ -159,4 +162,87 @@ func contains(haystack []string, needle string) bool {
         }
     }
     return false
+}
+
+func ParseFilesCollection(response *http.Response) (result map[string]io.Reader, err error) {
+    var part *multipart.Part
+    result = make(map[string]io.Reader)
+    if IsMultipart(response) {
+        boundary := GetBoundary(response)
+        mp := multipart.NewReader(response.Body, boundary)
+        part, err = mp.NextPart()
+        for err == nil && part != nil {
+            result[part.FileName()] = part
+            part, err = mp.NextPart()
+        }
+    } else {
+        result[""] = response.Body
+    }
+
+    return result, err
+}
+
+func ParseReadCloserFilesCollection(response io.Reader, boundary string) (result map[string]io.Reader, err error) {
+    var part *multipart.Part
+    result = make(map[string]io.Reader)
+    if boundary != "" {
+        mp := multipart.NewReader(response, boundary)
+        part, err = mp.NextPart()
+        for err == nil && part != nil {
+            result[part.FileName()] = part
+            part, err = mp.NextPart()
+        }
+    } else {
+        result[""] = response
+    }
+
+    return result, err
+}
+
+func ParsePartFilesCollection(response *multipart.Part) (result map[string]io.Reader, err error) {
+    var part *multipart.Part
+    result = make(map[string]io.Reader)
+    if IsPartMultipart(response) {
+        boundary := GetPartBoundary(response)
+        mp := multipart.NewReader(response, boundary)
+        part, err = mp.NextPart()
+        for err == nil && part != nil {
+            result[part.FileName()] = part
+            part, err = mp.NextPart()
+        }
+    } else {
+        result[""] = response
+    }
+
+    return result, err
+}
+
+func IsMultipart(response *http.Response) bool {
+    return strings.HasPrefix(response.Header.Get("Content-Type"), "multipart/mixed")
+}
+
+func IsPartMultipart(response *multipart.Part) bool {
+    return strings.HasPrefix(response.Header.Get("Content-Type"), "multipart/mixed")
+}
+
+func GetBoundary(response *http.Response) string {
+    return getBoundary(response.Header.Get("Content-Type"));
+}
+
+func GetPartBoundary(response *multipart.Part) string {
+    return getBoundary(response.Header.Get("Content-Type"));
+}
+
+func getBoundary(contentHeader string) string {
+    if contentHeader == "" {
+        return ""
+    }
+
+    _, params, err := mime.ParseMediaType(contentHeader)
+
+    if err != nil {
+        return ""
+    }
+
+    return params["boundary"]
 }

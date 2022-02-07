@@ -158,5 +158,7 @@ func (data *DeleteTableCellOnlineRequest) CreateRequestData() (RequestData, erro
 }
 
 func (data *DeleteTableCellOnlineRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
-            return reader, nil
+            var successPayload map[string]io.Reader
+            successPayload, err = ParseReadCloserFilesCollection(reader, boundary)
+            return successPayload, err
 }

@@ -27,15 +27,16 @@
 
 package models
 
- import "io" 
+import "io"
+
 
 // InsertOrUpdateParagraphTabStopOnlineResponse struct
 // Inserts a new or updates an existing paragraph tab stop in the document node.
 type InsertOrUpdateParagraphTabStopOnlineResponse struct {
     // The response model.
-    Model  TabStopsResponse  `json:"Model,omitempty"`
+    Model TabStopsResponse `json:"Model,omitempty"`
 
 
     // The document after modification.
-    Document  io.ReadCloser   `json:"Document,omitempty"`
+    Document map[string]io.Reader `json:"Document,omitempty"`
 }
