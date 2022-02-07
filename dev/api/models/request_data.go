@@ -179,6 +179,10 @@ func ParseFilesCollection(response *http.Response) (result map[string]io.Reader,
         result[""] = response.Body
     }
 
+    if err == io.EOF {
+        err = nil
+    }
+
     return result, err
 }
 
@@ -194,6 +198,10 @@ func ParseReadCloserFilesCollection(response io.Reader, boundary string) (result
         }
     } else {
         result[""] = response
+    }
+
+    if err == io.EOF {
+        err = nil
     }
 
     return result, err
@@ -212,6 +220,10 @@ func ParsePartFilesCollection(response *multipart.Part) (result map[string]io.Re
         }
     } else {
         result[""] = response
+    }
+
+    if err == io.EOF {
+        err = nil
     }
 
     return result, err
