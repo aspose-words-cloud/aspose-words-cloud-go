@@ -40,9 +40,15 @@ type ProtectionData struct {
 
 type IProtectionData interface {
     IsProtectionData() bool
+    Initialize()
 }
+
 func (ProtectionData) IsProtectionData() bool {
     return true
+}
+
+
+func (obj *ProtectionData) Initialize() {
 }
 
 

@@ -54,9 +54,6 @@ type PngSaveOptionsDataResult struct {
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for png save options.
-    SaveFormat string `json:"SaveFormat,omitempty"`
-
-    // Container class for png save options.
     UpdateCreatedTimeProperty bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Container class for png save options.
@@ -130,6 +127,9 @@ type PngSaveOptionsDataResult struct {
 
     // Container class for png save options.
     VerticalResolution float64 `json:"VerticalResolution,omitempty"`
+
+    // Container class for png save options.
+    SaveFormat string `json:"SaveFormat,omitempty"`
 }
 
 type PngSaveOptionsData struct {
@@ -156,9 +156,6 @@ type PngSaveOptionsData struct {
 
     // Container class for png save options.
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
-
-    // Container class for png save options.
-    SaveFormat *string `json:"SaveFormat,omitempty"`
 
     // Container class for png save options.
     UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
@@ -234,17 +231,106 @@ type PngSaveOptionsData struct {
 
     // Container class for png save options.
     VerticalResolution *float64 `json:"VerticalResolution,omitempty"`
+
+    // Container class for png save options.
+    SaveFormat *string `json:"SaveFormat,omitempty"`
 }
 
 type IPngSaveOptionsData interface {
     IsPngSaveOptionsData() bool
+    Initialize()
 }
+
 func (PngSaveOptionsData) IsPngSaveOptionsData() bool {
     return true
 }
 
 func (PngSaveOptionsData) IsImageSaveOptionsData() bool {
     return true
+}
+
+func (PngSaveOptionsData) IsFixedPageSaveOptionsData() bool {
+    return true
+}
+
+func (PngSaveOptionsData) IsSaveOptionsData() bool {
+    return true
+}
+
+func (obj *PngSaveOptionsData) Initialize() {
+    var _SaveFormat = "png"
+    obj.SaveFormat = &_SaveFormat
+
+    if (obj.CustomTimeZoneInfoData != nil) {
+        obj.CustomTimeZoneInfoData.Initialize()
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    if (obj.MetafileRenderingOptions != nil) {
+        obj.MetafileRenderingOptions.Initialize()
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 

@@ -40,9 +40,15 @@ type RunBase struct {
 
 type IRunBase interface {
     IsRunBase() bool
+    Initialize()
 }
+
 func (RunBase) IsRunBase() bool {
     return true
+}
+
+
+func (obj *RunBase) Initialize() {
 }
 
 

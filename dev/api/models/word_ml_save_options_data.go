@@ -54,9 +54,6 @@ type WordMLSaveOptionsDataResult struct {
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for wml save options.
-    SaveFormat string `json:"SaveFormat,omitempty"`
-
-    // Container class for wml save options.
     UpdateCreatedTimeProperty bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Container class for wml save options.
@@ -76,6 +73,9 @@ type WordMLSaveOptionsDataResult struct {
 
     // Container class for wml save options.
     PrettyFormat bool `json:"PrettyFormat,omitempty"`
+
+    // Container class for wml save options.
+    SaveFormat string `json:"SaveFormat,omitempty"`
 }
 
 type WordMLSaveOptionsData struct {
@@ -104,9 +104,6 @@ type WordMLSaveOptionsData struct {
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for wml save options.
-    SaveFormat *string `json:"SaveFormat,omitempty"`
-
-    // Container class for wml save options.
     UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Container class for wml save options.
@@ -126,17 +123,58 @@ type WordMLSaveOptionsData struct {
 
     // Container class for wml save options.
     PrettyFormat *bool `json:"PrettyFormat,omitempty"`
+
+    // Container class for wml save options.
+    SaveFormat *string `json:"SaveFormat,omitempty"`
 }
 
 type IWordMLSaveOptionsData interface {
     IsWordMLSaveOptionsData() bool
+    Initialize()
 }
+
 func (WordMLSaveOptionsData) IsWordMLSaveOptionsData() bool {
     return true
 }
 
 func (WordMLSaveOptionsData) IsSaveOptionsData() bool {
     return true
+}
+
+func (obj *WordMLSaveOptionsData) Initialize() {
+    var _SaveFormat = "wml"
+    obj.SaveFormat = &_SaveFormat
+
+    if (obj.CustomTimeZoneInfoData != nil) {
+        obj.CustomTimeZoneInfoData.Initialize()
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 

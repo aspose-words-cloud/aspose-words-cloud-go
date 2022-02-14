@@ -46,13 +46,24 @@ type ListLevels struct {
 
 type IListLevels interface {
     IsListLevels() bool
+    Initialize()
 }
+
 func (ListLevels) IsListLevels() bool {
     return true
 }
 
 func (ListLevels) IsLinkElement() bool {
     return true
+}
+
+func (obj *ListLevels) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+
+
 }
 
 

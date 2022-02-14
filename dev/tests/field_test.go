@@ -233,7 +233,7 @@ func Test_Field_InsertField(t *testing.T) {
 
     request := &models.InsertFieldRequest{
         Name: ToStringPointer(remoteFileName),
-        Field: requestField,
+        Field: &requestField,
         Optionals: options,
     }
 
@@ -264,7 +264,7 @@ func Test_Field_InsertFieldOnline(t *testing.T) {
 
     request := &models.InsertFieldOnlineRequest{
         Document: requestDocument,
-        Field: requestField,
+        Field: &requestField,
         Optionals: options,
     }
 
@@ -296,7 +296,7 @@ func Test_Field_InsertFieldWithoutNodePath(t *testing.T) {
 
     request := &models.InsertFieldRequest{
         Name: ToStringPointer(remoteFileName),
-        Field: requestField,
+        Field: &requestField,
         Optionals: options,
     }
 
@@ -333,7 +333,7 @@ func Test_Field_UpdateField(t *testing.T) {
     request := &models.UpdateFieldRequest{
         Name: ToStringPointer(remoteFileName),
         Index: ToInt32Pointer(int32(0)),
-        Field: requestField,
+        Field: &requestField,
         Optionals: options,
     }
 
@@ -364,7 +364,7 @@ func Test_Field_UpdateFieldOnline(t *testing.T) {
 
     request := &models.UpdateFieldOnlineRequest{
         Document: requestDocument,
-        Field: requestField,
+        Field: &requestField,
         Index: ToInt32Pointer(int32(0)),
         Optionals: options,
     }
@@ -398,7 +398,7 @@ func Test_Field_InsertPageNumbers(t *testing.T) {
 
     request := &models.InsertPageNumbersRequest{
         Name: ToStringPointer(remoteFileName),
-        PageNumber: requestPageNumber,
+        PageNumber: &requestPageNumber,
         Optionals: options,
     }
 
@@ -428,7 +428,7 @@ func Test_Field_InsertPageNumbersOnline(t *testing.T) {
 
     request := &models.InsertPageNumbersOnlineRequest{
         Document: requestDocument,
-        PageNumber: requestPageNumber,
+        PageNumber: &requestPageNumber,
         Optionals: options,
     }
 

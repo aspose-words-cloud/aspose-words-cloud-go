@@ -162,7 +162,7 @@ func Test_Bookmark_UpdateBookmark(t *testing.T) {
     request := &models.UpdateBookmarkRequest{
         Name: ToStringPointer(remoteFileName),
         BookmarkName: ToStringPointer(bookmarkName),
-        BookmarkData: requestBookmarkData,
+        BookmarkData: &requestBookmarkData,
         Optionals: options,
     }
 
@@ -194,7 +194,7 @@ func Test_Bookmark_UpdateBookmarkOnline(t *testing.T) {
     request := &models.UpdateBookmarkOnlineRequest{
         Document: requestDocument,
         BookmarkName: ToStringPointer(bookmarkName),
-        BookmarkData: requestBookmarkData,
+        BookmarkData: &requestBookmarkData,
         Optionals: options,
     }
 

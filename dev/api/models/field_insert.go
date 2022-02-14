@@ -46,13 +46,18 @@ type FieldInsert struct {
 
 type IFieldInsert interface {
     IsFieldInsert() bool
+    Initialize()
 }
+
 func (FieldInsert) IsFieldInsert() bool {
     return true
 }
 
 func (FieldInsert) IsFieldBase() bool {
     return true
+}
+
+func (obj *FieldInsert) Initialize() {
 }
 
 

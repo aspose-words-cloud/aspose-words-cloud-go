@@ -196,13 +196,82 @@ type ParagraphFormatUpdate struct {
 
 type IParagraphFormatUpdate interface {
     IsParagraphFormatUpdate() bool
+    Initialize()
 }
+
 func (ParagraphFormatUpdate) IsParagraphFormatUpdate() bool {
     return true
 }
 
 func (ParagraphFormatUpdate) IsParagraphFormatBase() bool {
     return true
+}
+
+func (ParagraphFormatUpdate) IsLinkElement() bool {
+    return true
+}
+
+func (obj *ParagraphFormatUpdate) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    if (obj.Shading != nil) {
+        obj.Shading.Initialize()
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 

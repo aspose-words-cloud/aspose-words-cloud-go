@@ -69,6 +69,10 @@ func (data *CopyStyleOnlineRequest) CreateRequestData() (RequestData, error) {
     result.QueryParams = url.Values{}
     result.FormParams = make([]FormParamContainer, 0)
 
+    if (data.StyleCopy != nil) {
+        data.StyleCopy.Initialize()
+    }
+
     if err := typeCheckParameter(data.Optionals["loadEncoding"], "string", "data.Optionals[loadEncoding]"); err != nil {
         return result, err
     }

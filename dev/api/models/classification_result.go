@@ -46,9 +46,15 @@ type ClassificationResult struct {
 
 type IClassificationResult interface {
     IsClassificationResult() bool
+    Initialize()
 }
+
 func (ClassificationResult) IsClassificationResult() bool {
     return true
+}
+
+
+func (obj *ClassificationResult) Initialize() {
 }
 
 

@@ -94,9 +94,15 @@ type CompareOptions struct {
 
 type ICompareOptions interface {
     IsCompareOptions() bool
+    Initialize()
 }
+
 func (CompareOptions) IsCompareOptions() bool {
     return true
+}
+
+
+func (obj *CompareOptions) Initialize() {
 }
 
 

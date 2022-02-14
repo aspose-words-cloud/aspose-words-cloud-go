@@ -46,13 +46,24 @@ type FieldCollection struct {
 
 type IFieldCollection interface {
     IsFieldCollection() bool
+    Initialize()
 }
+
 func (FieldCollection) IsFieldCollection() bool {
     return true
 }
 
 func (FieldCollection) IsLinkElement() bool {
     return true
+}
+
+func (obj *FieldCollection) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+
+
 }
 
 

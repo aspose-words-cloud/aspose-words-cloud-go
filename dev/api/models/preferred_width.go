@@ -46,9 +46,15 @@ type PreferredWidth struct {
 
 type IPreferredWidth interface {
     IsPreferredWidth() bool
+    Initialize()
 }
+
 func (PreferredWidth) IsPreferredWidth() bool {
     return true
+}
+
+
+func (obj *PreferredWidth) Initialize() {
 }
 
 

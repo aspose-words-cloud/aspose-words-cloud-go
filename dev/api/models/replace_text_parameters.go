@@ -64,9 +64,15 @@ type ReplaceTextParameters struct {
 
 type IReplaceTextParameters interface {
     IsReplaceTextParameters() bool
+    Initialize()
 }
+
 func (ReplaceTextParameters) IsReplaceTextParameters() bool {
     return true
+}
+
+
+func (obj *ReplaceTextParameters) Initialize() {
 }
 
 

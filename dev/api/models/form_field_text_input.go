@@ -124,13 +124,58 @@ type FormFieldTextInput struct {
 
 type IFormFieldTextInput interface {
     IsFormFieldTextInput() bool
+    Initialize()
 }
+
 func (FormFieldTextInput) IsFormFieldTextInput() bool {
     return true
 }
 
 func (FormFieldTextInput) IsFormField() bool {
     return true
+}
+
+func (FormFieldTextInput) IsNodeLink() bool {
+    return true
+}
+
+func (FormFieldTextInput) IsLinkElement() bool {
+    return true
+}
+
+func (obj *FormFieldTextInput) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 

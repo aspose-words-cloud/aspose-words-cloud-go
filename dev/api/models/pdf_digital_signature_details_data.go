@@ -64,9 +64,15 @@ type PdfDigitalSignatureDetailsData struct {
 
 type IPdfDigitalSignatureDetailsData interface {
     IsPdfDigitalSignatureDetailsData() bool
+    Initialize()
 }
+
 func (PdfDigitalSignatureDetailsData) IsPdfDigitalSignatureDetailsData() bool {
     return true
+}
+
+
+func (obj *PdfDigitalSignatureDetailsData) Initialize() {
 }
 
 

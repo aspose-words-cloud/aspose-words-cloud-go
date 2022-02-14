@@ -58,13 +58,18 @@ type TabStop struct {
 
 type ITabStop interface {
     IsTabStop() bool
+    Initialize()
 }
+
 func (TabStop) IsTabStop() bool {
     return true
 }
 
 func (TabStop) IsTabStopBase() bool {
     return true
+}
+
+func (obj *TabStop) Initialize() {
 }
 
 

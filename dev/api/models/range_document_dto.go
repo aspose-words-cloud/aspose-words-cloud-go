@@ -40,9 +40,15 @@ type RangeDocumentDto struct {
 
 type IRangeDocumentDto interface {
     IsRangeDocumentDto() bool
+    Initialize()
 }
+
 func (RangeDocumentDto) IsRangeDocumentDto() bool {
     return true
+}
+
+
+func (obj *RangeDocumentDto) Initialize() {
 }
 
 

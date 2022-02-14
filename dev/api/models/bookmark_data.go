@@ -46,9 +46,15 @@ type BookmarkData struct {
 
 type IBookmarkData interface {
     IsBookmarkData() bool
+    Initialize()
 }
+
 func (BookmarkData) IsBookmarkData() bool {
     return true
+}
+
+
+func (obj *BookmarkData) Initialize() {
 }
 
 

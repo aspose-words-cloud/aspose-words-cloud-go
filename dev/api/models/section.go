@@ -70,13 +70,48 @@ type Section struct {
 
 type ISection interface {
     IsSection() bool
+    Initialize()
 }
+
 func (Section) IsSection() bool {
     return true
 }
 
 func (Section) IsLinkElement() bool {
     return true
+}
+
+func (obj *Section) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+
+
+
+
+    if (obj.HeaderFooters != nil) {
+        obj.HeaderFooters.Initialize()
+    }
+
+
+
+    if (obj.PageSetup != nil) {
+        obj.PageSetup.Initialize()
+    }
+
+
+
+    if (obj.Paragraphs != nil) {
+        obj.Paragraphs.Initialize()
+    }
+
+
+
+    if (obj.Tables != nil) {
+        obj.Tables.Initialize()
+    }
+
 }
 
 

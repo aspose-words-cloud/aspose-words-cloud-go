@@ -46,9 +46,15 @@ type FilesUploadResult struct {
 
 type IFilesUploadResult interface {
     IsFilesUploadResult() bool
+    Initialize()
 }
+
 func (FilesUploadResult) IsFilesUploadResult() bool {
     return true
+}
+
+
+func (obj *FilesUploadResult) Initialize() {
 }
 
 

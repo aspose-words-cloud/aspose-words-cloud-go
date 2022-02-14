@@ -165,7 +165,7 @@ func Test_Range_SaveAsRange(t *testing.T) {
     request := &models.SaveAsRangeRequest{
         Name: ToStringPointer(remoteFileName),
         RangeStartIdentifier: ToStringPointer("id0.0.0"),
-        DocumentParameters: requestDocumentParameters,
+        DocumentParameters: &requestDocumentParameters,
         Optionals: options,
     }
 
@@ -197,7 +197,7 @@ func Test_Range_SaveAsRangeOnline(t *testing.T) {
     request := &models.SaveAsRangeOnlineRequest{
         Document: requestDocument,
         RangeStartIdentifier: ToStringPointer("id0.0.0"),
-        DocumentParameters: requestDocumentParameters,
+        DocumentParameters: &requestDocumentParameters,
         Optionals: options,
     }
 
@@ -230,7 +230,7 @@ func Test_Range_ReplaceWithText(t *testing.T) {
     request := &models.ReplaceWithTextRequest{
         Name: ToStringPointer(remoteFileName),
         RangeStartIdentifier: ToStringPointer("id0.0.0"),
-        RangeText: requestRangeText,
+        RangeText: &requestRangeText,
         Optionals: options,
     }
 
@@ -261,7 +261,7 @@ func Test_Range_ReplaceWithTextOnline(t *testing.T) {
     request := &models.ReplaceWithTextOnlineRequest{
         Document: requestDocument,
         RangeStartIdentifier: ToStringPointer("id0.0.0"),
-        RangeText: requestRangeText,
+        RangeText: &requestRangeText,
         Optionals: options,
     }
 

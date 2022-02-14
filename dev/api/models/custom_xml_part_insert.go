@@ -52,13 +52,34 @@ type CustomXmlPartInsert struct {
 
 type ICustomXmlPartInsert interface {
     IsCustomXmlPartInsert() bool
+    Initialize()
 }
+
 func (CustomXmlPartInsert) IsCustomXmlPartInsert() bool {
     return true
 }
 
 func (CustomXmlPartInsert) IsCustomXmlPart() bool {
     return true
+}
+
+func (CustomXmlPartInsert) IsCustomXmlPartLink() bool {
+    return true
+}
+
+func (CustomXmlPartInsert) IsLinkElement() bool {
+    return true
+}
+
+func (obj *CustomXmlPartInsert) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+
+
+
+
 }
 
 

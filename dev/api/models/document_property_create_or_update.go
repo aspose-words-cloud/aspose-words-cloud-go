@@ -40,13 +40,18 @@ type DocumentPropertyCreateOrUpdate struct {
 
 type IDocumentPropertyCreateOrUpdate interface {
     IsDocumentPropertyCreateOrUpdate() bool
+    Initialize()
 }
+
 func (DocumentPropertyCreateOrUpdate) IsDocumentPropertyCreateOrUpdate() bool {
     return true
 }
 
 func (DocumentPropertyCreateOrUpdate) IsDocumentPropertyBase() bool {
     return true
+}
+
+func (obj *DocumentPropertyCreateOrUpdate) Initialize() {
 }
 
 

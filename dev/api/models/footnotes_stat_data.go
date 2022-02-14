@@ -46,9 +46,15 @@ type FootnotesStatData struct {
 
 type IFootnotesStatData interface {
     IsFootnotesStatData() bool
+    Initialize()
 }
+
 func (FootnotesStatData) IsFootnotesStatData() bool {
     return true
+}
+
+
+func (obj *FootnotesStatData) Initialize() {
 }
 
 

@@ -82,13 +82,52 @@ type Comment struct {
 
 type IComment interface {
     IsComment() bool
+    Initialize()
 }
+
 func (Comment) IsComment() bool {
     return true
 }
 
 func (Comment) IsCommentLink() bool {
     return true
+}
+
+func (Comment) IsLinkElement() bool {
+    return true
+}
+
+func (obj *Comment) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+
+
+
+
+    if (obj.Content != nil) {
+        obj.Content.Initialize()
+    }
+
+
+
+
+
+
+
+    if (obj.RangeEnd != nil) {
+        obj.RangeEnd.Initialize()
+    }
+
+
+
+    if (obj.RangeStart != nil) {
+        obj.RangeStart.Initialize()
+    }
+
+
+
 }
 
 

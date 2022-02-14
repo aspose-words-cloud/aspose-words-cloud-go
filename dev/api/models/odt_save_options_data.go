@@ -54,9 +54,6 @@ type OdtSaveOptionsDataResult struct {
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for odt/ott save options.
-    SaveFormat string `json:"SaveFormat,omitempty"`
-
-    // Container class for odt/ott save options.
     UpdateCreatedTimeProperty bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Container class for odt/ott save options.
@@ -85,6 +82,9 @@ type OdtSaveOptionsDataResult struct {
 
     // Container class for odt/ott save options.
     PrettyFormat bool `json:"PrettyFormat,omitempty"`
+
+    // Container class for odt/ott save options.
+    SaveFormat string `json:"SaveFormat,omitempty"`
 }
 
 type OdtSaveOptionsData struct {
@@ -111,9 +111,6 @@ type OdtSaveOptionsData struct {
 
     // Container class for odt/ott save options.
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
-
-    // Container class for odt/ott save options.
-    SaveFormat *string `json:"SaveFormat,omitempty"`
 
     // Container class for odt/ott save options.
     UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
@@ -144,17 +141,64 @@ type OdtSaveOptionsData struct {
 
     // Container class for odt/ott save options.
     PrettyFormat *bool `json:"PrettyFormat,omitempty"`
+
+    // Container class for odt/ott save options.
+    SaveFormat *string `json:"SaveFormat,omitempty"`
 }
 
 type IOdtSaveOptionsData interface {
     IsOdtSaveOptionsData() bool
+    Initialize()
 }
+
 func (OdtSaveOptionsData) IsOdtSaveOptionsData() bool {
     return true
 }
 
 func (OdtSaveOptionsData) IsSaveOptionsData() bool {
     return true
+}
+
+func (obj *OdtSaveOptionsData) Initialize() {
+    var _SaveFormat = "odt"
+    obj.SaveFormat = &_SaveFormat
+
+    if (obj.CustomTimeZoneInfoData != nil) {
+        obj.CustomTimeZoneInfoData.Initialize()
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 

@@ -64,9 +64,15 @@ type MetafileRenderingOptionsData struct {
 
 type IMetafileRenderingOptionsData interface {
     IsMetafileRenderingOptionsData() bool
+    Initialize()
 }
+
 func (MetafileRenderingOptionsData) IsMetafileRenderingOptionsData() bool {
     return true
+}
+
+
+func (obj *MetafileRenderingOptionsData) Initialize() {
 }
 
 

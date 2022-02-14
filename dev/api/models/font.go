@@ -280,13 +280,118 @@ type Font struct {
 
 type IFont interface {
     IsFont() bool
+    Initialize()
 }
+
 func (Font) IsFont() bool {
     return true
 }
 
 func (Font) IsLinkElement() bool {
     return true
+}
+
+func (obj *Font) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+
+
+
+
+
+
+
+
+
+
+    if (obj.Border != nil) {
+        obj.Border.Initialize()
+    }
+
+
+
+    if (obj.Color != nil) {
+        obj.Color.Initialize()
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    if (obj.HighlightColor != nil) {
+        obj.HighlightColor.Initialize()
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    if (obj.UnderlineColor != nil) {
+        obj.UnderlineColor.Initialize()
+    }
+
 }
 
 

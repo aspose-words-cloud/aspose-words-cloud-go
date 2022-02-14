@@ -70,9 +70,37 @@ type ReportEngineSettings struct {
 
 type IReportEngineSettings interface {
     IsReportEngineSettings() bool
+    Initialize()
 }
+
 func (ReportEngineSettings) IsReportEngineSettings() bool {
     return true
+}
+
+
+func (obj *ReportEngineSettings) Initialize() {
+    if (obj.CsvDataLoadOptions != nil) {
+        obj.CsvDataLoadOptions.Initialize()
+    }
+
+
+
+
+
+
+
+    if (obj.JsonDataLoadOptions != nil) {
+        obj.JsonDataLoadOptions.Initialize()
+    }
+
+
+
+
+
+    if (obj.XmlDataLoadOptions != nil) {
+        obj.XmlDataLoadOptions.Initialize()
+    }
+
 }
 
 

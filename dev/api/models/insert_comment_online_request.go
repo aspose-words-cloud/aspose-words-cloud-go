@@ -69,6 +69,10 @@ func (data *InsertCommentOnlineRequest) CreateRequestData() (RequestData, error)
     result.QueryParams = url.Values{}
     result.FormParams = make([]FormParamContainer, 0)
 
+    if (data.Comment != nil) {
+        data.Comment.Initialize()
+    }
+
     if err := typeCheckParameter(data.Optionals["loadEncoding"], "string", "data.Optionals[loadEncoding]"); err != nil {
         return result, err
     }

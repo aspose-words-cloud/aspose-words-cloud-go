@@ -46,9 +46,15 @@ type BookmarksOutlineLevelData struct {
 
 type IBookmarksOutlineLevelData interface {
     IsBookmarksOutlineLevelData() bool
+    Initialize()
 }
+
 func (BookmarksOutlineLevelData) IsBookmarksOutlineLevelData() bool {
     return true
+}
+
+
+func (obj *BookmarksOutlineLevelData) Initialize() {
 }
 
 

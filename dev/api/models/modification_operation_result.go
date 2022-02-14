@@ -46,9 +46,25 @@ type ModificationOperationResult struct {
 
 type IModificationOperationResult interface {
     IsModificationOperationResult() bool
+    Initialize()
 }
+
 func (ModificationOperationResult) IsModificationOperationResult() bool {
     return true
+}
+
+
+func (obj *ModificationOperationResult) Initialize() {
+    if (obj.Dest != nil) {
+        obj.Dest.Initialize()
+    }
+
+
+
+    if (obj.Source != nil) {
+        obj.Source.Initialize()
+    }
+
 }
 
 

@@ -74,6 +74,10 @@ func (data *CreateOrUpdateDocumentPropertyRequest) CreateRequestData() (RequestD
     result.QueryParams = url.Values{}
     result.FormParams = make([]FormParamContainer, 0)
 
+    if (data.Property != nil) {
+        data.Property.Initialize()
+    }
+
     if err := typeCheckParameter(data.Optionals["folder"], "string", "data.Optionals[folder]"); err != nil {
         return result, err
     }

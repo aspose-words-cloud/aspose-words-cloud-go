@@ -40,9 +40,15 @@ type StyleApply struct {
 
 type IStyleApply interface {
     IsStyleApply() bool
+    Initialize()
 }
+
 func (StyleApply) IsStyleApply() bool {
     return true
+}
+
+
+func (obj *StyleApply) Initialize() {
 }
 
 

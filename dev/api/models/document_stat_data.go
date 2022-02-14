@@ -64,9 +64,27 @@ type DocumentStatData struct {
 
 type IDocumentStatData interface {
     IsDocumentStatData() bool
+    Initialize()
 }
+
 func (DocumentStatData) IsDocumentStatData() bool {
     return true
+}
+
+
+func (obj *DocumentStatData) Initialize() {
+    if (obj.FootnotesStatData != nil) {
+        obj.FootnotesStatData.Initialize()
+    }
+
+
+
+
+
+
+
+
+
 }
 
 

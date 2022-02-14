@@ -54,9 +54,6 @@ type EpubSaveOptionsDataResult struct {
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for epub save options.
-    SaveFormat string `json:"SaveFormat,omitempty"`
-
-    // Container class for epub save options.
     UpdateCreatedTimeProperty bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Container class for epub save options.
@@ -193,6 +190,9 @@ type EpubSaveOptionsDataResult struct {
 
     // Container class for epub save options.
     EpubNavigationMapLevel int32 `json:"EpubNavigationMapLevel,omitempty"`
+
+    // Container class for epub save options.
+    SaveFormat string `json:"SaveFormat,omitempty"`
 }
 
 type EpubSaveOptionsData struct {
@@ -219,9 +219,6 @@ type EpubSaveOptionsData struct {
 
     // Container class for epub save options.
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
-
-    // Container class for epub save options.
-    SaveFormat *string `json:"SaveFormat,omitempty"`
 
     // Container class for epub save options.
     UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
@@ -360,17 +357,140 @@ type EpubSaveOptionsData struct {
 
     // Container class for epub save options.
     EpubNavigationMapLevel *int32 `json:"EpubNavigationMapLevel,omitempty"`
+
+    // Container class for epub save options.
+    SaveFormat *string `json:"SaveFormat,omitempty"`
 }
 
 type IEpubSaveOptionsData interface {
     IsEpubSaveOptionsData() bool
+    Initialize()
 }
+
 func (EpubSaveOptionsData) IsEpubSaveOptionsData() bool {
     return true
 }
 
 func (EpubSaveOptionsData) IsHtmlSaveOptionsData() bool {
     return true
+}
+
+func (EpubSaveOptionsData) IsSaveOptionsData() bool {
+    return true
+}
+
+func (obj *EpubSaveOptionsData) Initialize() {
+    var _SaveFormat = "epub"
+    obj.SaveFormat = &_SaveFormat
+
+    if (obj.CustomTimeZoneInfoData != nil) {
+        obj.CustomTimeZoneInfoData.Initialize()
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 

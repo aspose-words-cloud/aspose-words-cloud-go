@@ -54,9 +54,6 @@ type TiffSaveOptionsDataResult struct {
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for tiff save options.
-    SaveFormat string `json:"SaveFormat,omitempty"`
-
-    // Container class for tiff save options.
     UpdateCreatedTimeProperty bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Container class for tiff save options.
@@ -132,6 +129,9 @@ type TiffSaveOptionsDataResult struct {
     VerticalResolution float64 `json:"VerticalResolution,omitempty"`
 
     // Container class for tiff save options.
+    SaveFormat string `json:"SaveFormat,omitempty"`
+
+    // Container class for tiff save options.
     ThresholdForFloydSteinbergDithering int32 `json:"ThresholdForFloydSteinbergDithering,omitempty"`
 
     // Container class for tiff save options.
@@ -165,9 +165,6 @@ type TiffSaveOptionsData struct {
 
     // Container class for tiff save options.
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
-
-    // Container class for tiff save options.
-    SaveFormat *string `json:"SaveFormat,omitempty"`
 
     // Container class for tiff save options.
     UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
@@ -245,6 +242,9 @@ type TiffSaveOptionsData struct {
     VerticalResolution *float64 `json:"VerticalResolution,omitempty"`
 
     // Container class for tiff save options.
+    SaveFormat *string `json:"SaveFormat,omitempty"`
+
+    // Container class for tiff save options.
     ThresholdForFloydSteinbergDithering *int32 `json:"ThresholdForFloydSteinbergDithering,omitempty"`
 
     // Container class for tiff save options.
@@ -256,13 +256,105 @@ type TiffSaveOptionsData struct {
 
 type ITiffSaveOptionsData interface {
     IsTiffSaveOptionsData() bool
+    Initialize()
 }
+
 func (TiffSaveOptionsData) IsTiffSaveOptionsData() bool {
     return true
 }
 
 func (TiffSaveOptionsData) IsImageSaveOptionsData() bool {
     return true
+}
+
+func (TiffSaveOptionsData) IsFixedPageSaveOptionsData() bool {
+    return true
+}
+
+func (TiffSaveOptionsData) IsSaveOptionsData() bool {
+    return true
+}
+
+func (obj *TiffSaveOptionsData) Initialize() {
+    var _SaveFormat = "tiff"
+    obj.SaveFormat = &_SaveFormat
+
+    if (obj.CustomTimeZoneInfoData != nil) {
+        obj.CustomTimeZoneInfoData.Initialize()
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    if (obj.MetafileRenderingOptions != nil) {
+        obj.MetafileRenderingOptions.Initialize()
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 

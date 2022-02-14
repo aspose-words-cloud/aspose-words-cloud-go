@@ -54,9 +54,6 @@ type XamlFixedSaveOptionsDataResult struct {
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for xaml fixed save options.
-    SaveFormat string `json:"SaveFormat,omitempty"`
-
-    // Container class for xaml fixed save options.
     UpdateCreatedTimeProperty bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Container class for xaml fixed save options.
@@ -100,6 +97,9 @@ type XamlFixedSaveOptionsDataResult struct {
 
     // Container class for xaml fixed save options.
     ResourcesFolderAlias string `json:"ResourcesFolderAlias,omitempty"`
+
+    // Container class for xaml fixed save options.
+    SaveFormat string `json:"SaveFormat,omitempty"`
 }
 
 type XamlFixedSaveOptionsData struct {
@@ -126,9 +126,6 @@ type XamlFixedSaveOptionsData struct {
 
     // Container class for xaml fixed save options.
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
-
-    // Container class for xaml fixed save options.
-    SaveFormat *string `json:"SaveFormat,omitempty"`
 
     // Container class for xaml fixed save options.
     UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
@@ -174,17 +171,82 @@ type XamlFixedSaveOptionsData struct {
 
     // Container class for xaml fixed save options.
     ResourcesFolderAlias *string `json:"ResourcesFolderAlias,omitempty"`
+
+    // Container class for xaml fixed save options.
+    SaveFormat *string `json:"SaveFormat,omitempty"`
 }
 
 type IXamlFixedSaveOptionsData interface {
     IsXamlFixedSaveOptionsData() bool
+    Initialize()
 }
+
 func (XamlFixedSaveOptionsData) IsXamlFixedSaveOptionsData() bool {
     return true
 }
 
 func (XamlFixedSaveOptionsData) IsFixedPageSaveOptionsData() bool {
     return true
+}
+
+func (XamlFixedSaveOptionsData) IsSaveOptionsData() bool {
+    return true
+}
+
+func (obj *XamlFixedSaveOptionsData) Initialize() {
+    var _SaveFormat = "xamlfixed"
+    obj.SaveFormat = &_SaveFormat
+
+    if (obj.CustomTimeZoneInfoData != nil) {
+        obj.CustomTimeZoneInfoData.Initialize()
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    if (obj.MetafileRenderingOptions != nil) {
+        obj.MetafileRenderingOptions.Initialize()
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 

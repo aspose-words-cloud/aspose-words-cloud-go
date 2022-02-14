@@ -54,9 +54,6 @@ type EmfSaveOptionsDataResult struct {
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for emf save options.
-    SaveFormat string `json:"SaveFormat,omitempty"`
-
-    // Container class for emf save options.
     UpdateCreatedTimeProperty bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Container class for emf save options.
@@ -130,6 +127,9 @@ type EmfSaveOptionsDataResult struct {
 
     // Container class for emf save options.
     VerticalResolution float64 `json:"VerticalResolution,omitempty"`
+
+    // Container class for emf save options.
+    SaveFormat string `json:"SaveFormat,omitempty"`
 }
 
 type EmfSaveOptionsData struct {
@@ -156,9 +156,6 @@ type EmfSaveOptionsData struct {
 
     // Container class for emf save options.
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
-
-    // Container class for emf save options.
-    SaveFormat *string `json:"SaveFormat,omitempty"`
 
     // Container class for emf save options.
     UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
@@ -234,17 +231,106 @@ type EmfSaveOptionsData struct {
 
     // Container class for emf save options.
     VerticalResolution *float64 `json:"VerticalResolution,omitempty"`
+
+    // Container class for emf save options.
+    SaveFormat *string `json:"SaveFormat,omitempty"`
 }
 
 type IEmfSaveOptionsData interface {
     IsEmfSaveOptionsData() bool
+    Initialize()
 }
+
 func (EmfSaveOptionsData) IsEmfSaveOptionsData() bool {
     return true
 }
 
 func (EmfSaveOptionsData) IsImageSaveOptionsData() bool {
     return true
+}
+
+func (EmfSaveOptionsData) IsFixedPageSaveOptionsData() bool {
+    return true
+}
+
+func (EmfSaveOptionsData) IsSaveOptionsData() bool {
+    return true
+}
+
+func (obj *EmfSaveOptionsData) Initialize() {
+    var _SaveFormat = "emf"
+    obj.SaveFormat = &_SaveFormat
+
+    if (obj.CustomTimeZoneInfoData != nil) {
+        obj.CustomTimeZoneInfoData.Initialize()
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    if (obj.MetafileRenderingOptions != nil) {
+        obj.MetafileRenderingOptions.Initialize()
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 

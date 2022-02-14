@@ -54,9 +54,6 @@ type TextSaveOptionsDataResult struct {
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for text save options.
-    SaveFormat string `json:"SaveFormat,omitempty"`
-
-    // Container class for text save options.
     UpdateCreatedTimeProperty bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Container class for text save options.
@@ -96,6 +93,9 @@ type TextSaveOptionsDataResult struct {
     PreserveTableLayout bool `json:"PreserveTableLayout,omitempty"`
 
     // Container class for text save options.
+    SaveFormat string `json:"SaveFormat,omitempty"`
+
+    // Container class for text save options.
     SimplifyListLabels bool `json:"SimplifyListLabels,omitempty"`
 }
 
@@ -123,9 +123,6 @@ type TextSaveOptionsData struct {
 
     // Container class for text save options.
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
-
-    // Container class for text save options.
-    SaveFormat *string `json:"SaveFormat,omitempty"`
 
     // Container class for text save options.
     UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
@@ -167,18 +164,77 @@ type TextSaveOptionsData struct {
     PreserveTableLayout *bool `json:"PreserveTableLayout,omitempty"`
 
     // Container class for text save options.
+    SaveFormat *string `json:"SaveFormat,omitempty"`
+
+    // Container class for text save options.
     SimplifyListLabels *bool `json:"SimplifyListLabels,omitempty"`
 }
 
 type ITextSaveOptionsData interface {
     IsTextSaveOptionsData() bool
+    Initialize()
 }
+
 func (TextSaveOptionsData) IsTextSaveOptionsData() bool {
     return true
 }
 
 func (TextSaveOptionsData) IsTxtSaveOptionsBaseData() bool {
     return true
+}
+
+func (TextSaveOptionsData) IsSaveOptionsData() bool {
+    return true
+}
+
+func (obj *TextSaveOptionsData) Initialize() {
+    var _SaveFormat = "txt"
+    obj.SaveFormat = &_SaveFormat
+
+    if (obj.CustomTimeZoneInfoData != nil) {
+        obj.CustomTimeZoneInfoData.Initialize()
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 

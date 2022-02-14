@@ -73,6 +73,10 @@ func (data *SaveAsRangeRequest) CreateRequestData() (RequestData, error) {
     result.QueryParams = url.Values{}
     result.FormParams = make([]FormParamContainer, 0)
 
+    if (data.DocumentParameters != nil) {
+        data.DocumentParameters.Initialize()
+    }
+
     if err := typeCheckParameter(data.Optionals["rangeEndIdentifier"], "string", "data.Optionals[rangeEndIdentifier]"); err != nil {
         return result, err
     }

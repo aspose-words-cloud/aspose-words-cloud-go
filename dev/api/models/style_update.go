@@ -58,9 +58,15 @@ type StyleUpdate struct {
 
 type IStyleUpdate interface {
     IsStyleUpdate() bool
+    Initialize()
 }
+
 func (StyleUpdate) IsStyleUpdate() bool {
     return true
+}
+
+
+func (obj *StyleUpdate) Initialize() {
 }
 
 

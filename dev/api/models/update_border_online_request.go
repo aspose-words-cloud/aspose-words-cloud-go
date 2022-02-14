@@ -75,6 +75,10 @@ func (data *UpdateBorderOnlineRequest) CreateRequestData() (RequestData, error) 
     result.QueryParams = url.Values{}
     result.FormParams = make([]FormParamContainer, 0)
 
+    if (data.BorderProperties != nil) {
+        data.BorderProperties.Initialize()
+    }
+
     if err := typeCheckParameter(data.Optionals["nodePath"], "string", "data.Optionals[nodePath]"); err != nil {
         return result, err
     }

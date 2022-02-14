@@ -54,9 +54,6 @@ type PdfSaveOptionsDataResult struct {
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for pdf save options.
-    SaveFormat string `json:"SaveFormat,omitempty"`
-
-    // Container class for pdf save options.
     UpdateCreatedTimeProperty bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Container class for pdf save options.
@@ -156,6 +153,9 @@ type PdfSaveOptionsDataResult struct {
     PreserveFormFields bool `json:"PreserveFormFields,omitempty"`
 
     // Container class for pdf save options.
+    SaveFormat string `json:"SaveFormat,omitempty"`
+
+    // Container class for pdf save options.
     TextCompression string `json:"TextCompression,omitempty"`
 
     // Container class for pdf save options.
@@ -195,9 +195,6 @@ type PdfSaveOptionsData struct {
 
     // Container class for pdf save options.
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
-
-    // Container class for pdf save options.
-    SaveFormat *string `json:"SaveFormat,omitempty"`
 
     // Container class for pdf save options.
     UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
@@ -299,6 +296,9 @@ type PdfSaveOptionsData struct {
     PreserveFormFields *bool `json:"PreserveFormFields,omitempty"`
 
     // Container class for pdf save options.
+    SaveFormat *string `json:"SaveFormat,omitempty"`
+
+    // Container class for pdf save options.
     TextCompression *string `json:"TextCompression,omitempty"`
 
     // Container class for pdf save options.
@@ -316,13 +316,137 @@ type PdfSaveOptionsData struct {
 
 type IPdfSaveOptionsData interface {
     IsPdfSaveOptionsData() bool
+    Initialize()
 }
+
 func (PdfSaveOptionsData) IsPdfSaveOptionsData() bool {
     return true
 }
 
 func (PdfSaveOptionsData) IsFixedPageSaveOptionsData() bool {
     return true
+}
+
+func (PdfSaveOptionsData) IsSaveOptionsData() bool {
+    return true
+}
+
+func (obj *PdfSaveOptionsData) Initialize() {
+    var _SaveFormat = "pdf"
+    obj.SaveFormat = &_SaveFormat
+
+    if (obj.CustomTimeZoneInfoData != nil) {
+        obj.CustomTimeZoneInfoData.Initialize()
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    if (obj.MetafileRenderingOptions != nil) {
+        obj.MetafileRenderingOptions.Initialize()
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    if (obj.DigitalSignatureDetails != nil) {
+        obj.DigitalSignatureDetails.Initialize()
+    }
+
+
+
+
+
+    if (obj.DownsampleOptions != nil) {
+        obj.DownsampleOptions.Initialize()
+    }
+
+
+
+
+
+    if (obj.EncryptionDetails != nil) {
+        obj.EncryptionDetails.Initialize()
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    if (obj.OutlineOptions != nil) {
+        obj.OutlineOptions.Initialize()
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 

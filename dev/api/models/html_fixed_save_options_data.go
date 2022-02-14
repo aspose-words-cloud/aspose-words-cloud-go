@@ -54,9 +54,6 @@ type HtmlFixedSaveOptionsDataResult struct {
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for fixed html save options.
-    SaveFormat string `json:"SaveFormat,omitempty"`
-
-    // Container class for fixed html save options.
     UpdateCreatedTimeProperty bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Container class for fixed html save options.
@@ -132,6 +129,9 @@ type HtmlFixedSaveOptionsDataResult struct {
     SaveFontFaceCssSeparately bool `json:"SaveFontFaceCssSeparately,omitempty"`
 
     // Container class for fixed html save options.
+    SaveFormat string `json:"SaveFormat,omitempty"`
+
+    // Container class for fixed html save options.
     ShowPageBorder bool `json:"ShowPageBorder,omitempty"`
 
     // Container class for fixed html save options.
@@ -162,9 +162,6 @@ type HtmlFixedSaveOptionsData struct {
 
     // Container class for fixed html save options.
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
-
-    // Container class for fixed html save options.
-    SaveFormat *string `json:"SaveFormat,omitempty"`
 
     // Container class for fixed html save options.
     UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
@@ -242,6 +239,9 @@ type HtmlFixedSaveOptionsData struct {
     SaveFontFaceCssSeparately *bool `json:"SaveFontFaceCssSeparately,omitempty"`
 
     // Container class for fixed html save options.
+    SaveFormat *string `json:"SaveFormat,omitempty"`
+
+    // Container class for fixed html save options.
     ShowPageBorder *bool `json:"ShowPageBorder,omitempty"`
 
     // Container class for fixed html save options.
@@ -250,13 +250,99 @@ type HtmlFixedSaveOptionsData struct {
 
 type IHtmlFixedSaveOptionsData interface {
     IsHtmlFixedSaveOptionsData() bool
+    Initialize()
 }
+
 func (HtmlFixedSaveOptionsData) IsHtmlFixedSaveOptionsData() bool {
     return true
 }
 
 func (HtmlFixedSaveOptionsData) IsFixedPageSaveOptionsData() bool {
     return true
+}
+
+func (HtmlFixedSaveOptionsData) IsSaveOptionsData() bool {
+    return true
+}
+
+func (obj *HtmlFixedSaveOptionsData) Initialize() {
+    var _SaveFormat = "htmlfixed"
+    obj.SaveFormat = &_SaveFormat
+
+    if (obj.CustomTimeZoneInfoData != nil) {
+        obj.CustomTimeZoneInfoData.Initialize()
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    if (obj.MetafileRenderingOptions != nil) {
+        obj.MetafileRenderingOptions.Initialize()
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 

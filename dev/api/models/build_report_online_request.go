@@ -64,6 +64,10 @@ func (data *BuildReportOnlineRequest) CreateRequestData() (RequestData, error) {
     result.QueryParams = url.Values{}
     result.FormParams = make([]FormParamContainer, 0)
 
+    if (data.ReportEngineSettings != nil) {
+        data.ReportEngineSettings.Initialize()
+    }
+
     if err := typeCheckParameter(data.Optionals["documentFileName"], "string", "data.Optionals[documentFileName]"); err != nil {
         return result, err
     }

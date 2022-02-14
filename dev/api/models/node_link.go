@@ -46,13 +46,24 @@ type NodeLink struct {
 
 type INodeLink interface {
     IsNodeLink() bool
+    Initialize()
 }
+
 func (NodeLink) IsNodeLink() bool {
     return true
 }
 
 func (NodeLink) IsLinkElement() bool {
     return true
+}
+
+func (obj *NodeLink) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+
+
 }
 
 

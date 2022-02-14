@@ -398,7 +398,7 @@ func Test_Paragraph_UpdateRunFont(t *testing.T) {
         Name: ToStringPointer(remoteFileName),
         ParagraphPath: ToStringPointer("paragraphs/0"),
         Index: ToInt32Pointer(int32(0)),
-        FontDto: requestFontDto,
+        FontDto: &requestFontDto,
         Optionals: options,
     }
 
@@ -428,7 +428,7 @@ func Test_Paragraph_UpdateRunFontOnline(t *testing.T) {
     request := &models.UpdateRunFontOnlineRequest{
         Document: requestDocument,
         ParagraphPath: ToStringPointer("paragraphs/0"),
-        FontDto: requestFontDto,
+        FontDto: &requestFontDto,
         Index: ToInt32Pointer(int32(0)),
         Optionals: options,
     }
@@ -461,7 +461,7 @@ func Test_Paragraph_InsertParagraph(t *testing.T) {
 
     request := &models.InsertParagraphRequest{
         Name: ToStringPointer(remoteFileName),
-        Paragraph: requestParagraph,
+        Paragraph: &requestParagraph,
         Optionals: options,
     }
 
@@ -491,7 +491,7 @@ func Test_Paragraph_InsertParagraphOnline(t *testing.T) {
 
     request := &models.InsertParagraphOnlineRequest{
         Document: requestDocument,
-        Paragraph: requestParagraph,
+        Paragraph: &requestParagraph,
         Optionals: options,
     }
 
@@ -522,7 +522,7 @@ func Test_Paragraph_InsertParagraphWithoutNodePath(t *testing.T) {
 
     request := &models.InsertParagraphRequest{
         Name: ToStringPointer(remoteFileName),
-        Paragraph: requestParagraph,
+        Paragraph: &requestParagraph,
         Optionals: options,
     }
 
@@ -728,7 +728,7 @@ func Test_Paragraph_UpdateParagraphFormat(t *testing.T) {
     request := &models.UpdateParagraphFormatRequest{
         Name: ToStringPointer(remoteFileName),
         Index: ToInt32Pointer(int32(0)),
-        ParagraphFormatDto: requestParagraphFormatDto,
+        ParagraphFormatDto: &requestParagraphFormatDto,
         Optionals: options,
     }
 
@@ -758,7 +758,7 @@ func Test_Paragraph_UpdateParagraphFormatOnline(t *testing.T) {
 
     request := &models.UpdateParagraphFormatOnlineRequest{
         Document: requestDocument,
-        ParagraphFormatDto: requestParagraphFormatDto,
+        ParagraphFormatDto: &requestParagraphFormatDto,
         Index: ToInt32Pointer(int32(0)),
         Optionals: options,
     }
@@ -962,7 +962,7 @@ func Test_Paragraph_UpdateParagraphListFormat(t *testing.T) {
     request := &models.UpdateParagraphListFormatRequest{
         Name: ToStringPointer(remoteFileName),
         Index: ToInt32Pointer(int32(0)),
-        ListFormatDto: requestListFormatDto,
+        ListFormatDto: &requestListFormatDto,
         Optionals: options,
     }
 
@@ -992,7 +992,7 @@ func Test_Paragraph_UpdateParagraphListFormatOnline(t *testing.T) {
 
     request := &models.UpdateParagraphListFormatOnlineRequest{
         Document: requestDocument,
-        ListFormatDto: requestListFormatDto,
+        ListFormatDto: &requestListFormatDto,
         Index: ToInt32Pointer(int32(0)),
         Optionals: options,
     }
@@ -1025,7 +1025,7 @@ func Test_Paragraph_UpdateParagraphListFormatWithoutNodePath(t *testing.T) {
     request := &models.UpdateParagraphListFormatRequest{
         Name: ToStringPointer(remoteFileName),
         Index: ToInt32Pointer(int32(0)),
-        ListFormatDto: requestListFormatDto,
+        ListFormatDto: &requestListFormatDto,
         Optionals: options,
     }
 
@@ -1232,7 +1232,7 @@ func Test_Paragraph_InsertParagraphTabStops(t *testing.T) {
     request := &models.InsertOrUpdateParagraphTabStopRequest{
         Name: ToStringPointer(remoteFileName),
         Index: ToInt32Pointer(int32(0)),
-        TabStopInsertDto: requestTabStopInsertDto,
+        TabStopInsertDto: &requestTabStopInsertDto,
         Optionals: options,
     }
 
@@ -1267,7 +1267,7 @@ func Test_Paragraph_InsertParagraphTabStopsOnline(t *testing.T) {
 
     request := &models.InsertOrUpdateParagraphTabStopOnlineRequest{
         Document: requestDocument,
-        TabStopInsertDto: requestTabStopInsertDto,
+        TabStopInsertDto: &requestTabStopInsertDto,
         Index: ToInt32Pointer(int32(0)),
         Optionals: options,
     }
@@ -1302,7 +1302,7 @@ func Test_Paragraph_InsertParagraphTabStopsWithoutNodePath(t *testing.T) {
     request := &models.InsertOrUpdateParagraphTabStopRequest{
         Name: ToStringPointer(remoteFileName),
         Index: ToInt32Pointer(int32(0)),
-        TabStopInsertDto: requestTabStopInsertDto,
+        TabStopInsertDto: &requestTabStopInsertDto,
         Optionals: options,
     }
 

@@ -56,7 +56,7 @@ func Test_Run_UpdateRun(t *testing.T) {
         Name: ToStringPointer(remoteFileName),
         ParagraphPath: ToStringPointer("paragraphs/1"),
         Index: ToInt32Pointer(int32(0)),
-        Run: requestRun,
+        Run: &requestRun,
         Optionals: options,
     }
 
@@ -86,7 +86,7 @@ func Test_Run_UpdateRunOnline(t *testing.T) {
     request := &models.UpdateRunOnlineRequest{
         Document: requestDocument,
         ParagraphPath: ToStringPointer("paragraphs/1"),
-        Run: requestRun,
+        Run: &requestRun,
         Index: ToInt32Pointer(int32(0)),
         Optionals: options,
     }
@@ -119,7 +119,7 @@ func Test_Run_InsertRun(t *testing.T) {
     request := &models.InsertRunRequest{
         Name: ToStringPointer(remoteFileName),
         ParagraphPath: ToStringPointer("paragraphs/1"),
-        Run: requestRun,
+        Run: &requestRun,
         Optionals: options,
     }
 
@@ -150,7 +150,7 @@ func Test_Run_InsertRunOnline(t *testing.T) {
     request := &models.InsertRunOnlineRequest{
         Document: requestDocument,
         ParagraphPath: ToStringPointer("paragraphs/1"),
-        Run: requestRun,
+        Run: &requestRun,
         Optionals: options,
     }
 

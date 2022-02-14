@@ -46,13 +46,24 @@ type HeaderFooterLink struct {
 
 type IHeaderFooterLink interface {
     IsHeaderFooterLink() bool
+    Initialize()
 }
+
 func (HeaderFooterLink) IsHeaderFooterLink() bool {
     return true
 }
 
 func (HeaderFooterLink) IsLinkElement() bool {
     return true
+}
+
+func (obj *HeaderFooterLink) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+
+
 }
 
 

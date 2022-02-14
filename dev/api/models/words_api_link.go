@@ -58,13 +58,18 @@ type WordsApiLink struct {
 
 type IWordsApiLink interface {
     IsWordsApiLink() bool
+    Initialize()
 }
+
 func (WordsApiLink) IsWordsApiLink() bool {
     return true
 }
 
 func (WordsApiLink) IsLink() bool {
     return true
+}
+
+func (obj *WordsApiLink) Initialize() {
 }
 
 

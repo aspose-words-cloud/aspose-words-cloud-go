@@ -69,7 +69,7 @@ func Test_BatchRequest(t *testing.T) {
 
 	request3 := *models.NewBatchPartRequest(&models.InsertParagraphRequest{
 		Name: ToStringPointer(remoteFileName),
-		Paragraph: models.ParagraphInsert{
+		Paragraph: &models.ParagraphInsert{
 			Text: ToStringPointer("This is a new paragraph for your document"),
 		},
 		Optionals: options,
@@ -92,7 +92,7 @@ func Test_BatchRequest(t *testing.T) {
 	request5 := *models.NewBatchPartRequest(&models.BuildReportOnlineRequest{
 		Template: templateFile,
 		Data:     ToStringPointer(ReadFile(t, localDataFile)),
-		ReportEngineSettings: models.ReportEngineSettings{
+		ReportEngineSettings: &models.ReportEngineSettings{
 			DataSourceType: ToStringPointer("Json"),
 			DataSourceName: ToStringPointer("persons"),
 		},
@@ -141,7 +141,7 @@ func Test_BatchRequestWithoutIntermediateResults(t *testing.T) {
 
 	request3 := *models.NewBatchPartRequest(&models.InsertParagraphRequest{
 		Name: ToStringPointer(remoteFileName),
-		Paragraph: models.ParagraphInsert{
+		Paragraph: &models.ParagraphInsert{
 			Text: ToStringPointer("This is a new paragraph for your document"),
 		},
 		Optionals: options,
@@ -164,7 +164,7 @@ func Test_BatchRequestWithoutIntermediateResults(t *testing.T) {
 	request5 := *models.NewBatchPartRequest(&models.BuildReportOnlineRequest{
 		Template: templateFile,
 		Data:     ToStringPointer(ReadFile(t, localDataFile)),
-		ReportEngineSettings: models.ReportEngineSettings{
+		ReportEngineSettings: &models.ReportEngineSettings{
 			DataSourceType: ToStringPointer("Json"),
 			DataSourceName: ToStringPointer("persons"),
 		},

@@ -52,9 +52,15 @@ type UserInformation struct {
 
 type IUserInformation interface {
     IsUserInformation() bool
+    Initialize()
 }
+
 func (UserInformation) IsUserInformation() bool {
     return true
+}
+
+
+func (obj *UserInformation) Initialize() {
 }
 
 

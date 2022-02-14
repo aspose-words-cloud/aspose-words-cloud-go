@@ -46,13 +46,24 @@ type SectionLinkCollection struct {
 
 type ISectionLinkCollection interface {
     IsSectionLinkCollection() bool
+    Initialize()
 }
+
 func (SectionLinkCollection) IsSectionLinkCollection() bool {
     return true
 }
 
 func (SectionLinkCollection) IsLinkElement() bool {
     return true
+}
+
+func (obj *SectionLinkCollection) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+
+
 }
 
 

@@ -54,9 +54,6 @@ type MarkdownSaveOptionsDataResult struct {
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for markdown save options.
-    SaveFormat string `json:"SaveFormat,omitempty"`
-
-    // Container class for markdown save options.
     UpdateCreatedTimeProperty bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Container class for markdown save options.
@@ -87,6 +84,9 @@ type MarkdownSaveOptionsDataResult struct {
     ParagraphBreak string `json:"ParagraphBreak,omitempty"`
 
     // Container class for markdown save options.
+    SaveFormat string `json:"SaveFormat,omitempty"`
+
+    // Container class for markdown save options.
     TableContentAlignment string `json:"TableContentAlignment,omitempty"`
 }
 
@@ -114,9 +114,6 @@ type MarkdownSaveOptionsData struct {
 
     // Container class for markdown save options.
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
-
-    // Container class for markdown save options.
-    SaveFormat *string `json:"SaveFormat,omitempty"`
 
     // Container class for markdown save options.
     UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
@@ -149,18 +146,71 @@ type MarkdownSaveOptionsData struct {
     ParagraphBreak *string `json:"ParagraphBreak,omitempty"`
 
     // Container class for markdown save options.
+    SaveFormat *string `json:"SaveFormat,omitempty"`
+
+    // Container class for markdown save options.
     TableContentAlignment *string `json:"TableContentAlignment,omitempty"`
 }
 
 type IMarkdownSaveOptionsData interface {
     IsMarkdownSaveOptionsData() bool
+    Initialize()
 }
+
 func (MarkdownSaveOptionsData) IsMarkdownSaveOptionsData() bool {
     return true
 }
 
 func (MarkdownSaveOptionsData) IsTxtSaveOptionsBaseData() bool {
     return true
+}
+
+func (MarkdownSaveOptionsData) IsSaveOptionsData() bool {
+    return true
+}
+
+func (obj *MarkdownSaveOptionsData) Initialize() {
+    var _SaveFormat = "md"
+    obj.SaveFormat = &_SaveFormat
+
+    if (obj.CustomTimeZoneInfoData != nil) {
+        obj.CustomTimeZoneInfoData.Initialize()
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 

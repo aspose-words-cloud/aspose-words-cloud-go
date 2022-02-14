@@ -46,13 +46,24 @@ type CustomXmlPartsCollection struct {
 
 type ICustomXmlPartsCollection interface {
     IsCustomXmlPartsCollection() bool
+    Initialize()
 }
+
 func (CustomXmlPartsCollection) IsCustomXmlPartsCollection() bool {
     return true
 }
 
 func (CustomXmlPartsCollection) IsLinkElement() bool {
     return true
+}
+
+func (obj *CustomXmlPartsCollection) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+
+
 }
 
 

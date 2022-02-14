@@ -46,13 +46,24 @@ type OfficeMathObjectsCollection struct {
 
 type IOfficeMathObjectsCollection interface {
     IsOfficeMathObjectsCollection() bool
+    Initialize()
 }
+
 func (OfficeMathObjectsCollection) IsOfficeMathObjectsCollection() bool {
     return true
 }
 
 func (OfficeMathObjectsCollection) IsLinkElement() bool {
     return true
+}
+
+func (obj *OfficeMathObjectsCollection) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+
+
 }
 
 

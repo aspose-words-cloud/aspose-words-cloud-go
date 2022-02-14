@@ -53,7 +53,7 @@ func Test_Compatibility_OptimizeDocument(t *testing.T) {
 
     request := &models.OptimizeDocumentRequest{
         Name: ToStringPointer(remoteFileName),
-        Options: requestOptions,
+        Options: &requestOptions,
         Optionals: options,
     }
 
@@ -81,7 +81,7 @@ func Test_Compatibility_OptimizeDocumentOnline(t *testing.T) {
 
     request := &models.OptimizeDocumentOnlineRequest{
         Document: requestDocument,
-        Options: requestOptions,
+        Options: &requestOptions,
         Optionals: options,
     }
 

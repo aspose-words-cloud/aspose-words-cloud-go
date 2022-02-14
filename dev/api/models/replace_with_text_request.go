@@ -74,6 +74,10 @@ func (data *ReplaceWithTextRequest) CreateRequestData() (RequestData, error) {
     result.QueryParams = url.Values{}
     result.FormParams = make([]FormParamContainer, 0)
 
+    if (data.RangeText != nil) {
+        data.RangeText.Initialize()
+    }
+
     if err := typeCheckParameter(data.Optionals["rangeEndIdentifier"], "string", "data.Optionals[rangeEndIdentifier]"); err != nil {
         return result, err
     }

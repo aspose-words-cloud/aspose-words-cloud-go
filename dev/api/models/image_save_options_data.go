@@ -238,13 +238,92 @@ type ImageSaveOptionsData struct {
 
 type IImageSaveOptionsData interface {
     IsImageSaveOptionsData() bool
+    Initialize()
 }
+
 func (ImageSaveOptionsData) IsImageSaveOptionsData() bool {
     return true
 }
 
 func (ImageSaveOptionsData) IsFixedPageSaveOptionsData() bool {
     return true
+}
+
+func (ImageSaveOptionsData) IsSaveOptionsData() bool {
+    return true
+}
+
+func (obj *ImageSaveOptionsData) Initialize() {
+    if (obj.CustomTimeZoneInfoData != nil) {
+        obj.CustomTimeZoneInfoData.Initialize()
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    if (obj.MetafileRenderingOptions != nil) {
+        obj.MetafileRenderingOptions.Initialize()
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 

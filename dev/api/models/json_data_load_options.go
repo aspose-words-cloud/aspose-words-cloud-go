@@ -52,9 +52,15 @@ type JsonDataLoadOptions struct {
 
 type IJsonDataLoadOptions interface {
     IsJsonDataLoadOptions() bool
+    Initialize()
 }
+
 func (JsonDataLoadOptions) IsJsonDataLoadOptions() bool {
     return true
+}
+
+
+func (obj *JsonDataLoadOptions) Initialize() {
 }
 
 

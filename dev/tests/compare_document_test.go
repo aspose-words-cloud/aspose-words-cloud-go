@@ -61,7 +61,7 @@ func Test_CompareDocument_CompareDocument(t *testing.T) {
 
     request := &models.CompareDocumentRequest{
         Name: ToStringPointer(remoteName1),
-        CompareData: requestCompareData,
+        CompareData: &requestCompareData,
         Optionals: options,
     }
 
@@ -99,7 +99,7 @@ func Test_CompareDocument_CompareDocumentOnline(t *testing.T) {
 
     request := &models.CompareDocumentOnlineRequest{
         Document: requestDocument,
-        CompareData: requestCompareData,
+        CompareData: &requestCompareData,
         Optionals: options,
     }
 
@@ -137,7 +137,7 @@ func Test_CompareDocument_CompareTwoDocumentOnline(t *testing.T) {
 
     request := &models.CompareDocumentOnlineRequest{
         Document: requestDocument,
-        CompareData: requestCompareData,
+        CompareData: &requestCompareData,
         Optionals: options,
     }
 

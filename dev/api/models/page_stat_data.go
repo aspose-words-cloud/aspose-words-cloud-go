@@ -58,9 +58,25 @@ type PageStatData struct {
 
 type IPageStatData interface {
     IsPageStatData() bool
+    Initialize()
 }
+
 func (PageStatData) IsPageStatData() bool {
     return true
+}
+
+
+func (obj *PageStatData) Initialize() {
+    if (obj.FootnotesStatData != nil) {
+        obj.FootnotesStatData.Initialize()
+    }
+
+
+
+
+
+
+
 }
 
 

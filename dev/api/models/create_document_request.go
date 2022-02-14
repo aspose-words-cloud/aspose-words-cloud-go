@@ -60,6 +60,7 @@ func (data *CreateDocumentRequest) CreateRequestData() (RequestData, error) {
     result.QueryParams = url.Values{}
     result.FormParams = make([]FormParamContainer, 0)
 
+
     if err := typeCheckParameter(data.Optionals["fileName"], "string", "data.Optionals[fileName]"); err != nil {
         return result, err
     }

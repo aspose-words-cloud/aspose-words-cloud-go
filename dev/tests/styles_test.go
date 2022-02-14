@@ -162,7 +162,7 @@ func Test_Styles_UpdateStyle(t *testing.T) {
     request := &models.UpdateStyleRequest{
         Name: ToStringPointer(remoteFileName),
         StyleName: ToStringPointer("Heading 1"),
-        StyleUpdate: requestStyleUpdate,
+        StyleUpdate: &requestStyleUpdate,
         Optionals: options,
     }
 
@@ -192,7 +192,7 @@ func Test_Styles_UpdateStyleOnline(t *testing.T) {
     request := &models.UpdateStyleOnlineRequest{
         Document: requestDocument,
         StyleName: ToStringPointer("Heading 1"),
-        StyleUpdate: requestStyleUpdate,
+        StyleUpdate: &requestStyleUpdate,
         Optionals: options,
     }
 
@@ -224,7 +224,7 @@ func Test_Styles_InsertStyle(t *testing.T) {
 
     request := &models.InsertStyleRequest{
         Name: ToStringPointer(remoteFileName),
-        StyleInsert: requestStyleInsert,
+        StyleInsert: &requestStyleInsert,
         Optionals: options,
     }
 
@@ -254,7 +254,7 @@ func Test_Styles_InsertStyleOnline(t *testing.T) {
 
     request := &models.InsertStyleOnlineRequest{
         Document: requestDocument,
-        StyleInsert: requestStyleInsert,
+        StyleInsert: &requestStyleInsert,
         Optionals: options,
     }
 
@@ -285,7 +285,7 @@ func Test_Styles_CopyStyle(t *testing.T) {
 
     request := &models.CopyStyleRequest{
         Name: ToStringPointer(remoteFileName),
-        StyleCopy: requestStyleCopy,
+        StyleCopy: &requestStyleCopy,
         Optionals: options,
     }
 
@@ -314,7 +314,7 @@ func Test_Styles_CopyStyleOnline(t *testing.T) {
 
     request := &models.CopyStyleOnlineRequest{
         Document: requestDocument,
-        StyleCopy: requestStyleCopy,
+        StyleCopy: &requestStyleCopy,
         Optionals: options,
     }
 
@@ -400,7 +400,7 @@ func Test_Styles_ApplyStyleToDocumentElement(t *testing.T) {
     request := &models.ApplyStyleToDocumentElementRequest{
         Name: ToStringPointer(remoteFileName),
         StyledNodePath: ToStringPointer("paragraphs/1/paragraphFormat"),
-        StyleApply: requestStyleApply,
+        StyleApply: &requestStyleApply,
         Optionals: options,
     }
 
@@ -428,7 +428,7 @@ func Test_Styles_ApplyStyleToDocumentElementOnline(t *testing.T) {
     request := &models.ApplyStyleToDocumentElementOnlineRequest{
         Document: requestDocument,
         StyledNodePath: ToStringPointer("paragraphs/1/paragraphFormat"),
-        StyleApply: requestStyleApply,
+        StyleApply: &requestStyleApply,
         Optionals: options,
     }
 

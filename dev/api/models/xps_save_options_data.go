@@ -54,9 +54,6 @@ type XpsSaveOptionsDataResult struct {
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for xps save options.
-    SaveFormat string `json:"SaveFormat,omitempty"`
-
-    // Container class for xps save options.
     UpdateCreatedTimeProperty bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Container class for xps save options.
@@ -105,6 +102,9 @@ type XpsSaveOptionsDataResult struct {
     OutlineOptions OutlineOptionsDataResult `json:"OutlineOptions,omitempty"`
 
     // Container class for xps save options.
+    SaveFormat string `json:"SaveFormat,omitempty"`
+
+    // Container class for xps save options.
     UseBookFoldPrintingSettings bool `json:"UseBookFoldPrintingSettings,omitempty"`
 }
 
@@ -132,9 +132,6 @@ type XpsSaveOptionsData struct {
 
     // Container class for xps save options.
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
-
-    // Container class for xps save options.
-    SaveFormat *string `json:"SaveFormat,omitempty"`
 
     // Container class for xps save options.
     UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
@@ -185,18 +182,91 @@ type XpsSaveOptionsData struct {
     OutlineOptions IOutlineOptionsData `json:"OutlineOptions,omitempty"`
 
     // Container class for xps save options.
+    SaveFormat *string `json:"SaveFormat,omitempty"`
+
+    // Container class for xps save options.
     UseBookFoldPrintingSettings *bool `json:"UseBookFoldPrintingSettings,omitempty"`
 }
 
 type IXpsSaveOptionsData interface {
     IsXpsSaveOptionsData() bool
+    Initialize()
 }
+
 func (XpsSaveOptionsData) IsXpsSaveOptionsData() bool {
     return true
 }
 
 func (XpsSaveOptionsData) IsFixedPageSaveOptionsData() bool {
     return true
+}
+
+func (XpsSaveOptionsData) IsSaveOptionsData() bool {
+    return true
+}
+
+func (obj *XpsSaveOptionsData) Initialize() {
+    var _SaveFormat = "xps"
+    obj.SaveFormat = &_SaveFormat
+
+    if (obj.CustomTimeZoneInfoData != nil) {
+        obj.CustomTimeZoneInfoData.Initialize()
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    if (obj.MetafileRenderingOptions != nil) {
+        obj.MetafileRenderingOptions.Initialize()
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    if (obj.OutlineOptions != nil) {
+        obj.OutlineOptions.Initialize()
+    }
+
+
+
 }
 
 

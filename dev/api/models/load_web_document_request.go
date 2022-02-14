@@ -60,6 +60,10 @@ func (data *LoadWebDocumentRequest) CreateRequestData() (RequestData, error) {
     result.QueryParams = url.Values{}
     result.FormParams = make([]FormParamContainer, 0)
 
+    if (data.Data != nil) {
+        data.Data.Initialize()
+    }
+
     if err := typeCheckParameter(data.Optionals["storage"], "string", "data.Optionals[storage]"); err != nil {
         return result, err
     }

@@ -58,9 +58,15 @@ type Error struct {
 
 type IError interface {
     IsError() bool
+    Initialize()
 }
+
 func (Error) IsError() bool {
     return true
+}
+
+
+func (obj *Error) Initialize() {
 }
 
 

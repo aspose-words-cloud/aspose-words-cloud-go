@@ -56,7 +56,7 @@ func Test_Footnote_InsertFootnote(t *testing.T) {
 
     request := &models.InsertFootnoteRequest{
         Name: ToStringPointer(remoteFileName),
-        FootnoteDto: requestFootnoteDto,
+        FootnoteDto: &requestFootnoteDto,
         Optionals: options,
     }
 
@@ -88,7 +88,7 @@ func Test_Footnote_InsertFootnoteOnline(t *testing.T) {
 
     request := &models.InsertFootnoteOnlineRequest{
         Document: requestDocument,
-        FootnoteDto: requestFootnoteDto,
+        FootnoteDto: &requestFootnoteDto,
         Optionals: options,
     }
 
@@ -120,7 +120,7 @@ func Test_Footnote_InsertFootnoteWithoutNodePath(t *testing.T) {
 
     request := &models.InsertFootnoteRequest{
         Name: ToStringPointer(remoteFileName),
-        FootnoteDto: requestFootnoteDto,
+        FootnoteDto: &requestFootnoteDto,
         Optionals: options,
     }
 
@@ -413,7 +413,7 @@ func Test_Footnote_UpdateFootnote(t *testing.T) {
     request := &models.UpdateFootnoteRequest{
         Name: ToStringPointer(remoteFileName),
         Index: ToInt32Pointer(int32(0)),
-        FootnoteDto: requestFootnoteDto,
+        FootnoteDto: &requestFootnoteDto,
         Optionals: options,
     }
 
@@ -443,7 +443,7 @@ func Test_Footnote_UpdateFootnoteOnline(t *testing.T) {
 
     request := &models.UpdateFootnoteOnlineRequest{
         Document: requestDocument,
-        FootnoteDto: requestFootnoteDto,
+        FootnoteDto: &requestFootnoteDto,
         Index: ToInt32Pointer(int32(0)),
         Optionals: options,
     }
@@ -476,7 +476,7 @@ func Test_Footnote_UpdateFootnoteWithoutNodePath(t *testing.T) {
     request := &models.UpdateFootnoteRequest{
         Name: ToStringPointer(remoteFileName),
         Index: ToInt32Pointer(int32(0)),
-        FootnoteDto: requestFootnoteDto,
+        FootnoteDto: &requestFootnoteDto,
         Optionals: options,
     }
 

@@ -58,13 +58,28 @@ type ListFormat struct {
 
 type IListFormat interface {
     IsListFormat() bool
+    Initialize()
 }
+
 func (ListFormat) IsListFormat() bool {
     return true
 }
 
 func (ListFormat) IsLinkElement() bool {
     return true
+}
+
+func (obj *ListFormat) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+
+
+
+
+
+
 }
 
 

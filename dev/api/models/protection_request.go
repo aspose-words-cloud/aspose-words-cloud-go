@@ -52,9 +52,15 @@ type ProtectionRequest struct {
 
 type IProtectionRequest interface {
     IsProtectionRequest() bool
+    Initialize()
 }
+
 func (ProtectionRequest) IsProtectionRequest() bool {
     return true
+}
+
+
+func (obj *ProtectionRequest) Initialize() {
 }
 
 

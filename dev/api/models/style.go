@@ -106,13 +106,48 @@ type Style struct {
 
 type IStyle interface {
     IsStyle() bool
+    Initialize()
 }
+
 func (Style) IsStyle() bool {
     return true
 }
 
 func (Style) IsLinkElement() bool {
     return true
+}
+
+func (obj *Style) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+
+
+
+
+
+
+
+
+    if (obj.Font != nil) {
+        obj.Font.Initialize()
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 

@@ -58,13 +58,26 @@ type FootnoteInsert struct {
 
 type IFootnoteInsert interface {
     IsFootnoteInsert() bool
+    Initialize()
 }
+
 func (FootnoteInsert) IsFootnoteInsert() bool {
     return true
 }
 
 func (FootnoteInsert) IsFootnoteBase() bool {
     return true
+}
+
+func (obj *FootnoteInsert) Initialize() {
+    if (obj.Position != nil) {
+        obj.Position.Initialize()
+    }
+
+
+
+
+
 }
 
 

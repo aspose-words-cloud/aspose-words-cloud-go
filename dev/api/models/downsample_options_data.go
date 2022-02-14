@@ -52,9 +52,15 @@ type DownsampleOptionsData struct {
 
 type IDownsampleOptionsData interface {
     IsDownsampleOptionsData() bool
+    Initialize()
 }
+
 func (DownsampleOptionsData) IsDownsampleOptionsData() bool {
     return true
+}
+
+
+func (obj *DownsampleOptionsData) Initialize() {
 }
 
 
