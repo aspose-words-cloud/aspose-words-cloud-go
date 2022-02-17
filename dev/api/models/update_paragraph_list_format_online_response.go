@@ -27,15 +27,16 @@
 
 package models
 
- import "io" 
+import "io"
+
 
 // UpdateParagraphListFormatOnlineResponse struct
 // Updates the formatting properties of a paragraph list in the document node.
 type UpdateParagraphListFormatOnlineResponse struct {
     // The response model.
-    Model  ParagraphListFormatResponse  `json:"Model,omitempty"`
+    Model ParagraphListFormatResponse `json:"Model,omitempty"`
 
 
     // The document after modification.
-    Document  io.ReadCloser   `json:"Document,omitempty"`
+    Document map[string]io.Reader `json:"Document,omitempty"`
 }

@@ -27,15 +27,16 @@
 
 package models
 
- import "io" 
+import "io"
+
 
 // InsertCommentOnlineResponse struct
 // Inserts a new comment to the document.
 type InsertCommentOnlineResponse struct {
     // The response model.
-    Model  CommentResponse  `json:"Model,omitempty"`
+    Model CommentResponse `json:"Model,omitempty"`
 
 
     // The document after modification.
-    Document  io.ReadCloser   `json:"Document,omitempty"`
+    Document map[string]io.Reader `json:"Document,omitempty"`
 }

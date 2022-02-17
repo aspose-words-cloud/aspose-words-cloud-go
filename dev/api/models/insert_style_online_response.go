@@ -27,15 +27,16 @@
 
 package models
 
- import "io" 
+import "io"
+
 
 // InsertStyleOnlineResponse struct
 // Inserts a new style to the document.
 type InsertStyleOnlineResponse struct {
     // The response model.
-    Model  StyleResponse  `json:"Model,omitempty"`
+    Model StyleResponse `json:"Model,omitempty"`
 
 
     // The document after modification.
-    Document  io.ReadCloser   `json:"Document,omitempty"`
+    Document map[string]io.Reader `json:"Document,omitempty"`
 }

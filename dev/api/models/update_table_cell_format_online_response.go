@@ -27,15 +27,16 @@
 
 package models
 
- import "io" 
+import "io"
+
 
 // UpdateTableCellFormatOnlineResponse struct
 // Updates the formatting properties of a cell in the table row.
 type UpdateTableCellFormatOnlineResponse struct {
     // The response model.
-    Model  TableCellFormatResponse  `json:"Model,omitempty"`
+    Model TableCellFormatResponse `json:"Model,omitempty"`
 
 
     // The document after modification.
-    Document  io.ReadCloser   `json:"Document,omitempty"`
+    Document map[string]io.Reader `json:"Document,omitempty"`
 }

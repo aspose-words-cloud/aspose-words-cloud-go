@@ -27,15 +27,16 @@
 
 package models
 
- import "io" 
+import "io"
+
 
 // CompareDocumentOnlineResponse struct
 // Compares two documents.
 type CompareDocumentOnlineResponse struct {
     // The response model.
-    Model  DocumentResponse  `json:"Model,omitempty"`
+    Model DocumentResponse `json:"Model,omitempty"`
 
 
     // The document after modification.
-    Document  io.ReadCloser   `json:"Document,omitempty"`
+    Document map[string]io.Reader `json:"Document,omitempty"`
 }

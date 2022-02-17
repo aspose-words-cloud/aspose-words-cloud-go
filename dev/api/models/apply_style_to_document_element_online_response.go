@@ -27,15 +27,16 @@
 
 package models
 
- import "io" 
+import "io"
+
 
 // ApplyStyleToDocumentElementOnlineResponse struct
 // Applies a style to the document node.
 type ApplyStyleToDocumentElementOnlineResponse struct {
     // The response model.
-    Model  WordsResponse  `json:"Model,omitempty"`
+    Model WordsResponse `json:"Model,omitempty"`
 
 
     // The document after modification.
-    Document  io.ReadCloser   `json:"Document,omitempty"`
+    Document map[string]io.Reader `json:"Document,omitempty"`
 }

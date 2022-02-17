@@ -27,15 +27,16 @@
 
 package models
 
- import "io" 
+import "io"
+
 
 // SaveAsTiffOnlineResponse struct
 // Converts a document to TIFF format using detailed conversion settings.
 type SaveAsTiffOnlineResponse struct {
     // The response model.
-    Model  SaveResponse  `json:"Model,omitempty"`
+    Model SaveResponse `json:"Model,omitempty"`
 
 
     // The document after modification.
-    Document  io.ReadCloser   `json:"Document,omitempty"`
+    Document map[string]io.Reader `json:"Document,omitempty"`
 }

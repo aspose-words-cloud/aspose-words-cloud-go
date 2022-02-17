@@ -251,7 +251,7 @@ func Test_HeaderFooter_DeleteHeaderFooterOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, err := client.WordsApi.DeleteHeaderFooterOnline(ctx, request)
+    _, _, err := client.WordsApi.DeleteHeaderFooterOnline(ctx, request)
     if err != nil {
         t.Error(err)
     }
@@ -304,7 +304,7 @@ func Test_HeaderFooter_DeleteHeadersFootersOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, err := client.WordsApi.DeleteHeadersFootersOnline(ctx, request)
+    _, _, err := client.WordsApi.DeleteHeadersFootersOnline(ctx, request)
     if err != nil {
         t.Error(err)
     }

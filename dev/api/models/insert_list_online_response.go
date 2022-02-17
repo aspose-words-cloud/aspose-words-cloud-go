@@ -27,15 +27,16 @@
 
 package models
 
- import "io" 
+import "io"
+
 
 // InsertListOnlineResponse struct
 // Inserts a new list to the document.
 type InsertListOnlineResponse struct {
     // The response model.
-    Model  ListResponse  `json:"Model,omitempty"`
+    Model ListResponse `json:"Model,omitempty"`
 
 
     // The document after modification.
-    Document  io.ReadCloser   `json:"Document,omitempty"`
+    Document map[string]io.Reader `json:"Document,omitempty"`
 }

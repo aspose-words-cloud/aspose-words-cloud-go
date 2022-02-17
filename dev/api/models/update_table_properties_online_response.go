@@ -27,15 +27,16 @@
 
 package models
 
- import "io" 
+import "io"
+
 
 // UpdateTablePropertiesOnlineResponse struct
 // Updates properties of a table in the document node.
 type UpdateTablePropertiesOnlineResponse struct {
     // The response model.
-    Model  TablePropertiesResponse  `json:"Model,omitempty"`
+    Model TablePropertiesResponse `json:"Model,omitempty"`
 
 
     // The document after modification.
-    Document  io.ReadCloser   `json:"Document,omitempty"`
+    Document map[string]io.Reader `json:"Document,omitempty"`
 }

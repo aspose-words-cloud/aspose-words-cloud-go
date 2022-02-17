@@ -488,7 +488,7 @@ func Test_FormField_DeleteFormFieldOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, err := client.WordsApi.DeleteFormFieldOnline(ctx, request)
+    _, _, err := client.WordsApi.DeleteFormFieldOnline(ctx, request)
     if err != nil {
         t.Error(err)
     }

@@ -340,7 +340,7 @@ func Test_MathObject_DeleteOfficeMathObjectOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, err := client.WordsApi.DeleteOfficeMathObjectOnline(ctx, request)
+    _, _, err := client.WordsApi.DeleteOfficeMathObjectOnline(ctx, request)
     if err != nil {
         t.Error(err)
     }

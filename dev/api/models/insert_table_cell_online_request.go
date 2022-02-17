@@ -186,7 +186,10 @@ func (data *InsertTableCellOnlineRequest) CreateResponse(reader io.Reader, bound
         return successPayload, err
     }
 
-    successPayload.Document = part
+    successPayload.Document, err = ParsePartFilesCollection(part)
+    if err != nil {
+        return successPayload, err
+    }
 
 
     return successPayload, err

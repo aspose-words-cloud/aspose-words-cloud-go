@@ -182,7 +182,7 @@ func Test_Footnote_DeleteFootnoteOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, err := client.WordsApi.DeleteFootnoteOnline(ctx, request)
+    _, _, err := client.WordsApi.DeleteFootnoteOnline(ctx, request)
     if err != nil {
         t.Error(err)
     }

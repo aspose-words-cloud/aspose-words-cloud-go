@@ -190,7 +190,7 @@ func Test_Section_DeleteSectionOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, err := client.WordsApi.DeleteSectionOnline(ctx, request)
+    _, _, err := client.WordsApi.DeleteSectionOnline(ctx, request)
     if err != nil {
         t.Error(err)
     }

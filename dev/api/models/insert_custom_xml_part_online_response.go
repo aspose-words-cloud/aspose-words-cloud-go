@@ -27,15 +27,16 @@
 
 package models
 
- import "io" 
+import "io"
+
 
 // InsertCustomXmlPartOnlineResponse struct
 // Inserts a new custom xml part to the document.
 type InsertCustomXmlPartOnlineResponse struct {
     // The response model.
-    Model  CustomXmlPartResponse  `json:"Model,omitempty"`
+    Model CustomXmlPartResponse `json:"Model,omitempty"`
 
 
     // The document after modification.
-    Document  io.ReadCloser   `json:"Document,omitempty"`
+    Document map[string]io.Reader `json:"Document,omitempty"`
 }

@@ -27,15 +27,16 @@
 
 package models
 
- import "io" 
+import "io"
+
 
 // InsertHeaderFooterOnlineResponse struct
 // Inserts a new HeaderFooter object to the document section.
 type InsertHeaderFooterOnlineResponse struct {
     // The response model.
-    Model  HeaderFooterResponse  `json:"Model,omitempty"`
+    Model HeaderFooterResponse `json:"Model,omitempty"`
 
 
     // The document after modification.
-    Document  io.ReadCloser   `json:"Document,omitempty"`
+    Document map[string]io.Reader `json:"Document,omitempty"`
 }

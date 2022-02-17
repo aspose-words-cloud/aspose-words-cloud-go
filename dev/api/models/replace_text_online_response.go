@@ -27,15 +27,16 @@
 
 package models
 
- import "io" 
+import "io"
+
 
 // ReplaceTextOnlineResponse struct
 // Replaces text in the document.
 type ReplaceTextOnlineResponse struct {
     // The response model.
-    Model  ReplaceTextResponse  `json:"Model,omitempty"`
+    Model ReplaceTextResponse `json:"Model,omitempty"`
 
 
     // The document after modification.
-    Document  io.ReadCloser   `json:"Document,omitempty"`
+    Document map[string]io.Reader `json:"Document,omitempty"`
 }

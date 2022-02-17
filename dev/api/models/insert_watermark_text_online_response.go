@@ -27,15 +27,16 @@
 
 package models
 
- import "io" 
+import "io"
+
 
 // InsertWatermarkTextOnlineResponse struct
 // Inserts a new watermark text to the document.
 type InsertWatermarkTextOnlineResponse struct {
     // The response model.
-    Model  DocumentResponse  `json:"Model,omitempty"`
+    Model DocumentResponse `json:"Model,omitempty"`
 
 
     // The document after modification.
-    Document  io.ReadCloser   `json:"Document,omitempty"`
+    Document map[string]io.Reader `json:"Document,omitempty"`
 }

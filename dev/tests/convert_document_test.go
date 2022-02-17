@@ -94,6 +94,35 @@ func Test_ConvertDocument_SaveAsOnline(t *testing.T) {
 
 }
 
+// Test for converting document online to html with additional files like css and images.
+func Test_ConvertDocument_SaveAsOnlineHtmlMultifile(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localName := "test_multi_pages.docx"
+
+    requestDocument := OpenFile(t, "Common/" + localName)
+    requestSaveOptionsData := models.HtmlSaveOptionsData{
+        FileName: ToStringPointer(baseTestOutPath + "/TestSaveAsHtml.html"),
+        CssStyleSheetType: ToStringPointer("External"),
+        CssStyleSheetFileName: ToStringPointer(baseTestOutPath + "/TestSaveAsHtml.css"),
+    }
+
+    options := map[string]interface{}{
+    }
+
+    request := &models.SaveAsOnlineRequest{
+        Document: requestDocument,
+        SaveOptionsData: &requestSaveOptionsData,
+        Optionals: options,
+    }
+
+    _, _, err := client.WordsApi.SaveAsOnline(ctx, request)
+    if err != nil {
+        t.Error(err)
+    }
+
+}
+
 // Test for converting document to one of the available formats.
 func Test_ConvertDocument_SaveAsDocx(t *testing.T) {
     config := ReadConfiguration(t)

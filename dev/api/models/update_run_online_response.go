@@ -27,15 +27,16 @@
 
 package models
 
- import "io" 
+import "io"
+
 
 // UpdateRunOnlineResponse struct
 // Updates a Run object in the paragraph.
 type UpdateRunOnlineResponse struct {
     // The response model.
-    Model  RunResponse  `json:"Model,omitempty"`
+    Model RunResponse `json:"Model,omitempty"`
 
 
     // The document after modification.
-    Document  io.ReadCloser   `json:"Document,omitempty"`
+    Document map[string]io.Reader `json:"Document,omitempty"`
 }

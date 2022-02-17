@@ -27,15 +27,16 @@
 
 package models
 
- import "io" 
+import "io"
+
 
 // DeleteParagraphTabStopOnlineResponse struct
 // Removes a paragraph tab stop from the document node.
 type DeleteParagraphTabStopOnlineResponse struct {
     // The response model.
-    Model  TabStopsResponse  `json:"Model,omitempty"`
+    Model TabStopsResponse `json:"Model,omitempty"`
 
 
     // The document after modification.
-    Document  io.ReadCloser   `json:"Document,omitempty"`
+    Document map[string]io.Reader `json:"Document,omitempty"`
 }

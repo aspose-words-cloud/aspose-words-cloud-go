@@ -27,15 +27,16 @@
 
 package models
 
- import "io" 
+import "io"
+
 
 // SplitDocumentOnlineResponse struct
 // Splits a document into parts and saves them in the specified format.
 type SplitDocumentOnlineResponse struct {
     // The response model.
-    Model  SplitDocumentResponse  `json:"Model,omitempty"`
+    Model SplitDocumentResponse `json:"Model,omitempty"`
 
 
     // The document after modification.
-    Document  io.ReadCloser   `json:"Document,omitempty"`
+    Document map[string]io.Reader `json:"Document,omitempty"`
 }

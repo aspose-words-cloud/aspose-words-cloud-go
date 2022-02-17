@@ -85,7 +85,7 @@ func Test_Compatibility_OptimizeDocumentOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, err := client.WordsApi.OptimizeDocumentOnline(ctx, request)
+    _, _, err := client.WordsApi.OptimizeDocumentOnline(ctx, request)
     if err != nil {
         t.Error(err)
     }
