@@ -29,6 +29,7 @@ package models
 
 import (
 	"encoding/json"
+	"errors"
 	"io/ioutil"
 	"net/http"
 	"net/url"
@@ -82,7 +83,9 @@ type Configuration struct {
 	DebugMode     bool              `json:"DebugMode,omitempty"`
 	DefaultHeader map[string]string `json:"DefaultHeader,omitempty"`
 	HttpClient    *http.Client
-    Timeout       time.Duration
+	Timeout       Duration `json:"Timeout,omitempty"`
+	Modulus       string   `json:"Modulus,omitempty"`
+	Exponent      string   `json:"Exponent,omitempty"`
 }
 
 func NewConfiguration(configFilePath string) (pConfig *Configuration, err error) {
@@ -118,4 +121,34 @@ func (w *WordsApiErrorResponse) Error() string {
 	}
 
 	return string(out)
+}
+
+
+type Duration struct {
+	time.Duration
+}
+
+func (d Duration) MarshalJSON() ([]byte, error) {
+	return json.Marshal(d.String())
+}
+
+func (d *Duration) UnmarshalJSON(b []byte) error {
+	var v interface{}
+	if err := json.Unmarshal(b, &v); err != nil {
+		return err
+	}
+	switch value := v.(type) {
+	case float64:
+		d.Duration = time.Duration(value)
+		return nil
+	case string:
+		var err error
+		d.Duration, err = time.ParseDuration(value)
+		if err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.New("invalid duration")
+	}
 }

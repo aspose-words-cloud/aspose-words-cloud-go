@@ -122,7 +122,7 @@ func GetConfigFilePath() (path string) {
 
 func PrepareTest(t *testing.T, config *models.Configuration) (apiClient *api.APIClient, ctx context.Context) {
 
-    config.Timeout = time.Minute
+    config.Timeout.Duration = time.Minute
 	client, err := api.NewAPIClient(config)
 
 	if err != nil {
@@ -325,6 +325,38 @@ func Test_Encrypted_Document(t *testing.T) {
 		"nodePath": "sections/0",
 		"folder":   remoteDataFolder,
 		"password": "12345",
+	}
+
+	request := &models.GetParagraphsRequest{
+		Name:      ToStringPointer(remoteFileName),
+		Optionals: options,
+	}
+
+	actual, _, err := client.WordsApi.GetParagraphs(ctx, request)
+	if err != nil {
+		t.Error(err)
+	}
+
+	assert.NotNil(t, actual.Paragraphs, "Validate GetDocumentParagraphs response.")
+	assert.NotNil(t, actual.Paragraphs.ParagraphLinkList, "Validate GetDocumentParagraphs response.")
+	assert.Equal(t, 2, len(actual.Paragraphs.ParagraphLinkList), "Validate GetDocumentParagraphs response.")
+}
+
+func Test_Encrypted_Document_With_Encrypted_Password(t *testing.T) {
+	config := ReadConfiguration(t)
+	client, ctx := PrepareTest(t, config)
+	remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Paragraphs"
+	localFile := "Common/DocWithPassword.docx"
+	remoteFileName := "TestGetEncryptedDocumentParagraphs.docx"
+
+	UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder+"/"+remoteFileName)
+
+	encryptedPassword, _ := client.WordsApi.Encrypt(ctx, "12345")
+
+	options := map[string]interface{}{
+		"nodePath":          "sections/0",
+		"folder":            remoteDataFolder,
+		"encryptedPassword": encryptedPassword,
 	}
 
 	request := &models.GetParagraphsRequest{

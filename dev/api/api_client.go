@@ -69,6 +69,7 @@ var (
 type APIClient struct {
     cfg 	*models.Configuration
     common 	service 		// Reuse a single struct instead of allocating one for each service on the heap.
+    key    *rsa.PublicKey // public key to encrypt data
 
      // API Services
     WordsApi	*WordsApiService
@@ -89,10 +90,6 @@ func NewAPIClient(cfg *models.Configuration) (client *APIClient, err error) {
         return nil, errors.New("ClientId must be non-empty string")
     }
 
-	if cfg.Timeout == 0 {
-		cfg.HttpClient.Timeout = cfg.Timeout
-	}
-
     if cfg.ClientSecret == "" {
         return nil, errors.New("ClientSecret must be non-empty string")
     }
@@ -102,6 +99,8 @@ func NewAPIClient(cfg *models.Configuration) (client *APIClient, err error) {
     if urlErr != nil {
         return nil, errors.New("BaseUrl must be valid URL")
     }
+
+    cfg.HttpClient.Timeout = cfg.Timeout.Duration
 
     c := &APIClient{}
     c.cfg = cfg
@@ -203,41 +202,7 @@ func (c *APIClient) NewContextWithToken(ctx context.Context) (ctxWithToken conte
         return nil, err
     }
 
-
-	contextWithToken := context.WithValue(ctx, models.ContextAccessToken, result.AccessToken)
-
-	rsaKeyData, _, err := c.WordsApi.GetPublicKey(contextWithToken, &models.GetPublicKeyRequest{})
-
-	if err != nil {
-		return nil, err
-	}
-
-    exponentBytes, err := base64.StdEncoding.DecodeString(rsaKeyData.Exponent) 
-
-	if err != nil {
-		return nil, err
-	}
-
-	var eBytes []byte
-	if len(exponentBytes) < 8 {
-		eBytes = make([]byte, 8-len(exponentBytes), 8)
-		eBytes = append(eBytes, exponentBytes...)
-	} else {
-		eBytes = exponentBytes
-	}
-
-	modulusBytes, err := base64.StdEncoding.DecodeString(rsaKeyData.Modulus)
-
-	if err != nil {
-		return nil, err
-	}
-
-	publicKey := rsa.PublicKey{
-		N: big.NewInt(0).SetBytes(modulusBytes),
-		E: int(binary.BigEndian.Uint64(eBytes)),
-	}
-
-	return context.WithValue(contextWithToken, models.ContextPasswordEncryptionKey, publicKey), nil
+	return context.WithValue(ctx, models.ContextAccessToken, result.AccessToken), nil
 }
 
 // prepareRequest build the request
@@ -304,7 +269,7 @@ func (c *APIClient) prepareRequest (
     for k, v := range data.QueryParams {
         for _, iv := range v {
             if k == "Password" && iv != "" {
-                encrypted, err := encrypt(ctx, iv)
+                encrypted, err := c.encrypt(ctx, iv)
 
                 if err != nil {
                     return nil, err
@@ -375,21 +340,61 @@ func (c *APIClient) prepareRequest (
 }
 
 // encrypt string with RSA key from context
-func encrypt(ctx context.Context, data string) (string, error) {
+func (c *APIClient) encrypt(ctx context.Context, data string) (string, error) {
 
-    if ctx.Value(models.ContextPasswordEncryptionKey) == nil {
-        return "", errors.New("Context doesn't contain RSA key")
-    }
+	if data == "" {
+		return data, nil
+	}
 
-    key := ctx.Value(models.ContextPasswordEncryptionKey).(rsa.PublicKey)
+	if c.key == nil {
 
-    encrypted, err := rsa.EncryptPKCS1v15(rand.Reader, &key, []byte(data))
+		modulus := c.cfg.Modulus
+		exponent := c.cfg.Exponent
 
-    if err != nil {
-        return "", err
-    }
+		if modulus == "" || exponent == "" {
+			rsaKeyData, _, err := c.WordsApi.GetPublicKey(ctx, &models.GetPublicKeyRequest{})
 
-    return base64.StdEncoding.EncodeToString(encrypted), nil
+			if err != nil {
+				return "", err
+			}
+
+			modulus = rsaKeyData.Modulus
+			exponent = rsaKeyData.Exponent
+		}
+
+		exponentBytes, err := base64.StdEncoding.DecodeString(exponent)
+
+		if err != nil {
+			return "", err
+		}
+
+		var eBytes []byte
+		if len(exponentBytes) < 8 {
+			eBytes = make([]byte, 8-len(exponentBytes), 8)
+			eBytes = append(eBytes, exponentBytes...)
+		} else {
+			eBytes = exponentBytes
+		}
+
+		modulusBytes, err := base64.StdEncoding.DecodeString(modulus)
+
+		if err != nil {
+			return "", err
+		}
+
+		c.key = &rsa.PublicKey{
+			N: big.NewInt(0).SetBytes(modulusBytes),
+			E: int(binary.BigEndian.Uint64(eBytes)),
+		}
+	}
+
+	encrypted, err := rsa.EncryptPKCS1v15(rand.Reader, c.key, []byte(data))
+
+	if err != nil {
+		return "", err
+	}
+
+	return base64.StdEncoding.EncodeToString(encrypted), nil
 }
 
 // Add a file to the multipart request
