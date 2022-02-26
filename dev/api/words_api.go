@@ -14867,3 +14867,12 @@ func (a *WordsApiService) batch(ctx context.Context, withoutIntermediateResults 
 
 	return successPayload, response, err
 }
+
+
+/* Encrypts string on APi key.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data data to encrypt.
+@return encrypted data. */
+func (a *WordsApiService) Encrypt(ctx context.Context, data string) (string, error) {
+	return a.client.encrypt(ctx, data)
+}

@@ -1,6 +1,6 @@
 /*
  * --------------------------------------------------------------------------------
- * <copyright company="Aspose" file="pdf_encryption_details_data.go">
+ * <copyright company="Aspose" file="pdf_permissions.go">
  *   Copyright (c) 2022 Aspose.Words for Cloud
  * </copyright>
  * <summary>
@@ -27,46 +27,19 @@
 
 package models
 
-// Container class for details of encryption.
-type PdfEncryptionDetailsDataResult struct {
-    // Container class for details of encryption.
-    EncryptionAlgorithm string `json:"EncryptionAlgorithm,omitempty"`
+// Specifies the operations that are allowed to a user on an encrypted PDF document.
+type PdfPermissions string
 
-    // Container class for details of encryption.
-    OwnerPassword string `json:"OwnerPassword,omitempty"`
-
-    // Container class for details of encryption.
-    Permissions []string `json:"Permissions,omitempty"`
-
-    // Container class for details of encryption.
-    UserPassword string `json:"UserPassword,omitempty"`
-}
-
-type PdfEncryptionDetailsData struct {
-    // Container class for details of encryption.
-    EncryptionAlgorithm *string `json:"EncryptionAlgorithm,omitempty"`
-
-    // Container class for details of encryption.
-    OwnerPassword *string `json:"OwnerPassword,omitempty"`
-
-    // Container class for details of encryption.
-    Permissions []string `json:"Permissions,omitempty"`
-
-    // Container class for details of encryption.
-    UserPassword *string `json:"UserPassword,omitempty"`
-}
-
-type IPdfEncryptionDetailsData interface {
-    IsPdfEncryptionDetailsData() bool
-    Initialize()
-}
-
-func (PdfEncryptionDetailsData) IsPdfEncryptionDetailsData() bool {
-    return true
-}
-
-
-func (obj *PdfEncryptionDetailsData) Initialize() {
-}
-
-
+// List of PdfPermissions
+const (
+    DISALLOWALL PdfPermissions = "DisallowAll"
+    PRINTING PdfPermissions = "Printing"
+    MODIFYCONTENTS PdfPermissions = "ModifyContents"
+    CONTENTCOPY PdfPermissions = "ContentCopy"
+    MODIFYANNOTATIONS PdfPermissions = "ModifyAnnotations"
+    FILLIN PdfPermissions = "FillIn"
+    CONTENTCOPYFORACCESSIBILITY PdfPermissions = "ContentCopyForAccessibility"
+    DOCUMENTASSEMBLY PdfPermissions = "DocumentAssembly"
+    HIGHRESOLUTIONPRINTING PdfPermissions = "HighResolutionPrinting"
+    ALLOWALL PdfPermissions = "AllowAll"
+)
