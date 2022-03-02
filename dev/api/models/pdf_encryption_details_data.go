@@ -30,9 +30,6 @@ package models
 // Container class for details of encryption.
 type PdfEncryptionDetailsDataResult struct {
     // Container class for details of encryption.
-    EncryptionAlgorithm string `json:"EncryptionAlgorithm,omitempty"`
-
-    // Container class for details of encryption.
     OwnerPassword string `json:"OwnerPassword,omitempty"`
 
     // Container class for details of encryption.
@@ -43,9 +40,6 @@ type PdfEncryptionDetailsDataResult struct {
 }
 
 type PdfEncryptionDetailsData struct {
-    // Container class for details of encryption.
-    EncryptionAlgorithm *string `json:"EncryptionAlgorithm,omitempty"`
-
     // Container class for details of encryption.
     OwnerPassword *string `json:"OwnerPassword,omitempty"`
 
