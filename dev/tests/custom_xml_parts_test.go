@@ -331,7 +331,7 @@ func Test_CustomXmlParts_DeleteCustomXmlPartOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, err := client.WordsApi.DeleteCustomXmlPartOnline(ctx, request)
+    _, _, err := client.WordsApi.DeleteCustomXmlPartOnline(ctx, request)
     if err != nil {
         t.Error(err)
     }
@@ -383,7 +383,7 @@ func Test_CustomXmlParts_DeleteCustomXmlPartsOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, err := client.WordsApi.DeleteCustomXmlPartsOnline(ctx, request)
+    _, _, err := client.WordsApi.DeleteCustomXmlPartsOnline(ctx, request)
     if err != nil {
         t.Error(err)
     }

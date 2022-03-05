@@ -818,7 +818,7 @@ func Test_Paragraph_DeleteParagraphOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, err := client.WordsApi.DeleteParagraphOnline(ctx, request)
+    _, _, err := client.WordsApi.DeleteParagraphOnline(ctx, request)
     if err != nil {
         t.Error(err)
     }

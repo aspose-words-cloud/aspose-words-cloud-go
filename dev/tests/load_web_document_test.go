@@ -40,8 +40,8 @@ func Test_LoadWebDocument_LoadWebDocument(t *testing.T) {
     client, ctx := PrepareTest(t, config)
     requestDataSaveOptions := models.DocSaveOptionsData{
         FileName: ToStringPointer("google.doc"),
-        DmlEffectsRenderingMode: ToStringPointer("1"),
-        DmlRenderingMode: ToStringPointer("1"),
+        DmlEffectsRenderingMode: ToStringPointer("None"),
+        DmlRenderingMode: ToStringPointer("DrawingML"),
         UpdateSdtContent: ToBoolPointer(false),
         ZipOutput: ToBoolPointer(false),
     }

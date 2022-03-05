@@ -389,7 +389,7 @@ func Test_Comment_DeleteCommentOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, err := client.WordsApi.DeleteCommentOnline(ctx, request)
+    _, _, err := client.WordsApi.DeleteCommentOnline(ctx, request)
     if err != nil {
         t.Error(err)
     }
@@ -441,7 +441,7 @@ func Test_Comment_DeleteCommentsOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, err := client.WordsApi.DeleteCommentsOnline(ctx, request)
+    _, _, err := client.WordsApi.DeleteCommentsOnline(ctx, request)
     if err != nil {
         t.Error(err)
     }

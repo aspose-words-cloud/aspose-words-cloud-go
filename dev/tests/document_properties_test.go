@@ -192,7 +192,7 @@ func Test_DocumentProperties_DeleteDocumentPropertyOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, err := client.WordsApi.DeleteDocumentPropertyOnline(ctx, request)
+    _, _, err := client.WordsApi.DeleteDocumentPropertyOnline(ctx, request)
     if err != nil {
         t.Error(err)
     }

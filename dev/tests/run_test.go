@@ -209,7 +209,7 @@ func Test_Run_DeleteRunOnline(t *testing.T) {
         Optionals: options,
     }
 
-    _, err := client.WordsApi.DeleteRunOnline(ctx, request)
+    _, _, err := client.WordsApi.DeleteRunOnline(ctx, request)
     if err != nil {
         t.Error(err)
     }
