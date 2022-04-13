@@ -16,12 +16,19 @@ Feel free to explore the [Developer's Guide](https://docs.aspose.cloud/display/w
 - Add & remove watermarks and protection.
 - Read & write access to Document Object Model.
 
+## Enhancements in Version 22.4
+
+- Added ExportShapesAsSvg to HtmlSaveOption.
+- Added new endpoint '~/styles/copy_from'.
+
+
 ## Enhancements in Version 22.3
 
 - Online methods returns the dictionary of files with included original filename as key instead of single file content in responses.
 - Parameters contained sensitive data should be passed in encrypted form. Names of the parameters have 'encrypted' prefix.
 - Added Encrypt method to encrypt data on the API public key. Use it to prepare values for parameters required encrypted data.
 - GetPublicKey method is not billable.
+- Changed type of enumerations for members of SaveOptionsData and other inherited classes from string to enum.
 
 
 ## Enhancements in Version 22.2
@@ -236,35 +243,27 @@ Config.json file:
 Go code:
 
 ```
-    // Start README example
+	// Start README example
 
-    // init words cloud api
-    config, _ := models.NewConfiguration(configFilePath)
-    wordsApi, ctx, _ := api.CreateWordsApi(config)
+	// init words cloud api
+	config, _ := models.NewConfiguration(configFilePath)
+	wordsApi, ctx, _ := api.CreateWordsApi(config)
 
-    // upload test.docx to a cloud
-    // remote.docx is a name in the cloud
-        file, _ := os.Open(localFilePath)
-    uploadRequest := &models.UploadFileRequest{
-        FileContent: file,
-        Path: &remotePath,
-    }
-    wordsApi.UploadFile(ctx, uploadRequest)
+	// upload test.docx to a cloud
+	// remote.docx is a name in the cloud
+	file, _ := os.Open(localFilePath)
+	wordsApi.UploadFile(ctx, file, remotePath, nil)
 
-    // get a text for the first paragraph of the first section
-    options := map[string]interface{}{
-        "folder": remoteFolder,
-    }
-    request := &models.GetParagraphsRequest{
-        Name: &remoteName,
-        Optionals: options,
-    }
+	// get a text for the first paragraph of the first section
+	options := map[string]interface{}{
+		"folder": remoteFolder,
+	}
 
-    result, _, _ := wordsApi.GetParagraphs(ctx, request)
+	result, _, _ := wordsApi.GetParagraphs(ctx, remoteName, options)
 
-    fmt.Println(result.Paragraphs.ParagraphLinkList[0].Text)
+	fmt.Println(result.Paragraphs.ParagraphLinkList[0].Text)
 
-    // End README example
+	// End README example
 ```
 
 [Product Page](https://products.aspose.cloud/words/go) | [Documentation](https://docs.aspose.cloud/display/wordscloud/Home) | [API Reference](https://apireference.aspose.cloud/words/) | [Code Samples](https://github.com/aspose-words-cloud/aspose-words-cloud-go) | [Blog](https://blog.aspose.cloud/category/words/) | [Free Support](https://forum.aspose.cloud/c/words) | [Free Trial](https://dashboard.aspose.cloud/#/apps)
