@@ -438,3 +438,34 @@ func Test_Styles_ApplyStyleToDocumentElementOnline(t *testing.T) {
     }
 
 }
+
+// Test for copying styles from a template.
+func Test_Styles_CopyStylesFromTemplate(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Styles"
+    localFile := "DocumentElements/Styles/GetStyles.docx"
+    remoteFileName := "TestCopyStylesFromTemplate.docx"
+    templateFolder := "DocumentElements/Styles"
+    templateName := "StyleTemplate.docx"
+
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(templateFolder + "/" + templateName), remoteDataFolder + "/" + templateName)
+
+
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+
+    request := &models.CopyStylesFromTemplateRequest{
+        Name: ToStringPointer(remoteFileName),
+        TemplateName: ToStringPointer(templateName),
+        Optionals: options,
+    }
+
+    _, _, err := client.WordsApi.CopyStylesFromTemplate(ctx, request)
+    if err != nil {
+        t.Error(err)
+    }
+
+}

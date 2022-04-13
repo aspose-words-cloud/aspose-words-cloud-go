@@ -902,6 +902,54 @@ func (a *WordsApiService) CopyStyleOnline(ctx context.Context, data *models.Copy
     return result.(models.CopyStyleOnlineResponse), response, err
 }
 
+/* WordsApiService Copies styles from the origin document to the target document.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return models.WordsResponse*/
+func (a *WordsApiService) CopyStylesFromTemplate(ctx context.Context, data *models.CopyStylesFromTemplateRequest) (models.WordsResponse, *http.Response, error) {
+    var (
+        successPayload models.WordsResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+
+    defer response.Body.Close()
+
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return successPayload, nil, err
+        }
+
+        return successPayload, response, &apiError
+    }
+    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
 /* WordsApiService Supported extensions: ".doc", ".docx", ".docm", ".dot", ".dotm", ".dotx", ".flatopc", ".fopc", ".flatopc_macro", ".fopc_macro", ".flatopc_template", ".fopc_template", ".flatopc_template_macro", ".fopc_template_macro", ".wordml", ".wml", ".rtf".
  * @param ctx context.Context for authentication, logging, tracing, etc.
  * @data operation request data.
