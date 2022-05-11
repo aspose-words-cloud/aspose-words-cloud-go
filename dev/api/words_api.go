@@ -10948,6 +10948,48 @@ func (a *WordsApiService) InsertWatermarkTextOnline(ctx context.Context, data *m
     return result.(models.InsertWatermarkTextOnlineResponse), response, err
 }
 
+/* WordsApiService Links headers / footers of the section to the previous one.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return */
+func (a *WordsApiService) LinkHeaderFootersToPrevious(ctx context.Context, data *models.LinkHeaderFootersToPreviousRequest) (*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+
+
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+    return response, err
+}
+
 /* WordsApiService Downloads a document from the Web using URL and saves it to cloud storage in the specified format.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  * @data operation request data.
