@@ -201,12 +201,18 @@ func Test_Section_DeleteSectionOnline(t *testing.T) {
 func Test_Section_LinkHeaderFootersToPrevious(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Section"
+    remoteFileName := "TestLinkHeaderFootersToPrevious.docx"
+
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile("DocumentElements/Sections/Source.docx"), remoteDataFolder + "/" + remoteFileName)
+
 
     options := map[string]interface{}{
+        "folder": remoteDataFolder,
     }
 
     request := &models.LinkHeaderFootersToPreviousRequest{
-        Name: ToStringPointer("DocumentElements/Sections/Source.docx"),
+        Name: ToStringPointer(remoteFileName),
         SectionIndex: ToInt32Pointer(int32(1)),
         Optionals: options,
     }

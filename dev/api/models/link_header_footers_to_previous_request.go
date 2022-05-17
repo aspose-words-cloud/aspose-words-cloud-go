@@ -58,7 +58,7 @@ func (data *LinkHeaderFootersToPreviousRequest) CreateRequestData() (RequestData
 
     var result RequestData
 
-    result.Method = strings.ToUpper("post")
+    result.Method = strings.ToUpper("put")
 
     // create path and map variables
     result.Path = "/words/{name}/sections/{sectionIndex}/link"
