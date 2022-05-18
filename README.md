@@ -16,6 +16,10 @@ Feel free to explore the [Developer's Guide](https://docs.aspose.cloud/display/w
 - Add & remove watermarks and protection.
 - Read & write access to Document Object Model.
 
+## Enhancements in Version 22.5
+
+- Internal API fixes and improvments.
+
 ## Enhancements in Version 22.4
 
 - Added ExportShapesAsSvg to HtmlSaveOption.
@@ -216,11 +220,11 @@ Firstly, create an account at [Aspose for Cloud](https://dashboard.aspose.cloud/
 
 From Visual Stuio Code:
 
-	Add "github.com/aspose-words-cloud/aspose-words-cloud-go/v2007/api" and "github.com/aspose-words-cloud/aspose-words-cloud-go/v2007/api/models" in the import section of your code
+	Add "github.com/aspose-words-cloud/aspose-words-cloud-go/v2205/api" and "github.com/aspose-words-cloud/aspose-words-cloud-go/v2205/api/models" in the import section of your code
 
 From the command line:
 
-	go get -v github.com/aspose-words-cloud/aspose-words-cloud-go/2007/api
+	go get -v github.com/aspose-words-cloud/aspose-words-cloud-go/v2205/api
 
 The complete source code is available at [GitHub Repository](https://github.com/aspose-words-cloud/aspose-words-cloud-go).
 
@@ -243,27 +247,35 @@ Config.json file:
 Go code:
 
 ```
-	// Start README example
+    // Start README example
 
-	// init words cloud api
-	config, _ := models.NewConfiguration(configFilePath)
-	wordsApi, ctx, _ := api.CreateWordsApi(config)
+    // init words cloud api
+    config, _ := models.NewConfiguration(configFilePath)
+    wordsApi, ctx, _ := api.CreateWordsApi(config)
 
-	// upload test.docx to a cloud
-	// remote.docx is a name in the cloud
-	file, _ := os.Open(localFilePath)
-	wordsApi.UploadFile(ctx, file, remotePath, nil)
+    // upload test.docx to a cloud
+    // remote.docx is a name in the cloud
+        file, _ := os.Open(localFilePath)
+    uploadRequest := &models.UploadFileRequest{
+        FileContent: file,
+        Path: &remotePath,
+    }
+    wordsApi.UploadFile(ctx, uploadRequest)
 
-	// get a text for the first paragraph of the first section
-	options := map[string]interface{}{
-		"folder": remoteFolder,
-	}
+    // get a text for the first paragraph of the first section
+    options := map[string]interface{}{
+        "folder": remoteFolder,
+    }
+    request := &models.GetParagraphsRequest{
+        Name: &remoteName,
+        Optionals: options,
+    }
 
-	result, _, _ := wordsApi.GetParagraphs(ctx, remoteName, options)
+    result, _, _ := wordsApi.GetParagraphs(ctx, request)
 
-	fmt.Println(result.Paragraphs.ParagraphLinkList[0].Text)
+    fmt.Println(result.Paragraphs.ParagraphLinkList[0].Text)
 
-	// End README example
+    // End README example
 ```
 
 [Product Page](https://products.aspose.cloud/words/go) | [Documentation](https://docs.aspose.cloud/display/wordscloud/Home) | [API Reference](https://apireference.aspose.cloud/words/) | [Code Samples](https://github.com/aspose-words-cloud/aspose-words-cloud-go) | [Blog](https://blog.aspose.cloud/category/words/) | [Free Support](https://forum.aspose.cloud/c/words) | [Free Trial](https://dashboard.aspose.cloud/#/apps)
