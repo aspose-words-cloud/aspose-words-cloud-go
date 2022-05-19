@@ -132,12 +132,6 @@ type HtmlSaveOptionsDataResult struct {
     ExportRoundtripInformation bool `json:"ExportRoundtripInformation,omitempty"`
 
     // Container class for html save options.
-    ExportShapesAsSvg bool `json:"ExportShapesAsSvg,omitempty"`
-
-    // Container class for html save options.
-    ExportTextBoxAsSvg bool `json:"ExportTextBoxAsSvg,omitempty"`
-
-    // Container class for html save options.
     ExportTextInputFormFieldAsText bool `json:"ExportTextInputFormFieldAsText,omitempty"`
 
     // Container class for html save options.
@@ -299,12 +293,6 @@ type HtmlSaveOptionsData struct {
     ExportRoundtripInformation *bool `json:"ExportRoundtripInformation,omitempty"`
 
     // Container class for html save options.
-    ExportShapesAsSvg *bool `json:"ExportShapesAsSvg,omitempty"`
-
-    // Container class for html save options.
-    ExportTextBoxAsSvg *bool `json:"ExportTextBoxAsSvg,omitempty"`
-
-    // Container class for html save options.
     ExportTextInputFormFieldAsText *bool `json:"ExportTextInputFormFieldAsText,omitempty"`
 
     // Container class for html save options.
@@ -382,10 +370,6 @@ func (obj *HtmlSaveOptionsData) Initialize() {
     if (obj.CustomTimeZoneInfoData != nil) {
         obj.CustomTimeZoneInfoData.Initialize()
     }
-
-
-
-
 
 
 

@@ -132,12 +132,6 @@ type MhtmlSaveOptionsDataResult struct {
     ExportRoundtripInformation bool `json:"ExportRoundtripInformation,omitempty"`
 
     // Container class for mhtml save options.
-    ExportShapesAsSvg bool `json:"ExportShapesAsSvg,omitempty"`
-
-    // Container class for mhtml save options.
-    ExportTextBoxAsSvg bool `json:"ExportTextBoxAsSvg,omitempty"`
-
-    // Container class for mhtml save options.
     ExportTextInputFormFieldAsText bool `json:"ExportTextInputFormFieldAsText,omitempty"`
 
     // Container class for mhtml save options.
@@ -302,12 +296,6 @@ type MhtmlSaveOptionsData struct {
     ExportRoundtripInformation *bool `json:"ExportRoundtripInformation,omitempty"`
 
     // Container class for mhtml save options.
-    ExportShapesAsSvg *bool `json:"ExportShapesAsSvg,omitempty"`
-
-    // Container class for mhtml save options.
-    ExportTextBoxAsSvg *bool `json:"ExportTextBoxAsSvg,omitempty"`
-
-    // Container class for mhtml save options.
     ExportTextInputFormFieldAsText *bool `json:"ExportTextInputFormFieldAsText,omitempty"`
 
     // Container class for mhtml save options.
@@ -392,10 +380,6 @@ func (obj *MhtmlSaveOptionsData) Initialize() {
     if (obj.CustomTimeZoneInfoData != nil) {
         obj.CustomTimeZoneInfoData.Initialize()
     }
-
-
-
-
 
 
 

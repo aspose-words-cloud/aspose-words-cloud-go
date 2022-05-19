@@ -132,12 +132,6 @@ type EpubSaveOptionsDataResult struct {
     ExportRoundtripInformation bool `json:"ExportRoundtripInformation,omitempty"`
 
     // Container class for epub save options.
-    ExportShapesAsSvg bool `json:"ExportShapesAsSvg,omitempty"`
-
-    // Container class for epub save options.
-    ExportTextBoxAsSvg bool `json:"ExportTextBoxAsSvg,omitempty"`
-
-    // Container class for epub save options.
     ExportTextInputFormFieldAsText bool `json:"ExportTextInputFormFieldAsText,omitempty"`
 
     // Container class for epub save options.
@@ -302,12 +296,6 @@ type EpubSaveOptionsData struct {
     ExportRoundtripInformation *bool `json:"ExportRoundtripInformation,omitempty"`
 
     // Container class for epub save options.
-    ExportShapesAsSvg *bool `json:"ExportShapesAsSvg,omitempty"`
-
-    // Container class for epub save options.
-    ExportTextBoxAsSvg *bool `json:"ExportTextBoxAsSvg,omitempty"`
-
-    // Container class for epub save options.
     ExportTextInputFormFieldAsText *bool `json:"ExportTextInputFormFieldAsText,omitempty"`
 
     // Container class for epub save options.
@@ -392,10 +380,6 @@ func (obj *EpubSaveOptionsData) Initialize() {
     if (obj.CustomTimeZoneInfoData != nil) {
         obj.CustomTimeZoneInfoData.Initialize()
     }
-
-
-
-
 
 
 
