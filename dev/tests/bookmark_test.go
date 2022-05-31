@@ -204,3 +204,197 @@ func Test_Bookmark_UpdateBookmarkOnline(t *testing.T) {
     }
 
 }
+
+// Test for deleting bookmark by specified name.
+func Test_Bookmark_DeleteBookmark(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Bookmarks"
+    localFile := "Common/test_multi_pages.docx"
+    bookmarkName := "aspose"
+    remoteFileName := "TestDeleteBookmark.docx"
+
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
+
+
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+
+    request := &models.DeleteBookmarkRequest{
+        Name: ToStringPointer(remoteFileName),
+        BookmarkName: ToStringPointer(bookmarkName),
+        Optionals: options,
+    }
+
+    _, err := client.WordsApi.DeleteBookmark(ctx, request)
+
+    if err != nil {
+        t.Error(err)
+    }
+
+}
+
+// Test for deleting bookmark by specified name online.
+func Test_Bookmark_DeleteBookmarkOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "Common/test_multi_pages.docx"
+    bookmarkName := "aspose"
+
+    requestDocument := OpenFile(t, localFile)
+
+    options := map[string]interface{}{
+    }
+
+    request := &models.DeleteBookmarkOnlineRequest{
+        Document: requestDocument,
+        BookmarkName: ToStringPointer(bookmarkName),
+        Optionals: options,
+    }
+
+    _, _, err := client.WordsApi.DeleteBookmarkOnline(ctx, request)
+    if err != nil {
+        t.Error(err)
+    }
+
+}
+
+// Test for deleting all bookmarks from document.
+func Test_Bookmark_DeleteBookmarks(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Bookmarks"
+    localFile := "Common/test_multi_pages.docx"
+    remoteFileName := "TestDeleteBookmarks.docx"
+
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
+
+
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+
+    request := &models.DeleteBookmarksRequest{
+        Name: ToStringPointer(remoteFileName),
+        Optionals: options,
+    }
+
+    _, err := client.WordsApi.DeleteBookmarks(ctx, request)
+
+    if err != nil {
+        t.Error(err)
+    }
+
+}
+
+// Test for deleting all bookmarks from document online.
+func Test_Bookmark_DeleteBookmarksOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "Common/test_multi_pages.docx"
+
+    requestDocument := OpenFile(t, localFile)
+
+    options := map[string]interface{}{
+    }
+
+    request := &models.DeleteBookmarksOnlineRequest{
+        Document: requestDocument,
+        Optionals: options,
+    }
+
+    _, _, err := client.WordsApi.DeleteBookmarksOnline(ctx, request)
+    if err != nil {
+        t.Error(err)
+    }
+
+}
+
+// Test for inserting new bookmark.
+func Test_Bookmark_InsertBookmark(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Bookmarks"
+    localFile := "Common/test_multi_pages.docx"
+    remoteFileName := "TestInsertBookmark.docx"
+
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
+
+    requestBookmarkStartRangeNode := models.NodeLink{
+        NodeId: ToStringPointer("0.0.0.0"),
+    }
+    requestBookmarkStartRange := models.DocumentPosition{
+        Node: &requestBookmarkStartRangeNode,
+    }
+    requestBookmarkEndRangeNode := models.NodeLink{
+        NodeId: ToStringPointer("0.0.0.0"),
+    }
+    requestBookmarkEndRange := models.DocumentPosition{
+        Node: &requestBookmarkEndRangeNode,
+    }
+    requestBookmark := models.BookmarkInsert{
+        StartRange: &requestBookmarkStartRange,
+        EndRange: &requestBookmarkEndRange,
+        Name: ToStringPointer("new_bookmark"),
+        Text: ToStringPointer("Some text"),
+    }
+
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+
+    request := &models.InsertBookmarkRequest{
+        Name: ToStringPointer(remoteFileName),
+        Bookmark: &requestBookmark,
+        Optionals: options,
+    }
+
+    _, _, err := client.WordsApi.InsertBookmark(ctx, request)
+    if err != nil {
+        t.Error(err)
+    }
+
+}
+
+// Test for inserting new bookmark online.
+func Test_Bookmark_InsertBookmarkOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "Common/test_multi_pages.docx"
+
+    requestDocument := OpenFile(t, localFile)
+    requestBookmarkStartRangeNode := models.NodeLink{
+        NodeId: ToStringPointer("0.0.0.0"),
+    }
+    requestBookmarkStartRange := models.DocumentPosition{
+        Node: &requestBookmarkStartRangeNode,
+    }
+    requestBookmarkEndRangeNode := models.NodeLink{
+        NodeId: ToStringPointer("0.0.0.0"),
+    }
+    requestBookmarkEndRange := models.DocumentPosition{
+        Node: &requestBookmarkEndRangeNode,
+    }
+    requestBookmark := models.BookmarkInsert{
+        StartRange: &requestBookmarkStartRange,
+        EndRange: &requestBookmarkEndRange,
+        Name: ToStringPointer("new_bookmark"),
+        Text: ToStringPointer("Some text"),
+    }
+
+    options := map[string]interface{}{
+    }
+
+    request := &models.InsertBookmarkOnlineRequest{
+        Document: requestDocument,
+        Bookmark: &requestBookmark,
+        Optionals: options,
+    }
+
+    _, _, err := client.WordsApi.InsertBookmarkOnline(ctx, request)
+    if err != nil {
+        t.Error(err)
+    }
+
+}
