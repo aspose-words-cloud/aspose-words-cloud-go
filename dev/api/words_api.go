@@ -1236,6 +1236,186 @@ func (a *WordsApiService) DeleteAllParagraphTabStopsOnline(ctx context.Context, 
     return result.(models.DeleteAllParagraphTabStopsOnlineResponse), response, err
 }
 
+/* WordsApiService Removes a bookmark from the document.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return */
+func (a *WordsApiService) DeleteBookmark(ctx context.Context, data *models.DeleteBookmarkRequest) (*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+
+
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+    return response, err
+}
+
+/* WordsApiService Removes a bookmark from the document.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return map[string]io.Reader*/
+func (a *WordsApiService) DeleteBookmarkOnline(ctx context.Context, data *models.DeleteBookmarkOnlineRequest) (map[string]io.Reader, *http.Response, error) {
+    var (
+        successPayload map[string]io.Reader
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+
+
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return successPayload, nil, err
+        }
+
+        return successPayload, response, &apiError
+    }
+    if err != nil {
+        return successPayload, response, err
+    }
+
+    successPayload, err = models.ParseFilesCollection(response)
+    return successPayload, response, err
+}
+
+/* WordsApiService Removes all bookmarks from the document.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return */
+func (a *WordsApiService) DeleteBookmarks(ctx context.Context, data *models.DeleteBookmarksRequest) (*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+
+
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+    return response, err
+}
+
+/* WordsApiService Removes all bookmarks from the document.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return map[string]io.Reader*/
+func (a *WordsApiService) DeleteBookmarksOnline(ctx context.Context, data *models.DeleteBookmarksOnlineRequest) (map[string]io.Reader, *http.Response, error) {
+    var (
+        successPayload map[string]io.Reader
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+
+
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return successPayload, nil, err
+        }
+
+        return successPayload, response, &apiError
+    }
+    if err != nil {
+        return successPayload, response, err
+    }
+
+    successPayload, err = models.ParseFilesCollection(response)
+    return successPayload, response, err
+}
+
 /* WordsApiService The 'nodePath' parameter should refer to a paragraph, a cell or a row.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  * @data operation request data.
@@ -9182,6 +9362,104 @@ func (a *WordsApiService) GetTablesOnline(ctx context.Context, data *models.GetT
     }
 
     return successPayload, response, err
+}
+
+/* WordsApiService Inserts a new bookmark to the document.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return models.BookmarkResponse*/
+func (a *WordsApiService) InsertBookmark(ctx context.Context, data *models.InsertBookmarkRequest) (models.BookmarkResponse, *http.Response, error) {
+    var (
+        successPayload models.BookmarkResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+
+    defer response.Body.Close()
+
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return successPayload, nil, err
+        }
+
+        return successPayload, response, &apiError
+    }
+    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Inserts a new bookmark to the document.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return InsertBookmarkOnlineResponse*/
+func (a *WordsApiService) InsertBookmarkOnline(ctx context.Context, data *models.InsertBookmarkOnlineRequest) (models.InsertBookmarkOnlineResponse, *http.Response, error) {
+    var (
+        successPayload models.InsertBookmarkOnlineResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+
+
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return successPayload, nil, err
+        }
+
+        return successPayload, response, &apiError
+    }
+    boundary := GetBoundary(response)
+    result, err := data.CreateResponse(response.Body, boundary)
+
+    if err != nil {
+        return successPayload, response, err
+    }
+
+    return result.(models.InsertBookmarkOnlineResponse), response, err
 }
 
 /* WordsApiService Inserts a new comment to the document.
