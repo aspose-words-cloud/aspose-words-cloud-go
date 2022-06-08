@@ -950,7 +950,7 @@ func (a *WordsApiService) CopyStylesFromTemplate(ctx context.Context, data *mode
     return successPayload, response, err
 }
 
-/* WordsApiService Supported extensions: ".doc", ".docx", ".docm", ".dot", ".dotm", ".dotx", ".flatopc", ".fopc", ".flatopc_macro", ".fopc_macro", ".flatopc_template", ".fopc_template", ".flatopc_template_macro", ".fopc_template_macro", ".wordml", ".wml", ".rtf".
+/* WordsApiService Supported all save format extensions.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  * @data operation request data.
 @return models.DocumentResponse*/
