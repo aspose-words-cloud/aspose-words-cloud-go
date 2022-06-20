@@ -1,6 +1,6 @@
 /*
  * --------------------------------------------------------------------------------
- * <copyright company="Aspose" file="document_entry_list.go">
+ * <copyright company="Aspose" file="image_entry_list.go">
  *   Copyright (c) 2022 Aspose.Words for Cloud
  * </copyright>
  * <summary>
@@ -27,37 +27,37 @@
 
 package models
 
-// Represents a list of documents which will be appended to the original resource document.
-type DocumentEntryListResult struct {
-    // Represents a list of documents which will be appended to the original resource document.
-    ApplyBaseDocumentHeadersAndFootersToAppendingDocuments bool `json:"ApplyBaseDocumentHeadersAndFootersToAppendingDocuments,omitempty"`
+// Represents a list of images which will be appended to the original resource document or image.
+type ImageEntryListResult struct {
+    // Represents a list of images which will be appended to the original resource document or image.
+    AppendEachImageOnNewPage bool `json:"AppendEachImageOnNewPage,omitempty"`
 
-    // Represents a list of documents which will be appended to the original resource document.
-    DocumentEntries []DocumentEntryResult `json:"DocumentEntries,omitempty"`
+    // Represents a list of images which will be appended to the original resource document or image.
+    ImageEntries []ImageEntryResult `json:"ImageEntries,omitempty"`
 }
 
-type DocumentEntryList struct {
-    // Represents a list of documents which will be appended to the original resource document.
-    ApplyBaseDocumentHeadersAndFootersToAppendingDocuments *bool `json:"ApplyBaseDocumentHeadersAndFootersToAppendingDocuments,omitempty"`
+type ImageEntryList struct {
+    // Represents a list of images which will be appended to the original resource document or image.
+    AppendEachImageOnNewPage *bool `json:"AppendEachImageOnNewPage,omitempty"`
 
-    // Represents a list of documents which will be appended to the original resource document.
-    DocumentEntries []DocumentEntry `json:"DocumentEntries,omitempty"`
+    // Represents a list of images which will be appended to the original resource document or image.
+    ImageEntries []ImageEntry `json:"ImageEntries,omitempty"`
 }
 
-type IDocumentEntryList interface {
-    IsDocumentEntryList() bool
+type IImageEntryList interface {
+    IsImageEntryList() bool
     Initialize()
 }
 
-func (DocumentEntryList) IsDocumentEntryList() bool {
+func (ImageEntryList) IsImageEntryList() bool {
     return true
 }
 
-func (DocumentEntryList) IsBaseEntryList() bool {
+func (ImageEntryList) IsBaseEntryList() bool {
     return true
 }
 
-func (obj *DocumentEntryList) Initialize() {
+func (obj *ImageEntryList) Initialize() {
 }
 
 

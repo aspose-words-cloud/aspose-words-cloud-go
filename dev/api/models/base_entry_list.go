@@ -1,6 +1,6 @@
 /*
  * --------------------------------------------------------------------------------
- * <copyright company="Aspose" file="document_entry_list.go">
+ * <copyright company="Aspose" file="base_entry_list.go">
  *   Copyright (c) 2022 Aspose.Words for Cloud
  * </copyright>
  * <summary>
@@ -27,37 +27,24 @@
 
 package models
 
-// Represents a list of documents which will be appended to the original resource document.
-type DocumentEntryListResult struct {
-    // Represents a list of documents which will be appended to the original resource document.
-    ApplyBaseDocumentHeadersAndFootersToAppendingDocuments bool `json:"ApplyBaseDocumentHeadersAndFootersToAppendingDocuments,omitempty"`
-
-    // Represents a list of documents which will be appended to the original resource document.
-    DocumentEntries []DocumentEntryResult `json:"DocumentEntries,omitempty"`
+// Represents a list of entries which will be appended to the original resource entry.
+type BaseEntryListResult struct {
 }
 
-type DocumentEntryList struct {
-    // Represents a list of documents which will be appended to the original resource document.
-    ApplyBaseDocumentHeadersAndFootersToAppendingDocuments *bool `json:"ApplyBaseDocumentHeadersAndFootersToAppendingDocuments,omitempty"`
-
-    // Represents a list of documents which will be appended to the original resource document.
-    DocumentEntries []DocumentEntry `json:"DocumentEntries,omitempty"`
+type BaseEntryList struct {
 }
 
-type IDocumentEntryList interface {
-    IsDocumentEntryList() bool
+type IBaseEntryList interface {
+    IsBaseEntryList() bool
     Initialize()
 }
 
-func (DocumentEntryList) IsDocumentEntryList() bool {
+func (BaseEntryList) IsBaseEntryList() bool {
     return true
 }
 
-func (DocumentEntryList) IsBaseEntryList() bool {
-    return true
-}
 
-func (obj *DocumentEntryList) Initialize() {
+func (obj *BaseEntryList) Initialize() {
 }
 
 

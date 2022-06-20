@@ -1,6 +1,6 @@
 /*
  * --------------------------------------------------------------------------------
- * <copyright company="Aspose" file="document_entry_list.go">
+ * <copyright company="Aspose" file="image_entry.go">
  *   Copyright (c) 2022 Aspose.Words for Cloud
  * </copyright>
  * <summary>
@@ -27,37 +27,31 @@
 
 package models
 
-// Represents a list of documents which will be appended to the original resource document.
-type DocumentEntryListResult struct {
-    // Represents a list of documents which will be appended to the original resource document.
-    ApplyBaseDocumentHeadersAndFootersToAppendingDocuments bool `json:"ApplyBaseDocumentHeadersAndFootersToAppendingDocuments,omitempty"`
-
-    // Represents a list of documents which will be appended to the original resource document.
-    DocumentEntries []DocumentEntryResult `json:"DocumentEntries,omitempty"`
+// Represents a image which will be appended to the original resource image or document.
+type ImageEntryResult struct {
+    // Represents a image which will be appended to the original resource image or document.
+    Href string `json:"Href,omitempty"`
 }
 
-type DocumentEntryList struct {
-    // Represents a list of documents which will be appended to the original resource document.
-    ApplyBaseDocumentHeadersAndFootersToAppendingDocuments *bool `json:"ApplyBaseDocumentHeadersAndFootersToAppendingDocuments,omitempty"`
-
-    // Represents a list of documents which will be appended to the original resource document.
-    DocumentEntries []DocumentEntry `json:"DocumentEntries,omitempty"`
+type ImageEntry struct {
+    // Represents a image which will be appended to the original resource image or document.
+    Href *string `json:"Href,omitempty"`
 }
 
-type IDocumentEntryList interface {
-    IsDocumentEntryList() bool
+type IImageEntry interface {
+    IsImageEntry() bool
     Initialize()
 }
 
-func (DocumentEntryList) IsDocumentEntryList() bool {
+func (ImageEntry) IsImageEntry() bool {
     return true
 }
 
-func (DocumentEntryList) IsBaseEntryList() bool {
+func (ImageEntry) IsBaseEntry() bool {
     return true
 }
 
-func (obj *DocumentEntryList) Initialize() {
+func (obj *ImageEntry) Initialize() {
 }
 
 

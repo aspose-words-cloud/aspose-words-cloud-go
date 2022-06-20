@@ -40,8 +40,8 @@ import (
 type AppendDocumentOnlineRequest struct {
         // Original document.
         Document io.ReadCloser
-        // <see cref="DocumentEntryList"/> with a list of documents to append.
-        DocumentList IDocumentEntryList
+        // <see cref="BaseEntryList"/> with a list of entries to append.
+        DocumentList IBaseEntryList
     /* optional (nil or map[string]interface{}) with one or more of key / value pairs:
         key: "loadEncoding" value: (*string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
         key: "password" value: (*string) Password of protected Word document. Use the parameter to pass a password via SDK. SDK encrypts it automatically. We don't recommend to use the parameter to pass a plain password for direct call of API.

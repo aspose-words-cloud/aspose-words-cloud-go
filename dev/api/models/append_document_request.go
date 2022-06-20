@@ -39,8 +39,8 @@ import (
 type AppendDocumentRequest struct {
         // The filename of the input document.
         Name *string
-        // <see cref="DocumentEntryList"/> with a list of documents to append.
-        DocumentList IDocumentEntryList
+        // <see cref="BaseEntryList"/> with a list of entries to append.
+        DocumentList IBaseEntryList
     /* optional (nil or map[string]interface{}) with one or more of key / value pairs:
         key: "folder" value: (*string) Original document folder.
         key: "storage" value: (*string) Original document storage.

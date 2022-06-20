@@ -1,6 +1,6 @@
 /*
  * --------------------------------------------------------------------------------
- * <copyright company="Aspose" file="document_entry_list.go">
+ * <copyright company="Aspose" file="base_entry.go">
  *   Copyright (c) 2022 Aspose.Words for Cloud
  * </copyright>
  * <summary>
@@ -27,37 +27,28 @@
 
 package models
 
-// Represents a list of documents which will be appended to the original resource document.
-type DocumentEntryListResult struct {
-    // Represents a list of documents which will be appended to the original resource document.
-    ApplyBaseDocumentHeadersAndFootersToAppendingDocuments bool `json:"ApplyBaseDocumentHeadersAndFootersToAppendingDocuments,omitempty"`
-
-    // Represents a list of documents which will be appended to the original resource document.
-    DocumentEntries []DocumentEntryResult `json:"DocumentEntries,omitempty"`
+// Represents a entry which will be appended to the original resource document.
+type BaseEntryResult struct {
+    // Represents a entry which will be appended to the original resource document.
+    Href string `json:"Href,omitempty"`
 }
 
-type DocumentEntryList struct {
-    // Represents a list of documents which will be appended to the original resource document.
-    ApplyBaseDocumentHeadersAndFootersToAppendingDocuments *bool `json:"ApplyBaseDocumentHeadersAndFootersToAppendingDocuments,omitempty"`
-
-    // Represents a list of documents which will be appended to the original resource document.
-    DocumentEntries []DocumentEntry `json:"DocumentEntries,omitempty"`
+type BaseEntry struct {
+    // Represents a entry which will be appended to the original resource document.
+    Href *string `json:"Href,omitempty"`
 }
 
-type IDocumentEntryList interface {
-    IsDocumentEntryList() bool
+type IBaseEntry interface {
+    IsBaseEntry() bool
     Initialize()
 }
 
-func (DocumentEntryList) IsDocumentEntryList() bool {
+func (BaseEntry) IsBaseEntry() bool {
     return true
 }
 
-func (DocumentEntryList) IsBaseEntryList() bool {
-    return true
-}
 
-func (obj *DocumentEntryList) Initialize() {
+func (obj *BaseEntry) Initialize() {
 }
 
 
