@@ -1,6 +1,6 @@
 /*
  * --------------------------------------------------------------------------------
- * <copyright company="Aspose" file="report_build_options.go">
+ * <copyright company="Aspose" file="compress_options.go">
  *   Copyright (c) 2022 Aspose.Words for Cloud
  * </copyright>
  * <summary>
@@ -27,15 +27,34 @@
 
 package models
 
-// Specifies options controlling behavior of ReportingEngine while building a report.
-type ReportBuildOptions string
+// Options of document compress.
+type CompressOptionsResult struct {
+    // Options of document compress.
+    ImagesQuality int32 `json:"ImagesQuality,omitempty"`
 
-// List of ReportBuildOptions
-const (
-    NONE ReportBuildOptions = "None"
-    ALLOWMISSINGMEMBERS ReportBuildOptions = "AllowMissingMembers"
-    REMOVEEMPTYPARAGRAPHS ReportBuildOptions = "RemoveEmptyParagraphs"
-    INLINEERRORMESSAGES ReportBuildOptions = "InlineErrorMessages"
-    USELEGACYHEADERFOOTERVISITING ReportBuildOptions = "UseLegacyHeaderFooterVisiting"
-    RESPECTJPEGEXIFORIENTATION ReportBuildOptions = "RespectJpegExifOrientation"
-)
+    // Options of document compress.
+    ImagesReduceSizeFactor int32 `json:"ImagesReduceSizeFactor,omitempty"`
+}
+
+type CompressOptions struct {
+    // Options of document compress.
+    ImagesQuality *int32 `json:"ImagesQuality,omitempty"`
+
+    // Options of document compress.
+    ImagesReduceSizeFactor *int32 `json:"ImagesReduceSizeFactor,omitempty"`
+}
+
+type ICompressOptions interface {
+    IsCompressOptions() bool
+    Initialize()
+}
+
+func (CompressOptions) IsCompressOptions() bool {
+    return true
+}
+
+
+func (obj *CompressOptions) Initialize() {
+}
+
+

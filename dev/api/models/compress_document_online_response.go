@@ -1,6 +1,6 @@
 /*
  * --------------------------------------------------------------------------------
- * <copyright company="Aspose" file="report_build_options.go">
+ * <copyright company="Aspose" file="compress_document_online_response.go">
  *   Copyright (c) 2022 Aspose.Words for Cloud
  * </copyright>
  * <summary>
@@ -27,15 +27,16 @@
 
 package models
 
-// Specifies options controlling behavior of ReportingEngine while building a report.
-type ReportBuildOptions string
+import "io"
 
-// List of ReportBuildOptions
-const (
-    NONE ReportBuildOptions = "None"
-    ALLOWMISSINGMEMBERS ReportBuildOptions = "AllowMissingMembers"
-    REMOVEEMPTYPARAGRAPHS ReportBuildOptions = "RemoveEmptyParagraphs"
-    INLINEERRORMESSAGES ReportBuildOptions = "InlineErrorMessages"
-    USELEGACYHEADERFOOTERVISITING ReportBuildOptions = "UseLegacyHeaderFooterVisiting"
-    RESPECTJPEGEXIFORIENTATION ReportBuildOptions = "RespectJpegExifOrientation"
-)
+
+// CompressDocumentOnlineResponse struct
+// Compress and resize images inside the document.
+type CompressDocumentOnlineResponse struct {
+    // The response model.
+    Model CompressResponse `json:"Model,omitempty"`
+
+
+    // The document after modification.
+    Document map[string]io.Reader `json:"Document,omitempty"`
+}
