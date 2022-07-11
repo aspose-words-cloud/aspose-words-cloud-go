@@ -678,6 +678,104 @@ func (a *WordsApiService) CompareDocumentOnline(ctx context.Context, data *model
     return result.(models.CompareDocumentOnlineResponse), response, err
 }
 
+/* WordsApiService The default settings allows to reduce the size of the document without any visible degradation of images quality.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return models.CompressResponse*/
+func (a *WordsApiService) CompressDocument(ctx context.Context, data *models.CompressDocumentRequest) (models.CompressResponse, *http.Response, error) {
+    var (
+        successPayload models.CompressResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+
+    defer response.Body.Close()
+
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return successPayload, nil, err
+        }
+
+        return successPayload, response, &apiError
+    }
+    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Compress and resize images inside the document.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return CompressDocumentOnlineResponse*/
+func (a *WordsApiService) CompressDocumentOnline(ctx context.Context, data *models.CompressDocumentOnlineRequest) (models.CompressDocumentOnlineResponse, *http.Response, error) {
+    var (
+        successPayload models.CompressDocumentOnlineResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+
+
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return successPayload, nil, err
+        }
+
+        return successPayload, response, &apiError
+    }
+    boundary := GetBoundary(response)
+    result, err := data.CreateResponse(response.Body, boundary)
+
+    if err != nil {
+        return successPayload, response, err
+    }
+
+    return result.(models.CompressDocumentOnlineResponse), response, err
+}
+
 /* WordsApiService Converts a document on a local drive to the specified format.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  * @data operation request data.
