@@ -28,6 +28,7 @@
 package models
 
 import (
+    "fmt"
 	"io/ioutil"
 	"net/url"
 	"strings"
@@ -60,6 +61,7 @@ func (data *ConvertDocumentRequest) CreateRequestData() (RequestData, error) {
 
     // create path and map variables
     result.Path = "/words/convert"
+    result.Path = strings.Replace(result.Path, "{"+"outPath"+"}", fmt.Sprintf("%v", data.Optionals["outPath"]), -1)
 
     result.Path = strings.Replace(result.Path, "/<nil>", "", -1)
     result.Path = strings.Replace(result.Path, "//", "/", -1)
@@ -93,11 +95,6 @@ func (data *ConvertDocumentRequest) CreateRequestData() (RequestData, error) {
 
 
     result.QueryParams.Add("Format", parameterToString(*data.Format, ""))
-
-
-    if localVarTempParam, localVarOk := data.Optionals["outPath"].(string); localVarOk {
-        result.QueryParams.Add("OutPath", parameterToString(localVarTempParam, ""))
-    }
 
 
     if localVarTempParam, localVarOk := data.Optionals["fileNameFieldValue"].(string); localVarOk {
