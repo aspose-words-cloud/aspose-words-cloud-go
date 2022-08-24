@@ -28,6 +28,7 @@
 package models
 
 import (
+    "fmt"
 	"io/ioutil"
 	"net/url"
 	"strings"
@@ -44,6 +45,9 @@ type ConvertDocumentRequest struct {
         key: "outPath" value: (*string) The path to the output document on a local storage.
         key: "fileNameFieldValue" value: (*string) The filename of the output document, that will be used when the resulting document has a dynamic field {filename}. If it is not set, the "sourceFilename" will be used instead.
         key: "storage" value: (*string) Original document storage.
+        key: "loadEncoding" value: (*string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
+        key: "password" value: (*string) Password of protected Word document. Use the parameter to pass a password via SDK. SDK encrypts it automatically. We don't recommend to use the parameter to pass a plain password for direct call of API.
+        key: "encryptedPassword" value: (*string) Password of protected Word document. Use the parameter to pass an encrypted password for direct calls of API. See SDK code for encyption details.
         key: "fontsLocation" value: (*string) Folder in filestorage with custom fonts. */
     Optionals map[string]interface{}
 }
@@ -57,6 +61,7 @@ func (data *ConvertDocumentRequest) CreateRequestData() (RequestData, error) {
 
     // create path and map variables
     result.Path = "/words/convert"
+    result.Path = strings.Replace(result.Path, "{"+"outPath"+"}", fmt.Sprintf("%v", data.Optionals["outPath"]), -1)
 
     result.Path = strings.Replace(result.Path, "/<nil>", "", -1)
     result.Path = strings.Replace(result.Path, "//", "/", -1)
@@ -75,17 +80,21 @@ func (data *ConvertDocumentRequest) CreateRequestData() (RequestData, error) {
     if err := typeCheckParameter(data.Optionals["storage"], "string", "data.Optionals[storage]"); err != nil {
         return result, err
     }
+    if err := typeCheckParameter(data.Optionals["loadEncoding"], "string", "data.Optionals[loadEncoding]"); err != nil {
+        return result, err
+    }
+    if err := typeCheckParameter(data.Optionals["password"], "string", "data.Optionals[password]"); err != nil {
+        return result, err
+    }
+    if err := typeCheckParameter(data.Optionals["encryptedPassword"], "string", "data.Optionals[encryptedPassword]"); err != nil {
+        return result, err
+    }
     if err := typeCheckParameter(data.Optionals["fontsLocation"], "string", "data.Optionals[fontsLocation]"); err != nil {
         return result, err
     }
 
 
     result.QueryParams.Add("Format", parameterToString(*data.Format, ""))
-
-
-    if localVarTempParam, localVarOk := data.Optionals["outPath"].(string); localVarOk {
-        result.QueryParams.Add("OutPath", parameterToString(localVarTempParam, ""))
-    }
 
 
     if localVarTempParam, localVarOk := data.Optionals["fileNameFieldValue"].(string); localVarOk {
@@ -95,6 +104,21 @@ func (data *ConvertDocumentRequest) CreateRequestData() (RequestData, error) {
 
     if localVarTempParam, localVarOk := data.Optionals["storage"].(string); localVarOk {
         result.QueryParams.Add("Storage", parameterToString(localVarTempParam, ""))
+    }
+
+
+    if localVarTempParam, localVarOk := data.Optionals["loadEncoding"].(string); localVarOk {
+        result.QueryParams.Add("LoadEncoding", parameterToString(localVarTempParam, ""))
+    }
+
+
+    if localVarTempParam, localVarOk := data.Optionals["password"].(string); localVarOk {
+        result.QueryParams.Add("Password", parameterToString(localVarTempParam, ""))
+    }
+
+
+    if localVarTempParam, localVarOk := data.Optionals["encryptedPassword"].(string); localVarOk {
+        result.QueryParams.Add("EncryptedPassword", parameterToString(localVarTempParam, ""))
     }
 
 
