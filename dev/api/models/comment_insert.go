@@ -71,6 +71,7 @@ type CommentInsert struct {
 type ICommentInsert interface {
     IsCommentInsert() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (CommentInsert) IsCommentInsert() bool {
@@ -86,14 +87,15 @@ func (obj *CommentInsert) Initialize() {
         obj.RangeEnd.Initialize()
     }
 
-
-
     if (obj.RangeStart != nil) {
         obj.RangeStart.Initialize()
     }
 
 
+}
 
+func (obj *CommentInsert) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    return resultFilesContent
 }
 
 

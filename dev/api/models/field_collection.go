@@ -47,6 +47,7 @@ type FieldCollection struct {
 type IFieldCollection interface {
     IsFieldCollection() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (FieldCollection) IsFieldCollection() bool {
@@ -62,8 +63,23 @@ func (obj *FieldCollection) Initialize() {
         obj.Link.Initialize()
     }
 
+    if (obj.List != nil) {
+        for _, element := range obj.List {
+            element.Initialize()
+        }
+    }
 
 
+}
+
+func (obj *FieldCollection) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    if (obj.List != nil) {
+        for _, element := range obj.List {
+            resultFilesContent = element.CollectFilesContent(resultFilesContent)
+        }
+    }
+
+    return resultFilesContent
 }
 
 

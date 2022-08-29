@@ -71,6 +71,7 @@ type Section struct {
 type ISection interface {
     IsSection() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (Section) IsSection() bool {
@@ -86,32 +87,55 @@ func (obj *Section) Initialize() {
         obj.Link.Initialize()
     }
 
-
-
-
+    if (obj.ChildNodes != nil) {
+        for _, element := range obj.ChildNodes {
+            element.Initialize()
+        }
+    }
 
     if (obj.HeaderFooters != nil) {
         obj.HeaderFooters.Initialize()
     }
 
-
-
     if (obj.PageSetup != nil) {
         obj.PageSetup.Initialize()
     }
-
-
 
     if (obj.Paragraphs != nil) {
         obj.Paragraphs.Initialize()
     }
 
-
-
     if (obj.Tables != nil) {
         obj.Tables.Initialize()
     }
 
+
+}
+
+func (obj *Section) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    if (obj.ChildNodes != nil) {
+        for _, element := range obj.ChildNodes {
+            resultFilesContent = element.CollectFilesContent(resultFilesContent)
+        }
+    }
+
+    if (obj.HeaderFooters != nil) {
+        resultFilesContent = obj.HeaderFooters.CollectFilesContent(resultFilesContent)
+    }
+
+    if (obj.PageSetup != nil) {
+        resultFilesContent = obj.PageSetup.CollectFilesContent(resultFilesContent)
+    }
+
+    if (obj.Paragraphs != nil) {
+        resultFilesContent = obj.Paragraphs.CollectFilesContent(resultFilesContent)
+    }
+
+    if (obj.Tables != nil) {
+        resultFilesContent = obj.Tables.CollectFilesContent(resultFilesContent)
+    }
+
+    return resultFilesContent
 }
 
 

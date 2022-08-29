@@ -29,12 +29,12 @@ package models
 
 import (
     "fmt"
-	"io/ioutil"
-	"net/url"
-	"strings"
+    "io/ioutil"
+    "net/url"
+    "strings"
     "io"
     "encoding/json"
-	"mime/multipart"
+    "mime/multipart"
 )
 
 // UpdateParagraphListFormatOnlineRequest contains request data for WordsApiService.UpdateParagraphListFormatOnline method.
@@ -60,6 +60,7 @@ type UpdateParagraphListFormatOnlineRequest struct {
 func (data *UpdateParagraphListFormatOnlineRequest) CreateRequestData() (RequestData, error) {
 
     var result RequestData
+    var filesContentData = make([]FileContent, 0)
 
     result.Method = strings.ToUpper("put")
 
@@ -132,27 +133,6 @@ func (data *UpdateParagraphListFormatOnlineRequest) CreateRequestData() (Request
     }
 
 
-    // to determine the Content-Type header
-    localVarHttpContentTypes := []string{ "multipart/form-data", }
-
-    // set Content-Type header
-    localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
-    if localVarHttpContentType != "" {
-        result.HeaderParams["Content-Type"] = localVarHttpContentType
-    }
-
-    // to determine the Accept header
-    localVarHttpHeaderAccepts := []string{
-        "application/xml",
-        "application/json",
-    }
-
-    // set Accept header
-    localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
-    if localVarHttpHeaderAccept != "" {
-        result.HeaderParams["Accept"] = localVarHttpHeaderAccept
-    }
-
 
     _document := data.Document
     if _document != nil {
@@ -161,10 +141,14 @@ func (data *UpdateParagraphListFormatOnlineRequest) CreateRequestData() (Request
         result.FormParams = append(result.FormParams, NewFileFormParamContainer("document", fbs))
     }
 
+    result.FormParams = append(result.FormParams, NewJsonFormParamContainer("ListFormatDto", parameterToString(data.ListFormatDto, "")))
+    filesContentData = data.ListFormatDto.CollectFilesContent(filesContentData)
 
-    result.FormParams = append(result.FormParams, NewTextFormParamContainer("ListFormatDto", parameterToString(data.ListFormatDto, "")))
 
-
+    for _, fileContentData := range filesContentData {
+        fbs, _ := ioutil.ReadAll(fileContentData.Content)
+        result.FormParams = append(result.FormParams, NewFileFormParamContainer(fileContentData.Id, fbs))
+    }
 
     return result, nil
 }

@@ -47,6 +47,7 @@ type CommentsCollection struct {
 type ICommentsCollection interface {
     IsCommentsCollection() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (CommentsCollection) IsCommentsCollection() bool {
@@ -62,8 +63,23 @@ func (obj *CommentsCollection) Initialize() {
         obj.Link.Initialize()
     }
 
+    if (obj.CommentList != nil) {
+        for _, element := range obj.CommentList {
+            element.Initialize()
+        }
+    }
 
 
+}
+
+func (obj *CommentsCollection) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    if (obj.CommentList != nil) {
+        for _, element := range obj.CommentList {
+            resultFilesContent = element.CollectFilesContent(resultFilesContent)
+        }
+    }
+
+    return resultFilesContent
 }
 
 

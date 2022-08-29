@@ -149,6 +149,7 @@ type DotxSaveOptionsData struct {
 type IDotxSaveOptionsData interface {
     IsDotxSaveOptionsData() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (DotxSaveOptionsData) IsDotxSaveOptionsData() bool {
@@ -167,42 +168,16 @@ func (obj *DotxSaveOptionsData) Initialize() {
     var _SaveFormat = "dotx"
     obj.SaveFormat = &_SaveFormat
 
+
     if (obj.CustomTimeZoneInfoData != nil) {
         obj.CustomTimeZoneInfoData.Initialize()
     }
 
 
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+func (obj *DotxSaveOptionsData) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    return resultFilesContent
 }
 
 

@@ -41,6 +41,7 @@ type LinkElement struct {
 type ILinkElement interface {
     IsLinkElement() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (LinkElement) IsLinkElement() bool {
@@ -53,6 +54,15 @@ func (obj *LinkElement) Initialize() {
         obj.Link.Initialize()
     }
 
+
+}
+
+func (obj *LinkElement) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    if (obj.Link != nil) {
+        resultFilesContent = obj.Link.CollectFilesContent(resultFilesContent)
+    }
+
+    return resultFilesContent
 }
 
 

@@ -29,12 +29,12 @@ package models
 
 import (
     "fmt"
-	"io/ioutil"
-	"net/url"
-	"strings"
+    "io/ioutil"
+    "net/url"
+    "strings"
     "io"
     "encoding/json"
-	"mime/multipart"
+    "mime/multipart"
 )
 
 // ReplaceWithTextOnlineRequest contains request data for WordsApiService.ReplaceWithTextOnline method.
@@ -58,6 +58,7 @@ type ReplaceWithTextOnlineRequest struct {
 func (data *ReplaceWithTextOnlineRequest) CreateRequestData() (RequestData, error) {
 
     var result RequestData
+    var filesContentData = make([]FileContent, 0)
 
     result.Method = strings.ToUpper("put")
 
@@ -114,27 +115,6 @@ func (data *ReplaceWithTextOnlineRequest) CreateRequestData() (RequestData, erro
     }
 
 
-    // to determine the Content-Type header
-    localVarHttpContentTypes := []string{ "multipart/form-data", }
-
-    // set Content-Type header
-    localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
-    if localVarHttpContentType != "" {
-        result.HeaderParams["Content-Type"] = localVarHttpContentType
-    }
-
-    // to determine the Accept header
-    localVarHttpHeaderAccepts := []string{
-        "application/xml",
-        "application/json",
-    }
-
-    // set Accept header
-    localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
-    if localVarHttpHeaderAccept != "" {
-        result.HeaderParams["Accept"] = localVarHttpHeaderAccept
-    }
-
 
     _document := data.Document
     if _document != nil {
@@ -143,10 +123,14 @@ func (data *ReplaceWithTextOnlineRequest) CreateRequestData() (RequestData, erro
         result.FormParams = append(result.FormParams, NewFileFormParamContainer("document", fbs))
     }
 
+    result.FormParams = append(result.FormParams, NewJsonFormParamContainer("RangeText", parameterToString(data.RangeText, "")))
+    filesContentData = data.RangeText.CollectFilesContent(filesContentData)
 
-    result.FormParams = append(result.FormParams, NewTextFormParamContainer("RangeText", parameterToString(data.RangeText, "")))
 
-
+    for _, fileContentData := range filesContentData {
+        fbs, _ := ioutil.ReadAll(fileContentData.Content)
+        result.FormParams = append(result.FormParams, NewFileFormParamContainer(fileContentData.Id, fbs))
+    }
 
     return result, nil
 }

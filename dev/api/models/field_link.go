@@ -53,6 +53,7 @@ type FieldLink struct {
 type IFieldLink interface {
     IsFieldLink() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (FieldLink) IsFieldLink() bool {
@@ -73,9 +74,10 @@ func (obj *FieldLink) Initialize() {
     }
 
 
+}
 
-
-
+func (obj *FieldLink) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    return resultFilesContent
 }
 
 

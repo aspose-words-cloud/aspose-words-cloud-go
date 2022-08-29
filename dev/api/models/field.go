@@ -65,6 +65,7 @@ type Field struct {
 type IField interface {
     IsField() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (Field) IsField() bool {
@@ -89,13 +90,10 @@ func (obj *Field) Initialize() {
     }
 
 
+}
 
-
-
-
-
-
-
+func (obj *Field) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    return resultFilesContent
 }
 
 

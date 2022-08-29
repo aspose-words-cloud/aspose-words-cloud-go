@@ -149,6 +149,7 @@ type DocxSaveOptionsData struct {
 type IDocxSaveOptionsData interface {
     IsDocxSaveOptionsData() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (DocxSaveOptionsData) IsDocxSaveOptionsData() bool {
@@ -167,42 +168,16 @@ func (obj *DocxSaveOptionsData) Initialize() {
     var _SaveFormat = "docx"
     obj.SaveFormat = &_SaveFormat
 
+
     if (obj.CustomTimeZoneInfoData != nil) {
         obj.CustomTimeZoneInfoData.Initialize()
     }
 
 
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+func (obj *DocxSaveOptionsData) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    return resultFilesContent
 }
 
 

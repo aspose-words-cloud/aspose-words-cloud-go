@@ -47,6 +47,7 @@ type FormFieldCollection struct {
 type IFormFieldCollection interface {
     IsFormFieldCollection() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (FormFieldCollection) IsFormFieldCollection() bool {
@@ -62,8 +63,23 @@ func (obj *FormFieldCollection) Initialize() {
         obj.Link.Initialize()
     }
 
+    if (obj.List != nil) {
+        for _, element := range obj.List {
+            element.Initialize()
+        }
+    }
 
 
+}
+
+func (obj *FormFieldCollection) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    if (obj.List != nil) {
+        for _, element := range obj.List {
+            resultFilesContent = element.CollectFilesContent(resultFilesContent)
+        }
+    }
+
+    return resultFilesContent
 }
 
 

@@ -47,6 +47,7 @@ type TableLink struct {
 type ITableLink interface {
     IsTableLink() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (TableLink) IsTableLink() bool {
@@ -67,7 +68,10 @@ func (obj *TableLink) Initialize() {
     }
 
 
+}
 
+func (obj *TableLink) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    return resultFilesContent
 }
 
 

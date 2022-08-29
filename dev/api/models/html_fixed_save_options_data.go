@@ -251,6 +251,7 @@ type HtmlFixedSaveOptionsData struct {
 type IHtmlFixedSaveOptionsData interface {
     IsHtmlFixedSaveOptionsData() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (HtmlFixedSaveOptionsData) IsHtmlFixedSaveOptionsData() bool {
@@ -269,80 +270,20 @@ func (obj *HtmlFixedSaveOptionsData) Initialize() {
     var _SaveFormat = "htmlfixed"
     obj.SaveFormat = &_SaveFormat
 
+
     if (obj.CustomTimeZoneInfoData != nil) {
         obj.CustomTimeZoneInfoData.Initialize()
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     if (obj.MetafileRenderingOptions != nil) {
         obj.MetafileRenderingOptions.Initialize()
     }
 
 
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+func (obj *HtmlFixedSaveOptionsData) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    return resultFilesContent
 }
 
 

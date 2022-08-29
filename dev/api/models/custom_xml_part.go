@@ -53,6 +53,7 @@ type CustomXmlPart struct {
 type ICustomXmlPart interface {
     IsCustomXmlPart() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (CustomXmlPart) IsCustomXmlPart() bool {
@@ -73,9 +74,10 @@ func (obj *CustomXmlPart) Initialize() {
     }
 
 
+}
 
-
-
+func (obj *CustomXmlPart) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    return resultFilesContent
 }
 
 

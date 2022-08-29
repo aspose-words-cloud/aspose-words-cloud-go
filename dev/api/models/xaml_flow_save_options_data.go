@@ -137,6 +137,7 @@ type XamlFlowSaveOptionsData struct {
 type IXamlFlowSaveOptionsData interface {
     IsXamlFlowSaveOptionsData() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (XamlFlowSaveOptionsData) IsXamlFlowSaveOptionsData() bool {
@@ -151,38 +152,16 @@ func (obj *XamlFlowSaveOptionsData) Initialize() {
     var _SaveFormat = "xamlflow"
     obj.SaveFormat = &_SaveFormat
 
+
     if (obj.CustomTimeZoneInfoData != nil) {
         obj.CustomTimeZoneInfoData.Initialize()
     }
 
 
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+func (obj *XamlFlowSaveOptionsData) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    return resultFilesContent
 }
 
 

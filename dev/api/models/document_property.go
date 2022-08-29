@@ -59,6 +59,7 @@ type DocumentProperty struct {
 type IDocumentProperty interface {
     IsDocumentProperty() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (DocumentProperty) IsDocumentProperty() bool {
@@ -75,11 +76,10 @@ func (obj *DocumentProperty) Initialize() {
     }
 
 
+}
 
-
-
-
-
+func (obj *DocumentProperty) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    return resultFilesContent
 }
 
 

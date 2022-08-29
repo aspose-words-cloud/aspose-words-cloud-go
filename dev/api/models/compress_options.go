@@ -47,6 +47,7 @@ type CompressOptions struct {
 type ICompressOptions interface {
     IsCompressOptions() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (CompressOptions) IsCompressOptions() bool {
@@ -55,6 +56,10 @@ func (CompressOptions) IsCompressOptions() bool {
 
 
 func (obj *CompressOptions) Initialize() {
+}
+
+func (obj *CompressOptions) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    return resultFilesContent
 }
 
 

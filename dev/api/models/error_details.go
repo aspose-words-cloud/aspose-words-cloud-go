@@ -47,6 +47,7 @@ type ErrorDetails struct {
 type IErrorDetails interface {
     IsErrorDetails() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (ErrorDetails) IsErrorDetails() bool {
@@ -55,6 +56,10 @@ func (ErrorDetails) IsErrorDetails() bool {
 
 
 func (obj *ErrorDetails) Initialize() {
+}
+
+func (obj *ErrorDetails) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    return resultFilesContent
 }
 
 

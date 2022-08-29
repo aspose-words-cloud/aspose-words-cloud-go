@@ -317,6 +317,7 @@ type PdfSaveOptionsData struct {
 type IPdfSaveOptionsData interface {
     IsPdfSaveOptionsData() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (PdfSaveOptionsData) IsPdfSaveOptionsData() bool {
@@ -335,89 +336,48 @@ func (obj *PdfSaveOptionsData) Initialize() {
     var _SaveFormat = "pdf"
     obj.SaveFormat = &_SaveFormat
 
+
     if (obj.CustomTimeZoneInfoData != nil) {
         obj.CustomTimeZoneInfoData.Initialize()
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     if (obj.MetafileRenderingOptions != nil) {
         obj.MetafileRenderingOptions.Initialize()
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     if (obj.DigitalSignatureDetails != nil) {
         obj.DigitalSignatureDetails.Initialize()
     }
-
-
-
-
 
     if (obj.DownsampleOptions != nil) {
         obj.DownsampleOptions.Initialize()
     }
 
-
-
-
-
     if (obj.EncryptionDetails != nil) {
         obj.EncryptionDetails.Initialize()
     }
 
+    if (obj.OutlineOptions != nil) {
+        obj.OutlineOptions.Initialize()
+    }
 
 
+}
+
+func (obj *PdfSaveOptionsData) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    if (obj.DigitalSignatureDetails != nil) {
+        resultFilesContent = obj.DigitalSignatureDetails.CollectFilesContent(resultFilesContent)
+    }
 
 
+    if (obj.DownsampleOptions != nil) {
+        resultFilesContent = obj.DownsampleOptions.CollectFilesContent(resultFilesContent)
+    }
 
 
-
-
-
+    if (obj.EncryptionDetails != nil) {
+        resultFilesContent = obj.EncryptionDetails.CollectFilesContent(resultFilesContent)
+    }
 
 
 
@@ -428,7 +388,7 @@ func (obj *PdfSaveOptionsData) Initialize() {
 
 
     if (obj.OutlineOptions != nil) {
-        obj.OutlineOptions.Initialize()
+        resultFilesContent = obj.OutlineOptions.CollectFilesContent(resultFilesContent)
     }
 
 
@@ -440,13 +400,7 @@ func (obj *PdfSaveOptionsData) Initialize() {
 
 
 
-
-
-
-
-
-
-
+    return resultFilesContent
 }
 
 

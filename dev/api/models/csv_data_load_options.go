@@ -59,6 +59,7 @@ type CsvDataLoadOptions struct {
 type ICsvDataLoadOptions interface {
     IsCsvDataLoadOptions() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (CsvDataLoadOptions) IsCsvDataLoadOptions() bool {
@@ -67,6 +68,10 @@ func (CsvDataLoadOptions) IsCsvDataLoadOptions() bool {
 
 
 func (obj *CsvDataLoadOptions) Initialize() {
+}
+
+func (obj *CsvDataLoadOptions) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    return resultFilesContent
 }
 
 

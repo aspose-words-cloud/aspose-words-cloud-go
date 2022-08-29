@@ -28,10 +28,9 @@
 package models
 
 import (
-    "fmt"
-	"io/ioutil"
-	"net/url"
-	"strings"
+    "io/ioutil"
+    "net/url"
+    "strings"
     "io"
 )
 
@@ -45,9 +44,6 @@ type ConvertDocumentRequest struct {
         key: "outPath" value: (*string) The path to the output document on a local storage.
         key: "fileNameFieldValue" value: (*string) The filename of the output document, that will be used when the resulting document has a dynamic field {filename}. If it is not set, the "sourceFilename" will be used instead.
         key: "storage" value: (*string) Original document storage.
-        key: "loadEncoding" value: (*string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
-        key: "password" value: (*string) Password of protected Word document. Use the parameter to pass a password via SDK. SDK encrypts it automatically. We don't recommend to use the parameter to pass a plain password for direct call of API.
-        key: "encryptedPassword" value: (*string) Password of protected Word document. Use the parameter to pass an encrypted password for direct calls of API. See SDK code for encyption details.
         key: "fontsLocation" value: (*string) Folder in filestorage with custom fonts. */
     Optionals map[string]interface{}
 }
@@ -56,12 +52,12 @@ type ConvertDocumentRequest struct {
 func (data *ConvertDocumentRequest) CreateRequestData() (RequestData, error) {
 
     var result RequestData
+    var filesContentData = make([]FileContent, 0)
 
     result.Method = strings.ToUpper("put")
 
     // create path and map variables
     result.Path = "/words/convert"
-    result.Path = strings.Replace(result.Path, "{"+"outPath"+"}", fmt.Sprintf("%v", data.Optionals["outPath"]), -1)
 
     result.Path = strings.Replace(result.Path, "/<nil>", "", -1)
     result.Path = strings.Replace(result.Path, "//", "/", -1)
@@ -80,21 +76,17 @@ func (data *ConvertDocumentRequest) CreateRequestData() (RequestData, error) {
     if err := typeCheckParameter(data.Optionals["storage"], "string", "data.Optionals[storage]"); err != nil {
         return result, err
     }
-    if err := typeCheckParameter(data.Optionals["loadEncoding"], "string", "data.Optionals[loadEncoding]"); err != nil {
-        return result, err
-    }
-    if err := typeCheckParameter(data.Optionals["password"], "string", "data.Optionals[password]"); err != nil {
-        return result, err
-    }
-    if err := typeCheckParameter(data.Optionals["encryptedPassword"], "string", "data.Optionals[encryptedPassword]"); err != nil {
-        return result, err
-    }
     if err := typeCheckParameter(data.Optionals["fontsLocation"], "string", "data.Optionals[fontsLocation]"); err != nil {
         return result, err
     }
 
 
     result.QueryParams.Add("Format", parameterToString(*data.Format, ""))
+
+
+    if localVarTempParam, localVarOk := data.Optionals["outPath"].(string); localVarOk {
+        result.QueryParams.Add("OutPath", parameterToString(localVarTempParam, ""))
+    }
 
 
     if localVarTempParam, localVarOk := data.Optionals["fileNameFieldValue"].(string); localVarOk {
@@ -107,46 +99,10 @@ func (data *ConvertDocumentRequest) CreateRequestData() (RequestData, error) {
     }
 
 
-    if localVarTempParam, localVarOk := data.Optionals["loadEncoding"].(string); localVarOk {
-        result.QueryParams.Add("LoadEncoding", parameterToString(localVarTempParam, ""))
-    }
-
-
-    if localVarTempParam, localVarOk := data.Optionals["password"].(string); localVarOk {
-        result.QueryParams.Add("Password", parameterToString(localVarTempParam, ""))
-    }
-
-
-    if localVarTempParam, localVarOk := data.Optionals["encryptedPassword"].(string); localVarOk {
-        result.QueryParams.Add("EncryptedPassword", parameterToString(localVarTempParam, ""))
-    }
-
-
     if localVarTempParam, localVarOk := data.Optionals["fontsLocation"].(string); localVarOk {
         result.QueryParams.Add("FontsLocation", parameterToString(localVarTempParam, ""))
     }
 
-
-    // to determine the Content-Type header
-    localVarHttpContentTypes := []string{ "multipart/form-data", }
-
-    // set Content-Type header
-    localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
-    if localVarHttpContentType != "" {
-        result.HeaderParams["Content-Type"] = localVarHttpContentType
-    }
-
-    // to determine the Accept header
-    localVarHttpHeaderAccepts := []string{
-        "application/xml",
-        "application/json",
-    }
-
-    // set Accept header
-    localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
-    if localVarHttpHeaderAccept != "" {
-        result.HeaderParams["Accept"] = localVarHttpHeaderAccept
-    }
 
 
     _document := data.Document
@@ -157,6 +113,10 @@ func (data *ConvertDocumentRequest) CreateRequestData() (RequestData, error) {
     }
 
 
+    for _, fileContentData := range filesContentData {
+        fbs, _ := ioutil.ReadAll(fileContentData.Content)
+        result.FormParams = append(result.FormParams, NewFileFormParamContainer(fileContentData.Id, fbs))
+    }
 
     return result, nil
 }

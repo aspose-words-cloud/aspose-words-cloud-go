@@ -149,6 +149,7 @@ type RtfSaveOptionsData struct {
 type IRtfSaveOptionsData interface {
     IsRtfSaveOptionsData() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (RtfSaveOptionsData) IsRtfSaveOptionsData() bool {
@@ -163,42 +164,16 @@ func (obj *RtfSaveOptionsData) Initialize() {
     var _SaveFormat = "rtf"
     obj.SaveFormat = &_SaveFormat
 
+
     if (obj.CustomTimeZoneInfoData != nil) {
         obj.CustomTimeZoneInfoData.Initialize()
     }
 
 
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+func (obj *RtfSaveOptionsData) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    return resultFilesContent
 }
 
 

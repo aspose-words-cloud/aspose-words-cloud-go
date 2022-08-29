@@ -239,6 +239,7 @@ type ImageSaveOptionsData struct {
 type IImageSaveOptionsData interface {
     IsImageSaveOptionsData() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (ImageSaveOptionsData) IsImageSaveOptionsData() bool {
@@ -258,72 +259,15 @@ func (obj *ImageSaveOptionsData) Initialize() {
         obj.CustomTimeZoneInfoData.Initialize()
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     if (obj.MetafileRenderingOptions != nil) {
         obj.MetafileRenderingOptions.Initialize()
     }
 
 
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+func (obj *ImageSaveOptionsData) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    return resultFilesContent
 }
 
 

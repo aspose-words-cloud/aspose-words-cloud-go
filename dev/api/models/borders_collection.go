@@ -47,6 +47,7 @@ type BordersCollection struct {
 type IBordersCollection interface {
     IsBordersCollection() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (BordersCollection) IsBordersCollection() bool {
@@ -62,8 +63,23 @@ func (obj *BordersCollection) Initialize() {
         obj.Link.Initialize()
     }
 
+    if (obj.List != nil) {
+        for _, element := range obj.List {
+            element.Initialize()
+        }
+    }
 
 
+}
+
+func (obj *BordersCollection) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    if (obj.List != nil) {
+        for _, element := range obj.List {
+            resultFilesContent = element.CollectFilesContent(resultFilesContent)
+        }
+    }
+
+    return resultFilesContent
 }
 
 

@@ -149,6 +149,7 @@ type TxtSaveOptionsBaseData struct {
 type ITxtSaveOptionsBaseData interface {
     IsTxtSaveOptionsBaseData() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (TxtSaveOptionsBaseData) IsTxtSaveOptionsBaseData() bool {
@@ -165,37 +166,10 @@ func (obj *TxtSaveOptionsBaseData) Initialize() {
     }
 
 
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+func (obj *TxtSaveOptionsBaseData) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    return resultFilesContent
 }
 
 

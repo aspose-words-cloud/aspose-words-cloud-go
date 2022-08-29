@@ -28,9 +28,9 @@
 package models
 
 import (
-	"io/ioutil"
-	"net/url"
-	"strings"
+    "io/ioutil"
+    "net/url"
+    "strings"
     "io"
 )
 
@@ -52,6 +52,7 @@ type ExecuteMailMergeOnlineRequest struct {
 func (data *ExecuteMailMergeOnlineRequest) CreateRequestData() (RequestData, error) {
 
     var result RequestData
+    var filesContentData = make([]FileContent, 0)
 
     result.Method = strings.ToUpper("put")
 
@@ -92,27 +93,6 @@ func (data *ExecuteMailMergeOnlineRequest) CreateRequestData() (RequestData, err
     }
 
 
-    // to determine the Content-Type header
-    localVarHttpContentTypes := []string{ "multipart/form-data", }
-
-    // set Content-Type header
-    localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
-    if localVarHttpContentType != "" {
-        result.HeaderParams["Content-Type"] = localVarHttpContentType
-    }
-
-    // to determine the Accept header
-    localVarHttpHeaderAccepts := []string{
-        "application/xml",
-        "application/json",
-    }
-
-    // set Accept header
-    localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
-    if localVarHttpHeaderAccept != "" {
-        result.HeaderParams["Accept"] = localVarHttpHeaderAccept
-    }
-
 
     _template := data.Template
     if _template != nil {
@@ -121,7 +101,6 @@ func (data *ExecuteMailMergeOnlineRequest) CreateRequestData() (RequestData, err
         result.FormParams = append(result.FormParams, NewFileFormParamContainer("template", fbs))
     }
 
-
     _data := data.Data
     if _data != nil {
         fbs, _ := ioutil.ReadAll(_data)
@@ -129,12 +108,16 @@ func (data *ExecuteMailMergeOnlineRequest) CreateRequestData() (RequestData, err
         result.FormParams = append(result.FormParams, NewFileFormParamContainer("data", fbs))
     }
 
-
     if localVarTempParam, localVarOk := data.Optionals["options"].(FieldOptions); localVarOk {
-        result.FormParams = append(result.FormParams, NewTextFormParamContainer("Options", parameterToString(localVarTempParam, "")))
+        result.FormParams = append(result.FormParams, NewJsonFormParamContainer("Options", parameterToString(localVarTempParam, "")))
+        filesContentData = localVarTempParam.CollectFilesContent(filesContentData)
     }
 
 
+    for _, fileContentData := range filesContentData {
+        fbs, _ := ioutil.ReadAll(fileContentData.Content)
+        result.FormParams = append(result.FormParams, NewFileFormParamContainer(fileContentData.Id, fbs))
+    }
 
     return result, nil
 }

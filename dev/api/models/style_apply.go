@@ -41,6 +41,7 @@ type StyleApply struct {
 type IStyleApply interface {
     IsStyleApply() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (StyleApply) IsStyleApply() bool {
@@ -49,6 +50,10 @@ func (StyleApply) IsStyleApply() bool {
 
 
 func (obj *StyleApply) Initialize() {
+}
+
+func (obj *StyleApply) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    return resultFilesContent
 }
 
 

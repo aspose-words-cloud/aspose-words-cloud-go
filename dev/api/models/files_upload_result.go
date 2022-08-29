@@ -47,6 +47,7 @@ type FilesUploadResult struct {
 type IFilesUploadResult interface {
     IsFilesUploadResult() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (FilesUploadResult) IsFilesUploadResult() bool {
@@ -55,6 +56,24 @@ func (FilesUploadResult) IsFilesUploadResult() bool {
 
 
 func (obj *FilesUploadResult) Initialize() {
+    if (obj.Errors != nil) {
+        for _, element := range obj.Errors {
+            element.Initialize()
+        }
+    }
+
+
+}
+
+func (obj *FilesUploadResult) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    if (obj.Errors != nil) {
+        for _, element := range obj.Errors {
+            resultFilesContent = element.CollectFilesContent(resultFilesContent)
+        }
+    }
+
+
+    return resultFilesContent
 }
 
 

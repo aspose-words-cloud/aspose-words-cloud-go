@@ -36,6 +36,7 @@ type TableCellFormatDto struct {
 type ITableCellFormatDto interface {
     IsTableCellFormatDto() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (TableCellFormatDto) IsTableCellFormatDto() bool {
@@ -44,6 +45,10 @@ func (TableCellFormatDto) IsTableCellFormatDto() bool {
 
 
 func (obj *TableCellFormatDto) Initialize() {
+}
+
+func (obj *TableCellFormatDto) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    return resultFilesContent
 }
 
 

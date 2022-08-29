@@ -1,6 +1,6 @@
 /*
  * --------------------------------------------------------------------------------
- * <copyright company="Aspose" file="base_entry.go">
+ * <copyright company="Aspose" file="base_document_entry_list.go">
  *   Copyright (c) 2022 Aspose.Words for Cloud
  * </copyright>
  * <summary>
@@ -27,28 +27,36 @@
 
 package models
 
-// Represents a entry which will be appended to the original resource document.
-type BaseEntryResult struct {
-    // Represents a entry which will be appended to the original resource document.
-    Href string `json:"Href,omitempty"`
+// Represents a list of documents which will be appended to the original resource document.
+type BaseDocumentEntryListResult struct {
+    // Represents a list of documents which will be appended to the original resource document.
+    ApplyBaseDocumentHeadersAndFootersToAppendingDocuments bool `json:"ApplyBaseDocumentHeadersAndFootersToAppendingDocuments,omitempty"`
 }
 
-type BaseEntry struct {
-    // Represents a entry which will be appended to the original resource document.
-    Href *string `json:"Href,omitempty"`
+type BaseDocumentEntryList struct {
+    // Represents a list of documents which will be appended to the original resource document.
+    ApplyBaseDocumentHeadersAndFootersToAppendingDocuments *bool `json:"ApplyBaseDocumentHeadersAndFootersToAppendingDocuments,omitempty"`
 }
 
-type IBaseEntry interface {
-    IsBaseEntry() bool
+type IBaseDocumentEntryList interface {
+    IsBaseDocumentEntryList() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
-func (BaseEntry) IsBaseEntry() bool {
+func (BaseDocumentEntryList) IsBaseDocumentEntryList() bool {
     return true
 }
 
+func (BaseDocumentEntryList) IsBaseEntryList() bool {
+    return true
+}
 
-func (obj *BaseEntry) Initialize() {
+func (obj *BaseDocumentEntryList) Initialize() {
+}
+
+func (obj *BaseDocumentEntryList) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    return resultFilesContent
 }
 
 

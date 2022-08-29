@@ -83,6 +83,7 @@ type DrawingObjectInsert struct {
 type IDrawingObjectInsert interface {
     IsDrawingObjectInsert() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (DrawingObjectInsert) IsDrawingObjectInsert() bool {
@@ -96,15 +97,19 @@ func (obj *DrawingObjectInsert) Initialize() {
     }
 
 
+}
+
+func (obj *DrawingObjectInsert) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    if (obj.Position != nil) {
+        resultFilesContent = obj.Position.CollectFilesContent(resultFilesContent)
+    }
 
 
 
 
 
 
-
-
-
+    return resultFilesContent
 }
 
 

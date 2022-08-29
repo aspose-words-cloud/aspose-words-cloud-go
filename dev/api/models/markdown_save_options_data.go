@@ -155,6 +155,7 @@ type MarkdownSaveOptionsData struct {
 type IMarkdownSaveOptionsData interface {
     IsMarkdownSaveOptionsData() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (MarkdownSaveOptionsData) IsMarkdownSaveOptionsData() bool {
@@ -173,44 +174,16 @@ func (obj *MarkdownSaveOptionsData) Initialize() {
     var _SaveFormat = "md"
     obj.SaveFormat = &_SaveFormat
 
+
     if (obj.CustomTimeZoneInfoData != nil) {
         obj.CustomTimeZoneInfoData.Initialize()
     }
 
 
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+func (obj *MarkdownSaveOptionsData) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    return resultFilesContent
 }
 
 

@@ -191,6 +191,7 @@ type OpenXpsSaveOptionsData struct {
 type IOpenXpsSaveOptionsData interface {
     IsOpenXpsSaveOptionsData() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (OpenXpsSaveOptionsData) IsOpenXpsSaveOptionsData() bool {
@@ -213,64 +214,24 @@ func (obj *OpenXpsSaveOptionsData) Initialize() {
     var _SaveFormat = "openxps"
     obj.SaveFormat = &_SaveFormat
 
+
     if (obj.CustomTimeZoneInfoData != nil) {
         obj.CustomTimeZoneInfoData.Initialize()
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     if (obj.MetafileRenderingOptions != nil) {
         obj.MetafileRenderingOptions.Initialize()
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     if (obj.OutlineOptions != nil) {
         obj.OutlineOptions.Initialize()
     }
 
 
+}
 
+func (obj *OpenXpsSaveOptionsData) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    return resultFilesContent
 }
 
 

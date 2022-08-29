@@ -47,6 +47,7 @@ type TableLinkCollection struct {
 type ITableLinkCollection interface {
     IsTableLinkCollection() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (TableLinkCollection) IsTableLinkCollection() bool {
@@ -62,8 +63,23 @@ func (obj *TableLinkCollection) Initialize() {
         obj.Link.Initialize()
     }
 
+    if (obj.TableLinkList != nil) {
+        for _, element := range obj.TableLinkList {
+            element.Initialize()
+        }
+    }
 
 
+}
+
+func (obj *TableLinkCollection) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    if (obj.TableLinkList != nil) {
+        for _, element := range obj.TableLinkList {
+            resultFilesContent = element.CollectFilesContent(resultFilesContent)
+        }
+    }
+
+    return resultFilesContent
 }
 
 

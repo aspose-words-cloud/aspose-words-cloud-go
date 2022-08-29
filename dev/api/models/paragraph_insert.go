@@ -41,6 +41,7 @@ type ParagraphInsert struct {
 type IParagraphInsert interface {
     IsParagraphInsert() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (ParagraphInsert) IsParagraphInsert() bool {
@@ -49,6 +50,10 @@ func (ParagraphInsert) IsParagraphInsert() bool {
 
 
 func (obj *ParagraphInsert) Initialize() {
+}
+
+func (obj *ParagraphInsert) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    return resultFilesContent
 }
 
 

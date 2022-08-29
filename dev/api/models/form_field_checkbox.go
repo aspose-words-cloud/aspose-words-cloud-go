@@ -119,6 +119,7 @@ type FormFieldCheckbox struct {
 type IFormFieldCheckbox interface {
     IsFormFieldCheckbox() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (FormFieldCheckbox) IsFormFieldCheckbox() bool {
@@ -143,31 +144,10 @@ func (obj *FormFieldCheckbox) Initialize() {
     }
 
 
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+func (obj *FormFieldCheckbox) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    return resultFilesContent
 }
 
 

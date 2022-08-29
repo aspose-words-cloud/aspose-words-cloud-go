@@ -149,6 +149,7 @@ type FlatOpcTemplateMacroSaveOptionsData struct {
 type IFlatOpcTemplateMacroSaveOptionsData interface {
     IsFlatOpcTemplateMacroSaveOptionsData() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (FlatOpcTemplateMacroSaveOptionsData) IsFlatOpcTemplateMacroSaveOptionsData() bool {
@@ -167,42 +168,16 @@ func (obj *FlatOpcTemplateMacroSaveOptionsData) Initialize() {
     var _SaveFormat = "fopc_template_macro"
     obj.SaveFormat = &_SaveFormat
 
+
     if (obj.CustomTimeZoneInfoData != nil) {
         obj.CustomTimeZoneInfoData.Initialize()
     }
 
 
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+func (obj *FlatOpcTemplateMacroSaveOptionsData) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    return resultFilesContent
 }
 
 

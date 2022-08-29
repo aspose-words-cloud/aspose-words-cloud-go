@@ -83,6 +83,7 @@ type ListInfo struct {
 type IListInfo interface {
     IsListInfo() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (ListInfo) IsListInfo() bool {
@@ -98,28 +99,27 @@ func (obj *ListInfo) Initialize() {
         obj.Link.Initialize()
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
     if (obj.ListLevels != nil) {
         obj.ListLevels.Initialize()
     }
-
-
 
     if (obj.Style != nil) {
         obj.Style.Initialize()
     }
 
+
+}
+
+func (obj *ListInfo) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    if (obj.ListLevels != nil) {
+        resultFilesContent = obj.ListLevels.CollectFilesContent(resultFilesContent)
+    }
+
+    if (obj.Style != nil) {
+        resultFilesContent = obj.Style.CollectFilesContent(resultFilesContent)
+    }
+
+    return resultFilesContent
 }
 
 

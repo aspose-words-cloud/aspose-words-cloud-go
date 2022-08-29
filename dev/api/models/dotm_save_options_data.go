@@ -149,6 +149,7 @@ type DotmSaveOptionsData struct {
 type IDotmSaveOptionsData interface {
     IsDotmSaveOptionsData() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (DotmSaveOptionsData) IsDotmSaveOptionsData() bool {
@@ -167,42 +168,16 @@ func (obj *DotmSaveOptionsData) Initialize() {
     var _SaveFormat = "dotm"
     obj.SaveFormat = &_SaveFormat
 
+
     if (obj.CustomTimeZoneInfoData != nil) {
         obj.CustomTimeZoneInfoData.Initialize()
     }
 
 
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+func (obj *DotmSaveOptionsData) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    return resultFilesContent
 }
 
 

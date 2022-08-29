@@ -65,6 +65,7 @@ type ReplaceTextParameters struct {
 type IReplaceTextParameters interface {
     IsReplaceTextParameters() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (ReplaceTextParameters) IsReplaceTextParameters() bool {
@@ -73,6 +74,10 @@ func (ReplaceTextParameters) IsReplaceTextParameters() bool {
 
 
 func (obj *ReplaceTextParameters) Initialize() {
+}
+
+func (obj *ReplaceTextParameters) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    return resultFilesContent
 }
 
 

@@ -149,6 +149,7 @@ type OoxmlSaveOptionsData struct {
 type IOoxmlSaveOptionsData interface {
     IsOoxmlSaveOptionsData() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (OoxmlSaveOptionsData) IsOoxmlSaveOptionsData() bool {
@@ -165,37 +166,10 @@ func (obj *OoxmlSaveOptionsData) Initialize() {
     }
 
 
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+func (obj *OoxmlSaveOptionsData) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    return resultFilesContent
 }
 
 

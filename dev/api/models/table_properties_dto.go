@@ -36,6 +36,7 @@ type TablePropertiesDto struct {
 type ITablePropertiesDto interface {
     IsTablePropertiesDto() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (TablePropertiesDto) IsTablePropertiesDto() bool {
@@ -44,6 +45,10 @@ func (TablePropertiesDto) IsTablePropertiesDto() bool {
 
 
 func (obj *TablePropertiesDto) Initialize() {
+}
+
+func (obj *TablePropertiesDto) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    return resultFilesContent
 }
 
 

@@ -59,6 +59,7 @@ type PageStatData struct {
 type IPageStatData interface {
     IsPageStatData() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (PageStatData) IsPageStatData() bool {
@@ -72,11 +73,17 @@ func (obj *PageStatData) Initialize() {
     }
 
 
+}
+
+func (obj *PageStatData) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    if (obj.FootnotesStatData != nil) {
+        resultFilesContent = obj.FootnotesStatData.CollectFilesContent(resultFilesContent)
+    }
 
 
 
 
-
+    return resultFilesContent
 }
 
 

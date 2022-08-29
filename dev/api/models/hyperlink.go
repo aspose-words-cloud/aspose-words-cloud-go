@@ -53,6 +53,7 @@ type Hyperlink struct {
 type IHyperlink interface {
     IsHyperlink() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (Hyperlink) IsHyperlink() bool {
@@ -69,9 +70,10 @@ func (obj *Hyperlink) Initialize() {
     }
 
 
+}
 
-
-
+func (obj *Hyperlink) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    return resultFilesContent
 }
 
 

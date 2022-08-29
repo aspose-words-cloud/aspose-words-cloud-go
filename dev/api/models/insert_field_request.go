@@ -29,8 +29,9 @@ package models
 
 import (
     "fmt"
-	"net/url"
-	"strings"
+    "io/ioutil"
+    "net/url"
+    "strings"
     "io"
     "encoding/json"
 )
@@ -59,6 +60,7 @@ type InsertFieldRequest struct {
 func (data *InsertFieldRequest) CreateRequestData() (RequestData, error) {
 
     var result RequestData
+    var filesContentData = make([]FileContent, 0)
 
     result.Method = strings.ToUpper("post")
 
@@ -155,30 +157,15 @@ func (data *InsertFieldRequest) CreateRequestData() (RequestData, error) {
     }
 
 
-    // to determine the Content-Type header
-    localVarHttpContentTypes := []string{ "application/xml", "application/json", }
 
-    // set Content-Type header
-    localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
-    if localVarHttpContentType != "" {
-        result.HeaderParams["Content-Type"] = localVarHttpContentType
+    result.FormParams = append(result.FormParams, NewJsonFormParamContainer("Field", parameterToString(data.Field, "")))
+    filesContentData = data.Field.CollectFilesContent(filesContentData)
+
+
+    for _, fileContentData := range filesContentData {
+        fbs, _ := ioutil.ReadAll(fileContentData.Content)
+        result.FormParams = append(result.FormParams, NewFileFormParamContainer(fileContentData.Id, fbs))
     }
-
-    // to determine the Accept header
-    localVarHttpHeaderAccepts := []string{
-        "application/xml",
-        "application/json",
-    }
-
-    // set Accept header
-    localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
-    if localVarHttpHeaderAccept != "" {
-        result.HeaderParams["Accept"] = localVarHttpHeaderAccept
-    }
-
-
-
-    result.PostBody = &data.Field
 
     return result, nil
 }

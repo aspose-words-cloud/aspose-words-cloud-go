@@ -215,6 +215,7 @@ type PageSetup struct {
 type IPageSetup interface {
     IsPageSetup() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (PageSetup) IsPageSetup() bool {
@@ -231,63 +232,10 @@ func (obj *PageSetup) Initialize() {
     }
 
 
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+func (obj *PageSetup) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    return resultFilesContent
 }
 
 

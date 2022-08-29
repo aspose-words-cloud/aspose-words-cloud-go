@@ -59,6 +59,7 @@ type TableRow struct {
 type ITableRow interface {
     IsTableRow() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (TableRow) IsTableRow() bool {
@@ -78,16 +79,31 @@ func (obj *TableRow) Initialize() {
         obj.Link.Initialize()
     }
 
-
-
-
-
     if (obj.RowFormat != nil) {
         obj.RowFormat.Initialize()
     }
 
+    if (obj.TableCellList != nil) {
+        for _, element := range obj.TableCellList {
+            element.Initialize()
+        }
+    }
 
 
+}
+
+func (obj *TableRow) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    if (obj.RowFormat != nil) {
+        resultFilesContent = obj.RowFormat.CollectFilesContent(resultFilesContent)
+    }
+
+    if (obj.TableCellList != nil) {
+        for _, element := range obj.TableCellList {
+            resultFilesContent = element.CollectFilesContent(resultFilesContent)
+        }
+    }
+
+    return resultFilesContent
 }
 
 

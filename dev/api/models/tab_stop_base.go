@@ -53,6 +53,7 @@ type TabStopBase struct {
 type ITabStopBase interface {
     IsTabStopBase() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (TabStopBase) IsTabStopBase() bool {
@@ -61,6 +62,10 @@ func (TabStopBase) IsTabStopBase() bool {
 
 
 func (obj *TabStopBase) Initialize() {
+}
+
+func (obj *TabStopBase) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    return resultFilesContent
 }
 
 

@@ -53,6 +53,7 @@ type ParagraphLink struct {
 type IParagraphLink interface {
     IsParagraphLink() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (ParagraphLink) IsParagraphLink() bool {
@@ -73,9 +74,10 @@ func (obj *ParagraphLink) Initialize() {
     }
 
 
+}
 
-
-
+func (obj *ParagraphLink) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    return resultFilesContent
 }
 
 

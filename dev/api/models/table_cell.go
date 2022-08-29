@@ -53,6 +53,7 @@ type TableCell struct {
 type ITableCell interface {
     IsTableCell() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (TableCell) IsTableCell() bool {
@@ -72,10 +73,23 @@ func (obj *TableCell) Initialize() {
         obj.Link.Initialize()
     }
 
+    if (obj.ChildNodes != nil) {
+        for _, element := range obj.ChildNodes {
+            element.Initialize()
+        }
+    }
 
 
+}
 
+func (obj *TableCell) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    if (obj.ChildNodes != nil) {
+        for _, element := range obj.ChildNodes {
+            resultFilesContent = element.CollectFilesContent(resultFilesContent)
+        }
+    }
 
+    return resultFilesContent
 }
 
 

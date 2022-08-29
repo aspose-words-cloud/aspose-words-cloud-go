@@ -65,6 +65,7 @@ type HeaderFooter struct {
 type IHeaderFooter interface {
     IsHeaderFooter() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (HeaderFooter) IsHeaderFooter() bool {
@@ -84,22 +85,39 @@ func (obj *HeaderFooter) Initialize() {
         obj.Link.Initialize()
     }
 
-
-
-
-
-
+    if (obj.ChildNodes != nil) {
+        for _, element := range obj.ChildNodes {
+            element.Initialize()
+        }
+    }
 
     if (obj.DrawingObjects != nil) {
         obj.DrawingObjects.Initialize()
     }
 
-
-
     if (obj.Paragraphs != nil) {
         obj.Paragraphs.Initialize()
     }
 
+
+}
+
+func (obj *HeaderFooter) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    if (obj.ChildNodes != nil) {
+        for _, element := range obj.ChildNodes {
+            resultFilesContent = element.CollectFilesContent(resultFilesContent)
+        }
+    }
+
+    if (obj.DrawingObjects != nil) {
+        resultFilesContent = obj.DrawingObjects.CollectFilesContent(resultFilesContent)
+    }
+
+    if (obj.Paragraphs != nil) {
+        resultFilesContent = obj.Paragraphs.CollectFilesContent(resultFilesContent)
+    }
+
+    return resultFilesContent
 }
 
 

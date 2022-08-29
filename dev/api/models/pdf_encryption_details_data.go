@@ -53,6 +53,7 @@ type PdfEncryptionDetailsData struct {
 type IPdfEncryptionDetailsData interface {
     IsPdfEncryptionDetailsData() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (PdfEncryptionDetailsData) IsPdfEncryptionDetailsData() bool {
@@ -61,6 +62,10 @@ func (PdfEncryptionDetailsData) IsPdfEncryptionDetailsData() bool {
 
 
 func (obj *PdfEncryptionDetailsData) Initialize() {
+}
+
+func (obj *PdfEncryptionDetailsData) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    return resultFilesContent
 }
 
 

@@ -113,6 +113,7 @@ type ListLevel struct {
 type IListLevel interface {
     IsListLevel() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (ListLevel) IsListLevel() bool {
@@ -128,23 +129,26 @@ func (obj *ListLevel) Initialize() {
         obj.Link.Initialize()
     }
 
-
-
-
-
     if (obj.Font != nil) {
         obj.Font.Initialize()
     }
-
-
-
-
 
     if (obj.LinkedStyle != nil) {
         obj.LinkedStyle.Initialize()
     }
 
 
+}
+
+func (obj *ListLevel) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    if (obj.Font != nil) {
+        resultFilesContent = obj.Font.CollectFilesContent(resultFilesContent)
+    }
+
+
+    if (obj.LinkedStyle != nil) {
+        resultFilesContent = obj.LinkedStyle.CollectFilesContent(resultFilesContent)
+    }
 
 
 
@@ -154,12 +158,7 @@ func (obj *ListLevel) Initialize() {
 
 
 
-
-
-
-
-
-
+    return resultFilesContent
 }
 
 

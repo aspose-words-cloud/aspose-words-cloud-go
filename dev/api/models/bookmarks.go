@@ -47,6 +47,7 @@ type Bookmarks struct {
 type IBookmarks interface {
     IsBookmarks() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (Bookmarks) IsBookmarks() bool {
@@ -62,8 +63,23 @@ func (obj *Bookmarks) Initialize() {
         obj.Link.Initialize()
     }
 
+    if (obj.BookmarkList != nil) {
+        for _, element := range obj.BookmarkList {
+            element.Initialize()
+        }
+    }
 
 
+}
+
+func (obj *Bookmarks) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    if (obj.BookmarkList != nil) {
+        for _, element := range obj.BookmarkList {
+            resultFilesContent = element.CollectFilesContent(resultFilesContent)
+        }
+    }
+
+    return resultFilesContent
 }
 
 

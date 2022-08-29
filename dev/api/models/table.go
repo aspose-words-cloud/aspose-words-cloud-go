@@ -59,6 +59,7 @@ type Table struct {
 type ITable interface {
     IsTable() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (Table) IsTable() bool {
@@ -78,16 +79,31 @@ func (obj *Table) Initialize() {
         obj.Link.Initialize()
     }
 
-
-
-
-
     if (obj.TableProperties != nil) {
         obj.TableProperties.Initialize()
     }
 
+    if (obj.TableRowList != nil) {
+        for _, element := range obj.TableRowList {
+            element.Initialize()
+        }
+    }
 
 
+}
+
+func (obj *Table) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    if (obj.TableProperties != nil) {
+        resultFilesContent = obj.TableProperties.CollectFilesContent(resultFilesContent)
+    }
+
+    if (obj.TableRowList != nil) {
+        for _, element := range obj.TableRowList {
+            resultFilesContent = element.CollectFilesContent(resultFilesContent)
+        }
+    }
+
+    return resultFilesContent
 }
 
 

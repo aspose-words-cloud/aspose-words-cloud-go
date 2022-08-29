@@ -167,6 +167,7 @@ type FixedPageSaveOptionsData struct {
 type IFixedPageSaveOptionsData interface {
     IsFixedPageSaveOptionsData() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (FixedPageSaveOptionsData) IsFixedPageSaveOptionsData() bool {
@@ -182,48 +183,23 @@ func (obj *FixedPageSaveOptionsData) Initialize() {
         obj.CustomTimeZoneInfoData.Initialize()
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     if (obj.MetafileRenderingOptions != nil) {
         obj.MetafileRenderingOptions.Initialize()
+    }
+
+
+}
+
+func (obj *FixedPageSaveOptionsData) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    if (obj.MetafileRenderingOptions != nil) {
+        resultFilesContent = obj.MetafileRenderingOptions.CollectFilesContent(resultFilesContent)
     }
 
 
 
 
 
-
-
-
-
+    return resultFilesContent
 }
 
 
