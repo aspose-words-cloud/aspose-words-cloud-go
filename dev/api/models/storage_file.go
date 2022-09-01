@@ -65,6 +65,7 @@ type StorageFile struct {
 type IStorageFile interface {
     IsStorageFile() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (StorageFile) IsStorageFile() bool {
@@ -73,6 +74,10 @@ func (StorageFile) IsStorageFile() bool {
 
 
 func (obj *StorageFile) Initialize() {
+}
+
+func (obj *StorageFile) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    return resultFilesContent
 }
 
 

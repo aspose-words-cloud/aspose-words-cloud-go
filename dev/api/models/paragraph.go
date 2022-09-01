@@ -53,6 +53,7 @@ type Paragraph struct {
 type IParagraph interface {
     IsParagraph() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (Paragraph) IsParagraph() bool {
@@ -72,10 +73,28 @@ func (obj *Paragraph) Initialize() {
         obj.Link.Initialize()
     }
 
+    if (obj.ChildNodes != nil) {
+        for _, element := range obj.ChildNodes {
+            element.Initialize()
+        }
+    }
 
 
+}
+
+func (obj *Paragraph) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    if (obj.Link != nil) {
+        resultFilesContent = obj.Link.CollectFilesContent(resultFilesContent)
+    }
 
 
+    if (obj.ChildNodes != nil) {
+        for _, element := range obj.ChildNodes {
+            resultFilesContent = element.CollectFilesContent(resultFilesContent)
+        }
+    }
+
+    return resultFilesContent
 }
 
 

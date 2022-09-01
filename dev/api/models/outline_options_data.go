@@ -71,6 +71,7 @@ type OutlineOptionsData struct {
 type IOutlineOptionsData interface {
     IsOutlineOptionsData() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (OutlineOptionsData) IsOutlineOptionsData() bool {
@@ -79,6 +80,28 @@ func (OutlineOptionsData) IsOutlineOptionsData() bool {
 
 
 func (obj *OutlineOptionsData) Initialize() {
+    if (obj.BookmarksOutlineLevels != nil) {
+        for _, element := range obj.BookmarksOutlineLevels {
+            element.Initialize()
+        }
+    }
+
+
+}
+
+func (obj *OutlineOptionsData) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    if (obj.BookmarksOutlineLevels != nil) {
+        for _, element := range obj.BookmarksOutlineLevels {
+            resultFilesContent = element.CollectFilesContent(resultFilesContent)
+        }
+    }
+
+
+
+
+
+
+    return resultFilesContent
 }
 
 

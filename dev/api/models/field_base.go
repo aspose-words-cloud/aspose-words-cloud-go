@@ -47,6 +47,7 @@ type FieldBase struct {
 type IFieldBase interface {
     IsFieldBase() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (FieldBase) IsFieldBase() bool {
@@ -55,6 +56,10 @@ func (FieldBase) IsFieldBase() bool {
 
 
 func (obj *FieldBase) Initialize() {
+}
+
+func (obj *FieldBase) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    return resultFilesContent
 }
 
 

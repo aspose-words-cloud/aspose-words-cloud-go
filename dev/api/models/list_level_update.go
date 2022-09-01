@@ -95,6 +95,7 @@ type ListLevelUpdate struct {
 type IListLevelUpdate interface {
     IsListLevelUpdate() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (ListLevelUpdate) IsListLevelUpdate() bool {
@@ -103,6 +104,10 @@ func (ListLevelUpdate) IsListLevelUpdate() bool {
 
 
 func (obj *ListLevelUpdate) Initialize() {
+}
+
+func (obj *ListLevelUpdate) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    return resultFilesContent
 }
 
 

@@ -29,8 +29,9 @@ package models
 
 import (
     "fmt"
-	"net/url"
-	"strings"
+    "io/ioutil"
+    "net/url"
+    "strings"
     "io"
     "encoding/json"
 )
@@ -59,6 +60,7 @@ type ExecuteMailMergeRequest struct {
 func (data *ExecuteMailMergeRequest) CreateRequestData() (RequestData, error) {
 
     var result RequestData
+    var filesContentData = make([]FileContent, 0)
 
     result.Method = strings.ToUpper("put")
 
@@ -159,38 +161,21 @@ func (data *ExecuteMailMergeRequest) CreateRequestData() (RequestData, error) {
     }
 
 
-    // to determine the Content-Type header
-    localVarHttpContentTypes := []string{ "multipart/form-data", }
-
-    // set Content-Type header
-    localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
-    if localVarHttpContentType != "" {
-        result.HeaderParams["Content-Type"] = localVarHttpContentType
-    }
-
-    // to determine the Accept header
-    localVarHttpHeaderAccepts := []string{
-        "application/xml",
-        "application/json",
-    }
-
-    // set Accept header
-    localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
-    if localVarHttpHeaderAccept != "" {
-        result.HeaderParams["Accept"] = localVarHttpHeaderAccept
-    }
-
 
     if localVarTempParam, localVarOk := data.Optionals["data"].(string); localVarOk {
         result.FormParams = append(result.FormParams, NewTextFormParamContainer("Data", parameterToString(localVarTempParam, "")))
     }
 
-
     if localVarTempParam, localVarOk := data.Optionals["options"].(FieldOptions); localVarOk {
-        result.FormParams = append(result.FormParams, NewTextFormParamContainer("Options", parameterToString(localVarTempParam, "")))
+        result.FormParams = append(result.FormParams, NewJsonFormParamContainer("Options", parameterToString(localVarTempParam, "")))
+        filesContentData = localVarTempParam.CollectFilesContent(filesContentData)
     }
 
 
+    for _, fileContentData := range filesContentData {
+        fbs, _ := ioutil.ReadAll(fileContentData.Content)
+        result.FormParams = append(result.FormParams, NewFileFormParamContainer(fileContentData.Id, fbs))
+    }
 
     return result, nil
 }

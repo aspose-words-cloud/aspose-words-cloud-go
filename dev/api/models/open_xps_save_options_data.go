@@ -191,6 +191,7 @@ type OpenXpsSaveOptionsData struct {
 type IOpenXpsSaveOptionsData interface {
     IsOpenXpsSaveOptionsData() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (OpenXpsSaveOptionsData) IsOpenXpsSaveOptionsData() bool {
@@ -213,25 +214,26 @@ func (obj *OpenXpsSaveOptionsData) Initialize() {
     var _SaveFormat = "openxps"
     obj.SaveFormat = &_SaveFormat
 
+
     if (obj.CustomTimeZoneInfoData != nil) {
         obj.CustomTimeZoneInfoData.Initialize()
     }
 
+    if (obj.MetafileRenderingOptions != nil) {
+        obj.MetafileRenderingOptions.Initialize()
+    }
+
+    if (obj.OutlineOptions != nil) {
+        obj.OutlineOptions.Initialize()
+    }
 
 
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
+func (obj *OpenXpsSaveOptionsData) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    if (obj.CustomTimeZoneInfoData != nil) {
+        resultFilesContent = obj.CustomTimeZoneInfoData.CollectFilesContent(resultFilesContent)
+    }
 
 
 
@@ -248,16 +250,8 @@ func (obj *OpenXpsSaveOptionsData) Initialize() {
 
 
     if (obj.MetafileRenderingOptions != nil) {
-        obj.MetafileRenderingOptions.Initialize()
+        resultFilesContent = obj.MetafileRenderingOptions.CollectFilesContent(resultFilesContent)
     }
-
-
-
-
-
-
-
-
 
 
 
@@ -266,11 +260,11 @@ func (obj *OpenXpsSaveOptionsData) Initialize() {
 
 
     if (obj.OutlineOptions != nil) {
-        obj.OutlineOptions.Initialize()
+        resultFilesContent = obj.OutlineOptions.CollectFilesContent(resultFilesContent)
     }
 
 
-
+    return resultFilesContent
 }
 
 

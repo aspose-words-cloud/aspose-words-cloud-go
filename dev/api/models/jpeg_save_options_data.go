@@ -239,6 +239,7 @@ type JpegSaveOptionsData struct {
 type IJpegSaveOptionsData interface {
     IsJpegSaveOptionsData() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (JpegSaveOptionsData) IsJpegSaveOptionsData() bool {
@@ -261,25 +262,22 @@ func (obj *JpegSaveOptionsData) Initialize() {
     var _SaveFormat = "jpeg"
     obj.SaveFormat = &_SaveFormat
 
+
     if (obj.CustomTimeZoneInfoData != nil) {
         obj.CustomTimeZoneInfoData.Initialize()
     }
 
+    if (obj.MetafileRenderingOptions != nil) {
+        obj.MetafileRenderingOptions.Initialize()
+    }
 
 
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
+func (obj *JpegSaveOptionsData) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    if (obj.CustomTimeZoneInfoData != nil) {
+        resultFilesContent = obj.CustomTimeZoneInfoData.CollectFilesContent(resultFilesContent)
+    }
 
 
 
@@ -296,7 +294,7 @@ func (obj *JpegSaveOptionsData) Initialize() {
 
 
     if (obj.MetafileRenderingOptions != nil) {
-        obj.MetafileRenderingOptions.Initialize()
+        resultFilesContent = obj.MetafileRenderingOptions.CollectFilesContent(resultFilesContent)
     }
 
 
@@ -315,22 +313,7 @@ func (obj *JpegSaveOptionsData) Initialize() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    return resultFilesContent
 }
 
 

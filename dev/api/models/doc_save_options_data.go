@@ -149,6 +149,7 @@ type DocSaveOptionsData struct {
 type IDocSaveOptionsData interface {
     IsDocSaveOptionsData() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (DocSaveOptionsData) IsDocSaveOptionsData() bool {
@@ -163,8 +164,17 @@ func (obj *DocSaveOptionsData) Initialize() {
     var _SaveFormat = "doc"
     obj.SaveFormat = &_SaveFormat
 
+
     if (obj.CustomTimeZoneInfoData != nil) {
         obj.CustomTimeZoneInfoData.Initialize()
+    }
+
+
+}
+
+func (obj *DocSaveOptionsData) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    if (obj.CustomTimeZoneInfoData != nil) {
+        resultFilesContent = obj.CustomTimeZoneInfoData.CollectFilesContent(resultFilesContent)
     }
 
 
@@ -183,22 +193,7 @@ func (obj *DocSaveOptionsData) Initialize() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    return resultFilesContent
 }
 
 

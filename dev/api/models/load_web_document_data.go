@@ -47,6 +47,7 @@ type LoadWebDocumentData struct {
 type ILoadWebDocumentData interface {
     IsLoadWebDocumentData() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (LoadWebDocumentData) IsLoadWebDocumentData() bool {
@@ -59,6 +60,15 @@ func (obj *LoadWebDocumentData) Initialize() {
         obj.SaveOptions.Initialize()
     }
 
+
+}
+
+func (obj *LoadWebDocumentData) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    if (obj.SaveOptions != nil) {
+        resultFilesContent = obj.SaveOptions.CollectFilesContent(resultFilesContent)
+    }
+
+    return resultFilesContent
 }
 
 

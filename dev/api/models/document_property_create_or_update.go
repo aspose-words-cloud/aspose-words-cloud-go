@@ -41,6 +41,7 @@ type DocumentPropertyCreateOrUpdate struct {
 type IDocumentPropertyCreateOrUpdate interface {
     IsDocumentPropertyCreateOrUpdate() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (DocumentPropertyCreateOrUpdate) IsDocumentPropertyCreateOrUpdate() bool {
@@ -52,6 +53,10 @@ func (DocumentPropertyCreateOrUpdate) IsDocumentPropertyBase() bool {
 }
 
 func (obj *DocumentPropertyCreateOrUpdate) Initialize() {
+}
+
+func (obj *DocumentPropertyCreateOrUpdate) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    return resultFilesContent
 }
 
 

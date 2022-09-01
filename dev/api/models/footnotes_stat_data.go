@@ -47,6 +47,7 @@ type FootnotesStatData struct {
 type IFootnotesStatData interface {
     IsFootnotesStatData() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (FootnotesStatData) IsFootnotesStatData() bool {
@@ -55,6 +56,10 @@ func (FootnotesStatData) IsFootnotesStatData() bool {
 
 
 func (obj *FootnotesStatData) Initialize() {
+}
+
+func (obj *FootnotesStatData) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    return resultFilesContent
 }
 
 

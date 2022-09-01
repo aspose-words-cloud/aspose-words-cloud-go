@@ -107,6 +107,7 @@ type DrawingObject struct {
 type IDrawingObject interface {
     IsDrawingObject() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (DrawingObject) IsDrawingObject() bool {
@@ -130,36 +131,51 @@ func (obj *DrawingObject) Initialize() {
         obj.Link.Initialize()
     }
 
-
-
-
-
-
-
     if (obj.ImageDataLink != nil) {
         obj.ImageDataLink.Initialize()
     }
-
-
-
-
 
     if (obj.OleDataLink != nil) {
         obj.OleDataLink.Initialize()
     }
 
+    if (obj.RenderLinks != nil) {
+        for _, element := range obj.RenderLinks {
+            element.Initialize()
+        }
+    }
+
+
+}
+
+func (obj *DrawingObject) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    if (obj.Link != nil) {
+        resultFilesContent = obj.Link.CollectFilesContent(resultFilesContent)
+    }
+
+
+
+    if (obj.ImageDataLink != nil) {
+        resultFilesContent = obj.ImageDataLink.CollectFilesContent(resultFilesContent)
+    }
+
+
+    if (obj.OleDataLink != nil) {
+        resultFilesContent = obj.OleDataLink.CollectFilesContent(resultFilesContent)
+    }
+
+
+
+    if (obj.RenderLinks != nil) {
+        for _, element := range obj.RenderLinks {
+            resultFilesContent = element.CollectFilesContent(resultFilesContent)
+        }
+    }
 
 
 
 
-
-
-
-
-
-
-
-
+    return resultFilesContent
 }
 
 

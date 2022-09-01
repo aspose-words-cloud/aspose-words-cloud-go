@@ -47,6 +47,7 @@ type FieldUpdate struct {
 type IFieldUpdate interface {
     IsFieldUpdate() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (FieldUpdate) IsFieldUpdate() bool {
@@ -58,6 +59,10 @@ func (FieldUpdate) IsFieldBase() bool {
 }
 
 func (obj *FieldUpdate) Initialize() {
+}
+
+func (obj *FieldUpdate) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    return resultFilesContent
 }
 
 

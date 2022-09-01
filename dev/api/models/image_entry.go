@@ -41,17 +41,19 @@ type ImageEntry struct {
 type IImageEntry interface {
     IsImageEntry() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (ImageEntry) IsImageEntry() bool {
     return true
 }
 
-func (ImageEntry) IsBaseEntry() bool {
-    return true
-}
 
 func (obj *ImageEntry) Initialize() {
+}
+
+func (obj *ImageEntry) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    return resultFilesContent
 }
 
 

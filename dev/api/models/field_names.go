@@ -47,6 +47,7 @@ type FieldNames struct {
 type IFieldNames interface {
     IsFieldNames() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (FieldNames) IsFieldNames() bool {
@@ -63,7 +64,15 @@ func (obj *FieldNames) Initialize() {
     }
 
 
+}
 
+func (obj *FieldNames) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    if (obj.Link != nil) {
+        resultFilesContent = obj.Link.CollectFilesContent(resultFilesContent)
+    }
+
+
+    return resultFilesContent
 }
 
 

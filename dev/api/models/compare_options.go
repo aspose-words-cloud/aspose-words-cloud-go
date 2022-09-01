@@ -95,6 +95,7 @@ type CompareOptions struct {
 type ICompareOptions interface {
     IsCompareOptions() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (CompareOptions) IsCompareOptions() bool {
@@ -103,6 +104,10 @@ func (CompareOptions) IsCompareOptions() bool {
 
 
 func (obj *CompareOptions) Initialize() {
+}
+
+func (obj *CompareOptions) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    return resultFilesContent
 }
 
 

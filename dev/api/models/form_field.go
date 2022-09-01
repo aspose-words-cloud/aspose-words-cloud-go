@@ -101,6 +101,7 @@ type FormField struct {
 type IFormField interface {
     IsFormField() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (FormField) IsFormField() bool {
@@ -121,6 +122,12 @@ func (obj *FormField) Initialize() {
     }
 
 
+}
+
+func (obj *FormField) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    if (obj.Link != nil) {
+        resultFilesContent = obj.Link.CollectFilesContent(resultFilesContent)
+    }
 
 
 
@@ -132,14 +139,7 @@ func (obj *FormField) Initialize() {
 
 
 
-
-
-
-
-
-
-
-
+    return resultFilesContent
 }
 
 

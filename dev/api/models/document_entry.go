@@ -33,10 +33,10 @@ type DocumentEntryResult struct {
     EncryptedPassword string `json:"EncryptedPassword,omitempty"`
 
     // Represents a document which will be appended to the original resource document.
-    Href string `json:"Href,omitempty"`
+    ImportFormatMode string `json:"ImportFormatMode,omitempty"`
 
     // Represents a document which will be appended to the original resource document.
-    ImportFormatMode string `json:"ImportFormatMode,omitempty"`
+    Href string `json:"Href,omitempty"`
 }
 
 type DocumentEntry struct {
@@ -44,23 +44,31 @@ type DocumentEntry struct {
     EncryptedPassword *string `json:"EncryptedPassword,omitempty"`
 
     // Represents a document which will be appended to the original resource document.
-    Href *string `json:"Href,omitempty"`
+    ImportFormatMode *string `json:"ImportFormatMode,omitempty"`
 
     // Represents a document which will be appended to the original resource document.
-    ImportFormatMode *string `json:"ImportFormatMode,omitempty"`
+    Href *string `json:"Href,omitempty"`
 }
 
 type IDocumentEntry interface {
     IsDocumentEntry() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (DocumentEntry) IsDocumentEntry() bool {
     return true
 }
 
+func (DocumentEntry) IsBaseDocumentEntry() bool {
+    return true
+}
 
 func (obj *DocumentEntry) Initialize() {
+}
+
+func (obj *DocumentEntry) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    return resultFilesContent
 }
 
 

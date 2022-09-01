@@ -59,6 +59,7 @@ type PageNumber struct {
 type IPageNumber interface {
     IsPageNumber() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (PageNumber) IsPageNumber() bool {
@@ -67,6 +68,10 @@ func (PageNumber) IsPageNumber() bool {
 
 
 func (obj *PageNumber) Initialize() {
+}
+
+func (obj *PageNumber) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    return resultFilesContent
 }
 
 

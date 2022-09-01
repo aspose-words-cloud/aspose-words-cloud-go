@@ -239,6 +239,7 @@ type EmfSaveOptionsData struct {
 type IEmfSaveOptionsData interface {
     IsEmfSaveOptionsData() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (EmfSaveOptionsData) IsEmfSaveOptionsData() bool {
@@ -261,25 +262,22 @@ func (obj *EmfSaveOptionsData) Initialize() {
     var _SaveFormat = "emf"
     obj.SaveFormat = &_SaveFormat
 
+
     if (obj.CustomTimeZoneInfoData != nil) {
         obj.CustomTimeZoneInfoData.Initialize()
     }
 
+    if (obj.MetafileRenderingOptions != nil) {
+        obj.MetafileRenderingOptions.Initialize()
+    }
 
 
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
+func (obj *EmfSaveOptionsData) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    if (obj.CustomTimeZoneInfoData != nil) {
+        resultFilesContent = obj.CustomTimeZoneInfoData.CollectFilesContent(resultFilesContent)
+    }
 
 
 
@@ -296,7 +294,7 @@ func (obj *EmfSaveOptionsData) Initialize() {
 
 
     if (obj.MetafileRenderingOptions != nil) {
-        obj.MetafileRenderingOptions.Initialize()
+        resultFilesContent = obj.MetafileRenderingOptions.CollectFilesContent(resultFilesContent)
     }
 
 
@@ -315,22 +313,7 @@ func (obj *EmfSaveOptionsData) Initialize() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    return resultFilesContent
 }
 
 

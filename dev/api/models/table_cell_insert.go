@@ -41,6 +41,7 @@ type TableCellInsert struct {
 type ITableCellInsert interface {
     IsTableCellInsert() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (TableCellInsert) IsTableCellInsert() bool {
@@ -49,6 +50,10 @@ func (TableCellInsert) IsTableCellInsert() bool {
 
 
 func (obj *TableCellInsert) Initialize() {
+}
+
+func (obj *TableCellInsert) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    return resultFilesContent
 }
 
 

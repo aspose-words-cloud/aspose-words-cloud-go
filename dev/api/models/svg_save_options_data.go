@@ -203,6 +203,7 @@ type SvgSaveOptionsData struct {
 type ISvgSaveOptionsData interface {
     IsSvgSaveOptionsData() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (SvgSaveOptionsData) IsSvgSaveOptionsData() bool {
@@ -221,25 +222,22 @@ func (obj *SvgSaveOptionsData) Initialize() {
     var _SaveFormat = "svg"
     obj.SaveFormat = &_SaveFormat
 
+
     if (obj.CustomTimeZoneInfoData != nil) {
         obj.CustomTimeZoneInfoData.Initialize()
     }
 
+    if (obj.MetafileRenderingOptions != nil) {
+        obj.MetafileRenderingOptions.Initialize()
+    }
 
 
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
+func (obj *SvgSaveOptionsData) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    if (obj.CustomTimeZoneInfoData != nil) {
+        resultFilesContent = obj.CustomTimeZoneInfoData.CollectFilesContent(resultFilesContent)
+    }
 
 
 
@@ -256,7 +254,7 @@ func (obj *SvgSaveOptionsData) Initialize() {
 
 
     if (obj.MetafileRenderingOptions != nil) {
-        obj.MetafileRenderingOptions.Initialize()
+        resultFilesContent = obj.MetafileRenderingOptions.CollectFilesContent(resultFilesContent)
     }
 
 
@@ -269,16 +267,7 @@ func (obj *SvgSaveOptionsData) Initialize() {
 
 
 
-
-
-
-
-
-
-
-
-
-
+    return resultFilesContent
 }
 
 

@@ -41,6 +41,7 @@ type CommentLink struct {
 type ICommentLink interface {
     IsCommentLink() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (CommentLink) IsCommentLink() bool {
@@ -56,6 +57,15 @@ func (obj *CommentLink) Initialize() {
         obj.Link.Initialize()
     }
 
+
+}
+
+func (obj *CommentLink) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    if (obj.Link != nil) {
+        resultFilesContent = obj.Link.CollectFilesContent(resultFilesContent)
+    }
+
+    return resultFilesContent
 }
 
 

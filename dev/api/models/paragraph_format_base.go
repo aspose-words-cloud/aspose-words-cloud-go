@@ -197,6 +197,7 @@ type ParagraphFormatBase struct {
 type IParagraphFormatBase interface {
     IsParagraphFormatBase() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (ParagraphFormatBase) IsParagraphFormatBase() bool {
@@ -212,23 +213,17 @@ func (obj *ParagraphFormatBase) Initialize() {
         obj.Link.Initialize()
     }
 
+    if (obj.Shading != nil) {
+        obj.Shading.Initialize()
+    }
 
 
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+func (obj *ParagraphFormatBase) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    if (obj.Link != nil) {
+        resultFilesContent = obj.Link.CollectFilesContent(resultFilesContent)
+    }
 
 
 
@@ -247,7 +242,7 @@ func (obj *ParagraphFormatBase) Initialize() {
 
 
     if (obj.Shading != nil) {
-        obj.Shading.Initialize()
+        resultFilesContent = obj.Shading.CollectFilesContent(resultFilesContent)
     }
 
 
@@ -259,15 +254,7 @@ func (obj *ParagraphFormatBase) Initialize() {
 
 
 
-
-
-
-
-
-
-
-
-
+    return resultFilesContent
 }
 
 

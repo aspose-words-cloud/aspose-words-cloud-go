@@ -173,6 +173,7 @@ type PsSaveOptionsData struct {
 type IPsSaveOptionsData interface {
     IsPsSaveOptionsData() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (PsSaveOptionsData) IsPsSaveOptionsData() bool {
@@ -191,25 +192,22 @@ func (obj *PsSaveOptionsData) Initialize() {
     var _SaveFormat = "ps"
     obj.SaveFormat = &_SaveFormat
 
+
     if (obj.CustomTimeZoneInfoData != nil) {
         obj.CustomTimeZoneInfoData.Initialize()
     }
 
+    if (obj.MetafileRenderingOptions != nil) {
+        obj.MetafileRenderingOptions.Initialize()
+    }
 
 
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
+func (obj *PsSaveOptionsData) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    if (obj.CustomTimeZoneInfoData != nil) {
+        resultFilesContent = obj.CustomTimeZoneInfoData.CollectFilesContent(resultFilesContent)
+    }
 
 
 
@@ -226,7 +224,7 @@ func (obj *PsSaveOptionsData) Initialize() {
 
 
     if (obj.MetafileRenderingOptions != nil) {
-        obj.MetafileRenderingOptions.Initialize()
+        resultFilesContent = obj.MetafileRenderingOptions.CollectFilesContent(resultFilesContent)
     }
 
 
@@ -234,11 +232,7 @@ func (obj *PsSaveOptionsData) Initialize() {
 
 
 
-
-
-
-
-
+    return resultFilesContent
 }
 
 

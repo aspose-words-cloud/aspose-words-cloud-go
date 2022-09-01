@@ -215,6 +215,7 @@ type PageSetup struct {
 type IPageSetup interface {
     IsPageSetup() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (PageSetup) IsPageSetup() bool {
@@ -228,6 +229,14 @@ func (PageSetup) IsLinkElement() bool {
 func (obj *PageSetup) Initialize() {
     if (obj.Link != nil) {
         obj.Link.Initialize()
+    }
+
+
+}
+
+func (obj *PageSetup) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    if (obj.Link != nil) {
+        resultFilesContent = obj.Link.CollectFilesContent(resultFilesContent)
     }
 
 
@@ -259,35 +268,7 @@ func (obj *PageSetup) Initialize() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    return resultFilesContent
 }
 
 

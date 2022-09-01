@@ -281,6 +281,7 @@ type Font struct {
 type IFont interface {
     IsFont() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (Font) IsFont() bool {
@@ -296,32 +297,41 @@ func (obj *Font) Initialize() {
         obj.Link.Initialize()
     }
 
+    if (obj.Border != nil) {
+        obj.Border.Initialize()
+    }
+
+    if (obj.Color != nil) {
+        obj.Color.Initialize()
+    }
+
+    if (obj.HighlightColor != nil) {
+        obj.HighlightColor.Initialize()
+    }
+
+    if (obj.UnderlineColor != nil) {
+        obj.UnderlineColor.Initialize()
+    }
 
 
+}
 
-
-
+func (obj *Font) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    if (obj.Link != nil) {
+        resultFilesContent = obj.Link.CollectFilesContent(resultFilesContent)
+    }
 
 
 
 
 
     if (obj.Border != nil) {
-        obj.Border.Initialize()
+        resultFilesContent = obj.Border.CollectFilesContent(resultFilesContent)
     }
-
-
 
     if (obj.Color != nil) {
-        obj.Color.Initialize()
+        resultFilesContent = obj.Color.CollectFilesContent(resultFilesContent)
     }
-
-
-
-
-
-
-
 
 
 
@@ -329,37 +339,8 @@ func (obj *Font) Initialize() {
 
 
     if (obj.HighlightColor != nil) {
-        obj.HighlightColor.Initialize()
+        resultFilesContent = obj.HighlightColor.CollectFilesContent(resultFilesContent)
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -389,9 +370,10 @@ func (obj *Font) Initialize() {
 
 
     if (obj.UnderlineColor != nil) {
-        obj.UnderlineColor.Initialize()
+        resultFilesContent = obj.UnderlineColor.CollectFilesContent(resultFilesContent)
     }
 
+    return resultFilesContent
 }
 
 

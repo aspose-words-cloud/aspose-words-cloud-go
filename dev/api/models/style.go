@@ -107,6 +107,7 @@ type Style struct {
 type IStyle interface {
     IsStyle() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (Style) IsStyle() bool {
@@ -122,16 +123,23 @@ func (obj *Style) Initialize() {
         obj.Link.Initialize()
     }
 
+    if (obj.Font != nil) {
+        obj.Font.Initialize()
+    }
 
 
+}
 
-
+func (obj *Style) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    if (obj.Link != nil) {
+        resultFilesContent = obj.Link.CollectFilesContent(resultFilesContent)
+    }
 
 
 
 
     if (obj.Font != nil) {
-        obj.Font.Initialize()
+        resultFilesContent = obj.Font.CollectFilesContent(resultFilesContent)
     }
 
 
@@ -141,13 +149,7 @@ func (obj *Style) Initialize() {
 
 
 
-
-
-
-
-
-
-
+    return resultFilesContent
 }
 
 

@@ -47,6 +47,7 @@ type FootnoteLink struct {
 type IFootnoteLink interface {
     IsFootnoteLink() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (FootnoteLink) IsFootnoteLink() bool {
@@ -67,7 +68,15 @@ func (obj *FootnoteLink) Initialize() {
     }
 
 
+}
 
+func (obj *FootnoteLink) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    if (obj.Link != nil) {
+        resultFilesContent = obj.Link.CollectFilesContent(resultFilesContent)
+    }
+
+
+    return resultFilesContent
 }
 
 

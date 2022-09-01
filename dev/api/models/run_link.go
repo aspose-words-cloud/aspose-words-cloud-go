@@ -53,6 +53,7 @@ type RunLink struct {
 type IRunLink interface {
     IsRunLink() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (RunLink) IsRunLink() bool {
@@ -73,9 +74,16 @@ func (obj *RunLink) Initialize() {
     }
 
 
+}
+
+func (obj *RunLink) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    if (obj.Link != nil) {
+        resultFilesContent = obj.Link.CollectFilesContent(resultFilesContent)
+    }
 
 
 
+    return resultFilesContent
 }
 
 

@@ -47,6 +47,7 @@ type NodeLink struct {
 type INodeLink interface {
     IsNodeLink() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (NodeLink) IsNodeLink() bool {
@@ -63,7 +64,15 @@ func (obj *NodeLink) Initialize() {
     }
 
 
+}
 
+func (obj *NodeLink) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    if (obj.Link != nil) {
+        resultFilesContent = obj.Link.CollectFilesContent(resultFilesContent)
+    }
+
+
+    return resultFilesContent
 }
 
 

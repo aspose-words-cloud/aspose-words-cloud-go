@@ -47,6 +47,7 @@ type StyleInsert struct {
 type IStyleInsert interface {
     IsStyleInsert() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (StyleInsert) IsStyleInsert() bool {
@@ -55,6 +56,10 @@ func (StyleInsert) IsStyleInsert() bool {
 
 
 func (obj *StyleInsert) Initialize() {
+}
+
+func (obj *StyleInsert) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    return resultFilesContent
 }
 
 

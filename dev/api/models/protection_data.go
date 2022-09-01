@@ -41,6 +41,7 @@ type ProtectionData struct {
 type IProtectionData interface {
     IsProtectionData() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (ProtectionData) IsProtectionData() bool {
@@ -49,6 +50,10 @@ func (ProtectionData) IsProtectionData() bool {
 
 
 func (obj *ProtectionData) Initialize() {
+}
+
+func (obj *ProtectionData) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    return resultFilesContent
 }
 
 

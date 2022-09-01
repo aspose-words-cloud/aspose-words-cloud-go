@@ -47,6 +47,7 @@ type DocumentPosition struct {
 type IDocumentPosition interface {
     IsDocumentPosition() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (DocumentPosition) IsDocumentPosition() bool {
@@ -60,7 +61,15 @@ func (obj *DocumentPosition) Initialize() {
     }
 
 
+}
 
+func (obj *DocumentPosition) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    if (obj.Node != nil) {
+        resultFilesContent = obj.Node.CollectFilesContent(resultFilesContent)
+    }
+
+
+    return resultFilesContent
 }
 
 

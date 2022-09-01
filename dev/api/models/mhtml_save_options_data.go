@@ -359,6 +359,7 @@ type MhtmlSaveOptionsData struct {
 type IMhtmlSaveOptionsData interface {
     IsMhtmlSaveOptionsData() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (MhtmlSaveOptionsData) IsMhtmlSaveOptionsData() bool {
@@ -377,8 +378,17 @@ func (obj *MhtmlSaveOptionsData) Initialize() {
     var _SaveFormat = "mht"
     obj.SaveFormat = &_SaveFormat
 
+
     if (obj.CustomTimeZoneInfoData != nil) {
         obj.CustomTimeZoneInfoData.Initialize()
+    }
+
+
+}
+
+func (obj *MhtmlSaveOptionsData) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    if (obj.CustomTimeZoneInfoData != nil) {
+        resultFilesContent = obj.CustomTimeZoneInfoData.CollectFilesContent(resultFilesContent)
     }
 
 
@@ -432,57 +442,7 @@ func (obj *MhtmlSaveOptionsData) Initialize() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    return resultFilesContent
 }
 
 

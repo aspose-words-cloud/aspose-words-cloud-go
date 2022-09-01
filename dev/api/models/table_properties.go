@@ -125,6 +125,7 @@ type TableProperties struct {
 type ITableProperties interface {
     IsTableProperties() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (TableProperties) IsTableProperties() bool {
@@ -140,24 +141,16 @@ func (obj *TableProperties) Initialize() {
         obj.Link.Initialize()
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     if (obj.PreferredWidth != nil) {
         obj.PreferredWidth.Initialize()
+    }
+
+
+}
+
+func (obj *TableProperties) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    if (obj.Link != nil) {
+        resultFilesContent = obj.Link.CollectFilesContent(resultFilesContent)
     }
 
 
@@ -167,11 +160,17 @@ func (obj *TableProperties) Initialize() {
 
 
 
+    if (obj.PreferredWidth != nil) {
+        resultFilesContent = obj.PreferredWidth.CollectFilesContent(resultFilesContent)
+    }
 
 
 
 
 
+
+
+    return resultFilesContent
 }
 
 

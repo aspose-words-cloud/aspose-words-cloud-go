@@ -71,6 +71,7 @@ type Document struct {
 type IDocument interface {
     IsDocument() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (Document) IsDocument() bool {
@@ -83,16 +84,31 @@ func (obj *Document) Initialize() {
         obj.DocumentProperties.Initialize()
     }
 
+    if (obj.Links != nil) {
+        for _, element := range obj.Links {
+            element.Initialize()
+        }
+    }
+
+
+}
+
+func (obj *Document) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    if (obj.DocumentProperties != nil) {
+        resultFilesContent = obj.DocumentProperties.CollectFilesContent(resultFilesContent)
+    }
 
 
 
 
+    if (obj.Links != nil) {
+        for _, element := range obj.Links {
+            resultFilesContent = element.CollectFilesContent(resultFilesContent)
+        }
+    }
 
 
-
-
-
-
+    return resultFilesContent
 }
 
 

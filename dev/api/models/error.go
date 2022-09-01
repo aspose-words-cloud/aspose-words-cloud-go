@@ -59,6 +59,7 @@ type Error struct {
 type IError interface {
     IsError() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (Error) IsError() bool {
@@ -67,6 +68,10 @@ func (Error) IsError() bool {
 
 
 func (obj *Error) Initialize() {
+}
+
+func (obj *Error) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    return resultFilesContent
 }
 
 

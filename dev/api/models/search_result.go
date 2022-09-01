@@ -47,6 +47,7 @@ type SearchResult struct {
 type ISearchResult interface {
     IsSearchResult() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileContent) []FileContent
 }
 
 func (SearchResult) IsSearchResult() bool {
@@ -59,12 +60,23 @@ func (obj *SearchResult) Initialize() {
         obj.RangeEnd.Initialize()
     }
 
-
-
     if (obj.RangeStart != nil) {
         obj.RangeStart.Initialize()
     }
 
+
+}
+
+func (obj *SearchResult) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+    if (obj.RangeEnd != nil) {
+        resultFilesContent = obj.RangeEnd.CollectFilesContent(resultFilesContent)
+    }
+
+    if (obj.RangeStart != nil) {
+        resultFilesContent = obj.RangeStart.CollectFilesContent(resultFilesContent)
+    }
+
+    return resultFilesContent
 }
 
 
