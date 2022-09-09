@@ -145,6 +145,7 @@ func (data *AppendDocumentRequest) CreateRequestData() (RequestData, error) {
 
 
     result.FormParams = append(result.FormParams, NewJsonFormParamContainer("DocumentList", parameterToString(data.DocumentList, "")))
+    filesContentData = data.DocumentList.CollectFilesContent(filesContentData)
 
 
     for _, fileContentData := range filesContentData {
