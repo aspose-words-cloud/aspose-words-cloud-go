@@ -53,7 +53,7 @@ type Shading struct {
 type IShading interface {
     IsShading() bool
     Initialize()
-    CollectFilesContent(resultFilesContent []FileContent) []FileContent
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (Shading) IsShading() bool {
@@ -62,27 +62,9 @@ func (Shading) IsShading() bool {
 
 
 func (obj *Shading) Initialize() {
-    if (obj.BackgroundPatternColor != nil) {
-        obj.BackgroundPatternColor.Initialize()
-    }
-
-    if (obj.ForegroundPatternColor != nil) {
-        obj.ForegroundPatternColor.Initialize()
-    }
-
-
 }
 
-func (obj *Shading) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
-    if (obj.BackgroundPatternColor != nil) {
-        resultFilesContent = obj.BackgroundPatternColor.CollectFilesContent(resultFilesContent)
-    }
-
-    if (obj.ForegroundPatternColor != nil) {
-        resultFilesContent = obj.ForegroundPatternColor.CollectFilesContent(resultFilesContent)
-    }
-
-
+func (obj *Shading) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 

@@ -54,7 +54,7 @@ type OptimizeDocumentOnlineRequest struct {
 func (data *OptimizeDocumentOnlineRequest) CreateRequestData() (RequestData, error) {
 
     var result RequestData
-    var filesContentData = make([]FileContent, 0)
+    var filesContentData = make([]FileReference, 0)
 
     result.Method = strings.ToUpper("put")
 
@@ -131,7 +131,6 @@ func (data *OptimizeDocumentOnlineRequest) CreateRequestData() (RequestData, err
     }
 
     result.FormParams = append(result.FormParams, NewJsonFormParamContainer("Options", parameterToString(data.Options, "")))
-    filesContentData = data.Options.CollectFilesContent(filesContentData)
 
 
     for _, fileContentData := range filesContentData {

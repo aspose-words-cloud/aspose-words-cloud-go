@@ -56,7 +56,7 @@ type SaveAsRequest struct {
 func (data *SaveAsRequest) CreateRequestData() (RequestData, error) {
 
     var result RequestData
-    var filesContentData = make([]FileContent, 0)
+    var filesContentData = make([]FileReference, 0)
 
     result.Method = strings.ToUpper("put")
 
@@ -127,7 +127,6 @@ func (data *SaveAsRequest) CreateRequestData() (RequestData, error) {
 
 
     result.FormParams = append(result.FormParams, NewJsonFormParamContainer("SaveOptionsData", parameterToString(data.SaveOptionsData, "")))
-    filesContentData = data.SaveOptionsData.CollectFilesContent(filesContentData)
 
 
     for _, fileContentData := range filesContentData {

@@ -59,7 +59,7 @@ type StyleUpdate struct {
 type IStyleUpdate interface {
     IsStyleUpdate() bool
     Initialize()
-    CollectFilesContent(resultFilesContent []FileContent) []FileContent
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (StyleUpdate) IsStyleUpdate() bool {
@@ -70,7 +70,7 @@ func (StyleUpdate) IsStyleUpdate() bool {
 func (obj *StyleUpdate) Initialize() {
 }
 
-func (obj *StyleUpdate) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+func (obj *StyleUpdate) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 

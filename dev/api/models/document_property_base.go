@@ -41,7 +41,7 @@ type DocumentPropertyBase struct {
 type IDocumentPropertyBase interface {
     IsDocumentPropertyBase() bool
     Initialize()
-    CollectFilesContent(resultFilesContent []FileContent) []FileContent
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (DocumentPropertyBase) IsDocumentPropertyBase() bool {
@@ -52,7 +52,7 @@ func (DocumentPropertyBase) IsDocumentPropertyBase() bool {
 func (obj *DocumentPropertyBase) Initialize() {
 }
 
-func (obj *DocumentPropertyBase) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+func (obj *DocumentPropertyBase) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 

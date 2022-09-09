@@ -149,7 +149,7 @@ type DocmSaveOptionsData struct {
 type IDocmSaveOptionsData interface {
     IsDocmSaveOptionsData() bool
     Initialize()
-    CollectFilesContent(resultFilesContent []FileContent) []FileContent
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (DocmSaveOptionsData) IsDocmSaveOptionsData() bool {
@@ -169,34 +169,9 @@ func (obj *DocmSaveOptionsData) Initialize() {
     obj.SaveFormat = &_SaveFormat
 
 
-    if (obj.CustomTimeZoneInfoData != nil) {
-        obj.CustomTimeZoneInfoData.Initialize()
-    }
-
-
 }
 
-func (obj *DocmSaveOptionsData) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
-    if (obj.CustomTimeZoneInfoData != nil) {
-        resultFilesContent = obj.CustomTimeZoneInfoData.CollectFilesContent(resultFilesContent)
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+func (obj *DocmSaveOptionsData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 

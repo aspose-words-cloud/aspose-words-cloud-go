@@ -54,7 +54,7 @@ type CompressDocumentOnlineRequest struct {
 func (data *CompressDocumentOnlineRequest) CreateRequestData() (RequestData, error) {
 
     var result RequestData
-    var filesContentData = make([]FileContent, 0)
+    var filesContentData = make([]FileReference, 0)
 
     result.Method = strings.ToUpper("put")
 
@@ -115,7 +115,6 @@ func (data *CompressDocumentOnlineRequest) CreateRequestData() (RequestData, err
     }
 
     result.FormParams = append(result.FormParams, NewJsonFormParamContainer("CompressOptions", parameterToString(data.CompressOptions, "")))
-    filesContentData = data.CompressOptions.CollectFilesContent(filesContentData)
 
 
     for _, fileContentData := range filesContentData {

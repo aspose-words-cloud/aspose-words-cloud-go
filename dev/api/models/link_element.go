@@ -41,7 +41,7 @@ type LinkElement struct {
 type ILinkElement interface {
     IsLinkElement() bool
     Initialize()
-    CollectFilesContent(resultFilesContent []FileContent) []FileContent
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (LinkElement) IsLinkElement() bool {
@@ -50,18 +50,9 @@ func (LinkElement) IsLinkElement() bool {
 
 
 func (obj *LinkElement) Initialize() {
-    if (obj.Link != nil) {
-        obj.Link.Initialize()
-    }
-
-
 }
 
-func (obj *LinkElement) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
-    if (obj.Link != nil) {
-        resultFilesContent = obj.Link.CollectFilesContent(resultFilesContent)
-    }
-
+func (obj *LinkElement) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 

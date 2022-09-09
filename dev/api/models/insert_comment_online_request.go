@@ -56,7 +56,7 @@ type InsertCommentOnlineRequest struct {
 func (data *InsertCommentOnlineRequest) CreateRequestData() (RequestData, error) {
 
     var result RequestData
-    var filesContentData = make([]FileContent, 0)
+    var filesContentData = make([]FileReference, 0)
 
     result.Method = strings.ToUpper("put")
 
@@ -133,7 +133,6 @@ func (data *InsertCommentOnlineRequest) CreateRequestData() (RequestData, error)
     }
 
     result.FormParams = append(result.FormParams, NewJsonFormParamContainer("Comment", parameterToString(data.Comment, "")))
-    filesContentData = data.Comment.CollectFilesContent(filesContentData)
 
 
     for _, fileContentData := range filesContentData {

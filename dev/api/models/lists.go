@@ -47,7 +47,7 @@ type Lists struct {
 type ILists interface {
     IsLists() bool
     Initialize()
-    CollectFilesContent(resultFilesContent []FileContent) []FileContent
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (Lists) IsLists() bool {
@@ -59,30 +59,9 @@ func (Lists) IsLinkElement() bool {
 }
 
 func (obj *Lists) Initialize() {
-    if (obj.Link != nil) {
-        obj.Link.Initialize()
-    }
-
-    if (obj.ListInfo != nil) {
-        for _, element := range obj.ListInfo {
-            element.Initialize()
-        }
-    }
-
-
 }
 
-func (obj *Lists) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
-    if (obj.Link != nil) {
-        resultFilesContent = obj.Link.CollectFilesContent(resultFilesContent)
-    }
-
-    if (obj.ListInfo != nil) {
-        for _, element := range obj.ListInfo {
-            resultFilesContent = element.CollectFilesContent(resultFilesContent)
-        }
-    }
-
+func (obj *Lists) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 

@@ -55,7 +55,7 @@ type GetCustomXmlPartRequest struct {
 func (data *GetCustomXmlPartRequest) CreateRequestData() (RequestData, error) {
 
     var result RequestData
-    var filesContentData = make([]FileContent, 0)
+    var filesContentData = make([]FileReference, 0)
 
     result.Method = strings.ToUpper("get")
 

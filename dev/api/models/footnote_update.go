@@ -59,7 +59,7 @@ type FootnoteUpdate struct {
 type IFootnoteUpdate interface {
     IsFootnoteUpdate() bool
     Initialize()
-    CollectFilesContent(resultFilesContent []FileContent) []FileContent
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (FootnoteUpdate) IsFootnoteUpdate() bool {
@@ -71,20 +71,9 @@ func (FootnoteUpdate) IsFootnoteBase() bool {
 }
 
 func (obj *FootnoteUpdate) Initialize() {
-    if (obj.Position != nil) {
-        obj.Position.Initialize()
-    }
-
-
 }
 
-func (obj *FootnoteUpdate) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
-    if (obj.Position != nil) {
-        resultFilesContent = obj.Position.CollectFilesContent(resultFilesContent)
-    }
-
-
-
+func (obj *FootnoteUpdate) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 

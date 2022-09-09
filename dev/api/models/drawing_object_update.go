@@ -77,7 +77,7 @@ type DrawingObjectUpdate struct {
 type IDrawingObjectUpdate interface {
     IsDrawingObjectUpdate() bool
     Initialize()
-    CollectFilesContent(resultFilesContent []FileContent) []FileContent
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (DrawingObjectUpdate) IsDrawingObjectUpdate() bool {
@@ -88,7 +88,7 @@ func (DrawingObjectUpdate) IsDrawingObjectUpdate() bool {
 func (obj *DrawingObjectUpdate) Initialize() {
 }
 
-func (obj *DrawingObjectUpdate) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+func (obj *DrawingObjectUpdate) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 

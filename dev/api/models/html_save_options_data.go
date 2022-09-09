@@ -353,7 +353,7 @@ type HtmlSaveOptionsData struct {
 type IHtmlSaveOptionsData interface {
     IsHtmlSaveOptionsData() bool
     Initialize()
-    CollectFilesContent(resultFilesContent []FileContent) []FileContent
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (HtmlSaveOptionsData) IsHtmlSaveOptionsData() bool {
@@ -369,68 +369,9 @@ func (obj *HtmlSaveOptionsData) Initialize() {
     obj.SaveFormat = &_SaveFormat
 
 
-    if (obj.CustomTimeZoneInfoData != nil) {
-        obj.CustomTimeZoneInfoData.Initialize()
-    }
-
-
 }
 
-func (obj *HtmlSaveOptionsData) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
-    if (obj.CustomTimeZoneInfoData != nil) {
-        resultFilesContent = obj.CustomTimeZoneInfoData.CollectFilesContent(resultFilesContent)
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+func (obj *HtmlSaveOptionsData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 

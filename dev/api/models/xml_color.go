@@ -47,7 +47,7 @@ type XmlColor struct {
 type IXmlColor interface {
     IsXmlColor() bool
     Initialize()
-    CollectFilesContent(resultFilesContent []FileContent) []FileContent
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (XmlColor) IsXmlColor() bool {
@@ -58,7 +58,7 @@ func (XmlColor) IsXmlColor() bool {
 func (obj *XmlColor) Initialize() {
 }
 
-func (obj *XmlColor) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+func (obj *XmlColor) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 

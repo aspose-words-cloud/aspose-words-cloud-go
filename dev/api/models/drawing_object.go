@@ -107,7 +107,7 @@ type DrawingObject struct {
 type IDrawingObject interface {
     IsDrawingObject() bool
     Initialize()
-    CollectFilesContent(resultFilesContent []FileContent) []FileContent
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (DrawingObject) IsDrawingObject() bool {
@@ -127,54 +127,9 @@ func (DrawingObject) IsLinkElement() bool {
 }
 
 func (obj *DrawingObject) Initialize() {
-    if (obj.Link != nil) {
-        obj.Link.Initialize()
-    }
-
-    if (obj.ImageDataLink != nil) {
-        obj.ImageDataLink.Initialize()
-    }
-
-    if (obj.OleDataLink != nil) {
-        obj.OleDataLink.Initialize()
-    }
-
-    if (obj.RenderLinks != nil) {
-        for _, element := range obj.RenderLinks {
-            element.Initialize()
-        }
-    }
-
-
 }
 
-func (obj *DrawingObject) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
-    if (obj.Link != nil) {
-        resultFilesContent = obj.Link.CollectFilesContent(resultFilesContent)
-    }
-
-
-
-    if (obj.ImageDataLink != nil) {
-        resultFilesContent = obj.ImageDataLink.CollectFilesContent(resultFilesContent)
-    }
-
-
-    if (obj.OleDataLink != nil) {
-        resultFilesContent = obj.OleDataLink.CollectFilesContent(resultFilesContent)
-    }
-
-
-
-    if (obj.RenderLinks != nil) {
-        for _, element := range obj.RenderLinks {
-            resultFilesContent = element.CollectFilesContent(resultFilesContent)
-        }
-    }
-
-
-
-
+func (obj *DrawingObject) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 

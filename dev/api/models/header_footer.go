@@ -65,7 +65,7 @@ type HeaderFooter struct {
 type IHeaderFooter interface {
     IsHeaderFooter() bool
     Initialize()
-    CollectFilesContent(resultFilesContent []FileContent) []FileContent
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (HeaderFooter) IsHeaderFooter() bool {
@@ -81,47 +81,9 @@ func (HeaderFooter) IsLinkElement() bool {
 }
 
 func (obj *HeaderFooter) Initialize() {
-    if (obj.Link != nil) {
-        obj.Link.Initialize()
-    }
-
-    if (obj.ChildNodes != nil) {
-        for _, element := range obj.ChildNodes {
-            element.Initialize()
-        }
-    }
-
-    if (obj.DrawingObjects != nil) {
-        obj.DrawingObjects.Initialize()
-    }
-
-    if (obj.Paragraphs != nil) {
-        obj.Paragraphs.Initialize()
-    }
-
-
 }
 
-func (obj *HeaderFooter) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
-    if (obj.Link != nil) {
-        resultFilesContent = obj.Link.CollectFilesContent(resultFilesContent)
-    }
-
-
-    if (obj.ChildNodes != nil) {
-        for _, element := range obj.ChildNodes {
-            resultFilesContent = element.CollectFilesContent(resultFilesContent)
-        }
-    }
-
-    if (obj.DrawingObjects != nil) {
-        resultFilesContent = obj.DrawingObjects.CollectFilesContent(resultFilesContent)
-    }
-
-    if (obj.Paragraphs != nil) {
-        resultFilesContent = obj.Paragraphs.CollectFilesContent(resultFilesContent)
-    }
-
+func (obj *HeaderFooter) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 

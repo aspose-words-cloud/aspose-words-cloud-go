@@ -60,7 +60,7 @@ type InsertDrawingObjectOnlineRequest struct {
 func (data *InsertDrawingObjectOnlineRequest) CreateRequestData() (RequestData, error) {
 
     var result RequestData
-    var filesContentData = make([]FileContent, 0)
+    var filesContentData = make([]FileReference, 0)
 
     result.Method = strings.ToUpper("put")
 
@@ -141,7 +141,6 @@ func (data *InsertDrawingObjectOnlineRequest) CreateRequestData() (RequestData, 
     }
 
     result.FormParams = append(result.FormParams, NewJsonFormParamContainer("DrawingObject", parameterToString(data.DrawingObject, "")))
-    filesContentData = data.DrawingObject.CollectFilesContent(filesContentData)
 
     _imageFile := data.ImageFile
     if _imageFile != nil {

@@ -47,7 +47,7 @@ type DrawingObjectCollection struct {
 type IDrawingObjectCollection interface {
     IsDrawingObjectCollection() bool
     Initialize()
-    CollectFilesContent(resultFilesContent []FileContent) []FileContent
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (DrawingObjectCollection) IsDrawingObjectCollection() bool {
@@ -59,30 +59,9 @@ func (DrawingObjectCollection) IsLinkElement() bool {
 }
 
 func (obj *DrawingObjectCollection) Initialize() {
-    if (obj.Link != nil) {
-        obj.Link.Initialize()
-    }
-
-    if (obj.List != nil) {
-        for _, element := range obj.List {
-            element.Initialize()
-        }
-    }
-
-
 }
 
-func (obj *DrawingObjectCollection) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
-    if (obj.Link != nil) {
-        resultFilesContent = obj.Link.CollectFilesContent(resultFilesContent)
-    }
-
-    if (obj.List != nil) {
-        for _, element := range obj.List {
-            resultFilesContent = element.CollectFilesContent(resultFilesContent)
-        }
-    }
-
+func (obj *DrawingObjectCollection) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 

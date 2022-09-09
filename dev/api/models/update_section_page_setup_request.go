@@ -60,7 +60,7 @@ type UpdateSectionPageSetupRequest struct {
 func (data *UpdateSectionPageSetupRequest) CreateRequestData() (RequestData, error) {
 
     var result RequestData
-    var filesContentData = make([]FileContent, 0)
+    var filesContentData = make([]FileReference, 0)
 
     result.Method = strings.ToUpper("put")
 
@@ -148,7 +148,6 @@ func (data *UpdateSectionPageSetupRequest) CreateRequestData() (RequestData, err
 
 
     result.FormParams = append(result.FormParams, NewJsonFormParamContainer("PageSetup", parameterToString(data.PageSetup, "")))
-    filesContentData = data.PageSetup.CollectFilesContent(filesContentData)
 
 
     for _, fileContentData := range filesContentData {

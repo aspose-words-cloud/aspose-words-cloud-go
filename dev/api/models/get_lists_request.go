@@ -53,7 +53,7 @@ type GetListsRequest struct {
 func (data *GetListsRequest) CreateRequestData() (RequestData, error) {
 
     var result RequestData
-    var filesContentData = make([]FileContent, 0)
+    var filesContentData = make([]FileReference, 0)
 
     result.Method = strings.ToUpper("get")
 

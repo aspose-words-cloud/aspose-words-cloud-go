@@ -59,7 +59,7 @@ type InsertTableRequest struct {
 func (data *InsertTableRequest) CreateRequestData() (RequestData, error) {
 
     var result RequestData
-    var filesContentData = make([]FileContent, 0)
+    var filesContentData = make([]FileReference, 0)
 
     result.Method = strings.ToUpper("post")
 
@@ -150,7 +150,6 @@ func (data *InsertTableRequest) CreateRequestData() (RequestData, error) {
 
 
     result.FormParams = append(result.FormParams, NewJsonFormParamContainer("Table", parameterToString(data.Table, "")))
-    filesContentData = data.Table.CollectFilesContent(filesContentData)
 
 
     for _, fileContentData := range filesContentData {

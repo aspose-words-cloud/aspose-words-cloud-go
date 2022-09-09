@@ -65,7 +65,7 @@ type Field struct {
 type IField interface {
     IsField() bool
     Initialize()
-    CollectFilesContent(resultFilesContent []FileContent) []FileContent
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (Field) IsField() bool {
@@ -85,22 +85,9 @@ func (Field) IsLinkElement() bool {
 }
 
 func (obj *Field) Initialize() {
-    if (obj.Link != nil) {
-        obj.Link.Initialize()
-    }
-
-
 }
 
-func (obj *Field) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
-    if (obj.Link != nil) {
-        resultFilesContent = obj.Link.CollectFilesContent(resultFilesContent)
-    }
-
-
-
-
-
+func (obj *Field) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 

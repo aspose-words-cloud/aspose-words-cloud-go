@@ -47,7 +47,7 @@ type ParagraphLinkCollection struct {
 type IParagraphLinkCollection interface {
     IsParagraphLinkCollection() bool
     Initialize()
-    CollectFilesContent(resultFilesContent []FileContent) []FileContent
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (ParagraphLinkCollection) IsParagraphLinkCollection() bool {
@@ -59,30 +59,9 @@ func (ParagraphLinkCollection) IsLinkElement() bool {
 }
 
 func (obj *ParagraphLinkCollection) Initialize() {
-    if (obj.Link != nil) {
-        obj.Link.Initialize()
-    }
-
-    if (obj.ParagraphLinkList != nil) {
-        for _, element := range obj.ParagraphLinkList {
-            element.Initialize()
-        }
-    }
-
-
 }
 
-func (obj *ParagraphLinkCollection) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
-    if (obj.Link != nil) {
-        resultFilesContent = obj.Link.CollectFilesContent(resultFilesContent)
-    }
-
-    if (obj.ParagraphLinkList != nil) {
-        for _, element := range obj.ParagraphLinkList {
-            resultFilesContent = element.CollectFilesContent(resultFilesContent)
-        }
-    }
-
+func (obj *ParagraphLinkCollection) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 

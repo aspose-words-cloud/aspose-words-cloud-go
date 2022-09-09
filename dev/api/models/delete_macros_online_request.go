@@ -52,7 +52,7 @@ type DeleteMacrosOnlineRequest struct {
 func (data *DeleteMacrosOnlineRequest) CreateRequestData() (RequestData, error) {
 
     var result RequestData
-    var filesContentData = make([]FileContent, 0)
+    var filesContentData = make([]FileReference, 0)
 
     result.Method = strings.ToUpper("put")
 

@@ -173,7 +173,7 @@ type TextSaveOptionsData struct {
 type ITextSaveOptionsData interface {
     IsTextSaveOptionsData() bool
     Initialize()
-    CollectFilesContent(resultFilesContent []FileContent) []FileContent
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (TextSaveOptionsData) IsTextSaveOptionsData() bool {
@@ -193,38 +193,9 @@ func (obj *TextSaveOptionsData) Initialize() {
     obj.SaveFormat = &_SaveFormat
 
 
-    if (obj.CustomTimeZoneInfoData != nil) {
-        obj.CustomTimeZoneInfoData.Initialize()
-    }
-
-
 }
 
-func (obj *TextSaveOptionsData) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
-    if (obj.CustomTimeZoneInfoData != nil) {
-        resultFilesContent = obj.CustomTimeZoneInfoData.CollectFilesContent(resultFilesContent)
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+func (obj *TextSaveOptionsData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 

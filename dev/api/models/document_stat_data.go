@@ -65,7 +65,7 @@ type DocumentStatData struct {
 type IDocumentStatData interface {
     IsDocumentStatData() bool
     Initialize()
-    CollectFilesContent(resultFilesContent []FileContent) []FileContent
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (DocumentStatData) IsDocumentStatData() bool {
@@ -74,33 +74,9 @@ func (DocumentStatData) IsDocumentStatData() bool {
 
 
 func (obj *DocumentStatData) Initialize() {
-    if (obj.FootnotesStatData != nil) {
-        obj.FootnotesStatData.Initialize()
-    }
-
-    if (obj.PageStatData != nil) {
-        for _, element := range obj.PageStatData {
-            element.Initialize()
-        }
-    }
-
-
 }
 
-func (obj *DocumentStatData) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
-    if (obj.FootnotesStatData != nil) {
-        resultFilesContent = obj.FootnotesStatData.CollectFilesContent(resultFilesContent)
-    }
-
-
-    if (obj.PageStatData != nil) {
-        for _, element := range obj.PageStatData {
-            resultFilesContent = element.CollectFilesContent(resultFilesContent)
-        }
-    }
-
-
-
+func (obj *DocumentStatData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 

@@ -54,7 +54,7 @@ type ProtectDocumentOnlineRequest struct {
 func (data *ProtectDocumentOnlineRequest) CreateRequestData() (RequestData, error) {
 
     var result RequestData
-    var filesContentData = make([]FileContent, 0)
+    var filesContentData = make([]FileReference, 0)
 
     result.Method = strings.ToUpper("put")
 
@@ -115,7 +115,6 @@ func (data *ProtectDocumentOnlineRequest) CreateRequestData() (RequestData, erro
     }
 
     result.FormParams = append(result.FormParams, NewJsonFormParamContainer("ProtectionRequest", parameterToString(data.ProtectionRequest, "")))
-    filesContentData = data.ProtectionRequest.CollectFilesContent(filesContentData)
 
 
     for _, fileContentData := range filesContentData {

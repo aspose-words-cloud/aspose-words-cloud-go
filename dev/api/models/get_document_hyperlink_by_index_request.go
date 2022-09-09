@@ -55,7 +55,7 @@ type GetDocumentHyperlinkByIndexRequest struct {
 func (data *GetDocumentHyperlinkByIndexRequest) CreateRequestData() (RequestData, error) {
 
     var result RequestData
-    var filesContentData = make([]FileContent, 0)
+    var filesContentData = make([]FileReference, 0)
 
     result.Method = strings.ToUpper("get")
 

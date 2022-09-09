@@ -47,14 +47,10 @@ type DocumentEntryList struct {
 type IDocumentEntryList interface {
     IsDocumentEntryList() bool
     Initialize()
-    CollectFilesContent(resultFilesContent []FileContent) []FileContent
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (DocumentEntryList) IsDocumentEntryList() bool {
-    return true
-}
-
-func (DocumentEntryList) IsBaseDocumentEntryList() bool {
     return true
 }
 
@@ -63,16 +59,9 @@ func (DocumentEntryList) IsBaseEntryList() bool {
 }
 
 func (obj *DocumentEntryList) Initialize() {
-    if (obj.DocumentEntries != nil) {
-        for _, element := range obj.DocumentEntries {
-            element.Initialize()
-        }
-    }
-
-
 }
 
-func (obj *DocumentEntryList) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+func (obj *DocumentEntryList) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     if (obj.DocumentEntries != nil) {
         for _, element := range obj.DocumentEntries {
             resultFilesContent = element.CollectFilesContent(resultFilesContent)

@@ -55,7 +55,7 @@ type SearchRequest struct {
 func (data *SearchRequest) CreateRequestData() (RequestData, error) {
 
     var result RequestData
-    var filesContentData = make([]FileContent, 0)
+    var filesContentData = make([]FileReference, 0)
 
     result.Method = strings.ToUpper("get")
 

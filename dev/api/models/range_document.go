@@ -41,7 +41,7 @@ type RangeDocument struct {
 type IRangeDocument interface {
     IsRangeDocument() bool
     Initialize()
-    CollectFilesContent(resultFilesContent []FileContent) []FileContent
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (RangeDocument) IsRangeDocument() bool {
@@ -52,7 +52,7 @@ func (RangeDocument) IsRangeDocument() bool {
 func (obj *RangeDocument) Initialize() {
 }
 
-func (obj *RangeDocument) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+func (obj *RangeDocument) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 

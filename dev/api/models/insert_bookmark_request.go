@@ -58,7 +58,7 @@ type InsertBookmarkRequest struct {
 func (data *InsertBookmarkRequest) CreateRequestData() (RequestData, error) {
 
     var result RequestData
-    var filesContentData = make([]FileContent, 0)
+    var filesContentData = make([]FileReference, 0)
 
     result.Method = strings.ToUpper("post")
 
@@ -145,7 +145,6 @@ func (data *InsertBookmarkRequest) CreateRequestData() (RequestData, error) {
 
 
     result.FormParams = append(result.FormParams, NewJsonFormParamContainer("Bookmark", parameterToString(data.Bookmark, "")))
-    filesContentData = data.Bookmark.CollectFilesContent(filesContentData)
 
 
     for _, fileContentData := range filesContentData {

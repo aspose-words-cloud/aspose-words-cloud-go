@@ -1,6 +1,6 @@
 /*
  * --------------------------------------------------------------------------------
- * <copyright company="Aspose" file="base_document_entry_list.go">
+ * <copyright company="Aspose" file="base_entry.go">
  *   Copyright (c) 2022 Aspose.Words for Cloud
  * </copyright>
  * <summary>
@@ -27,35 +27,36 @@
 
 package models
 
-// Represents a list of documents which will be appended to the original resource document.
-type BaseDocumentEntryListResult struct {
-    // Represents a list of documents which will be appended to the original resource document.
-    ApplyBaseDocumentHeadersAndFootersToAppendingDocuments bool `json:"ApplyBaseDocumentHeadersAndFootersToAppendingDocuments,omitempty"`
+// Represents a base class for document which will be appended to the original resource document.
+type BaseEntryResult struct {
+    // Represents a base class for document which will be appended to the original resource document.
+    FileReference FileReferenceResult `json:"FileReference,omitempty"`
 }
 
-type BaseDocumentEntryList struct {
-    // Represents a list of documents which will be appended to the original resource document.
-    ApplyBaseDocumentHeadersAndFootersToAppendingDocuments *bool `json:"ApplyBaseDocumentHeadersAndFootersToAppendingDocuments,omitempty"`
+type BaseEntry struct {
+    // Represents a base class for document which will be appended to the original resource document.
+    FileReference IFileReference `json:"FileReference,omitempty"`
 }
 
-type IBaseDocumentEntryList interface {
-    IsBaseDocumentEntryList() bool
+type IBaseEntry interface {
+    IsBaseEntry() bool
     Initialize()
-    CollectFilesContent(resultFilesContent []FileContent) []FileContent
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
-func (BaseDocumentEntryList) IsBaseDocumentEntryList() bool {
+func (BaseEntry) IsBaseEntry() bool {
     return true
 }
 
-func (BaseDocumentEntryList) IsBaseEntryList() bool {
-    return true
+
+func (obj *BaseEntry) Initialize() {
 }
 
-func (obj *BaseDocumentEntryList) Initialize() {
-}
+func (obj *BaseEntry) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    if (obj.FileReference != nil) {
+        resultFilesContent = obj.FileReference.CollectFilesContent(resultFilesContent)
+    }
 
-func (obj *BaseDocumentEntryList) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
     return resultFilesContent
 }
 

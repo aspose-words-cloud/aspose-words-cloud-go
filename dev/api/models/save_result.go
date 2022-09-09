@@ -53,7 +53,7 @@ type SaveResult struct {
 type ISaveResult interface {
     IsSaveResult() bool
     Initialize()
-    CollectFilesContent(resultFilesContent []FileContent) []FileContent
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (SaveResult) IsSaveResult() bool {
@@ -62,38 +62,9 @@ func (SaveResult) IsSaveResult() bool {
 
 
 func (obj *SaveResult) Initialize() {
-    if (obj.AdditionalItems != nil) {
-        for _, element := range obj.AdditionalItems {
-            element.Initialize()
-        }
-    }
-
-    if (obj.DestDocument != nil) {
-        obj.DestDocument.Initialize()
-    }
-
-    if (obj.SourceDocument != nil) {
-        obj.SourceDocument.Initialize()
-    }
-
-
 }
 
-func (obj *SaveResult) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
-    if (obj.AdditionalItems != nil) {
-        for _, element := range obj.AdditionalItems {
-            resultFilesContent = element.CollectFilesContent(resultFilesContent)
-        }
-    }
-
-    if (obj.DestDocument != nil) {
-        resultFilesContent = obj.DestDocument.CollectFilesContent(resultFilesContent)
-    }
-
-    if (obj.SourceDocument != nil) {
-        resultFilesContent = obj.SourceDocument.CollectFilesContent(resultFilesContent)
-    }
-
+func (obj *SaveResult) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 

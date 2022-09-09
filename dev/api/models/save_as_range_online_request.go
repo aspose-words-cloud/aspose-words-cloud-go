@@ -57,7 +57,7 @@ type SaveAsRangeOnlineRequest struct {
 func (data *SaveAsRangeOnlineRequest) CreateRequestData() (RequestData, error) {
 
     var result RequestData
-    var filesContentData = make([]FileContent, 0)
+    var filesContentData = make([]FileReference, 0)
 
     result.Method = strings.ToUpper("put")
 
@@ -115,7 +115,6 @@ func (data *SaveAsRangeOnlineRequest) CreateRequestData() (RequestData, error) {
     }
 
     result.FormParams = append(result.FormParams, NewJsonFormParamContainer("DocumentParameters", parameterToString(data.DocumentParameters, "")))
-    filesContentData = data.DocumentParameters.CollectFilesContent(filesContentData)
 
 
     for _, fileContentData := range filesContentData {

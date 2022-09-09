@@ -59,7 +59,7 @@ type InsertFootnoteRequest struct {
 func (data *InsertFootnoteRequest) CreateRequestData() (RequestData, error) {
 
     var result RequestData
-    var filesContentData = make([]FileContent, 0)
+    var filesContentData = make([]FileReference, 0)
 
     result.Method = strings.ToUpper("post")
 
@@ -150,7 +150,6 @@ func (data *InsertFootnoteRequest) CreateRequestData() (RequestData, error) {
 
 
     result.FormParams = append(result.FormParams, NewJsonFormParamContainer("FootnoteDto", parameterToString(data.FootnoteDto, "")))
-    filesContentData = data.FootnoteDto.CollectFilesContent(filesContentData)
 
 
     for _, fileContentData := range filesContentData {

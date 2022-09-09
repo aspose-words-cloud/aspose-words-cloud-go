@@ -47,7 +47,7 @@ type FieldInsert struct {
 type IFieldInsert interface {
     IsFieldInsert() bool
     Initialize()
-    CollectFilesContent(resultFilesContent []FileContent) []FileContent
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (FieldInsert) IsFieldInsert() bool {
@@ -61,7 +61,7 @@ func (FieldInsert) IsFieldBase() bool {
 func (obj *FieldInsert) Initialize() {
 }
 
-func (obj *FieldInsert) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+func (obj *FieldInsert) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 

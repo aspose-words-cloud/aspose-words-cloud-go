@@ -119,7 +119,7 @@ type FormFieldCheckbox struct {
 type IFormFieldCheckbox interface {
     IsFormFieldCheckbox() bool
     Initialize()
-    CollectFilesContent(resultFilesContent []FileContent) []FileContent
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (FormFieldCheckbox) IsFormFieldCheckbox() bool {
@@ -139,31 +139,9 @@ func (FormFieldCheckbox) IsLinkElement() bool {
 }
 
 func (obj *FormFieldCheckbox) Initialize() {
-    if (obj.Link != nil) {
-        obj.Link.Initialize()
-    }
-
-
 }
 
-func (obj *FormFieldCheckbox) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
-    if (obj.Link != nil) {
-        resultFilesContent = obj.Link.CollectFilesContent(resultFilesContent)
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+func (obj *FormFieldCheckbox) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 

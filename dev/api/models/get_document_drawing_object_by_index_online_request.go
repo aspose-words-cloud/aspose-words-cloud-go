@@ -54,7 +54,7 @@ type GetDocumentDrawingObjectByIndexOnlineRequest struct {
 func (data *GetDocumentDrawingObjectByIndexOnlineRequest) CreateRequestData() (RequestData, error) {
 
     var result RequestData
-    var filesContentData = make([]FileContent, 0)
+    var filesContentData = make([]FileReference, 0)
 
     result.Method = strings.ToUpper("put")
 

@@ -60,7 +60,7 @@ type UpdateCustomXmlPartRequest struct {
 func (data *UpdateCustomXmlPartRequest) CreateRequestData() (RequestData, error) {
 
     var result RequestData
-    var filesContentData = make([]FileContent, 0)
+    var filesContentData = make([]FileReference, 0)
 
     result.Method = strings.ToUpper("put")
 
@@ -148,7 +148,6 @@ func (data *UpdateCustomXmlPartRequest) CreateRequestData() (RequestData, error)
 
 
     result.FormParams = append(result.FormParams, NewJsonFormParamContainer("CustomXmlPart", parameterToString(data.CustomXmlPart, "")))
-    filesContentData = data.CustomXmlPart.CollectFilesContent(filesContentData)
 
 
     for _, fileContentData := range filesContentData {

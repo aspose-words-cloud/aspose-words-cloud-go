@@ -41,7 +41,7 @@ type StyleCopy struct {
 type IStyleCopy interface {
     IsStyleCopy() bool
     Initialize()
-    CollectFilesContent(resultFilesContent []FileContent) []FileContent
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (StyleCopy) IsStyleCopy() bool {
@@ -52,7 +52,7 @@ func (StyleCopy) IsStyleCopy() bool {
 func (obj *StyleCopy) Initialize() {
 }
 
-func (obj *StyleCopy) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+func (obj *StyleCopy) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 

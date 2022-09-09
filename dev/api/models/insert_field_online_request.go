@@ -59,7 +59,7 @@ type InsertFieldOnlineRequest struct {
 func (data *InsertFieldOnlineRequest) CreateRequestData() (RequestData, error) {
 
     var result RequestData
-    var filesContentData = make([]FileContent, 0)
+    var filesContentData = make([]FileReference, 0)
 
     result.Method = strings.ToUpper("put")
 
@@ -148,7 +148,6 @@ func (data *InsertFieldOnlineRequest) CreateRequestData() (RequestData, error) {
     }
 
     result.FormParams = append(result.FormParams, NewJsonFormParamContainer("Field", parameterToString(data.Field, "")))
-    filesContentData = data.Field.CollectFilesContent(filesContentData)
 
 
     for _, fileContentData := range filesContentData {

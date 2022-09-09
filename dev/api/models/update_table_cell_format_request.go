@@ -62,7 +62,7 @@ type UpdateTableCellFormatRequest struct {
 func (data *UpdateTableCellFormatRequest) CreateRequestData() (RequestData, error) {
 
     var result RequestData
-    var filesContentData = make([]FileContent, 0)
+    var filesContentData = make([]FileReference, 0)
 
     result.Method = strings.ToUpper("put")
 
@@ -151,7 +151,6 @@ func (data *UpdateTableCellFormatRequest) CreateRequestData() (RequestData, erro
 
 
     result.FormParams = append(result.FormParams, NewJsonFormParamContainer("Format", parameterToString(data.Format, "")))
-    filesContentData = data.Format.CollectFilesContent(filesContentData)
 
 
     for _, fileContentData := range filesContentData {

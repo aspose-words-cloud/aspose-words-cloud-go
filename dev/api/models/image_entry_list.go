@@ -47,14 +47,10 @@ type ImageEntryList struct {
 type IImageEntryList interface {
     IsImageEntryList() bool
     Initialize()
-    CollectFilesContent(resultFilesContent []FileContent) []FileContent
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (ImageEntryList) IsImageEntryList() bool {
-    return true
-}
-
-func (ImageEntryList) IsBaseImageEntryList() bool {
     return true
 }
 
@@ -63,16 +59,9 @@ func (ImageEntryList) IsBaseEntryList() bool {
 }
 
 func (obj *ImageEntryList) Initialize() {
-    if (obj.ImageEntries != nil) {
-        for _, element := range obj.ImageEntries {
-            element.Initialize()
-        }
-    }
-
-
 }
 
-func (obj *ImageEntryList) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+func (obj *ImageEntryList) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     if (obj.ImageEntries != nil) {
         for _, element := range obj.ImageEntries {
             resultFilesContent = element.CollectFilesContent(resultFilesContent)

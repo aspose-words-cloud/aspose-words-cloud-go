@@ -47,7 +47,7 @@ type SectionLink struct {
 type ISectionLink interface {
     IsSectionLink() bool
     Initialize()
-    CollectFilesContent(resultFilesContent []FileContent) []FileContent
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (SectionLink) IsSectionLink() bool {
@@ -63,19 +63,9 @@ func (SectionLink) IsLinkElement() bool {
 }
 
 func (obj *SectionLink) Initialize() {
-    if (obj.Link != nil) {
-        obj.Link.Initialize()
-    }
-
-
 }
 
-func (obj *SectionLink) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
-    if (obj.Link != nil) {
-        resultFilesContent = obj.Link.CollectFilesContent(resultFilesContent)
-    }
-
-
+func (obj *SectionLink) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 

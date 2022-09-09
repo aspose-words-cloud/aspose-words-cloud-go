@@ -44,8 +44,9 @@ func Test_AppendDocument_AppendDocument(t *testing.T) {
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
+    requestDocumentListDocumentEntries0FileReference := models.createRemoteFileReference(remoteDataFolder + "/" + remoteFileName)
     requestDocumentListDocumentEntries0 := models.DocumentEntry{
-        Href: ToStringPointer(remoteDataFolder + "/" + remoteFileName),
+        FileReference: &requestDocumentListDocumentEntries0FileReference,
         ImportFormatMode: ToStringPointer("KeepSourceFormatting"),
     }
     requestDocumentListDocumentEntries := []models.DocumentEntry{
@@ -82,17 +83,17 @@ func Test_AppendDocument_AppendDocumentOnline(t *testing.T) {
     localFile := "Common/test_multi_pages.docx"
 
     requestDocument := OpenFile(t, localFile)
-    requestDocumentListOnlineDocumentEntries0FileStream := OpenFile(t, localFile)
-    requestDocumentListOnlineDocumentEntries0File := models.FileContent{Filename: localFile, Content: requestDocumentListOnlineDocumentEntries0FileStream}
-    requestDocumentListOnlineDocumentEntries0 := models.OnlineDocumentEntry{
-        File: &requestDocumentListOnlineDocumentEntries0File,
+    requestDocumentListDocumentEntries0FileReferenceStream := OpenFile(t, localFile)
+    requestDocumentListDocumentEntries0FileReference := createLocalFileReference(requestDocumentListDocumentEntries0FileReferenceStream)
+    requestDocumentListDocumentEntries0 := models.DocumentEntry{
+        FileReference: &requestDocumentListDocumentEntries0FileReference,
         ImportFormatMode: ToStringPointer("KeepSourceFormatting"),
     }
-    requestDocumentListOnlineDocumentEntries := []models.OnlineDocumentEntry{
-        requestDocumentListOnlineDocumentEntries0,
+    requestDocumentListDocumentEntries := []models.DocumentEntry{
+        requestDocumentListDocumentEntries0,
     }
-    requestDocumentList := models.OnlineDocumentEntryList{
-        OnlineDocumentEntries: requestDocumentListOnlineDocumentEntries,
+    requestDocumentList := models.DocumentEntryList{
+        DocumentEntries: requestDocumentListDocumentEntries,
     }
 
     options := map[string]interface{}{

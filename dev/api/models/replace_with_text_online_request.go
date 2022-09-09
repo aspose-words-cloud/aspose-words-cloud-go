@@ -58,7 +58,7 @@ type ReplaceWithTextOnlineRequest struct {
 func (data *ReplaceWithTextOnlineRequest) CreateRequestData() (RequestData, error) {
 
     var result RequestData
-    var filesContentData = make([]FileContent, 0)
+    var filesContentData = make([]FileReference, 0)
 
     result.Method = strings.ToUpper("put")
 
@@ -124,7 +124,6 @@ func (data *ReplaceWithTextOnlineRequest) CreateRequestData() (RequestData, erro
     }
 
     result.FormParams = append(result.FormParams, NewJsonFormParamContainer("RangeText", parameterToString(data.RangeText, "")))
-    filesContentData = data.RangeText.CollectFilesContent(filesContentData)
 
 
     for _, fileContentData := range filesContentData {

@@ -41,7 +41,7 @@ type OptimizationOptions struct {
 type IOptimizationOptions interface {
     IsOptimizationOptions() bool
     Initialize()
-    CollectFilesContent(resultFilesContent []FileContent) []FileContent
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (OptimizationOptions) IsOptimizationOptions() bool {
@@ -52,7 +52,7 @@ func (OptimizationOptions) IsOptimizationOptions() bool {
 func (obj *OptimizationOptions) Initialize() {
 }
 
-func (obj *OptimizationOptions) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+func (obj *OptimizationOptions) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 

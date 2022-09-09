@@ -53,7 +53,7 @@ type ParagraphLink struct {
 type IParagraphLink interface {
     IsParagraphLink() bool
     Initialize()
-    CollectFilesContent(resultFilesContent []FileContent) []FileContent
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (ParagraphLink) IsParagraphLink() bool {
@@ -69,20 +69,9 @@ func (ParagraphLink) IsLinkElement() bool {
 }
 
 func (obj *ParagraphLink) Initialize() {
-    if (obj.Link != nil) {
-        obj.Link.Initialize()
-    }
-
-
 }
 
-func (obj *ParagraphLink) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
-    if (obj.Link != nil) {
-        resultFilesContent = obj.Link.CollectFilesContent(resultFilesContent)
-    }
-
-
-
+func (obj *ParagraphLink) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 

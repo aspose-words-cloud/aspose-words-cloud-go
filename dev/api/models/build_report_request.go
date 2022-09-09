@@ -58,7 +58,7 @@ type BuildReportRequest struct {
 func (data *BuildReportRequest) CreateRequestData() (RequestData, error) {
 
     var result RequestData
-    var filesContentData = make([]FileContent, 0)
+    var filesContentData = make([]FileReference, 0)
 
     result.Method = strings.ToUpper("put")
 
@@ -131,7 +131,6 @@ func (data *BuildReportRequest) CreateRequestData() (RequestData, error) {
     result.FormParams = append(result.FormParams, NewTextFormParamContainer("Data", parameterToString(data.Data, "")))
 
     result.FormParams = append(result.FormParams, NewJsonFormParamContainer("ReportEngineSettings", parameterToString(data.ReportEngineSettings, "")))
-    filesContentData = data.ReportEngineSettings.CollectFilesContent(filesContentData)
 
 
     for _, fileContentData := range filesContentData {

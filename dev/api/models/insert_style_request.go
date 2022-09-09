@@ -58,7 +58,7 @@ type InsertStyleRequest struct {
 func (data *InsertStyleRequest) CreateRequestData() (RequestData, error) {
 
     var result RequestData
-    var filesContentData = make([]FileContent, 0)
+    var filesContentData = make([]FileReference, 0)
 
     result.Method = strings.ToUpper("post")
 
@@ -145,7 +145,6 @@ func (data *InsertStyleRequest) CreateRequestData() (RequestData, error) {
 
 
     result.FormParams = append(result.FormParams, NewJsonFormParamContainer("StyleInsert", parameterToString(data.StyleInsert, "")))
-    filesContentData = data.StyleInsert.CollectFilesContent(filesContentData)
 
 
     for _, fileContentData := range filesContentData {

@@ -179,7 +179,7 @@ type XamlFixedSaveOptionsData struct {
 type IXamlFixedSaveOptionsData interface {
     IsXamlFixedSaveOptionsData() bool
     Initialize()
-    CollectFilesContent(resultFilesContent []FileContent) []FileContent
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (XamlFixedSaveOptionsData) IsXamlFixedSaveOptionsData() bool {
@@ -199,46 +199,9 @@ func (obj *XamlFixedSaveOptionsData) Initialize() {
     obj.SaveFormat = &_SaveFormat
 
 
-    if (obj.CustomTimeZoneInfoData != nil) {
-        obj.CustomTimeZoneInfoData.Initialize()
-    }
-
-    if (obj.MetafileRenderingOptions != nil) {
-        obj.MetafileRenderingOptions.Initialize()
-    }
-
-
 }
 
-func (obj *XamlFixedSaveOptionsData) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
-    if (obj.CustomTimeZoneInfoData != nil) {
-        resultFilesContent = obj.CustomTimeZoneInfoData.CollectFilesContent(resultFilesContent)
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    if (obj.MetafileRenderingOptions != nil) {
-        resultFilesContent = obj.MetafileRenderingOptions.CollectFilesContent(resultFilesContent)
-    }
-
-
-
-
-
-
-
+func (obj *XamlFixedSaveOptionsData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 

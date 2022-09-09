@@ -61,7 +61,7 @@ type UpdateParagraphFormatRequest struct {
 func (data *UpdateParagraphFormatRequest) CreateRequestData() (RequestData, error) {
 
     var result RequestData
-    var filesContentData = make([]FileContent, 0)
+    var filesContentData = make([]FileReference, 0)
 
     result.Method = strings.ToUpper("put")
 
@@ -153,7 +153,6 @@ func (data *UpdateParagraphFormatRequest) CreateRequestData() (RequestData, erro
 
 
     result.FormParams = append(result.FormParams, NewJsonFormParamContainer("ParagraphFormatDto", parameterToString(data.ParagraphFormatDto, "")))
-    filesContentData = data.ParagraphFormatDto.CollectFilesContent(filesContentData)
 
 
     for _, fileContentData := range filesContentData {

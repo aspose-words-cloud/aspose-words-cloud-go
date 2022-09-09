@@ -61,7 +61,7 @@ type UpdateTableRowFormatOnlineRequest struct {
 func (data *UpdateTableRowFormatOnlineRequest) CreateRequestData() (RequestData, error) {
 
     var result RequestData
-    var filesContentData = make([]FileContent, 0)
+    var filesContentData = make([]FileReference, 0)
 
     result.Method = strings.ToUpper("put")
 
@@ -140,7 +140,6 @@ func (data *UpdateTableRowFormatOnlineRequest) CreateRequestData() (RequestData,
     }
 
     result.FormParams = append(result.FormParams, NewJsonFormParamContainer("Format", parameterToString(data.Format, "")))
-    filesContentData = data.Format.CollectFilesContent(filesContentData)
 
 
     for _, fileContentData := range filesContentData {

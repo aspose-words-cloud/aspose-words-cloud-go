@@ -317,7 +317,7 @@ type PdfSaveOptionsData struct {
 type IPdfSaveOptionsData interface {
     IsPdfSaveOptionsData() bool
     Initialize()
-    CollectFilesContent(resultFilesContent []FileContent) []FileContent
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (PdfSaveOptionsData) IsPdfSaveOptionsData() bool {
@@ -337,97 +337,9 @@ func (obj *PdfSaveOptionsData) Initialize() {
     obj.SaveFormat = &_SaveFormat
 
 
-    if (obj.CustomTimeZoneInfoData != nil) {
-        obj.CustomTimeZoneInfoData.Initialize()
-    }
-
-    if (obj.MetafileRenderingOptions != nil) {
-        obj.MetafileRenderingOptions.Initialize()
-    }
-
-    if (obj.DigitalSignatureDetails != nil) {
-        obj.DigitalSignatureDetails.Initialize()
-    }
-
-    if (obj.DownsampleOptions != nil) {
-        obj.DownsampleOptions.Initialize()
-    }
-
-    if (obj.EncryptionDetails != nil) {
-        obj.EncryptionDetails.Initialize()
-    }
-
-    if (obj.OutlineOptions != nil) {
-        obj.OutlineOptions.Initialize()
-    }
-
-
 }
 
-func (obj *PdfSaveOptionsData) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
-    if (obj.CustomTimeZoneInfoData != nil) {
-        resultFilesContent = obj.CustomTimeZoneInfoData.CollectFilesContent(resultFilesContent)
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    if (obj.MetafileRenderingOptions != nil) {
-        resultFilesContent = obj.MetafileRenderingOptions.CollectFilesContent(resultFilesContent)
-    }
-
-
-
-
-
-
-
-
-    if (obj.DigitalSignatureDetails != nil) {
-        resultFilesContent = obj.DigitalSignatureDetails.CollectFilesContent(resultFilesContent)
-    }
-
-
-    if (obj.DownsampleOptions != nil) {
-        resultFilesContent = obj.DownsampleOptions.CollectFilesContent(resultFilesContent)
-    }
-
-
-    if (obj.EncryptionDetails != nil) {
-        resultFilesContent = obj.EncryptionDetails.CollectFilesContent(resultFilesContent)
-    }
-
-
-
-
-
-
-
-
-
-    if (obj.OutlineOptions != nil) {
-        resultFilesContent = obj.OutlineOptions.CollectFilesContent(resultFilesContent)
-    }
-
-
-
-
-
-
-
-
-
+func (obj *PdfSaveOptionsData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 

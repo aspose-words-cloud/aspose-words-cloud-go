@@ -47,7 +47,7 @@ type CustomXmlPartsCollection struct {
 type ICustomXmlPartsCollection interface {
     IsCustomXmlPartsCollection() bool
     Initialize()
-    CollectFilesContent(resultFilesContent []FileContent) []FileContent
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (CustomXmlPartsCollection) IsCustomXmlPartsCollection() bool {
@@ -59,30 +59,9 @@ func (CustomXmlPartsCollection) IsLinkElement() bool {
 }
 
 func (obj *CustomXmlPartsCollection) Initialize() {
-    if (obj.Link != nil) {
-        obj.Link.Initialize()
-    }
-
-    if (obj.CustomXmlPartsList != nil) {
-        for _, element := range obj.CustomXmlPartsList {
-            element.Initialize()
-        }
-    }
-
-
 }
 
-func (obj *CustomXmlPartsCollection) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
-    if (obj.Link != nil) {
-        resultFilesContent = obj.Link.CollectFilesContent(resultFilesContent)
-    }
-
-    if (obj.CustomXmlPartsList != nil) {
-        for _, element := range obj.CustomXmlPartsList {
-            resultFilesContent = element.CollectFilesContent(resultFilesContent)
-        }
-    }
-
+func (obj *CustomXmlPartsCollection) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 

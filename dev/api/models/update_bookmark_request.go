@@ -60,7 +60,7 @@ type UpdateBookmarkRequest struct {
 func (data *UpdateBookmarkRequest) CreateRequestData() (RequestData, error) {
 
     var result RequestData
-    var filesContentData = make([]FileContent, 0)
+    var filesContentData = make([]FileReference, 0)
 
     result.Method = strings.ToUpper("put")
 
@@ -148,7 +148,6 @@ func (data *UpdateBookmarkRequest) CreateRequestData() (RequestData, error) {
 
 
     result.FormParams = append(result.FormParams, NewJsonFormParamContainer("BookmarkData", parameterToString(data.BookmarkData, "")))
-    filesContentData = data.BookmarkData.CollectFilesContent(filesContentData)
 
 
     for _, fileContentData := range filesContentData {

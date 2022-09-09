@@ -59,7 +59,7 @@ type BookmarkInsert struct {
 type IBookmarkInsert interface {
     IsBookmarkInsert() bool
     Initialize()
-    CollectFilesContent(resultFilesContent []FileContent) []FileContent
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (BookmarkInsert) IsBookmarkInsert() bool {
@@ -71,26 +71,9 @@ func (BookmarkInsert) IsBookmarkData() bool {
 }
 
 func (obj *BookmarkInsert) Initialize() {
-    if (obj.EndRange != nil) {
-        obj.EndRange.Initialize()
-    }
-
-    if (obj.StartRange != nil) {
-        obj.StartRange.Initialize()
-    }
-
-
 }
 
-func (obj *BookmarkInsert) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
-    if (obj.EndRange != nil) {
-        resultFilesContent = obj.EndRange.CollectFilesContent(resultFilesContent)
-    }
-
-    if (obj.StartRange != nil) {
-        resultFilesContent = obj.StartRange.CollectFilesContent(resultFilesContent)
-    }
-
+func (obj *BookmarkInsert) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 

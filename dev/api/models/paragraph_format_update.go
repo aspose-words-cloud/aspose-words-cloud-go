@@ -197,7 +197,7 @@ type ParagraphFormatUpdate struct {
 type IParagraphFormatUpdate interface {
     IsParagraphFormatUpdate() bool
     Initialize()
-    CollectFilesContent(resultFilesContent []FileContent) []FileContent
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (ParagraphFormatUpdate) IsParagraphFormatUpdate() bool {
@@ -213,51 +213,9 @@ func (ParagraphFormatUpdate) IsLinkElement() bool {
 }
 
 func (obj *ParagraphFormatUpdate) Initialize() {
-    if (obj.Link != nil) {
-        obj.Link.Initialize()
-    }
-
-    if (obj.Shading != nil) {
-        obj.Shading.Initialize()
-    }
-
-
 }
 
-func (obj *ParagraphFormatUpdate) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
-    if (obj.Link != nil) {
-        resultFilesContent = obj.Link.CollectFilesContent(resultFilesContent)
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    if (obj.Shading != nil) {
-        resultFilesContent = obj.Shading.CollectFilesContent(resultFilesContent)
-    }
-
-
-
-
-
-
-
-
-
-
+func (obj *ParagraphFormatUpdate) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 

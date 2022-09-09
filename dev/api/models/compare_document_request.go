@@ -57,7 +57,7 @@ type CompareDocumentRequest struct {
 func (data *CompareDocumentRequest) CreateRequestData() (RequestData, error) {
 
     var result RequestData
-    var filesContentData = make([]FileContent, 0)
+    var filesContentData = make([]FileReference, 0)
 
     result.Method = strings.ToUpper("put")
 
@@ -136,7 +136,6 @@ func (data *CompareDocumentRequest) CreateRequestData() (RequestData, error) {
 
 
     result.FormParams = append(result.FormParams, NewJsonFormParamContainer("CompareData", parameterToString(data.CompareData, "")))
-    filesContentData = data.CompareData.CollectFilesContent(filesContentData)
 
 
     for _, fileContentData := range filesContentData {

@@ -47,7 +47,7 @@ type SearchResultsCollection struct {
 type ISearchResultsCollection interface {
     IsSearchResultsCollection() bool
     Initialize()
-    CollectFilesContent(resultFilesContent []FileContent) []FileContent
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (SearchResultsCollection) IsSearchResultsCollection() bool {
@@ -59,30 +59,9 @@ func (SearchResultsCollection) IsLinkElement() bool {
 }
 
 func (obj *SearchResultsCollection) Initialize() {
-    if (obj.Link != nil) {
-        obj.Link.Initialize()
-    }
-
-    if (obj.ResultsList != nil) {
-        for _, element := range obj.ResultsList {
-            element.Initialize()
-        }
-    }
-
-
 }
 
-func (obj *SearchResultsCollection) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
-    if (obj.Link != nil) {
-        resultFilesContent = obj.Link.CollectFilesContent(resultFilesContent)
-    }
-
-    if (obj.ResultsList != nil) {
-        for _, element := range obj.ResultsList {
-            resultFilesContent = element.CollectFilesContent(resultFilesContent)
-        }
-    }
-
+func (obj *SearchResultsCollection) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 

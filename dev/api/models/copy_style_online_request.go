@@ -56,7 +56,7 @@ type CopyStyleOnlineRequest struct {
 func (data *CopyStyleOnlineRequest) CreateRequestData() (RequestData, error) {
 
     var result RequestData
-    var filesContentData = make([]FileContent, 0)
+    var filesContentData = make([]FileReference, 0)
 
     result.Method = strings.ToUpper("put")
 
@@ -133,7 +133,6 @@ func (data *CopyStyleOnlineRequest) CreateRequestData() (RequestData, error) {
     }
 
     result.FormParams = append(result.FormParams, NewJsonFormParamContainer("StyleCopy", parameterToString(data.StyleCopy, "")))
-    filesContentData = data.StyleCopy.CollectFilesContent(filesContentData)
 
 
     for _, fileContentData := range filesContentData {

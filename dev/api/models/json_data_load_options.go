@@ -53,7 +53,7 @@ type JsonDataLoadOptions struct {
 type IJsonDataLoadOptions interface {
     IsJsonDataLoadOptions() bool
     Initialize()
-    CollectFilesContent(resultFilesContent []FileContent) []FileContent
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (JsonDataLoadOptions) IsJsonDataLoadOptions() bool {
@@ -64,7 +64,7 @@ func (JsonDataLoadOptions) IsJsonDataLoadOptions() bool {
 func (obj *JsonDataLoadOptions) Initialize() {
 }
 
-func (obj *JsonDataLoadOptions) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+func (obj *JsonDataLoadOptions) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 

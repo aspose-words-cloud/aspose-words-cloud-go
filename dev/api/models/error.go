@@ -59,7 +59,7 @@ type Error struct {
 type IError interface {
     IsError() bool
     Initialize()
-    CollectFilesContent(resultFilesContent []FileContent) []FileContent
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (Error) IsError() bool {
@@ -70,7 +70,7 @@ func (Error) IsError() bool {
 func (obj *Error) Initialize() {
 }
 
-func (obj *Error) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+func (obj *Error) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 

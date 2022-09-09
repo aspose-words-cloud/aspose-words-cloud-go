@@ -59,7 +59,7 @@ type ApplyStyleToDocumentElementOnlineRequest struct {
 func (data *ApplyStyleToDocumentElementOnlineRequest) CreateRequestData() (RequestData, error) {
 
     var result RequestData
-    var filesContentData = make([]FileContent, 0)
+    var filesContentData = make([]FileReference, 0)
 
     result.Method = strings.ToUpper("put")
 
@@ -137,7 +137,6 @@ func (data *ApplyStyleToDocumentElementOnlineRequest) CreateRequestData() (Reque
     }
 
     result.FormParams = append(result.FormParams, NewJsonFormParamContainer("StyleApply", parameterToString(data.StyleApply, "")))
-    filesContentData = data.StyleApply.CollectFilesContent(filesContentData)
 
 
     for _, fileContentData := range filesContentData {

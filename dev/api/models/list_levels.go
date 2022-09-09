@@ -47,7 +47,7 @@ type ListLevels struct {
 type IListLevels interface {
     IsListLevels() bool
     Initialize()
-    CollectFilesContent(resultFilesContent []FileContent) []FileContent
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (ListLevels) IsListLevels() bool {
@@ -59,30 +59,9 @@ func (ListLevels) IsLinkElement() bool {
 }
 
 func (obj *ListLevels) Initialize() {
-    if (obj.Link != nil) {
-        obj.Link.Initialize()
-    }
-
-    if (obj.ListLevel != nil) {
-        for _, element := range obj.ListLevel {
-            element.Initialize()
-        }
-    }
-
-
 }
 
-func (obj *ListLevels) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
-    if (obj.Link != nil) {
-        resultFilesContent = obj.Link.CollectFilesContent(resultFilesContent)
-    }
-
-    if (obj.ListLevel != nil) {
-        for _, element := range obj.ListLevel {
-            resultFilesContent = element.CollectFilesContent(resultFilesContent)
-        }
-    }
-
+func (obj *ListLevels) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 

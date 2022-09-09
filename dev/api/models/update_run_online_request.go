@@ -61,7 +61,7 @@ type UpdateRunOnlineRequest struct {
 func (data *UpdateRunOnlineRequest) CreateRequestData() (RequestData, error) {
 
     var result RequestData
-    var filesContentData = make([]FileContent, 0)
+    var filesContentData = make([]FileReference, 0)
 
     result.Method = strings.ToUpper("put")
 
@@ -140,7 +140,6 @@ func (data *UpdateRunOnlineRequest) CreateRequestData() (RequestData, error) {
     }
 
     result.FormParams = append(result.FormParams, NewJsonFormParamContainer("Run", parameterToString(data.Run, "")))
-    filesContentData = data.Run.CollectFilesContent(filesContentData)
 
 
     for _, fileContentData := range filesContentData {

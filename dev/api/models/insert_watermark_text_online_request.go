@@ -56,7 +56,7 @@ type InsertWatermarkTextOnlineRequest struct {
 func (data *InsertWatermarkTextOnlineRequest) CreateRequestData() (RequestData, error) {
 
     var result RequestData
-    var filesContentData = make([]FileContent, 0)
+    var filesContentData = make([]FileReference, 0)
 
     result.Method = strings.ToUpper("put")
 
@@ -133,7 +133,6 @@ func (data *InsertWatermarkTextOnlineRequest) CreateRequestData() (RequestData, 
     }
 
     result.FormParams = append(result.FormParams, NewJsonFormParamContainer("WatermarkText", parameterToString(data.WatermarkText, "")))
-    filesContentData = data.WatermarkText.CollectFilesContent(filesContentData)
 
 
     for _, fileContentData := range filesContentData {

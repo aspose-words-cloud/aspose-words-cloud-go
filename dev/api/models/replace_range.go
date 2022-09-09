@@ -47,7 +47,7 @@ type ReplaceRange struct {
 type IReplaceRange interface {
     IsReplaceRange() bool
     Initialize()
-    CollectFilesContent(resultFilesContent []FileContent) []FileContent
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (ReplaceRange) IsReplaceRange() bool {
@@ -58,7 +58,7 @@ func (ReplaceRange) IsReplaceRange() bool {
 func (obj *ReplaceRange) Initialize() {
 }
 
-func (obj *ReplaceRange) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+func (obj *ReplaceRange) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 

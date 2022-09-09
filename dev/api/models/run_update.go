@@ -41,7 +41,7 @@ type RunUpdate struct {
 type IRunUpdate interface {
     IsRunUpdate() bool
     Initialize()
-    CollectFilesContent(resultFilesContent []FileContent) []FileContent
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (RunUpdate) IsRunUpdate() bool {
@@ -55,7 +55,7 @@ func (RunUpdate) IsRunBase() bool {
 func (obj *RunUpdate) Initialize() {
 }
 
-func (obj *RunUpdate) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+func (obj *RunUpdate) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 

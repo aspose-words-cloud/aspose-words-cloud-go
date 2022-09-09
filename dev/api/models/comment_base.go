@@ -71,7 +71,7 @@ type CommentBase struct {
 type ICommentBase interface {
     IsCommentBase() bool
     Initialize()
-    CollectFilesContent(resultFilesContent []FileContent) []FileContent
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (CommentBase) IsCommentBase() bool {
@@ -80,27 +80,9 @@ func (CommentBase) IsCommentBase() bool {
 
 
 func (obj *CommentBase) Initialize() {
-    if (obj.RangeEnd != nil) {
-        obj.RangeEnd.Initialize()
-    }
-
-    if (obj.RangeStart != nil) {
-        obj.RangeStart.Initialize()
-    }
-
-
 }
 
-func (obj *CommentBase) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
-    if (obj.RangeEnd != nil) {
-        resultFilesContent = obj.RangeEnd.CollectFilesContent(resultFilesContent)
-    }
-
-    if (obj.RangeStart != nil) {
-        resultFilesContent = obj.RangeStart.CollectFilesContent(resultFilesContent)
-    }
-
-
+func (obj *CommentBase) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 

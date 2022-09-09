@@ -60,7 +60,7 @@ type ExecuteMailMergeRequest struct {
 func (data *ExecuteMailMergeRequest) CreateRequestData() (RequestData, error) {
 
     var result RequestData
-    var filesContentData = make([]FileContent, 0)
+    var filesContentData = make([]FileReference, 0)
 
     result.Method = strings.ToUpper("put")
 
@@ -168,7 +168,6 @@ func (data *ExecuteMailMergeRequest) CreateRequestData() (RequestData, error) {
 
     if localVarTempParam, localVarOk := data.Optionals["options"].(FieldOptions); localVarOk {
         result.FormParams = append(result.FormParams, NewJsonFormParamContainer("Options", parameterToString(localVarTempParam, "")))
-        filesContentData = localVarTempParam.CollectFilesContent(filesContentData)
     }
 
 

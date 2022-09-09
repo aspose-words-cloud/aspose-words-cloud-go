@@ -47,7 +47,7 @@ type DrawingObjectLink struct {
 type IDrawingObjectLink interface {
     IsDrawingObjectLink() bool
     Initialize()
-    CollectFilesContent(resultFilesContent []FileContent) []FileContent
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (DrawingObjectLink) IsDrawingObjectLink() bool {
@@ -63,19 +63,9 @@ func (DrawingObjectLink) IsLinkElement() bool {
 }
 
 func (obj *DrawingObjectLink) Initialize() {
-    if (obj.Link != nil) {
-        obj.Link.Initialize()
-    }
-
-
 }
 
-func (obj *DrawingObjectLink) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
-    if (obj.Link != nil) {
-        resultFilesContent = obj.Link.CollectFilesContent(resultFilesContent)
-    }
-
-
+func (obj *DrawingObjectLink) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 

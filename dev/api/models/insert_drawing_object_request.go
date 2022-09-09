@@ -61,7 +61,7 @@ type InsertDrawingObjectRequest struct {
 func (data *InsertDrawingObjectRequest) CreateRequestData() (RequestData, error) {
 
     var result RequestData
-    var filesContentData = make([]FileContent, 0)
+    var filesContentData = make([]FileReference, 0)
 
     result.Method = strings.ToUpper("post")
 
@@ -152,7 +152,6 @@ func (data *InsertDrawingObjectRequest) CreateRequestData() (RequestData, error)
 
 
     result.FormParams = append(result.FormParams, NewJsonFormParamContainer("DrawingObject", parameterToString(data.DrawingObject, "")))
-    filesContentData = data.DrawingObject.CollectFilesContent(filesContentData)
 
     _imageFile := data.ImageFile
     if _imageFile != nil {

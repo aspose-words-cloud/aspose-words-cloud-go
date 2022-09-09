@@ -53,7 +53,7 @@ type CustomXmlPartUpdate struct {
 type ICustomXmlPartUpdate interface {
     IsCustomXmlPartUpdate() bool
     Initialize()
-    CollectFilesContent(resultFilesContent []FileContent) []FileContent
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (CustomXmlPartUpdate) IsCustomXmlPartUpdate() bool {
@@ -73,20 +73,9 @@ func (CustomXmlPartUpdate) IsLinkElement() bool {
 }
 
 func (obj *CustomXmlPartUpdate) Initialize() {
-    if (obj.Link != nil) {
-        obj.Link.Initialize()
-    }
-
-
 }
 
-func (obj *CustomXmlPartUpdate) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
-    if (obj.Link != nil) {
-        resultFilesContent = obj.Link.CollectFilesContent(resultFilesContent)
-    }
-
-
-
+func (obj *CustomXmlPartUpdate) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 

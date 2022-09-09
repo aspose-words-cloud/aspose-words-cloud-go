@@ -65,7 +65,7 @@ type MetafileRenderingOptionsData struct {
 type IMetafileRenderingOptionsData interface {
     IsMetafileRenderingOptionsData() bool
     Initialize()
-    CollectFilesContent(resultFilesContent []FileContent) []FileContent
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (MetafileRenderingOptionsData) IsMetafileRenderingOptionsData() bool {
@@ -76,7 +76,7 @@ func (MetafileRenderingOptionsData) IsMetafileRenderingOptionsData() bool {
 func (obj *MetafileRenderingOptionsData) Initialize() {
 }
 
-func (obj *MetafileRenderingOptionsData) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+func (obj *MetafileRenderingOptionsData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 

@@ -58,7 +58,7 @@ type InsertListRequest struct {
 func (data *InsertListRequest) CreateRequestData() (RequestData, error) {
 
     var result RequestData
-    var filesContentData = make([]FileContent, 0)
+    var filesContentData = make([]FileReference, 0)
 
     result.Method = strings.ToUpper("post")
 
@@ -145,7 +145,6 @@ func (data *InsertListRequest) CreateRequestData() (RequestData, error) {
 
 
     result.FormParams = append(result.FormParams, NewJsonFormParamContainer("ListInsert", parameterToString(data.ListInsert, "")))
-    filesContentData = data.ListInsert.CollectFilesContent(filesContentData)
 
 
     for _, fileContentData := range filesContentData {

@@ -59,7 +59,7 @@ type FileLink struct {
 type IFileLink interface {
     IsFileLink() bool
     Initialize()
-    CollectFilesContent(resultFilesContent []FileContent) []FileContent
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (FileLink) IsFileLink() bool {
@@ -73,7 +73,7 @@ func (FileLink) IsLink() bool {
 func (obj *FileLink) Initialize() {
 }
 
-func (obj *FileLink) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+func (obj *FileLink) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 

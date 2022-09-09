@@ -56,7 +56,7 @@ type CompareDocumentOnlineRequest struct {
 func (data *CompareDocumentOnlineRequest) CreateRequestData() (RequestData, error) {
 
     var result RequestData
-    var filesContentData = make([]FileContent, 0)
+    var filesContentData = make([]FileReference, 0)
 
     result.Method = strings.ToUpper("put")
 
@@ -125,7 +125,6 @@ func (data *CompareDocumentOnlineRequest) CreateRequestData() (RequestData, erro
     }
 
     result.FormParams = append(result.FormParams, NewJsonFormParamContainer("CompareData", parameterToString(data.CompareData, "")))
-    filesContentData = data.CompareData.CollectFilesContent(filesContentData)
 
     var comparingDocument (io.ReadCloser)
     if localVarTempParam, localVarOk := data.Optionals["comparingDocument"].(io.ReadCloser); localVarOk {

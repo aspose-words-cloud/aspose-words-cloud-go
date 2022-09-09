@@ -47,7 +47,7 @@ type ListFormatUpdate struct {
 type IListFormatUpdate interface {
     IsListFormatUpdate() bool
     Initialize()
-    CollectFilesContent(resultFilesContent []FileContent) []FileContent
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (ListFormatUpdate) IsListFormatUpdate() bool {
@@ -58,7 +58,7 @@ func (ListFormatUpdate) IsListFormatUpdate() bool {
 func (obj *ListFormatUpdate) Initialize() {
 }
 
-func (obj *ListFormatUpdate) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+func (obj *ListFormatUpdate) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 

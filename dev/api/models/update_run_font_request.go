@@ -62,7 +62,7 @@ type UpdateRunFontRequest struct {
 func (data *UpdateRunFontRequest) CreateRequestData() (RequestData, error) {
 
     var result RequestData
-    var filesContentData = make([]FileContent, 0)
+    var filesContentData = make([]FileReference, 0)
 
     result.Method = strings.ToUpper("put")
 
@@ -151,7 +151,6 @@ func (data *UpdateRunFontRequest) CreateRequestData() (RequestData, error) {
 
 
     result.FormParams = append(result.FormParams, NewJsonFormParamContainer("FontDto", parameterToString(data.FontDto, "")))
-    filesContentData = data.FontDto.CollectFilesContent(filesContentData)
 
 
     for _, fileContentData := range filesContentData {

@@ -1,6 +1,6 @@
 /*
  * --------------------------------------------------------------------------------
- * <copyright company="Aspose" file="file_content.go">
+ * <copyright company="Aspose" file="file_reference.go">
  *   Copyright (c) 2022 Aspose.Words for Cloud
  * </copyright>
  * <summary>
@@ -33,50 +33,71 @@ import (
 	"io"
 )
 
-type FileContentResult struct {
-    // File name in multipart.
-    Id string `json:"Id"`
+type FileReferenceResult struct {
+    // File source.
+    Source string `json:"Source"`
 
-    // File name.
-    Filename string `json:"Filename"`
+    // File reference.
+    Reference string `json:"Reference"`
 
-    // File data.
+    // File local data.
     Content io.ReadCloser `json:"-"`
 }
 
-type FileContent struct {
-    // File name in multipart.
-    Id string `json:"Id"`
+type FileReference struct {
+    // File source.
+    Source string `json:"Source"`
 
-    // File name.
-    Filename string `json:"Filename"`
+    // File reference.
+    Reference string `json:"Reference"`
 
-    // File data.
+    // File local data.
     Content io.ReadCloser `json:"-"`
 }
 
-type IFileContent interface {
-    IsFileContent() bool
+type IFileReference interface {
+    IsFileReference() bool
     Initialize()
-    CollectFilesContent(resultFilesContent []FileContent) []FileContent
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
-func (FileContent) IsFileContent() bool {
+func (FileReference) IsFileReference() bool {
     return true
 }
 
 
-func (obj *FileContent) Initialize() {
-    obj.Id = createRandomFileContentId()
+func (obj *FileReference) Initialize() {
+
 }
 
-func (obj *FileContent) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
-    return append(resultFilesContent, *obj)
+func (obj *FileReference) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    if obj.Source == "Request" {
+        return append(resultFilesContent, *obj)
+    }
+    else {
+        return resultFilesContent;
+    }
 }
 
-func createRandomFileContentId() string {
+func createRandomFileReferenceId() string {
 	b := make([]byte, 16)
 	rand.Read(b)
 	uuid := fmt.Sprintf("%x-%x-%x-%x-%x", b[0:4], b[4:6], b[6:8], b[8:10], b[10:])
 	return uuid
+}
+
+func createRemoteFileReference(remoteFilePath string) FileReference {
+    return FileReference {
+        Source: "Storage",
+        Reference: remoteFilePath,
+        Content: nil
+    }
+}
+
+func createLocalFileReference(localFileContent io.ReadCloser) FileReference {
+    return FileReference {
+        Source: "Request",
+        Reference: createRandomFileReferenceId(),
+        Content: localFileContent
+    }
 }

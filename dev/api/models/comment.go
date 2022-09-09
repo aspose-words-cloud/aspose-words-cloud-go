@@ -83,7 +83,7 @@ type Comment struct {
 type IComment interface {
     IsComment() bool
     Initialize()
-    CollectFilesContent(resultFilesContent []FileContent) []FileContent
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (Comment) IsComment() bool {
@@ -99,46 +99,9 @@ func (Comment) IsLinkElement() bool {
 }
 
 func (obj *Comment) Initialize() {
-    if (obj.Link != nil) {
-        obj.Link.Initialize()
-    }
-
-    if (obj.Content != nil) {
-        obj.Content.Initialize()
-    }
-
-    if (obj.RangeEnd != nil) {
-        obj.RangeEnd.Initialize()
-    }
-
-    if (obj.RangeStart != nil) {
-        obj.RangeStart.Initialize()
-    }
-
-
 }
 
-func (obj *Comment) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
-    if (obj.Link != nil) {
-        resultFilesContent = obj.Link.CollectFilesContent(resultFilesContent)
-    }
-
-
-    if (obj.Content != nil) {
-        resultFilesContent = obj.Content.CollectFilesContent(resultFilesContent)
-    }
-
-
-
-    if (obj.RangeEnd != nil) {
-        resultFilesContent = obj.RangeEnd.CollectFilesContent(resultFilesContent)
-    }
-
-    if (obj.RangeStart != nil) {
-        resultFilesContent = obj.RangeStart.CollectFilesContent(resultFilesContent)
-    }
-
-
+func (obj *Comment) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 

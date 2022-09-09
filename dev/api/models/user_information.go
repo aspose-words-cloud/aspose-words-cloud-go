@@ -53,7 +53,7 @@ type UserInformation struct {
 type IUserInformation interface {
     IsUserInformation() bool
     Initialize()
-    CollectFilesContent(resultFilesContent []FileContent) []FileContent
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (UserInformation) IsUserInformation() bool {
@@ -64,7 +64,7 @@ func (UserInformation) IsUserInformation() bool {
 func (obj *UserInformation) Initialize() {
 }
 
-func (obj *UserInformation) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+func (obj *UserInformation) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 

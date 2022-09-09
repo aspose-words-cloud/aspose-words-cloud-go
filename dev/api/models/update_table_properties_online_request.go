@@ -60,7 +60,7 @@ type UpdateTablePropertiesOnlineRequest struct {
 func (data *UpdateTablePropertiesOnlineRequest) CreateRequestData() (RequestData, error) {
 
     var result RequestData
-    var filesContentData = make([]FileContent, 0)
+    var filesContentData = make([]FileReference, 0)
 
     result.Method = strings.ToUpper("put")
 
@@ -142,7 +142,6 @@ func (data *UpdateTablePropertiesOnlineRequest) CreateRequestData() (RequestData
     }
 
     result.FormParams = append(result.FormParams, NewJsonFormParamContainer("Properties", parameterToString(data.Properties, "")))
-    filesContentData = data.Properties.CollectFilesContent(filesContentData)
 
 
     for _, fileContentData := range filesContentData {

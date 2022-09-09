@@ -59,7 +59,7 @@ type InsertOrUpdateParagraphTabStopRequest struct {
 func (data *InsertOrUpdateParagraphTabStopRequest) CreateRequestData() (RequestData, error) {
 
     var result RequestData
-    var filesContentData = make([]FileContent, 0)
+    var filesContentData = make([]FileReference, 0)
 
     result.Method = strings.ToUpper("post")
 
@@ -135,7 +135,6 @@ func (data *InsertOrUpdateParagraphTabStopRequest) CreateRequestData() (RequestD
 
 
     result.FormParams = append(result.FormParams, NewJsonFormParamContainer("TabStopInsertDto", parameterToString(data.TabStopInsertDto, "")))
-    filesContentData = data.TabStopInsertDto.CollectFilesContent(filesContentData)
 
 
     for _, fileContentData := range filesContentData {

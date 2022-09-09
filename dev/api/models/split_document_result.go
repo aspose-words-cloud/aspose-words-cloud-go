@@ -53,7 +53,7 @@ type SplitDocumentResult struct {
 type ISplitDocumentResult interface {
     IsSplitDocumentResult() bool
     Initialize()
-    CollectFilesContent(resultFilesContent []FileContent) []FileContent
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (SplitDocumentResult) IsSplitDocumentResult() bool {
@@ -62,38 +62,9 @@ func (SplitDocumentResult) IsSplitDocumentResult() bool {
 
 
 func (obj *SplitDocumentResult) Initialize() {
-    if (obj.Pages != nil) {
-        for _, element := range obj.Pages {
-            element.Initialize()
-        }
-    }
-
-    if (obj.SourceDocument != nil) {
-        obj.SourceDocument.Initialize()
-    }
-
-    if (obj.ZippedPages != nil) {
-        obj.ZippedPages.Initialize()
-    }
-
-
 }
 
-func (obj *SplitDocumentResult) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
-    if (obj.Pages != nil) {
-        for _, element := range obj.Pages {
-            resultFilesContent = element.CollectFilesContent(resultFilesContent)
-        }
-    }
-
-    if (obj.SourceDocument != nil) {
-        resultFilesContent = obj.SourceDocument.CollectFilesContent(resultFilesContent)
-    }
-
-    if (obj.ZippedPages != nil) {
-        resultFilesContent = obj.ZippedPages.CollectFilesContent(resultFilesContent)
-    }
-
+func (obj *SplitDocumentResult) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 

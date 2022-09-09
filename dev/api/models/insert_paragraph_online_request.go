@@ -59,7 +59,7 @@ type InsertParagraphOnlineRequest struct {
 func (data *InsertParagraphOnlineRequest) CreateRequestData() (RequestData, error) {
 
     var result RequestData
-    var filesContentData = make([]FileContent, 0)
+    var filesContentData = make([]FileReference, 0)
 
     result.Method = strings.ToUpper("put")
 
@@ -148,7 +148,6 @@ func (data *InsertParagraphOnlineRequest) CreateRequestData() (RequestData, erro
     }
 
     result.FormParams = append(result.FormParams, NewJsonFormParamContainer("Paragraph", parameterToString(data.Paragraph, "")))
-    filesContentData = data.Paragraph.CollectFilesContent(filesContentData)
 
 
     for _, fileContentData := range filesContentData {

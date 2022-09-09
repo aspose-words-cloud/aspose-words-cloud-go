@@ -47,7 +47,7 @@ type BookmarksOutlineLevelData struct {
 type IBookmarksOutlineLevelData interface {
     IsBookmarksOutlineLevelData() bool
     Initialize()
-    CollectFilesContent(resultFilesContent []FileContent) []FileContent
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (BookmarksOutlineLevelData) IsBookmarksOutlineLevelData() bool {
@@ -58,7 +58,7 @@ func (BookmarksOutlineLevelData) IsBookmarksOutlineLevelData() bool {
 func (obj *BookmarksOutlineLevelData) Initialize() {
 }
 
-func (obj *BookmarksOutlineLevelData) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+func (obj *BookmarksOutlineLevelData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 

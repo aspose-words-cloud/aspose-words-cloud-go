@@ -53,7 +53,7 @@ type CustomXmlPartInsert struct {
 type ICustomXmlPartInsert interface {
     IsCustomXmlPartInsert() bool
     Initialize()
-    CollectFilesContent(resultFilesContent []FileContent) []FileContent
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (CustomXmlPartInsert) IsCustomXmlPartInsert() bool {
@@ -73,20 +73,9 @@ func (CustomXmlPartInsert) IsLinkElement() bool {
 }
 
 func (obj *CustomXmlPartInsert) Initialize() {
-    if (obj.Link != nil) {
-        obj.Link.Initialize()
-    }
-
-
 }
 
-func (obj *CustomXmlPartInsert) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
-    if (obj.Link != nil) {
-        resultFilesContent = obj.Link.CollectFilesContent(resultFilesContent)
-    }
-
-
-
+func (obj *CustomXmlPartInsert) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 

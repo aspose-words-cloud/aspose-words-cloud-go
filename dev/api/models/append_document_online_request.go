@@ -56,7 +56,7 @@ type AppendDocumentOnlineRequest struct {
 func (data *AppendDocumentOnlineRequest) CreateRequestData() (RequestData, error) {
 
     var result RequestData
-    var filesContentData = make([]FileContent, 0)
+    var filesContentData = make([]FileReference, 0)
 
     result.Method = strings.ToUpper("put")
 
@@ -133,7 +133,6 @@ func (data *AppendDocumentOnlineRequest) CreateRequestData() (RequestData, error
     }
 
     result.FormParams = append(result.FormParams, NewJsonFormParamContainer("DocumentList", parameterToString(data.DocumentList, "")))
-    filesContentData = data.DocumentList.CollectFilesContent(filesContentData)
 
 
     for _, fileContentData := range filesContentData {

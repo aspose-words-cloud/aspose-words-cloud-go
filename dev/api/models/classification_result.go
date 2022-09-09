@@ -47,7 +47,7 @@ type ClassificationResult struct {
 type IClassificationResult interface {
     IsClassificationResult() bool
     Initialize()
-    CollectFilesContent(resultFilesContent []FileContent) []FileContent
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (ClassificationResult) IsClassificationResult() bool {
@@ -58,7 +58,7 @@ func (ClassificationResult) IsClassificationResult() bool {
 func (obj *ClassificationResult) Initialize() {
 }
 
-func (obj *ClassificationResult) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+func (obj *ClassificationResult) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 

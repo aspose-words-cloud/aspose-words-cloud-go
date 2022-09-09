@@ -61,7 +61,7 @@ type UpdateBorderRequest struct {
 func (data *UpdateBorderRequest) CreateRequestData() (RequestData, error) {
 
     var result RequestData
-    var filesContentData = make([]FileContent, 0)
+    var filesContentData = make([]FileReference, 0)
 
     result.Method = strings.ToUpper("put")
 
@@ -153,7 +153,6 @@ func (data *UpdateBorderRequest) CreateRequestData() (RequestData, error) {
 
 
     result.FormParams = append(result.FormParams, NewJsonFormParamContainer("BorderProperties", parameterToString(data.BorderProperties, "")))
-    filesContentData = data.BorderProperties.CollectFilesContent(filesContentData)
 
 
     for _, fileContentData := range filesContentData {

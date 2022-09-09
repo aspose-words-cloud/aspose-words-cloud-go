@@ -41,7 +41,7 @@ type ListInsert struct {
 type IListInsert interface {
     IsListInsert() bool
     Initialize()
-    CollectFilesContent(resultFilesContent []FileContent) []FileContent
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (ListInsert) IsListInsert() bool {
@@ -52,7 +52,7 @@ func (ListInsert) IsListInsert() bool {
 func (obj *ListInsert) Initialize() {
 }
 
-func (obj *ListInsert) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+func (obj *ListInsert) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 

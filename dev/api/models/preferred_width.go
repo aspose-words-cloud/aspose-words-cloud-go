@@ -47,7 +47,7 @@ type PreferredWidth struct {
 type IPreferredWidth interface {
     IsPreferredWidth() bool
     Initialize()
-    CollectFilesContent(resultFilesContent []FileContent) []FileContent
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (PreferredWidth) IsPreferredWidth() bool {
@@ -58,7 +58,7 @@ func (PreferredWidth) IsPreferredWidth() bool {
 func (obj *PreferredWidth) Initialize() {
 }
 
-func (obj *PreferredWidth) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+func (obj *PreferredWidth) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 

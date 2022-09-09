@@ -59,7 +59,7 @@ type UpdateListOnlineRequest struct {
 func (data *UpdateListOnlineRequest) CreateRequestData() (RequestData, error) {
 
     var result RequestData
-    var filesContentData = make([]FileContent, 0)
+    var filesContentData = make([]FileReference, 0)
 
     result.Method = strings.ToUpper("put")
 
@@ -137,7 +137,6 @@ func (data *UpdateListOnlineRequest) CreateRequestData() (RequestData, error) {
     }
 
     result.FormParams = append(result.FormParams, NewJsonFormParamContainer("ListUpdate", parameterToString(data.ListUpdate, "")))
-    filesContentData = data.ListUpdate.CollectFilesContent(filesContentData)
 
 
     for _, fileContentData := range filesContentData {

@@ -59,7 +59,7 @@ type CreateOrUpdateDocumentPropertyOnlineRequest struct {
 func (data *CreateOrUpdateDocumentPropertyOnlineRequest) CreateRequestData() (RequestData, error) {
 
     var result RequestData
-    var filesContentData = make([]FileContent, 0)
+    var filesContentData = make([]FileReference, 0)
 
     result.Method = strings.ToUpper("put")
 
@@ -137,7 +137,6 @@ func (data *CreateOrUpdateDocumentPropertyOnlineRequest) CreateRequestData() (Re
     }
 
     result.FormParams = append(result.FormParams, NewJsonFormParamContainer("Property", parameterToString(data.Property, "")))
-    filesContentData = data.Property.CollectFilesContent(filesContentData)
 
 
     for _, fileContentData := range filesContentData {

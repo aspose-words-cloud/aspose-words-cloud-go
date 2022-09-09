@@ -113,7 +113,7 @@ type FormFieldDropDown struct {
 type IFormFieldDropDown interface {
     IsFormFieldDropDown() bool
     Initialize()
-    CollectFilesContent(resultFilesContent []FileContent) []FileContent
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (FormFieldDropDown) IsFormFieldDropDown() bool {
@@ -133,30 +133,9 @@ func (FormFieldDropDown) IsLinkElement() bool {
 }
 
 func (obj *FormFieldDropDown) Initialize() {
-    if (obj.Link != nil) {
-        obj.Link.Initialize()
-    }
-
-
 }
 
-func (obj *FormFieldDropDown) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
-    if (obj.Link != nil) {
-        resultFilesContent = obj.Link.CollectFilesContent(resultFilesContent)
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
+func (obj *FormFieldDropDown) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 

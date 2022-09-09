@@ -191,7 +191,7 @@ type XpsSaveOptionsData struct {
 type IXpsSaveOptionsData interface {
     IsXpsSaveOptionsData() bool
     Initialize()
-    CollectFilesContent(resultFilesContent []FileContent) []FileContent
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (XpsSaveOptionsData) IsXpsSaveOptionsData() bool {
@@ -211,55 +211,9 @@ func (obj *XpsSaveOptionsData) Initialize() {
     obj.SaveFormat = &_SaveFormat
 
 
-    if (obj.CustomTimeZoneInfoData != nil) {
-        obj.CustomTimeZoneInfoData.Initialize()
-    }
-
-    if (obj.MetafileRenderingOptions != nil) {
-        obj.MetafileRenderingOptions.Initialize()
-    }
-
-    if (obj.OutlineOptions != nil) {
-        obj.OutlineOptions.Initialize()
-    }
-
-
 }
 
-func (obj *XpsSaveOptionsData) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
-    if (obj.CustomTimeZoneInfoData != nil) {
-        resultFilesContent = obj.CustomTimeZoneInfoData.CollectFilesContent(resultFilesContent)
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    if (obj.MetafileRenderingOptions != nil) {
-        resultFilesContent = obj.MetafileRenderingOptions.CollectFilesContent(resultFilesContent)
-    }
-
-
-
-
-
-
-
-    if (obj.OutlineOptions != nil) {
-        resultFilesContent = obj.OutlineOptions.CollectFilesContent(resultFilesContent)
-    }
-
-
+func (obj *XpsSaveOptionsData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 

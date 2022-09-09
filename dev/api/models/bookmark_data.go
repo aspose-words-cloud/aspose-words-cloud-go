@@ -47,7 +47,7 @@ type BookmarkData struct {
 type IBookmarkData interface {
     IsBookmarkData() bool
     Initialize()
-    CollectFilesContent(resultFilesContent []FileContent) []FileContent
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (BookmarkData) IsBookmarkData() bool {
@@ -58,7 +58,7 @@ func (BookmarkData) IsBookmarkData() bool {
 func (obj *BookmarkData) Initialize() {
 }
 
-func (obj *BookmarkData) CollectFilesContent(resultFilesContent []FileContent) []FileContent {
+func (obj *BookmarkData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
