@@ -44,7 +44,7 @@ func Test_AppendDocument_AppendDocument(t *testing.T) {
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-    requestDocumentListDocumentEntries0FileReference := models.createRemoteFileReference(remoteDataFolder + "/" + remoteFileName)
+    requestDocumentListDocumentEntries0FileReference := models.CreateRemoteFileReference(remoteDataFolder + "/" + remoteFileName)
     requestDocumentListDocumentEntries0 := models.DocumentEntry{
         FileReference: &requestDocumentListDocumentEntries0FileReference,
         ImportFormatMode: ToStringPointer("KeepSourceFormatting"),
@@ -84,7 +84,7 @@ func Test_AppendDocument_AppendDocumentOnline(t *testing.T) {
 
     requestDocument := OpenFile(t, localFile)
     requestDocumentListDocumentEntries0FileReferenceStream := OpenFile(t, localFile)
-    requestDocumentListDocumentEntries0FileReference := createLocalFileReference(requestDocumentListDocumentEntries0FileReferenceStream)
+    requestDocumentListDocumentEntries0FileReference := models.CreateLocalFileReference(requestDocumentListDocumentEntries0FileReferenceStream)
     requestDocumentListDocumentEntries0 := models.DocumentEntry{
         FileReference: &requestDocumentListDocumentEntries0FileReference,
         ImportFormatMode: ToStringPointer("KeepSourceFormatting"),

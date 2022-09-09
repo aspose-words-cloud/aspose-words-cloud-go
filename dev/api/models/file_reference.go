@@ -73,8 +73,7 @@ func (obj *FileReference) Initialize() {
 func (obj *FileReference) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     if obj.Source == "Request" {
         return append(resultFilesContent, *obj)
-    }
-    else {
+    } else {
         return resultFilesContent;
     }
 }
@@ -86,18 +85,18 @@ func createRandomFileReferenceId() string {
 	return uuid
 }
 
-func createRemoteFileReference(remoteFilePath string) FileReference {
+func CreateRemoteFileReference(remoteFilePath string) FileReference {
     return FileReference {
         Source: "Storage",
         Reference: remoteFilePath,
-        Content: nil
+        Content: nil,
     }
 }
 
-func createLocalFileReference(localFileContent io.ReadCloser) FileReference {
+func CreateLocalFileReference(localFileContent io.ReadCloser) FileReference {
     return FileReference {
         Source: "Request",
         Reference: createRandomFileReferenceId(),
-        Content: localFileContent
+        Content: localFileContent,
     }
 }
