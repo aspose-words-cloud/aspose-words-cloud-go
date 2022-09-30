@@ -47,6 +47,7 @@ type InfoAdditionalItem struct {
 type IInfoAdditionalItem interface {
     IsInfoAdditionalItem() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (InfoAdditionalItem) IsInfoAdditionalItem() bool {
@@ -55,6 +56,10 @@ func (InfoAdditionalItem) IsInfoAdditionalItem() bool {
 
 
 func (obj *InfoAdditionalItem) Initialize() {
+}
+
+func (obj *InfoAdditionalItem) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
 }
 
 

@@ -27,20 +27,21 @@
 
 package models
 
-// Represents a entry which will be appended to the original resource document.
+// Represents a base class for document which will be appended to the original resource document.
 type BaseEntryResult struct {
-    // Represents a entry which will be appended to the original resource document.
-    Href string `json:"Href,omitempty"`
+    // Represents a base class for document which will be appended to the original resource document.
+    FileReference FileReferenceResult `json:"FileReference,omitempty"`
 }
 
 type BaseEntry struct {
-    // Represents a entry which will be appended to the original resource document.
-    Href *string `json:"Href,omitempty"`
+    // Represents a base class for document which will be appended to the original resource document.
+    FileReference IFileReference `json:"FileReference,omitempty"`
 }
 
 type IBaseEntry interface {
     IsBaseEntry() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (BaseEntry) IsBaseEntry() bool {
@@ -49,6 +50,14 @@ func (BaseEntry) IsBaseEntry() bool {
 
 
 func (obj *BaseEntry) Initialize() {
+}
+
+func (obj *BaseEntry) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    if (obj.FileReference != nil) {
+        resultFilesContent = obj.FileReference.CollectFilesContent(resultFilesContent)
+    }
+
+    return resultFilesContent
 }
 
 

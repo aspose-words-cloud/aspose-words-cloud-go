@@ -1,6 +1,6 @@
 /*
  * --------------------------------------------------------------------------------
- * <copyright company="Aspose" file="table_row_insert.go">
+ * <copyright company="Aspose" file="file_reference.go">
  *   Copyright (c) 2022 Aspose.Words for Cloud
  * </copyright>
  * <summary>
@@ -27,39 +27,76 @@
 
 package models
 
-// DTO container with a table row element.
-type TableRowInsertResult struct {
-    // DTO container with a table row element.
-    ColumnsCount int32 `json:"ColumnsCount,omitempty"`
+import (
+	"crypto/rand"
+	"fmt"
+	"io"
+)
 
-    // DTO container with a table row element.
-    InsertAfter int32 `json:"InsertAfter,omitempty"`
+type FileReferenceResult struct {
+    // File source.
+    Source string `json:"Source"`
+
+    // File reference.
+    Reference string `json:"Reference"`
+
+    // File local data.
+    Content io.ReadCloser `json:"-"`
 }
 
-type TableRowInsert struct {
-    // DTO container with a table row element.
-    ColumnsCount *int32 `json:"ColumnsCount,omitempty"`
+type FileReference struct {
+    // File source.
+    Source string `json:"Source"`
 
-    // DTO container with a table row element.
-    InsertAfter *int32 `json:"InsertAfter,omitempty"`
+    // File reference.
+    Reference string `json:"Reference"`
+
+    // File local data.
+    Content io.ReadCloser `json:"-"`
 }
 
-type ITableRowInsert interface {
-    IsTableRowInsert() bool
+type IFileReference interface {
+    IsFileReference() bool
     Initialize()
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
-func (TableRowInsert) IsTableRowInsert() bool {
+func (FileReference) IsFileReference() bool {
     return true
 }
 
 
-func (obj *TableRowInsert) Initialize() {
+func (obj *FileReference) Initialize() {
+
 }
 
-func (obj *TableRowInsert) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
-    return resultFilesContent
+func (obj *FileReference) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    if obj.Source == "Request" {
+        return append(resultFilesContent, *obj)
+    } else {
+        return resultFilesContent;
+    }
 }
 
+func createRandomFileReferenceId() string {
+	b := make([]byte, 16)
+	rand.Read(b)
+	uuid := fmt.Sprintf("%x-%x-%x-%x-%x", b[0:4], b[4:6], b[6:8], b[8:10], b[10:])
+	return uuid
+}
 
+func CreateRemoteFileReference(remoteFilePath string) FileReference {
+    return FileReference {
+        Source: "Storage",
+        Reference: remoteFilePath,
+        Content: nil,
+    }
+}
+
+func CreateLocalFileReference(localFileContent io.ReadCloser) FileReference {
+    return FileReference {
+        Source: "Request",
+        Reference: createRandomFileReferenceId(),
+        Content: localFileContent,
+    }
+}

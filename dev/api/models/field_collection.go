@@ -47,6 +47,7 @@ type FieldCollection struct {
 type IFieldCollection interface {
     IsFieldCollection() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (FieldCollection) IsFieldCollection() bool {
@@ -58,12 +59,10 @@ func (FieldCollection) IsLinkElement() bool {
 }
 
 func (obj *FieldCollection) Initialize() {
-    if (obj.Link != nil) {
-        obj.Link.Initialize()
-    }
+}
 
-
-
+func (obj *FieldCollection) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
 }
 
 

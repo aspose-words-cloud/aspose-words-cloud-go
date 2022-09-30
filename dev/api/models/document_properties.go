@@ -47,6 +47,7 @@ type DocumentProperties struct {
 type IDocumentProperties interface {
     IsDocumentProperties() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (DocumentProperties) IsDocumentProperties() bool {
@@ -58,12 +59,10 @@ func (DocumentProperties) IsLinkElement() bool {
 }
 
 func (obj *DocumentProperties) Initialize() {
-    if (obj.Link != nil) {
-        obj.Link.Initialize()
-    }
+}
 
-
-
+func (obj *DocumentProperties) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
 }
 
 

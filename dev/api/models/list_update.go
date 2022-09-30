@@ -41,6 +41,7 @@ type ListUpdate struct {
 type IListUpdate interface {
     IsListUpdate() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (ListUpdate) IsListUpdate() bool {
@@ -49,6 +50,10 @@ func (ListUpdate) IsListUpdate() bool {
 
 
 func (obj *ListUpdate) Initialize() {
+}
+
+func (obj *ListUpdate) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
 }
 
 

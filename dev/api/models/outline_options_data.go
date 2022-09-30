@@ -71,6 +71,7 @@ type OutlineOptionsData struct {
 type IOutlineOptionsData interface {
     IsOutlineOptionsData() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (OutlineOptionsData) IsOutlineOptionsData() bool {
@@ -79,6 +80,10 @@ func (OutlineOptionsData) IsOutlineOptionsData() bool {
 
 
 func (obj *OutlineOptionsData) Initialize() {
+}
+
+func (obj *OutlineOptionsData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
 }
 
 

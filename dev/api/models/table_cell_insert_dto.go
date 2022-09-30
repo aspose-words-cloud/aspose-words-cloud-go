@@ -41,6 +41,7 @@ type TableCellInsertDto struct {
 type ITableCellInsertDto interface {
     IsTableCellInsertDto() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (TableCellInsertDto) IsTableCellInsertDto() bool {
@@ -49,6 +50,10 @@ func (TableCellInsertDto) IsTableCellInsertDto() bool {
 
 
 func (obj *TableCellInsertDto) Initialize() {
+}
+
+func (obj *TableCellInsertDto) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
 }
 
 

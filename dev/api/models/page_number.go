@@ -39,6 +39,9 @@ type PageNumberResult struct {
     IsTop bool `json:"IsTop,omitempty"`
 
     // Class is used for insert page number request building.
+    PageStartingNumber int32 `json:"PageStartingNumber,omitempty"`
+
+    // Class is used for insert page number request building.
     SetPageNumberOnFirstPage bool `json:"SetPageNumberOnFirstPage,omitempty"`
 }
 
@@ -53,12 +56,16 @@ type PageNumber struct {
     IsTop *bool `json:"IsTop,omitempty"`
 
     // Class is used for insert page number request building.
+    PageStartingNumber *int32 `json:"PageStartingNumber,omitempty"`
+
+    // Class is used for insert page number request building.
     SetPageNumberOnFirstPage *bool `json:"SetPageNumberOnFirstPage,omitempty"`
 }
 
 type IPageNumber interface {
     IsPageNumber() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (PageNumber) IsPageNumber() bool {
@@ -67,6 +74,10 @@ func (PageNumber) IsPageNumber() bool {
 
 
 func (obj *PageNumber) Initialize() {
+}
+
+func (obj *PageNumber) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
 }
 
 

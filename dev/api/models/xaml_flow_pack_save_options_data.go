@@ -137,6 +137,7 @@ type XamlFlowPackSaveOptionsData struct {
 type IXamlFlowPackSaveOptionsData interface {
     IsXamlFlowPackSaveOptionsData() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (XamlFlowPackSaveOptionsData) IsXamlFlowPackSaveOptionsData() bool {
@@ -155,38 +156,11 @@ func (obj *XamlFlowPackSaveOptionsData) Initialize() {
     var _SaveFormat = "xamlflow_pack"
     obj.SaveFormat = &_SaveFormat
 
-    if (obj.CustomTimeZoneInfoData != nil) {
-        obj.CustomTimeZoneInfoData.Initialize()
-    }
 
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+func (obj *XamlFlowPackSaveOptionsData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
 }
 
 

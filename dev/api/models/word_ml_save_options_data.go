@@ -131,6 +131,7 @@ type WordMLSaveOptionsData struct {
 type IWordMLSaveOptionsData interface {
     IsWordMLSaveOptionsData() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (WordMLSaveOptionsData) IsWordMLSaveOptionsData() bool {
@@ -145,36 +146,11 @@ func (obj *WordMLSaveOptionsData) Initialize() {
     var _SaveFormat = "wml"
     obj.SaveFormat = &_SaveFormat
 
-    if (obj.CustomTimeZoneInfoData != nil) {
-        obj.CustomTimeZoneInfoData.Initialize()
-    }
 
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+func (obj *WordMLSaveOptionsData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
 }
 
 

@@ -65,6 +65,7 @@ type ApiError struct {
 type IApiError interface {
     IsApiError() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (ApiError) IsApiError() bool {
@@ -73,6 +74,10 @@ func (ApiError) IsApiError() bool {
 
 
 func (obj *ApiError) Initialize() {
+}
+
+func (obj *ApiError) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
 }
 
 

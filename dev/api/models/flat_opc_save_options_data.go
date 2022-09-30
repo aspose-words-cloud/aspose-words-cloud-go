@@ -149,6 +149,7 @@ type FlatOpcSaveOptionsData struct {
 type IFlatOpcSaveOptionsData interface {
     IsFlatOpcSaveOptionsData() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (FlatOpcSaveOptionsData) IsFlatOpcSaveOptionsData() bool {
@@ -167,42 +168,11 @@ func (obj *FlatOpcSaveOptionsData) Initialize() {
     var _SaveFormat = "fopc"
     obj.SaveFormat = &_SaveFormat
 
-    if (obj.CustomTimeZoneInfoData != nil) {
-        obj.CustomTimeZoneInfoData.Initialize()
-    }
 
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+func (obj *FlatOpcSaveOptionsData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
 }
 
 

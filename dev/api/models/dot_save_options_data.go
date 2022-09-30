@@ -149,6 +149,7 @@ type DotSaveOptionsData struct {
 type IDotSaveOptionsData interface {
     IsDotSaveOptionsData() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (DotSaveOptionsData) IsDotSaveOptionsData() bool {
@@ -167,42 +168,11 @@ func (obj *DotSaveOptionsData) Initialize() {
     var _SaveFormat = "dot"
     obj.SaveFormat = &_SaveFormat
 
-    if (obj.CustomTimeZoneInfoData != nil) {
-        obj.CustomTimeZoneInfoData.Initialize()
-    }
 
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+func (obj *DotSaveOptionsData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
 }
 
 

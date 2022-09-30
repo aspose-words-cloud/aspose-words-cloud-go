@@ -113,6 +113,7 @@ type TableCellFormat struct {
 type ITableCellFormat interface {
     IsTableCellFormat() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (TableCellFormat) IsTableCellFormat() bool {
@@ -124,38 +125,10 @@ func (TableCellFormat) IsLinkElement() bool {
 }
 
 func (obj *TableCellFormat) Initialize() {
-    if (obj.Link != nil) {
-        obj.Link.Initialize()
-    }
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-    if (obj.PreferredWidth != nil) {
-        obj.PreferredWidth.Initialize()
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
+func (obj *TableCellFormat) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
 }
 
 

@@ -37,6 +37,7 @@ type BaseEntryList struct {
 type IBaseEntryList interface {
     IsBaseEntryList() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (BaseEntryList) IsBaseEntryList() bool {
@@ -45,6 +46,10 @@ func (BaseEntryList) IsBaseEntryList() bool {
 
 
 func (obj *BaseEntryList) Initialize() {
+}
+
+func (obj *BaseEntryList) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
 }
 
 

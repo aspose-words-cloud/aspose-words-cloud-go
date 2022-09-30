@@ -47,6 +47,7 @@ type FilesUploadResult struct {
 type IFilesUploadResult interface {
     IsFilesUploadResult() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (FilesUploadResult) IsFilesUploadResult() bool {
@@ -55,6 +56,10 @@ func (FilesUploadResult) IsFilesUploadResult() bool {
 
 
 func (obj *FilesUploadResult) Initialize() {
+}
+
+func (obj *FilesUploadResult) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
 }
 
 

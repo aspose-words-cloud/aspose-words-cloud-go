@@ -49,7 +49,6 @@ type RequestInterface interface {
 type RequestData struct {
     Path         string
     Method       string
-    PostBody     interface{}
     HeaderParams map[string]string
     QueryParams  url.Values
     FormParams   []FormParamContainer
@@ -57,6 +56,7 @@ type RequestData struct {
 
 type FormParamContainer struct {
     Name string
+    MimeType string
     Text string
     File []byte
     IsFile bool
@@ -65,6 +65,16 @@ type FormParamContainer struct {
 func NewTextFormParamContainer(name string, text string) (result FormParamContainer) {
     r := FormParamContainer{}
     r.Name = name
+    r.MimeType = "text/plain"
+    r.Text = text
+    r.IsFile = false
+    return r
+}
+
+func NewJsonFormParamContainer(name string, text string) (result FormParamContainer) {
+    r := FormParamContainer{}
+    r.Name = name
+    r.MimeType = "application/json"
     r.Text = text
     r.IsFile = false
     return r
@@ -73,6 +83,7 @@ func NewTextFormParamContainer(name string, text string) (result FormParamContai
 func NewFileFormParamContainer(name string, file []byte) (result FormParamContainer) {
     r := FormParamContainer{}
     r.Name = name
+    r.MimeType = "application/octet-stream"
     r.File = file
     r.IsFile = true
     return r

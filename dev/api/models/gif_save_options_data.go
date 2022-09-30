@@ -239,6 +239,7 @@ type GifSaveOptionsData struct {
 type IGifSaveOptionsData interface {
     IsGifSaveOptionsData() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (GifSaveOptionsData) IsGifSaveOptionsData() bool {
@@ -261,76 +262,11 @@ func (obj *GifSaveOptionsData) Initialize() {
     var _SaveFormat = "gif"
     obj.SaveFormat = &_SaveFormat
 
-    if (obj.CustomTimeZoneInfoData != nil) {
-        obj.CustomTimeZoneInfoData.Initialize()
-    }
 
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    if (obj.MetafileRenderingOptions != nil) {
-        obj.MetafileRenderingOptions.Initialize()
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+func (obj *GifSaveOptionsData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
 }
 
 

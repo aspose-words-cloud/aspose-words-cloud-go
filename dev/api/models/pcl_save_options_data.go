@@ -179,6 +179,7 @@ type PclSaveOptionsData struct {
 type IPclSaveOptionsData interface {
     IsPclSaveOptionsData() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (PclSaveOptionsData) IsPclSaveOptionsData() bool {
@@ -197,56 +198,11 @@ func (obj *PclSaveOptionsData) Initialize() {
     var _SaveFormat = "pcl"
     obj.SaveFormat = &_SaveFormat
 
-    if (obj.CustomTimeZoneInfoData != nil) {
-        obj.CustomTimeZoneInfoData.Initialize()
-    }
 
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    if (obj.MetafileRenderingOptions != nil) {
-        obj.MetafileRenderingOptions.Initialize()
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
+func (obj *PclSaveOptionsData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
 }
 
 

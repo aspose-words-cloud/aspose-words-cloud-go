@@ -65,6 +65,7 @@ type PdfDigitalSignatureDetailsData struct {
 type IPdfDigitalSignatureDetailsData interface {
     IsPdfDigitalSignatureDetailsData() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (PdfDigitalSignatureDetailsData) IsPdfDigitalSignatureDetailsData() bool {
@@ -73,6 +74,10 @@ func (PdfDigitalSignatureDetailsData) IsPdfDigitalSignatureDetailsData() bool {
 
 
 func (obj *PdfDigitalSignatureDetailsData) Initialize() {
+}
+
+func (obj *PdfDigitalSignatureDetailsData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
 }
 
 

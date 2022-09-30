@@ -47,6 +47,7 @@ type FieldNames struct {
 type IFieldNames interface {
     IsFieldNames() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (FieldNames) IsFieldNames() bool {
@@ -58,12 +59,10 @@ func (FieldNames) IsLinkElement() bool {
 }
 
 func (obj *FieldNames) Initialize() {
-    if (obj.Link != nil) {
-        obj.Link.Initialize()
-    }
+}
 
-
-
+func (obj *FieldNames) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
 }
 
 

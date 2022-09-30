@@ -59,6 +59,7 @@ type ListFormat struct {
 type IListFormat interface {
     IsListFormat() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (ListFormat) IsListFormat() bool {
@@ -70,16 +71,10 @@ func (ListFormat) IsLinkElement() bool {
 }
 
 func (obj *ListFormat) Initialize() {
-    if (obj.Link != nil) {
-        obj.Link.Initialize()
-    }
+}
 
-
-
-
-
-
-
+func (obj *ListFormat) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
 }
 
 

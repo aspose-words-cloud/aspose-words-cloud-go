@@ -149,6 +149,7 @@ type OoxmlSaveOptionsData struct {
 type IOoxmlSaveOptionsData interface {
     IsOoxmlSaveOptionsData() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (OoxmlSaveOptionsData) IsOoxmlSaveOptionsData() bool {
@@ -160,42 +161,10 @@ func (OoxmlSaveOptionsData) IsSaveOptionsData() bool {
 }
 
 func (obj *OoxmlSaveOptionsData) Initialize() {
-    if (obj.CustomTimeZoneInfoData != nil) {
-        obj.CustomTimeZoneInfoData.Initialize()
-    }
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+func (obj *OoxmlSaveOptionsData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
 }
 
 

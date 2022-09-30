@@ -36,6 +36,7 @@ type FontDto struct {
 type IFontDto interface {
     IsFontDto() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (FontDto) IsFontDto() bool {
@@ -44,6 +45,10 @@ func (FontDto) IsFontDto() bool {
 
 
 func (obj *FontDto) Initialize() {
+}
+
+func (obj *FontDto) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
 }
 
 

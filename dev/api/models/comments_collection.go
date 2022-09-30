@@ -47,6 +47,7 @@ type CommentsCollection struct {
 type ICommentsCollection interface {
     IsCommentsCollection() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (CommentsCollection) IsCommentsCollection() bool {
@@ -58,12 +59,10 @@ func (CommentsCollection) IsLinkElement() bool {
 }
 
 func (obj *CommentsCollection) Initialize() {
-    if (obj.Link != nil) {
-        obj.Link.Initialize()
-    }
+}
 
-
-
+func (obj *CommentsCollection) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
 }
 
 

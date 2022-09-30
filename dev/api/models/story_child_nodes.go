@@ -41,6 +41,7 @@ type StoryChildNodes struct {
 type IStoryChildNodes interface {
     IsStoryChildNodes() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (StoryChildNodes) IsStoryChildNodes() bool {
@@ -49,6 +50,10 @@ func (StoryChildNodes) IsStoryChildNodes() bool {
 
 
 func (obj *StoryChildNodes) Initialize() {
+}
+
+func (obj *StoryChildNodes) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
 }
 
 

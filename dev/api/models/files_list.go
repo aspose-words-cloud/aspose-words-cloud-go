@@ -41,6 +41,7 @@ type FilesList struct {
 type IFilesList interface {
     IsFilesList() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (FilesList) IsFilesList() bool {
@@ -49,6 +50,10 @@ func (FilesList) IsFilesList() bool {
 
 
 func (obj *FilesList) Initialize() {
+}
+
+func (obj *FilesList) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
 }
 
 

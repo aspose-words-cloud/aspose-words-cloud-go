@@ -59,6 +59,7 @@ type FootnoteBase struct {
 type IFootnoteBase interface {
     IsFootnoteBase() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (FootnoteBase) IsFootnoteBase() bool {
@@ -67,14 +68,10 @@ func (FootnoteBase) IsFootnoteBase() bool {
 
 
 func (obj *FootnoteBase) Initialize() {
-    if (obj.Position != nil) {
-        obj.Position.Initialize()
-    }
+}
 
-
-
-
-
+func (obj *FootnoteBase) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
 }
 
 

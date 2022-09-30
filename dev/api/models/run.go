@@ -53,6 +53,7 @@ type Run struct {
 type IRun interface {
     IsRun() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (Run) IsRun() bool {
@@ -72,14 +73,10 @@ func (Run) IsLinkElement() bool {
 }
 
 func (obj *Run) Initialize() {
-    if (obj.Link != nil) {
-        obj.Link.Initialize()
-    }
+}
 
-
-
-
-
+func (obj *Run) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
 }
 
 

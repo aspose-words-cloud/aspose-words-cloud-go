@@ -47,6 +47,7 @@ type HeaderFooterLink struct {
 type IHeaderFooterLink interface {
     IsHeaderFooterLink() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (HeaderFooterLink) IsHeaderFooterLink() bool {
@@ -58,12 +59,10 @@ func (HeaderFooterLink) IsLinkElement() bool {
 }
 
 func (obj *HeaderFooterLink) Initialize() {
-    if (obj.Link != nil) {
-        obj.Link.Initialize()
-    }
+}
 
-
-
+func (obj *HeaderFooterLink) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
 }
 
 

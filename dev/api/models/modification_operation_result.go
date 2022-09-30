@@ -47,6 +47,7 @@ type ModificationOperationResult struct {
 type IModificationOperationResult interface {
     IsModificationOperationResult() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (ModificationOperationResult) IsModificationOperationResult() bool {
@@ -55,16 +56,10 @@ func (ModificationOperationResult) IsModificationOperationResult() bool {
 
 
 func (obj *ModificationOperationResult) Initialize() {
-    if (obj.Dest != nil) {
-        obj.Dest.Initialize()
-    }
+}
 
-
-
-    if (obj.Source != nil) {
-        obj.Source.Initialize()
-    }
-
+func (obj *ModificationOperationResult) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
 }
 
 

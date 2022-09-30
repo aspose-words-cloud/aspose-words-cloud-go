@@ -71,6 +71,7 @@ type CommentUpdate struct {
 type ICommentUpdate interface {
     IsCommentUpdate() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (CommentUpdate) IsCommentUpdate() bool {
@@ -82,18 +83,10 @@ func (CommentUpdate) IsCommentBase() bool {
 }
 
 func (obj *CommentUpdate) Initialize() {
-    if (obj.RangeEnd != nil) {
-        obj.RangeEnd.Initialize()
-    }
+}
 
-
-
-    if (obj.RangeStart != nil) {
-        obj.RangeStart.Initialize()
-    }
-
-
-
+func (obj *CommentUpdate) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
 }
 
 

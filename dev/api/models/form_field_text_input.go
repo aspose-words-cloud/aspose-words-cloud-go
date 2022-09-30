@@ -125,6 +125,7 @@ type FormFieldTextInput struct {
 type IFormFieldTextInput interface {
     IsFormFieldTextInput() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (FormFieldTextInput) IsFormFieldTextInput() bool {
@@ -144,38 +145,10 @@ func (FormFieldTextInput) IsLinkElement() bool {
 }
 
 func (obj *FormFieldTextInput) Initialize() {
-    if (obj.Link != nil) {
-        obj.Link.Initialize()
-    }
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+func (obj *FormFieldTextInput) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
 }
 
 

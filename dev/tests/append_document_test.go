@@ -44,8 +44,9 @@ func Test_AppendDocument_AppendDocument(t *testing.T) {
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
+    requestDocumentListDocumentEntries0FileReference := models.CreateRemoteFileReference(remoteDataFolder + "/" + remoteFileName)
     requestDocumentListDocumentEntries0 := models.DocumentEntry{
-        Href: ToStringPointer(remoteDataFolder + "/" + remoteFileName),
+        FileReference: &requestDocumentListDocumentEntries0FileReference,
         ImportFormatMode: ToStringPointer("KeepSourceFormatting"),
     }
     requestDocumentListDocumentEntries := []models.DocumentEntry{
@@ -79,15 +80,13 @@ func Test_AppendDocument_AppendDocument(t *testing.T) {
 func Test_AppendDocument_AppendDocumentOnline(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
-    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentActions/AppendDocument"
     localFile := "Common/test_multi_pages.docx"
-    remoteFileName := "TestAppendDocument.docx"
-
-    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
     requestDocument := OpenFile(t, localFile)
+    requestDocumentListDocumentEntries0FileReferenceStream := OpenFile(t, localFile)
+    requestDocumentListDocumentEntries0FileReference := models.CreateLocalFileReference(requestDocumentListDocumentEntries0FileReferenceStream)
     requestDocumentListDocumentEntries0 := models.DocumentEntry{
-        Href: ToStringPointer(remoteDataFolder + "/" + remoteFileName),
+        FileReference: &requestDocumentListDocumentEntries0FileReference,
         ImportFormatMode: ToStringPointer("KeepSourceFormatting"),
     }
     requestDocumentListDocumentEntries := []models.DocumentEntry{

@@ -59,6 +59,7 @@ type WordsApiLink struct {
 type IWordsApiLink interface {
     IsWordsApiLink() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (WordsApiLink) IsWordsApiLink() bool {
@@ -70,6 +71,10 @@ func (WordsApiLink) IsLink() bool {
 }
 
 func (obj *WordsApiLink) Initialize() {
+}
+
+func (obj *WordsApiLink) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
 }
 
 

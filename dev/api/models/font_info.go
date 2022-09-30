@@ -59,6 +59,7 @@ type FontInfo struct {
 type IFontInfo interface {
     IsFontInfo() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (FontInfo) IsFontInfo() bool {
@@ -67,6 +68,10 @@ func (FontInfo) IsFontInfo() bool {
 
 
 func (obj *FontInfo) Initialize() {
+}
+
+func (obj *FontInfo) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
 }
 
 

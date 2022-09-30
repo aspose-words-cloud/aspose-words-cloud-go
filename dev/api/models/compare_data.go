@@ -65,6 +65,7 @@ type CompareData struct {
 type ICompareData interface {
     IsCompareData() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (CompareData) IsCompareData() bool {
@@ -73,16 +74,10 @@ func (CompareData) IsCompareData() bool {
 
 
 func (obj *CompareData) Initialize() {
-    if (obj.CompareOptions != nil) {
-        obj.CompareOptions.Initialize()
-    }
+}
 
-
-
-
-
-
-
+func (obj *CompareData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
 }
 
 

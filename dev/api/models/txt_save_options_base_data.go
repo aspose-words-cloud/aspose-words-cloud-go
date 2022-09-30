@@ -149,6 +149,7 @@ type TxtSaveOptionsBaseData struct {
 type ITxtSaveOptionsBaseData interface {
     IsTxtSaveOptionsBaseData() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (TxtSaveOptionsBaseData) IsTxtSaveOptionsBaseData() bool {
@@ -160,42 +161,10 @@ func (TxtSaveOptionsBaseData) IsSaveOptionsData() bool {
 }
 
 func (obj *TxtSaveOptionsBaseData) Initialize() {
-    if (obj.CustomTimeZoneInfoData != nil) {
-        obj.CustomTimeZoneInfoData.Initialize()
-    }
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+func (obj *TxtSaveOptionsBaseData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
 }
 
 

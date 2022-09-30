@@ -29,12 +29,12 @@ package models
 
 import (
     "fmt"
-	"io/ioutil"
-	"net/url"
-	"strings"
+    "io/ioutil"
+    "net/url"
+    "strings"
     "io"
     "encoding/json"
-	"mime/multipart"
+    "mime/multipart"
 )
 
 // InsertOrUpdateParagraphTabStopOnlineRequest contains request data for WordsApiService.InsertOrUpdateParagraphTabStopOnline method.
@@ -58,6 +58,7 @@ type InsertOrUpdateParagraphTabStopOnlineRequest struct {
 func (data *InsertOrUpdateParagraphTabStopOnlineRequest) CreateRequestData() (RequestData, error) {
 
     var result RequestData
+    var filesContentData = make([]FileReference, 0)
 
     result.Method = strings.ToUpper("put")
 
@@ -114,27 +115,6 @@ func (data *InsertOrUpdateParagraphTabStopOnlineRequest) CreateRequestData() (Re
     }
 
 
-    // to determine the Content-Type header
-    localVarHttpContentTypes := []string{ "multipart/form-data", }
-
-    // set Content-Type header
-    localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
-    if localVarHttpContentType != "" {
-        result.HeaderParams["Content-Type"] = localVarHttpContentType
-    }
-
-    // to determine the Accept header
-    localVarHttpHeaderAccepts := []string{
-        "application/xml",
-        "application/json",
-    }
-
-    // set Accept header
-    localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
-    if localVarHttpHeaderAccept != "" {
-        result.HeaderParams["Accept"] = localVarHttpHeaderAccept
-    }
-
 
     _document := data.Document
     if _document != nil {
@@ -143,10 +123,13 @@ func (data *InsertOrUpdateParagraphTabStopOnlineRequest) CreateRequestData() (Re
         result.FormParams = append(result.FormParams, NewFileFormParamContainer("document", fbs))
     }
 
+    result.FormParams = append(result.FormParams, NewJsonFormParamContainer("TabStopInsertDto", parameterToString(data.TabStopInsertDto, "")))
 
-    result.FormParams = append(result.FormParams, NewTextFormParamContainer("TabStopInsertDto", parameterToString(data.TabStopInsertDto, "")))
 
-
+    for _, fileContentData := range filesContentData {
+        fbs, _ := ioutil.ReadAll(fileContentData.Content)
+        result.FormParams = append(result.FormParams, NewFileFormParamContainer(fileContentData.Reference, fbs))
+    }
 
     return result, nil
 }

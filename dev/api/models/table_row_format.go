@@ -65,6 +65,7 @@ type TableRowFormat struct {
 type ITableRowFormat interface {
     IsTableRowFormat() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (TableRowFormat) IsTableRowFormat() bool {
@@ -76,18 +77,10 @@ func (TableRowFormat) IsLinkElement() bool {
 }
 
 func (obj *TableRowFormat) Initialize() {
-    if (obj.Link != nil) {
-        obj.Link.Initialize()
-    }
+}
 
-
-
-
-
-
-
-
-
+func (obj *TableRowFormat) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
 }
 
 

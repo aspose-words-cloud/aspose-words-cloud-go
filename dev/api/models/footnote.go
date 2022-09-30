@@ -77,6 +77,7 @@ type Footnote struct {
 type IFootnote interface {
     IsFootnote() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (Footnote) IsFootnote() bool {
@@ -96,30 +97,10 @@ func (Footnote) IsLinkElement() bool {
 }
 
 func (obj *Footnote) Initialize() {
-    if (obj.Link != nil) {
-        obj.Link.Initialize()
-    }
+}
 
-
-
-
-
-    if (obj.Content != nil) {
-        obj.Content.Initialize()
-    }
-
-
-
-
-
-    if (obj.Position != nil) {
-        obj.Position.Initialize()
-    }
-
-
-
-
-
+func (obj *Footnote) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
 }
 
 

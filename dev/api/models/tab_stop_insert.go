@@ -53,6 +53,7 @@ type TabStopInsert struct {
 type ITabStopInsert interface {
     IsTabStopInsert() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (TabStopInsert) IsTabStopInsert() bool {
@@ -64,6 +65,10 @@ func (TabStopInsert) IsTabStopBase() bool {
 }
 
 func (obj *TabStopInsert) Initialize() {
+}
+
+func (obj *TabStopInsert) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
 }
 
 

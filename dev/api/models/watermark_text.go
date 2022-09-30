@@ -47,6 +47,7 @@ type WatermarkText struct {
 type IWatermarkText interface {
     IsWatermarkText() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (WatermarkText) IsWatermarkText() bool {
@@ -55,6 +56,10 @@ func (WatermarkText) IsWatermarkText() bool {
 
 
 func (obj *WatermarkText) Initialize() {
+}
+
+func (obj *WatermarkText) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
 }
 
 

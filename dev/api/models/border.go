@@ -77,6 +77,7 @@ type Border struct {
 type IBorder interface {
     IsBorder() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (Border) IsBorder() bool {
@@ -88,26 +89,10 @@ func (Border) IsLinkElement() bool {
 }
 
 func (obj *Border) Initialize() {
-    if (obj.Link != nil) {
-        obj.Link.Initialize()
-    }
+}
 
-
-
-
-
-    if (obj.Color != nil) {
-        obj.Color.Initialize()
-    }
-
-
-
-
-
-
-
-
-
+func (obj *Border) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
 }
 
 

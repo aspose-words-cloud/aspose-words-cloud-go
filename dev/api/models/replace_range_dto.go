@@ -47,6 +47,7 @@ type ReplaceRangeDto struct {
 type IReplaceRangeDto interface {
     IsReplaceRangeDto() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (ReplaceRangeDto) IsReplaceRangeDto() bool {
@@ -55,6 +56,10 @@ func (ReplaceRangeDto) IsReplaceRangeDto() bool {
 
 
 func (obj *ReplaceRangeDto) Initialize() {
+}
+
+func (obj *ReplaceRangeDto) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
 }
 
 

@@ -29,8 +29,9 @@ package models
 
 import (
     "fmt"
-	"net/url"
-	"strings"
+    "io/ioutil"
+    "net/url"
+    "strings"
     "io"
     "encoding/json"
 )
@@ -59,6 +60,7 @@ type InsertTableRowRequest struct {
 func (data *InsertTableRowRequest) CreateRequestData() (RequestData, error) {
 
     var result RequestData
+    var filesContentData = make([]FileReference, 0)
 
     result.Method = strings.ToUpper("post")
 
@@ -144,30 +146,14 @@ func (data *InsertTableRowRequest) CreateRequestData() (RequestData, error) {
     }
 
 
-    // to determine the Content-Type header
-    localVarHttpContentTypes := []string{ "application/xml", "application/json", }
 
-    // set Content-Type header
-    localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
-    if localVarHttpContentType != "" {
-        result.HeaderParams["Content-Type"] = localVarHttpContentType
+    result.FormParams = append(result.FormParams, NewJsonFormParamContainer("Row", parameterToString(data.Row, "")))
+
+
+    for _, fileContentData := range filesContentData {
+        fbs, _ := ioutil.ReadAll(fileContentData.Content)
+        result.FormParams = append(result.FormParams, NewFileFormParamContainer(fileContentData.Reference, fbs))
     }
-
-    // to determine the Accept header
-    localVarHttpHeaderAccepts := []string{
-        "application/xml",
-        "application/json",
-    }
-
-    // set Accept header
-    localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
-    if localVarHttpHeaderAccept != "" {
-        result.HeaderParams["Accept"] = localVarHttpHeaderAccept
-    }
-
-
-
-    result.PostBody = &data.Row
 
     return result, nil
 }

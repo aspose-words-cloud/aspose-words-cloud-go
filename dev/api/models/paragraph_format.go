@@ -209,6 +209,7 @@ type ParagraphFormat struct {
 type IParagraphFormat interface {
     IsParagraphFormat() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (ParagraphFormat) IsParagraphFormat() bool {
@@ -224,70 +225,10 @@ func (ParagraphFormat) IsLinkElement() bool {
 }
 
 func (obj *ParagraphFormat) Initialize() {
-    if (obj.Link != nil) {
-        obj.Link.Initialize()
-    }
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    if (obj.Shading != nil) {
-        obj.Shading.Initialize()
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+func (obj *ParagraphFormat) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
 }
 
 

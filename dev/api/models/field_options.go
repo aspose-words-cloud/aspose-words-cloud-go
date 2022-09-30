@@ -113,6 +113,7 @@ type FieldOptions struct {
 type IFieldOptions interface {
     IsFieldOptions() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (FieldOptions) IsFieldOptions() bool {
@@ -121,32 +122,10 @@ func (FieldOptions) IsFieldOptions() bool {
 
 
 func (obj *FieldOptions) Initialize() {
-    if (obj.CurrentUser != nil) {
-        obj.CurrentUser.Initialize()
-    }
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+func (obj *FieldOptions) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
 }
 
 

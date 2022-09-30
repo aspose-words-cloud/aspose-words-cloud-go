@@ -53,6 +53,7 @@ type DownsampleOptionsData struct {
 type IDownsampleOptionsData interface {
     IsDownsampleOptionsData() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (DownsampleOptionsData) IsDownsampleOptionsData() bool {
@@ -61,6 +62,10 @@ func (DownsampleOptionsData) IsDownsampleOptionsData() bool {
 
 
 func (obj *DownsampleOptionsData) Initialize() {
+}
+
+func (obj *DownsampleOptionsData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
 }
 
 

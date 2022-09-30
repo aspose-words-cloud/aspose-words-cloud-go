@@ -59,6 +59,7 @@ type Table struct {
 type ITable interface {
     IsTable() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (Table) IsTable() bool {
@@ -74,20 +75,10 @@ func (Table) IsLinkElement() bool {
 }
 
 func (obj *Table) Initialize() {
-    if (obj.Link != nil) {
-        obj.Link.Initialize()
-    }
+}
 
-
-
-
-
-    if (obj.TableProperties != nil) {
-        obj.TableProperties.Initialize()
-    }
-
-
-
+func (obj *Table) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
 }
 
 

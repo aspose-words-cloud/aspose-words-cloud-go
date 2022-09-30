@@ -47,6 +47,7 @@ type OfficeMathObjectsCollection struct {
 type IOfficeMathObjectsCollection interface {
     IsOfficeMathObjectsCollection() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (OfficeMathObjectsCollection) IsOfficeMathObjectsCollection() bool {
@@ -58,12 +59,10 @@ func (OfficeMathObjectsCollection) IsLinkElement() bool {
 }
 
 func (obj *OfficeMathObjectsCollection) Initialize() {
-    if (obj.Link != nil) {
-        obj.Link.Initialize()
-    }
+}
 
-
-
+func (obj *OfficeMathObjectsCollection) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
 }
 
 

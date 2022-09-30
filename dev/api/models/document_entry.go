@@ -30,10 +30,10 @@ package models
 // Represents a document which will be appended to the original resource document.
 type DocumentEntryResult struct {
     // Represents a document which will be appended to the original resource document.
-    EncryptedPassword string `json:"EncryptedPassword,omitempty"`
+    FileReference FileReferenceResult `json:"FileReference,omitempty"`
 
     // Represents a document which will be appended to the original resource document.
-    Href string `json:"Href,omitempty"`
+    EncryptedPassword string `json:"EncryptedPassword,omitempty"`
 
     // Represents a document which will be appended to the original resource document.
     ImportFormatMode string `json:"ImportFormatMode,omitempty"`
@@ -41,10 +41,10 @@ type DocumentEntryResult struct {
 
 type DocumentEntry struct {
     // Represents a document which will be appended to the original resource document.
-    EncryptedPassword *string `json:"EncryptedPassword,omitempty"`
+    FileReference IFileReference `json:"FileReference,omitempty"`
 
     // Represents a document which will be appended to the original resource document.
-    Href *string `json:"Href,omitempty"`
+    EncryptedPassword *string `json:"EncryptedPassword,omitempty"`
 
     // Represents a document which will be appended to the original resource document.
     ImportFormatMode *string `json:"ImportFormatMode,omitempty"`
@@ -53,14 +53,28 @@ type DocumentEntry struct {
 type IDocumentEntry interface {
     IsDocumentEntry() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (DocumentEntry) IsDocumentEntry() bool {
     return true
 }
 
+func (DocumentEntry) IsBaseEntry() bool {
+    return true
+}
 
 func (obj *DocumentEntry) Initialize() {
+}
+
+func (obj *DocumentEntry) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    if (obj.FileReference != nil) {
+        resultFilesContent = obj.FileReference.CollectFilesContent(resultFilesContent)
+    }
+
+
+
+    return resultFilesContent
 }
 
 

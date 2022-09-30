@@ -59,6 +59,7 @@ type TimeZoneInfoData struct {
 type ITimeZoneInfoData interface {
     IsTimeZoneInfoData() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (TimeZoneInfoData) IsTimeZoneInfoData() bool {
@@ -67,6 +68,10 @@ func (TimeZoneInfoData) IsTimeZoneInfoData() bool {
 
 
 func (obj *TimeZoneInfoData) Initialize() {
+}
+
+func (obj *TimeZoneInfoData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
 }
 
 

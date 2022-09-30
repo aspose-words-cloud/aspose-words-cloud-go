@@ -41,6 +41,7 @@ type RunInsert struct {
 type IRunInsert interface {
     IsRunInsert() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (RunInsert) IsRunInsert() bool {
@@ -52,6 +53,10 @@ func (RunInsert) IsRunBase() bool {
 }
 
 func (obj *RunInsert) Initialize() {
+}
+
+func (obj *RunInsert) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
 }
 
 

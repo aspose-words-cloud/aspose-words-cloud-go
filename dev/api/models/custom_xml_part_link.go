@@ -41,6 +41,7 @@ type CustomXmlPartLink struct {
 type ICustomXmlPartLink interface {
     IsCustomXmlPartLink() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (CustomXmlPartLink) IsCustomXmlPartLink() bool {
@@ -52,10 +53,10 @@ func (CustomXmlPartLink) IsLinkElement() bool {
 }
 
 func (obj *CustomXmlPartLink) Initialize() {
-    if (obj.Link != nil) {
-        obj.Link.Initialize()
-    }
+}
 
+func (obj *CustomXmlPartLink) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
 }
 
 

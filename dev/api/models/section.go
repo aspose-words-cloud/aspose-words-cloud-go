@@ -71,6 +71,7 @@ type Section struct {
 type ISection interface {
     IsSection() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (Section) IsSection() bool {
@@ -82,36 +83,10 @@ func (Section) IsLinkElement() bool {
 }
 
 func (obj *Section) Initialize() {
-    if (obj.Link != nil) {
-        obj.Link.Initialize()
-    }
+}
 
-
-
-
-
-    if (obj.HeaderFooters != nil) {
-        obj.HeaderFooters.Initialize()
-    }
-
-
-
-    if (obj.PageSetup != nil) {
-        obj.PageSetup.Initialize()
-    }
-
-
-
-    if (obj.Paragraphs != nil) {
-        obj.Paragraphs.Initialize()
-    }
-
-
-
-    if (obj.Tables != nil) {
-        obj.Tables.Initialize()
-    }
-
+func (obj *Section) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
 }
 
 

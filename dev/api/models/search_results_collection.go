@@ -47,6 +47,7 @@ type SearchResultsCollection struct {
 type ISearchResultsCollection interface {
     IsSearchResultsCollection() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (SearchResultsCollection) IsSearchResultsCollection() bool {
@@ -58,12 +59,10 @@ func (SearchResultsCollection) IsLinkElement() bool {
 }
 
 func (obj *SearchResultsCollection) Initialize() {
-    if (obj.Link != nil) {
-        obj.Link.Initialize()
-    }
+}
 
-
-
+func (obj *SearchResultsCollection) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
 }
 
 

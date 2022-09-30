@@ -149,6 +149,7 @@ type OttSaveOptionsData struct {
 type IOttSaveOptionsData interface {
     IsOttSaveOptionsData() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (OttSaveOptionsData) IsOttSaveOptionsData() bool {
@@ -167,42 +168,11 @@ func (obj *OttSaveOptionsData) Initialize() {
     var _SaveFormat = "ott"
     obj.SaveFormat = &_SaveFormat
 
-    if (obj.CustomTimeZoneInfoData != nil) {
-        obj.CustomTimeZoneInfoData.Initialize()
-    }
 
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+func (obj *OttSaveOptionsData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
 }
 
 

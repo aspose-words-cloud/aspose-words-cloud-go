@@ -53,6 +53,7 @@ type ProtectionRequest struct {
 type IProtectionRequest interface {
     IsProtectionRequest() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (ProtectionRequest) IsProtectionRequest() bool {
@@ -61,6 +62,10 @@ func (ProtectionRequest) IsProtectionRequest() bool {
 
 
 func (obj *ProtectionRequest) Initialize() {
+}
+
+func (obj *ProtectionRequest) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
 }
 
 

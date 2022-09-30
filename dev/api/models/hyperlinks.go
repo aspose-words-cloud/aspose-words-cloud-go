@@ -47,6 +47,7 @@ type Hyperlinks struct {
 type IHyperlinks interface {
     IsHyperlinks() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (Hyperlinks) IsHyperlinks() bool {
@@ -58,12 +59,10 @@ func (Hyperlinks) IsLinkElement() bool {
 }
 
 func (obj *Hyperlinks) Initialize() {
-    if (obj.Link != nil) {
-        obj.Link.Initialize()
-    }
+}
 
-
-
+func (obj *Hyperlinks) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
 }
 
 

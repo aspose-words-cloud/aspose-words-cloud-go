@@ -30,17 +30,18 @@ package models
 // Represents a image which will be appended to the original resource image or document.
 type ImageEntryResult struct {
     // Represents a image which will be appended to the original resource image or document.
-    Href string `json:"Href,omitempty"`
+    FileReference FileReferenceResult `json:"FileReference,omitempty"`
 }
 
 type ImageEntry struct {
     // Represents a image which will be appended to the original resource image or document.
-    Href *string `json:"Href,omitempty"`
+    FileReference IFileReference `json:"FileReference,omitempty"`
 }
 
 type IImageEntry interface {
     IsImageEntry() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (ImageEntry) IsImageEntry() bool {
@@ -52,6 +53,14 @@ func (ImageEntry) IsBaseEntry() bool {
 }
 
 func (obj *ImageEntry) Initialize() {
+}
+
+func (obj *ImageEntry) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    if (obj.FileReference != nil) {
+        resultFilesContent = obj.FileReference.CollectFilesContent(resultFilesContent)
+    }
+
+    return resultFilesContent
 }
 
 

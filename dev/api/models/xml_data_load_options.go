@@ -41,6 +41,7 @@ type XmlDataLoadOptions struct {
 type IXmlDataLoadOptions interface {
     IsXmlDataLoadOptions() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (XmlDataLoadOptions) IsXmlDataLoadOptions() bool {
@@ -49,6 +50,10 @@ func (XmlDataLoadOptions) IsXmlDataLoadOptions() bool {
 
 
 func (obj *XmlDataLoadOptions) Initialize() {
+}
+
+func (obj *XmlDataLoadOptions) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
 }
 
 

@@ -53,6 +53,7 @@ type SaveResult struct {
 type ISaveResult interface {
     IsSaveResult() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (SaveResult) IsSaveResult() bool {
@@ -61,16 +62,10 @@ func (SaveResult) IsSaveResult() bool {
 
 
 func (obj *SaveResult) Initialize() {
-    if (obj.DestDocument != nil) {
-        obj.DestDocument.Initialize()
-    }
+}
 
-
-
-    if (obj.SourceDocument != nil) {
-        obj.SourceDocument.Initialize()
-    }
-
+func (obj *SaveResult) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
 }
 
 

@@ -71,6 +71,7 @@ type ReportEngineSettings struct {
 type IReportEngineSettings interface {
     IsReportEngineSettings() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (ReportEngineSettings) IsReportEngineSettings() bool {
@@ -79,28 +80,10 @@ func (ReportEngineSettings) IsReportEngineSettings() bool {
 
 
 func (obj *ReportEngineSettings) Initialize() {
-    if (obj.CsvDataLoadOptions != nil) {
-        obj.CsvDataLoadOptions.Initialize()
-    }
+}
 
-
-
-
-
-
-
-    if (obj.JsonDataLoadOptions != nil) {
-        obj.JsonDataLoadOptions.Initialize()
-    }
-
-
-
-
-
-    if (obj.XmlDataLoadOptions != nil) {
-        obj.XmlDataLoadOptions.Initialize()
-    }
-
+func (obj *ReportEngineSettings) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
 }
 
 

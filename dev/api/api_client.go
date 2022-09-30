@@ -30,22 +30,22 @@ package api
 import (
     "bytes"
     "context"
-	"crypto/rand"
-	"crypto/rsa"
-	"encoding/base64"
-	"encoding/binary"
+    "crypto/rand"
+    "crypto/rsa"
+    "encoding/base64"
+    "encoding/binary"
     "encoding/json"
-    "encoding/xml"
     "errors"
     "fmt"
     "io"
     "io/ioutil"
     "log"
-	"math/big"
+    "math/big"
     "mime"
     "mime/multipart"
     "net/http"
     "net/http/httputil"
+    "net/textproto"
     "net/url"
     "os"
     "path/filepath"
@@ -67,12 +67,12 @@ var (
 // APIClient manages communication with the Aspose.Words for Cloud API Reference API v22.9
 // In most cases there should be only one, shared, APIClient.
 type APIClient struct {
-    cfg 	*models.Configuration
-    common 	service 		// Reuse a single struct instead of allocating one for each service on the heap.
+    cfg     *models.Configuration
+    common  service         // Reuse a single struct instead of allocating one for each service on the heap.
     key    *rsa.PublicKey // public key to encrypt data
 
      // API Services
-    WordsApi	*WordsApiService
+    WordsApi    *WordsApiService
 }
 
 type service struct {
@@ -119,11 +119,11 @@ func atoi(in string) (int, error) {
 // callAPI do the request. 
 func (c *APIClient) callAPI(request *http.Request) (resp *http.Response, err error) {
 
-	defer func() {
-		if p := recover(); p != nil {
-			panic(fmt.Sprintf("request error: %v", p))
-		}
-	}()
+    defer func() {
+        if p := recover(); p != nil {
+            panic(fmt.Sprintf("request error: %v", p))
+        }
+    }()
 
     // log request
     if c.cfg.DebugMode {
@@ -202,54 +202,61 @@ func (c *APIClient) NewContextWithToken(ctx context.Context) (ctxWithToken conte
         return nil, err
     }
 
-	return context.WithValue(ctx, models.ContextAccessToken, result.AccessToken), nil
+    return context.WithValue(ctx, models.ContextAccessToken, result.AccessToken), nil
 }
 
 // prepareRequest build the request
 func (c *APIClient) prepareRequest (
     ctx context.Context,
     data models.RequestData) (request *http.Request, err error) {
-
     var body *bytes.Buffer
 
-    // Detect postBody type and post.
-    if data.PostBody != nil {
-        contentType := data.HeaderParams["Content-Type"]
-        if contentType == "" {
-            contentType = detectContentType(data.PostBody)
-            data.HeaderParams["Content-Type"] = contentType
-        }
-
-        body, err = setBody(data.PostBody, contentType)
-        if err != nil {
-            return nil, err
-        }
-    }
-
     // add form parameters and file if available.
-    if len(data.FormParams) > 0 {
-        if body != nil {
-            return nil, errors.New("Cannot specify postBody and multipart form at the same time.")
+    if len(data.FormParams) == 1 {
+        body = &bytes.Buffer{}
+        formParam := data.FormParams[0]
+        data.HeaderParams["Content-Type"] = formParam.MimeType
+
+        if formParam.IsFile {
+            _, err = body.Write(formParam.File)
+            if err != nil {
+                return nil, err
+            }
+        } else {
+            _, err = body.WriteString(formParam.Text)
+            if err != nil {
+                return nil, err
+            }
         }
+    } else if len(data.FormParams) > 1 {
         body = &bytes.Buffer{}
         w := multipart.NewWriter(body)
         data.HeaderParams["Content-Type"] = w.FormDataContentType()
 
         for _, fp := range data.FormParams {
+            partDisposition := "form-data; name=\"" + fp.Name + "\""
             if fp.IsFile {
-                if len(fp.File) > 0 && fp.Name != "" {
-                    w.Boundary()
-                    part, err := w.CreateFormFile(fp.Name, filepath.Base(fp.Name))
-                    if err != nil {
-                        return nil, err
-                    }
-                    _, err = part.Write(fp.File)
-                    if err != nil {
-                        return nil, err
-                    }
+                partDisposition += "; filename=\"" + fp.Name + "\""
+            }
+
+            partHeader := make(textproto.MIMEHeader)
+            partHeader.Set("Content-Disposition", partDisposition)
+            partHeader.Set("Content-Type", fp.MimeType)
+            part, err := w.CreatePart(partHeader)
+            if err != nil {
+                return nil, err
+            }
+
+            if fp.IsFile {
+                _, err = part.Write(fp.File)
+                if err != nil {
+                    return nil, err
                 }
             } else {
-                w.WriteField(fp.Name, fp.Text)
+                _, err = part.Write([]byte(fp.Text))
+                if err != nil {
+                    return nil, err
+                }
             }
         }
 
@@ -342,59 +349,59 @@ func (c *APIClient) prepareRequest (
 // encrypt string with RSA key from context
 func (c *APIClient) encrypt(ctx context.Context, data string) (string, error) {
 
-	if data == "" {
-		return data, nil
-	}
+    if data == "" {
+        return data, nil
+    }
 
-	if c.key == nil {
+    if c.key == nil {
 
-		modulus := c.cfg.Modulus
-		exponent := c.cfg.Exponent
+        modulus := c.cfg.Modulus
+        exponent := c.cfg.Exponent
 
-		if modulus == "" || exponent == "" {
-			rsaKeyData, _, err := c.WordsApi.GetPublicKey(ctx, &models.GetPublicKeyRequest{})
+        if modulus == "" || exponent == "" {
+            rsaKeyData, _, err := c.WordsApi.GetPublicKey(ctx, &models.GetPublicKeyRequest{})
 
-			if err != nil {
-				return "", err
-			}
+            if err != nil {
+                return "", err
+            }
 
-			modulus = rsaKeyData.Modulus
-			exponent = rsaKeyData.Exponent
-		}
+            modulus = rsaKeyData.Modulus
+            exponent = rsaKeyData.Exponent
+        }
 
-		exponentBytes, err := base64.StdEncoding.DecodeString(exponent)
+        exponentBytes, err := base64.StdEncoding.DecodeString(exponent)
 
-		if err != nil {
-			return "", err
-		}
+        if err != nil {
+            return "", err
+        }
 
-		var eBytes []byte
-		if len(exponentBytes) < 8 {
-			eBytes = make([]byte, 8-len(exponentBytes), 8)
-			eBytes = append(eBytes, exponentBytes...)
-		} else {
-			eBytes = exponentBytes
-		}
+        var eBytes []byte
+        if len(exponentBytes) < 8 {
+            eBytes = make([]byte, 8-len(exponentBytes), 8)
+            eBytes = append(eBytes, exponentBytes...)
+        } else {
+            eBytes = exponentBytes
+        }
 
-		modulusBytes, err := base64.StdEncoding.DecodeString(modulus)
+        modulusBytes, err := base64.StdEncoding.DecodeString(modulus)
 
-		if err != nil {
-			return "", err
-		}
+        if err != nil {
+            return "", err
+        }
 
-		c.key = &rsa.PublicKey{
-			N: big.NewInt(0).SetBytes(modulusBytes),
-			E: int(binary.BigEndian.Uint64(eBytes)),
-		}
-	}
+        c.key = &rsa.PublicKey{
+            N: big.NewInt(0).SetBytes(modulusBytes),
+            E: int(binary.BigEndian.Uint64(eBytes)),
+        }
+    }
 
-	encrypted, err := rsa.EncryptPKCS1v15(rand.Reader, c.key, []byte(data))
+    encrypted, err := rsa.EncryptPKCS1v15(rand.Reader, c.key, []byte(data))
 
-	if err != nil {
-		return "", err
-	}
+    if err != nil {
+        return "", err
+    }
 
-	return base64.StdEncoding.EncodeToString(encrypted), nil
+    return base64.StdEncoding.EncodeToString(encrypted), nil
 }
 
 // Add a file to the multipart request
@@ -417,35 +424,6 @@ func addFile(w *multipart.Writer, fieldName, path string) error {
 // Prevent trying to import "fmt"
 func reportError(format string, a ...interface{}) (error) {
     return fmt.Errorf(format, a...)
-}
-
-// Set request body from an interface{}
-func setBody(body interface{}, contentType string) (bodyBuf *bytes.Buffer, err error) {
-    if bodyBuf == nil {
-        bodyBuf = &bytes.Buffer{}
-    }
-
-    if reader, ok := body.(io.Reader); ok {
-        _, err = bodyBuf.ReadFrom(reader)
-    } else if b, ok := body.([]byte); ok {
-        _, err = bodyBuf.Write(b)
-    } else if s, ok := body.(string); ok {
-        _, err = bodyBuf.WriteString(s)
-    } else if jsonCheck.MatchString(contentType) {
-        err = json.NewEncoder(bodyBuf).Encode(body)
-    } else if xmlCheck.MatchString(contentType) {
-        xml.NewEncoder(bodyBuf).Encode(body)
-    }
-
-    if err != nil {
-        return nil, err
-    }
-
-    if bodyBuf.Len() == 0 {
-        err = fmt.Errorf("Invalid body type %s\n", contentType)
-        return nil, err
-    }
-    return bodyBuf, nil
 }
 
 // detectContentType method is used to figure out `Request.Body` content type for request header
@@ -548,15 +526,15 @@ func GetPartBoundary(response *multipart.Part) string {
 }
 
 func getBoundary(contentHeader string) string {
-	if contentHeader == "" {
-		return ""
-	}
+    if contentHeader == "" {
+        return ""
+    }
 
-	_, params, err := mime.ParseMediaType(contentHeader)
+    _, params, err := mime.ParseMediaType(contentHeader)
 
-	if err != nil {
-		return ""
-	}
+    if err != nil {
+        return ""
+    }
 
-	return params["boundary"]
+    return params["boundary"]
 }

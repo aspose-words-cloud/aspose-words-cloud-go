@@ -28,9 +28,9 @@
 package models
 
 import (
-	"io/ioutil"
-	"net/url"
-	"strings"
+    "io/ioutil"
+    "net/url"
+    "strings"
     "io"
     "encoding/json"
 )
@@ -53,6 +53,7 @@ type GetDocumentStatisticsOnlineRequest struct {
 func (data *GetDocumentStatisticsOnlineRequest) CreateRequestData() (RequestData, error) {
 
     var result RequestData
+    var filesContentData = make([]FileReference, 0)
 
     result.Method = strings.ToUpper("put")
 
@@ -117,27 +118,6 @@ func (data *GetDocumentStatisticsOnlineRequest) CreateRequestData() (RequestData
     }
 
 
-    // to determine the Content-Type header
-    localVarHttpContentTypes := []string{ "multipart/form-data", }
-
-    // set Content-Type header
-    localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
-    if localVarHttpContentType != "" {
-        result.HeaderParams["Content-Type"] = localVarHttpContentType
-    }
-
-    // to determine the Accept header
-    localVarHttpHeaderAccepts := []string{
-        "application/xml",
-        "application/json",
-    }
-
-    // set Accept header
-    localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
-    if localVarHttpHeaderAccept != "" {
-        result.HeaderParams["Accept"] = localVarHttpHeaderAccept
-    }
-
 
     _document := data.Document
     if _document != nil {
@@ -147,6 +127,10 @@ func (data *GetDocumentStatisticsOnlineRequest) CreateRequestData() (RequestData
     }
 
 
+    for _, fileContentData := range filesContentData {
+        fbs, _ := ioutil.ReadAll(fileContentData.Content)
+        result.FormParams = append(result.FormParams, NewFileFormParamContainer(fileContentData.Reference, fbs))
+    }
 
     return result, nil
 }

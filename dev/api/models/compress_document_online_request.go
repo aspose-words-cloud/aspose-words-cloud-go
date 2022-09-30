@@ -28,12 +28,12 @@
 package models
 
 import (
-	"io/ioutil"
-	"net/url"
-	"strings"
+    "io/ioutil"
+    "net/url"
+    "strings"
     "io"
     "encoding/json"
-	"mime/multipart"
+    "mime/multipart"
 )
 
 // CompressDocumentOnlineRequest contains request data for WordsApiService.CompressDocumentOnline method.
@@ -54,6 +54,7 @@ type CompressDocumentOnlineRequest struct {
 func (data *CompressDocumentOnlineRequest) CreateRequestData() (RequestData, error) {
 
     var result RequestData
+    var filesContentData = make([]FileReference, 0)
 
     result.Method = strings.ToUpper("put")
 
@@ -105,27 +106,6 @@ func (data *CompressDocumentOnlineRequest) CreateRequestData() (RequestData, err
     }
 
 
-    // to determine the Content-Type header
-    localVarHttpContentTypes := []string{ "multipart/form-data", }
-
-    // set Content-Type header
-    localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
-    if localVarHttpContentType != "" {
-        result.HeaderParams["Content-Type"] = localVarHttpContentType
-    }
-
-    // to determine the Accept header
-    localVarHttpHeaderAccepts := []string{
-        "application/xml",
-        "application/json",
-    }
-
-    // set Accept header
-    localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
-    if localVarHttpHeaderAccept != "" {
-        result.HeaderParams["Accept"] = localVarHttpHeaderAccept
-    }
-
 
     _document := data.Document
     if _document != nil {
@@ -134,10 +114,13 @@ func (data *CompressDocumentOnlineRequest) CreateRequestData() (RequestData, err
         result.FormParams = append(result.FormParams, NewFileFormParamContainer("document", fbs))
     }
 
+    result.FormParams = append(result.FormParams, NewJsonFormParamContainer("CompressOptions", parameterToString(data.CompressOptions, "")))
 
-    result.FormParams = append(result.FormParams, NewTextFormParamContainer("CompressOptions", parameterToString(data.CompressOptions, "")))
 
-
+    for _, fileContentData := range filesContentData {
+        fbs, _ := ioutil.ReadAll(fileContentData.Content)
+        result.FormParams = append(result.FormParams, NewFileFormParamContainer(fileContentData.Reference, fbs))
+    }
 
     return result, nil
 }

@@ -47,6 +47,7 @@ type OfficeMathLink struct {
 type IOfficeMathLink interface {
     IsOfficeMathLink() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (OfficeMathLink) IsOfficeMathLink() bool {
@@ -62,12 +63,10 @@ func (OfficeMathLink) IsLinkElement() bool {
 }
 
 func (obj *OfficeMathLink) Initialize() {
-    if (obj.Link != nil) {
-        obj.Link.Initialize()
-    }
+}
 
-
-
+func (obj *OfficeMathLink) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
 }
 
 

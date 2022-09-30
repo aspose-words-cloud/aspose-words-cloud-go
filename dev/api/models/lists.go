@@ -47,6 +47,7 @@ type Lists struct {
 type ILists interface {
     IsLists() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (Lists) IsLists() bool {
@@ -58,12 +59,10 @@ func (Lists) IsLinkElement() bool {
 }
 
 func (obj *Lists) Initialize() {
-    if (obj.Link != nil) {
-        obj.Link.Initialize()
-    }
+}
 
-
-
+func (obj *Lists) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
 }
 
 

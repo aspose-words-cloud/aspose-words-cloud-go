@@ -41,6 +41,7 @@ type RunBase struct {
 type IRunBase interface {
     IsRunBase() bool
     Initialize()
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (RunBase) IsRunBase() bool {
@@ -49,6 +50,10 @@ func (RunBase) IsRunBase() bool {
 
 
 func (obj *RunBase) Initialize() {
+}
+
+func (obj *RunBase) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
 }
 
 
