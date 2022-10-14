@@ -48,9 +48,6 @@ type HtmlFixedSaveOptionsDataResult struct {
     FileName string `json:"FileName,omitempty"`
 
     // Container class for fixed html save options.
-    FlatOpcXmlMappingOnly bool `json:"FlatOpcXmlMappingOnly,omitempty"`
-
-    // Container class for fixed html save options.
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for fixed html save options.
@@ -156,9 +153,6 @@ type HtmlFixedSaveOptionsData struct {
 
     // Container class for fixed html save options.
     FileName *string `json:"FileName,omitempty"`
-
-    // Container class for fixed html save options.
-    FlatOpcXmlMappingOnly *bool `json:"FlatOpcXmlMappingOnly,omitempty"`
 
     // Container class for fixed html save options.
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`

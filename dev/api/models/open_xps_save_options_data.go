@@ -48,9 +48,6 @@ type OpenXpsSaveOptionsDataResult struct {
     FileName string `json:"FileName,omitempty"`
 
     // Container class for xps save options.
-    FlatOpcXmlMappingOnly bool `json:"FlatOpcXmlMappingOnly,omitempty"`
-
-    // Container class for xps save options.
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for xps save options.
@@ -126,9 +123,6 @@ type OpenXpsSaveOptionsData struct {
 
     // Container class for xps save options.
     FileName *string `json:"FileName,omitempty"`
-
-    // Container class for xps save options.
-    FlatOpcXmlMappingOnly *bool `json:"FlatOpcXmlMappingOnly,omitempty"`
 
     // Container class for xps save options.
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`

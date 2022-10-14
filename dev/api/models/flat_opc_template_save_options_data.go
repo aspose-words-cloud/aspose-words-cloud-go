@@ -48,9 +48,6 @@ type FlatOpcTemplateSaveOptionsDataResult struct {
     FileName string `json:"FileName,omitempty"`
 
     // Container class for fopc_template save options.
-    FlatOpcXmlMappingOnly bool `json:"FlatOpcXmlMappingOnly,omitempty"`
-
-    // Container class for fopc_template save options.
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for fopc_template save options.
@@ -105,9 +102,6 @@ type FlatOpcTemplateSaveOptionsData struct {
 
     // Container class for fopc_template save options.
     FileName *string `json:"FileName,omitempty"`
-
-    // Container class for fopc_template save options.
-    FlatOpcXmlMappingOnly *bool `json:"FlatOpcXmlMappingOnly,omitempty"`
 
     // Container class for fopc_template save options.
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
