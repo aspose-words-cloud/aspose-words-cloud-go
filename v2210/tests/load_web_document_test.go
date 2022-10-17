@@ -10,10 +10,10 @@
  *  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  *  copies of the Software, and to permit persons to whom the Software is
  *  furnished to do so, subject to the following conditions:
- * 
+ *
  *  The above copyright notice and this permission notice shall be included in all
  *  copies or substantial portions of the Software.
- * 
+ *
  *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -29,41 +29,42 @@
 package api_test
 
 import (
-    "github.com/stretchr/testify/assert"
-    "testing"
-    "github.com/aspose-words-cloud/aspose-words-cloud-go/v2210/api/models"
+	"testing"
+
+	"github.com/aspose-words-cloud/aspose-words-cloud-go/v2210/api/models"
+	"github.com/stretchr/testify/assert"
 )
 
 // Test for loading web document.
 func Test_LoadWebDocument_LoadWebDocument(t *testing.T) {
-    config := ReadConfiguration(t)
-    client, ctx := PrepareTest(t, config)
-    requestDataSaveOptions := models.DocSaveOptionsData{
-        FileName: ToStringPointer("google.doc"),
-        DmlEffectsRenderingMode: ToStringPointer("None"),
-        DmlRenderingMode: ToStringPointer("DrawingML"),
-        UpdateSdtContent: ToBoolPointer(false),
-        ZipOutput: ToBoolPointer(false),
-    }
-    requestData := models.LoadWebDocumentData{
-        LoadingDocumentUrl: ToStringPointer("http://google.com"),
-        SaveOptions: &requestDataSaveOptions,
-    }
+	config := ReadConfiguration(t)
+	client, ctx := PrepareTest(t, config)
+	requestDataSaveOptions := models.DocSaveOptionsData{
+		FileName:                ToStringPointer("google.doc"),
+		DmlEffectsRenderingMode: ToStringPointer("None"),
+		DmlRenderingMode:        ToStringPointer("DrawingML"),
+		UpdateSdtContent:        ToBoolPointer(false),
+		ZipOutput:               ToBoolPointer(false),
+		SaveFormat:              ToStringPointer("text"),
+	}
+	requestData := models.LoadWebDocumentData{
+		LoadingDocumentUrl: ToStringPointer("http://google.com"),
+		SaveOptions:        &requestDataSaveOptions,
+	}
 
-    options := map[string]interface{}{
-    }
+	options := map[string]interface{}{}
 
-    request := &models.LoadWebDocumentRequest{
-        Data: &requestData,
-        Optionals: options,
-    }
+	request := &models.LoadWebDocumentRequest{
+		Data:      &requestData,
+		Optionals: options,
+	}
 
-    actual, _, err := client.WordsApi.LoadWebDocument(ctx, request)
-    if err != nil {
-        t.Error(err)
-    }
+	actual, _, err := client.WordsApi.LoadWebDocument(ctx, request)
+	if err != nil {
+		t.Error(err)
+	}
 
-    assert.NotNil(t, actual.SaveResult, "Validate LoadWebDocument response.");
-    assert.NotNil(t, actual.SaveResult.DestDocument, "Validate LoadWebDocument response.");
-    assert.Equal(t, "google.doc", actual.SaveResult.DestDocument.Href, "Validate LoadWebDocument response.");
+	assert.NotNil(t, actual.SaveResult, "Validate LoadWebDocument response.")
+	assert.NotNil(t, actual.SaveResult.DestDocument, "Validate LoadWebDocument response.")
+	assert.Equal(t, "google.doc", actual.SaveResult.DestDocument.Href, "Validate LoadWebDocument response.")
 }
