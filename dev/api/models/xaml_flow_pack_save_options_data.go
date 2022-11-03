@@ -48,6 +48,9 @@ type XamlFlowPackSaveOptionsDataResult struct {
     FileName string `json:"FileName,omitempty"`
 
     // Container class for xamlflow_pack save options.
+    FlatOpcXmlMappingOnly bool `json:"FlatOpcXmlMappingOnly,omitempty"`
+
+    // Container class for xamlflow_pack save options.
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for xamlflow_pack save options.
@@ -96,6 +99,9 @@ type XamlFlowPackSaveOptionsData struct {
 
     // Container class for xamlflow_pack save options.
     FileName *string `json:"FileName,omitempty"`
+
+    // Container class for xamlflow_pack save options.
+    FlatOpcXmlMappingOnly *bool `json:"FlatOpcXmlMappingOnly,omitempty"`
 
     // Container class for xamlflow_pack save options.
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
@@ -149,6 +155,11 @@ func (XamlFlowPackSaveOptionsData) IsSaveOptionsData() bool {
 func (obj *XamlFlowPackSaveOptionsData) Initialize() {
     var _SaveFormat = "xamlflow_pack"
     obj.SaveFormat = &_SaveFormat
+
+
+    if (obj.CustomTimeZoneInfoData != nil) {
+        obj.CustomTimeZoneInfoData.Initialize()
+    }
 
 
 }

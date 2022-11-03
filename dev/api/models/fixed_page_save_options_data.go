@@ -48,6 +48,9 @@ type FixedPageSaveOptionsDataResult struct {
     FileName string `json:"FileName,omitempty"`
 
     // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
+    FlatOpcXmlMappingOnly bool `json:"FlatOpcXmlMappingOnly,omitempty"`
+
+    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
@@ -113,6 +116,9 @@ type FixedPageSaveOptionsData struct {
     FileName *string `json:"FileName,omitempty"`
 
     // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
+    FlatOpcXmlMappingOnly *bool `json:"FlatOpcXmlMappingOnly,omitempty"`
+
+    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
 
     // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
@@ -173,6 +179,15 @@ func (FixedPageSaveOptionsData) IsSaveOptionsData() bool {
 }
 
 func (obj *FixedPageSaveOptionsData) Initialize() {
+    if (obj.CustomTimeZoneInfoData != nil) {
+        obj.CustomTimeZoneInfoData.Initialize()
+    }
+
+    if (obj.MetafileRenderingOptions != nil) {
+        obj.MetafileRenderingOptions.Initialize()
+    }
+
+
 }
 
 func (obj *FixedPageSaveOptionsData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {

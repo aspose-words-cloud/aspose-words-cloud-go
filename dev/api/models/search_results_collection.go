@@ -59,6 +59,16 @@ func (SearchResultsCollection) IsLinkElement() bool {
 }
 
 func (obj *SearchResultsCollection) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+    if (obj.ResultsList != nil) {
+        for _, objElementResultsList := range obj.ResultsList {
+            objElementResultsList.Initialize()
+        }
+    }
+
 }
 
 func (obj *SearchResultsCollection) CollectFilesContent(resultFilesContent []FileReference) []FileReference {

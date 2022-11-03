@@ -62,6 +62,20 @@ func (SaveResult) IsSaveResult() bool {
 
 
 func (obj *SaveResult) Initialize() {
+    if (obj.AdditionalItems != nil) {
+        for _, objElementAdditionalItems := range obj.AdditionalItems {
+            objElementAdditionalItems.Initialize()
+        }
+    }
+    if (obj.DestDocument != nil) {
+        obj.DestDocument.Initialize()
+    }
+
+    if (obj.SourceDocument != nil) {
+        obj.SourceDocument.Initialize()
+    }
+
+
 }
 
 func (obj *SaveResult) CollectFilesContent(resultFilesContent []FileReference) []FileReference {

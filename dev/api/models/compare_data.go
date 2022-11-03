@@ -74,6 +74,11 @@ func (CompareData) IsCompareData() bool {
 
 
 func (obj *CompareData) Initialize() {
+    if (obj.CompareOptions != nil) {
+        obj.CompareOptions.Initialize()
+    }
+
+
 }
 
 func (obj *CompareData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {

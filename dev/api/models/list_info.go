@@ -95,6 +95,19 @@ func (ListInfo) IsLinkElement() bool {
 }
 
 func (obj *ListInfo) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+    if (obj.ListLevels != nil) {
+        obj.ListLevels.Initialize()
+    }
+
+    if (obj.Style != nil) {
+        obj.Style.Initialize()
+    }
+
+
 }
 
 func (obj *ListInfo) CollectFilesContent(resultFilesContent []FileReference) []FileReference {

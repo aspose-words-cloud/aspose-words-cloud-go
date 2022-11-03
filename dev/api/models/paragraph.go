@@ -69,6 +69,16 @@ func (Paragraph) IsLinkElement() bool {
 }
 
 func (obj *Paragraph) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+    if (obj.ChildNodes != nil) {
+        for _, objElementChildNodes := range obj.ChildNodes {
+            objElementChildNodes.Initialize()
+        }
+    }
+
 }
 
 func (obj *Paragraph) CollectFilesContent(resultFilesContent []FileReference) []FileReference {

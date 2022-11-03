@@ -80,6 +80,16 @@ func (Document) IsDocument() bool {
 
 
 func (obj *Document) Initialize() {
+    if (obj.DocumentProperties != nil) {
+        obj.DocumentProperties.Initialize()
+    }
+
+    if (obj.Links != nil) {
+        for _, objElementLinks := range obj.Links {
+            objElementLinks.Initialize()
+        }
+    }
+
 }
 
 func (obj *Document) CollectFilesContent(resultFilesContent []FileReference) []FileReference {

@@ -122,6 +122,11 @@ func (FieldOptions) IsFieldOptions() bool {
 
 
 func (obj *FieldOptions) Initialize() {
+    if (obj.CurrentUser != nil) {
+        obj.CurrentUser.Initialize()
+    }
+
+
 }
 
 func (obj *FieldOptions) CollectFilesContent(resultFilesContent []FileReference) []FileReference {

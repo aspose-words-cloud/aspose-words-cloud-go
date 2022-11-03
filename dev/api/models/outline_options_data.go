@@ -80,6 +80,12 @@ func (OutlineOptionsData) IsOutlineOptionsData() bool {
 
 
 func (obj *OutlineOptionsData) Initialize() {
+    if (obj.BookmarksOutlineLevels != nil) {
+        for _, objElementBookmarksOutlineLevels := range obj.BookmarksOutlineLevels {
+            objElementBookmarksOutlineLevels.Initialize()
+        }
+    }
+
 }
 
 func (obj *OutlineOptionsData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {

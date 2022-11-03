@@ -59,6 +59,12 @@ func (DocumentEntryList) IsBaseEntryList() bool {
 }
 
 func (obj *DocumentEntryList) Initialize() {
+    if (obj.DocumentEntries != nil) {
+        for _, objElementDocumentEntries := range obj.DocumentEntries {
+            objElementDocumentEntries.Initialize()
+        }
+    }
+
 }
 
 func (obj *DocumentEntryList) CollectFilesContent(resultFilesContent []FileReference) []FileReference {

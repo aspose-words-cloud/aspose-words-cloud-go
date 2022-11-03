@@ -89,6 +89,15 @@ func (Border) IsLinkElement() bool {
 }
 
 func (obj *Border) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+    if (obj.Color != nil) {
+        obj.Color.Initialize()
+    }
+
+
 }
 
 func (obj *Border) CollectFilesContent(resultFilesContent []FileReference) []FileReference {

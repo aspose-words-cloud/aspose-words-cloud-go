@@ -48,6 +48,9 @@ type GifSaveOptionsDataResult struct {
     FileName string `json:"FileName,omitempty"`
 
     // Container class for gif save options.
+    FlatOpcXmlMappingOnly bool `json:"FlatOpcXmlMappingOnly,omitempty"`
+
+    // Container class for gif save options.
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for gif save options.
@@ -147,6 +150,9 @@ type GifSaveOptionsData struct {
 
     // Container class for gif save options.
     FileName *string `json:"FileName,omitempty"`
+
+    // Container class for gif save options.
+    FlatOpcXmlMappingOnly *bool `json:"FlatOpcXmlMappingOnly,omitempty"`
 
     // Container class for gif save options.
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
@@ -255,6 +261,15 @@ func (GifSaveOptionsData) IsSaveOptionsData() bool {
 func (obj *GifSaveOptionsData) Initialize() {
     var _SaveFormat = "gif"
     obj.SaveFormat = &_SaveFormat
+
+
+    if (obj.CustomTimeZoneInfoData != nil) {
+        obj.CustomTimeZoneInfoData.Initialize()
+    }
+
+    if (obj.MetafileRenderingOptions != nil) {
+        obj.MetafileRenderingOptions.Initialize()
+    }
 
 
 }

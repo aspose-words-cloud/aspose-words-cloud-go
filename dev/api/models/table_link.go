@@ -63,6 +63,11 @@ func (TableLink) IsLinkElement() bool {
 }
 
 func (obj *TableLink) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+
 }
 
 func (obj *TableLink) CollectFilesContent(resultFilesContent []FileReference) []FileReference {

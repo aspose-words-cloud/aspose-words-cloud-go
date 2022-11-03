@@ -63,6 +63,11 @@ func (DrawingObjectLink) IsLinkElement() bool {
 }
 
 func (obj *DrawingObjectLink) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+
 }
 
 func (obj *DrawingObjectLink) CollectFilesContent(resultFilesContent []FileReference) []FileReference {

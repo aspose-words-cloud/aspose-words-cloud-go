@@ -48,6 +48,9 @@ type PngSaveOptionsDataResult struct {
     FileName string `json:"FileName,omitempty"`
 
     // Container class for png save options.
+    FlatOpcXmlMappingOnly bool `json:"FlatOpcXmlMappingOnly,omitempty"`
+
+    // Container class for png save options.
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for png save options.
@@ -147,6 +150,9 @@ type PngSaveOptionsData struct {
 
     // Container class for png save options.
     FileName *string `json:"FileName,omitempty"`
+
+    // Container class for png save options.
+    FlatOpcXmlMappingOnly *bool `json:"FlatOpcXmlMappingOnly,omitempty"`
 
     // Container class for png save options.
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
@@ -255,6 +261,15 @@ func (PngSaveOptionsData) IsSaveOptionsData() bool {
 func (obj *PngSaveOptionsData) Initialize() {
     var _SaveFormat = "png"
     obj.SaveFormat = &_SaveFormat
+
+
+    if (obj.CustomTimeZoneInfoData != nil) {
+        obj.CustomTimeZoneInfoData.Initialize()
+    }
+
+    if (obj.MetafileRenderingOptions != nil) {
+        obj.MetafileRenderingOptions.Initialize()
+    }
 
 
 }

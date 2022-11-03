@@ -62,6 +62,15 @@ func (Shading) IsShading() bool {
 
 
 func (obj *Shading) Initialize() {
+    if (obj.BackgroundPatternColor != nil) {
+        obj.BackgroundPatternColor.Initialize()
+    }
+
+    if (obj.ForegroundPatternColor != nil) {
+        obj.ForegroundPatternColor.Initialize()
+    }
+
+
 }
 
 func (obj *Shading) CollectFilesContent(resultFilesContent []FileReference) []FileReference {

@@ -48,6 +48,9 @@ type DocxSaveOptionsDataResult struct {
     FileName string `json:"FileName,omitempty"`
 
     // Container class for docx save options.
+    FlatOpcXmlMappingOnly bool `json:"FlatOpcXmlMappingOnly,omitempty"`
+
+    // Container class for docx save options.
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for docx save options.
@@ -102,6 +105,9 @@ type DocxSaveOptionsData struct {
 
     // Container class for docx save options.
     FileName *string `json:"FileName,omitempty"`
+
+    // Container class for docx save options.
+    FlatOpcXmlMappingOnly *bool `json:"FlatOpcXmlMappingOnly,omitempty"`
 
     // Container class for docx save options.
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
@@ -161,6 +167,11 @@ func (DocxSaveOptionsData) IsSaveOptionsData() bool {
 func (obj *DocxSaveOptionsData) Initialize() {
     var _SaveFormat = "docx"
     obj.SaveFormat = &_SaveFormat
+
+
+    if (obj.CustomTimeZoneInfoData != nil) {
+        obj.CustomTimeZoneInfoData.Initialize()
+    }
 
 
 }

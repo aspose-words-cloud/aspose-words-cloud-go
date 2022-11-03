@@ -48,6 +48,9 @@ type HtmlSaveOptionsDataResult struct {
     FileName string `json:"FileName,omitempty"`
 
     // Container class for html save options.
+    FlatOpcXmlMappingOnly bool `json:"FlatOpcXmlMappingOnly,omitempty"`
+
+    // Container class for html save options.
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for html save options.
@@ -206,6 +209,9 @@ type HtmlSaveOptionsData struct {
     FileName *string `json:"FileName,omitempty"`
 
     // Container class for html save options.
+    FlatOpcXmlMappingOnly *bool `json:"FlatOpcXmlMappingOnly,omitempty"`
+
+    // Container class for html save options.
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for html save options.
@@ -361,6 +367,11 @@ func (HtmlSaveOptionsData) IsSaveOptionsData() bool {
 func (obj *HtmlSaveOptionsData) Initialize() {
     var _SaveFormat = "html"
     obj.SaveFormat = &_SaveFormat
+
+
+    if (obj.CustomTimeZoneInfoData != nil) {
+        obj.CustomTimeZoneInfoData.Initialize()
+    }
 
 
 }

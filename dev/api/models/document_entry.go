@@ -65,6 +65,11 @@ func (DocumentEntry) IsBaseEntry() bool {
 }
 
 func (obj *DocumentEntry) Initialize() {
+    if (obj.FileReference != nil) {
+        obj.FileReference.Initialize()
+    }
+
+
 }
 
 func (obj *DocumentEntry) CollectFilesContent(resultFilesContent []FileReference) []FileReference {

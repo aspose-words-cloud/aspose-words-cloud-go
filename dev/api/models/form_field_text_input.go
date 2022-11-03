@@ -145,6 +145,11 @@ func (FormFieldTextInput) IsLinkElement() bool {
 }
 
 func (obj *FormFieldTextInput) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+
 }
 
 func (obj *FormFieldTextInput) CollectFilesContent(resultFilesContent []FileReference) []FileReference {

@@ -227,6 +227,11 @@ func (PageSetup) IsLinkElement() bool {
 }
 
 func (obj *PageSetup) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+
 }
 
 func (obj *PageSetup) CollectFilesContent(resultFilesContent []FileReference) []FileReference {

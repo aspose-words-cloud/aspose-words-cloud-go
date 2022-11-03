@@ -59,6 +59,16 @@ func (FootnoteCollection) IsLinkElement() bool {
 }
 
 func (obj *FootnoteCollection) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+    if (obj.List != nil) {
+        for _, objElementList := range obj.List {
+            objElementList.Initialize()
+        }
+    }
+
 }
 
 func (obj *FootnoteCollection) CollectFilesContent(resultFilesContent []FileReference) []FileReference {

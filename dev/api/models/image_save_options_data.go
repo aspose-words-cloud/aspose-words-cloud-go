@@ -48,6 +48,9 @@ type ImageSaveOptionsDataResult struct {
     FileName string `json:"FileName,omitempty"`
 
     // Container abstract class for image save options.
+    FlatOpcXmlMappingOnly bool `json:"FlatOpcXmlMappingOnly,omitempty"`
+
+    // Container abstract class for image save options.
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // Container abstract class for image save options.
@@ -147,6 +150,9 @@ type ImageSaveOptionsData struct {
 
     // Container abstract class for image save options.
     FileName *string `json:"FileName,omitempty"`
+
+    // Container abstract class for image save options.
+    FlatOpcXmlMappingOnly *bool `json:"FlatOpcXmlMappingOnly,omitempty"`
 
     // Container abstract class for image save options.
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
@@ -249,6 +255,15 @@ func (ImageSaveOptionsData) IsSaveOptionsData() bool {
 }
 
 func (obj *ImageSaveOptionsData) Initialize() {
+    if (obj.CustomTimeZoneInfoData != nil) {
+        obj.CustomTimeZoneInfoData.Initialize()
+    }
+
+    if (obj.MetafileRenderingOptions != nil) {
+        obj.MetafileRenderingOptions.Initialize()
+    }
+
+
 }
 
 func (obj *ImageSaveOptionsData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {

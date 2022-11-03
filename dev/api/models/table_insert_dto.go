@@ -62,6 +62,11 @@ func (TableInsertDto) IsTableInsertDto() bool {
 
 
 func (obj *TableInsertDto) Initialize() {
+    if (obj.Position != nil) {
+        obj.Position.Initialize()
+    }
+
+
 }
 
 func (obj *TableInsertDto) CollectFilesContent(resultFilesContent []FileReference) []FileReference {

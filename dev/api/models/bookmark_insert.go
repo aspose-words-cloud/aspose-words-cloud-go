@@ -71,6 +71,15 @@ func (BookmarkInsert) IsBookmarkData() bool {
 }
 
 func (obj *BookmarkInsert) Initialize() {
+    if (obj.EndRange != nil) {
+        obj.EndRange.Initialize()
+    }
+
+    if (obj.StartRange != nil) {
+        obj.StartRange.Initialize()
+    }
+
+
 }
 
 func (obj *BookmarkInsert) CollectFilesContent(resultFilesContent []FileReference) []FileReference {

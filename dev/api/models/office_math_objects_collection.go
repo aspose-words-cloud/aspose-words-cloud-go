@@ -59,6 +59,16 @@ func (OfficeMathObjectsCollection) IsLinkElement() bool {
 }
 
 func (obj *OfficeMathObjectsCollection) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+    if (obj.List != nil) {
+        for _, objElementList := range obj.List {
+            objElementList.Initialize()
+        }
+    }
+
 }
 
 func (obj *OfficeMathObjectsCollection) CollectFilesContent(resultFilesContent []FileReference) []FileReference {

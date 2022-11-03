@@ -50,6 +50,11 @@ func (LinkElement) IsLinkElement() bool {
 
 
 func (obj *LinkElement) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+
 }
 
 func (obj *LinkElement) CollectFilesContent(resultFilesContent []FileReference) []FileReference {

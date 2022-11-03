@@ -53,6 +53,11 @@ func (ImageEntry) IsBaseEntry() bool {
 }
 
 func (obj *ImageEntry) Initialize() {
+    if (obj.FileReference != nil) {
+        obj.FileReference.Initialize()
+    }
+
+
 }
 
 func (obj *ImageEntry) CollectFilesContent(resultFilesContent []FileReference) []FileReference {

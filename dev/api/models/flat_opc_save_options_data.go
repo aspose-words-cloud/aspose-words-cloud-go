@@ -48,6 +48,9 @@ type FlatOpcSaveOptionsDataResult struct {
     FileName string `json:"FileName,omitempty"`
 
     // Container class for fopc save options.
+    FlatOpcXmlMappingOnly bool `json:"FlatOpcXmlMappingOnly,omitempty"`
+
+    // Container class for fopc save options.
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for fopc save options.
@@ -102,6 +105,9 @@ type FlatOpcSaveOptionsData struct {
 
     // Container class for fopc save options.
     FileName *string `json:"FileName,omitempty"`
+
+    // Container class for fopc save options.
+    FlatOpcXmlMappingOnly *bool `json:"FlatOpcXmlMappingOnly,omitempty"`
 
     // Container class for fopc save options.
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
@@ -161,6 +167,11 @@ func (FlatOpcSaveOptionsData) IsSaveOptionsData() bool {
 func (obj *FlatOpcSaveOptionsData) Initialize() {
     var _SaveFormat = "fopc"
     obj.SaveFormat = &_SaveFormat
+
+
+    if (obj.CustomTimeZoneInfoData != nil) {
+        obj.CustomTimeZoneInfoData.Initialize()
+    }
 
 
 }

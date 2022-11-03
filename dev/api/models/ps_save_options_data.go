@@ -48,6 +48,9 @@ type PsSaveOptionsDataResult struct {
     FileName string `json:"FileName,omitempty"`
 
     // Container class for ps save options.
+    FlatOpcXmlMappingOnly bool `json:"FlatOpcXmlMappingOnly,omitempty"`
+
+    // Container class for ps save options.
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for ps save options.
@@ -114,6 +117,9 @@ type PsSaveOptionsData struct {
 
     // Container class for ps save options.
     FileName *string `json:"FileName,omitempty"`
+
+    // Container class for ps save options.
+    FlatOpcXmlMappingOnly *bool `json:"FlatOpcXmlMappingOnly,omitempty"`
 
     // Container class for ps save options.
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
@@ -185,6 +191,15 @@ func (PsSaveOptionsData) IsSaveOptionsData() bool {
 func (obj *PsSaveOptionsData) Initialize() {
     var _SaveFormat = "ps"
     obj.SaveFormat = &_SaveFormat
+
+
+    if (obj.CustomTimeZoneInfoData != nil) {
+        obj.CustomTimeZoneInfoData.Initialize()
+    }
+
+    if (obj.MetafileRenderingOptions != nil) {
+        obj.MetafileRenderingOptions.Initialize()
+    }
 
 
 }

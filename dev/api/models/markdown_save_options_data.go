@@ -48,6 +48,9 @@ type MarkdownSaveOptionsDataResult struct {
     FileName string `json:"FileName,omitempty"`
 
     // Container class for markdown save options.
+    FlatOpcXmlMappingOnly bool `json:"FlatOpcXmlMappingOnly,omitempty"`
+
+    // Container class for markdown save options.
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for markdown save options.
@@ -105,6 +108,9 @@ type MarkdownSaveOptionsData struct {
 
     // Container class for markdown save options.
     FileName *string `json:"FileName,omitempty"`
+
+    // Container class for markdown save options.
+    FlatOpcXmlMappingOnly *bool `json:"FlatOpcXmlMappingOnly,omitempty"`
 
     // Container class for markdown save options.
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
@@ -167,6 +173,11 @@ func (MarkdownSaveOptionsData) IsSaveOptionsData() bool {
 func (obj *MarkdownSaveOptionsData) Initialize() {
     var _SaveFormat = "md"
     obj.SaveFormat = &_SaveFormat
+
+
+    if (obj.CustomTimeZoneInfoData != nil) {
+        obj.CustomTimeZoneInfoData.Initialize()
+    }
 
 
 }

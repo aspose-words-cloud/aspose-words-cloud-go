@@ -48,6 +48,9 @@ type OoxmlSaveOptionsDataResult struct {
     FileName string `json:"FileName,omitempty"`
 
     // Container class for docx/docm/dotx/dotm/flatopc save options.
+    FlatOpcXmlMappingOnly bool `json:"FlatOpcXmlMappingOnly,omitempty"`
+
+    // Container class for docx/docm/dotx/dotm/flatopc save options.
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for docx/docm/dotx/dotm/flatopc save options.
@@ -104,6 +107,9 @@ type OoxmlSaveOptionsData struct {
     FileName *string `json:"FileName,omitempty"`
 
     // Container class for docx/docm/dotx/dotm/flatopc save options.
+    FlatOpcXmlMappingOnly *bool `json:"FlatOpcXmlMappingOnly,omitempty"`
+
+    // Container class for docx/docm/dotx/dotm/flatopc save options.
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for docx/docm/dotx/dotm/flatopc save options.
@@ -155,6 +161,11 @@ func (OoxmlSaveOptionsData) IsSaveOptionsData() bool {
 }
 
 func (obj *OoxmlSaveOptionsData) Initialize() {
+    if (obj.CustomTimeZoneInfoData != nil) {
+        obj.CustomTimeZoneInfoData.Initialize()
+    }
+
+
 }
 
 func (obj *OoxmlSaveOptionsData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {

@@ -85,6 +85,11 @@ func (Field) IsLinkElement() bool {
 }
 
 func (obj *Field) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+
 }
 
 func (obj *Field) CollectFilesContent(resultFilesContent []FileReference) []FileReference {

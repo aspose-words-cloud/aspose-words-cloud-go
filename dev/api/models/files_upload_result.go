@@ -56,6 +56,12 @@ func (FilesUploadResult) IsFilesUploadResult() bool {
 
 
 func (obj *FilesUploadResult) Initialize() {
+    if (obj.Errors != nil) {
+        for _, objElementErrors := range obj.Errors {
+            objElementErrors.Initialize()
+        }
+    }
+
 }
 
 func (obj *FilesUploadResult) CollectFilesContent(resultFilesContent []FileReference) []FileReference {

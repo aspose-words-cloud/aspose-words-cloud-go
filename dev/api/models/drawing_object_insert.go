@@ -92,6 +92,11 @@ func (DrawingObjectInsert) IsDrawingObjectInsert() bool {
 
 
 func (obj *DrawingObjectInsert) Initialize() {
+    if (obj.Position != nil) {
+        obj.Position.Initialize()
+    }
+
+
 }
 
 func (obj *DrawingObjectInsert) CollectFilesContent(resultFilesContent []FileReference) []FileReference {

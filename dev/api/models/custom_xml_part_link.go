@@ -53,6 +53,11 @@ func (CustomXmlPartLink) IsLinkElement() bool {
 }
 
 func (obj *CustomXmlPartLink) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+
 }
 
 func (obj *CustomXmlPartLink) CollectFilesContent(resultFilesContent []FileReference) []FileReference {

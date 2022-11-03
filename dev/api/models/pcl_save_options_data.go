@@ -48,6 +48,9 @@ type PclSaveOptionsDataResult struct {
     FileName string `json:"FileName,omitempty"`
 
     // Container class for pcl save options.
+    FlatOpcXmlMappingOnly bool `json:"FlatOpcXmlMappingOnly,omitempty"`
+
+    // Container class for pcl save options.
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for pcl save options.
@@ -117,6 +120,9 @@ type PclSaveOptionsData struct {
 
     // Container class for pcl save options.
     FileName *string `json:"FileName,omitempty"`
+
+    // Container class for pcl save options.
+    FlatOpcXmlMappingOnly *bool `json:"FlatOpcXmlMappingOnly,omitempty"`
 
     // Container class for pcl save options.
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
@@ -191,6 +197,15 @@ func (PclSaveOptionsData) IsSaveOptionsData() bool {
 func (obj *PclSaveOptionsData) Initialize() {
     var _SaveFormat = "pcl"
     obj.SaveFormat = &_SaveFormat
+
+
+    if (obj.CustomTimeZoneInfoData != nil) {
+        obj.CustomTimeZoneInfoData.Initialize()
+    }
+
+    if (obj.MetafileRenderingOptions != nil) {
+        obj.MetafileRenderingOptions.Initialize()
+    }
 
 
 }

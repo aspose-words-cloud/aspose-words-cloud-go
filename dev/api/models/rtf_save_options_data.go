@@ -48,6 +48,9 @@ type RtfSaveOptionsDataResult struct {
     FileName string `json:"FileName,omitempty"`
 
     // Container class for rtf save options.
+    FlatOpcXmlMappingOnly bool `json:"FlatOpcXmlMappingOnly,omitempty"`
+
+    // Container class for rtf save options.
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for rtf save options.
@@ -104,6 +107,9 @@ type RtfSaveOptionsData struct {
     FileName *string `json:"FileName,omitempty"`
 
     // Container class for rtf save options.
+    FlatOpcXmlMappingOnly *bool `json:"FlatOpcXmlMappingOnly,omitempty"`
+
+    // Container class for rtf save options.
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for rtf save options.
@@ -157,6 +163,11 @@ func (RtfSaveOptionsData) IsSaveOptionsData() bool {
 func (obj *RtfSaveOptionsData) Initialize() {
     var _SaveFormat = "rtf"
     obj.SaveFormat = &_SaveFormat
+
+
+    if (obj.CustomTimeZoneInfoData != nil) {
+        obj.CustomTimeZoneInfoData.Initialize()
+    }
 
 
 }

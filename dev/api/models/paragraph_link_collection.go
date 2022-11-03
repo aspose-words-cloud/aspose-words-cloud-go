@@ -59,6 +59,16 @@ func (ParagraphLinkCollection) IsLinkElement() bool {
 }
 
 func (obj *ParagraphLinkCollection) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+    if (obj.ParagraphLinkList != nil) {
+        for _, objElementParagraphLinkList := range obj.ParagraphLinkList {
+            objElementParagraphLinkList.Initialize()
+        }
+    }
+
 }
 
 func (obj *ParagraphLinkCollection) CollectFilesContent(resultFilesContent []FileReference) []FileReference {

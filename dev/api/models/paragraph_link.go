@@ -69,6 +69,11 @@ func (ParagraphLink) IsLinkElement() bool {
 }
 
 func (obj *ParagraphLink) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+
 }
 
 func (obj *ParagraphLink) CollectFilesContent(resultFilesContent []FileReference) []FileReference {

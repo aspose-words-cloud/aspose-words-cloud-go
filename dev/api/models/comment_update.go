@@ -83,6 +83,15 @@ func (CommentUpdate) IsCommentBase() bool {
 }
 
 func (obj *CommentUpdate) Initialize() {
+    if (obj.RangeEnd != nil) {
+        obj.RangeEnd.Initialize()
+    }
+
+    if (obj.RangeStart != nil) {
+        obj.RangeStart.Initialize()
+    }
+
+
 }
 
 func (obj *CommentUpdate) CollectFilesContent(resultFilesContent []FileReference) []FileReference {

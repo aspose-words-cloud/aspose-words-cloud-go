@@ -127,6 +127,24 @@ func (DrawingObject) IsLinkElement() bool {
 }
 
 func (obj *DrawingObject) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+    if (obj.ImageDataLink != nil) {
+        obj.ImageDataLink.Initialize()
+    }
+
+    if (obj.OleDataLink != nil) {
+        obj.OleDataLink.Initialize()
+    }
+
+    if (obj.RenderLinks != nil) {
+        for _, objElementRenderLinks := range obj.RenderLinks {
+            objElementRenderLinks.Initialize()
+        }
+    }
+
 }
 
 func (obj *DrawingObject) CollectFilesContent(resultFilesContent []FileReference) []FileReference {

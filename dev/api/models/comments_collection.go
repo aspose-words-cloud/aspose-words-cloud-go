@@ -59,6 +59,16 @@ func (CommentsCollection) IsLinkElement() bool {
 }
 
 func (obj *CommentsCollection) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+    if (obj.CommentList != nil) {
+        for _, objElementCommentList := range obj.CommentList {
+            objElementCommentList.Initialize()
+        }
+    }
+
 }
 
 func (obj *CommentsCollection) CollectFilesContent(resultFilesContent []FileReference) []FileReference {

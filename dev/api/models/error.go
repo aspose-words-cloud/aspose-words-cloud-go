@@ -68,6 +68,11 @@ func (Error) IsError() bool {
 
 
 func (obj *Error) Initialize() {
+    if (obj.InnerError != nil) {
+        obj.InnerError.Initialize()
+    }
+
+
 }
 
 func (obj *Error) CollectFilesContent(resultFilesContent []FileReference) []FileReference {

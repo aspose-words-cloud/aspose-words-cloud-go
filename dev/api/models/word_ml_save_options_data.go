@@ -48,6 +48,9 @@ type WordMLSaveOptionsDataResult struct {
     FileName string `json:"FileName,omitempty"`
 
     // Container class for wml save options.
+    FlatOpcXmlMappingOnly bool `json:"FlatOpcXmlMappingOnly,omitempty"`
+
+    // Container class for wml save options.
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for wml save options.
@@ -95,6 +98,9 @@ type WordMLSaveOptionsData struct {
     FileName *string `json:"FileName,omitempty"`
 
     // Container class for wml save options.
+    FlatOpcXmlMappingOnly *bool `json:"FlatOpcXmlMappingOnly,omitempty"`
+
+    // Container class for wml save options.
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for wml save options.
@@ -139,6 +145,11 @@ func (WordMLSaveOptionsData) IsSaveOptionsData() bool {
 func (obj *WordMLSaveOptionsData) Initialize() {
     var _SaveFormat = "wml"
     obj.SaveFormat = &_SaveFormat
+
+
+    if (obj.CustomTimeZoneInfoData != nil) {
+        obj.CustomTimeZoneInfoData.Initialize()
+    }
 
 
 }

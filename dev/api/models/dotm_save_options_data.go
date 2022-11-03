@@ -48,6 +48,9 @@ type DotmSaveOptionsDataResult struct {
     FileName string `json:"FileName,omitempty"`
 
     // Container class for dotm save options.
+    FlatOpcXmlMappingOnly bool `json:"FlatOpcXmlMappingOnly,omitempty"`
+
+    // Container class for dotm save options.
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for dotm save options.
@@ -102,6 +105,9 @@ type DotmSaveOptionsData struct {
 
     // Container class for dotm save options.
     FileName *string `json:"FileName,omitempty"`
+
+    // Container class for dotm save options.
+    FlatOpcXmlMappingOnly *bool `json:"FlatOpcXmlMappingOnly,omitempty"`
 
     // Container class for dotm save options.
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
@@ -161,6 +167,11 @@ func (DotmSaveOptionsData) IsSaveOptionsData() bool {
 func (obj *DotmSaveOptionsData) Initialize() {
     var _SaveFormat = "dotm"
     obj.SaveFormat = &_SaveFormat
+
+
+    if (obj.CustomTimeZoneInfoData != nil) {
+        obj.CustomTimeZoneInfoData.Initialize()
+    }
 
 
 }

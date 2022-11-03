@@ -56,6 +56,11 @@ func (DocumentPosition) IsDocumentPosition() bool {
 
 
 func (obj *DocumentPosition) Initialize() {
+    if (obj.Node != nil) {
+        obj.Node.Initialize()
+    }
+
+
 }
 
 func (obj *DocumentPosition) CollectFilesContent(resultFilesContent []FileReference) []FileReference {

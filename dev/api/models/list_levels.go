@@ -59,6 +59,16 @@ func (ListLevels) IsLinkElement() bool {
 }
 
 func (obj *ListLevels) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+    if (obj.ListLevel != nil) {
+        for _, objElementListLevel := range obj.ListLevel {
+            objElementListLevel.Initialize()
+        }
+    }
+
 }
 
 func (obj *ListLevels) CollectFilesContent(resultFilesContent []FileReference) []FileReference {

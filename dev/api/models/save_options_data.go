@@ -48,6 +48,9 @@ type SaveOptionsDataResult struct {
     FileName string `json:"FileName,omitempty"`
 
     // base container class for save options data.
+    FlatOpcXmlMappingOnly bool `json:"FlatOpcXmlMappingOnly,omitempty"`
+
+    // base container class for save options data.
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // base container class for save options data.
@@ -92,6 +95,9 @@ type SaveOptionsData struct {
     FileName *string `json:"FileName,omitempty"`
 
     // base container class for save options data.
+    FlatOpcXmlMappingOnly *bool `json:"FlatOpcXmlMappingOnly,omitempty"`
+
+    // base container class for save options data.
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
 
     // base container class for save options data.
@@ -128,6 +134,11 @@ func (SaveOptionsData) IsSaveOptionsData() bool {
 
 
 func (obj *SaveOptionsData) Initialize() {
+    if (obj.CustomTimeZoneInfoData != nil) {
+        obj.CustomTimeZoneInfoData.Initialize()
+    }
+
+
 }
 
 func (obj *SaveOptionsData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {

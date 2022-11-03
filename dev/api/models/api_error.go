@@ -74,6 +74,11 @@ func (ApiError) IsApiError() bool {
 
 
 func (obj *ApiError) Initialize() {
+    if (obj.InnerError != nil) {
+        obj.InnerError.Initialize()
+    }
+
+
 }
 
 func (obj *ApiError) CollectFilesContent(resultFilesContent []FileReference) []FileReference {

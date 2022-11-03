@@ -48,6 +48,9 @@ type XpsSaveOptionsDataResult struct {
     FileName string `json:"FileName,omitempty"`
 
     // Container class for xps save options.
+    FlatOpcXmlMappingOnly bool `json:"FlatOpcXmlMappingOnly,omitempty"`
+
+    // Container class for xps save options.
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for xps save options.
@@ -123,6 +126,9 @@ type XpsSaveOptionsData struct {
 
     // Container class for xps save options.
     FileName *string `json:"FileName,omitempty"`
+
+    // Container class for xps save options.
+    FlatOpcXmlMappingOnly *bool `json:"FlatOpcXmlMappingOnly,omitempty"`
 
     // Container class for xps save options.
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
@@ -203,6 +209,19 @@ func (XpsSaveOptionsData) IsSaveOptionsData() bool {
 func (obj *XpsSaveOptionsData) Initialize() {
     var _SaveFormat = "xps"
     obj.SaveFormat = &_SaveFormat
+
+
+    if (obj.CustomTimeZoneInfoData != nil) {
+        obj.CustomTimeZoneInfoData.Initialize()
+    }
+
+    if (obj.MetafileRenderingOptions != nil) {
+        obj.MetafileRenderingOptions.Initialize()
+    }
+
+    if (obj.OutlineOptions != nil) {
+        obj.OutlineOptions.Initialize()
+    }
 
 
 }

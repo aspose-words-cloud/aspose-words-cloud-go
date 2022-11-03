@@ -69,6 +69,11 @@ func (CustomXmlPart) IsLinkElement() bool {
 }
 
 func (obj *CustomXmlPart) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+
 }
 
 func (obj *CustomXmlPart) CollectFilesContent(resultFilesContent []FileReference) []FileReference {

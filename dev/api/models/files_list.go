@@ -50,6 +50,12 @@ func (FilesList) IsFilesList() bool {
 
 
 func (obj *FilesList) Initialize() {
+    if (obj.Value != nil) {
+        for _, objElementValue := range obj.Value {
+            objElementValue.Initialize()
+        }
+    }
+
 }
 
 func (obj *FilesList) CollectFilesContent(resultFilesContent []FileReference) []FileReference {

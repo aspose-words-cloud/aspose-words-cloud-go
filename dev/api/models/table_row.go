@@ -75,6 +75,20 @@ func (TableRow) IsLinkElement() bool {
 }
 
 func (obj *TableRow) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+    if (obj.RowFormat != nil) {
+        obj.RowFormat.Initialize()
+    }
+
+    if (obj.TableCellList != nil) {
+        for _, objElementTableCellList := range obj.TableCellList {
+            objElementTableCellList.Initialize()
+        }
+    }
+
 }
 
 func (obj *TableRow) CollectFilesContent(resultFilesContent []FileReference) []FileReference {

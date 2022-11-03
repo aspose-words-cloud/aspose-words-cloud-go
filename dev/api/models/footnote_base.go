@@ -68,6 +68,11 @@ func (FootnoteBase) IsFootnoteBase() bool {
 
 
 func (obj *FootnoteBase) Initialize() {
+    if (obj.Position != nil) {
+        obj.Position.Initialize()
+    }
+
+
 }
 
 func (obj *FootnoteBase) CollectFilesContent(resultFilesContent []FileReference) []FileReference {

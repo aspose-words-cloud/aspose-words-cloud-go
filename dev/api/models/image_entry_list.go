@@ -59,6 +59,12 @@ func (ImageEntryList) IsBaseEntryList() bool {
 }
 
 func (obj *ImageEntryList) Initialize() {
+    if (obj.ImageEntries != nil) {
+        for _, objElementImageEntries := range obj.ImageEntries {
+            objElementImageEntries.Initialize()
+        }
+    }
+
 }
 
 func (obj *ImageEntryList) CollectFilesContent(resultFilesContent []FileReference) []FileReference {

@@ -71,6 +71,11 @@ func (ListFormat) IsLinkElement() bool {
 }
 
 func (obj *ListFormat) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+
 }
 
 func (obj *ListFormat) CollectFilesContent(resultFilesContent []FileReference) []FileReference {

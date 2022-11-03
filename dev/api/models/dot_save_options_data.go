@@ -48,6 +48,9 @@ type DotSaveOptionsDataResult struct {
     FileName string `json:"FileName,omitempty"`
 
     // Container class for dot save options.
+    FlatOpcXmlMappingOnly bool `json:"FlatOpcXmlMappingOnly,omitempty"`
+
+    // Container class for dot save options.
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for dot save options.
@@ -102,6 +105,9 @@ type DotSaveOptionsData struct {
 
     // Container class for dot save options.
     FileName *string `json:"FileName,omitempty"`
+
+    // Container class for dot save options.
+    FlatOpcXmlMappingOnly *bool `json:"FlatOpcXmlMappingOnly,omitempty"`
 
     // Container class for dot save options.
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
@@ -161,6 +167,11 @@ func (DotSaveOptionsData) IsSaveOptionsData() bool {
 func (obj *DotSaveOptionsData) Initialize() {
     var _SaveFormat = "dot"
     obj.SaveFormat = &_SaveFormat
+
+
+    if (obj.CustomTimeZoneInfoData != nil) {
+        obj.CustomTimeZoneInfoData.Initialize()
+    }
 
 
 }

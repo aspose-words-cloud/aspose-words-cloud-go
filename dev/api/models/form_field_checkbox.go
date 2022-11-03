@@ -139,6 +139,11 @@ func (FormFieldCheckbox) IsLinkElement() bool {
 }
 
 func (obj *FormFieldCheckbox) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+
 }
 
 func (obj *FormFieldCheckbox) CollectFilesContent(resultFilesContent []FileReference) []FileReference {

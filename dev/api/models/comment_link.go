@@ -53,6 +53,11 @@ func (CommentLink) IsLinkElement() bool {
 }
 
 func (obj *CommentLink) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+
 }
 
 func (obj *CommentLink) CollectFilesContent(resultFilesContent []FileReference) []FileReference {

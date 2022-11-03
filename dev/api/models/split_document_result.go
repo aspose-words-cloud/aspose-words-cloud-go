@@ -62,6 +62,20 @@ func (SplitDocumentResult) IsSplitDocumentResult() bool {
 
 
 func (obj *SplitDocumentResult) Initialize() {
+    if (obj.Pages != nil) {
+        for _, objElementPages := range obj.Pages {
+            objElementPages.Initialize()
+        }
+    }
+    if (obj.SourceDocument != nil) {
+        obj.SourceDocument.Initialize()
+    }
+
+    if (obj.ZippedPages != nil) {
+        obj.ZippedPages.Initialize()
+    }
+
+
 }
 
 func (obj *SplitDocumentResult) CollectFilesContent(resultFilesContent []FileReference) []FileReference {

@@ -50,6 +50,12 @@ func (StoryChildNodes) IsStoryChildNodes() bool {
 
 
 func (obj *StoryChildNodes) Initialize() {
+    if (obj.ChildNodes != nil) {
+        for _, objElementChildNodes := range obj.ChildNodes {
+            objElementChildNodes.Initialize()
+        }
+    }
+
 }
 
 func (obj *StoryChildNodes) CollectFilesContent(resultFilesContent []FileReference) []FileReference {

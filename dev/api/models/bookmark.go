@@ -65,6 +65,11 @@ func (Bookmark) IsLinkElement() bool {
 }
 
 func (obj *Bookmark) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+
 }
 
 func (obj *Bookmark) CollectFilesContent(resultFilesContent []FileReference) []FileReference {

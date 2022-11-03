@@ -59,6 +59,11 @@ func (NodeLink) IsLinkElement() bool {
 }
 
 func (obj *NodeLink) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+
 }
 
 func (obj *NodeLink) CollectFilesContent(resultFilesContent []FileReference) []FileReference {

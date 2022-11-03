@@ -48,6 +48,9 @@ type OttSaveOptionsDataResult struct {
     FileName string `json:"FileName,omitempty"`
 
     // Container class for ott save options.
+    FlatOpcXmlMappingOnly bool `json:"FlatOpcXmlMappingOnly,omitempty"`
+
+    // Container class for ott save options.
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for ott save options.
@@ -102,6 +105,9 @@ type OttSaveOptionsData struct {
 
     // Container class for ott save options.
     FileName *string `json:"FileName,omitempty"`
+
+    // Container class for ott save options.
+    FlatOpcXmlMappingOnly *bool `json:"FlatOpcXmlMappingOnly,omitempty"`
 
     // Container class for ott save options.
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
@@ -161,6 +167,11 @@ func (OttSaveOptionsData) IsSaveOptionsData() bool {
 func (obj *OttSaveOptionsData) Initialize() {
     var _SaveFormat = "ott"
     obj.SaveFormat = &_SaveFormat
+
+
+    if (obj.CustomTimeZoneInfoData != nil) {
+        obj.CustomTimeZoneInfoData.Initialize()
+    }
 
 
 }

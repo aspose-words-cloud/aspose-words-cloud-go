@@ -209,6 +209,15 @@ func (ParagraphFormatBase) IsLinkElement() bool {
 }
 
 func (obj *ParagraphFormatBase) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+    if (obj.Shading != nil) {
+        obj.Shading.Initialize()
+    }
+
+
 }
 
 func (obj *ParagraphFormatBase) CollectFilesContent(resultFilesContent []FileReference) []FileReference {

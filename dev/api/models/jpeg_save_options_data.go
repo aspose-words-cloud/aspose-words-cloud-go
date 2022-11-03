@@ -48,6 +48,9 @@ type JpegSaveOptionsDataResult struct {
     FileName string `json:"FileName,omitempty"`
 
     // Container class for jpeg save options.
+    FlatOpcXmlMappingOnly bool `json:"FlatOpcXmlMappingOnly,omitempty"`
+
+    // Container class for jpeg save options.
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for jpeg save options.
@@ -147,6 +150,9 @@ type JpegSaveOptionsData struct {
 
     // Container class for jpeg save options.
     FileName *string `json:"FileName,omitempty"`
+
+    // Container class for jpeg save options.
+    FlatOpcXmlMappingOnly *bool `json:"FlatOpcXmlMappingOnly,omitempty"`
 
     // Container class for jpeg save options.
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
@@ -255,6 +261,15 @@ func (JpegSaveOptionsData) IsSaveOptionsData() bool {
 func (obj *JpegSaveOptionsData) Initialize() {
     var _SaveFormat = "jpeg"
     obj.SaveFormat = &_SaveFormat
+
+
+    if (obj.CustomTimeZoneInfoData != nil) {
+        obj.CustomTimeZoneInfoData.Initialize()
+    }
+
+    if (obj.MetafileRenderingOptions != nil) {
+        obj.MetafileRenderingOptions.Initialize()
+    }
 
 
 }

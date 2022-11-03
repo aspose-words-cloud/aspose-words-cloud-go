@@ -74,6 +74,16 @@ func (DocumentStatData) IsDocumentStatData() bool {
 
 
 func (obj *DocumentStatData) Initialize() {
+    if (obj.FootnotesStatData != nil) {
+        obj.FootnotesStatData.Initialize()
+    }
+
+    if (obj.PageStatData != nil) {
+        for _, objElementPageStatData := range obj.PageStatData {
+            objElementPageStatData.Initialize()
+        }
+    }
+
 }
 
 func (obj *DocumentStatData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {

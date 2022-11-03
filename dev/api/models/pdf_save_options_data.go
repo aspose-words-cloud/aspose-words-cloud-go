@@ -48,6 +48,9 @@ type PdfSaveOptionsDataResult struct {
     FileName string `json:"FileName,omitempty"`
 
     // Container class for pdf save options.
+    FlatOpcXmlMappingOnly bool `json:"FlatOpcXmlMappingOnly,omitempty"`
+
+    // Container class for pdf save options.
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for pdf save options.
@@ -88,9 +91,6 @@ type PdfSaveOptionsDataResult struct {
 
     // Container class for pdf save options.
     PageIndex int32 `json:"PageIndex,omitempty"`
-
-    // Container class for pdf save options.
-    CacheHeaderFooterShapes bool `json:"CacheHeaderFooterShapes,omitempty"`
 
     // Container class for pdf save options.
     Compliance string `json:"Compliance,omitempty"`
@@ -191,6 +191,9 @@ type PdfSaveOptionsData struct {
     FileName *string `json:"FileName,omitempty"`
 
     // Container class for pdf save options.
+    FlatOpcXmlMappingOnly *bool `json:"FlatOpcXmlMappingOnly,omitempty"`
+
+    // Container class for pdf save options.
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for pdf save options.
@@ -231,9 +234,6 @@ type PdfSaveOptionsData struct {
 
     // Container class for pdf save options.
     PageIndex *int32 `json:"PageIndex,omitempty"`
-
-    // Container class for pdf save options.
-    CacheHeaderFooterShapes *bool `json:"CacheHeaderFooterShapes,omitempty"`
 
     // Container class for pdf save options.
     Compliance *string `json:"Compliance,omitempty"`
@@ -335,6 +335,31 @@ func (PdfSaveOptionsData) IsSaveOptionsData() bool {
 func (obj *PdfSaveOptionsData) Initialize() {
     var _SaveFormat = "pdf"
     obj.SaveFormat = &_SaveFormat
+
+
+    if (obj.CustomTimeZoneInfoData != nil) {
+        obj.CustomTimeZoneInfoData.Initialize()
+    }
+
+    if (obj.MetafileRenderingOptions != nil) {
+        obj.MetafileRenderingOptions.Initialize()
+    }
+
+    if (obj.DigitalSignatureDetails != nil) {
+        obj.DigitalSignatureDetails.Initialize()
+    }
+
+    if (obj.DownsampleOptions != nil) {
+        obj.DownsampleOptions.Initialize()
+    }
+
+    if (obj.EncryptionDetails != nil) {
+        obj.EncryptionDetails.Initialize()
+    }
+
+    if (obj.OutlineOptions != nil) {
+        obj.OutlineOptions.Initialize()
+    }
 
 
 }

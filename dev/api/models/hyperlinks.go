@@ -59,6 +59,16 @@ func (Hyperlinks) IsLinkElement() bool {
 }
 
 func (obj *Hyperlinks) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+    if (obj.HyperlinkList != nil) {
+        for _, objElementHyperlinkList := range obj.HyperlinkList {
+            objElementHyperlinkList.Initialize()
+        }
+    }
+
 }
 
 func (obj *Hyperlinks) CollectFilesContent(resultFilesContent []FileReference) []FileReference {

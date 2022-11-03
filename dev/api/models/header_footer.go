@@ -81,6 +81,24 @@ func (HeaderFooter) IsLinkElement() bool {
 }
 
 func (obj *HeaderFooter) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+    if (obj.ChildNodes != nil) {
+        for _, objElementChildNodes := range obj.ChildNodes {
+            objElementChildNodes.Initialize()
+        }
+    }
+    if (obj.DrawingObjects != nil) {
+        obj.DrawingObjects.Initialize()
+    }
+
+    if (obj.Paragraphs != nil) {
+        obj.Paragraphs.Initialize()
+    }
+
+
 }
 
 func (obj *HeaderFooter) CollectFilesContent(resultFilesContent []FileReference) []FileReference {

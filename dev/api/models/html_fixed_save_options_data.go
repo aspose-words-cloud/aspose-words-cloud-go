@@ -48,6 +48,9 @@ type HtmlFixedSaveOptionsDataResult struct {
     FileName string `json:"FileName,omitempty"`
 
     // Container class for fixed html save options.
+    FlatOpcXmlMappingOnly bool `json:"FlatOpcXmlMappingOnly,omitempty"`
+
+    // Container class for fixed html save options.
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for fixed html save options.
@@ -153,6 +156,9 @@ type HtmlFixedSaveOptionsData struct {
 
     // Container class for fixed html save options.
     FileName *string `json:"FileName,omitempty"`
+
+    // Container class for fixed html save options.
+    FlatOpcXmlMappingOnly *bool `json:"FlatOpcXmlMappingOnly,omitempty"`
 
     // Container class for fixed html save options.
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
@@ -263,6 +269,15 @@ func (HtmlFixedSaveOptionsData) IsSaveOptionsData() bool {
 func (obj *HtmlFixedSaveOptionsData) Initialize() {
     var _SaveFormat = "htmlfixed"
     obj.SaveFormat = &_SaveFormat
+
+
+    if (obj.CustomTimeZoneInfoData != nil) {
+        obj.CustomTimeZoneInfoData.Initialize()
+    }
+
+    if (obj.MetafileRenderingOptions != nil) {
+        obj.MetafileRenderingOptions.Initialize()
+    }
 
 
 }

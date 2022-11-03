@@ -50,6 +50,11 @@ func (BaseEntry) IsBaseEntry() bool {
 
 
 func (obj *BaseEntry) Initialize() {
+    if (obj.FileReference != nil) {
+        obj.FileReference.Initialize()
+    }
+
+
 }
 
 func (obj *BaseEntry) CollectFilesContent(resultFilesContent []FileReference) []FileReference {

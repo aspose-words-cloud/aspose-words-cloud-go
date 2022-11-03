@@ -69,6 +69,11 @@ func (RunLink) IsLinkElement() bool {
 }
 
 func (obj *RunLink) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+
 }
 
 func (obj *RunLink) CollectFilesContent(resultFilesContent []FileReference) []FileReference {

@@ -68,6 +68,11 @@ func (PageStatData) IsPageStatData() bool {
 
 
 func (obj *PageStatData) Initialize() {
+    if (obj.FootnotesStatData != nil) {
+        obj.FootnotesStatData.Initialize()
+    }
+
+
 }
 
 func (obj *PageStatData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {

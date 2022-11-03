@@ -83,6 +83,32 @@ func (Section) IsLinkElement() bool {
 }
 
 func (obj *Section) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+    if (obj.ChildNodes != nil) {
+        for _, objElementChildNodes := range obj.ChildNodes {
+            objElementChildNodes.Initialize()
+        }
+    }
+    if (obj.HeaderFooters != nil) {
+        obj.HeaderFooters.Initialize()
+    }
+
+    if (obj.PageSetup != nil) {
+        obj.PageSetup.Initialize()
+    }
+
+    if (obj.Paragraphs != nil) {
+        obj.Paragraphs.Initialize()
+    }
+
+    if (obj.Tables != nil) {
+        obj.Tables.Initialize()
+    }
+
+
 }
 
 func (obj *Section) CollectFilesContent(resultFilesContent []FileReference) []FileReference {

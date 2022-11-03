@@ -59,6 +59,16 @@ func (BordersCollection) IsLinkElement() bool {
 }
 
 func (obj *BordersCollection) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+    if (obj.List != nil) {
+        for _, objElementList := range obj.List {
+            objElementList.Initialize()
+        }
+    }
+
 }
 
 func (obj *BordersCollection) CollectFilesContent(resultFilesContent []FileReference) []FileReference {

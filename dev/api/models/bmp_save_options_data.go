@@ -48,6 +48,9 @@ type BmpSaveOptionsDataResult struct {
     FileName string `json:"FileName,omitempty"`
 
     // Container class for bmp save options.
+    FlatOpcXmlMappingOnly bool `json:"FlatOpcXmlMappingOnly,omitempty"`
+
+    // Container class for bmp save options.
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for bmp save options.
@@ -147,6 +150,9 @@ type BmpSaveOptionsData struct {
 
     // Container class for bmp save options.
     FileName *string `json:"FileName,omitempty"`
+
+    // Container class for bmp save options.
+    FlatOpcXmlMappingOnly *bool `json:"FlatOpcXmlMappingOnly,omitempty"`
 
     // Container class for bmp save options.
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
@@ -255,6 +261,15 @@ func (BmpSaveOptionsData) IsSaveOptionsData() bool {
 func (obj *BmpSaveOptionsData) Initialize() {
     var _SaveFormat = "bmp"
     obj.SaveFormat = &_SaveFormat
+
+
+    if (obj.CustomTimeZoneInfoData != nil) {
+        obj.CustomTimeZoneInfoData.Initialize()
+    }
+
+    if (obj.MetafileRenderingOptions != nil) {
+        obj.MetafileRenderingOptions.Initialize()
+    }
 
 
 }

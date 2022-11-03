@@ -59,6 +59,16 @@ func (SectionLinkCollection) IsLinkElement() bool {
 }
 
 func (obj *SectionLinkCollection) Initialize() {
+    if (obj.Link != nil) {
+        obj.Link.Initialize()
+    }
+
+    if (obj.SectionLinkList != nil) {
+        for _, objElementSectionLinkList := range obj.SectionLinkList {
+            objElementSectionLinkList.Initialize()
+        }
+    }
+
 }
 
 func (obj *SectionLinkCollection) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
