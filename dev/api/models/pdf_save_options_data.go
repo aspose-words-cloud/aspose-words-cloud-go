@@ -48,9 +48,6 @@ type PdfSaveOptionsDataResult struct {
     FileName string `json:"FileName,omitempty"`
 
     // Container class for pdf save options.
-    FlatOpcXmlMappingOnly bool `json:"FlatOpcXmlMappingOnly,omitempty"`
-
-    // Container class for pdf save options.
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for pdf save options.
@@ -93,6 +90,9 @@ type PdfSaveOptionsDataResult struct {
     PageIndex int32 `json:"PageIndex,omitempty"`
 
     // Container class for pdf save options.
+    CacheBackgroundGraphics bool `json:"CacheBackgroundGraphics,omitempty"`
+
+    // Container class for pdf save options.
     Compliance string `json:"Compliance,omitempty"`
 
     // Container class for pdf save options.
@@ -109,6 +109,9 @@ type PdfSaveOptionsDataResult struct {
 
     // Container class for pdf save options.
     DownsampleOptions DownsampleOptionsDataResult `json:"DownsampleOptions,omitempty"`
+
+    // Container class for pdf save options.
+    EmbedAttachments bool `json:"EmbedAttachments,omitempty"`
 
     // Container class for pdf save options.
     EmbedFullFonts bool `json:"EmbedFullFonts,omitempty"`
@@ -191,9 +194,6 @@ type PdfSaveOptionsData struct {
     FileName *string `json:"FileName,omitempty"`
 
     // Container class for pdf save options.
-    FlatOpcXmlMappingOnly *bool `json:"FlatOpcXmlMappingOnly,omitempty"`
-
-    // Container class for pdf save options.
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for pdf save options.
@@ -236,6 +236,9 @@ type PdfSaveOptionsData struct {
     PageIndex *int32 `json:"PageIndex,omitempty"`
 
     // Container class for pdf save options.
+    CacheBackgroundGraphics *bool `json:"CacheBackgroundGraphics,omitempty"`
+
+    // Container class for pdf save options.
     Compliance *string `json:"Compliance,omitempty"`
 
     // Container class for pdf save options.
@@ -252,6 +255,9 @@ type PdfSaveOptionsData struct {
 
     // Container class for pdf save options.
     DownsampleOptions IDownsampleOptionsData `json:"DownsampleOptions,omitempty"`
+
+    // Container class for pdf save options.
+    EmbedAttachments *bool `json:"EmbedAttachments,omitempty"`
 
     // Container class for pdf save options.
     EmbedFullFonts *bool `json:"EmbedFullFonts,omitempty"`

@@ -28,13 +28,16 @@
 package models
 
 // Represents options for XML data loading.
+// To learn more, visit the LINQ Reporting Engine documentation article.
 type XmlDataLoadOptionsResult struct {
     // Represents options for XML data loading.
+    // To learn more, visit the LINQ Reporting Engine documentation article.
     AlwaysGenerateRootObject bool `json:"AlwaysGenerateRootObject,omitempty"`
 }
 
 type XmlDataLoadOptions struct {
     // Represents options for XML data loading.
+    // To learn more, visit the LINQ Reporting Engine documentation article.
     AlwaysGenerateRootObject *bool `json:"AlwaysGenerateRootObject,omitempty"`
 }
 

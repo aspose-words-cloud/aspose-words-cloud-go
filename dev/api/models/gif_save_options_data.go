@@ -48,9 +48,6 @@ type GifSaveOptionsDataResult struct {
     FileName string `json:"FileName,omitempty"`
 
     // Container class for gif save options.
-    FlatOpcXmlMappingOnly bool `json:"FlatOpcXmlMappingOnly,omitempty"`
-
-    // Container class for gif save options.
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for gif save options.
@@ -150,9 +147,6 @@ type GifSaveOptionsData struct {
 
     // Container class for gif save options.
     FileName *string `json:"FileName,omitempty"`
-
-    // Container class for gif save options.
-    FlatOpcXmlMappingOnly *bool `json:"FlatOpcXmlMappingOnly,omitempty"`
 
     // Container class for gif save options.
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`

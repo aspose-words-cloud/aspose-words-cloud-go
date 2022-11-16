@@ -48,9 +48,6 @@ type OoxmlSaveOptionsDataResult struct {
     FileName string `json:"FileName,omitempty"`
 
     // Container class for docx/docm/dotx/dotm/flatopc save options.
-    FlatOpcXmlMappingOnly bool `json:"FlatOpcXmlMappingOnly,omitempty"`
-
-    // Container class for docx/docm/dotx/dotm/flatopc save options.
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for docx/docm/dotx/dotm/flatopc save options.
@@ -105,9 +102,6 @@ type OoxmlSaveOptionsData struct {
 
     // Container class for docx/docm/dotx/dotm/flatopc save options.
     FileName *string `json:"FileName,omitempty"`
-
-    // Container class for docx/docm/dotx/dotm/flatopc save options.
-    FlatOpcXmlMappingOnly *bool `json:"FlatOpcXmlMappingOnly,omitempty"`
 
     // Container class for docx/docm/dotx/dotm/flatopc save options.
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`

@@ -48,9 +48,6 @@ type DotxSaveOptionsDataResult struct {
     FileName string `json:"FileName,omitempty"`
 
     // Container class for dotx save options.
-    FlatOpcXmlMappingOnly bool `json:"FlatOpcXmlMappingOnly,omitempty"`
-
-    // Container class for dotx save options.
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for dotx save options.
@@ -105,9 +102,6 @@ type DotxSaveOptionsData struct {
 
     // Container class for dotx save options.
     FileName *string `json:"FileName,omitempty"`
-
-    // Container class for dotx save options.
-    FlatOpcXmlMappingOnly *bool `json:"FlatOpcXmlMappingOnly,omitempty"`
 
     // Container class for dotx save options.
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`

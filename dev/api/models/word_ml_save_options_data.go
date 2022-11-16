@@ -48,9 +48,6 @@ type WordMLSaveOptionsDataResult struct {
     FileName string `json:"FileName,omitempty"`
 
     // Container class for wml save options.
-    FlatOpcXmlMappingOnly bool `json:"FlatOpcXmlMappingOnly,omitempty"`
-
-    // Container class for wml save options.
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for wml save options.
@@ -96,9 +93,6 @@ type WordMLSaveOptionsData struct {
 
     // Container class for wml save options.
     FileName *string `json:"FileName,omitempty"`
-
-    // Container class for wml save options.
-    FlatOpcXmlMappingOnly *bool `json:"FlatOpcXmlMappingOnly,omitempty"`
 
     // Container class for wml save options.
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`

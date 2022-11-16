@@ -48,9 +48,6 @@ type XamlFlowPackSaveOptionsDataResult struct {
     FileName string `json:"FileName,omitempty"`
 
     // Container class for xamlflow_pack save options.
-    FlatOpcXmlMappingOnly bool `json:"FlatOpcXmlMappingOnly,omitempty"`
-
-    // Container class for xamlflow_pack save options.
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for xamlflow_pack save options.
@@ -99,9 +96,6 @@ type XamlFlowPackSaveOptionsData struct {
 
     // Container class for xamlflow_pack save options.
     FileName *string `json:"FileName,omitempty"`
-
-    // Container class for xamlflow_pack save options.
-    FlatOpcXmlMappingOnly *bool `json:"FlatOpcXmlMappingOnly,omitempty"`
 
     // Container class for xamlflow_pack save options.
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
