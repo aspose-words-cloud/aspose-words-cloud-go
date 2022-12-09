@@ -176,7 +176,7 @@ func Test_PageSetup_GetRenderPage(t *testing.T) {
     request := &models.RenderPageRequest{
         Name: ToStringPointer(remoteFileName),
         PageIndex: ToInt32Pointer(int32(1)),
-        Format: ToStringPointer("bmp"),
+        Format: ToStringPointer("jpg"),
         Optionals: options,
     }
 
@@ -201,7 +201,7 @@ func Test_PageSetup_GetRenderPageOnline(t *testing.T) {
     request := &models.RenderPageOnlineRequest{
         Document: requestDocument,
         PageIndex: ToInt32Pointer(int32(1)),
-        Format: ToStringPointer("bmp"),
+        Format: ToStringPointer("jpg"),
         Optionals: options,
     }
 
