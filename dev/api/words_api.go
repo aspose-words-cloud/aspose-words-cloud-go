@@ -3520,6 +3520,96 @@ func (a *WordsApiService) DeleteSectionOnline(ctx context.Context, data *models.
     return successPayload, response, err
 }
 
+/* WordsApiService Removes a StructuredDocumentTag (SDT) from the document node.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return */
+func (a *WordsApiService) DeleteStructuredDocumentTag(ctx context.Context, data *models.DeleteStructuredDocumentTagRequest) (*http.Response, error) {
+    var (
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+
+    if err != nil || response == nil {
+        return nil, err
+    }
+
+
+    if response.StatusCode == 401 {
+        return nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return nil, err
+        }
+
+        return response, &apiError
+    }
+    return response, err
+}
+
+/* WordsApiService Removes a StructuredDocumentTag (SDT) from the document node.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return map[string]io.Reader*/
+func (a *WordsApiService) DeleteStructuredDocumentTagOnline(ctx context.Context, data *models.DeleteStructuredDocumentTagOnlineRequest) (map[string]io.Reader, *http.Response, error) {
+    var (
+        successPayload map[string]io.Reader
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+
+
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return successPayload, nil, err
+        }
+
+        return successPayload, response, &apiError
+    }
+    if err != nil {
+        return successPayload, response, err
+    }
+
+    successPayload, err = models.ParseFilesCollection(response)
+    return successPayload, response, err
+}
+
 /* WordsApiService Removes a table from the document node.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  * @data operation request data.
@@ -8502,6 +8592,198 @@ func (a *WordsApiService) GetSectionsOnline(ctx context.Context, data *models.Ge
     return successPayload, response, err
 }
 
+/* WordsApiService Reads a StructuredDocumentTag (SDT) from the document node.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return models.StructuredDocumentTagResponse*/
+func (a *WordsApiService) GetStructuredDocumentTag(ctx context.Context, data *models.GetStructuredDocumentTagRequest) (models.StructuredDocumentTagResponse, *http.Response, error) {
+    var (
+        successPayload models.StructuredDocumentTagResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+
+    defer response.Body.Close()
+
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return successPayload, nil, err
+        }
+
+        return successPayload, response, &apiError
+    }
+    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Reads a StructuredDocumentTag (SDT) from the document node.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return models.StructuredDocumentTagResponse*/
+func (a *WordsApiService) GetStructuredDocumentTagOnline(ctx context.Context, data *models.GetStructuredDocumentTagOnlineRequest) (models.StructuredDocumentTagResponse, *http.Response, error) {
+    var (
+        successPayload models.StructuredDocumentTagResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+
+    defer response.Body.Close()
+
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return successPayload, nil, err
+        }
+
+        return successPayload, response, &apiError
+    }
+    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Reads StructuredDocumentTags (SDT) from the document node.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return models.StructuredDocumentTagsResponse*/
+func (a *WordsApiService) GetStructuredDocumentTags(ctx context.Context, data *models.GetStructuredDocumentTagsRequest) (models.StructuredDocumentTagsResponse, *http.Response, error) {
+    var (
+        successPayload models.StructuredDocumentTagsResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+
+    defer response.Body.Close()
+
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return successPayload, nil, err
+        }
+
+        return successPayload, response, &apiError
+    }
+    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Reads StructuredDocumentTags (SDT) from the document node.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return models.StructuredDocumentTagsResponse*/
+func (a *WordsApiService) GetStructuredDocumentTagsOnline(ctx context.Context, data *models.GetStructuredDocumentTagsOnlineRequest) (models.StructuredDocumentTagsResponse, *http.Response, error) {
+    var (
+        successPayload models.StructuredDocumentTagsResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+
+    defer response.Body.Close()
+
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return successPayload, nil, err
+        }
+
+        return successPayload, response, &apiError
+    }
+    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
 /* WordsApiService Reads a style from the document.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  * @data operation request data.
@@ -10734,6 +11016,104 @@ func (a *WordsApiService) InsertRunOnline(ctx context.Context, data *models.Inse
     }
 
     return result.(models.InsertRunOnlineResponse), response, err
+}
+
+/* WordsApiService Inserts a new StructuredDocumentTag (SDT) to the document node.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return models.StructuredDocumentTagResponse*/
+func (a *WordsApiService) InsertStructuredDocumentTag(ctx context.Context, data *models.InsertStructuredDocumentTagRequest) (models.StructuredDocumentTagResponse, *http.Response, error) {
+    var (
+        successPayload models.StructuredDocumentTagResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+
+    defer response.Body.Close()
+
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return successPayload, nil, err
+        }
+
+        return successPayload, response, &apiError
+    }
+    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Inserts a new StructuredDocumentTag (SDT) to the document node.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return InsertStructuredDocumentTagOnlineResponse*/
+func (a *WordsApiService) InsertStructuredDocumentTagOnline(ctx context.Context, data *models.InsertStructuredDocumentTagOnlineRequest) (models.InsertStructuredDocumentTagOnlineResponse, *http.Response, error) {
+    var (
+        successPayload models.InsertStructuredDocumentTagOnlineResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+
+
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return successPayload, nil, err
+        }
+
+        return successPayload, response, &apiError
+    }
+    boundary := GetBoundary(response)
+    result, err := data.CreateResponse(response.Body, boundary)
+
+    if err != nil {
+        return successPayload, response, err
+    }
+
+    return result.(models.InsertStructuredDocumentTagOnlineResponse), response, err
 }
 
 /* WordsApiService Inserts a new style to the document.
@@ -14692,6 +15072,104 @@ func (a *WordsApiService) UpdateSectionPageSetupOnline(ctx context.Context, data
     }
 
     return result.(models.UpdateSectionPageSetupOnlineResponse), response, err
+}
+
+/* WordsApiService Updates a StructuredDocumentTag (SDT) in the document node.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return models.StructuredDocumentTagResponse*/
+func (a *WordsApiService) UpdateStructuredDocumentTag(ctx context.Context, data *models.UpdateStructuredDocumentTagRequest) (models.StructuredDocumentTagResponse, *http.Response, error) {
+    var (
+        successPayload models.StructuredDocumentTagResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+
+    defer response.Body.Close()
+
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return successPayload, nil, err
+        }
+
+        return successPayload, response, &apiError
+    }
+    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+        return successPayload, response, err
+    }
+
+    return successPayload, response, err
+}
+
+/* WordsApiService Updates a StructuredDocumentTag (SDT) in the document node.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return UpdateStructuredDocumentTagOnlineResponse*/
+func (a *WordsApiService) UpdateStructuredDocumentTagOnline(ctx context.Context, data *models.UpdateStructuredDocumentTagOnlineRequest) (models.UpdateStructuredDocumentTagOnlineResponse, *http.Response, error) {
+    var (
+        successPayload models.UpdateStructuredDocumentTagOnlineResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+
+
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+
+        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+            return successPayload, nil, err
+        }
+
+        return successPayload, response, &apiError
+    }
+    boundary := GetBoundary(response)
+    result, err := data.CreateResponse(response.Body, boundary)
+
+    if err != nil {
+        return successPayload, response, err
+    }
+
+    return result.(models.UpdateStructuredDocumentTagOnlineResponse), response, err
 }
 
 /* WordsApiService Updates a style in the document.
