@@ -41,12 +41,12 @@ import (
 type SaveAsRangeOnlineRequest struct {
         // The document.
         Document io.ReadCloser
-        // The range start identifier.
+        // The range start identifier. Identifier examples: id0.0.0, page0.
         RangeStartIdentifier *string
         // Parameters of a new document.
         DocumentParameters IRangeDocument
     /* optional (nil or map[string]interface{}) with one or more of key / value pairs:
-        key: "rangeEndIdentifier" value: (*string) The range end identifier.
+        key: "rangeEndIdentifier" value: (*string) The range end identifier. Identifier examples: id1.0.0, id0.0.0:end, page1, page1:end, document:end.
         key: "loadEncoding" value: (*string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
         key: "password" value: (*string) Password of protected Word document. Use the parameter to pass a password via SDK. SDK encrypts it automatically. We don't recommend to use the parameter to pass a plain password for direct call of API.
         key: "encryptedPassword" value: (*string) Password of protected Word document. Use the parameter to pass an encrypted password for direct calls of API. See SDK code for encyption details. */

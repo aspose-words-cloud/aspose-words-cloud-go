@@ -40,10 +40,10 @@ import (
 type GetRangeTextRequest struct {
         // The filename of the input document.
         Name *string
-        // The range start identifier.
+        // The range start identifier. Identifier examples: id0.0.0, page0.
         RangeStartIdentifier *string
     /* optional (nil or map[string]interface{}) with one or more of key / value pairs:
-        key: "rangeEndIdentifier" value: (*string) The range end identifier.
+        key: "rangeEndIdentifier" value: (*string) The range end identifier. Identifier examples: id1.0.0, id0.0.0:end, page1, page1:end, document:end.
         key: "folder" value: (*string) Original document folder.
         key: "storage" value: (*string) Original document storage.
         key: "loadEncoding" value: (*string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
