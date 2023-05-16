@@ -36,10 +36,10 @@ type BookmarkInsertResult struct {
     Text string `json:"Text,omitempty"`
 
     // Represents a bookmark to insert.
-    EndRange DocumentPositionResult `json:"EndRange,omitempty"`
+    EndRange NewDocumentPositionResult `json:"EndRange,omitempty"`
 
     // Represents a bookmark to insert.
-    StartRange DocumentPositionResult `json:"StartRange,omitempty"`
+    StartRange NewDocumentPositionResult `json:"StartRange,omitempty"`
 }
 
 type BookmarkInsert struct {
@@ -50,10 +50,10 @@ type BookmarkInsert struct {
     Text *string `json:"Text,omitempty"`
 
     // Represents a bookmark to insert.
-    EndRange IDocumentPosition `json:"EndRange,omitempty"`
+    EndRange INewDocumentPosition `json:"EndRange,omitempty"`
 
     // Represents a bookmark to insert.
-    StartRange IDocumentPosition `json:"StartRange,omitempty"`
+    StartRange INewDocumentPosition `json:"StartRange,omitempty"`
 }
 
 type IBookmarkInsert interface {

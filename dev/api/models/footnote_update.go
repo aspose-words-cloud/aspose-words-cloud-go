@@ -33,7 +33,7 @@ type FootnoteUpdateResult struct {
     FootnoteType string `json:"FootnoteType,omitempty"`
 
     // Footnote for update.
-    Position DocumentPositionResult `json:"Position,omitempty"`
+    Position NewDocumentPositionResult `json:"Position,omitempty"`
 
     // Footnote for update.
     ReferenceMark string `json:"ReferenceMark,omitempty"`
@@ -47,7 +47,7 @@ type FootnoteUpdate struct {
     FootnoteType *string `json:"FootnoteType,omitempty"`
 
     // Footnote for update.
-    Position IDocumentPosition `json:"Position,omitempty"`
+    Position INewDocumentPosition `json:"Position,omitempty"`
 
     // Footnote for update.
     ReferenceMark *string `json:"ReferenceMark,omitempty"`

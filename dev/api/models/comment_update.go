@@ -39,10 +39,10 @@ type CommentUpdateResult struct {
     Initial string `json:"Initial,omitempty"`
 
     // Comment update.
-    RangeEnd DocumentPositionResult `json:"RangeEnd,omitempty"`
+    RangeEnd NewDocumentPositionResult `json:"RangeEnd,omitempty"`
 
     // Comment update.
-    RangeStart DocumentPositionResult `json:"RangeStart,omitempty"`
+    RangeStart NewDocumentPositionResult `json:"RangeStart,omitempty"`
 
     // Comment update.
     Text string `json:"Text,omitempty"`
@@ -59,10 +59,10 @@ type CommentUpdate struct {
     Initial *string `json:"Initial,omitempty"`
 
     // Comment update.
-    RangeEnd IDocumentPosition `json:"RangeEnd,omitempty"`
+    RangeEnd INewDocumentPosition `json:"RangeEnd,omitempty"`
 
     // Comment update.
-    RangeStart IDocumentPosition `json:"RangeStart,omitempty"`
+    RangeStart INewDocumentPosition `json:"RangeStart,omitempty"`
 
     // Comment update.
     Text *string `json:"Text,omitempty"`

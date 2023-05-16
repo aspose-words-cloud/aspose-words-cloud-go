@@ -36,7 +36,7 @@ type DrawingObjectInsertResult struct {
     Left float64 `json:"Left,omitempty"`
 
     // Drawing object element for insert.
-    Position DocumentPositionResult `json:"Position,omitempty"`
+    Position NewDocumentPositionResult `json:"Position,omitempty"`
 
     // Drawing object element for insert.
     RelativeHorizontalPosition string `json:"RelativeHorizontalPosition,omitempty"`
@@ -62,7 +62,7 @@ type DrawingObjectInsert struct {
     Left *float64 `json:"Left,omitempty"`
 
     // Drawing object element for insert.
-    Position IDocumentPosition `json:"Position,omitempty"`
+    Position INewDocumentPosition `json:"Position,omitempty"`
 
     // Drawing object element for insert.
     RelativeHorizontalPosition *string `json:"RelativeHorizontalPosition,omitempty"`

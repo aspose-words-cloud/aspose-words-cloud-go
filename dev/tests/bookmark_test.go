@@ -321,17 +321,13 @@ func Test_Bookmark_InsertBookmark(t *testing.T) {
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-    requestBookmarkStartRangeNode := models.NodeLink{
+    requestBookmarkStartRange := models.NewDocumentPosition{
         NodeId: ToStringPointer("0.0.0.0"),
+        Offset: ToInt32Pointer(int32(0)),
     }
-    requestBookmarkStartRange := models.DocumentPosition{
-        Node: &requestBookmarkStartRangeNode,
-    }
-    requestBookmarkEndRangeNode := models.NodeLink{
+    requestBookmarkEndRange := models.NewDocumentPosition{
         NodeId: ToStringPointer("0.0.0.0"),
-    }
-    requestBookmarkEndRange := models.DocumentPosition{
-        Node: &requestBookmarkEndRangeNode,
+        Offset: ToInt32Pointer(int32(0)),
     }
     requestBookmark := models.BookmarkInsert{
         StartRange: &requestBookmarkStartRange,
@@ -364,17 +360,13 @@ func Test_Bookmark_InsertBookmarkOnline(t *testing.T) {
     localFile := "Common/test_multi_pages.docx"
 
     requestDocument := OpenFile(t, localFile)
-    requestBookmarkStartRangeNode := models.NodeLink{
+    requestBookmarkStartRange := models.NewDocumentPosition{
         NodeId: ToStringPointer("0.0.0.0"),
+        Offset: ToInt32Pointer(int32(0)),
     }
-    requestBookmarkStartRange := models.DocumentPosition{
-        Node: &requestBookmarkStartRangeNode,
-    }
-    requestBookmarkEndRangeNode := models.NodeLink{
+    requestBookmarkEndRange := models.NewDocumentPosition{
         NodeId: ToStringPointer("0.0.0.0"),
-    }
-    requestBookmarkEndRange := models.DocumentPosition{
-        Node: &requestBookmarkEndRangeNode,
+        Offset: ToInt32Pointer(int32(0)),
     }
     requestBookmark := models.BookmarkInsert{
         StartRange: &requestBookmarkStartRange,

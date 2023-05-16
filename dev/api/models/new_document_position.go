@@ -1,6 +1,6 @@
 /*
  * --------------------------------------------------------------------------------
- * <copyright company="Aspose" file="comment_base.go">
+ * <copyright company="Aspose" file="new_document_position.go">
  *   Copyright (c) 2023 Aspose.Words for Cloud
  * </copyright>
  * <summary>
@@ -27,71 +27,38 @@
 
 package models
 
-// Comment.
-type CommentBaseResult struct {
-    // Comment.
-    Author string `json:"Author,omitempty"`
+// DTO container with a new position in the document tree.
+type NewDocumentPositionResult struct {
+    // DTO container with a new position in the document tree.
+    NodeId string `json:"NodeId,omitempty"`
 
-    // Comment.
-    DateTime Time `json:"DateTime,omitempty"`
-
-    // Comment.
-    Initial string `json:"Initial,omitempty"`
-
-    // Comment.
-    RangeEnd NewDocumentPositionResult `json:"RangeEnd,omitempty"`
-
-    // Comment.
-    RangeStart NewDocumentPositionResult `json:"RangeStart,omitempty"`
-
-    // Comment.
-    Text string `json:"Text,omitempty"`
+    // DTO container with a new position in the document tree.
+    Offset int32 `json:"Offset,omitempty"`
 }
 
-type CommentBase struct {
-    // Comment.
-    Author *string `json:"Author,omitempty"`
+type NewDocumentPosition struct {
+    // DTO container with a new position in the document tree.
+    NodeId *string `json:"NodeId,omitempty"`
 
-    // Comment.
-    DateTime *Time `json:"DateTime,omitempty"`
-
-    // Comment.
-    Initial *string `json:"Initial,omitempty"`
-
-    // Comment.
-    RangeEnd INewDocumentPosition `json:"RangeEnd,omitempty"`
-
-    // Comment.
-    RangeStart INewDocumentPosition `json:"RangeStart,omitempty"`
-
-    // Comment.
-    Text *string `json:"Text,omitempty"`
+    // DTO container with a new position in the document tree.
+    Offset *int32 `json:"Offset,omitempty"`
 }
 
-type ICommentBase interface {
-    IsCommentBase() bool
+type INewDocumentPosition interface {
+    IsNewDocumentPosition() bool
     Initialize()
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
-func (CommentBase) IsCommentBase() bool {
+func (NewDocumentPosition) IsNewDocumentPosition() bool {
     return true
 }
 
 
-func (obj *CommentBase) Initialize() {
-    if (obj.RangeEnd != nil) {
-        obj.RangeEnd.Initialize()
-    }
-
-    if (obj.RangeStart != nil) {
-        obj.RangeStart.Initialize()
-    }
-
-
+func (obj *NewDocumentPosition) Initialize() {
 }
 
-func (obj *CommentBase) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+func (obj *NewDocumentPosition) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 

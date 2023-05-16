@@ -39,10 +39,10 @@ type CommentInsertResult struct {
     Initial string `json:"Initial,omitempty"`
 
     // Comment insert.
-    RangeEnd DocumentPositionResult `json:"RangeEnd,omitempty"`
+    RangeEnd NewDocumentPositionResult `json:"RangeEnd,omitempty"`
 
     // Comment insert.
-    RangeStart DocumentPositionResult `json:"RangeStart,omitempty"`
+    RangeStart NewDocumentPositionResult `json:"RangeStart,omitempty"`
 
     // Comment insert.
     Text string `json:"Text,omitempty"`
@@ -59,10 +59,10 @@ type CommentInsert struct {
     Initial *string `json:"Initial,omitempty"`
 
     // Comment insert.
-    RangeEnd IDocumentPosition `json:"RangeEnd,omitempty"`
+    RangeEnd INewDocumentPosition `json:"RangeEnd,omitempty"`
 
     // Comment insert.
-    RangeStart IDocumentPosition `json:"RangeStart,omitempty"`
+    RangeStart INewDocumentPosition `json:"RangeStart,omitempty"`
 
     // Comment insert.
     Text *string `json:"Text,omitempty"`

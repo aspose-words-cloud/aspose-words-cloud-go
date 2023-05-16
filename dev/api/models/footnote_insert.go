@@ -33,7 +33,7 @@ type FootnoteInsertResult struct {
     FootnoteType string `json:"FootnoteType,omitempty"`
 
     // Footnote for insert.
-    Position DocumentPositionResult `json:"Position,omitempty"`
+    Position NewDocumentPositionResult `json:"Position,omitempty"`
 
     // Footnote for insert.
     ReferenceMark string `json:"ReferenceMark,omitempty"`
@@ -47,7 +47,7 @@ type FootnoteInsert struct {
     FootnoteType *string `json:"FootnoteType,omitempty"`
 
     // Footnote for insert.
-    Position IDocumentPosition `json:"Position,omitempty"`
+    Position INewDocumentPosition `json:"Position,omitempty"`
 
     // Footnote for insert.
     ReferenceMark *string `json:"ReferenceMark,omitempty"`

@@ -33,7 +33,7 @@ type TableInsertDtoResult struct {
     ColumnsCount int32 `json:"ColumnsCount,omitempty"`
 
     // DTO container with a table element.
-    Position DocumentPositionResult `json:"Position,omitempty"`
+    Position NewDocumentPositionResult `json:"Position,omitempty"`
 
     // DTO container with a table element.
     RowsCount int32 `json:"RowsCount,omitempty"`
@@ -44,7 +44,7 @@ type TableInsertDto struct {
     ColumnsCount *int32 `json:"ColumnsCount,omitempty"`
 
     // DTO container with a table element.
-    Position IDocumentPosition `json:"Position,omitempty"`
+    Position INewDocumentPosition `json:"Position,omitempty"`
 
     // DTO container with a table element.
     RowsCount *int32 `json:"RowsCount,omitempty"`
