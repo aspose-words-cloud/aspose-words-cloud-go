@@ -152,18 +152,12 @@ func Test_Comment_InsertComment(t *testing.T) {
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-    requestCommentRangeStartNode := models.NodeLink{
+    requestCommentRangeStart := models.NewDocumentPosition{
         NodeId: ToStringPointer("0.3.0.3"),
-    }
-    requestCommentRangeStart := models.DocumentPosition{
-        Node: &requestCommentRangeStartNode,
         Offset: ToInt32Pointer(int32(0)),
     }
-    requestCommentRangeEndNode := models.NodeLink{
+    requestCommentRangeEnd := models.NewDocumentPosition{
         NodeId: ToStringPointer("0.3.0.3"),
-    }
-    requestCommentRangeEnd := models.DocumentPosition{
-        Node: &requestCommentRangeEndNode,
         Offset: ToInt32Pointer(int32(0)),
     }
     requestComment := models.CommentInsert{
@@ -203,18 +197,12 @@ func Test_Comment_InsertCommentOnline(t *testing.T) {
     localFile := "Common/test_multi_pages.docx"
 
     requestDocument := OpenFile(t, localFile)
-    requestCommentRangeStartNode := models.NodeLink{
+    requestCommentRangeStart := models.NewDocumentPosition{
         NodeId: ToStringPointer("0.3.0.3"),
-    }
-    requestCommentRangeStart := models.DocumentPosition{
-        Node: &requestCommentRangeStartNode,
         Offset: ToInt32Pointer(int32(0)),
     }
-    requestCommentRangeEndNode := models.NodeLink{
+    requestCommentRangeEnd := models.NewDocumentPosition{
         NodeId: ToStringPointer("0.3.0.3"),
-    }
-    requestCommentRangeEnd := models.DocumentPosition{
-        Node: &requestCommentRangeEndNode,
         Offset: ToInt32Pointer(int32(0)),
     }
     requestComment := models.CommentInsert{
@@ -251,18 +239,12 @@ func Test_Comment_UpdateComment(t *testing.T) {
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-    requestCommentRangeStartNode := models.NodeLink{
+    requestCommentRangeStart := models.NewDocumentPosition{
         NodeId: ToStringPointer("0.3.0"),
-    }
-    requestCommentRangeStart := models.DocumentPosition{
-        Node: &requestCommentRangeStartNode,
         Offset: ToInt32Pointer(int32(0)),
     }
-    requestCommentRangeEndNode := models.NodeLink{
+    requestCommentRangeEnd := models.NewDocumentPosition{
         NodeId: ToStringPointer("0.3.0"),
-    }
-    requestCommentRangeEnd := models.DocumentPosition{
-        Node: &requestCommentRangeEndNode,
         Offset: ToInt32Pointer(int32(0)),
     }
     requestComment := models.CommentUpdate{
@@ -303,18 +285,12 @@ func Test_Comment_UpdateCommentOnline(t *testing.T) {
     localFile := "Common/test_multi_pages.docx"
 
     requestDocument := OpenFile(t, localFile)
-    requestCommentRangeStartNode := models.NodeLink{
+    requestCommentRangeStart := models.NewDocumentPosition{
         NodeId: ToStringPointer("0.3.0"),
-    }
-    requestCommentRangeStart := models.DocumentPosition{
-        Node: &requestCommentRangeStartNode,
         Offset: ToInt32Pointer(int32(0)),
     }
-    requestCommentRangeEndNode := models.NodeLink{
+    requestCommentRangeEnd := models.NewDocumentPosition{
         NodeId: ToStringPointer("0.3.0"),
-    }
-    requestCommentRangeEnd := models.DocumentPosition{
-        Node: &requestCommentRangeEndNode,
         Offset: ToInt32Pointer(int32(0)),
     }
     requestComment := models.CommentUpdate{
