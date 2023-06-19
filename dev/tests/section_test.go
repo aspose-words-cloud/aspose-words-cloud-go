@@ -197,6 +197,59 @@ func Test_Section_DeleteSectionOnline(t *testing.T) {
 
 }
 
+// Test for insertion a section.
+func Test_Section_InsertSection(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Section"
+    localFile := "Common/test_multi_pages.docx"
+    remoteFileName := "TestInsertSection.docx"
+
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
+
+
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+
+    request := &models.InsertSectionRequest{
+        Name: ToStringPointer(remoteFileName),
+        SectionIndex: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    _, err := client.WordsApi.InsertSection(ctx, request)
+
+    if err != nil {
+        t.Error(err)
+    }
+
+}
+
+// Test for insertion a section online.
+func Test_Section_InsertSectionOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "Common/test_multi_pages.docx"
+
+    requestDocument := OpenFile(t, localFile)
+
+    options := map[string]interface{}{
+    }
+
+    request := &models.InsertSectionOnlineRequest{
+        Document: requestDocument,
+        SectionIndex: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    _, _, err := client.WordsApi.InsertSectionOnline(ctx, request)
+    if err != nil {
+        t.Error(err)
+    }
+
+}
+
 // Test for linking headers and footers to previous section.
 func Test_Section_LinkHeaderFootersToPrevious(t *testing.T) {
     config := ReadConfiguration(t)

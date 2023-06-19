@@ -37,8 +37,9 @@ import (
 
 // CreateDocumentRequest contains request data for WordsApiService.CreateDocument method.
 type CreateDocumentRequest struct {
+        // The filename of the document.
+        FileName *string
     /* optional (nil or map[string]interface{}) with one or more of key / value pairs:
-        key: "fileName" value: (*string) The filename of the document.
         key: "folder" value: (*string) The path to the document folder.
         key: "storage" value: (*string) Original document storage. */
     Optionals map[string]interface{}
@@ -63,9 +64,6 @@ func (data *CreateDocumentRequest) CreateRequestData() (RequestData, error) {
     result.FormParams = make([]FormParamContainer, 0)
 
 
-    if err := typeCheckParameter(data.Optionals["fileName"], "string", "data.Optionals[fileName]"); err != nil {
-        return result, err
-    }
     if err := typeCheckParameter(data.Optionals["folder"], "string", "data.Optionals[folder]"); err != nil {
         return result, err
     }
@@ -74,9 +72,7 @@ func (data *CreateDocumentRequest) CreateRequestData() (RequestData, error) {
     }
 
 
-    if localVarTempParam, localVarOk := data.Optionals["fileName"].(string); localVarOk {
-        result.QueryParams.Add("FileName", parameterToString(localVarTempParam, ""))
-    }
+    result.QueryParams.Add("FileName", parameterToString(*data.FileName, ""))
 
 
     if localVarTempParam, localVarOk := data.Optionals["folder"].(string); localVarOk {
