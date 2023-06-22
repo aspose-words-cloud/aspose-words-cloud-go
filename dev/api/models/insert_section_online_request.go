@@ -57,7 +57,7 @@ func (data *InsertSectionOnlineRequest) CreateRequestData() (RequestData, error)
     var result RequestData
     var filesContentData = make([]FileReference, 0)
 
-    result.Method = strings.ToUpper("post")
+    result.Method = strings.ToUpper("put")
 
     // create path and map variables
     result.Path = "/words/online/post/sections/{sectionIndex}"
