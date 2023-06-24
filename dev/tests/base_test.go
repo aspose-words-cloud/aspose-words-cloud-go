@@ -196,9 +196,8 @@ func TestDebugMode(t *testing.T) {
 	}()
 
 	request := &models.CreateDocumentRequest{
-		Optionals: map[string]interface{}{
-			"fileName": "test.docx",
-		},
+		FileName:  ToStringPointer("test.docx"),
+		Optionals: map[string]interface{}{},
 	}
 
 	_, _, err := client.WordsApi.CreateDocument(ctx, request)

@@ -72,11 +72,11 @@ func Test_Document_CreateDocument(t *testing.T) {
 
 
     options := map[string]interface{}{
-        "fileName": remoteFileName,
         "folder": remoteDataFolder,
     }
 
     request := &models.CreateDocumentRequest{
+        FileName: ToStringPointer(remoteFileName),
         Optionals: options,
     }
 
