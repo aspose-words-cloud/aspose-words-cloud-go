@@ -171,7 +171,7 @@ func (c *APIClient) NewContextWithToken(ctx context.Context) (ctxWithToken conte
     }
 
     tokenUrl, _ := url.Parse(c.cfg.BaseUrl)
-    tokenUrl.Path = "/connect/token"
+    tokenUrl.Path = "/v4.0/words/connect/token"
 
     response, err := http.PostForm(tokenUrl.String(), url.Values{
         "grant_type":    {"client_credentials"},
