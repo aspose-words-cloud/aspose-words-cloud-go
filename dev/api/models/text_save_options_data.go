@@ -90,10 +90,10 @@ type TextSaveOptionsDataResult struct {
     PreserveTableLayout bool `json:"PreserveTableLayout,omitempty"`
 
     // Container class for text save options.
-    SaveFormat string `json:"SaveFormat,omitempty"`
+    SimplifyListLabels bool `json:"SimplifyListLabels,omitempty"`
 
     // Container class for text save options.
-    SimplifyListLabels bool `json:"SimplifyListLabels,omitempty"`
+    SaveFormat string `json:"SaveFormat,omitempty"`
 }
 
 type TextSaveOptionsData struct {
@@ -158,10 +158,10 @@ type TextSaveOptionsData struct {
     PreserveTableLayout *bool `json:"PreserveTableLayout,omitempty"`
 
     // Container class for text save options.
-    SaveFormat *string `json:"SaveFormat,omitempty"`
+    SimplifyListLabels *bool `json:"SimplifyListLabels,omitempty"`
 
     // Container class for text save options.
-    SimplifyListLabels *bool `json:"SimplifyListLabels,omitempty"`
+    SaveFormat *string `json:"SaveFormat,omitempty"`
 }
 
 type ITextSaveOptionsData interface {

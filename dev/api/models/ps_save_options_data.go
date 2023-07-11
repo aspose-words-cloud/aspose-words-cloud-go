@@ -90,10 +90,10 @@ type PsSaveOptionsDataResult struct {
     PageIndex int32 `json:"PageIndex,omitempty"`
 
     // Container class for ps save options.
-    SaveFormat string `json:"SaveFormat,omitempty"`
+    UseBookFoldPrintingSettings bool `json:"UseBookFoldPrintingSettings,omitempty"`
 
     // Container class for ps save options.
-    UseBookFoldPrintingSettings bool `json:"UseBookFoldPrintingSettings,omitempty"`
+    SaveFormat string `json:"SaveFormat,omitempty"`
 }
 
 type PsSaveOptionsData struct {
@@ -158,10 +158,10 @@ type PsSaveOptionsData struct {
     PageIndex *int32 `json:"PageIndex,omitempty"`
 
     // Container class for ps save options.
-    SaveFormat *string `json:"SaveFormat,omitempty"`
+    UseBookFoldPrintingSettings *bool `json:"UseBookFoldPrintingSettings,omitempty"`
 
     // Container class for ps save options.
-    UseBookFoldPrintingSettings *bool `json:"UseBookFoldPrintingSettings,omitempty"`
+    SaveFormat *string `json:"SaveFormat,omitempty"`
 }
 
 type IPsSaveOptionsData interface {

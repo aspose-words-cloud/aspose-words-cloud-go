@@ -33,13 +33,13 @@ type PageStatDataResult struct {
     FootnotesStatData FootnotesStatDataResult `json:"FootnotesStatData,omitempty"`
 
     // Container for the page's statistical data.
-    PageNumber int32 `json:"PageNumber,omitempty"`
-
-    // Container for the page's statistical data.
     ParagraphCount int32 `json:"ParagraphCount,omitempty"`
 
     // Container for the page's statistical data.
     WordCount int32 `json:"WordCount,omitempty"`
+
+    // Container for the page's statistical data.
+    PageNumber int32 `json:"PageNumber,omitempty"`
 }
 
 type PageStatData struct {
@@ -47,13 +47,13 @@ type PageStatData struct {
     FootnotesStatData IFootnotesStatData `json:"FootnotesStatData,omitempty"`
 
     // Container for the page's statistical data.
-    PageNumber *int32 `json:"PageNumber,omitempty"`
-
-    // Container for the page's statistical data.
     ParagraphCount *int32 `json:"ParagraphCount,omitempty"`
 
     // Container for the page's statistical data.
     WordCount *int32 `json:"WordCount,omitempty"`
+
+    // Container for the page's statistical data.
+    PageNumber *int32 `json:"PageNumber,omitempty"`
 }
 
 type IPageStatData interface {

@@ -30,24 +30,24 @@ package models
 // Result of splitting document.
 type SplitDocumentResultResult struct {
     // Result of splitting document.
-    Pages []FileLinkResult `json:"Pages,omitempty"`
-
-    // Result of splitting document.
     SourceDocument FileLinkResult `json:"SourceDocument,omitempty"`
 
     // Result of splitting document.
     ZippedPages FileLinkResult `json:"ZippedPages,omitempty"`
+
+    // Result of splitting document.
+    Pages []FileLinkResult `json:"Pages,omitempty"`
 }
 
 type SplitDocumentResult struct {
-    // Result of splitting document.
-    Pages []FileLink `json:"Pages,omitempty"`
-
     // Result of splitting document.
     SourceDocument IFileLink `json:"SourceDocument,omitempty"`
 
     // Result of splitting document.
     ZippedPages IFileLink `json:"ZippedPages,omitempty"`
+
+    // Result of splitting document.
+    Pages []FileLink `json:"Pages,omitempty"`
 }
 
 type ISplitDocumentResult interface {
@@ -62,11 +62,6 @@ func (SplitDocumentResult) IsSplitDocumentResult() bool {
 
 
 func (obj *SplitDocumentResult) Initialize() {
-    if (obj.Pages != nil) {
-        for _, objElementPages := range obj.Pages {
-            objElementPages.Initialize()
-        }
-    }
     if (obj.SourceDocument != nil) {
         obj.SourceDocument.Initialize()
     }
@@ -75,6 +70,11 @@ func (obj *SplitDocumentResult) Initialize() {
         obj.ZippedPages.Initialize()
     }
 
+    if (obj.Pages != nil) {
+        for _, objElementPages := range obj.Pages {
+            objElementPages.Initialize()
+        }
+    }
 
 }
 

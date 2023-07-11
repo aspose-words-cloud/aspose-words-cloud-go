@@ -36,10 +36,10 @@ type TableResult struct {
     NodeId string `json:"NodeId,omitempty"`
 
     // DTO container with a table element.
-    TableProperties TablePropertiesResult `json:"TableProperties,omitempty"`
+    TableRowList []TableRowResult `json:"TableRowList,omitempty"`
 
     // DTO container with a table element.
-    TableRowList []TableRowResult `json:"TableRowList,omitempty"`
+    TableProperties TablePropertiesResult `json:"TableProperties,omitempty"`
 }
 
 type Table struct {
@@ -50,10 +50,10 @@ type Table struct {
     NodeId *string `json:"NodeId,omitempty"`
 
     // DTO container with a table element.
-    TableProperties ITableProperties `json:"TableProperties,omitempty"`
+    TableRowList []TableRow `json:"TableRowList,omitempty"`
 
     // DTO container with a table element.
-    TableRowList []TableRow `json:"TableRowList,omitempty"`
+    TableProperties ITableProperties `json:"TableProperties,omitempty"`
 }
 
 type ITable interface {
@@ -79,15 +79,15 @@ func (obj *Table) Initialize() {
         obj.Link.Initialize()
     }
 
-    if (obj.TableProperties != nil) {
-        obj.TableProperties.Initialize()
-    }
-
     if (obj.TableRowList != nil) {
         for _, objElementTableRowList := range obj.TableRowList {
             objElementTableRowList.Initialize()
         }
     }
+    if (obj.TableProperties != nil) {
+        obj.TableProperties.Initialize()
+    }
+
 
 }
 

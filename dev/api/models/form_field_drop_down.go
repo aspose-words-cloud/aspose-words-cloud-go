@@ -36,31 +36,31 @@ type FormFieldDropDownResult struct {
     NodeId string `json:"NodeId,omitempty"`
 
     // FormField dropdownlist element.
-    CalculateOnExit bool `json:"CalculateOnExit,omitempty"`
+    Name string `json:"Name,omitempty"`
 
     // FormField dropdownlist element.
     Enabled bool `json:"Enabled,omitempty"`
+
+    // FormField dropdownlist element.
+    StatusText string `json:"StatusText,omitempty"`
+
+    // FormField dropdownlist element.
+    OwnStatus bool `json:"OwnStatus,omitempty"`
+
+    // FormField dropdownlist element.
+    HelpText string `json:"HelpText,omitempty"`
+
+    // FormField dropdownlist element.
+    OwnHelp bool `json:"OwnHelp,omitempty"`
+
+    // FormField dropdownlist element.
+    CalculateOnExit bool `json:"CalculateOnExit,omitempty"`
 
     // FormField dropdownlist element.
     EntryMacro string `json:"EntryMacro,omitempty"`
 
     // FormField dropdownlist element.
     ExitMacro string `json:"ExitMacro,omitempty"`
-
-    // FormField dropdownlist element.
-    HelpText string `json:"HelpText,omitempty"`
-
-    // FormField dropdownlist element.
-    Name string `json:"Name,omitempty"`
-
-    // FormField dropdownlist element.
-    OwnHelp bool `json:"OwnHelp,omitempty"`
-
-    // FormField dropdownlist element.
-    OwnStatus bool `json:"OwnStatus,omitempty"`
-
-    // FormField dropdownlist element.
-    StatusText string `json:"StatusText,omitempty"`
 
     // FormField dropdownlist element.
     DropDownItems []string `json:"DropDownItems,omitempty"`
@@ -77,31 +77,31 @@ type FormFieldDropDown struct {
     NodeId *string `json:"NodeId,omitempty"`
 
     // FormField dropdownlist element.
-    CalculateOnExit *bool `json:"CalculateOnExit,omitempty"`
+    Name *string `json:"Name,omitempty"`
 
     // FormField dropdownlist element.
     Enabled *bool `json:"Enabled,omitempty"`
+
+    // FormField dropdownlist element.
+    StatusText *string `json:"StatusText,omitempty"`
+
+    // FormField dropdownlist element.
+    OwnStatus *bool `json:"OwnStatus,omitempty"`
+
+    // FormField dropdownlist element.
+    HelpText *string `json:"HelpText,omitempty"`
+
+    // FormField dropdownlist element.
+    OwnHelp *bool `json:"OwnHelp,omitempty"`
+
+    // FormField dropdownlist element.
+    CalculateOnExit *bool `json:"CalculateOnExit,omitempty"`
 
     // FormField dropdownlist element.
     EntryMacro *string `json:"EntryMacro,omitempty"`
 
     // FormField dropdownlist element.
     ExitMacro *string `json:"ExitMacro,omitempty"`
-
-    // FormField dropdownlist element.
-    HelpText *string `json:"HelpText,omitempty"`
-
-    // FormField dropdownlist element.
-    Name *string `json:"Name,omitempty"`
-
-    // FormField dropdownlist element.
-    OwnHelp *bool `json:"OwnHelp,omitempty"`
-
-    // FormField dropdownlist element.
-    OwnStatus *bool `json:"OwnStatus,omitempty"`
-
-    // FormField dropdownlist element.
-    StatusText *string `json:"StatusText,omitempty"`
 
     // FormField dropdownlist element.
     DropDownItems []string `json:"DropDownItems,omitempty"`

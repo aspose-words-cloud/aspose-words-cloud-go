@@ -33,10 +33,10 @@ type CustomXmlPartUpdateResult struct {
     Link WordsApiLinkResult `json:"Link,omitempty"`
 
     // Custom xml part update.
-    Data string `json:"Data,omitempty"`
+    Id string `json:"Id,omitempty"`
 
     // Custom xml part update.
-    Id string `json:"Id,omitempty"`
+    Data string `json:"Data,omitempty"`
 }
 
 type CustomXmlPartUpdate struct {
@@ -44,10 +44,10 @@ type CustomXmlPartUpdate struct {
     Link IWordsApiLink `json:"Link,omitempty"`
 
     // Custom xml part update.
-    Data *string `json:"Data,omitempty"`
+    Id *string `json:"Id,omitempty"`
 
     // Custom xml part update.
-    Id *string `json:"Id,omitempty"`
+    Data *string `json:"Data,omitempty"`
 }
 
 type ICustomXmlPartUpdate interface {

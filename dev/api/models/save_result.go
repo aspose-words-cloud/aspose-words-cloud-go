@@ -30,24 +30,24 @@ package models
 // Result of saving.
 type SaveResultResult struct {
     // Result of saving.
-    AdditionalItems []FileLinkResult `json:"AdditionalItems,omitempty"`
-
-    // Result of saving.
     DestDocument FileLinkResult `json:"DestDocument,omitempty"`
 
     // Result of saving.
     SourceDocument FileLinkResult `json:"SourceDocument,omitempty"`
+
+    // Result of saving.
+    AdditionalItems []FileLinkResult `json:"AdditionalItems,omitempty"`
 }
 
 type SaveResult struct {
-    // Result of saving.
-    AdditionalItems []FileLink `json:"AdditionalItems,omitempty"`
-
     // Result of saving.
     DestDocument IFileLink `json:"DestDocument,omitempty"`
 
     // Result of saving.
     SourceDocument IFileLink `json:"SourceDocument,omitempty"`
+
+    // Result of saving.
+    AdditionalItems []FileLink `json:"AdditionalItems,omitempty"`
 }
 
 type ISaveResult interface {
@@ -62,11 +62,6 @@ func (SaveResult) IsSaveResult() bool {
 
 
 func (obj *SaveResult) Initialize() {
-    if (obj.AdditionalItems != nil) {
-        for _, objElementAdditionalItems := range obj.AdditionalItems {
-            objElementAdditionalItems.Initialize()
-        }
-    }
     if (obj.DestDocument != nil) {
         obj.DestDocument.Initialize()
     }
@@ -75,6 +70,11 @@ func (obj *SaveResult) Initialize() {
         obj.SourceDocument.Initialize()
     }
 
+    if (obj.AdditionalItems != nil) {
+        for _, objElementAdditionalItems := range obj.AdditionalItems {
+            objElementAdditionalItems.Initialize()
+        }
+    }
 
 }
 

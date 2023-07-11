@@ -36,40 +36,46 @@ type StructuredDocumentTagInsertResult struct {
     NodeId string `json:"NodeId,omitempty"`
 
     // DTO container with a StructuredDocumentTag.
-    Appearance string `json:"Appearance,omitempty"`
-
-    // DTO container with a StructuredDocumentTag.
-    BuildingBlockCategory string `json:"BuildingBlockCategory,omitempty"`
-
-    // DTO container with a StructuredDocumentTag.
-    BuildingBlockGallery string `json:"BuildingBlockGallery,omitempty"`
-
-    // DTO container with a StructuredDocumentTag.
-    CalendarType string `json:"CalendarType,omitempty"`
+    ListItems []StructuredDocumentTagListItemResult `json:"ListItems,omitempty"`
 
     // DTO container with a StructuredDocumentTag.
     Checked bool `json:"Checked,omitempty"`
 
     // DTO container with a StructuredDocumentTag.
-    Color string `json:"Color,omitempty"`
-
-    // DTO container with a StructuredDocumentTag.
-    DateDisplayFormat string `json:"DateDisplayFormat,omitempty"`
+    Appearance string `json:"Appearance,omitempty"`
 
     // DTO container with a StructuredDocumentTag.
     DateDisplayLocale int32 `json:"DateDisplayLocale,omitempty"`
 
     // DTO container with a StructuredDocumentTag.
-    DateStorageFormat string `json:"DateStorageFormat,omitempty"`
+    DateDisplayFormat string `json:"DateDisplayFormat,omitempty"`
 
     // DTO container with a StructuredDocumentTag.
     FullDate Time `json:"FullDate,omitempty"`
 
     // DTO container with a StructuredDocumentTag.
-    Id int32 `json:"Id,omitempty"`
+    Title string `json:"Title,omitempty"`
 
     // DTO container with a StructuredDocumentTag.
-    IsShowingPlaceholderText bool `json:"IsShowingPlaceholderText,omitempty"`
+    DateStorageFormat string `json:"DateStorageFormat,omitempty"`
+
+    // DTO container with a StructuredDocumentTag.
+    BuildingBlockGallery string `json:"BuildingBlockGallery,omitempty"`
+
+    // DTO container with a StructuredDocumentTag.
+    BuildingBlockCategory string `json:"BuildingBlockCategory,omitempty"`
+
+    // DTO container with a StructuredDocumentTag.
+    Multiline bool `json:"Multiline,omitempty"`
+
+    // DTO container with a StructuredDocumentTag.
+    Color string `json:"Color,omitempty"`
+
+    // DTO container with a StructuredDocumentTag.
+    StyleName string `json:"StyleName,omitempty"`
+
+    // DTO container with a StructuredDocumentTag.
+    CalendarType string `json:"CalendarType,omitempty"`
 
     // DTO container with a StructuredDocumentTag.
     IsTemporary bool `json:"IsTemporary,omitempty"`
@@ -78,7 +84,10 @@ type StructuredDocumentTagInsertResult struct {
     Level string `json:"Level,omitempty"`
 
     // DTO container with a StructuredDocumentTag.
-    ListItems []StructuredDocumentTagListItemResult `json:"ListItems,omitempty"`
+    SdtType string `json:"SdtType,omitempty"`
+
+    // DTO container with a StructuredDocumentTag.
+    PlaceholderName string `json:"PlaceholderName,omitempty"`
 
     // DTO container with a StructuredDocumentTag.
     LockContentControl bool `json:"LockContentControl,omitempty"`
@@ -87,22 +96,13 @@ type StructuredDocumentTagInsertResult struct {
     LockContents bool `json:"LockContents,omitempty"`
 
     // DTO container with a StructuredDocumentTag.
-    Multiline bool `json:"Multiline,omitempty"`
-
-    // DTO container with a StructuredDocumentTag.
-    PlaceholderName string `json:"PlaceholderName,omitempty"`
-
-    // DTO container with a StructuredDocumentTag.
-    SdtType string `json:"SdtType,omitempty"`
-
-    // DTO container with a StructuredDocumentTag.
-    StyleName string `json:"StyleName,omitempty"`
+    IsShowingPlaceholderText bool `json:"IsShowingPlaceholderText,omitempty"`
 
     // DTO container with a StructuredDocumentTag.
     Tag string `json:"Tag,omitempty"`
 
     // DTO container with a StructuredDocumentTag.
-    Title string `json:"Title,omitempty"`
+    Id int32 `json:"Id,omitempty"`
 
     // DTO container with a StructuredDocumentTag.
     WordOpenXML string `json:"WordOpenXML,omitempty"`
@@ -116,40 +116,46 @@ type StructuredDocumentTagInsert struct {
     NodeId *string `json:"NodeId,omitempty"`
 
     // DTO container with a StructuredDocumentTag.
-    Appearance *string `json:"Appearance,omitempty"`
-
-    // DTO container with a StructuredDocumentTag.
-    BuildingBlockCategory *string `json:"BuildingBlockCategory,omitempty"`
-
-    // DTO container with a StructuredDocumentTag.
-    BuildingBlockGallery *string `json:"BuildingBlockGallery,omitempty"`
-
-    // DTO container with a StructuredDocumentTag.
-    CalendarType *string `json:"CalendarType,omitempty"`
+    ListItems []StructuredDocumentTagListItem `json:"ListItems,omitempty"`
 
     // DTO container with a StructuredDocumentTag.
     Checked *bool `json:"Checked,omitempty"`
 
     // DTO container with a StructuredDocumentTag.
-    Color *string `json:"Color,omitempty"`
-
-    // DTO container with a StructuredDocumentTag.
-    DateDisplayFormat *string `json:"DateDisplayFormat,omitempty"`
+    Appearance *string `json:"Appearance,omitempty"`
 
     // DTO container with a StructuredDocumentTag.
     DateDisplayLocale *int32 `json:"DateDisplayLocale,omitempty"`
 
     // DTO container with a StructuredDocumentTag.
-    DateStorageFormat *string `json:"DateStorageFormat,omitempty"`
+    DateDisplayFormat *string `json:"DateDisplayFormat,omitempty"`
 
     // DTO container with a StructuredDocumentTag.
     FullDate *Time `json:"FullDate,omitempty"`
 
     // DTO container with a StructuredDocumentTag.
-    Id *int32 `json:"Id,omitempty"`
+    Title *string `json:"Title,omitempty"`
 
     // DTO container with a StructuredDocumentTag.
-    IsShowingPlaceholderText *bool `json:"IsShowingPlaceholderText,omitempty"`
+    DateStorageFormat *string `json:"DateStorageFormat,omitempty"`
+
+    // DTO container with a StructuredDocumentTag.
+    BuildingBlockGallery *string `json:"BuildingBlockGallery,omitempty"`
+
+    // DTO container with a StructuredDocumentTag.
+    BuildingBlockCategory *string `json:"BuildingBlockCategory,omitempty"`
+
+    // DTO container with a StructuredDocumentTag.
+    Multiline *bool `json:"Multiline,omitempty"`
+
+    // DTO container with a StructuredDocumentTag.
+    Color *string `json:"Color,omitempty"`
+
+    // DTO container with a StructuredDocumentTag.
+    StyleName *string `json:"StyleName,omitempty"`
+
+    // DTO container with a StructuredDocumentTag.
+    CalendarType *string `json:"CalendarType,omitempty"`
 
     // DTO container with a StructuredDocumentTag.
     IsTemporary *bool `json:"IsTemporary,omitempty"`
@@ -158,7 +164,10 @@ type StructuredDocumentTagInsert struct {
     Level *string `json:"Level,omitempty"`
 
     // DTO container with a StructuredDocumentTag.
-    ListItems []StructuredDocumentTagListItem `json:"ListItems,omitempty"`
+    SdtType *string `json:"SdtType,omitempty"`
+
+    // DTO container with a StructuredDocumentTag.
+    PlaceholderName *string `json:"PlaceholderName,omitempty"`
 
     // DTO container with a StructuredDocumentTag.
     LockContentControl *bool `json:"LockContentControl,omitempty"`
@@ -167,22 +176,13 @@ type StructuredDocumentTagInsert struct {
     LockContents *bool `json:"LockContents,omitempty"`
 
     // DTO container with a StructuredDocumentTag.
-    Multiline *bool `json:"Multiline,omitempty"`
-
-    // DTO container with a StructuredDocumentTag.
-    PlaceholderName *string `json:"PlaceholderName,omitempty"`
-
-    // DTO container with a StructuredDocumentTag.
-    SdtType *string `json:"SdtType,omitempty"`
-
-    // DTO container with a StructuredDocumentTag.
-    StyleName *string `json:"StyleName,omitempty"`
+    IsShowingPlaceholderText *bool `json:"IsShowingPlaceholderText,omitempty"`
 
     // DTO container with a StructuredDocumentTag.
     Tag *string `json:"Tag,omitempty"`
 
     // DTO container with a StructuredDocumentTag.
-    Title *string `json:"Title,omitempty"`
+    Id *int32 `json:"Id,omitempty"`
 
     // DTO container with a StructuredDocumentTag.
     WordOpenXML *string `json:"WordOpenXML,omitempty"`

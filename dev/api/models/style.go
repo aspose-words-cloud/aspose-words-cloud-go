@@ -33,19 +33,16 @@ type StyleResult struct {
     Link WordsApiLinkResult `json:"Link,omitempty"`
 
     // DTO container with a single document style.
-    Aliases []string `json:"Aliases,omitempty"`
-
-    // DTO container with a single document style.
-    BaseStyleName string `json:"BaseStyleName,omitempty"`
+    Font FontResult `json:"Font,omitempty"`
 
     // DTO container with a single document style.
     BuiltIn bool `json:"BuiltIn,omitempty"`
 
     // DTO container with a single document style.
-    Font FontResult `json:"Font,omitempty"`
+    NextParagraphStyleName string `json:"NextParagraphStyleName,omitempty"`
 
     // DTO container with a single document style.
-    IsHeading bool `json:"IsHeading,omitempty"`
+    BaseStyleName string `json:"BaseStyleName,omitempty"`
 
     // DTO container with a single document style.
     IsQuickStyle bool `json:"IsQuickStyle,omitempty"`
@@ -54,16 +51,19 @@ type StyleResult struct {
     LinkedStyleName string `json:"LinkedStyleName,omitempty"`
 
     // DTO container with a single document style.
-    Name string `json:"Name,omitempty"`
+    Type string `json:"Type,omitempty"`
 
     // DTO container with a single document style.
-    NextParagraphStyleName string `json:"NextParagraphStyleName,omitempty"`
+    IsHeading bool `json:"IsHeading,omitempty"`
+
+    // DTO container with a single document style.
+    Aliases []string `json:"Aliases,omitempty"`
 
     // DTO container with a single document style.
     StyleIdentifier string `json:"StyleIdentifier,omitempty"`
 
     // DTO container with a single document style.
-    Type string `json:"Type,omitempty"`
+    Name string `json:"Name,omitempty"`
 }
 
 type Style struct {
@@ -71,19 +71,16 @@ type Style struct {
     Link IWordsApiLink `json:"Link,omitempty"`
 
     // DTO container with a single document style.
-    Aliases []string `json:"Aliases,omitempty"`
-
-    // DTO container with a single document style.
-    BaseStyleName *string `json:"BaseStyleName,omitempty"`
+    Font IFont `json:"Font,omitempty"`
 
     // DTO container with a single document style.
     BuiltIn *bool `json:"BuiltIn,omitempty"`
 
     // DTO container with a single document style.
-    Font IFont `json:"Font,omitempty"`
+    NextParagraphStyleName *string `json:"NextParagraphStyleName,omitempty"`
 
     // DTO container with a single document style.
-    IsHeading *bool `json:"IsHeading,omitempty"`
+    BaseStyleName *string `json:"BaseStyleName,omitempty"`
 
     // DTO container with a single document style.
     IsQuickStyle *bool `json:"IsQuickStyle,omitempty"`
@@ -92,16 +89,19 @@ type Style struct {
     LinkedStyleName *string `json:"LinkedStyleName,omitempty"`
 
     // DTO container with a single document style.
-    Name *string `json:"Name,omitempty"`
+    Type *string `json:"Type,omitempty"`
 
     // DTO container with a single document style.
-    NextParagraphStyleName *string `json:"NextParagraphStyleName,omitempty"`
+    IsHeading *bool `json:"IsHeading,omitempty"`
+
+    // DTO container with a single document style.
+    Aliases []string `json:"Aliases,omitempty"`
 
     // DTO container with a single document style.
     StyleIdentifier *string `json:"StyleIdentifier,omitempty"`
 
     // DTO container with a single document style.
-    Type *string `json:"Type,omitempty"`
+    Name *string `json:"Name,omitempty"`
 }
 
 type IStyle interface {

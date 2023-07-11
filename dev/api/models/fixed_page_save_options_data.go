@@ -51,9 +51,6 @@ type FixedPageSaveOptionsDataResult struct {
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
-    SaveFormat string `json:"SaveFormat,omitempty"`
-
-    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
     UpdateCreatedTimeProperty bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
@@ -70,6 +67,9 @@ type FixedPageSaveOptionsDataResult struct {
 
     // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
     ZipOutput bool `json:"ZipOutput,omitempty"`
+
+    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
+    SaveFormat string `json:"SaveFormat,omitempty"`
 
     // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
     ColorMode string `json:"ColorMode,omitempty"`
@@ -116,9 +116,6 @@ type FixedPageSaveOptionsData struct {
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
 
     // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
-    SaveFormat *string `json:"SaveFormat,omitempty"`
-
-    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
     UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
@@ -135,6 +132,9 @@ type FixedPageSaveOptionsData struct {
 
     // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
     ZipOutput *bool `json:"ZipOutput,omitempty"`
+
+    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
+    SaveFormat *string `json:"SaveFormat,omitempty"`
 
     // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
     ColorMode *string `json:"ColorMode,omitempty"`

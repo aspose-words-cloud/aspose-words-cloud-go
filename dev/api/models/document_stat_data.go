@@ -36,13 +36,13 @@ type DocumentStatDataResult struct {
     PageCount int32 `json:"PageCount,omitempty"`
 
     // Container for the document's statistical data.
-    PageStatData []PageStatDataResult `json:"PageStatData,omitempty"`
-
-    // Container for the document's statistical data.
     ParagraphCount int32 `json:"ParagraphCount,omitempty"`
 
     // Container for the document's statistical data.
     WordCount int32 `json:"WordCount,omitempty"`
+
+    // Container for the document's statistical data.
+    PageStatData []PageStatDataResult `json:"PageStatData,omitempty"`
 }
 
 type DocumentStatData struct {
@@ -53,13 +53,13 @@ type DocumentStatData struct {
     PageCount *int32 `json:"PageCount,omitempty"`
 
     // Container for the document's statistical data.
-    PageStatData []PageStatData `json:"PageStatData,omitempty"`
-
-    // Container for the document's statistical data.
     ParagraphCount *int32 `json:"ParagraphCount,omitempty"`
 
     // Container for the document's statistical data.
     WordCount *int32 `json:"WordCount,omitempty"`
+
+    // Container for the document's statistical data.
+    PageStatData []PageStatData `json:"PageStatData,omitempty"`
 }
 
 type IDocumentStatData interface {

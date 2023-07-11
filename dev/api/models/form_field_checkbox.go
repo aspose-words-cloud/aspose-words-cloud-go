@@ -36,10 +36,25 @@ type FormFieldCheckboxResult struct {
     NodeId string `json:"NodeId,omitempty"`
 
     // FormField checkbox element.
-    CalculateOnExit bool `json:"CalculateOnExit,omitempty"`
+    Name string `json:"Name,omitempty"`
 
     // FormField checkbox element.
     Enabled bool `json:"Enabled,omitempty"`
+
+    // FormField checkbox element.
+    StatusText string `json:"StatusText,omitempty"`
+
+    // FormField checkbox element.
+    OwnStatus bool `json:"OwnStatus,omitempty"`
+
+    // FormField checkbox element.
+    HelpText string `json:"HelpText,omitempty"`
+
+    // FormField checkbox element.
+    OwnHelp bool `json:"OwnHelp,omitempty"`
+
+    // FormField checkbox element.
+    CalculateOnExit bool `json:"CalculateOnExit,omitempty"`
 
     // FormField checkbox element.
     EntryMacro string `json:"EntryMacro,omitempty"`
@@ -48,28 +63,13 @@ type FormFieldCheckboxResult struct {
     ExitMacro string `json:"ExitMacro,omitempty"`
 
     // FormField checkbox element.
-    HelpText string `json:"HelpText,omitempty"`
-
-    // FormField checkbox element.
-    Name string `json:"Name,omitempty"`
-
-    // FormField checkbox element.
-    OwnHelp bool `json:"OwnHelp,omitempty"`
-
-    // FormField checkbox element.
-    OwnStatus bool `json:"OwnStatus,omitempty"`
-
-    // FormField checkbox element.
-    StatusText string `json:"StatusText,omitempty"`
+    IsCheckBoxExactSize bool `json:"IsCheckBoxExactSize,omitempty"`
 
     // FormField checkbox element.
     CheckBoxSize float64 `json:"CheckBoxSize,omitempty"`
 
     // FormField checkbox element.
     Checked bool `json:"Checked,omitempty"`
-
-    // FormField checkbox element.
-    IsCheckBoxExactSize bool `json:"IsCheckBoxExactSize,omitempty"`
 }
 
 type FormFieldCheckbox struct {
@@ -80,10 +80,25 @@ type FormFieldCheckbox struct {
     NodeId *string `json:"NodeId,omitempty"`
 
     // FormField checkbox element.
-    CalculateOnExit *bool `json:"CalculateOnExit,omitempty"`
+    Name *string `json:"Name,omitempty"`
 
     // FormField checkbox element.
     Enabled *bool `json:"Enabled,omitempty"`
+
+    // FormField checkbox element.
+    StatusText *string `json:"StatusText,omitempty"`
+
+    // FormField checkbox element.
+    OwnStatus *bool `json:"OwnStatus,omitempty"`
+
+    // FormField checkbox element.
+    HelpText *string `json:"HelpText,omitempty"`
+
+    // FormField checkbox element.
+    OwnHelp *bool `json:"OwnHelp,omitempty"`
+
+    // FormField checkbox element.
+    CalculateOnExit *bool `json:"CalculateOnExit,omitempty"`
 
     // FormField checkbox element.
     EntryMacro *string `json:"EntryMacro,omitempty"`
@@ -92,28 +107,13 @@ type FormFieldCheckbox struct {
     ExitMacro *string `json:"ExitMacro,omitempty"`
 
     // FormField checkbox element.
-    HelpText *string `json:"HelpText,omitempty"`
-
-    // FormField checkbox element.
-    Name *string `json:"Name,omitempty"`
-
-    // FormField checkbox element.
-    OwnHelp *bool `json:"OwnHelp,omitempty"`
-
-    // FormField checkbox element.
-    OwnStatus *bool `json:"OwnStatus,omitempty"`
-
-    // FormField checkbox element.
-    StatusText *string `json:"StatusText,omitempty"`
+    IsCheckBoxExactSize *bool `json:"IsCheckBoxExactSize,omitempty"`
 
     // FormField checkbox element.
     CheckBoxSize *float64 `json:"CheckBoxSize,omitempty"`
 
     // FormField checkbox element.
     Checked *bool `json:"Checked,omitempty"`
-
-    // FormField checkbox element.
-    IsCheckBoxExactSize *bool `json:"IsCheckBoxExactSize,omitempty"`
 }
 
 type IFormFieldCheckbox interface {

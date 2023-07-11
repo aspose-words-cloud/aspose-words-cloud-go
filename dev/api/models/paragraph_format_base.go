@@ -81,9 +81,6 @@ type ParagraphFormatBaseResult struct {
     RightIndent float64 `json:"RightIndent,omitempty"`
 
     // Paragraph format element base class.
-    Shading ShadingResult `json:"Shading,omitempty"`
-
-    // Paragraph format element base class.
     SpaceAfter float64 `json:"SpaceAfter,omitempty"`
 
     // Paragraph format element base class.
@@ -109,6 +106,9 @@ type ParagraphFormatBaseResult struct {
 
     // Paragraph format element base class.
     WidowControl bool `json:"WidowControl,omitempty"`
+
+    // Paragraph format element base class.
+    Shading ShadingResult `json:"Shading,omitempty"`
 }
 
 type ParagraphFormatBase struct {
@@ -164,9 +164,6 @@ type ParagraphFormatBase struct {
     RightIndent *float64 `json:"RightIndent,omitempty"`
 
     // Paragraph format element base class.
-    Shading IShading `json:"Shading,omitempty"`
-
-    // Paragraph format element base class.
     SpaceAfter *float64 `json:"SpaceAfter,omitempty"`
 
     // Paragraph format element base class.
@@ -192,6 +189,9 @@ type ParagraphFormatBase struct {
 
     // Paragraph format element base class.
     WidowControl *bool `json:"WidowControl,omitempty"`
+
+    // Paragraph format element base class.
+    Shading IShading `json:"Shading,omitempty"`
 }
 
 type IParagraphFormatBase interface {

@@ -36,10 +36,25 @@ type FormFieldTextInputResult struct {
     NodeId string `json:"NodeId,omitempty"`
 
     // FormField text input element.
-    CalculateOnExit bool `json:"CalculateOnExit,omitempty"`
+    Name string `json:"Name,omitempty"`
 
     // FormField text input element.
     Enabled bool `json:"Enabled,omitempty"`
+
+    // FormField text input element.
+    StatusText string `json:"StatusText,omitempty"`
+
+    // FormField text input element.
+    OwnStatus bool `json:"OwnStatus,omitempty"`
+
+    // FormField text input element.
+    HelpText string `json:"HelpText,omitempty"`
+
+    // FormField text input element.
+    OwnHelp bool `json:"OwnHelp,omitempty"`
+
+    // FormField text input element.
+    CalculateOnExit bool `json:"CalculateOnExit,omitempty"`
 
     // FormField text input element.
     EntryMacro string `json:"EntryMacro,omitempty"`
@@ -48,31 +63,16 @@ type FormFieldTextInputResult struct {
     ExitMacro string `json:"ExitMacro,omitempty"`
 
     // FormField text input element.
-    HelpText string `json:"HelpText,omitempty"`
+    TextInputFormat string `json:"TextInputFormat,omitempty"`
 
     // FormField text input element.
-    Name string `json:"Name,omitempty"`
-
-    // FormField text input element.
-    OwnHelp bool `json:"OwnHelp,omitempty"`
-
-    // FormField text input element.
-    OwnStatus bool `json:"OwnStatus,omitempty"`
-
-    // FormField text input element.
-    StatusText string `json:"StatusText,omitempty"`
-
-    // FormField text input element.
-    MaxLength int32 `json:"MaxLength,omitempty"`
+    TextInputType string `json:"TextInputType,omitempty"`
 
     // FormField text input element.
     TextInputDefault string `json:"TextInputDefault,omitempty"`
 
     // FormField text input element.
-    TextInputFormat string `json:"TextInputFormat,omitempty"`
-
-    // FormField text input element.
-    TextInputType string `json:"TextInputType,omitempty"`
+    MaxLength int32 `json:"MaxLength,omitempty"`
 }
 
 type FormFieldTextInput struct {
@@ -83,10 +83,25 @@ type FormFieldTextInput struct {
     NodeId *string `json:"NodeId,omitempty"`
 
     // FormField text input element.
-    CalculateOnExit *bool `json:"CalculateOnExit,omitempty"`
+    Name *string `json:"Name,omitempty"`
 
     // FormField text input element.
     Enabled *bool `json:"Enabled,omitempty"`
+
+    // FormField text input element.
+    StatusText *string `json:"StatusText,omitempty"`
+
+    // FormField text input element.
+    OwnStatus *bool `json:"OwnStatus,omitempty"`
+
+    // FormField text input element.
+    HelpText *string `json:"HelpText,omitempty"`
+
+    // FormField text input element.
+    OwnHelp *bool `json:"OwnHelp,omitempty"`
+
+    // FormField text input element.
+    CalculateOnExit *bool `json:"CalculateOnExit,omitempty"`
 
     // FormField text input element.
     EntryMacro *string `json:"EntryMacro,omitempty"`
@@ -95,31 +110,16 @@ type FormFieldTextInput struct {
     ExitMacro *string `json:"ExitMacro,omitempty"`
 
     // FormField text input element.
-    HelpText *string `json:"HelpText,omitempty"`
+    TextInputFormat *string `json:"TextInputFormat,omitempty"`
 
     // FormField text input element.
-    Name *string `json:"Name,omitempty"`
-
-    // FormField text input element.
-    OwnHelp *bool `json:"OwnHelp,omitempty"`
-
-    // FormField text input element.
-    OwnStatus *bool `json:"OwnStatus,omitempty"`
-
-    // FormField text input element.
-    StatusText *string `json:"StatusText,omitempty"`
-
-    // FormField text input element.
-    MaxLength *int32 `json:"MaxLength,omitempty"`
+    TextInputType *string `json:"TextInputType,omitempty"`
 
     // FormField text input element.
     TextInputDefault *string `json:"TextInputDefault,omitempty"`
 
     // FormField text input element.
-    TextInputFormat *string `json:"TextInputFormat,omitempty"`
-
-    // FormField text input element.
-    TextInputType *string `json:"TextInputType,omitempty"`
+    MaxLength *int32 `json:"MaxLength,omitempty"`
 }
 
 type IFormFieldTextInput interface {

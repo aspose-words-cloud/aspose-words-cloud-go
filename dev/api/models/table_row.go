@@ -36,10 +36,10 @@ type TableRowResult struct {
     NodeId string `json:"NodeId,omitempty"`
 
     // DTO container with a table row element.
-    RowFormat TableRowFormatResult `json:"RowFormat,omitempty"`
+    TableCellList []TableCellResult `json:"TableCellList,omitempty"`
 
     // DTO container with a table row element.
-    TableCellList []TableCellResult `json:"TableCellList,omitempty"`
+    RowFormat TableRowFormatResult `json:"RowFormat,omitempty"`
 }
 
 type TableRow struct {
@@ -50,10 +50,10 @@ type TableRow struct {
     NodeId *string `json:"NodeId,omitempty"`
 
     // DTO container with a table row element.
-    RowFormat ITableRowFormat `json:"RowFormat,omitempty"`
+    TableCellList []TableCell `json:"TableCellList,omitempty"`
 
     // DTO container with a table row element.
-    TableCellList []TableCell `json:"TableCellList,omitempty"`
+    RowFormat ITableRowFormat `json:"RowFormat,omitempty"`
 }
 
 type ITableRow interface {
@@ -79,15 +79,15 @@ func (obj *TableRow) Initialize() {
         obj.Link.Initialize()
     }
 
-    if (obj.RowFormat != nil) {
-        obj.RowFormat.Initialize()
-    }
-
     if (obj.TableCellList != nil) {
         for _, objElementTableCellList := range obj.TableCellList {
             objElementTableCellList.Initialize()
         }
     }
+    if (obj.RowFormat != nil) {
+        obj.RowFormat.Initialize()
+    }
+
 
 }
 

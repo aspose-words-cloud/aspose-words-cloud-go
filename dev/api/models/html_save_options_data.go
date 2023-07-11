@@ -177,13 +177,13 @@ type HtmlSaveOptionsDataResult struct {
     ResourceFolderAlias string `json:"ResourceFolderAlias,omitempty"`
 
     // Container class for html save options.
-    SaveFormat string `json:"SaveFormat,omitempty"`
-
-    // Container class for html save options.
     ScaleImageToShapeSize bool `json:"ScaleImageToShapeSize,omitempty"`
 
     // Container class for html save options.
     TableWidthOutputMode string `json:"TableWidthOutputMode,omitempty"`
+
+    // Container class for html save options.
+    SaveFormat string `json:"SaveFormat,omitempty"`
 }
 
 type HtmlSaveOptionsData struct {
@@ -335,13 +335,13 @@ type HtmlSaveOptionsData struct {
     ResourceFolderAlias *string `json:"ResourceFolderAlias,omitempty"`
 
     // Container class for html save options.
-    SaveFormat *string `json:"SaveFormat,omitempty"`
-
-    // Container class for html save options.
     ScaleImageToShapeSize *bool `json:"ScaleImageToShapeSize,omitempty"`
 
     // Container class for html save options.
     TableWidthOutputMode *string `json:"TableWidthOutputMode,omitempty"`
+
+    // Container class for html save options.
+    SaveFormat *string `json:"SaveFormat,omitempty"`
 }
 
 type IHtmlSaveOptionsData interface {

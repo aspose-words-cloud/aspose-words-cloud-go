@@ -51,9 +51,6 @@ type TxtSaveOptionsBaseDataResult struct {
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // Base class for save options of text formats.
-    SaveFormat string `json:"SaveFormat,omitempty"`
-
-    // Base class for save options of text formats.
     UpdateCreatedTimeProperty bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Base class for save options of text formats.
@@ -70,6 +67,9 @@ type TxtSaveOptionsBaseDataResult struct {
 
     // Base class for save options of text formats.
     ZipOutput bool `json:"ZipOutput,omitempty"`
+
+    // Base class for save options of text formats.
+    SaveFormat string `json:"SaveFormat,omitempty"`
 
     // Base class for save options of text formats.
     Encoding string `json:"Encoding,omitempty"`
@@ -107,9 +107,6 @@ type TxtSaveOptionsBaseData struct {
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
 
     // Base class for save options of text formats.
-    SaveFormat *string `json:"SaveFormat,omitempty"`
-
-    // Base class for save options of text formats.
     UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Base class for save options of text formats.
@@ -126,6 +123,9 @@ type TxtSaveOptionsBaseData struct {
 
     // Base class for save options of text formats.
     ZipOutput *bool `json:"ZipOutput,omitempty"`
+
+    // Base class for save options of text formats.
+    SaveFormat *string `json:"SaveFormat,omitempty"`
 
     // Base class for save options of text formats.
     Encoding *string `json:"Encoding,omitempty"`

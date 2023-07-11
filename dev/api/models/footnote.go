@@ -36,19 +36,19 @@ type FootnoteResult struct {
     NodeId string `json:"NodeId,omitempty"`
 
     // DTO container with a footnote.
-    Content StoryChildNodesResult `json:"Content,omitempty"`
+    Position DocumentPositionResult `json:"Position,omitempty"`
 
     // DTO container with a footnote.
     FootnoteType string `json:"FootnoteType,omitempty"`
-
-    // DTO container with a footnote.
-    Position DocumentPositionResult `json:"Position,omitempty"`
 
     // DTO container with a footnote.
     ReferenceMark string `json:"ReferenceMark,omitempty"`
 
     // DTO container with a footnote.
     Text string `json:"Text,omitempty"`
+
+    // DTO container with a footnote.
+    Content StoryChildNodesResult `json:"Content,omitempty"`
 }
 
 type Footnote struct {
@@ -59,19 +59,19 @@ type Footnote struct {
     NodeId *string `json:"NodeId,omitempty"`
 
     // DTO container with a footnote.
-    Content IStoryChildNodes `json:"Content,omitempty"`
+    Position IDocumentPosition `json:"Position,omitempty"`
 
     // DTO container with a footnote.
     FootnoteType *string `json:"FootnoteType,omitempty"`
-
-    // DTO container with a footnote.
-    Position IDocumentPosition `json:"Position,omitempty"`
 
     // DTO container with a footnote.
     ReferenceMark *string `json:"ReferenceMark,omitempty"`
 
     // DTO container with a footnote.
     Text *string `json:"Text,omitempty"`
+
+    // DTO container with a footnote.
+    Content IStoryChildNodes `json:"Content,omitempty"`
 }
 
 type IFootnote interface {
@@ -101,12 +101,12 @@ func (obj *Footnote) Initialize() {
         obj.Link.Initialize()
     }
 
-    if (obj.Content != nil) {
-        obj.Content.Initialize()
-    }
-
     if (obj.Position != nil) {
         obj.Position.Initialize()
+    }
+
+    if (obj.Content != nil) {
+        obj.Content.Initialize()
     }
 
 

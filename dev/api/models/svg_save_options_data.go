@@ -102,13 +102,13 @@ type SvgSaveOptionsDataResult struct {
     ResourcesFolderAlias string `json:"ResourcesFolderAlias,omitempty"`
 
     // Container class for svg save options.
-    SaveFormat string `json:"SaveFormat,omitempty"`
-
-    // Container class for svg save options.
     ShowPageBorder bool `json:"ShowPageBorder,omitempty"`
 
     // Container class for svg save options.
     TextOutputMode string `json:"TextOutputMode,omitempty"`
+
+    // Container class for svg save options.
+    SaveFormat string `json:"SaveFormat,omitempty"`
 }
 
 type SvgSaveOptionsData struct {
@@ -185,13 +185,13 @@ type SvgSaveOptionsData struct {
     ResourcesFolderAlias *string `json:"ResourcesFolderAlias,omitempty"`
 
     // Container class for svg save options.
-    SaveFormat *string `json:"SaveFormat,omitempty"`
-
-    // Container class for svg save options.
     ShowPageBorder *bool `json:"ShowPageBorder,omitempty"`
 
     // Container class for svg save options.
     TextOutputMode *string `json:"TextOutputMode,omitempty"`
+
+    // Container class for svg save options.
+    SaveFormat *string `json:"SaveFormat,omitempty"`
 }
 
 type ISvgSaveOptionsData interface {

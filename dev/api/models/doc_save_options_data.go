@@ -75,13 +75,13 @@ type DocSaveOptionsDataResult struct {
     Password string `json:"Password,omitempty"`
 
     // Container class for doc/dot save options.
-    SaveFormat string `json:"SaveFormat,omitempty"`
-
-    // Container class for doc/dot save options.
     SavePictureBullet bool `json:"SavePictureBullet,omitempty"`
 
     // Container class for doc/dot save options.
     SaveRoutingSlip bool `json:"SaveRoutingSlip,omitempty"`
+
+    // Container class for doc/dot save options.
+    SaveFormat string `json:"SaveFormat,omitempty"`
 }
 
 type DocSaveOptionsData struct {
@@ -131,13 +131,13 @@ type DocSaveOptionsData struct {
     Password *string `json:"Password,omitempty"`
 
     // Container class for doc/dot save options.
-    SaveFormat *string `json:"SaveFormat,omitempty"`
-
-    // Container class for doc/dot save options.
     SavePictureBullet *bool `json:"SavePictureBullet,omitempty"`
 
     // Container class for doc/dot save options.
     SaveRoutingSlip *bool `json:"SaveRoutingSlip,omitempty"`
+
+    // Container class for doc/dot save options.
+    SaveFormat *string `json:"SaveFormat,omitempty"`
 }
 
 type IDocSaveOptionsData interface {

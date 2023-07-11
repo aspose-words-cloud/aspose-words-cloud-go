@@ -30,6 +30,9 @@ package models
 // Represents Words document DTO.
 type DocumentResult struct {
     // Represents Words document DTO.
+    Links []LinkResult `json:"Links,omitempty"`
+
+    // Represents Words document DTO.
     DocumentProperties DocumentPropertiesResult `json:"DocumentProperties,omitempty"`
 
     // Represents Words document DTO.
@@ -42,13 +45,13 @@ type DocumentResult struct {
     IsSigned bool `json:"IsSigned,omitempty"`
 
     // Represents Words document DTO.
-    Links []LinkResult `json:"Links,omitempty"`
-
-    // Represents Words document DTO.
     SourceFormat string `json:"SourceFormat,omitempty"`
 }
 
 type Document struct {
+    // Represents Words document DTO.
+    Links []Link `json:"Links,omitempty"`
+
     // Represents Words document DTO.
     DocumentProperties IDocumentProperties `json:"DocumentProperties,omitempty"`
 
@@ -60,9 +63,6 @@ type Document struct {
 
     // Represents Words document DTO.
     IsSigned *bool `json:"IsSigned,omitempty"`
-
-    // Represents Words document DTO.
-    Links []Link `json:"Links,omitempty"`
 
     // Represents Words document DTO.
     SourceFormat *string `json:"SourceFormat,omitempty"`
@@ -80,15 +80,15 @@ func (Document) IsDocument() bool {
 
 
 func (obj *Document) Initialize() {
-    if (obj.DocumentProperties != nil) {
-        obj.DocumentProperties.Initialize()
-    }
-
     if (obj.Links != nil) {
         for _, objElementLinks := range obj.Links {
             objElementLinks.Initialize()
         }
     }
+    if (obj.DocumentProperties != nil) {
+        obj.DocumentProperties.Initialize()
+    }
+
 
 }
 

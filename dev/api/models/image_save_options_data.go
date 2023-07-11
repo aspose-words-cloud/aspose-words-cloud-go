@@ -51,9 +51,6 @@ type ImageSaveOptionsDataResult struct {
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // Container abstract class for image save options.
-    SaveFormat string `json:"SaveFormat,omitempty"`
-
-    // Container abstract class for image save options.
     UpdateCreatedTimeProperty bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Container abstract class for image save options.
@@ -70,6 +67,9 @@ type ImageSaveOptionsDataResult struct {
 
     // Container abstract class for image save options.
     ZipOutput bool `json:"ZipOutput,omitempty"`
+
+    // Container abstract class for image save options.
+    SaveFormat string `json:"SaveFormat,omitempty"`
 
     // Container abstract class for image save options.
     ColorMode string `json:"ColorMode,omitempty"`
@@ -120,13 +120,13 @@ type ImageSaveOptionsDataResult struct {
     UseAntiAliasing bool `json:"UseAntiAliasing,omitempty"`
 
     // Container abstract class for image save options.
-    UseGdiEmfRenderer bool `json:"UseGdiEmfRenderer,omitempty"`
-
-    // Container abstract class for image save options.
     UseHighQualityRendering bool `json:"UseHighQualityRendering,omitempty"`
 
     // Container abstract class for image save options.
     VerticalResolution float64 `json:"VerticalResolution,omitempty"`
+
+    // Container abstract class for image save options.
+    UseGdiEmfRenderer bool `json:"UseGdiEmfRenderer,omitempty"`
 }
 
 type ImageSaveOptionsData struct {
@@ -152,9 +152,6 @@ type ImageSaveOptionsData struct {
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
 
     // Container abstract class for image save options.
-    SaveFormat *string `json:"SaveFormat,omitempty"`
-
-    // Container abstract class for image save options.
     UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Container abstract class for image save options.
@@ -171,6 +168,9 @@ type ImageSaveOptionsData struct {
 
     // Container abstract class for image save options.
     ZipOutput *bool `json:"ZipOutput,omitempty"`
+
+    // Container abstract class for image save options.
+    SaveFormat *string `json:"SaveFormat,omitempty"`
 
     // Container abstract class for image save options.
     ColorMode *string `json:"ColorMode,omitempty"`
@@ -221,13 +221,13 @@ type ImageSaveOptionsData struct {
     UseAntiAliasing *bool `json:"UseAntiAliasing,omitempty"`
 
     // Container abstract class for image save options.
-    UseGdiEmfRenderer *bool `json:"UseGdiEmfRenderer,omitempty"`
-
-    // Container abstract class for image save options.
     UseHighQualityRendering *bool `json:"UseHighQualityRendering,omitempty"`
 
     // Container abstract class for image save options.
     VerticalResolution *float64 `json:"VerticalResolution,omitempty"`
+
+    // Container abstract class for image save options.
+    UseGdiEmfRenderer *bool `json:"UseGdiEmfRenderer,omitempty"`
 }
 
 type IImageSaveOptionsData interface {

@@ -81,10 +81,10 @@ type MarkdownSaveOptionsDataResult struct {
     ParagraphBreak string `json:"ParagraphBreak,omitempty"`
 
     // Container class for markdown save options.
-    SaveFormat string `json:"SaveFormat,omitempty"`
+    TableContentAlignment string `json:"TableContentAlignment,omitempty"`
 
     // Container class for markdown save options.
-    TableContentAlignment string `json:"TableContentAlignment,omitempty"`
+    SaveFormat string `json:"SaveFormat,omitempty"`
 }
 
 type MarkdownSaveOptionsData struct {
@@ -140,10 +140,10 @@ type MarkdownSaveOptionsData struct {
     ParagraphBreak *string `json:"ParagraphBreak,omitempty"`
 
     // Container class for markdown save options.
-    SaveFormat *string `json:"SaveFormat,omitempty"`
+    TableContentAlignment *string `json:"TableContentAlignment,omitempty"`
 
     // Container class for markdown save options.
-    TableContentAlignment *string `json:"TableContentAlignment,omitempty"`
+    SaveFormat *string `json:"SaveFormat,omitempty"`
 }
 
 type IMarkdownSaveOptionsData interface {

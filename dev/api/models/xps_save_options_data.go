@@ -99,10 +99,10 @@ type XpsSaveOptionsDataResult struct {
     OutlineOptions OutlineOptionsDataResult `json:"OutlineOptions,omitempty"`
 
     // Container class for xps save options.
-    SaveFormat string `json:"SaveFormat,omitempty"`
+    UseBookFoldPrintingSettings bool `json:"UseBookFoldPrintingSettings,omitempty"`
 
     // Container class for xps save options.
-    UseBookFoldPrintingSettings bool `json:"UseBookFoldPrintingSettings,omitempty"`
+    SaveFormat string `json:"SaveFormat,omitempty"`
 }
 
 type XpsSaveOptionsData struct {
@@ -176,10 +176,10 @@ type XpsSaveOptionsData struct {
     OutlineOptions IOutlineOptionsData `json:"OutlineOptions,omitempty"`
 
     // Container class for xps save options.
-    SaveFormat *string `json:"SaveFormat,omitempty"`
+    UseBookFoldPrintingSettings *bool `json:"UseBookFoldPrintingSettings,omitempty"`
 
     // Container class for xps save options.
-    UseBookFoldPrintingSettings *bool `json:"UseBookFoldPrintingSettings,omitempty"`
+    SaveFormat *string `json:"SaveFormat,omitempty"`
 }
 
 type IXpsSaveOptionsData interface {

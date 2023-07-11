@@ -30,6 +30,12 @@ package models
 // Comment update.
 type CommentUpdateResult struct {
     // Comment update.
+    RangeStart NewDocumentPositionResult `json:"RangeStart,omitempty"`
+
+    // Comment update.
+    RangeEnd NewDocumentPositionResult `json:"RangeEnd,omitempty"`
+
+    // Comment update.
     Author string `json:"Author,omitempty"`
 
     // Comment update.
@@ -39,16 +45,16 @@ type CommentUpdateResult struct {
     Initial string `json:"Initial,omitempty"`
 
     // Comment update.
-    RangeEnd NewDocumentPositionResult `json:"RangeEnd,omitempty"`
-
-    // Comment update.
-    RangeStart NewDocumentPositionResult `json:"RangeStart,omitempty"`
-
-    // Comment update.
     Text string `json:"Text,omitempty"`
 }
 
 type CommentUpdate struct {
+    // Comment update.
+    RangeStart INewDocumentPosition `json:"RangeStart,omitempty"`
+
+    // Comment update.
+    RangeEnd INewDocumentPosition `json:"RangeEnd,omitempty"`
+
     // Comment update.
     Author *string `json:"Author,omitempty"`
 
@@ -57,12 +63,6 @@ type CommentUpdate struct {
 
     // Comment update.
     Initial *string `json:"Initial,omitempty"`
-
-    // Comment update.
-    RangeEnd INewDocumentPosition `json:"RangeEnd,omitempty"`
-
-    // Comment update.
-    RangeStart INewDocumentPosition `json:"RangeStart,omitempty"`
 
     // Comment update.
     Text *string `json:"Text,omitempty"`
@@ -83,12 +83,12 @@ func (CommentUpdate) IsCommentBase() bool {
 }
 
 func (obj *CommentUpdate) Initialize() {
-    if (obj.RangeEnd != nil) {
-        obj.RangeEnd.Initialize()
-    }
-
     if (obj.RangeStart != nil) {
         obj.RangeStart.Initialize()
+    }
+
+    if (obj.RangeEnd != nil) {
+        obj.RangeEnd.Initialize()
     }
 
 
