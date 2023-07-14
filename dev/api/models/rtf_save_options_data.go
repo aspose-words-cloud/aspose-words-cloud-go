@@ -78,10 +78,10 @@ type RtfSaveOptionsDataResult struct {
     PrettyFormat bool `json:"PrettyFormat,omitempty"`
 
     // Container class for rtf save options.
-    SaveFormat string `json:"SaveFormat,omitempty"`
+    SaveImagesAsWmf bool `json:"SaveImagesAsWmf,omitempty"`
 
     // Container class for rtf save options.
-    SaveImagesAsWmf bool `json:"SaveImagesAsWmf,omitempty"`
+    SaveFormat string `json:"SaveFormat,omitempty"`
 }
 
 type RtfSaveOptionsData struct {
@@ -134,10 +134,10 @@ type RtfSaveOptionsData struct {
     PrettyFormat *bool `json:"PrettyFormat,omitempty"`
 
     // Container class for rtf save options.
-    SaveFormat *string `json:"SaveFormat,omitempty"`
+    SaveImagesAsWmf *bool `json:"SaveImagesAsWmf,omitempty"`
 
     // Container class for rtf save options.
-    SaveImagesAsWmf *bool `json:"SaveImagesAsWmf,omitempty"`
+    SaveFormat *string `json:"SaveFormat,omitempty"`
 }
 
 type IRtfSaveOptionsData interface {

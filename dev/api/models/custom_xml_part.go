@@ -33,10 +33,10 @@ type CustomXmlPartResult struct {
     Link WordsApiLinkResult `json:"Link,omitempty"`
 
     // DTO container with a CustomXmlPart.
-    Data string `json:"Data,omitempty"`
+    Id string `json:"Id,omitempty"`
 
     // DTO container with a CustomXmlPart.
-    Id string `json:"Id,omitempty"`
+    Data string `json:"Data,omitempty"`
 }
 
 type CustomXmlPart struct {
@@ -44,10 +44,10 @@ type CustomXmlPart struct {
     Link IWordsApiLink `json:"Link,omitempty"`
 
     // DTO container with a CustomXmlPart.
-    Data *string `json:"Data,omitempty"`
+    Id *string `json:"Id,omitempty"`
 
     // DTO container with a CustomXmlPart.
-    Id *string `json:"Id,omitempty"`
+    Data *string `json:"Data,omitempty"`
 }
 
 type ICustomXmlPart interface {

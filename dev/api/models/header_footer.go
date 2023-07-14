@@ -39,10 +39,10 @@ type HeaderFooterResult struct {
     ChildNodes []NodeLinkResult `json:"ChildNodes,omitempty"`
 
     // DTO container with a section element.
-    DrawingObjects LinkElementResult `json:"DrawingObjects,omitempty"`
+    Paragraphs LinkElementResult `json:"Paragraphs,omitempty"`
 
     // DTO container with a section element.
-    Paragraphs LinkElementResult `json:"Paragraphs,omitempty"`
+    DrawingObjects LinkElementResult `json:"DrawingObjects,omitempty"`
 }
 
 type HeaderFooter struct {
@@ -56,10 +56,10 @@ type HeaderFooter struct {
     ChildNodes []NodeLink `json:"ChildNodes,omitempty"`
 
     // DTO container with a section element.
-    DrawingObjects ILinkElement `json:"DrawingObjects,omitempty"`
+    Paragraphs ILinkElement `json:"Paragraphs,omitempty"`
 
     // DTO container with a section element.
-    Paragraphs ILinkElement `json:"Paragraphs,omitempty"`
+    DrawingObjects ILinkElement `json:"DrawingObjects,omitempty"`
 }
 
 type IHeaderFooter interface {
@@ -90,12 +90,12 @@ func (obj *HeaderFooter) Initialize() {
             objElementChildNodes.Initialize()
         }
     }
-    if (obj.DrawingObjects != nil) {
-        obj.DrawingObjects.Initialize()
-    }
-
     if (obj.Paragraphs != nil) {
         obj.Paragraphs.Initialize()
+    }
+
+    if (obj.DrawingObjects != nil) {
+        obj.DrawingObjects.Initialize()
     }
 
 

@@ -36,13 +36,13 @@ type SectionResult struct {
     ChildNodes []NodeLinkResult `json:"ChildNodes,omitempty"`
 
     // DTO container with a section element.
-    HeaderFooters LinkElementResult `json:"HeaderFooters,omitempty"`
+    Paragraphs LinkElementResult `json:"Paragraphs,omitempty"`
 
     // DTO container with a section element.
     PageSetup LinkElementResult `json:"PageSetup,omitempty"`
 
     // DTO container with a section element.
-    Paragraphs LinkElementResult `json:"Paragraphs,omitempty"`
+    HeaderFooters LinkElementResult `json:"HeaderFooters,omitempty"`
 
     // DTO container with a section element.
     Tables LinkElementResult `json:"Tables,omitempty"`
@@ -56,13 +56,13 @@ type Section struct {
     ChildNodes []NodeLink `json:"ChildNodes,omitempty"`
 
     // DTO container with a section element.
-    HeaderFooters ILinkElement `json:"HeaderFooters,omitempty"`
+    Paragraphs ILinkElement `json:"Paragraphs,omitempty"`
 
     // DTO container with a section element.
     PageSetup ILinkElement `json:"PageSetup,omitempty"`
 
     // DTO container with a section element.
-    Paragraphs ILinkElement `json:"Paragraphs,omitempty"`
+    HeaderFooters ILinkElement `json:"HeaderFooters,omitempty"`
 
     // DTO container with a section element.
     Tables ILinkElement `json:"Tables,omitempty"`
@@ -92,16 +92,16 @@ func (obj *Section) Initialize() {
             objElementChildNodes.Initialize()
         }
     }
-    if (obj.HeaderFooters != nil) {
-        obj.HeaderFooters.Initialize()
+    if (obj.Paragraphs != nil) {
+        obj.Paragraphs.Initialize()
     }
 
     if (obj.PageSetup != nil) {
         obj.PageSetup.Initialize()
     }
 
-    if (obj.Paragraphs != nil) {
-        obj.Paragraphs.Initialize()
+    if (obj.HeaderFooters != nil) {
+        obj.HeaderFooters.Initialize()
     }
 
     if (obj.Tables != nil) {

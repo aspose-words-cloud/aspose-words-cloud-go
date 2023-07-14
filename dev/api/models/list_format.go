@@ -33,13 +33,13 @@ type ListFormatResult struct {
     Link WordsApiLinkResult `json:"Link,omitempty"`
 
     // DTO container with a paragraph list format element.
-    IsListItem bool `json:"IsListItem,omitempty"`
+    ListLevelNumber int32 `json:"ListLevelNumber,omitempty"`
 
     // DTO container with a paragraph list format element.
     ListId int32 `json:"ListId,omitempty"`
 
     // DTO container with a paragraph list format element.
-    ListLevelNumber int32 `json:"ListLevelNumber,omitempty"`
+    IsListItem bool `json:"IsListItem,omitempty"`
 }
 
 type ListFormat struct {
@@ -47,13 +47,13 @@ type ListFormat struct {
     Link IWordsApiLink `json:"Link,omitempty"`
 
     // DTO container with a paragraph list format element.
-    IsListItem *bool `json:"IsListItem,omitempty"`
+    ListLevelNumber *int32 `json:"ListLevelNumber,omitempty"`
 
     // DTO container with a paragraph list format element.
     ListId *int32 `json:"ListId,omitempty"`
 
     // DTO container with a paragraph list format element.
-    ListLevelNumber *int32 `json:"ListLevelNumber,omitempty"`
+    IsListItem *bool `json:"IsListItem,omitempty"`
 }
 
 type IListFormat interface {

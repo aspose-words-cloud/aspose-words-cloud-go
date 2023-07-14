@@ -33,25 +33,25 @@ type CommentResult struct {
     Link WordsApiLinkResult `json:"Link,omitempty"`
 
     // DTO container with a comment.
-    Author string `json:"Author,omitempty"`
-
-    // DTO container with a comment.
-    Content StoryChildNodesResult `json:"Content,omitempty"`
-
-    // DTO container with a comment.
-    DateTime Time `json:"DateTime,omitempty"`
-
-    // DTO container with a comment.
-    Initial string `json:"Initial,omitempty"`
+    RangeStart DocumentPositionResult `json:"RangeStart,omitempty"`
 
     // DTO container with a comment.
     RangeEnd DocumentPositionResult `json:"RangeEnd,omitempty"`
 
     // DTO container with a comment.
-    RangeStart DocumentPositionResult `json:"RangeStart,omitempty"`
+    Author string `json:"Author,omitempty"`
+
+    // DTO container with a comment.
+    Initial string `json:"Initial,omitempty"`
+
+    // DTO container with a comment.
+    DateTime Time `json:"DateTime,omitempty"`
 
     // DTO container with a comment.
     Text string `json:"Text,omitempty"`
+
+    // DTO container with a comment.
+    Content StoryChildNodesResult `json:"Content,omitempty"`
 }
 
 type Comment struct {
@@ -59,25 +59,25 @@ type Comment struct {
     Link IWordsApiLink `json:"Link,omitempty"`
 
     // DTO container with a comment.
-    Author *string `json:"Author,omitempty"`
-
-    // DTO container with a comment.
-    Content IStoryChildNodes `json:"Content,omitempty"`
-
-    // DTO container with a comment.
-    DateTime *Time `json:"DateTime,omitempty"`
-
-    // DTO container with a comment.
-    Initial *string `json:"Initial,omitempty"`
+    RangeStart IDocumentPosition `json:"RangeStart,omitempty"`
 
     // DTO container with a comment.
     RangeEnd IDocumentPosition `json:"RangeEnd,omitempty"`
 
     // DTO container with a comment.
-    RangeStart IDocumentPosition `json:"RangeStart,omitempty"`
+    Author *string `json:"Author,omitempty"`
+
+    // DTO container with a comment.
+    Initial *string `json:"Initial,omitempty"`
+
+    // DTO container with a comment.
+    DateTime *Time `json:"DateTime,omitempty"`
 
     // DTO container with a comment.
     Text *string `json:"Text,omitempty"`
+
+    // DTO container with a comment.
+    Content IStoryChildNodes `json:"Content,omitempty"`
 }
 
 type IComment interface {
@@ -103,16 +103,16 @@ func (obj *Comment) Initialize() {
         obj.Link.Initialize()
     }
 
-    if (obj.Content != nil) {
-        obj.Content.Initialize()
+    if (obj.RangeStart != nil) {
+        obj.RangeStart.Initialize()
     }
 
     if (obj.RangeEnd != nil) {
         obj.RangeEnd.Initialize()
     }
 
-    if (obj.RangeStart != nil) {
-        obj.RangeStart.Initialize()
+    if (obj.Content != nil) {
+        obj.Content.Initialize()
     }
 
 

@@ -30,6 +30,12 @@ package models
 // Comment.
 type CommentBaseResult struct {
     // Comment.
+    RangeStart NewDocumentPositionResult `json:"RangeStart,omitempty"`
+
+    // Comment.
+    RangeEnd NewDocumentPositionResult `json:"RangeEnd,omitempty"`
+
+    // Comment.
     Author string `json:"Author,omitempty"`
 
     // Comment.
@@ -39,16 +45,16 @@ type CommentBaseResult struct {
     Initial string `json:"Initial,omitempty"`
 
     // Comment.
-    RangeEnd NewDocumentPositionResult `json:"RangeEnd,omitempty"`
-
-    // Comment.
-    RangeStart NewDocumentPositionResult `json:"RangeStart,omitempty"`
-
-    // Comment.
     Text string `json:"Text,omitempty"`
 }
 
 type CommentBase struct {
+    // Comment.
+    RangeStart INewDocumentPosition `json:"RangeStart,omitempty"`
+
+    // Comment.
+    RangeEnd INewDocumentPosition `json:"RangeEnd,omitempty"`
+
     // Comment.
     Author *string `json:"Author,omitempty"`
 
@@ -57,12 +63,6 @@ type CommentBase struct {
 
     // Comment.
     Initial *string `json:"Initial,omitempty"`
-
-    // Comment.
-    RangeEnd INewDocumentPosition `json:"RangeEnd,omitempty"`
-
-    // Comment.
-    RangeStart INewDocumentPosition `json:"RangeStart,omitempty"`
 
     // Comment.
     Text *string `json:"Text,omitempty"`
@@ -80,12 +80,12 @@ func (CommentBase) IsCommentBase() bool {
 
 
 func (obj *CommentBase) Initialize() {
-    if (obj.RangeEnd != nil) {
-        obj.RangeEnd.Initialize()
-    }
-
     if (obj.RangeStart != nil) {
         obj.RangeStart.Initialize()
+    }
+
+    if (obj.RangeEnd != nil) {
+        obj.RangeEnd.Initialize()
     }
 
 

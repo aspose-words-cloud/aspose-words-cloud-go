@@ -51,9 +51,6 @@ type SaveOptionsDataResult struct {
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // base container class for save options data.
-    SaveFormat string `json:"SaveFormat,omitempty"`
-
-    // base container class for save options data.
     UpdateCreatedTimeProperty bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // base container class for save options data.
@@ -70,6 +67,9 @@ type SaveOptionsDataResult struct {
 
     // base container class for save options data.
     ZipOutput bool `json:"ZipOutput,omitempty"`
+
+    // base container class for save options data.
+    SaveFormat string `json:"SaveFormat,omitempty"`
 }
 
 type SaveOptionsData struct {
@@ -95,9 +95,6 @@ type SaveOptionsData struct {
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
 
     // base container class for save options data.
-    SaveFormat *string `json:"SaveFormat,omitempty"`
-
-    // base container class for save options data.
     UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // base container class for save options data.
@@ -114,6 +111,9 @@ type SaveOptionsData struct {
 
     // base container class for save options data.
     ZipOutput *bool `json:"ZipOutput,omitempty"`
+
+    // base container class for save options data.
+    SaveFormat *string `json:"SaveFormat,omitempty"`
 }
 
 type ISaveOptionsData interface {

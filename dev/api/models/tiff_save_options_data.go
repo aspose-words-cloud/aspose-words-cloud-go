@@ -117,16 +117,13 @@ type TiffSaveOptionsDataResult struct {
     UseAntiAliasing bool `json:"UseAntiAliasing,omitempty"`
 
     // Container class for tiff save options.
-    UseGdiEmfRenderer bool `json:"UseGdiEmfRenderer,omitempty"`
-
-    // Container class for tiff save options.
     UseHighQualityRendering bool `json:"UseHighQualityRendering,omitempty"`
 
     // Container class for tiff save options.
     VerticalResolution float64 `json:"VerticalResolution,omitempty"`
 
     // Container class for tiff save options.
-    SaveFormat string `json:"SaveFormat,omitempty"`
+    UseGdiEmfRenderer bool `json:"UseGdiEmfRenderer,omitempty"`
 
     // Container class for tiff save options.
     ThresholdForFloydSteinbergDithering int32 `json:"ThresholdForFloydSteinbergDithering,omitempty"`
@@ -136,6 +133,9 @@ type TiffSaveOptionsDataResult struct {
 
     // Container class for tiff save options.
     TiffCompression string `json:"TiffCompression,omitempty"`
+
+    // Container class for tiff save options.
+    SaveFormat string `json:"SaveFormat,omitempty"`
 }
 
 type TiffSaveOptionsData struct {
@@ -227,16 +227,13 @@ type TiffSaveOptionsData struct {
     UseAntiAliasing *bool `json:"UseAntiAliasing,omitempty"`
 
     // Container class for tiff save options.
-    UseGdiEmfRenderer *bool `json:"UseGdiEmfRenderer,omitempty"`
-
-    // Container class for tiff save options.
     UseHighQualityRendering *bool `json:"UseHighQualityRendering,omitempty"`
 
     // Container class for tiff save options.
     VerticalResolution *float64 `json:"VerticalResolution,omitempty"`
 
     // Container class for tiff save options.
-    SaveFormat *string `json:"SaveFormat,omitempty"`
+    UseGdiEmfRenderer *bool `json:"UseGdiEmfRenderer,omitempty"`
 
     // Container class for tiff save options.
     ThresholdForFloydSteinbergDithering *int32 `json:"ThresholdForFloydSteinbergDithering,omitempty"`
@@ -246,6 +243,9 @@ type TiffSaveOptionsData struct {
 
     // Container class for tiff save options.
     TiffCompression *string `json:"TiffCompression,omitempty"`
+
+    // Container class for tiff save options.
+    SaveFormat *string `json:"SaveFormat,omitempty"`
 }
 
 type ITiffSaveOptionsData interface {

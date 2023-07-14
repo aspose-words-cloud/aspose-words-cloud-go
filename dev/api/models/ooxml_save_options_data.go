@@ -51,9 +51,6 @@ type OoxmlSaveOptionsDataResult struct {
     ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for docx/docm/dotx/dotm/flatopc save options.
-    SaveFormat string `json:"SaveFormat,omitempty"`
-
-    // Container class for docx/docm/dotx/dotm/flatopc save options.
     UpdateCreatedTimeProperty bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Container class for docx/docm/dotx/dotm/flatopc save options.
@@ -70,6 +67,9 @@ type OoxmlSaveOptionsDataResult struct {
 
     // Container class for docx/docm/dotx/dotm/flatopc save options.
     ZipOutput bool `json:"ZipOutput,omitempty"`
+
+    // Container class for docx/docm/dotx/dotm/flatopc save options.
+    SaveFormat string `json:"SaveFormat,omitempty"`
 
     // Container class for docx/docm/dotx/dotm/flatopc save options.
     Compliance string `json:"Compliance,omitempty"`
@@ -107,9 +107,6 @@ type OoxmlSaveOptionsData struct {
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for docx/docm/dotx/dotm/flatopc save options.
-    SaveFormat *string `json:"SaveFormat,omitempty"`
-
-    // Container class for docx/docm/dotx/dotm/flatopc save options.
     UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Container class for docx/docm/dotx/dotm/flatopc save options.
@@ -126,6 +123,9 @@ type OoxmlSaveOptionsData struct {
 
     // Container class for docx/docm/dotx/dotm/flatopc save options.
     ZipOutput *bool `json:"ZipOutput,omitempty"`
+
+    // Container class for docx/docm/dotx/dotm/flatopc save options.
+    SaveFormat *string `json:"SaveFormat,omitempty"`
 
     // Container class for docx/docm/dotx/dotm/flatopc save options.
     Compliance *string `json:"Compliance,omitempty"`

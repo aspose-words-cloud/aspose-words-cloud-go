@@ -30,18 +30,18 @@ package models
 // Result of search operation.
 type SearchResultResult struct {
     // Result of search operation.
-    RangeEnd DocumentPositionResult `json:"RangeEnd,omitempty"`
+    RangeStart DocumentPositionResult `json:"RangeStart,omitempty"`
 
     // Result of search operation.
-    RangeStart DocumentPositionResult `json:"RangeStart,omitempty"`
+    RangeEnd DocumentPositionResult `json:"RangeEnd,omitempty"`
 }
 
 type SearchResult struct {
     // Result of search operation.
-    RangeEnd IDocumentPosition `json:"RangeEnd,omitempty"`
+    RangeStart IDocumentPosition `json:"RangeStart,omitempty"`
 
     // Result of search operation.
-    RangeStart IDocumentPosition `json:"RangeStart,omitempty"`
+    RangeEnd IDocumentPosition `json:"RangeEnd,omitempty"`
 }
 
 type ISearchResult interface {
@@ -56,12 +56,12 @@ func (SearchResult) IsSearchResult() bool {
 
 
 func (obj *SearchResult) Initialize() {
-    if (obj.RangeEnd != nil) {
-        obj.RangeEnd.Initialize()
-    }
-
     if (obj.RangeStart != nil) {
         obj.RangeStart.Initialize()
+    }
+
+    if (obj.RangeEnd != nil) {
+        obj.RangeEnd.Initialize()
     }
 
 

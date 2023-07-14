@@ -33,10 +33,7 @@ type ListInfoResult struct {
     Link WordsApiLinkResult `json:"Link,omitempty"`
 
     // DTO container with a single document list.
-    IsListStyleDefinition bool `json:"IsListStyleDefinition,omitempty"`
-
-    // DTO container with a single document list.
-    IsListStyleReference bool `json:"IsListStyleReference,omitempty"`
+    ListId int32 `json:"ListId,omitempty"`
 
     // DTO container with a single document list.
     IsMultiLevel bool `json:"IsMultiLevel,omitempty"`
@@ -45,13 +42,16 @@ type ListInfoResult struct {
     IsRestartAtEachSection bool `json:"IsRestartAtEachSection,omitempty"`
 
     // DTO container with a single document list.
-    ListId int32 `json:"ListId,omitempty"`
+    IsListStyleDefinition bool `json:"IsListStyleDefinition,omitempty"`
 
     // DTO container with a single document list.
-    ListLevels ListLevelsResult `json:"ListLevels,omitempty"`
+    IsListStyleReference bool `json:"IsListStyleReference,omitempty"`
 
     // DTO container with a single document list.
     Style StyleResult `json:"Style,omitempty"`
+
+    // DTO container with a single document list.
+    ListLevels ListLevelsResult `json:"ListLevels,omitempty"`
 }
 
 type ListInfo struct {
@@ -59,10 +59,7 @@ type ListInfo struct {
     Link IWordsApiLink `json:"Link,omitempty"`
 
     // DTO container with a single document list.
-    IsListStyleDefinition *bool `json:"IsListStyleDefinition,omitempty"`
-
-    // DTO container with a single document list.
-    IsListStyleReference *bool `json:"IsListStyleReference,omitempty"`
+    ListId *int32 `json:"ListId,omitempty"`
 
     // DTO container with a single document list.
     IsMultiLevel *bool `json:"IsMultiLevel,omitempty"`
@@ -71,13 +68,16 @@ type ListInfo struct {
     IsRestartAtEachSection *bool `json:"IsRestartAtEachSection,omitempty"`
 
     // DTO container with a single document list.
-    ListId *int32 `json:"ListId,omitempty"`
+    IsListStyleDefinition *bool `json:"IsListStyleDefinition,omitempty"`
 
     // DTO container with a single document list.
-    ListLevels IListLevels `json:"ListLevels,omitempty"`
+    IsListStyleReference *bool `json:"IsListStyleReference,omitempty"`
 
     // DTO container with a single document list.
     Style IStyle `json:"Style,omitempty"`
+
+    // DTO container with a single document list.
+    ListLevels IListLevels `json:"ListLevels,omitempty"`
 }
 
 type IListInfo interface {
@@ -99,12 +99,12 @@ func (obj *ListInfo) Initialize() {
         obj.Link.Initialize()
     }
 
-    if (obj.ListLevels != nil) {
-        obj.ListLevels.Initialize()
-    }
-
     if (obj.Style != nil) {
         obj.Style.Initialize()
+    }
+
+    if (obj.ListLevels != nil) {
+        obj.ListLevels.Initialize()
     }
 
 

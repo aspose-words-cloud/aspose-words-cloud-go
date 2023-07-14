@@ -81,9 +81,6 @@ type ParagraphFormatUpdateResult struct {
     RightIndent float64 `json:"RightIndent,omitempty"`
 
     // Paragraph format element update DTO.
-    Shading ShadingResult `json:"Shading,omitempty"`
-
-    // Paragraph format element update DTO.
     SpaceAfter float64 `json:"SpaceAfter,omitempty"`
 
     // Paragraph format element update DTO.
@@ -109,6 +106,9 @@ type ParagraphFormatUpdateResult struct {
 
     // Paragraph format element update DTO.
     WidowControl bool `json:"WidowControl,omitempty"`
+
+    // Paragraph format element update DTO.
+    Shading ShadingResult `json:"Shading,omitempty"`
 }
 
 type ParagraphFormatUpdate struct {
@@ -164,9 +164,6 @@ type ParagraphFormatUpdate struct {
     RightIndent *float64 `json:"RightIndent,omitempty"`
 
     // Paragraph format element update DTO.
-    Shading IShading `json:"Shading,omitempty"`
-
-    // Paragraph format element update DTO.
     SpaceAfter *float64 `json:"SpaceAfter,omitempty"`
 
     // Paragraph format element update DTO.
@@ -192,6 +189,9 @@ type ParagraphFormatUpdate struct {
 
     // Paragraph format element update DTO.
     WidowControl *bool `json:"WidowControl,omitempty"`
+
+    // Paragraph format element update DTO.
+    Shading IShading `json:"Shading,omitempty"`
 }
 
 type IParagraphFormatUpdate interface {

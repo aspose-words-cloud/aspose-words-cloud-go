@@ -117,13 +117,13 @@ type JpegSaveOptionsDataResult struct {
     UseAntiAliasing bool `json:"UseAntiAliasing,omitempty"`
 
     // Container class for jpeg save options.
-    UseGdiEmfRenderer bool `json:"UseGdiEmfRenderer,omitempty"`
-
-    // Container class for jpeg save options.
     UseHighQualityRendering bool `json:"UseHighQualityRendering,omitempty"`
 
     // Container class for jpeg save options.
     VerticalResolution float64 `json:"VerticalResolution,omitempty"`
+
+    // Container class for jpeg save options.
+    UseGdiEmfRenderer bool `json:"UseGdiEmfRenderer,omitempty"`
 
     // Container class for jpeg save options.
     SaveFormat string `json:"SaveFormat,omitempty"`
@@ -218,13 +218,13 @@ type JpegSaveOptionsData struct {
     UseAntiAliasing *bool `json:"UseAntiAliasing,omitempty"`
 
     // Container class for jpeg save options.
-    UseGdiEmfRenderer *bool `json:"UseGdiEmfRenderer,omitempty"`
-
-    // Container class for jpeg save options.
     UseHighQualityRendering *bool `json:"UseHighQualityRendering,omitempty"`
 
     // Container class for jpeg save options.
     VerticalResolution *float64 `json:"VerticalResolution,omitempty"`
+
+    // Container class for jpeg save options.
+    UseGdiEmfRenderer *bool `json:"UseGdiEmfRenderer,omitempty"`
 
     // Container class for jpeg save options.
     SaveFormat *string `json:"SaveFormat,omitempty"`

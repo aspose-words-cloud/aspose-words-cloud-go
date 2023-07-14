@@ -81,9 +81,6 @@ type ParagraphFormatResult struct {
     RightIndent float64 `json:"RightIndent,omitempty"`
 
     // Paragraph format element.
-    Shading ShadingResult `json:"Shading,omitempty"`
-
-    // Paragraph format element.
     SpaceAfter float64 `json:"SpaceAfter,omitempty"`
 
     // Paragraph format element.
@@ -111,10 +108,13 @@ type ParagraphFormatResult struct {
     WidowControl bool `json:"WidowControl,omitempty"`
 
     // Paragraph format element.
-    IsHeading bool `json:"IsHeading,omitempty"`
+    Shading ShadingResult `json:"Shading,omitempty"`
 
     // Paragraph format element.
     IsListItem bool `json:"IsListItem,omitempty"`
+
+    // Paragraph format element.
+    IsHeading bool `json:"IsHeading,omitempty"`
 }
 
 type ParagraphFormat struct {
@@ -170,9 +170,6 @@ type ParagraphFormat struct {
     RightIndent *float64 `json:"RightIndent,omitempty"`
 
     // Paragraph format element.
-    Shading IShading `json:"Shading,omitempty"`
-
-    // Paragraph format element.
     SpaceAfter *float64 `json:"SpaceAfter,omitempty"`
 
     // Paragraph format element.
@@ -200,10 +197,13 @@ type ParagraphFormat struct {
     WidowControl *bool `json:"WidowControl,omitempty"`
 
     // Paragraph format element.
-    IsHeading *bool `json:"IsHeading,omitempty"`
+    Shading IShading `json:"Shading,omitempty"`
 
     // Paragraph format element.
     IsListItem *bool `json:"IsListItem,omitempty"`
+
+    // Paragraph format element.
+    IsHeading *bool `json:"IsHeading,omitempty"`
 }
 
 type IParagraphFormat interface {

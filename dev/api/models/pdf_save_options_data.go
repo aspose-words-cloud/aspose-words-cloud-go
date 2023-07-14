@@ -156,9 +156,6 @@ type PdfSaveOptionsDataResult struct {
     PreserveFormFields bool `json:"PreserveFormFields,omitempty"`
 
     // Container class for pdf save options.
-    SaveFormat string `json:"SaveFormat,omitempty"`
-
-    // Container class for pdf save options.
     TextCompression string `json:"TextCompression,omitempty"`
 
     // Container class for pdf save options.
@@ -172,6 +169,9 @@ type PdfSaveOptionsDataResult struct {
 
     // Container class for pdf save options.
     ZoomFactor int32 `json:"ZoomFactor,omitempty"`
+
+    // Container class for pdf save options.
+    SaveFormat string `json:"SaveFormat,omitempty"`
 }
 
 type PdfSaveOptionsData struct {
@@ -302,9 +302,6 @@ type PdfSaveOptionsData struct {
     PreserveFormFields *bool `json:"PreserveFormFields,omitempty"`
 
     // Container class for pdf save options.
-    SaveFormat *string `json:"SaveFormat,omitempty"`
-
-    // Container class for pdf save options.
     TextCompression *string `json:"TextCompression,omitempty"`
 
     // Container class for pdf save options.
@@ -318,6 +315,9 @@ type PdfSaveOptionsData struct {
 
     // Container class for pdf save options.
     ZoomFactor *int32 `json:"ZoomFactor,omitempty"`
+
+    // Container class for pdf save options.
+    SaveFormat *string `json:"SaveFormat,omitempty"`
 }
 
 type IPdfSaveOptionsData interface {

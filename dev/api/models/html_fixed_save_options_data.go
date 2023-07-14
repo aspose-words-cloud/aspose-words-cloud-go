@@ -126,13 +126,13 @@ type HtmlFixedSaveOptionsDataResult struct {
     SaveFontFaceCssSeparately bool `json:"SaveFontFaceCssSeparately,omitempty"`
 
     // Container class for fixed html save options.
-    SaveFormat string `json:"SaveFormat,omitempty"`
-
-    // Container class for fixed html save options.
     ShowPageBorder bool `json:"ShowPageBorder,omitempty"`
 
     // Container class for fixed html save options.
     UseTargetMachineFonts bool `json:"UseTargetMachineFonts,omitempty"`
+
+    // Container class for fixed html save options.
+    SaveFormat string `json:"SaveFormat,omitempty"`
 }
 
 type HtmlFixedSaveOptionsData struct {
@@ -233,13 +233,13 @@ type HtmlFixedSaveOptionsData struct {
     SaveFontFaceCssSeparately *bool `json:"SaveFontFaceCssSeparately,omitempty"`
 
     // Container class for fixed html save options.
-    SaveFormat *string `json:"SaveFormat,omitempty"`
-
-    // Container class for fixed html save options.
     ShowPageBorder *bool `json:"ShowPageBorder,omitempty"`
 
     // Container class for fixed html save options.
     UseTargetMachineFonts *bool `json:"UseTargetMachineFonts,omitempty"`
+
+    // Container class for fixed html save options.
+    SaveFormat *string `json:"SaveFormat,omitempty"`
 }
 
 type IHtmlFixedSaveOptionsData interface {
