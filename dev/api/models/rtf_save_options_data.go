@@ -63,9 +63,6 @@ type RtfSaveOptionsDataResult struct {
     UpdateLastSavedTimeProperty bool `json:"UpdateLastSavedTimeProperty,omitempty"`
 
     // Container class for rtf save options.
-    UpdateSdtContent bool `json:"UpdateSdtContent,omitempty"`
-
-    // Container class for rtf save options.
     ZipOutput bool `json:"ZipOutput,omitempty"`
 
     // Container class for rtf save options.
@@ -117,9 +114,6 @@ type RtfSaveOptionsData struct {
 
     // Container class for rtf save options.
     UpdateLastSavedTimeProperty *bool `json:"UpdateLastSavedTimeProperty,omitempty"`
-
-    // Container class for rtf save options.
-    UpdateSdtContent *bool `json:"UpdateSdtContent,omitempty"`
 
     // Container class for rtf save options.
     ZipOutput *bool `json:"ZipOutput,omitempty"`

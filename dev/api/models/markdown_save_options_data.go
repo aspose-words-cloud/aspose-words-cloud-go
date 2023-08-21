@@ -63,9 +63,6 @@ type MarkdownSaveOptionsDataResult struct {
     UpdateLastSavedTimeProperty bool `json:"UpdateLastSavedTimeProperty,omitempty"`
 
     // Container class for markdown save options.
-    UpdateSdtContent bool `json:"UpdateSdtContent,omitempty"`
-
-    // Container class for markdown save options.
     ZipOutput bool `json:"ZipOutput,omitempty"`
 
     // Container class for markdown save options.
@@ -120,9 +117,6 @@ type MarkdownSaveOptionsData struct {
 
     // Container class for markdown save options.
     UpdateLastSavedTimeProperty *bool `json:"UpdateLastSavedTimeProperty,omitempty"`
-
-    // Container class for markdown save options.
-    UpdateSdtContent *bool `json:"UpdateSdtContent,omitempty"`
 
     // Container class for markdown save options.
     ZipOutput *bool `json:"ZipOutput,omitempty"`

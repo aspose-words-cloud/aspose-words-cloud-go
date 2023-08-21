@@ -63,9 +63,6 @@ type PdfSaveOptionsDataResult struct {
     UpdateLastSavedTimeProperty bool `json:"UpdateLastSavedTimeProperty,omitempty"`
 
     // Container class for pdf save options.
-    UpdateSdtContent bool `json:"UpdateSdtContent,omitempty"`
-
-    // Container class for pdf save options.
     ZipOutput bool `json:"ZipOutput,omitempty"`
 
     // Container class for pdf save options.
@@ -207,9 +204,6 @@ type PdfSaveOptionsData struct {
 
     // Container class for pdf save options.
     UpdateLastSavedTimeProperty *bool `json:"UpdateLastSavedTimeProperty,omitempty"`
-
-    // Container class for pdf save options.
-    UpdateSdtContent *bool `json:"UpdateSdtContent,omitempty"`
 
     // Container class for pdf save options.
     ZipOutput *bool `json:"ZipOutput,omitempty"`

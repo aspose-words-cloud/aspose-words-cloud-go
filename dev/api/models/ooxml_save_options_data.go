@@ -63,9 +63,6 @@ type OoxmlSaveOptionsDataResult struct {
     UpdateLastSavedTimeProperty bool `json:"UpdateLastSavedTimeProperty,omitempty"`
 
     // Container class for docx/docm/dotx/dotm/flatopc save options.
-    UpdateSdtContent bool `json:"UpdateSdtContent,omitempty"`
-
-    // Container class for docx/docm/dotx/dotm/flatopc save options.
     ZipOutput bool `json:"ZipOutput,omitempty"`
 
     // Container class for docx/docm/dotx/dotm/flatopc save options.
@@ -117,9 +114,6 @@ type OoxmlSaveOptionsData struct {
 
     // Container class for docx/docm/dotx/dotm/flatopc save options.
     UpdateLastSavedTimeProperty *bool `json:"UpdateLastSavedTimeProperty,omitempty"`
-
-    // Container class for docx/docm/dotx/dotm/flatopc save options.
-    UpdateSdtContent *bool `json:"UpdateSdtContent,omitempty"`
 
     // Container class for docx/docm/dotx/dotm/flatopc save options.
     ZipOutput *bool `json:"ZipOutput,omitempty"`

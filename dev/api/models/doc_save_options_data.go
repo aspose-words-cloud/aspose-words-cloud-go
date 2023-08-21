@@ -63,9 +63,6 @@ type DocSaveOptionsDataResult struct {
     UpdateLastSavedTimeProperty bool `json:"UpdateLastSavedTimeProperty,omitempty"`
 
     // Container class for doc/dot save options.
-    UpdateSdtContent bool `json:"UpdateSdtContent,omitempty"`
-
-    // Container class for doc/dot save options.
     ZipOutput bool `json:"ZipOutput,omitempty"`
 
     // Container class for doc/dot save options.
@@ -117,9 +114,6 @@ type DocSaveOptionsData struct {
 
     // Container class for doc/dot save options.
     UpdateLastSavedTimeProperty *bool `json:"UpdateLastSavedTimeProperty,omitempty"`
-
-    // Container class for doc/dot save options.
-    UpdateSdtContent *bool `json:"UpdateSdtContent,omitempty"`
 
     // Container class for doc/dot save options.
     ZipOutput *bool `json:"ZipOutput,omitempty"`

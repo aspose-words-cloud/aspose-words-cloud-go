@@ -63,9 +63,6 @@ type SaveOptionsDataResult struct {
     UpdateLastSavedTimeProperty bool `json:"UpdateLastSavedTimeProperty,omitempty"`
 
     // base container class for save options data.
-    UpdateSdtContent bool `json:"UpdateSdtContent,omitempty"`
-
-    // base container class for save options data.
     ZipOutput bool `json:"ZipOutput,omitempty"`
 
     // base container class for save options data.
@@ -105,9 +102,6 @@ type SaveOptionsData struct {
 
     // base container class for save options data.
     UpdateLastSavedTimeProperty *bool `json:"UpdateLastSavedTimeProperty,omitempty"`
-
-    // base container class for save options data.
-    UpdateSdtContent *bool `json:"UpdateSdtContent,omitempty"`
 
     // base container class for save options data.
     ZipOutput *bool `json:"ZipOutput,omitempty"`

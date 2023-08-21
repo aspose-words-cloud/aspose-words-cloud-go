@@ -63,9 +63,6 @@ type TiffSaveOptionsDataResult struct {
     UpdateLastSavedTimeProperty bool `json:"UpdateLastSavedTimeProperty,omitempty"`
 
     // Container class for tiff save options.
-    UpdateSdtContent bool `json:"UpdateSdtContent,omitempty"`
-
-    // Container class for tiff save options.
     ZipOutput bool `json:"ZipOutput,omitempty"`
 
     // Container class for tiff save options.
@@ -171,9 +168,6 @@ type TiffSaveOptionsData struct {
 
     // Container class for tiff save options.
     UpdateLastSavedTimeProperty *bool `json:"UpdateLastSavedTimeProperty,omitempty"`
-
-    // Container class for tiff save options.
-    UpdateSdtContent *bool `json:"UpdateSdtContent,omitempty"`
 
     // Container class for tiff save options.
     ZipOutput *bool `json:"ZipOutput,omitempty"`

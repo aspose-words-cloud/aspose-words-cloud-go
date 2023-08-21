@@ -42,7 +42,6 @@ func Test_LoadWebDocument_LoadWebDocument(t *testing.T) {
         FileName: ToStringPointer("google.doc"),
         DmlEffectsRenderingMode: ToStringPointer("None"),
         DmlRenderingMode: ToStringPointer("DrawingML"),
-        UpdateSdtContent: ToBoolPointer(false),
         ZipOutput: ToBoolPointer(false),
     }
     requestData := models.LoadWebDocumentData{

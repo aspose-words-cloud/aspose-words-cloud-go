@@ -63,9 +63,6 @@ type PngSaveOptionsDataResult struct {
     UpdateLastSavedTimeProperty bool `json:"UpdateLastSavedTimeProperty,omitempty"`
 
     // Container class for png save options.
-    UpdateSdtContent bool `json:"UpdateSdtContent,omitempty"`
-
-    // Container class for png save options.
     ZipOutput bool `json:"ZipOutput,omitempty"`
 
     // Container class for png save options.
@@ -162,9 +159,6 @@ type PngSaveOptionsData struct {
 
     // Container class for png save options.
     UpdateLastSavedTimeProperty *bool `json:"UpdateLastSavedTimeProperty,omitempty"`
-
-    // Container class for png save options.
-    UpdateSdtContent *bool `json:"UpdateSdtContent,omitempty"`
 
     // Container class for png save options.
     ZipOutput *bool `json:"ZipOutput,omitempty"`

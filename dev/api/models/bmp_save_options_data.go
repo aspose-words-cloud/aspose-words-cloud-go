@@ -63,9 +63,6 @@ type BmpSaveOptionsDataResult struct {
     UpdateLastSavedTimeProperty bool `json:"UpdateLastSavedTimeProperty,omitempty"`
 
     // Container class for bmp save options.
-    UpdateSdtContent bool `json:"UpdateSdtContent,omitempty"`
-
-    // Container class for bmp save options.
     ZipOutput bool `json:"ZipOutput,omitempty"`
 
     // Container class for bmp save options.
@@ -162,9 +159,6 @@ type BmpSaveOptionsData struct {
 
     // Container class for bmp save options.
     UpdateLastSavedTimeProperty *bool `json:"UpdateLastSavedTimeProperty,omitempty"`
-
-    // Container class for bmp save options.
-    UpdateSdtContent *bool `json:"UpdateSdtContent,omitempty"`
 
     // Container class for bmp save options.
     ZipOutput *bool `json:"ZipOutput,omitempty"`

@@ -63,9 +63,6 @@ type HtmlSaveOptionsDataResult struct {
     UpdateLastSavedTimeProperty bool `json:"UpdateLastSavedTimeProperty,omitempty"`
 
     // Container class for html save options.
-    UpdateSdtContent bool `json:"UpdateSdtContent,omitempty"`
-
-    // Container class for html save options.
     ZipOutput bool `json:"ZipOutput,omitempty"`
 
     // Container class for html save options.
@@ -219,9 +216,6 @@ type HtmlSaveOptionsData struct {
 
     // Container class for html save options.
     UpdateLastSavedTimeProperty *bool `json:"UpdateLastSavedTimeProperty,omitempty"`
-
-    // Container class for html save options.
-    UpdateSdtContent *bool `json:"UpdateSdtContent,omitempty"`
 
     // Container class for html save options.
     ZipOutput *bool `json:"ZipOutput,omitempty"`

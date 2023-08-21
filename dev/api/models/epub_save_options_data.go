@@ -63,9 +63,6 @@ type EpubSaveOptionsDataResult struct {
     UpdateLastSavedTimeProperty bool `json:"UpdateLastSavedTimeProperty,omitempty"`
 
     // Container class for epub save options.
-    UpdateSdtContent bool `json:"UpdateSdtContent,omitempty"`
-
-    // Container class for epub save options.
     ZipOutput bool `json:"ZipOutput,omitempty"`
 
     // Container class for epub save options.
@@ -183,7 +180,7 @@ type EpubSaveOptionsDataResult struct {
     TableWidthOutputMode string `json:"TableWidthOutputMode,omitempty"`
 
     // Container class for epub save options.
-    EpubNavigationMapLevel int32 `json:"EpubNavigationMapLevel,omitempty"`
+    NavigationMapLevel int32 `json:"NavigationMapLevel,omitempty"`
 
     // Container class for epub save options.
     SaveFormat string `json:"SaveFormat,omitempty"`
@@ -222,9 +219,6 @@ type EpubSaveOptionsData struct {
 
     // Container class for epub save options.
     UpdateLastSavedTimeProperty *bool `json:"UpdateLastSavedTimeProperty,omitempty"`
-
-    // Container class for epub save options.
-    UpdateSdtContent *bool `json:"UpdateSdtContent,omitempty"`
 
     // Container class for epub save options.
     ZipOutput *bool `json:"ZipOutput,omitempty"`
@@ -344,7 +338,7 @@ type EpubSaveOptionsData struct {
     TableWidthOutputMode *string `json:"TableWidthOutputMode,omitempty"`
 
     // Container class for epub save options.
-    EpubNavigationMapLevel *int32 `json:"EpubNavigationMapLevel,omitempty"`
+    NavigationMapLevel *int32 `json:"NavigationMapLevel,omitempty"`
 
     // Container class for epub save options.
     SaveFormat *string `json:"SaveFormat,omitempty"`

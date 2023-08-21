@@ -63,9 +63,6 @@ type FixedPageSaveOptionsDataResult struct {
     UpdateLastSavedTimeProperty bool `json:"UpdateLastSavedTimeProperty,omitempty"`
 
     // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
-    UpdateSdtContent bool `json:"UpdateSdtContent,omitempty"`
-
-    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
     ZipOutput bool `json:"ZipOutput,omitempty"`
 
     // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
@@ -126,9 +123,6 @@ type FixedPageSaveOptionsData struct {
 
     // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
     UpdateLastSavedTimeProperty *bool `json:"UpdateLastSavedTimeProperty,omitempty"`
-
-    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
-    UpdateSdtContent *bool `json:"UpdateSdtContent,omitempty"`
 
     // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
     ZipOutput *bool `json:"ZipOutput,omitempty"`

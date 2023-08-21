@@ -63,9 +63,6 @@ type XpsSaveOptionsDataResult struct {
     UpdateLastSavedTimeProperty bool `json:"UpdateLastSavedTimeProperty,omitempty"`
 
     // Container class for xps save options.
-    UpdateSdtContent bool `json:"UpdateSdtContent,omitempty"`
-
-    // Container class for xps save options.
     ZipOutput bool `json:"ZipOutput,omitempty"`
 
     // Container class for xps save options.
@@ -138,9 +135,6 @@ type XpsSaveOptionsData struct {
 
     // Container class for xps save options.
     UpdateLastSavedTimeProperty *bool `json:"UpdateLastSavedTimeProperty,omitempty"`
-
-    // Container class for xps save options.
-    UpdateSdtContent *bool `json:"UpdateSdtContent,omitempty"`
 
     // Container class for xps save options.
     ZipOutput *bool `json:"ZipOutput,omitempty"`

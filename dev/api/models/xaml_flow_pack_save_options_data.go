@@ -63,9 +63,6 @@ type XamlFlowPackSaveOptionsDataResult struct {
     UpdateLastSavedTimeProperty bool `json:"UpdateLastSavedTimeProperty,omitempty"`
 
     // Container class for xamlflow_pack save options.
-    UpdateSdtContent bool `json:"UpdateSdtContent,omitempty"`
-
-    // Container class for xamlflow_pack save options.
     ZipOutput bool `json:"ZipOutput,omitempty"`
 
     // Container class for xamlflow_pack save options.
@@ -111,9 +108,6 @@ type XamlFlowPackSaveOptionsData struct {
 
     // Container class for xamlflow_pack save options.
     UpdateLastSavedTimeProperty *bool `json:"UpdateLastSavedTimeProperty,omitempty"`
-
-    // Container class for xamlflow_pack save options.
-    UpdateSdtContent *bool `json:"UpdateSdtContent,omitempty"`
 
     // Container class for xamlflow_pack save options.
     ZipOutput *bool `json:"ZipOutput,omitempty"`

@@ -63,9 +63,6 @@ type TextSaveOptionsDataResult struct {
     UpdateLastSavedTimeProperty bool `json:"UpdateLastSavedTimeProperty,omitempty"`
 
     // Container class for text save options.
-    UpdateSdtContent bool `json:"UpdateSdtContent,omitempty"`
-
-    // Container class for text save options.
     ZipOutput bool `json:"ZipOutput,omitempty"`
 
     // Container class for text save options.
@@ -129,9 +126,6 @@ type TextSaveOptionsData struct {
 
     // Container class for text save options.
     UpdateLastSavedTimeProperty *bool `json:"UpdateLastSavedTimeProperty,omitempty"`
-
-    // Container class for text save options.
-    UpdateSdtContent *bool `json:"UpdateSdtContent,omitempty"`
 
     // Container class for text save options.
     ZipOutput *bool `json:"ZipOutput,omitempty"`

@@ -63,9 +63,6 @@ type FlatOpcTemplateSaveOptionsDataResult struct {
     UpdateLastSavedTimeProperty bool `json:"UpdateLastSavedTimeProperty,omitempty"`
 
     // Container class for fopc_template save options.
-    UpdateSdtContent bool `json:"UpdateSdtContent,omitempty"`
-
-    // Container class for fopc_template save options.
     ZipOutput bool `json:"ZipOutput,omitempty"`
 
     // Container class for fopc_template save options.
@@ -117,9 +114,6 @@ type FlatOpcTemplateSaveOptionsData struct {
 
     // Container class for fopc_template save options.
     UpdateLastSavedTimeProperty *bool `json:"UpdateLastSavedTimeProperty,omitempty"`
-
-    // Container class for fopc_template save options.
-    UpdateSdtContent *bool `json:"UpdateSdtContent,omitempty"`
 
     // Container class for fopc_template save options.
     ZipOutput *bool `json:"ZipOutput,omitempty"`

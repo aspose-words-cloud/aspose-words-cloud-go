@@ -63,9 +63,6 @@ type PsSaveOptionsDataResult struct {
     UpdateLastSavedTimeProperty bool `json:"UpdateLastSavedTimeProperty,omitempty"`
 
     // Container class for ps save options.
-    UpdateSdtContent bool `json:"UpdateSdtContent,omitempty"`
-
-    // Container class for ps save options.
     ZipOutput bool `json:"ZipOutput,omitempty"`
 
     // Container class for ps save options.
@@ -129,9 +126,6 @@ type PsSaveOptionsData struct {
 
     // Container class for ps save options.
     UpdateLastSavedTimeProperty *bool `json:"UpdateLastSavedTimeProperty,omitempty"`
-
-    // Container class for ps save options.
-    UpdateSdtContent *bool `json:"UpdateSdtContent,omitempty"`
 
     // Container class for ps save options.
     ZipOutput *bool `json:"ZipOutput,omitempty"`

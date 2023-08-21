@@ -63,9 +63,6 @@ type WordMLSaveOptionsDataResult struct {
     UpdateLastSavedTimeProperty bool `json:"UpdateLastSavedTimeProperty,omitempty"`
 
     // Container class for wml save options.
-    UpdateSdtContent bool `json:"UpdateSdtContent,omitempty"`
-
-    // Container class for wml save options.
     ZipOutput bool `json:"ZipOutput,omitempty"`
 
     // Container class for wml save options.
@@ -108,9 +105,6 @@ type WordMLSaveOptionsData struct {
 
     // Container class for wml save options.
     UpdateLastSavedTimeProperty *bool `json:"UpdateLastSavedTimeProperty,omitempty"`
-
-    // Container class for wml save options.
-    UpdateSdtContent *bool `json:"UpdateSdtContent,omitempty"`
 
     // Container class for wml save options.
     ZipOutput *bool `json:"ZipOutput,omitempty"`

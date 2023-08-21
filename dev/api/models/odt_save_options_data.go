@@ -63,9 +63,6 @@ type OdtSaveOptionsDataResult struct {
     UpdateLastSavedTimeProperty bool `json:"UpdateLastSavedTimeProperty,omitempty"`
 
     // Container class for odt/ott save options.
-    UpdateSdtContent bool `json:"UpdateSdtContent,omitempty"`
-
-    // Container class for odt/ott save options.
     ZipOutput bool `json:"ZipOutput,omitempty"`
 
     // Container class for odt/ott save options.
@@ -117,9 +114,6 @@ type OdtSaveOptionsData struct {
 
     // Container class for odt/ott save options.
     UpdateLastSavedTimeProperty *bool `json:"UpdateLastSavedTimeProperty,omitempty"`
-
-    // Container class for odt/ott save options.
-    UpdateSdtContent *bool `json:"UpdateSdtContent,omitempty"`
 
     // Container class for odt/ott save options.
     ZipOutput *bool `json:"ZipOutput,omitempty"`

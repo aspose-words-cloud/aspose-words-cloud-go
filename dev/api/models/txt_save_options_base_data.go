@@ -63,9 +63,6 @@ type TxtSaveOptionsBaseDataResult struct {
     UpdateLastSavedTimeProperty bool `json:"UpdateLastSavedTimeProperty,omitempty"`
 
     // Base class for save options of text formats.
-    UpdateSdtContent bool `json:"UpdateSdtContent,omitempty"`
-
-    // Base class for save options of text formats.
     ZipOutput bool `json:"ZipOutput,omitempty"`
 
     // Base class for save options of text formats.
@@ -117,9 +114,6 @@ type TxtSaveOptionsBaseData struct {
 
     // Base class for save options of text formats.
     UpdateLastSavedTimeProperty *bool `json:"UpdateLastSavedTimeProperty,omitempty"`
-
-    // Base class for save options of text formats.
-    UpdateSdtContent *bool `json:"UpdateSdtContent,omitempty"`
 
     // Base class for save options of text formats.
     ZipOutput *bool `json:"ZipOutput,omitempty"`

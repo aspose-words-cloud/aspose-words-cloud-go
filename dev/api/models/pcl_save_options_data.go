@@ -63,9 +63,6 @@ type PclSaveOptionsDataResult struct {
     UpdateLastSavedTimeProperty bool `json:"UpdateLastSavedTimeProperty,omitempty"`
 
     // Container class for pcl save options.
-    UpdateSdtContent bool `json:"UpdateSdtContent,omitempty"`
-
-    // Container class for pcl save options.
     ZipOutput bool `json:"ZipOutput,omitempty"`
 
     // Container class for pcl save options.
@@ -132,9 +129,6 @@ type PclSaveOptionsData struct {
 
     // Container class for pcl save options.
     UpdateLastSavedTimeProperty *bool `json:"UpdateLastSavedTimeProperty,omitempty"`
-
-    // Container class for pcl save options.
-    UpdateSdtContent *bool `json:"UpdateSdtContent,omitempty"`
 
     // Container class for pcl save options.
     ZipOutput *bool `json:"ZipOutput,omitempty"`

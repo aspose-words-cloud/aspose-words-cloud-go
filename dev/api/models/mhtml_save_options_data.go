@@ -63,9 +63,6 @@ type MhtmlSaveOptionsDataResult struct {
     UpdateLastSavedTimeProperty bool `json:"UpdateLastSavedTimeProperty,omitempty"`
 
     // Container class for mhtml save options.
-    UpdateSdtContent bool `json:"UpdateSdtContent,omitempty"`
-
-    // Container class for mhtml save options.
     ZipOutput bool `json:"ZipOutput,omitempty"`
 
     // Container class for mhtml save options.
@@ -222,9 +219,6 @@ type MhtmlSaveOptionsData struct {
 
     // Container class for mhtml save options.
     UpdateLastSavedTimeProperty *bool `json:"UpdateLastSavedTimeProperty,omitempty"`
-
-    // Container class for mhtml save options.
-    UpdateSdtContent *bool `json:"UpdateSdtContent,omitempty"`
 
     // Container class for mhtml save options.
     ZipOutput *bool `json:"ZipOutput,omitempty"`

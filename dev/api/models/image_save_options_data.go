@@ -63,9 +63,6 @@ type ImageSaveOptionsDataResult struct {
     UpdateLastSavedTimeProperty bool `json:"UpdateLastSavedTimeProperty,omitempty"`
 
     // Container abstract class for image save options.
-    UpdateSdtContent bool `json:"UpdateSdtContent,omitempty"`
-
-    // Container abstract class for image save options.
     ZipOutput bool `json:"ZipOutput,omitempty"`
 
     // Container abstract class for image save options.
@@ -162,9 +159,6 @@ type ImageSaveOptionsData struct {
 
     // Container abstract class for image save options.
     UpdateLastSavedTimeProperty *bool `json:"UpdateLastSavedTimeProperty,omitempty"`
-
-    // Container abstract class for image save options.
-    UpdateSdtContent *bool `json:"UpdateSdtContent,omitempty"`
 
     // Container abstract class for image save options.
     ZipOutput *bool `json:"ZipOutput,omitempty"`

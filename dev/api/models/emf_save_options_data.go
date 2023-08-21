@@ -63,9 +63,6 @@ type EmfSaveOptionsDataResult struct {
     UpdateLastSavedTimeProperty bool `json:"UpdateLastSavedTimeProperty,omitempty"`
 
     // Container class for emf save options.
-    UpdateSdtContent bool `json:"UpdateSdtContent,omitempty"`
-
-    // Container class for emf save options.
     ZipOutput bool `json:"ZipOutput,omitempty"`
 
     // Container class for emf save options.
@@ -162,9 +159,6 @@ type EmfSaveOptionsData struct {
 
     // Container class for emf save options.
     UpdateLastSavedTimeProperty *bool `json:"UpdateLastSavedTimeProperty,omitempty"`
-
-    // Container class for emf save options.
-    UpdateSdtContent *bool `json:"UpdateSdtContent,omitempty"`
 
     // Container class for emf save options.
     ZipOutput *bool `json:"ZipOutput,omitempty"`

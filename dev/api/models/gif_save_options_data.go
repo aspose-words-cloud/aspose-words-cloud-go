@@ -63,9 +63,6 @@ type GifSaveOptionsDataResult struct {
     UpdateLastSavedTimeProperty bool `json:"UpdateLastSavedTimeProperty,omitempty"`
 
     // Container class for gif save options.
-    UpdateSdtContent bool `json:"UpdateSdtContent,omitempty"`
-
-    // Container class for gif save options.
     ZipOutput bool `json:"ZipOutput,omitempty"`
 
     // Container class for gif save options.
@@ -162,9 +159,6 @@ type GifSaveOptionsData struct {
 
     // Container class for gif save options.
     UpdateLastSavedTimeProperty *bool `json:"UpdateLastSavedTimeProperty,omitempty"`
-
-    // Container class for gif save options.
-    UpdateSdtContent *bool `json:"UpdateSdtContent,omitempty"`
 
     // Container class for gif save options.
     ZipOutput *bool `json:"ZipOutput,omitempty"`
