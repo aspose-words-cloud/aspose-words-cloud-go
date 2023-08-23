@@ -166,6 +166,7 @@ func (data *UpdateListLevelOnlineRequest) CreateResponse(reader io.Reader, bound
         return successPayload, err
     }
 
+    successPayload.Model = new(ListResponse)
     successPayload.Model.Deserialize(jsonMap)
 
 

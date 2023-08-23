@@ -159,6 +159,7 @@ func (data *InsertListOnlineRequest) CreateResponse(reader io.Reader, boundary s
         return successPayload, err
     }
 
+    successPayload.Model = new(ListResponse)
     successPayload.Model.Deserialize(jsonMap)
 
 

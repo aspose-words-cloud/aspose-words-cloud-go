@@ -163,6 +163,7 @@ func (data *ApplyStyleToDocumentElementOnlineRequest) CreateResponse(reader io.R
         return successPayload, err
     }
 
+    successPayload.Model = new(WordsResponse)
     successPayload.Model.Deserialize(jsonMap)
 
 

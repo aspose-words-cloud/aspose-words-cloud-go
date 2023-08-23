@@ -174,6 +174,7 @@ func (data *InsertFormFieldOnlineRequest) CreateResponse(reader io.Reader, bound
         return successPayload, err
     }
 
+    successPayload.Model = new(FormFieldResponse)
     successPayload.Model.Deserialize(jsonMap)
 
 

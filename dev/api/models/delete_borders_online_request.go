@@ -158,6 +158,7 @@ func (data *DeleteBordersOnlineRequest) CreateResponse(reader io.Reader, boundar
         return successPayload, err
     }
 
+    successPayload.Model = new(BordersResponse)
     successPayload.Model.Deserialize(jsonMap)
 
 

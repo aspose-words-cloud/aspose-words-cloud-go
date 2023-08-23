@@ -159,6 +159,7 @@ func (data *CopyStyleOnlineRequest) CreateResponse(reader io.Reader, boundary st
         return successPayload, err
     }
 
+    successPayload.Model = new(StyleResponse)
     successPayload.Model.Deserialize(jsonMap)
 
 

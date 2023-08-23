@@ -159,6 +159,7 @@ func (data *ReplaceTextOnlineRequest) CreateResponse(reader io.Reader, boundary 
         return successPayload, err
     }
 
+    successPayload.Model = new(ReplaceTextResponse)
     successPayload.Model.Deserialize(jsonMap)
 
 

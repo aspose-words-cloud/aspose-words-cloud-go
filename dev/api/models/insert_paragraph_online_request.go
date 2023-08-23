@@ -174,6 +174,7 @@ func (data *InsertParagraphOnlineRequest) CreateResponse(reader io.Reader, bound
         return successPayload, err
     }
 
+    successPayload.Model = new(ParagraphResponse)
     successPayload.Model.Deserialize(jsonMap)
 
 

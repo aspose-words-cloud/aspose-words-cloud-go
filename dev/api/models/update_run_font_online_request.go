@@ -166,6 +166,7 @@ func (data *UpdateRunFontOnlineRequest) CreateResponse(reader io.Reader, boundar
         return successPayload, err
     }
 
+    successPayload.Model = new(FontResponse)
     successPayload.Model.Deserialize(jsonMap)
 
 

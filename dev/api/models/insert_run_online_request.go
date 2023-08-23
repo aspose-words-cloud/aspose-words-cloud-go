@@ -172,6 +172,7 @@ func (data *InsertRunOnlineRequest) CreateResponse(reader io.Reader, boundary st
         return successPayload, err
     }
 
+    successPayload.Model = new(RunResponse)
     successPayload.Model.Deserialize(jsonMap)
 
 

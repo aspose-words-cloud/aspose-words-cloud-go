@@ -165,6 +165,7 @@ func (data *InsertTableOnlineRequest) CreateResponse(reader io.Reader, boundary 
         return successPayload, err
     }
 
+    successPayload.Model = new(TableResponse)
     successPayload.Model.Deserialize(jsonMap)
 
 

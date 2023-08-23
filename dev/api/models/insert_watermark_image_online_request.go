@@ -179,6 +179,7 @@ func (data *InsertWatermarkImageOnlineRequest) CreateResponse(reader io.Reader, 
         return successPayload, err
     }
 
+    successPayload.Model = new(DocumentResponse)
     successPayload.Model.Deserialize(jsonMap)
 
 

@@ -168,6 +168,7 @@ func (data *UpdateTablePropertiesOnlineRequest) CreateResponse(reader io.Reader,
         return successPayload, err
     }
 
+    successPayload.Model = new(TablePropertiesResponse)
     successPayload.Model.Deserialize(jsonMap)
 
 

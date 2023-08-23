@@ -141,6 +141,7 @@ func (data *SaveAsOnlineRequest) CreateResponse(reader io.Reader, boundary strin
         return successPayload, err
     }
 
+    successPayload.Model = new(SaveResponse)
     successPayload.Model.Deserialize(jsonMap)
 
 

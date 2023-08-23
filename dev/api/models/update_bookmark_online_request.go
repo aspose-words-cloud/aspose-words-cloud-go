@@ -163,6 +163,7 @@ func (data *UpdateBookmarkOnlineRequest) CreateResponse(reader io.Reader, bounda
         return successPayload, err
     }
 
+    successPayload.Model = new(BookmarkResponse)
     successPayload.Model.Deserialize(jsonMap)
 
 

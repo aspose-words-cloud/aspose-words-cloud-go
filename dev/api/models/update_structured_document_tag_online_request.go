@@ -168,6 +168,7 @@ func (data *UpdateStructuredDocumentTagOnlineRequest) CreateResponse(reader io.R
         return successPayload, err
     }
 
+    successPayload.Model = new(StructuredDocumentTagResponse)
     successPayload.Model.Deserialize(jsonMap)
 
 

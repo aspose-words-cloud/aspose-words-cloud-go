@@ -168,6 +168,7 @@ func (data *UpdateParagraphFormatOnlineRequest) CreateResponse(reader io.Reader,
         return successPayload, err
     }
 
+    successPayload.Model = new(ParagraphFormatResponse)
     successPayload.Model.Deserialize(jsonMap)
 
 

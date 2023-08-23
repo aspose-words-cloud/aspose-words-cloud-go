@@ -163,6 +163,7 @@ func (data *UpdateStyleOnlineRequest) CreateResponse(reader io.Reader, boundary 
         return successPayload, err
     }
 
+    successPayload.Model = new(StyleResponse)
     successPayload.Model.Deserialize(jsonMap)
 
 

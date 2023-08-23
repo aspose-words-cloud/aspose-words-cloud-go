@@ -163,6 +163,7 @@ func (data *CreateOrUpdateDocumentPropertyOnlineRequest) CreateResponse(reader i
         return successPayload, err
     }
 
+    successPayload.Model = new(DocumentPropertyResponse)
     successPayload.Model.Deserialize(jsonMap)
 
 

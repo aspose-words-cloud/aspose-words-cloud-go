@@ -163,6 +163,7 @@ func (data *UpdateCustomXmlPartOnlineRequest) CreateResponse(reader io.Reader, b
         return successPayload, err
     }
 
+    successPayload.Model = new(CustomXmlPartResponse)
     successPayload.Model.Deserialize(jsonMap)
 
 

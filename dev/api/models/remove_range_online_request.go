@@ -143,6 +143,7 @@ func (data *RemoveRangeOnlineRequest) CreateResponse(reader io.Reader, boundary 
         return successPayload, err
     }
 
+    successPayload.Model = new(DocumentResponse)
     successPayload.Model.Deserialize(jsonMap)
 
 

@@ -159,6 +159,7 @@ func (data *InsertPageNumbersOnlineRequest) CreateResponse(reader io.Reader, bou
         return successPayload, err
     }
 
+    successPayload.Model = new(DocumentResponse)
     successPayload.Model.Deserialize(jsonMap)
 
 

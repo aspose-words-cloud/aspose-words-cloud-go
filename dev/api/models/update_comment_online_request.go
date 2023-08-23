@@ -163,6 +163,7 @@ func (data *UpdateCommentOnlineRequest) CreateResponse(reader io.Reader, boundar
         return successPayload, err
     }
 
+    successPayload.Model = new(CommentResponse)
     successPayload.Model.Deserialize(jsonMap)
 
 

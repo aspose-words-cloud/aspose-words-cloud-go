@@ -163,6 +163,7 @@ func (data *UpdateSectionPageSetupOnlineRequest) CreateResponse(reader io.Reader
         return successPayload, err
     }
 
+    successPayload.Model = new(SectionPageSetupResponse)
     successPayload.Model.Deserialize(jsonMap)
 
 

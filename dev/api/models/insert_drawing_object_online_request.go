@@ -174,6 +174,7 @@ func (data *InsertDrawingObjectOnlineRequest) CreateResponse(reader io.Reader, b
         return successPayload, err
     }
 
+    successPayload.Model = new(DrawingObjectResponse)
     successPayload.Model.Deserialize(jsonMap)
 
 

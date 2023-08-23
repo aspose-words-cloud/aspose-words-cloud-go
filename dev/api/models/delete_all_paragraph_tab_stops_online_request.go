@@ -143,6 +143,7 @@ func (data *DeleteAllParagraphTabStopsOnlineRequest) CreateResponse(reader io.Re
         return successPayload, err
     }
 
+    successPayload.Model = new(TabStopsResponse)
     successPayload.Model.Deserialize(jsonMap)
 
 

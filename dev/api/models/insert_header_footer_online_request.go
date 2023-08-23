@@ -160,6 +160,7 @@ func (data *InsertHeaderFooterOnlineRequest) CreateResponse(reader io.Reader, bo
         return successPayload, err
     }
 
+    successPayload.Model = new(HeaderFooterResponse)
     successPayload.Model.Deserialize(jsonMap)
 
 

@@ -168,6 +168,7 @@ func (data *UpdateFootnoteOnlineRequest) CreateResponse(reader io.Reader, bounda
         return successPayload, err
     }
 
+    successPayload.Model = new(FootnoteResponse)
     successPayload.Model.Deserialize(jsonMap)
 
 

@@ -134,6 +134,7 @@ func (data *AcceptAllRevisionsOnlineRequest) CreateResponse(reader io.Reader, bo
         return successPayload, err
     }
 
+    successPayload.Model = new(RevisionsModificationResponse)
     successPayload.Model.Deserialize(jsonMap)
 
 

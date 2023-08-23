@@ -168,6 +168,7 @@ func (data *UpdateFieldOnlineRequest) CreateResponse(reader io.Reader, boundary 
         return successPayload, err
     }
 
+    successPayload.Model = new(FieldResponse)
     successPayload.Model.Deserialize(jsonMap)
 
 

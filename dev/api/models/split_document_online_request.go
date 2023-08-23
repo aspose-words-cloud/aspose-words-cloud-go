@@ -175,6 +175,7 @@ func (data *SplitDocumentOnlineRequest) CreateResponse(reader io.Reader, boundar
         return successPayload, err
     }
 
+    successPayload.Model = new(SplitDocumentResponse)
     successPayload.Model.Deserialize(jsonMap)
 
 

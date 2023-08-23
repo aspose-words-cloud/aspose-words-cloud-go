@@ -294,6 +294,7 @@ func (data *SaveAsTiffOnlineRequest) CreateResponse(reader io.Reader, boundary s
         return successPayload, err
     }
 
+    successPayload.Model = new(SaveResponse)
     successPayload.Model.Deserialize(jsonMap)
 
 

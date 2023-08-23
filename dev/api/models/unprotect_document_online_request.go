@@ -141,6 +141,7 @@ func (data *UnprotectDocumentOnlineRequest) CreateResponse(reader io.Reader, bou
         return successPayload, err
     }
 
+    successPayload.Model = new(ProtectionDataResponse)
     successPayload.Model.Deserialize(jsonMap)
 
 

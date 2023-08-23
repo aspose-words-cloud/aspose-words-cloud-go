@@ -161,6 +161,7 @@ func (data *DeleteParagraphListFormatOnlineRequest) CreateResponse(reader io.Rea
         return successPayload, err
     }
 
+    successPayload.Model = new(ParagraphListFormatResponse)
     successPayload.Model.Deserialize(jsonMap)
 
 

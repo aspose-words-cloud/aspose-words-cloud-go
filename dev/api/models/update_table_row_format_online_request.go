@@ -166,6 +166,7 @@ func (data *UpdateTableRowFormatOnlineRequest) CreateResponse(reader io.Reader, 
         return successPayload, err
     }
 
+    successPayload.Model = new(TableRowFormatResponse)
     successPayload.Model.Deserialize(jsonMap)
 
 

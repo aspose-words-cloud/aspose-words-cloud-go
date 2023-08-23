@@ -141,6 +141,7 @@ func (data *CompressDocumentOnlineRequest) CreateResponse(reader io.Reader, boun
         return successPayload, err
     }
 
+    successPayload.Model = new(CompressResponse)
     successPayload.Model.Deserialize(jsonMap)
 
 

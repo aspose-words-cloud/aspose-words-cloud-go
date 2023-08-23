@@ -150,6 +150,7 @@ func (data *ReplaceWithTextOnlineRequest) CreateResponse(reader io.Reader, bound
         return successPayload, err
     }
 
+    successPayload.Model = new(DocumentResponse)
     successPayload.Model.Deserialize(jsonMap)
 
 

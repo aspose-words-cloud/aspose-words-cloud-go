@@ -160,6 +160,7 @@ func (data *AppendDocumentOnlineRequest) CreateResponse(reader io.Reader, bounda
         return successPayload, err
     }
 
+    successPayload.Model = new(DocumentResponse)
     successPayload.Model.Deserialize(jsonMap)
 
 

@@ -163,6 +163,7 @@ func (data *InsertTableCellOnlineRequest) CreateResponse(reader io.Reader, bound
         return successPayload, err
     }
 
+    successPayload.Model = new(TableCellResponse)
     successPayload.Model.Deserialize(jsonMap)
 
 

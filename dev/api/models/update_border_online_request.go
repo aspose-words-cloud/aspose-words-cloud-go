@@ -168,6 +168,7 @@ func (data *UpdateBorderOnlineRequest) CreateResponse(reader io.Reader, boundary
         return successPayload, err
     }
 
+    successPayload.Model = new(BorderResponse)
     successPayload.Model.Deserialize(jsonMap)
 
 

@@ -166,6 +166,7 @@ func (data *UpdateRunOnlineRequest) CreateResponse(reader io.Reader, boundary st
         return successPayload, err
     }
 
+    successPayload.Model = new(RunResponse)
     successPayload.Model.Deserialize(jsonMap)
 
 
