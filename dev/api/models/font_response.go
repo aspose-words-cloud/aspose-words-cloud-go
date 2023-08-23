@@ -28,11 +28,89 @@
 package models
 
 // The REST response with a font.
+
+type IFontResponse interface {
+    IsFontResponse() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetRequestId() *string
+    SetRequestId(value *string)
+    GetFont() IFont
+    SetFont(value IFont)
+}
+
 type FontResponse struct {
     // The REST response with a font.
-    RequestId string `json:"RequestId,omitempty"`
+    RequestId *string
 
     // The REST response with a font.
-    Font FontResult `json:"Font,omitempty"`
+    Font IFont
+}
+
+func (FontResponse) IsFontResponse() bool {
+    return true
+}
+
+func (FontResponse) IsWordsResponse() bool {
+    return true
+}
+
+func (obj *FontResponse) Initialize() {
+    if (obj.Font != nil) {
+        obj.Font.Initialize()
+    }
+
+
+}
+
+func (obj *FontResponse) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["RequestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["requestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["Font"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IFont = new(Font)
+            modelInstance.Deserialize(parsedValue)
+            obj.Font = modelInstance
+        }
+
+    } else if jsonValue, exists := json["font"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IFont = new(Font)
+            modelInstance.Deserialize(parsedValue)
+            obj.Font = modelInstance
+        }
+
+    }
+}
+
+func (obj *FontResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
+}
+
+func (obj *FontResponse) GetRequestId() *string {
+    return obj.RequestId
+}
+
+func (obj *FontResponse) SetRequestId(value *string) {
+    obj.RequestId = value
+}
+
+func (obj *FontResponse) GetFont() IFont {
+    return obj.Font
+}
+
+func (obj *FontResponse) SetFont(value IFont) {
+    obj.Font = value
 }
 

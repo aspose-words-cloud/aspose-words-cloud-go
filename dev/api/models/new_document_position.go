@@ -28,26 +28,24 @@
 package models
 
 // DTO container with a new position in the document tree.
-type NewDocumentPositionResult struct {
-    // DTO container with a new position in the document tree.
-    NodeId string `json:"NodeId,omitempty"`
-
-    // DTO container with a new position in the document tree.
-    Offset int32 `json:"Offset,omitempty"`
-}
-
-type NewDocumentPosition struct {
-    // DTO container with a new position in the document tree.
-    NodeId *string `json:"NodeId,omitempty"`
-
-    // DTO container with a new position in the document tree.
-    Offset *int32 `json:"Offset,omitempty"`
-}
 
 type INewDocumentPosition interface {
     IsNewDocumentPosition() bool
     Initialize()
+    Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetNodeId() *string
+    SetNodeId(value *string)
+    GetOffset() *int32
+    SetOffset(value *int32)
+}
+
+type NewDocumentPosition struct {
+    // DTO container with a new position in the document tree.
+    NodeId *string
+
+    // DTO container with a new position in the document tree.
+    Offset *int32
 }
 
 func (NewDocumentPosition) IsNewDocumentPosition() bool {
@@ -58,8 +56,51 @@ func (NewDocumentPosition) IsNewDocumentPosition() bool {
 func (obj *NewDocumentPosition) Initialize() {
 }
 
+func (obj *NewDocumentPosition) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["NodeId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.NodeId = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["nodeId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.NodeId = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["Offset"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.Offset = new(int32)
+            *obj.Offset = int32(parsedValue)
+        }
+
+    } else if jsonValue, exists := json["offset"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.Offset = new(int32)
+            *obj.Offset = int32(parsedValue)
+        }
+
+    }
+}
+
 func (obj *NewDocumentPosition) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *NewDocumentPosition) GetNodeId() *string {
+    return obj.NodeId
+}
+
+func (obj *NewDocumentPosition) SetNodeId(value *string) {
+    obj.NodeId = value
+}
+
+func (obj *NewDocumentPosition) GetOffset() *int32 {
+    return obj.Offset
+}
+
+func (obj *NewDocumentPosition) SetOffset(value *int32) {
+    obj.Offset = value
+}
 

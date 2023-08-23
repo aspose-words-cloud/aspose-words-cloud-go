@@ -28,26 +28,24 @@
 package models
 
 // The error details.
-type ErrorDetailsResult struct {
-    // The error details.
-    ErrorDateTime Time `json:"ErrorDateTime,omitempty"`
-
-    // The error details.
-    RequestId string `json:"RequestId,omitempty"`
-}
-
-type ErrorDetails struct {
-    // The error details.
-    ErrorDateTime *Time `json:"ErrorDateTime,omitempty"`
-
-    // The error details.
-    RequestId *string `json:"RequestId,omitempty"`
-}
 
 type IErrorDetails interface {
     IsErrorDetails() bool
     Initialize()
+    Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetErrorDateTime() *Time
+    SetErrorDateTime(value *Time)
+    GetRequestId() *string
+    SetRequestId(value *string)
+}
+
+type ErrorDetails struct {
+    // The error details.
+    ErrorDateTime *Time
+
+    // The error details.
+    RequestId *string
 }
 
 func (ErrorDetails) IsErrorDetails() bool {
@@ -58,8 +56,51 @@ func (ErrorDetails) IsErrorDetails() bool {
 func (obj *ErrorDetails) Initialize() {
 }
 
+func (obj *ErrorDetails) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["ErrorDateTime"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.ErrorDateTime = new(Time)
+            obj.ErrorDateTime.Parse(parsedValue)
+        }
+
+    } else if jsonValue, exists := json["errorDateTime"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.ErrorDateTime = new(Time)
+            obj.ErrorDateTime.Parse(parsedValue)
+        }
+
+    }
+
+    if jsonValue, exists := json["RequestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["requestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    }
+}
+
 func (obj *ErrorDetails) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *ErrorDetails) GetErrorDateTime() *Time {
+    return obj.ErrorDateTime
+}
+
+func (obj *ErrorDetails) SetErrorDateTime(value *Time) {
+    obj.ErrorDateTime = value
+}
+
+func (obj *ErrorDetails) GetRequestId() *string {
+    return obj.RequestId
+}
+
+func (obj *ErrorDetails) SetRequestId(value *string) {
+    obj.RequestId = value
+}
 

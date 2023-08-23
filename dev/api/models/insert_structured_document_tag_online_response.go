@@ -34,9 +34,25 @@ import "io"
 // Inserts a new StructuredDocumentTag (SDT) to the document node.
 type InsertStructuredDocumentTagOnlineResponse struct {
     // The response model.
-    Model StructuredDocumentTagResponse `json:"Model,omitempty"`
+    Model IStructuredDocumentTagResponse
 
 
     // The document after modification.
-    Document map[string]io.Reader `json:"Document,omitempty"`
+    Document map[string]io.Reader
+}
+
+func (obj *InsertStructuredDocumentTagOnlineResponse) GetModel() IStructuredDocumentTagResponse {
+    return obj.Model
+}
+
+func (obj *InsertStructuredDocumentTagOnlineResponse) SetModel(value IStructuredDocumentTagResponse) {
+    obj.Model = value
+}
+
+func (obj *InsertStructuredDocumentTagOnlineResponse) GetDocument() map[string]io.Reader {
+    return obj.Document
+}
+
+func (obj *InsertStructuredDocumentTagOnlineResponse) SetDocument(value map[string]io.Reader) {
+    obj.Document = value
 }

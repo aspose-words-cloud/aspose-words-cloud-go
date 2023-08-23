@@ -166,7 +166,7 @@ func (data *ExecuteMailMergeRequest) CreateRequestData() (RequestData, error) {
         result.FormParams = append(result.FormParams, NewTextFormParamContainer("Data", parameterToString(localVarTempParam, "")))
     }
 
-    if localVarTempParam, localVarOk := data.Optionals["options"].(FieldOptions); localVarOk {
+    if localVarTempParam, localVarOk := data.Optionals["options"].(IFieldOptions); localVarOk {
         result.FormParams = append(result.FormParams, NewJsonFormParamContainer("Options", parameterToString(localVarTempParam, "")))
     }
 
@@ -180,10 +180,12 @@ func (data *ExecuteMailMergeRequest) CreateRequestData() (RequestData, error) {
 }
 
 func (data *ExecuteMailMergeRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
-            var successPayload DocumentResponse
-            if err = json.NewDecoder(reader).Decode(&successPayload); err != nil {
+            var successPayload IDocumentResponse
+            var jsonMap map[string]interface{}
+            if err = json.NewDecoder(reader).Decode(&jsonMap); err != nil {
                 return nil, err
             }
 
+            successPayload.Deserialize(jsonMap)
             return successPayload, err
 }

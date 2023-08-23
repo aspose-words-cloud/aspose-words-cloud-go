@@ -28,26 +28,24 @@
 package models
 
 // DTO container with a collection of runs.
-type RunsResult struct {
-    // DTO container with a collection of runs.
-    Link WordsApiLinkResult `json:"Link,omitempty"`
-
-    // DTO container with a collection of runs.
-    List []RunResult `json:"List,omitempty"`
-}
-
-type Runs struct {
-    // DTO container with a collection of runs.
-    Link IWordsApiLink `json:"Link,omitempty"`
-
-    // DTO container with a collection of runs.
-    List []Run `json:"List,omitempty"`
-}
 
 type IRuns interface {
     IsRuns() bool
     Initialize()
+    Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetLink() IWordsApiLink
+    SetLink(value IWordsApiLink)
+    GetList() []IRun
+    SetList(value []IRun)
+}
+
+type Runs struct {
+    // DTO container with a collection of runs.
+    Link IWordsApiLink
+
+    // DTO container with a collection of runs.
+    List []IRun
 }
 
 func (Runs) IsRuns() bool {
@@ -71,8 +69,67 @@ func (obj *Runs) Initialize() {
 
 }
 
+func (obj *Runs) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["Link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    } else if jsonValue, exists := json["link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    }
+
+    if jsonValue, exists := json["List"]; exists {
+        if parsedValue, valid := jsonValue.([]interface{}); valid {
+            for _, parsedElement := range parsedValue {
+                if elementValue, valid := parsedElement.(map[string]interface{}); valid {
+                    var modelElementInstance IRun = new(Run)
+                    modelElementInstance.Deserialize(elementValue)
+                    obj.List = append(obj.List, modelElementInstance)
+                }
+
+            }
+        }
+
+    } else if jsonValue, exists := json["list"]; exists {
+        if parsedValue, valid := jsonValue.([]interface{}); valid {
+            for _, parsedElement := range parsedValue {
+                if elementValue, valid := parsedElement.(map[string]interface{}); valid {
+                    var modelElementInstance IRun = new(Run)
+                    modelElementInstance.Deserialize(elementValue)
+                    obj.List = append(obj.List, modelElementInstance)
+                }
+
+            }
+        }
+
+    }
+}
+
 func (obj *Runs) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *Runs) GetLink() IWordsApiLink {
+    return obj.Link
+}
+
+func (obj *Runs) SetLink(value IWordsApiLink) {
+    obj.Link = value
+}
+
+func (obj *Runs) GetList() []IRun {
+    return obj.List
+}
+
+func (obj *Runs) SetList(value []IRun) {
+    obj.List = value
+}
 

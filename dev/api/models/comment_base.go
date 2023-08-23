@@ -28,71 +28,23 @@
 package models
 
 // Comment.
-type CommentBaseResult struct {
-    // Comment.
-    RangeStart NewDocumentPositionResult `json:"RangeStart,omitempty"`
-
-    // Comment.
-    RangeEnd NewDocumentPositionResult `json:"RangeEnd,omitempty"`
-
-    // Comment.
-    Author string `json:"Author,omitempty"`
-
-    // Comment.
-    DateTime Time `json:"DateTime,omitempty"`
-
-    // Comment.
-    Initial string `json:"Initial,omitempty"`
-
-    // Comment.
-    Text string `json:"Text,omitempty"`
-}
-
-type CommentBase struct {
-    // Comment.
-    RangeStart INewDocumentPosition `json:"RangeStart,omitempty"`
-
-    // Comment.
-    RangeEnd INewDocumentPosition `json:"RangeEnd,omitempty"`
-
-    // Comment.
-    Author *string `json:"Author,omitempty"`
-
-    // Comment.
-    DateTime *Time `json:"DateTime,omitempty"`
-
-    // Comment.
-    Initial *string `json:"Initial,omitempty"`
-
-    // Comment.
-    Text *string `json:"Text,omitempty"`
-}
 
 type ICommentBase interface {
     IsCommentBase() bool
     Initialize()
+    Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetRangeStart() INewDocumentPosition
+    SetRangeStart(value INewDocumentPosition)
+    GetRangeEnd() INewDocumentPosition
+    SetRangeEnd(value INewDocumentPosition)
+    GetAuthor() *string
+    SetAuthor(value *string)
+    GetDateTime() *Time
+    SetDateTime(value *Time)
+    GetInitial() *string
+    SetInitial(value *string)
+    GetText() *string
+    SetText(value *string)
 }
-
-func (CommentBase) IsCommentBase() bool {
-    return true
-}
-
-
-func (obj *CommentBase) Initialize() {
-    if (obj.RangeStart != nil) {
-        obj.RangeStart.Initialize()
-    }
-
-    if (obj.RangeEnd != nil) {
-        obj.RangeEnd.Initialize()
-    }
-
-
-}
-
-func (obj *CommentBase) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
-    return resultFilesContent
-}
-
 

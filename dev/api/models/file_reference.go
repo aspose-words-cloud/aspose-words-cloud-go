@@ -33,17 +33,6 @@ import (
 	"io"
 )
 
-type FileReferenceResult struct {
-    // File source.
-    Source string `json:"Source"`
-
-    // File reference.
-    Reference string `json:"Reference"`
-
-    // File local data.
-    Content io.ReadCloser `json:"-"`
-}
-
 type FileReference struct {
     // File source.
     Source string `json:"Source"`
@@ -58,6 +47,7 @@ type FileReference struct {
 type IFileReference interface {
     IsFileReference() bool
     Initialize()
+    Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
@@ -67,6 +57,10 @@ func (FileReference) IsFileReference() bool {
 
 
 func (obj *FileReference) Initialize() {
+
+}
+
+func (obj *FileReference) Deserialize(json map[string]interface{}) {
 
 }
 

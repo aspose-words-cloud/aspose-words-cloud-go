@@ -64,8 +64,8 @@ func Test_Watermark_InsertWatermarkImage(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.Document, "Validate InsertWatermarkImage response.");
-    assert.Equal(t, "TestInsertWatermarkImage.docx", actual.Document.FileName, "Validate InsertWatermarkImage response.");
+    assert.NotNil(t, actual.GetDocument(), "Validate InsertWatermarkImage response.");
+    assert.Equal(t, "TestInsertWatermarkImage.docx", DereferenceValue(actual.GetDocument().GetFileName()), "Validate InsertWatermarkImage response.");
 }
 
 // Test for adding watermark image online.
@@ -124,8 +124,8 @@ func Test_Watermark_InsertWatermarkText(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.Document, "Validate InsertWatermarkText response.");
-    assert.Equal(t, "TestInsertWatermarkText.docx", actual.Document.FileName, "Validate InsertWatermarkText response.");
+    assert.NotNil(t, actual.GetDocument(), "Validate InsertWatermarkText response.");
+    assert.Equal(t, "TestInsertWatermarkText.docx", DereferenceValue(actual.GetDocument().GetFileName()), "Validate InsertWatermarkText response.");
 }
 
 // Test for adding watermark text online.
@@ -182,8 +182,8 @@ func Test_Watermark_DeleteWatermark(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.Document, "Validate DeleteWatermark response.");
-    assert.Equal(t, "TestDeleteWatermark.docx", actual.Document.FileName, "Validate DeleteWatermark response.");
+    assert.NotNil(t, actual.GetDocument(), "Validate DeleteWatermark response.");
+    assert.Equal(t, "TestDeleteWatermark.docx", DereferenceValue(actual.GetDocument().GetFileName()), "Validate DeleteWatermark response.");
 }
 
 // Test for deleting watermark online.

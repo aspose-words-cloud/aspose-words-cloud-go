@@ -28,26 +28,24 @@
 package models
 
 // Section link element.
-type SectionLinkResult struct {
-    // Section link element.
-    Link WordsApiLinkResult `json:"Link,omitempty"`
-
-    // Section link element.
-    NodeId string `json:"NodeId,omitempty"`
-}
-
-type SectionLink struct {
-    // Section link element.
-    Link IWordsApiLink `json:"Link,omitempty"`
-
-    // Section link element.
-    NodeId *string `json:"NodeId,omitempty"`
-}
 
 type ISectionLink interface {
     IsSectionLink() bool
     Initialize()
+    Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetLink() IWordsApiLink
+    SetLink(value IWordsApiLink)
+    GetNodeId() *string
+    SetNodeId(value *string)
+}
+
+type SectionLink struct {
+    // Section link element.
+    Link IWordsApiLink
+
+    // Section link element.
+    NodeId *string
 }
 
 func (SectionLink) IsSectionLink() bool {
@@ -70,8 +68,53 @@ func (obj *SectionLink) Initialize() {
 
 }
 
+func (obj *SectionLink) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["Link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    } else if jsonValue, exists := json["link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    }
+
+    if jsonValue, exists := json["NodeId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.NodeId = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["nodeId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.NodeId = &parsedValue
+        }
+
+    }
+}
+
 func (obj *SectionLink) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *SectionLink) GetLink() IWordsApiLink {
+    return obj.Link
+}
+
+func (obj *SectionLink) SetLink(value IWordsApiLink) {
+    obj.Link = value
+}
+
+func (obj *SectionLink) GetNodeId() *string {
+    return obj.NodeId
+}
+
+func (obj *SectionLink) SetNodeId(value *string) {
+    obj.NodeId = value
+}
 

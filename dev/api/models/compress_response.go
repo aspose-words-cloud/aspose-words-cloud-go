@@ -28,11 +28,89 @@
 package models
 
 // The REST response of compressed document.
+
+type ICompressResponse interface {
+    IsCompressResponse() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetRequestId() *string
+    SetRequestId(value *string)
+    GetDocument() IDocument
+    SetDocument(value IDocument)
+}
+
 type CompressResponse struct {
     // The REST response of compressed document.
-    RequestId string `json:"RequestId,omitempty"`
+    RequestId *string
 
     // The REST response of compressed document.
-    Document DocumentResult `json:"Document,omitempty"`
+    Document IDocument
+}
+
+func (CompressResponse) IsCompressResponse() bool {
+    return true
+}
+
+func (CompressResponse) IsWordsResponse() bool {
+    return true
+}
+
+func (obj *CompressResponse) Initialize() {
+    if (obj.Document != nil) {
+        obj.Document.Initialize()
+    }
+
+
+}
+
+func (obj *CompressResponse) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["RequestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["requestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["Document"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IDocument = new(Document)
+            modelInstance.Deserialize(parsedValue)
+            obj.Document = modelInstance
+        }
+
+    } else if jsonValue, exists := json["document"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IDocument = new(Document)
+            modelInstance.Deserialize(parsedValue)
+            obj.Document = modelInstance
+        }
+
+    }
+}
+
+func (obj *CompressResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
+}
+
+func (obj *CompressResponse) GetRequestId() *string {
+    return obj.RequestId
+}
+
+func (obj *CompressResponse) SetRequestId(value *string) {
+    obj.RequestId = value
+}
+
+func (obj *CompressResponse) GetDocument() IDocument {
+    return obj.Document
+}
+
+func (obj *CompressResponse) SetDocument(value IDocument) {
+    obj.Document = value
 }
 

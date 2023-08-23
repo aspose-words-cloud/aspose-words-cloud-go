@@ -86,10 +86,12 @@ func (data *ClassifyRequest) CreateRequestData() (RequestData, error) {
 }
 
 func (data *ClassifyRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
-            var successPayload ClassificationResponse
-            if err = json.NewDecoder(reader).Decode(&successPayload); err != nil {
+            var successPayload IClassificationResponse
+            var jsonMap map[string]interface{}
+            if err = json.NewDecoder(reader).Decode(&jsonMap); err != nil {
                 return nil, err
             }
 
+            successPayload.Deserialize(jsonMap)
             return successPayload, err
 }

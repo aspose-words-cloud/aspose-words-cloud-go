@@ -65,8 +65,8 @@ func Test_DocumentProtection_ProtectDocument(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.ProtectionData, "Validate ProtectDocument response.");
-    assert.Equal(t, "ReadOnly", actual.ProtectionData.ProtectionType, "Validate ProtectDocument response.");
+    assert.NotNil(t, actual.GetProtectionData(), "Validate ProtectDocument response.");
+    assert.Equal(t, "ReadOnly", DereferenceValue(actual.GetProtectionData().GetProtectionType()), "Validate ProtectDocument response.");
 }
 
 // Test for setting document protection.
@@ -175,8 +175,8 @@ func Test_DocumentProtection_DeleteUnprotectDocument(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.ProtectionData, "Validate DeleteUnprotectDocument response.");
-    assert.Equal(t, "NoProtection", actual.ProtectionData.ProtectionType, "Validate DeleteUnprotectDocument response.");
+    assert.NotNil(t, actual.GetProtectionData(), "Validate DeleteUnprotectDocument response.");
+    assert.Equal(t, "NoProtection", DereferenceValue(actual.GetProtectionData().GetProtectionType()), "Validate DeleteUnprotectDocument response.");
 }
 
 // Test for deleting unprotect document.

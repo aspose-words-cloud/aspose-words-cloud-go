@@ -34,9 +34,25 @@ import "io"
 // Applies a style to the document node.
 type ApplyStyleToDocumentElementOnlineResponse struct {
     // The response model.
-    Model WordsResponse `json:"Model,omitempty"`
+    Model IWordsResponse
 
 
     // The document after modification.
-    Document map[string]io.Reader `json:"Document,omitempty"`
+    Document map[string]io.Reader
+}
+
+func (obj *ApplyStyleToDocumentElementOnlineResponse) GetModel() IWordsResponse {
+    return obj.Model
+}
+
+func (obj *ApplyStyleToDocumentElementOnlineResponse) SetModel(value IWordsResponse) {
+    obj.Model = value
+}
+
+func (obj *ApplyStyleToDocumentElementOnlineResponse) GetDocument() map[string]io.Reader {
+    return obj.Document
+}
+
+func (obj *ApplyStyleToDocumentElementOnlineResponse) SetDocument(value map[string]io.Reader) {
+    obj.Document = value
 }

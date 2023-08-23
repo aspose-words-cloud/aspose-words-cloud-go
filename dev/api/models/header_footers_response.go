@@ -28,11 +28,89 @@
 package models
 
 // The REST response with a collection of HeaderFooter elements.
+
+type IHeaderFootersResponse interface {
+    IsHeaderFootersResponse() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetRequestId() *string
+    SetRequestId(value *string)
+    GetHeaderFooters() IHeaderFooterLinkCollection
+    SetHeaderFooters(value IHeaderFooterLinkCollection)
+}
+
 type HeaderFootersResponse struct {
     // The REST response with a collection of HeaderFooter elements.
-    RequestId string `json:"RequestId,omitempty"`
+    RequestId *string
 
     // The REST response with a collection of HeaderFooter elements.
-    HeaderFooters HeaderFooterLinkCollectionResult `json:"HeaderFooters,omitempty"`
+    HeaderFooters IHeaderFooterLinkCollection
+}
+
+func (HeaderFootersResponse) IsHeaderFootersResponse() bool {
+    return true
+}
+
+func (HeaderFootersResponse) IsWordsResponse() bool {
+    return true
+}
+
+func (obj *HeaderFootersResponse) Initialize() {
+    if (obj.HeaderFooters != nil) {
+        obj.HeaderFooters.Initialize()
+    }
+
+
+}
+
+func (obj *HeaderFootersResponse) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["RequestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["requestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["HeaderFooters"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IHeaderFooterLinkCollection = new(HeaderFooterLinkCollection)
+            modelInstance.Deserialize(parsedValue)
+            obj.HeaderFooters = modelInstance
+        }
+
+    } else if jsonValue, exists := json["headerFooters"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IHeaderFooterLinkCollection = new(HeaderFooterLinkCollection)
+            modelInstance.Deserialize(parsedValue)
+            obj.HeaderFooters = modelInstance
+        }
+
+    }
+}
+
+func (obj *HeaderFootersResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
+}
+
+func (obj *HeaderFootersResponse) GetRequestId() *string {
+    return obj.RequestId
+}
+
+func (obj *HeaderFootersResponse) SetRequestId(value *string) {
+    obj.RequestId = value
+}
+
+func (obj *HeaderFootersResponse) GetHeaderFooters() IHeaderFooterLinkCollection {
+    return obj.HeaderFooters
+}
+
+func (obj *HeaderFootersResponse) SetHeaderFooters(value IHeaderFooterLinkCollection) {
+    obj.HeaderFooters = value
 }
 

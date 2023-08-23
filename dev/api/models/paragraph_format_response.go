@@ -28,11 +28,89 @@
 package models
 
 // The REST response with the formatting properties of a paragraph.
+
+type IParagraphFormatResponse interface {
+    IsParagraphFormatResponse() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetRequestId() *string
+    SetRequestId(value *string)
+    GetParagraphFormat() IParagraphFormat
+    SetParagraphFormat(value IParagraphFormat)
+}
+
 type ParagraphFormatResponse struct {
     // The REST response with the formatting properties of a paragraph.
-    RequestId string `json:"RequestId,omitempty"`
+    RequestId *string
 
     // The REST response with the formatting properties of a paragraph.
-    ParagraphFormat ParagraphFormatResult `json:"ParagraphFormat,omitempty"`
+    ParagraphFormat IParagraphFormat
+}
+
+func (ParagraphFormatResponse) IsParagraphFormatResponse() bool {
+    return true
+}
+
+func (ParagraphFormatResponse) IsWordsResponse() bool {
+    return true
+}
+
+func (obj *ParagraphFormatResponse) Initialize() {
+    if (obj.ParagraphFormat != nil) {
+        obj.ParagraphFormat.Initialize()
+    }
+
+
+}
+
+func (obj *ParagraphFormatResponse) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["RequestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["requestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["ParagraphFormat"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IParagraphFormat = new(ParagraphFormat)
+            modelInstance.Deserialize(parsedValue)
+            obj.ParagraphFormat = modelInstance
+        }
+
+    } else if jsonValue, exists := json["paragraphFormat"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IParagraphFormat = new(ParagraphFormat)
+            modelInstance.Deserialize(parsedValue)
+            obj.ParagraphFormat = modelInstance
+        }
+
+    }
+}
+
+func (obj *ParagraphFormatResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
+}
+
+func (obj *ParagraphFormatResponse) GetRequestId() *string {
+    return obj.RequestId
+}
+
+func (obj *ParagraphFormatResponse) SetRequestId(value *string) {
+    obj.RequestId = value
+}
+
+func (obj *ParagraphFormatResponse) GetParagraphFormat() IParagraphFormat {
+    return obj.ParagraphFormat
+}
+
+func (obj *ParagraphFormatResponse) SetParagraphFormat(value IParagraphFormat) {
+    obj.ParagraphFormat = value
 }
 

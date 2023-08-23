@@ -28,50 +28,44 @@
 package models
 
 // DTO container with an OfficeMath object.
-type OfficeMathObjectResult struct {
-    // DTO container with an OfficeMath object.
-    Link WordsApiLinkResult `json:"Link,omitempty"`
-
-    // DTO container with an OfficeMath object.
-    NodeId string `json:"NodeId,omitempty"`
-
-    // DTO container with an OfficeMath object.
-    Content StoryChildNodesResult `json:"Content,omitempty"`
-
-    // DTO container with an OfficeMath object.
-    DisplayType string `json:"DisplayType,omitempty"`
-
-    // DTO container with an OfficeMath object.
-    Justification string `json:"Justification,omitempty"`
-
-    // DTO container with an OfficeMath object.
-    MathObjectType string `json:"MathObjectType,omitempty"`
-}
-
-type OfficeMathObject struct {
-    // DTO container with an OfficeMath object.
-    Link IWordsApiLink `json:"Link,omitempty"`
-
-    // DTO container with an OfficeMath object.
-    NodeId *string `json:"NodeId,omitempty"`
-
-    // DTO container with an OfficeMath object.
-    Content IStoryChildNodes `json:"Content,omitempty"`
-
-    // DTO container with an OfficeMath object.
-    DisplayType *string `json:"DisplayType,omitempty"`
-
-    // DTO container with an OfficeMath object.
-    Justification *string `json:"Justification,omitempty"`
-
-    // DTO container with an OfficeMath object.
-    MathObjectType *string `json:"MathObjectType,omitempty"`
-}
 
 type IOfficeMathObject interface {
     IsOfficeMathObject() bool
     Initialize()
+    Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetLink() IWordsApiLink
+    SetLink(value IWordsApiLink)
+    GetNodeId() *string
+    SetNodeId(value *string)
+    GetContent() IStoryChildNodes
+    SetContent(value IStoryChildNodes)
+    GetDisplayType() *string
+    SetDisplayType(value *string)
+    GetJustification() *string
+    SetJustification(value *string)
+    GetMathObjectType() *string
+    SetMathObjectType(value *string)
+}
+
+type OfficeMathObject struct {
+    // DTO container with an OfficeMath object.
+    Link IWordsApiLink
+
+    // DTO container with an OfficeMath object.
+    NodeId *string
+
+    // DTO container with an OfficeMath object.
+    Content IStoryChildNodes
+
+    // DTO container with an OfficeMath object.
+    DisplayType *string
+
+    // DTO container with an OfficeMath object.
+    Justification *string
+
+    // DTO container with an OfficeMath object.
+    MathObjectType *string
 }
 
 func (OfficeMathObject) IsOfficeMathObject() bool {
@@ -102,8 +96,137 @@ func (obj *OfficeMathObject) Initialize() {
 
 }
 
+func (obj *OfficeMathObject) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["Link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    } else if jsonValue, exists := json["link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    }
+
+    if jsonValue, exists := json["NodeId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.NodeId = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["nodeId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.NodeId = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["Content"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IStoryChildNodes = new(StoryChildNodes)
+            modelInstance.Deserialize(parsedValue)
+            obj.Content = modelInstance
+        }
+
+    } else if jsonValue, exists := json["content"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IStoryChildNodes = new(StoryChildNodes)
+            modelInstance.Deserialize(parsedValue)
+            obj.Content = modelInstance
+        }
+
+    }
+
+    if jsonValue, exists := json["DisplayType"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.DisplayType = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["displayType"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.DisplayType = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["Justification"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Justification = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["justification"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Justification = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["MathObjectType"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.MathObjectType = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["mathObjectType"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.MathObjectType = &parsedValue
+        }
+
+    }
+}
+
 func (obj *OfficeMathObject) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *OfficeMathObject) GetLink() IWordsApiLink {
+    return obj.Link
+}
+
+func (obj *OfficeMathObject) SetLink(value IWordsApiLink) {
+    obj.Link = value
+}
+
+func (obj *OfficeMathObject) GetNodeId() *string {
+    return obj.NodeId
+}
+
+func (obj *OfficeMathObject) SetNodeId(value *string) {
+    obj.NodeId = value
+}
+
+func (obj *OfficeMathObject) GetContent() IStoryChildNodes {
+    return obj.Content
+}
+
+func (obj *OfficeMathObject) SetContent(value IStoryChildNodes) {
+    obj.Content = value
+}
+
+func (obj *OfficeMathObject) GetDisplayType() *string {
+    return obj.DisplayType
+}
+
+func (obj *OfficeMathObject) SetDisplayType(value *string) {
+    obj.DisplayType = value
+}
+
+func (obj *OfficeMathObject) GetJustification() *string {
+    return obj.Justification
+}
+
+func (obj *OfficeMathObject) SetJustification(value *string) {
+    obj.Justification = value
+}
+
+func (obj *OfficeMathObject) GetMathObjectType() *string {
+    return obj.MathObjectType
+}
+
+func (obj *OfficeMathObject) SetMathObjectType(value *string) {
+    obj.MathObjectType = value
+}
 

@@ -34,9 +34,25 @@ import "io"
 // Removes a paragraph tab stop from the document node.
 type DeleteParagraphTabStopOnlineResponse struct {
     // The response model.
-    Model TabStopsResponse `json:"Model,omitempty"`
+    Model ITabStopsResponse
 
 
     // The document after modification.
-    Document map[string]io.Reader `json:"Document,omitempty"`
+    Document map[string]io.Reader
+}
+
+func (obj *DeleteParagraphTabStopOnlineResponse) GetModel() ITabStopsResponse {
+    return obj.Model
+}
+
+func (obj *DeleteParagraphTabStopOnlineResponse) SetModel(value ITabStopsResponse) {
+    obj.Model = value
+}
+
+func (obj *DeleteParagraphTabStopOnlineResponse) GetDocument() map[string]io.Reader {
+    return obj.Document
+}
+
+func (obj *DeleteParagraphTabStopOnlineResponse) SetDocument(value map[string]io.Reader) {
+    obj.Document = value
 }

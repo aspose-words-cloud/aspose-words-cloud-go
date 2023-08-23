@@ -28,11 +28,89 @@
 package models
 
 // The REST response with a collection of DrawingObjects.
+
+type IDrawingObjectsResponse interface {
+    IsDrawingObjectsResponse() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetRequestId() *string
+    SetRequestId(value *string)
+    GetDrawingObjects() IDrawingObjectCollection
+    SetDrawingObjects(value IDrawingObjectCollection)
+}
+
 type DrawingObjectsResponse struct {
     // The REST response with a collection of DrawingObjects.
-    RequestId string `json:"RequestId,omitempty"`
+    RequestId *string
 
     // The REST response with a collection of DrawingObjects.
-    DrawingObjects DrawingObjectCollectionResult `json:"DrawingObjects,omitempty"`
+    DrawingObjects IDrawingObjectCollection
+}
+
+func (DrawingObjectsResponse) IsDrawingObjectsResponse() bool {
+    return true
+}
+
+func (DrawingObjectsResponse) IsWordsResponse() bool {
+    return true
+}
+
+func (obj *DrawingObjectsResponse) Initialize() {
+    if (obj.DrawingObjects != nil) {
+        obj.DrawingObjects.Initialize()
+    }
+
+
+}
+
+func (obj *DrawingObjectsResponse) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["RequestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["requestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["DrawingObjects"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IDrawingObjectCollection = new(DrawingObjectCollection)
+            modelInstance.Deserialize(parsedValue)
+            obj.DrawingObjects = modelInstance
+        }
+
+    } else if jsonValue, exists := json["drawingObjects"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IDrawingObjectCollection = new(DrawingObjectCollection)
+            modelInstance.Deserialize(parsedValue)
+            obj.DrawingObjects = modelInstance
+        }
+
+    }
+}
+
+func (obj *DrawingObjectsResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
+}
+
+func (obj *DrawingObjectsResponse) GetRequestId() *string {
+    return obj.RequestId
+}
+
+func (obj *DrawingObjectsResponse) SetRequestId(value *string) {
+    obj.RequestId = value
+}
+
+func (obj *DrawingObjectsResponse) GetDrawingObjects() IDrawingObjectCollection {
+    return obj.DrawingObjects
+}
+
+func (obj *DrawingObjectsResponse) SetDrawingObjects(value IDrawingObjectCollection) {
+    obj.DrawingObjects = value
 }
 

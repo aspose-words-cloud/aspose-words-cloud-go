@@ -28,26 +28,24 @@
 package models
 
 // File upload result.
-type FilesUploadResultResult struct {
-    // File upload result.
-    Errors []ErrorResult `json:"Errors,omitempty"`
-
-    // File upload result.
-    Uploaded []string `json:"Uploaded,omitempty"`
-}
-
-type FilesUploadResult struct {
-    // File upload result.
-    Errors []Error `json:"Errors,omitempty"`
-
-    // File upload result.
-    Uploaded []string `json:"Uploaded,omitempty"`
-}
 
 type IFilesUploadResult interface {
     IsFilesUploadResult() bool
     Initialize()
+    Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetErrors() []IError
+    SetErrors(value []IError)
+    GetUploaded() []string
+    SetUploaded(value []string)
+}
+
+type FilesUploadResult struct {
+    // File upload result.
+    Errors []IError
+
+    // File upload result.
+    Uploaded []string
 }
 
 func (FilesUploadResult) IsFilesUploadResult() bool {
@@ -64,8 +62,73 @@ func (obj *FilesUploadResult) Initialize() {
 
 }
 
+func (obj *FilesUploadResult) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["Errors"]; exists {
+        if parsedValue, valid := jsonValue.([]interface{}); valid {
+            for _, parsedElement := range parsedValue {
+                if elementValue, valid := parsedElement.(map[string]interface{}); valid {
+                    var modelElementInstance IError = new(Error)
+                    modelElementInstance.Deserialize(elementValue)
+                    obj.Errors = append(obj.Errors, modelElementInstance)
+                }
+
+            }
+        }
+
+    } else if jsonValue, exists := json["errors"]; exists {
+        if parsedValue, valid := jsonValue.([]interface{}); valid {
+            for _, parsedElement := range parsedValue {
+                if elementValue, valid := parsedElement.(map[string]interface{}); valid {
+                    var modelElementInstance IError = new(Error)
+                    modelElementInstance.Deserialize(elementValue)
+                    obj.Errors = append(obj.Errors, modelElementInstance)
+                }
+
+            }
+        }
+
+    }
+
+    if jsonValue, exists := json["Uploaded"]; exists {
+        if parsedValue, valid := jsonValue.([]interface{}); valid {
+            for _, parsedElement := range parsedValue {
+                if elementValue, valid := parsedElement.(string); valid {
+                    obj.Uploaded = append(obj.Uploaded, elementValue)
+                }
+
+            }
+        }
+
+    } else if jsonValue, exists := json["uploaded"]; exists {
+        if parsedValue, valid := jsonValue.([]interface{}); valid {
+            for _, parsedElement := range parsedValue {
+                if elementValue, valid := parsedElement.(string); valid {
+                    obj.Uploaded = append(obj.Uploaded, elementValue)
+                }
+
+            }
+        }
+
+    }
+}
+
 func (obj *FilesUploadResult) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *FilesUploadResult) GetErrors() []IError {
+    return obj.Errors
+}
+
+func (obj *FilesUploadResult) SetErrors(value []IError) {
+    obj.Errors = value
+}
+
+func (obj *FilesUploadResult) GetUploaded() []string {
+    return obj.Uploaded
+}
+
+func (obj *FilesUploadResult) SetUploaded(value []string) {
+    obj.Uploaded = value
+}
 

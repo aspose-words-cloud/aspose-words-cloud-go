@@ -28,26 +28,24 @@
 package models
 
 // Represents an array of bookmarks.
-type BookmarksResult struct {
-    // Represents an array of bookmarks.
-    Link WordsApiLinkResult `json:"Link,omitempty"`
-
-    // Represents an array of bookmarks.
-    BookmarkList []BookmarkResult `json:"BookmarkList,omitempty"`
-}
-
-type Bookmarks struct {
-    // Represents an array of bookmarks.
-    Link IWordsApiLink `json:"Link,omitempty"`
-
-    // Represents an array of bookmarks.
-    BookmarkList []Bookmark `json:"BookmarkList,omitempty"`
-}
 
 type IBookmarks interface {
     IsBookmarks() bool
     Initialize()
+    Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetLink() IWordsApiLink
+    SetLink(value IWordsApiLink)
+    GetBookmarkList() []IBookmark
+    SetBookmarkList(value []IBookmark)
+}
+
+type Bookmarks struct {
+    // Represents an array of bookmarks.
+    Link IWordsApiLink
+
+    // Represents an array of bookmarks.
+    BookmarkList []IBookmark
 }
 
 func (Bookmarks) IsBookmarks() bool {
@@ -71,8 +69,67 @@ func (obj *Bookmarks) Initialize() {
 
 }
 
+func (obj *Bookmarks) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["Link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    } else if jsonValue, exists := json["link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    }
+
+    if jsonValue, exists := json["BookmarkList"]; exists {
+        if parsedValue, valid := jsonValue.([]interface{}); valid {
+            for _, parsedElement := range parsedValue {
+                if elementValue, valid := parsedElement.(map[string]interface{}); valid {
+                    var modelElementInstance IBookmark = new(Bookmark)
+                    modelElementInstance.Deserialize(elementValue)
+                    obj.BookmarkList = append(obj.BookmarkList, modelElementInstance)
+                }
+
+            }
+        }
+
+    } else if jsonValue, exists := json["bookmarkList"]; exists {
+        if parsedValue, valid := jsonValue.([]interface{}); valid {
+            for _, parsedElement := range parsedValue {
+                if elementValue, valid := parsedElement.(map[string]interface{}); valid {
+                    var modelElementInstance IBookmark = new(Bookmark)
+                    modelElementInstance.Deserialize(elementValue)
+                    obj.BookmarkList = append(obj.BookmarkList, modelElementInstance)
+                }
+
+            }
+        }
+
+    }
+}
+
 func (obj *Bookmarks) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *Bookmarks) GetLink() IWordsApiLink {
+    return obj.Link
+}
+
+func (obj *Bookmarks) SetLink(value IWordsApiLink) {
+    obj.Link = value
+}
+
+func (obj *Bookmarks) GetBookmarkList() []IBookmark {
+    return obj.BookmarkList
+}
+
+func (obj *Bookmarks) SetBookmarkList(value []IBookmark) {
+    obj.BookmarkList = value
+}
 

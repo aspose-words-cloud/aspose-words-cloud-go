@@ -28,62 +28,54 @@
 package models
 
 // DTO container with a single document list.
-type ListInfoResult struct {
-    // DTO container with a single document list.
-    Link WordsApiLinkResult `json:"Link,omitempty"`
-
-    // DTO container with a single document list.
-    ListId int32 `json:"ListId,omitempty"`
-
-    // DTO container with a single document list.
-    IsMultiLevel bool `json:"IsMultiLevel,omitempty"`
-
-    // DTO container with a single document list.
-    IsRestartAtEachSection bool `json:"IsRestartAtEachSection,omitempty"`
-
-    // DTO container with a single document list.
-    IsListStyleDefinition bool `json:"IsListStyleDefinition,omitempty"`
-
-    // DTO container with a single document list.
-    IsListStyleReference bool `json:"IsListStyleReference,omitempty"`
-
-    // DTO container with a single document list.
-    Style StyleResult `json:"Style,omitempty"`
-
-    // DTO container with a single document list.
-    ListLevels ListLevelsResult `json:"ListLevels,omitempty"`
-}
-
-type ListInfo struct {
-    // DTO container with a single document list.
-    Link IWordsApiLink `json:"Link,omitempty"`
-
-    // DTO container with a single document list.
-    ListId *int32 `json:"ListId,omitempty"`
-
-    // DTO container with a single document list.
-    IsMultiLevel *bool `json:"IsMultiLevel,omitempty"`
-
-    // DTO container with a single document list.
-    IsRestartAtEachSection *bool `json:"IsRestartAtEachSection,omitempty"`
-
-    // DTO container with a single document list.
-    IsListStyleDefinition *bool `json:"IsListStyleDefinition,omitempty"`
-
-    // DTO container with a single document list.
-    IsListStyleReference *bool `json:"IsListStyleReference,omitempty"`
-
-    // DTO container with a single document list.
-    Style IStyle `json:"Style,omitempty"`
-
-    // DTO container with a single document list.
-    ListLevels IListLevels `json:"ListLevels,omitempty"`
-}
 
 type IListInfo interface {
     IsListInfo() bool
     Initialize()
+    Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetLink() IWordsApiLink
+    SetLink(value IWordsApiLink)
+    GetListId() *int32
+    SetListId(value *int32)
+    GetIsMultiLevel() *bool
+    SetIsMultiLevel(value *bool)
+    GetIsRestartAtEachSection() *bool
+    SetIsRestartAtEachSection(value *bool)
+    GetIsListStyleDefinition() *bool
+    SetIsListStyleDefinition(value *bool)
+    GetIsListStyleReference() *bool
+    SetIsListStyleReference(value *bool)
+    GetStyle() IStyle
+    SetStyle(value IStyle)
+    GetListLevels() IListLevels
+    SetListLevels(value IListLevels)
+}
+
+type ListInfo struct {
+    // DTO container with a single document list.
+    Link IWordsApiLink
+
+    // DTO container with a single document list.
+    ListId *int32
+
+    // DTO container with a single document list.
+    IsMultiLevel *bool
+
+    // DTO container with a single document list.
+    IsRestartAtEachSection *bool
+
+    // DTO container with a single document list.
+    IsListStyleDefinition *bool
+
+    // DTO container with a single document list.
+    IsListStyleReference *bool
+
+    // DTO container with a single document list.
+    Style IStyle
+
+    // DTO container with a single document list.
+    ListLevels IListLevels
 }
 
 func (ListInfo) IsListInfo() bool {
@@ -110,8 +102,183 @@ func (obj *ListInfo) Initialize() {
 
 }
 
+func (obj *ListInfo) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["Link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    } else if jsonValue, exists := json["link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    }
+
+    if jsonValue, exists := json["ListId"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.ListId = new(int32)
+            *obj.ListId = int32(parsedValue)
+        }
+
+    } else if jsonValue, exists := json["listId"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.ListId = new(int32)
+            *obj.ListId = int32(parsedValue)
+        }
+
+    }
+
+    if jsonValue, exists := json["IsMultiLevel"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.IsMultiLevel = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["isMultiLevel"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.IsMultiLevel = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["IsRestartAtEachSection"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.IsRestartAtEachSection = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["isRestartAtEachSection"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.IsRestartAtEachSection = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["IsListStyleDefinition"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.IsListStyleDefinition = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["isListStyleDefinition"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.IsListStyleDefinition = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["IsListStyleReference"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.IsListStyleReference = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["isListStyleReference"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.IsListStyleReference = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["Style"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IStyle = new(Style)
+            modelInstance.Deserialize(parsedValue)
+            obj.Style = modelInstance
+        }
+
+    } else if jsonValue, exists := json["style"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IStyle = new(Style)
+            modelInstance.Deserialize(parsedValue)
+            obj.Style = modelInstance
+        }
+
+    }
+
+    if jsonValue, exists := json["ListLevels"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IListLevels = new(ListLevels)
+            modelInstance.Deserialize(parsedValue)
+            obj.ListLevels = modelInstance
+        }
+
+    } else if jsonValue, exists := json["listLevels"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IListLevels = new(ListLevels)
+            modelInstance.Deserialize(parsedValue)
+            obj.ListLevels = modelInstance
+        }
+
+    }
+}
+
 func (obj *ListInfo) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *ListInfo) GetLink() IWordsApiLink {
+    return obj.Link
+}
+
+func (obj *ListInfo) SetLink(value IWordsApiLink) {
+    obj.Link = value
+}
+
+func (obj *ListInfo) GetListId() *int32 {
+    return obj.ListId
+}
+
+func (obj *ListInfo) SetListId(value *int32) {
+    obj.ListId = value
+}
+
+func (obj *ListInfo) GetIsMultiLevel() *bool {
+    return obj.IsMultiLevel
+}
+
+func (obj *ListInfo) SetIsMultiLevel(value *bool) {
+    obj.IsMultiLevel = value
+}
+
+func (obj *ListInfo) GetIsRestartAtEachSection() *bool {
+    return obj.IsRestartAtEachSection
+}
+
+func (obj *ListInfo) SetIsRestartAtEachSection(value *bool) {
+    obj.IsRestartAtEachSection = value
+}
+
+func (obj *ListInfo) GetIsListStyleDefinition() *bool {
+    return obj.IsListStyleDefinition
+}
+
+func (obj *ListInfo) SetIsListStyleDefinition(value *bool) {
+    obj.IsListStyleDefinition = value
+}
+
+func (obj *ListInfo) GetIsListStyleReference() *bool {
+    return obj.IsListStyleReference
+}
+
+func (obj *ListInfo) SetIsListStyleReference(value *bool) {
+    obj.IsListStyleReference = value
+}
+
+func (obj *ListInfo) GetStyle() IStyle {
+    return obj.Style
+}
+
+func (obj *ListInfo) SetStyle(value IStyle) {
+    obj.Style = value
+}
+
+func (obj *ListInfo) GetListLevels() IListLevels {
+    return obj.ListLevels
+}
+
+func (obj *ListInfo) SetListLevels(value IListLevels) {
+    obj.ListLevels = value
+}
 

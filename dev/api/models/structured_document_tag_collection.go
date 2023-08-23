@@ -28,26 +28,24 @@
 package models
 
 // DTO container with a collection of StructuredDocumentTags links.
-type StructuredDocumentTagCollectionResult struct {
-    // DTO container with a collection of StructuredDocumentTags links.
-    Link WordsApiLinkResult `json:"Link,omitempty"`
-
-    // DTO container with a collection of StructuredDocumentTags links.
-    List []StructuredDocumentTagResult `json:"List,omitempty"`
-}
-
-type StructuredDocumentTagCollection struct {
-    // DTO container with a collection of StructuredDocumentTags links.
-    Link IWordsApiLink `json:"Link,omitempty"`
-
-    // DTO container with a collection of StructuredDocumentTags links.
-    List []StructuredDocumentTag `json:"List,omitempty"`
-}
 
 type IStructuredDocumentTagCollection interface {
     IsStructuredDocumentTagCollection() bool
     Initialize()
+    Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetLink() IWordsApiLink
+    SetLink(value IWordsApiLink)
+    GetList() []IStructuredDocumentTag
+    SetList(value []IStructuredDocumentTag)
+}
+
+type StructuredDocumentTagCollection struct {
+    // DTO container with a collection of StructuredDocumentTags links.
+    Link IWordsApiLink
+
+    // DTO container with a collection of StructuredDocumentTags links.
+    List []IStructuredDocumentTag
 }
 
 func (StructuredDocumentTagCollection) IsStructuredDocumentTagCollection() bool {
@@ -71,8 +69,81 @@ func (obj *StructuredDocumentTagCollection) Initialize() {
 
 }
 
+func (obj *StructuredDocumentTagCollection) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["Link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    } else if jsonValue, exists := json["link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    }
+
+    if jsonValue, exists := json["List"]; exists {
+        if parsedValue, valid := jsonValue.([]interface{}); valid {
+            for _, parsedElement := range parsedValue {
+                if elementValue, valid := parsedElement.(map[string]interface{}); valid {
+                    var modelElementInstance IStructuredDocumentTag = nil
+                    if jsonElementType, found := elementValue["$type"]; found {
+                        jsonTypeStr := jsonElementType.(string)
+                        if jsonTypeStr == "StructuredDocumentTagInsert, _" { modelElementInstance = new(StructuredDocumentTagInsert) }
+                        if jsonTypeStr == "StructuredDocumentTagUpdate, _" { modelElementInstance = new(StructuredDocumentTagUpdate) }
+                    }
+
+                    if modelElementInstance == nil { modelElementInstance = new(StructuredDocumentTag) }
+                    modelElementInstance.Deserialize(elementValue)
+                    obj.List = append(obj.List, modelElementInstance)
+                }
+
+            }
+        }
+
+    } else if jsonValue, exists := json["list"]; exists {
+        if parsedValue, valid := jsonValue.([]interface{}); valid {
+            for _, parsedElement := range parsedValue {
+                if elementValue, valid := parsedElement.(map[string]interface{}); valid {
+                    var modelElementInstance IStructuredDocumentTag = nil
+                    if jsonElementType, found := elementValue["$type"]; found {
+                        jsonTypeStr := jsonElementType.(string)
+                        if jsonTypeStr == "StructuredDocumentTagInsert, _" { modelElementInstance = new(StructuredDocumentTagInsert) }
+                        if jsonTypeStr == "StructuredDocumentTagUpdate, _" { modelElementInstance = new(StructuredDocumentTagUpdate) }
+                    }
+
+                    if modelElementInstance == nil { modelElementInstance = new(StructuredDocumentTag) }
+                    modelElementInstance.Deserialize(elementValue)
+                    obj.List = append(obj.List, modelElementInstance)
+                }
+
+            }
+        }
+
+    }
+}
+
 func (obj *StructuredDocumentTagCollection) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *StructuredDocumentTagCollection) GetLink() IWordsApiLink {
+    return obj.Link
+}
+
+func (obj *StructuredDocumentTagCollection) SetLink(value IWordsApiLink) {
+    obj.Link = value
+}
+
+func (obj *StructuredDocumentTagCollection) GetList() []IStructuredDocumentTag {
+    return obj.List
+}
+
+func (obj *StructuredDocumentTagCollection) SetList(value []IStructuredDocumentTag) {
+    obj.List = value
+}
 

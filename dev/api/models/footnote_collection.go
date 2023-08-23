@@ -28,26 +28,24 @@
 package models
 
 // DTO container with a collection of footnotes.
-type FootnoteCollectionResult struct {
-    // DTO container with a collection of footnotes.
-    Link WordsApiLinkResult `json:"Link,omitempty"`
-
-    // DTO container with a collection of footnotes.
-    List []FootnoteResult `json:"List,omitempty"`
-}
-
-type FootnoteCollection struct {
-    // DTO container with a collection of footnotes.
-    Link IWordsApiLink `json:"Link,omitempty"`
-
-    // DTO container with a collection of footnotes.
-    List []Footnote `json:"List,omitempty"`
-}
 
 type IFootnoteCollection interface {
     IsFootnoteCollection() bool
     Initialize()
+    Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetLink() IWordsApiLink
+    SetLink(value IWordsApiLink)
+    GetList() []IFootnote
+    SetList(value []IFootnote)
+}
+
+type FootnoteCollection struct {
+    // DTO container with a collection of footnotes.
+    Link IWordsApiLink
+
+    // DTO container with a collection of footnotes.
+    List []IFootnote
 }
 
 func (FootnoteCollection) IsFootnoteCollection() bool {
@@ -71,8 +69,67 @@ func (obj *FootnoteCollection) Initialize() {
 
 }
 
+func (obj *FootnoteCollection) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["Link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    } else if jsonValue, exists := json["link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    }
+
+    if jsonValue, exists := json["List"]; exists {
+        if parsedValue, valid := jsonValue.([]interface{}); valid {
+            for _, parsedElement := range parsedValue {
+                if elementValue, valid := parsedElement.(map[string]interface{}); valid {
+                    var modelElementInstance IFootnote = new(Footnote)
+                    modelElementInstance.Deserialize(elementValue)
+                    obj.List = append(obj.List, modelElementInstance)
+                }
+
+            }
+        }
+
+    } else if jsonValue, exists := json["list"]; exists {
+        if parsedValue, valid := jsonValue.([]interface{}); valid {
+            for _, parsedElement := range parsedValue {
+                if elementValue, valid := parsedElement.(map[string]interface{}); valid {
+                    var modelElementInstance IFootnote = new(Footnote)
+                    modelElementInstance.Deserialize(elementValue)
+                    obj.List = append(obj.List, modelElementInstance)
+                }
+
+            }
+        }
+
+    }
+}
+
 func (obj *FootnoteCollection) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *FootnoteCollection) GetLink() IWordsApiLink {
+    return obj.Link
+}
+
+func (obj *FootnoteCollection) SetLink(value IWordsApiLink) {
+    obj.Link = value
+}
+
+func (obj *FootnoteCollection) GetList() []IFootnote {
+    return obj.List
+}
+
+func (obj *FootnoteCollection) SetList(value []IFootnote) {
+    obj.List = value
+}
 

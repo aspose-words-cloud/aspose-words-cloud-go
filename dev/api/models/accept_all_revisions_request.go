@@ -131,10 +131,12 @@ func (data *AcceptAllRevisionsRequest) CreateRequestData() (RequestData, error) 
 }
 
 func (data *AcceptAllRevisionsRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
-            var successPayload RevisionsModificationResponse
-            if err = json.NewDecoder(reader).Decode(&successPayload); err != nil {
+            var successPayload IRevisionsModificationResponse
+            var jsonMap map[string]interface{}
+            if err = json.NewDecoder(reader).Decode(&jsonMap); err != nil {
                 return nil, err
             }
 
+            successPayload.Deserialize(jsonMap)
             return successPayload, err
 }

@@ -28,104 +28,89 @@
 package models
 
 // FormField text input element.
-type FormFieldTextInputResult struct {
-    // FormField text input element.
-    Link WordsApiLinkResult `json:"Link,omitempty"`
-
-    // FormField text input element.
-    NodeId string `json:"NodeId,omitempty"`
-
-    // FormField text input element.
-    Name string `json:"Name,omitempty"`
-
-    // FormField text input element.
-    Enabled bool `json:"Enabled,omitempty"`
-
-    // FormField text input element.
-    StatusText string `json:"StatusText,omitempty"`
-
-    // FormField text input element.
-    OwnStatus bool `json:"OwnStatus,omitempty"`
-
-    // FormField text input element.
-    HelpText string `json:"HelpText,omitempty"`
-
-    // FormField text input element.
-    OwnHelp bool `json:"OwnHelp,omitempty"`
-
-    // FormField text input element.
-    CalculateOnExit bool `json:"CalculateOnExit,omitempty"`
-
-    // FormField text input element.
-    EntryMacro string `json:"EntryMacro,omitempty"`
-
-    // FormField text input element.
-    ExitMacro string `json:"ExitMacro,omitempty"`
-
-    // FormField text input element.
-    TextInputFormat string `json:"TextInputFormat,omitempty"`
-
-    // FormField text input element.
-    TextInputType string `json:"TextInputType,omitempty"`
-
-    // FormField text input element.
-    TextInputDefault string `json:"TextInputDefault,omitempty"`
-
-    // FormField text input element.
-    MaxLength int32 `json:"MaxLength,omitempty"`
-}
-
-type FormFieldTextInput struct {
-    // FormField text input element.
-    Link IWordsApiLink `json:"Link,omitempty"`
-
-    // FormField text input element.
-    NodeId *string `json:"NodeId,omitempty"`
-
-    // FormField text input element.
-    Name *string `json:"Name,omitempty"`
-
-    // FormField text input element.
-    Enabled *bool `json:"Enabled,omitempty"`
-
-    // FormField text input element.
-    StatusText *string `json:"StatusText,omitempty"`
-
-    // FormField text input element.
-    OwnStatus *bool `json:"OwnStatus,omitempty"`
-
-    // FormField text input element.
-    HelpText *string `json:"HelpText,omitempty"`
-
-    // FormField text input element.
-    OwnHelp *bool `json:"OwnHelp,omitempty"`
-
-    // FormField text input element.
-    CalculateOnExit *bool `json:"CalculateOnExit,omitempty"`
-
-    // FormField text input element.
-    EntryMacro *string `json:"EntryMacro,omitempty"`
-
-    // FormField text input element.
-    ExitMacro *string `json:"ExitMacro,omitempty"`
-
-    // FormField text input element.
-    TextInputFormat *string `json:"TextInputFormat,omitempty"`
-
-    // FormField text input element.
-    TextInputType *string `json:"TextInputType,omitempty"`
-
-    // FormField text input element.
-    TextInputDefault *string `json:"TextInputDefault,omitempty"`
-
-    // FormField text input element.
-    MaxLength *int32 `json:"MaxLength,omitempty"`
-}
 
 type IFormFieldTextInput interface {
     IsFormFieldTextInput() bool
     Initialize()
+    Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetLink() IWordsApiLink
+    SetLink(value IWordsApiLink)
+    GetNodeId() *string
+    SetNodeId(value *string)
+    GetName() *string
+    SetName(value *string)
+    GetEnabled() *bool
+    SetEnabled(value *bool)
+    GetStatusText() *string
+    SetStatusText(value *string)
+    GetOwnStatus() *bool
+    SetOwnStatus(value *bool)
+    GetHelpText() *string
+    SetHelpText(value *string)
+    GetOwnHelp() *bool
+    SetOwnHelp(value *bool)
+    GetCalculateOnExit() *bool
+    SetCalculateOnExit(value *bool)
+    GetEntryMacro() *string
+    SetEntryMacro(value *string)
+    GetExitMacro() *string
+    SetExitMacro(value *string)
+    GetTextInputFormat() *string
+    SetTextInputFormat(value *string)
+    GetTextInputType() *string
+    SetTextInputType(value *string)
+    GetTextInputDefault() *string
+    SetTextInputDefault(value *string)
+    GetMaxLength() *int32
+    SetMaxLength(value *int32)
+}
+
+type FormFieldTextInput struct {
+    // FormField text input element.
+    Link IWordsApiLink
+
+    // FormField text input element.
+    NodeId *string
+
+    // FormField text input element.
+    Name *string
+
+    // FormField text input element.
+    Enabled *bool
+
+    // FormField text input element.
+    StatusText *string
+
+    // FormField text input element.
+    OwnStatus *bool
+
+    // FormField text input element.
+    HelpText *string
+
+    // FormField text input element.
+    OwnHelp *bool
+
+    // FormField text input element.
+    CalculateOnExit *bool
+
+    // FormField text input element.
+    EntryMacro *string
+
+    // FormField text input element.
+    ExitMacro *string
+
+    // FormField text input element.
+    TextInputFormat *string
+
+    // FormField text input element.
+    TextInputType *string
+
+    // FormField text input element.
+    TextInputDefault *string
+
+    // FormField text input element.
+    MaxLength *int32
 }
 
 func (FormFieldTextInput) IsFormFieldTextInput() bool {
@@ -152,8 +137,315 @@ func (obj *FormFieldTextInput) Initialize() {
 
 }
 
+func (obj *FormFieldTextInput) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["Link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    } else if jsonValue, exists := json["link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    }
+
+    if jsonValue, exists := json["NodeId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.NodeId = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["nodeId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.NodeId = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["Name"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Name = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["name"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Name = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["Enabled"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.Enabled = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["enabled"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.Enabled = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["StatusText"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.StatusText = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["statusText"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.StatusText = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["OwnStatus"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.OwnStatus = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["ownStatus"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.OwnStatus = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["HelpText"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.HelpText = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["helpText"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.HelpText = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["OwnHelp"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.OwnHelp = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["ownHelp"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.OwnHelp = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["CalculateOnExit"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.CalculateOnExit = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["calculateOnExit"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.CalculateOnExit = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["EntryMacro"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.EntryMacro = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["entryMacro"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.EntryMacro = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["ExitMacro"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.ExitMacro = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["exitMacro"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.ExitMacro = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["TextInputFormat"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.TextInputFormat = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["textInputFormat"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.TextInputFormat = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["TextInputType"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.TextInputType = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["textInputType"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.TextInputType = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["TextInputDefault"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.TextInputDefault = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["textInputDefault"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.TextInputDefault = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["MaxLength"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.MaxLength = new(int32)
+            *obj.MaxLength = int32(parsedValue)
+        }
+
+    } else if jsonValue, exists := json["maxLength"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.MaxLength = new(int32)
+            *obj.MaxLength = int32(parsedValue)
+        }
+
+    }
+}
+
 func (obj *FormFieldTextInput) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *FormFieldTextInput) GetLink() IWordsApiLink {
+    return obj.Link
+}
+
+func (obj *FormFieldTextInput) SetLink(value IWordsApiLink) {
+    obj.Link = value
+}
+
+func (obj *FormFieldTextInput) GetNodeId() *string {
+    return obj.NodeId
+}
+
+func (obj *FormFieldTextInput) SetNodeId(value *string) {
+    obj.NodeId = value
+}
+
+func (obj *FormFieldTextInput) GetName() *string {
+    return obj.Name
+}
+
+func (obj *FormFieldTextInput) SetName(value *string) {
+    obj.Name = value
+}
+
+func (obj *FormFieldTextInput) GetEnabled() *bool {
+    return obj.Enabled
+}
+
+func (obj *FormFieldTextInput) SetEnabled(value *bool) {
+    obj.Enabled = value
+}
+
+func (obj *FormFieldTextInput) GetStatusText() *string {
+    return obj.StatusText
+}
+
+func (obj *FormFieldTextInput) SetStatusText(value *string) {
+    obj.StatusText = value
+}
+
+func (obj *FormFieldTextInput) GetOwnStatus() *bool {
+    return obj.OwnStatus
+}
+
+func (obj *FormFieldTextInput) SetOwnStatus(value *bool) {
+    obj.OwnStatus = value
+}
+
+func (obj *FormFieldTextInput) GetHelpText() *string {
+    return obj.HelpText
+}
+
+func (obj *FormFieldTextInput) SetHelpText(value *string) {
+    obj.HelpText = value
+}
+
+func (obj *FormFieldTextInput) GetOwnHelp() *bool {
+    return obj.OwnHelp
+}
+
+func (obj *FormFieldTextInput) SetOwnHelp(value *bool) {
+    obj.OwnHelp = value
+}
+
+func (obj *FormFieldTextInput) GetCalculateOnExit() *bool {
+    return obj.CalculateOnExit
+}
+
+func (obj *FormFieldTextInput) SetCalculateOnExit(value *bool) {
+    obj.CalculateOnExit = value
+}
+
+func (obj *FormFieldTextInput) GetEntryMacro() *string {
+    return obj.EntryMacro
+}
+
+func (obj *FormFieldTextInput) SetEntryMacro(value *string) {
+    obj.EntryMacro = value
+}
+
+func (obj *FormFieldTextInput) GetExitMacro() *string {
+    return obj.ExitMacro
+}
+
+func (obj *FormFieldTextInput) SetExitMacro(value *string) {
+    obj.ExitMacro = value
+}
+
+func (obj *FormFieldTextInput) GetTextInputFormat() *string {
+    return obj.TextInputFormat
+}
+
+func (obj *FormFieldTextInput) SetTextInputFormat(value *string) {
+    obj.TextInputFormat = value
+}
+
+func (obj *FormFieldTextInput) GetTextInputType() *string {
+    return obj.TextInputType
+}
+
+func (obj *FormFieldTextInput) SetTextInputType(value *string) {
+    obj.TextInputType = value
+}
+
+func (obj *FormFieldTextInput) GetTextInputDefault() *string {
+    return obj.TextInputDefault
+}
+
+func (obj *FormFieldTextInput) SetTextInputDefault(value *string) {
+    obj.TextInputDefault = value
+}
+
+func (obj *FormFieldTextInput) GetMaxLength() *int32 {
+    return obj.MaxLength
+}
+
+func (obj *FormFieldTextInput) SetMaxLength(value *int32) {
+    obj.MaxLength = value
+}
 

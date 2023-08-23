@@ -28,26 +28,24 @@
 package models
 
 // Container for the footnotes statistical data.
-type FootnotesStatDataResult struct {
-    // Container for the footnotes statistical data.
-    ParagraphCount int32 `json:"ParagraphCount,omitempty"`
-
-    // Container for the footnotes statistical data.
-    WordCount int32 `json:"WordCount,omitempty"`
-}
-
-type FootnotesStatData struct {
-    // Container for the footnotes statistical data.
-    ParagraphCount *int32 `json:"ParagraphCount,omitempty"`
-
-    // Container for the footnotes statistical data.
-    WordCount *int32 `json:"WordCount,omitempty"`
-}
 
 type IFootnotesStatData interface {
     IsFootnotesStatData() bool
     Initialize()
+    Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetParagraphCount() *int32
+    SetParagraphCount(value *int32)
+    GetWordCount() *int32
+    SetWordCount(value *int32)
+}
+
+type FootnotesStatData struct {
+    // Container for the footnotes statistical data.
+    ParagraphCount *int32
+
+    // Container for the footnotes statistical data.
+    WordCount *int32
 }
 
 func (FootnotesStatData) IsFootnotesStatData() bool {
@@ -58,8 +56,53 @@ func (FootnotesStatData) IsFootnotesStatData() bool {
 func (obj *FootnotesStatData) Initialize() {
 }
 
+func (obj *FootnotesStatData) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["ParagraphCount"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.ParagraphCount = new(int32)
+            *obj.ParagraphCount = int32(parsedValue)
+        }
+
+    } else if jsonValue, exists := json["paragraphCount"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.ParagraphCount = new(int32)
+            *obj.ParagraphCount = int32(parsedValue)
+        }
+
+    }
+
+    if jsonValue, exists := json["WordCount"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.WordCount = new(int32)
+            *obj.WordCount = int32(parsedValue)
+        }
+
+    } else if jsonValue, exists := json["wordCount"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.WordCount = new(int32)
+            *obj.WordCount = int32(parsedValue)
+        }
+
+    }
+}
+
 func (obj *FootnotesStatData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *FootnotesStatData) GetParagraphCount() *int32 {
+    return obj.ParagraphCount
+}
+
+func (obj *FootnotesStatData) SetParagraphCount(value *int32) {
+    obj.ParagraphCount = value
+}
+
+func (obj *FootnotesStatData) GetWordCount() *int32 {
+    return obj.WordCount
+}
+
+func (obj *FootnotesStatData) SetWordCount(value *int32) {
+    obj.WordCount = value
+}
 

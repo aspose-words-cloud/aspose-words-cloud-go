@@ -28,50 +28,44 @@
 package models
 
 // Report engine settings.
-type ReportEngineSettingsResult struct {
-    // Report engine settings.
-    CsvDataLoadOptions CsvDataLoadOptionsResult `json:"CsvDataLoadOptions,omitempty"`
-
-    // Report engine settings.
-    DataSourceName string `json:"DataSourceName,omitempty"`
-
-    // Report engine settings.
-    DataSourceType string `json:"DataSourceType,omitempty"`
-
-    // Report engine settings.
-    JsonDataLoadOptions JsonDataLoadOptionsResult `json:"JsonDataLoadOptions,omitempty"`
-
-    // Report engine settings.
-    ReportBuildOptions []string `json:"ReportBuildOptions,omitempty"`
-
-    // Report engine settings.
-    XmlDataLoadOptions XmlDataLoadOptionsResult `json:"XmlDataLoadOptions,omitempty"`
-}
-
-type ReportEngineSettings struct {
-    // Report engine settings.
-    CsvDataLoadOptions ICsvDataLoadOptions `json:"CsvDataLoadOptions,omitempty"`
-
-    // Report engine settings.
-    DataSourceName *string `json:"DataSourceName,omitempty"`
-
-    // Report engine settings.
-    DataSourceType *string `json:"DataSourceType,omitempty"`
-
-    // Report engine settings.
-    JsonDataLoadOptions IJsonDataLoadOptions `json:"JsonDataLoadOptions,omitempty"`
-
-    // Report engine settings.
-    ReportBuildOptions []string `json:"ReportBuildOptions,omitempty"`
-
-    // Report engine settings.
-    XmlDataLoadOptions IXmlDataLoadOptions `json:"XmlDataLoadOptions,omitempty"`
-}
 
 type IReportEngineSettings interface {
     IsReportEngineSettings() bool
     Initialize()
+    Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetCsvDataLoadOptions() ICsvDataLoadOptions
+    SetCsvDataLoadOptions(value ICsvDataLoadOptions)
+    GetDataSourceName() *string
+    SetDataSourceName(value *string)
+    GetDataSourceType() *string
+    SetDataSourceType(value *string)
+    GetJsonDataLoadOptions() IJsonDataLoadOptions
+    SetJsonDataLoadOptions(value IJsonDataLoadOptions)
+    GetReportBuildOptions() []string
+    SetReportBuildOptions(value []string)
+    GetXmlDataLoadOptions() IXmlDataLoadOptions
+    SetXmlDataLoadOptions(value IXmlDataLoadOptions)
+}
+
+type ReportEngineSettings struct {
+    // Report engine settings.
+    CsvDataLoadOptions ICsvDataLoadOptions
+
+    // Report engine settings.
+    DataSourceName *string
+
+    // Report engine settings.
+    DataSourceType *string
+
+    // Report engine settings.
+    JsonDataLoadOptions IJsonDataLoadOptions
+
+    // Report engine settings.
+    ReportBuildOptions []string
+
+    // Report engine settings.
+    XmlDataLoadOptions IXmlDataLoadOptions
 }
 
 func (ReportEngineSettings) IsReportEngineSettings() bool {
@@ -95,8 +89,151 @@ func (obj *ReportEngineSettings) Initialize() {
 
 }
 
+func (obj *ReportEngineSettings) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["CsvDataLoadOptions"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance ICsvDataLoadOptions = new(CsvDataLoadOptions)
+            modelInstance.Deserialize(parsedValue)
+            obj.CsvDataLoadOptions = modelInstance
+        }
+
+    } else if jsonValue, exists := json["csvDataLoadOptions"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance ICsvDataLoadOptions = new(CsvDataLoadOptions)
+            modelInstance.Deserialize(parsedValue)
+            obj.CsvDataLoadOptions = modelInstance
+        }
+
+    }
+
+    if jsonValue, exists := json["DataSourceName"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.DataSourceName = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["dataSourceName"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.DataSourceName = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["DataSourceType"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.DataSourceType = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["dataSourceType"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.DataSourceType = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["JsonDataLoadOptions"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IJsonDataLoadOptions = new(JsonDataLoadOptions)
+            modelInstance.Deserialize(parsedValue)
+            obj.JsonDataLoadOptions = modelInstance
+        }
+
+    } else if jsonValue, exists := json["jsonDataLoadOptions"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IJsonDataLoadOptions = new(JsonDataLoadOptions)
+            modelInstance.Deserialize(parsedValue)
+            obj.JsonDataLoadOptions = modelInstance
+        }
+
+    }
+
+    if jsonValue, exists := json["ReportBuildOptions"]; exists {
+        if parsedValue, valid := jsonValue.([]interface{}); valid {
+            for _, parsedElement := range parsedValue {
+                if elementValue, valid := parsedElement.(string); valid {
+                    obj.ReportBuildOptions = append(obj.ReportBuildOptions, elementValue)
+                }
+
+            }
+        }
+
+    } else if jsonValue, exists := json["reportBuildOptions"]; exists {
+        if parsedValue, valid := jsonValue.([]interface{}); valid {
+            for _, parsedElement := range parsedValue {
+                if elementValue, valid := parsedElement.(string); valid {
+                    obj.ReportBuildOptions = append(obj.ReportBuildOptions, elementValue)
+                }
+
+            }
+        }
+
+    }
+
+    if jsonValue, exists := json["XmlDataLoadOptions"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IXmlDataLoadOptions = new(XmlDataLoadOptions)
+            modelInstance.Deserialize(parsedValue)
+            obj.XmlDataLoadOptions = modelInstance
+        }
+
+    } else if jsonValue, exists := json["xmlDataLoadOptions"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IXmlDataLoadOptions = new(XmlDataLoadOptions)
+            modelInstance.Deserialize(parsedValue)
+            obj.XmlDataLoadOptions = modelInstance
+        }
+
+    }
+}
+
 func (obj *ReportEngineSettings) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *ReportEngineSettings) GetCsvDataLoadOptions() ICsvDataLoadOptions {
+    return obj.CsvDataLoadOptions
+}
+
+func (obj *ReportEngineSettings) SetCsvDataLoadOptions(value ICsvDataLoadOptions) {
+    obj.CsvDataLoadOptions = value
+}
+
+func (obj *ReportEngineSettings) GetDataSourceName() *string {
+    return obj.DataSourceName
+}
+
+func (obj *ReportEngineSettings) SetDataSourceName(value *string) {
+    obj.DataSourceName = value
+}
+
+func (obj *ReportEngineSettings) GetDataSourceType() *string {
+    return obj.DataSourceType
+}
+
+func (obj *ReportEngineSettings) SetDataSourceType(value *string) {
+    obj.DataSourceType = value
+}
+
+func (obj *ReportEngineSettings) GetJsonDataLoadOptions() IJsonDataLoadOptions {
+    return obj.JsonDataLoadOptions
+}
+
+func (obj *ReportEngineSettings) SetJsonDataLoadOptions(value IJsonDataLoadOptions) {
+    obj.JsonDataLoadOptions = value
+}
+
+func (obj *ReportEngineSettings) GetReportBuildOptions() []string {
+    return obj.ReportBuildOptions
+}
+
+func (obj *ReportEngineSettings) SetReportBuildOptions(value []string) {
+    obj.ReportBuildOptions = value
+}
+
+func (obj *ReportEngineSettings) GetXmlDataLoadOptions() IXmlDataLoadOptions {
+    return obj.XmlDataLoadOptions
+}
+
+func (obj *ReportEngineSettings) SetXmlDataLoadOptions(value IXmlDataLoadOptions) {
+    obj.XmlDataLoadOptions = value
+}
 

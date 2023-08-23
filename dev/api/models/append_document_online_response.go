@@ -34,9 +34,25 @@ import "io"
 // Appends documents to the original document.
 type AppendDocumentOnlineResponse struct {
     // The response model.
-    Model DocumentResponse `json:"Model,omitempty"`
+    Model IDocumentResponse
 
 
     // The document after modification.
-    Document map[string]io.Reader `json:"Document,omitempty"`
+    Document map[string]io.Reader
+}
+
+func (obj *AppendDocumentOnlineResponse) GetModel() IDocumentResponse {
+    return obj.Model
+}
+
+func (obj *AppendDocumentOnlineResponse) SetModel(value IDocumentResponse) {
+    obj.Model = value
+}
+
+func (obj *AppendDocumentOnlineResponse) GetDocument() map[string]io.Reader {
+    return obj.Document
+}
+
+func (obj *AppendDocumentOnlineResponse) SetDocument(value map[string]io.Reader) {
+    obj.Document = value
 }

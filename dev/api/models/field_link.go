@@ -28,32 +28,29 @@
 package models
 
 // Field link.
-type FieldLinkResult struct {
-    // Field link.
-    Link WordsApiLinkResult `json:"Link,omitempty"`
-
-    // Field link.
-    NodeId string `json:"NodeId,omitempty"`
-
-    // Field link.
-    FieldCode string `json:"FieldCode,omitempty"`
-}
-
-type FieldLink struct {
-    // Field link.
-    Link IWordsApiLink `json:"Link,omitempty"`
-
-    // Field link.
-    NodeId *string `json:"NodeId,omitempty"`
-
-    // Field link.
-    FieldCode *string `json:"FieldCode,omitempty"`
-}
 
 type IFieldLink interface {
     IsFieldLink() bool
     Initialize()
+    Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetLink() IWordsApiLink
+    SetLink(value IWordsApiLink)
+    GetNodeId() *string
+    SetNodeId(value *string)
+    GetFieldCode() *string
+    SetFieldCode(value *string)
+}
+
+type FieldLink struct {
+    // Field link.
+    Link IWordsApiLink
+
+    // Field link.
+    NodeId *string
+
+    // Field link.
+    FieldCode *string
 }
 
 func (FieldLink) IsFieldLink() bool {
@@ -76,8 +73,73 @@ func (obj *FieldLink) Initialize() {
 
 }
 
+func (obj *FieldLink) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["Link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    } else if jsonValue, exists := json["link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    }
+
+    if jsonValue, exists := json["NodeId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.NodeId = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["nodeId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.NodeId = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["FieldCode"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.FieldCode = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["fieldCode"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.FieldCode = &parsedValue
+        }
+
+    }
+}
+
 func (obj *FieldLink) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *FieldLink) GetLink() IWordsApiLink {
+    return obj.Link
+}
+
+func (obj *FieldLink) SetLink(value IWordsApiLink) {
+    obj.Link = value
+}
+
+func (obj *FieldLink) GetNodeId() *string {
+    return obj.NodeId
+}
+
+func (obj *FieldLink) SetNodeId(value *string) {
+    obj.NodeId = value
+}
+
+func (obj *FieldLink) GetFieldCode() *string {
+    return obj.FieldCode
+}
+
+func (obj *FieldLink) SetFieldCode(value *string) {
+    obj.FieldCode = value
+}
 

@@ -87,6 +87,28 @@ func ReadFile(t *testing.T, path string) (result string) {
 	return string(data)
 }
 
+func DereferenceValue(value interface{}) interface{} {
+	if result, success := value.(string); success {
+		return result
+	} else if result, success := value.(*string); success {
+		return *result
+	} else if result, success := value.(int32); success {
+		return result
+	} else if result, success := value.(*int32); success {
+		return *result
+	} else if result, success := value.(float64); success {
+		return result
+	} else if result, success := value.(*float64); success {
+		return *result
+	} else if result, success := value.(bool); success {
+		return result
+	} else if result, success := value.(*bool); success {
+		return *result
+	} else {
+		return nil
+	}
+}
+
 func OpenFile(t *testing.T, path string) (result *os.File) {
 	data, err := os.Open(GetLocalFile(path))
 	if err != nil {
@@ -336,9 +358,9 @@ func Test_Encrypted_Document(t *testing.T) {
 		t.Error(err)
 	}
 
-	assert.NotNil(t, actual.Paragraphs, "Validate GetDocumentParagraphs response.")
-	assert.NotNil(t, actual.Paragraphs.ParagraphLinkList, "Validate GetDocumentParagraphs response.")
-	assert.Equal(t, 2, len(actual.Paragraphs.ParagraphLinkList), "Validate GetDocumentParagraphs response.")
+	assert.NotNil(t, actual.GetParagraphs(), "Validate GetDocumentParagraphs response.")
+	assert.NotNil(t, actual.GetParagraphs().GetParagraphLinkList(), "Validate GetDocumentParagraphs response.")
+	assert.Equal(t, 2, len(actual.GetParagraphs().GetParagraphLinkList()), "Validate GetDocumentParagraphs response.")
 }
 
 func Test_Encrypted_Document_With_Encrypted_Password(t *testing.T) {
@@ -368,7 +390,7 @@ func Test_Encrypted_Document_With_Encrypted_Password(t *testing.T) {
 		t.Error(err)
 	}
 
-	assert.NotNil(t, actual.Paragraphs, "Validate GetDocumentParagraphs response.")
-	assert.NotNil(t, actual.Paragraphs.ParagraphLinkList, "Validate GetDocumentParagraphs response.")
-	assert.Equal(t, 2, len(actual.Paragraphs.ParagraphLinkList), "Validate GetDocumentParagraphs response.")
+	assert.NotNil(t, actual.GetParagraphs(), "Validate GetDocumentParagraphs response.")
+	assert.NotNil(t, actual.GetParagraphs().GetParagraphLinkList(), "Validate GetDocumentParagraphs response.")
+	assert.Equal(t, 2, len(actual.GetParagraphs().GetParagraphLinkList()), "Validate GetDocumentParagraphs response.")
 }

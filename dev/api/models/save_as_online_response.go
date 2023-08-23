@@ -34,9 +34,25 @@ import "io"
 // Converts a document to the specified format.
 type SaveAsOnlineResponse struct {
     // The response model.
-    Model SaveResponse `json:"Model,omitempty"`
+    Model ISaveResponse
 
 
     // The document after modification.
-    Document map[string]io.Reader `json:"Document,omitempty"`
+    Document map[string]io.Reader
+}
+
+func (obj *SaveAsOnlineResponse) GetModel() ISaveResponse {
+    return obj.Model
+}
+
+func (obj *SaveAsOnlineResponse) SetModel(value ISaveResponse) {
+    obj.Model = value
+}
+
+func (obj *SaveAsOnlineResponse) GetDocument() map[string]io.Reader {
+    return obj.Document
+}
+
+func (obj *SaveAsOnlineResponse) SetDocument(value map[string]io.Reader) {
+    obj.Document = value
 }

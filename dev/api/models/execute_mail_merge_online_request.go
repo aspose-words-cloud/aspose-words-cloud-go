@@ -108,7 +108,7 @@ func (data *ExecuteMailMergeOnlineRequest) CreateRequestData() (RequestData, err
         result.FormParams = append(result.FormParams, NewFileFormParamContainer("data", fbs))
     }
 
-    if localVarTempParam, localVarOk := data.Optionals["options"].(FieldOptions); localVarOk {
+    if localVarTempParam, localVarOk := data.Optionals["options"].(IFieldOptions); localVarOk {
         result.FormParams = append(result.FormParams, NewJsonFormParamContainer("Options", parameterToString(localVarTempParam, "")))
     }
 

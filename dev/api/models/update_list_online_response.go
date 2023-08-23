@@ -34,9 +34,25 @@ import "io"
 // Updates a list in the document.
 type UpdateListOnlineResponse struct {
     // The response model.
-    Model ListResponse `json:"Model,omitempty"`
+    Model IListResponse
 
 
     // The document after modification.
-    Document map[string]io.Reader `json:"Document,omitempty"`
+    Document map[string]io.Reader
+}
+
+func (obj *UpdateListOnlineResponse) GetModel() IListResponse {
+    return obj.Model
+}
+
+func (obj *UpdateListOnlineResponse) SetModel(value IListResponse) {
+    obj.Model = value
+}
+
+func (obj *UpdateListOnlineResponse) GetDocument() map[string]io.Reader {
+    return obj.Document
+}
+
+func (obj *UpdateListOnlineResponse) SetDocument(value map[string]io.Reader) {
+    obj.Document = value
 }

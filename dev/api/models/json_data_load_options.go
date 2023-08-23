@@ -28,32 +28,29 @@
 package models
 
 // Represents options for parsing JSON data.
-type JsonDataLoadOptionsResult struct {
-    // Represents options for parsing JSON data.
-    AlwaysGenerateRootObject bool `json:"AlwaysGenerateRootObject,omitempty"`
-
-    // Represents options for parsing JSON data.
-    ExactDateTimeParseFormats []string `json:"ExactDateTimeParseFormats,omitempty"`
-
-    // Represents options for parsing JSON data.
-    SimpleValueParseMode string `json:"SimpleValueParseMode,omitempty"`
-}
-
-type JsonDataLoadOptions struct {
-    // Represents options for parsing JSON data.
-    AlwaysGenerateRootObject *bool `json:"AlwaysGenerateRootObject,omitempty"`
-
-    // Represents options for parsing JSON data.
-    ExactDateTimeParseFormats []string `json:"ExactDateTimeParseFormats,omitempty"`
-
-    // Represents options for parsing JSON data.
-    SimpleValueParseMode *string `json:"SimpleValueParseMode,omitempty"`
-}
 
 type IJsonDataLoadOptions interface {
     IsJsonDataLoadOptions() bool
     Initialize()
+    Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetAlwaysGenerateRootObject() *bool
+    SetAlwaysGenerateRootObject(value *bool)
+    GetExactDateTimeParseFormats() []string
+    SetExactDateTimeParseFormats(value []string)
+    GetSimpleValueParseMode() *string
+    SetSimpleValueParseMode(value *string)
+}
+
+type JsonDataLoadOptions struct {
+    // Represents options for parsing JSON data.
+    AlwaysGenerateRootObject *bool
+
+    // Represents options for parsing JSON data.
+    ExactDateTimeParseFormats []string
+
+    // Represents options for parsing JSON data.
+    SimpleValueParseMode *string
 }
 
 func (JsonDataLoadOptions) IsJsonDataLoadOptions() bool {
@@ -64,8 +61,79 @@ func (JsonDataLoadOptions) IsJsonDataLoadOptions() bool {
 func (obj *JsonDataLoadOptions) Initialize() {
 }
 
+func (obj *JsonDataLoadOptions) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["AlwaysGenerateRootObject"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.AlwaysGenerateRootObject = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["alwaysGenerateRootObject"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.AlwaysGenerateRootObject = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["ExactDateTimeParseFormats"]; exists {
+        if parsedValue, valid := jsonValue.([]interface{}); valid {
+            for _, parsedElement := range parsedValue {
+                if elementValue, valid := parsedElement.(string); valid {
+                    obj.ExactDateTimeParseFormats = append(obj.ExactDateTimeParseFormats, elementValue)
+                }
+
+            }
+        }
+
+    } else if jsonValue, exists := json["exactDateTimeParseFormats"]; exists {
+        if parsedValue, valid := jsonValue.([]interface{}); valid {
+            for _, parsedElement := range parsedValue {
+                if elementValue, valid := parsedElement.(string); valid {
+                    obj.ExactDateTimeParseFormats = append(obj.ExactDateTimeParseFormats, elementValue)
+                }
+
+            }
+        }
+
+    }
+
+    if jsonValue, exists := json["SimpleValueParseMode"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.SimpleValueParseMode = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["simpleValueParseMode"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.SimpleValueParseMode = &parsedValue
+        }
+
+    }
+}
+
 func (obj *JsonDataLoadOptions) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *JsonDataLoadOptions) GetAlwaysGenerateRootObject() *bool {
+    return obj.AlwaysGenerateRootObject
+}
+
+func (obj *JsonDataLoadOptions) SetAlwaysGenerateRootObject(value *bool) {
+    obj.AlwaysGenerateRootObject = value
+}
+
+func (obj *JsonDataLoadOptions) GetExactDateTimeParseFormats() []string {
+    return obj.ExactDateTimeParseFormats
+}
+
+func (obj *JsonDataLoadOptions) SetExactDateTimeParseFormats(value []string) {
+    obj.ExactDateTimeParseFormats = value
+}
+
+func (obj *JsonDataLoadOptions) GetSimpleValueParseMode() *string {
+    return obj.SimpleValueParseMode
+}
+
+func (obj *JsonDataLoadOptions) SetSimpleValueParseMode(value *string) {
+    obj.SimpleValueParseMode = value
+}
 

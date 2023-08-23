@@ -86,10 +86,12 @@ func (data *GetFilesListRequest) CreateRequestData() (RequestData, error) {
 }
 
 func (data *GetFilesListRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
-            var successPayload FilesList
-            if err = json.NewDecoder(reader).Decode(&successPayload); err != nil {
+            var successPayload IFilesList
+            var jsonMap map[string]interface{}
+            if err = json.NewDecoder(reader).Decode(&jsonMap); err != nil {
                 return nil, err
             }
 
+            successPayload.Deserialize(jsonMap)
             return successPayload, err
 }

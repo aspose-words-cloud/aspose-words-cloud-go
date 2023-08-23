@@ -28,44 +28,39 @@
 package models
 
 // Api error.
-type ApiErrorResult struct {
-    // Api error.
-    Code string `json:"Code,omitempty"`
-
-    // Api error.
-    DateTime Time `json:"DateTime,omitempty"`
-
-    // Api error.
-    Description string `json:"Description,omitempty"`
-
-    // Api error.
-    InnerError *ApiErrorResult `json:"InnerError,omitempty"`
-
-    // Api error.
-    Message string `json:"Message,omitempty"`
-}
-
-type ApiError struct {
-    // Api error.
-    Code *string `json:"Code,omitempty"`
-
-    // Api error.
-    DateTime *Time `json:"DateTime,omitempty"`
-
-    // Api error.
-    Description *string `json:"Description,omitempty"`
-
-    // Api error.
-    InnerError *IApiError `json:"InnerError,omitempty"`
-
-    // Api error.
-    Message *string `json:"Message,omitempty"`
-}
 
 type IApiError interface {
     IsApiError() bool
     Initialize()
+    Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetCode() *string
+    SetCode(value *string)
+    GetDateTime() *Time
+    SetDateTime(value *Time)
+    GetDescription() *string
+    SetDescription(value *string)
+    GetInnerError() IApiError
+    SetInnerError(value IApiError)
+    GetMessage() *string
+    SetMessage(value *string)
+}
+
+type ApiError struct {
+    // Api error.
+    Code *string
+
+    // Api error.
+    DateTime *Time
+
+    // Api error.
+    Description *string
+
+    // Api error.
+    InnerError IApiError
+
+    // Api error.
+    Message *string
 }
 
 func (ApiError) IsApiError() bool {
@@ -76,8 +71,115 @@ func (ApiError) IsApiError() bool {
 func (obj *ApiError) Initialize() {
 }
 
+func (obj *ApiError) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["Code"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Code = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["code"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Code = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["DateTime"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.DateTime = new(Time)
+            obj.DateTime.Parse(parsedValue)
+        }
+
+    } else if jsonValue, exists := json["dateTime"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.DateTime = new(Time)
+            obj.DateTime.Parse(parsedValue)
+        }
+
+    }
+
+    if jsonValue, exists := json["Description"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Description = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["description"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Description = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["InnerError"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IApiError = new(ApiError)
+            modelInstance.Deserialize(parsedValue)
+            obj.InnerError = modelInstance
+        }
+
+    } else if jsonValue, exists := json["innerError"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IApiError = new(ApiError)
+            modelInstance.Deserialize(parsedValue)
+            obj.InnerError = modelInstance
+        }
+
+    }
+
+    if jsonValue, exists := json["Message"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Message = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["message"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Message = &parsedValue
+        }
+
+    }
+}
+
 func (obj *ApiError) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *ApiError) GetCode() *string {
+    return obj.Code
+}
+
+func (obj *ApiError) SetCode(value *string) {
+    obj.Code = value
+}
+
+func (obj *ApiError) GetDateTime() *Time {
+    return obj.DateTime
+}
+
+func (obj *ApiError) SetDateTime(value *Time) {
+    obj.DateTime = value
+}
+
+func (obj *ApiError) GetDescription() *string {
+    return obj.Description
+}
+
+func (obj *ApiError) SetDescription(value *string) {
+    obj.Description = value
+}
+
+func (obj *ApiError) GetInnerError() IApiError {
+    return obj.InnerError
+}
+
+func (obj *ApiError) SetInnerError(value IApiError) {
+    obj.InnerError = value
+}
+
+func (obj *ApiError) GetMessage() *string {
+    return obj.Message
+}
+
+func (obj *ApiError) SetMessage(value *string) {
+    obj.Message = value
+}
 

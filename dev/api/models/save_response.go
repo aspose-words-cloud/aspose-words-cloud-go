@@ -28,11 +28,89 @@
 package models
 
 // The REST response with a save result.
+
+type ISaveResponse interface {
+    IsSaveResponse() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetRequestId() *string
+    SetRequestId(value *string)
+    GetSaveResult() ISaveResult
+    SetSaveResult(value ISaveResult)
+}
+
 type SaveResponse struct {
     // The REST response with a save result.
-    RequestId string `json:"RequestId,omitempty"`
+    RequestId *string
 
     // The REST response with a save result.
-    SaveResult SaveResultResult `json:"SaveResult,omitempty"`
+    SaveResult ISaveResult
+}
+
+func (SaveResponse) IsSaveResponse() bool {
+    return true
+}
+
+func (SaveResponse) IsWordsResponse() bool {
+    return true
+}
+
+func (obj *SaveResponse) Initialize() {
+    if (obj.SaveResult != nil) {
+        obj.SaveResult.Initialize()
+    }
+
+
+}
+
+func (obj *SaveResponse) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["RequestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["requestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["SaveResult"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance ISaveResult = new(SaveResult)
+            modelInstance.Deserialize(parsedValue)
+            obj.SaveResult = modelInstance
+        }
+
+    } else if jsonValue, exists := json["saveResult"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance ISaveResult = new(SaveResult)
+            modelInstance.Deserialize(parsedValue)
+            obj.SaveResult = modelInstance
+        }
+
+    }
+}
+
+func (obj *SaveResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
+}
+
+func (obj *SaveResponse) GetRequestId() *string {
+    return obj.RequestId
+}
+
+func (obj *SaveResponse) SetRequestId(value *string) {
+    obj.RequestId = value
+}
+
+func (obj *SaveResponse) GetSaveResult() ISaveResult {
+    return obj.SaveResult
+}
+
+func (obj *SaveResponse) SetSaveResult(value ISaveResult) {
+    obj.SaveResult = value
 }
 

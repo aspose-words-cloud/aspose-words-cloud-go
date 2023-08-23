@@ -28,136 +28,47 @@
 package models
 
 // Base class for save options of text formats.
-type TxtSaveOptionsBaseDataResult struct {
-    // Base class for save options of text formats.
-    AllowEmbeddingPostScriptFonts bool `json:"AllowEmbeddingPostScriptFonts,omitempty"`
-
-    // Base class for save options of text formats.
-    CustomTimeZoneInfoData TimeZoneInfoDataResult `json:"CustomTimeZoneInfoData,omitempty"`
-
-    // Base class for save options of text formats.
-    Dml3DEffectsRenderingMode string `json:"Dml3DEffectsRenderingMode,omitempty"`
-
-    // Base class for save options of text formats.
-    DmlEffectsRenderingMode string `json:"DmlEffectsRenderingMode,omitempty"`
-
-    // Base class for save options of text formats.
-    DmlRenderingMode string `json:"DmlRenderingMode,omitempty"`
-
-    // Base class for save options of text formats.
-    FileName string `json:"FileName,omitempty"`
-
-    // Base class for save options of text formats.
-    ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
-
-    // Base class for save options of text formats.
-    UpdateCreatedTimeProperty bool `json:"UpdateCreatedTimeProperty,omitempty"`
-
-    // Base class for save options of text formats.
-    UpdateFields bool `json:"UpdateFields,omitempty"`
-
-    // Base class for save options of text formats.
-    UpdateLastPrintedProperty bool `json:"UpdateLastPrintedProperty,omitempty"`
-
-    // Base class for save options of text formats.
-    UpdateLastSavedTimeProperty bool `json:"UpdateLastSavedTimeProperty,omitempty"`
-
-    // Base class for save options of text formats.
-    ZipOutput bool `json:"ZipOutput,omitempty"`
-
-    // Base class for save options of text formats.
-    SaveFormat string `json:"SaveFormat,omitempty"`
-
-    // Base class for save options of text formats.
-    Encoding string `json:"Encoding,omitempty"`
-
-    // Base class for save options of text formats.
-    ExportHeadersFootersMode string `json:"ExportHeadersFootersMode,omitempty"`
-
-    // Base class for save options of text formats.
-    ForcePageBreaks bool `json:"ForcePageBreaks,omitempty"`
-
-    // Base class for save options of text formats.
-    ParagraphBreak string `json:"ParagraphBreak,omitempty"`
-}
-
-type TxtSaveOptionsBaseData struct {
-    // Base class for save options of text formats.
-    AllowEmbeddingPostScriptFonts *bool `json:"AllowEmbeddingPostScriptFonts,omitempty"`
-
-    // Base class for save options of text formats.
-    CustomTimeZoneInfoData ITimeZoneInfoData `json:"CustomTimeZoneInfoData,omitempty"`
-
-    // Base class for save options of text formats.
-    Dml3DEffectsRenderingMode *string `json:"Dml3DEffectsRenderingMode,omitempty"`
-
-    // Base class for save options of text formats.
-    DmlEffectsRenderingMode *string `json:"DmlEffectsRenderingMode,omitempty"`
-
-    // Base class for save options of text formats.
-    DmlRenderingMode *string `json:"DmlRenderingMode,omitempty"`
-
-    // Base class for save options of text formats.
-    FileName *string `json:"FileName,omitempty"`
-
-    // Base class for save options of text formats.
-    ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
-
-    // Base class for save options of text formats.
-    UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
-
-    // Base class for save options of text formats.
-    UpdateFields *bool `json:"UpdateFields,omitempty"`
-
-    // Base class for save options of text formats.
-    UpdateLastPrintedProperty *bool `json:"UpdateLastPrintedProperty,omitempty"`
-
-    // Base class for save options of text formats.
-    UpdateLastSavedTimeProperty *bool `json:"UpdateLastSavedTimeProperty,omitempty"`
-
-    // Base class for save options of text formats.
-    ZipOutput *bool `json:"ZipOutput,omitempty"`
-
-    // Base class for save options of text formats.
-    SaveFormat *string `json:"SaveFormat,omitempty"`
-
-    // Base class for save options of text formats.
-    Encoding *string `json:"Encoding,omitempty"`
-
-    // Base class for save options of text formats.
-    ExportHeadersFootersMode *string `json:"ExportHeadersFootersMode,omitempty"`
-
-    // Base class for save options of text formats.
-    ForcePageBreaks *bool `json:"ForcePageBreaks,omitempty"`
-
-    // Base class for save options of text formats.
-    ParagraphBreak *string `json:"ParagraphBreak,omitempty"`
-}
 
 type ITxtSaveOptionsBaseData interface {
     IsTxtSaveOptionsBaseData() bool
     Initialize()
+    Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetAllowEmbeddingPostScriptFonts() *bool
+    SetAllowEmbeddingPostScriptFonts(value *bool)
+    GetCustomTimeZoneInfoData() ITimeZoneInfoData
+    SetCustomTimeZoneInfoData(value ITimeZoneInfoData)
+    GetDml3DEffectsRenderingMode() *string
+    SetDml3DEffectsRenderingMode(value *string)
+    GetDmlEffectsRenderingMode() *string
+    SetDmlEffectsRenderingMode(value *string)
+    GetDmlRenderingMode() *string
+    SetDmlRenderingMode(value *string)
+    GetFileName() *string
+    SetFileName(value *string)
+    GetImlRenderingMode() *string
+    SetImlRenderingMode(value *string)
+    GetUpdateCreatedTimeProperty() *bool
+    SetUpdateCreatedTimeProperty(value *bool)
+    GetUpdateFields() *bool
+    SetUpdateFields(value *bool)
+    GetUpdateLastPrintedProperty() *bool
+    SetUpdateLastPrintedProperty(value *bool)
+    GetUpdateLastSavedTimeProperty() *bool
+    SetUpdateLastSavedTimeProperty(value *bool)
+    GetUpdateSdtContent() *bool
+    SetUpdateSdtContent(value *bool)
+    GetZipOutput() *bool
+    SetZipOutput(value *bool)
+    GetSaveFormat() *string
+    SetSaveFormat(value *string)
+    GetEncoding() *string
+    SetEncoding(value *string)
+    GetExportHeadersFootersMode() *string
+    SetExportHeadersFootersMode(value *string)
+    GetForcePageBreaks() *bool
+    SetForcePageBreaks(value *bool)
+    GetParagraphBreak() *string
+    SetParagraphBreak(value *string)
 }
-
-func (TxtSaveOptionsBaseData) IsTxtSaveOptionsBaseData() bool {
-    return true
-}
-
-func (TxtSaveOptionsBaseData) IsSaveOptionsData() bool {
-    return true
-}
-
-func (obj *TxtSaveOptionsBaseData) Initialize() {
-    if (obj.CustomTimeZoneInfoData != nil) {
-        obj.CustomTimeZoneInfoData.Initialize()
-    }
-
-
-}
-
-func (obj *TxtSaveOptionsBaseData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
-    return resultFilesContent
-}
-
 

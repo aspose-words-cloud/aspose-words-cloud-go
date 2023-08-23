@@ -28,26 +28,24 @@
 package models
 
 // DTO container with an array of document lists.
-type ListsResult struct {
-    // DTO container with an array of document lists.
-    Link WordsApiLinkResult `json:"Link,omitempty"`
-
-    // DTO container with an array of document lists.
-    ListInfo []ListInfoResult `json:"ListInfo,omitempty"`
-}
-
-type Lists struct {
-    // DTO container with an array of document lists.
-    Link IWordsApiLink `json:"Link,omitempty"`
-
-    // DTO container with an array of document lists.
-    ListInfo []ListInfo `json:"ListInfo,omitempty"`
-}
 
 type ILists interface {
     IsLists() bool
     Initialize()
+    Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetLink() IWordsApiLink
+    SetLink(value IWordsApiLink)
+    GetListInfo() []IListInfo
+    SetListInfo(value []IListInfo)
+}
+
+type Lists struct {
+    // DTO container with an array of document lists.
+    Link IWordsApiLink
+
+    // DTO container with an array of document lists.
+    ListInfo []IListInfo
 }
 
 func (Lists) IsLists() bool {
@@ -71,8 +69,67 @@ func (obj *Lists) Initialize() {
 
 }
 
+func (obj *Lists) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["Link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    } else if jsonValue, exists := json["link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    }
+
+    if jsonValue, exists := json["ListInfo"]; exists {
+        if parsedValue, valid := jsonValue.([]interface{}); valid {
+            for _, parsedElement := range parsedValue {
+                if elementValue, valid := parsedElement.(map[string]interface{}); valid {
+                    var modelElementInstance IListInfo = new(ListInfo)
+                    modelElementInstance.Deserialize(elementValue)
+                    obj.ListInfo = append(obj.ListInfo, modelElementInstance)
+                }
+
+            }
+        }
+
+    } else if jsonValue, exists := json["listInfo"]; exists {
+        if parsedValue, valid := jsonValue.([]interface{}); valid {
+            for _, parsedElement := range parsedValue {
+                if elementValue, valid := parsedElement.(map[string]interface{}); valid {
+                    var modelElementInstance IListInfo = new(ListInfo)
+                    modelElementInstance.Deserialize(elementValue)
+                    obj.ListInfo = append(obj.ListInfo, modelElementInstance)
+                }
+
+            }
+        }
+
+    }
+}
+
 func (obj *Lists) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *Lists) GetLink() IWordsApiLink {
+    return obj.Link
+}
+
+func (obj *Lists) SetLink(value IWordsApiLink) {
+    obj.Link = value
+}
+
+func (obj *Lists) GetListInfo() []IListInfo {
+    return obj.ListInfo
+}
+
+func (obj *Lists) SetListInfo(value []IListInfo) {
+    obj.ListInfo = value
+}
 

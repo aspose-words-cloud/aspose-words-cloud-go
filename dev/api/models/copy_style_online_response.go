@@ -34,9 +34,25 @@ import "io"
 // Makes a copy of the style in the document.
 type CopyStyleOnlineResponse struct {
     // The response model.
-    Model StyleResponse `json:"Model,omitempty"`
+    Model IStyleResponse
 
 
     // The document after modification.
-    Document map[string]io.Reader `json:"Document,omitempty"`
+    Document map[string]io.Reader
+}
+
+func (obj *CopyStyleOnlineResponse) GetModel() IStyleResponse {
+    return obj.Model
+}
+
+func (obj *CopyStyleOnlineResponse) SetModel(value IStyleResponse) {
+    obj.Model = value
+}
+
+func (obj *CopyStyleOnlineResponse) GetDocument() map[string]io.Reader {
+    return obj.Document
+}
+
+func (obj *CopyStyleOnlineResponse) SetDocument(value map[string]io.Reader) {
+    obj.Document = value
 }

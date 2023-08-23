@@ -34,9 +34,25 @@ import "io"
 // Updates the font properties of a Run object in the paragraph.
 type UpdateRunFontOnlineResponse struct {
     // The response model.
-    Model FontResponse `json:"Model,omitempty"`
+    Model IFontResponse
 
 
     // The document after modification.
-    Document map[string]io.Reader `json:"Document,omitempty"`
+    Document map[string]io.Reader
+}
+
+func (obj *UpdateRunFontOnlineResponse) GetModel() IFontResponse {
+    return obj.Model
+}
+
+func (obj *UpdateRunFontOnlineResponse) SetModel(value IFontResponse) {
+    obj.Model = value
+}
+
+func (obj *UpdateRunFontOnlineResponse) GetDocument() map[string]io.Reader {
+    return obj.Document
+}
+
+func (obj *UpdateRunFontOnlineResponse) SetDocument(value map[string]io.Reader) {
+    obj.Document = value
 }

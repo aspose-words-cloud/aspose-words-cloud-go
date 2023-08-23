@@ -28,26 +28,24 @@
 package models
 
 // DTO container with a SdtListItem for StructuredDocumentTag.
-type StructuredDocumentTagListItemResult struct {
-    // DTO container with a SdtListItem for StructuredDocumentTag.
-    DisplayText string `json:"DisplayText,omitempty"`
-
-    // DTO container with a SdtListItem for StructuredDocumentTag.
-    Value string `json:"Value,omitempty"`
-}
-
-type StructuredDocumentTagListItem struct {
-    // DTO container with a SdtListItem for StructuredDocumentTag.
-    DisplayText *string `json:"DisplayText,omitempty"`
-
-    // DTO container with a SdtListItem for StructuredDocumentTag.
-    Value *string `json:"Value,omitempty"`
-}
 
 type IStructuredDocumentTagListItem interface {
     IsStructuredDocumentTagListItem() bool
     Initialize()
+    Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetDisplayText() *string
+    SetDisplayText(value *string)
+    GetValue() *string
+    SetValue(value *string)
+}
+
+type StructuredDocumentTagListItem struct {
+    // DTO container with a SdtListItem for StructuredDocumentTag.
+    DisplayText *string
+
+    // DTO container with a SdtListItem for StructuredDocumentTag.
+    Value *string
 }
 
 func (StructuredDocumentTagListItem) IsStructuredDocumentTagListItem() bool {
@@ -58,8 +56,49 @@ func (StructuredDocumentTagListItem) IsStructuredDocumentTagListItem() bool {
 func (obj *StructuredDocumentTagListItem) Initialize() {
 }
 
+func (obj *StructuredDocumentTagListItem) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["DisplayText"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.DisplayText = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["displayText"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.DisplayText = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["Value"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Value = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["value"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Value = &parsedValue
+        }
+
+    }
+}
+
 func (obj *StructuredDocumentTagListItem) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *StructuredDocumentTagListItem) GetDisplayText() *string {
+    return obj.DisplayText
+}
+
+func (obj *StructuredDocumentTagListItem) SetDisplayText(value *string) {
+    obj.DisplayText = value
+}
+
+func (obj *StructuredDocumentTagListItem) GetValue() *string {
+    return obj.Value
+}
+
+func (obj *StructuredDocumentTagListItem) SetValue(value *string) {
+    obj.Value = value
+}
 

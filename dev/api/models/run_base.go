@@ -28,32 +28,13 @@
 package models
 
 // Run element.
-type RunBaseResult struct {
-    // Run element.
-    Text string `json:"Text,omitempty"`
-}
-
-type RunBase struct {
-    // Run element.
-    Text *string `json:"Text,omitempty"`
-}
 
 type IRunBase interface {
     IsRunBase() bool
     Initialize()
+    Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetText() *string
+    SetText(value *string)
 }
-
-func (RunBase) IsRunBase() bool {
-    return true
-}
-
-
-func (obj *RunBase) Initialize() {
-}
-
-func (obj *RunBase) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
-    return resultFilesContent
-}
-
 

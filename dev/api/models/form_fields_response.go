@@ -28,11 +28,89 @@
 package models
 
 // The REST response with a collection of form fields.
+
+type IFormFieldsResponse interface {
+    IsFormFieldsResponse() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetRequestId() *string
+    SetRequestId(value *string)
+    GetFormFields() IFormFieldCollection
+    SetFormFields(value IFormFieldCollection)
+}
+
 type FormFieldsResponse struct {
     // The REST response with a collection of form fields.
-    RequestId string `json:"RequestId,omitempty"`
+    RequestId *string
 
     // The REST response with a collection of form fields.
-    FormFields FormFieldCollectionResult `json:"FormFields,omitempty"`
+    FormFields IFormFieldCollection
+}
+
+func (FormFieldsResponse) IsFormFieldsResponse() bool {
+    return true
+}
+
+func (FormFieldsResponse) IsWordsResponse() bool {
+    return true
+}
+
+func (obj *FormFieldsResponse) Initialize() {
+    if (obj.FormFields != nil) {
+        obj.FormFields.Initialize()
+    }
+
+
+}
+
+func (obj *FormFieldsResponse) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["RequestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["requestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["FormFields"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IFormFieldCollection = new(FormFieldCollection)
+            modelInstance.Deserialize(parsedValue)
+            obj.FormFields = modelInstance
+        }
+
+    } else if jsonValue, exists := json["formFields"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IFormFieldCollection = new(FormFieldCollection)
+            modelInstance.Deserialize(parsedValue)
+            obj.FormFields = modelInstance
+        }
+
+    }
+}
+
+func (obj *FormFieldsResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
+}
+
+func (obj *FormFieldsResponse) GetRequestId() *string {
+    return obj.RequestId
+}
+
+func (obj *FormFieldsResponse) SetRequestId(value *string) {
+    obj.RequestId = value
+}
+
+func (obj *FormFieldsResponse) GetFormFields() IFormFieldCollection {
+    return obj.FormFields
+}
+
+func (obj *FormFieldsResponse) SetFormFields(value IFormFieldCollection) {
+    obj.FormFields = value
 }
 

@@ -28,14 +28,122 @@
 package models
 
 // The REST response with data on document's protection.
+
+type IProtectionDataResponse interface {
+    IsProtectionDataResponse() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetRequestId() *string
+    SetRequestId(value *string)
+    GetDocumentLink() IFileLink
+    SetDocumentLink(value IFileLink)
+    GetProtectionData() IProtectionData
+    SetProtectionData(value IProtectionData)
+}
+
 type ProtectionDataResponse struct {
     // The REST response with data on document's protection.
-    RequestId string `json:"RequestId,omitempty"`
+    RequestId *string
 
     // The REST response with data on document's protection.
-    DocumentLink FileLinkResult `json:"DocumentLink,omitempty"`
+    DocumentLink IFileLink
 
     // The REST response with data on document's protection.
-    ProtectionData ProtectionDataResult `json:"ProtectionData,omitempty"`
+    ProtectionData IProtectionData
+}
+
+func (ProtectionDataResponse) IsProtectionDataResponse() bool {
+    return true
+}
+
+func (ProtectionDataResponse) IsWordsResponse() bool {
+    return true
+}
+
+func (obj *ProtectionDataResponse) Initialize() {
+    if (obj.DocumentLink != nil) {
+        obj.DocumentLink.Initialize()
+    }
+
+    if (obj.ProtectionData != nil) {
+        obj.ProtectionData.Initialize()
+    }
+
+
+}
+
+func (obj *ProtectionDataResponse) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["RequestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["requestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["DocumentLink"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IFileLink = new(FileLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.DocumentLink = modelInstance
+        }
+
+    } else if jsonValue, exists := json["documentLink"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IFileLink = new(FileLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.DocumentLink = modelInstance
+        }
+
+    }
+
+    if jsonValue, exists := json["ProtectionData"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IProtectionData = new(ProtectionData)
+            modelInstance.Deserialize(parsedValue)
+            obj.ProtectionData = modelInstance
+        }
+
+    } else if jsonValue, exists := json["protectionData"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IProtectionData = new(ProtectionData)
+            modelInstance.Deserialize(parsedValue)
+            obj.ProtectionData = modelInstance
+        }
+
+    }
+}
+
+func (obj *ProtectionDataResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
+}
+
+func (obj *ProtectionDataResponse) GetRequestId() *string {
+    return obj.RequestId
+}
+
+func (obj *ProtectionDataResponse) SetRequestId(value *string) {
+    obj.RequestId = value
+}
+
+func (obj *ProtectionDataResponse) GetDocumentLink() IFileLink {
+    return obj.DocumentLink
+}
+
+func (obj *ProtectionDataResponse) SetDocumentLink(value IFileLink) {
+    obj.DocumentLink = value
+}
+
+func (obj *ProtectionDataResponse) GetProtectionData() IProtectionData {
+    return obj.ProtectionData
+}
+
+func (obj *ProtectionDataResponse) SetProtectionData(value IProtectionData) {
+    obj.ProtectionData = value
 }
 

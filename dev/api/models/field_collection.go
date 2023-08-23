@@ -28,26 +28,24 @@
 package models
 
 // DTO container with a collection of fields.
-type FieldCollectionResult struct {
-    // DTO container with a collection of fields.
-    Link WordsApiLinkResult `json:"Link,omitempty"`
-
-    // DTO container with a collection of fields.
-    List []FieldResult `json:"List,omitempty"`
-}
-
-type FieldCollection struct {
-    // DTO container with a collection of fields.
-    Link IWordsApiLink `json:"Link,omitempty"`
-
-    // DTO container with a collection of fields.
-    List []Field `json:"List,omitempty"`
-}
 
 type IFieldCollection interface {
     IsFieldCollection() bool
     Initialize()
+    Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetLink() IWordsApiLink
+    SetLink(value IWordsApiLink)
+    GetList() []IField
+    SetList(value []IField)
+}
+
+type FieldCollection struct {
+    // DTO container with a collection of fields.
+    Link IWordsApiLink
+
+    // DTO container with a collection of fields.
+    List []IField
 }
 
 func (FieldCollection) IsFieldCollection() bool {
@@ -71,8 +69,67 @@ func (obj *FieldCollection) Initialize() {
 
 }
 
+func (obj *FieldCollection) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["Link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    } else if jsonValue, exists := json["link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    }
+
+    if jsonValue, exists := json["List"]; exists {
+        if parsedValue, valid := jsonValue.([]interface{}); valid {
+            for _, parsedElement := range parsedValue {
+                if elementValue, valid := parsedElement.(map[string]interface{}); valid {
+                    var modelElementInstance IField = new(Field)
+                    modelElementInstance.Deserialize(elementValue)
+                    obj.List = append(obj.List, modelElementInstance)
+                }
+
+            }
+        }
+
+    } else if jsonValue, exists := json["list"]; exists {
+        if parsedValue, valid := jsonValue.([]interface{}); valid {
+            for _, parsedElement := range parsedValue {
+                if elementValue, valid := parsedElement.(map[string]interface{}); valid {
+                    var modelElementInstance IField = new(Field)
+                    modelElementInstance.Deserialize(elementValue)
+                    obj.List = append(obj.List, modelElementInstance)
+                }
+
+            }
+        }
+
+    }
+}
+
 func (obj *FieldCollection) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *FieldCollection) GetLink() IWordsApiLink {
+    return obj.Link
+}
+
+func (obj *FieldCollection) SetLink(value IWordsApiLink) {
+    obj.Link = value
+}
+
+func (obj *FieldCollection) GetList() []IField {
+    return obj.List
+}
+
+func (obj *FieldCollection) SetList(value []IField) {
+    obj.List = value
+}
 

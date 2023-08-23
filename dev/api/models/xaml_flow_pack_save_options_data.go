@@ -28,104 +28,94 @@
 package models
 
 // Container class for xamlflow_pack save options.
-type XamlFlowPackSaveOptionsDataResult struct {
-    // Container class for xamlflow_pack save options.
-    AllowEmbeddingPostScriptFonts bool `json:"AllowEmbeddingPostScriptFonts,omitempty"`
-
-    // Container class for xamlflow_pack save options.
-    CustomTimeZoneInfoData TimeZoneInfoDataResult `json:"CustomTimeZoneInfoData,omitempty"`
-
-    // Container class for xamlflow_pack save options.
-    Dml3DEffectsRenderingMode string `json:"Dml3DEffectsRenderingMode,omitempty"`
-
-    // Container class for xamlflow_pack save options.
-    DmlEffectsRenderingMode string `json:"DmlEffectsRenderingMode,omitempty"`
-
-    // Container class for xamlflow_pack save options.
-    DmlRenderingMode string `json:"DmlRenderingMode,omitempty"`
-
-    // Container class for xamlflow_pack save options.
-    FileName string `json:"FileName,omitempty"`
-
-    // Container class for xamlflow_pack save options.
-    ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
-
-    // Container class for xamlflow_pack save options.
-    UpdateCreatedTimeProperty bool `json:"UpdateCreatedTimeProperty,omitempty"`
-
-    // Container class for xamlflow_pack save options.
-    UpdateFields bool `json:"UpdateFields,omitempty"`
-
-    // Container class for xamlflow_pack save options.
-    UpdateLastPrintedProperty bool `json:"UpdateLastPrintedProperty,omitempty"`
-
-    // Container class for xamlflow_pack save options.
-    UpdateLastSavedTimeProperty bool `json:"UpdateLastSavedTimeProperty,omitempty"`
-
-    // Container class for xamlflow_pack save options.
-    ZipOutput bool `json:"ZipOutput,omitempty"`
-
-    // Container class for xamlflow_pack save options.
-    ImagesFolder string `json:"ImagesFolder,omitempty"`
-
-    // Container class for xamlflow_pack save options.
-    ImagesFolderAlias string `json:"ImagesFolderAlias,omitempty"`
-
-    // Container class for xamlflow_pack save options.
-    SaveFormat string `json:"SaveFormat,omitempty"`
-}
-
-type XamlFlowPackSaveOptionsData struct {
-    // Container class for xamlflow_pack save options.
-    AllowEmbeddingPostScriptFonts *bool `json:"AllowEmbeddingPostScriptFonts,omitempty"`
-
-    // Container class for xamlflow_pack save options.
-    CustomTimeZoneInfoData ITimeZoneInfoData `json:"CustomTimeZoneInfoData,omitempty"`
-
-    // Container class for xamlflow_pack save options.
-    Dml3DEffectsRenderingMode *string `json:"Dml3DEffectsRenderingMode,omitempty"`
-
-    // Container class for xamlflow_pack save options.
-    DmlEffectsRenderingMode *string `json:"DmlEffectsRenderingMode,omitempty"`
-
-    // Container class for xamlflow_pack save options.
-    DmlRenderingMode *string `json:"DmlRenderingMode,omitempty"`
-
-    // Container class for xamlflow_pack save options.
-    FileName *string `json:"FileName,omitempty"`
-
-    // Container class for xamlflow_pack save options.
-    ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
-
-    // Container class for xamlflow_pack save options.
-    UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
-
-    // Container class for xamlflow_pack save options.
-    UpdateFields *bool `json:"UpdateFields,omitempty"`
-
-    // Container class for xamlflow_pack save options.
-    UpdateLastPrintedProperty *bool `json:"UpdateLastPrintedProperty,omitempty"`
-
-    // Container class for xamlflow_pack save options.
-    UpdateLastSavedTimeProperty *bool `json:"UpdateLastSavedTimeProperty,omitempty"`
-
-    // Container class for xamlflow_pack save options.
-    ZipOutput *bool `json:"ZipOutput,omitempty"`
-
-    // Container class for xamlflow_pack save options.
-    ImagesFolder *string `json:"ImagesFolder,omitempty"`
-
-    // Container class for xamlflow_pack save options.
-    ImagesFolderAlias *string `json:"ImagesFolderAlias,omitempty"`
-
-    // Container class for xamlflow_pack save options.
-    SaveFormat *string `json:"SaveFormat,omitempty"`
-}
 
 type IXamlFlowPackSaveOptionsData interface {
     IsXamlFlowPackSaveOptionsData() bool
     Initialize()
+    Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetAllowEmbeddingPostScriptFonts() *bool
+    SetAllowEmbeddingPostScriptFonts(value *bool)
+    GetCustomTimeZoneInfoData() ITimeZoneInfoData
+    SetCustomTimeZoneInfoData(value ITimeZoneInfoData)
+    GetDml3DEffectsRenderingMode() *string
+    SetDml3DEffectsRenderingMode(value *string)
+    GetDmlEffectsRenderingMode() *string
+    SetDmlEffectsRenderingMode(value *string)
+    GetDmlRenderingMode() *string
+    SetDmlRenderingMode(value *string)
+    GetFileName() *string
+    SetFileName(value *string)
+    GetImlRenderingMode() *string
+    SetImlRenderingMode(value *string)
+    GetUpdateCreatedTimeProperty() *bool
+    SetUpdateCreatedTimeProperty(value *bool)
+    GetUpdateFields() *bool
+    SetUpdateFields(value *bool)
+    GetUpdateLastPrintedProperty() *bool
+    SetUpdateLastPrintedProperty(value *bool)
+    GetUpdateLastSavedTimeProperty() *bool
+    SetUpdateLastSavedTimeProperty(value *bool)
+    GetUpdateSdtContent() *bool
+    SetUpdateSdtContent(value *bool)
+    GetZipOutput() *bool
+    SetZipOutput(value *bool)
+    GetImagesFolder() *string
+    SetImagesFolder(value *string)
+    GetImagesFolderAlias() *string
+    SetImagesFolderAlias(value *string)
+    GetSaveFormat() *string
+    SetSaveFormat(value *string)
+}
+
+type XamlFlowPackSaveOptionsData struct {
+    // Container class for xamlflow_pack save options.
+    AllowEmbeddingPostScriptFonts *bool
+
+    // Container class for xamlflow_pack save options.
+    CustomTimeZoneInfoData ITimeZoneInfoData
+
+    // Container class for xamlflow_pack save options.
+    Dml3DEffectsRenderingMode *string
+
+    // Container class for xamlflow_pack save options.
+    DmlEffectsRenderingMode *string
+
+    // Container class for xamlflow_pack save options.
+    DmlRenderingMode *string
+
+    // Container class for xamlflow_pack save options.
+    FileName *string
+
+    // Container class for xamlflow_pack save options.
+    ImlRenderingMode *string
+
+    // Container class for xamlflow_pack save options.
+    UpdateCreatedTimeProperty *bool
+
+    // Container class for xamlflow_pack save options.
+    UpdateFields *bool
+
+    // Container class for xamlflow_pack save options.
+    UpdateLastPrintedProperty *bool
+
+    // Container class for xamlflow_pack save options.
+    UpdateLastSavedTimeProperty *bool
+
+    // Container class for xamlflow_pack save options.
+    UpdateSdtContent *bool
+
+    // Container class for xamlflow_pack save options.
+    ZipOutput *bool
+
+    // Container class for xamlflow_pack save options.
+    ImagesFolder *string
+
+    // Container class for xamlflow_pack save options.
+    ImagesFolderAlias *string
+
+    // Container class for xamlflow_pack save options.
+    SaveFormat *string
 }
 
 func (XamlFlowPackSaveOptionsData) IsXamlFlowPackSaveOptionsData() bool {
@@ -152,8 +142,321 @@ func (obj *XamlFlowPackSaveOptionsData) Initialize() {
 
 }
 
+func (obj *XamlFlowPackSaveOptionsData) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["AllowEmbeddingPostScriptFonts"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.AllowEmbeddingPostScriptFonts = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["allowEmbeddingPostScriptFonts"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.AllowEmbeddingPostScriptFonts = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["CustomTimeZoneInfoData"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance ITimeZoneInfoData = new(TimeZoneInfoData)
+            modelInstance.Deserialize(parsedValue)
+            obj.CustomTimeZoneInfoData = modelInstance
+        }
+
+    } else if jsonValue, exists := json["customTimeZoneInfoData"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance ITimeZoneInfoData = new(TimeZoneInfoData)
+            modelInstance.Deserialize(parsedValue)
+            obj.CustomTimeZoneInfoData = modelInstance
+        }
+
+    }
+
+    if jsonValue, exists := json["Dml3DEffectsRenderingMode"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Dml3DEffectsRenderingMode = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["dml3DEffectsRenderingMode"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Dml3DEffectsRenderingMode = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["DmlEffectsRenderingMode"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.DmlEffectsRenderingMode = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["dmlEffectsRenderingMode"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.DmlEffectsRenderingMode = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["DmlRenderingMode"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.DmlRenderingMode = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["dmlRenderingMode"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.DmlRenderingMode = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["FileName"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.FileName = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["fileName"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.FileName = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["ImlRenderingMode"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.ImlRenderingMode = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["imlRenderingMode"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.ImlRenderingMode = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["UpdateCreatedTimeProperty"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.UpdateCreatedTimeProperty = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["updateCreatedTimeProperty"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.UpdateCreatedTimeProperty = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["UpdateFields"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.UpdateFields = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["updateFields"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.UpdateFields = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["UpdateLastPrintedProperty"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.UpdateLastPrintedProperty = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["updateLastPrintedProperty"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.UpdateLastPrintedProperty = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["UpdateLastSavedTimeProperty"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.UpdateLastSavedTimeProperty = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["updateLastSavedTimeProperty"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.UpdateLastSavedTimeProperty = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["UpdateSdtContent"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.UpdateSdtContent = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["updateSdtContent"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.UpdateSdtContent = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["ZipOutput"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.ZipOutput = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["zipOutput"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.ZipOutput = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["ImagesFolder"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.ImagesFolder = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["imagesFolder"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.ImagesFolder = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["ImagesFolderAlias"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.ImagesFolderAlias = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["imagesFolderAlias"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.ImagesFolderAlias = &parsedValue
+        }
+
+    }
+}
+
 func (obj *XamlFlowPackSaveOptionsData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *XamlFlowPackSaveOptionsData) GetAllowEmbeddingPostScriptFonts() *bool {
+    return obj.AllowEmbeddingPostScriptFonts
+}
+
+func (obj *XamlFlowPackSaveOptionsData) SetAllowEmbeddingPostScriptFonts(value *bool) {
+    obj.AllowEmbeddingPostScriptFonts = value
+}
+
+func (obj *XamlFlowPackSaveOptionsData) GetCustomTimeZoneInfoData() ITimeZoneInfoData {
+    return obj.CustomTimeZoneInfoData
+}
+
+func (obj *XamlFlowPackSaveOptionsData) SetCustomTimeZoneInfoData(value ITimeZoneInfoData) {
+    obj.CustomTimeZoneInfoData = value
+}
+
+func (obj *XamlFlowPackSaveOptionsData) GetDml3DEffectsRenderingMode() *string {
+    return obj.Dml3DEffectsRenderingMode
+}
+
+func (obj *XamlFlowPackSaveOptionsData) SetDml3DEffectsRenderingMode(value *string) {
+    obj.Dml3DEffectsRenderingMode = value
+}
+
+func (obj *XamlFlowPackSaveOptionsData) GetDmlEffectsRenderingMode() *string {
+    return obj.DmlEffectsRenderingMode
+}
+
+func (obj *XamlFlowPackSaveOptionsData) SetDmlEffectsRenderingMode(value *string) {
+    obj.DmlEffectsRenderingMode = value
+}
+
+func (obj *XamlFlowPackSaveOptionsData) GetDmlRenderingMode() *string {
+    return obj.DmlRenderingMode
+}
+
+func (obj *XamlFlowPackSaveOptionsData) SetDmlRenderingMode(value *string) {
+    obj.DmlRenderingMode = value
+}
+
+func (obj *XamlFlowPackSaveOptionsData) GetFileName() *string {
+    return obj.FileName
+}
+
+func (obj *XamlFlowPackSaveOptionsData) SetFileName(value *string) {
+    obj.FileName = value
+}
+
+func (obj *XamlFlowPackSaveOptionsData) GetImlRenderingMode() *string {
+    return obj.ImlRenderingMode
+}
+
+func (obj *XamlFlowPackSaveOptionsData) SetImlRenderingMode(value *string) {
+    obj.ImlRenderingMode = value
+}
+
+func (obj *XamlFlowPackSaveOptionsData) GetUpdateCreatedTimeProperty() *bool {
+    return obj.UpdateCreatedTimeProperty
+}
+
+func (obj *XamlFlowPackSaveOptionsData) SetUpdateCreatedTimeProperty(value *bool) {
+    obj.UpdateCreatedTimeProperty = value
+}
+
+func (obj *XamlFlowPackSaveOptionsData) GetUpdateFields() *bool {
+    return obj.UpdateFields
+}
+
+func (obj *XamlFlowPackSaveOptionsData) SetUpdateFields(value *bool) {
+    obj.UpdateFields = value
+}
+
+func (obj *XamlFlowPackSaveOptionsData) GetUpdateLastPrintedProperty() *bool {
+    return obj.UpdateLastPrintedProperty
+}
+
+func (obj *XamlFlowPackSaveOptionsData) SetUpdateLastPrintedProperty(value *bool) {
+    obj.UpdateLastPrintedProperty = value
+}
+
+func (obj *XamlFlowPackSaveOptionsData) GetUpdateLastSavedTimeProperty() *bool {
+    return obj.UpdateLastSavedTimeProperty
+}
+
+func (obj *XamlFlowPackSaveOptionsData) SetUpdateLastSavedTimeProperty(value *bool) {
+    obj.UpdateLastSavedTimeProperty = value
+}
+
+func (obj *XamlFlowPackSaveOptionsData) GetUpdateSdtContent() *bool {
+    return obj.UpdateSdtContent
+}
+
+func (obj *XamlFlowPackSaveOptionsData) SetUpdateSdtContent(value *bool) {
+    obj.UpdateSdtContent = value
+}
+
+func (obj *XamlFlowPackSaveOptionsData) GetZipOutput() *bool {
+    return obj.ZipOutput
+}
+
+func (obj *XamlFlowPackSaveOptionsData) SetZipOutput(value *bool) {
+    obj.ZipOutput = value
+}
+
+func (obj *XamlFlowPackSaveOptionsData) GetImagesFolder() *string {
+    return obj.ImagesFolder
+}
+
+func (obj *XamlFlowPackSaveOptionsData) SetImagesFolder(value *string) {
+    obj.ImagesFolder = value
+}
+
+func (obj *XamlFlowPackSaveOptionsData) GetImagesFolderAlias() *string {
+    return obj.ImagesFolderAlias
+}
+
+func (obj *XamlFlowPackSaveOptionsData) SetImagesFolderAlias(value *string) {
+    obj.ImagesFolderAlias = value
+}
+
+func (obj *XamlFlowPackSaveOptionsData) GetSaveFormat() *string {
+    return obj.SaveFormat
+}
+
+func (obj *XamlFlowPackSaveOptionsData) SetSaveFormat(value *string) {
+    obj.SaveFormat = value
+}
 

@@ -28,26 +28,24 @@
 package models
 
 // The collection of section's links.
-type SectionLinkCollectionResult struct {
-    // The collection of section's links.
-    Link WordsApiLinkResult `json:"Link,omitempty"`
-
-    // The collection of section's links.
-    SectionLinkList []SectionLinkResult `json:"SectionLinkList,omitempty"`
-}
-
-type SectionLinkCollection struct {
-    // The collection of section's links.
-    Link IWordsApiLink `json:"Link,omitempty"`
-
-    // The collection of section's links.
-    SectionLinkList []SectionLink `json:"SectionLinkList,omitempty"`
-}
 
 type ISectionLinkCollection interface {
     IsSectionLinkCollection() bool
     Initialize()
+    Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetLink() IWordsApiLink
+    SetLink(value IWordsApiLink)
+    GetSectionLinkList() []ISectionLink
+    SetSectionLinkList(value []ISectionLink)
+}
+
+type SectionLinkCollection struct {
+    // The collection of section's links.
+    Link IWordsApiLink
+
+    // The collection of section's links.
+    SectionLinkList []ISectionLink
 }
 
 func (SectionLinkCollection) IsSectionLinkCollection() bool {
@@ -71,8 +69,67 @@ func (obj *SectionLinkCollection) Initialize() {
 
 }
 
+func (obj *SectionLinkCollection) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["Link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    } else if jsonValue, exists := json["link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    }
+
+    if jsonValue, exists := json["SectionLinkList"]; exists {
+        if parsedValue, valid := jsonValue.([]interface{}); valid {
+            for _, parsedElement := range parsedValue {
+                if elementValue, valid := parsedElement.(map[string]interface{}); valid {
+                    var modelElementInstance ISectionLink = new(SectionLink)
+                    modelElementInstance.Deserialize(elementValue)
+                    obj.SectionLinkList = append(obj.SectionLinkList, modelElementInstance)
+                }
+
+            }
+        }
+
+    } else if jsonValue, exists := json["sectionLinkList"]; exists {
+        if parsedValue, valid := jsonValue.([]interface{}); valid {
+            for _, parsedElement := range parsedValue {
+                if elementValue, valid := parsedElement.(map[string]interface{}); valid {
+                    var modelElementInstance ISectionLink = new(SectionLink)
+                    modelElementInstance.Deserialize(elementValue)
+                    obj.SectionLinkList = append(obj.SectionLinkList, modelElementInstance)
+                }
+
+            }
+        }
+
+    }
+}
+
 func (obj *SectionLinkCollection) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *SectionLinkCollection) GetLink() IWordsApiLink {
+    return obj.Link
+}
+
+func (obj *SectionLinkCollection) SetLink(value IWordsApiLink) {
+    obj.Link = value
+}
+
+func (obj *SectionLinkCollection) GetSectionLinkList() []ISectionLink {
+    return obj.SectionLinkList
+}
+
+func (obj *SectionLinkCollection) SetSectionLinkList(value []ISectionLink) {
+    obj.SectionLinkList = value
+}
 

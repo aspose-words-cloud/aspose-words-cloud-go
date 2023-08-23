@@ -34,9 +34,25 @@ import "io"
 // Adds protection to the document.
 type ProtectDocumentOnlineResponse struct {
     // The response model.
-    Model ProtectionDataResponse `json:"Model,omitempty"`
+    Model IProtectionDataResponse
 
 
     // The document after modification.
-    Document map[string]io.Reader `json:"Document,omitempty"`
+    Document map[string]io.Reader
+}
+
+func (obj *ProtectDocumentOnlineResponse) GetModel() IProtectionDataResponse {
+    return obj.Model
+}
+
+func (obj *ProtectDocumentOnlineResponse) SetModel(value IProtectionDataResponse) {
+    obj.Model = value
+}
+
+func (obj *ProtectDocumentOnlineResponse) GetDocument() map[string]io.Reader {
+    return obj.Document
+}
+
+func (obj *ProtectDocumentOnlineResponse) SetDocument(value map[string]io.Reader) {
+    obj.Document = value
 }

@@ -28,26 +28,24 @@
 package models
 
 // Represents a single document style to insert.
-type StyleInsertResult struct {
-    // Represents a single document style to insert.
-    StyleName string `json:"StyleName,omitempty"`
-
-    // Represents a single document style to insert.
-    StyleType string `json:"StyleType,omitempty"`
-}
-
-type StyleInsert struct {
-    // Represents a single document style to insert.
-    StyleName *string `json:"StyleName,omitempty"`
-
-    // Represents a single document style to insert.
-    StyleType *string `json:"StyleType,omitempty"`
-}
 
 type IStyleInsert interface {
     IsStyleInsert() bool
     Initialize()
+    Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetStyleName() *string
+    SetStyleName(value *string)
+    GetStyleType() *string
+    SetStyleType(value *string)
+}
+
+type StyleInsert struct {
+    // Represents a single document style to insert.
+    StyleName *string
+
+    // Represents a single document style to insert.
+    StyleType *string
 }
 
 func (StyleInsert) IsStyleInsert() bool {
@@ -58,8 +56,49 @@ func (StyleInsert) IsStyleInsert() bool {
 func (obj *StyleInsert) Initialize() {
 }
 
+func (obj *StyleInsert) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["StyleName"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.StyleName = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["styleName"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.StyleName = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["StyleType"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.StyleType = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["styleType"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.StyleType = &parsedValue
+        }
+
+    }
+}
+
 func (obj *StyleInsert) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *StyleInsert) GetStyleName() *string {
+    return obj.StyleName
+}
+
+func (obj *StyleInsert) SetStyleName(value *string) {
+    obj.StyleName = value
+}
+
+func (obj *StyleInsert) GetStyleType() *string {
+    return obj.StyleType
+}
+
+func (obj *StyleInsert) SetStyleType(value *string) {
+    obj.StyleType = value
+}
 

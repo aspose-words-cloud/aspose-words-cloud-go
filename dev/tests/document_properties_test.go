@@ -59,12 +59,12 @@ func Test_DocumentProperties_GetDocumentProperties(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.DocumentProperties, "Validate GetDocumentProperties response.");
-    assert.NotNil(t, actual.DocumentProperties.List, "Validate GetDocumentProperties response.");
-    assert.Equal(t, 24, len(actual.DocumentProperties.List), "Validate GetDocumentProperties response.");
-    assert.NotNil(t, actual.DocumentProperties.List[0], "Validate GetDocumentProperties response.");
-    assert.Equal(t, "Author", actual.DocumentProperties.List[0].Name, "Validate GetDocumentProperties response.");
-    assert.Equal(t, "", actual.DocumentProperties.List[0].Value, "Validate GetDocumentProperties response.");
+    assert.NotNil(t, actual.GetDocumentProperties(), "Validate GetDocumentProperties response.");
+    assert.NotNil(t, actual.GetDocumentProperties().GetList(), "Validate GetDocumentProperties response.");
+    assert.Equal(t, 24, len(actual.GetDocumentProperties().GetList()), "Validate GetDocumentProperties response.");
+    assert.NotNil(t, actual.GetDocumentProperties().GetList()[0], "Validate GetDocumentProperties response.");
+    assert.Equal(t, "Author", DereferenceValue(actual.GetDocumentProperties().GetList()[0].GetName()), "Validate GetDocumentProperties response.");
+    assert.Equal(t, "", DereferenceValue(actual.GetDocumentProperties().GetList()[0].GetValue()), "Validate GetDocumentProperties response.");
 }
 
 // Test for getting document properties online.
@@ -116,9 +116,9 @@ func Test_DocumentProperties_GetDocumentProperty(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.DocumentProperty, "Validate GetDocumentProperty response.");
-    assert.Equal(t, "Author", actual.DocumentProperty.Name, "Validate GetDocumentProperty response.");
-    assert.Equal(t, "", actual.DocumentProperty.Value, "Validate GetDocumentProperty response.");
+    assert.NotNil(t, actual.GetDocumentProperty(), "Validate GetDocumentProperty response.");
+    assert.Equal(t, "Author", DereferenceValue(actual.GetDocumentProperty().GetName()), "Validate GetDocumentProperty response.");
+    assert.Equal(t, "", DereferenceValue(actual.GetDocumentProperty().GetValue()), "Validate GetDocumentProperty response.");
 }
 
 // A test for GetDocumentProperty online.
@@ -230,9 +230,9 @@ func Test_DocumentProperties_UpdateDocumentProperty(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.DocumentProperty, "Validate UpdateDocumentProperty response.");
-    assert.Equal(t, "AsposeAuthor", actual.DocumentProperty.Name, "Validate UpdateDocumentProperty response.");
-    assert.Equal(t, "Imran Anwar", actual.DocumentProperty.Value, "Validate UpdateDocumentProperty response.");
+    assert.NotNil(t, actual.GetDocumentProperty(), "Validate UpdateDocumentProperty response.");
+    assert.Equal(t, "AsposeAuthor", DereferenceValue(actual.GetDocumentProperty().GetName()), "Validate UpdateDocumentProperty response.");
+    assert.Equal(t, "Imran Anwar", DereferenceValue(actual.GetDocumentProperty().GetValue()), "Validate UpdateDocumentProperty response.");
 }
 
 // Test for updating document property online.

@@ -28,38 +28,34 @@
 package models
 
 // Container for the page's statistical data.
-type PageStatDataResult struct {
-    // Container for the page's statistical data.
-    FootnotesStatData FootnotesStatDataResult `json:"FootnotesStatData,omitempty"`
-
-    // Container for the page's statistical data.
-    ParagraphCount int32 `json:"ParagraphCount,omitempty"`
-
-    // Container for the page's statistical data.
-    WordCount int32 `json:"WordCount,omitempty"`
-
-    // Container for the page's statistical data.
-    PageNumber int32 `json:"PageNumber,omitempty"`
-}
-
-type PageStatData struct {
-    // Container for the page's statistical data.
-    FootnotesStatData IFootnotesStatData `json:"FootnotesStatData,omitempty"`
-
-    // Container for the page's statistical data.
-    ParagraphCount *int32 `json:"ParagraphCount,omitempty"`
-
-    // Container for the page's statistical data.
-    WordCount *int32 `json:"WordCount,omitempty"`
-
-    // Container for the page's statistical data.
-    PageNumber *int32 `json:"PageNumber,omitempty"`
-}
 
 type IPageStatData interface {
     IsPageStatData() bool
     Initialize()
+    Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetFootnotesStatData() IFootnotesStatData
+    SetFootnotesStatData(value IFootnotesStatData)
+    GetParagraphCount() *int32
+    SetParagraphCount(value *int32)
+    GetWordCount() *int32
+    SetWordCount(value *int32)
+    GetPageNumber() *int32
+    SetPageNumber(value *int32)
+}
+
+type PageStatData struct {
+    // Container for the page's statistical data.
+    FootnotesStatData IFootnotesStatData
+
+    // Container for the page's statistical data.
+    ParagraphCount *int32
+
+    // Container for the page's statistical data.
+    WordCount *int32
+
+    // Container for the page's statistical data.
+    PageNumber *int32
 }
 
 func (PageStatData) IsPageStatData() bool {
@@ -75,8 +71,99 @@ func (obj *PageStatData) Initialize() {
 
 }
 
+func (obj *PageStatData) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["FootnotesStatData"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IFootnotesStatData = new(FootnotesStatData)
+            modelInstance.Deserialize(parsedValue)
+            obj.FootnotesStatData = modelInstance
+        }
+
+    } else if jsonValue, exists := json["footnotesStatData"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IFootnotesStatData = new(FootnotesStatData)
+            modelInstance.Deserialize(parsedValue)
+            obj.FootnotesStatData = modelInstance
+        }
+
+    }
+
+    if jsonValue, exists := json["ParagraphCount"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.ParagraphCount = new(int32)
+            *obj.ParagraphCount = int32(parsedValue)
+        }
+
+    } else if jsonValue, exists := json["paragraphCount"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.ParagraphCount = new(int32)
+            *obj.ParagraphCount = int32(parsedValue)
+        }
+
+    }
+
+    if jsonValue, exists := json["WordCount"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.WordCount = new(int32)
+            *obj.WordCount = int32(parsedValue)
+        }
+
+    } else if jsonValue, exists := json["wordCount"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.WordCount = new(int32)
+            *obj.WordCount = int32(parsedValue)
+        }
+
+    }
+
+    if jsonValue, exists := json["PageNumber"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.PageNumber = new(int32)
+            *obj.PageNumber = int32(parsedValue)
+        }
+
+    } else if jsonValue, exists := json["pageNumber"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.PageNumber = new(int32)
+            *obj.PageNumber = int32(parsedValue)
+        }
+
+    }
+}
+
 func (obj *PageStatData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *PageStatData) GetFootnotesStatData() IFootnotesStatData {
+    return obj.FootnotesStatData
+}
+
+func (obj *PageStatData) SetFootnotesStatData(value IFootnotesStatData) {
+    obj.FootnotesStatData = value
+}
+
+func (obj *PageStatData) GetParagraphCount() *int32 {
+    return obj.ParagraphCount
+}
+
+func (obj *PageStatData) SetParagraphCount(value *int32) {
+    obj.ParagraphCount = value
+}
+
+func (obj *PageStatData) GetWordCount() *int32 {
+    return obj.WordCount
+}
+
+func (obj *PageStatData) SetWordCount(value *int32) {
+    obj.WordCount = value
+}
+
+func (obj *PageStatData) GetPageNumber() *int32 {
+    return obj.PageNumber
+}
+
+func (obj *PageStatData) SetPageNumber(value *int32) {
+    obj.PageNumber = value
+}
 

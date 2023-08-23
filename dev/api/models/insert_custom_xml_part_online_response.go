@@ -34,9 +34,25 @@ import "io"
 // Inserts a new custom xml part to the document.
 type InsertCustomXmlPartOnlineResponse struct {
     // The response model.
-    Model CustomXmlPartResponse `json:"Model,omitempty"`
+    Model ICustomXmlPartResponse
 
 
     // The document after modification.
-    Document map[string]io.Reader `json:"Document,omitempty"`
+    Document map[string]io.Reader
+}
+
+func (obj *InsertCustomXmlPartOnlineResponse) GetModel() ICustomXmlPartResponse {
+    return obj.Model
+}
+
+func (obj *InsertCustomXmlPartOnlineResponse) SetModel(value ICustomXmlPartResponse) {
+    obj.Model = value
+}
+
+func (obj *InsertCustomXmlPartOnlineResponse) GetDocument() map[string]io.Reader {
+    return obj.Document
+}
+
+func (obj *InsertCustomXmlPartOnlineResponse) SetDocument(value map[string]io.Reader) {
+    obj.Document = value
 }

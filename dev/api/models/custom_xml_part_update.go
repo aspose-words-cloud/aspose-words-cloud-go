@@ -28,32 +28,29 @@
 package models
 
 // Custom xml part update.
-type CustomXmlPartUpdateResult struct {
-    // Custom xml part update.
-    Link WordsApiLinkResult `json:"Link,omitempty"`
-
-    // Custom xml part update.
-    Id string `json:"Id,omitempty"`
-
-    // Custom xml part update.
-    Data string `json:"Data,omitempty"`
-}
-
-type CustomXmlPartUpdate struct {
-    // Custom xml part update.
-    Link IWordsApiLink `json:"Link,omitempty"`
-
-    // Custom xml part update.
-    Id *string `json:"Id,omitempty"`
-
-    // Custom xml part update.
-    Data *string `json:"Data,omitempty"`
-}
 
 type ICustomXmlPartUpdate interface {
     IsCustomXmlPartUpdate() bool
     Initialize()
+    Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetLink() IWordsApiLink
+    SetLink(value IWordsApiLink)
+    GetId() *string
+    SetId(value *string)
+    GetData() *string
+    SetData(value *string)
+}
+
+type CustomXmlPartUpdate struct {
+    // Custom xml part update.
+    Link IWordsApiLink
+
+    // Custom xml part update.
+    Id *string
+
+    // Custom xml part update.
+    Data *string
 }
 
 func (CustomXmlPartUpdate) IsCustomXmlPartUpdate() bool {
@@ -80,8 +77,73 @@ func (obj *CustomXmlPartUpdate) Initialize() {
 
 }
 
+func (obj *CustomXmlPartUpdate) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["Link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    } else if jsonValue, exists := json["link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    }
+
+    if jsonValue, exists := json["Id"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Id = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["id"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Id = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["Data"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Data = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["data"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Data = &parsedValue
+        }
+
+    }
+}
+
 func (obj *CustomXmlPartUpdate) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *CustomXmlPartUpdate) GetLink() IWordsApiLink {
+    return obj.Link
+}
+
+func (obj *CustomXmlPartUpdate) SetLink(value IWordsApiLink) {
+    obj.Link = value
+}
+
+func (obj *CustomXmlPartUpdate) GetId() *string {
+    return obj.Id
+}
+
+func (obj *CustomXmlPartUpdate) SetId(value *string) {
+    obj.Id = value
+}
+
+func (obj *CustomXmlPartUpdate) GetData() *string {
+    return obj.Data
+}
+
+func (obj *CustomXmlPartUpdate) SetData(value *string) {
+    obj.Data = value
+}
 

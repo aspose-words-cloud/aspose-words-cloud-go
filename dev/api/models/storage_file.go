@@ -28,44 +28,39 @@
 package models
 
 // File or folder information.
-type StorageFileResult struct {
-    // File or folder information.
-    IsFolder bool `json:"IsFolder,omitempty"`
-
-    // File or folder information.
-    ModifiedDate Time `json:"ModifiedDate,omitempty"`
-
-    // File or folder information.
-    Name string `json:"Name,omitempty"`
-
-    // File or folder information.
-    Path string `json:"Path,omitempty"`
-
-    // File or folder information.
-    Size int32 `json:"Size,omitempty"`
-}
-
-type StorageFile struct {
-    // File or folder information.
-    IsFolder *bool `json:"IsFolder,omitempty"`
-
-    // File or folder information.
-    ModifiedDate *Time `json:"ModifiedDate,omitempty"`
-
-    // File or folder information.
-    Name *string `json:"Name,omitempty"`
-
-    // File or folder information.
-    Path *string `json:"Path,omitempty"`
-
-    // File or folder information.
-    Size *int32 `json:"Size,omitempty"`
-}
 
 type IStorageFile interface {
     IsStorageFile() bool
     Initialize()
+    Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetIsFolder() *bool
+    SetIsFolder(value *bool)
+    GetModifiedDate() *Time
+    SetModifiedDate(value *Time)
+    GetName() *string
+    SetName(value *string)
+    GetPath() *string
+    SetPath(value *string)
+    GetSize() *int32
+    SetSize(value *int32)
+}
+
+type StorageFile struct {
+    // File or folder information.
+    IsFolder *bool
+
+    // File or folder information.
+    ModifiedDate *Time
+
+    // File or folder information.
+    Name *string
+
+    // File or folder information.
+    Path *string
+
+    // File or folder information.
+    Size *int32
 }
 
 func (StorageFile) IsStorageFile() bool {
@@ -76,8 +71,113 @@ func (StorageFile) IsStorageFile() bool {
 func (obj *StorageFile) Initialize() {
 }
 
+func (obj *StorageFile) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["IsFolder"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.IsFolder = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["isFolder"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.IsFolder = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["ModifiedDate"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.ModifiedDate = new(Time)
+            obj.ModifiedDate.Parse(parsedValue)
+        }
+
+    } else if jsonValue, exists := json["modifiedDate"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.ModifiedDate = new(Time)
+            obj.ModifiedDate.Parse(parsedValue)
+        }
+
+    }
+
+    if jsonValue, exists := json["Name"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Name = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["name"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Name = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["Path"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Path = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["path"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Path = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["Size"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.Size = new(int32)
+            *obj.Size = int32(parsedValue)
+        }
+
+    } else if jsonValue, exists := json["size"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.Size = new(int32)
+            *obj.Size = int32(parsedValue)
+        }
+
+    }
+}
+
 func (obj *StorageFile) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *StorageFile) GetIsFolder() *bool {
+    return obj.IsFolder
+}
+
+func (obj *StorageFile) SetIsFolder(value *bool) {
+    obj.IsFolder = value
+}
+
+func (obj *StorageFile) GetModifiedDate() *Time {
+    return obj.ModifiedDate
+}
+
+func (obj *StorageFile) SetModifiedDate(value *Time) {
+    obj.ModifiedDate = value
+}
+
+func (obj *StorageFile) GetName() *string {
+    return obj.Name
+}
+
+func (obj *StorageFile) SetName(value *string) {
+    obj.Name = value
+}
+
+func (obj *StorageFile) GetPath() *string {
+    return obj.Path
+}
+
+func (obj *StorageFile) SetPath(value *string) {
+    obj.Path = value
+}
+
+func (obj *StorageFile) GetSize() *int32 {
+    return obj.Size
+}
+
+func (obj *StorageFile) SetSize(value *int32) {
+    obj.Size = value
+}
 

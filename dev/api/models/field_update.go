@@ -28,26 +28,24 @@
 package models
 
 // Field for update.
-type FieldUpdateResult struct {
-    // Field for update.
-    FieldCode string `json:"FieldCode,omitempty"`
-
-    // Field for update.
-    LocaleId string `json:"LocaleId,omitempty"`
-}
-
-type FieldUpdate struct {
-    // Field for update.
-    FieldCode *string `json:"FieldCode,omitempty"`
-
-    // Field for update.
-    LocaleId *string `json:"LocaleId,omitempty"`
-}
 
 type IFieldUpdate interface {
     IsFieldUpdate() bool
     Initialize()
+    Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetFieldCode() *string
+    SetFieldCode(value *string)
+    GetLocaleId() *string
+    SetLocaleId(value *string)
+}
+
+type FieldUpdate struct {
+    // Field for update.
+    FieldCode *string
+
+    // Field for update.
+    LocaleId *string
 }
 
 func (FieldUpdate) IsFieldUpdate() bool {
@@ -61,8 +59,49 @@ func (FieldUpdate) IsFieldBase() bool {
 func (obj *FieldUpdate) Initialize() {
 }
 
+func (obj *FieldUpdate) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["FieldCode"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.FieldCode = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["fieldCode"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.FieldCode = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["LocaleId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.LocaleId = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["localeId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.LocaleId = &parsedValue
+        }
+
+    }
+}
+
 func (obj *FieldUpdate) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *FieldUpdate) GetFieldCode() *string {
+    return obj.FieldCode
+}
+
+func (obj *FieldUpdate) SetFieldCode(value *string) {
+    obj.FieldCode = value
+}
+
+func (obj *FieldUpdate) GetLocaleId() *string {
+    return obj.LocaleId
+}
+
+func (obj *FieldUpdate) SetLocaleId(value *string) {
+    obj.LocaleId = value
+}
 

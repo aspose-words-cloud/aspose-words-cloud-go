@@ -34,9 +34,25 @@ import "io"
 // Splits a document into parts and saves them in the specified format.
 type SplitDocumentOnlineResponse struct {
     // The response model.
-    Model SplitDocumentResponse `json:"Model,omitempty"`
+    Model ISplitDocumentResponse
 
 
     // The document after modification.
-    Document map[string]io.Reader `json:"Document,omitempty"`
+    Document map[string]io.Reader
+}
+
+func (obj *SplitDocumentOnlineResponse) GetModel() ISplitDocumentResponse {
+    return obj.Model
+}
+
+func (obj *SplitDocumentOnlineResponse) SetModel(value ISplitDocumentResponse) {
+    obj.Model = value
+}
+
+func (obj *SplitDocumentOnlineResponse) GetDocument() map[string]io.Reader {
+    return obj.Document
+}
+
+func (obj *SplitDocumentOnlineResponse) SetDocument(value map[string]io.Reader) {
+    obj.Document = value
 }

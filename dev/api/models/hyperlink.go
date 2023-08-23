@@ -28,32 +28,29 @@
 package models
 
 // Hyperlink element.
-type HyperlinkResult struct {
-    // Hyperlink element.
-    Link WordsApiLinkResult `json:"Link,omitempty"`
-
-    // Hyperlink element.
-    DisplayText string `json:"DisplayText,omitempty"`
-
-    // Hyperlink element.
-    Value string `json:"Value,omitempty"`
-}
-
-type Hyperlink struct {
-    // Hyperlink element.
-    Link IWordsApiLink `json:"Link,omitempty"`
-
-    // Hyperlink element.
-    DisplayText *string `json:"DisplayText,omitempty"`
-
-    // Hyperlink element.
-    Value *string `json:"Value,omitempty"`
-}
 
 type IHyperlink interface {
     IsHyperlink() bool
     Initialize()
+    Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetLink() IWordsApiLink
+    SetLink(value IWordsApiLink)
+    GetDisplayText() *string
+    SetDisplayText(value *string)
+    GetValue() *string
+    SetValue(value *string)
+}
+
+type Hyperlink struct {
+    // Hyperlink element.
+    Link IWordsApiLink
+
+    // Hyperlink element.
+    DisplayText *string
+
+    // Hyperlink element.
+    Value *string
 }
 
 func (Hyperlink) IsHyperlink() bool {
@@ -72,8 +69,73 @@ func (obj *Hyperlink) Initialize() {
 
 }
 
+func (obj *Hyperlink) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["Link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    } else if jsonValue, exists := json["link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    }
+
+    if jsonValue, exists := json["DisplayText"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.DisplayText = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["displayText"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.DisplayText = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["Value"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Value = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["value"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Value = &parsedValue
+        }
+
+    }
+}
+
 func (obj *Hyperlink) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *Hyperlink) GetLink() IWordsApiLink {
+    return obj.Link
+}
+
+func (obj *Hyperlink) SetLink(value IWordsApiLink) {
+    obj.Link = value
+}
+
+func (obj *Hyperlink) GetDisplayText() *string {
+    return obj.DisplayText
+}
+
+func (obj *Hyperlink) SetDisplayText(value *string) {
+    obj.DisplayText = value
+}
+
+func (obj *Hyperlink) GetValue() *string {
+    return obj.Value
+}
+
+func (obj *Hyperlink) SetValue(value *string) {
+    obj.Value = value
+}
 

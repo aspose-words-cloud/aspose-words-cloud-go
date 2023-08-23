@@ -28,38 +28,34 @@
 package models
 
 // Represents a single document style properties to update.
-type StyleUpdateResult struct {
-    // Represents a single document style properties to update.
-    BaseStyleName string `json:"BaseStyleName,omitempty"`
-
-    // Represents a single document style properties to update.
-    IsQuickStyle bool `json:"IsQuickStyle,omitempty"`
-
-    // Represents a single document style properties to update.
-    Name string `json:"Name,omitempty"`
-
-    // Represents a single document style properties to update.
-    NextParagraphStyleName string `json:"NextParagraphStyleName,omitempty"`
-}
-
-type StyleUpdate struct {
-    // Represents a single document style properties to update.
-    BaseStyleName *string `json:"BaseStyleName,omitempty"`
-
-    // Represents a single document style properties to update.
-    IsQuickStyle *bool `json:"IsQuickStyle,omitempty"`
-
-    // Represents a single document style properties to update.
-    Name *string `json:"Name,omitempty"`
-
-    // Represents a single document style properties to update.
-    NextParagraphStyleName *string `json:"NextParagraphStyleName,omitempty"`
-}
 
 type IStyleUpdate interface {
     IsStyleUpdate() bool
     Initialize()
+    Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetBaseStyleName() *string
+    SetBaseStyleName(value *string)
+    GetIsQuickStyle() *bool
+    SetIsQuickStyle(value *bool)
+    GetName() *string
+    SetName(value *string)
+    GetNextParagraphStyleName() *string
+    SetNextParagraphStyleName(value *string)
+}
+
+type StyleUpdate struct {
+    // Represents a single document style properties to update.
+    BaseStyleName *string
+
+    // Represents a single document style properties to update.
+    IsQuickStyle *bool
+
+    // Represents a single document style properties to update.
+    Name *string
+
+    // Represents a single document style properties to update.
+    NextParagraphStyleName *string
 }
 
 func (StyleUpdate) IsStyleUpdate() bool {
@@ -70,8 +66,89 @@ func (StyleUpdate) IsStyleUpdate() bool {
 func (obj *StyleUpdate) Initialize() {
 }
 
+func (obj *StyleUpdate) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["BaseStyleName"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.BaseStyleName = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["baseStyleName"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.BaseStyleName = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["IsQuickStyle"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.IsQuickStyle = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["isQuickStyle"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.IsQuickStyle = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["Name"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Name = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["name"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Name = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["NextParagraphStyleName"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.NextParagraphStyleName = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["nextParagraphStyleName"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.NextParagraphStyleName = &parsedValue
+        }
+
+    }
+}
+
 func (obj *StyleUpdate) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *StyleUpdate) GetBaseStyleName() *string {
+    return obj.BaseStyleName
+}
+
+func (obj *StyleUpdate) SetBaseStyleName(value *string) {
+    obj.BaseStyleName = value
+}
+
+func (obj *StyleUpdate) GetIsQuickStyle() *bool {
+    return obj.IsQuickStyle
+}
+
+func (obj *StyleUpdate) SetIsQuickStyle(value *bool) {
+    obj.IsQuickStyle = value
+}
+
+func (obj *StyleUpdate) GetName() *string {
+    return obj.Name
+}
+
+func (obj *StyleUpdate) SetName(value *string) {
+    obj.Name = value
+}
+
+func (obj *StyleUpdate) GetNextParagraphStyleName() *string {
+    return obj.NextParagraphStyleName
+}
+
+func (obj *StyleUpdate) SetNextParagraphStyleName(value *string) {
+    obj.NextParagraphStyleName = value
+}
 

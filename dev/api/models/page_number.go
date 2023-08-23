@@ -28,44 +28,39 @@
 package models
 
 // Class is used for insert page number request building.
-type PageNumberResult struct {
-    // Class is used for insert page number request building.
-    Alignment string `json:"Alignment,omitempty"`
-
-    // Class is used for insert page number request building.
-    Format string `json:"Format,omitempty"`
-
-    // Class is used for insert page number request building.
-    IsTop bool `json:"IsTop,omitempty"`
-
-    // Class is used for insert page number request building.
-    PageStartingNumber int32 `json:"PageStartingNumber,omitempty"`
-
-    // Class is used for insert page number request building.
-    SetPageNumberOnFirstPage bool `json:"SetPageNumberOnFirstPage,omitempty"`
-}
-
-type PageNumber struct {
-    // Class is used for insert page number request building.
-    Alignment *string `json:"Alignment,omitempty"`
-
-    // Class is used for insert page number request building.
-    Format *string `json:"Format,omitempty"`
-
-    // Class is used for insert page number request building.
-    IsTop *bool `json:"IsTop,omitempty"`
-
-    // Class is used for insert page number request building.
-    PageStartingNumber *int32 `json:"PageStartingNumber,omitempty"`
-
-    // Class is used for insert page number request building.
-    SetPageNumberOnFirstPage *bool `json:"SetPageNumberOnFirstPage,omitempty"`
-}
 
 type IPageNumber interface {
     IsPageNumber() bool
     Initialize()
+    Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetAlignment() *string
+    SetAlignment(value *string)
+    GetFormat() *string
+    SetFormat(value *string)
+    GetIsTop() *bool
+    SetIsTop(value *bool)
+    GetPageStartingNumber() *int32
+    SetPageStartingNumber(value *int32)
+    GetSetPageNumberOnFirstPage() *bool
+    SetSetPageNumberOnFirstPage(value *bool)
+}
+
+type PageNumber struct {
+    // Class is used for insert page number request building.
+    Alignment *string
+
+    // Class is used for insert page number request building.
+    Format *string
+
+    // Class is used for insert page number request building.
+    IsTop *bool
+
+    // Class is used for insert page number request building.
+    PageStartingNumber *int32
+
+    // Class is used for insert page number request building.
+    SetPageNumberOnFirstPage *bool
 }
 
 func (PageNumber) IsPageNumber() bool {
@@ -76,8 +71,111 @@ func (PageNumber) IsPageNumber() bool {
 func (obj *PageNumber) Initialize() {
 }
 
+func (obj *PageNumber) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["Alignment"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Alignment = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["alignment"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Alignment = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["Format"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Format = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["format"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Format = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["IsTop"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.IsTop = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["isTop"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.IsTop = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["PageStartingNumber"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.PageStartingNumber = new(int32)
+            *obj.PageStartingNumber = int32(parsedValue)
+        }
+
+    } else if jsonValue, exists := json["pageStartingNumber"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.PageStartingNumber = new(int32)
+            *obj.PageStartingNumber = int32(parsedValue)
+        }
+
+    }
+
+    if jsonValue, exists := json["SetPageNumberOnFirstPage"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.SetPageNumberOnFirstPage = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["setPageNumberOnFirstPage"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.SetPageNumberOnFirstPage = &parsedValue
+        }
+
+    }
+}
+
 func (obj *PageNumber) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *PageNumber) GetAlignment() *string {
+    return obj.Alignment
+}
+
+func (obj *PageNumber) SetAlignment(value *string) {
+    obj.Alignment = value
+}
+
+func (obj *PageNumber) GetFormat() *string {
+    return obj.Format
+}
+
+func (obj *PageNumber) SetFormat(value *string) {
+    obj.Format = value
+}
+
+func (obj *PageNumber) GetIsTop() *bool {
+    return obj.IsTop
+}
+
+func (obj *PageNumber) SetIsTop(value *bool) {
+    obj.IsTop = value
+}
+
+func (obj *PageNumber) GetPageStartingNumber() *int32 {
+    return obj.PageStartingNumber
+}
+
+func (obj *PageNumber) SetPageStartingNumber(value *int32) {
+    obj.PageStartingNumber = value
+}
+
+func (obj *PageNumber) GetSetPageNumberOnFirstPage() *bool {
+    return obj.SetPageNumberOnFirstPage
+}
+
+func (obj *PageNumber) SetSetPageNumberOnFirstPage(value *bool) {
+    obj.SetPageNumberOnFirstPage = value
+}
 

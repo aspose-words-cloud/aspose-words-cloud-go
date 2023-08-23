@@ -34,9 +34,25 @@ import "io"
 // Updates the formatting properties of a paragraph in the document node.
 type UpdateParagraphFormatOnlineResponse struct {
     // The response model.
-    Model ParagraphFormatResponse `json:"Model,omitempty"`
+    Model IParagraphFormatResponse
 
 
     // The document after modification.
-    Document map[string]io.Reader `json:"Document,omitempty"`
+    Document map[string]io.Reader
+}
+
+func (obj *UpdateParagraphFormatOnlineResponse) GetModel() IParagraphFormatResponse {
+    return obj.Model
+}
+
+func (obj *UpdateParagraphFormatOnlineResponse) SetModel(value IParagraphFormatResponse) {
+    obj.Model = value
+}
+
+func (obj *UpdateParagraphFormatOnlineResponse) GetDocument() map[string]io.Reader {
+    return obj.Document
+}
+
+func (obj *UpdateParagraphFormatOnlineResponse) SetDocument(value map[string]io.Reader) {
+    obj.Document = value
 }

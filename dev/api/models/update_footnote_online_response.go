@@ -34,9 +34,25 @@ import "io"
 // Updates a footnote in the document node.
 type UpdateFootnoteOnlineResponse struct {
     // The response model.
-    Model FootnoteResponse `json:"Model,omitempty"`
+    Model IFootnoteResponse
 
 
     // The document after modification.
-    Document map[string]io.Reader `json:"Document,omitempty"`
+    Document map[string]io.Reader
+}
+
+func (obj *UpdateFootnoteOnlineResponse) GetModel() IFootnoteResponse {
+    return obj.Model
+}
+
+func (obj *UpdateFootnoteOnlineResponse) SetModel(value IFootnoteResponse) {
+    obj.Model = value
+}
+
+func (obj *UpdateFootnoteOnlineResponse) GetDocument() map[string]io.Reader {
+    return obj.Document
+}
+
+func (obj *UpdateFootnoteOnlineResponse) SetDocument(value map[string]io.Reader) {
+    obj.Document = value
 }

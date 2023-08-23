@@ -28,11 +28,89 @@
 package models
 
 // The REST response with a table cell.
+
+type ITableCellResponse interface {
+    IsTableCellResponse() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetRequestId() *string
+    SetRequestId(value *string)
+    GetCell() ITableCell
+    SetCell(value ITableCell)
+}
+
 type TableCellResponse struct {
     // The REST response with a table cell.
-    RequestId string `json:"RequestId,omitempty"`
+    RequestId *string
 
     // The REST response with a table cell.
-    Cell TableCellResult `json:"Cell,omitempty"`
+    Cell ITableCell
+}
+
+func (TableCellResponse) IsTableCellResponse() bool {
+    return true
+}
+
+func (TableCellResponse) IsWordsResponse() bool {
+    return true
+}
+
+func (obj *TableCellResponse) Initialize() {
+    if (obj.Cell != nil) {
+        obj.Cell.Initialize()
+    }
+
+
+}
+
+func (obj *TableCellResponse) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["RequestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["requestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["Cell"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance ITableCell = new(TableCell)
+            modelInstance.Deserialize(parsedValue)
+            obj.Cell = modelInstance
+        }
+
+    } else if jsonValue, exists := json["cell"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance ITableCell = new(TableCell)
+            modelInstance.Deserialize(parsedValue)
+            obj.Cell = modelInstance
+        }
+
+    }
+}
+
+func (obj *TableCellResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
+}
+
+func (obj *TableCellResponse) GetRequestId() *string {
+    return obj.RequestId
+}
+
+func (obj *TableCellResponse) SetRequestId(value *string) {
+    obj.RequestId = value
+}
+
+func (obj *TableCellResponse) GetCell() ITableCell {
+    return obj.Cell
+}
+
+func (obj *TableCellResponse) SetCell(value ITableCell) {
+    obj.Cell = value
 }
 

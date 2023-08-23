@@ -28,11 +28,89 @@
 package models
 
 // The REST response with a collection of fields.
+
+type IFieldsResponse interface {
+    IsFieldsResponse() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetRequestId() *string
+    SetRequestId(value *string)
+    GetFields() IFieldCollection
+    SetFields(value IFieldCollection)
+}
+
 type FieldsResponse struct {
     // The REST response with a collection of fields.
-    RequestId string `json:"RequestId,omitempty"`
+    RequestId *string
 
     // The REST response with a collection of fields.
-    Fields FieldCollectionResult `json:"Fields,omitempty"`
+    Fields IFieldCollection
+}
+
+func (FieldsResponse) IsFieldsResponse() bool {
+    return true
+}
+
+func (FieldsResponse) IsWordsResponse() bool {
+    return true
+}
+
+func (obj *FieldsResponse) Initialize() {
+    if (obj.Fields != nil) {
+        obj.Fields.Initialize()
+    }
+
+
+}
+
+func (obj *FieldsResponse) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["RequestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["requestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["Fields"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IFieldCollection = new(FieldCollection)
+            modelInstance.Deserialize(parsedValue)
+            obj.Fields = modelInstance
+        }
+
+    } else if jsonValue, exists := json["fields"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IFieldCollection = new(FieldCollection)
+            modelInstance.Deserialize(parsedValue)
+            obj.Fields = modelInstance
+        }
+
+    }
+}
+
+func (obj *FieldsResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
+}
+
+func (obj *FieldsResponse) GetRequestId() *string {
+    return obj.RequestId
+}
+
+func (obj *FieldsResponse) SetRequestId(value *string) {
+    obj.RequestId = value
+}
+
+func (obj *FieldsResponse) GetFields() IFieldCollection {
+    return obj.Fields
+}
+
+func (obj *FieldsResponse) SetFields(value IFieldCollection) {
+    obj.Fields = value
 }
 

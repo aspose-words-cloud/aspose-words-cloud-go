@@ -28,8 +28,52 @@
 package models
 
 // The base class for all responses.
+
+type IWordsResponse interface {
+    IsWordsResponse() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetRequestId() *string
+    SetRequestId(value *string)
+}
+
 type WordsResponse struct {
     // The base class for all responses.
-    RequestId string `json:"RequestId,omitempty"`
+    RequestId *string
+}
+
+func (WordsResponse) IsWordsResponse() bool {
+    return true
+}
+
+
+func (obj *WordsResponse) Initialize() {
+}
+
+func (obj *WordsResponse) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["RequestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["requestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    }
+}
+
+func (obj *WordsResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
+}
+
+func (obj *WordsResponse) GetRequestId() *string {
+    return obj.RequestId
+}
+
+func (obj *WordsResponse) SetRequestId(value *string) {
+    obj.RequestId = value
 }
 

@@ -28,26 +28,24 @@
 package models
 
 // The collection of search results.
-type SearchResultsCollectionResult struct {
-    // The collection of search results.
-    Link WordsApiLinkResult `json:"Link,omitempty"`
-
-    // The collection of search results.
-    ResultsList []SearchResultResult `json:"ResultsList,omitempty"`
-}
-
-type SearchResultsCollection struct {
-    // The collection of search results.
-    Link IWordsApiLink `json:"Link,omitempty"`
-
-    // The collection of search results.
-    ResultsList []SearchResult `json:"ResultsList,omitempty"`
-}
 
 type ISearchResultsCollection interface {
     IsSearchResultsCollection() bool
     Initialize()
+    Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetLink() IWordsApiLink
+    SetLink(value IWordsApiLink)
+    GetResultsList() []ISearchResult
+    SetResultsList(value []ISearchResult)
+}
+
+type SearchResultsCollection struct {
+    // The collection of search results.
+    Link IWordsApiLink
+
+    // The collection of search results.
+    ResultsList []ISearchResult
 }
 
 func (SearchResultsCollection) IsSearchResultsCollection() bool {
@@ -71,8 +69,67 @@ func (obj *SearchResultsCollection) Initialize() {
 
 }
 
+func (obj *SearchResultsCollection) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["Link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    } else if jsonValue, exists := json["link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    }
+
+    if jsonValue, exists := json["ResultsList"]; exists {
+        if parsedValue, valid := jsonValue.([]interface{}); valid {
+            for _, parsedElement := range parsedValue {
+                if elementValue, valid := parsedElement.(map[string]interface{}); valid {
+                    var modelElementInstance ISearchResult = new(SearchResult)
+                    modelElementInstance.Deserialize(elementValue)
+                    obj.ResultsList = append(obj.ResultsList, modelElementInstance)
+                }
+
+            }
+        }
+
+    } else if jsonValue, exists := json["resultsList"]; exists {
+        if parsedValue, valid := jsonValue.([]interface{}); valid {
+            for _, parsedElement := range parsedValue {
+                if elementValue, valid := parsedElement.(map[string]interface{}); valid {
+                    var modelElementInstance ISearchResult = new(SearchResult)
+                    modelElementInstance.Deserialize(elementValue)
+                    obj.ResultsList = append(obj.ResultsList, modelElementInstance)
+                }
+
+            }
+        }
+
+    }
+}
+
 func (obj *SearchResultsCollection) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *SearchResultsCollection) GetLink() IWordsApiLink {
+    return obj.Link
+}
+
+func (obj *SearchResultsCollection) SetLink(value IWordsApiLink) {
+    obj.Link = value
+}
+
+func (obj *SearchResultsCollection) GetResultsList() []ISearchResult {
+    return obj.ResultsList
+}
+
+func (obj *SearchResultsCollection) SetResultsList(value []ISearchResult) {
+    obj.ResultsList = value
+}
 

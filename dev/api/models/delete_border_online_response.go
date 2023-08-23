@@ -34,9 +34,25 @@ import "io"
 // Removes a border from the document node.
 type DeleteBorderOnlineResponse struct {
     // The response model.
-    Model BorderResponse `json:"Model,omitempty"`
+    Model IBorderResponse
 
 
     // The document after modification.
-    Document map[string]io.Reader `json:"Document,omitempty"`
+    Document map[string]io.Reader
+}
+
+func (obj *DeleteBorderOnlineResponse) GetModel() IBorderResponse {
+    return obj.Model
+}
+
+func (obj *DeleteBorderOnlineResponse) SetModel(value IBorderResponse) {
+    obj.Model = value
+}
+
+func (obj *DeleteBorderOnlineResponse) GetDocument() map[string]io.Reader {
+    return obj.Document
+}
+
+func (obj *DeleteBorderOnlineResponse) SetDocument(value map[string]io.Reader) {
+    obj.Document = value
 }

@@ -28,11 +28,89 @@
 package models
 
 // The REST response with a style.
+
+type IStyleResponse interface {
+    IsStyleResponse() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetRequestId() *string
+    SetRequestId(value *string)
+    GetStyle() IStyle
+    SetStyle(value IStyle)
+}
+
 type StyleResponse struct {
     // The REST response with a style.
-    RequestId string `json:"RequestId,omitempty"`
+    RequestId *string
 
     // The REST response with a style.
-    Style StyleResult `json:"Style,omitempty"`
+    Style IStyle
+}
+
+func (StyleResponse) IsStyleResponse() bool {
+    return true
+}
+
+func (StyleResponse) IsWordsResponse() bool {
+    return true
+}
+
+func (obj *StyleResponse) Initialize() {
+    if (obj.Style != nil) {
+        obj.Style.Initialize()
+    }
+
+
+}
+
+func (obj *StyleResponse) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["RequestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["requestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["Style"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IStyle = new(Style)
+            modelInstance.Deserialize(parsedValue)
+            obj.Style = modelInstance
+        }
+
+    } else if jsonValue, exists := json["style"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IStyle = new(Style)
+            modelInstance.Deserialize(parsedValue)
+            obj.Style = modelInstance
+        }
+
+    }
+}
+
+func (obj *StyleResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
+}
+
+func (obj *StyleResponse) GetRequestId() *string {
+    return obj.RequestId
+}
+
+func (obj *StyleResponse) SetRequestId(value *string) {
+    obj.RequestId = value
+}
+
+func (obj *StyleResponse) GetStyle() IStyle {
+    return obj.Style
+}
+
+func (obj *StyleResponse) SetStyle(value IStyle) {
+    obj.Style = value
 }
 

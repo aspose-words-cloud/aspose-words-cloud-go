@@ -28,11 +28,89 @@
 package models
 
 // The REST response with a collection of OfficeMath objects.
+
+type IOfficeMathObjectsResponse interface {
+    IsOfficeMathObjectsResponse() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetRequestId() *string
+    SetRequestId(value *string)
+    GetOfficeMathObjects() IOfficeMathObjectsCollection
+    SetOfficeMathObjects(value IOfficeMathObjectsCollection)
+}
+
 type OfficeMathObjectsResponse struct {
     // The REST response with a collection of OfficeMath objects.
-    RequestId string `json:"RequestId,omitempty"`
+    RequestId *string
 
     // The REST response with a collection of OfficeMath objects.
-    OfficeMathObjects OfficeMathObjectsCollectionResult `json:"OfficeMathObjects,omitempty"`
+    OfficeMathObjects IOfficeMathObjectsCollection
+}
+
+func (OfficeMathObjectsResponse) IsOfficeMathObjectsResponse() bool {
+    return true
+}
+
+func (OfficeMathObjectsResponse) IsWordsResponse() bool {
+    return true
+}
+
+func (obj *OfficeMathObjectsResponse) Initialize() {
+    if (obj.OfficeMathObjects != nil) {
+        obj.OfficeMathObjects.Initialize()
+    }
+
+
+}
+
+func (obj *OfficeMathObjectsResponse) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["RequestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["requestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["OfficeMathObjects"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IOfficeMathObjectsCollection = new(OfficeMathObjectsCollection)
+            modelInstance.Deserialize(parsedValue)
+            obj.OfficeMathObjects = modelInstance
+        }
+
+    } else if jsonValue, exists := json["officeMathObjects"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IOfficeMathObjectsCollection = new(OfficeMathObjectsCollection)
+            modelInstance.Deserialize(parsedValue)
+            obj.OfficeMathObjects = modelInstance
+        }
+
+    }
+}
+
+func (obj *OfficeMathObjectsResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
+}
+
+func (obj *OfficeMathObjectsResponse) GetRequestId() *string {
+    return obj.RequestId
+}
+
+func (obj *OfficeMathObjectsResponse) SetRequestId(value *string) {
+    obj.RequestId = value
+}
+
+func (obj *OfficeMathObjectsResponse) GetOfficeMathObjects() IOfficeMathObjectsCollection {
+    return obj.OfficeMathObjects
+}
+
+func (obj *OfficeMathObjectsResponse) SetOfficeMathObjects(value IOfficeMathObjectsCollection) {
+    obj.OfficeMathObjects = value
 }
 

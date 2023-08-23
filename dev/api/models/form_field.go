@@ -28,104 +28,33 @@
 package models
 
 // FromField.
-type FormFieldResult struct {
-    // FromField.
-    Link WordsApiLinkResult `json:"Link,omitempty"`
-
-    // FromField.
-    NodeId string `json:"NodeId,omitempty"`
-
-    // FromField.
-    Name string `json:"Name,omitempty"`
-
-    // FromField.
-    Enabled bool `json:"Enabled,omitempty"`
-
-    // FromField.
-    StatusText string `json:"StatusText,omitempty"`
-
-    // FromField.
-    OwnStatus bool `json:"OwnStatus,omitempty"`
-
-    // FromField.
-    HelpText string `json:"HelpText,omitempty"`
-
-    // FromField.
-    OwnHelp bool `json:"OwnHelp,omitempty"`
-
-    // FromField.
-    CalculateOnExit bool `json:"CalculateOnExit,omitempty"`
-
-    // FromField.
-    EntryMacro string `json:"EntryMacro,omitempty"`
-
-    // FromField.
-    ExitMacro string `json:"ExitMacro,omitempty"`
-}
-
-type FormField struct {
-    // FromField.
-    Link IWordsApiLink `json:"Link,omitempty"`
-
-    // FromField.
-    NodeId *string `json:"NodeId,omitempty"`
-
-    // FromField.
-    Name *string `json:"Name,omitempty"`
-
-    // FromField.
-    Enabled *bool `json:"Enabled,omitempty"`
-
-    // FromField.
-    StatusText *string `json:"StatusText,omitempty"`
-
-    // FromField.
-    OwnStatus *bool `json:"OwnStatus,omitempty"`
-
-    // FromField.
-    HelpText *string `json:"HelpText,omitempty"`
-
-    // FromField.
-    OwnHelp *bool `json:"OwnHelp,omitempty"`
-
-    // FromField.
-    CalculateOnExit *bool `json:"CalculateOnExit,omitempty"`
-
-    // FromField.
-    EntryMacro *string `json:"EntryMacro,omitempty"`
-
-    // FromField.
-    ExitMacro *string `json:"ExitMacro,omitempty"`
-}
 
 type IFormField interface {
     IsFormField() bool
     Initialize()
+    Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetLink() IWordsApiLink
+    SetLink(value IWordsApiLink)
+    GetNodeId() *string
+    SetNodeId(value *string)
+    GetName() *string
+    SetName(value *string)
+    GetEnabled() *bool
+    SetEnabled(value *bool)
+    GetStatusText() *string
+    SetStatusText(value *string)
+    GetOwnStatus() *bool
+    SetOwnStatus(value *bool)
+    GetHelpText() *string
+    SetHelpText(value *string)
+    GetOwnHelp() *bool
+    SetOwnHelp(value *bool)
+    GetCalculateOnExit() *bool
+    SetCalculateOnExit(value *bool)
+    GetEntryMacro() *string
+    SetEntryMacro(value *string)
+    GetExitMacro() *string
+    SetExitMacro(value *string)
 }
-
-func (FormField) IsFormField() bool {
-    return true
-}
-
-func (FormField) IsNodeLink() bool {
-    return true
-}
-
-func (FormField) IsLinkElement() bool {
-    return true
-}
-
-func (obj *FormField) Initialize() {
-    if (obj.Link != nil) {
-        obj.Link.Initialize()
-    }
-
-
-}
-
-func (obj *FormField) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
-    return resultFilesContent
-}
-
 

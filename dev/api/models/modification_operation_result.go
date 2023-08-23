@@ -28,26 +28,24 @@
 package models
 
 // result of the operation which modifies the original document and saves the result.
-type ModificationOperationResultResult struct {
-    // result of the operation which modifies the original document and saves the result.
-    Dest FileLinkResult `json:"Dest,omitempty"`
-
-    // result of the operation which modifies the original document and saves the result.
-    Source FileLinkResult `json:"Source,omitempty"`
-}
-
-type ModificationOperationResult struct {
-    // result of the operation which modifies the original document and saves the result.
-    Dest IFileLink `json:"Dest,omitempty"`
-
-    // result of the operation which modifies the original document and saves the result.
-    Source IFileLink `json:"Source,omitempty"`
-}
 
 type IModificationOperationResult interface {
     IsModificationOperationResult() bool
     Initialize()
+    Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetDest() IFileLink
+    SetDest(value IFileLink)
+    GetSource() IFileLink
+    SetSource(value IFileLink)
+}
+
+type ModificationOperationResult struct {
+    // result of the operation which modifies the original document and saves the result.
+    Dest IFileLink
+
+    // result of the operation which modifies the original document and saves the result.
+    Source IFileLink
 }
 
 func (ModificationOperationResult) IsModificationOperationResult() bool {
@@ -67,8 +65,57 @@ func (obj *ModificationOperationResult) Initialize() {
 
 }
 
+func (obj *ModificationOperationResult) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["Dest"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IFileLink = new(FileLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Dest = modelInstance
+        }
+
+    } else if jsonValue, exists := json["dest"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IFileLink = new(FileLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Dest = modelInstance
+        }
+
+    }
+
+    if jsonValue, exists := json["Source"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IFileLink = new(FileLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Source = modelInstance
+        }
+
+    } else if jsonValue, exists := json["source"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IFileLink = new(FileLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Source = modelInstance
+        }
+
+    }
+}
+
 func (obj *ModificationOperationResult) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *ModificationOperationResult) GetDest() IFileLink {
+    return obj.Dest
+}
+
+func (obj *ModificationOperationResult) SetDest(value IFileLink) {
+    obj.Dest = value
+}
+
+func (obj *ModificationOperationResult) GetSource() IFileLink {
+    return obj.Source
+}
+
+func (obj *ModificationOperationResult) SetSource(value IFileLink) {
+    obj.Source = value
+}
 

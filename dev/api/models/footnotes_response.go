@@ -28,11 +28,89 @@
 package models
 
 // The REST response with a collection of footnotes.
+
+type IFootnotesResponse interface {
+    IsFootnotesResponse() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetRequestId() *string
+    SetRequestId(value *string)
+    GetFootnotes() IFootnoteCollection
+    SetFootnotes(value IFootnoteCollection)
+}
+
 type FootnotesResponse struct {
     // The REST response with a collection of footnotes.
-    RequestId string `json:"RequestId,omitempty"`
+    RequestId *string
 
     // The REST response with a collection of footnotes.
-    Footnotes FootnoteCollectionResult `json:"Footnotes,omitempty"`
+    Footnotes IFootnoteCollection
+}
+
+func (FootnotesResponse) IsFootnotesResponse() bool {
+    return true
+}
+
+func (FootnotesResponse) IsWordsResponse() bool {
+    return true
+}
+
+func (obj *FootnotesResponse) Initialize() {
+    if (obj.Footnotes != nil) {
+        obj.Footnotes.Initialize()
+    }
+
+
+}
+
+func (obj *FootnotesResponse) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["RequestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["requestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["Footnotes"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IFootnoteCollection = new(FootnoteCollection)
+            modelInstance.Deserialize(parsedValue)
+            obj.Footnotes = modelInstance
+        }
+
+    } else if jsonValue, exists := json["footnotes"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IFootnoteCollection = new(FootnoteCollection)
+            modelInstance.Deserialize(parsedValue)
+            obj.Footnotes = modelInstance
+        }
+
+    }
+}
+
+func (obj *FootnotesResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
+}
+
+func (obj *FootnotesResponse) GetRequestId() *string {
+    return obj.RequestId
+}
+
+func (obj *FootnotesResponse) SetRequestId(value *string) {
+    obj.RequestId = value
+}
+
+func (obj *FootnotesResponse) GetFootnotes() IFootnoteCollection {
+    return obj.Footnotes
+}
+
+func (obj *FootnotesResponse) SetFootnotes(value IFootnoteCollection) {
+    obj.Footnotes = value
 }
 

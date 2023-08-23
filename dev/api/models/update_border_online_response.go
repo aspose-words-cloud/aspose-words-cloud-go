@@ -34,9 +34,25 @@ import "io"
 // Updates a border in the document node.
 type UpdateBorderOnlineResponse struct {
     // The response model.
-    Model BorderResponse `json:"Model,omitempty"`
+    Model IBorderResponse
 
 
     // The document after modification.
-    Document map[string]io.Reader `json:"Document,omitempty"`
+    Document map[string]io.Reader
+}
+
+func (obj *UpdateBorderOnlineResponse) GetModel() IBorderResponse {
+    return obj.Model
+}
+
+func (obj *UpdateBorderOnlineResponse) SetModel(value IBorderResponse) {
+    obj.Model = value
+}
+
+func (obj *UpdateBorderOnlineResponse) GetDocument() map[string]io.Reader {
+    return obj.Document
+}
+
+func (obj *UpdateBorderOnlineResponse) SetDocument(value map[string]io.Reader) {
+    obj.Document = value
 }

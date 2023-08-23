@@ -28,11 +28,89 @@
 package models
 
 // The REST response with a collection of Run elements.
+
+type IRunsResponse interface {
+    IsRunsResponse() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetRequestId() *string
+    SetRequestId(value *string)
+    GetRuns() IRuns
+    SetRuns(value IRuns)
+}
+
 type RunsResponse struct {
     // The REST response with a collection of Run elements.
-    RequestId string `json:"RequestId,omitempty"`
+    RequestId *string
 
     // The REST response with a collection of Run elements.
-    Runs RunsResult `json:"Runs,omitempty"`
+    Runs IRuns
+}
+
+func (RunsResponse) IsRunsResponse() bool {
+    return true
+}
+
+func (RunsResponse) IsWordsResponse() bool {
+    return true
+}
+
+func (obj *RunsResponse) Initialize() {
+    if (obj.Runs != nil) {
+        obj.Runs.Initialize()
+    }
+
+
+}
+
+func (obj *RunsResponse) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["RequestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["requestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["Runs"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IRuns = new(Runs)
+            modelInstance.Deserialize(parsedValue)
+            obj.Runs = modelInstance
+        }
+
+    } else if jsonValue, exists := json["runs"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IRuns = new(Runs)
+            modelInstance.Deserialize(parsedValue)
+            obj.Runs = modelInstance
+        }
+
+    }
+}
+
+func (obj *RunsResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
+}
+
+func (obj *RunsResponse) GetRequestId() *string {
+    return obj.RequestId
+}
+
+func (obj *RunsResponse) SetRequestId(value *string) {
+    obj.RequestId = value
+}
+
+func (obj *RunsResponse) GetRuns() IRuns {
+    return obj.Runs
+}
+
+func (obj *RunsResponse) SetRuns(value IRuns) {
+    obj.Runs = value
 }
 

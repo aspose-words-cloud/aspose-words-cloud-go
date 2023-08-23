@@ -28,56 +28,49 @@
 package models
 
 // DTO container with a footnote.
-type FootnoteResult struct {
-    // DTO container with a footnote.
-    Link WordsApiLinkResult `json:"Link,omitempty"`
-
-    // DTO container with a footnote.
-    NodeId string `json:"NodeId,omitempty"`
-
-    // DTO container with a footnote.
-    Position DocumentPositionResult `json:"Position,omitempty"`
-
-    // DTO container with a footnote.
-    FootnoteType string `json:"FootnoteType,omitempty"`
-
-    // DTO container with a footnote.
-    ReferenceMark string `json:"ReferenceMark,omitempty"`
-
-    // DTO container with a footnote.
-    Text string `json:"Text,omitempty"`
-
-    // DTO container with a footnote.
-    Content StoryChildNodesResult `json:"Content,omitempty"`
-}
-
-type Footnote struct {
-    // DTO container with a footnote.
-    Link IWordsApiLink `json:"Link,omitempty"`
-
-    // DTO container with a footnote.
-    NodeId *string `json:"NodeId,omitempty"`
-
-    // DTO container with a footnote.
-    Position IDocumentPosition `json:"Position,omitempty"`
-
-    // DTO container with a footnote.
-    FootnoteType *string `json:"FootnoteType,omitempty"`
-
-    // DTO container with a footnote.
-    ReferenceMark *string `json:"ReferenceMark,omitempty"`
-
-    // DTO container with a footnote.
-    Text *string `json:"Text,omitempty"`
-
-    // DTO container with a footnote.
-    Content IStoryChildNodes `json:"Content,omitempty"`
-}
 
 type IFootnote interface {
     IsFootnote() bool
     Initialize()
+    Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetLink() IWordsApiLink
+    SetLink(value IWordsApiLink)
+    GetNodeId() *string
+    SetNodeId(value *string)
+    GetPosition() IDocumentPosition
+    SetPosition(value IDocumentPosition)
+    GetFootnoteType() *string
+    SetFootnoteType(value *string)
+    GetReferenceMark() *string
+    SetReferenceMark(value *string)
+    GetText() *string
+    SetText(value *string)
+    GetContent() IStoryChildNodes
+    SetContent(value IStoryChildNodes)
+}
+
+type Footnote struct {
+    // DTO container with a footnote.
+    Link IWordsApiLink
+
+    // DTO container with a footnote.
+    NodeId *string
+
+    // DTO container with a footnote.
+    Position IDocumentPosition
+
+    // DTO container with a footnote.
+    FootnoteType *string
+
+    // DTO container with a footnote.
+    ReferenceMark *string
+
+    // DTO container with a footnote.
+    Text *string
+
+    // DTO container with a footnote.
+    Content IStoryChildNodes
 }
 
 func (Footnote) IsFootnote() bool {
@@ -112,8 +105,161 @@ func (obj *Footnote) Initialize() {
 
 }
 
+func (obj *Footnote) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["Link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    } else if jsonValue, exists := json["link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    }
+
+    if jsonValue, exists := json["NodeId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.NodeId = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["nodeId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.NodeId = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["Position"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IDocumentPosition = new(DocumentPosition)
+            modelInstance.Deserialize(parsedValue)
+            obj.Position = modelInstance
+        }
+
+    } else if jsonValue, exists := json["position"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IDocumentPosition = new(DocumentPosition)
+            modelInstance.Deserialize(parsedValue)
+            obj.Position = modelInstance
+        }
+
+    }
+
+    if jsonValue, exists := json["FootnoteType"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.FootnoteType = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["footnoteType"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.FootnoteType = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["ReferenceMark"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.ReferenceMark = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["referenceMark"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.ReferenceMark = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["Text"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Text = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["text"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Text = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["Content"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IStoryChildNodes = new(StoryChildNodes)
+            modelInstance.Deserialize(parsedValue)
+            obj.Content = modelInstance
+        }
+
+    } else if jsonValue, exists := json["content"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IStoryChildNodes = new(StoryChildNodes)
+            modelInstance.Deserialize(parsedValue)
+            obj.Content = modelInstance
+        }
+
+    }
+}
+
 func (obj *Footnote) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *Footnote) GetLink() IWordsApiLink {
+    return obj.Link
+}
+
+func (obj *Footnote) SetLink(value IWordsApiLink) {
+    obj.Link = value
+}
+
+func (obj *Footnote) GetNodeId() *string {
+    return obj.NodeId
+}
+
+func (obj *Footnote) SetNodeId(value *string) {
+    obj.NodeId = value
+}
+
+func (obj *Footnote) GetPosition() IDocumentPosition {
+    return obj.Position
+}
+
+func (obj *Footnote) SetPosition(value IDocumentPosition) {
+    obj.Position = value
+}
+
+func (obj *Footnote) GetFootnoteType() *string {
+    return obj.FootnoteType
+}
+
+func (obj *Footnote) SetFootnoteType(value *string) {
+    obj.FootnoteType = value
+}
+
+func (obj *Footnote) GetReferenceMark() *string {
+    return obj.ReferenceMark
+}
+
+func (obj *Footnote) SetReferenceMark(value *string) {
+    obj.ReferenceMark = value
+}
+
+func (obj *Footnote) GetText() *string {
+    return obj.Text
+}
+
+func (obj *Footnote) SetText(value *string) {
+    obj.Text = value
+}
+
+func (obj *Footnote) GetContent() IStoryChildNodes {
+    return obj.Content
+}
+
+func (obj *Footnote) SetContent(value IStoryChildNodes) {
+    obj.Content = value
+}
 

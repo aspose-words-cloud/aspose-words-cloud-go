@@ -28,26 +28,24 @@
 package models
 
 // The collection of comments.
-type CommentsCollectionResult struct {
-    // The collection of comments.
-    Link WordsApiLinkResult `json:"Link,omitempty"`
-
-    // The collection of comments.
-    CommentList []CommentResult `json:"CommentList,omitempty"`
-}
-
-type CommentsCollection struct {
-    // The collection of comments.
-    Link IWordsApiLink `json:"Link,omitempty"`
-
-    // The collection of comments.
-    CommentList []Comment `json:"CommentList,omitempty"`
-}
 
 type ICommentsCollection interface {
     IsCommentsCollection() bool
     Initialize()
+    Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetLink() IWordsApiLink
+    SetLink(value IWordsApiLink)
+    GetCommentList() []IComment
+    SetCommentList(value []IComment)
+}
+
+type CommentsCollection struct {
+    // The collection of comments.
+    Link IWordsApiLink
+
+    // The collection of comments.
+    CommentList []IComment
 }
 
 func (CommentsCollection) IsCommentsCollection() bool {
@@ -71,8 +69,67 @@ func (obj *CommentsCollection) Initialize() {
 
 }
 
+func (obj *CommentsCollection) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["Link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    } else if jsonValue, exists := json["link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    }
+
+    if jsonValue, exists := json["CommentList"]; exists {
+        if parsedValue, valid := jsonValue.([]interface{}); valid {
+            for _, parsedElement := range parsedValue {
+                if elementValue, valid := parsedElement.(map[string]interface{}); valid {
+                    var modelElementInstance IComment = new(Comment)
+                    modelElementInstance.Deserialize(elementValue)
+                    obj.CommentList = append(obj.CommentList, modelElementInstance)
+                }
+
+            }
+        }
+
+    } else if jsonValue, exists := json["commentList"]; exists {
+        if parsedValue, valid := jsonValue.([]interface{}); valid {
+            for _, parsedElement := range parsedValue {
+                if elementValue, valid := parsedElement.(map[string]interface{}); valid {
+                    var modelElementInstance IComment = new(Comment)
+                    modelElementInstance.Deserialize(elementValue)
+                    obj.CommentList = append(obj.CommentList, modelElementInstance)
+                }
+
+            }
+        }
+
+    }
+}
+
 func (obj *CommentsCollection) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *CommentsCollection) GetLink() IWordsApiLink {
+    return obj.Link
+}
+
+func (obj *CommentsCollection) SetLink(value IWordsApiLink) {
+    obj.Link = value
+}
+
+func (obj *CommentsCollection) GetCommentList() []IComment {
+    return obj.CommentList
+}
+
+func (obj *CommentsCollection) SetCommentList(value []IComment) {
+    obj.CommentList = value
+}
 

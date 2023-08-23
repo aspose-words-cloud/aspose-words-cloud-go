@@ -28,44 +28,39 @@
 package models
 
 // Class for document replace text request building.
-type ReplaceTextParametersResult struct {
-    // Class for document replace text request building.
-    IsMatchCase bool `json:"IsMatchCase,omitempty"`
-
-    // Class for document replace text request building.
-    IsMatchWholeWord bool `json:"IsMatchWholeWord,omitempty"`
-
-    // Class for document replace text request building.
-    IsOldValueRegex bool `json:"IsOldValueRegex,omitempty"`
-
-    // Class for document replace text request building.
-    NewValue string `json:"NewValue,omitempty"`
-
-    // Class for document replace text request building.
-    OldValue string `json:"OldValue,omitempty"`
-}
-
-type ReplaceTextParameters struct {
-    // Class for document replace text request building.
-    IsMatchCase *bool `json:"IsMatchCase,omitempty"`
-
-    // Class for document replace text request building.
-    IsMatchWholeWord *bool `json:"IsMatchWholeWord,omitempty"`
-
-    // Class for document replace text request building.
-    IsOldValueRegex *bool `json:"IsOldValueRegex,omitempty"`
-
-    // Class for document replace text request building.
-    NewValue *string `json:"NewValue,omitempty"`
-
-    // Class for document replace text request building.
-    OldValue *string `json:"OldValue,omitempty"`
-}
 
 type IReplaceTextParameters interface {
     IsReplaceTextParameters() bool
     Initialize()
+    Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetIsMatchCase() *bool
+    SetIsMatchCase(value *bool)
+    GetIsMatchWholeWord() *bool
+    SetIsMatchWholeWord(value *bool)
+    GetIsOldValueRegex() *bool
+    SetIsOldValueRegex(value *bool)
+    GetNewValue() *string
+    SetNewValue(value *string)
+    GetOldValue() *string
+    SetOldValue(value *string)
+}
+
+type ReplaceTextParameters struct {
+    // Class for document replace text request building.
+    IsMatchCase *bool
+
+    // Class for document replace text request building.
+    IsMatchWholeWord *bool
+
+    // Class for document replace text request building.
+    IsOldValueRegex *bool
+
+    // Class for document replace text request building.
+    NewValue *string
+
+    // Class for document replace text request building.
+    OldValue *string
 }
 
 func (ReplaceTextParameters) IsReplaceTextParameters() bool {
@@ -76,8 +71,109 @@ func (ReplaceTextParameters) IsReplaceTextParameters() bool {
 func (obj *ReplaceTextParameters) Initialize() {
 }
 
+func (obj *ReplaceTextParameters) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["IsMatchCase"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.IsMatchCase = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["isMatchCase"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.IsMatchCase = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["IsMatchWholeWord"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.IsMatchWholeWord = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["isMatchWholeWord"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.IsMatchWholeWord = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["IsOldValueRegex"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.IsOldValueRegex = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["isOldValueRegex"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.IsOldValueRegex = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["NewValue"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.NewValue = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["newValue"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.NewValue = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["OldValue"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.OldValue = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["oldValue"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.OldValue = &parsedValue
+        }
+
+    }
+}
+
 func (obj *ReplaceTextParameters) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *ReplaceTextParameters) GetIsMatchCase() *bool {
+    return obj.IsMatchCase
+}
+
+func (obj *ReplaceTextParameters) SetIsMatchCase(value *bool) {
+    obj.IsMatchCase = value
+}
+
+func (obj *ReplaceTextParameters) GetIsMatchWholeWord() *bool {
+    return obj.IsMatchWholeWord
+}
+
+func (obj *ReplaceTextParameters) SetIsMatchWholeWord(value *bool) {
+    obj.IsMatchWholeWord = value
+}
+
+func (obj *ReplaceTextParameters) GetIsOldValueRegex() *bool {
+    return obj.IsOldValueRegex
+}
+
+func (obj *ReplaceTextParameters) SetIsOldValueRegex(value *bool) {
+    obj.IsOldValueRegex = value
+}
+
+func (obj *ReplaceTextParameters) GetNewValue() *string {
+    return obj.NewValue
+}
+
+func (obj *ReplaceTextParameters) SetNewValue(value *string) {
+    obj.NewValue = value
+}
+
+func (obj *ReplaceTextParameters) GetOldValue() *string {
+    return obj.OldValue
+}
+
+func (obj *ReplaceTextParameters) SetOldValue(value *string) {
+    obj.OldValue = value
+}
 

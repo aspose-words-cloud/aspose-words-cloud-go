@@ -28,17 +28,150 @@
 package models
 
 // Response with API info.
+
+type IInfoResponse interface {
+    IsInfoResponse() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetRequestId() *string
+    SetRequestId(value *string)
+    GetAdditionalInfo() []IInfoAdditionalItem
+    SetAdditionalInfo(value []IInfoAdditionalItem)
+    GetName() *string
+    SetName(value *string)
+    GetVersion() *string
+    SetVersion(value *string)
+}
+
 type InfoResponse struct {
     // Response with API info.
-    RequestId string `json:"RequestId,omitempty"`
+    RequestId *string
 
     // Response with API info.
-    AdditionalInfo []InfoAdditionalItemResult `json:"AdditionalInfo,omitempty"`
+    AdditionalInfo []IInfoAdditionalItem
 
     // Response with API info.
-    Name string `json:"Name,omitempty"`
+    Name *string
 
     // Response with API info.
-    Version string `json:"Version,omitempty"`
+    Version *string
+}
+
+func (InfoResponse) IsInfoResponse() bool {
+    return true
+}
+
+func (InfoResponse) IsWordsResponse() bool {
+    return true
+}
+
+func (obj *InfoResponse) Initialize() {
+    if (obj.AdditionalInfo != nil) {
+        for _, objElementAdditionalInfo := range obj.AdditionalInfo {
+            objElementAdditionalInfo.Initialize()
+        }
+    }
+
+}
+
+func (obj *InfoResponse) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["RequestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["requestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["AdditionalInfo"]; exists {
+        if parsedValue, valid := jsonValue.([]interface{}); valid {
+            for _, parsedElement := range parsedValue {
+                if elementValue, valid := parsedElement.(map[string]interface{}); valid {
+                    var modelElementInstance IInfoAdditionalItem = new(InfoAdditionalItem)
+                    modelElementInstance.Deserialize(elementValue)
+                    obj.AdditionalInfo = append(obj.AdditionalInfo, modelElementInstance)
+                }
+
+            }
+        }
+
+    } else if jsonValue, exists := json["additionalInfo"]; exists {
+        if parsedValue, valid := jsonValue.([]interface{}); valid {
+            for _, parsedElement := range parsedValue {
+                if elementValue, valid := parsedElement.(map[string]interface{}); valid {
+                    var modelElementInstance IInfoAdditionalItem = new(InfoAdditionalItem)
+                    modelElementInstance.Deserialize(elementValue)
+                    obj.AdditionalInfo = append(obj.AdditionalInfo, modelElementInstance)
+                }
+
+            }
+        }
+
+    }
+
+    if jsonValue, exists := json["Name"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Name = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["name"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Name = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["Version"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Version = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["version"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Version = &parsedValue
+        }
+
+    }
+}
+
+func (obj *InfoResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
+}
+
+func (obj *InfoResponse) GetRequestId() *string {
+    return obj.RequestId
+}
+
+func (obj *InfoResponse) SetRequestId(value *string) {
+    obj.RequestId = value
+}
+
+func (obj *InfoResponse) GetAdditionalInfo() []IInfoAdditionalItem {
+    return obj.AdditionalInfo
+}
+
+func (obj *InfoResponse) SetAdditionalInfo(value []IInfoAdditionalItem) {
+    obj.AdditionalInfo = value
+}
+
+func (obj *InfoResponse) GetName() *string {
+    return obj.Name
+}
+
+func (obj *InfoResponse) SetName(value *string) {
+    obj.Name = value
+}
+
+func (obj *InfoResponse) GetVersion() *string {
+    return obj.Version
+}
+
+func (obj *InfoResponse) SetVersion(value *string) {
+    obj.Version = value
 }
 

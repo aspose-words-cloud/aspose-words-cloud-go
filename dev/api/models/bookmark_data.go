@@ -28,26 +28,24 @@
 package models
 
 // DTO for bookmark updating.
-type BookmarkDataResult struct {
-    // DTO for bookmark updating.
-    Name string `json:"Name,omitempty"`
-
-    // DTO for bookmark updating.
-    Text string `json:"Text,omitempty"`
-}
-
-type BookmarkData struct {
-    // DTO for bookmark updating.
-    Name *string `json:"Name,omitempty"`
-
-    // DTO for bookmark updating.
-    Text *string `json:"Text,omitempty"`
-}
 
 type IBookmarkData interface {
     IsBookmarkData() bool
     Initialize()
+    Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetName() *string
+    SetName(value *string)
+    GetText() *string
+    SetText(value *string)
+}
+
+type BookmarkData struct {
+    // DTO for bookmark updating.
+    Name *string
+
+    // DTO for bookmark updating.
+    Text *string
 }
 
 func (BookmarkData) IsBookmarkData() bool {
@@ -58,8 +56,49 @@ func (BookmarkData) IsBookmarkData() bool {
 func (obj *BookmarkData) Initialize() {
 }
 
+func (obj *BookmarkData) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["Name"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Name = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["name"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Name = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["Text"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Text = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["text"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Text = &parsedValue
+        }
+
+    }
+}
+
 func (obj *BookmarkData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *BookmarkData) GetName() *string {
+    return obj.Name
+}
+
+func (obj *BookmarkData) SetName(value *string) {
+    obj.Name = value
+}
+
+func (obj *BookmarkData) GetText() *string {
+    return obj.Text
+}
+
+func (obj *BookmarkData) SetText(value *string) {
+    obj.Text = value
+}
 

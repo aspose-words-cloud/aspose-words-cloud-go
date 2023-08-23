@@ -28,11 +28,89 @@
 package models
 
 // The REST response with a border.
+
+type IBorderResponse interface {
+    IsBorderResponse() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetRequestId() *string
+    SetRequestId(value *string)
+    GetBorder() IBorder
+    SetBorder(value IBorder)
+}
+
 type BorderResponse struct {
     // The REST response with a border.
-    RequestId string `json:"RequestId,omitempty"`
+    RequestId *string
 
     // The REST response with a border.
-    Border BorderResult `json:"Border,omitempty"`
+    Border IBorder
+}
+
+func (BorderResponse) IsBorderResponse() bool {
+    return true
+}
+
+func (BorderResponse) IsWordsResponse() bool {
+    return true
+}
+
+func (obj *BorderResponse) Initialize() {
+    if (obj.Border != nil) {
+        obj.Border.Initialize()
+    }
+
+
+}
+
+func (obj *BorderResponse) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["RequestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["requestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["Border"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IBorder = new(Border)
+            modelInstance.Deserialize(parsedValue)
+            obj.Border = modelInstance
+        }
+
+    } else if jsonValue, exists := json["border"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IBorder = new(Border)
+            modelInstance.Deserialize(parsedValue)
+            obj.Border = modelInstance
+        }
+
+    }
+}
+
+func (obj *BorderResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
+}
+
+func (obj *BorderResponse) GetRequestId() *string {
+    return obj.RequestId
+}
+
+func (obj *BorderResponse) SetRequestId(value *string) {
+    obj.RequestId = value
+}
+
+func (obj *BorderResponse) GetBorder() IBorder {
+    return obj.Border
+}
+
+func (obj *BorderResponse) SetBorder(value IBorder) {
+    obj.Border = value
 }
 

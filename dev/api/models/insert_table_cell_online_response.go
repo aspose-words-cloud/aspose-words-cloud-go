@@ -34,9 +34,25 @@ import "io"
 // Inserts a new cell to the table row.
 type InsertTableCellOnlineResponse struct {
     // The response model.
-    Model TableCellResponse `json:"Model,omitempty"`
+    Model ITableCellResponse
 
 
     // The document after modification.
-    Document map[string]io.Reader `json:"Document,omitempty"`
+    Document map[string]io.Reader
+}
+
+func (obj *InsertTableCellOnlineResponse) GetModel() ITableCellResponse {
+    return obj.Model
+}
+
+func (obj *InsertTableCellOnlineResponse) SetModel(value ITableCellResponse) {
+    obj.Model = value
+}
+
+func (obj *InsertTableCellOnlineResponse) GetDocument() map[string]io.Reader {
+    return obj.Document
+}
+
+func (obj *InsertTableCellOnlineResponse) SetDocument(value map[string]io.Reader) {
+    obj.Document = value
 }

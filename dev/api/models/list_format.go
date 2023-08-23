@@ -28,38 +28,34 @@
 package models
 
 // DTO container with a paragraph list format element.
-type ListFormatResult struct {
-    // DTO container with a paragraph list format element.
-    Link WordsApiLinkResult `json:"Link,omitempty"`
-
-    // DTO container with a paragraph list format element.
-    ListLevelNumber int32 `json:"ListLevelNumber,omitempty"`
-
-    // DTO container with a paragraph list format element.
-    ListId int32 `json:"ListId,omitempty"`
-
-    // DTO container with a paragraph list format element.
-    IsListItem bool `json:"IsListItem,omitempty"`
-}
-
-type ListFormat struct {
-    // DTO container with a paragraph list format element.
-    Link IWordsApiLink `json:"Link,omitempty"`
-
-    // DTO container with a paragraph list format element.
-    ListLevelNumber *int32 `json:"ListLevelNumber,omitempty"`
-
-    // DTO container with a paragraph list format element.
-    ListId *int32 `json:"ListId,omitempty"`
-
-    // DTO container with a paragraph list format element.
-    IsListItem *bool `json:"IsListItem,omitempty"`
-}
 
 type IListFormat interface {
     IsListFormat() bool
     Initialize()
+    Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetLink() IWordsApiLink
+    SetLink(value IWordsApiLink)
+    GetListLevelNumber() *int32
+    SetListLevelNumber(value *int32)
+    GetListId() *int32
+    SetListId(value *int32)
+    GetIsListItem() *bool
+    SetIsListItem(value *bool)
+}
+
+type ListFormat struct {
+    // DTO container with a paragraph list format element.
+    Link IWordsApiLink
+
+    // DTO container with a paragraph list format element.
+    ListLevelNumber *int32
+
+    // DTO container with a paragraph list format element.
+    ListId *int32
+
+    // DTO container with a paragraph list format element.
+    IsListItem *bool
 }
 
 func (ListFormat) IsListFormat() bool {
@@ -78,8 +74,97 @@ func (obj *ListFormat) Initialize() {
 
 }
 
+func (obj *ListFormat) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["Link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    } else if jsonValue, exists := json["link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    }
+
+    if jsonValue, exists := json["ListLevelNumber"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.ListLevelNumber = new(int32)
+            *obj.ListLevelNumber = int32(parsedValue)
+        }
+
+    } else if jsonValue, exists := json["listLevelNumber"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.ListLevelNumber = new(int32)
+            *obj.ListLevelNumber = int32(parsedValue)
+        }
+
+    }
+
+    if jsonValue, exists := json["ListId"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.ListId = new(int32)
+            *obj.ListId = int32(parsedValue)
+        }
+
+    } else if jsonValue, exists := json["listId"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.ListId = new(int32)
+            *obj.ListId = int32(parsedValue)
+        }
+
+    }
+
+    if jsonValue, exists := json["IsListItem"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.IsListItem = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["isListItem"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.IsListItem = &parsedValue
+        }
+
+    }
+}
+
 func (obj *ListFormat) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *ListFormat) GetLink() IWordsApiLink {
+    return obj.Link
+}
+
+func (obj *ListFormat) SetLink(value IWordsApiLink) {
+    obj.Link = value
+}
+
+func (obj *ListFormat) GetListLevelNumber() *int32 {
+    return obj.ListLevelNumber
+}
+
+func (obj *ListFormat) SetListLevelNumber(value *int32) {
+    obj.ListLevelNumber = value
+}
+
+func (obj *ListFormat) GetListId() *int32 {
+    return obj.ListId
+}
+
+func (obj *ListFormat) SetListId(value *int32) {
+    obj.ListId = value
+}
+
+func (obj *ListFormat) GetIsListItem() *bool {
+    return obj.IsListItem
+}
+
+func (obj *ListFormat) SetIsListItem(value *bool) {
+    obj.IsListItem = value
+}
 

@@ -28,26 +28,24 @@
 package models
 
 // Class for insert watermark text request building.
-type WatermarkTextResult struct {
-    // Class for insert watermark text request building.
-    RotationAngle float64 `json:"RotationAngle,omitempty"`
-
-    // Class for insert watermark text request building.
-    Text string `json:"Text,omitempty"`
-}
-
-type WatermarkText struct {
-    // Class for insert watermark text request building.
-    RotationAngle *float64 `json:"RotationAngle,omitempty"`
-
-    // Class for insert watermark text request building.
-    Text *string `json:"Text,omitempty"`
-}
 
 type IWatermarkText interface {
     IsWatermarkText() bool
     Initialize()
+    Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetRotationAngle() *float64
+    SetRotationAngle(value *float64)
+    GetText() *string
+    SetText(value *string)
+}
+
+type WatermarkText struct {
+    // Class for insert watermark text request building.
+    RotationAngle *float64
+
+    // Class for insert watermark text request building.
+    Text *string
 }
 
 func (WatermarkText) IsWatermarkText() bool {
@@ -58,8 +56,49 @@ func (WatermarkText) IsWatermarkText() bool {
 func (obj *WatermarkText) Initialize() {
 }
 
+func (obj *WatermarkText) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["RotationAngle"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.RotationAngle = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["rotationAngle"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.RotationAngle = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["Text"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Text = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["text"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Text = &parsedValue
+        }
+
+    }
+}
+
 func (obj *WatermarkText) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *WatermarkText) GetRotationAngle() *float64 {
+    return obj.RotationAngle
+}
+
+func (obj *WatermarkText) SetRotationAngle(value *float64) {
+    obj.RotationAngle = value
+}
+
+func (obj *WatermarkText) GetText() *string {
+    return obj.Text
+}
+
+func (obj *WatermarkText) SetText(value *string) {
+    obj.Text = value
+}
 

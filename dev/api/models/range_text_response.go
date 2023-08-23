@@ -28,11 +28,80 @@
 package models
 
 // The REST response with a range's text.
+
+type IRangeTextResponse interface {
+    IsRangeTextResponse() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetRequestId() *string
+    SetRequestId(value *string)
+    GetText() *string
+    SetText(value *string)
+}
+
 type RangeTextResponse struct {
     // The REST response with a range's text.
-    RequestId string `json:"RequestId,omitempty"`
+    RequestId *string
 
     // The REST response with a range's text.
-    Text string `json:"Text,omitempty"`
+    Text *string
+}
+
+func (RangeTextResponse) IsRangeTextResponse() bool {
+    return true
+}
+
+func (RangeTextResponse) IsWordsResponse() bool {
+    return true
+}
+
+func (obj *RangeTextResponse) Initialize() {
+}
+
+func (obj *RangeTextResponse) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["RequestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["requestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["Text"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Text = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["text"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Text = &parsedValue
+        }
+
+    }
+}
+
+func (obj *RangeTextResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
+}
+
+func (obj *RangeTextResponse) GetRequestId() *string {
+    return obj.RequestId
+}
+
+func (obj *RangeTextResponse) SetRequestId(value *string) {
+    obj.RequestId = value
+}
+
+func (obj *RangeTextResponse) GetText() *string {
+    return obj.Text
+}
+
+func (obj *RangeTextResponse) SetText(value *string) {
+    obj.Text = value
 }
 

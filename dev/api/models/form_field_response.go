@@ -28,11 +28,103 @@
 package models
 
 // The REST response with a form field.
+
+type IFormFieldResponse interface {
+    IsFormFieldResponse() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetRequestId() *string
+    SetRequestId(value *string)
+    GetFormField() IFormField
+    SetFormField(value IFormField)
+}
+
 type FormFieldResponse struct {
     // The REST response with a form field.
-    RequestId string `json:"RequestId,omitempty"`
+    RequestId *string
 
     // The REST response with a form field.
-    FormField FormFieldResult `json:"FormField,omitempty"`
+    FormField IFormField
+}
+
+func (FormFieldResponse) IsFormFieldResponse() bool {
+    return true
+}
+
+func (FormFieldResponse) IsWordsResponse() bool {
+    return true
+}
+
+func (obj *FormFieldResponse) Initialize() {
+    if (obj.FormField != nil) {
+        obj.FormField.Initialize()
+    }
+
+
+}
+
+func (obj *FormFieldResponse) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["RequestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["requestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["FormField"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IFormField = nil
+            if jsonType, found := parsedValue["$type"]; found {
+                jsonTypeStr := jsonType.(string)
+                if jsonTypeStr == "FormFieldCheckbox, _" { modelInstance = new(FormFieldCheckbox) }
+                if jsonTypeStr == "FormFieldDropDown, _" { modelInstance = new(FormFieldDropDown) }
+                if jsonTypeStr == "FormFieldTextInput, _" { modelInstance = new(FormFieldTextInput) }
+            }
+
+            modelInstance.Deserialize(parsedValue)
+            obj.FormField = modelInstance
+        }
+
+    } else if jsonValue, exists := json["formField"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IFormField = nil
+            if jsonType, found := parsedValue["$type"]; found {
+                jsonTypeStr := jsonType.(string)
+                if jsonTypeStr == "FormFieldCheckbox, _" { modelInstance = new(FormFieldCheckbox) }
+                if jsonTypeStr == "FormFieldDropDown, _" { modelInstance = new(FormFieldDropDown) }
+                if jsonTypeStr == "FormFieldTextInput, _" { modelInstance = new(FormFieldTextInput) }
+            }
+
+            modelInstance.Deserialize(parsedValue)
+            obj.FormField = modelInstance
+        }
+
+    }
+}
+
+func (obj *FormFieldResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
+}
+
+func (obj *FormFieldResponse) GetRequestId() *string {
+    return obj.RequestId
+}
+
+func (obj *FormFieldResponse) SetRequestId(value *string) {
+    obj.RequestId = value
+}
+
+func (obj *FormFieldResponse) GetFormField() IFormField {
+    return obj.FormField
+}
+
+func (obj *FormFieldResponse) SetFormField(value IFormField) {
+    obj.FormField = value
 }
 

@@ -65,8 +65,8 @@ func Test_Run_UpdateRun(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.Run, "Validate UpdateRun response.");
-    assert.Equal(t, "run with text", actual.Run.Text, "Validate UpdateRun response.");
+    assert.NotNil(t, actual.GetRun(), "Validate UpdateRun response.");
+    assert.Equal(t, "run with text", DereferenceValue(actual.GetRun().GetText()), "Validate UpdateRun response.");
 }
 
 // Test for updating run online.
@@ -128,9 +128,9 @@ func Test_Run_InsertRun(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.Run, "Validate InsertRun response.");
-    assert.Equal(t, "run with text", actual.Run.Text, "Validate InsertRun response.");
-    assert.Equal(t, "0.0.1.3", actual.Run.NodeId, "Validate InsertRun response.");
+    assert.NotNil(t, actual.GetRun(), "Validate InsertRun response.");
+    assert.Equal(t, "run with text", DereferenceValue(actual.GetRun().GetText()), "Validate InsertRun response.");
+    assert.Equal(t, "0.0.1.3", DereferenceValue(actual.GetRun().GetNodeId()), "Validate InsertRun response.");
 }
 
 // Test for adding run online.

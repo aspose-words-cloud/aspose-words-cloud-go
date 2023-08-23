@@ -60,9 +60,9 @@ func Test_CustomXmlParts_GetCustomXmlPart(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.CustomXmlPart, "Validate GetCustomXmlPart response.");
-    assert.Equal(t, "aspose", actual.CustomXmlPart.Id, "Validate GetCustomXmlPart response.");
-    assert.Equal(t, "<Metadata><Author>author1</Author><Initial>initial</Initial><DateTime>2015-01-22T00:00:00</DateTime><Text>text</Text></Metadata>", actual.CustomXmlPart.Data, "Validate GetCustomXmlPart response.");
+    assert.NotNil(t, actual.GetCustomXmlPart(), "Validate GetCustomXmlPart response.");
+    assert.Equal(t, "aspose", DereferenceValue(actual.GetCustomXmlPart().GetId()), "Validate GetCustomXmlPart response.");
+    assert.Equal(t, "<Metadata><Author>author1</Author><Initial>initial</Initial><DateTime>2015-01-22T00:00:00</DateTime><Text>text</Text></Metadata>", DereferenceValue(actual.GetCustomXmlPart().GetData()), "Validate GetCustomXmlPart response.");
 }
 
 // Test for getting custom xml part by specified index online.
@@ -87,9 +87,9 @@ func Test_CustomXmlParts_GetCustomXmlPartOnline(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.CustomXmlPart, "Validate GetCustomXmlPartOnline response.");
-    assert.Equal(t, "aspose", actual.CustomXmlPart.Id, "Validate GetCustomXmlPartOnline response.");
-    assert.Equal(t, "<Metadata><Author>author1</Author><Initial>initial</Initial><DateTime>2015-01-22T00:00:00</DateTime><Text>text</Text></Metadata>", actual.CustomXmlPart.Data, "Validate GetCustomXmlPartOnline response.");
+    assert.NotNil(t, actual.GetCustomXmlPart(), "Validate GetCustomXmlPartOnline response.");
+    assert.Equal(t, "aspose", DereferenceValue(actual.GetCustomXmlPart().GetId()), "Validate GetCustomXmlPartOnline response.");
+    assert.Equal(t, "<Metadata><Author>author1</Author><Initial>initial</Initial><DateTime>2015-01-22T00:00:00</DateTime><Text>text</Text></Metadata>", DereferenceValue(actual.GetCustomXmlPart().GetData()), "Validate GetCustomXmlPartOnline response.");
 }
 
 // Test for getting all custom xml parts from document.
@@ -117,11 +117,11 @@ func Test_CustomXmlParts_GetCustomXmlParts(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.CustomXmlParts, "Validate GetCustomXmlParts response.");
-    assert.NotNil(t, actual.CustomXmlParts.CustomXmlPartsList, "Validate GetCustomXmlParts response.");
-    assert.Equal(t, 2, len(actual.CustomXmlParts.CustomXmlPartsList), "Validate GetCustomXmlParts response.");
-    assert.Equal(t, "aspose", actual.CustomXmlParts.CustomXmlPartsList[0].Id, "Validate GetCustomXmlParts response.");
-    assert.Equal(t, "<Metadata><Author>author1</Author><Initial>initial</Initial><DateTime>2015-01-22T00:00:00</DateTime><Text>text</Text></Metadata>", actual.CustomXmlParts.CustomXmlPartsList[0].Data, "Validate GetCustomXmlParts response.");
+    assert.NotNil(t, actual.GetCustomXmlParts(), "Validate GetCustomXmlParts response.");
+    assert.NotNil(t, actual.GetCustomXmlParts().GetCustomXmlPartsList(), "Validate GetCustomXmlParts response.");
+    assert.Equal(t, 2, len(actual.GetCustomXmlParts().GetCustomXmlPartsList()), "Validate GetCustomXmlParts response.");
+    assert.Equal(t, "aspose", DereferenceValue(actual.GetCustomXmlParts().GetCustomXmlPartsList()[0].GetId()), "Validate GetCustomXmlParts response.");
+    assert.Equal(t, "<Metadata><Author>author1</Author><Initial>initial</Initial><DateTime>2015-01-22T00:00:00</DateTime><Text>text</Text></Metadata>", DereferenceValue(actual.GetCustomXmlParts().GetCustomXmlPartsList()[0].GetData()), "Validate GetCustomXmlParts response.");
 }
 
 // Test for getting all custom xml parts from document online.
@@ -145,11 +145,11 @@ func Test_CustomXmlParts_GetCustomXmlPartsOnline(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.CustomXmlParts, "Validate GetCustomXmlPartsOnline response.");
-    assert.NotNil(t, actual.CustomXmlParts.CustomXmlPartsList, "Validate GetCustomXmlPartsOnline response.");
-    assert.Equal(t, 2, len(actual.CustomXmlParts.CustomXmlPartsList), "Validate GetCustomXmlPartsOnline response.");
-    assert.Equal(t, "aspose", actual.CustomXmlParts.CustomXmlPartsList[0].Id, "Validate GetCustomXmlPartsOnline response.");
-    assert.Equal(t, "<Metadata><Author>author1</Author><Initial>initial</Initial><DateTime>2015-01-22T00:00:00</DateTime><Text>text</Text></Metadata>", actual.CustomXmlParts.CustomXmlPartsList[0].Data, "Validate GetCustomXmlPartsOnline response.");
+    assert.NotNil(t, actual.GetCustomXmlParts(), "Validate GetCustomXmlPartsOnline response.");
+    assert.NotNil(t, actual.GetCustomXmlParts().GetCustomXmlPartsList(), "Validate GetCustomXmlPartsOnline response.");
+    assert.Equal(t, 2, len(actual.GetCustomXmlParts().GetCustomXmlPartsList()), "Validate GetCustomXmlPartsOnline response.");
+    assert.Equal(t, "aspose", DereferenceValue(actual.GetCustomXmlParts().GetCustomXmlPartsList()[0].GetId()), "Validate GetCustomXmlPartsOnline response.");
+    assert.Equal(t, "<Metadata><Author>author1</Author><Initial>initial</Initial><DateTime>2015-01-22T00:00:00</DateTime><Text>text</Text></Metadata>", DereferenceValue(actual.GetCustomXmlParts().GetCustomXmlPartsList()[0].GetData()), "Validate GetCustomXmlPartsOnline response.");
 }
 
 // Test for adding custom xml part.
@@ -182,9 +182,9 @@ func Test_CustomXmlParts_InsertCustomXmlPart(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.CustomXmlPart, "Validate InsertCustomXmlPart response.");
-    assert.Equal(t, "hello", actual.CustomXmlPart.Id, "Validate InsertCustomXmlPart response.");
-    assert.Equal(t, "<data>Hello world</data>", actual.CustomXmlPart.Data, "Validate InsertCustomXmlPart response.");
+    assert.NotNil(t, actual.GetCustomXmlPart(), "Validate InsertCustomXmlPart response.");
+    assert.Equal(t, "hello", DereferenceValue(actual.GetCustomXmlPart().GetId()), "Validate InsertCustomXmlPart response.");
+    assert.Equal(t, "<data>Hello world</data>", DereferenceValue(actual.GetCustomXmlPart().GetData()), "Validate InsertCustomXmlPart response.");
 }
 
 // Test for adding custom xml part online.
@@ -213,9 +213,9 @@ func Test_CustomXmlParts_InsertCustomXmlPartOnline(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.Model.CustomXmlPart, "Validate InsertCustomXmlPartOnline response.");
-    assert.Equal(t, "hello", actual.Model.CustomXmlPart.Id, "Validate InsertCustomXmlPartOnline response.");
-    assert.Equal(t, "<data>Hello world</data>", actual.Model.CustomXmlPart.Data, "Validate InsertCustomXmlPartOnline response.");
+    assert.NotNil(t, actual.GetModel().GetCustomXmlPart(), "Validate InsertCustomXmlPartOnline response.");
+    assert.Equal(t, "hello", DereferenceValue(actual.GetModel().GetCustomXmlPart().GetId()), "Validate InsertCustomXmlPartOnline response.");
+    assert.Equal(t, "<data>Hello world</data>", DereferenceValue(actual.GetModel().GetCustomXmlPart().GetData()), "Validate InsertCustomXmlPartOnline response.");
 }
 
 // Test for updating custom xml part.
@@ -248,9 +248,9 @@ func Test_CustomXmlParts_UpdateCustomXmlPart(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.CustomXmlPart, "Validate UpdateCustomXmlPart response.");
-    assert.Equal(t, "aspose", actual.CustomXmlPart.Id, "Validate UpdateCustomXmlPart response.");
-    assert.Equal(t, "<data>Hello world</data>", actual.CustomXmlPart.Data, "Validate UpdateCustomXmlPart response.");
+    assert.NotNil(t, actual.GetCustomXmlPart(), "Validate UpdateCustomXmlPart response.");
+    assert.Equal(t, "aspose", DereferenceValue(actual.GetCustomXmlPart().GetId()), "Validate UpdateCustomXmlPart response.");
+    assert.Equal(t, "<data>Hello world</data>", DereferenceValue(actual.GetCustomXmlPart().GetData()), "Validate UpdateCustomXmlPart response.");
 }
 
 // Test for updating custom xml part online.
@@ -279,9 +279,9 @@ func Test_CustomXmlParts_UpdateCustomXmlPartOnline(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.Model.CustomXmlPart, "Validate UpdateCustomXmlPartOnline response.");
-    assert.Equal(t, "aspose", actual.Model.CustomXmlPart.Id, "Validate UpdateCustomXmlPartOnline response.");
-    assert.Equal(t, "<data>Hello world</data>", actual.Model.CustomXmlPart.Data, "Validate UpdateCustomXmlPartOnline response.");
+    assert.NotNil(t, actual.GetModel().GetCustomXmlPart(), "Validate UpdateCustomXmlPartOnline response.");
+    assert.Equal(t, "aspose", DereferenceValue(actual.GetModel().GetCustomXmlPart().GetId()), "Validate UpdateCustomXmlPartOnline response.");
+    assert.Equal(t, "<data>Hello world</data>", DereferenceValue(actual.GetModel().GetCustomXmlPart().GetData()), "Validate UpdateCustomXmlPartOnline response.");
 }
 
 // A test for DeleteCustomXmlPart.

@@ -28,26 +28,24 @@
 package models
 
 // Field for insert.
-type FieldInsertResult struct {
-    // Field for insert.
-    FieldCode string `json:"FieldCode,omitempty"`
-
-    // Field for insert.
-    LocaleId string `json:"LocaleId,omitempty"`
-}
-
-type FieldInsert struct {
-    // Field for insert.
-    FieldCode *string `json:"FieldCode,omitempty"`
-
-    // Field for insert.
-    LocaleId *string `json:"LocaleId,omitempty"`
-}
 
 type IFieldInsert interface {
     IsFieldInsert() bool
     Initialize()
+    Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetFieldCode() *string
+    SetFieldCode(value *string)
+    GetLocaleId() *string
+    SetLocaleId(value *string)
+}
+
+type FieldInsert struct {
+    // Field for insert.
+    FieldCode *string
+
+    // Field for insert.
+    LocaleId *string
 }
 
 func (FieldInsert) IsFieldInsert() bool {
@@ -61,8 +59,49 @@ func (FieldInsert) IsFieldBase() bool {
 func (obj *FieldInsert) Initialize() {
 }
 
+func (obj *FieldInsert) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["FieldCode"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.FieldCode = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["fieldCode"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.FieldCode = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["LocaleId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.LocaleId = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["localeId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.LocaleId = &parsedValue
+        }
+
+    }
+}
+
 func (obj *FieldInsert) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *FieldInsert) GetFieldCode() *string {
+    return obj.FieldCode
+}
+
+func (obj *FieldInsert) SetFieldCode(value *string) {
+    obj.FieldCode = value
+}
+
+func (obj *FieldInsert) GetLocaleId() *string {
+    return obj.LocaleId
+}
+
+func (obj *FieldInsert) SetLocaleId(value *string) {
+    obj.LocaleId = value
+}
 

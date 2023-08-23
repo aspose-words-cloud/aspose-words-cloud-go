@@ -34,9 +34,25 @@ import "io"
 // Removes the formatting properties of a paragraph list from the document node.
 type DeleteParagraphListFormatOnlineResponse struct {
     // The response model.
-    Model ParagraphListFormatResponse `json:"Model,omitempty"`
+    Model IParagraphListFormatResponse
 
 
     // The document after modification.
-    Document map[string]io.Reader `json:"Document,omitempty"`
+    Document map[string]io.Reader
+}
+
+func (obj *DeleteParagraphListFormatOnlineResponse) GetModel() IParagraphListFormatResponse {
+    return obj.Model
+}
+
+func (obj *DeleteParagraphListFormatOnlineResponse) SetModel(value IParagraphListFormatResponse) {
+    obj.Model = value
+}
+
+func (obj *DeleteParagraphListFormatOnlineResponse) GetDocument() map[string]io.Reader {
+    return obj.Document
+}
+
+func (obj *DeleteParagraphListFormatOnlineResponse) SetDocument(value map[string]io.Reader) {
+    obj.Document = value
 }

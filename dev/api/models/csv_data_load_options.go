@@ -29,46 +29,38 @@ package models
 
 // Represents options for parsing CSV data.
 // To learn more, visit the LINQ Reporting Engine documentation article.
-type CsvDataLoadOptionsResult struct {
-    // Represents options for parsing CSV data.
-    // To learn more, visit the LINQ Reporting Engine documentation article.
-    CommentChar string `json:"CommentChar,omitempty"`
 
-    // Represents options for parsing CSV data.
-    // To learn more, visit the LINQ Reporting Engine documentation article.
-    Delimiter string `json:"Delimiter,omitempty"`
-
-    // Represents options for parsing CSV data.
-    // To learn more, visit the LINQ Reporting Engine documentation article.
-    HasHeaders bool `json:"HasHeaders,omitempty"`
-
-    // Represents options for parsing CSV data.
-    // To learn more, visit the LINQ Reporting Engine documentation article.
-    QuoteChar string `json:"QuoteChar,omitempty"`
+type ICsvDataLoadOptions interface {
+    IsCsvDataLoadOptions() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetCommentChar() *string
+    SetCommentChar(value *string)
+    GetDelimiter() *string
+    SetDelimiter(value *string)
+    GetHasHeaders() *bool
+    SetHasHeaders(value *bool)
+    GetQuoteChar() *string
+    SetQuoteChar(value *string)
 }
 
 type CsvDataLoadOptions struct {
     // Represents options for parsing CSV data.
     // To learn more, visit the LINQ Reporting Engine documentation article.
-    CommentChar *string `json:"CommentChar,omitempty"`
+    CommentChar *string
 
     // Represents options for parsing CSV data.
     // To learn more, visit the LINQ Reporting Engine documentation article.
-    Delimiter *string `json:"Delimiter,omitempty"`
+    Delimiter *string
 
     // Represents options for parsing CSV data.
     // To learn more, visit the LINQ Reporting Engine documentation article.
-    HasHeaders *bool `json:"HasHeaders,omitempty"`
+    HasHeaders *bool
 
     // Represents options for parsing CSV data.
     // To learn more, visit the LINQ Reporting Engine documentation article.
-    QuoteChar *string `json:"QuoteChar,omitempty"`
-}
-
-type ICsvDataLoadOptions interface {
-    IsCsvDataLoadOptions() bool
-    Initialize()
-    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    QuoteChar *string
 }
 
 func (CsvDataLoadOptions) IsCsvDataLoadOptions() bool {
@@ -79,8 +71,89 @@ func (CsvDataLoadOptions) IsCsvDataLoadOptions() bool {
 func (obj *CsvDataLoadOptions) Initialize() {
 }
 
+func (obj *CsvDataLoadOptions) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["CommentChar"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.CommentChar = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["commentChar"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.CommentChar = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["Delimiter"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Delimiter = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["delimiter"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Delimiter = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["HasHeaders"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.HasHeaders = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["hasHeaders"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.HasHeaders = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["QuoteChar"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.QuoteChar = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["quoteChar"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.QuoteChar = &parsedValue
+        }
+
+    }
+}
+
 func (obj *CsvDataLoadOptions) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *CsvDataLoadOptions) GetCommentChar() *string {
+    return obj.CommentChar
+}
+
+func (obj *CsvDataLoadOptions) SetCommentChar(value *string) {
+    obj.CommentChar = value
+}
+
+func (obj *CsvDataLoadOptions) GetDelimiter() *string {
+    return obj.Delimiter
+}
+
+func (obj *CsvDataLoadOptions) SetDelimiter(value *string) {
+    obj.Delimiter = value
+}
+
+func (obj *CsvDataLoadOptions) GetHasHeaders() *bool {
+    return obj.HasHeaders
+}
+
+func (obj *CsvDataLoadOptions) SetHasHeaders(value *bool) {
+    obj.HasHeaders = value
+}
+
+func (obj *CsvDataLoadOptions) GetQuoteChar() *string {
+    return obj.QuoteChar
+}
+
+func (obj *CsvDataLoadOptions) SetQuoteChar(value *string) {
+    obj.QuoteChar = value
+}
 

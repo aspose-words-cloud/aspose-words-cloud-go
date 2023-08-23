@@ -159,10 +159,12 @@ func (data *InsertTableCellRequest) CreateRequestData() (RequestData, error) {
 }
 
 func (data *InsertTableCellRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
-            var successPayload TableCellResponse
-            if err = json.NewDecoder(reader).Decode(&successPayload); err != nil {
+            var successPayload ITableCellResponse
+            var jsonMap map[string]interface{}
+            if err = json.NewDecoder(reader).Decode(&jsonMap); err != nil {
                 return nil, err
             }
 
+            successPayload.Deserialize(jsonMap)
             return successPayload, err
 }

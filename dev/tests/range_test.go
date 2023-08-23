@@ -61,7 +61,7 @@ func Test_Range_GetRangeText(t *testing.T) {
         t.Error(err)
     }
 
-    assert.Equal(t, "This is HEADER ", actual.Text, "Validate GetRangeText response.");
+    assert.Equal(t, "This is HEADER ", DereferenceValue(actual.GetText()), "Validate GetRangeText response.");
 }
 
 // Test for getting the text from range online.
@@ -174,8 +174,8 @@ func Test_Range_SaveAsRange(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.Document, "Validate SaveAsRange response.");
-    assert.Equal(t, "NewDoc.docx", actual.Document.FileName, "Validate SaveAsRange response.");
+    assert.NotNil(t, actual.GetDocument(), "Validate SaveAsRange response.");
+    assert.Equal(t, "NewDoc.docx", DereferenceValue(actual.GetDocument().GetFileName()), "Validate SaveAsRange response.");
 }
 
 // Test for saving a range as a new document online.
@@ -239,8 +239,8 @@ func Test_Range_ReplaceWithText(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.Document, "Validate ReplaceWithText response.");
-    assert.Equal(t, "TestReplaceWithText.docx", actual.Document.FileName, "Validate ReplaceWithText response.");
+    assert.NotNil(t, actual.GetDocument(), "Validate ReplaceWithText response.");
+    assert.Equal(t, "TestReplaceWithText.docx", DereferenceValue(actual.GetDocument().GetFileName()), "Validate ReplaceWithText response.");
 }
 
 // Test for replacing text in range online.

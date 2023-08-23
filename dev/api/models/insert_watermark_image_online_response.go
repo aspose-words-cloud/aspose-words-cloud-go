@@ -34,9 +34,25 @@ import "io"
 // Inserts a new watermark image to the document.
 type InsertWatermarkImageOnlineResponse struct {
     // The response model.
-    Model DocumentResponse `json:"Model,omitempty"`
+    Model IDocumentResponse
 
 
     // The document after modification.
-    Document map[string]io.Reader `json:"Document,omitempty"`
+    Document map[string]io.Reader
+}
+
+func (obj *InsertWatermarkImageOnlineResponse) GetModel() IDocumentResponse {
+    return obj.Model
+}
+
+func (obj *InsertWatermarkImageOnlineResponse) SetModel(value IDocumentResponse) {
+    obj.Model = value
+}
+
+func (obj *InsertWatermarkImageOnlineResponse) GetDocument() map[string]io.Reader {
+    return obj.Document
+}
+
+func (obj *InsertWatermarkImageOnlineResponse) SetDocument(value map[string]io.Reader) {
+    obj.Document = value
 }

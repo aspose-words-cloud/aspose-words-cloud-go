@@ -34,9 +34,25 @@ import "io"
 // Converts a document to TIFF format using detailed conversion settings.
 type SaveAsTiffOnlineResponse struct {
     // The response model.
-    Model SaveResponse `json:"Model,omitempty"`
+    Model ISaveResponse
 
 
     // The document after modification.
-    Document map[string]io.Reader `json:"Document,omitempty"`
+    Document map[string]io.Reader
+}
+
+func (obj *SaveAsTiffOnlineResponse) GetModel() ISaveResponse {
+    return obj.Model
+}
+
+func (obj *SaveAsTiffOnlineResponse) SetModel(value ISaveResponse) {
+    obj.Model = value
+}
+
+func (obj *SaveAsTiffOnlineResponse) GetDocument() map[string]io.Reader {
+    return obj.Document
+}
+
+func (obj *SaveAsTiffOnlineResponse) SetDocument(value map[string]io.Reader) {
+    obj.Document = value
 }

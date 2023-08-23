@@ -28,20 +28,19 @@
 package models
 
 // Run element for insert.
-type RunUpdateResult struct {
-    // Run element for insert.
-    Text string `json:"Text,omitempty"`
-}
-
-type RunUpdate struct {
-    // Run element for insert.
-    Text *string `json:"Text,omitempty"`
-}
 
 type IRunUpdate interface {
     IsRunUpdate() bool
     Initialize()
+    Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetText() *string
+    SetText(value *string)
+}
+
+type RunUpdate struct {
+    // Run element for insert.
+    Text *string
 }
 
 func (RunUpdate) IsRunUpdate() bool {
@@ -55,8 +54,29 @@ func (RunUpdate) IsRunBase() bool {
 func (obj *RunUpdate) Initialize() {
 }
 
+func (obj *RunUpdate) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["Text"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Text = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["text"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Text = &parsedValue
+        }
+
+    }
+}
+
 func (obj *RunUpdate) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *RunUpdate) GetText() *string {
+    return obj.Text
+}
+
+func (obj *RunUpdate) SetText(value *string) {
+    obj.Text = value
+}
 

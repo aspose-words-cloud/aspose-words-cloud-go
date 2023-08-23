@@ -28,20 +28,19 @@
 package models
 
 // Comment link.
-type CommentLinkResult struct {
-    // Comment link.
-    Link WordsApiLinkResult `json:"Link,omitempty"`
-}
-
-type CommentLink struct {
-    // Comment link.
-    Link IWordsApiLink `json:"Link,omitempty"`
-}
 
 type ICommentLink interface {
     IsCommentLink() bool
     Initialize()
+    Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetLink() IWordsApiLink
+    SetLink(value IWordsApiLink)
+}
+
+type CommentLink struct {
+    // Comment link.
+    Link IWordsApiLink
 }
 
 func (CommentLink) IsCommentLink() bool {
@@ -60,8 +59,33 @@ func (obj *CommentLink) Initialize() {
 
 }
 
+func (obj *CommentLink) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["Link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    } else if jsonValue, exists := json["link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    }
+}
+
 func (obj *CommentLink) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *CommentLink) GetLink() IWordsApiLink {
+    return obj.Link
+}
+
+func (obj *CommentLink) SetLink(value IWordsApiLink) {
+    obj.Link = value
+}
 

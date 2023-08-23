@@ -28,20 +28,19 @@
 package models
 
 // DTO container with a Range element.
-type RangeDocumentResult struct {
-    // DTO container with a Range element.
-    DocumentName string `json:"DocumentName,omitempty"`
-}
-
-type RangeDocument struct {
-    // DTO container with a Range element.
-    DocumentName *string `json:"DocumentName,omitempty"`
-}
 
 type IRangeDocument interface {
     IsRangeDocument() bool
     Initialize()
+    Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetDocumentName() *string
+    SetDocumentName(value *string)
+}
+
+type RangeDocument struct {
+    // DTO container with a Range element.
+    DocumentName *string
 }
 
 func (RangeDocument) IsRangeDocument() bool {
@@ -52,8 +51,29 @@ func (RangeDocument) IsRangeDocument() bool {
 func (obj *RangeDocument) Initialize() {
 }
 
+func (obj *RangeDocument) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["DocumentName"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.DocumentName = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["documentName"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.DocumentName = &parsedValue
+        }
+
+    }
+}
+
 func (obj *RangeDocument) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *RangeDocument) GetDocumentName() *string {
+    return obj.DocumentName
+}
+
+func (obj *RangeDocument) SetDocumentName(value *string) {
+    obj.DocumentName = value
+}
 

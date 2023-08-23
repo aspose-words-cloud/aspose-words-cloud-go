@@ -28,11 +28,89 @@
 package models
 
 // The REST response with the formatting properties of a table row.
+
+type ITableRowFormatResponse interface {
+    IsTableRowFormatResponse() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetRequestId() *string
+    SetRequestId(value *string)
+    GetRowFormat() ITableRowFormat
+    SetRowFormat(value ITableRowFormat)
+}
+
 type TableRowFormatResponse struct {
     // The REST response with the formatting properties of a table row.
-    RequestId string `json:"RequestId,omitempty"`
+    RequestId *string
 
     // The REST response with the formatting properties of a table row.
-    RowFormat TableRowFormatResult `json:"RowFormat,omitempty"`
+    RowFormat ITableRowFormat
+}
+
+func (TableRowFormatResponse) IsTableRowFormatResponse() bool {
+    return true
+}
+
+func (TableRowFormatResponse) IsWordsResponse() bool {
+    return true
+}
+
+func (obj *TableRowFormatResponse) Initialize() {
+    if (obj.RowFormat != nil) {
+        obj.RowFormat.Initialize()
+    }
+
+
+}
+
+func (obj *TableRowFormatResponse) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["RequestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["requestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["RowFormat"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance ITableRowFormat = new(TableRowFormat)
+            modelInstance.Deserialize(parsedValue)
+            obj.RowFormat = modelInstance
+        }
+
+    } else if jsonValue, exists := json["rowFormat"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance ITableRowFormat = new(TableRowFormat)
+            modelInstance.Deserialize(parsedValue)
+            obj.RowFormat = modelInstance
+        }
+
+    }
+}
+
+func (obj *TableRowFormatResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
+}
+
+func (obj *TableRowFormatResponse) GetRequestId() *string {
+    return obj.RequestId
+}
+
+func (obj *TableRowFormatResponse) SetRequestId(value *string) {
+    obj.RequestId = value
+}
+
+func (obj *TableRowFormatResponse) GetRowFormat() ITableRowFormat {
+    return obj.RowFormat
+}
+
+func (obj *TableRowFormatResponse) SetRowFormat(value ITableRowFormat) {
+    obj.RowFormat = value
 }
 

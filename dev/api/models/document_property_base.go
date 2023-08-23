@@ -28,32 +28,13 @@
 package models
 
 // Words document property DTO base class.
-type DocumentPropertyBaseResult struct {
-    // Words document property DTO base class.
-    Value string `json:"Value,omitempty"`
-}
-
-type DocumentPropertyBase struct {
-    // Words document property DTO base class.
-    Value *string `json:"Value,omitempty"`
-}
 
 type IDocumentPropertyBase interface {
     IsDocumentPropertyBase() bool
     Initialize()
+    Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetValue() *string
+    SetValue(value *string)
 }
-
-func (DocumentPropertyBase) IsDocumentPropertyBase() bool {
-    return true
-}
-
-
-func (obj *DocumentPropertyBase) Initialize() {
-}
-
-func (obj *DocumentPropertyBase) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
-    return resultFilesContent
-}
-
 

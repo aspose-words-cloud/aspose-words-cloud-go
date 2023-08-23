@@ -28,20 +28,19 @@
 package models
 
 // Reference to a document.
-type LinkElementResult struct {
-    // Reference to a document.
-    Link WordsApiLinkResult `json:"Link,omitempty"`
-}
-
-type LinkElement struct {
-    // Reference to a document.
-    Link IWordsApiLink `json:"Link,omitempty"`
-}
 
 type ILinkElement interface {
     IsLinkElement() bool
     Initialize()
+    Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetLink() IWordsApiLink
+    SetLink(value IWordsApiLink)
+}
+
+type LinkElement struct {
+    // Reference to a document.
+    Link IWordsApiLink
 }
 
 func (LinkElement) IsLinkElement() bool {
@@ -57,8 +56,33 @@ func (obj *LinkElement) Initialize() {
 
 }
 
+func (obj *LinkElement) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["Link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    } else if jsonValue, exists := json["link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    }
+}
+
 func (obj *LinkElement) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *LinkElement) GetLink() IWordsApiLink {
+    return obj.Link
+}
+
+func (obj *LinkElement) SetLink(value IWordsApiLink) {
+    obj.Link = value
+}
 

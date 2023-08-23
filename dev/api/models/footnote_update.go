@@ -28,38 +28,34 @@
 package models
 
 // Footnote for update.
-type FootnoteUpdateResult struct {
-    // Footnote for update.
-    FootnoteType string `json:"FootnoteType,omitempty"`
-
-    // Footnote for update.
-    Position NewDocumentPositionResult `json:"Position,omitempty"`
-
-    // Footnote for update.
-    ReferenceMark string `json:"ReferenceMark,omitempty"`
-
-    // Footnote for update.
-    Text string `json:"Text,omitempty"`
-}
-
-type FootnoteUpdate struct {
-    // Footnote for update.
-    FootnoteType *string `json:"FootnoteType,omitempty"`
-
-    // Footnote for update.
-    Position INewDocumentPosition `json:"Position,omitempty"`
-
-    // Footnote for update.
-    ReferenceMark *string `json:"ReferenceMark,omitempty"`
-
-    // Footnote for update.
-    Text *string `json:"Text,omitempty"`
-}
 
 type IFootnoteUpdate interface {
     IsFootnoteUpdate() bool
     Initialize()
+    Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetFootnoteType() *string
+    SetFootnoteType(value *string)
+    GetPosition() INewDocumentPosition
+    SetPosition(value INewDocumentPosition)
+    GetReferenceMark() *string
+    SetReferenceMark(value *string)
+    GetText() *string
+    SetText(value *string)
+}
+
+type FootnoteUpdate struct {
+    // Footnote for update.
+    FootnoteType *string
+
+    // Footnote for update.
+    Position INewDocumentPosition
+
+    // Footnote for update.
+    ReferenceMark *string
+
+    // Footnote for update.
+    Text *string
 }
 
 func (FootnoteUpdate) IsFootnoteUpdate() bool {
@@ -78,8 +74,93 @@ func (obj *FootnoteUpdate) Initialize() {
 
 }
 
+func (obj *FootnoteUpdate) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["FootnoteType"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.FootnoteType = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["footnoteType"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.FootnoteType = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["Position"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance INewDocumentPosition = new(NewDocumentPosition)
+            modelInstance.Deserialize(parsedValue)
+            obj.Position = modelInstance
+        }
+
+    } else if jsonValue, exists := json["position"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance INewDocumentPosition = new(NewDocumentPosition)
+            modelInstance.Deserialize(parsedValue)
+            obj.Position = modelInstance
+        }
+
+    }
+
+    if jsonValue, exists := json["ReferenceMark"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.ReferenceMark = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["referenceMark"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.ReferenceMark = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["Text"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Text = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["text"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Text = &parsedValue
+        }
+
+    }
+}
+
 func (obj *FootnoteUpdate) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *FootnoteUpdate) GetFootnoteType() *string {
+    return obj.FootnoteType
+}
+
+func (obj *FootnoteUpdate) SetFootnoteType(value *string) {
+    obj.FootnoteType = value
+}
+
+func (obj *FootnoteUpdate) GetPosition() INewDocumentPosition {
+    return obj.Position
+}
+
+func (obj *FootnoteUpdate) SetPosition(value INewDocumentPosition) {
+    obj.Position = value
+}
+
+func (obj *FootnoteUpdate) GetReferenceMark() *string {
+    return obj.ReferenceMark
+}
+
+func (obj *FootnoteUpdate) SetReferenceMark(value *string) {
+    obj.ReferenceMark = value
+}
+
+func (obj *FootnoteUpdate) GetText() *string {
+    return obj.Text
+}
+
+func (obj *FootnoteUpdate) SetText(value *string) {
+    obj.Text = value
+}
 

@@ -28,11 +28,89 @@
 package models
 
 // The REST response with a DrawingObject.
+
+type IDrawingObjectResponse interface {
+    IsDrawingObjectResponse() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetRequestId() *string
+    SetRequestId(value *string)
+    GetDrawingObject() IDrawingObject
+    SetDrawingObject(value IDrawingObject)
+}
+
 type DrawingObjectResponse struct {
     // The REST response with a DrawingObject.
-    RequestId string `json:"RequestId,omitempty"`
+    RequestId *string
 
     // The REST response with a DrawingObject.
-    DrawingObject DrawingObjectResult `json:"DrawingObject,omitempty"`
+    DrawingObject IDrawingObject
+}
+
+func (DrawingObjectResponse) IsDrawingObjectResponse() bool {
+    return true
+}
+
+func (DrawingObjectResponse) IsWordsResponse() bool {
+    return true
+}
+
+func (obj *DrawingObjectResponse) Initialize() {
+    if (obj.DrawingObject != nil) {
+        obj.DrawingObject.Initialize()
+    }
+
+
+}
+
+func (obj *DrawingObjectResponse) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["RequestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["requestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["DrawingObject"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IDrawingObject = new(DrawingObject)
+            modelInstance.Deserialize(parsedValue)
+            obj.DrawingObject = modelInstance
+        }
+
+    } else if jsonValue, exists := json["drawingObject"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IDrawingObject = new(DrawingObject)
+            modelInstance.Deserialize(parsedValue)
+            obj.DrawingObject = modelInstance
+        }
+
+    }
+}
+
+func (obj *DrawingObjectResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
+}
+
+func (obj *DrawingObjectResponse) GetRequestId() *string {
+    return obj.RequestId
+}
+
+func (obj *DrawingObjectResponse) SetRequestId(value *string) {
+    obj.RequestId = value
+}
+
+func (obj *DrawingObjectResponse) GetDrawingObject() IDrawingObject {
+    return obj.DrawingObject
+}
+
+func (obj *DrawingObjectResponse) SetDrawingObject(value IDrawingObject) {
+    obj.DrawingObject = value
 }
 

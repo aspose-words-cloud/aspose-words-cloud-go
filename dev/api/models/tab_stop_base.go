@@ -28,44 +28,17 @@
 package models
 
 // Base class for paragraph format tab stop DTO.
-type TabStopBaseResult struct {
-    // Base class for paragraph format tab stop DTO.
-    Alignment string `json:"Alignment,omitempty"`
-
-    // Base class for paragraph format tab stop DTO.
-    Leader string `json:"Leader,omitempty"`
-
-    // Base class for paragraph format tab stop DTO.
-    Position float64 `json:"Position,omitempty"`
-}
-
-type TabStopBase struct {
-    // Base class for paragraph format tab stop DTO.
-    Alignment *string `json:"Alignment,omitempty"`
-
-    // Base class for paragraph format tab stop DTO.
-    Leader *string `json:"Leader,omitempty"`
-
-    // Base class for paragraph format tab stop DTO.
-    Position *float64 `json:"Position,omitempty"`
-}
 
 type ITabStopBase interface {
     IsTabStopBase() bool
     Initialize()
+    Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetAlignment() *string
+    SetAlignment(value *string)
+    GetLeader() *string
+    SetLeader(value *string)
+    GetPosition() *float64
+    SetPosition(value *float64)
 }
-
-func (TabStopBase) IsTabStopBase() bool {
-    return true
-}
-
-
-func (obj *TabStopBase) Initialize() {
-}
-
-func (obj *TabStopBase) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
-    return resultFilesContent
-}
-
 

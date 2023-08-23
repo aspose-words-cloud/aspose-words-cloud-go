@@ -28,20 +28,19 @@
 package models
 
 // Represents a single document style to insert.
-type StyleCopyResult struct {
-    // Represents a single document style to insert.
-    StyleName string `json:"StyleName,omitempty"`
-}
-
-type StyleCopy struct {
-    // Represents a single document style to insert.
-    StyleName *string `json:"StyleName,omitempty"`
-}
 
 type IStyleCopy interface {
     IsStyleCopy() bool
     Initialize()
+    Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetStyleName() *string
+    SetStyleName(value *string)
+}
+
+type StyleCopy struct {
+    // Represents a single document style to insert.
+    StyleName *string
 }
 
 func (StyleCopy) IsStyleCopy() bool {
@@ -52,8 +51,29 @@ func (StyleCopy) IsStyleCopy() bool {
 func (obj *StyleCopy) Initialize() {
 }
 
+func (obj *StyleCopy) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["StyleName"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.StyleName = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["styleName"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.StyleName = &parsedValue
+        }
+
+    }
+}
+
 func (obj *StyleCopy) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *StyleCopy) GetStyleName() *string {
+    return obj.StyleName
+}
+
+func (obj *StyleCopy) SetStyleName(value *string) {
+    obj.StyleName = value
+}
 

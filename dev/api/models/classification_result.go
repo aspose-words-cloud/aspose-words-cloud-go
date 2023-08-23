@@ -28,26 +28,24 @@
 package models
 
 // Represents a single classification result.
-type ClassificationResultResult struct {
-    // Represents a single classification result.
-    ClassName string `json:"ClassName,omitempty"`
-
-    // Represents a single classification result.
-    ClassProbability float64 `json:"ClassProbability,omitempty"`
-}
-
-type ClassificationResult struct {
-    // Represents a single classification result.
-    ClassName *string `json:"ClassName,omitempty"`
-
-    // Represents a single classification result.
-    ClassProbability *float64 `json:"ClassProbability,omitempty"`
-}
 
 type IClassificationResult interface {
     IsClassificationResult() bool
     Initialize()
+    Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetClassName() *string
+    SetClassName(value *string)
+    GetClassProbability() *float64
+    SetClassProbability(value *float64)
+}
+
+type ClassificationResult struct {
+    // Represents a single classification result.
+    ClassName *string
+
+    // Represents a single classification result.
+    ClassProbability *float64
 }
 
 func (ClassificationResult) IsClassificationResult() bool {
@@ -58,8 +56,49 @@ func (ClassificationResult) IsClassificationResult() bool {
 func (obj *ClassificationResult) Initialize() {
 }
 
+func (obj *ClassificationResult) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["ClassName"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.ClassName = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["className"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.ClassName = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["ClassProbability"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.ClassProbability = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["classProbability"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.ClassProbability = &parsedValue
+        }
+
+    }
+}
+
 func (obj *ClassificationResult) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *ClassificationResult) GetClassName() *string {
+    return obj.ClassName
+}
+
+func (obj *ClassificationResult) SetClassName(value *string) {
+    obj.ClassName = value
+}
+
+func (obj *ClassificationResult) GetClassProbability() *float64 {
+    return obj.ClassProbability
+}
+
+func (obj *ClassificationResult) SetClassProbability(value *float64) {
+    obj.ClassProbability = value
+}
 

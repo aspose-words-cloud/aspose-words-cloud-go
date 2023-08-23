@@ -28,26 +28,24 @@
 package models
 
 // Paragraph list format element for update.
-type ListFormatUpdateResult struct {
-    // Paragraph list format element for update.
-    ListId int32 `json:"ListId,omitempty"`
-
-    // Paragraph list format element for update.
-    ListLevelNumber int32 `json:"ListLevelNumber,omitempty"`
-}
-
-type ListFormatUpdate struct {
-    // Paragraph list format element for update.
-    ListId *int32 `json:"ListId,omitempty"`
-
-    // Paragraph list format element for update.
-    ListLevelNumber *int32 `json:"ListLevelNumber,omitempty"`
-}
 
 type IListFormatUpdate interface {
     IsListFormatUpdate() bool
     Initialize()
+    Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetListId() *int32
+    SetListId(value *int32)
+    GetListLevelNumber() *int32
+    SetListLevelNumber(value *int32)
+}
+
+type ListFormatUpdate struct {
+    // Paragraph list format element for update.
+    ListId *int32
+
+    // Paragraph list format element for update.
+    ListLevelNumber *int32
 }
 
 func (ListFormatUpdate) IsListFormatUpdate() bool {
@@ -58,8 +56,53 @@ func (ListFormatUpdate) IsListFormatUpdate() bool {
 func (obj *ListFormatUpdate) Initialize() {
 }
 
+func (obj *ListFormatUpdate) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["ListId"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.ListId = new(int32)
+            *obj.ListId = int32(parsedValue)
+        }
+
+    } else if jsonValue, exists := json["listId"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.ListId = new(int32)
+            *obj.ListId = int32(parsedValue)
+        }
+
+    }
+
+    if jsonValue, exists := json["ListLevelNumber"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.ListLevelNumber = new(int32)
+            *obj.ListLevelNumber = int32(parsedValue)
+        }
+
+    } else if jsonValue, exists := json["listLevelNumber"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.ListLevelNumber = new(int32)
+            *obj.ListLevelNumber = int32(parsedValue)
+        }
+
+    }
+}
+
 func (obj *ListFormatUpdate) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *ListFormatUpdate) GetListId() *int32 {
+    return obj.ListId
+}
+
+func (obj *ListFormatUpdate) SetListId(value *int32) {
+    obj.ListId = value
+}
+
+func (obj *ListFormatUpdate) GetListLevelNumber() *int32 {
+    return obj.ListLevelNumber
+}
+
+func (obj *ListFormatUpdate) SetListLevelNumber(value *int32) {
+    obj.ListLevelNumber = value
+}
 

@@ -28,26 +28,24 @@
 package models
 
 // Represents a collection of merge fields within a document.
-type FieldNamesResult struct {
-    // Represents a collection of merge fields within a document.
-    Link WordsApiLinkResult `json:"Link,omitempty"`
-
-    // Represents a collection of merge fields within a document.
-    Names []string `json:"Names,omitempty"`
-}
-
-type FieldNames struct {
-    // Represents a collection of merge fields within a document.
-    Link IWordsApiLink `json:"Link,omitempty"`
-
-    // Represents a collection of merge fields within a document.
-    Names []string `json:"Names,omitempty"`
-}
 
 type IFieldNames interface {
     IsFieldNames() bool
     Initialize()
+    Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetLink() IWordsApiLink
+    SetLink(value IWordsApiLink)
+    GetNames() []string
+    SetNames(value []string)
+}
+
+type FieldNames struct {
+    // Represents a collection of merge fields within a document.
+    Link IWordsApiLink
+
+    // Represents a collection of merge fields within a document.
+    Names []string
 }
 
 func (FieldNames) IsFieldNames() bool {
@@ -66,8 +64,63 @@ func (obj *FieldNames) Initialize() {
 
 }
 
+func (obj *FieldNames) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["Link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    } else if jsonValue, exists := json["link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    }
+
+    if jsonValue, exists := json["Names"]; exists {
+        if parsedValue, valid := jsonValue.([]interface{}); valid {
+            for _, parsedElement := range parsedValue {
+                if elementValue, valid := parsedElement.(string); valid {
+                    obj.Names = append(obj.Names, elementValue)
+                }
+
+            }
+        }
+
+    } else if jsonValue, exists := json["names"]; exists {
+        if parsedValue, valid := jsonValue.([]interface{}); valid {
+            for _, parsedElement := range parsedValue {
+                if elementValue, valid := parsedElement.(string); valid {
+                    obj.Names = append(obj.Names, elementValue)
+                }
+
+            }
+        }
+
+    }
+}
+
 func (obj *FieldNames) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *FieldNames) GetLink() IWordsApiLink {
+    return obj.Link
+}
+
+func (obj *FieldNames) SetLink(value IWordsApiLink) {
+    obj.Link = value
+}
+
+func (obj *FieldNames) GetNames() []string {
+    return obj.Names
+}
+
+func (obj *FieldNames) SetNames(value []string) {
+    obj.Names = value
+}
 

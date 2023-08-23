@@ -340,7 +340,7 @@ Go code:
 
 	result, _, _ := wordsApi.GetParagraphs(ctx, remoteName, options)
 
-	fmt.Println(result.Paragraphs.ParagraphLinkList[0].Text)
+	fmt.Println(result.Paragraphs.GetParagraphLinkList()[0].GetText())
 
 	// End README example
 ```

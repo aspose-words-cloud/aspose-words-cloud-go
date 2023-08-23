@@ -28,32 +28,29 @@
 package models
 
 // Request on changing of protection.
-type ProtectionRequestResult struct {
-    // Request on changing of protection.
-    NewPassword string `json:"NewPassword,omitempty"`
-
-    // Request on changing of protection.
-    Password string `json:"Password,omitempty"`
-
-    // Request on changing of protection.
-    ProtectionType string `json:"ProtectionType,omitempty"`
-}
-
-type ProtectionRequest struct {
-    // Request on changing of protection.
-    NewPassword *string `json:"NewPassword,omitempty"`
-
-    // Request on changing of protection.
-    Password *string `json:"Password,omitempty"`
-
-    // Request on changing of protection.
-    ProtectionType *string `json:"ProtectionType,omitempty"`
-}
 
 type IProtectionRequest interface {
     IsProtectionRequest() bool
     Initialize()
+    Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetNewPassword() *string
+    SetNewPassword(value *string)
+    GetPassword() *string
+    SetPassword(value *string)
+    GetProtectionType() *string
+    SetProtectionType(value *string)
+}
+
+type ProtectionRequest struct {
+    // Request on changing of protection.
+    NewPassword *string
+
+    // Request on changing of protection.
+    Password *string
+
+    // Request on changing of protection.
+    ProtectionType *string
 }
 
 func (ProtectionRequest) IsProtectionRequest() bool {
@@ -64,8 +61,69 @@ func (ProtectionRequest) IsProtectionRequest() bool {
 func (obj *ProtectionRequest) Initialize() {
 }
 
+func (obj *ProtectionRequest) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["NewPassword"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.NewPassword = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["newPassword"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.NewPassword = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["Password"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Password = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["password"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Password = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["ProtectionType"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.ProtectionType = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["protectionType"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.ProtectionType = &parsedValue
+        }
+
+    }
+}
+
 func (obj *ProtectionRequest) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *ProtectionRequest) GetNewPassword() *string {
+    return obj.NewPassword
+}
+
+func (obj *ProtectionRequest) SetNewPassword(value *string) {
+    obj.NewPassword = value
+}
+
+func (obj *ProtectionRequest) GetPassword() *string {
+    return obj.Password
+}
+
+func (obj *ProtectionRequest) SetPassword(value *string) {
+    obj.Password = value
+}
+
+func (obj *ProtectionRequest) GetProtectionType() *string {
+    return obj.ProtectionType
+}
+
+func (obj *ProtectionRequest) SetProtectionType(value *string) {
+    obj.ProtectionType = value
+}
 

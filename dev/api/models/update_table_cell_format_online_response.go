@@ -34,9 +34,25 @@ import "io"
 // Updates the formatting properties of a cell in the table row.
 type UpdateTableCellFormatOnlineResponse struct {
     // The response model.
-    Model TableCellFormatResponse `json:"Model,omitempty"`
+    Model ITableCellFormatResponse
 
 
     // The document after modification.
-    Document map[string]io.Reader `json:"Document,omitempty"`
+    Document map[string]io.Reader
+}
+
+func (obj *UpdateTableCellFormatOnlineResponse) GetModel() ITableCellFormatResponse {
+    return obj.Model
+}
+
+func (obj *UpdateTableCellFormatOnlineResponse) SetModel(value ITableCellFormatResponse) {
+    obj.Model = value
+}
+
+func (obj *UpdateTableCellFormatOnlineResponse) GetDocument() map[string]io.Reader {
+    return obj.Document
+}
+
+func (obj *UpdateTableCellFormatOnlineResponse) SetDocument(value map[string]io.Reader) {
+    obj.Document = value
 }

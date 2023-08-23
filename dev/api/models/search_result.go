@@ -28,26 +28,24 @@
 package models
 
 // Result of search operation.
-type SearchResultResult struct {
-    // Result of search operation.
-    RangeStart DocumentPositionResult `json:"RangeStart,omitempty"`
-
-    // Result of search operation.
-    RangeEnd DocumentPositionResult `json:"RangeEnd,omitempty"`
-}
-
-type SearchResult struct {
-    // Result of search operation.
-    RangeStart IDocumentPosition `json:"RangeStart,omitempty"`
-
-    // Result of search operation.
-    RangeEnd IDocumentPosition `json:"RangeEnd,omitempty"`
-}
 
 type ISearchResult interface {
     IsSearchResult() bool
     Initialize()
+    Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetRangeStart() IDocumentPosition
+    SetRangeStart(value IDocumentPosition)
+    GetRangeEnd() IDocumentPosition
+    SetRangeEnd(value IDocumentPosition)
+}
+
+type SearchResult struct {
+    // Result of search operation.
+    RangeStart IDocumentPosition
+
+    // Result of search operation.
+    RangeEnd IDocumentPosition
 }
 
 func (SearchResult) IsSearchResult() bool {
@@ -67,8 +65,57 @@ func (obj *SearchResult) Initialize() {
 
 }
 
+func (obj *SearchResult) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["RangeStart"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IDocumentPosition = new(DocumentPosition)
+            modelInstance.Deserialize(parsedValue)
+            obj.RangeStart = modelInstance
+        }
+
+    } else if jsonValue, exists := json["rangeStart"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IDocumentPosition = new(DocumentPosition)
+            modelInstance.Deserialize(parsedValue)
+            obj.RangeStart = modelInstance
+        }
+
+    }
+
+    if jsonValue, exists := json["RangeEnd"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IDocumentPosition = new(DocumentPosition)
+            modelInstance.Deserialize(parsedValue)
+            obj.RangeEnd = modelInstance
+        }
+
+    } else if jsonValue, exists := json["rangeEnd"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IDocumentPosition = new(DocumentPosition)
+            modelInstance.Deserialize(parsedValue)
+            obj.RangeEnd = modelInstance
+        }
+
+    }
+}
+
 func (obj *SearchResult) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *SearchResult) GetRangeStart() IDocumentPosition {
+    return obj.RangeStart
+}
+
+func (obj *SearchResult) SetRangeStart(value IDocumentPosition) {
+    obj.RangeStart = value
+}
+
+func (obj *SearchResult) GetRangeEnd() IDocumentPosition {
+    return obj.RangeEnd
+}
+
+func (obj *SearchResult) SetRangeEnd(value IDocumentPosition) {
+    obj.RangeEnd = value
+}
 

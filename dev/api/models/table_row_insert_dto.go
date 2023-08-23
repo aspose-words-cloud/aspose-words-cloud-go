@@ -28,26 +28,24 @@
 package models
 
 // DTO container with a table row element.
-type TableRowInsertDtoResult struct {
-    // DTO container with a table row element.
-    ColumnsCount int32 `json:"ColumnsCount,omitempty"`
-
-    // DTO container with a table row element.
-    InsertAfter int32 `json:"InsertAfter,omitempty"`
-}
-
-type TableRowInsertDto struct {
-    // DTO container with a table row element.
-    ColumnsCount *int32 `json:"ColumnsCount,omitempty"`
-
-    // DTO container with a table row element.
-    InsertAfter *int32 `json:"InsertAfter,omitempty"`
-}
 
 type ITableRowInsertDto interface {
     IsTableRowInsertDto() bool
     Initialize()
+    Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetColumnsCount() *int32
+    SetColumnsCount(value *int32)
+    GetInsertAfter() *int32
+    SetInsertAfter(value *int32)
+}
+
+type TableRowInsertDto struct {
+    // DTO container with a table row element.
+    ColumnsCount *int32
+
+    // DTO container with a table row element.
+    InsertAfter *int32
 }
 
 func (TableRowInsertDto) IsTableRowInsertDto() bool {
@@ -58,8 +56,53 @@ func (TableRowInsertDto) IsTableRowInsertDto() bool {
 func (obj *TableRowInsertDto) Initialize() {
 }
 
+func (obj *TableRowInsertDto) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["ColumnsCount"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.ColumnsCount = new(int32)
+            *obj.ColumnsCount = int32(parsedValue)
+        }
+
+    } else if jsonValue, exists := json["columnsCount"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.ColumnsCount = new(int32)
+            *obj.ColumnsCount = int32(parsedValue)
+        }
+
+    }
+
+    if jsonValue, exists := json["InsertAfter"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.InsertAfter = new(int32)
+            *obj.InsertAfter = int32(parsedValue)
+        }
+
+    } else if jsonValue, exists := json["insertAfter"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.InsertAfter = new(int32)
+            *obj.InsertAfter = int32(parsedValue)
+        }
+
+    }
+}
+
 func (obj *TableRowInsertDto) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *TableRowInsertDto) GetColumnsCount() *int32 {
+    return obj.ColumnsCount
+}
+
+func (obj *TableRowInsertDto) SetColumnsCount(value *int32) {
+    obj.ColumnsCount = value
+}
+
+func (obj *TableRowInsertDto) GetInsertAfter() *int32 {
+    return obj.InsertAfter
+}
+
+func (obj *TableRowInsertDto) SetInsertAfter(value *int32) {
+    obj.InsertAfter = value
+}
 

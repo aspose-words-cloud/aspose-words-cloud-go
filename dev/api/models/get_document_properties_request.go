@@ -122,10 +122,12 @@ func (data *GetDocumentPropertiesRequest) CreateRequestData() (RequestData, erro
 }
 
 func (data *GetDocumentPropertiesRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
-            var successPayload DocumentPropertiesResponse
-            if err = json.NewDecoder(reader).Decode(&successPayload); err != nil {
+            var successPayload IDocumentPropertiesResponse
+            var jsonMap map[string]interface{}
+            if err = json.NewDecoder(reader).Decode(&jsonMap); err != nil {
                 return nil, err
             }
 
+            successPayload.Deserialize(jsonMap)
             return successPayload, err
 }

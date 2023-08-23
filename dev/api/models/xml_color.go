@@ -28,26 +28,24 @@
 package models
 
 // Utility class for Color serialization.
-type XmlColorResult struct {
-    // Utility class for Color serialization.
-    Alpha int32 `json:"Alpha,omitempty"`
-
-    // Utility class for Color serialization.
-    Web string `json:"Web,omitempty"`
-}
-
-type XmlColor struct {
-    // Utility class for Color serialization.
-    Alpha *int32 `json:"Alpha,omitempty"`
-
-    // Utility class for Color serialization.
-    Web *string `json:"Web,omitempty"`
-}
 
 type IXmlColor interface {
     IsXmlColor() bool
     Initialize()
+    Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetAlpha() *int32
+    SetAlpha(value *int32)
+    GetWeb() *string
+    SetWeb(value *string)
+}
+
+type XmlColor struct {
+    // Utility class for Color serialization.
+    Alpha *int32
+
+    // Utility class for Color serialization.
+    Web *string
 }
 
 func (XmlColor) IsXmlColor() bool {
@@ -58,8 +56,51 @@ func (XmlColor) IsXmlColor() bool {
 func (obj *XmlColor) Initialize() {
 }
 
+func (obj *XmlColor) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["Alpha"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.Alpha = new(int32)
+            *obj.Alpha = int32(parsedValue)
+        }
+
+    } else if jsonValue, exists := json["alpha"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.Alpha = new(int32)
+            *obj.Alpha = int32(parsedValue)
+        }
+
+    }
+
+    if jsonValue, exists := json["Web"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Web = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["web"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Web = &parsedValue
+        }
+
+    }
+}
+
 func (obj *XmlColor) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *XmlColor) GetAlpha() *int32 {
+    return obj.Alpha
+}
+
+func (obj *XmlColor) SetAlpha(value *int32) {
+    obj.Alpha = value
+}
+
+func (obj *XmlColor) GetWeb() *string {
+    return obj.Web
+}
+
+func (obj *XmlColor) SetWeb(value *string) {
+    obj.Web = value
+}
 

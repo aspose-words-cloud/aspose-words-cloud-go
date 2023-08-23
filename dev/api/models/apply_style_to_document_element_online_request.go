@@ -158,9 +158,12 @@ func (data *ApplyStyleToDocumentElementOnlineRequest) CreateResponse(reader io.R
         return successPayload, err
     }
 
-    if err = json.NewDecoder(part).Decode(&successPayload.Model); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(part).Decode(&jsonMap); err != nil {
         return successPayload, err
     }
+
+    successPayload.Model.Deserialize(jsonMap)
 
 
     part, err = mr.NextPart()

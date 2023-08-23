@@ -34,9 +34,25 @@ import "io"
 // Inserts a new bookmark to the document.
 type InsertBookmarkOnlineResponse struct {
     // The response model.
-    Model BookmarkResponse `json:"Model,omitempty"`
+    Model IBookmarkResponse
 
 
     // The document after modification.
-    Document map[string]io.Reader `json:"Document,omitempty"`
+    Document map[string]io.Reader
+}
+
+func (obj *InsertBookmarkOnlineResponse) GetModel() IBookmarkResponse {
+    return obj.Model
+}
+
+func (obj *InsertBookmarkOnlineResponse) SetModel(value IBookmarkResponse) {
+    obj.Model = value
+}
+
+func (obj *InsertBookmarkOnlineResponse) GetDocument() map[string]io.Reader {
+    return obj.Document
+}
+
+func (obj *InsertBookmarkOnlineResponse) SetDocument(value map[string]io.Reader) {
+    obj.Document = value
 }

@@ -28,26 +28,24 @@
 package models
 
 // Options of document compress.
-type CompressOptionsResult struct {
-    // Options of document compress.
-    ImagesQuality int32 `json:"ImagesQuality,omitempty"`
-
-    // Options of document compress.
-    ImagesReduceSizeFactor int32 `json:"ImagesReduceSizeFactor,omitempty"`
-}
-
-type CompressOptions struct {
-    // Options of document compress.
-    ImagesQuality *int32 `json:"ImagesQuality,omitempty"`
-
-    // Options of document compress.
-    ImagesReduceSizeFactor *int32 `json:"ImagesReduceSizeFactor,omitempty"`
-}
 
 type ICompressOptions interface {
     IsCompressOptions() bool
     Initialize()
+    Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetImagesQuality() *int32
+    SetImagesQuality(value *int32)
+    GetImagesReduceSizeFactor() *int32
+    SetImagesReduceSizeFactor(value *int32)
+}
+
+type CompressOptions struct {
+    // Options of document compress.
+    ImagesQuality *int32
+
+    // Options of document compress.
+    ImagesReduceSizeFactor *int32
 }
 
 func (CompressOptions) IsCompressOptions() bool {
@@ -58,8 +56,53 @@ func (CompressOptions) IsCompressOptions() bool {
 func (obj *CompressOptions) Initialize() {
 }
 
+func (obj *CompressOptions) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["ImagesQuality"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.ImagesQuality = new(int32)
+            *obj.ImagesQuality = int32(parsedValue)
+        }
+
+    } else if jsonValue, exists := json["imagesQuality"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.ImagesQuality = new(int32)
+            *obj.ImagesQuality = int32(parsedValue)
+        }
+
+    }
+
+    if jsonValue, exists := json["ImagesReduceSizeFactor"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.ImagesReduceSizeFactor = new(int32)
+            *obj.ImagesReduceSizeFactor = int32(parsedValue)
+        }
+
+    } else if jsonValue, exists := json["imagesReduceSizeFactor"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.ImagesReduceSizeFactor = new(int32)
+            *obj.ImagesReduceSizeFactor = int32(parsedValue)
+        }
+
+    }
+}
+
 func (obj *CompressOptions) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *CompressOptions) GetImagesQuality() *int32 {
+    return obj.ImagesQuality
+}
+
+func (obj *CompressOptions) SetImagesQuality(value *int32) {
+    obj.ImagesQuality = value
+}
+
+func (obj *CompressOptions) GetImagesReduceSizeFactor() *int32 {
+    return obj.ImagesReduceSizeFactor
+}
+
+func (obj *CompressOptions) SetImagesReduceSizeFactor(value *int32) {
+    obj.ImagesReduceSizeFactor = value
+}
 

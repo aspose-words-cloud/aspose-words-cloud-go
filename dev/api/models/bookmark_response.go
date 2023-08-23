@@ -28,11 +28,89 @@
 package models
 
 // The REST response with a bookmark.
+
+type IBookmarkResponse interface {
+    IsBookmarkResponse() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetRequestId() *string
+    SetRequestId(value *string)
+    GetBookmark() IBookmark
+    SetBookmark(value IBookmark)
+}
+
 type BookmarkResponse struct {
     // The REST response with a bookmark.
-    RequestId string `json:"RequestId,omitempty"`
+    RequestId *string
 
     // The REST response with a bookmark.
-    Bookmark BookmarkResult `json:"Bookmark,omitempty"`
+    Bookmark IBookmark
+}
+
+func (BookmarkResponse) IsBookmarkResponse() bool {
+    return true
+}
+
+func (BookmarkResponse) IsWordsResponse() bool {
+    return true
+}
+
+func (obj *BookmarkResponse) Initialize() {
+    if (obj.Bookmark != nil) {
+        obj.Bookmark.Initialize()
+    }
+
+
+}
+
+func (obj *BookmarkResponse) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["RequestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["requestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["Bookmark"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IBookmark = new(Bookmark)
+            modelInstance.Deserialize(parsedValue)
+            obj.Bookmark = modelInstance
+        }
+
+    } else if jsonValue, exists := json["bookmark"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IBookmark = new(Bookmark)
+            modelInstance.Deserialize(parsedValue)
+            obj.Bookmark = modelInstance
+        }
+
+    }
+}
+
+func (obj *BookmarkResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
+}
+
+func (obj *BookmarkResponse) GetRequestId() *string {
+    return obj.RequestId
+}
+
+func (obj *BookmarkResponse) SetRequestId(value *string) {
+    obj.RequestId = value
+}
+
+func (obj *BookmarkResponse) GetBookmark() IBookmark {
+    return obj.Bookmark
+}
+
+func (obj *BookmarkResponse) SetBookmark(value IBookmark) {
+    obj.Bookmark = value
 }
 

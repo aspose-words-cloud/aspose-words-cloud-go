@@ -34,9 +34,25 @@ import "io"
 // Inserts a new paragraph to the document node.
 type InsertParagraphOnlineResponse struct {
     // The response model.
-    Model ParagraphResponse `json:"Model,omitempty"`
+    Model IParagraphResponse
 
 
     // The document after modification.
-    Document map[string]io.Reader `json:"Document,omitempty"`
+    Document map[string]io.Reader
+}
+
+func (obj *InsertParagraphOnlineResponse) GetModel() IParagraphResponse {
+    return obj.Model
+}
+
+func (obj *InsertParagraphOnlineResponse) SetModel(value IParagraphResponse) {
+    obj.Model = value
+}
+
+func (obj *InsertParagraphOnlineResponse) GetDocument() map[string]io.Reader {
+    return obj.Document
+}
+
+func (obj *InsertParagraphOnlineResponse) SetDocument(value map[string]io.Reader) {
+    obj.Document = value
 }

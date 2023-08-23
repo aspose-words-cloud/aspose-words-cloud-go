@@ -28,38 +28,34 @@
 package models
 
 // Class to specify TimeZoneInfo parameters.
-type TimeZoneInfoDataResult struct {
-    // Class to specify TimeZoneInfo parameters.
-    BaseUtcOffset string `json:"BaseUtcOffset,omitempty"`
-
-    // Class to specify TimeZoneInfo parameters.
-    DisplayName string `json:"DisplayName,omitempty"`
-
-    // Class to specify TimeZoneInfo parameters.
-    Id string `json:"Id,omitempty"`
-
-    // Class to specify TimeZoneInfo parameters.
-    StandardDisplayName string `json:"StandardDisplayName,omitempty"`
-}
-
-type TimeZoneInfoData struct {
-    // Class to specify TimeZoneInfo parameters.
-    BaseUtcOffset *string `json:"BaseUtcOffset,omitempty"`
-
-    // Class to specify TimeZoneInfo parameters.
-    DisplayName *string `json:"DisplayName,omitempty"`
-
-    // Class to specify TimeZoneInfo parameters.
-    Id *string `json:"Id,omitempty"`
-
-    // Class to specify TimeZoneInfo parameters.
-    StandardDisplayName *string `json:"StandardDisplayName,omitempty"`
-}
 
 type ITimeZoneInfoData interface {
     IsTimeZoneInfoData() bool
     Initialize()
+    Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetBaseUtcOffset() *string
+    SetBaseUtcOffset(value *string)
+    GetDisplayName() *string
+    SetDisplayName(value *string)
+    GetId() *string
+    SetId(value *string)
+    GetStandardDisplayName() *string
+    SetStandardDisplayName(value *string)
+}
+
+type TimeZoneInfoData struct {
+    // Class to specify TimeZoneInfo parameters.
+    BaseUtcOffset *string
+
+    // Class to specify TimeZoneInfo parameters.
+    DisplayName *string
+
+    // Class to specify TimeZoneInfo parameters.
+    Id *string
+
+    // Class to specify TimeZoneInfo parameters.
+    StandardDisplayName *string
 }
 
 func (TimeZoneInfoData) IsTimeZoneInfoData() bool {
@@ -70,8 +66,89 @@ func (TimeZoneInfoData) IsTimeZoneInfoData() bool {
 func (obj *TimeZoneInfoData) Initialize() {
 }
 
+func (obj *TimeZoneInfoData) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["BaseUtcOffset"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.BaseUtcOffset = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["baseUtcOffset"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.BaseUtcOffset = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["DisplayName"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.DisplayName = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["displayName"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.DisplayName = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["Id"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Id = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["id"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Id = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["StandardDisplayName"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.StandardDisplayName = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["standardDisplayName"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.StandardDisplayName = &parsedValue
+        }
+
+    }
+}
+
 func (obj *TimeZoneInfoData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *TimeZoneInfoData) GetBaseUtcOffset() *string {
+    return obj.BaseUtcOffset
+}
+
+func (obj *TimeZoneInfoData) SetBaseUtcOffset(value *string) {
+    obj.BaseUtcOffset = value
+}
+
+func (obj *TimeZoneInfoData) GetDisplayName() *string {
+    return obj.DisplayName
+}
+
+func (obj *TimeZoneInfoData) SetDisplayName(value *string) {
+    obj.DisplayName = value
+}
+
+func (obj *TimeZoneInfoData) GetId() *string {
+    return obj.Id
+}
+
+func (obj *TimeZoneInfoData) SetId(value *string) {
+    obj.Id = value
+}
+
+func (obj *TimeZoneInfoData) GetStandardDisplayName() *string {
+    return obj.StandardDisplayName
+}
+
+func (obj *TimeZoneInfoData) SetStandardDisplayName(value *string) {
+    obj.StandardDisplayName = value
+}
 

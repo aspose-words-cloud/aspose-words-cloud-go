@@ -28,11 +28,89 @@
 package models
 
 // The REST response with a table row.
+
+type ITableRowResponse interface {
+    IsTableRowResponse() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetRequestId() *string
+    SetRequestId(value *string)
+    GetRow() ITableRow
+    SetRow(value ITableRow)
+}
+
 type TableRowResponse struct {
     // The REST response with a table row.
-    RequestId string `json:"RequestId,omitempty"`
+    RequestId *string
 
     // The REST response with a table row.
-    Row TableRowResult `json:"Row,omitempty"`
+    Row ITableRow
+}
+
+func (TableRowResponse) IsTableRowResponse() bool {
+    return true
+}
+
+func (TableRowResponse) IsWordsResponse() bool {
+    return true
+}
+
+func (obj *TableRowResponse) Initialize() {
+    if (obj.Row != nil) {
+        obj.Row.Initialize()
+    }
+
+
+}
+
+func (obj *TableRowResponse) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["RequestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["requestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["Row"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance ITableRow = new(TableRow)
+            modelInstance.Deserialize(parsedValue)
+            obj.Row = modelInstance
+        }
+
+    } else if jsonValue, exists := json["row"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance ITableRow = new(TableRow)
+            modelInstance.Deserialize(parsedValue)
+            obj.Row = modelInstance
+        }
+
+    }
+}
+
+func (obj *TableRowResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
+}
+
+func (obj *TableRowResponse) GetRequestId() *string {
+    return obj.RequestId
+}
+
+func (obj *TableRowResponse) SetRequestId(value *string) {
+    obj.RequestId = value
+}
+
+func (obj *TableRowResponse) GetRow() ITableRow {
+    return obj.Row
+}
+
+func (obj *TableRowResponse) SetRow(value ITableRow) {
+    obj.Row = value
 }
 

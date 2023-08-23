@@ -28,32 +28,29 @@
 package models
 
 // DTO container with a table element.
-type TableInsertResult struct {
-    // DTO container with a table element.
-    ColumnsCount int32 `json:"ColumnsCount,omitempty"`
-
-    // DTO container with a table element.
-    Position NewDocumentPositionResult `json:"Position,omitempty"`
-
-    // DTO container with a table element.
-    RowsCount int32 `json:"RowsCount,omitempty"`
-}
-
-type TableInsert struct {
-    // DTO container with a table element.
-    ColumnsCount *int32 `json:"ColumnsCount,omitempty"`
-
-    // DTO container with a table element.
-    Position INewDocumentPosition `json:"Position,omitempty"`
-
-    // DTO container with a table element.
-    RowsCount *int32 `json:"RowsCount,omitempty"`
-}
 
 type ITableInsert interface {
     IsTableInsert() bool
     Initialize()
+    Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetColumnsCount() *int32
+    SetColumnsCount(value *int32)
+    GetPosition() INewDocumentPosition
+    SetPosition(value INewDocumentPosition)
+    GetRowsCount() *int32
+    SetRowsCount(value *int32)
+}
+
+type TableInsert struct {
+    // DTO container with a table element.
+    ColumnsCount *int32
+
+    // DTO container with a table element.
+    Position INewDocumentPosition
+
+    // DTO container with a table element.
+    RowsCount *int32
 }
 
 func (TableInsert) IsTableInsert() bool {
@@ -69,8 +66,77 @@ func (obj *TableInsert) Initialize() {
 
 }
 
+func (obj *TableInsert) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["ColumnsCount"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.ColumnsCount = new(int32)
+            *obj.ColumnsCount = int32(parsedValue)
+        }
+
+    } else if jsonValue, exists := json["columnsCount"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.ColumnsCount = new(int32)
+            *obj.ColumnsCount = int32(parsedValue)
+        }
+
+    }
+
+    if jsonValue, exists := json["Position"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance INewDocumentPosition = new(NewDocumentPosition)
+            modelInstance.Deserialize(parsedValue)
+            obj.Position = modelInstance
+        }
+
+    } else if jsonValue, exists := json["position"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance INewDocumentPosition = new(NewDocumentPosition)
+            modelInstance.Deserialize(parsedValue)
+            obj.Position = modelInstance
+        }
+
+    }
+
+    if jsonValue, exists := json["RowsCount"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.RowsCount = new(int32)
+            *obj.RowsCount = int32(parsedValue)
+        }
+
+    } else if jsonValue, exists := json["rowsCount"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.RowsCount = new(int32)
+            *obj.RowsCount = int32(parsedValue)
+        }
+
+    }
+}
+
 func (obj *TableInsert) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *TableInsert) GetColumnsCount() *int32 {
+    return obj.ColumnsCount
+}
+
+func (obj *TableInsert) SetColumnsCount(value *int32) {
+    obj.ColumnsCount = value
+}
+
+func (obj *TableInsert) GetPosition() INewDocumentPosition {
+    return obj.Position
+}
+
+func (obj *TableInsert) SetPosition(value INewDocumentPosition) {
+    obj.Position = value
+}
+
+func (obj *TableInsert) GetRowsCount() *int32 {
+    return obj.RowsCount
+}
+
+func (obj *TableInsert) SetRowsCount(value *int32) {
+    obj.RowsCount = value
+}
 

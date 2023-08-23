@@ -28,32 +28,29 @@
 package models
 
 // DTO container with a paragraph format shading element.
-type ShadingResult struct {
-    // DTO container with a paragraph format shading element.
-    BackgroundPatternColor XmlColorResult `json:"BackgroundPatternColor,omitempty"`
-
-    // DTO container with a paragraph format shading element.
-    ForegroundPatternColor XmlColorResult `json:"ForegroundPatternColor,omitempty"`
-
-    // DTO container with a paragraph format shading element.
-    Texture string `json:"Texture,omitempty"`
-}
-
-type Shading struct {
-    // DTO container with a paragraph format shading element.
-    BackgroundPatternColor IXmlColor `json:"BackgroundPatternColor,omitempty"`
-
-    // DTO container with a paragraph format shading element.
-    ForegroundPatternColor IXmlColor `json:"ForegroundPatternColor,omitempty"`
-
-    // DTO container with a paragraph format shading element.
-    Texture *string `json:"Texture,omitempty"`
-}
 
 type IShading interface {
     IsShading() bool
     Initialize()
+    Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetBackgroundPatternColor() IXmlColor
+    SetBackgroundPatternColor(value IXmlColor)
+    GetForegroundPatternColor() IXmlColor
+    SetForegroundPatternColor(value IXmlColor)
+    GetTexture() *string
+    SetTexture(value *string)
+}
+
+type Shading struct {
+    // DTO container with a paragraph format shading element.
+    BackgroundPatternColor IXmlColor
+
+    // DTO container with a paragraph format shading element.
+    ForegroundPatternColor IXmlColor
+
+    // DTO container with a paragraph format shading element.
+    Texture *string
 }
 
 func (Shading) IsShading() bool {
@@ -73,8 +70,77 @@ func (obj *Shading) Initialize() {
 
 }
 
+func (obj *Shading) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["BackgroundPatternColor"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IXmlColor = new(XmlColor)
+            modelInstance.Deserialize(parsedValue)
+            obj.BackgroundPatternColor = modelInstance
+        }
+
+    } else if jsonValue, exists := json["backgroundPatternColor"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IXmlColor = new(XmlColor)
+            modelInstance.Deserialize(parsedValue)
+            obj.BackgroundPatternColor = modelInstance
+        }
+
+    }
+
+    if jsonValue, exists := json["ForegroundPatternColor"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IXmlColor = new(XmlColor)
+            modelInstance.Deserialize(parsedValue)
+            obj.ForegroundPatternColor = modelInstance
+        }
+
+    } else if jsonValue, exists := json["foregroundPatternColor"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IXmlColor = new(XmlColor)
+            modelInstance.Deserialize(parsedValue)
+            obj.ForegroundPatternColor = modelInstance
+        }
+
+    }
+
+    if jsonValue, exists := json["Texture"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Texture = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["texture"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Texture = &parsedValue
+        }
+
+    }
+}
+
 func (obj *Shading) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *Shading) GetBackgroundPatternColor() IXmlColor {
+    return obj.BackgroundPatternColor
+}
+
+func (obj *Shading) SetBackgroundPatternColor(value IXmlColor) {
+    obj.BackgroundPatternColor = value
+}
+
+func (obj *Shading) GetForegroundPatternColor() IXmlColor {
+    return obj.ForegroundPatternColor
+}
+
+func (obj *Shading) SetForegroundPatternColor(value IXmlColor) {
+    obj.ForegroundPatternColor = value
+}
+
+func (obj *Shading) GetTexture() *string {
+    return obj.Texture
+}
+
+func (obj *Shading) SetTexture(value *string) {
+    obj.Texture = value
+}
 

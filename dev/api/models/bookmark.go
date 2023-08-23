@@ -28,32 +28,29 @@
 package models
 
 // Represents a single bookmark.
-type BookmarkResult struct {
-    // Represents a single bookmark.
-    Link WordsApiLinkResult `json:"Link,omitempty"`
-
-    // Represents a single bookmark.
-    Name string `json:"Name,omitempty"`
-
-    // Represents a single bookmark.
-    Text string `json:"Text,omitempty"`
-}
-
-type Bookmark struct {
-    // Represents a single bookmark.
-    Link IWordsApiLink `json:"Link,omitempty"`
-
-    // Represents a single bookmark.
-    Name *string `json:"Name,omitempty"`
-
-    // Represents a single bookmark.
-    Text *string `json:"Text,omitempty"`
-}
 
 type IBookmark interface {
     IsBookmark() bool
     Initialize()
+    Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetLink() IWordsApiLink
+    SetLink(value IWordsApiLink)
+    GetName() *string
+    SetName(value *string)
+    GetText() *string
+    SetText(value *string)
+}
+
+type Bookmark struct {
+    // Represents a single bookmark.
+    Link IWordsApiLink
+
+    // Represents a single bookmark.
+    Name *string
+
+    // Represents a single bookmark.
+    Text *string
 }
 
 func (Bookmark) IsBookmark() bool {
@@ -72,8 +69,73 @@ func (obj *Bookmark) Initialize() {
 
 }
 
+func (obj *Bookmark) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["Link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    } else if jsonValue, exists := json["link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    }
+
+    if jsonValue, exists := json["Name"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Name = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["name"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Name = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["Text"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Text = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["text"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Text = &parsedValue
+        }
+
+    }
+}
+
 func (obj *Bookmark) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *Bookmark) GetLink() IWordsApiLink {
+    return obj.Link
+}
+
+func (obj *Bookmark) SetLink(value IWordsApiLink) {
+    obj.Link = value
+}
+
+func (obj *Bookmark) GetName() *string {
+    return obj.Name
+}
+
+func (obj *Bookmark) SetName(value *string) {
+    obj.Name = value
+}
+
+func (obj *Bookmark) GetText() *string {
+    return obj.Text
+}
+
+func (obj *Bookmark) SetText(value *string) {
+    obj.Text = value
+}
 

@@ -34,9 +34,25 @@ import "io"
 // Updates the level of a List element in the document.
 type UpdateListLevelOnlineResponse struct {
     // The response model.
-    Model ListResponse `json:"Model,omitempty"`
+    Model IListResponse
 
 
     // The document after modification.
-    Document map[string]io.Reader `json:"Document,omitempty"`
+    Document map[string]io.Reader
+}
+
+func (obj *UpdateListLevelOnlineResponse) GetModel() IListResponse {
+    return obj.Model
+}
+
+func (obj *UpdateListLevelOnlineResponse) SetModel(value IListResponse) {
+    obj.Model = value
+}
+
+func (obj *UpdateListLevelOnlineResponse) GetDocument() map[string]io.Reader {
+    return obj.Document
+}
+
+func (obj *UpdateListLevelOnlineResponse) SetDocument(value map[string]io.Reader) {
+    obj.Document = value
 }
