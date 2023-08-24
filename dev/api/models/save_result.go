@@ -44,13 +44,13 @@ type ISaveResult interface {
 
 type SaveResult struct {
     // Result of saving.
-    DestDocument IFileLink
+    DestDocument IFileLink `json:"DestDocument,omitempty"`
 
     // Result of saving.
-    SourceDocument IFileLink
+    SourceDocument IFileLink `json:"SourceDocument,omitempty"`
 
     // Result of saving.
-    AdditionalItems []IFileLink
+    AdditionalItems []IFileLink `json:"AdditionalItems,omitempty"`
 }
 
 func (SaveResult) IsSaveResult() bool {

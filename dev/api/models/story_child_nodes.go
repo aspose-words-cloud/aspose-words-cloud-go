@@ -40,7 +40,7 @@ type IStoryChildNodes interface {
 
 type StoryChildNodes struct {
     // Child nodes of Story or InlineStory.
-    ChildNodes []INodeLink
+    ChildNodes []INodeLink `json:"ChildNodes,omitempty"`
 }
 
 func (StoryChildNodes) IsStoryChildNodes() bool {

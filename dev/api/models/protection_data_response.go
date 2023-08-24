@@ -44,13 +44,13 @@ type IProtectionDataResponse interface {
 
 type ProtectionDataResponse struct {
     // The REST response with data on document's protection.
-    RequestId *string
+    RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with data on document's protection.
-    DocumentLink IFileLink
+    DocumentLink IFileLink `json:"DocumentLink,omitempty"`
 
     // The REST response with data on document's protection.
-    ProtectionData IProtectionData
+    ProtectionData IProtectionData `json:"ProtectionData,omitempty"`
 }
 
 func (ProtectionDataResponse) IsProtectionDataResponse() bool {

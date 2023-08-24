@@ -42,10 +42,10 @@ type ISearchResultsCollection interface {
 
 type SearchResultsCollection struct {
     // The collection of search results.
-    Link IWordsApiLink
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // The collection of search results.
-    ResultsList []ISearchResult
+    ResultsList []ISearchResult `json:"ResultsList,omitempty"`
 }
 
 func (SearchResultsCollection) IsSearchResultsCollection() bool {

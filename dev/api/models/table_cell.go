@@ -44,13 +44,13 @@ type ITableCell interface {
 
 type TableCell struct {
     // DTO container with a table cell element.
-    Link IWordsApiLink
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // DTO container with a table cell element.
-    NodeId *string
+    NodeId *string `json:"NodeId,omitempty"`
 
     // DTO container with a table cell element.
-    ChildNodes []INodeLink
+    ChildNodes []INodeLink `json:"ChildNodes,omitempty"`
 }
 
 func (TableCell) IsTableCell() bool {

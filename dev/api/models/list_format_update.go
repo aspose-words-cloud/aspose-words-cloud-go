@@ -42,10 +42,10 @@ type IListFormatUpdate interface {
 
 type ListFormatUpdate struct {
     // Paragraph list format element for update.
-    ListId *int32
+    ListId *int32 `json:"ListId,omitempty"`
 
     // Paragraph list format element for update.
-    ListLevelNumber *int32
+    ListLevelNumber *int32 `json:"ListLevelNumber,omitempty"`
 }
 
 func (ListFormatUpdate) IsListFormatUpdate() bool {

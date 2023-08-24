@@ -42,10 +42,10 @@ type ITableCellResponse interface {
 
 type TableCellResponse struct {
     // The REST response with a table cell.
-    RequestId *string
+    RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with a table cell.
-    Cell ITableCell
+    Cell ITableCell `json:"Cell,omitempty"`
 }
 
 func (TableCellResponse) IsTableCellResponse() bool {

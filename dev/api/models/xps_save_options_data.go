@@ -88,79 +88,79 @@ type IXpsSaveOptionsData interface {
 
 type XpsSaveOptionsData struct {
     // Container class for xps save options.
-    AllowEmbeddingPostScriptFonts *bool
+    AllowEmbeddingPostScriptFonts *bool `json:"AllowEmbeddingPostScriptFonts,omitempty"`
 
     // Container class for xps save options.
-    CustomTimeZoneInfoData ITimeZoneInfoData
+    CustomTimeZoneInfoData ITimeZoneInfoData `json:"CustomTimeZoneInfoData,omitempty"`
 
     // Container class for xps save options.
-    Dml3DEffectsRenderingMode *string
+    Dml3DEffectsRenderingMode *string `json:"Dml3DEffectsRenderingMode,omitempty"`
 
     // Container class for xps save options.
-    DmlEffectsRenderingMode *string
+    DmlEffectsRenderingMode *string `json:"DmlEffectsRenderingMode,omitempty"`
 
     // Container class for xps save options.
-    DmlRenderingMode *string
+    DmlRenderingMode *string `json:"DmlRenderingMode,omitempty"`
 
     // Container class for xps save options.
-    FileName *string
+    FileName *string `json:"FileName,omitempty"`
 
     // Container class for xps save options.
-    ImlRenderingMode *string
+    ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for xps save options.
-    UpdateCreatedTimeProperty *bool
+    UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Container class for xps save options.
-    UpdateFields *bool
+    UpdateFields *bool `json:"UpdateFields,omitempty"`
 
     // Container class for xps save options.
-    UpdateLastPrintedProperty *bool
+    UpdateLastPrintedProperty *bool `json:"UpdateLastPrintedProperty,omitempty"`
 
     // Container class for xps save options.
-    UpdateLastSavedTimeProperty *bool
+    UpdateLastSavedTimeProperty *bool `json:"UpdateLastSavedTimeProperty,omitempty"`
 
     // Container class for xps save options.
-    UpdateSdtContent *bool
+    UpdateSdtContent *bool `json:"UpdateSdtContent,omitempty"`
 
     // Container class for xps save options.
-    ZipOutput *bool
+    ZipOutput *bool `json:"ZipOutput,omitempty"`
 
     // Container class for xps save options.
-    ColorMode *string
+    ColorMode *string `json:"ColorMode,omitempty"`
 
     // Container class for xps save options.
-    JpegQuality *int32
+    JpegQuality *int32 `json:"JpegQuality,omitempty"`
 
     // Container class for xps save options.
-    MetafileRenderingOptions IMetafileRenderingOptionsData
+    MetafileRenderingOptions IMetafileRenderingOptionsData `json:"MetafileRenderingOptions,omitempty"`
 
     // Container class for xps save options.
-    NumeralFormat *string
+    NumeralFormat *string `json:"NumeralFormat,omitempty"`
 
     // Container class for xps save options.
-    OptimizeOutput *bool
+    OptimizeOutput *bool `json:"OptimizeOutput,omitempty"`
 
     // Container class for xps save options.
-    PageCount *int32
+    PageCount *int32 `json:"PageCount,omitempty"`
 
     // Container class for xps save options.
-    PageIndex *int32
+    PageIndex *int32 `json:"PageIndex,omitempty"`
 
     // Container class for xps save options.
-    BookmarksOutlineLevel *int32
+    BookmarksOutlineLevel *int32 `json:"BookmarksOutlineLevel,omitempty"`
 
     // Container class for xps save options.
-    HeadingsOutlineLevels *int32
+    HeadingsOutlineLevels *int32 `json:"HeadingsOutlineLevels,omitempty"`
 
     // Container class for xps save options.
-    OutlineOptions IOutlineOptionsData
+    OutlineOptions IOutlineOptionsData `json:"OutlineOptions,omitempty"`
 
     // Container class for xps save options.
-    UseBookFoldPrintingSettings *bool
+    UseBookFoldPrintingSettings *bool `json:"UseBookFoldPrintingSettings,omitempty"`
 
     // Container class for xps save options.
-    SaveFormat *string
+    SaveFormat *string `json:"SaveFormat,omitempty"`
 }
 
 func (XpsSaveOptionsData) IsXpsSaveOptionsData() bool {

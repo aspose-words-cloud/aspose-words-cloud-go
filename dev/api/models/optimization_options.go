@@ -40,7 +40,7 @@ type IOptimizationOptions interface {
 
 type OptimizationOptions struct {
     // Container class for the document optimization options.
-    MsWordVersion *string
+    MsWordVersion *string `json:"MsWordVersion,omitempty"`
 }
 
 func (OptimizationOptions) IsOptimizationOptions() bool {

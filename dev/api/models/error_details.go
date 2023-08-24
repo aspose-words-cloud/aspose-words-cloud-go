@@ -42,10 +42,10 @@ type IErrorDetails interface {
 
 type ErrorDetails struct {
     // The error details.
-    ErrorDateTime *Time
+    ErrorDateTime *Time `json:"ErrorDateTime,omitempty"`
 
     // The error details.
-    RequestId *string
+    RequestId *string `json:"RequestId,omitempty"`
 }
 
 func (ErrorDetails) IsErrorDetails() bool {

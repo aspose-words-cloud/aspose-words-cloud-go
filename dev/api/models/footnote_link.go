@@ -42,10 +42,10 @@ type IFootnoteLink interface {
 
 type FootnoteLink struct {
     // Footnote link.
-    Link IWordsApiLink
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // Footnote link.
-    NodeId *string
+    NodeId *string `json:"NodeId,omitempty"`
 }
 
 func (FootnoteLink) IsFootnoteLink() bool {

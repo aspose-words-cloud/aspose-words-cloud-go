@@ -46,16 +46,16 @@ type ITableRow interface {
 
 type TableRow struct {
     // DTO container with a table row element.
-    Link IWordsApiLink
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // DTO container with a table row element.
-    NodeId *string
+    NodeId *string `json:"NodeId,omitempty"`
 
     // DTO container with a table row element.
-    TableCellList []ITableCell
+    TableCellList []ITableCell `json:"TableCellList,omitempty"`
 
     // DTO container with a table row element.
-    RowFormat ITableRowFormat
+    RowFormat ITableRowFormat `json:"RowFormat,omitempty"`
 }
 
 func (TableRow) IsTableRow() bool {

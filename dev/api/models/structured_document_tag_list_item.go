@@ -42,10 +42,10 @@ type IStructuredDocumentTagListItem interface {
 
 type StructuredDocumentTagListItem struct {
     // DTO container with a SdtListItem for StructuredDocumentTag.
-    DisplayText *string
+    DisplayText *string `json:"DisplayText,omitempty"`
 
     // DTO container with a SdtListItem for StructuredDocumentTag.
-    Value *string
+    Value *string `json:"Value,omitempty"`
 }
 
 func (StructuredDocumentTagListItem) IsStructuredDocumentTagListItem() bool {

@@ -48,19 +48,19 @@ type ICompareData interface {
 
 type CompareData struct {
     // Container class for compare documents.
-    Author *string
+    Author *string `json:"Author,omitempty"`
 
     // Container class for compare documents.
-    CompareOptions ICompareOptions
+    CompareOptions ICompareOptions `json:"CompareOptions,omitempty"`
 
     // Container class for compare documents.
-    ComparingWithDocument *string
+    ComparingWithDocument *string `json:"ComparingWithDocument,omitempty"`
 
     // Container class for compare documents.
-    DateTime *Time
+    DateTime *Time `json:"DateTime,omitempty"`
 
     // Container class for compare documents.
-    ResultDocumentFormat *string
+    ResultDocumentFormat *string `json:"ResultDocumentFormat,omitempty"`
 }
 
 func (CompareData) IsCompareData() bool {

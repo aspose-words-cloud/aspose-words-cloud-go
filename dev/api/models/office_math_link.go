@@ -42,10 +42,10 @@ type IOfficeMathLink interface {
 
 type OfficeMathLink struct {
     // OfficeMath object link element.
-    Link IWordsApiLink
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // OfficeMath object link element.
-    NodeId *string
+    NodeId *string `json:"NodeId,omitempty"`
 }
 
 func (OfficeMathLink) IsOfficeMathLink() bool {

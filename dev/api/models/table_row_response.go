@@ -42,10 +42,10 @@ type ITableRowResponse interface {
 
 type TableRowResponse struct {
     // The REST response with a table row.
-    RequestId *string
+    RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with a table row.
-    Row ITableRow
+    Row ITableRow `json:"Row,omitempty"`
 }
 
 func (TableRowResponse) IsTableRowResponse() bool {

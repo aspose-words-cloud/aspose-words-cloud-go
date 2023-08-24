@@ -46,16 +46,16 @@ type ITimeZoneInfoData interface {
 
 type TimeZoneInfoData struct {
     // Class to specify TimeZoneInfo parameters.
-    BaseUtcOffset *string
+    BaseUtcOffset *string `json:"BaseUtcOffset,omitempty"`
 
     // Class to specify TimeZoneInfo parameters.
-    DisplayName *string
+    DisplayName *string `json:"DisplayName,omitempty"`
 
     // Class to specify TimeZoneInfo parameters.
-    Id *string
+    Id *string `json:"Id,omitempty"`
 
     // Class to specify TimeZoneInfo parameters.
-    StandardDisplayName *string
+    StandardDisplayName *string `json:"StandardDisplayName,omitempty"`
 }
 
 func (TimeZoneInfoData) IsTimeZoneInfoData() bool {

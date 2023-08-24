@@ -42,10 +42,10 @@ type IDrawingObjectCollection interface {
 
 type DrawingObjectCollection struct {
     // DTO container with a collection of DrawingObjects links.
-    Link IWordsApiLink
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // DTO container with a collection of DrawingObjects links.
-    List []ILinkElement
+    List []ILinkElement `json:"List,omitempty"`
 }
 
 func (DrawingObjectCollection) IsDrawingObjectCollection() bool {

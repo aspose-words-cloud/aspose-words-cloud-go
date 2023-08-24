@@ -48,19 +48,19 @@ type ILink interface {
 type Link struct {
     // Provides information for the object link.
     // This is supposed to be an atom:link, therefore it should have all attributes specified here http://tools.ietf.org/html/rfc4287#section-4.2.7.
-    Href *string
+    Href *string `json:"Href,omitempty"`
 
     // Provides information for the object link.
     // This is supposed to be an atom:link, therefore it should have all attributes specified here http://tools.ietf.org/html/rfc4287#section-4.2.7.
-    Rel *string
+    Rel *string `json:"Rel,omitempty"`
 
     // Provides information for the object link.
     // This is supposed to be an atom:link, therefore it should have all attributes specified here http://tools.ietf.org/html/rfc4287#section-4.2.7.
-    Title *string
+    Title *string `json:"Title,omitempty"`
 
     // Provides information for the object link.
     // This is supposed to be an atom:link, therefore it should have all attributes specified here http://tools.ietf.org/html/rfc4287#section-4.2.7.
-    Type *string
+    Type *string `json:"Type,omitempty"`
 }
 
 func (Link) IsLink() bool {

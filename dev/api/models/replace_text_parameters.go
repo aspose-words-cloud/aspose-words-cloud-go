@@ -48,19 +48,19 @@ type IReplaceTextParameters interface {
 
 type ReplaceTextParameters struct {
     // Class for document replace text request building.
-    IsMatchCase *bool
+    IsMatchCase *bool `json:"IsMatchCase,omitempty"`
 
     // Class for document replace text request building.
-    IsMatchWholeWord *bool
+    IsMatchWholeWord *bool `json:"IsMatchWholeWord,omitempty"`
 
     // Class for document replace text request building.
-    IsOldValueRegex *bool
+    IsOldValueRegex *bool `json:"IsOldValueRegex,omitempty"`
 
     // Class for document replace text request building.
-    NewValue *string
+    NewValue *string `json:"NewValue,omitempty"`
 
     // Class for document replace text request building.
-    OldValue *string
+    OldValue *string `json:"OldValue,omitempty"`
 }
 
 func (ReplaceTextParameters) IsReplaceTextParameters() bool {

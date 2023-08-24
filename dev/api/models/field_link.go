@@ -44,13 +44,13 @@ type IFieldLink interface {
 
 type FieldLink struct {
     // Field link.
-    Link IWordsApiLink
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // Field link.
-    NodeId *string
+    NodeId *string `json:"NodeId,omitempty"`
 
     // Field link.
-    FieldCode *string
+    FieldCode *string `json:"FieldCode,omitempty"`
 }
 
 func (FieldLink) IsFieldLink() bool {

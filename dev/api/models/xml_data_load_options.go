@@ -42,7 +42,7 @@ type IXmlDataLoadOptions interface {
 type XmlDataLoadOptions struct {
     // Represents options for XML data loading.
     // To learn more, visit the LINQ Reporting Engine documentation article.
-    AlwaysGenerateRootObject *bool
+    AlwaysGenerateRootObject *bool `json:"AlwaysGenerateRootObject,omitempty"`
 }
 
 func (XmlDataLoadOptions) IsXmlDataLoadOptions() bool {

@@ -92,85 +92,85 @@ type ISvgSaveOptionsData interface {
 
 type SvgSaveOptionsData struct {
     // Container class for svg save options.
-    AllowEmbeddingPostScriptFonts *bool
+    AllowEmbeddingPostScriptFonts *bool `json:"AllowEmbeddingPostScriptFonts,omitempty"`
 
     // Container class for svg save options.
-    CustomTimeZoneInfoData ITimeZoneInfoData
+    CustomTimeZoneInfoData ITimeZoneInfoData `json:"CustomTimeZoneInfoData,omitempty"`
 
     // Container class for svg save options.
-    Dml3DEffectsRenderingMode *string
+    Dml3DEffectsRenderingMode *string `json:"Dml3DEffectsRenderingMode,omitempty"`
 
     // Container class for svg save options.
-    DmlEffectsRenderingMode *string
+    DmlEffectsRenderingMode *string `json:"DmlEffectsRenderingMode,omitempty"`
 
     // Container class for svg save options.
-    DmlRenderingMode *string
+    DmlRenderingMode *string `json:"DmlRenderingMode,omitempty"`
 
     // Container class for svg save options.
-    FileName *string
+    FileName *string `json:"FileName,omitempty"`
 
     // Container class for svg save options.
-    ImlRenderingMode *string
+    ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for svg save options.
-    UpdateCreatedTimeProperty *bool
+    UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Container class for svg save options.
-    UpdateFields *bool
+    UpdateFields *bool `json:"UpdateFields,omitempty"`
 
     // Container class for svg save options.
-    UpdateLastPrintedProperty *bool
+    UpdateLastPrintedProperty *bool `json:"UpdateLastPrintedProperty,omitempty"`
 
     // Container class for svg save options.
-    UpdateLastSavedTimeProperty *bool
+    UpdateLastSavedTimeProperty *bool `json:"UpdateLastSavedTimeProperty,omitempty"`
 
     // Container class for svg save options.
-    UpdateSdtContent *bool
+    UpdateSdtContent *bool `json:"UpdateSdtContent,omitempty"`
 
     // Container class for svg save options.
-    ZipOutput *bool
+    ZipOutput *bool `json:"ZipOutput,omitempty"`
 
     // Container class for svg save options.
-    ColorMode *string
+    ColorMode *string `json:"ColorMode,omitempty"`
 
     // Container class for svg save options.
-    JpegQuality *int32
+    JpegQuality *int32 `json:"JpegQuality,omitempty"`
 
     // Container class for svg save options.
-    MetafileRenderingOptions IMetafileRenderingOptionsData
+    MetafileRenderingOptions IMetafileRenderingOptionsData `json:"MetafileRenderingOptions,omitempty"`
 
     // Container class for svg save options.
-    NumeralFormat *string
+    NumeralFormat *string `json:"NumeralFormat,omitempty"`
 
     // Container class for svg save options.
-    OptimizeOutput *bool
+    OptimizeOutput *bool `json:"OptimizeOutput,omitempty"`
 
     // Container class for svg save options.
-    PageCount *int32
+    PageCount *int32 `json:"PageCount,omitempty"`
 
     // Container class for svg save options.
-    PageIndex *int32
+    PageIndex *int32 `json:"PageIndex,omitempty"`
 
     // Container class for svg save options.
-    ExportEmbeddedImages *bool
+    ExportEmbeddedImages *bool `json:"ExportEmbeddedImages,omitempty"`
 
     // Container class for svg save options.
-    FitToViewPort *bool
+    FitToViewPort *bool `json:"FitToViewPort,omitempty"`
 
     // Container class for svg save options.
-    ResourcesFolder *string
+    ResourcesFolder *string `json:"ResourcesFolder,omitempty"`
 
     // Container class for svg save options.
-    ResourcesFolderAlias *string
+    ResourcesFolderAlias *string `json:"ResourcesFolderAlias,omitempty"`
 
     // Container class for svg save options.
-    ShowPageBorder *bool
+    ShowPageBorder *bool `json:"ShowPageBorder,omitempty"`
 
     // Container class for svg save options.
-    TextOutputMode *string
+    TextOutputMode *string `json:"TextOutputMode,omitempty"`
 
     // Container class for svg save options.
-    SaveFormat *string
+    SaveFormat *string `json:"SaveFormat,omitempty"`
 }
 
 func (SvgSaveOptionsData) IsSvgSaveOptionsData() bool {

@@ -42,10 +42,10 @@ type ICustomXmlPartsResponse interface {
 
 type CustomXmlPartsResponse struct {
     // The REST response with a collection of custom xml parts.
-    RequestId *string
+    RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with a collection of custom xml parts.
-    CustomXmlParts ICustomXmlPartsCollection
+    CustomXmlParts ICustomXmlPartsCollection `json:"CustomXmlParts,omitempty"`
 }
 
 func (CustomXmlPartsResponse) IsCustomXmlPartsResponse() bool {

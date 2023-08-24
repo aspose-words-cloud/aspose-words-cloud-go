@@ -44,13 +44,13 @@ type IParagraph interface {
 
 type Paragraph struct {
     // DTO container with a paragraph element.
-    Link IWordsApiLink
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // DTO container with a paragraph element.
-    NodeId *string
+    NodeId *string `json:"NodeId,omitempty"`
 
     // DTO container with a paragraph element.
-    ChildNodes []INodeLink
+    ChildNodes []INodeLink `json:"ChildNodes,omitempty"`
 }
 
 func (Paragraph) IsParagraph() bool {

@@ -50,22 +50,22 @@ type IOutlineOptionsData interface {
 
 type OutlineOptionsData struct {
     // Container class for outline options.
-    BookmarksOutlineLevels []IBookmarksOutlineLevelData
+    BookmarksOutlineLevels []IBookmarksOutlineLevelData `json:"BookmarksOutlineLevels,omitempty"`
 
     // Container class for outline options.
-    CreateMissingOutlineLevels *bool
+    CreateMissingOutlineLevels *bool `json:"CreateMissingOutlineLevels,omitempty"`
 
     // Container class for outline options.
-    CreateOutlinesForHeadingsInTables *bool
+    CreateOutlinesForHeadingsInTables *bool `json:"CreateOutlinesForHeadingsInTables,omitempty"`
 
     // Container class for outline options.
-    DefaultBookmarksOutlineLevel *int32
+    DefaultBookmarksOutlineLevel *int32 `json:"DefaultBookmarksOutlineLevel,omitempty"`
 
     // Container class for outline options.
-    ExpandedOutlineLevels *int32
+    ExpandedOutlineLevels *int32 `json:"ExpandedOutlineLevels,omitempty"`
 
     // Container class for outline options.
-    HeadingsOutlineLevels *int32
+    HeadingsOutlineLevels *int32 `json:"HeadingsOutlineLevels,omitempty"`
 }
 
 func (OutlineOptionsData) IsOutlineOptionsData() bool {

@@ -42,10 +42,10 @@ type IFieldCollection interface {
 
 type FieldCollection struct {
     // DTO container with a collection of fields.
-    Link IWordsApiLink
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // DTO container with a collection of fields.
-    List []IField
+    List []IField `json:"List,omitempty"`
 }
 
 func (FieldCollection) IsFieldCollection() bool {

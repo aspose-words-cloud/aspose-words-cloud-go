@@ -58,34 +58,34 @@ type ICompareOptions interface {
 
 type CompareOptions struct {
     // DTO container with compare documents options.
-    AcceptAllRevisionsBeforeComparison *bool
+    AcceptAllRevisionsBeforeComparison *bool `json:"AcceptAllRevisionsBeforeComparison,omitempty"`
 
     // DTO container with compare documents options.
-    IgnoreCaseChanges *bool
+    IgnoreCaseChanges *bool `json:"IgnoreCaseChanges,omitempty"`
 
     // DTO container with compare documents options.
-    IgnoreComments *bool
+    IgnoreComments *bool `json:"IgnoreComments,omitempty"`
 
     // DTO container with compare documents options.
-    IgnoreFields *bool
+    IgnoreFields *bool `json:"IgnoreFields,omitempty"`
 
     // DTO container with compare documents options.
-    IgnoreFootnotes *bool
+    IgnoreFootnotes *bool `json:"IgnoreFootnotes,omitempty"`
 
     // DTO container with compare documents options.
-    IgnoreFormatting *bool
+    IgnoreFormatting *bool `json:"IgnoreFormatting,omitempty"`
 
     // DTO container with compare documents options.
-    IgnoreHeadersAndFooters *bool
+    IgnoreHeadersAndFooters *bool `json:"IgnoreHeadersAndFooters,omitempty"`
 
     // DTO container with compare documents options.
-    IgnoreTables *bool
+    IgnoreTables *bool `json:"IgnoreTables,omitempty"`
 
     // DTO container with compare documents options.
-    IgnoreTextboxes *bool
+    IgnoreTextboxes *bool `json:"IgnoreTextboxes,omitempty"`
 
     // DTO container with compare documents options.
-    Target *string
+    Target *string `json:"Target,omitempty"`
 }
 
 func (CompareOptions) IsCompareOptions() bool {

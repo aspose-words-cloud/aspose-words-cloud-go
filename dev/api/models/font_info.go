@@ -46,16 +46,16 @@ type IFontInfo interface {
 
 type FontInfo struct {
     // DTO container with font info.
-    FilePath *string
+    FilePath *string `json:"FilePath,omitempty"`
 
     // DTO container with font info.
-    FontFamilyName *string
+    FontFamilyName *string `json:"FontFamilyName,omitempty"`
 
     // DTO container with font info.
-    FullFontName *string
+    FullFontName *string `json:"FullFontName,omitempty"`
 
     // DTO container with font info.
-    Version *string
+    Version *string `json:"Version,omitempty"`
 }
 
 func (FontInfo) IsFontInfo() bool {

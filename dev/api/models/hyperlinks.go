@@ -42,10 +42,10 @@ type IHyperlinks interface {
 
 type Hyperlinks struct {
     // Collection of Hyperlink.
-    Link IWordsApiLink
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // Collection of Hyperlink.
-    HyperlinkList []IHyperlink
+    HyperlinkList []IHyperlink `json:"HyperlinkList,omitempty"`
 }
 
 func (Hyperlinks) IsHyperlinks() bool {

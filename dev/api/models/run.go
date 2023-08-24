@@ -44,13 +44,13 @@ type IRun interface {
 
 type Run struct {
     // Run element.
-    Link IWordsApiLink
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // Run element.
-    NodeId *string
+    NodeId *string `json:"NodeId,omitempty"`
 
     // Run element.
-    Text *string
+    Text *string `json:"Text,omitempty"`
 }
 
 func (Run) IsRun() bool {

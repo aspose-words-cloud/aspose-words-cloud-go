@@ -42,10 +42,10 @@ type IImageEntryList interface {
 
 type ImageEntryList struct {
     // Represents a list of images which will be appended to the original resource document or image.
-    AppendEachImageOnNewPage *bool
+    AppendEachImageOnNewPage *bool `json:"AppendEachImageOnNewPage,omitempty"`
 
     // Represents a list of images which will be appended to the original resource document or image.
-    ImageEntries []IImageEntry
+    ImageEntries []IImageEntry `json:"ImageEntries,omitempty"`
 }
 
 func (ImageEntryList) IsImageEntryList() bool {

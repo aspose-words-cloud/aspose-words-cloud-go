@@ -44,13 +44,13 @@ type IRunLink interface {
 
 type RunLink struct {
     // Run link element.
-    Link IWordsApiLink
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // Run link element.
-    NodeId *string
+    NodeId *string `json:"NodeId,omitempty"`
 
     // Run link element.
-    Text *string
+    Text *string `json:"Text,omitempty"`
 }
 
 func (RunLink) IsRunLink() bool {

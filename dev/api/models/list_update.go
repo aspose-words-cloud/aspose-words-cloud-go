@@ -40,7 +40,7 @@ type IListUpdate interface {
 
 type ListUpdate struct {
     // Update document properties if document list.
-    IsRestartAtEachSection *bool
+    IsRestartAtEachSection *bool `json:"IsRestartAtEachSection,omitempty"`
 }
 
 func (ListUpdate) IsListUpdate() bool {

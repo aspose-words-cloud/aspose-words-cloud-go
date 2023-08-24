@@ -42,10 +42,10 @@ type INodeLink interface {
 
 type NodeLink struct {
     // Reference to node.
-    Link IWordsApiLink
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // Reference to node.
-    NodeId *string
+    NodeId *string `json:"NodeId,omitempty"`
 }
 
 func (NodeLink) IsNodeLink() bool {

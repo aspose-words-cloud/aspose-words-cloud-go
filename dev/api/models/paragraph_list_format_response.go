@@ -42,10 +42,10 @@ type IParagraphListFormatResponse interface {
 
 type ParagraphListFormatResponse struct {
     // The REST response with a list format for a paragraph.
-    RequestId *string
+    RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with a list format for a paragraph.
-    ListFormat IListFormat
+    ListFormat IListFormat `json:"ListFormat,omitempty"`
 }
 
 func (ParagraphListFormatResponse) IsParagraphListFormatResponse() bool {

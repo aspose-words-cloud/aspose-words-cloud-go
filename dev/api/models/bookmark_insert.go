@@ -46,16 +46,16 @@ type IBookmarkInsert interface {
 
 type BookmarkInsert struct {
     // Represents a bookmark to insert.
-    Name *string
+    Name *string `json:"Name,omitempty"`
 
     // Represents a bookmark to insert.
-    Text *string
+    Text *string `json:"Text,omitempty"`
 
     // Represents a bookmark to insert.
-    EndRange INewDocumentPosition
+    EndRange INewDocumentPosition `json:"EndRange,omitempty"`
 
     // Represents a bookmark to insert.
-    StartRange INewDocumentPosition
+    StartRange INewDocumentPosition `json:"StartRange,omitempty"`
 }
 
 func (BookmarkInsert) IsBookmarkInsert() bool {

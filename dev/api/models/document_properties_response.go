@@ -42,10 +42,10 @@ type IDocumentPropertiesResponse interface {
 
 type DocumentPropertiesResponse struct {
     // The REST response with a collection of document properties.
-    RequestId *string
+    RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with a collection of document properties.
-    DocumentProperties IDocumentProperties
+    DocumentProperties IDocumentProperties `json:"DocumentProperties,omitempty"`
 }
 
 func (DocumentPropertiesResponse) IsDocumentPropertiesResponse() bool {

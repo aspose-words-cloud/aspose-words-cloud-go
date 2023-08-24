@@ -92,85 +92,85 @@ type IParagraphFormatUpdate interface {
 
 type ParagraphFormatUpdate struct {
     // Paragraph format element update DTO.
-    Link IWordsApiLink
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // Paragraph format element update DTO.
-    AddSpaceBetweenFarEastAndAlpha *bool
+    AddSpaceBetweenFarEastAndAlpha *bool `json:"AddSpaceBetweenFarEastAndAlpha,omitempty"`
 
     // Paragraph format element update DTO.
-    AddSpaceBetweenFarEastAndDigit *bool
+    AddSpaceBetweenFarEastAndDigit *bool `json:"AddSpaceBetweenFarEastAndDigit,omitempty"`
 
     // Paragraph format element update DTO.
-    Alignment *string
+    Alignment *string `json:"Alignment,omitempty"`
 
     // Paragraph format element update DTO.
-    Bidi *bool
+    Bidi *bool `json:"Bidi,omitempty"`
 
     // Paragraph format element update DTO.
-    DropCapPosition *string
+    DropCapPosition *string `json:"DropCapPosition,omitempty"`
 
     // Paragraph format element update DTO.
-    FirstLineIndent *float64
+    FirstLineIndent *float64 `json:"FirstLineIndent,omitempty"`
 
     // Paragraph format element update DTO.
-    KeepTogether *bool
+    KeepTogether *bool `json:"KeepTogether,omitempty"`
 
     // Paragraph format element update DTO.
-    KeepWithNext *bool
+    KeepWithNext *bool `json:"KeepWithNext,omitempty"`
 
     // Paragraph format element update DTO.
-    LeftIndent *float64
+    LeftIndent *float64 `json:"LeftIndent,omitempty"`
 
     // Paragraph format element update DTO.
-    LineSpacing *float64
+    LineSpacing *float64 `json:"LineSpacing,omitempty"`
 
     // Paragraph format element update DTO.
-    LineSpacingRule *string
+    LineSpacingRule *string `json:"LineSpacingRule,omitempty"`
 
     // Paragraph format element update DTO.
-    LinesToDrop *int32
+    LinesToDrop *int32 `json:"LinesToDrop,omitempty"`
 
     // Paragraph format element update DTO.
-    NoSpaceBetweenParagraphsOfSameStyle *bool
+    NoSpaceBetweenParagraphsOfSameStyle *bool `json:"NoSpaceBetweenParagraphsOfSameStyle,omitempty"`
 
     // Paragraph format element update DTO.
-    OutlineLevel *string
+    OutlineLevel *string `json:"OutlineLevel,omitempty"`
 
     // Paragraph format element update DTO.
-    PageBreakBefore *bool
+    PageBreakBefore *bool `json:"PageBreakBefore,omitempty"`
 
     // Paragraph format element update DTO.
-    RightIndent *float64
+    RightIndent *float64 `json:"RightIndent,omitempty"`
 
     // Paragraph format element update DTO.
-    SpaceAfter *float64
+    SpaceAfter *float64 `json:"SpaceAfter,omitempty"`
 
     // Paragraph format element update DTO.
-    SpaceAfterAuto *bool
+    SpaceAfterAuto *bool `json:"SpaceAfterAuto,omitempty"`
 
     // Paragraph format element update DTO.
-    SpaceBefore *float64
+    SpaceBefore *float64 `json:"SpaceBefore,omitempty"`
 
     // Paragraph format element update DTO.
-    SpaceBeforeAuto *bool
+    SpaceBeforeAuto *bool `json:"SpaceBeforeAuto,omitempty"`
 
     // Paragraph format element update DTO.
-    StyleIdentifier *string
+    StyleIdentifier *string `json:"StyleIdentifier,omitempty"`
 
     // Paragraph format element update DTO.
-    StyleName *string
+    StyleName *string `json:"StyleName,omitempty"`
 
     // Paragraph format element update DTO.
-    SuppressAutoHyphens *bool
+    SuppressAutoHyphens *bool `json:"SuppressAutoHyphens,omitempty"`
 
     // Paragraph format element update DTO.
-    SuppressLineNumbers *bool
+    SuppressLineNumbers *bool `json:"SuppressLineNumbers,omitempty"`
 
     // Paragraph format element update DTO.
-    WidowControl *bool
+    WidowControl *bool `json:"WidowControl,omitempty"`
 
     // Paragraph format element update DTO.
-    Shading IShading
+    Shading IShading `json:"Shading,omitempty"`
 }
 
 func (ParagraphFormatUpdate) IsParagraphFormatUpdate() bool {

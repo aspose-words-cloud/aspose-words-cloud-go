@@ -50,22 +50,22 @@ type IReportEngineSettings interface {
 
 type ReportEngineSettings struct {
     // Report engine settings.
-    CsvDataLoadOptions ICsvDataLoadOptions
+    CsvDataLoadOptions ICsvDataLoadOptions `json:"CsvDataLoadOptions,omitempty"`
 
     // Report engine settings.
-    DataSourceName *string
+    DataSourceName *string `json:"DataSourceName,omitempty"`
 
     // Report engine settings.
-    DataSourceType *string
+    DataSourceType *string `json:"DataSourceType,omitempty"`
 
     // Report engine settings.
-    JsonDataLoadOptions IJsonDataLoadOptions
+    JsonDataLoadOptions IJsonDataLoadOptions `json:"JsonDataLoadOptions,omitempty"`
 
     // Report engine settings.
-    ReportBuildOptions []string
+    ReportBuildOptions []string `json:"ReportBuildOptions,omitempty"`
 
     // Report engine settings.
-    XmlDataLoadOptions IXmlDataLoadOptions
+    XmlDataLoadOptions IXmlDataLoadOptions `json:"XmlDataLoadOptions,omitempty"`
 }
 
 func (ReportEngineSettings) IsReportEngineSettings() bool {

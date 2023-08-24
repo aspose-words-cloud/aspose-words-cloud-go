@@ -62,40 +62,40 @@ type IDrawingObject interface {
 
 type DrawingObject struct {
     // DTO container with a DrawingObject.
-    Link IWordsApiLink
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // DTO container with a DrawingObject.
-    NodeId *string
+    NodeId *string `json:"NodeId,omitempty"`
 
     // DTO container with a DrawingObject.
-    RenderLinks []IWordsApiLink
+    RenderLinks []IWordsApiLink `json:"RenderLinks,omitempty"`
 
     // DTO container with a DrawingObject.
-    Width *float64
+    Width *float64 `json:"Width,omitempty"`
 
     // DTO container with a DrawingObject.
-    Height *float64
+    Height *float64 `json:"Height,omitempty"`
 
     // DTO container with a DrawingObject.
-    OleDataLink IWordsApiLink
+    OleDataLink IWordsApiLink `json:"OleDataLink,omitempty"`
 
     // DTO container with a DrawingObject.
-    ImageDataLink IWordsApiLink
+    ImageDataLink IWordsApiLink `json:"ImageDataLink,omitempty"`
 
     // DTO container with a DrawingObject.
-    RelativeHorizontalPosition *string
+    RelativeHorizontalPosition *string `json:"RelativeHorizontalPosition,omitempty"`
 
     // DTO container with a DrawingObject.
-    Left *float64
+    Left *float64 `json:"Left,omitempty"`
 
     // DTO container with a DrawingObject.
-    RelativeVerticalPosition *string
+    RelativeVerticalPosition *string `json:"RelativeVerticalPosition,omitempty"`
 
     // DTO container with a DrawingObject.
-    Top *float64
+    Top *float64 `json:"Top,omitempty"`
 
     // DTO container with a DrawingObject.
-    WrapType *string
+    WrapType *string `json:"WrapType,omitempty"`
 }
 
 func (DrawingObject) IsDrawingObject() bool {

@@ -42,10 +42,10 @@ type ISectionResponse interface {
 
 type SectionResponse struct {
     // The REST response with a section.
-    RequestId *string
+    RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with a section.
-    Section ISection
+    Section ISection `json:"Section,omitempty"`
 }
 
 func (SectionResponse) IsSectionResponse() bool {

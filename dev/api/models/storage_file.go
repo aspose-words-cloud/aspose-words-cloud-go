@@ -48,19 +48,19 @@ type IStorageFile interface {
 
 type StorageFile struct {
     // File or folder information.
-    IsFolder *bool
+    IsFolder *bool `json:"IsFolder,omitempty"`
 
     // File or folder information.
-    ModifiedDate *Time
+    ModifiedDate *Time `json:"ModifiedDate,omitempty"`
 
     // File or folder information.
-    Name *string
+    Name *string `json:"Name,omitempty"`
 
     // File or folder information.
-    Path *string
+    Path *string `json:"Path,omitempty"`
 
     // File or folder information.
-    Size *int32
+    Size *int32 `json:"Size,omitempty"`
 }
 
 func (StorageFile) IsStorageFile() bool {

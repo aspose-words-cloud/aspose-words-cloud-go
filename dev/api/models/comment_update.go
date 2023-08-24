@@ -50,22 +50,22 @@ type ICommentUpdate interface {
 
 type CommentUpdate struct {
     // Comment update.
-    RangeStart INewDocumentPosition
+    RangeStart INewDocumentPosition `json:"RangeStart,omitempty"`
 
     // Comment update.
-    RangeEnd INewDocumentPosition
+    RangeEnd INewDocumentPosition `json:"RangeEnd,omitempty"`
 
     // Comment update.
-    Author *string
+    Author *string `json:"Author,omitempty"`
 
     // Comment update.
-    DateTime *Time
+    DateTime *Time `json:"DateTime,omitempty"`
 
     // Comment update.
-    Initial *string
+    Initial *string `json:"Initial,omitempty"`
 
     // Comment update.
-    Text *string
+    Text *string `json:"Text,omitempty"`
 }
 
 func (CommentUpdate) IsCommentUpdate() bool {

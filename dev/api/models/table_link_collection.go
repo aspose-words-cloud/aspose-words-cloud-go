@@ -42,10 +42,10 @@ type ITableLinkCollection interface {
 
 type TableLinkCollection struct {
     // The collection of table's links.
-    Link IWordsApiLink
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // The collection of table's links.
-    TableLinkList []ITableLink
+    TableLinkList []ITableLink `json:"TableLinkList,omitempty"`
 }
 
 func (TableLinkCollection) IsTableLinkCollection() bool {

@@ -42,10 +42,10 @@ type IRangeTextResponse interface {
 
 type RangeTextResponse struct {
     // The REST response with a range's text.
-    RequestId *string
+    RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with a range's text.
-    Text *string
+    Text *string `json:"Text,omitempty"`
 }
 
 func (RangeTextResponse) IsRangeTextResponse() bool {

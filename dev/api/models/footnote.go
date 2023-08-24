@@ -52,25 +52,25 @@ type IFootnote interface {
 
 type Footnote struct {
     // DTO container with a footnote.
-    Link IWordsApiLink
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // DTO container with a footnote.
-    NodeId *string
+    NodeId *string `json:"NodeId,omitempty"`
 
     // DTO container with a footnote.
-    Position IDocumentPosition
+    Position IDocumentPosition `json:"Position,omitempty"`
 
     // DTO container with a footnote.
-    FootnoteType *string
+    FootnoteType *string `json:"FootnoteType,omitempty"`
 
     // DTO container with a footnote.
-    ReferenceMark *string
+    ReferenceMark *string `json:"ReferenceMark,omitempty"`
 
     // DTO container with a footnote.
-    Text *string
+    Text *string `json:"Text,omitempty"`
 
     // DTO container with a footnote.
-    Content IStoryChildNodes
+    Content IStoryChildNodes `json:"Content,omitempty"`
 }
 
 func (Footnote) IsFootnote() bool {

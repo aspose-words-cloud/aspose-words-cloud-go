@@ -44,13 +44,13 @@ type ITableInsertDto interface {
 
 type TableInsertDto struct {
     // DTO container with a table element.
-    ColumnsCount *int32
+    ColumnsCount *int32 `json:"ColumnsCount,omitempty"`
 
     // DTO container with a table element.
-    Position INewDocumentPosition
+    Position INewDocumentPosition `json:"Position,omitempty"`
 
     // DTO container with a table element.
-    RowsCount *int32
+    RowsCount *int32 `json:"RowsCount,omitempty"`
 }
 
 func (TableInsertDto) IsTableInsertDto() bool {

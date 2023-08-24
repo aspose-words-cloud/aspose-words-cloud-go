@@ -44,13 +44,13 @@ type IHyperlink interface {
 
 type Hyperlink struct {
     // Hyperlink element.
-    Link IWordsApiLink
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // Hyperlink element.
-    DisplayText *string
+    DisplayText *string `json:"DisplayText,omitempty"`
 
     // Hyperlink element.
-    Value *string
+    Value *string `json:"Value,omitempty"`
 }
 
 func (Hyperlink) IsHyperlink() bool {

@@ -74,58 +74,58 @@ type IRtfSaveOptionsData interface {
 
 type RtfSaveOptionsData struct {
     // Container class for rtf save options.
-    AllowEmbeddingPostScriptFonts *bool
+    AllowEmbeddingPostScriptFonts *bool `json:"AllowEmbeddingPostScriptFonts,omitempty"`
 
     // Container class for rtf save options.
-    CustomTimeZoneInfoData ITimeZoneInfoData
+    CustomTimeZoneInfoData ITimeZoneInfoData `json:"CustomTimeZoneInfoData,omitempty"`
 
     // Container class for rtf save options.
-    Dml3DEffectsRenderingMode *string
+    Dml3DEffectsRenderingMode *string `json:"Dml3DEffectsRenderingMode,omitempty"`
 
     // Container class for rtf save options.
-    DmlEffectsRenderingMode *string
+    DmlEffectsRenderingMode *string `json:"DmlEffectsRenderingMode,omitempty"`
 
     // Container class for rtf save options.
-    DmlRenderingMode *string
+    DmlRenderingMode *string `json:"DmlRenderingMode,omitempty"`
 
     // Container class for rtf save options.
-    FileName *string
+    FileName *string `json:"FileName,omitempty"`
 
     // Container class for rtf save options.
-    ImlRenderingMode *string
+    ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for rtf save options.
-    UpdateCreatedTimeProperty *bool
+    UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Container class for rtf save options.
-    UpdateFields *bool
+    UpdateFields *bool `json:"UpdateFields,omitempty"`
 
     // Container class for rtf save options.
-    UpdateLastPrintedProperty *bool
+    UpdateLastPrintedProperty *bool `json:"UpdateLastPrintedProperty,omitempty"`
 
     // Container class for rtf save options.
-    UpdateLastSavedTimeProperty *bool
+    UpdateLastSavedTimeProperty *bool `json:"UpdateLastSavedTimeProperty,omitempty"`
 
     // Container class for rtf save options.
-    UpdateSdtContent *bool
+    UpdateSdtContent *bool `json:"UpdateSdtContent,omitempty"`
 
     // Container class for rtf save options.
-    ZipOutput *bool
+    ZipOutput *bool `json:"ZipOutput,omitempty"`
 
     // Container class for rtf save options.
-    ExportCompactSize *bool
+    ExportCompactSize *bool `json:"ExportCompactSize,omitempty"`
 
     // Container class for rtf save options.
-    ExportImagesForOldReaders *bool
+    ExportImagesForOldReaders *bool `json:"ExportImagesForOldReaders,omitempty"`
 
     // Container class for rtf save options.
-    PrettyFormat *bool
+    PrettyFormat *bool `json:"PrettyFormat,omitempty"`
 
     // Container class for rtf save options.
-    SaveImagesAsWmf *bool
+    SaveImagesAsWmf *bool `json:"SaveImagesAsWmf,omitempty"`
 
     // Container class for rtf save options.
-    SaveFormat *string
+    SaveFormat *string `json:"SaveFormat,omitempty"`
 }
 
 func (RtfSaveOptionsData) IsRtfSaveOptionsData() bool {

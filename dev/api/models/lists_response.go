@@ -42,10 +42,10 @@ type IListsResponse interface {
 
 type ListsResponse struct {
     // The REST response with a collection of lists, contained in the document.
-    RequestId *string
+    RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with a collection of lists, contained in the document.
-    Lists ILists
+    Lists ILists `json:"Lists,omitempty"`
 }
 
 func (ListsResponse) IsListsResponse() bool {

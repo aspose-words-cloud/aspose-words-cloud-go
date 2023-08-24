@@ -44,13 +44,13 @@ type IProtectionRequest interface {
 
 type ProtectionRequest struct {
     // Request on changing of protection.
-    NewPassword *string
+    NewPassword *string `json:"NewPassword,omitempty"`
 
     // Request on changing of protection.
-    Password *string
+    Password *string `json:"Password,omitempty"`
 
     // Request on changing of protection.
-    ProtectionType *string
+    ProtectionType *string `json:"ProtectionType,omitempty"`
 }
 
 func (ProtectionRequest) IsProtectionRequest() bool {

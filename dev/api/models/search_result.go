@@ -42,10 +42,10 @@ type ISearchResult interface {
 
 type SearchResult struct {
     // Result of search operation.
-    RangeStart IDocumentPosition
+    RangeStart IDocumentPosition `json:"RangeStart,omitempty"`
 
     // Result of search operation.
-    RangeEnd IDocumentPosition
+    RangeEnd IDocumentPosition `json:"RangeEnd,omitempty"`
 }
 
 func (SearchResult) IsSearchResult() bool {

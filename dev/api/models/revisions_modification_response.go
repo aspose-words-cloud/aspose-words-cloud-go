@@ -42,10 +42,10 @@ type IRevisionsModificationResponse interface {
 
 type RevisionsModificationResponse struct {
     // The REST response with a result of the modification operations for the revisions collection (now these are acceptAll and rejectAll).
-    RequestId *string
+    RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with a result of the modification operations for the revisions collection (now these are acceptAll and rejectAll).
-    Result IModificationOperationResult
+    Result IModificationOperationResult `json:"Result,omitempty"`
 }
 
 func (RevisionsModificationResponse) IsRevisionsModificationResponse() bool {

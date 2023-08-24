@@ -42,10 +42,10 @@ type ICommentsCollection interface {
 
 type CommentsCollection struct {
     // The collection of comments.
-    Link IWordsApiLink
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // The collection of comments.
-    CommentList []IComment
+    CommentList []IComment `json:"CommentList,omitempty"`
 }
 
 func (CommentsCollection) IsCommentsCollection() bool {

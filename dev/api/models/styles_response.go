@@ -42,10 +42,10 @@ type IStylesResponse interface {
 
 type StylesResponse struct {
     // The REST response with an array of styles.
-    RequestId *string
+    RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with an array of styles.
-    Styles []IStyle
+    Styles []IStyle `json:"Styles,omitempty"`
 }
 
 func (StylesResponse) IsStylesResponse() bool {

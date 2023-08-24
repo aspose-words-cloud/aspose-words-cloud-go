@@ -40,7 +40,7 @@ type IProtectionData interface {
 
 type ProtectionData struct {
     // Container for the data about protection of the document.
-    ProtectionType *string
+    ProtectionType *string `json:"ProtectionType,omitempty"`
 }
 
 func (ProtectionData) IsProtectionData() bool {

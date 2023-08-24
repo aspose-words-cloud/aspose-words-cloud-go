@@ -42,10 +42,10 @@ type IHeaderFooterLink interface {
 
 type HeaderFooterLink struct {
     // HeaderFooter link element.
-    Link IWordsApiLink
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // HeaderFooter link element.
-    Type *string
+    Type *string `json:"Type,omitempty"`
 }
 
 func (HeaderFooterLink) IsHeaderFooterLink() bool {

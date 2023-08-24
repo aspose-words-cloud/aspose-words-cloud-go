@@ -44,13 +44,13 @@ type IStatDataResponse interface {
 
 type StatDataResponse struct {
     // The REST response with document's statistical data.
-    RequestId *string
+    RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with document's statistical data.
-    DocumentLink IFileLink
+    DocumentLink IFileLink `json:"DocumentLink,omitempty"`
 
     // The REST response with document's statistical data.
-    StatData IDocumentStatData
+    StatData IDocumentStatData `json:"StatData,omitempty"`
 }
 
 func (StatDataResponse) IsStatDataResponse() bool {

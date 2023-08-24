@@ -40,7 +40,7 @@ type IParagraphInsert interface {
 
 type ParagraphInsert struct {
     // DTO container with a paragraph's text.
-    Text *string
+    Text *string `json:"Text,omitempty"`
 }
 
 func (ParagraphInsert) IsParagraphInsert() bool {

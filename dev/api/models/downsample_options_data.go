@@ -44,13 +44,13 @@ type IDownsampleOptionsData interface {
 
 type DownsampleOptionsData struct {
     // Container class for Downsample options.
-    DownsampleImages *bool
+    DownsampleImages *bool `json:"DownsampleImages,omitempty"`
 
     // Container class for Downsample options.
-    Resolution *int32
+    Resolution *int32 `json:"Resolution,omitempty"`
 
     // Container class for Downsample options.
-    ResolutionThreshold *int32
+    ResolutionThreshold *int32 `json:"ResolutionThreshold,omitempty"`
 }
 
 func (DownsampleOptionsData) IsDownsampleOptionsData() bool {

@@ -44,13 +44,13 @@ type ISplitDocumentResult interface {
 
 type SplitDocumentResult struct {
     // Result of splitting document.
-    SourceDocument IFileLink
+    SourceDocument IFileLink `json:"SourceDocument,omitempty"`
 
     // Result of splitting document.
-    ZippedPages IFileLink
+    ZippedPages IFileLink `json:"ZippedPages,omitempty"`
 
     // Result of splitting document.
-    Pages []IFileLink
+    Pages []IFileLink `json:"Pages,omitempty"`
 }
 
 func (SplitDocumentResult) IsSplitDocumentResult() bool {

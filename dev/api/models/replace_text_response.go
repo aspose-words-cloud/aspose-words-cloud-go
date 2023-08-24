@@ -44,13 +44,13 @@ type IReplaceTextResponse interface {
 
 type ReplaceTextResponse struct {
     // The REST response with a number of occurrences of the captured text in the document.
-    RequestId *string
+    RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with a number of occurrences of the captured text in the document.
-    DocumentLink IFileLink
+    DocumentLink IFileLink `json:"DocumentLink,omitempty"`
 
     // The REST response with a number of occurrences of the captured text in the document.
-    Matches *int32
+    Matches *int32 `json:"Matches,omitempty"`
 }
 
 func (ReplaceTextResponse) IsReplaceTextResponse() bool {

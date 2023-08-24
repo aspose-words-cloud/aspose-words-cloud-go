@@ -44,13 +44,13 @@ type IShading interface {
 
 type Shading struct {
     // DTO container with a paragraph format shading element.
-    BackgroundPatternColor IXmlColor
+    BackgroundPatternColor IXmlColor `json:"BackgroundPatternColor,omitempty"`
 
     // DTO container with a paragraph format shading element.
-    ForegroundPatternColor IXmlColor
+    ForegroundPatternColor IXmlColor `json:"ForegroundPatternColor,omitempty"`
 
     // DTO container with a paragraph format shading element.
-    Texture *string
+    Texture *string `json:"Texture,omitempty"`
 }
 
 func (Shading) IsShading() bool {

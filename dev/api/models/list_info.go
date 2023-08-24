@@ -54,28 +54,28 @@ type IListInfo interface {
 
 type ListInfo struct {
     // DTO container with a single document list.
-    Link IWordsApiLink
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // DTO container with a single document list.
-    ListId *int32
+    ListId *int32 `json:"ListId,omitempty"`
 
     // DTO container with a single document list.
-    IsMultiLevel *bool
+    IsMultiLevel *bool `json:"IsMultiLevel,omitempty"`
 
     // DTO container with a single document list.
-    IsRestartAtEachSection *bool
+    IsRestartAtEachSection *bool `json:"IsRestartAtEachSection,omitempty"`
 
     // DTO container with a single document list.
-    IsListStyleDefinition *bool
+    IsListStyleDefinition *bool `json:"IsListStyleDefinition,omitempty"`
 
     // DTO container with a single document list.
-    IsListStyleReference *bool
+    IsListStyleReference *bool `json:"IsListStyleReference,omitempty"`
 
     // DTO container with a single document list.
-    Style IStyle
+    Style IStyle `json:"Style,omitempty"`
 
     // DTO container with a single document list.
-    ListLevels IListLevels
+    ListLevels IListLevels `json:"ListLevels,omitempty"`
 }
 
 func (ListInfo) IsListInfo() bool {

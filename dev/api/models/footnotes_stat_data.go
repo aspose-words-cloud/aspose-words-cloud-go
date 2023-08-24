@@ -42,10 +42,10 @@ type IFootnotesStatData interface {
 
 type FootnotesStatData struct {
     // Container for the footnotes statistical data.
-    ParagraphCount *int32
+    ParagraphCount *int32 `json:"ParagraphCount,omitempty"`
 
     // Container for the footnotes statistical data.
-    WordCount *int32
+    WordCount *int32 `json:"WordCount,omitempty"`
 }
 
 func (FootnotesStatData) IsFootnotesStatData() bool {

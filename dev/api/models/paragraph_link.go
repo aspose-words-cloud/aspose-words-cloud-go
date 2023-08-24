@@ -44,13 +44,13 @@ type IParagraphLink interface {
 
 type ParagraphLink struct {
     // Paragraph link element.
-    Link IWordsApiLink
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // Paragraph link element.
-    NodeId *string
+    NodeId *string `json:"NodeId,omitempty"`
 
     // Paragraph link element.
-    Text *string
+    Text *string `json:"Text,omitempty"`
 }
 
 func (ParagraphLink) IsParagraphLink() bool {

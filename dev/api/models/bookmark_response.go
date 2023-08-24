@@ -42,10 +42,10 @@ type IBookmarkResponse interface {
 
 type BookmarkResponse struct {
     // The REST response with a bookmark.
-    RequestId *string
+    RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with a bookmark.
-    Bookmark IBookmark
+    Bookmark IBookmark `json:"Bookmark,omitempty"`
 }
 
 func (BookmarkResponse) IsBookmarkResponse() bool {

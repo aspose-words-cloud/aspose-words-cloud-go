@@ -48,19 +48,19 @@ type IMetafileRenderingOptionsData interface {
 
 type MetafileRenderingOptionsData struct {
     // Container class for options of metafile rendering.
-    EmfPlusDualRenderingMode *string
+    EmfPlusDualRenderingMode *string `json:"EmfPlusDualRenderingMode,omitempty"`
 
     // Container class for options of metafile rendering.
-    EmulateRasterOperations *bool
+    EmulateRasterOperations *bool `json:"EmulateRasterOperations,omitempty"`
 
     // Container class for options of metafile rendering.
-    RenderingMode *string
+    RenderingMode *string `json:"RenderingMode,omitempty"`
 
     // Container class for options of metafile rendering.
-    ScaleWmfFontsToMetafileSize *bool
+    ScaleWmfFontsToMetafileSize *bool `json:"ScaleWmfFontsToMetafileSize,omitempty"`
 
     // Container class for options of metafile rendering.
-    UseEmfEmbeddedToWmf *bool
+    UseEmfEmbeddedToWmf *bool `json:"UseEmfEmbeddedToWmf,omitempty"`
 }
 
 func (MetafileRenderingOptionsData) IsMetafileRenderingOptionsData() bool {

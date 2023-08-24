@@ -40,7 +40,7 @@ type ICustomXmlPartLink interface {
 
 type CustomXmlPartLink struct {
     // CustomXmlPart link.
-    Link IWordsApiLink
+    Link IWordsApiLink `json:"Link,omitempty"`
 }
 
 func (CustomXmlPartLink) IsCustomXmlPartLink() bool {

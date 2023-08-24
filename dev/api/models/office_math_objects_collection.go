@@ -42,10 +42,10 @@ type IOfficeMathObjectsCollection interface {
 
 type OfficeMathObjectsCollection struct {
     // DTO container with a collection of OfficeMath objects.
-    Link IWordsApiLink
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // DTO container with a collection of OfficeMath objects.
-    List []IOfficeMathObject
+    List []IOfficeMathObject `json:"List,omitempty"`
 }
 
 func (OfficeMathObjectsCollection) IsOfficeMathObjectsCollection() bool {

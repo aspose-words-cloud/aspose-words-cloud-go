@@ -42,10 +42,10 @@ type ISectionPageSetupResponse interface {
 
 type SectionPageSetupResponse struct {
     // The REST response with a page setup of a section.
-    RequestId *string
+    RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with a page setup of a section.
-    PageSetup IPageSetup
+    PageSetup IPageSetup `json:"PageSetup,omitempty"`
 }
 
 func (SectionPageSetupResponse) IsSectionPageSetupResponse() bool {

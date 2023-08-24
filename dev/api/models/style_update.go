@@ -46,16 +46,16 @@ type IStyleUpdate interface {
 
 type StyleUpdate struct {
     // Represents a single document style properties to update.
-    BaseStyleName *string
+    BaseStyleName *string `json:"BaseStyleName,omitempty"`
 
     // Represents a single document style properties to update.
-    IsQuickStyle *bool
+    IsQuickStyle *bool `json:"IsQuickStyle,omitempty"`
 
     // Represents a single document style properties to update.
-    Name *string
+    Name *string `json:"Name,omitempty"`
 
     // Represents a single document style properties to update.
-    NextParagraphStyleName *string
+    NextParagraphStyleName *string `json:"NextParagraphStyleName,omitempty"`
 }
 
 func (StyleUpdate) IsStyleUpdate() bool {

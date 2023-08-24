@@ -40,7 +40,7 @@ type IRunInsert interface {
 
 type RunInsert struct {
     // Run element for insert.
-    Text *string
+    Text *string `json:"Text,omitempty"`
 }
 
 func (RunInsert) IsRunInsert() bool {

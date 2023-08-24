@@ -48,19 +48,19 @@ type IField interface {
 
 type Field struct {
     // DTO container with a field.
-    Link IWordsApiLink
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // DTO container with a field.
-    NodeId *string
+    NodeId *string `json:"NodeId,omitempty"`
 
     // DTO container with a field.
-    FieldCode *string
+    FieldCode *string `json:"FieldCode,omitempty"`
 
     // DTO container with a field.
-    LocaleId *string
+    LocaleId *string `json:"LocaleId,omitempty"`
 
     // DTO container with a field.
-    Result *string
+    Result *string `json:"Result,omitempty"`
 }
 
 func (Field) IsField() bool {

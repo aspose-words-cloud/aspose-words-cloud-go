@@ -50,22 +50,22 @@ type IOfficeMathObject interface {
 
 type OfficeMathObject struct {
     // DTO container with an OfficeMath object.
-    Link IWordsApiLink
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // DTO container with an OfficeMath object.
-    NodeId *string
+    NodeId *string `json:"NodeId,omitempty"`
 
     // DTO container with an OfficeMath object.
-    Content IStoryChildNodes
+    Content IStoryChildNodes `json:"Content,omitempty"`
 
     // DTO container with an OfficeMath object.
-    DisplayType *string
+    DisplayType *string `json:"DisplayType,omitempty"`
 
     // DTO container with an OfficeMath object.
-    Justification *string
+    Justification *string `json:"Justification,omitempty"`
 
     // DTO container with an OfficeMath object.
-    MathObjectType *string
+    MathObjectType *string `json:"MathObjectType,omitempty"`
 }
 
 func (OfficeMathObject) IsOfficeMathObject() bool {

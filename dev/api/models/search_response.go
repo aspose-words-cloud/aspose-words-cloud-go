@@ -44,13 +44,13 @@ type ISearchResponse interface {
 
 type SearchResponse struct {
     // The REST response with a regular expression pattern and a collection of search results.
-    RequestId *string
+    RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with a regular expression pattern and a collection of search results.
-    SearchingPattern *string
+    SearchingPattern *string `json:"SearchingPattern,omitempty"`
 
     // The REST response with a regular expression pattern and a collection of search results.
-    SearchResults ISearchResultsCollection
+    SearchResults ISearchResultsCollection `json:"SearchResults,omitempty"`
 }
 
 func (SearchResponse) IsSearchResponse() bool {

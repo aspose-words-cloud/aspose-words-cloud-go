@@ -40,7 +40,7 @@ type IListInsert interface {
 
 type ListInsert struct {
     // Insert document to document list.
-    Template *string
+    Template *string `json:"Template,omitempty"`
 }
 
 func (ListInsert) IsListInsert() bool {

@@ -42,10 +42,10 @@ type ISectionLinkCollection interface {
 
 type SectionLinkCollection struct {
     // The collection of section's links.
-    Link IWordsApiLink
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // The collection of section's links.
-    SectionLinkList []ISectionLink
+    SectionLinkList []ISectionLink `json:"SectionLinkList,omitempty"`
 }
 
 func (SectionLinkCollection) IsSectionLinkCollection() bool {

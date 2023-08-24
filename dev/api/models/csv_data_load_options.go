@@ -48,19 +48,19 @@ type ICsvDataLoadOptions interface {
 type CsvDataLoadOptions struct {
     // Represents options for parsing CSV data.
     // To learn more, visit the LINQ Reporting Engine documentation article.
-    CommentChar *string
+    CommentChar *string `json:"CommentChar,omitempty"`
 
     // Represents options for parsing CSV data.
     // To learn more, visit the LINQ Reporting Engine documentation article.
-    Delimiter *string
+    Delimiter *string `json:"Delimiter,omitempty"`
 
     // Represents options for parsing CSV data.
     // To learn more, visit the LINQ Reporting Engine documentation article.
-    HasHeaders *bool
+    HasHeaders *bool `json:"HasHeaders,omitempty"`
 
     // Represents options for parsing CSV data.
     // To learn more, visit the LINQ Reporting Engine documentation article.
-    QuoteChar *string
+    QuoteChar *string `json:"QuoteChar,omitempty"`
 }
 
 func (CsvDataLoadOptions) IsCsvDataLoadOptions() bool {

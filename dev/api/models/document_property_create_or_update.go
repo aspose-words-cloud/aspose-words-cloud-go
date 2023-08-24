@@ -40,7 +40,7 @@ type IDocumentPropertyCreateOrUpdate interface {
 
 type DocumentPropertyCreateOrUpdate struct {
     // Words document property DTO for create or update.
-    Value *string
+    Value *string `json:"Value,omitempty"`
 }
 
 func (DocumentPropertyCreateOrUpdate) IsDocumentPropertyCreateOrUpdate() bool {

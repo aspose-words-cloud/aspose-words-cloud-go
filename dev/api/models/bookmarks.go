@@ -42,10 +42,10 @@ type IBookmarks interface {
 
 type Bookmarks struct {
     // Represents an array of bookmarks.
-    Link IWordsApiLink
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // Represents an array of bookmarks.
-    BookmarkList []IBookmark
+    BookmarkList []IBookmark `json:"BookmarkList,omitempty"`
 }
 
 func (Bookmarks) IsBookmarks() bool {

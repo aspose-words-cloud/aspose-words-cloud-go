@@ -42,10 +42,10 @@ type ITableLink interface {
 
 type TableLink struct {
     // Table link element.
-    Link IWordsApiLink
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // Table link element.
-    NodeId *string
+    NodeId *string `json:"NodeId,omitempty"`
 }
 
 func (TableLink) IsTableLink() bool {

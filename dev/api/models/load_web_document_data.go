@@ -42,10 +42,10 @@ type ILoadWebDocumentData interface {
 
 type LoadWebDocumentData struct {
     // Contains data for load web document.
-    SaveOptions ISaveOptionsData
+    SaveOptions ISaveOptionsData `json:"SaveOptions,omitempty"`
 
     // Contains data for load web document.
-    LoadingDocumentUrl *string
+    LoadingDocumentUrl *string `json:"LoadingDocumentUrl,omitempty"`
 }
 
 func (LoadWebDocumentData) IsLoadWebDocumentData() bool {

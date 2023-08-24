@@ -82,70 +82,70 @@ type ITextSaveOptionsData interface {
 
 type TextSaveOptionsData struct {
     // Container class for text save options.
-    AllowEmbeddingPostScriptFonts *bool
+    AllowEmbeddingPostScriptFonts *bool `json:"AllowEmbeddingPostScriptFonts,omitempty"`
 
     // Container class for text save options.
-    CustomTimeZoneInfoData ITimeZoneInfoData
+    CustomTimeZoneInfoData ITimeZoneInfoData `json:"CustomTimeZoneInfoData,omitempty"`
 
     // Container class for text save options.
-    Dml3DEffectsRenderingMode *string
+    Dml3DEffectsRenderingMode *string `json:"Dml3DEffectsRenderingMode,omitempty"`
 
     // Container class for text save options.
-    DmlEffectsRenderingMode *string
+    DmlEffectsRenderingMode *string `json:"DmlEffectsRenderingMode,omitempty"`
 
     // Container class for text save options.
-    DmlRenderingMode *string
+    DmlRenderingMode *string `json:"DmlRenderingMode,omitempty"`
 
     // Container class for text save options.
-    FileName *string
+    FileName *string `json:"FileName,omitempty"`
 
     // Container class for text save options.
-    ImlRenderingMode *string
+    ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for text save options.
-    UpdateCreatedTimeProperty *bool
+    UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Container class for text save options.
-    UpdateFields *bool
+    UpdateFields *bool `json:"UpdateFields,omitempty"`
 
     // Container class for text save options.
-    UpdateLastPrintedProperty *bool
+    UpdateLastPrintedProperty *bool `json:"UpdateLastPrintedProperty,omitempty"`
 
     // Container class for text save options.
-    UpdateLastSavedTimeProperty *bool
+    UpdateLastSavedTimeProperty *bool `json:"UpdateLastSavedTimeProperty,omitempty"`
 
     // Container class for text save options.
-    UpdateSdtContent *bool
+    UpdateSdtContent *bool `json:"UpdateSdtContent,omitempty"`
 
     // Container class for text save options.
-    ZipOutput *bool
+    ZipOutput *bool `json:"ZipOutput,omitempty"`
 
     // Container class for text save options.
-    Encoding *string
+    Encoding *string `json:"Encoding,omitempty"`
 
     // Container class for text save options.
-    ExportHeadersFootersMode *string
+    ExportHeadersFootersMode *string `json:"ExportHeadersFootersMode,omitempty"`
 
     // Container class for text save options.
-    ForcePageBreaks *bool
+    ForcePageBreaks *bool `json:"ForcePageBreaks,omitempty"`
 
     // Container class for text save options.
-    ParagraphBreak *string
+    ParagraphBreak *string `json:"ParagraphBreak,omitempty"`
 
     // Container class for text save options.
-    AddBidiMarks *bool
+    AddBidiMarks *bool `json:"AddBidiMarks,omitempty"`
 
     // Container class for text save options.
-    MaxCharactersPerLine *int32
+    MaxCharactersPerLine *int32 `json:"MaxCharactersPerLine,omitempty"`
 
     // Container class for text save options.
-    PreserveTableLayout *bool
+    PreserveTableLayout *bool `json:"PreserveTableLayout,omitempty"`
 
     // Container class for text save options.
-    SimplifyListLabels *bool
+    SimplifyListLabels *bool `json:"SimplifyListLabels,omitempty"`
 
     // Container class for text save options.
-    SaveFormat *string
+    SaveFormat *string `json:"SaveFormat,omitempty"`
 }
 
 func (TextSaveOptionsData) IsTextSaveOptionsData() bool {

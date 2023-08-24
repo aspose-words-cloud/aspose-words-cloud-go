@@ -40,7 +40,7 @@ type IImageEntry interface {
 
 type ImageEntry struct {
     // Represents a image which will be appended to the original resource image or document.
-    FileReference IFileReference
+    FileReference IFileReference `json:"FileReference,omitempty"`
 }
 
 func (ImageEntry) IsImageEntry() bool {

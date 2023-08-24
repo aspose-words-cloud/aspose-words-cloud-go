@@ -62,40 +62,40 @@ type IStyle interface {
 
 type Style struct {
     // DTO container with a single document style.
-    Link IWordsApiLink
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // DTO container with a single document style.
-    Font IFont
+    Font IFont `json:"Font,omitempty"`
 
     // DTO container with a single document style.
-    BuiltIn *bool
+    BuiltIn *bool `json:"BuiltIn,omitempty"`
 
     // DTO container with a single document style.
-    NextParagraphStyleName *string
+    NextParagraphStyleName *string `json:"NextParagraphStyleName,omitempty"`
 
     // DTO container with a single document style.
-    BaseStyleName *string
+    BaseStyleName *string `json:"BaseStyleName,omitempty"`
 
     // DTO container with a single document style.
-    IsQuickStyle *bool
+    IsQuickStyle *bool `json:"IsQuickStyle,omitempty"`
 
     // DTO container with a single document style.
-    LinkedStyleName *string
+    LinkedStyleName *string `json:"LinkedStyleName,omitempty"`
 
     // DTO container with a single document style.
-    Type *string
+    Type *string `json:"Type,omitempty"`
 
     // DTO container with a single document style.
-    IsHeading *bool
+    IsHeading *bool `json:"IsHeading,omitempty"`
 
     // DTO container with a single document style.
-    Aliases []string
+    Aliases []string `json:"Aliases,omitempty"`
 
     // DTO container with a single document style.
-    StyleIdentifier *string
+    StyleIdentifier *string `json:"StyleIdentifier,omitempty"`
 
     // DTO container with a single document style.
-    Name *string
+    Name *string `json:"Name,omitempty"`
 }
 
 func (Style) IsStyle() bool {

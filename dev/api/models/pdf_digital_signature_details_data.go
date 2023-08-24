@@ -48,19 +48,19 @@ type IPdfDigitalSignatureDetailsData interface {
 
 type PdfDigitalSignatureDetailsData struct {
     // Container class for details of digital signature.
-    CertificateFilename *string
+    CertificateFilename *string `json:"CertificateFilename,omitempty"`
 
     // Container class for details of digital signature.
-    HashAlgorithm *string
+    HashAlgorithm *string `json:"HashAlgorithm,omitempty"`
 
     // Container class for details of digital signature.
-    Location *string
+    Location *string `json:"Location,omitempty"`
 
     // Container class for details of digital signature.
-    Reason *string
+    Reason *string `json:"Reason,omitempty"`
 
     // Container class for details of digital signature.
-    SignatureDate *Time
+    SignatureDate *Time `json:"SignatureDate,omitempty"`
 }
 
 func (PdfDigitalSignatureDetailsData) IsPdfDigitalSignatureDetailsData() bool {

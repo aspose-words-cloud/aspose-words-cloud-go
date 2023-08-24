@@ -76,61 +76,61 @@ type IMarkdownSaveOptionsData interface {
 
 type MarkdownSaveOptionsData struct {
     // Container class for markdown save options.
-    AllowEmbeddingPostScriptFonts *bool
+    AllowEmbeddingPostScriptFonts *bool `json:"AllowEmbeddingPostScriptFonts,omitempty"`
 
     // Container class for markdown save options.
-    CustomTimeZoneInfoData ITimeZoneInfoData
+    CustomTimeZoneInfoData ITimeZoneInfoData `json:"CustomTimeZoneInfoData,omitempty"`
 
     // Container class for markdown save options.
-    Dml3DEffectsRenderingMode *string
+    Dml3DEffectsRenderingMode *string `json:"Dml3DEffectsRenderingMode,omitempty"`
 
     // Container class for markdown save options.
-    DmlEffectsRenderingMode *string
+    DmlEffectsRenderingMode *string `json:"DmlEffectsRenderingMode,omitempty"`
 
     // Container class for markdown save options.
-    DmlRenderingMode *string
+    DmlRenderingMode *string `json:"DmlRenderingMode,omitempty"`
 
     // Container class for markdown save options.
-    FileName *string
+    FileName *string `json:"FileName,omitempty"`
 
     // Container class for markdown save options.
-    ImlRenderingMode *string
+    ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for markdown save options.
-    UpdateCreatedTimeProperty *bool
+    UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Container class for markdown save options.
-    UpdateFields *bool
+    UpdateFields *bool `json:"UpdateFields,omitempty"`
 
     // Container class for markdown save options.
-    UpdateLastPrintedProperty *bool
+    UpdateLastPrintedProperty *bool `json:"UpdateLastPrintedProperty,omitempty"`
 
     // Container class for markdown save options.
-    UpdateLastSavedTimeProperty *bool
+    UpdateLastSavedTimeProperty *bool `json:"UpdateLastSavedTimeProperty,omitempty"`
 
     // Container class for markdown save options.
-    UpdateSdtContent *bool
+    UpdateSdtContent *bool `json:"UpdateSdtContent,omitempty"`
 
     // Container class for markdown save options.
-    ZipOutput *bool
+    ZipOutput *bool `json:"ZipOutput,omitempty"`
 
     // Container class for markdown save options.
-    Encoding *string
+    Encoding *string `json:"Encoding,omitempty"`
 
     // Container class for markdown save options.
-    ExportHeadersFootersMode *string
+    ExportHeadersFootersMode *string `json:"ExportHeadersFootersMode,omitempty"`
 
     // Container class for markdown save options.
-    ForcePageBreaks *bool
+    ForcePageBreaks *bool `json:"ForcePageBreaks,omitempty"`
 
     // Container class for markdown save options.
-    ParagraphBreak *string
+    ParagraphBreak *string `json:"ParagraphBreak,omitempty"`
 
     // Container class for markdown save options.
-    TableContentAlignment *string
+    TableContentAlignment *string `json:"TableContentAlignment,omitempty"`
 
     // Container class for markdown save options.
-    SaveFormat *string
+    SaveFormat *string `json:"SaveFormat,omitempty"`
 }
 
 func (MarkdownSaveOptionsData) IsMarkdownSaveOptionsData() bool {

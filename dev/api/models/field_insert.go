@@ -42,10 +42,10 @@ type IFieldInsert interface {
 
 type FieldInsert struct {
     // Field for insert.
-    FieldCode *string
+    FieldCode *string `json:"FieldCode,omitempty"`
 
     // Field for insert.
-    LocaleId *string
+    LocaleId *string `json:"LocaleId,omitempty"`
 }
 
 func (FieldInsert) IsFieldInsert() bool {

@@ -52,25 +52,25 @@ type IDrawingObjectUpdate interface {
 
 type DrawingObjectUpdate struct {
     // Drawing object element for update.
-    Height *float64
+    Height *float64 `json:"Height,omitempty"`
 
     // Drawing object element for update.
-    Left *float64
+    Left *float64 `json:"Left,omitempty"`
 
     // Drawing object element for update.
-    RelativeHorizontalPosition *string
+    RelativeHorizontalPosition *string `json:"RelativeHorizontalPosition,omitempty"`
 
     // Drawing object element for update.
-    RelativeVerticalPosition *string
+    RelativeVerticalPosition *string `json:"RelativeVerticalPosition,omitempty"`
 
     // Drawing object element for update.
-    Top *float64
+    Top *float64 `json:"Top,omitempty"`
 
     // Drawing object element for update.
-    Width *float64
+    Width *float64 `json:"Width,omitempty"`
 
     // Drawing object element for update.
-    WrapType *string
+    WrapType *string `json:"WrapType,omitempty"`
 }
 
 func (DrawingObjectUpdate) IsDrawingObjectUpdate() bool {

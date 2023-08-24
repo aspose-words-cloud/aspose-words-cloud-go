@@ -42,10 +42,10 @@ type IListLevels interface {
 
 type ListLevels struct {
     // DTO container with a single document list.
-    Link IWordsApiLink
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // DTO container with a single document list.
-    ListLevel []IListLevel
+    ListLevel []IListLevel `json:"ListLevel,omitempty"`
 }
 
 func (ListLevels) IsListLevels() bool {

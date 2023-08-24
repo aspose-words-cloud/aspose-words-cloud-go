@@ -40,7 +40,7 @@ type IWordsResponse interface {
 
 type WordsResponse struct {
     // The base class for all responses.
-    RequestId *string
+    RequestId *string `json:"RequestId,omitempty"`
 }
 
 func (WordsResponse) IsWordsResponse() bool {

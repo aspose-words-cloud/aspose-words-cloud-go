@@ -42,10 +42,10 @@ type IStructuredDocumentTagCollection interface {
 
 type StructuredDocumentTagCollection struct {
     // DTO container with a collection of StructuredDocumentTags links.
-    Link IWordsApiLink
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // DTO container with a collection of StructuredDocumentTags links.
-    List []IStructuredDocumentTag
+    List []IStructuredDocumentTag `json:"List,omitempty"`
 }
 
 func (StructuredDocumentTagCollection) IsStructuredDocumentTagCollection() bool {

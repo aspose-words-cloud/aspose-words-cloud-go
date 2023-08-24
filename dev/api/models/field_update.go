@@ -42,10 +42,10 @@ type IFieldUpdate interface {
 
 type FieldUpdate struct {
     // Field for update.
-    FieldCode *string
+    FieldCode *string `json:"FieldCode,omitempty"`
 
     // Field for update.
-    LocaleId *string
+    LocaleId *string `json:"LocaleId,omitempty"`
 }
 
 func (FieldUpdate) IsFieldUpdate() bool {

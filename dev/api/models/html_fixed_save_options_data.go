@@ -108,109 +108,109 @@ type IHtmlFixedSaveOptionsData interface {
 
 type HtmlFixedSaveOptionsData struct {
     // Container class for fixed html save options.
-    AllowEmbeddingPostScriptFonts *bool
+    AllowEmbeddingPostScriptFonts *bool `json:"AllowEmbeddingPostScriptFonts,omitempty"`
 
     // Container class for fixed html save options.
-    CustomTimeZoneInfoData ITimeZoneInfoData
+    CustomTimeZoneInfoData ITimeZoneInfoData `json:"CustomTimeZoneInfoData,omitempty"`
 
     // Container class for fixed html save options.
-    Dml3DEffectsRenderingMode *string
+    Dml3DEffectsRenderingMode *string `json:"Dml3DEffectsRenderingMode,omitempty"`
 
     // Container class for fixed html save options.
-    DmlEffectsRenderingMode *string
+    DmlEffectsRenderingMode *string `json:"DmlEffectsRenderingMode,omitempty"`
 
     // Container class for fixed html save options.
-    DmlRenderingMode *string
+    DmlRenderingMode *string `json:"DmlRenderingMode,omitempty"`
 
     // Container class for fixed html save options.
-    FileName *string
+    FileName *string `json:"FileName,omitempty"`
 
     // Container class for fixed html save options.
-    ImlRenderingMode *string
+    ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for fixed html save options.
-    UpdateCreatedTimeProperty *bool
+    UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Container class for fixed html save options.
-    UpdateFields *bool
+    UpdateFields *bool `json:"UpdateFields,omitempty"`
 
     // Container class for fixed html save options.
-    UpdateLastPrintedProperty *bool
+    UpdateLastPrintedProperty *bool `json:"UpdateLastPrintedProperty,omitempty"`
 
     // Container class for fixed html save options.
-    UpdateLastSavedTimeProperty *bool
+    UpdateLastSavedTimeProperty *bool `json:"UpdateLastSavedTimeProperty,omitempty"`
 
     // Container class for fixed html save options.
-    UpdateSdtContent *bool
+    UpdateSdtContent *bool `json:"UpdateSdtContent,omitempty"`
 
     // Container class for fixed html save options.
-    ZipOutput *bool
+    ZipOutput *bool `json:"ZipOutput,omitempty"`
 
     // Container class for fixed html save options.
-    ColorMode *string
+    ColorMode *string `json:"ColorMode,omitempty"`
 
     // Container class for fixed html save options.
-    JpegQuality *int32
+    JpegQuality *int32 `json:"JpegQuality,omitempty"`
 
     // Container class for fixed html save options.
-    MetafileRenderingOptions IMetafileRenderingOptionsData
+    MetafileRenderingOptions IMetafileRenderingOptionsData `json:"MetafileRenderingOptions,omitempty"`
 
     // Container class for fixed html save options.
-    NumeralFormat *string
+    NumeralFormat *string `json:"NumeralFormat,omitempty"`
 
     // Container class for fixed html save options.
-    OptimizeOutput *bool
+    OptimizeOutput *bool `json:"OptimizeOutput,omitempty"`
 
     // Container class for fixed html save options.
-    PageCount *int32
+    PageCount *int32 `json:"PageCount,omitempty"`
 
     // Container class for fixed html save options.
-    PageIndex *int32
+    PageIndex *int32 `json:"PageIndex,omitempty"`
 
     // Container class for fixed html save options.
-    CssClassNamesPrefix *string
+    CssClassNamesPrefix *string `json:"CssClassNamesPrefix,omitempty"`
 
     // Container class for fixed html save options.
-    Encoding *string
+    Encoding *string `json:"Encoding,omitempty"`
 
     // Container class for fixed html save options.
-    ExportEmbeddedCss *bool
+    ExportEmbeddedCss *bool `json:"ExportEmbeddedCss,omitempty"`
 
     // Container class for fixed html save options.
-    ExportEmbeddedFonts *bool
+    ExportEmbeddedFonts *bool `json:"ExportEmbeddedFonts,omitempty"`
 
     // Container class for fixed html save options.
-    ExportEmbeddedImages *bool
+    ExportEmbeddedImages *bool `json:"ExportEmbeddedImages,omitempty"`
 
     // Container class for fixed html save options.
-    ExportFormFields *bool
+    ExportFormFields *bool `json:"ExportFormFields,omitempty"`
 
     // Container class for fixed html save options.
-    FontFormat *string
+    FontFormat *string `json:"FontFormat,omitempty"`
 
     // Container class for fixed html save options.
-    PageHorizontalAlignment *string
+    PageHorizontalAlignment *string `json:"PageHorizontalAlignment,omitempty"`
 
     // Container class for fixed html save options.
-    PageMargins *float64
+    PageMargins *float64 `json:"PageMargins,omitempty"`
 
     // Container class for fixed html save options.
-    ResourcesFolder *string
+    ResourcesFolder *string `json:"ResourcesFolder,omitempty"`
 
     // Container class for fixed html save options.
-    ResourcesFolderAlias *string
+    ResourcesFolderAlias *string `json:"ResourcesFolderAlias,omitempty"`
 
     // Container class for fixed html save options.
-    SaveFontFaceCssSeparately *bool
+    SaveFontFaceCssSeparately *bool `json:"SaveFontFaceCssSeparately,omitempty"`
 
     // Container class for fixed html save options.
-    ShowPageBorder *bool
+    ShowPageBorder *bool `json:"ShowPageBorder,omitempty"`
 
     // Container class for fixed html save options.
-    UseTargetMachineFonts *bool
+    UseTargetMachineFonts *bool `json:"UseTargetMachineFonts,omitempty"`
 
     // Container class for fixed html save options.
-    SaveFormat *string
+    SaveFormat *string `json:"SaveFormat,omitempty"`
 }
 
 func (HtmlFixedSaveOptionsData) IsHtmlFixedSaveOptionsData() bool {

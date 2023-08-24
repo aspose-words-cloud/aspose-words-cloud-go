@@ -42,10 +42,10 @@ type IDrawingObjectLink interface {
 
 type DrawingObjectLink struct {
     // Represents link for Drawing Object DTO.
-    Link IWordsApiLink
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // Represents link for Drawing Object DTO.
-    NodeId *string
+    NodeId *string `json:"NodeId,omitempty"`
 }
 
 func (DrawingObjectLink) IsDrawingObjectLink() bool {

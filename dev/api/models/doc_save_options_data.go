@@ -74,58 +74,58 @@ type IDocSaveOptionsData interface {
 
 type DocSaveOptionsData struct {
     // Container class for doc/dot save options.
-    AllowEmbeddingPostScriptFonts *bool
+    AllowEmbeddingPostScriptFonts *bool `json:"AllowEmbeddingPostScriptFonts,omitempty"`
 
     // Container class for doc/dot save options.
-    CustomTimeZoneInfoData ITimeZoneInfoData
+    CustomTimeZoneInfoData ITimeZoneInfoData `json:"CustomTimeZoneInfoData,omitempty"`
 
     // Container class for doc/dot save options.
-    Dml3DEffectsRenderingMode *string
+    Dml3DEffectsRenderingMode *string `json:"Dml3DEffectsRenderingMode,omitempty"`
 
     // Container class for doc/dot save options.
-    DmlEffectsRenderingMode *string
+    DmlEffectsRenderingMode *string `json:"DmlEffectsRenderingMode,omitempty"`
 
     // Container class for doc/dot save options.
-    DmlRenderingMode *string
+    DmlRenderingMode *string `json:"DmlRenderingMode,omitempty"`
 
     // Container class for doc/dot save options.
-    FileName *string
+    FileName *string `json:"FileName,omitempty"`
 
     // Container class for doc/dot save options.
-    ImlRenderingMode *string
+    ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for doc/dot save options.
-    UpdateCreatedTimeProperty *bool
+    UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Container class for doc/dot save options.
-    UpdateFields *bool
+    UpdateFields *bool `json:"UpdateFields,omitempty"`
 
     // Container class for doc/dot save options.
-    UpdateLastPrintedProperty *bool
+    UpdateLastPrintedProperty *bool `json:"UpdateLastPrintedProperty,omitempty"`
 
     // Container class for doc/dot save options.
-    UpdateLastSavedTimeProperty *bool
+    UpdateLastSavedTimeProperty *bool `json:"UpdateLastSavedTimeProperty,omitempty"`
 
     // Container class for doc/dot save options.
-    UpdateSdtContent *bool
+    UpdateSdtContent *bool `json:"UpdateSdtContent,omitempty"`
 
     // Container class for doc/dot save options.
-    ZipOutput *bool
+    ZipOutput *bool `json:"ZipOutput,omitempty"`
 
     // Container class for doc/dot save options.
-    AlwaysCompressMetafiles *bool
+    AlwaysCompressMetafiles *bool `json:"AlwaysCompressMetafiles,omitempty"`
 
     // Container class for doc/dot save options.
-    Password *string
+    Password *string `json:"Password,omitempty"`
 
     // Container class for doc/dot save options.
-    SavePictureBullet *bool
+    SavePictureBullet *bool `json:"SavePictureBullet,omitempty"`
 
     // Container class for doc/dot save options.
-    SaveRoutingSlip *bool
+    SaveRoutingSlip *bool `json:"SaveRoutingSlip,omitempty"`
 
     // Container class for doc/dot save options.
-    SaveFormat *string
+    SaveFormat *string `json:"SaveFormat,omitempty"`
 }
 
 func (DocSaveOptionsData) IsDocSaveOptionsData() bool {

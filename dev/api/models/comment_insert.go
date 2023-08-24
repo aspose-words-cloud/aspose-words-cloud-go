@@ -50,22 +50,22 @@ type ICommentInsert interface {
 
 type CommentInsert struct {
     // Comment insert.
-    RangeStart INewDocumentPosition
+    RangeStart INewDocumentPosition `json:"RangeStart,omitempty"`
 
     // Comment insert.
-    RangeEnd INewDocumentPosition
+    RangeEnd INewDocumentPosition `json:"RangeEnd,omitempty"`
 
     // Comment insert.
-    Author *string
+    Author *string `json:"Author,omitempty"`
 
     // Comment insert.
-    DateTime *Time
+    DateTime *Time `json:"DateTime,omitempty"`
 
     // Comment insert.
-    Initial *string
+    Initial *string `json:"Initial,omitempty"`
 
     // Comment insert.
-    Text *string
+    Text *string `json:"Text,omitempty"`
 }
 
 func (CommentInsert) IsCommentInsert() bool {

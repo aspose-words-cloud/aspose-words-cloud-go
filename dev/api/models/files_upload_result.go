@@ -42,10 +42,10 @@ type IFilesUploadResult interface {
 
 type FilesUploadResult struct {
     // File upload result.
-    Errors []IError
+    Errors []IError `json:"Errors,omitempty"`
 
     // File upload result.
-    Uploaded []string
+    Uploaded []string `json:"Uploaded,omitempty"`
 }
 
 func (FilesUploadResult) IsFilesUploadResult() bool {

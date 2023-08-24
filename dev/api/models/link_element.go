@@ -40,7 +40,7 @@ type ILinkElement interface {
 
 type LinkElement struct {
     // Reference to a document.
-    Link IWordsApiLink
+    Link IWordsApiLink `json:"Link,omitempty"`
 }
 
 func (LinkElement) IsLinkElement() bool {

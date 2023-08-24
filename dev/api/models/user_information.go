@@ -44,13 +44,13 @@ type IUserInformation interface {
 
 type UserInformation struct {
     // DTO for user information.
-    Address *string
+    Address *string `json:"Address,omitempty"`
 
     // DTO for user information.
-    Initials *string
+    Initials *string `json:"Initials,omitempty"`
 
     // DTO for user information.
-    Name *string
+    Name *string `json:"Name,omitempty"`
 }
 
 func (UserInformation) IsUserInformation() bool {

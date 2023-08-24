@@ -46,16 +46,16 @@ type IListFormat interface {
 
 type ListFormat struct {
     // DTO container with a paragraph list format element.
-    Link IWordsApiLink
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // DTO container with a paragraph list format element.
-    ListLevelNumber *int32
+    ListLevelNumber *int32 `json:"ListLevelNumber,omitempty"`
 
     // DTO container with a paragraph list format element.
-    ListId *int32
+    ListId *int32 `json:"ListId,omitempty"`
 
     // DTO container with a paragraph list format element.
-    IsListItem *bool
+    IsListItem *bool `json:"IsListItem,omitempty"`
 }
 
 func (ListFormat) IsListFormat() bool {

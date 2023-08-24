@@ -44,13 +44,13 @@ type ICustomXmlPart interface {
 
 type CustomXmlPart struct {
     // DTO container with a CustomXmlPart.
-    Link IWordsApiLink
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // DTO container with a CustomXmlPart.
-    Id *string
+    Id *string `json:"Id,omitempty"`
 
     // DTO container with a CustomXmlPart.
-    Data *string
+    Data *string `json:"Data,omitempty"`
 }
 
 func (CustomXmlPart) IsCustomXmlPart() bool {

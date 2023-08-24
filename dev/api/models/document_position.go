@@ -42,10 +42,10 @@ type IDocumentPosition interface {
 
 type DocumentPosition struct {
     // DTO container with a position in the document tree.
-    Node INodeLink
+    Node INodeLink `json:"Node,omitempty"`
 
     // DTO container with a position in the document tree.
-    Offset *int32
+    Offset *int32 `json:"Offset,omitempty"`
 }
 
 func (DocumentPosition) IsDocumentPosition() bool {

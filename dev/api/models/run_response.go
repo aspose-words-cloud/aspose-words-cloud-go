@@ -42,10 +42,10 @@ type IRunResponse interface {
 
 type RunResponse struct {
     // The REST response with a Run element.
-    RequestId *string
+    RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with a Run element.
-    Run IRun
+    Run IRun `json:"Run,omitempty"`
 }
 
 func (RunResponse) IsRunResponse() bool {

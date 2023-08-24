@@ -40,7 +40,7 @@ type ICommentLink interface {
 
 type CommentLink struct {
     // Comment link.
-    Link IWordsApiLink
+    Link IWordsApiLink `json:"Link,omitempty"`
 }
 
 func (CommentLink) IsCommentLink() bool {

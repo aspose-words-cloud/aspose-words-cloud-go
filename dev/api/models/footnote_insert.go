@@ -46,16 +46,16 @@ type IFootnoteInsert interface {
 
 type FootnoteInsert struct {
     // Footnote for insert.
-    FootnoteType *string
+    FootnoteType *string `json:"FootnoteType,omitempty"`
 
     // Footnote for insert.
-    Position INewDocumentPosition
+    Position INewDocumentPosition `json:"Position,omitempty"`
 
     // Footnote for insert.
-    ReferenceMark *string
+    ReferenceMark *string `json:"ReferenceMark,omitempty"`
 
     // Footnote for insert.
-    Text *string
+    Text *string `json:"Text,omitempty"`
 }
 
 func (FootnoteInsert) IsFootnoteInsert() bool {

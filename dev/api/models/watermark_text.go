@@ -42,10 +42,10 @@ type IWatermarkText interface {
 
 type WatermarkText struct {
     // Class for insert watermark text request building.
-    RotationAngle *float64
+    RotationAngle *float64 `json:"RotationAngle,omitempty"`
 
     // Class for insert watermark text request building.
-    Text *string
+    Text *string `json:"Text,omitempty"`
 }
 
 func (WatermarkText) IsWatermarkText() bool {

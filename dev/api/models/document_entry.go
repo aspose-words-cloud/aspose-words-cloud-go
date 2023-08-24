@@ -44,13 +44,13 @@ type IDocumentEntry interface {
 
 type DocumentEntry struct {
     // Represents a document which will be appended to the original resource document.
-    FileReference IFileReference
+    FileReference IFileReference `json:"FileReference,omitempty"`
 
     // Represents a document which will be appended to the original resource document.
-    EncryptedPassword *string
+    EncryptedPassword *string `json:"EncryptedPassword,omitempty"`
 
     // Represents a document which will be appended to the original resource document.
-    ImportFormatMode *string
+    ImportFormatMode *string `json:"ImportFormatMode,omitempty"`
 }
 
 func (DocumentEntry) IsDocumentEntry() bool {

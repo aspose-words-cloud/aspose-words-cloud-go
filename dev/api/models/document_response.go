@@ -42,10 +42,10 @@ type IDocumentResponse interface {
 
 type DocumentResponse struct {
     // The REST response with a document description.
-    RequestId *string
+    RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with a document description.
-    Document IDocument
+    Document IDocument `json:"Document,omitempty"`
 }
 
 func (DocumentResponse) IsDocumentResponse() bool {

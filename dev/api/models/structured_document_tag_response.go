@@ -42,10 +42,10 @@ type IStructuredDocumentTagResponse interface {
 
 type StructuredDocumentTagResponse struct {
     // The REST response with a StructuredDocumentTag.
-    RequestId *string
+    RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with a StructuredDocumentTag.
-    StructuredDocumentTag IStructuredDocumentTag
+    StructuredDocumentTag IStructuredDocumentTag `json:"StructuredDocumentTag,omitempty"`
 }
 
 func (StructuredDocumentTagResponse) IsStructuredDocumentTagResponse() bool {

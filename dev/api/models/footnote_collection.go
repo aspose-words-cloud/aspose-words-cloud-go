@@ -42,10 +42,10 @@ type IFootnoteCollection interface {
 
 type FootnoteCollection struct {
     // DTO container with a collection of footnotes.
-    Link IWordsApiLink
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // DTO container with a collection of footnotes.
-    List []IFootnote
+    List []IFootnote `json:"List,omitempty"`
 }
 
 func (FootnoteCollection) IsFootnoteCollection() bool {

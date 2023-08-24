@@ -44,13 +44,13 @@ type ICustomXmlPartUpdate interface {
 
 type CustomXmlPartUpdate struct {
     // Custom xml part update.
-    Link IWordsApiLink
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // Custom xml part update.
-    Id *string
+    Id *string `json:"Id,omitempty"`
 
     // Custom xml part update.
-    Data *string
+    Data *string `json:"Data,omitempty"`
 }
 
 func (CustomXmlPartUpdate) IsCustomXmlPartUpdate() bool {

@@ -54,28 +54,28 @@ type IDrawingObjectInsert interface {
 
 type DrawingObjectInsert struct {
     // Drawing object element for insert.
-    Height *float64
+    Height *float64 `json:"Height,omitempty"`
 
     // Drawing object element for insert.
-    Left *float64
+    Left *float64 `json:"Left,omitempty"`
 
     // Drawing object element for insert.
-    Position INewDocumentPosition
+    Position INewDocumentPosition `json:"Position,omitempty"`
 
     // Drawing object element for insert.
-    RelativeHorizontalPosition *string
+    RelativeHorizontalPosition *string `json:"RelativeHorizontalPosition,omitempty"`
 
     // Drawing object element for insert.
-    RelativeVerticalPosition *string
+    RelativeVerticalPosition *string `json:"RelativeVerticalPosition,omitempty"`
 
     // Drawing object element for insert.
-    Top *float64
+    Top *float64 `json:"Top,omitempty"`
 
     // Drawing object element for insert.
-    Width *float64
+    Width *float64 `json:"Width,omitempty"`
 
     // Drawing object element for insert.
-    WrapType *string
+    WrapType *string `json:"WrapType,omitempty"`
 }
 
 func (DrawingObjectInsert) IsDrawingObjectInsert() bool {

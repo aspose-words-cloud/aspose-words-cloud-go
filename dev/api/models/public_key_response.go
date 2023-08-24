@@ -44,13 +44,13 @@ type IPublicKeyResponse interface {
 
 type PublicKeyResponse struct {
     // REST response for RSA public key info.
-    RequestId *string
+    RequestId *string `json:"RequestId,omitempty"`
 
     // REST response for RSA public key info.
-    Exponent *string
+    Exponent *string `json:"Exponent,omitempty"`
 
     // REST response for RSA public key info.
-    Modulus *string
+    Modulus *string `json:"Modulus,omitempty"`
 }
 
 func (PublicKeyResponse) IsPublicKeyResponse() bool {

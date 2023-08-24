@@ -52,25 +52,25 @@ type IBorder interface {
 
 type Border struct {
     // Represents a border of an object.
-    Link IWordsApiLink
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // Represents a border of an object.
-    BorderType *string
+    BorderType *string `json:"BorderType,omitempty"`
 
     // Represents a border of an object.
-    Color IXmlColor
+    Color IXmlColor `json:"Color,omitempty"`
 
     // Represents a border of an object.
-    DistanceFromText *float64
+    DistanceFromText *float64 `json:"DistanceFromText,omitempty"`
 
     // Represents a border of an object.
-    LineStyle *string
+    LineStyle *string `json:"LineStyle,omitempty"`
 
     // Represents a border of an object.
-    LineWidth *float64
+    LineWidth *float64 `json:"LineWidth,omitempty"`
 
     // Represents a border of an object.
-    Shadow *bool
+    Shadow *bool `json:"Shadow,omitempty"`
 }
 
 func (Border) IsBorder() bool {

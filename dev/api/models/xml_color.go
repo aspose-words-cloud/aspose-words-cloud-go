@@ -42,10 +42,10 @@ type IXmlColor interface {
 
 type XmlColor struct {
     // Utility class for Color serialization.
-    Alpha *int32
+    Alpha *int32 `json:"Alpha,omitempty"`
 
     // Utility class for Color serialization.
-    Web *string
+    Web *string `json:"Web,omitempty"`
 }
 
 func (XmlColor) IsXmlColor() bool {

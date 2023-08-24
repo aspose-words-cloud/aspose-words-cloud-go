@@ -42,10 +42,10 @@ type ICompressResponse interface {
 
 type CompressResponse struct {
     // The REST response of compressed document.
-    RequestId *string
+    RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response of compressed document.
-    Document IDocument
+    Document IDocument `json:"Document,omitempty"`
 }
 
 func (CompressResponse) IsCompressResponse() bool {

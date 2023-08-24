@@ -42,10 +42,10 @@ type IDocumentProperties interface {
 
 type DocumentProperties struct {
     // The collection of document properties.
-    Link IWordsApiLink
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // The collection of document properties.
-    List []IDocumentProperty
+    List []IDocumentProperty `json:"List,omitempty"`
 }
 
 func (DocumentProperties) IsDocumentProperties() bool {

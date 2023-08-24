@@ -42,10 +42,10 @@ type ISectionLinkCollectionResponse interface {
 
 type SectionLinkCollectionResponse struct {
     // The REST response with a collection of sections.
-    RequestId *string
+    RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with a collection of sections.
-    Sections ISectionLinkCollection
+    Sections ISectionLinkCollection `json:"Sections,omitempty"`
 }
 
 func (SectionLinkCollectionResponse) IsSectionLinkCollectionResponse() bool {

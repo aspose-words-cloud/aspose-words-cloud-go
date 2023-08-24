@@ -48,19 +48,19 @@ type ITableRowFormat interface {
 
 type TableRowFormat struct {
     // DTO container with formatting for a table row.
-    Link IWordsApiLink
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // DTO container with formatting for a table row.
-    Height *float64
+    Height *float64 `json:"Height,omitempty"`
 
     // DTO container with formatting for a table row.
-    HeightRule *string
+    HeightRule *string `json:"HeightRule,omitempty"`
 
     // DTO container with formatting for a table row.
-    AllowBreakAcrossPages *bool
+    AllowBreakAcrossPages *bool `json:"AllowBreakAcrossPages,omitempty"`
 
     // DTO container with formatting for a table row.
-    HeadingFormat *bool
+    HeadingFormat *bool `json:"HeadingFormat,omitempty"`
 }
 
 func (TableRowFormat) IsTableRowFormat() bool {

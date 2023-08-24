@@ -42,10 +42,10 @@ type ITableCellFormatResponse interface {
 
 type TableCellFormatResponse struct {
     // The REST response with the formatting properties of a table cell.
-    RequestId *string
+    RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with the formatting properties of a table cell.
-    CellFormat ITableCellFormat
+    CellFormat ITableCellFormat `json:"CellFormat,omitempty"`
 }
 
 func (TableCellFormatResponse) IsTableCellFormatResponse() bool {

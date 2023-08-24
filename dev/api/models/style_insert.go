@@ -42,10 +42,10 @@ type IStyleInsert interface {
 
 type StyleInsert struct {
     // Represents a single document style to insert.
-    StyleName *string
+    StyleName *string `json:"StyleName,omitempty"`
 
     // Represents a single document style to insert.
-    StyleType *string
+    StyleType *string `json:"StyleType,omitempty"`
 }
 
 func (StyleInsert) IsStyleInsert() bool {

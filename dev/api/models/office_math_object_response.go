@@ -42,10 +42,10 @@ type IOfficeMathObjectResponse interface {
 
 type OfficeMathObjectResponse struct {
     // The REST response with a OfficeMath object.
-    RequestId *string
+    RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with a OfficeMath object.
-    OfficeMathObject IOfficeMathObject
+    OfficeMathObject IOfficeMathObject `json:"OfficeMathObject,omitempty"`
 }
 
 func (OfficeMathObjectResponse) IsOfficeMathObjectResponse() bool {

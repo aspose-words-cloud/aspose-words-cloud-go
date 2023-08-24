@@ -46,16 +46,16 @@ type IFileLink interface {
 
 type FileLink struct {
     // Provides information for the file link.
-    Href *string
+    Href *string `json:"Href,omitempty"`
 
     // Provides information for the file link.
-    Rel *string
+    Rel *string `json:"Rel,omitempty"`
 
     // Provides information for the file link.
-    Title *string
+    Title *string `json:"Title,omitempty"`
 
     // Provides information for the file link.
-    Type *string
+    Type *string `json:"Type,omitempty"`
 }
 
 func (FileLink) IsFileLink() bool {

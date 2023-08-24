@@ -120,127 +120,127 @@ type IFont interface {
 
 type Font struct {
     // DTO container with a font element.
-    Link IWordsApiLink
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // DTO container with a font element.
-    AllCaps *bool
+    AllCaps *bool `json:"AllCaps,omitempty"`
 
     // DTO container with a font element.
-    Bidi *bool
+    Bidi *bool `json:"Bidi,omitempty"`
 
     // DTO container with a font element.
-    Bold *bool
+    Bold *bool `json:"Bold,omitempty"`
 
     // DTO container with a font element.
-    BoldBi *bool
+    BoldBi *bool `json:"BoldBi,omitempty"`
 
     // DTO container with a font element.
-    Border IBorder
+    Border IBorder `json:"Border,omitempty"`
 
     // DTO container with a font element.
-    Color IXmlColor
+    Color IXmlColor `json:"Color,omitempty"`
 
     // DTO container with a font element.
-    ComplexScript *bool
+    ComplexScript *bool `json:"ComplexScript,omitempty"`
 
     // DTO container with a font element.
-    DoubleStrikeThrough *bool
+    DoubleStrikeThrough *bool `json:"DoubleStrikeThrough,omitempty"`
 
     // DTO container with a font element.
-    Emboss *bool
+    Emboss *bool `json:"Emboss,omitempty"`
 
     // DTO container with a font element.
-    Engrave *bool
+    Engrave *bool `json:"Engrave,omitempty"`
 
     // DTO container with a font element.
-    Hidden *bool
+    Hidden *bool `json:"Hidden,omitempty"`
 
     // DTO container with a font element.
-    HighlightColor IXmlColor
+    HighlightColor IXmlColor `json:"HighlightColor,omitempty"`
 
     // DTO container with a font element.
-    Italic *bool
+    Italic *bool `json:"Italic,omitempty"`
 
     // DTO container with a font element.
-    ItalicBi *bool
+    ItalicBi *bool `json:"ItalicBi,omitempty"`
 
     // DTO container with a font element.
-    Kerning *float64
+    Kerning *float64 `json:"Kerning,omitempty"`
 
     // DTO container with a font element.
-    LocaleId *int32
+    LocaleId *int32 `json:"LocaleId,omitempty"`
 
     // DTO container with a font element.
-    LocaleIdBi *int32
+    LocaleIdBi *int32 `json:"LocaleIdBi,omitempty"`
 
     // DTO container with a font element.
-    LocaleIdFarEast *int32
+    LocaleIdFarEast *int32 `json:"LocaleIdFarEast,omitempty"`
 
     // DTO container with a font element.
-    Name *string
+    Name *string `json:"Name,omitempty"`
 
     // DTO container with a font element.
-    NameAscii *string
+    NameAscii *string `json:"NameAscii,omitempty"`
 
     // DTO container with a font element.
-    NameBi *string
+    NameBi *string `json:"NameBi,omitempty"`
 
     // DTO container with a font element.
-    NameFarEast *string
+    NameFarEast *string `json:"NameFarEast,omitempty"`
 
     // DTO container with a font element.
-    NameOther *string
+    NameOther *string `json:"NameOther,omitempty"`
 
     // DTO container with a font element.
-    NoProofing *bool
+    NoProofing *bool `json:"NoProofing,omitempty"`
 
     // DTO container with a font element.
-    Outline *bool
+    Outline *bool `json:"Outline,omitempty"`
 
     // DTO container with a font element.
-    Position *float64
+    Position *float64 `json:"Position,omitempty"`
 
     // DTO container with a font element.
-    Scaling *int32
+    Scaling *int32 `json:"Scaling,omitempty"`
 
     // DTO container with a font element.
-    Shadow *bool
+    Shadow *bool `json:"Shadow,omitempty"`
 
     // DTO container with a font element.
-    Size *float64
+    Size *float64 `json:"Size,omitempty"`
 
     // DTO container with a font element.
-    SizeBi *float64
+    SizeBi *float64 `json:"SizeBi,omitempty"`
 
     // DTO container with a font element.
-    SmallCaps *bool
+    SmallCaps *bool `json:"SmallCaps,omitempty"`
 
     // DTO container with a font element.
-    Spacing *float64
+    Spacing *float64 `json:"Spacing,omitempty"`
 
     // DTO container with a font element.
-    StrikeThrough *bool
+    StrikeThrough *bool `json:"StrikeThrough,omitempty"`
 
     // DTO container with a font element.
-    StyleIdentifier *string
+    StyleIdentifier *string `json:"StyleIdentifier,omitempty"`
 
     // DTO container with a font element.
-    StyleName *string
+    StyleName *string `json:"StyleName,omitempty"`
 
     // DTO container with a font element.
-    Subscript *bool
+    Subscript *bool `json:"Subscript,omitempty"`
 
     // DTO container with a font element.
-    Superscript *bool
+    Superscript *bool `json:"Superscript,omitempty"`
 
     // DTO container with a font element.
-    TextEffect *string
+    TextEffect *string `json:"TextEffect,omitempty"`
 
     // DTO container with a font element.
-    Underline *string
+    Underline *string `json:"Underline,omitempty"`
 
     // DTO container with a font element.
-    UnderlineColor IXmlColor
+    UnderlineColor IXmlColor `json:"UnderlineColor,omitempty"`
 }
 
 func (Font) IsFont() bool {

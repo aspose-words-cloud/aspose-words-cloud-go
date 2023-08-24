@@ -42,10 +42,10 @@ type IWordsApiErrorResponse interface {
 
 type WordsApiErrorResponse struct {
     // The REST response with an API error.
-    RequestId *string
+    RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with an API error.
-    Error_ IApiError
+    Error_ IApiError `json:"Error,omitempty"`
 }
 
 func (WordsApiErrorResponse) IsWordsApiErrorResponse() bool {

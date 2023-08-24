@@ -42,10 +42,10 @@ type IHeaderFooterLinkCollection interface {
 
 type HeaderFooterLinkCollection struct {
     // The collection of HeaderFooter's links.
-    Link IWordsApiLink
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // The collection of HeaderFooter's links.
-    List []IHeaderFooterLink
+    List []IHeaderFooterLink `json:"List,omitempty"`
 }
 
 func (HeaderFooterLinkCollection) IsHeaderFooterLinkCollection() bool {

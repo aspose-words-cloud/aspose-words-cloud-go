@@ -42,10 +42,10 @@ type IReplaceRange interface {
 
 type ReplaceRange struct {
     // DTO container with a range element.
-    Text *string
+    Text *string `json:"Text,omitempty"`
 
     // DTO container with a range element.
-    TextType *string
+    TextType *string `json:"TextType,omitempty"`
 }
 
 func (ReplaceRange) IsReplaceRange() bool {

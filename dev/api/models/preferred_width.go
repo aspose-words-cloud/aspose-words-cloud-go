@@ -42,10 +42,10 @@ type IPreferredWidth interface {
 
 type PreferredWidth struct {
     // DTO container with a preferred width value.
-    Type *string
+    Type *string `json:"Type,omitempty"`
 
     // DTO container with a preferred width value.
-    Value *float64
+    Value *float64 `json:"Value,omitempty"`
 }
 
 func (PreferredWidth) IsPreferredWidth() bool {

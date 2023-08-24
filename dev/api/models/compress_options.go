@@ -42,10 +42,10 @@ type ICompressOptions interface {
 
 type CompressOptions struct {
     // Options of document compress.
-    ImagesQuality *int32
+    ImagesQuality *int32 `json:"ImagesQuality,omitempty"`
 
     // Options of document compress.
-    ImagesReduceSizeFactor *int32
+    ImagesReduceSizeFactor *int32 `json:"ImagesReduceSizeFactor,omitempty"`
 }
 
 func (CompressOptions) IsCompressOptions() bool {

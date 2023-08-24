@@ -42,10 +42,10 @@ type IHeaderFooterResponse interface {
 
 type HeaderFooterResponse struct {
     // The REST response with a HeaderFooter.
-    RequestId *string
+    RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with a HeaderFooter.
-    HeaderFooter IHeaderFooter
+    HeaderFooter IHeaderFooter `json:"HeaderFooter,omitempty"`
 }
 
 func (HeaderFooterResponse) IsHeaderFooterResponse() bool {

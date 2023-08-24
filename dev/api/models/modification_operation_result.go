@@ -42,10 +42,10 @@ type IModificationOperationResult interface {
 
 type ModificationOperationResult struct {
     // result of the operation which modifies the original document and saves the result.
-    Dest IFileLink
+    Dest IFileLink `json:"Dest,omitempty"`
 
     // result of the operation which modifies the original document and saves the result.
-    Source IFileLink
+    Source IFileLink `json:"Source,omitempty"`
 }
 
 func (ModificationOperationResult) IsModificationOperationResult() bool {

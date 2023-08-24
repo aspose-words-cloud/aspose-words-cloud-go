@@ -46,16 +46,16 @@ type IError interface {
 
 type Error struct {
     // Error.
-    Code *string
+    Code *string `json:"Code,omitempty"`
 
     // Error.
-    Description *string
+    Description *string `json:"Description,omitempty"`
 
     // Error.
-    InnerError IErrorDetails
+    InnerError IErrorDetails `json:"InnerError,omitempty"`
 
     // Error.
-    Message *string
+    Message *string `json:"Message,omitempty"`
 }
 
 func (Error) IsError() bool {

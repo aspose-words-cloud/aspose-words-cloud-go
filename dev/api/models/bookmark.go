@@ -44,13 +44,13 @@ type IBookmark interface {
 
 type Bookmark struct {
     // Represents a single bookmark.
-    Link IWordsApiLink
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // Represents a single bookmark.
-    Name *string
+    Name *string `json:"Name,omitempty"`
 
     // Represents a single bookmark.
-    Text *string
+    Text *string `json:"Text,omitempty"`
 }
 
 func (Bookmark) IsBookmark() bool {

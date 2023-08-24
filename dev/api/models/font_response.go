@@ -42,10 +42,10 @@ type IFontResponse interface {
 
 type FontResponse struct {
     // The REST response with a font.
-    RequestId *string
+    RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with a font.
-    Font IFont
+    Font IFont `json:"Font,omitempty"`
 }
 
 func (FontResponse) IsFontResponse() bool {

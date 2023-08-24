@@ -64,43 +64,43 @@ type IFieldOptions interface {
 
 type FieldOptions struct {
     // DTO for field options.
-    BuiltInTemplatesPaths []string
+    BuiltInTemplatesPaths []string `json:"BuiltInTemplatesPaths,omitempty"`
 
     // DTO for field options.
-    CurrentUser IUserInformation
+    CurrentUser IUserInformation `json:"CurrentUser,omitempty"`
 
     // DTO for field options.
-    CustomTocStyleSeparator *string
+    CustomTocStyleSeparator *string `json:"CustomTocStyleSeparator,omitempty"`
 
     // DTO for field options.
-    DefaultDocumentAuthor *string
+    DefaultDocumentAuthor *string `json:"DefaultDocumentAuthor,omitempty"`
 
     // DTO for field options.
-    FieldIndexFormat *string
+    FieldIndexFormat *string `json:"FieldIndexFormat,omitempty"`
 
     // DTO for field options.
-    FieldUpdateCultureName *string
+    FieldUpdateCultureName *string `json:"FieldUpdateCultureName,omitempty"`
 
     // DTO for field options.
-    FieldUpdateCultureSource *string
+    FieldUpdateCultureSource *string `json:"FieldUpdateCultureSource,omitempty"`
 
     // DTO for field options.
-    FileName *string
+    FileName *string `json:"FileName,omitempty"`
 
     // DTO for field options.
-    IsBidiTextSupportedOnUpdate *bool
+    IsBidiTextSupportedOnUpdate *bool `json:"IsBidiTextSupportedOnUpdate,omitempty"`
 
     // DTO for field options.
-    LegacyNumberFormat *bool
+    LegacyNumberFormat *bool `json:"LegacyNumberFormat,omitempty"`
 
     // DTO for field options.
-    PreProcessCultureName *string
+    PreProcessCultureName *string `json:"PreProcessCultureName,omitempty"`
 
     // DTO for field options.
-    TemplateName *string
+    TemplateName *string `json:"TemplateName,omitempty"`
 
     // DTO for field options.
-    UseInvariantCultureNumberFormat *bool
+    UseInvariantCultureNumberFormat *bool `json:"UseInvariantCultureNumberFormat,omitempty"`
 }
 
 func (FieldOptions) IsFieldOptions() bool {

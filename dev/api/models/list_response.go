@@ -42,10 +42,10 @@ type IListResponse interface {
 
 type ListResponse struct {
     // The REST response with a list information.
-    RequestId *string
+    RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with a list information.
-    List IListInfo
+    List IListInfo `json:"List,omitempty"`
 }
 
 func (ListResponse) IsListResponse() bool {

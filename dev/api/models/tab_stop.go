@@ -46,16 +46,16 @@ type ITabStop interface {
 
 type TabStop struct {
     // DTO container with paragraph format tab stop.
-    Alignment *string
+    Alignment *string `json:"Alignment,omitempty"`
 
     // DTO container with paragraph format tab stop.
-    Leader *string
+    Leader *string `json:"Leader,omitempty"`
 
     // DTO container with paragraph format tab stop.
-    Position *float64
+    Position *float64 `json:"Position,omitempty"`
 
     // DTO container with paragraph format tab stop.
-    IsClear *bool
+    IsClear *bool `json:"IsClear,omitempty"`
 }
 
 func (TabStop) IsTabStop() bool {

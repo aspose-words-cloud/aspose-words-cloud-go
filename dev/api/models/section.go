@@ -50,22 +50,22 @@ type ISection interface {
 
 type Section struct {
     // DTO container with a section element.
-    Link IWordsApiLink
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // DTO container with a section element.
-    ChildNodes []INodeLink
+    ChildNodes []INodeLink `json:"ChildNodes,omitempty"`
 
     // DTO container with a section element.
-    Paragraphs ILinkElement
+    Paragraphs ILinkElement `json:"Paragraphs,omitempty"`
 
     // DTO container with a section element.
-    PageSetup ILinkElement
+    PageSetup ILinkElement `json:"PageSetup,omitempty"`
 
     // DTO container with a section element.
-    HeaderFooters ILinkElement
+    HeaderFooters ILinkElement `json:"HeaderFooters,omitempty"`
 
     // DTO container with a section element.
-    Tables ILinkElement
+    Tables ILinkElement `json:"Tables,omitempty"`
 }
 
 func (Section) IsSection() bool {

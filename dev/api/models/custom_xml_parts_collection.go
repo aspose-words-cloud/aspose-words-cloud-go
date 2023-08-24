@@ -42,10 +42,10 @@ type ICustomXmlPartsCollection interface {
 
 type CustomXmlPartsCollection struct {
     // The collection of CustomXmlPart.
-    Link IWordsApiLink
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // The collection of CustomXmlPart.
-    CustomXmlPartsList []ICustomXmlPart
+    CustomXmlPartsList []ICustomXmlPart `json:"CustomXmlPartsList,omitempty"`
 }
 
 func (CustomXmlPartsCollection) IsCustomXmlPartsCollection() bool {

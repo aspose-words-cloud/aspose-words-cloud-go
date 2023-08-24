@@ -42,10 +42,10 @@ type IParagraphLinkCollection interface {
 
 type ParagraphLinkCollection struct {
     // The collection of paragraph's links.
-    Link IWordsApiLink
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // The collection of paragraph's links.
-    ParagraphLinkList []IParagraphLink
+    ParagraphLinkList []IParagraphLink `json:"ParagraphLinkList,omitempty"`
 }
 
 func (ParagraphLinkCollection) IsParagraphLinkCollection() bool {

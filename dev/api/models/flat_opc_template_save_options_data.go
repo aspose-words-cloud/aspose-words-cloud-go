@@ -74,58 +74,58 @@ type IFlatOpcTemplateSaveOptionsData interface {
 
 type FlatOpcTemplateSaveOptionsData struct {
     // Container class for fopc_template save options.
-    AllowEmbeddingPostScriptFonts *bool
+    AllowEmbeddingPostScriptFonts *bool `json:"AllowEmbeddingPostScriptFonts,omitempty"`
 
     // Container class for fopc_template save options.
-    CustomTimeZoneInfoData ITimeZoneInfoData
+    CustomTimeZoneInfoData ITimeZoneInfoData `json:"CustomTimeZoneInfoData,omitempty"`
 
     // Container class for fopc_template save options.
-    Dml3DEffectsRenderingMode *string
+    Dml3DEffectsRenderingMode *string `json:"Dml3DEffectsRenderingMode,omitempty"`
 
     // Container class for fopc_template save options.
-    DmlEffectsRenderingMode *string
+    DmlEffectsRenderingMode *string `json:"DmlEffectsRenderingMode,omitempty"`
 
     // Container class for fopc_template save options.
-    DmlRenderingMode *string
+    DmlRenderingMode *string `json:"DmlRenderingMode,omitempty"`
 
     // Container class for fopc_template save options.
-    FileName *string
+    FileName *string `json:"FileName,omitempty"`
 
     // Container class for fopc_template save options.
-    ImlRenderingMode *string
+    ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for fopc_template save options.
-    UpdateCreatedTimeProperty *bool
+    UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Container class for fopc_template save options.
-    UpdateFields *bool
+    UpdateFields *bool `json:"UpdateFields,omitempty"`
 
     // Container class for fopc_template save options.
-    UpdateLastPrintedProperty *bool
+    UpdateLastPrintedProperty *bool `json:"UpdateLastPrintedProperty,omitempty"`
 
     // Container class for fopc_template save options.
-    UpdateLastSavedTimeProperty *bool
+    UpdateLastSavedTimeProperty *bool `json:"UpdateLastSavedTimeProperty,omitempty"`
 
     // Container class for fopc_template save options.
-    UpdateSdtContent *bool
+    UpdateSdtContent *bool `json:"UpdateSdtContent,omitempty"`
 
     // Container class for fopc_template save options.
-    ZipOutput *bool
+    ZipOutput *bool `json:"ZipOutput,omitempty"`
 
     // Container class for fopc_template save options.
-    Compliance *string
+    Compliance *string `json:"Compliance,omitempty"`
 
     // Container class for fopc_template save options.
-    CompressionLevel *string
+    CompressionLevel *string `json:"CompressionLevel,omitempty"`
 
     // Container class for fopc_template save options.
-    Password *string
+    Password *string `json:"Password,omitempty"`
 
     // Container class for fopc_template save options.
-    PrettyFormat *bool
+    PrettyFormat *bool `json:"PrettyFormat,omitempty"`
 
     // Container class for fopc_template save options.
-    SaveFormat *string
+    SaveFormat *string `json:"SaveFormat,omitempty"`
 }
 
 func (FlatOpcTemplateSaveOptionsData) IsFlatOpcTemplateSaveOptionsData() bool {

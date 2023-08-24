@@ -46,16 +46,16 @@ type IDocumentProperty interface {
 
 type DocumentProperty struct {
     // Words document property DTO.
-    Link IWordsApiLink
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // Words document property DTO.
-    Name *string
+    Name *string `json:"Name,omitempty"`
 
     // Words document property DTO.
-    Value *string
+    Value *string `json:"Value,omitempty"`
 
     // Words document property DTO.
-    BuiltIn *bool
+    BuiltIn *bool `json:"BuiltIn,omitempty"`
 }
 
 func (DocumentProperty) IsDocumentProperty() bool {

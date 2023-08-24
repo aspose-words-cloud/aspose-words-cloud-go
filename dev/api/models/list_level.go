@@ -64,43 +64,43 @@ type IListLevel interface {
 
 type ListLevel struct {
     // DTO container with a document list level.
-    Link IWordsApiLink
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // DTO container with a document list level.
-    StartAt *int32
+    StartAt *int32 `json:"StartAt,omitempty"`
 
     // DTO container with a document list level.
-    NumberStyle *string
+    NumberStyle *string `json:"NumberStyle,omitempty"`
 
     // DTO container with a document list level.
-    NumberFormat *string
+    NumberFormat *string `json:"NumberFormat,omitempty"`
 
     // DTO container with a document list level.
-    Alignment *string
+    Alignment *string `json:"Alignment,omitempty"`
 
     // DTO container with a document list level.
-    IsLegal *bool
+    IsLegal *bool `json:"IsLegal,omitempty"`
 
     // DTO container with a document list level.
-    RestartAfterLevel *int32
+    RestartAfterLevel *int32 `json:"RestartAfterLevel,omitempty"`
 
     // DTO container with a document list level.
-    TrailingCharacter *string
+    TrailingCharacter *string `json:"TrailingCharacter,omitempty"`
 
     // DTO container with a document list level.
-    Font IFont
+    Font IFont `json:"Font,omitempty"`
 
     // DTO container with a document list level.
-    TabPosition *float64
+    TabPosition *float64 `json:"TabPosition,omitempty"`
 
     // DTO container with a document list level.
-    NumberPosition *float64
+    NumberPosition *float64 `json:"NumberPosition,omitempty"`
 
     // DTO container with a document list level.
-    TextPosition *float64
+    TextPosition *float64 `json:"TextPosition,omitempty"`
 
     // DTO container with a document list level.
-    LinkedStyle IStyle
+    LinkedStyle IStyle `json:"LinkedStyle,omitempty"`
 }
 
 func (ListLevel) IsListLevel() bool {

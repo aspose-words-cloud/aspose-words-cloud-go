@@ -46,16 +46,16 @@ type IFootnoteUpdate interface {
 
 type FootnoteUpdate struct {
     // Footnote for update.
-    FootnoteType *string
+    FootnoteType *string `json:"FootnoteType,omitempty"`
 
     // Footnote for update.
-    Position INewDocumentPosition
+    Position INewDocumentPosition `json:"Position,omitempty"`
 
     // Footnote for update.
-    ReferenceMark *string
+    ReferenceMark *string `json:"ReferenceMark,omitempty"`
 
     // Footnote for update.
-    Text *string
+    Text *string `json:"Text,omitempty"`
 }
 
 func (FootnoteUpdate) IsFootnoteUpdate() bool {

@@ -104,103 +104,103 @@ type IGifSaveOptionsData interface {
 
 type GifSaveOptionsData struct {
     // Container class for gif save options.
-    AllowEmbeddingPostScriptFonts *bool
+    AllowEmbeddingPostScriptFonts *bool `json:"AllowEmbeddingPostScriptFonts,omitempty"`
 
     // Container class for gif save options.
-    CustomTimeZoneInfoData ITimeZoneInfoData
+    CustomTimeZoneInfoData ITimeZoneInfoData `json:"CustomTimeZoneInfoData,omitempty"`
 
     // Container class for gif save options.
-    Dml3DEffectsRenderingMode *string
+    Dml3DEffectsRenderingMode *string `json:"Dml3DEffectsRenderingMode,omitempty"`
 
     // Container class for gif save options.
-    DmlEffectsRenderingMode *string
+    DmlEffectsRenderingMode *string `json:"DmlEffectsRenderingMode,omitempty"`
 
     // Container class for gif save options.
-    DmlRenderingMode *string
+    DmlRenderingMode *string `json:"DmlRenderingMode,omitempty"`
 
     // Container class for gif save options.
-    FileName *string
+    FileName *string `json:"FileName,omitempty"`
 
     // Container class for gif save options.
-    ImlRenderingMode *string
+    ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for gif save options.
-    UpdateCreatedTimeProperty *bool
+    UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Container class for gif save options.
-    UpdateFields *bool
+    UpdateFields *bool `json:"UpdateFields,omitempty"`
 
     // Container class for gif save options.
-    UpdateLastPrintedProperty *bool
+    UpdateLastPrintedProperty *bool `json:"UpdateLastPrintedProperty,omitempty"`
 
     // Container class for gif save options.
-    UpdateLastSavedTimeProperty *bool
+    UpdateLastSavedTimeProperty *bool `json:"UpdateLastSavedTimeProperty,omitempty"`
 
     // Container class for gif save options.
-    UpdateSdtContent *bool
+    UpdateSdtContent *bool `json:"UpdateSdtContent,omitempty"`
 
     // Container class for gif save options.
-    ZipOutput *bool
+    ZipOutput *bool `json:"ZipOutput,omitempty"`
 
     // Container class for gif save options.
-    ColorMode *string
+    ColorMode *string `json:"ColorMode,omitempty"`
 
     // Container class for gif save options.
-    JpegQuality *int32
+    JpegQuality *int32 `json:"JpegQuality,omitempty"`
 
     // Container class for gif save options.
-    MetafileRenderingOptions IMetafileRenderingOptionsData
+    MetafileRenderingOptions IMetafileRenderingOptionsData `json:"MetafileRenderingOptions,omitempty"`
 
     // Container class for gif save options.
-    NumeralFormat *string
+    NumeralFormat *string `json:"NumeralFormat,omitempty"`
 
     // Container class for gif save options.
-    OptimizeOutput *bool
+    OptimizeOutput *bool `json:"OptimizeOutput,omitempty"`
 
     // Container class for gif save options.
-    PageCount *int32
+    PageCount *int32 `json:"PageCount,omitempty"`
 
     // Container class for gif save options.
-    PageIndex *int32
+    PageIndex *int32 `json:"PageIndex,omitempty"`
 
     // Container class for gif save options.
-    HorizontalResolution *float64
+    HorizontalResolution *float64 `json:"HorizontalResolution,omitempty"`
 
     // Container class for gif save options.
-    ImageBrightness *float64
+    ImageBrightness *float64 `json:"ImageBrightness,omitempty"`
 
     // Container class for gif save options.
-    ImageColorMode *string
+    ImageColorMode *string `json:"ImageColorMode,omitempty"`
 
     // Container class for gif save options.
-    ImageContrast *float64
+    ImageContrast *float64 `json:"ImageContrast,omitempty"`
 
     // Container class for gif save options.
-    PaperColor *string
+    PaperColor *string `json:"PaperColor,omitempty"`
 
     // Container class for gif save options.
-    PixelFormat *string
+    PixelFormat *string `json:"PixelFormat,omitempty"`
 
     // Container class for gif save options.
-    Resolution *float64
+    Resolution *float64 `json:"Resolution,omitempty"`
 
     // Container class for gif save options.
-    Scale *float64
+    Scale *float64 `json:"Scale,omitempty"`
 
     // Container class for gif save options.
-    UseAntiAliasing *bool
+    UseAntiAliasing *bool `json:"UseAntiAliasing,omitempty"`
 
     // Container class for gif save options.
-    UseHighQualityRendering *bool
+    UseHighQualityRendering *bool `json:"UseHighQualityRendering,omitempty"`
 
     // Container class for gif save options.
-    VerticalResolution *float64
+    VerticalResolution *float64 `json:"VerticalResolution,omitempty"`
 
     // Container class for gif save options.
-    UseGdiEmfRenderer *bool
+    UseGdiEmfRenderer *bool `json:"UseGdiEmfRenderer,omitempty"`
 
     // Container class for gif save options.
-    SaveFormat *string
+    SaveFormat *string `json:"SaveFormat,omitempty"`
 }
 
 func (GifSaveOptionsData) IsGifSaveOptionsData() bool {

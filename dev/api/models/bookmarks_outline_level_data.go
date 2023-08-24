@@ -42,10 +42,10 @@ type IBookmarksOutlineLevelData interface {
 
 type BookmarksOutlineLevelData struct {
     // Container class for individual bookmarks outline level.
-    BookmarksOutlineLevel *int32
+    BookmarksOutlineLevel *int32 `json:"BookmarksOutlineLevel,omitempty"`
 
     // Container class for individual bookmarks outline level.
-    Name *string
+    Name *string `json:"Name,omitempty"`
 }
 
 func (BookmarksOutlineLevelData) IsBookmarksOutlineLevelData() bool {

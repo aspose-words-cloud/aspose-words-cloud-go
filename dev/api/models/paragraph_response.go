@@ -42,10 +42,10 @@ type IParagraphResponse interface {
 
 type ParagraphResponse struct {
     // The REST response with a paragraph.
-    RequestId *string
+    RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with a paragraph.
-    Paragraph IParagraph
+    Paragraph IParagraph `json:"Paragraph,omitempty"`
 }
 
 func (ParagraphResponse) IsParagraphResponse() bool {

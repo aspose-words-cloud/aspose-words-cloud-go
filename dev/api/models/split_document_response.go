@@ -42,10 +42,10 @@ type ISplitDocumentResponse interface {
 
 type SplitDocumentResponse struct {
     // The REST response with a result of document splitting.
-    RequestId *string
+    RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with a result of document splitting.
-    SplitResult ISplitDocumentResult
+    SplitResult ISplitDocumentResult `json:"SplitResult,omitempty"`
 }
 
 func (SplitDocumentResponse) IsSplitDocumentResponse() bool {

@@ -42,10 +42,10 @@ type ILists interface {
 
 type Lists struct {
     // DTO container with an array of document lists.
-    Link IWordsApiLink
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // DTO container with an array of document lists.
-    ListInfo []IListInfo
+    ListInfo []IListInfo `json:"ListInfo,omitempty"`
 }
 
 func (Lists) IsLists() bool {

@@ -42,10 +42,10 @@ type IFormFieldCollection interface {
 
 type FormFieldCollection struct {
     // DTO container with a collection of form fields.
-    Link IWordsApiLink
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // DTO container with a collection of form fields.
-    List []IFormField
+    List []IFormField `json:"List,omitempty"`
 }
 
 func (FormFieldCollection) IsFormFieldCollection() bool {

@@ -42,10 +42,10 @@ type IFieldNamesResponse interface {
 
 type FieldNamesResponse struct {
     // The REST response with a collection of mail merge fields.
-    RequestId *string
+    RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with a collection of mail merge fields.
-    FieldNames IFieldNames
+    FieldNames IFieldNames `json:"FieldNames,omitempty"`
 }
 
 func (FieldNamesResponse) IsFieldNamesResponse() bool {

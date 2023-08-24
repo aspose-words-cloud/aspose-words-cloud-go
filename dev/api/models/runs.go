@@ -42,10 +42,10 @@ type IRuns interface {
 
 type Runs struct {
     // DTO container with a collection of runs.
-    Link IWordsApiLink
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // DTO container with a collection of runs.
-    List []IRun
+    List []IRun `json:"List,omitempty"`
 }
 
 func (Runs) IsRuns() bool {

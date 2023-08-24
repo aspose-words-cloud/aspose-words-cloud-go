@@ -40,7 +40,7 @@ type IStyleApply interface {
 
 type StyleApply struct {
     // Represents a single document style to insert.
-    StyleName *string
+    StyleName *string `json:"StyleName,omitempty"`
 }
 
 func (StyleApply) IsStyleApply() bool {

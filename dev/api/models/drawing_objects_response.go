@@ -42,10 +42,10 @@ type IDrawingObjectsResponse interface {
 
 type DrawingObjectsResponse struct {
     // The REST response with a collection of DrawingObjects.
-    RequestId *string
+    RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with a collection of DrawingObjects.
-    DrawingObjects IDrawingObjectCollection
+    DrawingObjects IDrawingObjectCollection `json:"DrawingObjects,omitempty"`
 }
 
 func (DrawingObjectsResponse) IsDrawingObjectsResponse() bool {

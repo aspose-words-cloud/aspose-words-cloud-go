@@ -42,10 +42,10 @@ type IDocumentEntryList interface {
 
 type DocumentEntryList struct {
     // Represents a list of documents which will be appended to the original resource document.
-    ApplyBaseDocumentHeadersAndFootersToAppendingDocuments *bool
+    ApplyBaseDocumentHeadersAndFootersToAppendingDocuments *bool `json:"ApplyBaseDocumentHeadersAndFootersToAppendingDocuments,omitempty"`
 
     // Represents a list of documents which will be appended to the original resource document.
-    DocumentEntries []IDocumentEntry
+    DocumentEntries []IDocumentEntry `json:"DocumentEntries,omitempty"`
 }
 
 func (DocumentEntryList) IsDocumentEntryList() bool {

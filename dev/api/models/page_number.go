@@ -48,19 +48,19 @@ type IPageNumber interface {
 
 type PageNumber struct {
     // Class is used for insert page number request building.
-    Alignment *string
+    Alignment *string `json:"Alignment,omitempty"`
 
     // Class is used for insert page number request building.
-    Format *string
+    Format *string `json:"Format,omitempty"`
 
     // Class is used for insert page number request building.
-    IsTop *bool
+    IsTop *bool `json:"IsTop,omitempty"`
 
     // Class is used for insert page number request building.
-    PageStartingNumber *int32
+    PageStartingNumber *int32 `json:"PageStartingNumber,omitempty"`
 
     // Class is used for insert page number request building.
-    SetPageNumberOnFirstPage *bool
+    SetPageNumberOnFirstPage *bool `json:"SetPageNumberOnFirstPage,omitempty"`
 }
 
 func (PageNumber) IsPageNumber() bool {

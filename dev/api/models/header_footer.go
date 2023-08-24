@@ -48,19 +48,19 @@ type IHeaderFooter interface {
 
 type HeaderFooter struct {
     // DTO container with a section element.
-    Link IWordsApiLink
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // DTO container with a section element.
-    Type *string
+    Type *string `json:"Type,omitempty"`
 
     // DTO container with a section element.
-    ChildNodes []INodeLink
+    ChildNodes []INodeLink `json:"ChildNodes,omitempty"`
 
     // DTO container with a section element.
-    Paragraphs ILinkElement
+    Paragraphs ILinkElement `json:"Paragraphs,omitempty"`
 
     // DTO container with a section element.
-    DrawingObjects ILinkElement
+    DrawingObjects ILinkElement `json:"DrawingObjects,omitempty"`
 }
 
 func (HeaderFooter) IsHeaderFooter() bool {

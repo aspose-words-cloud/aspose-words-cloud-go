@@ -40,7 +40,7 @@ type IStyleCopy interface {
 
 type StyleCopy struct {
     // Represents a single document style to insert.
-    StyleName *string
+    StyleName *string `json:"StyleName,omitempty"`
 }
 
 func (StyleCopy) IsStyleCopy() bool {

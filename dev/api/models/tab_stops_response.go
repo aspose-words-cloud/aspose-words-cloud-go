@@ -42,10 +42,10 @@ type ITabStopsResponse interface {
 
 type TabStopsResponse struct {
     // The REST response with an array of tab stops.
-    RequestId *string
+    RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with an array of tab stops.
-    TabStops []ITabStop
+    TabStops []ITabStop `json:"TabStops,omitempty"`
 }
 
 func (TabStopsResponse) IsTabStopsResponse() bool {

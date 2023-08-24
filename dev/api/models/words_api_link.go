@@ -46,16 +46,16 @@ type IWordsApiLink interface {
 
 type WordsApiLink struct {
     // Provides information for the words API resource link.
-    Href *string
+    Href *string `json:"Href,omitempty"`
 
     // Provides information for the words API resource link.
-    Rel *string
+    Rel *string `json:"Rel,omitempty"`
 
     // Provides information for the words API resource link.
-    Title *string
+    Title *string `json:"Title,omitempty"`
 
     // Provides information for the words API resource link.
-    Type *string
+    Type *string `json:"Type,omitempty"`
 }
 
 func (WordsApiLink) IsWordsApiLink() bool {

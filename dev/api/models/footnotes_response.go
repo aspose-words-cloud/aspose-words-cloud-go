@@ -42,10 +42,10 @@ type IFootnotesResponse interface {
 
 type FootnotesResponse struct {
     // The REST response with a collection of footnotes.
-    RequestId *string
+    RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with a collection of footnotes.
-    Footnotes IFootnoteCollection
+    Footnotes IFootnoteCollection `json:"Footnotes,omitempty"`
 }
 
 func (FootnotesResponse) IsFootnotesResponse() bool {

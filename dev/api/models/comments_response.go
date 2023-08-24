@@ -42,10 +42,10 @@ type ICommentsResponse interface {
 
 type CommentsResponse struct {
     // The REST response with a collection of comments.
-    RequestId *string
+    RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with a collection of comments.
-    Comments ICommentsCollection
+    Comments ICommentsCollection `json:"Comments,omitempty"`
 }
 
 func (CommentsResponse) IsCommentsResponse() bool {

@@ -42,10 +42,10 @@ type IHeaderFootersResponse interface {
 
 type HeaderFootersResponse struct {
     // The REST response with a collection of HeaderFooter elements.
-    RequestId *string
+    RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with a collection of HeaderFooter elements.
-    HeaderFooters IHeaderFooterLinkCollection
+    HeaderFooters IHeaderFooterLinkCollection `json:"HeaderFooters,omitempty"`
 }
 
 func (HeaderFootersResponse) IsHeaderFootersResponse() bool {

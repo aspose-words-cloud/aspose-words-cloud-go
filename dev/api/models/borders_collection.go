@@ -42,10 +42,10 @@ type IBordersCollection interface {
 
 type BordersCollection struct {
     // The collection of borders.
-    Link IWordsApiLink
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // The collection of borders.
-    List []IBorder
+    List []IBorder `json:"List,omitempty"`
 }
 
 func (BordersCollection) IsBordersCollection() bool {

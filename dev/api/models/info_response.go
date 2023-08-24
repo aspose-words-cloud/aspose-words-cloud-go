@@ -46,16 +46,16 @@ type IInfoResponse interface {
 
 type InfoResponse struct {
     // Response with API info.
-    RequestId *string
+    RequestId *string `json:"RequestId,omitempty"`
 
     // Response with API info.
-    AdditionalInfo []IInfoAdditionalItem
+    AdditionalInfo []IInfoAdditionalItem `json:"AdditionalInfo,omitempty"`
 
     // Response with API info.
-    Name *string
+    Name *string `json:"Name,omitempty"`
 
     // Response with API info.
-    Version *string
+    Version *string `json:"Version,omitempty"`
 }
 
 func (InfoResponse) IsInfoResponse() bool {

@@ -46,16 +46,16 @@ type IPageStatData interface {
 
 type PageStatData struct {
     // Container for the page's statistical data.
-    FootnotesStatData IFootnotesStatData
+    FootnotesStatData IFootnotesStatData `json:"FootnotesStatData,omitempty"`
 
     // Container for the page's statistical data.
-    ParagraphCount *int32
+    ParagraphCount *int32 `json:"ParagraphCount,omitempty"`
 
     // Container for the page's statistical data.
-    WordCount *int32
+    WordCount *int32 `json:"WordCount,omitempty"`
 
     // Container for the page's statistical data.
-    PageNumber *int32
+    PageNumber *int32 `json:"PageNumber,omitempty"`
 }
 
 func (PageStatData) IsPageStatData() bool {

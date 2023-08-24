@@ -48,19 +48,19 @@ type IApiError interface {
 
 type ApiError struct {
     // Api error.
-    Code *string
+    Code *string `json:"Code,omitempty"`
 
     // Api error.
-    DateTime *Time
+    DateTime *Time `json:"DateTime,omitempty"`
 
     // Api error.
-    Description *string
+    Description *string `json:"Description,omitempty"`
 
     // Api error.
-    InnerError IApiError
+    InnerError IApiError `json:"InnerError,omitempty"`
 
     // Api error.
-    Message *string
+    Message *string `json:"Message,omitempty"`
 }
 
 func (ApiError) IsApiError() bool {

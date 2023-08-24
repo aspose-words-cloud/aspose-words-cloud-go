@@ -40,7 +40,7 @@ type ITableCellInsertDto interface {
 
 type TableCellInsertDto struct {
     // DTO container with a table cell.
-    InsertAfter *int32
+    InsertAfter *int32 `json:"InsertAfter,omitempty"`
 }
 
 func (TableCellInsertDto) IsTableCellInsertDto() bool {

@@ -58,34 +58,34 @@ type IListLevelUpdate interface {
 
 type ListLevelUpdate struct {
     // Represents a document list levels.
-    Alignment *string
+    Alignment *string `json:"Alignment,omitempty"`
 
     // Represents a document list levels.
-    IsLegal *bool
+    IsLegal *bool `json:"IsLegal,omitempty"`
 
     // Represents a document list levels.
-    NumberFormat *string
+    NumberFormat *string `json:"NumberFormat,omitempty"`
 
     // Represents a document list levels.
-    NumberPosition *float64
+    NumberPosition *float64 `json:"NumberPosition,omitempty"`
 
     // Represents a document list levels.
-    NumberStyle *string
+    NumberStyle *string `json:"NumberStyle,omitempty"`
 
     // Represents a document list levels.
-    RestartAfterLevel *int32
+    RestartAfterLevel *int32 `json:"RestartAfterLevel,omitempty"`
 
     // Represents a document list levels.
-    StartAt *int32
+    StartAt *int32 `json:"StartAt,omitempty"`
 
     // Represents a document list levels.
-    TabPosition *float64
+    TabPosition *float64 `json:"TabPosition,omitempty"`
 
     // Represents a document list levels.
-    TextPosition *float64
+    TextPosition *float64 `json:"TextPosition,omitempty"`
 
     // Represents a document list levels.
-    TrailingCharacter *string
+    TrailingCharacter *string `json:"TrailingCharacter,omitempty"`
 }
 
 func (ListLevelUpdate) IsListLevelUpdate() bool {

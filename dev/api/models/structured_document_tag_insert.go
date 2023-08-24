@@ -90,82 +90,82 @@ type IStructuredDocumentTagInsert interface {
 
 type StructuredDocumentTagInsert struct {
     // DTO container with a StructuredDocumentTag.
-    Link IWordsApiLink
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // DTO container with a StructuredDocumentTag.
-    NodeId *string
+    NodeId *string `json:"NodeId,omitempty"`
 
     // DTO container with a StructuredDocumentTag.
-    ListItems []IStructuredDocumentTagListItem
+    ListItems []IStructuredDocumentTagListItem `json:"ListItems,omitempty"`
 
     // DTO container with a StructuredDocumentTag.
-    Checked *bool
+    Checked *bool `json:"Checked,omitempty"`
 
     // DTO container with a StructuredDocumentTag.
-    Appearance *string
+    Appearance *string `json:"Appearance,omitempty"`
 
     // DTO container with a StructuredDocumentTag.
-    DateDisplayLocale *int32
+    DateDisplayLocale *int32 `json:"DateDisplayLocale,omitempty"`
 
     // DTO container with a StructuredDocumentTag.
-    DateDisplayFormat *string
+    DateDisplayFormat *string `json:"DateDisplayFormat,omitempty"`
 
     // DTO container with a StructuredDocumentTag.
-    FullDate *Time
+    FullDate *Time `json:"FullDate,omitempty"`
 
     // DTO container with a StructuredDocumentTag.
-    Title *string
+    Title *string `json:"Title,omitempty"`
 
     // DTO container with a StructuredDocumentTag.
-    DateStorageFormat *string
+    DateStorageFormat *string `json:"DateStorageFormat,omitempty"`
 
     // DTO container with a StructuredDocumentTag.
-    BuildingBlockGallery *string
+    BuildingBlockGallery *string `json:"BuildingBlockGallery,omitempty"`
 
     // DTO container with a StructuredDocumentTag.
-    BuildingBlockCategory *string
+    BuildingBlockCategory *string `json:"BuildingBlockCategory,omitempty"`
 
     // DTO container with a StructuredDocumentTag.
-    Multiline *bool
+    Multiline *bool `json:"Multiline,omitempty"`
 
     // DTO container with a StructuredDocumentTag.
-    Color *string
+    Color *string `json:"Color,omitempty"`
 
     // DTO container with a StructuredDocumentTag.
-    StyleName *string
+    StyleName *string `json:"StyleName,omitempty"`
 
     // DTO container with a StructuredDocumentTag.
-    CalendarType *string
+    CalendarType *string `json:"CalendarType,omitempty"`
 
     // DTO container with a StructuredDocumentTag.
-    IsTemporary *bool
+    IsTemporary *bool `json:"IsTemporary,omitempty"`
 
     // DTO container with a StructuredDocumentTag.
-    Level *string
+    Level *string `json:"Level,omitempty"`
 
     // DTO container with a StructuredDocumentTag.
-    SdtType *string
+    SdtType *string `json:"SdtType,omitempty"`
 
     // DTO container with a StructuredDocumentTag.
-    PlaceholderName *string
+    PlaceholderName *string `json:"PlaceholderName,omitempty"`
 
     // DTO container with a StructuredDocumentTag.
-    LockContentControl *bool
+    LockContentControl *bool `json:"LockContentControl,omitempty"`
 
     // DTO container with a StructuredDocumentTag.
-    LockContents *bool
+    LockContents *bool `json:"LockContents,omitempty"`
 
     // DTO container with a StructuredDocumentTag.
-    IsShowingPlaceholderText *bool
+    IsShowingPlaceholderText *bool `json:"IsShowingPlaceholderText,omitempty"`
 
     // DTO container with a StructuredDocumentTag.
-    Tag *string
+    Tag *string `json:"Tag,omitempty"`
 
     // DTO container with a StructuredDocumentTag.
-    Id *int32
+    Id *int32 `json:"Id,omitempty"`
 
     // DTO container with a StructuredDocumentTag.
-    WordOpenXML *string
+    WordOpenXML *string `json:"WordOpenXML,omitempty"`
 }
 
 func (StructuredDocumentTagInsert) IsStructuredDocumentTagInsert() bool {

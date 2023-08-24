@@ -54,28 +54,28 @@ type IComment interface {
 
 type Comment struct {
     // DTO container with a comment.
-    Link IWordsApiLink
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // DTO container with a comment.
-    RangeStart IDocumentPosition
+    RangeStart IDocumentPosition `json:"RangeStart,omitempty"`
 
     // DTO container with a comment.
-    RangeEnd IDocumentPosition
+    RangeEnd IDocumentPosition `json:"RangeEnd,omitempty"`
 
     // DTO container with a comment.
-    Author *string
+    Author *string `json:"Author,omitempty"`
 
     // DTO container with a comment.
-    Initial *string
+    Initial *string `json:"Initial,omitempty"`
 
     // DTO container with a comment.
-    DateTime *Time
+    DateTime *Time `json:"DateTime,omitempty"`
 
     // DTO container with a comment.
-    Text *string
+    Text *string `json:"Text,omitempty"`
 
     // DTO container with a comment.
-    Content IStoryChildNodes
+    Content IStoryChildNodes `json:"Content,omitempty"`
 }
 
 func (Comment) IsComment() bool {

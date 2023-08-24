@@ -42,10 +42,10 @@ type IBorderResponse interface {
 
 type BorderResponse struct {
     // The REST response with a border.
-    RequestId *string
+    RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with a border.
-    Border IBorder
+    Border IBorder `json:"Border,omitempty"`
 }
 
 func (BorderResponse) IsBorderResponse() bool {

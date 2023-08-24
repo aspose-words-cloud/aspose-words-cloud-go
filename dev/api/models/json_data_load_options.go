@@ -44,13 +44,13 @@ type IJsonDataLoadOptions interface {
 
 type JsonDataLoadOptions struct {
     // Represents options for parsing JSON data.
-    AlwaysGenerateRootObject *bool
+    AlwaysGenerateRootObject *bool `json:"AlwaysGenerateRootObject,omitempty"`
 
     // Represents options for parsing JSON data.
-    ExactDateTimeParseFormats []string
+    ExactDateTimeParseFormats []string `json:"ExactDateTimeParseFormats,omitempty"`
 
     // Represents options for parsing JSON data.
-    SimpleValueParseMode *string
+    SimpleValueParseMode *string `json:"SimpleValueParseMode,omitempty"`
 }
 
 func (JsonDataLoadOptions) IsJsonDataLoadOptions() bool {

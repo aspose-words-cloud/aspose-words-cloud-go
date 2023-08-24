@@ -44,13 +44,13 @@ type IPdfEncryptionDetailsData interface {
 
 type PdfEncryptionDetailsData struct {
     // Container class for details of encryption.
-    OwnerPassword *string
+    OwnerPassword *string `json:"OwnerPassword,omitempty"`
 
     // Container class for details of encryption.
-    Permissions []string
+    Permissions []string `json:"Permissions,omitempty"`
 
     // Container class for details of encryption.
-    UserPassword *string
+    UserPassword *string `json:"UserPassword,omitempty"`
 }
 
 func (PdfEncryptionDetailsData) IsPdfEncryptionDetailsData() bool {

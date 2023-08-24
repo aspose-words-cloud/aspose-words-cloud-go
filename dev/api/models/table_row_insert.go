@@ -42,10 +42,10 @@ type ITableRowInsert interface {
 
 type TableRowInsert struct {
     // DTO container with a table row element.
-    ColumnsCount *int32
+    ColumnsCount *int32 `json:"ColumnsCount,omitempty"`
 
     // DTO container with a table row element.
-    InsertAfter *int32
+    InsertAfter *int32 `json:"InsertAfter,omitempty"`
 }
 
 func (TableRowInsert) IsTableRowInsert() bool {

@@ -68,49 +68,49 @@ type ITableProperties interface {
 
 type TableProperties struct {
     // DTO container with table properties.
-    Link IWordsApiLink
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // DTO container with table properties.
-    Alignment *string
+    Alignment *string `json:"Alignment,omitempty"`
 
     // DTO container with table properties.
-    AllowAutoFit *bool
+    AllowAutoFit *bool `json:"AllowAutoFit,omitempty"`
 
     // DTO container with table properties.
-    Bidi *bool
+    Bidi *bool `json:"Bidi,omitempty"`
 
     // DTO container with table properties.
-    BottomPadding *float64
+    BottomPadding *float64 `json:"BottomPadding,omitempty"`
 
     // DTO container with table properties.
-    CellSpacing *float64
+    CellSpacing *float64 `json:"CellSpacing,omitempty"`
 
     // DTO container with table properties.
-    LeftIndent *float64
+    LeftIndent *float64 `json:"LeftIndent,omitempty"`
 
     // DTO container with table properties.
-    LeftPadding *float64
+    LeftPadding *float64 `json:"LeftPadding,omitempty"`
 
     // DTO container with table properties.
-    PreferredWidth IPreferredWidth
+    PreferredWidth IPreferredWidth `json:"PreferredWidth,omitempty"`
 
     // DTO container with table properties.
-    RightPadding *float64
+    RightPadding *float64 `json:"RightPadding,omitempty"`
 
     // DTO container with table properties.
-    StyleIdentifier *string
+    StyleIdentifier *string `json:"StyleIdentifier,omitempty"`
 
     // DTO container with table properties.
-    StyleName *string
+    StyleName *string `json:"StyleName,omitempty"`
 
     // DTO container with table properties.
-    StyleOptions *string
+    StyleOptions *string `json:"StyleOptions,omitempty"`
 
     // DTO container with table properties.
-    TextWrapping *string
+    TextWrapping *string `json:"TextWrapping,omitempty"`
 
     // DTO container with table properties.
-    TopPadding *float64
+    TopPadding *float64 `json:"TopPadding,omitempty"`
 }
 
 func (TableProperties) IsTableProperties() bool {

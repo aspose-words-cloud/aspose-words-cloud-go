@@ -46,16 +46,16 @@ type ITable interface {
 
 type Table struct {
     // DTO container with a table element.
-    Link IWordsApiLink
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // DTO container with a table element.
-    NodeId *string
+    NodeId *string `json:"NodeId,omitempty"`
 
     // DTO container with a table element.
-    TableRowList []ITableRow
+    TableRowList []ITableRow `json:"TableRowList,omitempty"`
 
     // DTO container with a table element.
-    TableProperties ITableProperties
+    TableProperties ITableProperties `json:"TableProperties,omitempty"`
 }
 
 func (Table) IsTable() bool {

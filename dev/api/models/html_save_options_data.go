@@ -142,160 +142,160 @@ type IHtmlSaveOptionsData interface {
 
 type HtmlSaveOptionsData struct {
     // Container class for html save options.
-    AllowEmbeddingPostScriptFonts *bool
+    AllowEmbeddingPostScriptFonts *bool `json:"AllowEmbeddingPostScriptFonts,omitempty"`
 
     // Container class for html save options.
-    CustomTimeZoneInfoData ITimeZoneInfoData
+    CustomTimeZoneInfoData ITimeZoneInfoData `json:"CustomTimeZoneInfoData,omitempty"`
 
     // Container class for html save options.
-    Dml3DEffectsRenderingMode *string
+    Dml3DEffectsRenderingMode *string `json:"Dml3DEffectsRenderingMode,omitempty"`
 
     // Container class for html save options.
-    DmlEffectsRenderingMode *string
+    DmlEffectsRenderingMode *string `json:"DmlEffectsRenderingMode,omitempty"`
 
     // Container class for html save options.
-    DmlRenderingMode *string
+    DmlRenderingMode *string `json:"DmlRenderingMode,omitempty"`
 
     // Container class for html save options.
-    FileName *string
+    FileName *string `json:"FileName,omitempty"`
 
     // Container class for html save options.
-    ImlRenderingMode *string
+    ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for html save options.
-    UpdateCreatedTimeProperty *bool
+    UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Container class for html save options.
-    UpdateFields *bool
+    UpdateFields *bool `json:"UpdateFields,omitempty"`
 
     // Container class for html save options.
-    UpdateLastPrintedProperty *bool
+    UpdateLastPrintedProperty *bool `json:"UpdateLastPrintedProperty,omitempty"`
 
     // Container class for html save options.
-    UpdateLastSavedTimeProperty *bool
+    UpdateLastSavedTimeProperty *bool `json:"UpdateLastSavedTimeProperty,omitempty"`
 
     // Container class for html save options.
-    UpdateSdtContent *bool
+    UpdateSdtContent *bool `json:"UpdateSdtContent,omitempty"`
 
     // Container class for html save options.
-    ZipOutput *bool
+    ZipOutput *bool `json:"ZipOutput,omitempty"`
 
     // Container class for html save options.
-    AllowNegativeIndent *bool
+    AllowNegativeIndent *bool `json:"AllowNegativeIndent,omitempty"`
 
     // Container class for html save options.
-    CssClassNamePrefix *string
+    CssClassNamePrefix *string `json:"CssClassNamePrefix,omitempty"`
 
     // Container class for html save options.
-    CssStyleSheetFileName *string
+    CssStyleSheetFileName *string `json:"CssStyleSheetFileName,omitempty"`
 
     // Container class for html save options.
-    CssStyleSheetType *string
+    CssStyleSheetType *string `json:"CssStyleSheetType,omitempty"`
 
     // Container class for html save options.
-    DocumentSplitCriteria *string
+    DocumentSplitCriteria *string `json:"DocumentSplitCriteria,omitempty"`
 
     // Container class for html save options.
-    DocumentSplitHeadingLevel *int32
+    DocumentSplitHeadingLevel *int32 `json:"DocumentSplitHeadingLevel,omitempty"`
 
     // Container class for html save options.
-    Encoding *string
+    Encoding *string `json:"Encoding,omitempty"`
 
     // Container class for html save options.
-    ExportDocumentProperties *bool
+    ExportDocumentProperties *bool `json:"ExportDocumentProperties,omitempty"`
 
     // Container class for html save options.
-    ExportDropDownFormFieldAsText *bool
+    ExportDropDownFormFieldAsText *bool `json:"ExportDropDownFormFieldAsText,omitempty"`
 
     // Container class for html save options.
-    ExportFontResources *bool
+    ExportFontResources *bool `json:"ExportFontResources,omitempty"`
 
     // Container class for html save options.
-    ExportFontsAsBase64 *bool
+    ExportFontsAsBase64 *bool `json:"ExportFontsAsBase64,omitempty"`
 
     // Container class for html save options.
-    ExportHeadersFootersMode *string
+    ExportHeadersFootersMode *string `json:"ExportHeadersFootersMode,omitempty"`
 
     // Container class for html save options.
-    ExportImagesAsBase64 *bool
+    ExportImagesAsBase64 *bool `json:"ExportImagesAsBase64,omitempty"`
 
     // Container class for html save options.
-    ExportLanguageInformation *bool
+    ExportLanguageInformation *bool `json:"ExportLanguageInformation,omitempty"`
 
     // Container class for html save options.
-    ExportListLabels *string
+    ExportListLabels *string `json:"ExportListLabels,omitempty"`
 
     // Container class for html save options.
-    ExportOriginalUrlForLinkedImages *bool
+    ExportOriginalUrlForLinkedImages *bool `json:"ExportOriginalUrlForLinkedImages,omitempty"`
 
     // Container class for html save options.
-    ExportPageMargins *bool
+    ExportPageMargins *bool `json:"ExportPageMargins,omitempty"`
 
     // Container class for html save options.
-    ExportPageSetup *bool
+    ExportPageSetup *bool `json:"ExportPageSetup,omitempty"`
 
     // Container class for html save options.
-    ExportRelativeFontSize *bool
+    ExportRelativeFontSize *bool `json:"ExportRelativeFontSize,omitempty"`
 
     // Container class for html save options.
-    ExportRoundtripInformation *bool
+    ExportRoundtripInformation *bool `json:"ExportRoundtripInformation,omitempty"`
 
     // Container class for html save options.
-    ExportTextInputFormFieldAsText *bool
+    ExportTextInputFormFieldAsText *bool `json:"ExportTextInputFormFieldAsText,omitempty"`
 
     // Container class for html save options.
-    ExportTocPageNumbers *bool
+    ExportTocPageNumbers *bool `json:"ExportTocPageNumbers,omitempty"`
 
     // Container class for html save options.
-    ExportXhtmlTransitional *bool
+    ExportXhtmlTransitional *bool `json:"ExportXhtmlTransitional,omitempty"`
 
     // Container class for html save options.
-    FontResourcesSubsettingSizeThreshold *int32
+    FontResourcesSubsettingSizeThreshold *int32 `json:"FontResourcesSubsettingSizeThreshold,omitempty"`
 
     // Container class for html save options.
-    FontsFolder *string
+    FontsFolder *string `json:"FontsFolder,omitempty"`
 
     // Container class for html save options.
-    FontsFolderAlias *string
+    FontsFolderAlias *string `json:"FontsFolderAlias,omitempty"`
 
     // Container class for html save options.
-    HtmlVersion *string
+    HtmlVersion *string `json:"HtmlVersion,omitempty"`
 
     // Container class for html save options.
-    ImageResolution *int32
+    ImageResolution *int32 `json:"ImageResolution,omitempty"`
 
     // Container class for html save options.
-    ImagesFolder *string
+    ImagesFolder *string `json:"ImagesFolder,omitempty"`
 
     // Container class for html save options.
-    ImagesFolderAlias *string
+    ImagesFolderAlias *string `json:"ImagesFolderAlias,omitempty"`
 
     // Container class for html save options.
-    MetafileFormat *string
+    MetafileFormat *string `json:"MetafileFormat,omitempty"`
 
     // Container class for html save options.
-    OfficeMathOutputMode *string
+    OfficeMathOutputMode *string `json:"OfficeMathOutputMode,omitempty"`
 
     // Container class for html save options.
-    PrettyFormat *bool
+    PrettyFormat *bool `json:"PrettyFormat,omitempty"`
 
     // Container class for html save options.
-    ResolveFontNames *bool
+    ResolveFontNames *bool `json:"ResolveFontNames,omitempty"`
 
     // Container class for html save options.
-    ResourceFolder *string
+    ResourceFolder *string `json:"ResourceFolder,omitempty"`
 
     // Container class for html save options.
-    ResourceFolderAlias *string
+    ResourceFolderAlias *string `json:"ResourceFolderAlias,omitempty"`
 
     // Container class for html save options.
-    ScaleImageToShapeSize *bool
+    ScaleImageToShapeSize *bool `json:"ScaleImageToShapeSize,omitempty"`
 
     // Container class for html save options.
-    TableWidthOutputMode *string
+    TableWidthOutputMode *string `json:"TableWidthOutputMode,omitempty"`
 
     // Container class for html save options.
-    SaveFormat *string
+    SaveFormat *string `json:"SaveFormat,omitempty"`
 }
 
 func (HtmlSaveOptionsData) IsHtmlSaveOptionsData() bool {

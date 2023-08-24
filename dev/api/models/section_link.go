@@ -42,10 +42,10 @@ type ISectionLink interface {
 
 type SectionLink struct {
     // Section link element.
-    Link IWordsApiLink
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // Section link element.
-    NodeId *string
+    NodeId *string `json:"NodeId,omitempty"`
 }
 
 func (SectionLink) IsSectionLink() bool {

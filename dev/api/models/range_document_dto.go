@@ -40,7 +40,7 @@ type IRangeDocumentDto interface {
 
 type RangeDocumentDto struct {
     // DTO container with a Range element.
-    DocumentName *string
+    DocumentName *string `json:"DocumentName,omitempty"`
 }
 
 func (RangeDocumentDto) IsRangeDocumentDto() bool {

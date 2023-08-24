@@ -42,10 +42,10 @@ type IFieldNames interface {
 
 type FieldNames struct {
     // Represents a collection of merge fields within a document.
-    Link IWordsApiLink
+    Link IWordsApiLink `json:"Link,omitempty"`
 
     // Represents a collection of merge fields within a document.
-    Names []string
+    Names []string `json:"Names,omitempty"`
 }
 
 func (FieldNames) IsFieldNames() bool {

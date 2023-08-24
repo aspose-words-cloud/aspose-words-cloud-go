@@ -42,10 +42,10 @@ type IInfoAdditionalItem interface {
 
 type InfoAdditionalItem struct {
     // Info additional item.
-    Key *string
+    Key *string `json:"Key,omitempty"`
 
     // Info additional item.
-    Value *string
+    Value *string `json:"Value,omitempty"`
 }
 
 func (InfoAdditionalItem) IsInfoAdditionalItem() bool {

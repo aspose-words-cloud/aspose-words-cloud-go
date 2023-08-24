@@ -46,16 +46,16 @@ type IAvailableFontsResponse interface {
 
 type AvailableFontsResponse struct {
     // The REST response with data on system, additional and custom fonts, available for document processing.
-    RequestId *string
+    RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with data on system, additional and custom fonts, available for document processing.
-    AdditionalFonts []IFontInfo
+    AdditionalFonts []IFontInfo `json:"AdditionalFonts,omitempty"`
 
     // The REST response with data on system, additional and custom fonts, available for document processing.
-    CustomFonts []IFontInfo
+    CustomFonts []IFontInfo `json:"CustomFonts,omitempty"`
 
     // The REST response with data on system, additional and custom fonts, available for document processing.
-    SystemFonts []IFontInfo
+    SystemFonts []IFontInfo `json:"SystemFonts,omitempty"`
 }
 
 func (AvailableFontsResponse) IsAvailableFontsResponse() bool {

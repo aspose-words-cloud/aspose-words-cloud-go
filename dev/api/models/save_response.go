@@ -42,10 +42,10 @@ type ISaveResponse interface {
 
 type SaveResponse struct {
     // The REST response with a save result.
-    RequestId *string
+    RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with a save result.
-    SaveResult ISaveResult
+    SaveResult ISaveResult `json:"SaveResult,omitempty"`
 }
 
 func (SaveResponse) IsSaveResponse() bool {

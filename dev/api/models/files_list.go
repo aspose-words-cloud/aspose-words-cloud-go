@@ -40,7 +40,7 @@ type IFilesList interface {
 
 type FilesList struct {
     // Files list.
-    Value []IStorageFile
+    Value []IStorageFile `json:"Value,omitempty"`
 }
 
 func (FilesList) IsFilesList() bool {

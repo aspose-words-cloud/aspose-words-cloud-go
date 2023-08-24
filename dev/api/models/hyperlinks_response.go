@@ -42,10 +42,10 @@ type IHyperlinksResponse interface {
 
 type HyperlinksResponse struct {
     // The REST response with a collection of hyperlinks.
-    RequestId *string
+    RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with a collection of hyperlinks.
-    Hyperlinks IHyperlinks
+    Hyperlinks IHyperlinks `json:"Hyperlinks,omitempty"`
 }
 
 func (HyperlinksResponse) IsHyperlinksResponse() bool {

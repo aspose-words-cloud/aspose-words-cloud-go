@@ -42,10 +42,10 @@ type ITableLinkCollectionResponse interface {
 
 type TableLinkCollectionResponse struct {
     // The REST response with a collection of tables.
-    RequestId *string
+    RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with a collection of tables.
-    Tables ITableLinkCollection
+    Tables ITableLinkCollection `json:"Tables,omitempty"`
 }
 
 func (TableLinkCollectionResponse) IsTableLinkCollectionResponse() bool {

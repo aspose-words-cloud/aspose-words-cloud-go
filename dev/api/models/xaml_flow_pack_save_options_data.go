@@ -70,52 +70,52 @@ type IXamlFlowPackSaveOptionsData interface {
 
 type XamlFlowPackSaveOptionsData struct {
     // Container class for xamlflow_pack save options.
-    AllowEmbeddingPostScriptFonts *bool
+    AllowEmbeddingPostScriptFonts *bool `json:"AllowEmbeddingPostScriptFonts,omitempty"`
 
     // Container class for xamlflow_pack save options.
-    CustomTimeZoneInfoData ITimeZoneInfoData
+    CustomTimeZoneInfoData ITimeZoneInfoData `json:"CustomTimeZoneInfoData,omitempty"`
 
     // Container class for xamlflow_pack save options.
-    Dml3DEffectsRenderingMode *string
+    Dml3DEffectsRenderingMode *string `json:"Dml3DEffectsRenderingMode,omitempty"`
 
     // Container class for xamlflow_pack save options.
-    DmlEffectsRenderingMode *string
+    DmlEffectsRenderingMode *string `json:"DmlEffectsRenderingMode,omitempty"`
 
     // Container class for xamlflow_pack save options.
-    DmlRenderingMode *string
+    DmlRenderingMode *string `json:"DmlRenderingMode,omitempty"`
 
     // Container class for xamlflow_pack save options.
-    FileName *string
+    FileName *string `json:"FileName,omitempty"`
 
     // Container class for xamlflow_pack save options.
-    ImlRenderingMode *string
+    ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for xamlflow_pack save options.
-    UpdateCreatedTimeProperty *bool
+    UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Container class for xamlflow_pack save options.
-    UpdateFields *bool
+    UpdateFields *bool `json:"UpdateFields,omitempty"`
 
     // Container class for xamlflow_pack save options.
-    UpdateLastPrintedProperty *bool
+    UpdateLastPrintedProperty *bool `json:"UpdateLastPrintedProperty,omitempty"`
 
     // Container class for xamlflow_pack save options.
-    UpdateLastSavedTimeProperty *bool
+    UpdateLastSavedTimeProperty *bool `json:"UpdateLastSavedTimeProperty,omitempty"`
 
     // Container class for xamlflow_pack save options.
-    UpdateSdtContent *bool
+    UpdateSdtContent *bool `json:"UpdateSdtContent,omitempty"`
 
     // Container class for xamlflow_pack save options.
-    ZipOutput *bool
+    ZipOutput *bool `json:"ZipOutput,omitempty"`
 
     // Container class for xamlflow_pack save options.
-    ImagesFolder *string
+    ImagesFolder *string `json:"ImagesFolder,omitempty"`
 
     // Container class for xamlflow_pack save options.
-    ImagesFolderAlias *string
+    ImagesFolderAlias *string `json:"ImagesFolderAlias,omitempty"`
 
     // Container class for xamlflow_pack save options.
-    SaveFormat *string
+    SaveFormat *string `json:"SaveFormat,omitempty"`
 }
 
 func (XamlFlowPackSaveOptionsData) IsXamlFlowPackSaveOptionsData() bool {

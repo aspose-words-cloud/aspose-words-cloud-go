@@ -42,10 +42,10 @@ type INewDocumentPosition interface {
 
 type NewDocumentPosition struct {
     // DTO container with a new position in the document tree.
-    NodeId *string
+    NodeId *string `json:"NodeId,omitempty"`
 
     // DTO container with a new position in the document tree.
-    Offset *int32
+    Offset *int32 `json:"Offset,omitempty"`
 }
 
 func (NewDocumentPosition) IsNewDocumentPosition() bool {

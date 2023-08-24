@@ -42,10 +42,10 @@ type IBookmarkData interface {
 
 type BookmarkData struct {
     // DTO for bookmark updating.
-    Name *string
+    Name *string `json:"Name,omitempty"`
 
     // DTO for bookmark updating.
-    Text *string
+    Text *string `json:"Text,omitempty"`
 }
 
 func (BookmarkData) IsBookmarkData() bool {

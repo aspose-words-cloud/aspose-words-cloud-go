@@ -42,10 +42,10 @@ type ITableResponse interface {
 
 type TableResponse struct {
     // The REST response with a table.
-    RequestId *string
+    RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with a table.
-    Table ITable
+    Table ITable `json:"Table,omitempty"`
 }
 
 func (TableResponse) IsTableResponse() bool {

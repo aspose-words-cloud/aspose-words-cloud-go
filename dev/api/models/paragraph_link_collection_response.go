@@ -42,10 +42,10 @@ type IParagraphLinkCollectionResponse interface {
 
 type ParagraphLinkCollectionResponse struct {
     // The REST response with a collection of paragraphs.
-    RequestId *string
+    RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with a collection of paragraphs.
-    Paragraphs IParagraphLinkCollection
+    Paragraphs IParagraphLinkCollection `json:"Paragraphs,omitempty"`
 }
 
 func (ParagraphLinkCollectionResponse) IsParagraphLinkCollectionResponse() bool {

@@ -46,16 +46,16 @@ type IClassificationResponse interface {
 
 type ClassificationResponse struct {
     // The REST response with data on multi-class text classification.
-    RequestId *string
+    RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with data on multi-class text classification.
-    BestClassName *string
+    BestClassName *string `json:"BestClassName,omitempty"`
 
     // The REST response with data on multi-class text classification.
-    BestClassProbability *float64
+    BestClassProbability *float64 `json:"BestClassProbability,omitempty"`
 
     // The REST response with data on multi-class text classification.
-    BestResults []IClassificationResult
+    BestResults []IClassificationResult `json:"BestResults,omitempty"`
 }
 
 func (ClassificationResponse) IsClassificationResponse() bool {

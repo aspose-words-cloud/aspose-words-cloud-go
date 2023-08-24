@@ -42,10 +42,10 @@ type IFormFieldsResponse interface {
 
 type FormFieldsResponse struct {
     // The REST response with a collection of form fields.
-    RequestId *string
+    RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with a collection of form fields.
-    FormFields IFormFieldCollection
+    FormFields IFormFieldCollection `json:"FormFields,omitempty"`
 }
 
 func (FormFieldsResponse) IsFormFieldsResponse() bool {

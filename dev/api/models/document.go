@@ -50,22 +50,22 @@ type IDocument interface {
 
 type Document struct {
     // Represents Words document DTO.
-    Links []ILink
+    Links []ILink `json:"Links,omitempty"`
 
     // Represents Words document DTO.
-    DocumentProperties IDocumentProperties
+    DocumentProperties IDocumentProperties `json:"DocumentProperties,omitempty"`
 
     // Represents Words document DTO.
-    FileName *string
+    FileName *string `json:"FileName,omitempty"`
 
     // Represents Words document DTO.
-    IsEncrypted *bool
+    IsEncrypted *bool `json:"IsEncrypted,omitempty"`
 
     // Represents Words document DTO.
-    IsSigned *bool
+    IsSigned *bool `json:"IsSigned,omitempty"`
 
     // Represents Words document DTO.
-    SourceFormat *string
+    SourceFormat *string `json:"SourceFormat,omitempty"`
 }
 
 func (Document) IsDocument() bool {
