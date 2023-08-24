@@ -89,6 +89,7 @@ func (obj *Document) Initialize() {
 func (obj *Document) Deserialize(json map[string]interface{}) {
     if jsonValue, exists := json["Links"]; exists {
         if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.Links = make([]ILink, 0)
             for _, parsedElement := range parsedValue {
                 if elementValue, valid := parsedElement.(map[string]interface{}); valid {
                     var modelElementInstance ILink = nil
@@ -108,6 +109,7 @@ func (obj *Document) Deserialize(json map[string]interface{}) {
 
     } else if jsonValue, exists := json["links"]; exists {
         if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.Links = make([]ILink, 0)
             for _, parsedElement := range parsedValue {
                 if elementValue, valid := parsedElement.(map[string]interface{}); valid {
                     var modelElementInstance ILink = nil

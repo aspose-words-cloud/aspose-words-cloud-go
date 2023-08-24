@@ -88,6 +88,7 @@ func (obj *Bookmarks) Deserialize(json map[string]interface{}) {
 
     if jsonValue, exists := json["BookmarkList"]; exists {
         if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.BookmarkList = make([]IBookmark, 0)
             for _, parsedElement := range parsedValue {
                 if elementValue, valid := parsedElement.(map[string]interface{}); valid {
                     var modelElementInstance IBookmark = new(Bookmark)
@@ -100,6 +101,7 @@ func (obj *Bookmarks) Deserialize(json map[string]interface{}) {
 
     } else if jsonValue, exists := json["bookmarkList"]; exists {
         if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.BookmarkList = make([]IBookmark, 0)
             for _, parsedElement := range parsedValue {
                 if elementValue, valid := parsedElement.(map[string]interface{}); valid {
                     var modelElementInstance IBookmark = new(Bookmark)

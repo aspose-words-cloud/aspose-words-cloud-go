@@ -142,6 +142,7 @@ func (obj *DocumentStatData) Deserialize(json map[string]interface{}) {
 
     if jsonValue, exists := json["PageStatData"]; exists {
         if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.PageStatData = make([]IPageStatData, 0)
             for _, parsedElement := range parsedValue {
                 if elementValue, valid := parsedElement.(map[string]interface{}); valid {
                     var modelElementInstance IPageStatData = new(PageStatData)
@@ -154,6 +155,7 @@ func (obj *DocumentStatData) Deserialize(json map[string]interface{}) {
 
     } else if jsonValue, exists := json["pageStatData"]; exists {
         if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.PageStatData = make([]IPageStatData, 0)
             for _, parsedElement := range parsedValue {
                 if elementValue, valid := parsedElement.(map[string]interface{}); valid {
                     var modelElementInstance IPageStatData = new(PageStatData)

@@ -88,6 +88,7 @@ func (obj *ParagraphLinkCollection) Deserialize(json map[string]interface{}) {
 
     if jsonValue, exists := json["ParagraphLinkList"]; exists {
         if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.ParagraphLinkList = make([]IParagraphLink, 0)
             for _, parsedElement := range parsedValue {
                 if elementValue, valid := parsedElement.(map[string]interface{}); valid {
                     var modelElementInstance IParagraphLink = new(ParagraphLink)
@@ -100,6 +101,7 @@ func (obj *ParagraphLinkCollection) Deserialize(json map[string]interface{}) {
 
     } else if jsonValue, exists := json["paragraphLinkList"]; exists {
         if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.ParagraphLinkList = make([]IParagraphLink, 0)
             for _, parsedElement := range parsedValue {
                 if elementValue, valid := parsedElement.(map[string]interface{}); valid {
                     var modelElementInstance IParagraphLink = new(ParagraphLink)

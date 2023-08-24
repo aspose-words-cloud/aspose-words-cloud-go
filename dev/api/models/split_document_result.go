@@ -110,6 +110,7 @@ func (obj *SplitDocumentResult) Deserialize(json map[string]interface{}) {
 
     if jsonValue, exists := json["Pages"]; exists {
         if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.Pages = make([]IFileLink, 0)
             for _, parsedElement := range parsedValue {
                 if elementValue, valid := parsedElement.(map[string]interface{}); valid {
                     var modelElementInstance IFileLink = new(FileLink)
@@ -122,6 +123,7 @@ func (obj *SplitDocumentResult) Deserialize(json map[string]interface{}) {
 
     } else if jsonValue, exists := json["pages"]; exists {
         if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.Pages = make([]IFileLink, 0)
             for _, parsedElement := range parsedValue {
                 if elementValue, valid := parsedElement.(map[string]interface{}); valid {
                     var modelElementInstance IFileLink = new(FileLink)

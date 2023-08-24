@@ -88,6 +88,7 @@ func (obj *SectionLinkCollection) Deserialize(json map[string]interface{}) {
 
     if jsonValue, exists := json["SectionLinkList"]; exists {
         if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.SectionLinkList = make([]ISectionLink, 0)
             for _, parsedElement := range parsedValue {
                 if elementValue, valid := parsedElement.(map[string]interface{}); valid {
                     var modelElementInstance ISectionLink = new(SectionLink)
@@ -100,6 +101,7 @@ func (obj *SectionLinkCollection) Deserialize(json map[string]interface{}) {
 
     } else if jsonValue, exists := json["sectionLinkList"]; exists {
         if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.SectionLinkList = make([]ISectionLink, 0)
             for _, parsedElement := range parsedValue {
                 if elementValue, valid := parsedElement.(map[string]interface{}); valid {
                     var modelElementInstance ISectionLink = new(SectionLink)

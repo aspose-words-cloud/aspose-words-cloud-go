@@ -88,6 +88,7 @@ func (obj *Runs) Deserialize(json map[string]interface{}) {
 
     if jsonValue, exists := json["List"]; exists {
         if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.List = make([]IRun, 0)
             for _, parsedElement := range parsedValue {
                 if elementValue, valid := parsedElement.(map[string]interface{}); valid {
                     var modelElementInstance IRun = new(Run)
@@ -100,6 +101,7 @@ func (obj *Runs) Deserialize(json map[string]interface{}) {
 
     } else if jsonValue, exists := json["list"]; exists {
         if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.List = make([]IRun, 0)
             for _, parsedElement := range parsedValue {
                 if elementValue, valid := parsedElement.(map[string]interface{}); valid {
                     var modelElementInstance IRun = new(Run)

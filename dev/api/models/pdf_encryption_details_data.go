@@ -76,6 +76,7 @@ func (obj *PdfEncryptionDetailsData) Deserialize(json map[string]interface{}) {
 
     if jsonValue, exists := json["Permissions"]; exists {
         if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.Permissions = make([]string, 0)
             for _, parsedElement := range parsedValue {
                 if elementValue, valid := parsedElement.(string); valid {
                     obj.Permissions = append(obj.Permissions, elementValue)
@@ -86,6 +87,7 @@ func (obj *PdfEncryptionDetailsData) Deserialize(json map[string]interface{}) {
 
     } else if jsonValue, exists := json["permissions"]; exists {
         if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.Permissions = make([]string, 0)
             for _, parsedElement := range parsedValue {
                 if elementValue, valid := parsedElement.(string); valid {
                     obj.Permissions = append(obj.Permissions, elementValue)

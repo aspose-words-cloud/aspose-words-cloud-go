@@ -80,6 +80,7 @@ func (obj *ImageEntryList) Deserialize(json map[string]interface{}) {
 
     if jsonValue, exists := json["ImageEntries"]; exists {
         if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.ImageEntries = make([]IImageEntry, 0)
             for _, parsedElement := range parsedValue {
                 if elementValue, valid := parsedElement.(map[string]interface{}); valid {
                     var modelElementInstance IImageEntry = new(ImageEntry)
@@ -92,6 +93,7 @@ func (obj *ImageEntryList) Deserialize(json map[string]interface{}) {
 
     } else if jsonValue, exists := json["imageEntries"]; exists {
         if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.ImageEntries = make([]IImageEntry, 0)
             for _, parsedElement := range parsedValue {
                 if elementValue, valid := parsedElement.(map[string]interface{}); valid {
                     var modelElementInstance IImageEntry = new(ImageEntry)

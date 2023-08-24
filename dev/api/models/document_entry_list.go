@@ -80,6 +80,7 @@ func (obj *DocumentEntryList) Deserialize(json map[string]interface{}) {
 
     if jsonValue, exists := json["DocumentEntries"]; exists {
         if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.DocumentEntries = make([]IDocumentEntry, 0)
             for _, parsedElement := range parsedValue {
                 if elementValue, valid := parsedElement.(map[string]interface{}); valid {
                     var modelElementInstance IDocumentEntry = new(DocumentEntry)
@@ -92,6 +93,7 @@ func (obj *DocumentEntryList) Deserialize(json map[string]interface{}) {
 
     } else if jsonValue, exists := json["documentEntries"]; exists {
         if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.DocumentEntries = make([]IDocumentEntry, 0)
             for _, parsedElement := range parsedValue {
                 if elementValue, valid := parsedElement.(map[string]interface{}); valid {
                     var modelElementInstance IDocumentEntry = new(DocumentEntry)

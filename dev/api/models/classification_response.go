@@ -114,6 +114,7 @@ func (obj *ClassificationResponse) Deserialize(json map[string]interface{}) {
 
     if jsonValue, exists := json["BestResults"]; exists {
         if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.BestResults = make([]IClassificationResult, 0)
             for _, parsedElement := range parsedValue {
                 if elementValue, valid := parsedElement.(map[string]interface{}); valid {
                     var modelElementInstance IClassificationResult = new(ClassificationResult)
@@ -126,6 +127,7 @@ func (obj *ClassificationResponse) Deserialize(json map[string]interface{}) {
 
     } else if jsonValue, exists := json["bestResults"]; exists {
         if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.BestResults = make([]IClassificationResult, 0)
             for _, parsedElement := range parsedValue {
                 if elementValue, valid := parsedElement.(map[string]interface{}); valid {
                     var modelElementInstance IClassificationResult = new(ClassificationResult)

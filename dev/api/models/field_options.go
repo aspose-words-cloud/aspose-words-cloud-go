@@ -119,6 +119,7 @@ func (obj *FieldOptions) Initialize() {
 func (obj *FieldOptions) Deserialize(json map[string]interface{}) {
     if jsonValue, exists := json["BuiltInTemplatesPaths"]; exists {
         if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.BuiltInTemplatesPaths = make([]string, 0)
             for _, parsedElement := range parsedValue {
                 if elementValue, valid := parsedElement.(string); valid {
                     obj.BuiltInTemplatesPaths = append(obj.BuiltInTemplatesPaths, elementValue)
@@ -129,6 +130,7 @@ func (obj *FieldOptions) Deserialize(json map[string]interface{}) {
 
     } else if jsonValue, exists := json["builtInTemplatesPaths"]; exists {
         if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.BuiltInTemplatesPaths = make([]string, 0)
             for _, parsedElement := range parsedValue {
                 if elementValue, valid := parsedElement.(string); valid {
                     obj.BuiltInTemplatesPaths = append(obj.BuiltInTemplatesPaths, elementValue)

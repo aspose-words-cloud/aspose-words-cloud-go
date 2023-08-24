@@ -90,6 +90,7 @@ func (obj *InfoResponse) Deserialize(json map[string]interface{}) {
 
     if jsonValue, exists := json["AdditionalInfo"]; exists {
         if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.AdditionalInfo = make([]IInfoAdditionalItem, 0)
             for _, parsedElement := range parsedValue {
                 if elementValue, valid := parsedElement.(map[string]interface{}); valid {
                     var modelElementInstance IInfoAdditionalItem = new(InfoAdditionalItem)
@@ -102,6 +103,7 @@ func (obj *InfoResponse) Deserialize(json map[string]interface{}) {
 
     } else if jsonValue, exists := json["additionalInfo"]; exists {
         if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.AdditionalInfo = make([]IInfoAdditionalItem, 0)
             for _, parsedElement := range parsedValue {
                 if elementValue, valid := parsedElement.(map[string]interface{}); valid {
                     var modelElementInstance IInfoAdditionalItem = new(InfoAdditionalItem)

@@ -88,6 +88,7 @@ func (obj *SearchResultsCollection) Deserialize(json map[string]interface{}) {
 
     if jsonValue, exists := json["ResultsList"]; exists {
         if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.ResultsList = make([]ISearchResult, 0)
             for _, parsedElement := range parsedValue {
                 if elementValue, valid := parsedElement.(map[string]interface{}); valid {
                     var modelElementInstance ISearchResult = new(SearchResult)
@@ -100,6 +101,7 @@ func (obj *SearchResultsCollection) Deserialize(json map[string]interface{}) {
 
     } else if jsonValue, exists := json["resultsList"]; exists {
         if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.ResultsList = make([]ISearchResult, 0)
             for _, parsedElement := range parsedValue {
                 if elementValue, valid := parsedElement.(map[string]interface{}); valid {
                     var modelElementInstance ISearchResult = new(SearchResult)

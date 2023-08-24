@@ -118,6 +118,7 @@ func (obj *Table) Deserialize(json map[string]interface{}) {
 
     if jsonValue, exists := json["TableRowList"]; exists {
         if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.TableRowList = make([]ITableRow, 0)
             for _, parsedElement := range parsedValue {
                 if elementValue, valid := parsedElement.(map[string]interface{}); valid {
                     var modelElementInstance ITableRow = new(TableRow)
@@ -130,6 +131,7 @@ func (obj *Table) Deserialize(json map[string]interface{}) {
 
     } else if jsonValue, exists := json["tableRowList"]; exists {
         if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.TableRowList = make([]ITableRow, 0)
             for _, parsedElement := range parsedValue {
                 if elementValue, valid := parsedElement.(map[string]interface{}); valid {
                     var modelElementInstance ITableRow = new(TableRow)

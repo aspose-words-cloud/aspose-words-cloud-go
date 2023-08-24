@@ -127,6 +127,7 @@ func (obj *HeaderFooter) Deserialize(json map[string]interface{}) {
 
     if jsonValue, exists := json["ChildNodes"]; exists {
         if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.ChildNodes = make([]INodeLink, 0)
             for _, parsedElement := range parsedValue {
                 if elementValue, valid := parsedElement.(map[string]interface{}); valid {
                     var modelElementInstance INodeLink = nil
@@ -168,6 +169,7 @@ func (obj *HeaderFooter) Deserialize(json map[string]interface{}) {
 
     } else if jsonValue, exists := json["childNodes"]; exists {
         if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.ChildNodes = make([]INodeLink, 0)
             for _, parsedElement := range parsedValue {
                 if elementValue, valid := parsedElement.(map[string]interface{}); valid {
                     var modelElementInstance INodeLink = nil

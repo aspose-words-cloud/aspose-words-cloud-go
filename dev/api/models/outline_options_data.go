@@ -85,6 +85,7 @@ func (obj *OutlineOptionsData) Initialize() {
 func (obj *OutlineOptionsData) Deserialize(json map[string]interface{}) {
     if jsonValue, exists := json["BookmarksOutlineLevels"]; exists {
         if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.BookmarksOutlineLevels = make([]IBookmarksOutlineLevelData, 0)
             for _, parsedElement := range parsedValue {
                 if elementValue, valid := parsedElement.(map[string]interface{}); valid {
                     var modelElementInstance IBookmarksOutlineLevelData = new(BookmarksOutlineLevelData)
@@ -97,6 +98,7 @@ func (obj *OutlineOptionsData) Deserialize(json map[string]interface{}) {
 
     } else if jsonValue, exists := json["bookmarksOutlineLevels"]; exists {
         if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.BookmarksOutlineLevels = make([]IBookmarksOutlineLevelData, 0)
             for _, parsedElement := range parsedValue {
                 if elementValue, valid := parsedElement.(map[string]interface{}); valid {
                     var modelElementInstance IBookmarksOutlineLevelData = new(BookmarksOutlineLevelData)

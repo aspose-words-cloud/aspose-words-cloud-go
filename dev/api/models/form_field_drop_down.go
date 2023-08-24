@@ -266,6 +266,7 @@ func (obj *FormFieldDropDown) Deserialize(json map[string]interface{}) {
 
     if jsonValue, exists := json["DropDownItems"]; exists {
         if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.DropDownItems = make([]string, 0)
             for _, parsedElement := range parsedValue {
                 if elementValue, valid := parsedElement.(string); valid {
                     obj.DropDownItems = append(obj.DropDownItems, elementValue)
@@ -276,6 +277,7 @@ func (obj *FormFieldDropDown) Deserialize(json map[string]interface{}) {
 
     } else if jsonValue, exists := json["dropDownItems"]; exists {
         if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.DropDownItems = make([]string, 0)
             for _, parsedElement := range parsedValue {
                 if elementValue, valid := parsedElement.(string); valid {
                     obj.DropDownItems = append(obj.DropDownItems, elementValue)

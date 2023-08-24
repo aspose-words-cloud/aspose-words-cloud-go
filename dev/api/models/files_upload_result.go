@@ -65,6 +65,7 @@ func (obj *FilesUploadResult) Initialize() {
 func (obj *FilesUploadResult) Deserialize(json map[string]interface{}) {
     if jsonValue, exists := json["Errors"]; exists {
         if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.Errors = make([]IError, 0)
             for _, parsedElement := range parsedValue {
                 if elementValue, valid := parsedElement.(map[string]interface{}); valid {
                     var modelElementInstance IError = new(Error)
@@ -77,6 +78,7 @@ func (obj *FilesUploadResult) Deserialize(json map[string]interface{}) {
 
     } else if jsonValue, exists := json["errors"]; exists {
         if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.Errors = make([]IError, 0)
             for _, parsedElement := range parsedValue {
                 if elementValue, valid := parsedElement.(map[string]interface{}); valid {
                     var modelElementInstance IError = new(Error)
@@ -91,6 +93,7 @@ func (obj *FilesUploadResult) Deserialize(json map[string]interface{}) {
 
     if jsonValue, exists := json["Uploaded"]; exists {
         if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.Uploaded = make([]string, 0)
             for _, parsedElement := range parsedValue {
                 if elementValue, valid := parsedElement.(string); valid {
                     obj.Uploaded = append(obj.Uploaded, elementValue)
@@ -101,6 +104,7 @@ func (obj *FilesUploadResult) Deserialize(json map[string]interface{}) {
 
     } else if jsonValue, exists := json["uploaded"]; exists {
         if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.Uploaded = make([]string, 0)
             for _, parsedElement := range parsedValue {
                 if elementValue, valid := parsedElement.(string); valid {
                     obj.Uploaded = append(obj.Uploaded, elementValue)

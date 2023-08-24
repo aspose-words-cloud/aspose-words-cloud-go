@@ -76,6 +76,7 @@ func (obj *JsonDataLoadOptions) Deserialize(json map[string]interface{}) {
 
     if jsonValue, exists := json["ExactDateTimeParseFormats"]; exists {
         if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.ExactDateTimeParseFormats = make([]string, 0)
             for _, parsedElement := range parsedValue {
                 if elementValue, valid := parsedElement.(string); valid {
                     obj.ExactDateTimeParseFormats = append(obj.ExactDateTimeParseFormats, elementValue)
@@ -86,6 +87,7 @@ func (obj *JsonDataLoadOptions) Deserialize(json map[string]interface{}) {
 
     } else if jsonValue, exists := json["exactDateTimeParseFormats"]; exists {
         if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.ExactDateTimeParseFormats = make([]string, 0)
             for _, parsedElement := range parsedValue {
                 if elementValue, valid := parsedElement.(string); valid {
                     obj.ExactDateTimeParseFormats = append(obj.ExactDateTimeParseFormats, elementValue)

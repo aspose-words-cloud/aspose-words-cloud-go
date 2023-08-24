@@ -100,6 +100,7 @@ func (obj *AvailableFontsResponse) Deserialize(json map[string]interface{}) {
 
     if jsonValue, exists := json["AdditionalFonts"]; exists {
         if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.AdditionalFonts = make([]IFontInfo, 0)
             for _, parsedElement := range parsedValue {
                 if elementValue, valid := parsedElement.(map[string]interface{}); valid {
                     var modelElementInstance IFontInfo = new(FontInfo)
@@ -112,6 +113,7 @@ func (obj *AvailableFontsResponse) Deserialize(json map[string]interface{}) {
 
     } else if jsonValue, exists := json["additionalFonts"]; exists {
         if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.AdditionalFonts = make([]IFontInfo, 0)
             for _, parsedElement := range parsedValue {
                 if elementValue, valid := parsedElement.(map[string]interface{}); valid {
                     var modelElementInstance IFontInfo = new(FontInfo)
@@ -126,6 +128,7 @@ func (obj *AvailableFontsResponse) Deserialize(json map[string]interface{}) {
 
     if jsonValue, exists := json["CustomFonts"]; exists {
         if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.CustomFonts = make([]IFontInfo, 0)
             for _, parsedElement := range parsedValue {
                 if elementValue, valid := parsedElement.(map[string]interface{}); valid {
                     var modelElementInstance IFontInfo = new(FontInfo)
@@ -138,6 +141,7 @@ func (obj *AvailableFontsResponse) Deserialize(json map[string]interface{}) {
 
     } else if jsonValue, exists := json["customFonts"]; exists {
         if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.CustomFonts = make([]IFontInfo, 0)
             for _, parsedElement := range parsedValue {
                 if elementValue, valid := parsedElement.(map[string]interface{}); valid {
                     var modelElementInstance IFontInfo = new(FontInfo)
@@ -152,6 +156,7 @@ func (obj *AvailableFontsResponse) Deserialize(json map[string]interface{}) {
 
     if jsonValue, exists := json["SystemFonts"]; exists {
         if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.SystemFonts = make([]IFontInfo, 0)
             for _, parsedElement := range parsedValue {
                 if elementValue, valid := parsedElement.(map[string]interface{}); valid {
                     var modelElementInstance IFontInfo = new(FontInfo)
@@ -164,6 +169,7 @@ func (obj *AvailableFontsResponse) Deserialize(json map[string]interface{}) {
 
     } else if jsonValue, exists := json["systemFonts"]; exists {
         if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.SystemFonts = make([]IFontInfo, 0)
             for _, parsedElement := range parsedValue {
                 if elementValue, valid := parsedElement.(map[string]interface{}); valid {
                     var modelElementInstance IFontInfo = new(FontInfo)

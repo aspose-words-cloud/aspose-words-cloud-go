@@ -166,6 +166,7 @@ func (obj *DrawingObject) Deserialize(json map[string]interface{}) {
 
     if jsonValue, exists := json["RenderLinks"]; exists {
         if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.RenderLinks = make([]IWordsApiLink, 0)
             for _, parsedElement := range parsedValue {
                 if elementValue, valid := parsedElement.(map[string]interface{}); valid {
                     var modelElementInstance IWordsApiLink = new(WordsApiLink)
@@ -178,6 +179,7 @@ func (obj *DrawingObject) Deserialize(json map[string]interface{}) {
 
     } else if jsonValue, exists := json["renderLinks"]; exists {
         if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.RenderLinks = make([]IWordsApiLink, 0)
             for _, parsedElement := range parsedValue {
                 if elementValue, valid := parsedElement.(map[string]interface{}); valid {
                     var modelElementInstance IWordsApiLink = new(WordsApiLink)

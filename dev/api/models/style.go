@@ -237,6 +237,7 @@ func (obj *Style) Deserialize(json map[string]interface{}) {
 
     if jsonValue, exists := json["Aliases"]; exists {
         if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.Aliases = make([]string, 0)
             for _, parsedElement := range parsedValue {
                 if elementValue, valid := parsedElement.(string); valid {
                     obj.Aliases = append(obj.Aliases, elementValue)
@@ -247,6 +248,7 @@ func (obj *Style) Deserialize(json map[string]interface{}) {
 
     } else if jsonValue, exists := json["aliases"]; exists {
         if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.Aliases = make([]string, 0)
             for _, parsedElement := range parsedValue {
                 if elementValue, valid := parsedElement.(string); valid {
                     obj.Aliases = append(obj.Aliases, elementValue)

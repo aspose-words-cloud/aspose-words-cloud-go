@@ -88,6 +88,7 @@ func (obj *CustomXmlPartsCollection) Deserialize(json map[string]interface{}) {
 
     if jsonValue, exists := json["CustomXmlPartsList"]; exists {
         if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.CustomXmlPartsList = make([]ICustomXmlPart, 0)
             for _, parsedElement := range parsedValue {
                 if elementValue, valid := parsedElement.(map[string]interface{}); valid {
                     var modelElementInstance ICustomXmlPart = nil
@@ -107,6 +108,7 @@ func (obj *CustomXmlPartsCollection) Deserialize(json map[string]interface{}) {
 
     } else if jsonValue, exists := json["customXmlPartsList"]; exists {
         if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.CustomXmlPartsList = make([]ICustomXmlPart, 0)
             for _, parsedElement := range parsedValue {
                 if elementValue, valid := parsedElement.(map[string]interface{}); valid {
                     var modelElementInstance ICustomXmlPart = nil

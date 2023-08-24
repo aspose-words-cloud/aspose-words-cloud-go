@@ -60,6 +60,7 @@ func (obj *FilesList) Initialize() {
 func (obj *FilesList) Deserialize(json map[string]interface{}) {
     if jsonValue, exists := json["Value"]; exists {
         if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.Value = make([]IStorageFile, 0)
             for _, parsedElement := range parsedValue {
                 if elementValue, valid := parsedElement.(map[string]interface{}); valid {
                     var modelElementInstance IStorageFile = new(StorageFile)
@@ -72,6 +73,7 @@ func (obj *FilesList) Deserialize(json map[string]interface{}) {
 
     } else if jsonValue, exists := json["value"]; exists {
         if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.Value = make([]IStorageFile, 0)
             for _, parsedElement := range parsedValue {
                 if elementValue, valid := parsedElement.(map[string]interface{}); valid {
                     var modelElementInstance IStorageFile = new(StorageFile)

@@ -88,6 +88,7 @@ func (obj *CommentsCollection) Deserialize(json map[string]interface{}) {
 
     if jsonValue, exists := json["CommentList"]; exists {
         if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.CommentList = make([]IComment, 0)
             for _, parsedElement := range parsedValue {
                 if elementValue, valid := parsedElement.(map[string]interface{}); valid {
                     var modelElementInstance IComment = new(Comment)
@@ -100,6 +101,7 @@ func (obj *CommentsCollection) Deserialize(json map[string]interface{}) {
 
     } else if jsonValue, exists := json["commentList"]; exists {
         if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.CommentList = make([]IComment, 0)
             for _, parsedElement := range parsedValue {
                 if elementValue, valid := parsedElement.(map[string]interface{}); valid {
                     var modelElementInstance IComment = new(Comment)

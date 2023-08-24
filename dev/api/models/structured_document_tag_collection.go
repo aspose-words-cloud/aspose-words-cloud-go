@@ -88,6 +88,7 @@ func (obj *StructuredDocumentTagCollection) Deserialize(json map[string]interfac
 
     if jsonValue, exists := json["List"]; exists {
         if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.List = make([]IStructuredDocumentTag, 0)
             for _, parsedElement := range parsedValue {
                 if elementValue, valid := parsedElement.(map[string]interface{}); valid {
                     var modelElementInstance IStructuredDocumentTag = nil
@@ -107,6 +108,7 @@ func (obj *StructuredDocumentTagCollection) Deserialize(json map[string]interfac
 
     } else if jsonValue, exists := json["list"]; exists {
         if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.List = make([]IStructuredDocumentTag, 0)
             for _, parsedElement := range parsedValue {
                 if elementValue, valid := parsedElement.(map[string]interface{}); valid {
                     var modelElementInstance IStructuredDocumentTag = nil

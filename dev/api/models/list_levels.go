@@ -88,6 +88,7 @@ func (obj *ListLevels) Deserialize(json map[string]interface{}) {
 
     if jsonValue, exists := json["ListLevel"]; exists {
         if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.ListLevel = make([]IListLevel, 0)
             for _, parsedElement := range parsedValue {
                 if elementValue, valid := parsedElement.(map[string]interface{}); valid {
                     var modelElementInstance IListLevel = new(ListLevel)
@@ -100,6 +101,7 @@ func (obj *ListLevels) Deserialize(json map[string]interface{}) {
 
     } else if jsonValue, exists := json["listLevel"]; exists {
         if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.ListLevel = make([]IListLevel, 0)
             for _, parsedElement := range parsedValue {
                 if elementValue, valid := parsedElement.(map[string]interface{}); valid {
                     var modelElementInstance IListLevel = new(ListLevel)

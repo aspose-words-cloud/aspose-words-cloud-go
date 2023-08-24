@@ -80,6 +80,7 @@ func (obj *TabStopsResponse) Deserialize(json map[string]interface{}) {
 
     if jsonValue, exists := json["TabStops"]; exists {
         if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.TabStops = make([]ITabStop, 0)
             for _, parsedElement := range parsedValue {
                 if elementValue, valid := parsedElement.(map[string]interface{}); valid {
                     var modelElementInstance ITabStop = new(TabStop)
@@ -92,6 +93,7 @@ func (obj *TabStopsResponse) Deserialize(json map[string]interface{}) {
 
     } else if jsonValue, exists := json["tabStops"]; exists {
         if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.TabStops = make([]ITabStop, 0)
             for _, parsedElement := range parsedValue {
                 if elementValue, valid := parsedElement.(map[string]interface{}); valid {
                     var modelElementInstance ITabStop = new(TabStop)

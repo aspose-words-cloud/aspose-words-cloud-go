@@ -80,6 +80,7 @@ func (obj *StylesResponse) Deserialize(json map[string]interface{}) {
 
     if jsonValue, exists := json["Styles"]; exists {
         if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.Styles = make([]IStyle, 0)
             for _, parsedElement := range parsedValue {
                 if elementValue, valid := parsedElement.(map[string]interface{}); valid {
                     var modelElementInstance IStyle = new(Style)
@@ -92,6 +93,7 @@ func (obj *StylesResponse) Deserialize(json map[string]interface{}) {
 
     } else if jsonValue, exists := json["styles"]; exists {
         if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.Styles = make([]IStyle, 0)
             for _, parsedElement := range parsedValue {
                 if elementValue, valid := parsedElement.(map[string]interface{}); valid {
                     var modelElementInstance IStyle = new(Style)

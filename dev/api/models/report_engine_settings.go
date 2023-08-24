@@ -148,6 +148,7 @@ func (obj *ReportEngineSettings) Deserialize(json map[string]interface{}) {
 
     if jsonValue, exists := json["ReportBuildOptions"]; exists {
         if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.ReportBuildOptions = make([]string, 0)
             for _, parsedElement := range parsedValue {
                 if elementValue, valid := parsedElement.(string); valid {
                     obj.ReportBuildOptions = append(obj.ReportBuildOptions, elementValue)
@@ -158,6 +159,7 @@ func (obj *ReportEngineSettings) Deserialize(json map[string]interface{}) {
 
     } else if jsonValue, exists := json["reportBuildOptions"]; exists {
         if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.ReportBuildOptions = make([]string, 0)
             for _, parsedElement := range parsedValue {
                 if elementValue, valid := parsedElement.(string); valid {
                     obj.ReportBuildOptions = append(obj.ReportBuildOptions, elementValue)
