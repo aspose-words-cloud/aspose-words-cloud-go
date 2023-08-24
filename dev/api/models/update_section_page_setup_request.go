@@ -159,7 +159,7 @@ func (data *UpdateSectionPageSetupRequest) CreateRequestData() (RequestData, err
 }
 
 func (data *UpdateSectionPageSetupRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
-            var successPayload ISectionPageSetupResponse
+            var successPayload ISectionPageSetupResponse = new(SectionPageSetupResponse)
             var jsonMap map[string]interface{}
             if err = json.NewDecoder(reader).Decode(&jsonMap); err != nil {
                 return nil, err

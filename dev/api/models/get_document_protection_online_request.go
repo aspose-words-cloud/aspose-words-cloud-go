@@ -109,7 +109,7 @@ func (data *GetDocumentProtectionOnlineRequest) CreateRequestData() (RequestData
 }
 
 func (data *GetDocumentProtectionOnlineRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
-            var successPayload IProtectionDataResponse
+            var successPayload IProtectionDataResponse = new(ProtectionDataResponse)
             var jsonMap map[string]interface{}
             if err = json.NewDecoder(reader).Decode(&jsonMap); err != nil {
                 return nil, err

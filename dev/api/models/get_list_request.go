@@ -125,7 +125,7 @@ func (data *GetListRequest) CreateRequestData() (RequestData, error) {
 }
 
 func (data *GetListRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
-            var successPayload IListResponse
+            var successPayload IListResponse = new(ListResponse)
             var jsonMap map[string]interface{}
             if err = json.NewDecoder(reader).Decode(&jsonMap); err != nil {
                 return nil, err

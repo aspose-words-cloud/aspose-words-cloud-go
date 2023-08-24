@@ -115,7 +115,7 @@ func (data *GetFootnotesOnlineRequest) CreateRequestData() (RequestData, error) 
 }
 
 func (data *GetFootnotesOnlineRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
-            var successPayload IFootnotesResponse
+            var successPayload IFootnotesResponse = new(FootnotesResponse)
             var jsonMap map[string]interface{}
             if err = json.NewDecoder(reader).Decode(&jsonMap); err != nil {
                 return nil, err

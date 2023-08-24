@@ -140,7 +140,7 @@ func (data *ClassifyDocumentRequest) CreateRequestData() (RequestData, error) {
 }
 
 func (data *ClassifyDocumentRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
-            var successPayload IClassificationResponse
+            var successPayload IClassificationResponse = new(ClassificationResponse)
             var jsonMap map[string]interface{}
             if err = json.NewDecoder(reader).Decode(&jsonMap); err != nil {
                 return nil, err

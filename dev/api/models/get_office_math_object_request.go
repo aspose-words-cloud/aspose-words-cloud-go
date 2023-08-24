@@ -130,7 +130,7 @@ func (data *GetOfficeMathObjectRequest) CreateRequestData() (RequestData, error)
 }
 
 func (data *GetOfficeMathObjectRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
-            var successPayload IOfficeMathObjectResponse
+            var successPayload IOfficeMathObjectResponse = new(OfficeMathObjectResponse)
             var jsonMap map[string]interface{}
             if err = json.NewDecoder(reader).Decode(&jsonMap); err != nil {
                 return nil, err

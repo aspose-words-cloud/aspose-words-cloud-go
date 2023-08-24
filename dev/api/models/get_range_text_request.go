@@ -130,7 +130,7 @@ func (data *GetRangeTextRequest) CreateRequestData() (RequestData, error) {
 }
 
 func (data *GetRangeTextRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
-            var successPayload IRangeTextResponse
+            var successPayload IRangeTextResponse = new(RangeTextResponse)
             var jsonMap map[string]interface{}
             if err = json.NewDecoder(reader).Decode(&jsonMap); err != nil {
                 return nil, err

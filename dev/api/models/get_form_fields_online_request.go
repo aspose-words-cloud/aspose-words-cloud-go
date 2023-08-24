@@ -115,7 +115,7 @@ func (data *GetFormFieldsOnlineRequest) CreateRequestData() (RequestData, error)
 }
 
 func (data *GetFormFieldsOnlineRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
-            var successPayload IFormFieldsResponse
+            var successPayload IFormFieldsResponse = new(FormFieldsResponse)
             var jsonMap map[string]interface{}
             if err = json.NewDecoder(reader).Decode(&jsonMap); err != nil {
                 return nil, err

@@ -122,7 +122,7 @@ func (data *GetCommentsRequest) CreateRequestData() (RequestData, error) {
 }
 
 func (data *GetCommentsRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
-            var successPayload ICommentsResponse
+            var successPayload ICommentsResponse = new(CommentsResponse)
             var jsonMap map[string]interface{}
             if err = json.NewDecoder(reader).Decode(&jsonMap); err != nil {
                 return nil, err

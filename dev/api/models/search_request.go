@@ -127,7 +127,7 @@ func (data *SearchRequest) CreateRequestData() (RequestData, error) {
 }
 
 func (data *SearchRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
-            var successPayload ISearchResponse
+            var successPayload ISearchResponse = new(SearchResponse)
             var jsonMap map[string]interface{}
             if err = json.NewDecoder(reader).Decode(&jsonMap); err != nil {
                 return nil, err

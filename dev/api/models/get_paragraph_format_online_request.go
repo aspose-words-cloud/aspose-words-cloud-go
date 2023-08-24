@@ -118,7 +118,7 @@ func (data *GetParagraphFormatOnlineRequest) CreateRequestData() (RequestData, e
 }
 
 func (data *GetParagraphFormatOnlineRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
-            var successPayload IParagraphFormatResponse
+            var successPayload IParagraphFormatResponse = new(ParagraphFormatResponse)
             var jsonMap map[string]interface{}
             if err = json.NewDecoder(reader).Decode(&jsonMap); err != nil {
                 return nil, err

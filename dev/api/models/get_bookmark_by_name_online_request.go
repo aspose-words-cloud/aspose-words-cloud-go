@@ -113,7 +113,7 @@ func (data *GetBookmarkByNameOnlineRequest) CreateRequestData() (RequestData, er
 }
 
 func (data *GetBookmarkByNameOnlineRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
-            var successPayload IBookmarkResponse
+            var successPayload IBookmarkResponse = new(BookmarkResponse)
             var jsonMap map[string]interface{}
             if err = json.NewDecoder(reader).Decode(&jsonMap); err != nil {
                 return nil, err

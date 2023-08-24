@@ -71,7 +71,7 @@ func (data *GetInfoRequest) CreateRequestData() (RequestData, error) {
 }
 
 func (data *GetInfoRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
-            var successPayload IInfoResponse
+            var successPayload IInfoResponse = new(InfoResponse)
             var jsonMap map[string]interface{}
             if err = json.NewDecoder(reader).Decode(&jsonMap); err != nil {
                 return nil, err

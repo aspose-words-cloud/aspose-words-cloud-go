@@ -122,7 +122,7 @@ func (data *GetStylesRequest) CreateRequestData() (RequestData, error) {
 }
 
 func (data *GetStylesRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
-            var successPayload IStylesResponse
+            var successPayload IStylesResponse = new(StylesResponse)
             var jsonMap map[string]interface{}
             if err = json.NewDecoder(reader).Decode(&jsonMap); err != nil {
                 return nil, err

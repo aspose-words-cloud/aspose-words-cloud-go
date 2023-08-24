@@ -154,7 +154,7 @@ func (data *CopyStylesFromTemplateRequest) CreateRequestData() (RequestData, err
 }
 
 func (data *CopyStylesFromTemplateRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
-            var successPayload IWordsResponse
+            var successPayload IWordsResponse = new(WordsResponse)
             var jsonMap map[string]interface{}
             if err = json.NewDecoder(reader).Decode(&jsonMap); err != nil {
                 return nil, err

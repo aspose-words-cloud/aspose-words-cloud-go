@@ -127,7 +127,7 @@ func (data *GetDocumentDrawingObjectsRequest) CreateRequestData() (RequestData, 
 }
 
 func (data *GetDocumentDrawingObjectsRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
-            var successPayload IDrawingObjectsResponse
+            var successPayload IDrawingObjectsResponse = new(DrawingObjectsResponse)
             var jsonMap map[string]interface{}
             if err = json.NewDecoder(reader).Decode(&jsonMap); err != nil {
                 return nil, err

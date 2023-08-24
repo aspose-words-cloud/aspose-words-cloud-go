@@ -122,7 +122,7 @@ func (data *GetSectionsRequest) CreateRequestData() (RequestData, error) {
 }
 
 func (data *GetSectionsRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
-            var successPayload ISectionLinkCollectionResponse
+            var successPayload ISectionLinkCollectionResponse = new(SectionLinkCollectionResponse)
             var jsonMap map[string]interface{}
             if err = json.NewDecoder(reader).Decode(&jsonMap); err != nil {
                 return nil, err

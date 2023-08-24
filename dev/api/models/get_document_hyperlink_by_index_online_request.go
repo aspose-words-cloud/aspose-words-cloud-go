@@ -113,7 +113,7 @@ func (data *GetDocumentHyperlinkByIndexOnlineRequest) CreateRequestData() (Reque
 }
 
 func (data *GetDocumentHyperlinkByIndexOnlineRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
-            var successPayload IHyperlinkResponse
+            var successPayload IHyperlinkResponse = new(HyperlinkResponse)
             var jsonMap map[string]interface{}
             if err = json.NewDecoder(reader).Decode(&jsonMap); err != nil {
                 return nil, err

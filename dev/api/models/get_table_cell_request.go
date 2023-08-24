@@ -128,7 +128,7 @@ func (data *GetTableCellRequest) CreateRequestData() (RequestData, error) {
 }
 
 func (data *GetTableCellRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
-            var successPayload ITableCellResponse
+            var successPayload ITableCellResponse = new(TableCellResponse)
             var jsonMap map[string]interface{}
             if err = json.NewDecoder(reader).Decode(&jsonMap); err != nil {
                 return nil, err

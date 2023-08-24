@@ -162,7 +162,7 @@ func (data *UpdateRunFontRequest) CreateRequestData() (RequestData, error) {
 }
 
 func (data *UpdateRunFontRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
-            var successPayload IFontResponse
+            var successPayload IFontResponse = new(FontResponse)
             var jsonMap map[string]interface{}
             if err = json.NewDecoder(reader).Decode(&jsonMap); err != nil {
                 return nil, err

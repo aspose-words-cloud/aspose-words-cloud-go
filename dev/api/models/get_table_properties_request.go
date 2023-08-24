@@ -130,7 +130,7 @@ func (data *GetTablePropertiesRequest) CreateRequestData() (RequestData, error) 
 }
 
 func (data *GetTablePropertiesRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
-            var successPayload ITablePropertiesResponse
+            var successPayload ITablePropertiesResponse = new(TablePropertiesResponse)
             var jsonMap map[string]interface{}
             if err = json.NewDecoder(reader).Decode(&jsonMap); err != nil {
                 return nil, err

@@ -164,7 +164,7 @@ func (data *UpdateParagraphFormatRequest) CreateRequestData() (RequestData, erro
 }
 
 func (data *UpdateParagraphFormatRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
-            var successPayload IParagraphFormatResponse
+            var successPayload IParagraphFormatResponse = new(ParagraphFormatResponse)
             var jsonMap map[string]interface{}
             if err = json.NewDecoder(reader).Decode(&jsonMap); err != nil {
                 return nil, err

@@ -139,7 +139,7 @@ func (data *DeleteAllParagraphTabStopsRequest) CreateRequestData() (RequestData,
 }
 
 func (data *DeleteAllParagraphTabStopsRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
-            var successPayload ITabStopsResponse
+            var successPayload ITabStopsResponse = new(TabStopsResponse)
             var jsonMap map[string]interface{}
             if err = json.NewDecoder(reader).Decode(&jsonMap); err != nil {
                 return nil, err

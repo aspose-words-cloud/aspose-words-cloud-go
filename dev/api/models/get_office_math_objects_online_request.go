@@ -115,7 +115,7 @@ func (data *GetOfficeMathObjectsOnlineRequest) CreateRequestData() (RequestData,
 }
 
 func (data *GetOfficeMathObjectsOnlineRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
-            var successPayload IOfficeMathObjectsResponse
+            var successPayload IOfficeMathObjectsResponse = new(OfficeMathObjectsResponse)
             var jsonMap map[string]interface{}
             if err = json.NewDecoder(reader).Decode(&jsonMap); err != nil {
                 return nil, err

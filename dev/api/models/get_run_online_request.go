@@ -116,7 +116,7 @@ func (data *GetRunOnlineRequest) CreateRequestData() (RequestData, error) {
 }
 
 func (data *GetRunOnlineRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
-            var successPayload IRunResponse
+            var successPayload IRunResponse = new(RunResponse)
             var jsonMap map[string]interface{}
             if err = json.NewDecoder(reader).Decode(&jsonMap); err != nil {
                 return nil, err

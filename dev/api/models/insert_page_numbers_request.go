@@ -156,7 +156,7 @@ func (data *InsertPageNumbersRequest) CreateRequestData() (RequestData, error) {
 }
 
 func (data *InsertPageNumbersRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
-            var successPayload IDocumentResponse
+            var successPayload IDocumentResponse = new(DocumentResponse)
             var jsonMap map[string]interface{}
             if err = json.NewDecoder(reader).Decode(&jsonMap); err != nil {
                 return nil, err

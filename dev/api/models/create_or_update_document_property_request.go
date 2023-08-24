@@ -159,7 +159,7 @@ func (data *CreateOrUpdateDocumentPropertyRequest) CreateRequestData() (RequestD
 }
 
 func (data *CreateOrUpdateDocumentPropertyRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
-            var successPayload IDocumentPropertyResponse
+            var successPayload IDocumentPropertyResponse = new(DocumentPropertyResponse)
             var jsonMap map[string]interface{}
             if err = json.NewDecoder(reader).Decode(&jsonMap); err != nil {
                 return nil, err

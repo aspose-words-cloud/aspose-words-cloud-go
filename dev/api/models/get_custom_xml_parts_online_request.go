@@ -109,7 +109,7 @@ func (data *GetCustomXmlPartsOnlineRequest) CreateRequestData() (RequestData, er
 }
 
 func (data *GetCustomXmlPartsOnlineRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
-            var successPayload ICustomXmlPartsResponse
+            var successPayload ICustomXmlPartsResponse = new(CustomXmlPartsResponse)
             var jsonMap map[string]interface{}
             if err = json.NewDecoder(reader).Decode(&jsonMap); err != nil {
                 return nil, err

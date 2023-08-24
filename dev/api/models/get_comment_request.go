@@ -125,7 +125,7 @@ func (data *GetCommentRequest) CreateRequestData() (RequestData, error) {
 }
 
 func (data *GetCommentRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
-            var successPayload ICommentResponse
+            var successPayload ICommentResponse = new(CommentResponse)
             var jsonMap map[string]interface{}
             if err = json.NewDecoder(reader).Decode(&jsonMap); err != nil {
                 return nil, err

@@ -127,7 +127,7 @@ func (data *GetStructuredDocumentTagsRequest) CreateRequestData() (RequestData, 
 }
 
 func (data *GetStructuredDocumentTagsRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
-            var successPayload IStructuredDocumentTagsResponse
+            var successPayload IStructuredDocumentTagsResponse = new(StructuredDocumentTagsResponse)
             var jsonMap map[string]interface{}
             if err = json.NewDecoder(reader).Decode(&jsonMap); err != nil {
                 return nil, err

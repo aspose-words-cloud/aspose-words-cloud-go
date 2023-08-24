@@ -291,7 +291,7 @@ func (data *SaveAsTiffRequest) CreateRequestData() (RequestData, error) {
 }
 
 func (data *SaveAsTiffRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
-            var successPayload ISaveResponse
+            var successPayload ISaveResponse = new(SaveResponse)
             var jsonMap map[string]interface{}
             if err = json.NewDecoder(reader).Decode(&jsonMap); err != nil {
                 return nil, err

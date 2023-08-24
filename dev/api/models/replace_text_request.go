@@ -156,7 +156,7 @@ func (data *ReplaceTextRequest) CreateRequestData() (RequestData, error) {
 }
 
 func (data *ReplaceTextRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
-            var successPayload IReplaceTextResponse
+            var successPayload IReplaceTextResponse = new(ReplaceTextResponse)
             var jsonMap map[string]interface{}
             if err = json.NewDecoder(reader).Decode(&jsonMap); err != nil {
                 return nil, err

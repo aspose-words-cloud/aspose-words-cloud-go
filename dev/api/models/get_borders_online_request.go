@@ -115,7 +115,7 @@ func (data *GetBordersOnlineRequest) CreateRequestData() (RequestData, error) {
 }
 
 func (data *GetBordersOnlineRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
-            var successPayload IBordersResponse
+            var successPayload IBordersResponse = new(BordersResponse)
             var jsonMap map[string]interface{}
             if err = json.NewDecoder(reader).Decode(&jsonMap); err != nil {
                 return nil, err

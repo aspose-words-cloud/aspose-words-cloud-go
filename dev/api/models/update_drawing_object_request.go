@@ -173,7 +173,7 @@ func (data *UpdateDrawingObjectRequest) CreateRequestData() (RequestData, error)
 }
 
 func (data *UpdateDrawingObjectRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
-            var successPayload IDrawingObjectResponse
+            var successPayload IDrawingObjectResponse = new(DrawingObjectResponse)
             var jsonMap map[string]interface{}
             if err = json.NewDecoder(reader).Decode(&jsonMap); err != nil {
                 return nil, err

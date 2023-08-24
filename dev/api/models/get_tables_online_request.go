@@ -115,7 +115,7 @@ func (data *GetTablesOnlineRequest) CreateRequestData() (RequestData, error) {
 }
 
 func (data *GetTablesOnlineRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
-            var successPayload ITableLinkCollectionResponse
+            var successPayload ITableLinkCollectionResponse = new(TableLinkCollectionResponse)
             var jsonMap map[string]interface{}
             if err = json.NewDecoder(reader).Decode(&jsonMap); err != nil {
                 return nil, err

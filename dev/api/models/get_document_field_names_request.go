@@ -131,7 +131,7 @@ func (data *GetDocumentFieldNamesRequest) CreateRequestData() (RequestData, erro
 }
 
 func (data *GetDocumentFieldNamesRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
-            var successPayload IFieldNamesResponse
+            var successPayload IFieldNamesResponse = new(FieldNamesResponse)
             var jsonMap map[string]interface{}
             if err = json.NewDecoder(reader).Decode(&jsonMap); err != nil {
                 return nil, err

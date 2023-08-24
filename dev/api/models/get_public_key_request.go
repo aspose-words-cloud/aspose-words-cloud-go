@@ -71,7 +71,7 @@ func (data *GetPublicKeyRequest) CreateRequestData() (RequestData, error) {
 }
 
 func (data *GetPublicKeyRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
-            var successPayload IPublicKeyResponse
+            var successPayload IPublicKeyResponse = new(PublicKeyResponse)
             var jsonMap map[string]interface{}
             if err = json.NewDecoder(reader).Decode(&jsonMap); err != nil {
                 return nil, err

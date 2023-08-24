@@ -122,7 +122,7 @@ func (data *GetHeaderFooterOnlineRequest) CreateRequestData() (RequestData, erro
 }
 
 func (data *GetHeaderFooterOnlineRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
-            var successPayload IHeaderFooterResponse
+            var successPayload IHeaderFooterResponse = new(HeaderFooterResponse)
             var jsonMap map[string]interface{}
             if err = json.NewDecoder(reader).Decode(&jsonMap); err != nil {
                 return nil, err
