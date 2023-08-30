@@ -34,9 +34,25 @@ import "io"
 // Updates a Run object in the paragraph.
 type UpdateRunOnlineResponse struct {
     // The response model.
-    Model RunResponse `json:"Model,omitempty"`
+    Model IRunResponse
 
 
     // The document after modification.
-    Document map[string]io.Reader `json:"Document,omitempty"`
+    Document map[string]io.Reader
+}
+
+func (obj *UpdateRunOnlineResponse) GetModel() IRunResponse {
+    return obj.Model
+}
+
+func (obj *UpdateRunOnlineResponse) SetModel(value IRunResponse) {
+    obj.Model = value
+}
+
+func (obj *UpdateRunOnlineResponse) GetDocument() map[string]io.Reader {
+    return obj.Document
+}
+
+func (obj *UpdateRunOnlineResponse) SetDocument(value map[string]io.Reader) {
+    obj.Document = value
 }

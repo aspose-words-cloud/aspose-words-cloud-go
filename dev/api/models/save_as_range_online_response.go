@@ -34,9 +34,25 @@ import "io"
 // Saves a range as a new document.
 type SaveAsRangeOnlineResponse struct {
     // The response model.
-    Model DocumentResponse `json:"Model,omitempty"`
+    Model IDocumentResponse
 
 
     // The document after modification.
-    Document map[string]io.Reader `json:"Document,omitempty"`
+    Document map[string]io.Reader
+}
+
+func (obj *SaveAsRangeOnlineResponse) GetModel() IDocumentResponse {
+    return obj.Model
+}
+
+func (obj *SaveAsRangeOnlineResponse) SetModel(value IDocumentResponse) {
+    obj.Model = value
+}
+
+func (obj *SaveAsRangeOnlineResponse) GetDocument() map[string]io.Reader {
+    return obj.Document
+}
+
+func (obj *SaveAsRangeOnlineResponse) SetDocument(value map[string]io.Reader) {
+    obj.Document = value
 }

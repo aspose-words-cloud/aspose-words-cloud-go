@@ -118,10 +118,12 @@ func (data *GetParagraphTabStopsOnlineRequest) CreateRequestData() (RequestData,
 }
 
 func (data *GetParagraphTabStopsOnlineRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
-            var successPayload TabStopsResponse
-            if err = json.NewDecoder(reader).Decode(&successPayload); err != nil {
+            var successPayload ITabStopsResponse = new(TabStopsResponse)
+            var jsonMap map[string]interface{}
+            if err = json.NewDecoder(reader).Decode(&jsonMap); err != nil {
                 return nil, err
             }
 
+            successPayload.Deserialize(jsonMap)
             return successPayload, err
 }

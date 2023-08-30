@@ -28,11 +28,89 @@
 package models
 
 // The REST response with a collection of comments.
+
+type ICommentsResponse interface {
+    IsCommentsResponse() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetRequestId() *string
+    SetRequestId(value *string)
+    GetComments() ICommentsCollection
+    SetComments(value ICommentsCollection)
+}
+
 type CommentsResponse struct {
     // The REST response with a collection of comments.
-    RequestId string `json:"RequestId,omitempty"`
+    RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with a collection of comments.
-    Comments CommentsCollectionResult `json:"Comments,omitempty"`
+    Comments ICommentsCollection `json:"Comments,omitempty"`
+}
+
+func (CommentsResponse) IsCommentsResponse() bool {
+    return true
+}
+
+func (CommentsResponse) IsWordsResponse() bool {
+    return true
+}
+
+func (obj *CommentsResponse) Initialize() {
+    if (obj.Comments != nil) {
+        obj.Comments.Initialize()
+    }
+
+
+}
+
+func (obj *CommentsResponse) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["RequestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["requestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["Comments"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance ICommentsCollection = new(CommentsCollection)
+            modelInstance.Deserialize(parsedValue)
+            obj.Comments = modelInstance
+        }
+
+    } else if jsonValue, exists := json["comments"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance ICommentsCollection = new(CommentsCollection)
+            modelInstance.Deserialize(parsedValue)
+            obj.Comments = modelInstance
+        }
+
+    }
+}
+
+func (obj *CommentsResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
+}
+
+func (obj *CommentsResponse) GetRequestId() *string {
+    return obj.RequestId
+}
+
+func (obj *CommentsResponse) SetRequestId(value *string) {
+    obj.RequestId = value
+}
+
+func (obj *CommentsResponse) GetComments() ICommentsCollection {
+    return obj.Comments
+}
+
+func (obj *CommentsResponse) SetComments(value ICommentsCollection) {
+    obj.Comments = value
 }
 

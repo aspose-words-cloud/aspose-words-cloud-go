@@ -60,10 +60,10 @@ func Test_Table_GetTables(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.Tables, "Validate GetTables response.");
-    assert.NotNil(t, actual.Tables.TableLinkList, "Validate GetTables response.");
-    assert.Equal(t, 5, len(actual.Tables.TableLinkList), "Validate GetTables response.");
-    assert.Equal(t, "0.0.1", actual.Tables.TableLinkList[0].NodeId, "Validate GetTables response.");
+    assert.NotNil(t, actual.GetTables(), "Validate GetTables response.");
+    assert.NotNil(t, actual.GetTables().GetTableLinkList(), "Validate GetTables response.");
+    assert.Equal(t, 5, len(actual.GetTables().GetTableLinkList()), "Validate GetTables response.");
+    assert.Equal(t, "0.0.1", DereferenceValue(actual.GetTables().GetTableLinkList()[0].GetNodeId()), "Validate GetTables response.");
 }
 
 // Test for getting tables online.
@@ -115,10 +115,10 @@ func Test_Table_GetTablesWithoutNodePath(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.Tables, "Validate GetTablesWithoutNodePath response.");
-    assert.NotNil(t, actual.Tables.TableLinkList, "Validate GetTablesWithoutNodePath response.");
-    assert.Equal(t, 5, len(actual.Tables.TableLinkList), "Validate GetTablesWithoutNodePath response.");
-    assert.Equal(t, "0.0.1", actual.Tables.TableLinkList[0].NodeId, "Validate GetTablesWithoutNodePath response.");
+    assert.NotNil(t, actual.GetTables(), "Validate GetTablesWithoutNodePath response.");
+    assert.NotNil(t, actual.GetTables().GetTableLinkList(), "Validate GetTablesWithoutNodePath response.");
+    assert.Equal(t, 5, len(actual.GetTables().GetTableLinkList()), "Validate GetTablesWithoutNodePath response.");
+    assert.Equal(t, "0.0.1", DereferenceValue(actual.GetTables().GetTableLinkList()[0].GetNodeId()), "Validate GetTablesWithoutNodePath response.");
 }
 
 // Test for getting table.
@@ -148,11 +148,11 @@ func Test_Table_GetTable(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.Table, "Validate GetTable response.");
-    assert.NotNil(t, actual.Table.TableRowList, "Validate GetTable response.");
-    assert.Equal(t, 1, len(actual.Table.TableRowList), "Validate GetTable response.");
-    assert.NotNil(t, actual.Table.TableRowList[0].TableCellList, "Validate GetTable response.");
-    assert.Equal(t, 2, len(actual.Table.TableRowList[0].TableCellList), "Validate GetTable response.");
+    assert.NotNil(t, actual.GetTable(), "Validate GetTable response.");
+    assert.NotNil(t, actual.GetTable().GetTableRowList(), "Validate GetTable response.");
+    assert.Equal(t, 1, len(actual.GetTable().GetTableRowList()), "Validate GetTable response.");
+    assert.NotNil(t, actual.GetTable().GetTableRowList()[0].GetTableCellList(), "Validate GetTable response.");
+    assert.Equal(t, 2, len(actual.GetTable().GetTableRowList()[0].GetTableCellList()), "Validate GetTable response.");
 }
 
 // Test for getting table online.
@@ -206,11 +206,11 @@ func Test_Table_GetTableWithoutNodePath(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.Table, "Validate GetTableWithoutNodePath response.");
-    assert.NotNil(t, actual.Table.TableRowList, "Validate GetTableWithoutNodePath response.");
-    assert.Equal(t, 1, len(actual.Table.TableRowList), "Validate GetTableWithoutNodePath response.");
-    assert.NotNil(t, actual.Table.TableRowList[0].TableCellList, "Validate GetTableWithoutNodePath response.");
-    assert.Equal(t, 2, len(actual.Table.TableRowList[0].TableCellList), "Validate GetTableWithoutNodePath response.");
+    assert.NotNil(t, actual.GetTable(), "Validate GetTableWithoutNodePath response.");
+    assert.NotNil(t, actual.GetTable().GetTableRowList(), "Validate GetTableWithoutNodePath response.");
+    assert.Equal(t, 1, len(actual.GetTable().GetTableRowList()), "Validate GetTableWithoutNodePath response.");
+    assert.NotNil(t, actual.GetTable().GetTableRowList()[0].GetTableCellList(), "Validate GetTableWithoutNodePath response.");
+    assert.Equal(t, 2, len(actual.GetTable().GetTableRowList()[0].GetTableCellList()), "Validate GetTableWithoutNodePath response.");
 }
 
 // Test for deleting table.
@@ -328,11 +328,11 @@ func Test_Table_InsertTable(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.Table, "Validate InsertTable response.");
-    assert.NotNil(t, actual.Table.TableRowList, "Validate InsertTable response.");
-    assert.Equal(t, 4, len(actual.Table.TableRowList), "Validate InsertTable response.");
-    assert.NotNil(t, actual.Table.TableRowList[0].TableCellList, "Validate InsertTable response.");
-    assert.Equal(t, 5, len(actual.Table.TableRowList[0].TableCellList), "Validate InsertTable response.");
+    assert.NotNil(t, actual.GetTable(), "Validate InsertTable response.");
+    assert.NotNil(t, actual.GetTable().GetTableRowList(), "Validate InsertTable response.");
+    assert.Equal(t, 4, len(actual.GetTable().GetTableRowList()), "Validate InsertTable response.");
+    assert.NotNil(t, actual.GetTable().GetTableRowList()[0].GetTableCellList(), "Validate InsertTable response.");
+    assert.Equal(t, 5, len(actual.GetTable().GetTableRowList()[0].GetTableCellList()), "Validate InsertTable response.");
 }
 
 // Test for adding table online.
@@ -394,11 +394,11 @@ func Test_Table_InsertTableWithoutNodePath(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.Table, "Validate InsertTableWithoutNodePath response.");
-    assert.NotNil(t, actual.Table.TableRowList, "Validate InsertTableWithoutNodePath response.");
-    assert.Equal(t, 4, len(actual.Table.TableRowList), "Validate InsertTableWithoutNodePath response.");
-    assert.NotNil(t, actual.Table.TableRowList[0].TableCellList, "Validate InsertTableWithoutNodePath response.");
-    assert.Equal(t, 5, len(actual.Table.TableRowList[0].TableCellList), "Validate InsertTableWithoutNodePath response.");
+    assert.NotNil(t, actual.GetTable(), "Validate InsertTableWithoutNodePath response.");
+    assert.NotNil(t, actual.GetTable().GetTableRowList(), "Validate InsertTableWithoutNodePath response.");
+    assert.Equal(t, 4, len(actual.GetTable().GetTableRowList()), "Validate InsertTableWithoutNodePath response.");
+    assert.NotNil(t, actual.GetTable().GetTableRowList()[0].GetTableCellList(), "Validate InsertTableWithoutNodePath response.");
+    assert.Equal(t, 5, len(actual.GetTable().GetTableRowList()[0].GetTableCellList()), "Validate InsertTableWithoutNodePath response.");
 }
 
 // Test for getting document properties.
@@ -428,8 +428,8 @@ func Test_Table_GetTableProperties(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.Properties, "Validate GetTableProperties response.");
-    assert.Equal(t, "Table Grid", actual.Properties.StyleName, "Validate GetTableProperties response.");
+    assert.NotNil(t, actual.GetProperties(), "Validate GetTableProperties response.");
+    assert.Equal(t, "Table Grid", DereferenceValue(actual.GetProperties().GetStyleName()), "Validate GetTableProperties response.");
 }
 
 // Test for getting document properties online.
@@ -483,8 +483,8 @@ func Test_Table_GetTablePropertiesWithoutNodePath(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.Properties, "Validate GetTablePropertiesWithoutNodePath response.");
-    assert.Equal(t, "Table Grid", actual.Properties.StyleName, "Validate GetTablePropertiesWithoutNodePath response.");
+    assert.NotNil(t, actual.GetProperties(), "Validate GetTablePropertiesWithoutNodePath response.");
+    assert.Equal(t, "Table Grid", DereferenceValue(actual.GetProperties().GetStyleName()), "Validate GetTablePropertiesWithoutNodePath response.");
 }
 
 // Test for updating table properties.
@@ -523,11 +523,11 @@ func Test_Table_UpdateTableProperties(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.Properties, "Validate UpdateTableProperties response.");
-    assert.False(t, actual.Properties.AllowAutoFit, "Validate UpdateTableProperties response.");
-    assert.True(t, actual.Properties.Bidi, "Validate UpdateTableProperties response.");
-    assert.Equal(t, 1.0, actual.Properties.BottomPadding, "Validate UpdateTableProperties response.");
-    assert.Equal(t, 2.0, actual.Properties.CellSpacing, "Validate UpdateTableProperties response.");
+    assert.NotNil(t, actual.GetProperties(), "Validate UpdateTableProperties response.");
+    assert.Equal(t, false, DereferenceValue(actual.GetProperties().GetAllowAutoFit()), "Validate UpdateTableProperties response.");
+    assert.Equal(t, true, DereferenceValue(actual.GetProperties().GetBidi()), "Validate UpdateTableProperties response.");
+    assert.Equal(t, 1.0, DereferenceValue(actual.GetProperties().GetBottomPadding()), "Validate UpdateTableProperties response.");
+    assert.Equal(t, 2.0, DereferenceValue(actual.GetProperties().GetCellSpacing()), "Validate UpdateTableProperties response.");
 }
 
 // Test for updating table properties online.
@@ -599,11 +599,11 @@ func Test_Table_UpdateTablePropertiesWithoutNodePath(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.Properties, "Validate UpdateTablePropertiesWithoutNodePath response.");
-    assert.False(t, actual.Properties.AllowAutoFit, "Validate UpdateTablePropertiesWithoutNodePath response.");
-    assert.True(t, actual.Properties.Bidi, "Validate UpdateTablePropertiesWithoutNodePath response.");
-    assert.Equal(t, 1.0, actual.Properties.BottomPadding, "Validate UpdateTablePropertiesWithoutNodePath response.");
-    assert.Equal(t, 2.0, actual.Properties.CellSpacing, "Validate UpdateTablePropertiesWithoutNodePath response.");
+    assert.NotNil(t, actual.GetProperties(), "Validate UpdateTablePropertiesWithoutNodePath response.");
+    assert.Equal(t, false, DereferenceValue(actual.GetProperties().GetAllowAutoFit()), "Validate UpdateTablePropertiesWithoutNodePath response.");
+    assert.Equal(t, true, DereferenceValue(actual.GetProperties().GetBidi()), "Validate UpdateTablePropertiesWithoutNodePath response.");
+    assert.Equal(t, 1.0, DereferenceValue(actual.GetProperties().GetBottomPadding()), "Validate UpdateTablePropertiesWithoutNodePath response.");
+    assert.Equal(t, 2.0, DereferenceValue(actual.GetProperties().GetCellSpacing()), "Validate UpdateTablePropertiesWithoutNodePath response.");
 }
 
 // Test for getting table row.
@@ -633,9 +633,9 @@ func Test_Table_GetTableRow(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.Row, "Validate GetTableRow response.");
-    assert.NotNil(t, actual.Row.TableCellList, "Validate GetTableRow response.");
-    assert.Equal(t, 2, len(actual.Row.TableCellList), "Validate GetTableRow response.");
+    assert.NotNil(t, actual.GetRow(), "Validate GetTableRow response.");
+    assert.NotNil(t, actual.GetRow().GetTableCellList(), "Validate GetTableRow response.");
+    assert.Equal(t, 2, len(actual.GetRow().GetTableCellList()), "Validate GetTableRow response.");
 }
 
 // Test for getting table row online.
@@ -748,9 +748,9 @@ func Test_Table_InsertTableRow(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.Row, "Validate InsertTableRow response.");
-    assert.NotNil(t, actual.Row.TableCellList, "Validate InsertTableRow response.");
-    assert.Equal(t, 5, len(actual.Row.TableCellList), "Validate InsertTableRow response.");
+    assert.NotNil(t, actual.GetRow(), "Validate InsertTableRow response.");
+    assert.NotNil(t, actual.GetRow().GetTableCellList(), "Validate InsertTableRow response.");
+    assert.Equal(t, 5, len(actual.GetRow().GetTableCellList()), "Validate InsertTableRow response.");
 }
 
 // Test for adding row online.
@@ -808,8 +808,8 @@ func Test_Table_GetTableRowFormat(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.RowFormat, "Validate GetTableRowFormat response.");
-    assert.True(t, actual.RowFormat.AllowBreakAcrossPages, "Validate GetTableRowFormat response.");
+    assert.NotNil(t, actual.GetRowFormat(), "Validate GetTableRowFormat response.");
+    assert.Equal(t, true, DereferenceValue(actual.GetRowFormat().GetAllowBreakAcrossPages()), "Validate GetTableRowFormat response.");
 }
 
 // Test for getting row format online.
@@ -871,10 +871,10 @@ func Test_Table_UpdateTableRowFormat(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.RowFormat, "Validate UpdateTableRowFormat response.");
-    assert.True(t, actual.RowFormat.AllowBreakAcrossPages, "Validate UpdateTableRowFormat response.");
-    assert.True(t, actual.RowFormat.HeadingFormat, "Validate UpdateTableRowFormat response.");
-    assert.Equal(t, 10.0, actual.RowFormat.Height, "Validate UpdateTableRowFormat response.");
+    assert.NotNil(t, actual.GetRowFormat(), "Validate UpdateTableRowFormat response.");
+    assert.Equal(t, true, DereferenceValue(actual.GetRowFormat().GetAllowBreakAcrossPages()), "Validate UpdateTableRowFormat response.");
+    assert.Equal(t, true, DereferenceValue(actual.GetRowFormat().GetHeadingFormat()), "Validate UpdateTableRowFormat response.");
+    assert.Equal(t, 10.0, DereferenceValue(actual.GetRowFormat().GetHeight()), "Validate UpdateTableRowFormat response.");
 }
 
 // Test updating row format online.
@@ -936,8 +936,8 @@ func Test_Table_GetTableCell(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.Cell, "Validate GetTableCell response.");
-    assert.Equal(t, "0.0.5.0.0", actual.Cell.NodeId, "Validate GetTableCell response.");
+    assert.NotNil(t, actual.GetCell(), "Validate GetTableCell response.");
+    assert.Equal(t, "0.0.5.0.0", DereferenceValue(actual.GetCell().GetNodeId()), "Validate GetTableCell response.");
 }
 
 // Test for getting table cell online.
@@ -1049,8 +1049,8 @@ func Test_Table_InsertTableCell(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.Cell, "Validate InsertTableCell response.");
-    assert.Equal(t, "0.0.5.0.3", actual.Cell.NodeId, "Validate InsertTableCell response.");
+    assert.NotNil(t, actual.GetCell(), "Validate InsertTableCell response.");
+    assert.Equal(t, "0.0.5.0.3", DereferenceValue(actual.GetCell().GetNodeId()), "Validate InsertTableCell response.");
 }
 
 // Test for adding cell online.
@@ -1107,8 +1107,8 @@ func Test_Table_GetTableCellFormat(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.CellFormat, "Validate GetTableCellFormat response.");
-    assert.True(t, actual.CellFormat.WrapText, "Validate GetTableCellFormat response.");
+    assert.NotNil(t, actual.GetCellFormat(), "Validate GetTableCellFormat response.");
+    assert.Equal(t, true, DereferenceValue(actual.GetCellFormat().GetWrapText()), "Validate GetTableCellFormat response.");
 }
 
 // Test for getting cell format online.
@@ -1170,10 +1170,10 @@ func Test_Table_UpdateTableCellFormat(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.CellFormat, "Validate UpdateTableCellFormat response.");
-    assert.Equal(t, 5.0, actual.CellFormat.BottomPadding, "Validate UpdateTableCellFormat response.");
-    assert.True(t, actual.CellFormat.FitText, "Validate UpdateTableCellFormat response.");
-    assert.True(t, actual.CellFormat.WrapText, "Validate UpdateTableCellFormat response.");
+    assert.NotNil(t, actual.GetCellFormat(), "Validate UpdateTableCellFormat response.");
+    assert.Equal(t, 5.0, DereferenceValue(actual.GetCellFormat().GetBottomPadding()), "Validate UpdateTableCellFormat response.");
+    assert.Equal(t, true, DereferenceValue(actual.GetCellFormat().GetFitText()), "Validate UpdateTableCellFormat response.");
+    assert.Equal(t, true, DereferenceValue(actual.GetCellFormat().GetWrapText()), "Validate UpdateTableCellFormat response.");
 }
 
 // Test for updating cell format online.

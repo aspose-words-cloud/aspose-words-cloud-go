@@ -34,9 +34,25 @@ import "io"
 // Replaces text in the document.
 type ReplaceTextOnlineResponse struct {
     // The response model.
-    Model ReplaceTextResponse `json:"Model,omitempty"`
+    Model IReplaceTextResponse
 
 
     // The document after modification.
-    Document map[string]io.Reader `json:"Document,omitempty"`
+    Document map[string]io.Reader
+}
+
+func (obj *ReplaceTextOnlineResponse) GetModel() IReplaceTextResponse {
+    return obj.Model
+}
+
+func (obj *ReplaceTextOnlineResponse) SetModel(value IReplaceTextResponse) {
+    obj.Model = value
+}
+
+func (obj *ReplaceTextOnlineResponse) GetDocument() map[string]io.Reader {
+    return obj.Document
+}
+
+func (obj *ReplaceTextOnlineResponse) SetDocument(value map[string]io.Reader) {
+    obj.Document = value
 }

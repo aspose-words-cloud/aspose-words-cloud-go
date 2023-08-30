@@ -28,15 +28,18 @@
 package models
 
 // DTO container with a table cell element.
-type TableCellResult struct {
-    // DTO container with a table cell element.
-    Link WordsApiLinkResult `json:"Link,omitempty"`
 
-    // DTO container with a table cell element.
-    NodeId string `json:"NodeId,omitempty"`
-
-    // DTO container with a table cell element.
-    ChildNodes []NodeLinkResult `json:"ChildNodes,omitempty"`
+type ITableCell interface {
+    IsTableCell() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetLink() IWordsApiLink
+    SetLink(value IWordsApiLink)
+    GetNodeId() *string
+    SetNodeId(value *string)
+    GetChildNodes() []INodeLink
+    SetChildNodes(value []INodeLink)
 }
 
 type TableCell struct {
@@ -47,13 +50,7 @@ type TableCell struct {
     NodeId *string `json:"NodeId,omitempty"`
 
     // DTO container with a table cell element.
-    ChildNodes []NodeLink `json:"ChildNodes,omitempty"`
-}
-
-type ITableCell interface {
-    IsTableCell() bool
-    Initialize()
-    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    ChildNodes []INodeLink `json:"ChildNodes,omitempty"`
 }
 
 func (TableCell) IsTableCell() bool {
@@ -81,8 +78,147 @@ func (obj *TableCell) Initialize() {
 
 }
 
+func (obj *TableCell) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["Link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    } else if jsonValue, exists := json["link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    }
+
+    if jsonValue, exists := json["NodeId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.NodeId = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["nodeId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.NodeId = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["ChildNodes"]; exists {
+        if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.ChildNodes = make([]INodeLink, 0)
+            for _, parsedElement := range parsedValue {
+                if elementValue, valid := parsedElement.(map[string]interface{}); valid {
+                    var modelElementInstance INodeLink = nil
+                    if jsonElementType, found := elementValue["$type"]; found {
+                        jsonTypeStr := jsonElementType.(string)
+                        if jsonTypeStr == "DrawingObject, _" { modelElementInstance = new(DrawingObject) }
+                        if jsonTypeStr == "DrawingObjectLink, _" { modelElementInstance = new(DrawingObjectLink) }
+                        if jsonTypeStr == "Field, _" { modelElementInstance = new(Field) }
+                        if jsonTypeStr == "FieldLink, _" { modelElementInstance = new(FieldLink) }
+                        if jsonTypeStr == "Footnote, _" { modelElementInstance = new(Footnote) }
+                        if jsonTypeStr == "FootnoteLink, _" { modelElementInstance = new(FootnoteLink) }
+                        if jsonTypeStr == "FormField, _" { modelElementInstance = new(FormField) }
+                        if jsonTypeStr == "FormFieldCheckbox, _" { modelElementInstance = new(FormFieldCheckbox) }
+                        if jsonTypeStr == "FormFieldDropDown, _" { modelElementInstance = new(FormFieldDropDown) }
+                        if jsonTypeStr == "FormFieldTextInput, _" { modelElementInstance = new(FormFieldTextInput) }
+                        if jsonTypeStr == "OfficeMathLink, _" { modelElementInstance = new(OfficeMathLink) }
+                        if jsonTypeStr == "OfficeMathObject, _" { modelElementInstance = new(OfficeMathObject) }
+                        if jsonTypeStr == "Paragraph, _" { modelElementInstance = new(Paragraph) }
+                        if jsonTypeStr == "ParagraphLink, _" { modelElementInstance = new(ParagraphLink) }
+                        if jsonTypeStr == "Run, _" { modelElementInstance = new(Run) }
+                        if jsonTypeStr == "RunLink, _" { modelElementInstance = new(RunLink) }
+                        if jsonTypeStr == "SectionLink, _" { modelElementInstance = new(SectionLink) }
+                        if jsonTypeStr == "StructuredDocumentTag, _" { modelElementInstance = new(StructuredDocumentTag) }
+                        if jsonTypeStr == "StructuredDocumentTagInsert, _" { modelElementInstance = new(StructuredDocumentTagInsert) }
+                        if jsonTypeStr == "StructuredDocumentTagUpdate, _" { modelElementInstance = new(StructuredDocumentTagUpdate) }
+                        if jsonTypeStr == "Table, _" { modelElementInstance = new(Table) }
+                        if jsonTypeStr == "TableCell, _" { modelElementInstance = new(TableCell) }
+                        if jsonTypeStr == "TableLink, _" { modelElementInstance = new(TableLink) }
+                        if jsonTypeStr == "TableRow, _" { modelElementInstance = new(TableRow) }
+                    }
+
+                    if modelElementInstance == nil { modelElementInstance = new(NodeLink) }
+                    modelElementInstance.Deserialize(elementValue)
+                    obj.ChildNodes = append(obj.ChildNodes, modelElementInstance)
+                }
+
+            }
+        }
+
+    } else if jsonValue, exists := json["childNodes"]; exists {
+        if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.ChildNodes = make([]INodeLink, 0)
+            for _, parsedElement := range parsedValue {
+                if elementValue, valid := parsedElement.(map[string]interface{}); valid {
+                    var modelElementInstance INodeLink = nil
+                    if jsonElementType, found := elementValue["$type"]; found {
+                        jsonTypeStr := jsonElementType.(string)
+                        if jsonTypeStr == "DrawingObject, _" { modelElementInstance = new(DrawingObject) }
+                        if jsonTypeStr == "DrawingObjectLink, _" { modelElementInstance = new(DrawingObjectLink) }
+                        if jsonTypeStr == "Field, _" { modelElementInstance = new(Field) }
+                        if jsonTypeStr == "FieldLink, _" { modelElementInstance = new(FieldLink) }
+                        if jsonTypeStr == "Footnote, _" { modelElementInstance = new(Footnote) }
+                        if jsonTypeStr == "FootnoteLink, _" { modelElementInstance = new(FootnoteLink) }
+                        if jsonTypeStr == "FormField, _" { modelElementInstance = new(FormField) }
+                        if jsonTypeStr == "FormFieldCheckbox, _" { modelElementInstance = new(FormFieldCheckbox) }
+                        if jsonTypeStr == "FormFieldDropDown, _" { modelElementInstance = new(FormFieldDropDown) }
+                        if jsonTypeStr == "FormFieldTextInput, _" { modelElementInstance = new(FormFieldTextInput) }
+                        if jsonTypeStr == "OfficeMathLink, _" { modelElementInstance = new(OfficeMathLink) }
+                        if jsonTypeStr == "OfficeMathObject, _" { modelElementInstance = new(OfficeMathObject) }
+                        if jsonTypeStr == "Paragraph, _" { modelElementInstance = new(Paragraph) }
+                        if jsonTypeStr == "ParagraphLink, _" { modelElementInstance = new(ParagraphLink) }
+                        if jsonTypeStr == "Run, _" { modelElementInstance = new(Run) }
+                        if jsonTypeStr == "RunLink, _" { modelElementInstance = new(RunLink) }
+                        if jsonTypeStr == "SectionLink, _" { modelElementInstance = new(SectionLink) }
+                        if jsonTypeStr == "StructuredDocumentTag, _" { modelElementInstance = new(StructuredDocumentTag) }
+                        if jsonTypeStr == "StructuredDocumentTagInsert, _" { modelElementInstance = new(StructuredDocumentTagInsert) }
+                        if jsonTypeStr == "StructuredDocumentTagUpdate, _" { modelElementInstance = new(StructuredDocumentTagUpdate) }
+                        if jsonTypeStr == "Table, _" { modelElementInstance = new(Table) }
+                        if jsonTypeStr == "TableCell, _" { modelElementInstance = new(TableCell) }
+                        if jsonTypeStr == "TableLink, _" { modelElementInstance = new(TableLink) }
+                        if jsonTypeStr == "TableRow, _" { modelElementInstance = new(TableRow) }
+                    }
+
+                    if modelElementInstance == nil { modelElementInstance = new(NodeLink) }
+                    modelElementInstance.Deserialize(elementValue)
+                    obj.ChildNodes = append(obj.ChildNodes, modelElementInstance)
+                }
+
+            }
+        }
+
+    }
+}
+
 func (obj *TableCell) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *TableCell) GetLink() IWordsApiLink {
+    return obj.Link
+}
+
+func (obj *TableCell) SetLink(value IWordsApiLink) {
+    obj.Link = value
+}
+
+func (obj *TableCell) GetNodeId() *string {
+    return obj.NodeId
+}
+
+func (obj *TableCell) SetNodeId(value *string) {
+    obj.NodeId = value
+}
+
+func (obj *TableCell) GetChildNodes() []INodeLink {
+    return obj.ChildNodes
+}
+
+func (obj *TableCell) SetChildNodes(value []INodeLink) {
+    obj.ChildNodes = value
+}
 

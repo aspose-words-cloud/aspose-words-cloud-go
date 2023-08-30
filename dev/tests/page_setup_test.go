@@ -60,8 +60,8 @@ func Test_PageSetup_GetSectionPageSetup(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.PageSetup, "Validate GetSectionPageSetup response.");
-    assert.Equal(t, int32(1), actual.PageSetup.LineStartingNumber, "Validate GetSectionPageSetup response.");
+    assert.NotNil(t, actual.GetPageSetup(), "Validate GetSectionPageSetup response.");
+    assert.Equal(t, int32(1), DereferenceValue(actual.GetPageSetup().GetLineStartingNumber()), "Validate GetSectionPageSetup response.");
 }
 
 // Test for getting page settings online.
@@ -121,8 +121,8 @@ func Test_PageSetup_UpdateSectionPageSetup(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.PageSetup, "Validate UpdateSectionPageSetup response.");
-    assert.True(t, actual.PageSetup.RtlGutter, "Validate UpdateSectionPageSetup response.");
+    assert.NotNil(t, actual.GetPageSetup(), "Validate UpdateSectionPageSetup response.");
+    assert.Equal(t, true, DereferenceValue(actual.GetPageSetup().GetRtlGutter()), "Validate UpdateSectionPageSetup response.");
 
 
 }

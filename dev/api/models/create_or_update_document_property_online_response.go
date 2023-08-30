@@ -34,9 +34,25 @@ import "io"
 // Adds a new or updates an existing document property.
 type CreateOrUpdateDocumentPropertyOnlineResponse struct {
     // The response model.
-    Model DocumentPropertyResponse `json:"Model,omitempty"`
+    Model IDocumentPropertyResponse
 
 
     // The document after modification.
-    Document map[string]io.Reader `json:"Document,omitempty"`
+    Document map[string]io.Reader
+}
+
+func (obj *CreateOrUpdateDocumentPropertyOnlineResponse) GetModel() IDocumentPropertyResponse {
+    return obj.Model
+}
+
+func (obj *CreateOrUpdateDocumentPropertyOnlineResponse) SetModel(value IDocumentPropertyResponse) {
+    obj.Model = value
+}
+
+func (obj *CreateOrUpdateDocumentPropertyOnlineResponse) GetDocument() map[string]io.Reader {
+    return obj.Document
+}
+
+func (obj *CreateOrUpdateDocumentPropertyOnlineResponse) SetDocument(value map[string]io.Reader) {
+    obj.Document = value
 }

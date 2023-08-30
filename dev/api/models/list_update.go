@@ -28,20 +28,19 @@
 package models
 
 // Update document properties if document list.
-type ListUpdateResult struct {
-    // Update document properties if document list.
-    IsRestartAtEachSection bool `json:"IsRestartAtEachSection,omitempty"`
+
+type IListUpdate interface {
+    IsListUpdate() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetIsRestartAtEachSection() *bool
+    SetIsRestartAtEachSection(value *bool)
 }
 
 type ListUpdate struct {
     // Update document properties if document list.
     IsRestartAtEachSection *bool `json:"IsRestartAtEachSection,omitempty"`
-}
-
-type IListUpdate interface {
-    IsListUpdate() bool
-    Initialize()
-    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (ListUpdate) IsListUpdate() bool {
@@ -52,8 +51,29 @@ func (ListUpdate) IsListUpdate() bool {
 func (obj *ListUpdate) Initialize() {
 }
 
+func (obj *ListUpdate) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["IsRestartAtEachSection"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.IsRestartAtEachSection = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["isRestartAtEachSection"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.IsRestartAtEachSection = &parsedValue
+        }
+
+    }
+}
+
 func (obj *ListUpdate) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *ListUpdate) GetIsRestartAtEachSection() *bool {
+    return obj.IsRestartAtEachSection
+}
+
+func (obj *ListUpdate) SetIsRestartAtEachSection(value *bool) {
+    obj.IsRestartAtEachSection = value
+}
 

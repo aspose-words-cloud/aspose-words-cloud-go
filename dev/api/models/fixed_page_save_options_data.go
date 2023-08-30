@@ -28,158 +28,51 @@
 package models
 
 // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
-type FixedPageSaveOptionsDataResult struct {
-    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
-    AllowEmbeddingPostScriptFonts bool `json:"AllowEmbeddingPostScriptFonts,omitempty"`
-
-    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
-    CustomTimeZoneInfoData TimeZoneInfoDataResult `json:"CustomTimeZoneInfoData,omitempty"`
-
-    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
-    Dml3DEffectsRenderingMode string `json:"Dml3DEffectsRenderingMode,omitempty"`
-
-    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
-    DmlEffectsRenderingMode string `json:"DmlEffectsRenderingMode,omitempty"`
-
-    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
-    DmlRenderingMode string `json:"DmlRenderingMode,omitempty"`
-
-    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
-    FileName string `json:"FileName,omitempty"`
-
-    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
-    ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
-
-    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
-    UpdateCreatedTimeProperty bool `json:"UpdateCreatedTimeProperty,omitempty"`
-
-    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
-    UpdateFields bool `json:"UpdateFields,omitempty"`
-
-    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
-    UpdateLastPrintedProperty bool `json:"UpdateLastPrintedProperty,omitempty"`
-
-    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
-    UpdateLastSavedTimeProperty bool `json:"UpdateLastSavedTimeProperty,omitempty"`
-
-    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
-    ZipOutput bool `json:"ZipOutput,omitempty"`
-
-    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
-    SaveFormat string `json:"SaveFormat,omitempty"`
-
-    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
-    ColorMode string `json:"ColorMode,omitempty"`
-
-    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
-    JpegQuality int32 `json:"JpegQuality,omitempty"`
-
-    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
-    MetafileRenderingOptions MetafileRenderingOptionsDataResult `json:"MetafileRenderingOptions,omitempty"`
-
-    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
-    NumeralFormat string `json:"NumeralFormat,omitempty"`
-
-    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
-    OptimizeOutput bool `json:"OptimizeOutput,omitempty"`
-
-    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
-    PageCount int32 `json:"PageCount,omitempty"`
-
-    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
-    PageIndex int32 `json:"PageIndex,omitempty"`
-}
-
-type FixedPageSaveOptionsData struct {
-    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
-    AllowEmbeddingPostScriptFonts *bool `json:"AllowEmbeddingPostScriptFonts,omitempty"`
-
-    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
-    CustomTimeZoneInfoData ITimeZoneInfoData `json:"CustomTimeZoneInfoData,omitempty"`
-
-    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
-    Dml3DEffectsRenderingMode *string `json:"Dml3DEffectsRenderingMode,omitempty"`
-
-    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
-    DmlEffectsRenderingMode *string `json:"DmlEffectsRenderingMode,omitempty"`
-
-    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
-    DmlRenderingMode *string `json:"DmlRenderingMode,omitempty"`
-
-    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
-    FileName *string `json:"FileName,omitempty"`
-
-    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
-    ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
-
-    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
-    UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
-
-    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
-    UpdateFields *bool `json:"UpdateFields,omitempty"`
-
-    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
-    UpdateLastPrintedProperty *bool `json:"UpdateLastPrintedProperty,omitempty"`
-
-    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
-    UpdateLastSavedTimeProperty *bool `json:"UpdateLastSavedTimeProperty,omitempty"`
-
-    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
-    ZipOutput *bool `json:"ZipOutput,omitempty"`
-
-    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
-    SaveFormat *string `json:"SaveFormat,omitempty"`
-
-    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
-    ColorMode *string `json:"ColorMode,omitempty"`
-
-    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
-    JpegQuality *int32 `json:"JpegQuality,omitempty"`
-
-    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
-    MetafileRenderingOptions IMetafileRenderingOptionsData `json:"MetafileRenderingOptions,omitempty"`
-
-    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
-    NumeralFormat *string `json:"NumeralFormat,omitempty"`
-
-    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
-    OptimizeOutput *bool `json:"OptimizeOutput,omitempty"`
-
-    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
-    PageCount *int32 `json:"PageCount,omitempty"`
-
-    // Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc).
-    PageIndex *int32 `json:"PageIndex,omitempty"`
-}
 
 type IFixedPageSaveOptionsData interface {
     IsFixedPageSaveOptionsData() bool
     Initialize()
+    Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetAllowEmbeddingPostScriptFonts() *bool
+    SetAllowEmbeddingPostScriptFonts(value *bool)
+    GetCustomTimeZoneInfoData() ITimeZoneInfoData
+    SetCustomTimeZoneInfoData(value ITimeZoneInfoData)
+    GetDml3DEffectsRenderingMode() *string
+    SetDml3DEffectsRenderingMode(value *string)
+    GetDmlEffectsRenderingMode() *string
+    SetDmlEffectsRenderingMode(value *string)
+    GetDmlRenderingMode() *string
+    SetDmlRenderingMode(value *string)
+    GetFileName() *string
+    SetFileName(value *string)
+    GetImlRenderingMode() *string
+    SetImlRenderingMode(value *string)
+    GetUpdateCreatedTimeProperty() *bool
+    SetUpdateCreatedTimeProperty(value *bool)
+    GetUpdateFields() *bool
+    SetUpdateFields(value *bool)
+    GetUpdateLastPrintedProperty() *bool
+    SetUpdateLastPrintedProperty(value *bool)
+    GetUpdateLastSavedTimeProperty() *bool
+    SetUpdateLastSavedTimeProperty(value *bool)
+    GetZipOutput() *bool
+    SetZipOutput(value *bool)
+    GetSaveFormat() *string
+    SetSaveFormat(value *string)
+    GetColorMode() *string
+    SetColorMode(value *string)
+    GetJpegQuality() *int32
+    SetJpegQuality(value *int32)
+    GetMetafileRenderingOptions() IMetafileRenderingOptionsData
+    SetMetafileRenderingOptions(value IMetafileRenderingOptionsData)
+    GetNumeralFormat() *string
+    SetNumeralFormat(value *string)
+    GetOptimizeOutput() *bool
+    SetOptimizeOutput(value *bool)
+    GetPageCount() *int32
+    SetPageCount(value *int32)
+    GetPageIndex() *int32
+    SetPageIndex(value *int32)
 }
-
-func (FixedPageSaveOptionsData) IsFixedPageSaveOptionsData() bool {
-    return true
-}
-
-func (FixedPageSaveOptionsData) IsSaveOptionsData() bool {
-    return true
-}
-
-func (obj *FixedPageSaveOptionsData) Initialize() {
-    if (obj.CustomTimeZoneInfoData != nil) {
-        obj.CustomTimeZoneInfoData.Initialize()
-    }
-
-    if (obj.MetafileRenderingOptions != nil) {
-        obj.MetafileRenderingOptions.Initialize()
-    }
-
-
-}
-
-func (obj *FixedPageSaveOptionsData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
-    return resultFilesContent
-}
-
 

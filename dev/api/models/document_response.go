@@ -28,11 +28,89 @@
 package models
 
 // The REST response with a document description.
+
+type IDocumentResponse interface {
+    IsDocumentResponse() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetRequestId() *string
+    SetRequestId(value *string)
+    GetDocument() IDocument
+    SetDocument(value IDocument)
+}
+
 type DocumentResponse struct {
     // The REST response with a document description.
-    RequestId string `json:"RequestId,omitempty"`
+    RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with a document description.
-    Document DocumentResult `json:"Document,omitempty"`
+    Document IDocument `json:"Document,omitempty"`
+}
+
+func (DocumentResponse) IsDocumentResponse() bool {
+    return true
+}
+
+func (DocumentResponse) IsWordsResponse() bool {
+    return true
+}
+
+func (obj *DocumentResponse) Initialize() {
+    if (obj.Document != nil) {
+        obj.Document.Initialize()
+    }
+
+
+}
+
+func (obj *DocumentResponse) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["RequestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["requestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["Document"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IDocument = new(Document)
+            modelInstance.Deserialize(parsedValue)
+            obj.Document = modelInstance
+        }
+
+    } else if jsonValue, exists := json["document"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IDocument = new(Document)
+            modelInstance.Deserialize(parsedValue)
+            obj.Document = modelInstance
+        }
+
+    }
+}
+
+func (obj *DocumentResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
+}
+
+func (obj *DocumentResponse) GetRequestId() *string {
+    return obj.RequestId
+}
+
+func (obj *DocumentResponse) SetRequestId(value *string) {
+    obj.RequestId = value
+}
+
+func (obj *DocumentResponse) GetDocument() IDocument {
+    return obj.Document
+}
+
+func (obj *DocumentResponse) SetDocument(value IDocument) {
+    obj.Document = value
 }
 

@@ -28,20 +28,19 @@
 package models
 
 // Insert document to document list.
-type ListInsertResult struct {
-    // Insert document to document list.
-    Template string `json:"Template,omitempty"`
+
+type IListInsert interface {
+    IsListInsert() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetTemplate() *string
+    SetTemplate(value *string)
 }
 
 type ListInsert struct {
     // Insert document to document list.
     Template *string `json:"Template,omitempty"`
-}
-
-type IListInsert interface {
-    IsListInsert() bool
-    Initialize()
-    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (ListInsert) IsListInsert() bool {
@@ -52,8 +51,29 @@ func (ListInsert) IsListInsert() bool {
 func (obj *ListInsert) Initialize() {
 }
 
+func (obj *ListInsert) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["Template"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Template = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["template"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Template = &parsedValue
+        }
+
+    }
+}
+
 func (obj *ListInsert) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *ListInsert) GetTemplate() *string {
+    return obj.Template
+}
+
+func (obj *ListInsert) SetTemplate(value *string) {
+    obj.Template = value
+}
 

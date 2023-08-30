@@ -172,10 +172,12 @@ func (data *SplitDocumentRequest) CreateRequestData() (RequestData, error) {
 }
 
 func (data *SplitDocumentRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
-            var successPayload SplitDocumentResponse
-            if err = json.NewDecoder(reader).Decode(&successPayload); err != nil {
+            var successPayload ISplitDocumentResponse = new(SplitDocumentResponse)
+            var jsonMap map[string]interface{}
+            if err = json.NewDecoder(reader).Decode(&jsonMap); err != nil {
                 return nil, err
             }
 
+            successPayload.Deserialize(jsonMap)
             return successPayload, err
 }

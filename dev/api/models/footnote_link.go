@@ -28,12 +28,16 @@
 package models
 
 // Footnote link.
-type FootnoteLinkResult struct {
-    // Footnote link.
-    Link WordsApiLinkResult `json:"Link,omitempty"`
 
-    // Footnote link.
-    NodeId string `json:"NodeId,omitempty"`
+type IFootnoteLink interface {
+    IsFootnoteLink() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetLink() IWordsApiLink
+    SetLink(value IWordsApiLink)
+    GetNodeId() *string
+    SetNodeId(value *string)
 }
 
 type FootnoteLink struct {
@@ -42,12 +46,6 @@ type FootnoteLink struct {
 
     // Footnote link.
     NodeId *string `json:"NodeId,omitempty"`
-}
-
-type IFootnoteLink interface {
-    IsFootnoteLink() bool
-    Initialize()
-    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (FootnoteLink) IsFootnoteLink() bool {
@@ -70,8 +68,53 @@ func (obj *FootnoteLink) Initialize() {
 
 }
 
+func (obj *FootnoteLink) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["Link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    } else if jsonValue, exists := json["link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    }
+
+    if jsonValue, exists := json["NodeId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.NodeId = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["nodeId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.NodeId = &parsedValue
+        }
+
+    }
+}
+
 func (obj *FootnoteLink) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *FootnoteLink) GetLink() IWordsApiLink {
+    return obj.Link
+}
+
+func (obj *FootnoteLink) SetLink(value IWordsApiLink) {
+    obj.Link = value
+}
+
+func (obj *FootnoteLink) GetNodeId() *string {
+    return obj.NodeId
+}
+
+func (obj *FootnoteLink) SetNodeId(value *string) {
+    obj.NodeId = value
+}
 

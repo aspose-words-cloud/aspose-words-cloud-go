@@ -122,10 +122,12 @@ func (data *GetBookmarksRequest) CreateRequestData() (RequestData, error) {
 }
 
 func (data *GetBookmarksRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
-            var successPayload BookmarksResponse
-            if err = json.NewDecoder(reader).Decode(&successPayload); err != nil {
+            var successPayload IBookmarksResponse = new(BookmarksResponse)
+            var jsonMap map[string]interface{}
+            if err = json.NewDecoder(reader).Decode(&jsonMap); err != nil {
                 return nil, err
             }
 
+            successPayload.Deserialize(jsonMap)
             return successPayload, err
 }

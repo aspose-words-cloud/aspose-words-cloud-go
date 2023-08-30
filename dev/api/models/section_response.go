@@ -28,11 +28,89 @@
 package models
 
 // The REST response with a section.
+
+type ISectionResponse interface {
+    IsSectionResponse() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetRequestId() *string
+    SetRequestId(value *string)
+    GetSection() ISection
+    SetSection(value ISection)
+}
+
 type SectionResponse struct {
     // The REST response with a section.
-    RequestId string `json:"RequestId,omitempty"`
+    RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with a section.
-    Section SectionResult `json:"Section,omitempty"`
+    Section ISection `json:"Section,omitempty"`
+}
+
+func (SectionResponse) IsSectionResponse() bool {
+    return true
+}
+
+func (SectionResponse) IsWordsResponse() bool {
+    return true
+}
+
+func (obj *SectionResponse) Initialize() {
+    if (obj.Section != nil) {
+        obj.Section.Initialize()
+    }
+
+
+}
+
+func (obj *SectionResponse) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["RequestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["requestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["Section"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance ISection = new(Section)
+            modelInstance.Deserialize(parsedValue)
+            obj.Section = modelInstance
+        }
+
+    } else if jsonValue, exists := json["section"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance ISection = new(Section)
+            modelInstance.Deserialize(parsedValue)
+            obj.Section = modelInstance
+        }
+
+    }
+}
+
+func (obj *SectionResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
+}
+
+func (obj *SectionResponse) GetRequestId() *string {
+    return obj.RequestId
+}
+
+func (obj *SectionResponse) SetRequestId(value *string) {
+    obj.RequestId = value
+}
+
+func (obj *SectionResponse) GetSection() ISection {
+    return obj.Section
+}
+
+func (obj *SectionResponse) SetSection(value ISection) {
+    obj.Section = value
 }
 

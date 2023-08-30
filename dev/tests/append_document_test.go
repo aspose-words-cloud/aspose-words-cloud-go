@@ -49,8 +49,8 @@ func Test_AppendDocument_AppendDocument(t *testing.T) {
         FileReference: &requestDocumentListDocumentEntries0FileReference,
         ImportFormatMode: ToStringPointer("KeepSourceFormatting"),
     }
-    requestDocumentListDocumentEntries := []models.DocumentEntry{
-        requestDocumentListDocumentEntries0,
+    requestDocumentListDocumentEntries := []models.IDocumentEntry{
+        &requestDocumentListDocumentEntries0,
     }
     requestDocumentList := models.DocumentEntryList{
         DocumentEntries: requestDocumentListDocumentEntries,
@@ -72,8 +72,8 @@ func Test_AppendDocument_AppendDocument(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.Document, "Validate AppendDocument response.");
-    assert.Equal(t, "TestAppendDocument.docx", actual.Document.FileName, "Validate AppendDocument response.");
+    assert.NotNil(t, actual.GetDocument(), "Validate AppendDocument response.");
+    assert.Equal(t, "TestAppendDocument.docx", DereferenceValue(actual.GetDocument().GetFileName()), "Validate AppendDocument response.");
 }
 
 // Test for appending document online.
@@ -89,8 +89,8 @@ func Test_AppendDocument_AppendDocumentOnline(t *testing.T) {
         FileReference: &requestDocumentListDocumentEntries0FileReference,
         ImportFormatMode: ToStringPointer("KeepSourceFormatting"),
     }
-    requestDocumentListDocumentEntries := []models.DocumentEntry{
-        requestDocumentListDocumentEntries0,
+    requestDocumentListDocumentEntries := []models.IDocumentEntry{
+        &requestDocumentListDocumentEntries0,
     }
     requestDocumentList := models.DocumentEntryList{
         DocumentEntries: requestDocumentListDocumentEntries,

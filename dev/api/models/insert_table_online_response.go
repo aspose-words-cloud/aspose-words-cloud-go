@@ -34,9 +34,25 @@ import "io"
 // Inserts a new table to the document node.
 type InsertTableOnlineResponse struct {
     // The response model.
-    Model TableResponse `json:"Model,omitempty"`
+    Model ITableResponse
 
 
     // The document after modification.
-    Document map[string]io.Reader `json:"Document,omitempty"`
+    Document map[string]io.Reader
+}
+
+func (obj *InsertTableOnlineResponse) GetModel() ITableResponse {
+    return obj.Model
+}
+
+func (obj *InsertTableOnlineResponse) SetModel(value ITableResponse) {
+    obj.Model = value
+}
+
+func (obj *InsertTableOnlineResponse) GetDocument() map[string]io.Reader {
+    return obj.Document
+}
+
+func (obj *InsertTableOnlineResponse) SetDocument(value map[string]io.Reader) {
+    obj.Document = value
 }

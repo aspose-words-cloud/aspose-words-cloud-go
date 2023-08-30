@@ -28,11 +28,89 @@
 package models
 
 // The REST response with a document property.
+
+type IDocumentPropertyResponse interface {
+    IsDocumentPropertyResponse() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetRequestId() *string
+    SetRequestId(value *string)
+    GetDocumentProperty() IDocumentProperty
+    SetDocumentProperty(value IDocumentProperty)
+}
+
 type DocumentPropertyResponse struct {
     // The REST response with a document property.
-    RequestId string `json:"RequestId,omitempty"`
+    RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with a document property.
-    DocumentProperty DocumentPropertyResult `json:"DocumentProperty,omitempty"`
+    DocumentProperty IDocumentProperty `json:"DocumentProperty,omitempty"`
+}
+
+func (DocumentPropertyResponse) IsDocumentPropertyResponse() bool {
+    return true
+}
+
+func (DocumentPropertyResponse) IsWordsResponse() bool {
+    return true
+}
+
+func (obj *DocumentPropertyResponse) Initialize() {
+    if (obj.DocumentProperty != nil) {
+        obj.DocumentProperty.Initialize()
+    }
+
+
+}
+
+func (obj *DocumentPropertyResponse) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["RequestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["requestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["DocumentProperty"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IDocumentProperty = new(DocumentProperty)
+            modelInstance.Deserialize(parsedValue)
+            obj.DocumentProperty = modelInstance
+        }
+
+    } else if jsonValue, exists := json["documentProperty"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IDocumentProperty = new(DocumentProperty)
+            modelInstance.Deserialize(parsedValue)
+            obj.DocumentProperty = modelInstance
+        }
+
+    }
+}
+
+func (obj *DocumentPropertyResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
+}
+
+func (obj *DocumentPropertyResponse) GetRequestId() *string {
+    return obj.RequestId
+}
+
+func (obj *DocumentPropertyResponse) SetRequestId(value *string) {
+    obj.RequestId = value
+}
+
+func (obj *DocumentPropertyResponse) GetDocumentProperty() IDocumentProperty {
+    return obj.DocumentProperty
+}
+
+func (obj *DocumentPropertyResponse) SetDocumentProperty(value IDocumentProperty) {
+    obj.DocumentProperty = value
 }
 

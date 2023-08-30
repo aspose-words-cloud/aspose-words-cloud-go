@@ -164,10 +164,12 @@ func (data *UpdateFieldRequest) CreateRequestData() (RequestData, error) {
 }
 
 func (data *UpdateFieldRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
-            var successPayload FieldResponse
-            if err = json.NewDecoder(reader).Decode(&successPayload); err != nil {
+            var successPayload IFieldResponse = new(FieldResponse)
+            var jsonMap map[string]interface{}
+            if err = json.NewDecoder(reader).Decode(&jsonMap); err != nil {
                 return nil, err
             }
 
+            successPayload.Deserialize(jsonMap)
             return successPayload, err
 }

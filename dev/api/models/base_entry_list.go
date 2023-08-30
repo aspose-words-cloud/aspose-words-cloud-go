@@ -28,28 +28,11 @@
 package models
 
 // Represents a list of entries which will be appended to the original resource entry.
-type BaseEntryListResult struct {
-}
-
-type BaseEntryList struct {
-}
 
 type IBaseEntryList interface {
     IsBaseEntryList() bool
     Initialize()
+    Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
-
-func (BaseEntryList) IsBaseEntryList() bool {
-    return true
-}
-
-
-func (obj *BaseEntryList) Initialize() {
-}
-
-func (obj *BaseEntryList) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
-    return resultFilesContent
-}
-
 

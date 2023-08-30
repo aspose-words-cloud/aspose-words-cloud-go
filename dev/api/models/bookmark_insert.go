@@ -28,18 +28,20 @@
 package models
 
 // Represents a bookmark to insert.
-type BookmarkInsertResult struct {
-    // Represents a bookmark to insert.
-    Name string `json:"Name,omitempty"`
 
-    // Represents a bookmark to insert.
-    Text string `json:"Text,omitempty"`
-
-    // Represents a bookmark to insert.
-    EndRange NewDocumentPositionResult `json:"EndRange,omitempty"`
-
-    // Represents a bookmark to insert.
-    StartRange NewDocumentPositionResult `json:"StartRange,omitempty"`
+type IBookmarkInsert interface {
+    IsBookmarkInsert() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetName() *string
+    SetName(value *string)
+    GetText() *string
+    SetText(value *string)
+    GetEndRange() INewDocumentPosition
+    SetEndRange(value INewDocumentPosition)
+    GetStartRange() INewDocumentPosition
+    SetStartRange(value INewDocumentPosition)
 }
 
 type BookmarkInsert struct {
@@ -54,12 +56,6 @@ type BookmarkInsert struct {
 
     // Represents a bookmark to insert.
     StartRange INewDocumentPosition `json:"StartRange,omitempty"`
-}
-
-type IBookmarkInsert interface {
-    IsBookmarkInsert() bool
-    Initialize()
-    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (BookmarkInsert) IsBookmarkInsert() bool {
@@ -82,8 +78,97 @@ func (obj *BookmarkInsert) Initialize() {
 
 }
 
+func (obj *BookmarkInsert) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["Name"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Name = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["name"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Name = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["Text"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Text = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["text"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Text = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["EndRange"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance INewDocumentPosition = new(NewDocumentPosition)
+            modelInstance.Deserialize(parsedValue)
+            obj.EndRange = modelInstance
+        }
+
+    } else if jsonValue, exists := json["endRange"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance INewDocumentPosition = new(NewDocumentPosition)
+            modelInstance.Deserialize(parsedValue)
+            obj.EndRange = modelInstance
+        }
+
+    }
+
+    if jsonValue, exists := json["StartRange"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance INewDocumentPosition = new(NewDocumentPosition)
+            modelInstance.Deserialize(parsedValue)
+            obj.StartRange = modelInstance
+        }
+
+    } else if jsonValue, exists := json["startRange"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance INewDocumentPosition = new(NewDocumentPosition)
+            modelInstance.Deserialize(parsedValue)
+            obj.StartRange = modelInstance
+        }
+
+    }
+}
+
 func (obj *BookmarkInsert) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *BookmarkInsert) GetName() *string {
+    return obj.Name
+}
+
+func (obj *BookmarkInsert) SetName(value *string) {
+    obj.Name = value
+}
+
+func (obj *BookmarkInsert) GetText() *string {
+    return obj.Text
+}
+
+func (obj *BookmarkInsert) SetText(value *string) {
+    obj.Text = value
+}
+
+func (obj *BookmarkInsert) GetEndRange() INewDocumentPosition {
+    return obj.EndRange
+}
+
+func (obj *BookmarkInsert) SetEndRange(value INewDocumentPosition) {
+    obj.EndRange = value
+}
+
+func (obj *BookmarkInsert) GetStartRange() INewDocumentPosition {
+    return obj.StartRange
+}
+
+func (obj *BookmarkInsert) SetStartRange(value INewDocumentPosition) {
+    obj.StartRange = value
+}
 

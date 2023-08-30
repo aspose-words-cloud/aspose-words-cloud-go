@@ -28,11 +28,89 @@
 package models
 
 // The REST response with a HeaderFooter.
+
+type IHeaderFooterResponse interface {
+    IsHeaderFooterResponse() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetRequestId() *string
+    SetRequestId(value *string)
+    GetHeaderFooter() IHeaderFooter
+    SetHeaderFooter(value IHeaderFooter)
+}
+
 type HeaderFooterResponse struct {
     // The REST response with a HeaderFooter.
-    RequestId string `json:"RequestId,omitempty"`
+    RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with a HeaderFooter.
-    HeaderFooter HeaderFooterResult `json:"HeaderFooter,omitempty"`
+    HeaderFooter IHeaderFooter `json:"HeaderFooter,omitempty"`
+}
+
+func (HeaderFooterResponse) IsHeaderFooterResponse() bool {
+    return true
+}
+
+func (HeaderFooterResponse) IsWordsResponse() bool {
+    return true
+}
+
+func (obj *HeaderFooterResponse) Initialize() {
+    if (obj.HeaderFooter != nil) {
+        obj.HeaderFooter.Initialize()
+    }
+
+
+}
+
+func (obj *HeaderFooterResponse) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["RequestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["requestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["HeaderFooter"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IHeaderFooter = new(HeaderFooter)
+            modelInstance.Deserialize(parsedValue)
+            obj.HeaderFooter = modelInstance
+        }
+
+    } else if jsonValue, exists := json["headerFooter"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IHeaderFooter = new(HeaderFooter)
+            modelInstance.Deserialize(parsedValue)
+            obj.HeaderFooter = modelInstance
+        }
+
+    }
+}
+
+func (obj *HeaderFooterResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
+}
+
+func (obj *HeaderFooterResponse) GetRequestId() *string {
+    return obj.RequestId
+}
+
+func (obj *HeaderFooterResponse) SetRequestId(value *string) {
+    obj.RequestId = value
+}
+
+func (obj *HeaderFooterResponse) GetHeaderFooter() IHeaderFooter {
+    return obj.HeaderFooter
+}
+
+func (obj *HeaderFooterResponse) SetHeaderFooter(value IHeaderFooter) {
+    obj.HeaderFooter = value
 }
 

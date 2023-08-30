@@ -28,14 +28,116 @@
 package models
 
 // The REST response with a number of occurrences of the captured text in the document.
+
+type IReplaceTextResponse interface {
+    IsReplaceTextResponse() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetRequestId() *string
+    SetRequestId(value *string)
+    GetDocumentLink() IFileLink
+    SetDocumentLink(value IFileLink)
+    GetMatches() *int32
+    SetMatches(value *int32)
+}
+
 type ReplaceTextResponse struct {
     // The REST response with a number of occurrences of the captured text in the document.
-    RequestId string `json:"RequestId,omitempty"`
+    RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with a number of occurrences of the captured text in the document.
-    DocumentLink FileLinkResult `json:"DocumentLink,omitempty"`
+    DocumentLink IFileLink `json:"DocumentLink,omitempty"`
 
     // The REST response with a number of occurrences of the captured text in the document.
-    Matches int32 `json:"Matches,omitempty"`
+    Matches *int32 `json:"Matches,omitempty"`
+}
+
+func (ReplaceTextResponse) IsReplaceTextResponse() bool {
+    return true
+}
+
+func (ReplaceTextResponse) IsWordsResponse() bool {
+    return true
+}
+
+func (obj *ReplaceTextResponse) Initialize() {
+    if (obj.DocumentLink != nil) {
+        obj.DocumentLink.Initialize()
+    }
+
+
+}
+
+func (obj *ReplaceTextResponse) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["RequestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["requestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["DocumentLink"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IFileLink = new(FileLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.DocumentLink = modelInstance
+        }
+
+    } else if jsonValue, exists := json["documentLink"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IFileLink = new(FileLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.DocumentLink = modelInstance
+        }
+
+    }
+
+    if jsonValue, exists := json["Matches"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.Matches = new(int32)
+            *obj.Matches = int32(parsedValue)
+        }
+
+    } else if jsonValue, exists := json["matches"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.Matches = new(int32)
+            *obj.Matches = int32(parsedValue)
+        }
+
+    }
+}
+
+func (obj *ReplaceTextResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
+}
+
+func (obj *ReplaceTextResponse) GetRequestId() *string {
+    return obj.RequestId
+}
+
+func (obj *ReplaceTextResponse) SetRequestId(value *string) {
+    obj.RequestId = value
+}
+
+func (obj *ReplaceTextResponse) GetDocumentLink() IFileLink {
+    return obj.DocumentLink
+}
+
+func (obj *ReplaceTextResponse) SetDocumentLink(value IFileLink) {
+    obj.DocumentLink = value
+}
+
+func (obj *ReplaceTextResponse) GetMatches() *int32 {
+    return obj.Matches
+}
+
+func (obj *ReplaceTextResponse) SetMatches(value *int32) {
+    obj.Matches = value
 }
 

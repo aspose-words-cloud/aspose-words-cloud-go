@@ -28,11 +28,89 @@
 package models
 
 // The REST response with a list format for a paragraph.
+
+type IParagraphListFormatResponse interface {
+    IsParagraphListFormatResponse() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetRequestId() *string
+    SetRequestId(value *string)
+    GetListFormat() IListFormat
+    SetListFormat(value IListFormat)
+}
+
 type ParagraphListFormatResponse struct {
     // The REST response with a list format for a paragraph.
-    RequestId string `json:"RequestId,omitempty"`
+    RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with a list format for a paragraph.
-    ListFormat ListFormatResult `json:"ListFormat,omitempty"`
+    ListFormat IListFormat `json:"ListFormat,omitempty"`
+}
+
+func (ParagraphListFormatResponse) IsParagraphListFormatResponse() bool {
+    return true
+}
+
+func (ParagraphListFormatResponse) IsWordsResponse() bool {
+    return true
+}
+
+func (obj *ParagraphListFormatResponse) Initialize() {
+    if (obj.ListFormat != nil) {
+        obj.ListFormat.Initialize()
+    }
+
+
+}
+
+func (obj *ParagraphListFormatResponse) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["RequestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["requestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["ListFormat"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IListFormat = new(ListFormat)
+            modelInstance.Deserialize(parsedValue)
+            obj.ListFormat = modelInstance
+        }
+
+    } else if jsonValue, exists := json["listFormat"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IListFormat = new(ListFormat)
+            modelInstance.Deserialize(parsedValue)
+            obj.ListFormat = modelInstance
+        }
+
+    }
+}
+
+func (obj *ParagraphListFormatResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
+}
+
+func (obj *ParagraphListFormatResponse) GetRequestId() *string {
+    return obj.RequestId
+}
+
+func (obj *ParagraphListFormatResponse) SetRequestId(value *string) {
+    obj.RequestId = value
+}
+
+func (obj *ParagraphListFormatResponse) GetListFormat() IListFormat {
+    return obj.ListFormat
+}
+
+func (obj *ParagraphListFormatResponse) SetListFormat(value IListFormat) {
+    obj.ListFormat = value
 }
 

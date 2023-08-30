@@ -77,7 +77,7 @@ func TestReadmeCode(t *testing.T) {
 
     result, _, _ := wordsApi.GetParagraphs(ctx, request)
 
-    fmt.Println(result.Paragraphs.ParagraphLinkList[0].Text)
+    fmt.Println(result.Paragraphs.GetParagraphLinkList()[0].GetText())
 
     // End README example
 

@@ -28,109 +28,37 @@
 package models
 
 // base container class for save options data.
-type SaveOptionsDataResult struct {
-    // base container class for save options data.
-    AllowEmbeddingPostScriptFonts bool `json:"AllowEmbeddingPostScriptFonts,omitempty"`
-
-    // base container class for save options data.
-    CustomTimeZoneInfoData TimeZoneInfoDataResult `json:"CustomTimeZoneInfoData,omitempty"`
-
-    // base container class for save options data.
-    Dml3DEffectsRenderingMode string `json:"Dml3DEffectsRenderingMode,omitempty"`
-
-    // base container class for save options data.
-    DmlEffectsRenderingMode string `json:"DmlEffectsRenderingMode,omitempty"`
-
-    // base container class for save options data.
-    DmlRenderingMode string `json:"DmlRenderingMode,omitempty"`
-
-    // base container class for save options data.
-    FileName string `json:"FileName,omitempty"`
-
-    // base container class for save options data.
-    ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
-
-    // base container class for save options data.
-    UpdateCreatedTimeProperty bool `json:"UpdateCreatedTimeProperty,omitempty"`
-
-    // base container class for save options data.
-    UpdateFields bool `json:"UpdateFields,omitempty"`
-
-    // base container class for save options data.
-    UpdateLastPrintedProperty bool `json:"UpdateLastPrintedProperty,omitempty"`
-
-    // base container class for save options data.
-    UpdateLastSavedTimeProperty bool `json:"UpdateLastSavedTimeProperty,omitempty"`
-
-    // base container class for save options data.
-    ZipOutput bool `json:"ZipOutput,omitempty"`
-
-    // base container class for save options data.
-    SaveFormat string `json:"SaveFormat,omitempty"`
-}
-
-type SaveOptionsData struct {
-    // base container class for save options data.
-    AllowEmbeddingPostScriptFonts *bool `json:"AllowEmbeddingPostScriptFonts,omitempty"`
-
-    // base container class for save options data.
-    CustomTimeZoneInfoData ITimeZoneInfoData `json:"CustomTimeZoneInfoData,omitempty"`
-
-    // base container class for save options data.
-    Dml3DEffectsRenderingMode *string `json:"Dml3DEffectsRenderingMode,omitempty"`
-
-    // base container class for save options data.
-    DmlEffectsRenderingMode *string `json:"DmlEffectsRenderingMode,omitempty"`
-
-    // base container class for save options data.
-    DmlRenderingMode *string `json:"DmlRenderingMode,omitempty"`
-
-    // base container class for save options data.
-    FileName *string `json:"FileName,omitempty"`
-
-    // base container class for save options data.
-    ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
-
-    // base container class for save options data.
-    UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
-
-    // base container class for save options data.
-    UpdateFields *bool `json:"UpdateFields,omitempty"`
-
-    // base container class for save options data.
-    UpdateLastPrintedProperty *bool `json:"UpdateLastPrintedProperty,omitempty"`
-
-    // base container class for save options data.
-    UpdateLastSavedTimeProperty *bool `json:"UpdateLastSavedTimeProperty,omitempty"`
-
-    // base container class for save options data.
-    ZipOutput *bool `json:"ZipOutput,omitempty"`
-
-    // base container class for save options data.
-    SaveFormat *string `json:"SaveFormat,omitempty"`
-}
 
 type ISaveOptionsData interface {
     IsSaveOptionsData() bool
     Initialize()
+    Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetAllowEmbeddingPostScriptFonts() *bool
+    SetAllowEmbeddingPostScriptFonts(value *bool)
+    GetCustomTimeZoneInfoData() ITimeZoneInfoData
+    SetCustomTimeZoneInfoData(value ITimeZoneInfoData)
+    GetDml3DEffectsRenderingMode() *string
+    SetDml3DEffectsRenderingMode(value *string)
+    GetDmlEffectsRenderingMode() *string
+    SetDmlEffectsRenderingMode(value *string)
+    GetDmlRenderingMode() *string
+    SetDmlRenderingMode(value *string)
+    GetFileName() *string
+    SetFileName(value *string)
+    GetImlRenderingMode() *string
+    SetImlRenderingMode(value *string)
+    GetUpdateCreatedTimeProperty() *bool
+    SetUpdateCreatedTimeProperty(value *bool)
+    GetUpdateFields() *bool
+    SetUpdateFields(value *bool)
+    GetUpdateLastPrintedProperty() *bool
+    SetUpdateLastPrintedProperty(value *bool)
+    GetUpdateLastSavedTimeProperty() *bool
+    SetUpdateLastSavedTimeProperty(value *bool)
+    GetZipOutput() *bool
+    SetZipOutput(value *bool)
+    GetSaveFormat() *string
+    SetSaveFormat(value *string)
 }
-
-func (SaveOptionsData) IsSaveOptionsData() bool {
-    return true
-}
-
-
-func (obj *SaveOptionsData) Initialize() {
-    if (obj.CustomTimeZoneInfoData != nil) {
-        obj.CustomTimeZoneInfoData.Initialize()
-    }
-
-
-}
-
-func (obj *SaveOptionsData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
-    return resultFilesContent
-}
-
 

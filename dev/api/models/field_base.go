@@ -28,38 +28,15 @@
 package models
 
 // Field.
-type FieldBaseResult struct {
-    // Field.
-    FieldCode string `json:"FieldCode,omitempty"`
-
-    // Field.
-    LocaleId string `json:"LocaleId,omitempty"`
-}
-
-type FieldBase struct {
-    // Field.
-    FieldCode *string `json:"FieldCode,omitempty"`
-
-    // Field.
-    LocaleId *string `json:"LocaleId,omitempty"`
-}
 
 type IFieldBase interface {
     IsFieldBase() bool
     Initialize()
+    Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetFieldCode() *string
+    SetFieldCode(value *string)
+    GetLocaleId() *string
+    SetLocaleId(value *string)
 }
-
-func (FieldBase) IsFieldBase() bool {
-    return true
-}
-
-
-func (obj *FieldBase) Initialize() {
-}
-
-func (obj *FieldBase) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
-    return resultFilesContent
-}
-
 

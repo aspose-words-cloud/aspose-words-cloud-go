@@ -91,6 +91,6 @@ func Test_ExecuteMailMerge_ExecuteMailMerge(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.Document, "Validate ExecuteMailMerge response.");
-    assert.Equal(t, "TestExecuteMailMerge.docx", actual.Document.FileName, "Validate ExecuteMailMerge response.");
+    assert.NotNil(t, actual.GetDocument(), "Validate ExecuteMailMerge response.");
+    assert.Equal(t, "TestExecuteMailMerge.docx", DereferenceValue(actual.GetDocument().GetFileName()), "Validate ExecuteMailMerge response.");
 }

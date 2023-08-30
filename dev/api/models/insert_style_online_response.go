@@ -34,9 +34,25 @@ import "io"
 // Inserts a new style to the document.
 type InsertStyleOnlineResponse struct {
     // The response model.
-    Model StyleResponse `json:"Model,omitempty"`
+    Model IStyleResponse
 
 
     // The document after modification.
-    Document map[string]io.Reader `json:"Document,omitempty"`
+    Document map[string]io.Reader
+}
+
+func (obj *InsertStyleOnlineResponse) GetModel() IStyleResponse {
+    return obj.Model
+}
+
+func (obj *InsertStyleOnlineResponse) SetModel(value IStyleResponse) {
+    obj.Model = value
+}
+
+func (obj *InsertStyleOnlineResponse) GetDocument() map[string]io.Reader {
+    return obj.Document
+}
+
+func (obj *InsertStyleOnlineResponse) SetDocument(value map[string]io.Reader) {
+    obj.Document = value
 }

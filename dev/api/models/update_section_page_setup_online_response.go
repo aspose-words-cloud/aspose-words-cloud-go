@@ -34,9 +34,25 @@ import "io"
 // Updates the page setup of a section in the document.
 type UpdateSectionPageSetupOnlineResponse struct {
     // The response model.
-    Model SectionPageSetupResponse `json:"Model,omitempty"`
+    Model ISectionPageSetupResponse
 
 
     // The document after modification.
-    Document map[string]io.Reader `json:"Document,omitempty"`
+    Document map[string]io.Reader
+}
+
+func (obj *UpdateSectionPageSetupOnlineResponse) GetModel() ISectionPageSetupResponse {
+    return obj.Model
+}
+
+func (obj *UpdateSectionPageSetupOnlineResponse) SetModel(value ISectionPageSetupResponse) {
+    obj.Model = value
+}
+
+func (obj *UpdateSectionPageSetupOnlineResponse) GetDocument() map[string]io.Reader {
+    return obj.Document
+}
+
+func (obj *UpdateSectionPageSetupOnlineResponse) SetDocument(value map[string]io.Reader) {
+    obj.Document = value
 }

@@ -28,12 +28,16 @@
 package models
 
 // Contains data for load web document.
-type LoadWebDocumentDataResult struct {
-    // Contains data for load web document.
-    SaveOptions SaveOptionsDataResult `json:"SaveOptions,omitempty"`
 
-    // Contains data for load web document.
-    LoadingDocumentUrl string `json:"LoadingDocumentUrl,omitempty"`
+type ILoadWebDocumentData interface {
+    IsLoadWebDocumentData() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetSaveOptions() ISaveOptionsData
+    SetSaveOptions(value ISaveOptionsData)
+    GetLoadingDocumentUrl() *string
+    SetLoadingDocumentUrl(value *string)
 }
 
 type LoadWebDocumentData struct {
@@ -42,12 +46,6 @@ type LoadWebDocumentData struct {
 
     // Contains data for load web document.
     LoadingDocumentUrl *string `json:"LoadingDocumentUrl,omitempty"`
-}
-
-type ILoadWebDocumentData interface {
-    IsLoadWebDocumentData() bool
-    Initialize()
-    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (LoadWebDocumentData) IsLoadWebDocumentData() bool {
@@ -63,8 +61,139 @@ func (obj *LoadWebDocumentData) Initialize() {
 
 }
 
+func (obj *LoadWebDocumentData) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["SaveOptions"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance ISaveOptionsData = nil
+            if jsonType, found := parsedValue["$type"]; found {
+                jsonTypeStr := jsonType.(string)
+                if jsonTypeStr == "BmpSaveOptionsData, _" { modelInstance = new(BmpSaveOptionsData) }
+                if jsonTypeStr == "DocmSaveOptionsData, _" { modelInstance = new(DocmSaveOptionsData) }
+                if jsonTypeStr == "DocSaveOptionsData, _" { modelInstance = new(DocSaveOptionsData) }
+                if jsonTypeStr == "DocxSaveOptionsData, _" { modelInstance = new(DocxSaveOptionsData) }
+                if jsonTypeStr == "DotmSaveOptionsData, _" { modelInstance = new(DotmSaveOptionsData) }
+                if jsonTypeStr == "DotSaveOptionsData, _" { modelInstance = new(DotSaveOptionsData) }
+                if jsonTypeStr == "DotxSaveOptionsData, _" { modelInstance = new(DotxSaveOptionsData) }
+                if jsonTypeStr == "EmfSaveOptionsData, _" { modelInstance = new(EmfSaveOptionsData) }
+                if jsonTypeStr == "EpubSaveOptionsData, _" { modelInstance = new(EpubSaveOptionsData) }
+                if jsonTypeStr == "FixedPageSaveOptionsData, _" {  }
+                if jsonTypeStr == "FlatOpcMacroSaveOptionsData, _" { modelInstance = new(FlatOpcMacroSaveOptionsData) }
+                if jsonTypeStr == "FlatOpcSaveOptionsData, _" { modelInstance = new(FlatOpcSaveOptionsData) }
+                if jsonTypeStr == "FlatOpcTemplateMacroSaveOptionsData, _" { modelInstance = new(FlatOpcTemplateMacroSaveOptionsData) }
+                if jsonTypeStr == "FlatOpcTemplateSaveOptionsData, _" { modelInstance = new(FlatOpcTemplateSaveOptionsData) }
+                if jsonTypeStr == "GifSaveOptionsData, _" { modelInstance = new(GifSaveOptionsData) }
+                if jsonTypeStr == "HtmlFixedSaveOptionsData, _" { modelInstance = new(HtmlFixedSaveOptionsData) }
+                if jsonTypeStr == "HtmlSaveOptionsData, _" { modelInstance = new(HtmlSaveOptionsData) }
+                if jsonTypeStr == "ImageSaveOptionsData, _" {  }
+                if jsonTypeStr == "JpegSaveOptionsData, _" { modelInstance = new(JpegSaveOptionsData) }
+                if jsonTypeStr == "MarkdownSaveOptionsData, _" { modelInstance = new(MarkdownSaveOptionsData) }
+                if jsonTypeStr == "MhtmlSaveOptionsData, _" { modelInstance = new(MhtmlSaveOptionsData) }
+                if jsonTypeStr == "OdtSaveOptionsData, _" { modelInstance = new(OdtSaveOptionsData) }
+                if jsonTypeStr == "OoxmlSaveOptionsData, _" {  }
+                if jsonTypeStr == "OpenXpsSaveOptionsData, _" { modelInstance = new(OpenXpsSaveOptionsData) }
+                if jsonTypeStr == "OttSaveOptionsData, _" { modelInstance = new(OttSaveOptionsData) }
+                if jsonTypeStr == "PclSaveOptionsData, _" { modelInstance = new(PclSaveOptionsData) }
+                if jsonTypeStr == "PdfSaveOptionsData, _" { modelInstance = new(PdfSaveOptionsData) }
+                if jsonTypeStr == "PngSaveOptionsData, _" { modelInstance = new(PngSaveOptionsData) }
+                if jsonTypeStr == "PsSaveOptionsData, _" { modelInstance = new(PsSaveOptionsData) }
+                if jsonTypeStr == "RtfSaveOptionsData, _" { modelInstance = new(RtfSaveOptionsData) }
+                if jsonTypeStr == "SvgSaveOptionsData, _" { modelInstance = new(SvgSaveOptionsData) }
+                if jsonTypeStr == "TextSaveOptionsData, _" { modelInstance = new(TextSaveOptionsData) }
+                if jsonTypeStr == "TiffSaveOptionsData, _" { modelInstance = new(TiffSaveOptionsData) }
+                if jsonTypeStr == "TxtSaveOptionsBaseData, _" {  }
+                if jsonTypeStr == "WordMLSaveOptionsData, _" { modelInstance = new(WordMLSaveOptionsData) }
+                if jsonTypeStr == "XamlFixedSaveOptionsData, _" { modelInstance = new(XamlFixedSaveOptionsData) }
+                if jsonTypeStr == "XamlFlowPackSaveOptionsData, _" { modelInstance = new(XamlFlowPackSaveOptionsData) }
+                if jsonTypeStr == "XamlFlowSaveOptionsData, _" { modelInstance = new(XamlFlowSaveOptionsData) }
+                if jsonTypeStr == "XpsSaveOptionsData, _" { modelInstance = new(XpsSaveOptionsData) }
+            }
+
+            modelInstance.Deserialize(parsedValue)
+            obj.SaveOptions = modelInstance
+        }
+
+    } else if jsonValue, exists := json["saveOptions"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance ISaveOptionsData = nil
+            if jsonType, found := parsedValue["$type"]; found {
+                jsonTypeStr := jsonType.(string)
+                if jsonTypeStr == "BmpSaveOptionsData, _" { modelInstance = new(BmpSaveOptionsData) }
+                if jsonTypeStr == "DocmSaveOptionsData, _" { modelInstance = new(DocmSaveOptionsData) }
+                if jsonTypeStr == "DocSaveOptionsData, _" { modelInstance = new(DocSaveOptionsData) }
+                if jsonTypeStr == "DocxSaveOptionsData, _" { modelInstance = new(DocxSaveOptionsData) }
+                if jsonTypeStr == "DotmSaveOptionsData, _" { modelInstance = new(DotmSaveOptionsData) }
+                if jsonTypeStr == "DotSaveOptionsData, _" { modelInstance = new(DotSaveOptionsData) }
+                if jsonTypeStr == "DotxSaveOptionsData, _" { modelInstance = new(DotxSaveOptionsData) }
+                if jsonTypeStr == "EmfSaveOptionsData, _" { modelInstance = new(EmfSaveOptionsData) }
+                if jsonTypeStr == "EpubSaveOptionsData, _" { modelInstance = new(EpubSaveOptionsData) }
+                if jsonTypeStr == "FixedPageSaveOptionsData, _" {  }
+                if jsonTypeStr == "FlatOpcMacroSaveOptionsData, _" { modelInstance = new(FlatOpcMacroSaveOptionsData) }
+                if jsonTypeStr == "FlatOpcSaveOptionsData, _" { modelInstance = new(FlatOpcSaveOptionsData) }
+                if jsonTypeStr == "FlatOpcTemplateMacroSaveOptionsData, _" { modelInstance = new(FlatOpcTemplateMacroSaveOptionsData) }
+                if jsonTypeStr == "FlatOpcTemplateSaveOptionsData, _" { modelInstance = new(FlatOpcTemplateSaveOptionsData) }
+                if jsonTypeStr == "GifSaveOptionsData, _" { modelInstance = new(GifSaveOptionsData) }
+                if jsonTypeStr == "HtmlFixedSaveOptionsData, _" { modelInstance = new(HtmlFixedSaveOptionsData) }
+                if jsonTypeStr == "HtmlSaveOptionsData, _" { modelInstance = new(HtmlSaveOptionsData) }
+                if jsonTypeStr == "ImageSaveOptionsData, _" {  }
+                if jsonTypeStr == "JpegSaveOptionsData, _" { modelInstance = new(JpegSaveOptionsData) }
+                if jsonTypeStr == "MarkdownSaveOptionsData, _" { modelInstance = new(MarkdownSaveOptionsData) }
+                if jsonTypeStr == "MhtmlSaveOptionsData, _" { modelInstance = new(MhtmlSaveOptionsData) }
+                if jsonTypeStr == "OdtSaveOptionsData, _" { modelInstance = new(OdtSaveOptionsData) }
+                if jsonTypeStr == "OoxmlSaveOptionsData, _" {  }
+                if jsonTypeStr == "OpenXpsSaveOptionsData, _" { modelInstance = new(OpenXpsSaveOptionsData) }
+                if jsonTypeStr == "OttSaveOptionsData, _" { modelInstance = new(OttSaveOptionsData) }
+                if jsonTypeStr == "PclSaveOptionsData, _" { modelInstance = new(PclSaveOptionsData) }
+                if jsonTypeStr == "PdfSaveOptionsData, _" { modelInstance = new(PdfSaveOptionsData) }
+                if jsonTypeStr == "PngSaveOptionsData, _" { modelInstance = new(PngSaveOptionsData) }
+                if jsonTypeStr == "PsSaveOptionsData, _" { modelInstance = new(PsSaveOptionsData) }
+                if jsonTypeStr == "RtfSaveOptionsData, _" { modelInstance = new(RtfSaveOptionsData) }
+                if jsonTypeStr == "SvgSaveOptionsData, _" { modelInstance = new(SvgSaveOptionsData) }
+                if jsonTypeStr == "TextSaveOptionsData, _" { modelInstance = new(TextSaveOptionsData) }
+                if jsonTypeStr == "TiffSaveOptionsData, _" { modelInstance = new(TiffSaveOptionsData) }
+                if jsonTypeStr == "TxtSaveOptionsBaseData, _" {  }
+                if jsonTypeStr == "WordMLSaveOptionsData, _" { modelInstance = new(WordMLSaveOptionsData) }
+                if jsonTypeStr == "XamlFixedSaveOptionsData, _" { modelInstance = new(XamlFixedSaveOptionsData) }
+                if jsonTypeStr == "XamlFlowPackSaveOptionsData, _" { modelInstance = new(XamlFlowPackSaveOptionsData) }
+                if jsonTypeStr == "XamlFlowSaveOptionsData, _" { modelInstance = new(XamlFlowSaveOptionsData) }
+                if jsonTypeStr == "XpsSaveOptionsData, _" { modelInstance = new(XpsSaveOptionsData) }
+            }
+
+            modelInstance.Deserialize(parsedValue)
+            obj.SaveOptions = modelInstance
+        }
+
+    }
+
+    if jsonValue, exists := json["LoadingDocumentUrl"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.LoadingDocumentUrl = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["loadingDocumentUrl"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.LoadingDocumentUrl = &parsedValue
+        }
+
+    }
+}
+
 func (obj *LoadWebDocumentData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *LoadWebDocumentData) GetSaveOptions() ISaveOptionsData {
+    return obj.SaveOptions
+}
+
+func (obj *LoadWebDocumentData) SetSaveOptions(value ISaveOptionsData) {
+    obj.SaveOptions = value
+}
+
+func (obj *LoadWebDocumentData) GetLoadingDocumentUrl() *string {
+    return obj.LoadingDocumentUrl
+}
+
+func (obj *LoadWebDocumentData) SetLoadingDocumentUrl(value *string) {
+    obj.LoadingDocumentUrl = value
+}
 

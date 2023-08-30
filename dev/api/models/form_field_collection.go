@@ -28,12 +28,16 @@
 package models
 
 // DTO container with a collection of form fields.
-type FormFieldCollectionResult struct {
-    // DTO container with a collection of form fields.
-    Link WordsApiLinkResult `json:"Link,omitempty"`
 
-    // DTO container with a collection of form fields.
-    List []FormFieldResult `json:"List,omitempty"`
+type IFormFieldCollection interface {
+    IsFormFieldCollection() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetLink() IWordsApiLink
+    SetLink(value IWordsApiLink)
+    GetList() []IFormField
+    SetList(value []IFormField)
 }
 
 type FormFieldCollection struct {
@@ -41,13 +45,7 @@ type FormFieldCollection struct {
     Link IWordsApiLink `json:"Link,omitempty"`
 
     // DTO container with a collection of form fields.
-    List []FormField `json:"List,omitempty"`
-}
-
-type IFormFieldCollection interface {
-    IsFormFieldCollection() bool
-    Initialize()
-    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    List []IFormField `json:"List,omitempty"`
 }
 
 func (FormFieldCollection) IsFormFieldCollection() bool {
@@ -71,8 +69,85 @@ func (obj *FormFieldCollection) Initialize() {
 
 }
 
+func (obj *FormFieldCollection) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["Link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    } else if jsonValue, exists := json["link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    }
+
+    if jsonValue, exists := json["List"]; exists {
+        if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.List = make([]IFormField, 0)
+            for _, parsedElement := range parsedValue {
+                if elementValue, valid := parsedElement.(map[string]interface{}); valid {
+                    var modelElementInstance IFormField = nil
+                    if jsonElementType, found := elementValue["$type"]; found {
+                        jsonTypeStr := jsonElementType.(string)
+                        if jsonTypeStr == "FormFieldCheckbox, _" { modelElementInstance = new(FormFieldCheckbox) }
+                        if jsonTypeStr == "FormFieldDropDown, _" { modelElementInstance = new(FormFieldDropDown) }
+                        if jsonTypeStr == "FormFieldTextInput, _" { modelElementInstance = new(FormFieldTextInput) }
+                    }
+
+                    if modelElementInstance == nil { modelElementInstance = new(FormField) }
+                    modelElementInstance.Deserialize(elementValue)
+                    obj.List = append(obj.List, modelElementInstance)
+                }
+
+            }
+        }
+
+    } else if jsonValue, exists := json["list"]; exists {
+        if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.List = make([]IFormField, 0)
+            for _, parsedElement := range parsedValue {
+                if elementValue, valid := parsedElement.(map[string]interface{}); valid {
+                    var modelElementInstance IFormField = nil
+                    if jsonElementType, found := elementValue["$type"]; found {
+                        jsonTypeStr := jsonElementType.(string)
+                        if jsonTypeStr == "FormFieldCheckbox, _" { modelElementInstance = new(FormFieldCheckbox) }
+                        if jsonTypeStr == "FormFieldDropDown, _" { modelElementInstance = new(FormFieldDropDown) }
+                        if jsonTypeStr == "FormFieldTextInput, _" { modelElementInstance = new(FormFieldTextInput) }
+                    }
+
+                    if modelElementInstance == nil { modelElementInstance = new(FormField) }
+                    modelElementInstance.Deserialize(elementValue)
+                    obj.List = append(obj.List, modelElementInstance)
+                }
+
+            }
+        }
+
+    }
+}
+
 func (obj *FormFieldCollection) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *FormFieldCollection) GetLink() IWordsApiLink {
+    return obj.Link
+}
+
+func (obj *FormFieldCollection) SetLink(value IWordsApiLink) {
+    obj.Link = value
+}
+
+func (obj *FormFieldCollection) GetList() []IFormField {
+    return obj.List
+}
+
+func (obj *FormFieldCollection) SetList(value []IFormField) {
+    obj.List = value
+}
 

@@ -170,10 +170,12 @@ func (data *InsertFormFieldRequest) CreateRequestData() (RequestData, error) {
 }
 
 func (data *InsertFormFieldRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
-            var successPayload FormFieldResponse
-            if err = json.NewDecoder(reader).Decode(&successPayload); err != nil {
+            var successPayload IFormFieldResponse = new(FormFieldResponse)
+            var jsonMap map[string]interface{}
+            if err = json.NewDecoder(reader).Decode(&jsonMap); err != nil {
                 return nil, err
             }
 
+            successPayload.Deserialize(jsonMap)
             return successPayload, err
 }

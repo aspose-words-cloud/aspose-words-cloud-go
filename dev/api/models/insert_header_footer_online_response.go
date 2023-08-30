@@ -34,9 +34,25 @@ import "io"
 // Inserts a new HeaderFooter object to the document section.
 type InsertHeaderFooterOnlineResponse struct {
     // The response model.
-    Model HeaderFooterResponse `json:"Model,omitempty"`
+    Model IHeaderFooterResponse
 
 
     // The document after modification.
-    Document map[string]io.Reader `json:"Document,omitempty"`
+    Document map[string]io.Reader
+}
+
+func (obj *InsertHeaderFooterOnlineResponse) GetModel() IHeaderFooterResponse {
+    return obj.Model
+}
+
+func (obj *InsertHeaderFooterOnlineResponse) SetModel(value IHeaderFooterResponse) {
+    obj.Model = value
+}
+
+func (obj *InsertHeaderFooterOnlineResponse) GetDocument() map[string]io.Reader {
+    return obj.Document
+}
+
+func (obj *InsertHeaderFooterOnlineResponse) SetDocument(value map[string]io.Reader) {
+    obj.Document = value
 }

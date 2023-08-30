@@ -28,15 +28,18 @@
 package models
 
 // Result of saving.
-type SaveResultResult struct {
-    // Result of saving.
-    DestDocument FileLinkResult `json:"DestDocument,omitempty"`
 
-    // Result of saving.
-    SourceDocument FileLinkResult `json:"SourceDocument,omitempty"`
-
-    // Result of saving.
-    AdditionalItems []FileLinkResult `json:"AdditionalItems,omitempty"`
+type ISaveResult interface {
+    IsSaveResult() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetDestDocument() IFileLink
+    SetDestDocument(value IFileLink)
+    GetSourceDocument() IFileLink
+    SetSourceDocument(value IFileLink)
+    GetAdditionalItems() []IFileLink
+    SetAdditionalItems(value []IFileLink)
 }
 
 type SaveResult struct {
@@ -47,13 +50,7 @@ type SaveResult struct {
     SourceDocument IFileLink `json:"SourceDocument,omitempty"`
 
     // Result of saving.
-    AdditionalItems []FileLink `json:"AdditionalItems,omitempty"`
-}
-
-type ISaveResult interface {
-    IsSaveResult() bool
-    Initialize()
-    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    AdditionalItems []IFileLink `json:"AdditionalItems,omitempty"`
 }
 
 func (SaveResult) IsSaveResult() bool {
@@ -78,8 +75,93 @@ func (obj *SaveResult) Initialize() {
 
 }
 
+func (obj *SaveResult) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["DestDocument"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IFileLink = new(FileLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.DestDocument = modelInstance
+        }
+
+    } else if jsonValue, exists := json["destDocument"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IFileLink = new(FileLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.DestDocument = modelInstance
+        }
+
+    }
+
+    if jsonValue, exists := json["SourceDocument"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IFileLink = new(FileLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.SourceDocument = modelInstance
+        }
+
+    } else if jsonValue, exists := json["sourceDocument"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IFileLink = new(FileLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.SourceDocument = modelInstance
+        }
+
+    }
+
+    if jsonValue, exists := json["AdditionalItems"]; exists {
+        if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.AdditionalItems = make([]IFileLink, 0)
+            for _, parsedElement := range parsedValue {
+                if elementValue, valid := parsedElement.(map[string]interface{}); valid {
+                    var modelElementInstance IFileLink = new(FileLink)
+                    modelElementInstance.Deserialize(elementValue)
+                    obj.AdditionalItems = append(obj.AdditionalItems, modelElementInstance)
+                }
+
+            }
+        }
+
+    } else if jsonValue, exists := json["additionalItems"]; exists {
+        if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.AdditionalItems = make([]IFileLink, 0)
+            for _, parsedElement := range parsedValue {
+                if elementValue, valid := parsedElement.(map[string]interface{}); valid {
+                    var modelElementInstance IFileLink = new(FileLink)
+                    modelElementInstance.Deserialize(elementValue)
+                    obj.AdditionalItems = append(obj.AdditionalItems, modelElementInstance)
+                }
+
+            }
+        }
+
+    }
+}
+
 func (obj *SaveResult) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *SaveResult) GetDestDocument() IFileLink {
+    return obj.DestDocument
+}
+
+func (obj *SaveResult) SetDestDocument(value IFileLink) {
+    obj.DestDocument = value
+}
+
+func (obj *SaveResult) GetSourceDocument() IFileLink {
+    return obj.SourceDocument
+}
+
+func (obj *SaveResult) SetSourceDocument(value IFileLink) {
+    obj.SourceDocument = value
+}
+
+func (obj *SaveResult) GetAdditionalItems() []IFileLink {
+    return obj.AdditionalItems
+}
+
+func (obj *SaveResult) SetAdditionalItems(value []IFileLink) {
+    obj.AdditionalItems = value
+}
 

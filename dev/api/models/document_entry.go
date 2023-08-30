@@ -28,15 +28,18 @@
 package models
 
 // Represents a document which will be appended to the original resource document.
-type DocumentEntryResult struct {
-    // Represents a document which will be appended to the original resource document.
-    FileReference FileReferenceResult `json:"FileReference,omitempty"`
 
-    // Represents a document which will be appended to the original resource document.
-    EncryptedPassword string `json:"EncryptedPassword,omitempty"`
-
-    // Represents a document which will be appended to the original resource document.
-    ImportFormatMode string `json:"ImportFormatMode,omitempty"`
+type IDocumentEntry interface {
+    IsDocumentEntry() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetFileReference() IFileReference
+    SetFileReference(value IFileReference)
+    GetEncryptedPassword() *string
+    SetEncryptedPassword(value *string)
+    GetImportFormatMode() *string
+    SetImportFormatMode(value *string)
 }
 
 type DocumentEntry struct {
@@ -48,12 +51,6 @@ type DocumentEntry struct {
 
     // Represents a document which will be appended to the original resource document.
     ImportFormatMode *string `json:"ImportFormatMode,omitempty"`
-}
-
-type IDocumentEntry interface {
-    IsDocumentEntry() bool
-    Initialize()
-    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (DocumentEntry) IsDocumentEntry() bool {
@@ -72,6 +69,48 @@ func (obj *DocumentEntry) Initialize() {
 
 }
 
+func (obj *DocumentEntry) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["FileReference"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IFileReference = new(FileReference)
+            modelInstance.Deserialize(parsedValue)
+            obj.FileReference = modelInstance
+        }
+
+    } else if jsonValue, exists := json["fileReference"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IFileReference = new(FileReference)
+            modelInstance.Deserialize(parsedValue)
+            obj.FileReference = modelInstance
+        }
+
+    }
+
+    if jsonValue, exists := json["EncryptedPassword"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.EncryptedPassword = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["encryptedPassword"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.EncryptedPassword = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["ImportFormatMode"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.ImportFormatMode = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["importFormatMode"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.ImportFormatMode = &parsedValue
+        }
+
+    }
+}
+
 func (obj *DocumentEntry) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     if (obj.FileReference != nil) {
         resultFilesContent = obj.FileReference.CollectFilesContent(resultFilesContent)
@@ -82,4 +121,27 @@ func (obj *DocumentEntry) CollectFilesContent(resultFilesContent []FileReference
     return resultFilesContent
 }
 
+func (obj *DocumentEntry) GetFileReference() IFileReference {
+    return obj.FileReference
+}
+
+func (obj *DocumentEntry) SetFileReference(value IFileReference) {
+    obj.FileReference = value
+}
+
+func (obj *DocumentEntry) GetEncryptedPassword() *string {
+    return obj.EncryptedPassword
+}
+
+func (obj *DocumentEntry) SetEncryptedPassword(value *string) {
+    obj.EncryptedPassword = value
+}
+
+func (obj *DocumentEntry) GetImportFormatMode() *string {
+    return obj.ImportFormatMode
+}
+
+func (obj *DocumentEntry) SetImportFormatMode(value *string) {
+    obj.ImportFormatMode = value
+}
 

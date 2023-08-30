@@ -28,18 +28,20 @@
 package models
 
 // Provides information for the words API resource link.
-type WordsApiLinkResult struct {
-    // Provides information for the words API resource link.
-    Href string `json:"Href,omitempty"`
 
-    // Provides information for the words API resource link.
-    Rel string `json:"Rel,omitempty"`
-
-    // Provides information for the words API resource link.
-    Title string `json:"Title,omitempty"`
-
-    // Provides information for the words API resource link.
-    Type string `json:"Type,omitempty"`
+type IWordsApiLink interface {
+    IsWordsApiLink() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetHref() *string
+    SetHref(value *string)
+    GetRel() *string
+    SetRel(value *string)
+    GetTitle() *string
+    SetTitle(value *string)
+    GetType() *string
+    SetType(value *string)
 }
 
 type WordsApiLink struct {
@@ -56,12 +58,6 @@ type WordsApiLink struct {
     Type *string `json:"Type,omitempty"`
 }
 
-type IWordsApiLink interface {
-    IsWordsApiLink() bool
-    Initialize()
-    CollectFilesContent(resultFilesContent []FileReference) []FileReference
-}
-
 func (WordsApiLink) IsWordsApiLink() bool {
     return true
 }
@@ -73,8 +69,89 @@ func (WordsApiLink) IsLink() bool {
 func (obj *WordsApiLink) Initialize() {
 }
 
+func (obj *WordsApiLink) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["Href"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Href = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["href"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Href = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["Rel"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Rel = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["rel"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Rel = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["Title"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Title = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["title"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Title = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["Type"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Type = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["type"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Type = &parsedValue
+        }
+
+    }
+}
+
 func (obj *WordsApiLink) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *WordsApiLink) GetHref() *string {
+    return obj.Href
+}
+
+func (obj *WordsApiLink) SetHref(value *string) {
+    obj.Href = value
+}
+
+func (obj *WordsApiLink) GetRel() *string {
+    return obj.Rel
+}
+
+func (obj *WordsApiLink) SetRel(value *string) {
+    obj.Rel = value
+}
+
+func (obj *WordsApiLink) GetTitle() *string {
+    return obj.Title
+}
+
+func (obj *WordsApiLink) SetTitle(value *string) {
+    obj.Title = value
+}
+
+func (obj *WordsApiLink) GetType() *string {
+    return obj.Type
+}
+
+func (obj *WordsApiLink) SetType(value *string) {
+    obj.Type = value
+}
 

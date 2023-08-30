@@ -59,8 +59,8 @@ func Test_DocumentStatistics_GetDocumentStatistics(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.StatData, "Validate GetDocumentStatistics response.");
-    assert.Equal(t, int32(10), actual.StatData.WordCount, "Validate GetDocumentStatistics response.");
+    assert.NotNil(t, actual.GetStatData(), "Validate GetDocumentStatistics response.");
+    assert.Equal(t, int32(10), DereferenceValue(actual.GetStatData().GetWordCount()), "Validate GetDocumentStatistics response.");
 }
 
 // Test for document classification online.

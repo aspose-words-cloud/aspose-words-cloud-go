@@ -28,11 +28,102 @@
 package models
 
 // The REST response with an array of tab stops.
+
+type ITabStopsResponse interface {
+    IsTabStopsResponse() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetRequestId() *string
+    SetRequestId(value *string)
+    GetTabStops() []ITabStop
+    SetTabStops(value []ITabStop)
+}
+
 type TabStopsResponse struct {
     // The REST response with an array of tab stops.
-    RequestId string `json:"RequestId,omitempty"`
+    RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with an array of tab stops.
-    TabStops []TabStopResult `json:"TabStops,omitempty"`
+    TabStops []ITabStop `json:"TabStops,omitempty"`
+}
+
+func (TabStopsResponse) IsTabStopsResponse() bool {
+    return true
+}
+
+func (TabStopsResponse) IsWordsResponse() bool {
+    return true
+}
+
+func (obj *TabStopsResponse) Initialize() {
+    if (obj.TabStops != nil) {
+        for _, objElementTabStops := range obj.TabStops {
+            objElementTabStops.Initialize()
+        }
+    }
+
+}
+
+func (obj *TabStopsResponse) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["RequestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["requestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["TabStops"]; exists {
+        if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.TabStops = make([]ITabStop, 0)
+            for _, parsedElement := range parsedValue {
+                if elementValue, valid := parsedElement.(map[string]interface{}); valid {
+                    var modelElementInstance ITabStop = new(TabStop)
+                    modelElementInstance.Deserialize(elementValue)
+                    obj.TabStops = append(obj.TabStops, modelElementInstance)
+                }
+
+            }
+        }
+
+    } else if jsonValue, exists := json["tabStops"]; exists {
+        if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.TabStops = make([]ITabStop, 0)
+            for _, parsedElement := range parsedValue {
+                if elementValue, valid := parsedElement.(map[string]interface{}); valid {
+                    var modelElementInstance ITabStop = new(TabStop)
+                    modelElementInstance.Deserialize(elementValue)
+                    obj.TabStops = append(obj.TabStops, modelElementInstance)
+                }
+
+            }
+        }
+
+    }
+}
+
+func (obj *TabStopsResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
+}
+
+func (obj *TabStopsResponse) GetRequestId() *string {
+    return obj.RequestId
+}
+
+func (obj *TabStopsResponse) SetRequestId(value *string) {
+    obj.RequestId = value
+}
+
+func (obj *TabStopsResponse) GetTabStops() []ITabStop {
+    return obj.TabStops
+}
+
+func (obj *TabStopsResponse) SetTabStops(value []ITabStop) {
+    obj.TabStops = value
 }
 

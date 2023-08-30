@@ -28,11 +28,89 @@
 package models
 
 // The REST response with the formatting properties of a table cell.
+
+type ITableCellFormatResponse interface {
+    IsTableCellFormatResponse() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetRequestId() *string
+    SetRequestId(value *string)
+    GetCellFormat() ITableCellFormat
+    SetCellFormat(value ITableCellFormat)
+}
+
 type TableCellFormatResponse struct {
     // The REST response with the formatting properties of a table cell.
-    RequestId string `json:"RequestId,omitempty"`
+    RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with the formatting properties of a table cell.
-    CellFormat TableCellFormatResult `json:"CellFormat,omitempty"`
+    CellFormat ITableCellFormat `json:"CellFormat,omitempty"`
+}
+
+func (TableCellFormatResponse) IsTableCellFormatResponse() bool {
+    return true
+}
+
+func (TableCellFormatResponse) IsWordsResponse() bool {
+    return true
+}
+
+func (obj *TableCellFormatResponse) Initialize() {
+    if (obj.CellFormat != nil) {
+        obj.CellFormat.Initialize()
+    }
+
+
+}
+
+func (obj *TableCellFormatResponse) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["RequestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["requestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["CellFormat"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance ITableCellFormat = new(TableCellFormat)
+            modelInstance.Deserialize(parsedValue)
+            obj.CellFormat = modelInstance
+        }
+
+    } else if jsonValue, exists := json["cellFormat"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance ITableCellFormat = new(TableCellFormat)
+            modelInstance.Deserialize(parsedValue)
+            obj.CellFormat = modelInstance
+        }
+
+    }
+}
+
+func (obj *TableCellFormatResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
+}
+
+func (obj *TableCellFormatResponse) GetRequestId() *string {
+    return obj.RequestId
+}
+
+func (obj *TableCellFormatResponse) SetRequestId(value *string) {
+    obj.RequestId = value
+}
+
+func (obj *TableCellFormatResponse) GetCellFormat() ITableCellFormat {
+    return obj.CellFormat
+}
+
+func (obj *TableCellFormatResponse) SetCellFormat(value ITableCellFormat) {
+    obj.CellFormat = value
 }
 

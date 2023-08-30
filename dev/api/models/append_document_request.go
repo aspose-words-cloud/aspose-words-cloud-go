@@ -157,10 +157,12 @@ func (data *AppendDocumentRequest) CreateRequestData() (RequestData, error) {
 }
 
 func (data *AppendDocumentRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
-            var successPayload DocumentResponse
-            if err = json.NewDecoder(reader).Decode(&successPayload); err != nil {
+            var successPayload IDocumentResponse = new(DocumentResponse)
+            var jsonMap map[string]interface{}
+            if err = json.NewDecoder(reader).Decode(&jsonMap); err != nil {
                 return nil, err
             }
 
+            successPayload.Deserialize(jsonMap)
             return successPayload, err
 }

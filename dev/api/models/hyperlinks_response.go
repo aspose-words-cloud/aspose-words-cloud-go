@@ -28,11 +28,89 @@
 package models
 
 // The REST response with a collection of hyperlinks.
+
+type IHyperlinksResponse interface {
+    IsHyperlinksResponse() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetRequestId() *string
+    SetRequestId(value *string)
+    GetHyperlinks() IHyperlinks
+    SetHyperlinks(value IHyperlinks)
+}
+
 type HyperlinksResponse struct {
     // The REST response with a collection of hyperlinks.
-    RequestId string `json:"RequestId,omitempty"`
+    RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with a collection of hyperlinks.
-    Hyperlinks HyperlinksResult `json:"Hyperlinks,omitempty"`
+    Hyperlinks IHyperlinks `json:"Hyperlinks,omitempty"`
+}
+
+func (HyperlinksResponse) IsHyperlinksResponse() bool {
+    return true
+}
+
+func (HyperlinksResponse) IsWordsResponse() bool {
+    return true
+}
+
+func (obj *HyperlinksResponse) Initialize() {
+    if (obj.Hyperlinks != nil) {
+        obj.Hyperlinks.Initialize()
+    }
+
+
+}
+
+func (obj *HyperlinksResponse) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["RequestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["requestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["Hyperlinks"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IHyperlinks = new(Hyperlinks)
+            modelInstance.Deserialize(parsedValue)
+            obj.Hyperlinks = modelInstance
+        }
+
+    } else if jsonValue, exists := json["hyperlinks"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IHyperlinks = new(Hyperlinks)
+            modelInstance.Deserialize(parsedValue)
+            obj.Hyperlinks = modelInstance
+        }
+
+    }
+}
+
+func (obj *HyperlinksResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
+}
+
+func (obj *HyperlinksResponse) GetRequestId() *string {
+    return obj.RequestId
+}
+
+func (obj *HyperlinksResponse) SetRequestId(value *string) {
+    obj.RequestId = value
+}
+
+func (obj *HyperlinksResponse) GetHyperlinks() IHyperlinks {
+    return obj.Hyperlinks
+}
+
+func (obj *HyperlinksResponse) SetHyperlinks(value IHyperlinks) {
+    obj.Hyperlinks = value
 }
 

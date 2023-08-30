@@ -70,8 +70,8 @@ func Test_CompareDocument_CompareDocument(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.Document, "Validate CompareDocument response.");
-    assert.Equal(t, "TestCompareDocumentOut.doc", actual.Document.FileName, "Validate CompareDocument response.");
+    assert.NotNil(t, actual.GetDocument(), "Validate CompareDocument response.");
+    assert.Equal(t, "TestCompareDocumentOut.doc", DereferenceValue(actual.GetDocument().GetFileName()), "Validate CompareDocument response.");
 }
 
 // Test for document comparison online.

@@ -28,12 +28,16 @@
 package models
 
 // Info additional item.
-type InfoAdditionalItemResult struct {
-    // Info additional item.
-    Key string `json:"Key,omitempty"`
 
-    // Info additional item.
-    Value string `json:"Value,omitempty"`
+type IInfoAdditionalItem interface {
+    IsInfoAdditionalItem() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetKey() *string
+    SetKey(value *string)
+    GetValue() *string
+    SetValue(value *string)
 }
 
 type InfoAdditionalItem struct {
@@ -44,12 +48,6 @@ type InfoAdditionalItem struct {
     Value *string `json:"Value,omitempty"`
 }
 
-type IInfoAdditionalItem interface {
-    IsInfoAdditionalItem() bool
-    Initialize()
-    CollectFilesContent(resultFilesContent []FileReference) []FileReference
-}
-
 func (InfoAdditionalItem) IsInfoAdditionalItem() bool {
     return true
 }
@@ -58,8 +56,49 @@ func (InfoAdditionalItem) IsInfoAdditionalItem() bool {
 func (obj *InfoAdditionalItem) Initialize() {
 }
 
+func (obj *InfoAdditionalItem) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["Key"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Key = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["key"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Key = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["Value"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Value = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["value"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Value = &parsedValue
+        }
+
+    }
+}
+
 func (obj *InfoAdditionalItem) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *InfoAdditionalItem) GetKey() *string {
+    return obj.Key
+}
+
+func (obj *InfoAdditionalItem) SetKey(value *string) {
+    obj.Key = value
+}
+
+func (obj *InfoAdditionalItem) GetValue() *string {
+    return obj.Value
+}
+
+func (obj *InfoAdditionalItem) SetValue(value *string) {
+    obj.Value = value
+}
 

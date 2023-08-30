@@ -169,9 +169,13 @@ func (data *InsertDrawingObjectOnlineRequest) CreateResponse(reader io.Reader, b
         return successPayload, err
     }
 
-    if err = json.NewDecoder(part).Decode(&successPayload.Model); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(part).Decode(&jsonMap); err != nil {
         return successPayload, err
     }
+
+    successPayload.Model = new(DrawingObjectResponse)
+    successPayload.Model.Deserialize(jsonMap)
 
 
     part, err = mr.NextPart()

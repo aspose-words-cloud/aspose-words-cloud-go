@@ -34,9 +34,25 @@ import "io"
 // Updates properties of a table in the document node.
 type UpdateTablePropertiesOnlineResponse struct {
     // The response model.
-    Model TablePropertiesResponse `json:"Model,omitempty"`
+    Model ITablePropertiesResponse
 
 
     // The document after modification.
-    Document map[string]io.Reader `json:"Document,omitempty"`
+    Document map[string]io.Reader
+}
+
+func (obj *UpdateTablePropertiesOnlineResponse) GetModel() ITablePropertiesResponse {
+    return obj.Model
+}
+
+func (obj *UpdateTablePropertiesOnlineResponse) SetModel(value ITablePropertiesResponse) {
+    obj.Model = value
+}
+
+func (obj *UpdateTablePropertiesOnlineResponse) GetDocument() map[string]io.Reader {
+    return obj.Document
+}
+
+func (obj *UpdateTablePropertiesOnlineResponse) SetDocument(value map[string]io.Reader) {
+    obj.Document = value
 }

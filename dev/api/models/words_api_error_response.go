@@ -28,11 +28,84 @@
 package models
 
 // The REST response with an API error.
+
+type IWordsApiErrorResponse interface {
+    IsWordsApiErrorResponse() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetRequestId() *string
+    SetRequestId(value *string)
+    GetError() IApiError
+    SetError(value IApiError)
+}
+
 type WordsApiErrorResponse struct {
     // The REST response with an API error.
-    RequestId string `json:"RequestId,omitempty"`
+    RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with an API error.
-    Error_ ApiErrorResult `json:"Error,omitempty"`
+    Error_ IApiError `json:"Error,omitempty"`
+}
+
+func (WordsApiErrorResponse) IsWordsApiErrorResponse() bool {
+    return true
+}
+
+func (WordsApiErrorResponse) IsWordsResponse() bool {
+    return true
+}
+
+func (obj *WordsApiErrorResponse) Initialize() {
+}
+
+func (obj *WordsApiErrorResponse) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["RequestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["requestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["Error"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IApiError = new(ApiError)
+            modelInstance.Deserialize(parsedValue)
+            obj.Error_ = modelInstance
+        }
+
+    } else if jsonValue, exists := json["error"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IApiError = new(ApiError)
+            modelInstance.Deserialize(parsedValue)
+            obj.Error_ = modelInstance
+        }
+
+    }
+}
+
+func (obj *WordsApiErrorResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
+}
+
+func (obj *WordsApiErrorResponse) GetRequestId() *string {
+    return obj.RequestId
+}
+
+func (obj *WordsApiErrorResponse) SetRequestId(value *string) {
+    obj.RequestId = value
+}
+
+func (obj *WordsApiErrorResponse) GetError() IApiError {
+    return obj.Error_
+}
+
+func (obj *WordsApiErrorResponse) SetError(value IApiError) {
+    obj.Error_ = value
 }
 

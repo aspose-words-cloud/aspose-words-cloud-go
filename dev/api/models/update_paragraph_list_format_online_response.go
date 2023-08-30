@@ -34,9 +34,25 @@ import "io"
 // Updates the formatting properties of a paragraph list in the document node.
 type UpdateParagraphListFormatOnlineResponse struct {
     // The response model.
-    Model ParagraphListFormatResponse `json:"Model,omitempty"`
+    Model IParagraphListFormatResponse
 
 
     // The document after modification.
-    Document map[string]io.Reader `json:"Document,omitempty"`
+    Document map[string]io.Reader
+}
+
+func (obj *UpdateParagraphListFormatOnlineResponse) GetModel() IParagraphListFormatResponse {
+    return obj.Model
+}
+
+func (obj *UpdateParagraphListFormatOnlineResponse) SetModel(value IParagraphListFormatResponse) {
+    obj.Model = value
+}
+
+func (obj *UpdateParagraphListFormatOnlineResponse) GetDocument() map[string]io.Reader {
+    return obj.Document
+}
+
+func (obj *UpdateParagraphListFormatOnlineResponse) SetDocument(value map[string]io.Reader) {
+    obj.Document = value
 }

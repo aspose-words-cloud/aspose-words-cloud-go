@@ -28,20 +28,19 @@
 package models
 
 // Files list.
-type FilesListResult struct {
-    // Files list.
-    Value []StorageFileResult `json:"Value,omitempty"`
-}
-
-type FilesList struct {
-    // Files list.
-    Value []StorageFile `json:"Value,omitempty"`
-}
 
 type IFilesList interface {
     IsFilesList() bool
     Initialize()
+    Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetValue() []IStorageFile
+    SetValue(value []IStorageFile)
+}
+
+type FilesList struct {
+    // Files list.
+    Value []IStorageFile `json:"Value,omitempty"`
 }
 
 func (FilesList) IsFilesList() bool {
@@ -58,8 +57,45 @@ func (obj *FilesList) Initialize() {
 
 }
 
+func (obj *FilesList) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["Value"]; exists {
+        if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.Value = make([]IStorageFile, 0)
+            for _, parsedElement := range parsedValue {
+                if elementValue, valid := parsedElement.(map[string]interface{}); valid {
+                    var modelElementInstance IStorageFile = new(StorageFile)
+                    modelElementInstance.Deserialize(elementValue)
+                    obj.Value = append(obj.Value, modelElementInstance)
+                }
+
+            }
+        }
+
+    } else if jsonValue, exists := json["value"]; exists {
+        if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.Value = make([]IStorageFile, 0)
+            for _, parsedElement := range parsedValue {
+                if elementValue, valid := parsedElement.(map[string]interface{}); valid {
+                    var modelElementInstance IStorageFile = new(StorageFile)
+                    modelElementInstance.Deserialize(elementValue)
+                    obj.Value = append(obj.Value, modelElementInstance)
+                }
+
+            }
+        }
+
+    }
+}
+
 func (obj *FilesList) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *FilesList) GetValue() []IStorageFile {
+    return obj.Value
+}
+
+func (obj *FilesList) SetValue(value []IStorageFile) {
+    obj.Value = value
+}
 

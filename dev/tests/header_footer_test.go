@@ -60,9 +60,9 @@ func Test_HeaderFooter_GetHeaderFooters(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.HeaderFooters, "Validate GetHeaderFooters response.");
-    assert.NotNil(t, actual.HeaderFooters.List, "Validate GetHeaderFooters response.");
-    assert.Equal(t, 6, len(actual.HeaderFooters.List), "Validate GetHeaderFooters response.");
+    assert.NotNil(t, actual.GetHeaderFooters(), "Validate GetHeaderFooters response.");
+    assert.NotNil(t, actual.GetHeaderFooters().GetList(), "Validate GetHeaderFooters response.");
+    assert.Equal(t, 6, len(actual.GetHeaderFooters().GetList()), "Validate GetHeaderFooters response.");
 }
 
 // Test for getting headers and footers online.
@@ -115,10 +115,10 @@ func Test_HeaderFooter_GetHeaderFooter(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.HeaderFooter, "Validate GetHeaderFooter response.");
-    assert.NotNil(t, actual.HeaderFooter.ChildNodes, "Validate GetHeaderFooter response.");
-    assert.Equal(t, 1, len(actual.HeaderFooter.ChildNodes), "Validate GetHeaderFooter response.");
-    assert.Equal(t, "0.0.0", actual.HeaderFooter.ChildNodes[0].NodeId, "Validate GetHeaderFooter response.");
+    assert.NotNil(t, actual.GetHeaderFooter(), "Validate GetHeaderFooter response.");
+    assert.NotNil(t, actual.GetHeaderFooter().GetChildNodes(), "Validate GetHeaderFooter response.");
+    assert.Equal(t, 1, len(actual.GetHeaderFooter().GetChildNodes()), "Validate GetHeaderFooter response.");
+    assert.Equal(t, "0.0.0", DereferenceValue(actual.GetHeaderFooter().GetChildNodes()[0].GetNodeId()), "Validate GetHeaderFooter response.");
 }
 
 // Test for getting headerfooter online.
@@ -172,10 +172,10 @@ func Test_HeaderFooter_GetHeaderFooterOfSection(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.HeaderFooter, "Validate GetHeaderFooterOfSection response.");
-    assert.NotNil(t, actual.HeaderFooter.ChildNodes, "Validate GetHeaderFooterOfSection response.");
-    assert.Equal(t, 1, len(actual.HeaderFooter.ChildNodes), "Validate GetHeaderFooterOfSection response.");
-    assert.Equal(t, "0.0.0", actual.HeaderFooter.ChildNodes[0].NodeId, "Validate GetHeaderFooterOfSection response.");
+    assert.NotNil(t, actual.GetHeaderFooter(), "Validate GetHeaderFooterOfSection response.");
+    assert.NotNil(t, actual.GetHeaderFooter().GetChildNodes(), "Validate GetHeaderFooterOfSection response.");
+    assert.Equal(t, 1, len(actual.GetHeaderFooter().GetChildNodes()), "Validate GetHeaderFooterOfSection response.");
+    assert.Equal(t, "0.0.0", DereferenceValue(actual.GetHeaderFooter().GetChildNodes()[0].GetNodeId()), "Validate GetHeaderFooterOfSection response.");
 }
 
 // Test for getting headerfooter of section online.
@@ -363,8 +363,8 @@ func Test_HeaderFooter_InsertHeaderFooterOnline(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.Model.HeaderFooter, "Validate InsertHeaderFooterOnline response.");
-    assert.NotNil(t, actual.Model.HeaderFooter.ChildNodes, "Validate InsertHeaderFooterOnline response.");
-    assert.Equal(t, 1, len(actual.Model.HeaderFooter.ChildNodes), "Validate InsertHeaderFooterOnline response.");
-    assert.Equal(t, "0.2.0", actual.Model.HeaderFooter.ChildNodes[0].NodeId, "Validate InsertHeaderFooterOnline response.");
+    assert.NotNil(t, actual.GetModel().GetHeaderFooter(), "Validate InsertHeaderFooterOnline response.");
+    assert.NotNil(t, actual.GetModel().GetHeaderFooter().GetChildNodes(), "Validate InsertHeaderFooterOnline response.");
+    assert.Equal(t, 1, len(actual.GetModel().GetHeaderFooter().GetChildNodes()), "Validate InsertHeaderFooterOnline response.");
+    assert.Equal(t, "0.2.0", DereferenceValue(actual.GetModel().GetHeaderFooter().GetChildNodes()[0].GetNodeId()), "Validate InsertHeaderFooterOnline response.");
 }

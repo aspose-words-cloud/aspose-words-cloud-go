@@ -34,9 +34,25 @@ import "io"
 // Compress and resize images inside the document.
 type CompressDocumentOnlineResponse struct {
     // The response model.
-    Model CompressResponse `json:"Model,omitempty"`
+    Model ICompressResponse
 
 
     // The document after modification.
-    Document map[string]io.Reader `json:"Document,omitempty"`
+    Document map[string]io.Reader
+}
+
+func (obj *CompressDocumentOnlineResponse) GetModel() ICompressResponse {
+    return obj.Model
+}
+
+func (obj *CompressDocumentOnlineResponse) SetModel(value ICompressResponse) {
+    obj.Model = value
+}
+
+func (obj *CompressDocumentOnlineResponse) GetDocument() map[string]io.Reader {
+    return obj.Document
+}
+
+func (obj *CompressDocumentOnlineResponse) SetDocument(value map[string]io.Reader) {
+    obj.Document = value
 }

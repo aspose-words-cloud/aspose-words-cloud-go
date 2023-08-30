@@ -28,12 +28,16 @@
 package models
 
 // DTO container with a range element.
-type ReplaceRangeResult struct {
-    // DTO container with a range element.
-    Text string `json:"Text,omitempty"`
 
-    // DTO container with a range element.
-    TextType string `json:"TextType,omitempty"`
+type IReplaceRange interface {
+    IsReplaceRange() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetText() *string
+    SetText(value *string)
+    GetTextType() *string
+    SetTextType(value *string)
 }
 
 type ReplaceRange struct {
@@ -44,12 +48,6 @@ type ReplaceRange struct {
     TextType *string `json:"TextType,omitempty"`
 }
 
-type IReplaceRange interface {
-    IsReplaceRange() bool
-    Initialize()
-    CollectFilesContent(resultFilesContent []FileReference) []FileReference
-}
-
 func (ReplaceRange) IsReplaceRange() bool {
     return true
 }
@@ -58,8 +56,49 @@ func (ReplaceRange) IsReplaceRange() bool {
 func (obj *ReplaceRange) Initialize() {
 }
 
+func (obj *ReplaceRange) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["Text"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Text = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["text"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Text = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["TextType"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.TextType = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["textType"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.TextType = &parsedValue
+        }
+
+    }
+}
+
 func (obj *ReplaceRange) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *ReplaceRange) GetText() *string {
+    return obj.Text
+}
+
+func (obj *ReplaceRange) SetText(value *string) {
+    obj.Text = value
+}
+
+func (obj *ReplaceRange) GetTextType() *string {
+    return obj.TextType
+}
+
+func (obj *ReplaceRange) SetTextType(value *string) {
+    obj.TextType = value
+}
 

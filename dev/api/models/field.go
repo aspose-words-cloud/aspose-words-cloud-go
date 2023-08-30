@@ -28,21 +28,22 @@
 package models
 
 // DTO container with a field.
-type FieldResult struct {
-    // DTO container with a field.
-    Link WordsApiLinkResult `json:"Link,omitempty"`
 
-    // DTO container with a field.
-    NodeId string `json:"NodeId,omitempty"`
-
-    // DTO container with a field.
-    FieldCode string `json:"FieldCode,omitempty"`
-
-    // DTO container with a field.
-    LocaleId string `json:"LocaleId,omitempty"`
-
-    // DTO container with a field.
-    Result string `json:"Result,omitempty"`
+type IField interface {
+    IsField() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetLink() IWordsApiLink
+    SetLink(value IWordsApiLink)
+    GetNodeId() *string
+    SetNodeId(value *string)
+    GetFieldCode() *string
+    SetFieldCode(value *string)
+    GetLocaleId() *string
+    SetLocaleId(value *string)
+    GetResult() *string
+    SetResult(value *string)
 }
 
 type Field struct {
@@ -60,12 +61,6 @@ type Field struct {
 
     // DTO container with a field.
     Result *string `json:"Result,omitempty"`
-}
-
-type IField interface {
-    IsField() bool
-    Initialize()
-    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (Field) IsField() bool {
@@ -92,8 +87,113 @@ func (obj *Field) Initialize() {
 
 }
 
+func (obj *Field) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["Link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    } else if jsonValue, exists := json["link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    }
+
+    if jsonValue, exists := json["NodeId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.NodeId = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["nodeId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.NodeId = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["FieldCode"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.FieldCode = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["fieldCode"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.FieldCode = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["LocaleId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.LocaleId = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["localeId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.LocaleId = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["Result"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Result = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["result"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Result = &parsedValue
+        }
+
+    }
+}
+
 func (obj *Field) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *Field) GetLink() IWordsApiLink {
+    return obj.Link
+}
+
+func (obj *Field) SetLink(value IWordsApiLink) {
+    obj.Link = value
+}
+
+func (obj *Field) GetNodeId() *string {
+    return obj.NodeId
+}
+
+func (obj *Field) SetNodeId(value *string) {
+    obj.NodeId = value
+}
+
+func (obj *Field) GetFieldCode() *string {
+    return obj.FieldCode
+}
+
+func (obj *Field) SetFieldCode(value *string) {
+    obj.FieldCode = value
+}
+
+func (obj *Field) GetLocaleId() *string {
+    return obj.LocaleId
+}
+
+func (obj *Field) SetLocaleId(value *string) {
+    obj.LocaleId = value
+}
+
+func (obj *Field) GetResult() *string {
+    return obj.Result
+}
+
+func (obj *Field) SetResult(value *string) {
+    obj.Result = value
+}
 

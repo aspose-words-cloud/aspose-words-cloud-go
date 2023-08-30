@@ -29,22 +29,20 @@ package models
 
 // Represents options for XML data loading.
 // To learn more, visit the LINQ Reporting Engine documentation article.
-type XmlDataLoadOptionsResult struct {
-    // Represents options for XML data loading.
-    // To learn more, visit the LINQ Reporting Engine documentation article.
-    AlwaysGenerateRootObject bool `json:"AlwaysGenerateRootObject,omitempty"`
+
+type IXmlDataLoadOptions interface {
+    IsXmlDataLoadOptions() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetAlwaysGenerateRootObject() *bool
+    SetAlwaysGenerateRootObject(value *bool)
 }
 
 type XmlDataLoadOptions struct {
     // Represents options for XML data loading.
     // To learn more, visit the LINQ Reporting Engine documentation article.
     AlwaysGenerateRootObject *bool `json:"AlwaysGenerateRootObject,omitempty"`
-}
-
-type IXmlDataLoadOptions interface {
-    IsXmlDataLoadOptions() bool
-    Initialize()
-    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (XmlDataLoadOptions) IsXmlDataLoadOptions() bool {
@@ -55,8 +53,29 @@ func (XmlDataLoadOptions) IsXmlDataLoadOptions() bool {
 func (obj *XmlDataLoadOptions) Initialize() {
 }
 
+func (obj *XmlDataLoadOptions) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["AlwaysGenerateRootObject"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.AlwaysGenerateRootObject = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["alwaysGenerateRootObject"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.AlwaysGenerateRootObject = &parsedValue
+        }
+
+    }
+}
+
 func (obj *XmlDataLoadOptions) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *XmlDataLoadOptions) GetAlwaysGenerateRootObject() *bool {
+    return obj.AlwaysGenerateRootObject
+}
+
+func (obj *XmlDataLoadOptions) SetAlwaysGenerateRootObject(value *bool) {
+    obj.AlwaysGenerateRootObject = value
+}
 

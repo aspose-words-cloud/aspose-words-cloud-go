@@ -27,16 +27,15 @@
 
 package models
 
-type TableRowFormatDtoResult struct {
-}
-
-type TableRowFormatDto struct {
-}
 
 type ITableRowFormatDto interface {
     IsTableRowFormatDto() bool
     Initialize()
+    Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+}
+
+type TableRowFormatDto struct {
 }
 
 func (TableRowFormatDto) IsTableRowFormatDto() bool {
@@ -45,6 +44,9 @@ func (TableRowFormatDto) IsTableRowFormatDto() bool {
 
 
 func (obj *TableRowFormatDto) Initialize() {
+}
+
+func (obj *TableRowFormatDto) Deserialize(json map[string]interface{}) {
 }
 
 func (obj *TableRowFormatDto) CollectFilesContent(resultFilesContent []FileReference) []FileReference {

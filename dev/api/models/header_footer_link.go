@@ -28,12 +28,16 @@
 package models
 
 // HeaderFooter link element.
-type HeaderFooterLinkResult struct {
-    // HeaderFooter link element.
-    Link WordsApiLinkResult `json:"Link,omitempty"`
 
-    // HeaderFooter link element.
-    Type string `json:"Type,omitempty"`
+type IHeaderFooterLink interface {
+    IsHeaderFooterLink() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetLink() IWordsApiLink
+    SetLink(value IWordsApiLink)
+    GetType() *string
+    SetType(value *string)
 }
 
 type HeaderFooterLink struct {
@@ -42,12 +46,6 @@ type HeaderFooterLink struct {
 
     // HeaderFooter link element.
     Type *string `json:"Type,omitempty"`
-}
-
-type IHeaderFooterLink interface {
-    IsHeaderFooterLink() bool
-    Initialize()
-    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (HeaderFooterLink) IsHeaderFooterLink() bool {
@@ -66,8 +64,53 @@ func (obj *HeaderFooterLink) Initialize() {
 
 }
 
+func (obj *HeaderFooterLink) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["Link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    } else if jsonValue, exists := json["link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    }
+
+    if jsonValue, exists := json["Type"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Type = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["type"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Type = &parsedValue
+        }
+
+    }
+}
+
 func (obj *HeaderFooterLink) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *HeaderFooterLink) GetLink() IWordsApiLink {
+    return obj.Link
+}
+
+func (obj *HeaderFooterLink) SetLink(value IWordsApiLink) {
+    obj.Link = value
+}
+
+func (obj *HeaderFooterLink) GetType() *string {
+    return obj.Type
+}
+
+func (obj *HeaderFooterLink) SetType(value *string) {
+    obj.Type = value
+}
 

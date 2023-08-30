@@ -37,13 +37,7 @@ type Time struct {
 	time.Time
 }
 
-// unmarshall date
-func (t *Time) UnmarshalJSON(data []byte) error {
-	var str string
-	if err := json.Unmarshal(data, &str); err != nil {
-		return err
-	}
-
+func (t *Time) Parse(str string) error {
 	if val, err := time.Parse(time.RFC3339, str); err != nil {
 		if val, err = time.Parse("2006-01-02T03:04:05", str); err != nil {
 			return err
@@ -52,4 +46,14 @@ func (t *Time) UnmarshalJSON(data []byte) error {
 	}
 
 	return nil
+}
+
+// unmarshall date
+func (t *Time) UnmarshalJSON(data []byte) error {
+	var str string
+	if err := json.Unmarshal(data, &str); err != nil {
+		return err
+	}
+
+	return t.Parse(str)
 }

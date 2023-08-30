@@ -34,9 +34,25 @@ import "io"
 // Inserts a new or updates an existing paragraph tab stop in the document node.
 type InsertOrUpdateParagraphTabStopOnlineResponse struct {
     // The response model.
-    Model TabStopsResponse `json:"Model,omitempty"`
+    Model ITabStopsResponse
 
 
     // The document after modification.
-    Document map[string]io.Reader `json:"Document,omitempty"`
+    Document map[string]io.Reader
+}
+
+func (obj *InsertOrUpdateParagraphTabStopOnlineResponse) GetModel() ITabStopsResponse {
+    return obj.Model
+}
+
+func (obj *InsertOrUpdateParagraphTabStopOnlineResponse) SetModel(value ITabStopsResponse) {
+    obj.Model = value
+}
+
+func (obj *InsertOrUpdateParagraphTabStopOnlineResponse) GetDocument() map[string]io.Reader {
+    return obj.Document
+}
+
+func (obj *InsertOrUpdateParagraphTabStopOnlineResponse) SetDocument(value map[string]io.Reader) {
+    obj.Document = value
 }

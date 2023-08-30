@@ -28,20 +28,19 @@
 package models
 
 // Container class for the document optimization options.
-type OptimizationOptionsResult struct {
-    // Container class for the document optimization options.
-    MsWordVersion string `json:"MsWordVersion,omitempty"`
+
+type IOptimizationOptions interface {
+    IsOptimizationOptions() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetMsWordVersion() *string
+    SetMsWordVersion(value *string)
 }
 
 type OptimizationOptions struct {
     // Container class for the document optimization options.
     MsWordVersion *string `json:"MsWordVersion,omitempty"`
-}
-
-type IOptimizationOptions interface {
-    IsOptimizationOptions() bool
-    Initialize()
-    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (OptimizationOptions) IsOptimizationOptions() bool {
@@ -52,8 +51,29 @@ func (OptimizationOptions) IsOptimizationOptions() bool {
 func (obj *OptimizationOptions) Initialize() {
 }
 
+func (obj *OptimizationOptions) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["MsWordVersion"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.MsWordVersion = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["msWordVersion"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.MsWordVersion = &parsedValue
+        }
+
+    }
+}
+
 func (obj *OptimizationOptions) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *OptimizationOptions) GetMsWordVersion() *string {
+    return obj.MsWordVersion
+}
+
+func (obj *OptimizationOptions) SetMsWordVersion(value *string) {
+    obj.MsWordVersion = value
+}
 

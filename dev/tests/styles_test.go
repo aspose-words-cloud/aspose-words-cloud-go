@@ -59,9 +59,9 @@ func Test_Styles_GetStyles(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.Styles, "Validate GetStyles response.");
-    assert.Equal(t, 22, len(actual.Styles), "Validate GetStyles response.");
-    assert.Equal(t, "Default Paragraph Font", actual.Styles[0].Name, "Validate GetStyles response.");
+    assert.NotNil(t, actual.GetStyles(), "Validate GetStyles response.");
+    assert.Equal(t, 22, len(actual.GetStyles()), "Validate GetStyles response.");
+    assert.Equal(t, "Default Paragraph Font", DereferenceValue(actual.GetStyles()[0].GetName()), "Validate GetStyles response.");
 }
 
 // Test for getting styles from document online.
@@ -113,8 +113,8 @@ func Test_Styles_GetStyle(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.Style, "Validate GetStyle response.");
-    assert.Equal(t, "Heading 1", actual.Style.Name, "Validate GetStyle response.");
+    assert.NotNil(t, actual.GetStyle(), "Validate GetStyle response.");
+    assert.Equal(t, "Heading 1", DereferenceValue(actual.GetStyle().GetName()), "Validate GetStyle response.");
 }
 
 // Test for getting style from document online.
@@ -171,8 +171,8 @@ func Test_Styles_UpdateStyle(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.Style, "Validate UpdateStyle response.");
-    assert.Equal(t, "My Style", actual.Style.Name, "Validate UpdateStyle response.");
+    assert.NotNil(t, actual.GetStyle(), "Validate UpdateStyle response.");
+    assert.Equal(t, "My Style", DereferenceValue(actual.GetStyle().GetName()), "Validate UpdateStyle response.");
 }
 
 // Test for updating style from document online.
@@ -233,8 +233,8 @@ func Test_Styles_InsertStyle(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.Style, "Validate InsertStyle response.");
-    assert.Equal(t, "My Style", actual.Style.Name, "Validate InsertStyle response.");
+    assert.NotNil(t, actual.GetStyle(), "Validate InsertStyle response.");
+    assert.Equal(t, "My Style", DereferenceValue(actual.GetStyle().GetName()), "Validate InsertStyle response.");
 }
 
 // Test for inserting style from document online.
@@ -294,8 +294,8 @@ func Test_Styles_CopyStyle(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.Style, "Validate CopyStyle response.");
-    assert.Equal(t, "Heading 1_0", actual.Style.Name, "Validate CopyStyle response.");
+    assert.NotNil(t, actual.GetStyle(), "Validate CopyStyle response.");
+    assert.Equal(t, "Heading 1_0", DereferenceValue(actual.GetStyle().GetName()), "Validate CopyStyle response.");
 }
 
 // Test for coping style from document online.
@@ -351,8 +351,8 @@ func Test_Styles_GetStyleFromDocumentElement(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.Style, "Validate GetStyleFromDocumentElement response.");
-    assert.Equal(t, "TOC 1", actual.Style.Name, "Validate GetStyleFromDocumentElement response.");
+    assert.NotNil(t, actual.GetStyle(), "Validate GetStyleFromDocumentElement response.");
+    assert.Equal(t, "TOC 1", DereferenceValue(actual.GetStyle().GetName()), "Validate GetStyleFromDocumentElement response.");
 }
 
 // Test for getting style from document element online.

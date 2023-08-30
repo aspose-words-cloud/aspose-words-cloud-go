@@ -60,10 +60,10 @@ func Test_Section_GetSection(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.Section, "Validate GetSection response.");
-    assert.NotNil(t, actual.Section.ChildNodes, "Validate GetSection response.");
-    assert.Equal(t, 13, len(actual.Section.ChildNodes), "Validate GetSection response.");
-    assert.Equal(t, "0.3.0", actual.Section.ChildNodes[0].NodeId, "Validate GetSection response.");
+    assert.NotNil(t, actual.GetSection(), "Validate GetSection response.");
+    assert.NotNil(t, actual.GetSection().GetChildNodes(), "Validate GetSection response.");
+    assert.Equal(t, 13, len(actual.GetSection().GetChildNodes()), "Validate GetSection response.");
+    assert.Equal(t, "0.3.0", DereferenceValue(actual.GetSection().GetChildNodes()[0].GetNodeId()), "Validate GetSection response.");
 }
 
 // Test for getting section by index online.
@@ -115,10 +115,10 @@ func Test_Section_GetSections(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.Sections, "Validate GetSections response.");
-    assert.NotNil(t, actual.Sections.SectionLinkList, "Validate GetSections response.");
-    assert.Equal(t, 1, len(actual.Sections.SectionLinkList), "Validate GetSections response.");
-    assert.Equal(t, "0", actual.Sections.SectionLinkList[0].NodeId, "Validate GetSections response.");
+    assert.NotNil(t, actual.GetSections(), "Validate GetSections response.");
+    assert.NotNil(t, actual.GetSections().GetSectionLinkList(), "Validate GetSections response.");
+    assert.Equal(t, 1, len(actual.GetSections().GetSectionLinkList()), "Validate GetSections response.");
+    assert.Equal(t, "0", DereferenceValue(actual.GetSections().GetSectionLinkList()[0].GetNodeId()), "Validate GetSections response.");
 }
 
 // Test for getting sections online.

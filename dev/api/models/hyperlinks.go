@@ -28,12 +28,16 @@
 package models
 
 // Collection of Hyperlink.
-type HyperlinksResult struct {
-    // Collection of Hyperlink.
-    Link WordsApiLinkResult `json:"Link,omitempty"`
 
-    // Collection of Hyperlink.
-    HyperlinkList []HyperlinkResult `json:"HyperlinkList,omitempty"`
+type IHyperlinks interface {
+    IsHyperlinks() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetLink() IWordsApiLink
+    SetLink(value IWordsApiLink)
+    GetHyperlinkList() []IHyperlink
+    SetHyperlinkList(value []IHyperlink)
 }
 
 type Hyperlinks struct {
@@ -41,13 +45,7 @@ type Hyperlinks struct {
     Link IWordsApiLink `json:"Link,omitempty"`
 
     // Collection of Hyperlink.
-    HyperlinkList []Hyperlink `json:"HyperlinkList,omitempty"`
-}
-
-type IHyperlinks interface {
-    IsHyperlinks() bool
-    Initialize()
-    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    HyperlinkList []IHyperlink `json:"HyperlinkList,omitempty"`
 }
 
 func (Hyperlinks) IsHyperlinks() bool {
@@ -71,8 +69,69 @@ func (obj *Hyperlinks) Initialize() {
 
 }
 
+func (obj *Hyperlinks) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["Link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    } else if jsonValue, exists := json["link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    }
+
+    if jsonValue, exists := json["HyperlinkList"]; exists {
+        if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.HyperlinkList = make([]IHyperlink, 0)
+            for _, parsedElement := range parsedValue {
+                if elementValue, valid := parsedElement.(map[string]interface{}); valid {
+                    var modelElementInstance IHyperlink = new(Hyperlink)
+                    modelElementInstance.Deserialize(elementValue)
+                    obj.HyperlinkList = append(obj.HyperlinkList, modelElementInstance)
+                }
+
+            }
+        }
+
+    } else if jsonValue, exists := json["hyperlinkList"]; exists {
+        if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.HyperlinkList = make([]IHyperlink, 0)
+            for _, parsedElement := range parsedValue {
+                if elementValue, valid := parsedElement.(map[string]interface{}); valid {
+                    var modelElementInstance IHyperlink = new(Hyperlink)
+                    modelElementInstance.Deserialize(elementValue)
+                    obj.HyperlinkList = append(obj.HyperlinkList, modelElementInstance)
+                }
+
+            }
+        }
+
+    }
+}
+
 func (obj *Hyperlinks) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *Hyperlinks) GetLink() IWordsApiLink {
+    return obj.Link
+}
+
+func (obj *Hyperlinks) SetLink(value IWordsApiLink) {
+    obj.Link = value
+}
+
+func (obj *Hyperlinks) GetHyperlinkList() []IHyperlink {
+    return obj.HyperlinkList
+}
+
+func (obj *Hyperlinks) SetHyperlinkList(value []IHyperlink) {
+    obj.HyperlinkList = value
+}
 

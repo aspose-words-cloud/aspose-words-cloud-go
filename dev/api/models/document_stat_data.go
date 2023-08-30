@@ -28,21 +28,22 @@
 package models
 
 // Container for the document's statistical data.
-type DocumentStatDataResult struct {
-    // Container for the document's statistical data.
-    FootnotesStatData FootnotesStatDataResult `json:"FootnotesStatData,omitempty"`
 
-    // Container for the document's statistical data.
-    PageCount int32 `json:"PageCount,omitempty"`
-
-    // Container for the document's statistical data.
-    ParagraphCount int32 `json:"ParagraphCount,omitempty"`
-
-    // Container for the document's statistical data.
-    WordCount int32 `json:"WordCount,omitempty"`
-
-    // Container for the document's statistical data.
-    PageStatData []PageStatDataResult `json:"PageStatData,omitempty"`
+type IDocumentStatData interface {
+    IsDocumentStatData() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetFootnotesStatData() IFootnotesStatData
+    SetFootnotesStatData(value IFootnotesStatData)
+    GetPageCount() *int32
+    SetPageCount(value *int32)
+    GetParagraphCount() *int32
+    SetParagraphCount(value *int32)
+    GetWordCount() *int32
+    SetWordCount(value *int32)
+    GetPageStatData() []IPageStatData
+    SetPageStatData(value []IPageStatData)
 }
 
 type DocumentStatData struct {
@@ -59,13 +60,7 @@ type DocumentStatData struct {
     WordCount *int32 `json:"WordCount,omitempty"`
 
     // Container for the document's statistical data.
-    PageStatData []PageStatData `json:"PageStatData,omitempty"`
-}
-
-type IDocumentStatData interface {
-    IsDocumentStatData() bool
-    Initialize()
-    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    PageStatData []IPageStatData `json:"PageStatData,omitempty"`
 }
 
 func (DocumentStatData) IsDocumentStatData() bool {
@@ -86,8 +81,135 @@ func (obj *DocumentStatData) Initialize() {
 
 }
 
+func (obj *DocumentStatData) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["FootnotesStatData"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IFootnotesStatData = new(FootnotesStatData)
+            modelInstance.Deserialize(parsedValue)
+            obj.FootnotesStatData = modelInstance
+        }
+
+    } else if jsonValue, exists := json["footnotesStatData"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IFootnotesStatData = new(FootnotesStatData)
+            modelInstance.Deserialize(parsedValue)
+            obj.FootnotesStatData = modelInstance
+        }
+
+    }
+
+    if jsonValue, exists := json["PageCount"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.PageCount = new(int32)
+            *obj.PageCount = int32(parsedValue)
+        }
+
+    } else if jsonValue, exists := json["pageCount"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.PageCount = new(int32)
+            *obj.PageCount = int32(parsedValue)
+        }
+
+    }
+
+    if jsonValue, exists := json["ParagraphCount"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.ParagraphCount = new(int32)
+            *obj.ParagraphCount = int32(parsedValue)
+        }
+
+    } else if jsonValue, exists := json["paragraphCount"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.ParagraphCount = new(int32)
+            *obj.ParagraphCount = int32(parsedValue)
+        }
+
+    }
+
+    if jsonValue, exists := json["WordCount"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.WordCount = new(int32)
+            *obj.WordCount = int32(parsedValue)
+        }
+
+    } else if jsonValue, exists := json["wordCount"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.WordCount = new(int32)
+            *obj.WordCount = int32(parsedValue)
+        }
+
+    }
+
+    if jsonValue, exists := json["PageStatData"]; exists {
+        if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.PageStatData = make([]IPageStatData, 0)
+            for _, parsedElement := range parsedValue {
+                if elementValue, valid := parsedElement.(map[string]interface{}); valid {
+                    var modelElementInstance IPageStatData = new(PageStatData)
+                    modelElementInstance.Deserialize(elementValue)
+                    obj.PageStatData = append(obj.PageStatData, modelElementInstance)
+                }
+
+            }
+        }
+
+    } else if jsonValue, exists := json["pageStatData"]; exists {
+        if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.PageStatData = make([]IPageStatData, 0)
+            for _, parsedElement := range parsedValue {
+                if elementValue, valid := parsedElement.(map[string]interface{}); valid {
+                    var modelElementInstance IPageStatData = new(PageStatData)
+                    modelElementInstance.Deserialize(elementValue)
+                    obj.PageStatData = append(obj.PageStatData, modelElementInstance)
+                }
+
+            }
+        }
+
+    }
+}
+
 func (obj *DocumentStatData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *DocumentStatData) GetFootnotesStatData() IFootnotesStatData {
+    return obj.FootnotesStatData
+}
+
+func (obj *DocumentStatData) SetFootnotesStatData(value IFootnotesStatData) {
+    obj.FootnotesStatData = value
+}
+
+func (obj *DocumentStatData) GetPageCount() *int32 {
+    return obj.PageCount
+}
+
+func (obj *DocumentStatData) SetPageCount(value *int32) {
+    obj.PageCount = value
+}
+
+func (obj *DocumentStatData) GetParagraphCount() *int32 {
+    return obj.ParagraphCount
+}
+
+func (obj *DocumentStatData) SetParagraphCount(value *int32) {
+    obj.ParagraphCount = value
+}
+
+func (obj *DocumentStatData) GetWordCount() *int32 {
+    return obj.WordCount
+}
+
+func (obj *DocumentStatData) SetWordCount(value *int32) {
+    obj.WordCount = value
+}
+
+func (obj *DocumentStatData) GetPageStatData() []IPageStatData {
+    return obj.PageStatData
+}
+
+func (obj *DocumentStatData) SetPageStatData(value []IPageStatData) {
+    obj.PageStatData = value
+}
 

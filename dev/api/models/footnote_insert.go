@@ -28,18 +28,20 @@
 package models
 
 // Footnote for insert.
-type FootnoteInsertResult struct {
-    // Footnote for insert.
-    FootnoteType string `json:"FootnoteType,omitempty"`
 
-    // Footnote for insert.
-    Position NewDocumentPositionResult `json:"Position,omitempty"`
-
-    // Footnote for insert.
-    ReferenceMark string `json:"ReferenceMark,omitempty"`
-
-    // Footnote for insert.
-    Text string `json:"Text,omitempty"`
+type IFootnoteInsert interface {
+    IsFootnoteInsert() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetFootnoteType() *string
+    SetFootnoteType(value *string)
+    GetPosition() INewDocumentPosition
+    SetPosition(value INewDocumentPosition)
+    GetReferenceMark() *string
+    SetReferenceMark(value *string)
+    GetText() *string
+    SetText(value *string)
 }
 
 type FootnoteInsert struct {
@@ -54,12 +56,6 @@ type FootnoteInsert struct {
 
     // Footnote for insert.
     Text *string `json:"Text,omitempty"`
-}
-
-type IFootnoteInsert interface {
-    IsFootnoteInsert() bool
-    Initialize()
-    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (FootnoteInsert) IsFootnoteInsert() bool {
@@ -78,8 +74,93 @@ func (obj *FootnoteInsert) Initialize() {
 
 }
 
+func (obj *FootnoteInsert) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["FootnoteType"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.FootnoteType = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["footnoteType"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.FootnoteType = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["Position"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance INewDocumentPosition = new(NewDocumentPosition)
+            modelInstance.Deserialize(parsedValue)
+            obj.Position = modelInstance
+        }
+
+    } else if jsonValue, exists := json["position"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance INewDocumentPosition = new(NewDocumentPosition)
+            modelInstance.Deserialize(parsedValue)
+            obj.Position = modelInstance
+        }
+
+    }
+
+    if jsonValue, exists := json["ReferenceMark"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.ReferenceMark = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["referenceMark"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.ReferenceMark = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["Text"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Text = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["text"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Text = &parsedValue
+        }
+
+    }
+}
+
 func (obj *FootnoteInsert) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *FootnoteInsert) GetFootnoteType() *string {
+    return obj.FootnoteType
+}
+
+func (obj *FootnoteInsert) SetFootnoteType(value *string) {
+    obj.FootnoteType = value
+}
+
+func (obj *FootnoteInsert) GetPosition() INewDocumentPosition {
+    return obj.Position
+}
+
+func (obj *FootnoteInsert) SetPosition(value INewDocumentPosition) {
+    obj.Position = value
+}
+
+func (obj *FootnoteInsert) GetReferenceMark() *string {
+    return obj.ReferenceMark
+}
+
+func (obj *FootnoteInsert) SetReferenceMark(value *string) {
+    obj.ReferenceMark = value
+}
+
+func (obj *FootnoteInsert) GetText() *string {
+    return obj.Text
+}
+
+func (obj *FootnoteInsert) SetText(value *string) {
+    obj.Text = value
+}
 

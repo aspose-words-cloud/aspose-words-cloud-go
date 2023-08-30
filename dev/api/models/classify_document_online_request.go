@@ -127,10 +127,12 @@ func (data *ClassifyDocumentOnlineRequest) CreateRequestData() (RequestData, err
 }
 
 func (data *ClassifyDocumentOnlineRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
-            var successPayload ClassificationResponse
-            if err = json.NewDecoder(reader).Decode(&successPayload); err != nil {
+            var successPayload IClassificationResponse = new(ClassificationResponse)
+            var jsonMap map[string]interface{}
+            if err = json.NewDecoder(reader).Decode(&jsonMap); err != nil {
                 return nil, err
             }
 
+            successPayload.Deserialize(jsonMap)
             return successPayload, err
 }

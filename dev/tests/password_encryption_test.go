@@ -47,6 +47,6 @@ func Test_PasswordEncryption_GetPublicKey(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.Exponent, "Validate GetPublicKey response.");
-    assert.NotNil(t, actual.Modulus, "Validate GetPublicKey response.");
+    assert.NotNil(t, actual.GetExponent(), "Validate GetPublicKey response.");
+    assert.NotNil(t, actual.GetModulus(), "Validate GetPublicKey response.");
 }

@@ -27,16 +27,15 @@
 
 package models
 
-type FontDtoResult struct {
-}
-
-type FontDto struct {
-}
 
 type IFontDto interface {
     IsFontDto() bool
     Initialize()
+    Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+}
+
+type FontDto struct {
 }
 
 func (FontDto) IsFontDto() bool {
@@ -45,6 +44,9 @@ func (FontDto) IsFontDto() bool {
 
 
 func (obj *FontDto) Initialize() {
+}
+
+func (obj *FontDto) Deserialize(json map[string]interface{}) {
 }
 
 func (obj *FontDto) CollectFilesContent(resultFilesContent []FileReference) []FileReference {

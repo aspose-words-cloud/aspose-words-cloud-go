@@ -28,27 +28,26 @@
 package models
 
 // Represents a border of an object.
-type BorderResult struct {
-    // Represents a border of an object.
-    Link WordsApiLinkResult `json:"Link,omitempty"`
 
-    // Represents a border of an object.
-    BorderType string `json:"BorderType,omitempty"`
-
-    // Represents a border of an object.
-    Color XmlColorResult `json:"Color,omitempty"`
-
-    // Represents a border of an object.
-    DistanceFromText float64 `json:"DistanceFromText,omitempty"`
-
-    // Represents a border of an object.
-    LineStyle string `json:"LineStyle,omitempty"`
-
-    // Represents a border of an object.
-    LineWidth float64 `json:"LineWidth,omitempty"`
-
-    // Represents a border of an object.
-    Shadow bool `json:"Shadow,omitempty"`
+type IBorder interface {
+    IsBorder() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetLink() IWordsApiLink
+    SetLink(value IWordsApiLink)
+    GetBorderType() *string
+    SetBorderType(value *string)
+    GetColor() IXmlColor
+    SetColor(value IXmlColor)
+    GetDistanceFromText() *float64
+    SetDistanceFromText(value *float64)
+    GetLineStyle() *string
+    SetLineStyle(value *string)
+    GetLineWidth() *float64
+    SetLineWidth(value *float64)
+    GetShadow() *bool
+    SetShadow(value *bool)
 }
 
 type Border struct {
@@ -74,12 +73,6 @@ type Border struct {
     Shadow *bool `json:"Shadow,omitempty"`
 }
 
-type IBorder interface {
-    IsBorder() bool
-    Initialize()
-    CollectFilesContent(resultFilesContent []FileReference) []FileReference
-}
-
 func (Border) IsBorder() bool {
     return true
 }
@@ -100,8 +93,157 @@ func (obj *Border) Initialize() {
 
 }
 
+func (obj *Border) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["Link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    } else if jsonValue, exists := json["link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    }
+
+    if jsonValue, exists := json["BorderType"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.BorderType = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["borderType"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.BorderType = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["Color"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IXmlColor = new(XmlColor)
+            modelInstance.Deserialize(parsedValue)
+            obj.Color = modelInstance
+        }
+
+    } else if jsonValue, exists := json["color"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IXmlColor = new(XmlColor)
+            modelInstance.Deserialize(parsedValue)
+            obj.Color = modelInstance
+        }
+
+    }
+
+    if jsonValue, exists := json["DistanceFromText"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.DistanceFromText = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["distanceFromText"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.DistanceFromText = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["LineStyle"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.LineStyle = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["lineStyle"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.LineStyle = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["LineWidth"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.LineWidth = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["lineWidth"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.LineWidth = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["Shadow"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.Shadow = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["shadow"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.Shadow = &parsedValue
+        }
+
+    }
+}
+
 func (obj *Border) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *Border) GetLink() IWordsApiLink {
+    return obj.Link
+}
+
+func (obj *Border) SetLink(value IWordsApiLink) {
+    obj.Link = value
+}
+
+func (obj *Border) GetBorderType() *string {
+    return obj.BorderType
+}
+
+func (obj *Border) SetBorderType(value *string) {
+    obj.BorderType = value
+}
+
+func (obj *Border) GetColor() IXmlColor {
+    return obj.Color
+}
+
+func (obj *Border) SetColor(value IXmlColor) {
+    obj.Color = value
+}
+
+func (obj *Border) GetDistanceFromText() *float64 {
+    return obj.DistanceFromText
+}
+
+func (obj *Border) SetDistanceFromText(value *float64) {
+    obj.DistanceFromText = value
+}
+
+func (obj *Border) GetLineStyle() *string {
+    return obj.LineStyle
+}
+
+func (obj *Border) SetLineStyle(value *string) {
+    obj.LineStyle = value
+}
+
+func (obj *Border) GetLineWidth() *float64 {
+    return obj.LineWidth
+}
+
+func (obj *Border) SetLineWidth(value *float64) {
+    obj.LineWidth = value
+}
+
+func (obj *Border) GetShadow() *bool {
+    return obj.Shadow
+}
+
+func (obj *Border) SetShadow(value *bool) {
+    obj.Shadow = value
+}
 

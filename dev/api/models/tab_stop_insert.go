@@ -28,15 +28,18 @@
 package models
 
 // A DTO to Insert / replace a tab stop.
-type TabStopInsertResult struct {
-    // A DTO to Insert / replace a tab stop.
-    Alignment string `json:"Alignment,omitempty"`
 
-    // A DTO to Insert / replace a tab stop.
-    Leader string `json:"Leader,omitempty"`
-
-    // A DTO to Insert / replace a tab stop.
-    Position float64 `json:"Position,omitempty"`
+type ITabStopInsert interface {
+    IsTabStopInsert() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetAlignment() *string
+    SetAlignment(value *string)
+    GetLeader() *string
+    SetLeader(value *string)
+    GetPosition() *float64
+    SetPosition(value *float64)
 }
 
 type TabStopInsert struct {
@@ -50,12 +53,6 @@ type TabStopInsert struct {
     Position *float64 `json:"Position,omitempty"`
 }
 
-type ITabStopInsert interface {
-    IsTabStopInsert() bool
-    Initialize()
-    CollectFilesContent(resultFilesContent []FileReference) []FileReference
-}
-
 func (TabStopInsert) IsTabStopInsert() bool {
     return true
 }
@@ -67,8 +64,69 @@ func (TabStopInsert) IsTabStopBase() bool {
 func (obj *TabStopInsert) Initialize() {
 }
 
+func (obj *TabStopInsert) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["Alignment"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Alignment = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["alignment"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Alignment = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["Leader"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Leader = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["leader"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Leader = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["Position"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.Position = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["position"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.Position = &parsedValue
+        }
+
+    }
+}
+
 func (obj *TabStopInsert) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *TabStopInsert) GetAlignment() *string {
+    return obj.Alignment
+}
+
+func (obj *TabStopInsert) SetAlignment(value *string) {
+    obj.Alignment = value
+}
+
+func (obj *TabStopInsert) GetLeader() *string {
+    return obj.Leader
+}
+
+func (obj *TabStopInsert) SetLeader(value *string) {
+    obj.Leader = value
+}
+
+func (obj *TabStopInsert) GetPosition() *float64 {
+    return obj.Position
+}
+
+func (obj *TabStopInsert) SetPosition(value *float64) {
+    obj.Position = value
+}
 

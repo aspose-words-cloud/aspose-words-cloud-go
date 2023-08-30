@@ -28,12 +28,16 @@
 package models
 
 // Represents a list of documents which will be appended to the original resource document.
-type DocumentEntryListResult struct {
-    // Represents a list of documents which will be appended to the original resource document.
-    ApplyBaseDocumentHeadersAndFootersToAppendingDocuments bool `json:"ApplyBaseDocumentHeadersAndFootersToAppendingDocuments,omitempty"`
 
-    // Represents a list of documents which will be appended to the original resource document.
-    DocumentEntries []DocumentEntryResult `json:"DocumentEntries,omitempty"`
+type IDocumentEntryList interface {
+    IsDocumentEntryList() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetApplyBaseDocumentHeadersAndFootersToAppendingDocuments() *bool
+    SetApplyBaseDocumentHeadersAndFootersToAppendingDocuments(value *bool)
+    GetDocumentEntries() []IDocumentEntry
+    SetDocumentEntries(value []IDocumentEntry)
 }
 
 type DocumentEntryList struct {
@@ -41,13 +45,7 @@ type DocumentEntryList struct {
     ApplyBaseDocumentHeadersAndFootersToAppendingDocuments *bool `json:"ApplyBaseDocumentHeadersAndFootersToAppendingDocuments,omitempty"`
 
     // Represents a list of documents which will be appended to the original resource document.
-    DocumentEntries []DocumentEntry `json:"DocumentEntries,omitempty"`
-}
-
-type IDocumentEntryList interface {
-    IsDocumentEntryList() bool
-    Initialize()
-    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    DocumentEntries []IDocumentEntry `json:"DocumentEntries,omitempty"`
 }
 
 func (DocumentEntryList) IsDocumentEntryList() bool {
@@ -67,6 +65,48 @@ func (obj *DocumentEntryList) Initialize() {
 
 }
 
+func (obj *DocumentEntryList) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["ApplyBaseDocumentHeadersAndFootersToAppendingDocuments"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.ApplyBaseDocumentHeadersAndFootersToAppendingDocuments = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["applyBaseDocumentHeadersAndFootersToAppendingDocuments"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.ApplyBaseDocumentHeadersAndFootersToAppendingDocuments = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["DocumentEntries"]; exists {
+        if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.DocumentEntries = make([]IDocumentEntry, 0)
+            for _, parsedElement := range parsedValue {
+                if elementValue, valid := parsedElement.(map[string]interface{}); valid {
+                    var modelElementInstance IDocumentEntry = new(DocumentEntry)
+                    modelElementInstance.Deserialize(elementValue)
+                    obj.DocumentEntries = append(obj.DocumentEntries, modelElementInstance)
+                }
+
+            }
+        }
+
+    } else if jsonValue, exists := json["documentEntries"]; exists {
+        if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.DocumentEntries = make([]IDocumentEntry, 0)
+            for _, parsedElement := range parsedValue {
+                if elementValue, valid := parsedElement.(map[string]interface{}); valid {
+                    var modelElementInstance IDocumentEntry = new(DocumentEntry)
+                    modelElementInstance.Deserialize(elementValue)
+                    obj.DocumentEntries = append(obj.DocumentEntries, modelElementInstance)
+                }
+
+            }
+        }
+
+    }
+}
+
 func (obj *DocumentEntryList) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     if (obj.DocumentEntries != nil) {
         for _, element := range obj.DocumentEntries {
@@ -77,4 +117,19 @@ func (obj *DocumentEntryList) CollectFilesContent(resultFilesContent []FileRefer
     return resultFilesContent
 }
 
+func (obj *DocumentEntryList) GetApplyBaseDocumentHeadersAndFootersToAppendingDocuments() *bool {
+    return obj.ApplyBaseDocumentHeadersAndFootersToAppendingDocuments
+}
+
+func (obj *DocumentEntryList) SetApplyBaseDocumentHeadersAndFootersToAppendingDocuments(value *bool) {
+    obj.ApplyBaseDocumentHeadersAndFootersToAppendingDocuments = value
+}
+
+func (obj *DocumentEntryList) GetDocumentEntries() []IDocumentEntry {
+    return obj.DocumentEntries
+}
+
+func (obj *DocumentEntryList) SetDocumentEntries(value []IDocumentEntry) {
+    obj.DocumentEntries = value
+}
 

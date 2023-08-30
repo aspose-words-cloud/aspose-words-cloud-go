@@ -28,30 +28,28 @@
 package models
 
 // Drawing object element for insert.
-type DrawingObjectInsertResult struct {
-    // Drawing object element for insert.
-    Height float64 `json:"Height,omitempty"`
 
-    // Drawing object element for insert.
-    Left float64 `json:"Left,omitempty"`
-
-    // Drawing object element for insert.
-    Position NewDocumentPositionResult `json:"Position,omitempty"`
-
-    // Drawing object element for insert.
-    RelativeHorizontalPosition string `json:"RelativeHorizontalPosition,omitempty"`
-
-    // Drawing object element for insert.
-    RelativeVerticalPosition string `json:"RelativeVerticalPosition,omitempty"`
-
-    // Drawing object element for insert.
-    Top float64 `json:"Top,omitempty"`
-
-    // Drawing object element for insert.
-    Width float64 `json:"Width,omitempty"`
-
-    // Drawing object element for insert.
-    WrapType string `json:"WrapType,omitempty"`
+type IDrawingObjectInsert interface {
+    IsDrawingObjectInsert() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetHeight() *float64
+    SetHeight(value *float64)
+    GetLeft() *float64
+    SetLeft(value *float64)
+    GetPosition() INewDocumentPosition
+    SetPosition(value INewDocumentPosition)
+    GetRelativeHorizontalPosition() *string
+    SetRelativeHorizontalPosition(value *string)
+    GetRelativeVerticalPosition() *string
+    SetRelativeVerticalPosition(value *string)
+    GetTop() *float64
+    SetTop(value *float64)
+    GetWidth() *float64
+    SetWidth(value *float64)
+    GetWrapType() *string
+    SetWrapType(value *string)
 }
 
 type DrawingObjectInsert struct {
@@ -80,12 +78,6 @@ type DrawingObjectInsert struct {
     WrapType *string `json:"WrapType,omitempty"`
 }
 
-type IDrawingObjectInsert interface {
-    IsDrawingObjectInsert() bool
-    Initialize()
-    CollectFilesContent(resultFilesContent []FileReference) []FileReference
-}
-
 func (DrawingObjectInsert) IsDrawingObjectInsert() bool {
     return true
 }
@@ -99,8 +91,173 @@ func (obj *DrawingObjectInsert) Initialize() {
 
 }
 
+func (obj *DrawingObjectInsert) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["Height"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.Height = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["height"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.Height = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["Left"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.Left = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["left"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.Left = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["Position"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance INewDocumentPosition = new(NewDocumentPosition)
+            modelInstance.Deserialize(parsedValue)
+            obj.Position = modelInstance
+        }
+
+    } else if jsonValue, exists := json["position"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance INewDocumentPosition = new(NewDocumentPosition)
+            modelInstance.Deserialize(parsedValue)
+            obj.Position = modelInstance
+        }
+
+    }
+
+    if jsonValue, exists := json["RelativeHorizontalPosition"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RelativeHorizontalPosition = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["relativeHorizontalPosition"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RelativeHorizontalPosition = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["RelativeVerticalPosition"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RelativeVerticalPosition = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["relativeVerticalPosition"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RelativeVerticalPosition = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["Top"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.Top = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["top"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.Top = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["Width"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.Width = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["width"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.Width = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["WrapType"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.WrapType = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["wrapType"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.WrapType = &parsedValue
+        }
+
+    }
+}
+
 func (obj *DrawingObjectInsert) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *DrawingObjectInsert) GetHeight() *float64 {
+    return obj.Height
+}
+
+func (obj *DrawingObjectInsert) SetHeight(value *float64) {
+    obj.Height = value
+}
+
+func (obj *DrawingObjectInsert) GetLeft() *float64 {
+    return obj.Left
+}
+
+func (obj *DrawingObjectInsert) SetLeft(value *float64) {
+    obj.Left = value
+}
+
+func (obj *DrawingObjectInsert) GetPosition() INewDocumentPosition {
+    return obj.Position
+}
+
+func (obj *DrawingObjectInsert) SetPosition(value INewDocumentPosition) {
+    obj.Position = value
+}
+
+func (obj *DrawingObjectInsert) GetRelativeHorizontalPosition() *string {
+    return obj.RelativeHorizontalPosition
+}
+
+func (obj *DrawingObjectInsert) SetRelativeHorizontalPosition(value *string) {
+    obj.RelativeHorizontalPosition = value
+}
+
+func (obj *DrawingObjectInsert) GetRelativeVerticalPosition() *string {
+    return obj.RelativeVerticalPosition
+}
+
+func (obj *DrawingObjectInsert) SetRelativeVerticalPosition(value *string) {
+    obj.RelativeVerticalPosition = value
+}
+
+func (obj *DrawingObjectInsert) GetTop() *float64 {
+    return obj.Top
+}
+
+func (obj *DrawingObjectInsert) SetTop(value *float64) {
+    obj.Top = value
+}
+
+func (obj *DrawingObjectInsert) GetWidth() *float64 {
+    return obj.Width
+}
+
+func (obj *DrawingObjectInsert) SetWidth(value *float64) {
+    obj.Width = value
+}
+
+func (obj *DrawingObjectInsert) GetWrapType() *string {
+    return obj.WrapType
+}
+
+func (obj *DrawingObjectInsert) SetWrapType(value *string) {
+    obj.WrapType = value
+}
 

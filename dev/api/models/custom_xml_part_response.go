@@ -28,11 +28,103 @@
 package models
 
 // The REST response with a custom xml part.
+
+type ICustomXmlPartResponse interface {
+    IsCustomXmlPartResponse() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetRequestId() *string
+    SetRequestId(value *string)
+    GetCustomXmlPart() ICustomXmlPart
+    SetCustomXmlPart(value ICustomXmlPart)
+}
+
 type CustomXmlPartResponse struct {
     // The REST response with a custom xml part.
-    RequestId string `json:"RequestId,omitempty"`
+    RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with a custom xml part.
-    CustomXmlPart CustomXmlPartResult `json:"CustomXmlPart,omitempty"`
+    CustomXmlPart ICustomXmlPart `json:"CustomXmlPart,omitempty"`
+}
+
+func (CustomXmlPartResponse) IsCustomXmlPartResponse() bool {
+    return true
+}
+
+func (CustomXmlPartResponse) IsWordsResponse() bool {
+    return true
+}
+
+func (obj *CustomXmlPartResponse) Initialize() {
+    if (obj.CustomXmlPart != nil) {
+        obj.CustomXmlPart.Initialize()
+    }
+
+
+}
+
+func (obj *CustomXmlPartResponse) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["RequestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["requestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["CustomXmlPart"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance ICustomXmlPart = nil
+            if jsonType, found := parsedValue["$type"]; found {
+                jsonTypeStr := jsonType.(string)
+                if jsonTypeStr == "CustomXmlPartInsert, _" { modelInstance = new(CustomXmlPartInsert) }
+                if jsonTypeStr == "CustomXmlPartUpdate, _" { modelInstance = new(CustomXmlPartUpdate) }
+            }
+
+            if modelInstance == nil { modelInstance = new(CustomXmlPart) }
+            modelInstance.Deserialize(parsedValue)
+            obj.CustomXmlPart = modelInstance
+        }
+
+    } else if jsonValue, exists := json["customXmlPart"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance ICustomXmlPart = nil
+            if jsonType, found := parsedValue["$type"]; found {
+                jsonTypeStr := jsonType.(string)
+                if jsonTypeStr == "CustomXmlPartInsert, _" { modelInstance = new(CustomXmlPartInsert) }
+                if jsonTypeStr == "CustomXmlPartUpdate, _" { modelInstance = new(CustomXmlPartUpdate) }
+            }
+
+            if modelInstance == nil { modelInstance = new(CustomXmlPart) }
+            modelInstance.Deserialize(parsedValue)
+            obj.CustomXmlPart = modelInstance
+        }
+
+    }
+}
+
+func (obj *CustomXmlPartResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
+}
+
+func (obj *CustomXmlPartResponse) GetRequestId() *string {
+    return obj.RequestId
+}
+
+func (obj *CustomXmlPartResponse) SetRequestId(value *string) {
+    obj.RequestId = value
+}
+
+func (obj *CustomXmlPartResponse) GetCustomXmlPart() ICustomXmlPart {
+    return obj.CustomXmlPart
+}
+
+func (obj *CustomXmlPartResponse) SetCustomXmlPart(value ICustomXmlPart) {
+    obj.CustomXmlPart = value
 }
 

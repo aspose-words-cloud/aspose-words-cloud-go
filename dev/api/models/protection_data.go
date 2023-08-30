@@ -28,20 +28,19 @@
 package models
 
 // Container for the data about protection of the document.
-type ProtectionDataResult struct {
-    // Container for the data about protection of the document.
-    ProtectionType string `json:"ProtectionType,omitempty"`
+
+type IProtectionData interface {
+    IsProtectionData() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetProtectionType() *string
+    SetProtectionType(value *string)
 }
 
 type ProtectionData struct {
     // Container for the data about protection of the document.
     ProtectionType *string `json:"ProtectionType,omitempty"`
-}
-
-type IProtectionData interface {
-    IsProtectionData() bool
-    Initialize()
-    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (ProtectionData) IsProtectionData() bool {
@@ -52,8 +51,29 @@ func (ProtectionData) IsProtectionData() bool {
 func (obj *ProtectionData) Initialize() {
 }
 
+func (obj *ProtectionData) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["ProtectionType"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.ProtectionType = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["protectionType"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.ProtectionType = &parsedValue
+        }
+
+    }
+}
+
 func (obj *ProtectionData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *ProtectionData) GetProtectionType() *string {
+    return obj.ProtectionType
+}
+
+func (obj *ProtectionData) SetProtectionType(value *string) {
+    obj.ProtectionType = value
+}
 

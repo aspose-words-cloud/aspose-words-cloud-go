@@ -63,7 +63,7 @@ func Test_CompressDocument_CompressDocument(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.Document, "Validate CompressDocument response.");
+    assert.NotNil(t, actual.GetDocument(), "Validate CompressDocument response.");
 }
 
 // Test for compression document online.

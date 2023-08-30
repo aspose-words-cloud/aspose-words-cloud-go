@@ -28,11 +28,89 @@
 package models
 
 // The REST response with a paragraph.
+
+type IParagraphResponse interface {
+    IsParagraphResponse() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetRequestId() *string
+    SetRequestId(value *string)
+    GetParagraph() IParagraph
+    SetParagraph(value IParagraph)
+}
+
 type ParagraphResponse struct {
     // The REST response with a paragraph.
-    RequestId string `json:"RequestId,omitempty"`
+    RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with a paragraph.
-    Paragraph ParagraphResult `json:"Paragraph,omitempty"`
+    Paragraph IParagraph `json:"Paragraph,omitempty"`
+}
+
+func (ParagraphResponse) IsParagraphResponse() bool {
+    return true
+}
+
+func (ParagraphResponse) IsWordsResponse() bool {
+    return true
+}
+
+func (obj *ParagraphResponse) Initialize() {
+    if (obj.Paragraph != nil) {
+        obj.Paragraph.Initialize()
+    }
+
+
+}
+
+func (obj *ParagraphResponse) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["RequestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["requestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["Paragraph"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IParagraph = new(Paragraph)
+            modelInstance.Deserialize(parsedValue)
+            obj.Paragraph = modelInstance
+        }
+
+    } else if jsonValue, exists := json["paragraph"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IParagraph = new(Paragraph)
+            modelInstance.Deserialize(parsedValue)
+            obj.Paragraph = modelInstance
+        }
+
+    }
+}
+
+func (obj *ParagraphResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
+}
+
+func (obj *ParagraphResponse) GetRequestId() *string {
+    return obj.RequestId
+}
+
+func (obj *ParagraphResponse) SetRequestId(value *string) {
+    obj.RequestId = value
+}
+
+func (obj *ParagraphResponse) GetParagraph() IParagraph {
+    return obj.Paragraph
+}
+
+func (obj *ParagraphResponse) SetParagraph(value IParagraph) {
+    obj.Paragraph = value
 }
 

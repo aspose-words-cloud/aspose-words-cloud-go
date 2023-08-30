@@ -28,15 +28,18 @@
 package models
 
 // DTO for user information.
-type UserInformationResult struct {
-    // DTO for user information.
-    Address string `json:"Address,omitempty"`
 
-    // DTO for user information.
-    Initials string `json:"Initials,omitempty"`
-
-    // DTO for user information.
-    Name string `json:"Name,omitempty"`
+type IUserInformation interface {
+    IsUserInformation() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetAddress() *string
+    SetAddress(value *string)
+    GetInitials() *string
+    SetInitials(value *string)
+    GetName() *string
+    SetName(value *string)
 }
 
 type UserInformation struct {
@@ -50,12 +53,6 @@ type UserInformation struct {
     Name *string `json:"Name,omitempty"`
 }
 
-type IUserInformation interface {
-    IsUserInformation() bool
-    Initialize()
-    CollectFilesContent(resultFilesContent []FileReference) []FileReference
-}
-
 func (UserInformation) IsUserInformation() bool {
     return true
 }
@@ -64,8 +61,69 @@ func (UserInformation) IsUserInformation() bool {
 func (obj *UserInformation) Initialize() {
 }
 
+func (obj *UserInformation) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["Address"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Address = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["address"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Address = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["Initials"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Initials = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["initials"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Initials = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["Name"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Name = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["name"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Name = &parsedValue
+        }
+
+    }
+}
+
 func (obj *UserInformation) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *UserInformation) GetAddress() *string {
+    return obj.Address
+}
+
+func (obj *UserInformation) SetAddress(value *string) {
+    obj.Address = value
+}
+
+func (obj *UserInformation) GetInitials() *string {
+    return obj.Initials
+}
+
+func (obj *UserInformation) SetInitials(value *string) {
+    obj.Initials = value
+}
+
+func (obj *UserInformation) GetName() *string {
+    return obj.Name
+}
+
+func (obj *UserInformation) SetName(value *string) {
+    obj.Name = value
+}
 

@@ -28,20 +28,19 @@
 package models
 
 // DTO container with a table cell.
-type TableCellInsertDtoResult struct {
-    // DTO container with a table cell.
-    InsertAfter int32 `json:"InsertAfter,omitempty"`
+
+type ITableCellInsertDto interface {
+    IsTableCellInsertDto() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetInsertAfter() *int32
+    SetInsertAfter(value *int32)
 }
 
 type TableCellInsertDto struct {
     // DTO container with a table cell.
     InsertAfter *int32 `json:"InsertAfter,omitempty"`
-}
-
-type ITableCellInsertDto interface {
-    IsTableCellInsertDto() bool
-    Initialize()
-    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (TableCellInsertDto) IsTableCellInsertDto() bool {
@@ -52,8 +51,31 @@ func (TableCellInsertDto) IsTableCellInsertDto() bool {
 func (obj *TableCellInsertDto) Initialize() {
 }
 
+func (obj *TableCellInsertDto) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["InsertAfter"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.InsertAfter = new(int32)
+            *obj.InsertAfter = int32(parsedValue)
+        }
+
+    } else if jsonValue, exists := json["insertAfter"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.InsertAfter = new(int32)
+            *obj.InsertAfter = int32(parsedValue)
+        }
+
+    }
+}
+
 func (obj *TableCellInsertDto) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *TableCellInsertDto) GetInsertAfter() *int32 {
+    return obj.InsertAfter
+}
+
+func (obj *TableCellInsertDto) SetInsertAfter(value *int32) {
+    obj.InsertAfter = value
+}
 

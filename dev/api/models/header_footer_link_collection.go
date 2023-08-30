@@ -28,12 +28,16 @@
 package models
 
 // The collection of HeaderFooter's links.
-type HeaderFooterLinkCollectionResult struct {
-    // The collection of HeaderFooter's links.
-    Link WordsApiLinkResult `json:"Link,omitempty"`
 
-    // The collection of HeaderFooter's links.
-    List []HeaderFooterLinkResult `json:"List,omitempty"`
+type IHeaderFooterLinkCollection interface {
+    IsHeaderFooterLinkCollection() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetLink() IWordsApiLink
+    SetLink(value IWordsApiLink)
+    GetList() []IHeaderFooterLink
+    SetList(value []IHeaderFooterLink)
 }
 
 type HeaderFooterLinkCollection struct {
@@ -41,13 +45,7 @@ type HeaderFooterLinkCollection struct {
     Link IWordsApiLink `json:"Link,omitempty"`
 
     // The collection of HeaderFooter's links.
-    List []HeaderFooterLink `json:"List,omitempty"`
-}
-
-type IHeaderFooterLinkCollection interface {
-    IsHeaderFooterLinkCollection() bool
-    Initialize()
-    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    List []IHeaderFooterLink `json:"List,omitempty"`
 }
 
 func (HeaderFooterLinkCollection) IsHeaderFooterLinkCollection() bool {
@@ -71,8 +69,81 @@ func (obj *HeaderFooterLinkCollection) Initialize() {
 
 }
 
+func (obj *HeaderFooterLinkCollection) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["Link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    } else if jsonValue, exists := json["link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    }
+
+    if jsonValue, exists := json["List"]; exists {
+        if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.List = make([]IHeaderFooterLink, 0)
+            for _, parsedElement := range parsedValue {
+                if elementValue, valid := parsedElement.(map[string]interface{}); valid {
+                    var modelElementInstance IHeaderFooterLink = nil
+                    if jsonElementType, found := elementValue["$type"]; found {
+                        jsonTypeStr := jsonElementType.(string)
+                        if jsonTypeStr == "HeaderFooter, _" { modelElementInstance = new(HeaderFooter) }
+                    }
+
+                    if modelElementInstance == nil { modelElementInstance = new(HeaderFooterLink) }
+                    modelElementInstance.Deserialize(elementValue)
+                    obj.List = append(obj.List, modelElementInstance)
+                }
+
+            }
+        }
+
+    } else if jsonValue, exists := json["list"]; exists {
+        if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.List = make([]IHeaderFooterLink, 0)
+            for _, parsedElement := range parsedValue {
+                if elementValue, valid := parsedElement.(map[string]interface{}); valid {
+                    var modelElementInstance IHeaderFooterLink = nil
+                    if jsonElementType, found := elementValue["$type"]; found {
+                        jsonTypeStr := jsonElementType.(string)
+                        if jsonTypeStr == "HeaderFooter, _" { modelElementInstance = new(HeaderFooter) }
+                    }
+
+                    if modelElementInstance == nil { modelElementInstance = new(HeaderFooterLink) }
+                    modelElementInstance.Deserialize(elementValue)
+                    obj.List = append(obj.List, modelElementInstance)
+                }
+
+            }
+        }
+
+    }
+}
+
 func (obj *HeaderFooterLinkCollection) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *HeaderFooterLinkCollection) GetLink() IWordsApiLink {
+    return obj.Link
+}
+
+func (obj *HeaderFooterLinkCollection) SetLink(value IWordsApiLink) {
+    obj.Link = value
+}
+
+func (obj *HeaderFooterLinkCollection) GetList() []IHeaderFooterLink {
+    return obj.List
+}
+
+func (obj *HeaderFooterLinkCollection) SetList(value []IHeaderFooterLink) {
+    obj.List = value
+}
 

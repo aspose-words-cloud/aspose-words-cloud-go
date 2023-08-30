@@ -63,8 +63,8 @@ func Test_ExecuteTemplate_ExecuteTemplate(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.Document, "Validate ExecuteTemplate response.");
-    assert.Equal(t, "TestExecuteTemplate.docx", actual.Document.FileName, "Validate ExecuteTemplate response.");
+    assert.NotNil(t, actual.GetDocument(), "Validate ExecuteTemplate response.");
+    assert.Equal(t, "TestExecuteTemplate.docx", DereferenceValue(actual.GetDocument().GetFileName()), "Validate ExecuteTemplate response.");
 }
 
 // Test for execute template online.

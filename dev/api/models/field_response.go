@@ -28,11 +28,89 @@
 package models
 
 // The REST response with a field.
+
+type IFieldResponse interface {
+    IsFieldResponse() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetRequestId() *string
+    SetRequestId(value *string)
+    GetField() IField
+    SetField(value IField)
+}
+
 type FieldResponse struct {
     // The REST response with a field.
-    RequestId string `json:"RequestId,omitempty"`
+    RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with a field.
-    Field FieldResult `json:"Field,omitempty"`
+    Field IField `json:"Field,omitempty"`
+}
+
+func (FieldResponse) IsFieldResponse() bool {
+    return true
+}
+
+func (FieldResponse) IsWordsResponse() bool {
+    return true
+}
+
+func (obj *FieldResponse) Initialize() {
+    if (obj.Field != nil) {
+        obj.Field.Initialize()
+    }
+
+
+}
+
+func (obj *FieldResponse) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["RequestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["requestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["Field"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IField = new(Field)
+            modelInstance.Deserialize(parsedValue)
+            obj.Field = modelInstance
+        }
+
+    } else if jsonValue, exists := json["field"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IField = new(Field)
+            modelInstance.Deserialize(parsedValue)
+            obj.Field = modelInstance
+        }
+
+    }
+}
+
+func (obj *FieldResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
+}
+
+func (obj *FieldResponse) GetRequestId() *string {
+    return obj.RequestId
+}
+
+func (obj *FieldResponse) SetRequestId(value *string) {
+    obj.RequestId = value
+}
+
+func (obj *FieldResponse) GetField() IField {
+    return obj.Field
+}
+
+func (obj *FieldResponse) SetField(value IField) {
+    obj.Field = value
 }
 

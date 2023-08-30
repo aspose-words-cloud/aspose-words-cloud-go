@@ -34,9 +34,25 @@ import "io"
 // Inserts page numbers to the document.
 type InsertPageNumbersOnlineResponse struct {
     // The response model.
-    Model DocumentResponse `json:"Model,omitempty"`
+    Model IDocumentResponse
 
 
     // The document after modification.
-    Document map[string]io.Reader `json:"Document,omitempty"`
+    Document map[string]io.Reader
+}
+
+func (obj *InsertPageNumbersOnlineResponse) GetModel() IDocumentResponse {
+    return obj.Model
+}
+
+func (obj *InsertPageNumbersOnlineResponse) SetModel(value IDocumentResponse) {
+    obj.Model = value
+}
+
+func (obj *InsertPageNumbersOnlineResponse) GetDocument() map[string]io.Reader {
+    return obj.Document
+}
+
+func (obj *InsertPageNumbersOnlineResponse) SetDocument(value map[string]io.Reader) {
+    obj.Document = value
 }

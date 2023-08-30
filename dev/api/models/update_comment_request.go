@@ -159,10 +159,12 @@ func (data *UpdateCommentRequest) CreateRequestData() (RequestData, error) {
 }
 
 func (data *UpdateCommentRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
-            var successPayload CommentResponse
-            if err = json.NewDecoder(reader).Decode(&successPayload); err != nil {
+            var successPayload ICommentResponse = new(CommentResponse)
+            var jsonMap map[string]interface{}
+            if err = json.NewDecoder(reader).Decode(&jsonMap); err != nil {
                 return nil, err
             }
 
+            successPayload.Deserialize(jsonMap)
             return successPayload, err
 }

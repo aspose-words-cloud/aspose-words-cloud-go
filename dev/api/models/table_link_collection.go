@@ -28,12 +28,16 @@
 package models
 
 // The collection of table's links.
-type TableLinkCollectionResult struct {
-    // The collection of table's links.
-    Link WordsApiLinkResult `json:"Link,omitempty"`
 
-    // The collection of table's links.
-    TableLinkList []TableLinkResult `json:"TableLinkList,omitempty"`
+type ITableLinkCollection interface {
+    IsTableLinkCollection() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetLink() IWordsApiLink
+    SetLink(value IWordsApiLink)
+    GetTableLinkList() []ITableLink
+    SetTableLinkList(value []ITableLink)
 }
 
 type TableLinkCollection struct {
@@ -41,13 +45,7 @@ type TableLinkCollection struct {
     Link IWordsApiLink `json:"Link,omitempty"`
 
     // The collection of table's links.
-    TableLinkList []TableLink `json:"TableLinkList,omitempty"`
-}
-
-type ITableLinkCollection interface {
-    IsTableLinkCollection() bool
-    Initialize()
-    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    TableLinkList []ITableLink `json:"TableLinkList,omitempty"`
 }
 
 func (TableLinkCollection) IsTableLinkCollection() bool {
@@ -71,8 +69,69 @@ func (obj *TableLinkCollection) Initialize() {
 
 }
 
+func (obj *TableLinkCollection) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["Link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    } else if jsonValue, exists := json["link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    }
+
+    if jsonValue, exists := json["TableLinkList"]; exists {
+        if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.TableLinkList = make([]ITableLink, 0)
+            for _, parsedElement := range parsedValue {
+                if elementValue, valid := parsedElement.(map[string]interface{}); valid {
+                    var modelElementInstance ITableLink = new(TableLink)
+                    modelElementInstance.Deserialize(elementValue)
+                    obj.TableLinkList = append(obj.TableLinkList, modelElementInstance)
+                }
+
+            }
+        }
+
+    } else if jsonValue, exists := json["tableLinkList"]; exists {
+        if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.TableLinkList = make([]ITableLink, 0)
+            for _, parsedElement := range parsedValue {
+                if elementValue, valid := parsedElement.(map[string]interface{}); valid {
+                    var modelElementInstance ITableLink = new(TableLink)
+                    modelElementInstance.Deserialize(elementValue)
+                    obj.TableLinkList = append(obj.TableLinkList, modelElementInstance)
+                }
+
+            }
+        }
+
+    }
+}
+
 func (obj *TableLinkCollection) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *TableLinkCollection) GetLink() IWordsApiLink {
+    return obj.Link
+}
+
+func (obj *TableLinkCollection) SetLink(value IWordsApiLink) {
+    obj.Link = value
+}
+
+func (obj *TableLinkCollection) GetTableLinkList() []ITableLink {
+    return obj.TableLinkList
+}
+
+func (obj *TableLinkCollection) SetTableLinkList(value []ITableLink) {
+    obj.TableLinkList = value
+}
 

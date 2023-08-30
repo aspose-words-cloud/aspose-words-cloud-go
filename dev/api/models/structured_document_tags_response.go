@@ -28,11 +28,89 @@
 package models
 
 // The REST response with a collection of StructuredDocumentTags.
+
+type IStructuredDocumentTagsResponse interface {
+    IsStructuredDocumentTagsResponse() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetRequestId() *string
+    SetRequestId(value *string)
+    GetStructuredDocumentTags() IStructuredDocumentTagCollection
+    SetStructuredDocumentTags(value IStructuredDocumentTagCollection)
+}
+
 type StructuredDocumentTagsResponse struct {
     // The REST response with a collection of StructuredDocumentTags.
-    RequestId string `json:"RequestId,omitempty"`
+    RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with a collection of StructuredDocumentTags.
-    StructuredDocumentTags StructuredDocumentTagCollectionResult `json:"StructuredDocumentTags,omitempty"`
+    StructuredDocumentTags IStructuredDocumentTagCollection `json:"StructuredDocumentTags,omitempty"`
+}
+
+func (StructuredDocumentTagsResponse) IsStructuredDocumentTagsResponse() bool {
+    return true
+}
+
+func (StructuredDocumentTagsResponse) IsWordsResponse() bool {
+    return true
+}
+
+func (obj *StructuredDocumentTagsResponse) Initialize() {
+    if (obj.StructuredDocumentTags != nil) {
+        obj.StructuredDocumentTags.Initialize()
+    }
+
+
+}
+
+func (obj *StructuredDocumentTagsResponse) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["RequestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["requestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["StructuredDocumentTags"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IStructuredDocumentTagCollection = new(StructuredDocumentTagCollection)
+            modelInstance.Deserialize(parsedValue)
+            obj.StructuredDocumentTags = modelInstance
+        }
+
+    } else if jsonValue, exists := json["structuredDocumentTags"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IStructuredDocumentTagCollection = new(StructuredDocumentTagCollection)
+            modelInstance.Deserialize(parsedValue)
+            obj.StructuredDocumentTags = modelInstance
+        }
+
+    }
+}
+
+func (obj *StructuredDocumentTagsResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
+}
+
+func (obj *StructuredDocumentTagsResponse) GetRequestId() *string {
+    return obj.RequestId
+}
+
+func (obj *StructuredDocumentTagsResponse) SetRequestId(value *string) {
+    obj.RequestId = value
+}
+
+func (obj *StructuredDocumentTagsResponse) GetStructuredDocumentTags() IStructuredDocumentTagCollection {
+    return obj.StructuredDocumentTags
+}
+
+func (obj *StructuredDocumentTagsResponse) SetStructuredDocumentTags(value IStructuredDocumentTagCollection) {
+    obj.StructuredDocumentTags = value
 }
 

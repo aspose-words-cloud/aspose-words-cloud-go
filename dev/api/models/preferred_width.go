@@ -28,12 +28,16 @@
 package models
 
 // DTO container with a preferred width value.
-type PreferredWidthResult struct {
-    // DTO container with a preferred width value.
-    Type string `json:"Type,omitempty"`
 
-    // DTO container with a preferred width value.
-    Value float64 `json:"Value,omitempty"`
+type IPreferredWidth interface {
+    IsPreferredWidth() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetType() *string
+    SetType(value *string)
+    GetValue() *float64
+    SetValue(value *float64)
 }
 
 type PreferredWidth struct {
@@ -44,12 +48,6 @@ type PreferredWidth struct {
     Value *float64 `json:"Value,omitempty"`
 }
 
-type IPreferredWidth interface {
-    IsPreferredWidth() bool
-    Initialize()
-    CollectFilesContent(resultFilesContent []FileReference) []FileReference
-}
-
 func (PreferredWidth) IsPreferredWidth() bool {
     return true
 }
@@ -58,8 +56,49 @@ func (PreferredWidth) IsPreferredWidth() bool {
 func (obj *PreferredWidth) Initialize() {
 }
 
+func (obj *PreferredWidth) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["Type"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Type = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["type"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Type = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["Value"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.Value = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["value"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.Value = &parsedValue
+        }
+
+    }
+}
+
 func (obj *PreferredWidth) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *PreferredWidth) GetType() *string {
+    return obj.Type
+}
+
+func (obj *PreferredWidth) SetType(value *string) {
+    obj.Type = value
+}
+
+func (obj *PreferredWidth) GetValue() *float64 {
+    return obj.Value
+}
+
+func (obj *PreferredWidth) SetValue(value *float64) {
+    obj.Value = value
+}
 

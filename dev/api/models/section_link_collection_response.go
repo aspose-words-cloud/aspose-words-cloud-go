@@ -28,11 +28,89 @@
 package models
 
 // The REST response with a collection of sections.
+
+type ISectionLinkCollectionResponse interface {
+    IsSectionLinkCollectionResponse() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetRequestId() *string
+    SetRequestId(value *string)
+    GetSections() ISectionLinkCollection
+    SetSections(value ISectionLinkCollection)
+}
+
 type SectionLinkCollectionResponse struct {
     // The REST response with a collection of sections.
-    RequestId string `json:"RequestId,omitempty"`
+    RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with a collection of sections.
-    Sections SectionLinkCollectionResult `json:"Sections,omitempty"`
+    Sections ISectionLinkCollection `json:"Sections,omitempty"`
+}
+
+func (SectionLinkCollectionResponse) IsSectionLinkCollectionResponse() bool {
+    return true
+}
+
+func (SectionLinkCollectionResponse) IsWordsResponse() bool {
+    return true
+}
+
+func (obj *SectionLinkCollectionResponse) Initialize() {
+    if (obj.Sections != nil) {
+        obj.Sections.Initialize()
+    }
+
+
+}
+
+func (obj *SectionLinkCollectionResponse) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["RequestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["requestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["Sections"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance ISectionLinkCollection = new(SectionLinkCollection)
+            modelInstance.Deserialize(parsedValue)
+            obj.Sections = modelInstance
+        }
+
+    } else if jsonValue, exists := json["sections"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance ISectionLinkCollection = new(SectionLinkCollection)
+            modelInstance.Deserialize(parsedValue)
+            obj.Sections = modelInstance
+        }
+
+    }
+}
+
+func (obj *SectionLinkCollectionResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
+}
+
+func (obj *SectionLinkCollectionResponse) GetRequestId() *string {
+    return obj.RequestId
+}
+
+func (obj *SectionLinkCollectionResponse) SetRequestId(value *string) {
+    obj.RequestId = value
+}
+
+func (obj *SectionLinkCollectionResponse) GetSections() ISectionLinkCollection {
+    return obj.Sections
+}
+
+func (obj *SectionLinkCollectionResponse) SetSections(value ISectionLinkCollection) {
+    obj.Sections = value
 }
 

@@ -28,11 +28,89 @@
 package models
 
 // The REST response with a collection of paragraphs.
+
+type IParagraphLinkCollectionResponse interface {
+    IsParagraphLinkCollectionResponse() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetRequestId() *string
+    SetRequestId(value *string)
+    GetParagraphs() IParagraphLinkCollection
+    SetParagraphs(value IParagraphLinkCollection)
+}
+
 type ParagraphLinkCollectionResponse struct {
     // The REST response with a collection of paragraphs.
-    RequestId string `json:"RequestId,omitempty"`
+    RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with a collection of paragraphs.
-    Paragraphs ParagraphLinkCollectionResult `json:"Paragraphs,omitempty"`
+    Paragraphs IParagraphLinkCollection `json:"Paragraphs,omitempty"`
+}
+
+func (ParagraphLinkCollectionResponse) IsParagraphLinkCollectionResponse() bool {
+    return true
+}
+
+func (ParagraphLinkCollectionResponse) IsWordsResponse() bool {
+    return true
+}
+
+func (obj *ParagraphLinkCollectionResponse) Initialize() {
+    if (obj.Paragraphs != nil) {
+        obj.Paragraphs.Initialize()
+    }
+
+
+}
+
+func (obj *ParagraphLinkCollectionResponse) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["RequestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["requestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["Paragraphs"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IParagraphLinkCollection = new(ParagraphLinkCollection)
+            modelInstance.Deserialize(parsedValue)
+            obj.Paragraphs = modelInstance
+        }
+
+    } else if jsonValue, exists := json["paragraphs"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IParagraphLinkCollection = new(ParagraphLinkCollection)
+            modelInstance.Deserialize(parsedValue)
+            obj.Paragraphs = modelInstance
+        }
+
+    }
+}
+
+func (obj *ParagraphLinkCollectionResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
+}
+
+func (obj *ParagraphLinkCollectionResponse) GetRequestId() *string {
+    return obj.RequestId
+}
+
+func (obj *ParagraphLinkCollectionResponse) SetRequestId(value *string) {
+    obj.RequestId = value
+}
+
+func (obj *ParagraphLinkCollectionResponse) GetParagraphs() IParagraphLinkCollection {
+    return obj.Paragraphs
+}
+
+func (obj *ParagraphLinkCollectionResponse) SetParagraphs(value IParagraphLinkCollection) {
+    obj.Paragraphs = value
 }
 

@@ -28,12 +28,16 @@
 package models
 
 // Container class for individual bookmarks outline level.
-type BookmarksOutlineLevelDataResult struct {
-    // Container class for individual bookmarks outline level.
-    BookmarksOutlineLevel int32 `json:"BookmarksOutlineLevel,omitempty"`
 
-    // Container class for individual bookmarks outline level.
-    Name string `json:"Name,omitempty"`
+type IBookmarksOutlineLevelData interface {
+    IsBookmarksOutlineLevelData() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetBookmarksOutlineLevel() *int32
+    SetBookmarksOutlineLevel(value *int32)
+    GetName() *string
+    SetName(value *string)
 }
 
 type BookmarksOutlineLevelData struct {
@@ -44,12 +48,6 @@ type BookmarksOutlineLevelData struct {
     Name *string `json:"Name,omitempty"`
 }
 
-type IBookmarksOutlineLevelData interface {
-    IsBookmarksOutlineLevelData() bool
-    Initialize()
-    CollectFilesContent(resultFilesContent []FileReference) []FileReference
-}
-
 func (BookmarksOutlineLevelData) IsBookmarksOutlineLevelData() bool {
     return true
 }
@@ -58,8 +56,51 @@ func (BookmarksOutlineLevelData) IsBookmarksOutlineLevelData() bool {
 func (obj *BookmarksOutlineLevelData) Initialize() {
 }
 
+func (obj *BookmarksOutlineLevelData) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["BookmarksOutlineLevel"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.BookmarksOutlineLevel = new(int32)
+            *obj.BookmarksOutlineLevel = int32(parsedValue)
+        }
+
+    } else if jsonValue, exists := json["bookmarksOutlineLevel"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.BookmarksOutlineLevel = new(int32)
+            *obj.BookmarksOutlineLevel = int32(parsedValue)
+        }
+
+    }
+
+    if jsonValue, exists := json["Name"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Name = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["name"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Name = &parsedValue
+        }
+
+    }
+}
+
 func (obj *BookmarksOutlineLevelData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *BookmarksOutlineLevelData) GetBookmarksOutlineLevel() *int32 {
+    return obj.BookmarksOutlineLevel
+}
+
+func (obj *BookmarksOutlineLevelData) SetBookmarksOutlineLevel(value *int32) {
+    obj.BookmarksOutlineLevel = value
+}
+
+func (obj *BookmarksOutlineLevelData) GetName() *string {
+    return obj.Name
+}
+
+func (obj *BookmarksOutlineLevelData) SetName(value *string) {
+    obj.Name = value
+}
 

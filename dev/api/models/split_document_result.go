@@ -28,15 +28,18 @@
 package models
 
 // Result of splitting document.
-type SplitDocumentResultResult struct {
-    // Result of splitting document.
-    SourceDocument FileLinkResult `json:"SourceDocument,omitempty"`
 
-    // Result of splitting document.
-    ZippedPages FileLinkResult `json:"ZippedPages,omitempty"`
-
-    // Result of splitting document.
-    Pages []FileLinkResult `json:"Pages,omitempty"`
+type ISplitDocumentResult interface {
+    IsSplitDocumentResult() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetSourceDocument() IFileLink
+    SetSourceDocument(value IFileLink)
+    GetZippedPages() IFileLink
+    SetZippedPages(value IFileLink)
+    GetPages() []IFileLink
+    SetPages(value []IFileLink)
 }
 
 type SplitDocumentResult struct {
@@ -47,13 +50,7 @@ type SplitDocumentResult struct {
     ZippedPages IFileLink `json:"ZippedPages,omitempty"`
 
     // Result of splitting document.
-    Pages []FileLink `json:"Pages,omitempty"`
-}
-
-type ISplitDocumentResult interface {
-    IsSplitDocumentResult() bool
-    Initialize()
-    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Pages []IFileLink `json:"Pages,omitempty"`
 }
 
 func (SplitDocumentResult) IsSplitDocumentResult() bool {
@@ -78,8 +75,93 @@ func (obj *SplitDocumentResult) Initialize() {
 
 }
 
+func (obj *SplitDocumentResult) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["SourceDocument"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IFileLink = new(FileLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.SourceDocument = modelInstance
+        }
+
+    } else if jsonValue, exists := json["sourceDocument"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IFileLink = new(FileLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.SourceDocument = modelInstance
+        }
+
+    }
+
+    if jsonValue, exists := json["ZippedPages"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IFileLink = new(FileLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.ZippedPages = modelInstance
+        }
+
+    } else if jsonValue, exists := json["zippedPages"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IFileLink = new(FileLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.ZippedPages = modelInstance
+        }
+
+    }
+
+    if jsonValue, exists := json["Pages"]; exists {
+        if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.Pages = make([]IFileLink, 0)
+            for _, parsedElement := range parsedValue {
+                if elementValue, valid := parsedElement.(map[string]interface{}); valid {
+                    var modelElementInstance IFileLink = new(FileLink)
+                    modelElementInstance.Deserialize(elementValue)
+                    obj.Pages = append(obj.Pages, modelElementInstance)
+                }
+
+            }
+        }
+
+    } else if jsonValue, exists := json["pages"]; exists {
+        if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.Pages = make([]IFileLink, 0)
+            for _, parsedElement := range parsedValue {
+                if elementValue, valid := parsedElement.(map[string]interface{}); valid {
+                    var modelElementInstance IFileLink = new(FileLink)
+                    modelElementInstance.Deserialize(elementValue)
+                    obj.Pages = append(obj.Pages, modelElementInstance)
+                }
+
+            }
+        }
+
+    }
+}
+
 func (obj *SplitDocumentResult) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *SplitDocumentResult) GetSourceDocument() IFileLink {
+    return obj.SourceDocument
+}
+
+func (obj *SplitDocumentResult) SetSourceDocument(value IFileLink) {
+    obj.SourceDocument = value
+}
+
+func (obj *SplitDocumentResult) GetZippedPages() IFileLink {
+    return obj.ZippedPages
+}
+
+func (obj *SplitDocumentResult) SetZippedPages(value IFileLink) {
+    obj.ZippedPages = value
+}
+
+func (obj *SplitDocumentResult) GetPages() []IFileLink {
+    return obj.Pages
+}
+
+func (obj *SplitDocumentResult) SetPages(value []IFileLink) {
+    obj.Pages = value
+}
 

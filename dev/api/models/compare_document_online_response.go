@@ -34,9 +34,25 @@ import "io"
 // Compares two documents.
 type CompareDocumentOnlineResponse struct {
     // The response model.
-    Model DocumentResponse `json:"Model,omitempty"`
+    Model IDocumentResponse
 
 
     // The document after modification.
-    Document map[string]io.Reader `json:"Document,omitempty"`
+    Document map[string]io.Reader
+}
+
+func (obj *CompareDocumentOnlineResponse) GetModel() IDocumentResponse {
+    return obj.Model
+}
+
+func (obj *CompareDocumentOnlineResponse) SetModel(value IDocumentResponse) {
+    obj.Model = value
+}
+
+func (obj *CompareDocumentOnlineResponse) GetDocument() map[string]io.Reader {
+    return obj.Document
+}
+
+func (obj *CompareDocumentOnlineResponse) SetDocument(value map[string]io.Reader) {
+    obj.Document = value
 }

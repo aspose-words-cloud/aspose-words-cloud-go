@@ -28,11 +28,89 @@
 package models
 
 // The REST response with a collection of lists, contained in the document.
+
+type IListsResponse interface {
+    IsListsResponse() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetRequestId() *string
+    SetRequestId(value *string)
+    GetLists() ILists
+    SetLists(value ILists)
+}
+
 type ListsResponse struct {
     // The REST response with a collection of lists, contained in the document.
-    RequestId string `json:"RequestId,omitempty"`
+    RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with a collection of lists, contained in the document.
-    Lists ListsResult `json:"Lists,omitempty"`
+    Lists ILists `json:"Lists,omitempty"`
+}
+
+func (ListsResponse) IsListsResponse() bool {
+    return true
+}
+
+func (ListsResponse) IsWordsResponse() bool {
+    return true
+}
+
+func (obj *ListsResponse) Initialize() {
+    if (obj.Lists != nil) {
+        obj.Lists.Initialize()
+    }
+
+
+}
+
+func (obj *ListsResponse) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["RequestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["requestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["Lists"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance ILists = new(Lists)
+            modelInstance.Deserialize(parsedValue)
+            obj.Lists = modelInstance
+        }
+
+    } else if jsonValue, exists := json["lists"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance ILists = new(Lists)
+            modelInstance.Deserialize(parsedValue)
+            obj.Lists = modelInstance
+        }
+
+    }
+}
+
+func (obj *ListsResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
+}
+
+func (obj *ListsResponse) GetRequestId() *string {
+    return obj.RequestId
+}
+
+func (obj *ListsResponse) SetRequestId(value *string) {
+    obj.RequestId = value
+}
+
+func (obj *ListsResponse) GetLists() ILists {
+    return obj.Lists
+}
+
+func (obj *ListsResponse) SetLists(value ILists) {
+    obj.Lists = value
 }
 

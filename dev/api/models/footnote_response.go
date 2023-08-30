@@ -28,11 +28,89 @@
 package models
 
 // The REST response with a footnote.
+
+type IFootnoteResponse interface {
+    IsFootnoteResponse() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetRequestId() *string
+    SetRequestId(value *string)
+    GetFootnote() IFootnote
+    SetFootnote(value IFootnote)
+}
+
 type FootnoteResponse struct {
     // The REST response with a footnote.
-    RequestId string `json:"RequestId,omitempty"`
+    RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with a footnote.
-    Footnote FootnoteResult `json:"Footnote,omitempty"`
+    Footnote IFootnote `json:"Footnote,omitempty"`
+}
+
+func (FootnoteResponse) IsFootnoteResponse() bool {
+    return true
+}
+
+func (FootnoteResponse) IsWordsResponse() bool {
+    return true
+}
+
+func (obj *FootnoteResponse) Initialize() {
+    if (obj.Footnote != nil) {
+        obj.Footnote.Initialize()
+    }
+
+
+}
+
+func (obj *FootnoteResponse) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["RequestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["requestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["Footnote"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IFootnote = new(Footnote)
+            modelInstance.Deserialize(parsedValue)
+            obj.Footnote = modelInstance
+        }
+
+    } else if jsonValue, exists := json["footnote"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IFootnote = new(Footnote)
+            modelInstance.Deserialize(parsedValue)
+            obj.Footnote = modelInstance
+        }
+
+    }
+}
+
+func (obj *FootnoteResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
+}
+
+func (obj *FootnoteResponse) GetRequestId() *string {
+    return obj.RequestId
+}
+
+func (obj *FootnoteResponse) SetRequestId(value *string) {
+    obj.RequestId = value
+}
+
+func (obj *FootnoteResponse) GetFootnote() IFootnote {
+    return obj.Footnote
+}
+
+func (obj *FootnoteResponse) SetFootnote(value IFootnote) {
+    obj.Footnote = value
 }
 

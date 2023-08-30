@@ -154,10 +154,12 @@ func (data *DeleteBordersRequest) CreateRequestData() (RequestData, error) {
 }
 
 func (data *DeleteBordersRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
-            var successPayload BordersResponse
-            if err = json.NewDecoder(reader).Decode(&successPayload); err != nil {
+            var successPayload IBordersResponse = new(BordersResponse)
+            var jsonMap map[string]interface{}
+            if err = json.NewDecoder(reader).Decode(&jsonMap); err != nil {
                 return nil, err
             }
 
+            successPayload.Deserialize(jsonMap)
             return successPayload, err
 }

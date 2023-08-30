@@ -27,16 +27,15 @@
 
 package models
 
-type TablePropertiesDtoResult struct {
-}
-
-type TablePropertiesDto struct {
-}
 
 type ITablePropertiesDto interface {
     IsTablePropertiesDto() bool
     Initialize()
+    Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+}
+
+type TablePropertiesDto struct {
 }
 
 func (TablePropertiesDto) IsTablePropertiesDto() bool {
@@ -45,6 +44,9 @@ func (TablePropertiesDto) IsTablePropertiesDto() bool {
 
 
 func (obj *TablePropertiesDto) Initialize() {
+}
+
+func (obj *TablePropertiesDto) Deserialize(json map[string]interface{}) {
 }
 
 func (obj *TablePropertiesDto) CollectFilesContent(resultFilesContent []FileReference) []FileReference {

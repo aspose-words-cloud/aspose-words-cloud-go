@@ -53,9 +53,9 @@ func Test_Classification_Classify(t *testing.T) {
         t.Error(err)
     }
 
-    assert.Equal(t, "Science", actual.BestClassName, "Validate Classify response.");
-    assert.NotNil(t, actual.BestResults, "Validate Classify response.");
-    assert.Equal(t, 3, len(actual.BestResults), "Validate Classify response.");
+    assert.Equal(t, "Science", DereferenceValue(actual.GetBestClassName()), "Validate Classify response.");
+    assert.NotNil(t, actual.GetBestResults(), "Validate Classify response.");
+    assert.Equal(t, 3, len(actual.GetBestResults()), "Validate Classify response.");
 }
 
 // Test for document classification.
@@ -84,9 +84,9 @@ func Test_Classification_ClassifyDocument(t *testing.T) {
         t.Error(err)
     }
 
-    assert.Equal(t, "Hobbies_&_Interests", actual.BestClassName, "Validate ClassifyDocument response.");
-    assert.NotNil(t, actual.BestResults, "Validate ClassifyDocument response.");
-    assert.Equal(t, 3, len(actual.BestResults), "Validate ClassifyDocument response.");
+    assert.Equal(t, "Hobbies_&_Interests", DereferenceValue(actual.GetBestClassName()), "Validate ClassifyDocument response.");
+    assert.NotNil(t, actual.GetBestResults(), "Validate ClassifyDocument response.");
+    assert.Equal(t, 3, len(actual.GetBestResults()), "Validate ClassifyDocument response.");
 }
 
 // Test for document classification online.

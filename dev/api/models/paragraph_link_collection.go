@@ -28,12 +28,16 @@
 package models
 
 // The collection of paragraph's links.
-type ParagraphLinkCollectionResult struct {
-    // The collection of paragraph's links.
-    Link WordsApiLinkResult `json:"Link,omitempty"`
 
-    // The collection of paragraph's links.
-    ParagraphLinkList []ParagraphLinkResult `json:"ParagraphLinkList,omitempty"`
+type IParagraphLinkCollection interface {
+    IsParagraphLinkCollection() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetLink() IWordsApiLink
+    SetLink(value IWordsApiLink)
+    GetParagraphLinkList() []IParagraphLink
+    SetParagraphLinkList(value []IParagraphLink)
 }
 
 type ParagraphLinkCollection struct {
@@ -41,13 +45,7 @@ type ParagraphLinkCollection struct {
     Link IWordsApiLink `json:"Link,omitempty"`
 
     // The collection of paragraph's links.
-    ParagraphLinkList []ParagraphLink `json:"ParagraphLinkList,omitempty"`
-}
-
-type IParagraphLinkCollection interface {
-    IsParagraphLinkCollection() bool
-    Initialize()
-    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    ParagraphLinkList []IParagraphLink `json:"ParagraphLinkList,omitempty"`
 }
 
 func (ParagraphLinkCollection) IsParagraphLinkCollection() bool {
@@ -71,8 +69,69 @@ func (obj *ParagraphLinkCollection) Initialize() {
 
 }
 
+func (obj *ParagraphLinkCollection) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["Link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    } else if jsonValue, exists := json["link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    }
+
+    if jsonValue, exists := json["ParagraphLinkList"]; exists {
+        if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.ParagraphLinkList = make([]IParagraphLink, 0)
+            for _, parsedElement := range parsedValue {
+                if elementValue, valid := parsedElement.(map[string]interface{}); valid {
+                    var modelElementInstance IParagraphLink = new(ParagraphLink)
+                    modelElementInstance.Deserialize(elementValue)
+                    obj.ParagraphLinkList = append(obj.ParagraphLinkList, modelElementInstance)
+                }
+
+            }
+        }
+
+    } else if jsonValue, exists := json["paragraphLinkList"]; exists {
+        if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.ParagraphLinkList = make([]IParagraphLink, 0)
+            for _, parsedElement := range parsedValue {
+                if elementValue, valid := parsedElement.(map[string]interface{}); valid {
+                    var modelElementInstance IParagraphLink = new(ParagraphLink)
+                    modelElementInstance.Deserialize(elementValue)
+                    obj.ParagraphLinkList = append(obj.ParagraphLinkList, modelElementInstance)
+                }
+
+            }
+        }
+
+    }
+}
+
 func (obj *ParagraphLinkCollection) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *ParagraphLinkCollection) GetLink() IWordsApiLink {
+    return obj.Link
+}
+
+func (obj *ParagraphLinkCollection) SetLink(value IWordsApiLink) {
+    obj.Link = value
+}
+
+func (obj *ParagraphLinkCollection) GetParagraphLinkList() []IParagraphLink {
+    return obj.ParagraphLinkList
+}
+
+func (obj *ParagraphLinkCollection) SetParagraphLinkList(value []IParagraphLink) {
+    obj.ParagraphLinkList = value
+}
 

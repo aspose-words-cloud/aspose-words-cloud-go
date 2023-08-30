@@ -34,9 +34,25 @@ import "io"
 // Removes a watermark from the document.
 type DeleteWatermarkOnlineResponse struct {
     // The response model.
-    Model DocumentResponse `json:"Model,omitempty"`
+    Model IDocumentResponse
 
 
     // The document after modification.
-    Document map[string]io.Reader `json:"Document,omitempty"`
+    Document map[string]io.Reader
+}
+
+func (obj *DeleteWatermarkOnlineResponse) GetModel() IDocumentResponse {
+    return obj.Model
+}
+
+func (obj *DeleteWatermarkOnlineResponse) SetModel(value IDocumentResponse) {
+    obj.Model = value
+}
+
+func (obj *DeleteWatermarkOnlineResponse) GetDocument() map[string]io.Reader {
+    return obj.Document
+}
+
+func (obj *DeleteWatermarkOnlineResponse) SetDocument(value map[string]io.Reader) {
+    obj.Document = value
 }

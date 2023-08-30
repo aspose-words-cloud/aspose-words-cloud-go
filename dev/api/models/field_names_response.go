@@ -28,11 +28,89 @@
 package models
 
 // The REST response with a collection of mail merge fields.
+
+type IFieldNamesResponse interface {
+    IsFieldNamesResponse() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetRequestId() *string
+    SetRequestId(value *string)
+    GetFieldNames() IFieldNames
+    SetFieldNames(value IFieldNames)
+}
+
 type FieldNamesResponse struct {
     // The REST response with a collection of mail merge fields.
-    RequestId string `json:"RequestId,omitempty"`
+    RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with a collection of mail merge fields.
-    FieldNames FieldNamesResult `json:"FieldNames,omitempty"`
+    FieldNames IFieldNames `json:"FieldNames,omitempty"`
+}
+
+func (FieldNamesResponse) IsFieldNamesResponse() bool {
+    return true
+}
+
+func (FieldNamesResponse) IsWordsResponse() bool {
+    return true
+}
+
+func (obj *FieldNamesResponse) Initialize() {
+    if (obj.FieldNames != nil) {
+        obj.FieldNames.Initialize()
+    }
+
+
+}
+
+func (obj *FieldNamesResponse) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["RequestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["requestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["FieldNames"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IFieldNames = new(FieldNames)
+            modelInstance.Deserialize(parsedValue)
+            obj.FieldNames = modelInstance
+        }
+
+    } else if jsonValue, exists := json["fieldNames"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IFieldNames = new(FieldNames)
+            modelInstance.Deserialize(parsedValue)
+            obj.FieldNames = modelInstance
+        }
+
+    }
+}
+
+func (obj *FieldNamesResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
+}
+
+func (obj *FieldNamesResponse) GetRequestId() *string {
+    return obj.RequestId
+}
+
+func (obj *FieldNamesResponse) SetRequestId(value *string) {
+    obj.RequestId = value
+}
+
+func (obj *FieldNamesResponse) GetFieldNames() IFieldNames {
+    return obj.FieldNames
+}
+
+func (obj *FieldNamesResponse) SetFieldNames(value IFieldNames) {
+    obj.FieldNames = value
 }
 

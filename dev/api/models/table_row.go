@@ -28,18 +28,20 @@
 package models
 
 // DTO container with a table row element.
-type TableRowResult struct {
-    // DTO container with a table row element.
-    Link WordsApiLinkResult `json:"Link,omitempty"`
 
-    // DTO container with a table row element.
-    NodeId string `json:"NodeId,omitempty"`
-
-    // DTO container with a table row element.
-    TableCellList []TableCellResult `json:"TableCellList,omitempty"`
-
-    // DTO container with a table row element.
-    RowFormat TableRowFormatResult `json:"RowFormat,omitempty"`
+type ITableRow interface {
+    IsTableRow() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetLink() IWordsApiLink
+    SetLink(value IWordsApiLink)
+    GetNodeId() *string
+    SetNodeId(value *string)
+    GetTableCellList() []ITableCell
+    SetTableCellList(value []ITableCell)
+    GetRowFormat() ITableRowFormat
+    SetRowFormat(value ITableRowFormat)
 }
 
 type TableRow struct {
@@ -50,16 +52,10 @@ type TableRow struct {
     NodeId *string `json:"NodeId,omitempty"`
 
     // DTO container with a table row element.
-    TableCellList []TableCell `json:"TableCellList,omitempty"`
+    TableCellList []ITableCell `json:"TableCellList,omitempty"`
 
     // DTO container with a table row element.
     RowFormat ITableRowFormat `json:"RowFormat,omitempty"`
-}
-
-type ITableRow interface {
-    IsTableRow() bool
-    Initialize()
-    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (TableRow) IsTableRow() bool {
@@ -91,8 +87,113 @@ func (obj *TableRow) Initialize() {
 
 }
 
+func (obj *TableRow) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["Link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    } else if jsonValue, exists := json["link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    }
+
+    if jsonValue, exists := json["NodeId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.NodeId = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["nodeId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.NodeId = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["TableCellList"]; exists {
+        if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.TableCellList = make([]ITableCell, 0)
+            for _, parsedElement := range parsedValue {
+                if elementValue, valid := parsedElement.(map[string]interface{}); valid {
+                    var modelElementInstance ITableCell = new(TableCell)
+                    modelElementInstance.Deserialize(elementValue)
+                    obj.TableCellList = append(obj.TableCellList, modelElementInstance)
+                }
+
+            }
+        }
+
+    } else if jsonValue, exists := json["tableCellList"]; exists {
+        if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.TableCellList = make([]ITableCell, 0)
+            for _, parsedElement := range parsedValue {
+                if elementValue, valid := parsedElement.(map[string]interface{}); valid {
+                    var modelElementInstance ITableCell = new(TableCell)
+                    modelElementInstance.Deserialize(elementValue)
+                    obj.TableCellList = append(obj.TableCellList, modelElementInstance)
+                }
+
+            }
+        }
+
+    }
+
+    if jsonValue, exists := json["RowFormat"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance ITableRowFormat = new(TableRowFormat)
+            modelInstance.Deserialize(parsedValue)
+            obj.RowFormat = modelInstance
+        }
+
+    } else if jsonValue, exists := json["rowFormat"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance ITableRowFormat = new(TableRowFormat)
+            modelInstance.Deserialize(parsedValue)
+            obj.RowFormat = modelInstance
+        }
+
+    }
+}
+
 func (obj *TableRow) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *TableRow) GetLink() IWordsApiLink {
+    return obj.Link
+}
+
+func (obj *TableRow) SetLink(value IWordsApiLink) {
+    obj.Link = value
+}
+
+func (obj *TableRow) GetNodeId() *string {
+    return obj.NodeId
+}
+
+func (obj *TableRow) SetNodeId(value *string) {
+    obj.NodeId = value
+}
+
+func (obj *TableRow) GetTableCellList() []ITableCell {
+    return obj.TableCellList
+}
+
+func (obj *TableRow) SetTableCellList(value []ITableCell) {
+    obj.TableCellList = value
+}
+
+func (obj *TableRow) GetRowFormat() ITableRowFormat {
+    return obj.RowFormat
+}
+
+func (obj *TableRow) SetRowFormat(value ITableRowFormat) {
+    obj.RowFormat = value
+}
 

@@ -28,20 +28,19 @@
 package models
 
 // CustomXmlPart link.
-type CustomXmlPartLinkResult struct {
-    // CustomXmlPart link.
-    Link WordsApiLinkResult `json:"Link,omitempty"`
+
+type ICustomXmlPartLink interface {
+    IsCustomXmlPartLink() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetLink() IWordsApiLink
+    SetLink(value IWordsApiLink)
 }
 
 type CustomXmlPartLink struct {
     // CustomXmlPart link.
     Link IWordsApiLink `json:"Link,omitempty"`
-}
-
-type ICustomXmlPartLink interface {
-    IsCustomXmlPartLink() bool
-    Initialize()
-    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (CustomXmlPartLink) IsCustomXmlPartLink() bool {
@@ -60,8 +59,33 @@ func (obj *CustomXmlPartLink) Initialize() {
 
 }
 
+func (obj *CustomXmlPartLink) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["Link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    } else if jsonValue, exists := json["link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    }
+}
+
 func (obj *CustomXmlPartLink) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *CustomXmlPartLink) GetLink() IWordsApiLink {
+    return obj.Link
+}
+
+func (obj *CustomXmlPartLink) SetLink(value IWordsApiLink) {
+    obj.Link = value
+}
 

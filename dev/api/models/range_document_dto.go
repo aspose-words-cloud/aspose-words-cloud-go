@@ -28,20 +28,19 @@
 package models
 
 // DTO container with a Range element.
-type RangeDocumentDtoResult struct {
-    // DTO container with a Range element.
-    DocumentName string `json:"DocumentName,omitempty"`
+
+type IRangeDocumentDto interface {
+    IsRangeDocumentDto() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetDocumentName() *string
+    SetDocumentName(value *string)
 }
 
 type RangeDocumentDto struct {
     // DTO container with a Range element.
     DocumentName *string `json:"DocumentName,omitempty"`
-}
-
-type IRangeDocumentDto interface {
-    IsRangeDocumentDto() bool
-    Initialize()
-    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (RangeDocumentDto) IsRangeDocumentDto() bool {
@@ -52,8 +51,29 @@ func (RangeDocumentDto) IsRangeDocumentDto() bool {
 func (obj *RangeDocumentDto) Initialize() {
 }
 
+func (obj *RangeDocumentDto) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["DocumentName"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.DocumentName = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["documentName"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.DocumentName = &parsedValue
+        }
+
+    }
+}
+
 func (obj *RangeDocumentDto) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *RangeDocumentDto) GetDocumentName() *string {
+    return obj.DocumentName
+}
+
+func (obj *RangeDocumentDto) SetDocumentName(value *string) {
+    obj.DocumentName = value
+}
 

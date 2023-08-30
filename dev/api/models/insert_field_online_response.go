@@ -34,9 +34,25 @@ import "io"
 // Inserts a new field to the document node.
 type InsertFieldOnlineResponse struct {
     // The response model.
-    Model FieldResponse `json:"Model,omitempty"`
+    Model IFieldResponse
 
 
     // The document after modification.
-    Document map[string]io.Reader `json:"Document,omitempty"`
+    Document map[string]io.Reader
+}
+
+func (obj *InsertFieldOnlineResponse) GetModel() IFieldResponse {
+    return obj.Model
+}
+
+func (obj *InsertFieldOnlineResponse) SetModel(value IFieldResponse) {
+    obj.Model = value
+}
+
+func (obj *InsertFieldOnlineResponse) GetDocument() map[string]io.Reader {
+    return obj.Document
+}
+
+func (obj *InsertFieldOnlineResponse) SetDocument(value map[string]io.Reader) {
+    obj.Document = value
 }

@@ -34,9 +34,25 @@ import "io"
 // Inserts a new Run object to the paragraph.
 type InsertRunOnlineResponse struct {
     // The response model.
-    Model RunResponse `json:"Model,omitempty"`
+    Model IRunResponse
 
 
     // The document after modification.
-    Document map[string]io.Reader `json:"Document,omitempty"`
+    Document map[string]io.Reader
+}
+
+func (obj *InsertRunOnlineResponse) GetModel() IRunResponse {
+    return obj.Model
+}
+
+func (obj *InsertRunOnlineResponse) SetModel(value IRunResponse) {
+    obj.Model = value
+}
+
+func (obj *InsertRunOnlineResponse) GetDocument() map[string]io.Reader {
+    return obj.Document
+}
+
+func (obj *InsertRunOnlineResponse) SetDocument(value map[string]io.Reader) {
+    obj.Document = value
 }

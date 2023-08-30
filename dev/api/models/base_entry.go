@@ -28,41 +28,13 @@
 package models
 
 // Represents a base class for document which will be appended to the original resource document.
-type BaseEntryResult struct {
-    // Represents a base class for document which will be appended to the original resource document.
-    FileReference FileReferenceResult `json:"FileReference,omitempty"`
-}
-
-type BaseEntry struct {
-    // Represents a base class for document which will be appended to the original resource document.
-    FileReference IFileReference `json:"FileReference,omitempty"`
-}
 
 type IBaseEntry interface {
     IsBaseEntry() bool
     Initialize()
+    Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetFileReference() IFileReference
+    SetFileReference(value IFileReference)
 }
-
-func (BaseEntry) IsBaseEntry() bool {
-    return true
-}
-
-
-func (obj *BaseEntry) Initialize() {
-    if (obj.FileReference != nil) {
-        obj.FileReference.Initialize()
-    }
-
-
-}
-
-func (obj *BaseEntry) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
-    if (obj.FileReference != nil) {
-        resultFilesContent = obj.FileReference.CollectFilesContent(resultFilesContent)
-    }
-
-    return resultFilesContent
-}
-
 

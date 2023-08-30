@@ -28,11 +28,89 @@
 package models
 
 // The REST response with a page setup of a section.
+
+type ISectionPageSetupResponse interface {
+    IsSectionPageSetupResponse() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetRequestId() *string
+    SetRequestId(value *string)
+    GetPageSetup() IPageSetup
+    SetPageSetup(value IPageSetup)
+}
+
 type SectionPageSetupResponse struct {
     // The REST response with a page setup of a section.
-    RequestId string `json:"RequestId,omitempty"`
+    RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with a page setup of a section.
-    PageSetup PageSetupResult `json:"PageSetup,omitempty"`
+    PageSetup IPageSetup `json:"PageSetup,omitempty"`
+}
+
+func (SectionPageSetupResponse) IsSectionPageSetupResponse() bool {
+    return true
+}
+
+func (SectionPageSetupResponse) IsWordsResponse() bool {
+    return true
+}
+
+func (obj *SectionPageSetupResponse) Initialize() {
+    if (obj.PageSetup != nil) {
+        obj.PageSetup.Initialize()
+    }
+
+
+}
+
+func (obj *SectionPageSetupResponse) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["RequestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["requestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["PageSetup"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IPageSetup = new(PageSetup)
+            modelInstance.Deserialize(parsedValue)
+            obj.PageSetup = modelInstance
+        }
+
+    } else if jsonValue, exists := json["pageSetup"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IPageSetup = new(PageSetup)
+            modelInstance.Deserialize(parsedValue)
+            obj.PageSetup = modelInstance
+        }
+
+    }
+}
+
+func (obj *SectionPageSetupResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
+}
+
+func (obj *SectionPageSetupResponse) GetRequestId() *string {
+    return obj.RequestId
+}
+
+func (obj *SectionPageSetupResponse) SetRequestId(value *string) {
+    obj.RequestId = value
+}
+
+func (obj *SectionPageSetupResponse) GetPageSetup() IPageSetup {
+    return obj.PageSetup
+}
+
+func (obj *SectionPageSetupResponse) SetPageSetup(value IPageSetup) {
+    obj.PageSetup = value
 }
 

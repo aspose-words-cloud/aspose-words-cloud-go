@@ -28,12 +28,16 @@
 package models
 
 // DTO container with a collection of OfficeMath objects.
-type OfficeMathObjectsCollectionResult struct {
-    // DTO container with a collection of OfficeMath objects.
-    Link WordsApiLinkResult `json:"Link,omitempty"`
 
-    // DTO container with a collection of OfficeMath objects.
-    List []OfficeMathObjectResult `json:"List,omitempty"`
+type IOfficeMathObjectsCollection interface {
+    IsOfficeMathObjectsCollection() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetLink() IWordsApiLink
+    SetLink(value IWordsApiLink)
+    GetList() []IOfficeMathObject
+    SetList(value []IOfficeMathObject)
 }
 
 type OfficeMathObjectsCollection struct {
@@ -41,13 +45,7 @@ type OfficeMathObjectsCollection struct {
     Link IWordsApiLink `json:"Link,omitempty"`
 
     // DTO container with a collection of OfficeMath objects.
-    List []OfficeMathObject `json:"List,omitempty"`
-}
-
-type IOfficeMathObjectsCollection interface {
-    IsOfficeMathObjectsCollection() bool
-    Initialize()
-    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    List []IOfficeMathObject `json:"List,omitempty"`
 }
 
 func (OfficeMathObjectsCollection) IsOfficeMathObjectsCollection() bool {
@@ -71,8 +69,69 @@ func (obj *OfficeMathObjectsCollection) Initialize() {
 
 }
 
+func (obj *OfficeMathObjectsCollection) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["Link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    } else if jsonValue, exists := json["link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    }
+
+    if jsonValue, exists := json["List"]; exists {
+        if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.List = make([]IOfficeMathObject, 0)
+            for _, parsedElement := range parsedValue {
+                if elementValue, valid := parsedElement.(map[string]interface{}); valid {
+                    var modelElementInstance IOfficeMathObject = new(OfficeMathObject)
+                    modelElementInstance.Deserialize(elementValue)
+                    obj.List = append(obj.List, modelElementInstance)
+                }
+
+            }
+        }
+
+    } else if jsonValue, exists := json["list"]; exists {
+        if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.List = make([]IOfficeMathObject, 0)
+            for _, parsedElement := range parsedValue {
+                if elementValue, valid := parsedElement.(map[string]interface{}); valid {
+                    var modelElementInstance IOfficeMathObject = new(OfficeMathObject)
+                    modelElementInstance.Deserialize(elementValue)
+                    obj.List = append(obj.List, modelElementInstance)
+                }
+
+            }
+        }
+
+    }
+}
+
 func (obj *OfficeMathObjectsCollection) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *OfficeMathObjectsCollection) GetLink() IWordsApiLink {
+    return obj.Link
+}
+
+func (obj *OfficeMathObjectsCollection) SetLink(value IWordsApiLink) {
+    obj.Link = value
+}
+
+func (obj *OfficeMathObjectsCollection) GetList() []IOfficeMathObject {
+    return obj.List
+}
+
+func (obj *OfficeMathObjectsCollection) SetList(value []IOfficeMathObject) {
+    obj.List = value
+}
 

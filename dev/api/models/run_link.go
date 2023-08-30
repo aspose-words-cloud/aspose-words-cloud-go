@@ -28,15 +28,18 @@
 package models
 
 // Run link element.
-type RunLinkResult struct {
-    // Run link element.
-    Link WordsApiLinkResult `json:"Link,omitempty"`
 
-    // Run link element.
-    NodeId string `json:"NodeId,omitempty"`
-
-    // Run link element.
-    Text string `json:"Text,omitempty"`
+type IRunLink interface {
+    IsRunLink() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetLink() IWordsApiLink
+    SetLink(value IWordsApiLink)
+    GetNodeId() *string
+    SetNodeId(value *string)
+    GetText() *string
+    SetText(value *string)
 }
 
 type RunLink struct {
@@ -48,12 +51,6 @@ type RunLink struct {
 
     // Run link element.
     Text *string `json:"Text,omitempty"`
-}
-
-type IRunLink interface {
-    IsRunLink() bool
-    Initialize()
-    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (RunLink) IsRunLink() bool {
@@ -76,8 +73,73 @@ func (obj *RunLink) Initialize() {
 
 }
 
+func (obj *RunLink) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["Link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    } else if jsonValue, exists := json["link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    }
+
+    if jsonValue, exists := json["NodeId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.NodeId = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["nodeId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.NodeId = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["Text"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Text = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["text"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Text = &parsedValue
+        }
+
+    }
+}
+
 func (obj *RunLink) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *RunLink) GetLink() IWordsApiLink {
+    return obj.Link
+}
+
+func (obj *RunLink) SetLink(value IWordsApiLink) {
+    obj.Link = value
+}
+
+func (obj *RunLink) GetNodeId() *string {
+    return obj.NodeId
+}
+
+func (obj *RunLink) SetNodeId(value *string) {
+    obj.NodeId = value
+}
+
+func (obj *RunLink) GetText() *string {
+    return obj.Text
+}
+
+func (obj *RunLink) SetText(value *string) {
+    obj.Text = value
+}
 

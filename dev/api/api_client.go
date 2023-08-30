@@ -55,6 +55,7 @@ import (
     "strings"
     "time"
     "unicode/utf8"
+
     "github.com/aspose-words-cloud/aspose-words-cloud-go/dev/api/models"
     "golang.org/x/oauth2"
 )
@@ -365,8 +366,10 @@ func (c *APIClient) encrypt(ctx context.Context, data string) (string, error) {
                 return "", err
             }
 
-            modulus = rsaKeyData.Modulus
-            exponent = rsaKeyData.Exponent
+            if rsaKeyData.Modulus != nil && rsaKeyData.Exponent != nil {
+                modulus = *rsaKeyData.Modulus
+                exponent = *rsaKeyData.Exponent
+            }
         }
 
         exponentBytes, err := base64.StdEncoding.DecodeString(exponent)

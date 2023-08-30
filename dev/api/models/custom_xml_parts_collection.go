@@ -28,12 +28,16 @@
 package models
 
 // The collection of CustomXmlPart.
-type CustomXmlPartsCollectionResult struct {
-    // The collection of CustomXmlPart.
-    Link WordsApiLinkResult `json:"Link,omitempty"`
 
-    // The collection of CustomXmlPart.
-    CustomXmlPartsList []CustomXmlPartResult `json:"CustomXmlPartsList,omitempty"`
+type ICustomXmlPartsCollection interface {
+    IsCustomXmlPartsCollection() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetLink() IWordsApiLink
+    SetLink(value IWordsApiLink)
+    GetCustomXmlPartsList() []ICustomXmlPart
+    SetCustomXmlPartsList(value []ICustomXmlPart)
 }
 
 type CustomXmlPartsCollection struct {
@@ -41,13 +45,7 @@ type CustomXmlPartsCollection struct {
     Link IWordsApiLink `json:"Link,omitempty"`
 
     // The collection of CustomXmlPart.
-    CustomXmlPartsList []CustomXmlPart `json:"CustomXmlPartsList,omitempty"`
-}
-
-type ICustomXmlPartsCollection interface {
-    IsCustomXmlPartsCollection() bool
-    Initialize()
-    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    CustomXmlPartsList []ICustomXmlPart `json:"CustomXmlPartsList,omitempty"`
 }
 
 func (CustomXmlPartsCollection) IsCustomXmlPartsCollection() bool {
@@ -71,8 +69,83 @@ func (obj *CustomXmlPartsCollection) Initialize() {
 
 }
 
+func (obj *CustomXmlPartsCollection) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["Link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    } else if jsonValue, exists := json["link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    }
+
+    if jsonValue, exists := json["CustomXmlPartsList"]; exists {
+        if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.CustomXmlPartsList = make([]ICustomXmlPart, 0)
+            for _, parsedElement := range parsedValue {
+                if elementValue, valid := parsedElement.(map[string]interface{}); valid {
+                    var modelElementInstance ICustomXmlPart = nil
+                    if jsonElementType, found := elementValue["$type"]; found {
+                        jsonTypeStr := jsonElementType.(string)
+                        if jsonTypeStr == "CustomXmlPartInsert, _" { modelElementInstance = new(CustomXmlPartInsert) }
+                        if jsonTypeStr == "CustomXmlPartUpdate, _" { modelElementInstance = new(CustomXmlPartUpdate) }
+                    }
+
+                    if modelElementInstance == nil { modelElementInstance = new(CustomXmlPart) }
+                    modelElementInstance.Deserialize(elementValue)
+                    obj.CustomXmlPartsList = append(obj.CustomXmlPartsList, modelElementInstance)
+                }
+
+            }
+        }
+
+    } else if jsonValue, exists := json["customXmlPartsList"]; exists {
+        if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.CustomXmlPartsList = make([]ICustomXmlPart, 0)
+            for _, parsedElement := range parsedValue {
+                if elementValue, valid := parsedElement.(map[string]interface{}); valid {
+                    var modelElementInstance ICustomXmlPart = nil
+                    if jsonElementType, found := elementValue["$type"]; found {
+                        jsonTypeStr := jsonElementType.(string)
+                        if jsonTypeStr == "CustomXmlPartInsert, _" { modelElementInstance = new(CustomXmlPartInsert) }
+                        if jsonTypeStr == "CustomXmlPartUpdate, _" { modelElementInstance = new(CustomXmlPartUpdate) }
+                    }
+
+                    if modelElementInstance == nil { modelElementInstance = new(CustomXmlPart) }
+                    modelElementInstance.Deserialize(elementValue)
+                    obj.CustomXmlPartsList = append(obj.CustomXmlPartsList, modelElementInstance)
+                }
+
+            }
+        }
+
+    }
+}
+
 func (obj *CustomXmlPartsCollection) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *CustomXmlPartsCollection) GetLink() IWordsApiLink {
+    return obj.Link
+}
+
+func (obj *CustomXmlPartsCollection) SetLink(value IWordsApiLink) {
+    obj.Link = value
+}
+
+func (obj *CustomXmlPartsCollection) GetCustomXmlPartsList() []ICustomXmlPart {
+    return obj.CustomXmlPartsList
+}
+
+func (obj *CustomXmlPartsCollection) SetCustomXmlPartsList(value []ICustomXmlPart) {
+    obj.CustomXmlPartsList = value
+}
 

@@ -28,20 +28,19 @@
 package models
 
 // Represents a image which will be appended to the original resource image or document.
-type ImageEntryResult struct {
-    // Represents a image which will be appended to the original resource image or document.
-    FileReference FileReferenceResult `json:"FileReference,omitempty"`
+
+type IImageEntry interface {
+    IsImageEntry() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetFileReference() IFileReference
+    SetFileReference(value IFileReference)
 }
 
 type ImageEntry struct {
     // Represents a image which will be appended to the original resource image or document.
     FileReference IFileReference `json:"FileReference,omitempty"`
-}
-
-type IImageEntry interface {
-    IsImageEntry() bool
-    Initialize()
-    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (ImageEntry) IsImageEntry() bool {
@@ -60,6 +59,24 @@ func (obj *ImageEntry) Initialize() {
 
 }
 
+func (obj *ImageEntry) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["FileReference"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IFileReference = new(FileReference)
+            modelInstance.Deserialize(parsedValue)
+            obj.FileReference = modelInstance
+        }
+
+    } else if jsonValue, exists := json["fileReference"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IFileReference = new(FileReference)
+            modelInstance.Deserialize(parsedValue)
+            obj.FileReference = modelInstance
+        }
+
+    }
+}
+
 func (obj *ImageEntry) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     if (obj.FileReference != nil) {
         resultFilesContent = obj.FileReference.CollectFilesContent(resultFilesContent)
@@ -68,4 +85,11 @@ func (obj *ImageEntry) CollectFilesContent(resultFilesContent []FileReference) [
     return resultFilesContent
 }
 
+func (obj *ImageEntry) GetFileReference() IFileReference {
+    return obj.FileReference
+}
+
+func (obj *ImageEntry) SetFileReference(value IFileReference) {
+    obj.FileReference = value
+}
 

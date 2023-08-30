@@ -28,11 +28,89 @@
 package models
 
 // The REST response with a comment.
+
+type ICommentResponse interface {
+    IsCommentResponse() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetRequestId() *string
+    SetRequestId(value *string)
+    GetComment() IComment
+    SetComment(value IComment)
+}
+
 type CommentResponse struct {
     // The REST response with a comment.
-    RequestId string `json:"RequestId,omitempty"`
+    RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with a comment.
-    Comment CommentResult `json:"Comment,omitempty"`
+    Comment IComment `json:"Comment,omitempty"`
+}
+
+func (CommentResponse) IsCommentResponse() bool {
+    return true
+}
+
+func (CommentResponse) IsWordsResponse() bool {
+    return true
+}
+
+func (obj *CommentResponse) Initialize() {
+    if (obj.Comment != nil) {
+        obj.Comment.Initialize()
+    }
+
+
+}
+
+func (obj *CommentResponse) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["RequestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["requestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["Comment"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IComment = new(Comment)
+            modelInstance.Deserialize(parsedValue)
+            obj.Comment = modelInstance
+        }
+
+    } else if jsonValue, exists := json["comment"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IComment = new(Comment)
+            modelInstance.Deserialize(parsedValue)
+            obj.Comment = modelInstance
+        }
+
+    }
+}
+
+func (obj *CommentResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
+}
+
+func (obj *CommentResponse) GetRequestId() *string {
+    return obj.RequestId
+}
+
+func (obj *CommentResponse) SetRequestId(value *string) {
+    obj.RequestId = value
+}
+
+func (obj *CommentResponse) GetComment() IComment {
+    return obj.Comment
+}
+
+func (obj *CommentResponse) SetComment(value IComment) {
+    obj.Comment = value
 }
 

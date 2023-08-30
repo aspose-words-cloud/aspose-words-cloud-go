@@ -28,11 +28,89 @@
 package models
 
 // The REST response with a collection of custom xml parts.
+
+type ICustomXmlPartsResponse interface {
+    IsCustomXmlPartsResponse() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetRequestId() *string
+    SetRequestId(value *string)
+    GetCustomXmlParts() ICustomXmlPartsCollection
+    SetCustomXmlParts(value ICustomXmlPartsCollection)
+}
+
 type CustomXmlPartsResponse struct {
     // The REST response with a collection of custom xml parts.
-    RequestId string `json:"RequestId,omitempty"`
+    RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with a collection of custom xml parts.
-    CustomXmlParts CustomXmlPartsCollectionResult `json:"CustomXmlParts,omitempty"`
+    CustomXmlParts ICustomXmlPartsCollection `json:"CustomXmlParts,omitempty"`
+}
+
+func (CustomXmlPartsResponse) IsCustomXmlPartsResponse() bool {
+    return true
+}
+
+func (CustomXmlPartsResponse) IsWordsResponse() bool {
+    return true
+}
+
+func (obj *CustomXmlPartsResponse) Initialize() {
+    if (obj.CustomXmlParts != nil) {
+        obj.CustomXmlParts.Initialize()
+    }
+
+
+}
+
+func (obj *CustomXmlPartsResponse) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["RequestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["requestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["CustomXmlParts"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance ICustomXmlPartsCollection = new(CustomXmlPartsCollection)
+            modelInstance.Deserialize(parsedValue)
+            obj.CustomXmlParts = modelInstance
+        }
+
+    } else if jsonValue, exists := json["customXmlParts"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance ICustomXmlPartsCollection = new(CustomXmlPartsCollection)
+            modelInstance.Deserialize(parsedValue)
+            obj.CustomXmlParts = modelInstance
+        }
+
+    }
+}
+
+func (obj *CustomXmlPartsResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
+}
+
+func (obj *CustomXmlPartsResponse) GetRequestId() *string {
+    return obj.RequestId
+}
+
+func (obj *CustomXmlPartsResponse) SetRequestId(value *string) {
+    obj.RequestId = value
+}
+
+func (obj *CustomXmlPartsResponse) GetCustomXmlParts() ICustomXmlPartsCollection {
+    return obj.CustomXmlParts
+}
+
+func (obj *CustomXmlPartsResponse) SetCustomXmlParts(value ICustomXmlPartsCollection) {
+    obj.CustomXmlParts = value
 }
 

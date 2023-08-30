@@ -28,55 +28,19 @@
 package models
 
 // Footnote base class.
-type FootnoteBaseResult struct {
-    // Footnote base class.
-    FootnoteType string `json:"FootnoteType,omitempty"`
-
-    // Footnote base class.
-    Position NewDocumentPositionResult `json:"Position,omitempty"`
-
-    // Footnote base class.
-    ReferenceMark string `json:"ReferenceMark,omitempty"`
-
-    // Footnote base class.
-    Text string `json:"Text,omitempty"`
-}
-
-type FootnoteBase struct {
-    // Footnote base class.
-    FootnoteType *string `json:"FootnoteType,omitempty"`
-
-    // Footnote base class.
-    Position INewDocumentPosition `json:"Position,omitempty"`
-
-    // Footnote base class.
-    ReferenceMark *string `json:"ReferenceMark,omitempty"`
-
-    // Footnote base class.
-    Text *string `json:"Text,omitempty"`
-}
 
 type IFootnoteBase interface {
     IsFootnoteBase() bool
     Initialize()
+    Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetFootnoteType() *string
+    SetFootnoteType(value *string)
+    GetPosition() INewDocumentPosition
+    SetPosition(value INewDocumentPosition)
+    GetReferenceMark() *string
+    SetReferenceMark(value *string)
+    GetText() *string
+    SetText(value *string)
 }
-
-func (FootnoteBase) IsFootnoteBase() bool {
-    return true
-}
-
-
-func (obj *FootnoteBase) Initialize() {
-    if (obj.Position != nil) {
-        obj.Position.Initialize()
-    }
-
-
-}
-
-func (obj *FootnoteBase) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
-    return resultFilesContent
-}
-
 

@@ -156,10 +156,12 @@ func (data *InsertHeaderFooterRequest) CreateRequestData() (RequestData, error) 
 }
 
 func (data *InsertHeaderFooterRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
-            var successPayload HeaderFooterResponse
-            if err = json.NewDecoder(reader).Decode(&successPayload); err != nil {
+            var successPayload IHeaderFooterResponse = new(HeaderFooterResponse)
+            var jsonMap map[string]interface{}
+            if err = json.NewDecoder(reader).Decode(&jsonMap); err != nil {
                 return nil, err
             }
 
+            successPayload.Deserialize(jsonMap)
             return successPayload, err
 }

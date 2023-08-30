@@ -28,136 +28,45 @@
 package models
 
 // Container class for docx/docm/dotx/dotm/flatopc save options.
-type OoxmlSaveOptionsDataResult struct {
-    // Container class for docx/docm/dotx/dotm/flatopc save options.
-    AllowEmbeddingPostScriptFonts bool `json:"AllowEmbeddingPostScriptFonts,omitempty"`
-
-    // Container class for docx/docm/dotx/dotm/flatopc save options.
-    CustomTimeZoneInfoData TimeZoneInfoDataResult `json:"CustomTimeZoneInfoData,omitempty"`
-
-    // Container class for docx/docm/dotx/dotm/flatopc save options.
-    Dml3DEffectsRenderingMode string `json:"Dml3DEffectsRenderingMode,omitempty"`
-
-    // Container class for docx/docm/dotx/dotm/flatopc save options.
-    DmlEffectsRenderingMode string `json:"DmlEffectsRenderingMode,omitempty"`
-
-    // Container class for docx/docm/dotx/dotm/flatopc save options.
-    DmlRenderingMode string `json:"DmlRenderingMode,omitempty"`
-
-    // Container class for docx/docm/dotx/dotm/flatopc save options.
-    FileName string `json:"FileName,omitempty"`
-
-    // Container class for docx/docm/dotx/dotm/flatopc save options.
-    ImlRenderingMode string `json:"ImlRenderingMode,omitempty"`
-
-    // Container class for docx/docm/dotx/dotm/flatopc save options.
-    UpdateCreatedTimeProperty bool `json:"UpdateCreatedTimeProperty,omitempty"`
-
-    // Container class for docx/docm/dotx/dotm/flatopc save options.
-    UpdateFields bool `json:"UpdateFields,omitempty"`
-
-    // Container class for docx/docm/dotx/dotm/flatopc save options.
-    UpdateLastPrintedProperty bool `json:"UpdateLastPrintedProperty,omitempty"`
-
-    // Container class for docx/docm/dotx/dotm/flatopc save options.
-    UpdateLastSavedTimeProperty bool `json:"UpdateLastSavedTimeProperty,omitempty"`
-
-    // Container class for docx/docm/dotx/dotm/flatopc save options.
-    ZipOutput bool `json:"ZipOutput,omitempty"`
-
-    // Container class for docx/docm/dotx/dotm/flatopc save options.
-    SaveFormat string `json:"SaveFormat,omitempty"`
-
-    // Container class for docx/docm/dotx/dotm/flatopc save options.
-    Compliance string `json:"Compliance,omitempty"`
-
-    // Container class for docx/docm/dotx/dotm/flatopc save options.
-    CompressionLevel string `json:"CompressionLevel,omitempty"`
-
-    // Container class for docx/docm/dotx/dotm/flatopc save options.
-    Password string `json:"Password,omitempty"`
-
-    // Container class for docx/docm/dotx/dotm/flatopc save options.
-    PrettyFormat bool `json:"PrettyFormat,omitempty"`
-}
-
-type OoxmlSaveOptionsData struct {
-    // Container class for docx/docm/dotx/dotm/flatopc save options.
-    AllowEmbeddingPostScriptFonts *bool `json:"AllowEmbeddingPostScriptFonts,omitempty"`
-
-    // Container class for docx/docm/dotx/dotm/flatopc save options.
-    CustomTimeZoneInfoData ITimeZoneInfoData `json:"CustomTimeZoneInfoData,omitempty"`
-
-    // Container class for docx/docm/dotx/dotm/flatopc save options.
-    Dml3DEffectsRenderingMode *string `json:"Dml3DEffectsRenderingMode,omitempty"`
-
-    // Container class for docx/docm/dotx/dotm/flatopc save options.
-    DmlEffectsRenderingMode *string `json:"DmlEffectsRenderingMode,omitempty"`
-
-    // Container class for docx/docm/dotx/dotm/flatopc save options.
-    DmlRenderingMode *string `json:"DmlRenderingMode,omitempty"`
-
-    // Container class for docx/docm/dotx/dotm/flatopc save options.
-    FileName *string `json:"FileName,omitempty"`
-
-    // Container class for docx/docm/dotx/dotm/flatopc save options.
-    ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
-
-    // Container class for docx/docm/dotx/dotm/flatopc save options.
-    UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
-
-    // Container class for docx/docm/dotx/dotm/flatopc save options.
-    UpdateFields *bool `json:"UpdateFields,omitempty"`
-
-    // Container class for docx/docm/dotx/dotm/flatopc save options.
-    UpdateLastPrintedProperty *bool `json:"UpdateLastPrintedProperty,omitempty"`
-
-    // Container class for docx/docm/dotx/dotm/flatopc save options.
-    UpdateLastSavedTimeProperty *bool `json:"UpdateLastSavedTimeProperty,omitempty"`
-
-    // Container class for docx/docm/dotx/dotm/flatopc save options.
-    ZipOutput *bool `json:"ZipOutput,omitempty"`
-
-    // Container class for docx/docm/dotx/dotm/flatopc save options.
-    SaveFormat *string `json:"SaveFormat,omitempty"`
-
-    // Container class for docx/docm/dotx/dotm/flatopc save options.
-    Compliance *string `json:"Compliance,omitempty"`
-
-    // Container class for docx/docm/dotx/dotm/flatopc save options.
-    CompressionLevel *string `json:"CompressionLevel,omitempty"`
-
-    // Container class for docx/docm/dotx/dotm/flatopc save options.
-    Password *string `json:"Password,omitempty"`
-
-    // Container class for docx/docm/dotx/dotm/flatopc save options.
-    PrettyFormat *bool `json:"PrettyFormat,omitempty"`
-}
 
 type IOoxmlSaveOptionsData interface {
     IsOoxmlSaveOptionsData() bool
     Initialize()
+    Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetAllowEmbeddingPostScriptFonts() *bool
+    SetAllowEmbeddingPostScriptFonts(value *bool)
+    GetCustomTimeZoneInfoData() ITimeZoneInfoData
+    SetCustomTimeZoneInfoData(value ITimeZoneInfoData)
+    GetDml3DEffectsRenderingMode() *string
+    SetDml3DEffectsRenderingMode(value *string)
+    GetDmlEffectsRenderingMode() *string
+    SetDmlEffectsRenderingMode(value *string)
+    GetDmlRenderingMode() *string
+    SetDmlRenderingMode(value *string)
+    GetFileName() *string
+    SetFileName(value *string)
+    GetImlRenderingMode() *string
+    SetImlRenderingMode(value *string)
+    GetUpdateCreatedTimeProperty() *bool
+    SetUpdateCreatedTimeProperty(value *bool)
+    GetUpdateFields() *bool
+    SetUpdateFields(value *bool)
+    GetUpdateLastPrintedProperty() *bool
+    SetUpdateLastPrintedProperty(value *bool)
+    GetUpdateLastSavedTimeProperty() *bool
+    SetUpdateLastSavedTimeProperty(value *bool)
+    GetZipOutput() *bool
+    SetZipOutput(value *bool)
+    GetSaveFormat() *string
+    SetSaveFormat(value *string)
+    GetCompliance() *string
+    SetCompliance(value *string)
+    GetCompressionLevel() *string
+    SetCompressionLevel(value *string)
+    GetPassword() *string
+    SetPassword(value *string)
+    GetPrettyFormat() *bool
+    SetPrettyFormat(value *bool)
 }
-
-func (OoxmlSaveOptionsData) IsOoxmlSaveOptionsData() bool {
-    return true
-}
-
-func (OoxmlSaveOptionsData) IsSaveOptionsData() bool {
-    return true
-}
-
-func (obj *OoxmlSaveOptionsData) Initialize() {
-    if (obj.CustomTimeZoneInfoData != nil) {
-        obj.CustomTimeZoneInfoData.Initialize()
-    }
-
-
-}
-
-func (obj *OoxmlSaveOptionsData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
-    return resultFilesContent
-}
-
 

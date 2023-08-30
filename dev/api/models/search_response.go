@@ -28,14 +28,114 @@
 package models
 
 // The REST response with a regular expression pattern and a collection of search results.
+
+type ISearchResponse interface {
+    IsSearchResponse() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetRequestId() *string
+    SetRequestId(value *string)
+    GetSearchingPattern() *string
+    SetSearchingPattern(value *string)
+    GetSearchResults() ISearchResultsCollection
+    SetSearchResults(value ISearchResultsCollection)
+}
+
 type SearchResponse struct {
     // The REST response with a regular expression pattern and a collection of search results.
-    RequestId string `json:"RequestId,omitempty"`
+    RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with a regular expression pattern and a collection of search results.
-    SearchingPattern string `json:"SearchingPattern,omitempty"`
+    SearchingPattern *string `json:"SearchingPattern,omitempty"`
 
     // The REST response with a regular expression pattern and a collection of search results.
-    SearchResults SearchResultsCollectionResult `json:"SearchResults,omitempty"`
+    SearchResults ISearchResultsCollection `json:"SearchResults,omitempty"`
+}
+
+func (SearchResponse) IsSearchResponse() bool {
+    return true
+}
+
+func (SearchResponse) IsWordsResponse() bool {
+    return true
+}
+
+func (obj *SearchResponse) Initialize() {
+    if (obj.SearchResults != nil) {
+        obj.SearchResults.Initialize()
+    }
+
+
+}
+
+func (obj *SearchResponse) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["RequestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["requestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["SearchingPattern"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.SearchingPattern = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["searchingPattern"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.SearchingPattern = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["SearchResults"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance ISearchResultsCollection = new(SearchResultsCollection)
+            modelInstance.Deserialize(parsedValue)
+            obj.SearchResults = modelInstance
+        }
+
+    } else if jsonValue, exists := json["searchResults"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance ISearchResultsCollection = new(SearchResultsCollection)
+            modelInstance.Deserialize(parsedValue)
+            obj.SearchResults = modelInstance
+        }
+
+    }
+}
+
+func (obj *SearchResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
+}
+
+func (obj *SearchResponse) GetRequestId() *string {
+    return obj.RequestId
+}
+
+func (obj *SearchResponse) SetRequestId(value *string) {
+    obj.RequestId = value
+}
+
+func (obj *SearchResponse) GetSearchingPattern() *string {
+    return obj.SearchingPattern
+}
+
+func (obj *SearchResponse) SetSearchingPattern(value *string) {
+    obj.SearchingPattern = value
+}
+
+func (obj *SearchResponse) GetSearchResults() ISearchResultsCollection {
+    return obj.SearchResults
+}
+
+func (obj *SearchResponse) SetSearchResults(value ISearchResultsCollection) {
+    obj.SearchResults = value
 }
 

@@ -28,18 +28,20 @@
 package models
 
 // DTO container with paragraph format tab stop.
-type TabStopResult struct {
-    // DTO container with paragraph format tab stop.
-    Alignment string `json:"Alignment,omitempty"`
 
-    // DTO container with paragraph format tab stop.
-    Leader string `json:"Leader,omitempty"`
-
-    // DTO container with paragraph format tab stop.
-    Position float64 `json:"Position,omitempty"`
-
-    // DTO container with paragraph format tab stop.
-    IsClear bool `json:"IsClear,omitempty"`
+type ITabStop interface {
+    IsTabStop() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetAlignment() *string
+    SetAlignment(value *string)
+    GetLeader() *string
+    SetLeader(value *string)
+    GetPosition() *float64
+    SetPosition(value *float64)
+    GetIsClear() *bool
+    SetIsClear(value *bool)
 }
 
 type TabStop struct {
@@ -56,12 +58,6 @@ type TabStop struct {
     IsClear *bool `json:"IsClear,omitempty"`
 }
 
-type ITabStop interface {
-    IsTabStop() bool
-    Initialize()
-    CollectFilesContent(resultFilesContent []FileReference) []FileReference
-}
-
 func (TabStop) IsTabStop() bool {
     return true
 }
@@ -73,8 +69,89 @@ func (TabStop) IsTabStopBase() bool {
 func (obj *TabStop) Initialize() {
 }
 
+func (obj *TabStop) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["Alignment"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Alignment = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["alignment"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Alignment = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["Leader"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Leader = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["leader"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Leader = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["Position"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.Position = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["position"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.Position = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["IsClear"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.IsClear = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["isClear"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.IsClear = &parsedValue
+        }
+
+    }
+}
+
 func (obj *TabStop) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *TabStop) GetAlignment() *string {
+    return obj.Alignment
+}
+
+func (obj *TabStop) SetAlignment(value *string) {
+    obj.Alignment = value
+}
+
+func (obj *TabStop) GetLeader() *string {
+    return obj.Leader
+}
+
+func (obj *TabStop) SetLeader(value *string) {
+    obj.Leader = value
+}
+
+func (obj *TabStop) GetPosition() *float64 {
+    return obj.Position
+}
+
+func (obj *TabStop) SetPosition(value *float64) {
+    obj.Position = value
+}
+
+func (obj *TabStop) GetIsClear() *bool {
+    return obj.IsClear
+}
+
+func (obj *TabStop) SetIsClear(value *bool) {
+    obj.IsClear = value
+}
 

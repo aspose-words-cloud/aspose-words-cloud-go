@@ -28,11 +28,89 @@
 package models
 
 // The REST response with a table.
+
+type ITablePropertiesResponse interface {
+    IsTablePropertiesResponse() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetRequestId() *string
+    SetRequestId(value *string)
+    GetProperties() ITableProperties
+    SetProperties(value ITableProperties)
+}
+
 type TablePropertiesResponse struct {
     // The REST response with a table.
-    RequestId string `json:"RequestId,omitempty"`
+    RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with a table.
-    Properties TablePropertiesResult `json:"Properties,omitempty"`
+    Properties ITableProperties `json:"Properties,omitempty"`
+}
+
+func (TablePropertiesResponse) IsTablePropertiesResponse() bool {
+    return true
+}
+
+func (TablePropertiesResponse) IsWordsResponse() bool {
+    return true
+}
+
+func (obj *TablePropertiesResponse) Initialize() {
+    if (obj.Properties != nil) {
+        obj.Properties.Initialize()
+    }
+
+
+}
+
+func (obj *TablePropertiesResponse) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["RequestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["requestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["Properties"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance ITableProperties = new(TableProperties)
+            modelInstance.Deserialize(parsedValue)
+            obj.Properties = modelInstance
+        }
+
+    } else if jsonValue, exists := json["properties"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance ITableProperties = new(TableProperties)
+            modelInstance.Deserialize(parsedValue)
+            obj.Properties = modelInstance
+        }
+
+    }
+}
+
+func (obj *TablePropertiesResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
+}
+
+func (obj *TablePropertiesResponse) GetRequestId() *string {
+    return obj.RequestId
+}
+
+func (obj *TablePropertiesResponse) SetRequestId(value *string) {
+    obj.RequestId = value
+}
+
+func (obj *TablePropertiesResponse) GetProperties() ITableProperties {
+    return obj.Properties
+}
+
+func (obj *TablePropertiesResponse) SetProperties(value ITableProperties) {
+    obj.Properties = value
 }
 

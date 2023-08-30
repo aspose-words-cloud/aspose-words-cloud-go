@@ -127,10 +127,12 @@ func (data *GetFootnotesRequest) CreateRequestData() (RequestData, error) {
 }
 
 func (data *GetFootnotesRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
-            var successPayload FootnotesResponse
-            if err = json.NewDecoder(reader).Decode(&successPayload); err != nil {
+            var successPayload IFootnotesResponse = new(FootnotesResponse)
+            var jsonMap map[string]interface{}
+            if err = json.NewDecoder(reader).Decode(&jsonMap); err != nil {
                 return nil, err
             }
 
+            successPayload.Deserialize(jsonMap)
             return successPayload, err
 }

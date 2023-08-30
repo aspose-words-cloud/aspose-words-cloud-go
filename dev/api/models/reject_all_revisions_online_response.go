@@ -34,9 +34,25 @@ import "io"
 // Rejects all revisions in the document.
 type RejectAllRevisionsOnlineResponse struct {
     // The response model.
-    Model RevisionsModificationResponse `json:"Model,omitempty"`
+    Model IRevisionsModificationResponse
 
 
     // The document after modification.
-    Document map[string]io.Reader `json:"Document,omitempty"`
+    Document map[string]io.Reader
+}
+
+func (obj *RejectAllRevisionsOnlineResponse) GetModel() IRevisionsModificationResponse {
+    return obj.Model
+}
+
+func (obj *RejectAllRevisionsOnlineResponse) SetModel(value IRevisionsModificationResponse) {
+    obj.Model = value
+}
+
+func (obj *RejectAllRevisionsOnlineResponse) GetDocument() map[string]io.Reader {
+    return obj.Document
+}
+
+func (obj *RejectAllRevisionsOnlineResponse) SetDocument(value map[string]io.Reader) {
+    obj.Document = value
 }

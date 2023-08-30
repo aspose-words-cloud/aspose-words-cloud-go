@@ -28,12 +28,16 @@
 package models
 
 // Represents link for Drawing Object DTO.
-type DrawingObjectLinkResult struct {
-    // Represents link for Drawing Object DTO.
-    Link WordsApiLinkResult `json:"Link,omitempty"`
 
-    // Represents link for Drawing Object DTO.
-    NodeId string `json:"NodeId,omitempty"`
+type IDrawingObjectLink interface {
+    IsDrawingObjectLink() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetLink() IWordsApiLink
+    SetLink(value IWordsApiLink)
+    GetNodeId() *string
+    SetNodeId(value *string)
 }
 
 type DrawingObjectLink struct {
@@ -42,12 +46,6 @@ type DrawingObjectLink struct {
 
     // Represents link for Drawing Object DTO.
     NodeId *string `json:"NodeId,omitempty"`
-}
-
-type IDrawingObjectLink interface {
-    IsDrawingObjectLink() bool
-    Initialize()
-    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (DrawingObjectLink) IsDrawingObjectLink() bool {
@@ -70,8 +68,53 @@ func (obj *DrawingObjectLink) Initialize() {
 
 }
 
+func (obj *DrawingObjectLink) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["Link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    } else if jsonValue, exists := json["link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    }
+
+    if jsonValue, exists := json["NodeId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.NodeId = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["nodeId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.NodeId = &parsedValue
+        }
+
+    }
+}
+
 func (obj *DrawingObjectLink) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *DrawingObjectLink) GetLink() IWordsApiLink {
+    return obj.Link
+}
+
+func (obj *DrawingObjectLink) SetLink(value IWordsApiLink) {
+    obj.Link = value
+}
+
+func (obj *DrawingObjectLink) GetNodeId() *string {
+    return obj.NodeId
+}
+
+func (obj *DrawingObjectLink) SetNodeId(value *string) {
+    obj.NodeId = value
+}
 

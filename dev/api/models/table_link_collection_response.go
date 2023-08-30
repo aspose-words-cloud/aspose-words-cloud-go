@@ -28,11 +28,89 @@
 package models
 
 // The REST response with a collection of tables.
+
+type ITableLinkCollectionResponse interface {
+    IsTableLinkCollectionResponse() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetRequestId() *string
+    SetRequestId(value *string)
+    GetTables() ITableLinkCollection
+    SetTables(value ITableLinkCollection)
+}
+
 type TableLinkCollectionResponse struct {
     // The REST response with a collection of tables.
-    RequestId string `json:"RequestId,omitempty"`
+    RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with a collection of tables.
-    Tables TableLinkCollectionResult `json:"Tables,omitempty"`
+    Tables ITableLinkCollection `json:"Tables,omitempty"`
+}
+
+func (TableLinkCollectionResponse) IsTableLinkCollectionResponse() bool {
+    return true
+}
+
+func (TableLinkCollectionResponse) IsWordsResponse() bool {
+    return true
+}
+
+func (obj *TableLinkCollectionResponse) Initialize() {
+    if (obj.Tables != nil) {
+        obj.Tables.Initialize()
+    }
+
+
+}
+
+func (obj *TableLinkCollectionResponse) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["RequestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["requestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["Tables"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance ITableLinkCollection = new(TableLinkCollection)
+            modelInstance.Deserialize(parsedValue)
+            obj.Tables = modelInstance
+        }
+
+    } else if jsonValue, exists := json["tables"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance ITableLinkCollection = new(TableLinkCollection)
+            modelInstance.Deserialize(parsedValue)
+            obj.Tables = modelInstance
+        }
+
+    }
+}
+
+func (obj *TableLinkCollectionResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
+}
+
+func (obj *TableLinkCollectionResponse) GetRequestId() *string {
+    return obj.RequestId
+}
+
+func (obj *TableLinkCollectionResponse) SetRequestId(value *string) {
+    obj.RequestId = value
+}
+
+func (obj *TableLinkCollectionResponse) GetTables() ITableLinkCollection {
+    return obj.Tables
+}
+
+func (obj *TableLinkCollectionResponse) SetTables(value ITableLinkCollection) {
+    obj.Tables = value
 }
 

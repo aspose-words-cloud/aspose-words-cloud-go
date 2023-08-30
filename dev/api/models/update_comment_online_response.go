@@ -34,9 +34,25 @@ import "io"
 // Updates a comment in the document.
 type UpdateCommentOnlineResponse struct {
     // The response model.
-    Model CommentResponse `json:"Model,omitempty"`
+    Model ICommentResponse
 
 
     // The document after modification.
-    Document map[string]io.Reader `json:"Document,omitempty"`
+    Document map[string]io.Reader
+}
+
+func (obj *UpdateCommentOnlineResponse) GetModel() ICommentResponse {
+    return obj.Model
+}
+
+func (obj *UpdateCommentOnlineResponse) SetModel(value ICommentResponse) {
+    obj.Model = value
+}
+
+func (obj *UpdateCommentOnlineResponse) GetDocument() map[string]io.Reader {
+    return obj.Document
+}
+
+func (obj *UpdateCommentOnlineResponse) SetDocument(value map[string]io.Reader) {
+    obj.Document = value
 }

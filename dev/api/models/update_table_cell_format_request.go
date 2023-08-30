@@ -162,10 +162,12 @@ func (data *UpdateTableCellFormatRequest) CreateRequestData() (RequestData, erro
 }
 
 func (data *UpdateTableCellFormatRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
-            var successPayload TableCellFormatResponse
-            if err = json.NewDecoder(reader).Decode(&successPayload); err != nil {
+            var successPayload ITableCellFormatResponse = new(TableCellFormatResponse)
+            var jsonMap map[string]interface{}
+            if err = json.NewDecoder(reader).Decode(&jsonMap); err != nil {
                 return nil, err
             }
 
+            successPayload.Deserialize(jsonMap)
             return successPayload, err
 }

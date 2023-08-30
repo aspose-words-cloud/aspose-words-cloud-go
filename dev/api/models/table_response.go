@@ -28,11 +28,89 @@
 package models
 
 // The REST response with a table.
+
+type ITableResponse interface {
+    IsTableResponse() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetRequestId() *string
+    SetRequestId(value *string)
+    GetTable() ITable
+    SetTable(value ITable)
+}
+
 type TableResponse struct {
     // The REST response with a table.
-    RequestId string `json:"RequestId,omitempty"`
+    RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with a table.
-    Table TableResult `json:"Table,omitempty"`
+    Table ITable `json:"Table,omitempty"`
+}
+
+func (TableResponse) IsTableResponse() bool {
+    return true
+}
+
+func (TableResponse) IsWordsResponse() bool {
+    return true
+}
+
+func (obj *TableResponse) Initialize() {
+    if (obj.Table != nil) {
+        obj.Table.Initialize()
+    }
+
+
+}
+
+func (obj *TableResponse) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["RequestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["requestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["Table"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance ITable = new(Table)
+            modelInstance.Deserialize(parsedValue)
+            obj.Table = modelInstance
+        }
+
+    } else if jsonValue, exists := json["table"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance ITable = new(Table)
+            modelInstance.Deserialize(parsedValue)
+            obj.Table = modelInstance
+        }
+
+    }
+}
+
+func (obj *TableResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
+}
+
+func (obj *TableResponse) GetRequestId() *string {
+    return obj.RequestId
+}
+
+func (obj *TableResponse) SetRequestId(value *string) {
+    obj.RequestId = value
+}
+
+func (obj *TableResponse) GetTable() ITable {
+    return obj.Table
+}
+
+func (obj *TableResponse) SetTable(value ITable) {
+    obj.Table = value
 }
 

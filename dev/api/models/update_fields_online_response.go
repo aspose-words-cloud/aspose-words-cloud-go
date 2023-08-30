@@ -34,9 +34,25 @@ import "io"
 // Reevaluates field values in the document.
 type UpdateFieldsOnlineResponse struct {
     // The response model.
-    Model DocumentResponse `json:"Model,omitempty"`
+    Model IDocumentResponse
 
 
     // The document after modification.
-    Document map[string]io.Reader `json:"Document,omitempty"`
+    Document map[string]io.Reader
+}
+
+func (obj *UpdateFieldsOnlineResponse) GetModel() IDocumentResponse {
+    return obj.Model
+}
+
+func (obj *UpdateFieldsOnlineResponse) SetModel(value IDocumentResponse) {
+    obj.Model = value
+}
+
+func (obj *UpdateFieldsOnlineResponse) GetDocument() map[string]io.Reader {
+    return obj.Document
+}
+
+func (obj *UpdateFieldsOnlineResponse) SetDocument(value map[string]io.Reader) {
+    obj.Document = value
 }

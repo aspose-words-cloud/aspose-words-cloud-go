@@ -28,12 +28,16 @@
 package models
 
 // DTO container with a single document list.
-type ListLevelsResult struct {
-    // DTO container with a single document list.
-    Link WordsApiLinkResult `json:"Link,omitempty"`
 
-    // DTO container with a single document list.
-    ListLevel []ListLevelResult `json:"ListLevel,omitempty"`
+type IListLevels interface {
+    IsListLevels() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetLink() IWordsApiLink
+    SetLink(value IWordsApiLink)
+    GetListLevel() []IListLevel
+    SetListLevel(value []IListLevel)
 }
 
 type ListLevels struct {
@@ -41,13 +45,7 @@ type ListLevels struct {
     Link IWordsApiLink `json:"Link,omitempty"`
 
     // DTO container with a single document list.
-    ListLevel []ListLevel `json:"ListLevel,omitempty"`
-}
-
-type IListLevels interface {
-    IsListLevels() bool
-    Initialize()
-    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    ListLevel []IListLevel `json:"ListLevel,omitempty"`
 }
 
 func (ListLevels) IsListLevels() bool {
@@ -71,8 +69,69 @@ func (obj *ListLevels) Initialize() {
 
 }
 
+func (obj *ListLevels) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["Link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    } else if jsonValue, exists := json["link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    }
+
+    if jsonValue, exists := json["ListLevel"]; exists {
+        if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.ListLevel = make([]IListLevel, 0)
+            for _, parsedElement := range parsedValue {
+                if elementValue, valid := parsedElement.(map[string]interface{}); valid {
+                    var modelElementInstance IListLevel = new(ListLevel)
+                    modelElementInstance.Deserialize(elementValue)
+                    obj.ListLevel = append(obj.ListLevel, modelElementInstance)
+                }
+
+            }
+        }
+
+    } else if jsonValue, exists := json["listLevel"]; exists {
+        if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.ListLevel = make([]IListLevel, 0)
+            for _, parsedElement := range parsedValue {
+                if elementValue, valid := parsedElement.(map[string]interface{}); valid {
+                    var modelElementInstance IListLevel = new(ListLevel)
+                    modelElementInstance.Deserialize(elementValue)
+                    obj.ListLevel = append(obj.ListLevel, modelElementInstance)
+                }
+
+            }
+        }
+
+    }
+}
+
 func (obj *ListLevels) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *ListLevels) GetLink() IWordsApiLink {
+    return obj.Link
+}
+
+func (obj *ListLevels) SetLink(value IWordsApiLink) {
+    obj.Link = value
+}
+
+func (obj *ListLevels) GetListLevel() []IListLevel {
+    return obj.ListLevel
+}
+
+func (obj *ListLevels) SetListLevel(value []IListLevel) {
+    obj.ListLevel = value
+}
 

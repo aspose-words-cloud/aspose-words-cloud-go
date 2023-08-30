@@ -28,11 +28,89 @@
 package models
 
 // The REST response with a collection of borders.
+
+type IBordersResponse interface {
+    IsBordersResponse() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetRequestId() *string
+    SetRequestId(value *string)
+    GetBorders() IBordersCollection
+    SetBorders(value IBordersCollection)
+}
+
 type BordersResponse struct {
     // The REST response with a collection of borders.
-    RequestId string `json:"RequestId,omitempty"`
+    RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with a collection of borders.
-    Borders BordersCollectionResult `json:"Borders,omitempty"`
+    Borders IBordersCollection `json:"Borders,omitempty"`
+}
+
+func (BordersResponse) IsBordersResponse() bool {
+    return true
+}
+
+func (BordersResponse) IsWordsResponse() bool {
+    return true
+}
+
+func (obj *BordersResponse) Initialize() {
+    if (obj.Borders != nil) {
+        obj.Borders.Initialize()
+    }
+
+
+}
+
+func (obj *BordersResponse) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["RequestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["requestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["Borders"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IBordersCollection = new(BordersCollection)
+            modelInstance.Deserialize(parsedValue)
+            obj.Borders = modelInstance
+        }
+
+    } else if jsonValue, exists := json["borders"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IBordersCollection = new(BordersCollection)
+            modelInstance.Deserialize(parsedValue)
+            obj.Borders = modelInstance
+        }
+
+    }
+}
+
+func (obj *BordersResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
+}
+
+func (obj *BordersResponse) GetRequestId() *string {
+    return obj.RequestId
+}
+
+func (obj *BordersResponse) SetRequestId(value *string) {
+    obj.RequestId = value
+}
+
+func (obj *BordersResponse) GetBorders() IBordersCollection {
+    return obj.Borders
+}
+
+func (obj *BordersResponse) SetBorders(value IBordersCollection) {
+    obj.Borders = value
 }
 

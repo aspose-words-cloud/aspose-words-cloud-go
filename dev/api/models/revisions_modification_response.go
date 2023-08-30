@@ -28,11 +28,89 @@
 package models
 
 // The REST response with a result of the modification operations for the revisions collection (now these are acceptAll and rejectAll).
+
+type IRevisionsModificationResponse interface {
+    IsRevisionsModificationResponse() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetRequestId() *string
+    SetRequestId(value *string)
+    GetResult() IModificationOperationResult
+    SetResult(value IModificationOperationResult)
+}
+
 type RevisionsModificationResponse struct {
     // The REST response with a result of the modification operations for the revisions collection (now these are acceptAll and rejectAll).
-    RequestId string `json:"RequestId,omitempty"`
+    RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with a result of the modification operations for the revisions collection (now these are acceptAll and rejectAll).
-    Result ModificationOperationResultResult `json:"Result,omitempty"`
+    Result IModificationOperationResult `json:"Result,omitempty"`
+}
+
+func (RevisionsModificationResponse) IsRevisionsModificationResponse() bool {
+    return true
+}
+
+func (RevisionsModificationResponse) IsWordsResponse() bool {
+    return true
+}
+
+func (obj *RevisionsModificationResponse) Initialize() {
+    if (obj.Result != nil) {
+        obj.Result.Initialize()
+    }
+
+
+}
+
+func (obj *RevisionsModificationResponse) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["RequestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["requestId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RequestId = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["Result"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IModificationOperationResult = new(ModificationOperationResult)
+            modelInstance.Deserialize(parsedValue)
+            obj.Result = modelInstance
+        }
+
+    } else if jsonValue, exists := json["result"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IModificationOperationResult = new(ModificationOperationResult)
+            modelInstance.Deserialize(parsedValue)
+            obj.Result = modelInstance
+        }
+
+    }
+}
+
+func (obj *RevisionsModificationResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    return resultFilesContent
+}
+
+func (obj *RevisionsModificationResponse) GetRequestId() *string {
+    return obj.RequestId
+}
+
+func (obj *RevisionsModificationResponse) SetRequestId(value *string) {
+    obj.RequestId = value
+}
+
+func (obj *RevisionsModificationResponse) GetResult() IModificationOperationResult {
+    return obj.Result
+}
+
+func (obj *RevisionsModificationResponse) SetResult(value IModificationOperationResult) {
+    obj.Result = value
 }
 

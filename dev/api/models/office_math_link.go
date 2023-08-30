@@ -28,12 +28,16 @@
 package models
 
 // OfficeMath object link element.
-type OfficeMathLinkResult struct {
-    // OfficeMath object link element.
-    Link WordsApiLinkResult `json:"Link,omitempty"`
 
-    // OfficeMath object link element.
-    NodeId string `json:"NodeId,omitempty"`
+type IOfficeMathLink interface {
+    IsOfficeMathLink() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetLink() IWordsApiLink
+    SetLink(value IWordsApiLink)
+    GetNodeId() *string
+    SetNodeId(value *string)
 }
 
 type OfficeMathLink struct {
@@ -42,12 +46,6 @@ type OfficeMathLink struct {
 
     // OfficeMath object link element.
     NodeId *string `json:"NodeId,omitempty"`
-}
-
-type IOfficeMathLink interface {
-    IsOfficeMathLink() bool
-    Initialize()
-    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (OfficeMathLink) IsOfficeMathLink() bool {
@@ -70,8 +68,53 @@ func (obj *OfficeMathLink) Initialize() {
 
 }
 
+func (obj *OfficeMathLink) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["Link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    } else if jsonValue, exists := json["link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    }
+
+    if jsonValue, exists := json["NodeId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.NodeId = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["nodeId"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.NodeId = &parsedValue
+        }
+
+    }
+}
+
 func (obj *OfficeMathLink) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *OfficeMathLink) GetLink() IWordsApiLink {
+    return obj.Link
+}
+
+func (obj *OfficeMathLink) SetLink(value IWordsApiLink) {
+    obj.Link = value
+}
+
+func (obj *OfficeMathLink) GetNodeId() *string {
+    return obj.NodeId
+}
+
+func (obj *OfficeMathLink) SetNodeId(value *string) {
+    obj.NodeId = value
+}
 

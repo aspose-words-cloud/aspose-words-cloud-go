@@ -274,9 +274,9 @@ func Test_StructuredDocumentTag_UpdateStructuredDocumentTag(t *testing.T) {
         DisplayText: ToStringPointer("Hello world"),
         Value: ToStringPointer("2"),
     }
-    requestStructuredDocumentTagListItems := []models.StructuredDocumentTagListItem{
-        requestStructuredDocumentTagListItems0,
-        requestStructuredDocumentTagListItems1,
+    requestStructuredDocumentTagListItems := []models.IStructuredDocumentTagListItem{
+        &requestStructuredDocumentTagListItems0,
+        &requestStructuredDocumentTagListItems1,
     }
     requestStructuredDocumentTag := models.StructuredDocumentTagUpdate{
         ListItems: requestStructuredDocumentTagListItems,
@@ -316,9 +316,9 @@ func Test_StructuredDocumentTag_UpdateStructuredDocumentTagOnline(t *testing.T) 
         DisplayText: ToStringPointer("Hello world"),
         Value: ToStringPointer("2"),
     }
-    requestStructuredDocumentTagListItems := []models.StructuredDocumentTagListItem{
-        requestStructuredDocumentTagListItems0,
-        requestStructuredDocumentTagListItems1,
+    requestStructuredDocumentTagListItems := []models.IStructuredDocumentTagListItem{
+        &requestStructuredDocumentTagListItems0,
+        &requestStructuredDocumentTagListItems1,
     }
     requestStructuredDocumentTag := models.StructuredDocumentTagUpdate{
         ListItems: requestStructuredDocumentTagListItems,

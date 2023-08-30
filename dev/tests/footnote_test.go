@@ -65,9 +65,9 @@ func Test_Footnote_InsertFootnote(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.Footnote, "Validate InsertFootnote response.");
-    assert.Equal(t, "0.1.7.1", actual.Footnote.NodeId, "Validate InsertFootnote response.");
-    assert.Equal(t, " test endnote" + "\r\n", actual.Footnote.Text, "Validate InsertFootnote response.");
+    assert.NotNil(t, actual.GetFootnote(), "Validate InsertFootnote response.");
+    assert.Equal(t, "0.1.7.1", DereferenceValue(actual.GetFootnote().GetNodeId()), "Validate InsertFootnote response.");
+    assert.Equal(t, " test endnote" + "\r\n", DereferenceValue(actual.GetFootnote().GetText()), "Validate InsertFootnote response.");
 }
 
 // Test for adding footnote online.
@@ -129,9 +129,9 @@ func Test_Footnote_InsertFootnoteWithoutNodePath(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.Footnote, "Validate InsertFootnoteWithoutNodePath response.");
-    assert.Equal(t, "0.1.7.1", actual.Footnote.NodeId, "Validate InsertFootnoteWithoutNodePath response.");
-    assert.Equal(t, " test endnote" + "\r\n", actual.Footnote.Text, "Validate InsertFootnoteWithoutNodePath response.");
+    assert.NotNil(t, actual.GetFootnote(), "Validate InsertFootnoteWithoutNodePath response.");
+    assert.Equal(t, "0.1.7.1", DereferenceValue(actual.GetFootnote().GetNodeId()), "Validate InsertFootnoteWithoutNodePath response.");
+    assert.Equal(t, " test endnote" + "\r\n", DereferenceValue(actual.GetFootnote().GetText()), "Validate InsertFootnoteWithoutNodePath response.");
 }
 
 // Test for deleting footnote.
@@ -244,10 +244,10 @@ func Test_Footnote_GetFootnotes(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.Footnotes, "Validate GetFootnotes response.");
-    assert.NotNil(t, actual.Footnotes.List, "Validate GetFootnotes response.");
-    assert.Equal(t, 6, len(actual.Footnotes.List), "Validate GetFootnotes response.");
-    assert.Equal(t, " Footnote 1." + "\r\n", actual.Footnotes.List[0].Text, "Validate GetFootnotes response.");
+    assert.NotNil(t, actual.GetFootnotes(), "Validate GetFootnotes response.");
+    assert.NotNil(t, actual.GetFootnotes().GetList(), "Validate GetFootnotes response.");
+    assert.Equal(t, 6, len(actual.GetFootnotes().GetList()), "Validate GetFootnotes response.");
+    assert.Equal(t, " Footnote 1." + "\r\n", DereferenceValue(actual.GetFootnotes().GetList()[0].GetText()), "Validate GetFootnotes response.");
 }
 
 // Test for getting footnotes online.
@@ -299,10 +299,10 @@ func Test_Footnote_GetFootnotesWithoutNodePath(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.Footnotes, "Validate GetFootnotesWithoutNodePath response.");
-    assert.NotNil(t, actual.Footnotes.List, "Validate GetFootnotesWithoutNodePath response.");
-    assert.Equal(t, 6, len(actual.Footnotes.List), "Validate GetFootnotesWithoutNodePath response.");
-    assert.Equal(t, " Footnote 1." + "\r\n", actual.Footnotes.List[0].Text, "Validate GetFootnotesWithoutNodePath response.");
+    assert.NotNil(t, actual.GetFootnotes(), "Validate GetFootnotesWithoutNodePath response.");
+    assert.NotNil(t, actual.GetFootnotes().GetList(), "Validate GetFootnotesWithoutNodePath response.");
+    assert.Equal(t, 6, len(actual.GetFootnotes().GetList()), "Validate GetFootnotesWithoutNodePath response.");
+    assert.Equal(t, " Footnote 1." + "\r\n", DereferenceValue(actual.GetFootnotes().GetList()[0].GetText()), "Validate GetFootnotesWithoutNodePath response.");
 }
 
 // Test for getting footnote.
@@ -332,8 +332,8 @@ func Test_Footnote_GetFootnote(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.Footnote, "Validate GetFootnote response.");
-    assert.Equal(t, " Footnote 1." + "\r\n", actual.Footnote.Text, "Validate GetFootnote response.");
+    assert.NotNil(t, actual.GetFootnote(), "Validate GetFootnote response.");
+    assert.Equal(t, " Footnote 1." + "\r\n", DereferenceValue(actual.GetFootnote().GetText()), "Validate GetFootnote response.");
 }
 
 // Test for getting footnote online.
@@ -387,8 +387,8 @@ func Test_Footnote_GetFootnoteWithoutNodePath(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.Footnote, "Validate GetFootnoteWithoutNodePath response.");
-    assert.Equal(t, " Footnote 1." + "\r\n", actual.Footnote.Text, "Validate GetFootnoteWithoutNodePath response.");
+    assert.NotNil(t, actual.GetFootnote(), "Validate GetFootnoteWithoutNodePath response.");
+    assert.Equal(t, " Footnote 1." + "\r\n", DereferenceValue(actual.GetFootnote().GetText()), "Validate GetFootnoteWithoutNodePath response.");
 }
 
 // Test for updating footnote.
@@ -422,8 +422,8 @@ func Test_Footnote_UpdateFootnote(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.Footnote, "Validate UpdateFootnote response.");
-    assert.Equal(t, " new text is here" + "\r\n", actual.Footnote.Text, "Validate UpdateFootnote response.");
+    assert.NotNil(t, actual.GetFootnote(), "Validate UpdateFootnote response.");
+    assert.Equal(t, " new text is here" + "\r\n", DereferenceValue(actual.GetFootnote().GetText()), "Validate UpdateFootnote response.");
 }
 
 // Test for updating footnote online.
@@ -485,6 +485,6 @@ func Test_Footnote_UpdateFootnoteWithoutNodePath(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.Footnote, "Validate UpdateFootnoteWithoutNodePath response.");
-    assert.Equal(t, " new text is here" + "\r\n", actual.Footnote.Text, "Validate UpdateFootnoteWithoutNodePath response.");
+    assert.NotNil(t, actual.GetFootnote(), "Validate UpdateFootnoteWithoutNodePath response.");
+    assert.Equal(t, " new text is here" + "\r\n", DereferenceValue(actual.GetFootnote().GetText()), "Validate UpdateFootnoteWithoutNodePath response.");
 }

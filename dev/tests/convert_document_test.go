@@ -63,8 +63,8 @@ func Test_ConvertDocument_SaveAs(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.SaveResult, "Validate SaveAs response.");
-    assert.NotNil(t, actual.SaveResult.DestDocument, "Validate SaveAs response.");
+    assert.NotNil(t, actual.GetSaveResult(), "Validate SaveAs response.");
+    assert.NotNil(t, actual.GetSaveResult().GetDestDocument(), "Validate SaveAs response.");
 }
 
 // Test for converting document online to one of the available formats.
@@ -153,8 +153,8 @@ func Test_ConvertDocument_SaveAsDocx(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.SaveResult, "Validate SaveAsDocx response.");
-    assert.NotNil(t, actual.SaveResult.DestDocument, "Validate SaveAsDocx response.");
+    assert.NotNil(t, actual.GetSaveResult(), "Validate SaveAsDocx response.");
+    assert.NotNil(t, actual.GetSaveResult().GetDestDocument(), "Validate SaveAsDocx response.");
 }
 
 // Test for converting document to one of the available formats.
@@ -186,8 +186,8 @@ func Test_ConvertDocument_SaveAsTiff(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.SaveResult, "Validate SaveAsTiff response.");
-    assert.NotNil(t, actual.SaveResult.DestDocument, "Validate SaveAsTiff response.");
+    assert.NotNil(t, actual.GetSaveResult(), "Validate SaveAsTiff response.");
+    assert.NotNil(t, actual.GetSaveResult().GetDestDocument(), "Validate SaveAsTiff response.");
 }
 
 // Test for converting document to one of the available formats.

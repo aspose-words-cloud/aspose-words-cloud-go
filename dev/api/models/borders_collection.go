@@ -28,12 +28,16 @@
 package models
 
 // The collection of borders.
-type BordersCollectionResult struct {
-    // The collection of borders.
-    Link WordsApiLinkResult `json:"Link,omitempty"`
 
-    // The collection of borders.
-    List []BorderResult `json:"List,omitempty"`
+type IBordersCollection interface {
+    IsBordersCollection() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetLink() IWordsApiLink
+    SetLink(value IWordsApiLink)
+    GetList() []IBorder
+    SetList(value []IBorder)
 }
 
 type BordersCollection struct {
@@ -41,13 +45,7 @@ type BordersCollection struct {
     Link IWordsApiLink `json:"Link,omitempty"`
 
     // The collection of borders.
-    List []Border `json:"List,omitempty"`
-}
-
-type IBordersCollection interface {
-    IsBordersCollection() bool
-    Initialize()
-    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    List []IBorder `json:"List,omitempty"`
 }
 
 func (BordersCollection) IsBordersCollection() bool {
@@ -71,8 +69,69 @@ func (obj *BordersCollection) Initialize() {
 
 }
 
+func (obj *BordersCollection) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["Link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    } else if jsonValue, exists := json["link"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IWordsApiLink = new(WordsApiLink)
+            modelInstance.Deserialize(parsedValue)
+            obj.Link = modelInstance
+        }
+
+    }
+
+    if jsonValue, exists := json["List"]; exists {
+        if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.List = make([]IBorder, 0)
+            for _, parsedElement := range parsedValue {
+                if elementValue, valid := parsedElement.(map[string]interface{}); valid {
+                    var modelElementInstance IBorder = new(Border)
+                    modelElementInstance.Deserialize(elementValue)
+                    obj.List = append(obj.List, modelElementInstance)
+                }
+
+            }
+        }
+
+    } else if jsonValue, exists := json["list"]; exists {
+        if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.List = make([]IBorder, 0)
+            for _, parsedElement := range parsedValue {
+                if elementValue, valid := parsedElement.(map[string]interface{}); valid {
+                    var modelElementInstance IBorder = new(Border)
+                    modelElementInstance.Deserialize(elementValue)
+                    obj.List = append(obj.List, modelElementInstance)
+                }
+
+            }
+        }
+
+    }
+}
+
 func (obj *BordersCollection) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *BordersCollection) GetLink() IWordsApiLink {
+    return obj.Link
+}
+
+func (obj *BordersCollection) SetLink(value IWordsApiLink) {
+    obj.Link = value
+}
+
+func (obj *BordersCollection) GetList() []IBorder {
+    return obj.List
+}
+
+func (obj *BordersCollection) SetList(value []IBorder) {
+    obj.List = value
+}
 

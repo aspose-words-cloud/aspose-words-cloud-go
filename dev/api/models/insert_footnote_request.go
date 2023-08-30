@@ -161,10 +161,12 @@ func (data *InsertFootnoteRequest) CreateRequestData() (RequestData, error) {
 }
 
 func (data *InsertFootnoteRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
-            var successPayload FootnoteResponse
-            if err = json.NewDecoder(reader).Decode(&successPayload); err != nil {
+            var successPayload IFootnoteResponse = new(FootnoteResponse)
+            var jsonMap map[string]interface{}
+            if err = json.NewDecoder(reader).Decode(&jsonMap); err != nil {
                 return nil, err
             }
 
+            successPayload.Deserialize(jsonMap)
             return successPayload, err
 }

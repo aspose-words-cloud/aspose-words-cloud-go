@@ -28,20 +28,19 @@
 package models
 
 // Words document property DTO for create or update.
-type DocumentPropertyCreateOrUpdateResult struct {
-    // Words document property DTO for create or update.
-    Value string `json:"Value,omitempty"`
+
+type IDocumentPropertyCreateOrUpdate interface {
+    IsDocumentPropertyCreateOrUpdate() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetValue() *string
+    SetValue(value *string)
 }
 
 type DocumentPropertyCreateOrUpdate struct {
     // Words document property DTO for create or update.
     Value *string `json:"Value,omitempty"`
-}
-
-type IDocumentPropertyCreateOrUpdate interface {
-    IsDocumentPropertyCreateOrUpdate() bool
-    Initialize()
-    CollectFilesContent(resultFilesContent []FileReference) []FileReference
 }
 
 func (DocumentPropertyCreateOrUpdate) IsDocumentPropertyCreateOrUpdate() bool {
@@ -55,8 +54,29 @@ func (DocumentPropertyCreateOrUpdate) IsDocumentPropertyBase() bool {
 func (obj *DocumentPropertyCreateOrUpdate) Initialize() {
 }
 
+func (obj *DocumentPropertyCreateOrUpdate) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["Value"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Value = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["value"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Value = &parsedValue
+        }
+
+    }
+}
+
 func (obj *DocumentPropertyCreateOrUpdate) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *DocumentPropertyCreateOrUpdate) GetValue() *string {
+    return obj.Value
+}
+
+func (obj *DocumentPropertyCreateOrUpdate) SetValue(value *string) {
+    obj.Value = value
+}
 

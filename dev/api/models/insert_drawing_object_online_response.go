@@ -34,9 +34,25 @@ import "io"
 // Inserts a new DrawingObject to the document node.
 type InsertDrawingObjectOnlineResponse struct {
     // The response model.
-    Model DrawingObjectResponse `json:"Model,omitempty"`
+    Model IDrawingObjectResponse
 
 
     // The document after modification.
-    Document map[string]io.Reader `json:"Document,omitempty"`
+    Document map[string]io.Reader
+}
+
+func (obj *InsertDrawingObjectOnlineResponse) GetModel() IDrawingObjectResponse {
+    return obj.Model
+}
+
+func (obj *InsertDrawingObjectOnlineResponse) SetModel(value IDrawingObjectResponse) {
+    obj.Model = value
+}
+
+func (obj *InsertDrawingObjectOnlineResponse) GetDocument() map[string]io.Reader {
+    return obj.Document
+}
+
+func (obj *InsertDrawingObjectOnlineResponse) SetDocument(value map[string]io.Reader) {
+    obj.Document = value
 }

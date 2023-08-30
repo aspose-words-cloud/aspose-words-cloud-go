@@ -28,18 +28,20 @@
 package models
 
 // Provides information for the file link.
-type FileLinkResult struct {
-    // Provides information for the file link.
-    Href string `json:"Href,omitempty"`
 
-    // Provides information for the file link.
-    Rel string `json:"Rel,omitempty"`
-
-    // Provides information for the file link.
-    Title string `json:"Title,omitempty"`
-
-    // Provides information for the file link.
-    Type string `json:"Type,omitempty"`
+type IFileLink interface {
+    IsFileLink() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetHref() *string
+    SetHref(value *string)
+    GetRel() *string
+    SetRel(value *string)
+    GetTitle() *string
+    SetTitle(value *string)
+    GetType() *string
+    SetType(value *string)
 }
 
 type FileLink struct {
@@ -56,12 +58,6 @@ type FileLink struct {
     Type *string `json:"Type,omitempty"`
 }
 
-type IFileLink interface {
-    IsFileLink() bool
-    Initialize()
-    CollectFilesContent(resultFilesContent []FileReference) []FileReference
-}
-
 func (FileLink) IsFileLink() bool {
     return true
 }
@@ -73,8 +69,89 @@ func (FileLink) IsLink() bool {
 func (obj *FileLink) Initialize() {
 }
 
+func (obj *FileLink) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["Href"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Href = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["href"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Href = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["Rel"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Rel = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["rel"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Rel = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["Title"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Title = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["title"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Title = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["Type"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Type = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["type"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Type = &parsedValue
+        }
+
+    }
+}
+
 func (obj *FileLink) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *FileLink) GetHref() *string {
+    return obj.Href
+}
+
+func (obj *FileLink) SetHref(value *string) {
+    obj.Href = value
+}
+
+func (obj *FileLink) GetRel() *string {
+    return obj.Rel
+}
+
+func (obj *FileLink) SetRel(value *string) {
+    obj.Rel = value
+}
+
+func (obj *FileLink) GetTitle() *string {
+    return obj.Title
+}
+
+func (obj *FileLink) SetTitle(value *string) {
+    obj.Title = value
+}
+
+func (obj *FileLink) GetType() *string {
+    return obj.Type
+}
+
+func (obj *FileLink) SetType(value *string) {
+    obj.Type = value
+}
 

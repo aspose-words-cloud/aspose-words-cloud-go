@@ -153,9 +153,13 @@ func (data *DeleteBordersOnlineRequest) CreateResponse(reader io.Reader, boundar
         return successPayload, err
     }
 
-    if err = json.NewDecoder(part).Decode(&successPayload.Model); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(part).Decode(&jsonMap); err != nil {
         return successPayload, err
     }
+
+    successPayload.Model = new(BordersResponse)
+    successPayload.Model.Deserialize(jsonMap)
 
 
     part, err = mr.NextPart()

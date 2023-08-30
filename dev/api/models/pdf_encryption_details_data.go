@@ -28,15 +28,18 @@
 package models
 
 // Container class for details of encryption.
-type PdfEncryptionDetailsDataResult struct {
-    // Container class for details of encryption.
-    OwnerPassword string `json:"OwnerPassword,omitempty"`
 
-    // Container class for details of encryption.
-    Permissions []string `json:"Permissions,omitempty"`
-
-    // Container class for details of encryption.
-    UserPassword string `json:"UserPassword,omitempty"`
+type IPdfEncryptionDetailsData interface {
+    IsPdfEncryptionDetailsData() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetOwnerPassword() *string
+    SetOwnerPassword(value *string)
+    GetPermissions() []string
+    SetPermissions(value []string)
+    GetUserPassword() *string
+    SetUserPassword(value *string)
 }
 
 type PdfEncryptionDetailsData struct {
@@ -50,12 +53,6 @@ type PdfEncryptionDetailsData struct {
     UserPassword *string `json:"UserPassword,omitempty"`
 }
 
-type IPdfEncryptionDetailsData interface {
-    IsPdfEncryptionDetailsData() bool
-    Initialize()
-    CollectFilesContent(resultFilesContent []FileReference) []FileReference
-}
-
 func (PdfEncryptionDetailsData) IsPdfEncryptionDetailsData() bool {
     return true
 }
@@ -64,8 +61,81 @@ func (PdfEncryptionDetailsData) IsPdfEncryptionDetailsData() bool {
 func (obj *PdfEncryptionDetailsData) Initialize() {
 }
 
+func (obj *PdfEncryptionDetailsData) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["OwnerPassword"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.OwnerPassword = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["ownerPassword"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.OwnerPassword = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["Permissions"]; exists {
+        if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.Permissions = make([]string, 0)
+            for _, parsedElement := range parsedValue {
+                if elementValue, valid := parsedElement.(string); valid {
+                    obj.Permissions = append(obj.Permissions, elementValue)
+                }
+
+            }
+        }
+
+    } else if jsonValue, exists := json["permissions"]; exists {
+        if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.Permissions = make([]string, 0)
+            for _, parsedElement := range parsedValue {
+                if elementValue, valid := parsedElement.(string); valid {
+                    obj.Permissions = append(obj.Permissions, elementValue)
+                }
+
+            }
+        }
+
+    }
+
+    if jsonValue, exists := json["UserPassword"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.UserPassword = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["userPassword"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.UserPassword = &parsedValue
+        }
+
+    }
+}
+
 func (obj *PdfEncryptionDetailsData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
+func (obj *PdfEncryptionDetailsData) GetOwnerPassword() *string {
+    return obj.OwnerPassword
+}
+
+func (obj *PdfEncryptionDetailsData) SetOwnerPassword(value *string) {
+    obj.OwnerPassword = value
+}
+
+func (obj *PdfEncryptionDetailsData) GetPermissions() []string {
+    return obj.Permissions
+}
+
+func (obj *PdfEncryptionDetailsData) SetPermissions(value []string) {
+    obj.Permissions = value
+}
+
+func (obj *PdfEncryptionDetailsData) GetUserPassword() *string {
+    return obj.UserPassword
+}
+
+func (obj *PdfEncryptionDetailsData) SetUserPassword(value *string) {
+    obj.UserPassword = value
+}
 
