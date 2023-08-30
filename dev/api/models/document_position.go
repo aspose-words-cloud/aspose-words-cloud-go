@@ -73,7 +73,7 @@ func (obj *DocumentPosition) Deserialize(json map[string]interface{}) {
                 if jsonTypeStr == "FieldLink, _" { modelInstance = new(FieldLink) }
                 if jsonTypeStr == "Footnote, _" { modelInstance = new(Footnote) }
                 if jsonTypeStr == "FootnoteLink, _" { modelInstance = new(FootnoteLink) }
-                if jsonTypeStr == "FormField, _" { modelInstance = new(FormField) }
+                if jsonTypeStr == "FormField, _" {  }
                 if jsonTypeStr == "FormFieldCheckbox, _" { modelInstance = new(FormFieldCheckbox) }
                 if jsonTypeStr == "FormFieldDropDown, _" { modelInstance = new(FormFieldDropDown) }
                 if jsonTypeStr == "FormFieldTextInput, _" { modelInstance = new(FormFieldTextInput) }
@@ -109,7 +109,7 @@ func (obj *DocumentPosition) Deserialize(json map[string]interface{}) {
                 if jsonTypeStr == "FieldLink, _" { modelInstance = new(FieldLink) }
                 if jsonTypeStr == "Footnote, _" { modelInstance = new(Footnote) }
                 if jsonTypeStr == "FootnoteLink, _" { modelInstance = new(FootnoteLink) }
-                if jsonTypeStr == "FormField, _" { modelInstance = new(FormField) }
+                if jsonTypeStr == "FormField, _" {  }
                 if jsonTypeStr == "FormFieldCheckbox, _" { modelInstance = new(FormFieldCheckbox) }
                 if jsonTypeStr == "FormFieldDropDown, _" { modelInstance = new(FormFieldDropDown) }
                 if jsonTypeStr == "FormFieldTextInput, _" { modelInstance = new(FormFieldTextInput) }

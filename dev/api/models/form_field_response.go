@@ -87,7 +87,6 @@ func (obj *FormFieldResponse) Deserialize(json map[string]interface{}) {
                 if jsonTypeStr == "FormFieldTextInput, _" { modelInstance = new(FormFieldTextInput) }
             }
 
-            if modelInstance == nil { modelInstance = new(FormField) }
             modelInstance.Deserialize(parsedValue)
             obj.FormField = modelInstance
         }
@@ -102,7 +101,6 @@ func (obj *FormFieldResponse) Deserialize(json map[string]interface{}) {
                 if jsonTypeStr == "FormFieldTextInput, _" { modelInstance = new(FormFieldTextInput) }
             }
 
-            if modelInstance == nil { modelInstance = new(FormField) }
             modelInstance.Deserialize(parsedValue)
             obj.FormField = modelInstance
         }

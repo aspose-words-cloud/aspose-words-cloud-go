@@ -121,7 +121,7 @@ func (obj *TableCell) Deserialize(json map[string]interface{}) {
                         if jsonTypeStr == "FieldLink, _" { modelElementInstance = new(FieldLink) }
                         if jsonTypeStr == "Footnote, _" { modelElementInstance = new(Footnote) }
                         if jsonTypeStr == "FootnoteLink, _" { modelElementInstance = new(FootnoteLink) }
-                        if jsonTypeStr == "FormField, _" { modelElementInstance = new(FormField) }
+                        if jsonTypeStr == "FormField, _" {  }
                         if jsonTypeStr == "FormFieldCheckbox, _" { modelElementInstance = new(FormFieldCheckbox) }
                         if jsonTypeStr == "FormFieldDropDown, _" { modelElementInstance = new(FormFieldDropDown) }
                         if jsonTypeStr == "FormFieldTextInput, _" { modelElementInstance = new(FormFieldTextInput) }
@@ -163,7 +163,7 @@ func (obj *TableCell) Deserialize(json map[string]interface{}) {
                         if jsonTypeStr == "FieldLink, _" { modelElementInstance = new(FieldLink) }
                         if jsonTypeStr == "Footnote, _" { modelElementInstance = new(Footnote) }
                         if jsonTypeStr == "FootnoteLink, _" { modelElementInstance = new(FootnoteLink) }
-                        if jsonTypeStr == "FormField, _" { modelElementInstance = new(FormField) }
+                        if jsonTypeStr == "FormField, _" {  }
                         if jsonTypeStr == "FormFieldCheckbox, _" { modelElementInstance = new(FormFieldCheckbox) }
                         if jsonTypeStr == "FormFieldDropDown, _" { modelElementInstance = new(FormFieldDropDown) }
                         if jsonTypeStr == "FormFieldTextInput, _" { modelElementInstance = new(FormFieldTextInput) }

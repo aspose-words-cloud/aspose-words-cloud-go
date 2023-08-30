@@ -119,7 +119,7 @@ func (obj *DrawingObjectCollection) Deserialize(json map[string]interface{}) {
                         if jsonTypeStr == "Footnote, _" { modelElementInstance = new(Footnote) }
                         if jsonTypeStr == "FootnoteCollection, _" { modelElementInstance = new(FootnoteCollection) }
                         if jsonTypeStr == "FootnoteLink, _" { modelElementInstance = new(FootnoteLink) }
-                        if jsonTypeStr == "FormField, _" { modelElementInstance = new(FormField) }
+                        if jsonTypeStr == "FormField, _" {  }
                         if jsonTypeStr == "FormFieldCheckbox, _" { modelElementInstance = new(FormFieldCheckbox) }
                         if jsonTypeStr == "FormFieldCollection, _" { modelElementInstance = new(FormFieldCollection) }
                         if jsonTypeStr == "FormFieldDropDown, _" { modelElementInstance = new(FormFieldDropDown) }
@@ -141,7 +141,7 @@ func (obj *DrawingObjectCollection) Deserialize(json map[string]interface{}) {
                         if jsonTypeStr == "PageSetup, _" { modelElementInstance = new(PageSetup) }
                         if jsonTypeStr == "Paragraph, _" { modelElementInstance = new(Paragraph) }
                         if jsonTypeStr == "ParagraphFormat, _" { modelElementInstance = new(ParagraphFormat) }
-                        if jsonTypeStr == "ParagraphFormatBase, _" { modelElementInstance = new(ParagraphFormatBase) }
+                        if jsonTypeStr == "ParagraphFormatBase, _" {  }
                         if jsonTypeStr == "ParagraphFormatUpdate, _" { modelElementInstance = new(ParagraphFormatUpdate) }
                         if jsonTypeStr == "ParagraphLink, _" { modelElementInstance = new(ParagraphLink) }
                         if jsonTypeStr == "ParagraphLinkCollection, _" { modelElementInstance = new(ParagraphLinkCollection) }
@@ -208,7 +208,7 @@ func (obj *DrawingObjectCollection) Deserialize(json map[string]interface{}) {
                         if jsonTypeStr == "Footnote, _" { modelElementInstance = new(Footnote) }
                         if jsonTypeStr == "FootnoteCollection, _" { modelElementInstance = new(FootnoteCollection) }
                         if jsonTypeStr == "FootnoteLink, _" { modelElementInstance = new(FootnoteLink) }
-                        if jsonTypeStr == "FormField, _" { modelElementInstance = new(FormField) }
+                        if jsonTypeStr == "FormField, _" {  }
                         if jsonTypeStr == "FormFieldCheckbox, _" { modelElementInstance = new(FormFieldCheckbox) }
                         if jsonTypeStr == "FormFieldCollection, _" { modelElementInstance = new(FormFieldCollection) }
                         if jsonTypeStr == "FormFieldDropDown, _" { modelElementInstance = new(FormFieldDropDown) }
@@ -230,7 +230,7 @@ func (obj *DrawingObjectCollection) Deserialize(json map[string]interface{}) {
                         if jsonTypeStr == "PageSetup, _" { modelElementInstance = new(PageSetup) }
                         if jsonTypeStr == "Paragraph, _" { modelElementInstance = new(Paragraph) }
                         if jsonTypeStr == "ParagraphFormat, _" { modelElementInstance = new(ParagraphFormat) }
-                        if jsonTypeStr == "ParagraphFormatBase, _" { modelElementInstance = new(ParagraphFormatBase) }
+                        if jsonTypeStr == "ParagraphFormatBase, _" {  }
                         if jsonTypeStr == "ParagraphFormatUpdate, _" { modelElementInstance = new(ParagraphFormatUpdate) }
                         if jsonTypeStr == "ParagraphLink, _" { modelElementInstance = new(ParagraphLink) }
                         if jsonTypeStr == "ParagraphLinkCollection, _" { modelElementInstance = new(ParagraphLinkCollection) }
