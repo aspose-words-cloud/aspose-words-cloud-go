@@ -38,10 +38,10 @@ type IMetafileRenderingOptionsData interface {
     SetEmfPlusDualRenderingMode(value *string)
     GetEmulateRasterOperations() *bool
     SetEmulateRasterOperations(value *bool)
+    GetEmulateRenderingToSizeOnPage() *bool
+    SetEmulateRenderingToSizeOnPage(value *bool)
     GetRenderingMode() *string
     SetRenderingMode(value *string)
-    GetScaleWmfFontsToMetafileSize() *bool
-    SetScaleWmfFontsToMetafileSize(value *bool)
     GetUseEmfEmbeddedToWmf() *bool
     SetUseEmfEmbeddedToWmf(value *bool)
 }
@@ -54,10 +54,10 @@ type MetafileRenderingOptionsData struct {
     EmulateRasterOperations *bool `json:"EmulateRasterOperations,omitempty"`
 
     // Container class for options of metafile rendering.
-    RenderingMode *string `json:"RenderingMode,omitempty"`
+    EmulateRenderingToSizeOnPage *bool `json:"EmulateRenderingToSizeOnPage,omitempty"`
 
     // Container class for options of metafile rendering.
-    ScaleWmfFontsToMetafileSize *bool `json:"ScaleWmfFontsToMetafileSize,omitempty"`
+    RenderingMode *string `json:"RenderingMode,omitempty"`
 
     // Container class for options of metafile rendering.
     UseEmfEmbeddedToWmf *bool `json:"UseEmfEmbeddedToWmf,omitempty"`
@@ -96,6 +96,18 @@ func (obj *MetafileRenderingOptionsData) Deserialize(json map[string]interface{}
 
     }
 
+    if jsonValue, exists := json["EmulateRenderingToSizeOnPage"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.EmulateRenderingToSizeOnPage = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["emulateRenderingToSizeOnPage"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.EmulateRenderingToSizeOnPage = &parsedValue
+        }
+
+    }
+
     if jsonValue, exists := json["RenderingMode"]; exists {
         if parsedValue, valid := jsonValue.(string); valid {
             obj.RenderingMode = &parsedValue
@@ -104,18 +116,6 @@ func (obj *MetafileRenderingOptionsData) Deserialize(json map[string]interface{}
     } else if jsonValue, exists := json["renderingMode"]; exists {
         if parsedValue, valid := jsonValue.(string); valid {
             obj.RenderingMode = &parsedValue
-        }
-
-    }
-
-    if jsonValue, exists := json["ScaleWmfFontsToMetafileSize"]; exists {
-        if parsedValue, valid := jsonValue.(bool); valid {
-            obj.ScaleWmfFontsToMetafileSize = &parsedValue
-        }
-
-    } else if jsonValue, exists := json["scaleWmfFontsToMetafileSize"]; exists {
-        if parsedValue, valid := jsonValue.(bool); valid {
-            obj.ScaleWmfFontsToMetafileSize = &parsedValue
         }
 
     }
@@ -153,20 +153,20 @@ func (obj *MetafileRenderingOptionsData) SetEmulateRasterOperations(value *bool)
     obj.EmulateRasterOperations = value
 }
 
+func (obj *MetafileRenderingOptionsData) GetEmulateRenderingToSizeOnPage() *bool {
+    return obj.EmulateRenderingToSizeOnPage
+}
+
+func (obj *MetafileRenderingOptionsData) SetEmulateRenderingToSizeOnPage(value *bool) {
+    obj.EmulateRenderingToSizeOnPage = value
+}
+
 func (obj *MetafileRenderingOptionsData) GetRenderingMode() *string {
     return obj.RenderingMode
 }
 
 func (obj *MetafileRenderingOptionsData) SetRenderingMode(value *string) {
     obj.RenderingMode = value
-}
-
-func (obj *MetafileRenderingOptionsData) GetScaleWmfFontsToMetafileSize() *bool {
-    return obj.ScaleWmfFontsToMetafileSize
-}
-
-func (obj *MetafileRenderingOptionsData) SetScaleWmfFontsToMetafileSize(value *bool) {
-    obj.ScaleWmfFontsToMetafileSize = value
 }
 
 func (obj *MetafileRenderingOptionsData) GetUseEmfEmbeddedToWmf() *bool {
