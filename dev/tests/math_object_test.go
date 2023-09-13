@@ -60,10 +60,10 @@ func Test_MathObject_GetOfficeMathObjects(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.OfficeMathObjects, "Validate GetOfficeMathObjects response.");
-    assert.NotNil(t, actual.OfficeMathObjects.List, "Validate GetOfficeMathObjects response.");
-    assert.Equal(t, 16, len(actual.OfficeMathObjects.List), "Validate GetOfficeMathObjects response.");
-    assert.Equal(t, "0.0.0.0", actual.OfficeMathObjects.List[0].NodeId, "Validate GetOfficeMathObjects response.");
+    assert.NotNil(t, actual.GetOfficeMathObjects(), "Validate GetOfficeMathObjects response.");
+    assert.NotNil(t, actual.GetOfficeMathObjects().GetList(), "Validate GetOfficeMathObjects response.");
+    assert.Equal(t, 16, len(actual.GetOfficeMathObjects().GetList()), "Validate GetOfficeMathObjects response.");
+    assert.Equal(t, "0.0.0.0", DereferenceValue(actual.GetOfficeMathObjects().GetList()[0].GetNodeId()), "Validate GetOfficeMathObjects response.");
 }
 
 // Test for getting mathObjects online.
@@ -115,10 +115,10 @@ func Test_MathObject_GetOfficeMathObjectsWithoutNodePath(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.OfficeMathObjects, "Validate GetOfficeMathObjectsWithoutNodePath response.");
-    assert.NotNil(t, actual.OfficeMathObjects.List, "Validate GetOfficeMathObjectsWithoutNodePath response.");
-    assert.Equal(t, 16, len(actual.OfficeMathObjects.List), "Validate GetOfficeMathObjectsWithoutNodePath response.");
-    assert.Equal(t, "0.0.0.0", actual.OfficeMathObjects.List[0].NodeId, "Validate GetOfficeMathObjectsWithoutNodePath response.");
+    assert.NotNil(t, actual.GetOfficeMathObjects(), "Validate GetOfficeMathObjectsWithoutNodePath response.");
+    assert.NotNil(t, actual.GetOfficeMathObjects().GetList(), "Validate GetOfficeMathObjectsWithoutNodePath response.");
+    assert.Equal(t, 16, len(actual.GetOfficeMathObjects().GetList()), "Validate GetOfficeMathObjectsWithoutNodePath response.");
+    assert.Equal(t, "0.0.0.0", DereferenceValue(actual.GetOfficeMathObjects().GetList()[0].GetNodeId()), "Validate GetOfficeMathObjectsWithoutNodePath response.");
 }
 
 // Test for getting mathObject.
@@ -148,8 +148,8 @@ func Test_MathObject_GetOfficeMathObject(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.OfficeMathObject, "Validate GetOfficeMathObject response.");
-    assert.Equal(t, "0.0.0.0", actual.OfficeMathObject.NodeId, "Validate GetOfficeMathObject response.");
+    assert.NotNil(t, actual.GetOfficeMathObject(), "Validate GetOfficeMathObject response.");
+    assert.Equal(t, "0.0.0.0", DereferenceValue(actual.GetOfficeMathObject().GetNodeId()), "Validate GetOfficeMathObject response.");
 }
 
 // Test for getting mathObject online.
@@ -203,8 +203,8 @@ func Test_MathObject_GetOfficeMathObjectWithoutNodePath(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.OfficeMathObject, "Validate GetOfficeMathObjectWithoutNodePath response.");
-    assert.Equal(t, "0.0.0.0", actual.OfficeMathObject.NodeId, "Validate GetOfficeMathObjectWithoutNodePath response.");
+    assert.NotNil(t, actual.GetOfficeMathObject(), "Validate GetOfficeMathObjectWithoutNodePath response.");
+    assert.Equal(t, "0.0.0.0", DereferenceValue(actual.GetOfficeMathObject().GetNodeId()), "Validate GetOfficeMathObjectWithoutNodePath response.");
 }
 
 // Test for rendering mathObject.

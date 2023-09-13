@@ -71,9 +71,9 @@ func Test_FormField_UpdateFormField(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.FormField, "Validate UpdateFormField response.");
-    assert.Equal(t, "FullName", actual.FormField.Name, "Validate UpdateFormField response.");
-    assert.Equal(t, "", actual.FormField.StatusText, "Validate UpdateFormField response.");
+    assert.NotNil(t, actual.GetFormField(), "Validate UpdateFormField response.");
+    assert.Equal(t, "FullName", DereferenceValue(actual.GetFormField().GetName()), "Validate UpdateFormField response.");
+    assert.Equal(t, "", DereferenceValue(actual.GetFormField().GetStatusText()), "Validate UpdateFormField response.");
 }
 
 // Test for posting form field online.
@@ -146,9 +146,9 @@ func Test_FormField_UpdateFormFieldWithoutNodePath(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.FormField, "Validate UpdateFormFieldWithoutNodePath response.");
-    assert.Equal(t, "FullName", actual.FormField.Name, "Validate UpdateFormFieldWithoutNodePath response.");
-    assert.Equal(t, "", actual.FormField.StatusText, "Validate UpdateFormFieldWithoutNodePath response.");
+    assert.NotNil(t, actual.GetFormField(), "Validate UpdateFormFieldWithoutNodePath response.");
+    assert.Equal(t, "FullName", DereferenceValue(actual.GetFormField().GetName()), "Validate UpdateFormFieldWithoutNodePath response.");
+    assert.Equal(t, "", DereferenceValue(actual.GetFormField().GetStatusText()), "Validate UpdateFormFieldWithoutNodePath response.");
 }
 
 // Test for getting form field.
@@ -178,8 +178,8 @@ func Test_FormField_GetFormField(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.FormField, "Validate GetFormField response.");
-    assert.Equal(t, "FullName", actual.FormField.Name, "Validate GetFormField response.");
+    assert.NotNil(t, actual.GetFormField(), "Validate GetFormField response.");
+    assert.Equal(t, "FullName", DereferenceValue(actual.GetFormField().GetName()), "Validate GetFormField response.");
 }
 
 // Test for getting form field online.
@@ -233,8 +233,8 @@ func Test_FormField_GetFormFieldWithoutNodePath(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.FormField, "Validate GetFormFieldWithoutNodePath response.");
-    assert.Equal(t, "FullName", actual.FormField.Name, "Validate GetFormFieldWithoutNodePath response.");
+    assert.NotNil(t, actual.GetFormField(), "Validate GetFormFieldWithoutNodePath response.");
+    assert.Equal(t, "FullName", DereferenceValue(actual.GetFormField().GetName()), "Validate GetFormFieldWithoutNodePath response.");
 }
 
 // Test for getting form fields.
@@ -263,10 +263,10 @@ func Test_FormField_GetFormFields(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.FormFields, "Validate GetFormFields response.");
-    assert.NotNil(t, actual.FormFields.List, "Validate GetFormFields response.");
-    assert.Equal(t, 5, len(actual.FormFields.List), "Validate GetFormFields response.");
-    assert.Equal(t, "FullName", actual.FormFields.List[0].Name, "Validate GetFormFields response.");
+    assert.NotNil(t, actual.GetFormFields(), "Validate GetFormFields response.");
+    assert.NotNil(t, actual.GetFormFields().GetList(), "Validate GetFormFields response.");
+    assert.Equal(t, 5, len(actual.GetFormFields().GetList()), "Validate GetFormFields response.");
+    assert.Equal(t, "FullName", DereferenceValue(actual.GetFormFields().GetList()[0].GetName()), "Validate GetFormFields response.");
 }
 
 // Test for getting form fields online.
@@ -318,10 +318,10 @@ func Test_FormField_GetFormFieldsWithoutNodePath(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.FormFields, "Validate GetFormFieldsWithoutNodePath response.");
-    assert.NotNil(t, actual.FormFields.List, "Validate GetFormFieldsWithoutNodePath response.");
-    assert.Equal(t, 5, len(actual.FormFields.List), "Validate GetFormFieldsWithoutNodePath response.");
-    assert.Equal(t, "FullName", actual.FormFields.List[0].Name, "Validate GetFormFieldsWithoutNodePath response.");
+    assert.NotNil(t, actual.GetFormFields(), "Validate GetFormFieldsWithoutNodePath response.");
+    assert.NotNil(t, actual.GetFormFields().GetList(), "Validate GetFormFieldsWithoutNodePath response.");
+    assert.Equal(t, 5, len(actual.GetFormFields().GetList()), "Validate GetFormFieldsWithoutNodePath response.");
+    assert.Equal(t, "FullName", DereferenceValue(actual.GetFormFields().GetList()[0].GetName()), "Validate GetFormFieldsWithoutNodePath response.");
 }
 
 // Test for insert form field without node path.
@@ -360,9 +360,9 @@ func Test_FormField_InsertFormField(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.FormField, "Validate InsertFormField response.");
-    assert.Equal(t, "FullName", actual.FormField.Name, "Validate InsertFormField response.");
-    assert.Equal(t, "", actual.FormField.StatusText, "Validate InsertFormField response.");
+    assert.NotNil(t, actual.GetFormField(), "Validate InsertFormField response.");
+    assert.Equal(t, "FullName", DereferenceValue(actual.GetFormField().GetName()), "Validate InsertFormField response.");
+    assert.Equal(t, "", DereferenceValue(actual.GetFormField().GetStatusText()), "Validate InsertFormField response.");
 }
 
 // Test for insert form field without node path online.
@@ -434,9 +434,9 @@ func Test_FormField_InsertFormFieldWithoutNodePath(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.FormField, "Validate InsertFormFieldWithoutNodePath response.");
-    assert.Equal(t, "FullName", actual.FormField.Name, "Validate InsertFormFieldWithoutNodePath response.");
-    assert.Equal(t, "", actual.FormField.StatusText, "Validate InsertFormFieldWithoutNodePath response.");
+    assert.NotNil(t, actual.GetFormField(), "Validate InsertFormFieldWithoutNodePath response.");
+    assert.Equal(t, "FullName", DereferenceValue(actual.GetFormField().GetName()), "Validate InsertFormFieldWithoutNodePath response.");
+    assert.Equal(t, "", DereferenceValue(actual.GetFormField().GetStatusText()), "Validate InsertFormFieldWithoutNodePath response.");
 }
 
 // Test for deleting form field.

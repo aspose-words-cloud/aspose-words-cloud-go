@@ -60,8 +60,8 @@ func Test_Hyperlink_GetDocumentHyperlinkByIndex(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.Hyperlink, "Validate GetDocumentHyperlinkByIndex response.");
-    assert.Equal(t, "Aspose", actual.Hyperlink.DisplayText, "Validate GetDocumentHyperlinkByIndex response.");
+    assert.NotNil(t, actual.GetHyperlink(), "Validate GetDocumentHyperlinkByIndex response.");
+    assert.Equal(t, "Aspose", DereferenceValue(actual.GetHyperlink().GetDisplayText()), "Validate GetDocumentHyperlinkByIndex response.");
 }
 
 // Test for getting hyperlink by specified index online.
@@ -113,10 +113,10 @@ func Test_Hyperlink_GetDocumentHyperlinks(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.Hyperlinks, "Validate GetDocumentHyperlinks response.");
-    assert.NotNil(t, actual.Hyperlinks.HyperlinkList, "Validate GetDocumentHyperlinks response.");
-    assert.Equal(t, 2, len(actual.Hyperlinks.HyperlinkList), "Validate GetDocumentHyperlinks response.");
-    assert.Equal(t, "Aspose", actual.Hyperlinks.HyperlinkList[0].DisplayText, "Validate GetDocumentHyperlinks response.");
+    assert.NotNil(t, actual.GetHyperlinks(), "Validate GetDocumentHyperlinks response.");
+    assert.NotNil(t, actual.GetHyperlinks().GetHyperlinkList(), "Validate GetDocumentHyperlinks response.");
+    assert.Equal(t, 2, len(actual.GetHyperlinks().GetHyperlinkList()), "Validate GetDocumentHyperlinks response.");
+    assert.Equal(t, "Aspose", DereferenceValue(actual.GetHyperlinks().GetHyperlinkList()[0].GetDisplayText()), "Validate GetDocumentHyperlinks response.");
 }
 
 // Test for getting hyperlinks online.

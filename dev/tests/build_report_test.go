@@ -102,6 +102,6 @@ func Test_BuildReport_BuildReport(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.Document, "Validate BuildReport response.");
-    assert.Equal(t, "TestBuildReport.docx", actual.Document.FileName, "Validate BuildReport response.");
+    assert.NotNil(t, actual.GetDocument(), "Validate BuildReport response.");
+    assert.Equal(t, "TestBuildReport.docx", DereferenceValue(actual.GetDocument().GetFileName()), "Validate BuildReport response.");
 }

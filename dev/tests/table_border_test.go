@@ -60,11 +60,11 @@ func Test_TableBorder_GetBorders(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.Borders, "Validate GetBorders response.");
-    assert.NotNil(t, actual.Borders.List, "Validate GetBorders response.");
-    assert.Equal(t, 6, len(actual.Borders.List), "Validate GetBorders response.");
-    assert.NotNil(t, actual.Borders.List[0].Color, "Validate GetBorders response.");
-    assert.Equal(t, "#000000", actual.Borders.List[0].Color.Web, "Validate GetBorders response.");
+    assert.NotNil(t, actual.GetBorders(), "Validate GetBorders response.");
+    assert.NotNil(t, actual.GetBorders().GetList(), "Validate GetBorders response.");
+    assert.Equal(t, 6, len(actual.GetBorders().GetList()), "Validate GetBorders response.");
+    assert.NotNil(t, actual.GetBorders().GetList()[0].GetColor(), "Validate GetBorders response.");
+    assert.Equal(t, "#000000", DereferenceValue(actual.GetBorders().GetList()[0].GetColor().GetWeb()), "Validate GetBorders response.");
 }
 
 // Test for getting borders online.
@@ -118,9 +118,9 @@ func Test_TableBorder_GetBorder(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.Border, "Validate GetBorder response.");
-    assert.NotNil(t, actual.Border.Color, "Validate GetBorder response.");
-    assert.Equal(t, "#000000", actual.Border.Color.Web, "Validate GetBorder response.");
+    assert.NotNil(t, actual.GetBorder(), "Validate GetBorder response.");
+    assert.NotNil(t, actual.GetBorder().GetColor(), "Validate GetBorder response.");
+    assert.Equal(t, "#000000", DereferenceValue(actual.GetBorder().GetColor().GetWeb()), "Validate GetBorder response.");
 }
 
 // Test for getting border online.
@@ -293,12 +293,12 @@ func Test_TableBorder_UpdateBorder(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.Border, "Validate UpdateBorder response.");
-    assert.NotNil(t, actual.Border.Color, "Validate UpdateBorder response.");
-    assert.Equal(t, "#AABBCC", actual.Border.Color.Web, "Validate UpdateBorder response.");
-    assert.Equal(t, 6.0, actual.Border.DistanceFromText, "Validate UpdateBorder response.");
-    assert.Equal(t, 2.0, actual.Border.LineWidth, "Validate UpdateBorder response.");
-    assert.True(t, actual.Border.Shadow, "Validate UpdateBorder response.");
+    assert.NotNil(t, actual.GetBorder(), "Validate UpdateBorder response.");
+    assert.NotNil(t, actual.GetBorder().GetColor(), "Validate UpdateBorder response.");
+    assert.Equal(t, "#AABBCC", DereferenceValue(actual.GetBorder().GetColor().GetWeb()), "Validate UpdateBorder response.");
+    assert.Equal(t, 6.0, DereferenceValue(actual.GetBorder().GetDistanceFromText()), "Validate UpdateBorder response.");
+    assert.Equal(t, 2.0, DereferenceValue(actual.GetBorder().GetLineWidth()), "Validate UpdateBorder response.");
+    assert.Equal(t, true, DereferenceValue(actual.GetBorder().GetShadow()), "Validate UpdateBorder response.");
 }
 
 // Test for updating border online.

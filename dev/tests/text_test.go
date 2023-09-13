@@ -65,7 +65,7 @@ func Test_Text_ReplaceText(t *testing.T) {
         t.Error(err)
     }
 
-    assert.Equal(t, int32(3), actual.Matches, "Validate ReplaceText response.");
+    assert.Equal(t, int32(3), DereferenceValue(actual.GetMatches()), "Validate ReplaceText response.");
 }
 
 // Test for replacing text online.
@@ -122,11 +122,11 @@ func Test_Text_Search(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.SearchResults, "Validate Search response.");
-    assert.NotNil(t, actual.SearchResults.ResultsList, "Validate Search response.");
-    assert.Equal(t, 23, len(actual.SearchResults.ResultsList), "Validate Search response.");
-    assert.NotNil(t, actual.SearchResults.ResultsList[0].RangeStart, "Validate Search response.");
-    assert.Equal(t, int32(65), actual.SearchResults.ResultsList[0].RangeStart.Offset, "Validate Search response.");
+    assert.NotNil(t, actual.GetSearchResults(), "Validate Search response.");
+    assert.NotNil(t, actual.GetSearchResults().GetResultsList(), "Validate Search response.");
+    assert.Equal(t, 23, len(actual.GetSearchResults().GetResultsList()), "Validate Search response.");
+    assert.NotNil(t, actual.GetSearchResults().GetResultsList()[0].GetRangeStart(), "Validate Search response.");
+    assert.Equal(t, int32(65), DereferenceValue(actual.GetSearchResults().GetResultsList()[0].GetRangeStart().GetOffset()), "Validate Search response.");
 }
 
 // Test for searching online.

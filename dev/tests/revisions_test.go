@@ -60,8 +60,8 @@ func Test_Revisions_AcceptAllRevisions(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.Result, "Validate AcceptAllRevisions response.");
-    assert.NotNil(t, actual.Result.Dest, "Validate AcceptAllRevisions response.");
+    assert.NotNil(t, actual.GetResult(), "Validate AcceptAllRevisions response.");
+    assert.NotNil(t, actual.GetResult().GetDest(), "Validate AcceptAllRevisions response.");
 }
 
 // Test for accepting revisions in document online.
@@ -85,10 +85,10 @@ func Test_Revisions_AcceptAllRevisionsOnline(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.Document, "Validate AcceptAllRevisionsOnline response.");
-    assert.NotNil(t, actual.Model, "Validate AcceptAllRevisionsOnline response.");
-    assert.NotNil(t, actual.Model.Result, "Validate AcceptAllRevisionsOnline response.");
-    assert.NotNil(t, actual.Model.Result.Dest, "Validate AcceptAllRevisionsOnline response.");
+    assert.NotNil(t, actual.GetDocument(), "Validate AcceptAllRevisionsOnline response.");
+    assert.NotNil(t, actual.GetModel(), "Validate AcceptAllRevisionsOnline response.");
+    assert.NotNil(t, actual.GetModel().GetResult(), "Validate AcceptAllRevisionsOnline response.");
+    assert.NotNil(t, actual.GetModel().GetResult().GetDest(), "Validate AcceptAllRevisionsOnline response.");
 }
 
 // Test for rejecting revisions in document.
@@ -117,8 +117,8 @@ func Test_Revisions_RejectAllRevisions(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.Result, "Validate RejectAllRevisions response.");
-    assert.NotNil(t, actual.Result.Dest, "Validate RejectAllRevisions response.");
+    assert.NotNil(t, actual.GetResult(), "Validate RejectAllRevisions response.");
+    assert.NotNil(t, actual.GetResult().GetDest(), "Validate RejectAllRevisions response.");
 }
 
 // Test for rejecting revisions in document online.
@@ -142,8 +142,8 @@ func Test_Revisions_RejectAllRevisionsOnline(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.Document, "Validate RejectAllRevisionsOnline response.");
-    assert.NotNil(t, actual.Model, "Validate RejectAllRevisionsOnline response.");
-    assert.NotNil(t, actual.Model.Result, "Validate RejectAllRevisionsOnline response.");
-    assert.NotNil(t, actual.Model.Result.Dest, "Validate RejectAllRevisionsOnline response.");
+    assert.NotNil(t, actual.GetDocument(), "Validate RejectAllRevisionsOnline response.");
+    assert.NotNil(t, actual.GetModel(), "Validate RejectAllRevisionsOnline response.");
+    assert.NotNil(t, actual.GetModel().GetResult(), "Validate RejectAllRevisionsOnline response.");
+    assert.NotNil(t, actual.GetModel().GetResult().GetDest(), "Validate RejectAllRevisionsOnline response.");
 }

@@ -62,7 +62,7 @@ func Test_LoadWebDocument_LoadWebDocument(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.SaveResult, "Validate LoadWebDocument response.");
-    assert.NotNil(t, actual.SaveResult.DestDocument, "Validate LoadWebDocument response.");
-    assert.Equal(t, "google.doc", actual.SaveResult.DestDocument.Href, "Validate LoadWebDocument response.");
+    assert.NotNil(t, actual.GetSaveResult(), "Validate LoadWebDocument response.");
+    assert.NotNil(t, actual.GetSaveResult().GetDestDocument(), "Validate LoadWebDocument response.");
+    assert.Equal(t, "google.doc", DereferenceValue(actual.GetSaveResult().GetDestDocument().GetHref()), "Validate LoadWebDocument response.");
 }

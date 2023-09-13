@@ -28,21 +28,21 @@
 package api
 
 import (
-	"bufio"
-	"bytes"
-	"encoding/json"
-	"errors"
-	"fmt"
-	"io"
-	"io/ioutil"
-	"mime"
-	"mime/multipart"
-	"net/http"
-	"net/textproto"
-	"strings"
+    "bufio"
+    "bytes"
+    "encoding/json"
+    "errors"
+    "fmt"
+    "io"
+    "io/ioutil"
+    "mime"
+    "mime/multipart"
+    "net/http"
+    "net/textproto"
+    "strings"
 
-	"github.com/aspose-words-cloud/aspose-words-cloud-go/dev/api/models"
-	"golang.org/x/net/context"
+    "github.com/aspose-words-cloud/aspose-words-cloud-go/dev/api/models"
+    "golang.org/x/net/context"
 )
 
 // Linger please
@@ -86,17 +86,20 @@ func (a *WordsApiService) AcceptAllRevisions(ctx context.Context, data *models.A
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -133,11 +136,12 @@ func (a *WordsApiService) AcceptAllRevisionsOnline(ctx context.Context, data *mo
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     boundary := GetBoundary(response)
@@ -184,17 +188,20 @@ func (a *WordsApiService) AppendDocument(ctx context.Context, data *models.Appen
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -231,11 +238,12 @@ func (a *WordsApiService) AppendDocumentOnline(ctx context.Context, data *models
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     boundary := GetBoundary(response)
@@ -282,17 +290,20 @@ func (a *WordsApiService) ApplyStyleToDocumentElement(ctx context.Context, data 
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -329,11 +340,12 @@ func (a *WordsApiService) ApplyStyleToDocumentElementOnline(ctx context.Context,
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     boundary := GetBoundary(response)
@@ -380,17 +392,20 @@ func (a *WordsApiService) BuildReport(ctx context.Context, data *models.BuildRep
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -426,11 +441,12 @@ func (a *WordsApiService) BuildReportOnline(ctx context.Context, data *models.Bu
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return response, &apiError
     }
     return response, err
@@ -470,17 +486,20 @@ func (a *WordsApiService) Classify(ctx context.Context, data *models.ClassifyReq
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -518,17 +537,20 @@ func (a *WordsApiService) ClassifyDocument(ctx context.Context, data *models.Cla
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -566,17 +588,20 @@ func (a *WordsApiService) ClassifyDocumentOnline(ctx context.Context, data *mode
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -614,17 +639,20 @@ func (a *WordsApiService) CompareDocument(ctx context.Context, data *models.Comp
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -661,11 +689,12 @@ func (a *WordsApiService) CompareDocumentOnline(ctx context.Context, data *model
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     boundary := GetBoundary(response)
@@ -712,17 +741,20 @@ func (a *WordsApiService) CompressDocument(ctx context.Context, data *models.Com
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -759,11 +791,12 @@ func (a *WordsApiService) CompressDocumentOnline(ctx context.Context, data *mode
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     boundary := GetBoundary(response)
@@ -808,11 +841,12 @@ func (a *WordsApiService) ConvertDocument(ctx context.Context, data *models.Conv
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return response, &apiError
     }
     return response, err
@@ -850,11 +884,12 @@ func (a *WordsApiService) CopyFile(ctx context.Context, data *models.CopyFileReq
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return response, &apiError
     }
     return response, err
@@ -892,11 +927,12 @@ func (a *WordsApiService) CopyFolder(ctx context.Context, data *models.CopyFolde
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return response, &apiError
     }
     return response, err
@@ -936,17 +972,20 @@ func (a *WordsApiService) CopyStyle(ctx context.Context, data *models.CopyStyleR
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -983,11 +1022,12 @@ func (a *WordsApiService) CopyStyleOnline(ctx context.Context, data *models.Copy
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     boundary := GetBoundary(response)
@@ -1034,17 +1074,20 @@ func (a *WordsApiService) CopyStylesFromTemplate(ctx context.Context, data *mode
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -1082,17 +1125,20 @@ func (a *WordsApiService) CreateDocument(ctx context.Context, data *models.Creat
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -1128,11 +1174,12 @@ func (a *WordsApiService) CreateFolder(ctx context.Context, data *models.CreateF
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return response, &apiError
     }
     return response, err
@@ -1172,17 +1219,20 @@ func (a *WordsApiService) CreateOrUpdateDocumentProperty(ctx context.Context, da
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -1219,11 +1269,12 @@ func (a *WordsApiService) CreateOrUpdateDocumentPropertyOnline(ctx context.Conte
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     boundary := GetBoundary(response)
@@ -1270,17 +1321,20 @@ func (a *WordsApiService) DeleteAllParagraphTabStops(ctx context.Context, data *
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -1317,11 +1371,12 @@ func (a *WordsApiService) DeleteAllParagraphTabStopsOnline(ctx context.Context, 
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     boundary := GetBoundary(response)
@@ -1366,11 +1421,12 @@ func (a *WordsApiService) DeleteBookmark(ctx context.Context, data *models.Delet
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return response, &apiError
     }
     return response, err
@@ -1409,11 +1465,12 @@ func (a *WordsApiService) DeleteBookmarkOnline(ctx context.Context, data *models
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     if err != nil {
@@ -1456,11 +1513,12 @@ func (a *WordsApiService) DeleteBookmarks(ctx context.Context, data *models.Dele
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return response, &apiError
     }
     return response, err
@@ -1499,11 +1557,12 @@ func (a *WordsApiService) DeleteBookmarksOnline(ctx context.Context, data *model
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     if err != nil {
@@ -1548,17 +1607,20 @@ func (a *WordsApiService) DeleteBorder(ctx context.Context, data *models.DeleteB
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -1595,11 +1657,12 @@ func (a *WordsApiService) DeleteBorderOnline(ctx context.Context, data *models.D
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     boundary := GetBoundary(response)
@@ -1646,17 +1709,20 @@ func (a *WordsApiService) DeleteBorders(ctx context.Context, data *models.Delete
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -1693,11 +1759,12 @@ func (a *WordsApiService) DeleteBordersOnline(ctx context.Context, data *models.
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     boundary := GetBoundary(response)
@@ -1742,11 +1809,12 @@ func (a *WordsApiService) DeleteComment(ctx context.Context, data *models.Delete
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return response, &apiError
     }
     return response, err
@@ -1785,11 +1853,12 @@ func (a *WordsApiService) DeleteCommentOnline(ctx context.Context, data *models.
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     if err != nil {
@@ -1832,11 +1901,12 @@ func (a *WordsApiService) DeleteComments(ctx context.Context, data *models.Delet
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return response, &apiError
     }
     return response, err
@@ -1875,11 +1945,12 @@ func (a *WordsApiService) DeleteCommentsOnline(ctx context.Context, data *models
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     if err != nil {
@@ -1922,11 +1993,12 @@ func (a *WordsApiService) DeleteCustomXmlPart(ctx context.Context, data *models.
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return response, &apiError
     }
     return response, err
@@ -1965,11 +2037,12 @@ func (a *WordsApiService) DeleteCustomXmlPartOnline(ctx context.Context, data *m
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     if err != nil {
@@ -2012,11 +2085,12 @@ func (a *WordsApiService) DeleteCustomXmlParts(ctx context.Context, data *models
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return response, &apiError
     }
     return response, err
@@ -2055,11 +2129,12 @@ func (a *WordsApiService) DeleteCustomXmlPartsOnline(ctx context.Context, data *
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     if err != nil {
@@ -2102,11 +2177,12 @@ func (a *WordsApiService) DeleteDocumentProperty(ctx context.Context, data *mode
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return response, &apiError
     }
     return response, err
@@ -2145,11 +2221,12 @@ func (a *WordsApiService) DeleteDocumentPropertyOnline(ctx context.Context, data
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     if err != nil {
@@ -2192,11 +2269,12 @@ func (a *WordsApiService) DeleteDrawingObject(ctx context.Context, data *models.
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return response, &apiError
     }
     return response, err
@@ -2235,11 +2313,12 @@ func (a *WordsApiService) DeleteDrawingObjectOnline(ctx context.Context, data *m
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     if err != nil {
@@ -2282,11 +2361,12 @@ func (a *WordsApiService) DeleteField(ctx context.Context, data *models.DeleteFi
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return response, &apiError
     }
     return response, err
@@ -2325,11 +2405,12 @@ func (a *WordsApiService) DeleteFieldOnline(ctx context.Context, data *models.De
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     if err != nil {
@@ -2372,11 +2453,12 @@ func (a *WordsApiService) DeleteFields(ctx context.Context, data *models.DeleteF
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return response, &apiError
     }
     return response, err
@@ -2415,11 +2497,12 @@ func (a *WordsApiService) DeleteFieldsOnline(ctx context.Context, data *models.D
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     if err != nil {
@@ -2462,11 +2545,12 @@ func (a *WordsApiService) DeleteFile(ctx context.Context, data *models.DeleteFil
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return response, &apiError
     }
     return response, err
@@ -2504,11 +2588,12 @@ func (a *WordsApiService) DeleteFolder(ctx context.Context, data *models.DeleteF
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return response, &apiError
     }
     return response, err
@@ -2546,11 +2631,12 @@ func (a *WordsApiService) DeleteFootnote(ctx context.Context, data *models.Delet
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return response, &apiError
     }
     return response, err
@@ -2589,11 +2675,12 @@ func (a *WordsApiService) DeleteFootnoteOnline(ctx context.Context, data *models
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     if err != nil {
@@ -2636,11 +2723,12 @@ func (a *WordsApiService) DeleteFormField(ctx context.Context, data *models.Dele
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return response, &apiError
     }
     return response, err
@@ -2679,11 +2767,12 @@ func (a *WordsApiService) DeleteFormFieldOnline(ctx context.Context, data *model
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     if err != nil {
@@ -2726,11 +2815,12 @@ func (a *WordsApiService) DeleteHeaderFooter(ctx context.Context, data *models.D
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return response, &apiError
     }
     return response, err
@@ -2769,11 +2859,12 @@ func (a *WordsApiService) DeleteHeaderFooterOnline(ctx context.Context, data *mo
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     if err != nil {
@@ -2816,11 +2907,12 @@ func (a *WordsApiService) DeleteHeadersFooters(ctx context.Context, data *models
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return response, &apiError
     }
     return response, err
@@ -2859,11 +2951,12 @@ func (a *WordsApiService) DeleteHeadersFootersOnline(ctx context.Context, data *
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     if err != nil {
@@ -2906,11 +2999,12 @@ func (a *WordsApiService) DeleteMacros(ctx context.Context, data *models.DeleteM
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return response, &apiError
     }
     return response, err
@@ -2949,11 +3043,12 @@ func (a *WordsApiService) DeleteMacrosOnline(ctx context.Context, data *models.D
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     if err != nil {
@@ -2996,11 +3091,12 @@ func (a *WordsApiService) DeleteOfficeMathObject(ctx context.Context, data *mode
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return response, &apiError
     }
     return response, err
@@ -3039,11 +3135,12 @@ func (a *WordsApiService) DeleteOfficeMathObjectOnline(ctx context.Context, data
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     if err != nil {
@@ -3086,11 +3183,12 @@ func (a *WordsApiService) DeleteParagraph(ctx context.Context, data *models.Dele
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return response, &apiError
     }
     return response, err
@@ -3130,17 +3228,20 @@ func (a *WordsApiService) DeleteParagraphListFormat(ctx context.Context, data *m
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -3177,11 +3278,12 @@ func (a *WordsApiService) DeleteParagraphListFormatOnline(ctx context.Context, d
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     boundary := GetBoundary(response)
@@ -3227,11 +3329,12 @@ func (a *WordsApiService) DeleteParagraphOnline(ctx context.Context, data *model
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     if err != nil {
@@ -3276,17 +3379,20 @@ func (a *WordsApiService) DeleteParagraphTabStop(ctx context.Context, data *mode
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -3323,11 +3429,12 @@ func (a *WordsApiService) DeleteParagraphTabStopOnline(ctx context.Context, data
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     boundary := GetBoundary(response)
@@ -3372,11 +3479,12 @@ func (a *WordsApiService) DeleteRun(ctx context.Context, data *models.DeleteRunR
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return response, &apiError
     }
     return response, err
@@ -3415,11 +3523,12 @@ func (a *WordsApiService) DeleteRunOnline(ctx context.Context, data *models.Dele
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     if err != nil {
@@ -3462,11 +3571,12 @@ func (a *WordsApiService) DeleteSection(ctx context.Context, data *models.Delete
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return response, &apiError
     }
     return response, err
@@ -3505,11 +3615,12 @@ func (a *WordsApiService) DeleteSectionOnline(ctx context.Context, data *models.
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     if err != nil {
@@ -3552,11 +3663,12 @@ func (a *WordsApiService) DeleteStructuredDocumentTag(ctx context.Context, data 
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return response, &apiError
     }
     return response, err
@@ -3595,11 +3707,12 @@ func (a *WordsApiService) DeleteStructuredDocumentTagOnline(ctx context.Context,
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     if err != nil {
@@ -3642,11 +3755,12 @@ func (a *WordsApiService) DeleteTable(ctx context.Context, data *models.DeleteTa
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return response, &apiError
     }
     return response, err
@@ -3684,11 +3798,12 @@ func (a *WordsApiService) DeleteTableCell(ctx context.Context, data *models.Dele
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return response, &apiError
     }
     return response, err
@@ -3727,11 +3842,12 @@ func (a *WordsApiService) DeleteTableCellOnline(ctx context.Context, data *model
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     if err != nil {
@@ -3775,11 +3891,12 @@ func (a *WordsApiService) DeleteTableOnline(ctx context.Context, data *models.De
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     if err != nil {
@@ -3822,11 +3939,12 @@ func (a *WordsApiService) DeleteTableRow(ctx context.Context, data *models.Delet
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return response, &apiError
     }
     return response, err
@@ -3865,11 +3983,12 @@ func (a *WordsApiService) DeleteTableRowOnline(ctx context.Context, data *models
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     if err != nil {
@@ -3914,17 +4033,20 @@ func (a *WordsApiService) DeleteWatermark(ctx context.Context, data *models.Dele
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -3961,11 +4083,12 @@ func (a *WordsApiService) DeleteWatermarkOnline(ctx context.Context, data *model
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     boundary := GetBoundary(response)
@@ -4010,11 +4133,12 @@ func (a *WordsApiService) DownloadFile(ctx context.Context, data *models.Downloa
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return response, &apiError
     }
     return response, err
@@ -4054,17 +4178,20 @@ func (a *WordsApiService) ExecuteMailMerge(ctx context.Context, data *models.Exe
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -4100,11 +4227,12 @@ func (a *WordsApiService) ExecuteMailMergeOnline(ctx context.Context, data *mode
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return response, &apiError
     }
     return response, err
@@ -4144,17 +4272,20 @@ func (a *WordsApiService) GetAvailableFonts(ctx context.Context, data *models.Ge
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -4192,17 +4323,20 @@ func (a *WordsApiService) GetBookmarkByName(ctx context.Context, data *models.Ge
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -4240,17 +4374,20 @@ func (a *WordsApiService) GetBookmarkByNameOnline(ctx context.Context, data *mod
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -4288,17 +4425,20 @@ func (a *WordsApiService) GetBookmarks(ctx context.Context, data *models.GetBook
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -4336,17 +4476,20 @@ func (a *WordsApiService) GetBookmarksOnline(ctx context.Context, data *models.G
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -4384,17 +4527,20 @@ func (a *WordsApiService) GetBorder(ctx context.Context, data *models.GetBorderR
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -4432,17 +4578,20 @@ func (a *WordsApiService) GetBorderOnline(ctx context.Context, data *models.GetB
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -4480,17 +4629,20 @@ func (a *WordsApiService) GetBorders(ctx context.Context, data *models.GetBorder
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -4528,17 +4680,20 @@ func (a *WordsApiService) GetBordersOnline(ctx context.Context, data *models.Get
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -4576,17 +4731,20 @@ func (a *WordsApiService) GetComment(ctx context.Context, data *models.GetCommen
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -4624,17 +4782,20 @@ func (a *WordsApiService) GetCommentOnline(ctx context.Context, data *models.Get
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -4672,17 +4833,20 @@ func (a *WordsApiService) GetComments(ctx context.Context, data *models.GetComme
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -4720,17 +4884,20 @@ func (a *WordsApiService) GetCommentsOnline(ctx context.Context, data *models.Ge
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -4768,17 +4935,20 @@ func (a *WordsApiService) GetCustomXmlPart(ctx context.Context, data *models.Get
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -4816,17 +4986,20 @@ func (a *WordsApiService) GetCustomXmlPartOnline(ctx context.Context, data *mode
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -4864,17 +5037,20 @@ func (a *WordsApiService) GetCustomXmlParts(ctx context.Context, data *models.Ge
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -4912,17 +5088,20 @@ func (a *WordsApiService) GetCustomXmlPartsOnline(ctx context.Context, data *mod
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -4960,17 +5139,20 @@ func (a *WordsApiService) GetDocument(ctx context.Context, data *models.GetDocum
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -5008,17 +5190,20 @@ func (a *WordsApiService) GetDocumentDrawingObjectByIndex(ctx context.Context, d
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -5056,17 +5241,20 @@ func (a *WordsApiService) GetDocumentDrawingObjectByIndexOnline(ctx context.Cont
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -5102,11 +5290,12 @@ func (a *WordsApiService) GetDocumentDrawingObjectImageData(ctx context.Context,
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return response, &apiError
     }
     return response, err
@@ -5144,11 +5333,12 @@ func (a *WordsApiService) GetDocumentDrawingObjectImageDataOnline(ctx context.Co
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return response, &apiError
     }
     return response, err
@@ -5186,11 +5376,12 @@ func (a *WordsApiService) GetDocumentDrawingObjectOleData(ctx context.Context, d
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return response, &apiError
     }
     return response, err
@@ -5228,11 +5419,12 @@ func (a *WordsApiService) GetDocumentDrawingObjectOleDataOnline(ctx context.Cont
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return response, &apiError
     }
     return response, err
@@ -5272,17 +5464,20 @@ func (a *WordsApiService) GetDocumentDrawingObjects(ctx context.Context, data *m
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -5320,17 +5515,20 @@ func (a *WordsApiService) GetDocumentDrawingObjectsOnline(ctx context.Context, d
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -5368,17 +5566,20 @@ func (a *WordsApiService) GetDocumentFieldNames(ctx context.Context, data *model
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -5416,17 +5617,20 @@ func (a *WordsApiService) GetDocumentFieldNamesOnline(ctx context.Context, data 
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -5464,17 +5668,20 @@ func (a *WordsApiService) GetDocumentHyperlinkByIndex(ctx context.Context, data 
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -5512,17 +5719,20 @@ func (a *WordsApiService) GetDocumentHyperlinkByIndexOnline(ctx context.Context,
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -5560,17 +5770,20 @@ func (a *WordsApiService) GetDocumentHyperlinks(ctx context.Context, data *model
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -5608,17 +5821,20 @@ func (a *WordsApiService) GetDocumentHyperlinksOnline(ctx context.Context, data 
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -5656,17 +5872,20 @@ func (a *WordsApiService) GetDocumentProperties(ctx context.Context, data *model
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -5704,17 +5923,20 @@ func (a *WordsApiService) GetDocumentPropertiesOnline(ctx context.Context, data 
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -5752,17 +5974,20 @@ func (a *WordsApiService) GetDocumentProperty(ctx context.Context, data *models.
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -5800,17 +6025,20 @@ func (a *WordsApiService) GetDocumentPropertyOnline(ctx context.Context, data *m
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -5848,17 +6076,20 @@ func (a *WordsApiService) GetDocumentProtection(ctx context.Context, data *model
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -5896,17 +6127,20 @@ func (a *WordsApiService) GetDocumentProtectionOnline(ctx context.Context, data 
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -5944,17 +6178,20 @@ func (a *WordsApiService) GetDocumentStatistics(ctx context.Context, data *model
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -5992,17 +6229,20 @@ func (a *WordsApiService) GetDocumentStatisticsOnline(ctx context.Context, data 
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -6038,11 +6278,12 @@ func (a *WordsApiService) GetDocumentWithFormat(ctx context.Context, data *model
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return response, &apiError
     }
     return response, err
@@ -6082,17 +6323,20 @@ func (a *WordsApiService) GetField(ctx context.Context, data *models.GetFieldReq
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -6130,17 +6374,20 @@ func (a *WordsApiService) GetFieldOnline(ctx context.Context, data *models.GetFi
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -6178,17 +6425,20 @@ func (a *WordsApiService) GetFields(ctx context.Context, data *models.GetFieldsR
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -6226,17 +6476,20 @@ func (a *WordsApiService) GetFieldsOnline(ctx context.Context, data *models.GetF
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -6274,17 +6527,20 @@ func (a *WordsApiService) GetFilesList(ctx context.Context, data *models.GetFile
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -6322,17 +6578,20 @@ func (a *WordsApiService) GetFootnote(ctx context.Context, data *models.GetFootn
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -6370,17 +6629,20 @@ func (a *WordsApiService) GetFootnoteOnline(ctx context.Context, data *models.Ge
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -6418,17 +6680,20 @@ func (a *WordsApiService) GetFootnotes(ctx context.Context, data *models.GetFoot
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -6466,17 +6731,20 @@ func (a *WordsApiService) GetFootnotesOnline(ctx context.Context, data *models.G
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -6514,17 +6782,20 @@ func (a *WordsApiService) GetFormField(ctx context.Context, data *models.GetForm
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -6562,17 +6833,20 @@ func (a *WordsApiService) GetFormFieldOnline(ctx context.Context, data *models.G
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -6610,17 +6884,20 @@ func (a *WordsApiService) GetFormFields(ctx context.Context, data *models.GetFor
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -6658,17 +6935,20 @@ func (a *WordsApiService) GetFormFieldsOnline(ctx context.Context, data *models.
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -6706,17 +6986,20 @@ func (a *WordsApiService) GetHeaderFooter(ctx context.Context, data *models.GetH
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -6754,17 +7037,20 @@ func (a *WordsApiService) GetHeaderFooterOfSection(ctx context.Context, data *mo
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -6802,17 +7088,20 @@ func (a *WordsApiService) GetHeaderFooterOfSectionOnline(ctx context.Context, da
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -6850,17 +7139,20 @@ func (a *WordsApiService) GetHeaderFooterOnline(ctx context.Context, data *model
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -6898,17 +7190,20 @@ func (a *WordsApiService) GetHeaderFooters(ctx context.Context, data *models.Get
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -6946,17 +7241,20 @@ func (a *WordsApiService) GetHeaderFootersOnline(ctx context.Context, data *mode
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -6994,17 +7292,20 @@ func (a *WordsApiService) GetInfo(ctx context.Context, data *models.GetInfoReque
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -7042,17 +7343,20 @@ func (a *WordsApiService) GetList(ctx context.Context, data *models.GetListReque
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -7090,17 +7394,20 @@ func (a *WordsApiService) GetListOnline(ctx context.Context, data *models.GetLis
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -7138,17 +7445,20 @@ func (a *WordsApiService) GetLists(ctx context.Context, data *models.GetListsReq
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -7186,17 +7496,20 @@ func (a *WordsApiService) GetListsOnline(ctx context.Context, data *models.GetLi
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -7234,17 +7547,20 @@ func (a *WordsApiService) GetOfficeMathObject(ctx context.Context, data *models.
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -7282,17 +7598,20 @@ func (a *WordsApiService) GetOfficeMathObjectOnline(ctx context.Context, data *m
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -7330,17 +7649,20 @@ func (a *WordsApiService) GetOfficeMathObjects(ctx context.Context, data *models
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -7378,17 +7700,20 @@ func (a *WordsApiService) GetOfficeMathObjectsOnline(ctx context.Context, data *
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -7426,17 +7751,20 @@ func (a *WordsApiService) GetParagraph(ctx context.Context, data *models.GetPara
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -7474,17 +7802,20 @@ func (a *WordsApiService) GetParagraphFormat(ctx context.Context, data *models.G
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -7522,17 +7853,20 @@ func (a *WordsApiService) GetParagraphFormatOnline(ctx context.Context, data *mo
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -7570,17 +7904,20 @@ func (a *WordsApiService) GetParagraphListFormat(ctx context.Context, data *mode
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -7618,17 +7955,20 @@ func (a *WordsApiService) GetParagraphListFormatOnline(ctx context.Context, data
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -7666,17 +8006,20 @@ func (a *WordsApiService) GetParagraphOnline(ctx context.Context, data *models.G
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -7714,17 +8057,20 @@ func (a *WordsApiService) GetParagraphs(ctx context.Context, data *models.GetPar
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -7762,17 +8108,20 @@ func (a *WordsApiService) GetParagraphsOnline(ctx context.Context, data *models.
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -7810,17 +8159,20 @@ func (a *WordsApiService) GetParagraphTabStops(ctx context.Context, data *models
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -7858,17 +8210,20 @@ func (a *WordsApiService) GetParagraphTabStopsOnline(ctx context.Context, data *
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -7906,17 +8261,20 @@ func (a *WordsApiService) GetPublicKey(ctx context.Context, data *models.GetPubl
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -7954,17 +8312,20 @@ func (a *WordsApiService) GetRangeText(ctx context.Context, data *models.GetRang
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -8002,17 +8363,20 @@ func (a *WordsApiService) GetRangeTextOnline(ctx context.Context, data *models.G
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -8050,17 +8414,20 @@ func (a *WordsApiService) GetRun(ctx context.Context, data *models.GetRunRequest
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -8098,17 +8465,20 @@ func (a *WordsApiService) GetRunFont(ctx context.Context, data *models.GetRunFon
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -8146,17 +8516,20 @@ func (a *WordsApiService) GetRunFontOnline(ctx context.Context, data *models.Get
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -8194,17 +8567,20 @@ func (a *WordsApiService) GetRunOnline(ctx context.Context, data *models.GetRunO
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -8242,17 +8618,20 @@ func (a *WordsApiService) GetRuns(ctx context.Context, data *models.GetRunsReque
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -8290,17 +8669,20 @@ func (a *WordsApiService) GetRunsOnline(ctx context.Context, data *models.GetRun
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -8338,17 +8720,20 @@ func (a *WordsApiService) GetSection(ctx context.Context, data *models.GetSectio
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -8386,17 +8771,20 @@ func (a *WordsApiService) GetSectionOnline(ctx context.Context, data *models.Get
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -8434,17 +8822,20 @@ func (a *WordsApiService) GetSectionPageSetup(ctx context.Context, data *models.
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -8482,17 +8873,20 @@ func (a *WordsApiService) GetSectionPageSetupOnline(ctx context.Context, data *m
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -8530,17 +8924,20 @@ func (a *WordsApiService) GetSections(ctx context.Context, data *models.GetSecti
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -8578,17 +8975,20 @@ func (a *WordsApiService) GetSectionsOnline(ctx context.Context, data *models.Ge
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -8626,17 +9026,20 @@ func (a *WordsApiService) GetStructuredDocumentTag(ctx context.Context, data *mo
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -8674,17 +9077,20 @@ func (a *WordsApiService) GetStructuredDocumentTagOnline(ctx context.Context, da
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -8722,17 +9128,20 @@ func (a *WordsApiService) GetStructuredDocumentTags(ctx context.Context, data *m
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -8770,17 +9179,20 @@ func (a *WordsApiService) GetStructuredDocumentTagsOnline(ctx context.Context, d
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -8818,17 +9230,20 @@ func (a *WordsApiService) GetStyle(ctx context.Context, data *models.GetStyleReq
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -8866,17 +9281,20 @@ func (a *WordsApiService) GetStyleFromDocumentElement(ctx context.Context, data 
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -8914,17 +9332,20 @@ func (a *WordsApiService) GetStyleFromDocumentElementOnline(ctx context.Context,
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -8962,17 +9383,20 @@ func (a *WordsApiService) GetStyleOnline(ctx context.Context, data *models.GetSt
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -9010,17 +9434,20 @@ func (a *WordsApiService) GetStyles(ctx context.Context, data *models.GetStylesR
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -9058,17 +9485,20 @@ func (a *WordsApiService) GetStylesOnline(ctx context.Context, data *models.GetS
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -9106,17 +9536,20 @@ func (a *WordsApiService) GetTable(ctx context.Context, data *models.GetTableReq
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -9154,17 +9587,20 @@ func (a *WordsApiService) GetTableCell(ctx context.Context, data *models.GetTabl
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -9202,17 +9638,20 @@ func (a *WordsApiService) GetTableCellFormat(ctx context.Context, data *models.G
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -9250,17 +9689,20 @@ func (a *WordsApiService) GetTableCellFormatOnline(ctx context.Context, data *mo
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -9298,17 +9740,20 @@ func (a *WordsApiService) GetTableCellOnline(ctx context.Context, data *models.G
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -9346,17 +9791,20 @@ func (a *WordsApiService) GetTableOnline(ctx context.Context, data *models.GetTa
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -9394,17 +9842,20 @@ func (a *WordsApiService) GetTableProperties(ctx context.Context, data *models.G
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -9442,17 +9893,20 @@ func (a *WordsApiService) GetTablePropertiesOnline(ctx context.Context, data *mo
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -9490,17 +9944,20 @@ func (a *WordsApiService) GetTableRow(ctx context.Context, data *models.GetTable
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -9538,17 +9995,20 @@ func (a *WordsApiService) GetTableRowFormat(ctx context.Context, data *models.Ge
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -9586,17 +10046,20 @@ func (a *WordsApiService) GetTableRowFormatOnline(ctx context.Context, data *mod
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -9634,17 +10097,20 @@ func (a *WordsApiService) GetTableRowOnline(ctx context.Context, data *models.Ge
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -9682,17 +10148,20 @@ func (a *WordsApiService) GetTables(ctx context.Context, data *models.GetTablesR
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -9730,17 +10199,20 @@ func (a *WordsApiService) GetTablesOnline(ctx context.Context, data *models.GetT
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -9778,17 +10250,20 @@ func (a *WordsApiService) InsertBookmark(ctx context.Context, data *models.Inser
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -9825,11 +10300,12 @@ func (a *WordsApiService) InsertBookmarkOnline(ctx context.Context, data *models
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     boundary := GetBoundary(response)
@@ -9876,17 +10352,20 @@ func (a *WordsApiService) InsertComment(ctx context.Context, data *models.Insert
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -9923,11 +10402,12 @@ func (a *WordsApiService) InsertCommentOnline(ctx context.Context, data *models.
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     boundary := GetBoundary(response)
@@ -9974,17 +10454,20 @@ func (a *WordsApiService) InsertCustomXmlPart(ctx context.Context, data *models.
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -10021,11 +10504,12 @@ func (a *WordsApiService) InsertCustomXmlPartOnline(ctx context.Context, data *m
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     boundary := GetBoundary(response)
@@ -10072,17 +10556,20 @@ func (a *WordsApiService) InsertDrawingObject(ctx context.Context, data *models.
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -10119,11 +10606,12 @@ func (a *WordsApiService) InsertDrawingObjectOnline(ctx context.Context, data *m
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     boundary := GetBoundary(response)
@@ -10170,17 +10658,20 @@ func (a *WordsApiService) InsertField(ctx context.Context, data *models.InsertFi
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -10217,11 +10708,12 @@ func (a *WordsApiService) InsertFieldOnline(ctx context.Context, data *models.In
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     boundary := GetBoundary(response)
@@ -10268,17 +10760,20 @@ func (a *WordsApiService) InsertFootnote(ctx context.Context, data *models.Inser
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -10315,11 +10810,12 @@ func (a *WordsApiService) InsertFootnoteOnline(ctx context.Context, data *models
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     boundary := GetBoundary(response)
@@ -10366,17 +10862,20 @@ func (a *WordsApiService) InsertFormField(ctx context.Context, data *models.Inse
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -10413,11 +10912,12 @@ func (a *WordsApiService) InsertFormFieldOnline(ctx context.Context, data *model
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     boundary := GetBoundary(response)
@@ -10464,17 +10964,20 @@ func (a *WordsApiService) InsertHeaderFooter(ctx context.Context, data *models.I
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -10511,11 +11014,12 @@ func (a *WordsApiService) InsertHeaderFooterOnline(ctx context.Context, data *mo
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     boundary := GetBoundary(response)
@@ -10562,17 +11066,20 @@ func (a *WordsApiService) InsertList(ctx context.Context, data *models.InsertLis
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -10609,11 +11116,12 @@ func (a *WordsApiService) InsertListOnline(ctx context.Context, data *models.Ins
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     boundary := GetBoundary(response)
@@ -10660,17 +11168,20 @@ func (a *WordsApiService) InsertOrUpdateParagraphTabStop(ctx context.Context, da
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -10707,11 +11218,12 @@ func (a *WordsApiService) InsertOrUpdateParagraphTabStopOnline(ctx context.Conte
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     boundary := GetBoundary(response)
@@ -10758,17 +11270,20 @@ func (a *WordsApiService) InsertPageNumbers(ctx context.Context, data *models.In
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -10805,11 +11320,12 @@ func (a *WordsApiService) InsertPageNumbersOnline(ctx context.Context, data *mod
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     boundary := GetBoundary(response)
@@ -10856,17 +11372,20 @@ func (a *WordsApiService) InsertParagraph(ctx context.Context, data *models.Inse
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -10903,11 +11422,12 @@ func (a *WordsApiService) InsertParagraphOnline(ctx context.Context, data *model
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     boundary := GetBoundary(response)
@@ -10954,17 +11474,20 @@ func (a *WordsApiService) InsertRun(ctx context.Context, data *models.InsertRunR
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -11001,11 +11524,12 @@ func (a *WordsApiService) InsertRunOnline(ctx context.Context, data *models.Inse
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     boundary := GetBoundary(response)
@@ -11050,11 +11574,12 @@ func (a *WordsApiService) InsertSection(ctx context.Context, data *models.Insert
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return response, &apiError
     }
     return response, err
@@ -11093,11 +11618,12 @@ func (a *WordsApiService) InsertSectionOnline(ctx context.Context, data *models.
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     if err != nil {
@@ -11142,17 +11668,20 @@ func (a *WordsApiService) InsertStructuredDocumentTag(ctx context.Context, data 
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -11189,11 +11718,12 @@ func (a *WordsApiService) InsertStructuredDocumentTagOnline(ctx context.Context,
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     boundary := GetBoundary(response)
@@ -11240,17 +11770,20 @@ func (a *WordsApiService) InsertStyle(ctx context.Context, data *models.InsertSt
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -11287,11 +11820,12 @@ func (a *WordsApiService) InsertStyleOnline(ctx context.Context, data *models.In
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     boundary := GetBoundary(response)
@@ -11338,17 +11872,20 @@ func (a *WordsApiService) InsertTable(ctx context.Context, data *models.InsertTa
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -11386,17 +11923,20 @@ func (a *WordsApiService) InsertTableCell(ctx context.Context, data *models.Inse
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -11433,11 +11973,12 @@ func (a *WordsApiService) InsertTableCellOnline(ctx context.Context, data *model
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     boundary := GetBoundary(response)
@@ -11483,11 +12024,12 @@ func (a *WordsApiService) InsertTableOnline(ctx context.Context, data *models.In
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     boundary := GetBoundary(response)
@@ -11534,17 +12076,20 @@ func (a *WordsApiService) InsertTableRow(ctx context.Context, data *models.Inser
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -11581,11 +12126,12 @@ func (a *WordsApiService) InsertTableRowOnline(ctx context.Context, data *models
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     boundary := GetBoundary(response)
@@ -11632,17 +12178,20 @@ func (a *WordsApiService) InsertWatermarkImage(ctx context.Context, data *models
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -11679,11 +12228,12 @@ func (a *WordsApiService) InsertWatermarkImageOnline(ctx context.Context, data *
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     boundary := GetBoundary(response)
@@ -11730,17 +12280,20 @@ func (a *WordsApiService) InsertWatermarkText(ctx context.Context, data *models.
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -11777,11 +12330,12 @@ func (a *WordsApiService) InsertWatermarkTextOnline(ctx context.Context, data *m
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     boundary := GetBoundary(response)
@@ -11826,11 +12380,12 @@ func (a *WordsApiService) LinkHeaderFootersToPrevious(ctx context.Context, data 
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return response, &apiError
     }
     return response, err
@@ -11870,17 +12425,20 @@ func (a *WordsApiService) LoadWebDocument(ctx context.Context, data *models.Load
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -11916,11 +12474,12 @@ func (a *WordsApiService) MoveFile(ctx context.Context, data *models.MoveFileReq
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return response, &apiError
     }
     return response, err
@@ -11958,11 +12517,12 @@ func (a *WordsApiService) MoveFolder(ctx context.Context, data *models.MoveFolde
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return response, &apiError
     }
     return response, err
@@ -12000,11 +12560,12 @@ func (a *WordsApiService) OptimizeDocument(ctx context.Context, data *models.Opt
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return response, &apiError
     }
     return response, err
@@ -12043,11 +12604,12 @@ func (a *WordsApiService) OptimizeDocumentOnline(ctx context.Context, data *mode
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     if err != nil {
@@ -12092,17 +12654,20 @@ func (a *WordsApiService) ProtectDocument(ctx context.Context, data *models.Prot
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -12139,11 +12704,12 @@ func (a *WordsApiService) ProtectDocumentOnline(ctx context.Context, data *model
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     boundary := GetBoundary(response)
@@ -12190,17 +12756,20 @@ func (a *WordsApiService) RejectAllRevisions(ctx context.Context, data *models.R
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -12237,11 +12806,12 @@ func (a *WordsApiService) RejectAllRevisionsOnline(ctx context.Context, data *mo
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     boundary := GetBoundary(response)
@@ -12288,17 +12858,20 @@ func (a *WordsApiService) RemoveRange(ctx context.Context, data *models.RemoveRa
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -12335,11 +12908,12 @@ func (a *WordsApiService) RemoveRangeOnline(ctx context.Context, data *models.Re
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     boundary := GetBoundary(response)
@@ -12384,11 +12958,12 @@ func (a *WordsApiService) RenderDrawingObject(ctx context.Context, data *models.
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return response, &apiError
     }
     return response, err
@@ -12426,11 +13001,12 @@ func (a *WordsApiService) RenderDrawingObjectOnline(ctx context.Context, data *m
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return response, &apiError
     }
     return response, err
@@ -12468,11 +13044,12 @@ func (a *WordsApiService) RenderMathObject(ctx context.Context, data *models.Ren
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return response, &apiError
     }
     return response, err
@@ -12510,11 +13087,12 @@ func (a *WordsApiService) RenderMathObjectOnline(ctx context.Context, data *mode
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return response, &apiError
     }
     return response, err
@@ -12552,11 +13130,12 @@ func (a *WordsApiService) RenderPage(ctx context.Context, data *models.RenderPag
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return response, &apiError
     }
     return response, err
@@ -12594,11 +13173,12 @@ func (a *WordsApiService) RenderPageOnline(ctx context.Context, data *models.Ren
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return response, &apiError
     }
     return response, err
@@ -12636,11 +13216,12 @@ func (a *WordsApiService) RenderParagraph(ctx context.Context, data *models.Rend
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return response, &apiError
     }
     return response, err
@@ -12678,11 +13259,12 @@ func (a *WordsApiService) RenderParagraphOnline(ctx context.Context, data *model
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return response, &apiError
     }
     return response, err
@@ -12720,11 +13302,12 @@ func (a *WordsApiService) RenderTable(ctx context.Context, data *models.RenderTa
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return response, &apiError
     }
     return response, err
@@ -12762,11 +13345,12 @@ func (a *WordsApiService) RenderTableOnline(ctx context.Context, data *models.Re
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return response, &apiError
     }
     return response, err
@@ -12806,17 +13390,20 @@ func (a *WordsApiService) ReplaceText(ctx context.Context, data *models.ReplaceT
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -12853,11 +13440,12 @@ func (a *WordsApiService) ReplaceTextOnline(ctx context.Context, data *models.Re
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     boundary := GetBoundary(response)
@@ -12904,17 +13492,20 @@ func (a *WordsApiService) ReplaceWithText(ctx context.Context, data *models.Repl
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -12951,11 +13542,12 @@ func (a *WordsApiService) ReplaceWithTextOnline(ctx context.Context, data *model
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     boundary := GetBoundary(response)
@@ -13000,11 +13592,12 @@ func (a *WordsApiService) ResetCache(ctx context.Context, data *models.ResetCach
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return response, &apiError
     }
     return response, err
@@ -13044,17 +13637,20 @@ func (a *WordsApiService) SaveAs(ctx context.Context, data *models.SaveAsRequest
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -13091,11 +13687,12 @@ func (a *WordsApiService) SaveAsOnline(ctx context.Context, data *models.SaveAsO
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     boundary := GetBoundary(response)
@@ -13142,17 +13739,20 @@ func (a *WordsApiService) SaveAsRange(ctx context.Context, data *models.SaveAsRa
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -13189,11 +13789,12 @@ func (a *WordsApiService) SaveAsRangeOnline(ctx context.Context, data *models.Sa
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     boundary := GetBoundary(response)
@@ -13240,17 +13841,20 @@ func (a *WordsApiService) SaveAsTiff(ctx context.Context, data *models.SaveAsTif
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -13287,11 +13891,12 @@ func (a *WordsApiService) SaveAsTiffOnline(ctx context.Context, data *models.Sav
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     boundary := GetBoundary(response)
@@ -13338,17 +13943,20 @@ func (a *WordsApiService) Search(ctx context.Context, data *models.SearchRequest
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -13386,17 +13994,20 @@ func (a *WordsApiService) SearchOnline(ctx context.Context, data *models.SearchO
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -13434,17 +14045,20 @@ func (a *WordsApiService) SplitDocument(ctx context.Context, data *models.SplitD
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -13481,11 +14095,12 @@ func (a *WordsApiService) SplitDocumentOnline(ctx context.Context, data *models.
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     boundary := GetBoundary(response)
@@ -13532,17 +14147,20 @@ func (a *WordsApiService) UnprotectDocument(ctx context.Context, data *models.Un
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -13579,11 +14197,12 @@ func (a *WordsApiService) UnprotectDocumentOnline(ctx context.Context, data *mod
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     boundary := GetBoundary(response)
@@ -13630,17 +14249,20 @@ func (a *WordsApiService) UpdateBookmark(ctx context.Context, data *models.Updat
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -13677,11 +14299,12 @@ func (a *WordsApiService) UpdateBookmarkOnline(ctx context.Context, data *models
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     boundary := GetBoundary(response)
@@ -13728,17 +14351,20 @@ func (a *WordsApiService) UpdateBorder(ctx context.Context, data *models.UpdateB
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -13775,11 +14401,12 @@ func (a *WordsApiService) UpdateBorderOnline(ctx context.Context, data *models.U
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     boundary := GetBoundary(response)
@@ -13826,17 +14453,20 @@ func (a *WordsApiService) UpdateComment(ctx context.Context, data *models.Update
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -13873,11 +14503,12 @@ func (a *WordsApiService) UpdateCommentOnline(ctx context.Context, data *models.
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     boundary := GetBoundary(response)
@@ -13924,17 +14555,20 @@ func (a *WordsApiService) UpdateCustomXmlPart(ctx context.Context, data *models.
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -13971,11 +14605,12 @@ func (a *WordsApiService) UpdateCustomXmlPartOnline(ctx context.Context, data *m
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     boundary := GetBoundary(response)
@@ -14022,17 +14657,20 @@ func (a *WordsApiService) UpdateDrawingObject(ctx context.Context, data *models.
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -14069,11 +14707,12 @@ func (a *WordsApiService) UpdateDrawingObjectOnline(ctx context.Context, data *m
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     boundary := GetBoundary(response)
@@ -14120,17 +14759,20 @@ func (a *WordsApiService) UpdateField(ctx context.Context, data *models.UpdateFi
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -14167,11 +14809,12 @@ func (a *WordsApiService) UpdateFieldOnline(ctx context.Context, data *models.Up
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     boundary := GetBoundary(response)
@@ -14218,17 +14861,20 @@ func (a *WordsApiService) UpdateFields(ctx context.Context, data *models.UpdateF
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -14265,11 +14911,12 @@ func (a *WordsApiService) UpdateFieldsOnline(ctx context.Context, data *models.U
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     boundary := GetBoundary(response)
@@ -14316,17 +14963,20 @@ func (a *WordsApiService) UpdateFootnote(ctx context.Context, data *models.Updat
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -14363,11 +15013,12 @@ func (a *WordsApiService) UpdateFootnoteOnline(ctx context.Context, data *models
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     boundary := GetBoundary(response)
@@ -14414,17 +15065,20 @@ func (a *WordsApiService) UpdateFormField(ctx context.Context, data *models.Upda
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -14461,11 +15115,12 @@ func (a *WordsApiService) UpdateFormFieldOnline(ctx context.Context, data *model
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     boundary := GetBoundary(response)
@@ -14512,17 +15167,20 @@ func (a *WordsApiService) UpdateList(ctx context.Context, data *models.UpdateLis
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -14560,17 +15218,20 @@ func (a *WordsApiService) UpdateListLevel(ctx context.Context, data *models.Upda
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -14607,11 +15268,12 @@ func (a *WordsApiService) UpdateListLevelOnline(ctx context.Context, data *model
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     boundary := GetBoundary(response)
@@ -14657,11 +15319,12 @@ func (a *WordsApiService) UpdateListOnline(ctx context.Context, data *models.Upd
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     boundary := GetBoundary(response)
@@ -14708,17 +15371,20 @@ func (a *WordsApiService) UpdateParagraphFormat(ctx context.Context, data *model
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -14755,11 +15421,12 @@ func (a *WordsApiService) UpdateParagraphFormatOnline(ctx context.Context, data 
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     boundary := GetBoundary(response)
@@ -14806,17 +15473,20 @@ func (a *WordsApiService) UpdateParagraphListFormat(ctx context.Context, data *m
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -14853,11 +15523,12 @@ func (a *WordsApiService) UpdateParagraphListFormatOnline(ctx context.Context, d
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     boundary := GetBoundary(response)
@@ -14904,17 +15575,20 @@ func (a *WordsApiService) UpdateRun(ctx context.Context, data *models.UpdateRunR
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -14952,17 +15626,20 @@ func (a *WordsApiService) UpdateRunFont(ctx context.Context, data *models.Update
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -14999,11 +15676,12 @@ func (a *WordsApiService) UpdateRunFontOnline(ctx context.Context, data *models.
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     boundary := GetBoundary(response)
@@ -15049,11 +15727,12 @@ func (a *WordsApiService) UpdateRunOnline(ctx context.Context, data *models.Upda
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     boundary := GetBoundary(response)
@@ -15100,17 +15779,20 @@ func (a *WordsApiService) UpdateSectionPageSetup(ctx context.Context, data *mode
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -15147,11 +15829,12 @@ func (a *WordsApiService) UpdateSectionPageSetupOnline(ctx context.Context, data
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     boundary := GetBoundary(response)
@@ -15198,17 +15881,20 @@ func (a *WordsApiService) UpdateStructuredDocumentTag(ctx context.Context, data 
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -15245,11 +15931,12 @@ func (a *WordsApiService) UpdateStructuredDocumentTagOnline(ctx context.Context,
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     boundary := GetBoundary(response)
@@ -15296,17 +15983,20 @@ func (a *WordsApiService) UpdateStyle(ctx context.Context, data *models.UpdateSt
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -15343,11 +16033,12 @@ func (a *WordsApiService) UpdateStyleOnline(ctx context.Context, data *models.Up
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     boundary := GetBoundary(response)
@@ -15394,17 +16085,20 @@ func (a *WordsApiService) UpdateTableCellFormat(ctx context.Context, data *model
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -15441,11 +16135,12 @@ func (a *WordsApiService) UpdateTableCellFormatOnline(ctx context.Context, data 
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     boundary := GetBoundary(response)
@@ -15492,17 +16187,20 @@ func (a *WordsApiService) UpdateTableProperties(ctx context.Context, data *model
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -15539,11 +16237,12 @@ func (a *WordsApiService) UpdateTablePropertiesOnline(ctx context.Context, data 
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     boundary := GetBoundary(response)
@@ -15590,17 +16289,20 @@ func (a *WordsApiService) UpdateTableRowFormat(ctx context.Context, data *models
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -15637,11 +16339,12 @@ func (a *WordsApiService) UpdateTableRowFormatOnline(ctx context.Context, data *
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
     boundary := GetBoundary(response)
@@ -15688,17 +16391,20 @@ func (a *WordsApiService) UploadFile(ctx context.Context, data *models.UploadFil
     }
     if response.StatusCode >= 300 {
         var apiError models.WordsApiErrorResponse;
-
-        if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
             return successPayload, nil, err
         }
 
+        apiError.Deserialize(jsonMap)
         return successPayload, response, &apiError
     }
-    if err = json.NewDecoder(response.Body).Decode(&successPayload); err != nil {
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
         return successPayload, response, err
     }
 
+    successPayload.Deserialize(jsonMap)
     return successPayload, response, err
 }
 
@@ -15712,7 +16418,7 @@ func (a *WordsApiService) UploadFile(ctx context.Context, data *models.UploadFil
  * @requests to be called as one call.
 @return array of results */
 func (a *WordsApiService) Batch(ctx context.Context, requests ...models.BatchPartRequest) ([]interface{}, *http.Response, error) {
-	return a.batch(ctx, false, requests)
+    return a.batch(ctx, false, requests)
 }
 
 /* WordsApiService Batch request without intermediate results.
@@ -15720,186 +16426,188 @@ func (a *WordsApiService) Batch(ctx context.Context, requests ...models.BatchPar
  * @requests to be called as one call.
 @return array with one element (a result of last executed request). */
 func (a *WordsApiService) BatchWithoutIntermidiateResults(ctx context.Context, requests ...models.BatchPartRequest) ([]interface{}, *http.Response, error) {
-	return a.batch(ctx, true, requests)
+    return a.batch(ctx, true, requests)
 }
 
 func (a *WordsApiService) batch(ctx context.Context, withoutIntermediateResults bool, requests []models.BatchPartRequest) ([]interface{}, *http.Response, error) {
 
-	if requests == nil || len(requests) == 0 {
-		return nil, nil, errors.New("The Batch method requires one or more requests.")
-	}
+    if requests == nil || len(requests) == 0 {
+        return nil, nil, errors.New("The Batch method requires one or more requests.")
+    }
 
-	// create map of requests
-	rs := make(map[string]models.BatchPartRequest)
+    // create map of requests
+    rs := make(map[string]models.BatchPartRequest)
 
-	// generate HTTP requests
-	httpRequests := []http.Request{}
+    // generate HTTP requests
+    httpRequests := []http.Request{}
 
-	for _, r := range requests {
-		rs[*r.RequestId] = r
+    for _, r := range requests {
+        rs[*r.RequestId] = r
 
-		data, err := r.CreateRequestData()
-		if err != nil {
-			return nil, nil, err
-		}
+        data, err := r.CreateRequestData()
+        if err != nil {
+            return nil, nil, err
+        }
 
-		// fix path
-		data.Path = data.Path[7:]
+        // fix path
+        data.Path = data.Path[7:]
 
-		req, err := a.client.prepareRequest(ctx, data)
-		if err != nil {
-			return nil, nil, err
-		}
+        req, err := a.client.prepareRequest(ctx, data)
+        if err != nil {
+            return nil, nil, err
+        }
 
-		// add the request and its parent IDs
-		req.Header.Add("RequestId", *r.RequestId)
-		if r.ParentRequestId != nil {
-			req.Header.Add("DependsOn", *r.ParentRequestId)
-		}
+        // add the request and its parent IDs
+        req.Header.Add("RequestId", *r.RequestId)
+        if r.ParentRequestId != nil {
+            req.Header.Add("DependsOn", *r.ParentRequestId)
+        }
 
-		httpRequests = append(httpRequests, *req)
-	}
+        httpRequests = append(httpRequests, *req)
+    }
 
-	// create body
-	reader, writer := io.Pipe()
-	defer reader.Close()
+    // create body
+    reader, writer := io.Pipe()
+    defer reader.Close()
 
-	bodyWriter := multipart.NewWriter(writer)
-	boundary := bodyWriter.Boundary()
+    bodyWriter := multipart.NewWriter(writer)
+    boundary := bodyWriter.Boundary()
 
-	go func() {
+    go func() {
 
-		for _, req := range httpRequests {
-			headers := make(textproto.MIMEHeader)
-			headers.Set("Content-Type", "application/http; msgtype=request")
-			partWriter, _ := bodyWriter.CreatePart(headers)
+        for _, req := range httpRequests {
+            headers := make(textproto.MIMEHeader)
+            headers.Set("Content-Type", "application/http; msgtype=request")
+            partWriter, _ := bodyWriter.CreatePart(headers)
 
-			io.WriteString(partWriter, fmt.Sprintf("%s %s \r\n", req.Method, req.URL))
+            io.WriteString(partWriter, fmt.Sprintf("%s %s \r\n", req.Method, req.URL))
 
-			if (req.Body != nil) && (req.Header.Get("Content-Type") != "") {
-				io.WriteString(partWriter, "Content-Type: "+req.Header.Get("Content-Type"))
-				io.WriteString(partWriter, "\r\n")
-			}
+            if (req.Body != nil) && (req.Header.Get("Content-Type") != "") {
+                io.WriteString(partWriter, "Content-Type: "+req.Header.Get("Content-Type"))
+                io.WriteString(partWriter, "\r\n")
+            }
 
-			io.WriteString(partWriter, "RequestId: "+req.Header.Get("RequestId")+"\r\n")
-			if req.Header.Get("DependsOn") != "" {
-				io.WriteString(partWriter, "DependsOn: "+req.Header.Get("DependsOn")+"\r\n")
-			}
+            io.WriteString(partWriter, "RequestId: "+req.Header.Get("RequestId")+"\r\n")
+            if req.Header.Get("DependsOn") != "" {
+                io.WriteString(partWriter, "DependsOn: "+req.Header.Get("DependsOn")+"\r\n")
+            }
 
-			io.WriteString(partWriter, "\r\n")
+            io.WriteString(partWriter, "\r\n")
 
-			if req.Body != nil {
-				io.Copy(partWriter, req.Body)
-			}
-		}
+            if req.Body != nil {
+                io.Copy(partWriter, req.Body)
+            }
+        }
 
-		bodyWriter.Close()
-		writer.Close()
-	}()
+        bodyWriter.Close()
+        writer.Close()
+    }()
 
     url := a.client.cfg.BaseUrl+"/words/batch"
     if withoutIntermediateResults {
         url = url + "?displayIntermediateResults=false"
     }
 
-	request, err := http.NewRequest("PUT", url, reader)
-	if err != nil {
-		return nil, nil, err
-	}
+    request, err := http.NewRequest("PUT", url, reader)
+    if err != nil {
+        return nil, nil, err
+    }
 
-	request.Header.Add("Content-Type", "multipart/batching;boundary="+boundary)
+    request.Header.Add("Content-Type", "multipart/batching;boundary="+boundary)
 
-	if ctx != nil {
-		// add context to the request
-		request = request.WithContext(ctx)
+    if ctx != nil {
+        // add context to the request
+        request = request.WithContext(ctx)
 
-		// AccessToken Authentication
-		if auth, ok := ctx.Value(models.ContextAccessToken).(string); ok {
-			request.Header.Add("Authorization", "Bearer "+auth)
-		}
-	}
+        // AccessToken Authentication
+        if auth, ok := ctx.Value(models.ContextAccessToken).(string); ok {
+            request.Header.Add("Authorization", "Bearer "+auth)
+        }
+    }
 
-	for header, value := range a.client.cfg.DefaultHeader {
-		request.Header.Add(header, value)
-	}
+    for header, value := range a.client.cfg.DefaultHeader {
+        request.Header.Add(header, value)
+    }
 
-	var successPayload []interface{}
-	response, err := a.client.callAPI(request)
+    var successPayload []interface{}
+    response, err := a.client.callAPI(request)
 
-	if err != nil || response == nil {
-		return successPayload, response, err
-	}
+    if err != nil || response == nil {
+        return successPayload, response, err
+    }
 
     defer response.Body.Close()
 
-	if response.StatusCode == 401 {
-		return successPayload, nil, errors.New("Access is denied")
-	}
-	if response.StatusCode >= 300 {
-		var apiError models.WordsApiErrorResponse
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
+            return successPayload, response, err
+        }
 
-		if err = json.NewDecoder(response.Body).Decode(&apiError); err != nil {
-			return successPayload, response, err
-		}
+        apiError.Deserialize(jsonMap)
+        return successPayload, response, &apiError
+    }
 
-		return successPayload, response, &apiError
-	}
+    _, params, err := mime.ParseMediaType(response.Header.Get("Content-Type"))
+    if err != nil {
+        return successPayload, response, err
+    }
 
-	_, params, err := mime.ParseMediaType(response.Header.Get("Content-Type"))
-	if err != nil {
-		return successPayload, response, err
-	}
+    mr := multipart.NewReader(response.Body, params["boundary"])
+    for part, err := mr.NextPart(); err == nil; part, err = mr.NextPart() {
 
-	mr := multipart.NewReader(response.Body, params["boundary"])
-	for part, err := mr.NextPart(); err == nil; part, err = mr.NextPart() {
+        r := bufio.NewReader(part)
+        status, _ := r.ReadString('\n')
+        statusParts := strings.Split(status, " ")
+        statusCode, _ := atoi(statusParts[0])
 
-		r := bufio.NewReader(part)
-		status, _ := r.ReadString('\n')
-		statusParts := strings.Split(status, " ")
-		statusCode, _ := atoi(statusParts[0])
-
-		// parse headers
+        // parse headers
         hs := make(map[string]string)
-		line := status
-		for line != "" {
-			line, _ = r.ReadString('\n')
-			line = strings.ReplaceAll(line, "\r\n", "")
+        line := status
+        for line != "" {
+            line, _ = r.ReadString('\n')
+            line = strings.ReplaceAll(line, "\r\n", "")
             header_parts  := strings.Split(line, ":")
             if len(header_parts) == 2 {
                 hs[header_parts[0]] = strings.Trim(header_parts[1], " ")
             }
-		}
+        }
 
         id := hs["RequestId"]
 
-		if statusCode >= 300 {
-			var apiError models.WordsApiErrorResponse
+        if statusCode >= 300 {
+            var apiError models.WordsApiErrorResponse
+            var jsonMap map[string]interface{}
+            if err = json.NewDecoder(r).Decode(&jsonMap); err != nil {
+                return successPayload, response, err
+            }
 
-			if err = json.NewDecoder(r).Decode(&apiError); err != nil {
-				return successPayload, response, err
-			}
-
-			return successPayload, response, &apiError
-		}
+            apiError.Deserialize(jsonMap)
+            return successPayload, response, &apiError
+        }
 
         boundary := GetPartBoundary(part)
 
-		body, _ := ioutil.ReadAll(r)
+        body, _ := ioutil.ReadAll(r)
 
-		rq := rs[id]
-		currentResult, err := (&rq).CreateResponse(bytes.NewReader(body), boundary)
-		if err != nil {
-			return successPayload, response, err
-		}
+        rq := rs[id]
+        currentResult, err := (&rq).CreateResponse(bytes.NewReader(body), boundary)
+        if err != nil {
+            return successPayload, response, err
+        }
 
-		successPayload = append(successPayload, currentResult)
-	}
+        successPayload = append(successPayload, currentResult)
+    }
 
-	if err != io.EOF {
-		return successPayload, response, err
-	}
+    if err != io.EOF {
+        return successPayload, response, err
+    }
 
-	return successPayload, response, err
+    return successPayload, response, err
 }
 
 
@@ -15908,5 +16616,5 @@ func (a *WordsApiService) batch(ctx context.Context, withoutIntermediateResults 
  * @data data to encrypt.
 @return encrypted data. */
 func (a *WordsApiService) Encrypt(ctx context.Context, data string) (string, error) {
-	return a.client.encrypt(ctx, data)
+    return a.client.encrypt(ctx, data)
 }

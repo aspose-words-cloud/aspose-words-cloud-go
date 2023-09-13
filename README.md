@@ -16,6 +16,11 @@ Feel free to explore the [Developer's Guide](https://docs.aspose.cloud/display/w
 - Add & remove watermarks and protection.
 - Read & write access to Document Object Model.
 
+## Enhancements in Version 23.9
+
+- Support for class inheritance in responses from the server.
+
+
 ## Enhancements in Version 23.6
 
 - Fix XMLHttpRequest in web applications.
@@ -340,7 +345,7 @@ Go code:
 
 	result, _, _ := wordsApi.GetParagraphs(ctx, remoteName, options)
 
-	fmt.Println(result.Paragraphs.ParagraphLinkList[0].Text)
+	fmt.Println(result.Paragraphs.GetParagraphLinkList()[0].GetText())
 
 	// End README example
 ```

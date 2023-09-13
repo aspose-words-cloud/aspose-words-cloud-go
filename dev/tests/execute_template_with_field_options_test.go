@@ -70,8 +70,8 @@ func Test_ExecuteTemplateWithFieldOptions_ExecuteTemplateWithFieldOptions(t *tes
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.Document, "Validate ExecuteTemplateWithFieldOptions response.");
-    assert.Equal(t, "TestMailMergeWithOptions.docx", actual.Document.FileName, "Validate ExecuteTemplateWithFieldOptions response.");
+    assert.NotNil(t, actual.GetDocument(), "Validate ExecuteTemplateWithFieldOptions response.");
+    assert.Equal(t, "TestMailMergeWithOptions.docx", DereferenceValue(actual.GetDocument().GetFileName()), "Validate ExecuteTemplateWithFieldOptions response.");
 }
 
 // Test for execute template online.

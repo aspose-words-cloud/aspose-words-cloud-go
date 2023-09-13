@@ -60,8 +60,8 @@ func Test_Comment_GetComment(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.Comment, "Validate GetComment response.");
-    assert.Equal(t, "Comment 1" + "\r\n\r\n", actual.Comment.Text, "Validate GetComment response.");
+    assert.NotNil(t, actual.GetComment(), "Validate GetComment response.");
+    assert.Equal(t, "Comment 1" + "\r\n\r\n", DereferenceValue(actual.GetComment().GetText()), "Validate GetComment response.");
 }
 
 // Test for getting comment by specified comment's index online.
@@ -113,10 +113,10 @@ func Test_Comment_GetComments(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.Comments, "Validate GetComments response.");
-    assert.NotNil(t, actual.Comments.CommentList, "Validate GetComments response.");
-    assert.Equal(t, 1, len(actual.Comments.CommentList), "Validate GetComments response.");
-    assert.Equal(t, "Comment 1" + "\r\n\r\n", actual.Comments.CommentList[0].Text, "Validate GetComments response.");
+    assert.NotNil(t, actual.GetComments(), "Validate GetComments response.");
+    assert.NotNil(t, actual.GetComments().GetCommentList(), "Validate GetComments response.");
+    assert.Equal(t, 1, len(actual.GetComments().GetCommentList()), "Validate GetComments response.");
+    assert.Equal(t, "Comment 1" + "\r\n\r\n", DereferenceValue(actual.GetComments().GetCommentList()[0].GetText()), "Validate GetComments response.");
 }
 
 // Test for getting all comments from document online.
@@ -183,11 +183,11 @@ func Test_Comment_InsertComment(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.Comment, "Validate InsertComment response.");
-    assert.Equal(t, "A new Comment" + "\r\n", actual.Comment.Text, "Validate InsertComment response.");
-    assert.NotNil(t, actual.Comment.RangeStart, "Validate InsertComment response.");
-    assert.NotNil(t, actual.Comment.RangeStart.Node, "Validate InsertComment response.");
-    assert.Equal(t, "0.3.0.4", actual.Comment.RangeStart.Node.NodeId, "Validate InsertComment response.");
+    assert.NotNil(t, actual.GetComment(), "Validate InsertComment response.");
+    assert.Equal(t, "A new Comment" + "\r\n", DereferenceValue(actual.GetComment().GetText()), "Validate InsertComment response.");
+    assert.NotNil(t, actual.GetComment().GetRangeStart(), "Validate InsertComment response.");
+    assert.NotNil(t, actual.GetComment().GetRangeStart().GetNode(), "Validate InsertComment response.");
+    assert.Equal(t, "0.3.0.4", DereferenceValue(actual.GetComment().GetRangeStart().GetNode().GetNodeId()), "Validate InsertComment response.");
 }
 
 // Test for adding comment online.
@@ -271,11 +271,11 @@ func Test_Comment_UpdateComment(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.Comment, "Validate UpdateComment response.");
-    assert.Equal(t, "A new Comment" + "\r\n", actual.Comment.Text, "Validate UpdateComment response.");
-    assert.NotNil(t, actual.Comment.RangeStart, "Validate UpdateComment response.");
-    assert.NotNil(t, actual.Comment.RangeStart.Node, "Validate UpdateComment response.");
-    assert.Equal(t, "0.3.0.1", actual.Comment.RangeStart.Node.NodeId, "Validate UpdateComment response.");
+    assert.NotNil(t, actual.GetComment(), "Validate UpdateComment response.");
+    assert.Equal(t, "A new Comment" + "\r\n", DereferenceValue(actual.GetComment().GetText()), "Validate UpdateComment response.");
+    assert.NotNil(t, actual.GetComment().GetRangeStart(), "Validate UpdateComment response.");
+    assert.NotNil(t, actual.GetComment().GetRangeStart().GetNode(), "Validate UpdateComment response.");
+    assert.Equal(t, "0.3.0.1", DereferenceValue(actual.GetComment().GetRangeStart().GetNode().GetNodeId()), "Validate UpdateComment response.");
 }
 
 // Test for updating comment online.

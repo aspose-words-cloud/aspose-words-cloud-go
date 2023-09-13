@@ -58,9 +58,9 @@ func Test_File_UploadFile(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.Uploaded, "Validate UploadFile response.");
-    assert.Equal(t, 1, len(actual.Uploaded), "Validate UploadFile response.");
-    assert.Equal(t, "TestUploadFile.docx", actual.Uploaded[0], "Validate UploadFile response.");
+    assert.NotNil(t, actual.GetUploaded(), "Validate UploadFile response.");
+    assert.Equal(t, 1, len(actual.GetUploaded()), "Validate UploadFile response.");
+    assert.Equal(t, "TestUploadFile.docx", DereferenceValue(actual.GetUploaded()[0]), "Validate UploadFile response.");
 }
 
 // Test for copy file.

@@ -67,5 +67,5 @@ func Test_Font_GetAvailableFonts(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.SystemFonts, "Validate GetAvailableFonts response.");
+    assert.NotNil(t, actual.GetSystemFonts(), "Validate GetAvailableFonts response.");
 }

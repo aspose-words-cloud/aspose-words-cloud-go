@@ -63,9 +63,9 @@ func Test_SplitDocumentToFormat_SplitDocument(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.SplitResult, "Validate SplitDocument response.");
-    assert.NotNil(t, actual.SplitResult.Pages, "Validate SplitDocument response.");
-    assert.Equal(t, 2, len(actual.SplitResult.Pages), "Validate SplitDocument response.");
+    assert.NotNil(t, actual.GetSplitResult(), "Validate SplitDocument response.");
+    assert.NotNil(t, actual.GetSplitResult().GetPages(), "Validate SplitDocument response.");
+    assert.Equal(t, 2, len(actual.GetSplitResult().GetPages()), "Validate SplitDocument response.");
 }
 
 // Test for document splitting online.

@@ -55,6 +55,7 @@ import (
     "strings"
     "time"
     "unicode/utf8"
+
     "github.com/aspose-words-cloud/aspose-words-cloud-go/dev/api/models"
     "golang.org/x/oauth2"
 )
@@ -64,7 +65,7 @@ var (
     xmlCheck = regexp.MustCompile("(?i:[application|text]/xml)")
 )
 
-// APIClient manages communication with the Aspose.Words for Cloud API Reference API v23.8
+// APIClient manages communication with the Aspose.Words for Cloud API Reference API v23.9
 // In most cases there should be only one, shared, APIClient.
 type APIClient struct {
     cfg     *models.Configuration
@@ -365,8 +366,10 @@ func (c *APIClient) encrypt(ctx context.Context, data string) (string, error) {
                 return "", err
             }
 
-            modulus = rsaKeyData.Modulus
-            exponent = rsaKeyData.Exponent
+            if rsaKeyData.Modulus != nil && rsaKeyData.Exponent != nil {
+                modulus = *rsaKeyData.Modulus
+                exponent = *rsaKeyData.Exponent
+            }
         }
 
         exponentBytes, err := base64.StdEncoding.DecodeString(exponent)

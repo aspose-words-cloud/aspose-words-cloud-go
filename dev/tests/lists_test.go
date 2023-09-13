@@ -59,10 +59,10 @@ func Test_Lists_GetLists(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.Lists, "Validate GetLists response.");
-    assert.NotNil(t, actual.Lists.ListInfo, "Validate GetLists response.");
-    assert.Equal(t, 2, len(actual.Lists.ListInfo), "Validate GetLists response.");
-    assert.Equal(t, int32(1), actual.Lists.ListInfo[0].ListId, "Validate GetLists response.");
+    assert.NotNil(t, actual.GetLists(), "Validate GetLists response.");
+    assert.NotNil(t, actual.GetLists().GetListInfo(), "Validate GetLists response.");
+    assert.Equal(t, 2, len(actual.GetLists().GetListInfo()), "Validate GetLists response.");
+    assert.Equal(t, int32(1), DereferenceValue(actual.GetLists().GetListInfo()[0].GetListId()), "Validate GetLists response.");
 }
 
 // Test for getting lists from document online.
@@ -114,8 +114,8 @@ func Test_Lists_GetList(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.List, "Validate GetList response.");
-    assert.Equal(t, int32(1), actual.List.ListId, "Validate GetList response.");
+    assert.NotNil(t, actual.GetList(), "Validate GetList response.");
+    assert.Equal(t, int32(1), DereferenceValue(actual.GetList().GetListId()), "Validate GetList response.");
 }
 
 // Test for getting list from document online.
@@ -200,9 +200,9 @@ func Test_Lists_UpdateListOnline(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.Model.List, "Validate UpdateListOnline response.");
-    assert.Equal(t, int32(1), actual.Model.List.ListId, "Validate UpdateListOnline response.");
-    assert.True(t, actual.Model.List.IsRestartAtEachSection, "Validate UpdateListOnline response.");
+    assert.NotNil(t, actual.GetModel().GetList(), "Validate UpdateListOnline response.");
+    assert.Equal(t, int32(1), DereferenceValue(actual.GetModel().GetList().GetListId()), "Validate UpdateListOnline response.");
+    assert.Equal(t, true, DereferenceValue(actual.GetModel().GetList().GetIsRestartAtEachSection()), "Validate UpdateListOnline response.");
 }
 
 // Test for updating list level from document.
@@ -265,10 +265,10 @@ func Test_Lists_UpdateListLevelOnline(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.Model.List, "Validate UpdateListLevelOnline response.");
-    assert.NotNil(t, actual.Model.List.ListLevels, "Validate UpdateListLevelOnline response.");
-    assert.NotNil(t, actual.Model.List.ListLevels.ListLevel, "Validate UpdateListLevelOnline response.");
-    assert.Equal(t, 9, len(actual.Model.List.ListLevels.ListLevel), "Validate UpdateListLevelOnline response.");
+    assert.NotNil(t, actual.GetModel().GetList(), "Validate UpdateListLevelOnline response.");
+    assert.NotNil(t, actual.GetModel().GetList().GetListLevels(), "Validate UpdateListLevelOnline response.");
+    assert.NotNil(t, actual.GetModel().GetList().GetListLevels().GetListLevel(), "Validate UpdateListLevelOnline response.");
+    assert.Equal(t, 9, len(actual.GetModel().GetList().GetListLevels().GetListLevel()), "Validate UpdateListLevelOnline response.");
 
 }
 
@@ -301,8 +301,8 @@ func Test_Lists_InsertList(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.List, "Validate InsertList response.");
-    assert.Equal(t, int32(3), actual.List.ListId, "Validate InsertList response.");
+    assert.NotNil(t, actual.GetList(), "Validate InsertList response.");
+    assert.Equal(t, int32(3), DereferenceValue(actual.GetList().GetListId()), "Validate InsertList response.");
 }
 
 // Test for inserting list from document online.

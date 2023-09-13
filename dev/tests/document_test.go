@@ -59,8 +59,8 @@ func Test_Document_GetDocument(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.Document, "Validate GetDocument response.");
-    assert.Equal(t, "TestGetDocument.docx", actual.Document.FileName, "Validate GetDocument response.");
+    assert.NotNil(t, actual.GetDocument(), "Validate GetDocument response.");
+    assert.Equal(t, "TestGetDocument.docx", DereferenceValue(actual.GetDocument().GetFileName()), "Validate GetDocument response.");
 }
 
 // Test for creating word document.
@@ -85,6 +85,6 @@ func Test_Document_CreateDocument(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.Document, "Validate CreateDocument response.");
-    assert.Equal(t, "TestCreateDocument.doc", actual.Document.FileName, "Validate CreateDocument response.");
+    assert.NotNil(t, actual.GetDocument(), "Validate CreateDocument response.");
+    assert.Equal(t, "TestCreateDocument.doc", DereferenceValue(actual.GetDocument().GetFileName()), "Validate CreateDocument response.");
 }

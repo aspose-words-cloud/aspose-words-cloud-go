@@ -104,7 +104,7 @@ func Test_Folder_GetFilesList(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.Value, "Validate GetFilesList response.");
+    assert.NotNil(t, actual.GetValue(), "Validate GetFilesList response.");
 }
 
 // Test for copy folder.
