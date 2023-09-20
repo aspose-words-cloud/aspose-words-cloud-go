@@ -94,6 +94,10 @@ type IJpegSaveOptionsData interface {
     SetUseHighQualityRendering(value *bool)
     GetVerticalResolution() *float64
     SetVerticalResolution(value *float64)
+    GetImageHeight() *int32
+    SetImageHeight(value *int32)
+    GetImageWidth() *int32
+    SetImageWidth(value *int32)
     GetUseGdiEmfRenderer() *bool
     SetUseGdiEmfRenderer(value *bool)
     GetSaveFormat() *string
@@ -190,6 +194,12 @@ type JpegSaveOptionsData struct {
 
     // Container class for jpeg save options.
     VerticalResolution *float64 `json:"VerticalResolution,omitempty"`
+
+    // Container class for jpeg save options.
+    ImageHeight *int32 `json:"ImageHeight,omitempty"`
+
+    // Container class for jpeg save options.
+    ImageWidth *int32 `json:"ImageWidth,omitempty"`
 
     // Container class for jpeg save options.
     UseGdiEmfRenderer *bool `json:"UseGdiEmfRenderer,omitempty"`
@@ -605,6 +615,34 @@ func (obj *JpegSaveOptionsData) Deserialize(json map[string]interface{}) {
 
     }
 
+    if jsonValue, exists := json["ImageHeight"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.ImageHeight = new(int32)
+            *obj.ImageHeight = int32(parsedValue)
+        }
+
+    } else if jsonValue, exists := json["imageHeight"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.ImageHeight = new(int32)
+            *obj.ImageHeight = int32(parsedValue)
+        }
+
+    }
+
+    if jsonValue, exists := json["ImageWidth"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.ImageWidth = new(int32)
+            *obj.ImageWidth = int32(parsedValue)
+        }
+
+    } else if jsonValue, exists := json["imageWidth"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.ImageWidth = new(int32)
+            *obj.ImageWidth = int32(parsedValue)
+        }
+
+    }
+
     if jsonValue, exists := json["UseGdiEmfRenderer"]; exists {
         if parsedValue, valid := jsonValue.(bool); valid {
             obj.UseGdiEmfRenderer = &parsedValue
@@ -860,6 +898,22 @@ func (obj *JpegSaveOptionsData) GetVerticalResolution() *float64 {
 
 func (obj *JpegSaveOptionsData) SetVerticalResolution(value *float64) {
     obj.VerticalResolution = value
+}
+
+func (obj *JpegSaveOptionsData) GetImageHeight() *int32 {
+    return obj.ImageHeight
+}
+
+func (obj *JpegSaveOptionsData) SetImageHeight(value *int32) {
+    obj.ImageHeight = value
+}
+
+func (obj *JpegSaveOptionsData) GetImageWidth() *int32 {
+    return obj.ImageWidth
+}
+
+func (obj *JpegSaveOptionsData) SetImageWidth(value *int32) {
+    obj.ImageWidth = value
 }
 
 func (obj *JpegSaveOptionsData) GetUseGdiEmfRenderer() *bool {

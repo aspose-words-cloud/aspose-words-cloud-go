@@ -96,6 +96,10 @@ type IImageSaveOptionsData interface {
     SetUseHighQualityRendering(value *bool)
     GetVerticalResolution() *float64
     SetVerticalResolution(value *float64)
+    GetImageHeight() *int32
+    SetImageHeight(value *int32)
+    GetImageWidth() *int32
+    SetImageWidth(value *int32)
     GetUseGdiEmfRenderer() *bool
     SetUseGdiEmfRenderer(value *bool)
 }

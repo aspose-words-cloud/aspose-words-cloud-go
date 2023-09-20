@@ -1,6 +1,6 @@
 /*
  * --------------------------------------------------------------------------------
- * <copyright company="Aspose" file="bmp_save_options_data.go">
+ * <copyright company="Aspose" file="eps_save_options_data.go">
  *   Copyright (c) 2023 Aspose.Words for Cloud
  * </copyright>
  * <summary>
@@ -27,10 +27,10 @@
 
 package models
 
-// Container class for bmp save options.
+// Container class for eps save options.
 
-type IBmpSaveOptionsData interface {
-    IsBmpSaveOptionsData() bool
+type IEpsSaveOptionsData interface {
+    IsEpsSaveOptionsData() bool
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
@@ -104,128 +104,128 @@ type IBmpSaveOptionsData interface {
     SetSaveFormat(value *string)
 }
 
-type BmpSaveOptionsData struct {
-    // Container class for bmp save options.
+type EpsSaveOptionsData struct {
+    // Container class for eps save options.
     AllowEmbeddingPostScriptFonts *bool `json:"AllowEmbeddingPostScriptFonts,omitempty"`
 
-    // Container class for bmp save options.
+    // Container class for eps save options.
     CustomTimeZoneInfoData ITimeZoneInfoData `json:"CustomTimeZoneInfoData,omitempty"`
 
-    // Container class for bmp save options.
+    // Container class for eps save options.
     Dml3DEffectsRenderingMode *string `json:"Dml3DEffectsRenderingMode,omitempty"`
 
-    // Container class for bmp save options.
+    // Container class for eps save options.
     DmlEffectsRenderingMode *string `json:"DmlEffectsRenderingMode,omitempty"`
 
-    // Container class for bmp save options.
+    // Container class for eps save options.
     DmlRenderingMode *string `json:"DmlRenderingMode,omitempty"`
 
-    // Container class for bmp save options.
+    // Container class for eps save options.
     FileName *string `json:"FileName,omitempty"`
 
-    // Container class for bmp save options.
+    // Container class for eps save options.
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
 
-    // Container class for bmp save options.
+    // Container class for eps save options.
     UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
-    // Container class for bmp save options.
+    // Container class for eps save options.
     UpdateFields *bool `json:"UpdateFields,omitempty"`
 
-    // Container class for bmp save options.
+    // Container class for eps save options.
     UpdateLastPrintedProperty *bool `json:"UpdateLastPrintedProperty,omitempty"`
 
-    // Container class for bmp save options.
+    // Container class for eps save options.
     UpdateLastSavedTimeProperty *bool `json:"UpdateLastSavedTimeProperty,omitempty"`
 
-    // Container class for bmp save options.
+    // Container class for eps save options.
     ZipOutput *bool `json:"ZipOutput,omitempty"`
 
-    // Container class for bmp save options.
+    // Container class for eps save options.
     ColorMode *string `json:"ColorMode,omitempty"`
 
-    // Container class for bmp save options.
+    // Container class for eps save options.
     JpegQuality *int32 `json:"JpegQuality,omitempty"`
 
-    // Container class for bmp save options.
+    // Container class for eps save options.
     MetafileRenderingOptions IMetafileRenderingOptionsData `json:"MetafileRenderingOptions,omitempty"`
 
-    // Container class for bmp save options.
+    // Container class for eps save options.
     NumeralFormat *string `json:"NumeralFormat,omitempty"`
 
-    // Container class for bmp save options.
+    // Container class for eps save options.
     OptimizeOutput *bool `json:"OptimizeOutput,omitempty"`
 
-    // Container class for bmp save options.
+    // Container class for eps save options.
     PageCount *int32 `json:"PageCount,omitempty"`
 
-    // Container class for bmp save options.
+    // Container class for eps save options.
     PageIndex *int32 `json:"PageIndex,omitempty"`
 
-    // Container class for bmp save options.
+    // Container class for eps save options.
     HorizontalResolution *float64 `json:"HorizontalResolution,omitempty"`
 
-    // Container class for bmp save options.
+    // Container class for eps save options.
     ImageBrightness *float64 `json:"ImageBrightness,omitempty"`
 
-    // Container class for bmp save options.
+    // Container class for eps save options.
     ImageColorMode *string `json:"ImageColorMode,omitempty"`
 
-    // Container class for bmp save options.
+    // Container class for eps save options.
     ImageContrast *float64 `json:"ImageContrast,omitempty"`
 
-    // Container class for bmp save options.
+    // Container class for eps save options.
     PaperColor *string `json:"PaperColor,omitempty"`
 
-    // Container class for bmp save options.
+    // Container class for eps save options.
     PixelFormat *string `json:"PixelFormat,omitempty"`
 
-    // Container class for bmp save options.
+    // Container class for eps save options.
     Resolution *float64 `json:"Resolution,omitempty"`
 
-    // Container class for bmp save options.
+    // Container class for eps save options.
     Scale *float64 `json:"Scale,omitempty"`
 
-    // Container class for bmp save options.
+    // Container class for eps save options.
     UseAntiAliasing *bool `json:"UseAntiAliasing,omitempty"`
 
-    // Container class for bmp save options.
+    // Container class for eps save options.
     UseHighQualityRendering *bool `json:"UseHighQualityRendering,omitempty"`
 
-    // Container class for bmp save options.
+    // Container class for eps save options.
     VerticalResolution *float64 `json:"VerticalResolution,omitempty"`
 
-    // Container class for bmp save options.
+    // Container class for eps save options.
     ImageHeight *int32 `json:"ImageHeight,omitempty"`
 
-    // Container class for bmp save options.
+    // Container class for eps save options.
     ImageWidth *int32 `json:"ImageWidth,omitempty"`
 
-    // Container class for bmp save options.
+    // Container class for eps save options.
     UseGdiEmfRenderer *bool `json:"UseGdiEmfRenderer,omitempty"`
 
-    // Container class for bmp save options.
+    // Container class for eps save options.
     SaveFormat *string `json:"SaveFormat,omitempty"`
 }
 
-func (BmpSaveOptionsData) IsBmpSaveOptionsData() bool {
+func (EpsSaveOptionsData) IsEpsSaveOptionsData() bool {
     return true
 }
 
-func (BmpSaveOptionsData) IsImageSaveOptionsData() bool {
+func (EpsSaveOptionsData) IsImageSaveOptionsData() bool {
     return true
 }
 
-func (BmpSaveOptionsData) IsFixedPageSaveOptionsData() bool {
+func (EpsSaveOptionsData) IsFixedPageSaveOptionsData() bool {
     return true
 }
 
-func (BmpSaveOptionsData) IsSaveOptionsData() bool {
+func (EpsSaveOptionsData) IsSaveOptionsData() bool {
     return true
 }
 
-func (obj *BmpSaveOptionsData) Initialize() {
-    var _SaveFormat = "bmp"
+func (obj *EpsSaveOptionsData) Initialize() {
+    var _SaveFormat = "eps"
     obj.SaveFormat = &_SaveFormat
 
 
@@ -240,7 +240,7 @@ func (obj *BmpSaveOptionsData) Initialize() {
 
 }
 
-func (obj *BmpSaveOptionsData) Deserialize(json map[string]interface{}) {
+func (obj *EpsSaveOptionsData) Deserialize(json map[string]interface{}) {
     if jsonValue, exists := json["AllowEmbeddingPostScriptFonts"]; exists {
         if parsedValue, valid := jsonValue.(bool); valid {
             obj.AllowEmbeddingPostScriptFonts = &parsedValue
@@ -656,279 +656,279 @@ func (obj *BmpSaveOptionsData) Deserialize(json map[string]interface{}) {
     }
 }
 
-func (obj *BmpSaveOptionsData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+func (obj *EpsSaveOptionsData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
-func (obj *BmpSaveOptionsData) GetAllowEmbeddingPostScriptFonts() *bool {
+func (obj *EpsSaveOptionsData) GetAllowEmbeddingPostScriptFonts() *bool {
     return obj.AllowEmbeddingPostScriptFonts
 }
 
-func (obj *BmpSaveOptionsData) SetAllowEmbeddingPostScriptFonts(value *bool) {
+func (obj *EpsSaveOptionsData) SetAllowEmbeddingPostScriptFonts(value *bool) {
     obj.AllowEmbeddingPostScriptFonts = value
 }
 
-func (obj *BmpSaveOptionsData) GetCustomTimeZoneInfoData() ITimeZoneInfoData {
+func (obj *EpsSaveOptionsData) GetCustomTimeZoneInfoData() ITimeZoneInfoData {
     return obj.CustomTimeZoneInfoData
 }
 
-func (obj *BmpSaveOptionsData) SetCustomTimeZoneInfoData(value ITimeZoneInfoData) {
+func (obj *EpsSaveOptionsData) SetCustomTimeZoneInfoData(value ITimeZoneInfoData) {
     obj.CustomTimeZoneInfoData = value
 }
 
-func (obj *BmpSaveOptionsData) GetDml3DEffectsRenderingMode() *string {
+func (obj *EpsSaveOptionsData) GetDml3DEffectsRenderingMode() *string {
     return obj.Dml3DEffectsRenderingMode
 }
 
-func (obj *BmpSaveOptionsData) SetDml3DEffectsRenderingMode(value *string) {
+func (obj *EpsSaveOptionsData) SetDml3DEffectsRenderingMode(value *string) {
     obj.Dml3DEffectsRenderingMode = value
 }
 
-func (obj *BmpSaveOptionsData) GetDmlEffectsRenderingMode() *string {
+func (obj *EpsSaveOptionsData) GetDmlEffectsRenderingMode() *string {
     return obj.DmlEffectsRenderingMode
 }
 
-func (obj *BmpSaveOptionsData) SetDmlEffectsRenderingMode(value *string) {
+func (obj *EpsSaveOptionsData) SetDmlEffectsRenderingMode(value *string) {
     obj.DmlEffectsRenderingMode = value
 }
 
-func (obj *BmpSaveOptionsData) GetDmlRenderingMode() *string {
+func (obj *EpsSaveOptionsData) GetDmlRenderingMode() *string {
     return obj.DmlRenderingMode
 }
 
-func (obj *BmpSaveOptionsData) SetDmlRenderingMode(value *string) {
+func (obj *EpsSaveOptionsData) SetDmlRenderingMode(value *string) {
     obj.DmlRenderingMode = value
 }
 
-func (obj *BmpSaveOptionsData) GetFileName() *string {
+func (obj *EpsSaveOptionsData) GetFileName() *string {
     return obj.FileName
 }
 
-func (obj *BmpSaveOptionsData) SetFileName(value *string) {
+func (obj *EpsSaveOptionsData) SetFileName(value *string) {
     obj.FileName = value
 }
 
-func (obj *BmpSaveOptionsData) GetImlRenderingMode() *string {
+func (obj *EpsSaveOptionsData) GetImlRenderingMode() *string {
     return obj.ImlRenderingMode
 }
 
-func (obj *BmpSaveOptionsData) SetImlRenderingMode(value *string) {
+func (obj *EpsSaveOptionsData) SetImlRenderingMode(value *string) {
     obj.ImlRenderingMode = value
 }
 
-func (obj *BmpSaveOptionsData) GetUpdateCreatedTimeProperty() *bool {
+func (obj *EpsSaveOptionsData) GetUpdateCreatedTimeProperty() *bool {
     return obj.UpdateCreatedTimeProperty
 }
 
-func (obj *BmpSaveOptionsData) SetUpdateCreatedTimeProperty(value *bool) {
+func (obj *EpsSaveOptionsData) SetUpdateCreatedTimeProperty(value *bool) {
     obj.UpdateCreatedTimeProperty = value
 }
 
-func (obj *BmpSaveOptionsData) GetUpdateFields() *bool {
+func (obj *EpsSaveOptionsData) GetUpdateFields() *bool {
     return obj.UpdateFields
 }
 
-func (obj *BmpSaveOptionsData) SetUpdateFields(value *bool) {
+func (obj *EpsSaveOptionsData) SetUpdateFields(value *bool) {
     obj.UpdateFields = value
 }
 
-func (obj *BmpSaveOptionsData) GetUpdateLastPrintedProperty() *bool {
+func (obj *EpsSaveOptionsData) GetUpdateLastPrintedProperty() *bool {
     return obj.UpdateLastPrintedProperty
 }
 
-func (obj *BmpSaveOptionsData) SetUpdateLastPrintedProperty(value *bool) {
+func (obj *EpsSaveOptionsData) SetUpdateLastPrintedProperty(value *bool) {
     obj.UpdateLastPrintedProperty = value
 }
 
-func (obj *BmpSaveOptionsData) GetUpdateLastSavedTimeProperty() *bool {
+func (obj *EpsSaveOptionsData) GetUpdateLastSavedTimeProperty() *bool {
     return obj.UpdateLastSavedTimeProperty
 }
 
-func (obj *BmpSaveOptionsData) SetUpdateLastSavedTimeProperty(value *bool) {
+func (obj *EpsSaveOptionsData) SetUpdateLastSavedTimeProperty(value *bool) {
     obj.UpdateLastSavedTimeProperty = value
 }
 
-func (obj *BmpSaveOptionsData) GetZipOutput() *bool {
+func (obj *EpsSaveOptionsData) GetZipOutput() *bool {
     return obj.ZipOutput
 }
 
-func (obj *BmpSaveOptionsData) SetZipOutput(value *bool) {
+func (obj *EpsSaveOptionsData) SetZipOutput(value *bool) {
     obj.ZipOutput = value
 }
 
-func (obj *BmpSaveOptionsData) GetColorMode() *string {
+func (obj *EpsSaveOptionsData) GetColorMode() *string {
     return obj.ColorMode
 }
 
-func (obj *BmpSaveOptionsData) SetColorMode(value *string) {
+func (obj *EpsSaveOptionsData) SetColorMode(value *string) {
     obj.ColorMode = value
 }
 
-func (obj *BmpSaveOptionsData) GetJpegQuality() *int32 {
+func (obj *EpsSaveOptionsData) GetJpegQuality() *int32 {
     return obj.JpegQuality
 }
 
-func (obj *BmpSaveOptionsData) SetJpegQuality(value *int32) {
+func (obj *EpsSaveOptionsData) SetJpegQuality(value *int32) {
     obj.JpegQuality = value
 }
 
-func (obj *BmpSaveOptionsData) GetMetafileRenderingOptions() IMetafileRenderingOptionsData {
+func (obj *EpsSaveOptionsData) GetMetafileRenderingOptions() IMetafileRenderingOptionsData {
     return obj.MetafileRenderingOptions
 }
 
-func (obj *BmpSaveOptionsData) SetMetafileRenderingOptions(value IMetafileRenderingOptionsData) {
+func (obj *EpsSaveOptionsData) SetMetafileRenderingOptions(value IMetafileRenderingOptionsData) {
     obj.MetafileRenderingOptions = value
 }
 
-func (obj *BmpSaveOptionsData) GetNumeralFormat() *string {
+func (obj *EpsSaveOptionsData) GetNumeralFormat() *string {
     return obj.NumeralFormat
 }
 
-func (obj *BmpSaveOptionsData) SetNumeralFormat(value *string) {
+func (obj *EpsSaveOptionsData) SetNumeralFormat(value *string) {
     obj.NumeralFormat = value
 }
 
-func (obj *BmpSaveOptionsData) GetOptimizeOutput() *bool {
+func (obj *EpsSaveOptionsData) GetOptimizeOutput() *bool {
     return obj.OptimizeOutput
 }
 
-func (obj *BmpSaveOptionsData) SetOptimizeOutput(value *bool) {
+func (obj *EpsSaveOptionsData) SetOptimizeOutput(value *bool) {
     obj.OptimizeOutput = value
 }
 
-func (obj *BmpSaveOptionsData) GetPageCount() *int32 {
+func (obj *EpsSaveOptionsData) GetPageCount() *int32 {
     return obj.PageCount
 }
 
-func (obj *BmpSaveOptionsData) SetPageCount(value *int32) {
+func (obj *EpsSaveOptionsData) SetPageCount(value *int32) {
     obj.PageCount = value
 }
 
-func (obj *BmpSaveOptionsData) GetPageIndex() *int32 {
+func (obj *EpsSaveOptionsData) GetPageIndex() *int32 {
     return obj.PageIndex
 }
 
-func (obj *BmpSaveOptionsData) SetPageIndex(value *int32) {
+func (obj *EpsSaveOptionsData) SetPageIndex(value *int32) {
     obj.PageIndex = value
 }
 
-func (obj *BmpSaveOptionsData) GetHorizontalResolution() *float64 {
+func (obj *EpsSaveOptionsData) GetHorizontalResolution() *float64 {
     return obj.HorizontalResolution
 }
 
-func (obj *BmpSaveOptionsData) SetHorizontalResolution(value *float64) {
+func (obj *EpsSaveOptionsData) SetHorizontalResolution(value *float64) {
     obj.HorizontalResolution = value
 }
 
-func (obj *BmpSaveOptionsData) GetImageBrightness() *float64 {
+func (obj *EpsSaveOptionsData) GetImageBrightness() *float64 {
     return obj.ImageBrightness
 }
 
-func (obj *BmpSaveOptionsData) SetImageBrightness(value *float64) {
+func (obj *EpsSaveOptionsData) SetImageBrightness(value *float64) {
     obj.ImageBrightness = value
 }
 
-func (obj *BmpSaveOptionsData) GetImageColorMode() *string {
+func (obj *EpsSaveOptionsData) GetImageColorMode() *string {
     return obj.ImageColorMode
 }
 
-func (obj *BmpSaveOptionsData) SetImageColorMode(value *string) {
+func (obj *EpsSaveOptionsData) SetImageColorMode(value *string) {
     obj.ImageColorMode = value
 }
 
-func (obj *BmpSaveOptionsData) GetImageContrast() *float64 {
+func (obj *EpsSaveOptionsData) GetImageContrast() *float64 {
     return obj.ImageContrast
 }
 
-func (obj *BmpSaveOptionsData) SetImageContrast(value *float64) {
+func (obj *EpsSaveOptionsData) SetImageContrast(value *float64) {
     obj.ImageContrast = value
 }
 
-func (obj *BmpSaveOptionsData) GetPaperColor() *string {
+func (obj *EpsSaveOptionsData) GetPaperColor() *string {
     return obj.PaperColor
 }
 
-func (obj *BmpSaveOptionsData) SetPaperColor(value *string) {
+func (obj *EpsSaveOptionsData) SetPaperColor(value *string) {
     obj.PaperColor = value
 }
 
-func (obj *BmpSaveOptionsData) GetPixelFormat() *string {
+func (obj *EpsSaveOptionsData) GetPixelFormat() *string {
     return obj.PixelFormat
 }
 
-func (obj *BmpSaveOptionsData) SetPixelFormat(value *string) {
+func (obj *EpsSaveOptionsData) SetPixelFormat(value *string) {
     obj.PixelFormat = value
 }
 
-func (obj *BmpSaveOptionsData) GetResolution() *float64 {
+func (obj *EpsSaveOptionsData) GetResolution() *float64 {
     return obj.Resolution
 }
 
-func (obj *BmpSaveOptionsData) SetResolution(value *float64) {
+func (obj *EpsSaveOptionsData) SetResolution(value *float64) {
     obj.Resolution = value
 }
 
-func (obj *BmpSaveOptionsData) GetScale() *float64 {
+func (obj *EpsSaveOptionsData) GetScale() *float64 {
     return obj.Scale
 }
 
-func (obj *BmpSaveOptionsData) SetScale(value *float64) {
+func (obj *EpsSaveOptionsData) SetScale(value *float64) {
     obj.Scale = value
 }
 
-func (obj *BmpSaveOptionsData) GetUseAntiAliasing() *bool {
+func (obj *EpsSaveOptionsData) GetUseAntiAliasing() *bool {
     return obj.UseAntiAliasing
 }
 
-func (obj *BmpSaveOptionsData) SetUseAntiAliasing(value *bool) {
+func (obj *EpsSaveOptionsData) SetUseAntiAliasing(value *bool) {
     obj.UseAntiAliasing = value
 }
 
-func (obj *BmpSaveOptionsData) GetUseHighQualityRendering() *bool {
+func (obj *EpsSaveOptionsData) GetUseHighQualityRendering() *bool {
     return obj.UseHighQualityRendering
 }
 
-func (obj *BmpSaveOptionsData) SetUseHighQualityRendering(value *bool) {
+func (obj *EpsSaveOptionsData) SetUseHighQualityRendering(value *bool) {
     obj.UseHighQualityRendering = value
 }
 
-func (obj *BmpSaveOptionsData) GetVerticalResolution() *float64 {
+func (obj *EpsSaveOptionsData) GetVerticalResolution() *float64 {
     return obj.VerticalResolution
 }
 
-func (obj *BmpSaveOptionsData) SetVerticalResolution(value *float64) {
+func (obj *EpsSaveOptionsData) SetVerticalResolution(value *float64) {
     obj.VerticalResolution = value
 }
 
-func (obj *BmpSaveOptionsData) GetImageHeight() *int32 {
+func (obj *EpsSaveOptionsData) GetImageHeight() *int32 {
     return obj.ImageHeight
 }
 
-func (obj *BmpSaveOptionsData) SetImageHeight(value *int32) {
+func (obj *EpsSaveOptionsData) SetImageHeight(value *int32) {
     obj.ImageHeight = value
 }
 
-func (obj *BmpSaveOptionsData) GetImageWidth() *int32 {
+func (obj *EpsSaveOptionsData) GetImageWidth() *int32 {
     return obj.ImageWidth
 }
 
-func (obj *BmpSaveOptionsData) SetImageWidth(value *int32) {
+func (obj *EpsSaveOptionsData) SetImageWidth(value *int32) {
     obj.ImageWidth = value
 }
 
-func (obj *BmpSaveOptionsData) GetUseGdiEmfRenderer() *bool {
+func (obj *EpsSaveOptionsData) GetUseGdiEmfRenderer() *bool {
     return obj.UseGdiEmfRenderer
 }
 
-func (obj *BmpSaveOptionsData) SetUseGdiEmfRenderer(value *bool) {
+func (obj *EpsSaveOptionsData) SetUseGdiEmfRenderer(value *bool) {
     obj.UseGdiEmfRenderer = value
 }
 
-func (obj *BmpSaveOptionsData) GetSaveFormat() *string {
+func (obj *EpsSaveOptionsData) GetSaveFormat() *string {
     return obj.SaveFormat
 }
 
-func (obj *BmpSaveOptionsData) SetSaveFormat(value *string) {
+func (obj *EpsSaveOptionsData) SetSaveFormat(value *string) {
     obj.SaveFormat = value
 }
 

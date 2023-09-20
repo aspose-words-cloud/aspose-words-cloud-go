@@ -75,6 +75,7 @@ func (obj *LoadWebDocumentData) Deserialize(json map[string]interface{}) {
                 if jsonTypeStr == "DotSaveOptionsData, _" { modelInstance = new(DotSaveOptionsData) }
                 if jsonTypeStr == "DotxSaveOptionsData, _" { modelInstance = new(DotxSaveOptionsData) }
                 if jsonTypeStr == "EmfSaveOptionsData, _" { modelInstance = new(EmfSaveOptionsData) }
+                if jsonTypeStr == "EpsSaveOptionsData, _" { modelInstance = new(EpsSaveOptionsData) }
                 if jsonTypeStr == "EpubSaveOptionsData, _" { modelInstance = new(EpubSaveOptionsData) }
                 if jsonTypeStr == "FixedPageSaveOptionsData, _" {  }
                 if jsonTypeStr == "FlatOpcMacroSaveOptionsData, _" { modelInstance = new(FlatOpcMacroSaveOptionsData) }
@@ -125,6 +126,7 @@ func (obj *LoadWebDocumentData) Deserialize(json map[string]interface{}) {
                 if jsonTypeStr == "DotSaveOptionsData, _" { modelInstance = new(DotSaveOptionsData) }
                 if jsonTypeStr == "DotxSaveOptionsData, _" { modelInstance = new(DotxSaveOptionsData) }
                 if jsonTypeStr == "EmfSaveOptionsData, _" { modelInstance = new(EmfSaveOptionsData) }
+                if jsonTypeStr == "EpsSaveOptionsData, _" { modelInstance = new(EpsSaveOptionsData) }
                 if jsonTypeStr == "EpubSaveOptionsData, _" { modelInstance = new(EpubSaveOptionsData) }
                 if jsonTypeStr == "FixedPageSaveOptionsData, _" {  }
                 if jsonTypeStr == "FlatOpcMacroSaveOptionsData, _" { modelInstance = new(FlatOpcMacroSaveOptionsData) }
