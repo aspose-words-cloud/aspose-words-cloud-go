@@ -33,7 +33,7 @@ import "io"
 // UpdateStructuredDocumentTagOnlineResponse struct
 // Updates a StructuredDocumentTag (SDT) in the document node.
 type UpdateStructuredDocumentTagOnlineResponse struct {
-    // The response model.
+    // The REST response with a StructuredDocumentTag.
     Model IStructuredDocumentTagResponse
 
 

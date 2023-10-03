@@ -28,6 +28,7 @@
 package models
 
 // The REST response with a collection of DrawingObjects.
+// This response should be returned by the service when handling: GET /drawingObjects.
 
 type IDrawingObjectsResponse interface {
     IsDrawingObjectsResponse() bool
@@ -42,9 +43,11 @@ type IDrawingObjectsResponse interface {
 
 type DrawingObjectsResponse struct {
     // The REST response with a collection of DrawingObjects.
+    // This response should be returned by the service when handling: GET /drawingObjects.
     RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with a collection of DrawingObjects.
+    // This response should be returned by the service when handling: GET /drawingObjects.
     DrawingObjects IDrawingObjectCollection `json:"DrawingObjects,omitempty"`
 }
 

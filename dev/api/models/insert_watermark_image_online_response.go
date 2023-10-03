@@ -33,7 +33,7 @@ import "io"
 // InsertWatermarkImageOnlineResponse struct
 // Inserts a new watermark image to the document.
 type InsertWatermarkImageOnlineResponse struct {
-    // The response model.
+    // The REST response with a document description.
     Model IDocumentResponse
 
 

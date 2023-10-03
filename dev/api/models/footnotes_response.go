@@ -28,6 +28,7 @@
 package models
 
 // The REST response with a collection of footnotes.
+// This response is returned by the Service when handling "GET https://api.aspose.cloud/v4.0/words/Test.doc/footnotes" REST API requests.
 
 type IFootnotesResponse interface {
     IsFootnotesResponse() bool
@@ -42,9 +43,11 @@ type IFootnotesResponse interface {
 
 type FootnotesResponse struct {
     // The REST response with a collection of footnotes.
+    // This response is returned by the Service when handling "GET https://api.aspose.cloud/v4.0/words/Test.doc/footnotes" REST API requests.
     RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with a collection of footnotes.
+    // This response is returned by the Service when handling "GET https://api.aspose.cloud/v4.0/words/Test.doc/footnotes" REST API requests.
     Footnotes IFootnoteCollection `json:"Footnotes,omitempty"`
 }
 

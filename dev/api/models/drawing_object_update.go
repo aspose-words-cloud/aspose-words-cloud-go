@@ -34,31 +34,28 @@ type IDrawingObjectUpdate interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
-    GetHeight() *float64
-    SetHeight(value *float64)
-    GetLeft() *float64
-    SetLeft(value *float64)
     GetRelativeHorizontalPosition() *string
     SetRelativeHorizontalPosition(value *string)
+    GetLeft() *float64
+    SetLeft(value *float64)
     GetRelativeVerticalPosition() *string
     SetRelativeVerticalPosition(value *string)
     GetTop() *float64
     SetTop(value *float64)
     GetWidth() *float64
     SetWidth(value *float64)
+    GetHeight() *float64
+    SetHeight(value *float64)
     GetWrapType() *string
     SetWrapType(value *string)
 }
 
 type DrawingObjectUpdate struct {
     // Drawing object element for update.
-    Height *float64 `json:"Height,omitempty"`
+    RelativeHorizontalPosition *string `json:"RelativeHorizontalPosition,omitempty"`
 
     // Drawing object element for update.
     Left *float64 `json:"Left,omitempty"`
-
-    // Drawing object element for update.
-    RelativeHorizontalPosition *string `json:"RelativeHorizontalPosition,omitempty"`
 
     // Drawing object element for update.
     RelativeVerticalPosition *string `json:"RelativeVerticalPosition,omitempty"`
@@ -68,6 +65,9 @@ type DrawingObjectUpdate struct {
 
     // Drawing object element for update.
     Width *float64 `json:"Width,omitempty"`
+
+    // Drawing object element for update.
+    Height *float64 `json:"Height,omitempty"`
 
     // Drawing object element for update.
     WrapType *string `json:"WrapType,omitempty"`
@@ -82,14 +82,14 @@ func (obj *DrawingObjectUpdate) Initialize() {
 }
 
 func (obj *DrawingObjectUpdate) Deserialize(json map[string]interface{}) {
-    if jsonValue, exists := json["Height"]; exists {
-        if parsedValue, valid := jsonValue.(float64); valid {
-            obj.Height = &parsedValue
+    if jsonValue, exists := json["RelativeHorizontalPosition"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RelativeHorizontalPosition = &parsedValue
         }
 
-    } else if jsonValue, exists := json["height"]; exists {
-        if parsedValue, valid := jsonValue.(float64); valid {
-            obj.Height = &parsedValue
+    } else if jsonValue, exists := json["relativeHorizontalPosition"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.RelativeHorizontalPosition = &parsedValue
         }
 
     }
@@ -102,18 +102,6 @@ func (obj *DrawingObjectUpdate) Deserialize(json map[string]interface{}) {
     } else if jsonValue, exists := json["left"]; exists {
         if parsedValue, valid := jsonValue.(float64); valid {
             obj.Left = &parsedValue
-        }
-
-    }
-
-    if jsonValue, exists := json["RelativeHorizontalPosition"]; exists {
-        if parsedValue, valid := jsonValue.(string); valid {
-            obj.RelativeHorizontalPosition = &parsedValue
-        }
-
-    } else if jsonValue, exists := json["relativeHorizontalPosition"]; exists {
-        if parsedValue, valid := jsonValue.(string); valid {
-            obj.RelativeHorizontalPosition = &parsedValue
         }
 
     }
@@ -154,6 +142,18 @@ func (obj *DrawingObjectUpdate) Deserialize(json map[string]interface{}) {
 
     }
 
+    if jsonValue, exists := json["Height"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.Height = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["height"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.Height = &parsedValue
+        }
+
+    }
+
     if jsonValue, exists := json["WrapType"]; exists {
         if parsedValue, valid := jsonValue.(string); valid {
             obj.WrapType = &parsedValue
@@ -171,12 +171,12 @@ func (obj *DrawingObjectUpdate) CollectFilesContent(resultFilesContent []FileRef
     return resultFilesContent
 }
 
-func (obj *DrawingObjectUpdate) GetHeight() *float64 {
-    return obj.Height
+func (obj *DrawingObjectUpdate) GetRelativeHorizontalPosition() *string {
+    return obj.RelativeHorizontalPosition
 }
 
-func (obj *DrawingObjectUpdate) SetHeight(value *float64) {
-    obj.Height = value
+func (obj *DrawingObjectUpdate) SetRelativeHorizontalPosition(value *string) {
+    obj.RelativeHorizontalPosition = value
 }
 
 func (obj *DrawingObjectUpdate) GetLeft() *float64 {
@@ -185,14 +185,6 @@ func (obj *DrawingObjectUpdate) GetLeft() *float64 {
 
 func (obj *DrawingObjectUpdate) SetLeft(value *float64) {
     obj.Left = value
-}
-
-func (obj *DrawingObjectUpdate) GetRelativeHorizontalPosition() *string {
-    return obj.RelativeHorizontalPosition
-}
-
-func (obj *DrawingObjectUpdate) SetRelativeHorizontalPosition(value *string) {
-    obj.RelativeHorizontalPosition = value
 }
 
 func (obj *DrawingObjectUpdate) GetRelativeVerticalPosition() *string {
@@ -217,6 +209,14 @@ func (obj *DrawingObjectUpdate) GetWidth() *float64 {
 
 func (obj *DrawingObjectUpdate) SetWidth(value *float64) {
     obj.Width = value
+}
+
+func (obj *DrawingObjectUpdate) GetHeight() *float64 {
+    return obj.Height
+}
+
+func (obj *DrawingObjectUpdate) SetHeight(value *float64) {
+    obj.Height = value
 }
 
 func (obj *DrawingObjectUpdate) GetWrapType() *string {

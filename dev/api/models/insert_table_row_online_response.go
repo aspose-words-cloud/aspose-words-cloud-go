@@ -33,7 +33,8 @@ import "io"
 // InsertTableRowOnlineResponse struct
 // Inserts a new row to the table.
 type InsertTableRowOnlineResponse struct {
-    // The response model.
+    // The REST response with a table row.
+    // This response is returned by the Service when handling "GET https://api.aspose.cloud/v4.0/words/Test.doc/tables/{0}" REST API requests.
     Model ITableRowResponse
 
 

@@ -28,6 +28,7 @@
 package models
 
 // The REST response with a regular expression pattern and a collection of search results.
+// This response is returned by the Service when handling "GET https://api.aspose.cloud/v4.0/words/Test.doc/search" REST API requests.
 
 type ISearchResponse interface {
     IsSearchResponse() bool
@@ -44,12 +45,15 @@ type ISearchResponse interface {
 
 type SearchResponse struct {
     // The REST response with a regular expression pattern and a collection of search results.
+    // This response is returned by the Service when handling "GET https://api.aspose.cloud/v4.0/words/Test.doc/search" REST API requests.
     RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with a regular expression pattern and a collection of search results.
+    // This response is returned by the Service when handling "GET https://api.aspose.cloud/v4.0/words/Test.doc/search" REST API requests.
     SearchingPattern *string `json:"SearchingPattern,omitempty"`
 
     // The REST response with a regular expression pattern and a collection of search results.
+    // This response is returned by the Service when handling "GET https://api.aspose.cloud/v4.0/words/Test.doc/search" REST API requests.
     SearchResults ISearchResultsCollection `json:"SearchResults,omitempty"`
 }
 

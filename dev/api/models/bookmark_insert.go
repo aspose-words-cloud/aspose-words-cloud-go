@@ -38,10 +38,10 @@ type IBookmarkInsert interface {
     SetName(value *string)
     GetText() *string
     SetText(value *string)
-    GetEndRange() INewDocumentPosition
-    SetEndRange(value INewDocumentPosition)
     GetStartRange() INewDocumentPosition
     SetStartRange(value INewDocumentPosition)
+    GetEndRange() INewDocumentPosition
+    SetEndRange(value INewDocumentPosition)
 }
 
 type BookmarkInsert struct {
@@ -52,10 +52,10 @@ type BookmarkInsert struct {
     Text *string `json:"Text,omitempty"`
 
     // Represents a bookmark to insert.
-    EndRange INewDocumentPosition `json:"EndRange,omitempty"`
+    StartRange INewDocumentPosition `json:"StartRange,omitempty"`
 
     // Represents a bookmark to insert.
-    StartRange INewDocumentPosition `json:"StartRange,omitempty"`
+    EndRange INewDocumentPosition `json:"EndRange,omitempty"`
 }
 
 func (BookmarkInsert) IsBookmarkInsert() bool {
@@ -67,12 +67,12 @@ func (BookmarkInsert) IsBookmarkData() bool {
 }
 
 func (obj *BookmarkInsert) Initialize() {
-    if (obj.EndRange != nil) {
-        obj.EndRange.Initialize()
-    }
-
     if (obj.StartRange != nil) {
         obj.StartRange.Initialize()
+    }
+
+    if (obj.EndRange != nil) {
+        obj.EndRange.Initialize()
     }
 
 
@@ -103,22 +103,6 @@ func (obj *BookmarkInsert) Deserialize(json map[string]interface{}) {
 
     }
 
-    if jsonValue, exists := json["EndRange"]; exists {
-        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
-            var modelInstance INewDocumentPosition = new(NewDocumentPosition)
-            modelInstance.Deserialize(parsedValue)
-            obj.EndRange = modelInstance
-        }
-
-    } else if jsonValue, exists := json["endRange"]; exists {
-        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
-            var modelInstance INewDocumentPosition = new(NewDocumentPosition)
-            modelInstance.Deserialize(parsedValue)
-            obj.EndRange = modelInstance
-        }
-
-    }
-
     if jsonValue, exists := json["StartRange"]; exists {
         if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
             var modelInstance INewDocumentPosition = new(NewDocumentPosition)
@@ -131,6 +115,22 @@ func (obj *BookmarkInsert) Deserialize(json map[string]interface{}) {
             var modelInstance INewDocumentPosition = new(NewDocumentPosition)
             modelInstance.Deserialize(parsedValue)
             obj.StartRange = modelInstance
+        }
+
+    }
+
+    if jsonValue, exists := json["EndRange"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance INewDocumentPosition = new(NewDocumentPosition)
+            modelInstance.Deserialize(parsedValue)
+            obj.EndRange = modelInstance
+        }
+
+    } else if jsonValue, exists := json["endRange"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance INewDocumentPosition = new(NewDocumentPosition)
+            modelInstance.Deserialize(parsedValue)
+            obj.EndRange = modelInstance
         }
 
     }
@@ -156,19 +156,19 @@ func (obj *BookmarkInsert) SetText(value *string) {
     obj.Text = value
 }
 
-func (obj *BookmarkInsert) GetEndRange() INewDocumentPosition {
-    return obj.EndRange
-}
-
-func (obj *BookmarkInsert) SetEndRange(value INewDocumentPosition) {
-    obj.EndRange = value
-}
-
 func (obj *BookmarkInsert) GetStartRange() INewDocumentPosition {
     return obj.StartRange
 }
 
 func (obj *BookmarkInsert) SetStartRange(value INewDocumentPosition) {
     obj.StartRange = value
+}
+
+func (obj *BookmarkInsert) GetEndRange() INewDocumentPosition {
+    return obj.EndRange
+}
+
+func (obj *BookmarkInsert) SetEndRange(value INewDocumentPosition) {
+    obj.EndRange = value
 }
 

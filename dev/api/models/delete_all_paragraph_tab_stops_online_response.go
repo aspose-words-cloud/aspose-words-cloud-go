@@ -33,7 +33,8 @@ import "io"
 // DeleteAllParagraphTabStopsOnlineResponse struct
 // Removes paragraph tab stops from the document node.
 type DeleteAllParagraphTabStopsOnlineResponse struct {
-    // The response model.
+    // The REST response with an array of tab stops.
+    // This response is returned by the Service when handling "GET https://api.aspose.cloud/v4.0/words/Test.doc/paragraphs/{0}/tabstops" REST API requests.
     Model ITabStopsResponse
 
 

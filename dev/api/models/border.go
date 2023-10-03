@@ -28,6 +28,7 @@
 package models
 
 // Represents a border of an object.
+// Borders can be applied to various document elements including paragraph, run of text inside a paragraph or a table cell.
 
 type IBorder interface {
     IsBorder() bool
@@ -52,24 +53,31 @@ type IBorder interface {
 
 type Border struct {
     // Represents a border of an object.
+    // Borders can be applied to various document elements including paragraph, run of text inside a paragraph or a table cell.
     Link IWordsApiLink `json:"Link,omitempty"`
 
     // Represents a border of an object.
+    // Borders can be applied to various document elements including paragraph, run of text inside a paragraph or a table cell.
     BorderType *string `json:"BorderType,omitempty"`
 
     // Represents a border of an object.
+    // Borders can be applied to various document elements including paragraph, run of text inside a paragraph or a table cell.
     Color IXmlColor `json:"Color,omitempty"`
 
     // Represents a border of an object.
+    // Borders can be applied to various document elements including paragraph, run of text inside a paragraph or a table cell.
     DistanceFromText *float64 `json:"DistanceFromText,omitempty"`
 
     // Represents a border of an object.
+    // Borders can be applied to various document elements including paragraph, run of text inside a paragraph or a table cell.
     LineStyle *string `json:"LineStyle,omitempty"`
 
     // Represents a border of an object.
+    // Borders can be applied to various document elements including paragraph, run of text inside a paragraph or a table cell.
     LineWidth *float64 `json:"LineWidth,omitempty"`
 
     // Represents a border of an object.
+    // Borders can be applied to various document elements including paragraph, run of text inside a paragraph or a table cell.
     Shadow *bool `json:"Shadow,omitempty"`
 }
 

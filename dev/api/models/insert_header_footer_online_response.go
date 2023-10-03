@@ -33,7 +33,8 @@ import "io"
 // InsertHeaderFooterOnlineResponse struct
 // Inserts a new HeaderFooter object to the document section.
 type InsertHeaderFooterOnlineResponse struct {
-    // The response model.
+    // The REST response with a HeaderFooter.
+    // This response is returned by the Service when handling "GET https://api.aspose.cloud/v4.0/words/Test.doc/headersfooters/{0}" REST API requests.
     Model IHeaderFooterResponse
 
 

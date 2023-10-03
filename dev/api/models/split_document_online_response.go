@@ -33,7 +33,8 @@ import "io"
 // SplitDocumentOnlineResponse struct
 // Splits a document into parts and saves them in the specified format.
 type SplitDocumentOnlineResponse struct {
-    // The response model.
+    // The REST response with a result of document splitting.
+    // This response should be returned by the service when handling: POST /{name}/split.
     Model ISplitDocumentResponse
 
 

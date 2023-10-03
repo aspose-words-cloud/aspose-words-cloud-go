@@ -28,6 +28,7 @@
 package models
 
 // The REST response with an array of styles.
+// This response is returned by the Service when handling "GET https://api.aspose.cloud/v4.0/words/Test.doc/styles" REST API requests.
 
 type IStylesResponse interface {
     IsStylesResponse() bool
@@ -42,9 +43,11 @@ type IStylesResponse interface {
 
 type StylesResponse struct {
     // The REST response with an array of styles.
+    // This response is returned by the Service when handling "GET https://api.aspose.cloud/v4.0/words/Test.doc/styles" REST API requests.
     RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with an array of styles.
+    // This response is returned by the Service when handling "GET https://api.aspose.cloud/v4.0/words/Test.doc/styles" REST API requests.
     Styles []IStyle `json:"Styles,omitempty"`
 }
 

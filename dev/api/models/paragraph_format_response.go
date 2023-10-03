@@ -28,6 +28,7 @@
 package models
 
 // The REST response with the formatting properties of a paragraph.
+// This response is returned by the Service when handling "GET https://api.aspose.cloud/v4.0/words/Test.doc/paragraphs/{0}/format" REST API requests.
 
 type IParagraphFormatResponse interface {
     IsParagraphFormatResponse() bool
@@ -42,9 +43,11 @@ type IParagraphFormatResponse interface {
 
 type ParagraphFormatResponse struct {
     // The REST response with the formatting properties of a paragraph.
+    // This response is returned by the Service when handling "GET https://api.aspose.cloud/v4.0/words/Test.doc/paragraphs/{0}/format" REST API requests.
     RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with the formatting properties of a paragraph.
+    // This response is returned by the Service when handling "GET https://api.aspose.cloud/v4.0/words/Test.doc/paragraphs/{0}/format" REST API requests.
     ParagraphFormat IParagraphFormat `json:"ParagraphFormat,omitempty"`
 }
 

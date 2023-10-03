@@ -33,7 +33,7 @@ import "io"
 // InsertDrawingObjectOnlineResponse struct
 // Inserts a new DrawingObject to the document node.
 type InsertDrawingObjectOnlineResponse struct {
-    // The response model.
+    // The REST response with a DrawingObject.
     Model IDrawingObjectResponse
 
 

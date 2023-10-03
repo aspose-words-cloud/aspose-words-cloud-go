@@ -28,6 +28,7 @@
 package models
 
 // The REST response with data on multi-class text classification.
+// This response is returned by the Service when handling "PUT https://api.aspose.cloud/v4.0/words/classify" REST API requests.
 
 type IClassificationResponse interface {
     IsClassificationResponse() bool
@@ -46,15 +47,19 @@ type IClassificationResponse interface {
 
 type ClassificationResponse struct {
     // The REST response with data on multi-class text classification.
+    // This response is returned by the Service when handling "PUT https://api.aspose.cloud/v4.0/words/classify" REST API requests.
     RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with data on multi-class text classification.
+    // This response is returned by the Service when handling "PUT https://api.aspose.cloud/v4.0/words/classify" REST API requests.
     BestClassName *string `json:"BestClassName,omitempty"`
 
     // The REST response with data on multi-class text classification.
+    // This response is returned by the Service when handling "PUT https://api.aspose.cloud/v4.0/words/classify" REST API requests.
     BestClassProbability *float64 `json:"BestClassProbability,omitempty"`
 
     // The REST response with data on multi-class text classification.
+    // This response is returned by the Service when handling "PUT https://api.aspose.cloud/v4.0/words/classify" REST API requests.
     BestResults []IClassificationResult `json:"BestResults,omitempty"`
 }
 

@@ -33,7 +33,7 @@ import "io"
 // UnprotectDocumentOnlineResponse struct
 // Removes protection from the document.
 type UnprotectDocumentOnlineResponse struct {
-    // The response model.
+    // The REST response with data on document's protection.
     Model IProtectionDataResponse
 
 

@@ -28,6 +28,7 @@
 package models
 
 // The REST response with a hyperlink.
+// This response should be returned by the service when handling: GET /{name}/hyperlinks/{hyperlinkIndex}.
 
 type IHyperlinkResponse interface {
     IsHyperlinkResponse() bool
@@ -42,9 +43,11 @@ type IHyperlinkResponse interface {
 
 type HyperlinkResponse struct {
     // The REST response with a hyperlink.
+    // This response should be returned by the service when handling: GET /{name}/hyperlinks/{hyperlinkIndex}.
     RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with a hyperlink.
+    // This response should be returned by the service when handling: GET /{name}/hyperlinks/{hyperlinkIndex}.
     Hyperlink IHyperlink `json:"Hyperlink,omitempty"`
 }
 

@@ -28,6 +28,7 @@
 package models
 
 // The REST response with a border.
+// This response is returned by the Service when handling "GET {nodeWithBorders}/borders" REST API requests.
 
 type IBorderResponse interface {
     IsBorderResponse() bool
@@ -42,9 +43,11 @@ type IBorderResponse interface {
 
 type BorderResponse struct {
     // The REST response with a border.
+    // This response is returned by the Service when handling "GET {nodeWithBorders}/borders" REST API requests.
     RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with a border.
+    // This response is returned by the Service when handling "GET {nodeWithBorders}/borders" REST API requests.
     Border IBorder `json:"Border,omitempty"`
 }
 

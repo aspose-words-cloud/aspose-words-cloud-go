@@ -28,6 +28,7 @@
 package models
 
 // The REST response with a collection of form fields.
+// This response is returned by the Service when handling "GET https://api.aspose.cloud/v4.0/words/Test.doc/{nodePath}/form fields" REST API requests.
 
 type IFormFieldsResponse interface {
     IsFormFieldsResponse() bool
@@ -42,9 +43,11 @@ type IFormFieldsResponse interface {
 
 type FormFieldsResponse struct {
     // The REST response with a collection of form fields.
+    // This response is returned by the Service when handling "GET https://api.aspose.cloud/v4.0/words/Test.doc/{nodePath}/form fields" REST API requests.
     RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with a collection of form fields.
+    // This response is returned by the Service when handling "GET https://api.aspose.cloud/v4.0/words/Test.doc/{nodePath}/form fields" REST API requests.
     FormFields IFormFieldCollection `json:"FormFields,omitempty"`
 }
 

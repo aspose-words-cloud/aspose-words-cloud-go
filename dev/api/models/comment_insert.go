@@ -40,10 +40,10 @@ type ICommentInsert interface {
     SetRangeEnd(value INewDocumentPosition)
     GetAuthor() *string
     SetAuthor(value *string)
-    GetDateTime() *Time
-    SetDateTime(value *Time)
     GetInitial() *string
     SetInitial(value *string)
+    GetDateTime() *Time
+    SetDateTime(value *Time)
     GetText() *string
     SetText(value *string)
 }
@@ -59,10 +59,10 @@ type CommentInsert struct {
     Author *string `json:"Author,omitempty"`
 
     // Comment insert.
-    DateTime *Time `json:"DateTime,omitempty"`
+    Initial *string `json:"Initial,omitempty"`
 
     // Comment insert.
-    Initial *string `json:"Initial,omitempty"`
+    DateTime *Time `json:"DateTime,omitempty"`
 
     // Comment insert.
     Text *string `json:"Text,omitempty"`
@@ -133,6 +133,18 @@ func (obj *CommentInsert) Deserialize(json map[string]interface{}) {
 
     }
 
+    if jsonValue, exists := json["Initial"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Initial = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["initial"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Initial = &parsedValue
+        }
+
+    }
+
     if jsonValue, exists := json["DateTime"]; exists {
         if parsedValue, valid := jsonValue.(string); valid {
             obj.DateTime = new(Time)
@@ -143,18 +155,6 @@ func (obj *CommentInsert) Deserialize(json map[string]interface{}) {
         if parsedValue, valid := jsonValue.(string); valid {
             obj.DateTime = new(Time)
             obj.DateTime.Parse(parsedValue)
-        }
-
-    }
-
-    if jsonValue, exists := json["Initial"]; exists {
-        if parsedValue, valid := jsonValue.(string); valid {
-            obj.Initial = &parsedValue
-        }
-
-    } else if jsonValue, exists := json["initial"]; exists {
-        if parsedValue, valid := jsonValue.(string); valid {
-            obj.Initial = &parsedValue
         }
 
     }
@@ -200,20 +200,20 @@ func (obj *CommentInsert) SetAuthor(value *string) {
     obj.Author = value
 }
 
-func (obj *CommentInsert) GetDateTime() *Time {
-    return obj.DateTime
-}
-
-func (obj *CommentInsert) SetDateTime(value *Time) {
-    obj.DateTime = value
-}
-
 func (obj *CommentInsert) GetInitial() *string {
     return obj.Initial
 }
 
 func (obj *CommentInsert) SetInitial(value *string) {
     obj.Initial = value
+}
+
+func (obj *CommentInsert) GetDateTime() *Time {
+    return obj.DateTime
+}
+
+func (obj *CommentInsert) SetDateTime(value *Time) {
+    obj.DateTime = value
 }
 
 func (obj *CommentInsert) GetText() *string {

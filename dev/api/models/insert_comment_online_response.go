@@ -33,7 +33,8 @@ import "io"
 // InsertCommentOnlineResponse struct
 // Inserts a new comment to the document.
 type InsertCommentOnlineResponse struct {
-    // The response model.
+    // The REST response with a comment.
+    // This response is returned by the Service when handling "GET https://api.aspose.cloud/v4.0/words/Test.doc/comments/0" REST API requests.
     Model ICommentResponse
 
 

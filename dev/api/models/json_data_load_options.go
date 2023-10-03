@@ -28,6 +28,7 @@
 package models
 
 // Represents options for parsing JSON data.
+// An instance of this class can be passed into constructors of Aspose.Words.Reporting.JsonDataSource.
 
 type IJsonDataLoadOptions interface {
     IsJsonDataLoadOptions() bool
@@ -44,12 +45,15 @@ type IJsonDataLoadOptions interface {
 
 type JsonDataLoadOptions struct {
     // Represents options for parsing JSON data.
+    // An instance of this class can be passed into constructors of Aspose.Words.Reporting.JsonDataSource.
     AlwaysGenerateRootObject *bool `json:"AlwaysGenerateRootObject,omitempty"`
 
     // Represents options for parsing JSON data.
+    // An instance of this class can be passed into constructors of Aspose.Words.Reporting.JsonDataSource.
     ExactDateTimeParseFormats []string `json:"ExactDateTimeParseFormats,omitempty"`
 
     // Represents options for parsing JSON data.
+    // An instance of this class can be passed into constructors of Aspose.Words.Reporting.JsonDataSource.
     SimpleValueParseMode *string `json:"SimpleValueParseMode,omitempty"`
 }
 

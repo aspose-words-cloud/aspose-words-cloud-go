@@ -33,7 +33,7 @@ import "io"
 // CompareDocumentOnlineResponse struct
 // Compares two documents.
 type CompareDocumentOnlineResponse struct {
-    // The response model.
+    // The REST response with a document description.
     Model IDocumentResponse
 
 

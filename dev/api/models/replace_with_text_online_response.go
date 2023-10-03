@@ -33,7 +33,7 @@ import "io"
 // ReplaceWithTextOnlineResponse struct
 // Replaces a range with text in the document.
 type ReplaceWithTextOnlineResponse struct {
-    // The response model.
+    // The REST response with a document description.
     Model IDocumentResponse
 
 

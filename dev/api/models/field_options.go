@@ -34,8 +34,6 @@ type IFieldOptions interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
-    GetBuiltInTemplatesPaths() []string
-    SetBuiltInTemplatesPaths(value []string)
     GetCurrentUser() IUserInformation
     SetCurrentUser(value IUserInformation)
     GetCustomTocStyleSeparator() *string
@@ -60,12 +58,11 @@ type IFieldOptions interface {
     SetTemplateName(value *string)
     GetUseInvariantCultureNumberFormat() *bool
     SetUseInvariantCultureNumberFormat(value *bool)
+    GetBuiltInTemplatesPaths() []string
+    SetBuiltInTemplatesPaths(value []string)
 }
 
 type FieldOptions struct {
-    // DTO for field options.
-    BuiltInTemplatesPaths []string `json:"BuiltInTemplatesPaths,omitempty"`
-
     // DTO for field options.
     CurrentUser IUserInformation `json:"CurrentUser,omitempty"`
 
@@ -101,6 +98,9 @@ type FieldOptions struct {
 
     // DTO for field options.
     UseInvariantCultureNumberFormat *bool `json:"UseInvariantCultureNumberFormat,omitempty"`
+
+    // DTO for field options.
+    BuiltInTemplatesPaths []string `json:"BuiltInTemplatesPaths,omitempty"`
 }
 
 func (FieldOptions) IsFieldOptions() bool {
@@ -117,30 +117,6 @@ func (obj *FieldOptions) Initialize() {
 }
 
 func (obj *FieldOptions) Deserialize(json map[string]interface{}) {
-    if jsonValue, exists := json["BuiltInTemplatesPaths"]; exists {
-        if parsedValue, valid := jsonValue.([]interface{}); valid {
-            obj.BuiltInTemplatesPaths = make([]string, 0)
-            for _, parsedElement := range parsedValue {
-                if elementValue, valid := parsedElement.(string); valid {
-                    obj.BuiltInTemplatesPaths = append(obj.BuiltInTemplatesPaths, elementValue)
-                }
-
-            }
-        }
-
-    } else if jsonValue, exists := json["builtInTemplatesPaths"]; exists {
-        if parsedValue, valid := jsonValue.([]interface{}); valid {
-            obj.BuiltInTemplatesPaths = make([]string, 0)
-            for _, parsedElement := range parsedValue {
-                if elementValue, valid := parsedElement.(string); valid {
-                    obj.BuiltInTemplatesPaths = append(obj.BuiltInTemplatesPaths, elementValue)
-                }
-
-            }
-        }
-
-    }
-
     if jsonValue, exists := json["CurrentUser"]; exists {
         if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
             var modelInstance IUserInformation = new(UserInformation)
@@ -288,18 +264,34 @@ func (obj *FieldOptions) Deserialize(json map[string]interface{}) {
         }
 
     }
+
+    if jsonValue, exists := json["BuiltInTemplatesPaths"]; exists {
+        if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.BuiltInTemplatesPaths = make([]string, 0)
+            for _, parsedElement := range parsedValue {
+                if elementValue, valid := parsedElement.(string); valid {
+                    obj.BuiltInTemplatesPaths = append(obj.BuiltInTemplatesPaths, elementValue)
+                }
+
+            }
+        }
+
+    } else if jsonValue, exists := json["builtInTemplatesPaths"]; exists {
+        if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.BuiltInTemplatesPaths = make([]string, 0)
+            for _, parsedElement := range parsedValue {
+                if elementValue, valid := parsedElement.(string); valid {
+                    obj.BuiltInTemplatesPaths = append(obj.BuiltInTemplatesPaths, elementValue)
+                }
+
+            }
+        }
+
+    }
 }
 
 func (obj *FieldOptions) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
-}
-
-func (obj *FieldOptions) GetBuiltInTemplatesPaths() []string {
-    return obj.BuiltInTemplatesPaths
-}
-
-func (obj *FieldOptions) SetBuiltInTemplatesPaths(value []string) {
-    obj.BuiltInTemplatesPaths = value
 }
 
 func (obj *FieldOptions) GetCurrentUser() IUserInformation {
@@ -396,5 +388,13 @@ func (obj *FieldOptions) GetUseInvariantCultureNumberFormat() *bool {
 
 func (obj *FieldOptions) SetUseInvariantCultureNumberFormat(value *bool) {
     obj.UseInvariantCultureNumberFormat = value
+}
+
+func (obj *FieldOptions) GetBuiltInTemplatesPaths() []string {
+    return obj.BuiltInTemplatesPaths
+}
+
+func (obj *FieldOptions) SetBuiltInTemplatesPaths(value []string) {
+    obj.BuiltInTemplatesPaths = value
 }
 

@@ -33,7 +33,7 @@ import "io"
 // RemoveRangeOnlineResponse struct
 // Removes a range from the document.
 type RemoveRangeOnlineResponse struct {
-    // The response model.
+    // The REST response with a document description.
     Model IDocumentResponse
 
 

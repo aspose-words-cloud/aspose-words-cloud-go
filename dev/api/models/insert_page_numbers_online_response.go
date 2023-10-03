@@ -33,7 +33,7 @@ import "io"
 // InsertPageNumbersOnlineResponse struct
 // Inserts page numbers to the document.
 type InsertPageNumbersOnlineResponse struct {
-    // The response model.
+    // The REST response with a document description.
     Model IDocumentResponse
 
 

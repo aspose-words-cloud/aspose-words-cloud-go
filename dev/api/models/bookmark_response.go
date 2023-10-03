@@ -28,6 +28,7 @@
 package models
 
 // The REST response with a bookmark.
+// This response should be returned by the service when handling: GET bookmarks/{bookmarkName}.
 
 type IBookmarkResponse interface {
     IsBookmarkResponse() bool
@@ -42,9 +43,11 @@ type IBookmarkResponse interface {
 
 type BookmarkResponse struct {
     // The REST response with a bookmark.
+    // This response should be returned by the service when handling: GET bookmarks/{bookmarkName}.
     RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with a bookmark.
+    // This response should be returned by the service when handling: GET bookmarks/{bookmarkName}.
     Bookmark IBookmark `json:"Bookmark,omitempty"`
 }
 

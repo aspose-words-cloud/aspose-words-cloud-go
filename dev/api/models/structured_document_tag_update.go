@@ -523,18 +523,6 @@ func (obj *StructuredDocumentTagUpdate) Deserialize(json map[string]interface{})
         }
 
     }
-
-    if jsonValue, exists := json["WordOpenXML"]; exists {
-        if parsedValue, valid := jsonValue.(string); valid {
-            obj.WordOpenXML = &parsedValue
-        }
-
-    } else if jsonValue, exists := json["wordOpenXML"]; exists {
-        if parsedValue, valid := jsonValue.(string); valid {
-            obj.WordOpenXML = &parsedValue
-        }
-
-    }
 }
 
 func (obj *StructuredDocumentTagUpdate) CollectFilesContent(resultFilesContent []FileReference) []FileReference {

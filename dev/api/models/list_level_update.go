@@ -34,29 +34,38 @@ type IListLevelUpdate interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetStartAt() *int32
+    SetStartAt(value *int32)
+    GetNumberStyle() *string
+    SetNumberStyle(value *string)
+    GetNumberFormat() *string
+    SetNumberFormat(value *string)
     GetAlignment() *string
     SetAlignment(value *string)
     GetIsLegal() *bool
     SetIsLegal(value *bool)
-    GetNumberFormat() *string
-    SetNumberFormat(value *string)
-    GetNumberPosition() *float64
-    SetNumberPosition(value *float64)
-    GetNumberStyle() *string
-    SetNumberStyle(value *string)
     GetRestartAfterLevel() *int32
     SetRestartAfterLevel(value *int32)
-    GetStartAt() *int32
-    SetStartAt(value *int32)
-    GetTabPosition() *float64
-    SetTabPosition(value *float64)
-    GetTextPosition() *float64
-    SetTextPosition(value *float64)
     GetTrailingCharacter() *string
     SetTrailingCharacter(value *string)
+    GetTabPosition() *float64
+    SetTabPosition(value *float64)
+    GetNumberPosition() *float64
+    SetNumberPosition(value *float64)
+    GetTextPosition() *float64
+    SetTextPosition(value *float64)
 }
 
 type ListLevelUpdate struct {
+    // Represents a document list levels.
+    StartAt *int32 `json:"StartAt,omitempty"`
+
+    // Represents a document list levels.
+    NumberStyle *string `json:"NumberStyle,omitempty"`
+
+    // Represents a document list levels.
+    NumberFormat *string `json:"NumberFormat,omitempty"`
+
     // Represents a document list levels.
     Alignment *string `json:"Alignment,omitempty"`
 
@@ -64,28 +73,19 @@ type ListLevelUpdate struct {
     IsLegal *bool `json:"IsLegal,omitempty"`
 
     // Represents a document list levels.
-    NumberFormat *string `json:"NumberFormat,omitempty"`
-
-    // Represents a document list levels.
-    NumberPosition *float64 `json:"NumberPosition,omitempty"`
-
-    // Represents a document list levels.
-    NumberStyle *string `json:"NumberStyle,omitempty"`
-
-    // Represents a document list levels.
     RestartAfterLevel *int32 `json:"RestartAfterLevel,omitempty"`
 
     // Represents a document list levels.
-    StartAt *int32 `json:"StartAt,omitempty"`
+    TrailingCharacter *string `json:"TrailingCharacter,omitempty"`
 
     // Represents a document list levels.
     TabPosition *float64 `json:"TabPosition,omitempty"`
 
     // Represents a document list levels.
-    TextPosition *float64 `json:"TextPosition,omitempty"`
+    NumberPosition *float64 `json:"NumberPosition,omitempty"`
 
     // Represents a document list levels.
-    TrailingCharacter *string `json:"TrailingCharacter,omitempty"`
+    TextPosition *float64 `json:"TextPosition,omitempty"`
 }
 
 func (ListLevelUpdate) IsListLevelUpdate() bool {
@@ -97,6 +97,44 @@ func (obj *ListLevelUpdate) Initialize() {
 }
 
 func (obj *ListLevelUpdate) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["StartAt"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.StartAt = new(int32)
+            *obj.StartAt = int32(parsedValue)
+        }
+
+    } else if jsonValue, exists := json["startAt"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.StartAt = new(int32)
+            *obj.StartAt = int32(parsedValue)
+        }
+
+    }
+
+    if jsonValue, exists := json["NumberStyle"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.NumberStyle = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["numberStyle"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.NumberStyle = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["NumberFormat"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.NumberFormat = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["numberFormat"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.NumberFormat = &parsedValue
+        }
+
+    }
+
     if jsonValue, exists := json["Alignment"]; exists {
         if parsedValue, valid := jsonValue.(string); valid {
             obj.Alignment = &parsedValue
@@ -121,42 +159,6 @@ func (obj *ListLevelUpdate) Deserialize(json map[string]interface{}) {
 
     }
 
-    if jsonValue, exists := json["NumberFormat"]; exists {
-        if parsedValue, valid := jsonValue.(string); valid {
-            obj.NumberFormat = &parsedValue
-        }
-
-    } else if jsonValue, exists := json["numberFormat"]; exists {
-        if parsedValue, valid := jsonValue.(string); valid {
-            obj.NumberFormat = &parsedValue
-        }
-
-    }
-
-    if jsonValue, exists := json["NumberPosition"]; exists {
-        if parsedValue, valid := jsonValue.(float64); valid {
-            obj.NumberPosition = &parsedValue
-        }
-
-    } else if jsonValue, exists := json["numberPosition"]; exists {
-        if parsedValue, valid := jsonValue.(float64); valid {
-            obj.NumberPosition = &parsedValue
-        }
-
-    }
-
-    if jsonValue, exists := json["NumberStyle"]; exists {
-        if parsedValue, valid := jsonValue.(string); valid {
-            obj.NumberStyle = &parsedValue
-        }
-
-    } else if jsonValue, exists := json["numberStyle"]; exists {
-        if parsedValue, valid := jsonValue.(string); valid {
-            obj.NumberStyle = &parsedValue
-        }
-
-    }
-
     if jsonValue, exists := json["RestartAfterLevel"]; exists {
         if parsedValue, valid := jsonValue.(float64); valid {
             obj.RestartAfterLevel = new(int32)
@@ -171,16 +173,14 @@ func (obj *ListLevelUpdate) Deserialize(json map[string]interface{}) {
 
     }
 
-    if jsonValue, exists := json["StartAt"]; exists {
-        if parsedValue, valid := jsonValue.(float64); valid {
-            obj.StartAt = new(int32)
-            *obj.StartAt = int32(parsedValue)
+    if jsonValue, exists := json["TrailingCharacter"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.TrailingCharacter = &parsedValue
         }
 
-    } else if jsonValue, exists := json["startAt"]; exists {
-        if parsedValue, valid := jsonValue.(float64); valid {
-            obj.StartAt = new(int32)
-            *obj.StartAt = int32(parsedValue)
+    } else if jsonValue, exists := json["trailingCharacter"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.TrailingCharacter = &parsedValue
         }
 
     }
@@ -197,6 +197,18 @@ func (obj *ListLevelUpdate) Deserialize(json map[string]interface{}) {
 
     }
 
+    if jsonValue, exists := json["NumberPosition"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.NumberPosition = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["numberPosition"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.NumberPosition = &parsedValue
+        }
+
+    }
+
     if jsonValue, exists := json["TextPosition"]; exists {
         if parsedValue, valid := jsonValue.(float64); valid {
             obj.TextPosition = &parsedValue
@@ -208,22 +220,34 @@ func (obj *ListLevelUpdate) Deserialize(json map[string]interface{}) {
         }
 
     }
-
-    if jsonValue, exists := json["TrailingCharacter"]; exists {
-        if parsedValue, valid := jsonValue.(string); valid {
-            obj.TrailingCharacter = &parsedValue
-        }
-
-    } else if jsonValue, exists := json["trailingCharacter"]; exists {
-        if parsedValue, valid := jsonValue.(string); valid {
-            obj.TrailingCharacter = &parsedValue
-        }
-
-    }
 }
 
 func (obj *ListLevelUpdate) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *ListLevelUpdate) GetStartAt() *int32 {
+    return obj.StartAt
+}
+
+func (obj *ListLevelUpdate) SetStartAt(value *int32) {
+    obj.StartAt = value
+}
+
+func (obj *ListLevelUpdate) GetNumberStyle() *string {
+    return obj.NumberStyle
+}
+
+func (obj *ListLevelUpdate) SetNumberStyle(value *string) {
+    obj.NumberStyle = value
+}
+
+func (obj *ListLevelUpdate) GetNumberFormat() *string {
+    return obj.NumberFormat
+}
+
+func (obj *ListLevelUpdate) SetNumberFormat(value *string) {
+    obj.NumberFormat = value
 }
 
 func (obj *ListLevelUpdate) GetAlignment() *string {
@@ -242,30 +266,6 @@ func (obj *ListLevelUpdate) SetIsLegal(value *bool) {
     obj.IsLegal = value
 }
 
-func (obj *ListLevelUpdate) GetNumberFormat() *string {
-    return obj.NumberFormat
-}
-
-func (obj *ListLevelUpdate) SetNumberFormat(value *string) {
-    obj.NumberFormat = value
-}
-
-func (obj *ListLevelUpdate) GetNumberPosition() *float64 {
-    return obj.NumberPosition
-}
-
-func (obj *ListLevelUpdate) SetNumberPosition(value *float64) {
-    obj.NumberPosition = value
-}
-
-func (obj *ListLevelUpdate) GetNumberStyle() *string {
-    return obj.NumberStyle
-}
-
-func (obj *ListLevelUpdate) SetNumberStyle(value *string) {
-    obj.NumberStyle = value
-}
-
 func (obj *ListLevelUpdate) GetRestartAfterLevel() *int32 {
     return obj.RestartAfterLevel
 }
@@ -274,12 +274,12 @@ func (obj *ListLevelUpdate) SetRestartAfterLevel(value *int32) {
     obj.RestartAfterLevel = value
 }
 
-func (obj *ListLevelUpdate) GetStartAt() *int32 {
-    return obj.StartAt
+func (obj *ListLevelUpdate) GetTrailingCharacter() *string {
+    return obj.TrailingCharacter
 }
 
-func (obj *ListLevelUpdate) SetStartAt(value *int32) {
-    obj.StartAt = value
+func (obj *ListLevelUpdate) SetTrailingCharacter(value *string) {
+    obj.TrailingCharacter = value
 }
 
 func (obj *ListLevelUpdate) GetTabPosition() *float64 {
@@ -290,19 +290,19 @@ func (obj *ListLevelUpdate) SetTabPosition(value *float64) {
     obj.TabPosition = value
 }
 
+func (obj *ListLevelUpdate) GetNumberPosition() *float64 {
+    return obj.NumberPosition
+}
+
+func (obj *ListLevelUpdate) SetNumberPosition(value *float64) {
+    obj.NumberPosition = value
+}
+
 func (obj *ListLevelUpdate) GetTextPosition() *float64 {
     return obj.TextPosition
 }
 
 func (obj *ListLevelUpdate) SetTextPosition(value *float64) {
     obj.TextPosition = value
-}
-
-func (obj *ListLevelUpdate) GetTrailingCharacter() *string {
-    return obj.TrailingCharacter
-}
-
-func (obj *ListLevelUpdate) SetTrailingCharacter(value *string) {
-    obj.TrailingCharacter = value
 }
 

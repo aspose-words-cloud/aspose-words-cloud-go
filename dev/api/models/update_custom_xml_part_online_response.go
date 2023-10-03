@@ -33,7 +33,8 @@ import "io"
 // UpdateCustomXmlPartOnlineResponse struct
 // Updates the custom xml part in the document.
 type UpdateCustomXmlPartOnlineResponse struct {
-    // The response model.
+    // The REST response with a custom xml part.
+    // This response is returned by the Service when handling "GET https://api.aspose.cloud/v4.0/words/Test.doc/customXmlParts/0" REST API requests.
     Model ICustomXmlPartResponse
 
 

@@ -32,8 +32,10 @@ import "io"
 
 // DeleteBordersOnlineResponse struct
 // Removes borders from the document node.
+// The 'nodePath' parameter should refer to a paragraph, a cell or a row.
 type DeleteBordersOnlineResponse struct {
-    // The response model.
+    // The REST response with a collection of borders.
+    // This response is returned by the Service when handling "GET {nodeWithBorders}/borders" REST API requests.
     Model IBordersResponse
 
 

@@ -33,7 +33,7 @@ import "io"
 // UpdateFieldsOnlineResponse struct
 // Reevaluates field values in the document.
 type UpdateFieldsOnlineResponse struct {
-    // The response model.
+    // The REST response with a document description.
     Model IDocumentResponse
 
 

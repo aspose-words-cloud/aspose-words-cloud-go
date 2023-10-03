@@ -40,10 +40,10 @@ type ICommentBase interface {
     SetRangeEnd(value INewDocumentPosition)
     GetAuthor() *string
     SetAuthor(value *string)
-    GetDateTime() *Time
-    SetDateTime(value *Time)
     GetInitial() *string
     SetInitial(value *string)
+    GetDateTime() *Time
+    SetDateTime(value *Time)
     GetText() *string
     SetText(value *string)
 }
