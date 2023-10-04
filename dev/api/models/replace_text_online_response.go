@@ -33,7 +33,7 @@ import "io"
 // ReplaceTextOnlineResponse struct
 // Replaces text in the document.
 type ReplaceTextOnlineResponse struct {
-    // The response model.
+    // The REST response with a number of occurrences of the captured text in the document.
     Model IReplaceTextResponse
 
 

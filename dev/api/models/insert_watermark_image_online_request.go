@@ -40,9 +40,8 @@ import (
 type InsertWatermarkImageOnlineRequest struct {
         // The document.
         Document io.ReadCloser
-        // File with image.
-        ImageFile io.ReadCloser
     /* optional (nil or map[string]interface{}) with one or more of key / value pairs:
+        key: "imageFile" value: (io.ReadCloser) File with image.
         key: "loadEncoding" value: (*string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
         key: "password" value: (*string) Password of protected Word document. Use the parameter to pass a password via SDK. SDK encrypts it automatically. We don't recommend to use the parameter to pass a plain password for direct call of API.
         key: "encryptedPassword" value: (*string) Password of protected Word document. Use the parameter to pass an encrypted password for direct calls of API. See SDK code for encyption details.
@@ -147,7 +146,11 @@ func (data *InsertWatermarkImageOnlineRequest) CreateRequestData() (RequestData,
         result.FormParams = append(result.FormParams, NewFileFormParamContainer("document", fbs))
     }
 
-    _imageFile := data.ImageFile
+    var imageFile (io.ReadCloser)
+    if localVarTempParam, localVarOk := data.Optionals["imageFile"].(io.ReadCloser); localVarOk {
+        imageFile = localVarTempParam
+    }
+    _imageFile := imageFile
     if _imageFile != nil {
         fbs, _ := ioutil.ReadAll(_imageFile)
         _imageFile.Close()

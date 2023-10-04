@@ -33,7 +33,8 @@ import "io"
 // CreateOrUpdateDocumentPropertyOnlineResponse struct
 // Adds a new or updates an existing document property.
 type CreateOrUpdateDocumentPropertyOnlineResponse struct {
-    // The response model.
+    // The REST response with a document property.
+    // This response should be returned by the service when handling: GET documentProperties/{propertyName}.
     Model IDocumentPropertyResponse
 
 

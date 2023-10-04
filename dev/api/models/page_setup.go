@@ -28,6 +28,7 @@
 package models
 
 // Represents the page setup properties of a section.
+// PageSetup object contains all the page setup attributes of a section (left margin, bottom margin, paper size, and so on) as properties.
 
 type IPageSetup interface {
     IsPageSetup() bool
@@ -98,93 +99,123 @@ type IPageSetup interface {
 
 type PageSetup struct {
     // Represents the page setup properties of a section.
+    // PageSetup object contains all the page setup attributes of a section (left margin, bottom margin, paper size, and so on) as properties.
     Link IWordsApiLink `json:"Link,omitempty"`
 
     // Represents the page setup properties of a section.
+    // PageSetup object contains all the page setup attributes of a section (left margin, bottom margin, paper size, and so on) as properties.
     Bidi *bool `json:"Bidi,omitempty"`
 
     // Represents the page setup properties of a section.
+    // PageSetup object contains all the page setup attributes of a section (left margin, bottom margin, paper size, and so on) as properties.
     BorderAlwaysInFront *bool `json:"BorderAlwaysInFront,omitempty"`
 
     // Represents the page setup properties of a section.
+    // PageSetup object contains all the page setup attributes of a section (left margin, bottom margin, paper size, and so on) as properties.
     BorderAppliesTo *string `json:"BorderAppliesTo,omitempty"`
 
     // Represents the page setup properties of a section.
+    // PageSetup object contains all the page setup attributes of a section (left margin, bottom margin, paper size, and so on) as properties.
     BorderDistanceFrom *string `json:"BorderDistanceFrom,omitempty"`
 
     // Represents the page setup properties of a section.
+    // PageSetup object contains all the page setup attributes of a section (left margin, bottom margin, paper size, and so on) as properties.
     BottomMargin *float64 `json:"BottomMargin,omitempty"`
 
     // Represents the page setup properties of a section.
+    // PageSetup object contains all the page setup attributes of a section (left margin, bottom margin, paper size, and so on) as properties.
     DifferentFirstPageHeaderFooter *bool `json:"DifferentFirstPageHeaderFooter,omitempty"`
 
     // Represents the page setup properties of a section.
+    // PageSetup object contains all the page setup attributes of a section (left margin, bottom margin, paper size, and so on) as properties.
     FirstPageTray *int32 `json:"FirstPageTray,omitempty"`
 
     // Represents the page setup properties of a section.
+    // PageSetup object contains all the page setup attributes of a section (left margin, bottom margin, paper size, and so on) as properties.
     FooterDistance *float64 `json:"FooterDistance,omitempty"`
 
     // Represents the page setup properties of a section.
+    // PageSetup object contains all the page setup attributes of a section (left margin, bottom margin, paper size, and so on) as properties.
     Gutter *float64 `json:"Gutter,omitempty"`
 
     // Represents the page setup properties of a section.
+    // PageSetup object contains all the page setup attributes of a section (left margin, bottom margin, paper size, and so on) as properties.
     HeaderDistance *float64 `json:"HeaderDistance,omitempty"`
 
     // Represents the page setup properties of a section.
+    // PageSetup object contains all the page setup attributes of a section (left margin, bottom margin, paper size, and so on) as properties.
     LeftMargin *float64 `json:"LeftMargin,omitempty"`
 
     // Represents the page setup properties of a section.
+    // PageSetup object contains all the page setup attributes of a section (left margin, bottom margin, paper size, and so on) as properties.
     LineNumberCountBy *int32 `json:"LineNumberCountBy,omitempty"`
 
     // Represents the page setup properties of a section.
+    // PageSetup object contains all the page setup attributes of a section (left margin, bottom margin, paper size, and so on) as properties.
     LineNumberDistanceFromText *float64 `json:"LineNumberDistanceFromText,omitempty"`
 
     // Represents the page setup properties of a section.
+    // PageSetup object contains all the page setup attributes of a section (left margin, bottom margin, paper size, and so on) as properties.
     LineNumberRestartMode *string `json:"LineNumberRestartMode,omitempty"`
 
     // Represents the page setup properties of a section.
+    // PageSetup object contains all the page setup attributes of a section (left margin, bottom margin, paper size, and so on) as properties.
     LineStartingNumber *int32 `json:"LineStartingNumber,omitempty"`
 
     // Represents the page setup properties of a section.
+    // PageSetup object contains all the page setup attributes of a section (left margin, bottom margin, paper size, and so on) as properties.
     Orientation *string `json:"Orientation,omitempty"`
 
     // Represents the page setup properties of a section.
+    // PageSetup object contains all the page setup attributes of a section (left margin, bottom margin, paper size, and so on) as properties.
     OtherPagesTray *int32 `json:"OtherPagesTray,omitempty"`
 
     // Represents the page setup properties of a section.
+    // PageSetup object contains all the page setup attributes of a section (left margin, bottom margin, paper size, and so on) as properties.
     PageHeight *float64 `json:"PageHeight,omitempty"`
 
     // Represents the page setup properties of a section.
+    // PageSetup object contains all the page setup attributes of a section (left margin, bottom margin, paper size, and so on) as properties.
     PageNumberStyle *string `json:"PageNumberStyle,omitempty"`
 
     // Represents the page setup properties of a section.
+    // PageSetup object contains all the page setup attributes of a section (left margin, bottom margin, paper size, and so on) as properties.
     PageStartingNumber *int32 `json:"PageStartingNumber,omitempty"`
 
     // Represents the page setup properties of a section.
+    // PageSetup object contains all the page setup attributes of a section (left margin, bottom margin, paper size, and so on) as properties.
     PageWidth *float64 `json:"PageWidth,omitempty"`
 
     // Represents the page setup properties of a section.
+    // PageSetup object contains all the page setup attributes of a section (left margin, bottom margin, paper size, and so on) as properties.
     PaperSize *string `json:"PaperSize,omitempty"`
 
     // Represents the page setup properties of a section.
+    // PageSetup object contains all the page setup attributes of a section (left margin, bottom margin, paper size, and so on) as properties.
     RestartPageNumbering *bool `json:"RestartPageNumbering,omitempty"`
 
     // Represents the page setup properties of a section.
+    // PageSetup object contains all the page setup attributes of a section (left margin, bottom margin, paper size, and so on) as properties.
     RightMargin *float64 `json:"RightMargin,omitempty"`
 
     // Represents the page setup properties of a section.
+    // PageSetup object contains all the page setup attributes of a section (left margin, bottom margin, paper size, and so on) as properties.
     RtlGutter *bool `json:"RtlGutter,omitempty"`
 
     // Represents the page setup properties of a section.
+    // PageSetup object contains all the page setup attributes of a section (left margin, bottom margin, paper size, and so on) as properties.
     SectionStart *string `json:"SectionStart,omitempty"`
 
     // Represents the page setup properties of a section.
+    // PageSetup object contains all the page setup attributes of a section (left margin, bottom margin, paper size, and so on) as properties.
     SuppressEndnotes *bool `json:"SuppressEndnotes,omitempty"`
 
     // Represents the page setup properties of a section.
+    // PageSetup object contains all the page setup attributes of a section (left margin, bottom margin, paper size, and so on) as properties.
     TopMargin *float64 `json:"TopMargin,omitempty"`
 
     // Represents the page setup properties of a section.
+    // PageSetup object contains all the page setup attributes of a section (left margin, bottom margin, paper size, and so on) as properties.
     VerticalAlignment *string `json:"VerticalAlignment,omitempty"`
 }
 

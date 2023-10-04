@@ -32,8 +32,10 @@ import "io"
 
 // UpdateBorderOnlineResponse struct
 // Updates a border in the document node.
+// The 'nodePath' parameter should refer to a paragraph, a cell or a row.
 type UpdateBorderOnlineResponse struct {
-    // The response model.
+    // The REST response with a border.
+    // This response is returned by the Service when handling "GET {nodeWithBorders}/borders" REST API requests.
     Model IBorderResponse
 
 

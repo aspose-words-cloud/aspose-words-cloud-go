@@ -34,18 +34,18 @@ type IFieldInsert interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
-    GetFieldCode() *string
-    SetFieldCode(value *string)
     GetLocaleId() *string
     SetLocaleId(value *string)
+    GetFieldCode() *string
+    SetFieldCode(value *string)
 }
 
 type FieldInsert struct {
     // Field for insert.
-    FieldCode *string `json:"FieldCode,omitempty"`
+    LocaleId *string `json:"LocaleId,omitempty"`
 
     // Field for insert.
-    LocaleId *string `json:"LocaleId,omitempty"`
+    FieldCode *string `json:"FieldCode,omitempty"`
 }
 
 func (FieldInsert) IsFieldInsert() bool {
@@ -60,18 +60,6 @@ func (obj *FieldInsert) Initialize() {
 }
 
 func (obj *FieldInsert) Deserialize(json map[string]interface{}) {
-    if jsonValue, exists := json["FieldCode"]; exists {
-        if parsedValue, valid := jsonValue.(string); valid {
-            obj.FieldCode = &parsedValue
-        }
-
-    } else if jsonValue, exists := json["fieldCode"]; exists {
-        if parsedValue, valid := jsonValue.(string); valid {
-            obj.FieldCode = &parsedValue
-        }
-
-    }
-
     if jsonValue, exists := json["LocaleId"]; exists {
         if parsedValue, valid := jsonValue.(string); valid {
             obj.LocaleId = &parsedValue
@@ -83,18 +71,22 @@ func (obj *FieldInsert) Deserialize(json map[string]interface{}) {
         }
 
     }
+
+    if jsonValue, exists := json["FieldCode"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.FieldCode = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["fieldCode"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.FieldCode = &parsedValue
+        }
+
+    }
 }
 
 func (obj *FieldInsert) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
-}
-
-func (obj *FieldInsert) GetFieldCode() *string {
-    return obj.FieldCode
-}
-
-func (obj *FieldInsert) SetFieldCode(value *string) {
-    obj.FieldCode = value
 }
 
 func (obj *FieldInsert) GetLocaleId() *string {
@@ -103,5 +95,13 @@ func (obj *FieldInsert) GetLocaleId() *string {
 
 func (obj *FieldInsert) SetLocaleId(value *string) {
     obj.LocaleId = value
+}
+
+func (obj *FieldInsert) GetFieldCode() *string {
+    return obj.FieldCode
+}
+
+func (obj *FieldInsert) SetFieldCode(value *string) {
+    obj.FieldCode = value
 }
 

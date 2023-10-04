@@ -34,17 +34,20 @@ type IStyleUpdate interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    GetNextParagraphStyleName() *string
+    SetNextParagraphStyleName(value *string)
     GetBaseStyleName() *string
     SetBaseStyleName(value *string)
     GetIsQuickStyle() *bool
     SetIsQuickStyle(value *bool)
     GetName() *string
     SetName(value *string)
-    GetNextParagraphStyleName() *string
-    SetNextParagraphStyleName(value *string)
 }
 
 type StyleUpdate struct {
+    // Represents a single document style properties to update.
+    NextParagraphStyleName *string `json:"NextParagraphStyleName,omitempty"`
+
     // Represents a single document style properties to update.
     BaseStyleName *string `json:"BaseStyleName,omitempty"`
 
@@ -53,9 +56,6 @@ type StyleUpdate struct {
 
     // Represents a single document style properties to update.
     Name *string `json:"Name,omitempty"`
-
-    // Represents a single document style properties to update.
-    NextParagraphStyleName *string `json:"NextParagraphStyleName,omitempty"`
 }
 
 func (StyleUpdate) IsStyleUpdate() bool {
@@ -67,6 +67,18 @@ func (obj *StyleUpdate) Initialize() {
 }
 
 func (obj *StyleUpdate) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["NextParagraphStyleName"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.NextParagraphStyleName = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["nextParagraphStyleName"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.NextParagraphStyleName = &parsedValue
+        }
+
+    }
+
     if jsonValue, exists := json["BaseStyleName"]; exists {
         if parsedValue, valid := jsonValue.(string); valid {
             obj.BaseStyleName = &parsedValue
@@ -102,22 +114,18 @@ func (obj *StyleUpdate) Deserialize(json map[string]interface{}) {
         }
 
     }
-
-    if jsonValue, exists := json["NextParagraphStyleName"]; exists {
-        if parsedValue, valid := jsonValue.(string); valid {
-            obj.NextParagraphStyleName = &parsedValue
-        }
-
-    } else if jsonValue, exists := json["nextParagraphStyleName"]; exists {
-        if parsedValue, valid := jsonValue.(string); valid {
-            obj.NextParagraphStyleName = &parsedValue
-        }
-
-    }
 }
 
 func (obj *StyleUpdate) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *StyleUpdate) GetNextParagraphStyleName() *string {
+    return obj.NextParagraphStyleName
+}
+
+func (obj *StyleUpdate) SetNextParagraphStyleName(value *string) {
+    obj.NextParagraphStyleName = value
 }
 
 func (obj *StyleUpdate) GetBaseStyleName() *string {
@@ -142,13 +150,5 @@ func (obj *StyleUpdate) GetName() *string {
 
 func (obj *StyleUpdate) SetName(value *string) {
     obj.Name = value
-}
-
-func (obj *StyleUpdate) GetNextParagraphStyleName() *string {
-    return obj.NextParagraphStyleName
-}
-
-func (obj *StyleUpdate) SetNextParagraphStyleName(value *string) {
-    obj.NextParagraphStyleName = value
 }
 

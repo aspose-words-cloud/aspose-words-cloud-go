@@ -33,7 +33,7 @@ import "io"
 // DeleteWatermarkOnlineResponse struct
 // Removes a watermark from the document.
 type DeleteWatermarkOnlineResponse struct {
-    // The response model.
+    // The REST response with a document description.
     Model IDocumentResponse
 
 

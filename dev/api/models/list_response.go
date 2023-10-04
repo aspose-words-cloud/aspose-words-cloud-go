@@ -28,6 +28,7 @@
 package models
 
 // The REST response with a list information.
+// This response is returned by the Service when handling "GET https://api.aspose.cloud/v4.0/words/Test.doc/lists/{n}" REST API requests.
 
 type IListResponse interface {
     IsListResponse() bool
@@ -42,9 +43,11 @@ type IListResponse interface {
 
 type ListResponse struct {
     // The REST response with a list information.
+    // This response is returned by the Service when handling "GET https://api.aspose.cloud/v4.0/words/Test.doc/lists/{n}" REST API requests.
     RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with a list information.
+    // This response is returned by the Service when handling "GET https://api.aspose.cloud/v4.0/words/Test.doc/lists/{n}" REST API requests.
     List IListInfo `json:"List,omitempty"`
 }
 

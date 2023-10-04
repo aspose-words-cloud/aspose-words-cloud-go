@@ -33,7 +33,8 @@ import "io"
 // UpdateBookmarkOnlineResponse struct
 // Updates a bookmark in the document.
 type UpdateBookmarkOnlineResponse struct {
-    // The response model.
+    // The REST response with a bookmark.
+    // This response should be returned by the service when handling: GET bookmarks/{bookmarkName}.
     Model IBookmarkResponse
 
 

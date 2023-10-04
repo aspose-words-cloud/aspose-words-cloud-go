@@ -33,7 +33,7 @@ import "io"
 // SaveAsRangeOnlineResponse struct
 // Saves a range as a new document.
 type SaveAsRangeOnlineResponse struct {
-    // The response model.
+    // The REST response with a document description.
     Model IDocumentResponse
 
 

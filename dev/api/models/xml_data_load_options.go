@@ -29,6 +29,7 @@ package models
 
 // Represents options for XML data loading.
 // To learn more, visit the LINQ Reporting Engine documentation article.
+// An instance of this class can be passed into constructors of XmlDataSource.
 
 type IXmlDataLoadOptions interface {
     IsXmlDataLoadOptions() bool
@@ -42,6 +43,7 @@ type IXmlDataLoadOptions interface {
 type XmlDataLoadOptions struct {
     // Represents options for XML data loading.
     // To learn more, visit the LINQ Reporting Engine documentation article.
+    // An instance of this class can be passed into constructors of XmlDataSource.
     AlwaysGenerateRootObject *bool `json:"AlwaysGenerateRootObject,omitempty"`
 }
 

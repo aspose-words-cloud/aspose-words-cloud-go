@@ -34,9 +34,9 @@ type IFieldBase interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
-    GetFieldCode() *string
-    SetFieldCode(value *string)
     GetLocaleId() *string
     SetLocaleId(value *string)
+    GetFieldCode() *string
+    SetFieldCode(value *string)
 }
 

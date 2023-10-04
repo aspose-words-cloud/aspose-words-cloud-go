@@ -28,6 +28,7 @@
 package models
 
 // The REST response with a collection of StructuredDocumentTags.
+// This response should be returned by the service when handling: GET /structuredDocumentTags.
 
 type IStructuredDocumentTagsResponse interface {
     IsStructuredDocumentTagsResponse() bool
@@ -42,9 +43,11 @@ type IStructuredDocumentTagsResponse interface {
 
 type StructuredDocumentTagsResponse struct {
     // The REST response with a collection of StructuredDocumentTags.
+    // This response should be returned by the service when handling: GET /structuredDocumentTags.
     RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with a collection of StructuredDocumentTags.
+    // This response should be returned by the service when handling: GET /structuredDocumentTags.
     StructuredDocumentTags IStructuredDocumentTagCollection `json:"StructuredDocumentTags,omitempty"`
 }
 

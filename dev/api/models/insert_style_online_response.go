@@ -33,7 +33,8 @@ import "io"
 // InsertStyleOnlineResponse struct
 // Inserts a new style to the document.
 type InsertStyleOnlineResponse struct {
-    // The response model.
+    // The REST response with a style.
+    // This response is returned by the Service when handling "GET https://api.aspose.cloud/v4.0/words/Test.doc/styles/{0}" REST API requests.
     Model IStyleResponse
 
 

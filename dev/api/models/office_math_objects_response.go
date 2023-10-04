@@ -28,6 +28,7 @@
 package models
 
 // The REST response with a collection of OfficeMath objects.
+// This response is returned by the Service when handling "GET https://api.aspose.cloud/v4.0/words/Test.doc/OfficeMathObjects" REST API requests.
 
 type IOfficeMathObjectsResponse interface {
     IsOfficeMathObjectsResponse() bool
@@ -42,9 +43,11 @@ type IOfficeMathObjectsResponse interface {
 
 type OfficeMathObjectsResponse struct {
     // The REST response with a collection of OfficeMath objects.
+    // This response is returned by the Service when handling "GET https://api.aspose.cloud/v4.0/words/Test.doc/OfficeMathObjects" REST API requests.
     RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with a collection of OfficeMath objects.
+    // This response is returned by the Service when handling "GET https://api.aspose.cloud/v4.0/words/Test.doc/OfficeMathObjects" REST API requests.
     OfficeMathObjects IOfficeMathObjectsCollection `json:"OfficeMathObjects,omitempty"`
 }
 

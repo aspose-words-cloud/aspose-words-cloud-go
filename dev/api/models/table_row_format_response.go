@@ -28,6 +28,7 @@
 package models
 
 // The REST response with the formatting properties of a table row.
+// This response is returned by the Service when handling "GET https://api.aspose.cloud/v4.0/words/Test.doc/tables/{0}/rows/{1}/rowformat" REST API requests.
 
 type ITableRowFormatResponse interface {
     IsTableRowFormatResponse() bool
@@ -42,9 +43,11 @@ type ITableRowFormatResponse interface {
 
 type TableRowFormatResponse struct {
     // The REST response with the formatting properties of a table row.
+    // This response is returned by the Service when handling "GET https://api.aspose.cloud/v4.0/words/Test.doc/tables/{0}/rows/{1}/rowformat" REST API requests.
     RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with the formatting properties of a table row.
+    // This response is returned by the Service when handling "GET https://api.aspose.cloud/v4.0/words/Test.doc/tables/{0}/rows/{1}/rowformat" REST API requests.
     RowFormat ITableRowFormat `json:"RowFormat,omitempty"`
 }
 

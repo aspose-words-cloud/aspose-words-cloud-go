@@ -31,9 +31,9 @@ import "io"
 
 
 // SaveAsOnlineResponse struct
-// Converts a document to the specified format.
+// Converts a document in cloud storage to the specified format.
 type SaveAsOnlineResponse struct {
-    // The response model.
+    // The REST response with a save result.
     Model ISaveResponse
 
 

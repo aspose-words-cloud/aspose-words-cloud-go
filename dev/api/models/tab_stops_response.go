@@ -28,6 +28,7 @@
 package models
 
 // The REST response with an array of tab stops.
+// This response is returned by the Service when handling "GET https://api.aspose.cloud/v4.0/words/Test.doc/paragraphs/{0}/tabstops" REST API requests.
 
 type ITabStopsResponse interface {
     IsTabStopsResponse() bool
@@ -42,9 +43,11 @@ type ITabStopsResponse interface {
 
 type TabStopsResponse struct {
     // The REST response with an array of tab stops.
+    // This response is returned by the Service when handling "GET https://api.aspose.cloud/v4.0/words/Test.doc/paragraphs/{0}/tabstops" REST API requests.
     RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with an array of tab stops.
+    // This response is returned by the Service when handling "GET https://api.aspose.cloud/v4.0/words/Test.doc/paragraphs/{0}/tabstops" REST API requests.
     TabStops []ITabStop `json:"TabStops,omitempty"`
 }
 

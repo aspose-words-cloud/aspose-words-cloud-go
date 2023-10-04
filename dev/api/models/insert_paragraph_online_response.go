@@ -33,7 +33,8 @@ import "io"
 // InsertParagraphOnlineResponse struct
 // Inserts a new paragraph to the document node.
 type InsertParagraphOnlineResponse struct {
-    // The response model.
+    // The REST response with a paragraph.
+    // This response is returned by the Service when handling "GET https://api.aspose.cloud/v4.0/words/Test.doc/paragraphs/{0}" REST API requests.
     Model IParagraphResponse
 
 

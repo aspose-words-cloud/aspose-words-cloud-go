@@ -33,7 +33,7 @@ import "io"
 // AcceptAllRevisionsOnlineResponse struct
 // Accepts all revisions in the document.
 type AcceptAllRevisionsOnlineResponse struct {
-    // The response model.
+    // The REST response with a result of the modification operations for the revisions collection (now these are acceptAll and rejectAll).
     Model IRevisionsModificationResponse
 
 

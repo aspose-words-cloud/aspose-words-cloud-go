@@ -31,9 +31,9 @@ import "io"
 
 
 // SaveAsTiffOnlineResponse struct
-// Converts a document to TIFF format using detailed conversion settings.
+// Converts a document in cloud storage to TIFF format using detailed conversion settings.
 type SaveAsTiffOnlineResponse struct {
-    // The response model.
+    // The REST response with a save result.
     Model ISaveResponse
 
 

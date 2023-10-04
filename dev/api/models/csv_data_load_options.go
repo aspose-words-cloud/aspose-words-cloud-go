@@ -29,6 +29,7 @@ package models
 
 // Represents options for parsing CSV data.
 // To learn more, visit the LINQ Reporting Engine documentation article.
+// An instance of this class can be passed into constructors of CsvDataSource.
 
 type ICsvDataLoadOptions interface {
     IsCsvDataLoadOptions() bool
@@ -48,18 +49,22 @@ type ICsvDataLoadOptions interface {
 type CsvDataLoadOptions struct {
     // Represents options for parsing CSV data.
     // To learn more, visit the LINQ Reporting Engine documentation article.
+    // An instance of this class can be passed into constructors of CsvDataSource.
     CommentChar *string `json:"CommentChar,omitempty"`
 
     // Represents options for parsing CSV data.
     // To learn more, visit the LINQ Reporting Engine documentation article.
+    // An instance of this class can be passed into constructors of CsvDataSource.
     Delimiter *string `json:"Delimiter,omitempty"`
 
     // Represents options for parsing CSV data.
     // To learn more, visit the LINQ Reporting Engine documentation article.
+    // An instance of this class can be passed into constructors of CsvDataSource.
     HasHeaders *bool `json:"HasHeaders,omitempty"`
 
     // Represents options for parsing CSV data.
     // To learn more, visit the LINQ Reporting Engine documentation article.
+    // An instance of this class can be passed into constructors of CsvDataSource.
     QuoteChar *string `json:"QuoteChar,omitempty"`
 }
 

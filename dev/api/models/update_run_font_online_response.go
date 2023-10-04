@@ -33,7 +33,8 @@ import "io"
 // UpdateRunFontOnlineResponse struct
 // Updates the font properties of a Run object in the paragraph.
 type UpdateRunFontOnlineResponse struct {
-    // The response model.
+    // The REST response with a font.
+    // This response is returned by the Service when handling "GET https://api.aspose.cloud/v4.0/words/Test.doc/paragraphs/{0}/runs/{1}/font" REST API requests.
     Model IFontResponse
 
 

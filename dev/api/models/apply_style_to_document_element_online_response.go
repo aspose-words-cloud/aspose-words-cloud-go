@@ -33,7 +33,7 @@ import "io"
 // ApplyStyleToDocumentElementOnlineResponse struct
 // Applies a style to the document node.
 type ApplyStyleToDocumentElementOnlineResponse struct {
-    // The response model.
+    // The base class for all responses.
     Model IWordsResponse
 
 

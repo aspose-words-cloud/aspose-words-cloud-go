@@ -33,7 +33,7 @@ import "io"
 // ProtectDocumentOnlineResponse struct
 // Adds protection to the document.
 type ProtectDocumentOnlineResponse struct {
-    // The response model.
+    // The REST response with data on document's protection.
     Model IProtectionDataResponse
 
 

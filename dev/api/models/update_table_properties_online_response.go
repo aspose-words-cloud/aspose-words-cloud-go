@@ -33,7 +33,8 @@ import "io"
 // UpdateTablePropertiesOnlineResponse struct
 // Updates properties of a table in the document node.
 type UpdateTablePropertiesOnlineResponse struct {
-    // The response model.
+    // The REST response with a table.
+    // This response is returned by the Service when handling "GET https://api.aspose.cloud/v4.0/words/Test.doc/tables/{0}/properties" REST API requests.
     Model ITablePropertiesResponse
 
 

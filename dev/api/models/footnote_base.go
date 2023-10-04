@@ -34,10 +34,10 @@ type IFootnoteBase interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
-    GetFootnoteType() *string
-    SetFootnoteType(value *string)
     GetPosition() INewDocumentPosition
     SetPosition(value INewDocumentPosition)
+    GetFootnoteType() *string
+    SetFootnoteType(value *string)
     GetReferenceMark() *string
     SetReferenceMark(value *string)
     GetText() *string

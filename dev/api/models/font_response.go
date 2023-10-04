@@ -28,6 +28,7 @@
 package models
 
 // The REST response with a font.
+// This response is returned by the Service when handling "GET https://api.aspose.cloud/v4.0/words/Test.doc/paragraphs/{0}/runs/{1}/font" REST API requests.
 
 type IFontResponse interface {
     IsFontResponse() bool
@@ -42,9 +43,11 @@ type IFontResponse interface {
 
 type FontResponse struct {
     // The REST response with a font.
+    // This response is returned by the Service when handling "GET https://api.aspose.cloud/v4.0/words/Test.doc/paragraphs/{0}/runs/{1}/font" REST API requests.
     RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with a font.
+    // This response is returned by the Service when handling "GET https://api.aspose.cloud/v4.0/words/Test.doc/paragraphs/{0}/runs/{1}/font" REST API requests.
     Font IFont `json:"Font,omitempty"`
 }
 

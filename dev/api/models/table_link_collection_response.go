@@ -28,6 +28,7 @@
 package models
 
 // The REST response with a collection of tables.
+// This response is returned by the Service when handling "GET https://api.aspose.cloud/v4.0/words/Test.doc/tables" REST API requests.
 
 type ITableLinkCollectionResponse interface {
     IsTableLinkCollectionResponse() bool
@@ -42,9 +43,11 @@ type ITableLinkCollectionResponse interface {
 
 type TableLinkCollectionResponse struct {
     // The REST response with a collection of tables.
+    // This response is returned by the Service when handling "GET https://api.aspose.cloud/v4.0/words/Test.doc/tables" REST API requests.
     RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with a collection of tables.
+    // This response is returned by the Service when handling "GET https://api.aspose.cloud/v4.0/words/Test.doc/tables" REST API requests.
     Tables ITableLinkCollection `json:"Tables,omitempty"`
 }
 

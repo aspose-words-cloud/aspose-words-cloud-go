@@ -28,6 +28,7 @@
 package models
 
 // The REST response with a collection of Run elements.
+// This response is returned by the Service when handling "GET https://api.aspose.cloud/v4.0/words/Test.doc/{paragraphPath}/runs" REST API requests.
 
 type IRunsResponse interface {
     IsRunsResponse() bool
@@ -42,9 +43,11 @@ type IRunsResponse interface {
 
 type RunsResponse struct {
     // The REST response with a collection of Run elements.
+    // This response is returned by the Service when handling "GET https://api.aspose.cloud/v4.0/words/Test.doc/{paragraphPath}/runs" REST API requests.
     RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with a collection of Run elements.
+    // This response is returned by the Service when handling "GET https://api.aspose.cloud/v4.0/words/Test.doc/{paragraphPath}/runs" REST API requests.
     Runs IRuns `json:"Runs,omitempty"`
 }
 

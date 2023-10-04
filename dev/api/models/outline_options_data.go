@@ -34,8 +34,6 @@ type IOutlineOptionsData interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
-    GetBookmarksOutlineLevels() []IBookmarksOutlineLevelData
-    SetBookmarksOutlineLevels(value []IBookmarksOutlineLevelData)
     GetCreateMissingOutlineLevels() *bool
     SetCreateMissingOutlineLevels(value *bool)
     GetCreateOutlinesForHeadingsInTables() *bool
@@ -46,12 +44,11 @@ type IOutlineOptionsData interface {
     SetExpandedOutlineLevels(value *int32)
     GetHeadingsOutlineLevels() *int32
     SetHeadingsOutlineLevels(value *int32)
+    GetBookmarksOutlineLevels() []IBookmarksOutlineLevelData
+    SetBookmarksOutlineLevels(value []IBookmarksOutlineLevelData)
 }
 
 type OutlineOptionsData struct {
-    // Container class for outline options.
-    BookmarksOutlineLevels []IBookmarksOutlineLevelData `json:"BookmarksOutlineLevels,omitempty"`
-
     // Container class for outline options.
     CreateMissingOutlineLevels *bool `json:"CreateMissingOutlineLevels,omitempty"`
 
@@ -66,6 +63,9 @@ type OutlineOptionsData struct {
 
     // Container class for outline options.
     HeadingsOutlineLevels *int32 `json:"HeadingsOutlineLevels,omitempty"`
+
+    // Container class for outline options.
+    BookmarksOutlineLevels []IBookmarksOutlineLevelData `json:"BookmarksOutlineLevels,omitempty"`
 }
 
 func (OutlineOptionsData) IsOutlineOptionsData() bool {
@@ -83,34 +83,6 @@ func (obj *OutlineOptionsData) Initialize() {
 }
 
 func (obj *OutlineOptionsData) Deserialize(json map[string]interface{}) {
-    if jsonValue, exists := json["BookmarksOutlineLevels"]; exists {
-        if parsedValue, valid := jsonValue.([]interface{}); valid {
-            obj.BookmarksOutlineLevels = make([]IBookmarksOutlineLevelData, 0)
-            for _, parsedElement := range parsedValue {
-                if elementValue, valid := parsedElement.(map[string]interface{}); valid {
-                    var modelElementInstance IBookmarksOutlineLevelData = new(BookmarksOutlineLevelData)
-                    modelElementInstance.Deserialize(elementValue)
-                    obj.BookmarksOutlineLevels = append(obj.BookmarksOutlineLevels, modelElementInstance)
-                }
-
-            }
-        }
-
-    } else if jsonValue, exists := json["bookmarksOutlineLevels"]; exists {
-        if parsedValue, valid := jsonValue.([]interface{}); valid {
-            obj.BookmarksOutlineLevels = make([]IBookmarksOutlineLevelData, 0)
-            for _, parsedElement := range parsedValue {
-                if elementValue, valid := parsedElement.(map[string]interface{}); valid {
-                    var modelElementInstance IBookmarksOutlineLevelData = new(BookmarksOutlineLevelData)
-                    modelElementInstance.Deserialize(elementValue)
-                    obj.BookmarksOutlineLevels = append(obj.BookmarksOutlineLevels, modelElementInstance)
-                }
-
-            }
-        }
-
-    }
-
     if jsonValue, exists := json["CreateMissingOutlineLevels"]; exists {
         if parsedValue, valid := jsonValue.(bool); valid {
             obj.CreateMissingOutlineLevels = &parsedValue
@@ -176,18 +148,38 @@ func (obj *OutlineOptionsData) Deserialize(json map[string]interface{}) {
         }
 
     }
+
+    if jsonValue, exists := json["BookmarksOutlineLevels"]; exists {
+        if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.BookmarksOutlineLevels = make([]IBookmarksOutlineLevelData, 0)
+            for _, parsedElement := range parsedValue {
+                if elementValue, valid := parsedElement.(map[string]interface{}); valid {
+                    var modelElementInstance IBookmarksOutlineLevelData = new(BookmarksOutlineLevelData)
+                    modelElementInstance.Deserialize(elementValue)
+                    obj.BookmarksOutlineLevels = append(obj.BookmarksOutlineLevels, modelElementInstance)
+                }
+
+            }
+        }
+
+    } else if jsonValue, exists := json["bookmarksOutlineLevels"]; exists {
+        if parsedValue, valid := jsonValue.([]interface{}); valid {
+            obj.BookmarksOutlineLevels = make([]IBookmarksOutlineLevelData, 0)
+            for _, parsedElement := range parsedValue {
+                if elementValue, valid := parsedElement.(map[string]interface{}); valid {
+                    var modelElementInstance IBookmarksOutlineLevelData = new(BookmarksOutlineLevelData)
+                    modelElementInstance.Deserialize(elementValue)
+                    obj.BookmarksOutlineLevels = append(obj.BookmarksOutlineLevels, modelElementInstance)
+                }
+
+            }
+        }
+
+    }
 }
 
 func (obj *OutlineOptionsData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
-}
-
-func (obj *OutlineOptionsData) GetBookmarksOutlineLevels() []IBookmarksOutlineLevelData {
-    return obj.BookmarksOutlineLevels
-}
-
-func (obj *OutlineOptionsData) SetBookmarksOutlineLevels(value []IBookmarksOutlineLevelData) {
-    obj.BookmarksOutlineLevels = value
 }
 
 func (obj *OutlineOptionsData) GetCreateMissingOutlineLevels() *bool {
@@ -228,5 +220,13 @@ func (obj *OutlineOptionsData) GetHeadingsOutlineLevels() *int32 {
 
 func (obj *OutlineOptionsData) SetHeadingsOutlineLevels(value *int32) {
     obj.HeadingsOutlineLevels = value
+}
+
+func (obj *OutlineOptionsData) GetBookmarksOutlineLevels() []IBookmarksOutlineLevelData {
+    return obj.BookmarksOutlineLevels
+}
+
+func (obj *OutlineOptionsData) SetBookmarksOutlineLevels(value []IBookmarksOutlineLevelData) {
+    obj.BookmarksOutlineLevels = value
 }
 

@@ -33,7 +33,7 @@ import "io"
 // AppendDocumentOnlineResponse struct
 // Appends documents to the original document.
 type AppendDocumentOnlineResponse struct {
-    // The response model.
+    // The REST response with a document description.
     Model IDocumentResponse
 
 

@@ -28,6 +28,7 @@
 package models
 
 // The REST response with a collection of hyperlinks.
+// This response should be returned by the service when handling "GET /{name}/hyperlinks" REST API calls.
 
 type IHyperlinksResponse interface {
     IsHyperlinksResponse() bool
@@ -42,9 +43,11 @@ type IHyperlinksResponse interface {
 
 type HyperlinksResponse struct {
     // The REST response with a collection of hyperlinks.
+    // This response should be returned by the service when handling "GET /{name}/hyperlinks" REST API calls.
     RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with a collection of hyperlinks.
+    // This response should be returned by the service when handling "GET /{name}/hyperlinks" REST API calls.
     Hyperlinks IHyperlinks `json:"Hyperlinks,omitempty"`
 }
 

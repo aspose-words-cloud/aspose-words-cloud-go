@@ -78,11 +78,11 @@ func Test_Watermark_InsertWatermarkImageOnline(t *testing.T) {
     requestImageFile := OpenFile(t, "Common/aspose-cloud.png")
 
     options := map[string]interface{}{
+        "imageFile": requestImageFile,
     }
 
     request := &models.InsertWatermarkImageOnlineRequest{
         Document: requestDocument,
-        ImageFile: requestImageFile,
         Optionals: options,
     }
 

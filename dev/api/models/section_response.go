@@ -28,6 +28,7 @@
 package models
 
 // The REST response with a section.
+// This response is returned by the Service when handling "GET https://api.aspose.cloud/v4.0/words/Test.doc/sections/{0}" REST API requests.
 
 type ISectionResponse interface {
     IsSectionResponse() bool
@@ -42,9 +43,11 @@ type ISectionResponse interface {
 
 type SectionResponse struct {
     // The REST response with a section.
+    // This response is returned by the Service when handling "GET https://api.aspose.cloud/v4.0/words/Test.doc/sections/{0}" REST API requests.
     RequestId *string `json:"RequestId,omitempty"`
 
     // The REST response with a section.
+    // This response is returned by the Service when handling "GET https://api.aspose.cloud/v4.0/words/Test.doc/sections/{0}" REST API requests.
     Section ISection `json:"Section,omitempty"`
 }
 

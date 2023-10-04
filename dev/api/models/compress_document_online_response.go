@@ -32,8 +32,9 @@ import "io"
 
 // CompressDocumentOnlineResponse struct
 // Compress and resize images inside the document.
+// The default settings allows to reduce the size of the document without any visible degradation of images quality.
 type CompressDocumentOnlineResponse struct {
-    // The response model.
+    // The REST response of compressed document.
     Model ICompressResponse
 
 
