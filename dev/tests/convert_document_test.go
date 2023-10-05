@@ -157,66 +157,6 @@ func Test_ConvertDocument_SaveAsDocx(t *testing.T) {
     assert.NotNil(t, actual.GetSaveResult().GetDestDocument(), "Validate SaveAsDocx response.");
 }
 
-// Test for converting document to one of the available formats.
-func Test_ConvertDocument_SaveAsTiff(t *testing.T) {
-    config := ReadConfiguration(t)
-    client, ctx := PrepareTest(t, config)
-    remoteFolder := remoteBaseTestDataFolder + "/DocumentActions/ConvertDocument"
-    localName := "test_multi_pages.docx"
-    remoteName := "TestSaveAsTiff.pdf"
-
-    UploadNextFileToStorage(t, ctx, client, GetLocalFile("Common/" + localName), remoteFolder + "/" + remoteName)
-
-    requestSaveOptions := models.TiffSaveOptionsData{
-        FileName: ToStringPointer(baseTestOutPath + "/abc.tiff"),
-    }
-
-    options := map[string]interface{}{
-        "folder": remoteFolder,
-    }
-
-    request := &models.SaveAsTiffRequest{
-        Name: ToStringPointer(remoteName),
-        SaveOptions: &requestSaveOptions,
-        Optionals: options,
-    }
-
-    actual, _, err := client.WordsApi.SaveAsTiff(ctx, request)
-    if err != nil {
-        t.Error(err)
-    }
-
-    assert.NotNil(t, actual.GetSaveResult(), "Validate SaveAsTiff response.");
-    assert.NotNil(t, actual.GetSaveResult().GetDestDocument(), "Validate SaveAsTiff response.");
-}
-
-// Test for converting document to one of the available formats.
-func Test_ConvertDocument_SaveAsTiffOnline(t *testing.T) {
-    config := ReadConfiguration(t)
-    client, ctx := PrepareTest(t, config)
-    localName := "test_multi_pages.docx"
-
-    requestDocument := OpenFile(t, "Common/" + localName)
-    requestSaveOptions := models.TiffSaveOptionsData{
-        FileName: ToStringPointer(baseTestOutPath + "/abc.tiff"),
-    }
-
-    options := map[string]interface{}{
-    }
-
-    request := &models.SaveAsTiffOnlineRequest{
-        Document: requestDocument,
-        SaveOptions: &requestSaveOptions,
-        Optionals: options,
-    }
-
-    _, _, err := client.WordsApi.SaveAsTiffOnline(ctx, request)
-    if err != nil {
-        t.Error(err)
-    }
-
-}
-
 // A test for ConvertDocument.
 func Test_ConvertDocument_ConvertDocument(t *testing.T) {
     config := ReadConfiguration(t)
