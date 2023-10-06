@@ -13808,6 +13808,7 @@ func (a *WordsApiService) SaveAsRangeOnline(ctx context.Context, data *models.Sa
 }
 
 /* WordsApiService Converts a document in cloud storage to TIFF format using detailed conversion settings.
+ * Deprecated: This operation will be removed in the future.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  * @data operation request data.
 @return models.SaveResponse*/
@@ -13859,6 +13860,7 @@ func (a *WordsApiService) SaveAsTiff(ctx context.Context, data *models.SaveAsTif
 }
 
 /* WordsApiService Converts a document in cloud storage to TIFF format using detailed conversion settings.
+ * Deprecated: This operation will be removed in the future.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  * @data operation request data.
 @return SaveAsTiffOnlineResponse*/
