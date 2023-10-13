@@ -707,7 +707,7 @@ func (a *WordsApiService) CompareDocumentOnline(ctx context.Context, data *model
     return result.(models.CompareDocumentOnlineResponse), response, err
 }
 
-/* WordsApiService The default settings allows to reduce the size of the document without any visible degradation of images quality.
+/* WordsApiService Compress and resize images inside the document. The default settings allows to reduce the size of the document without any visible degradation of images quality.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  * @data operation request data.
 @return models.CompressResponse*/
@@ -758,7 +758,7 @@ func (a *WordsApiService) CompressDocument(ctx context.Context, data *models.Com
     return successPayload, response, err
 }
 
-/* WordsApiService Compress and resize images inside the document.
+/* WordsApiService Compress and resize images inside the document. The default settings allows to reduce the size of the document without any visible degradation of images quality.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  * @data operation request data.
 @return CompressDocumentOnlineResponse*/
@@ -1091,7 +1091,7 @@ func (a *WordsApiService) CopyStylesFromTemplate(ctx context.Context, data *mode
     return successPayload, response, err
 }
 
-/* WordsApiService Supported all save format extensions.
+/* WordsApiService Creates a new document in cloud storage in the format, determined by the file extension. Supported all save format extensions.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  * @data operation request data.
 @return models.DocumentResponse*/
@@ -1573,7 +1573,7 @@ func (a *WordsApiService) DeleteBookmarksOnline(ctx context.Context, data *model
     return successPayload, response, err
 }
 
-/* WordsApiService The 'nodePath' parameter should refer to a paragraph, a cell or a row.
+/* WordsApiService Removes a border from the document node. The 'nodePath' parameter should refer to a paragraph, a cell or a row.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  * @data operation request data.
 @return models.BorderResponse*/
@@ -1624,7 +1624,7 @@ func (a *WordsApiService) DeleteBorder(ctx context.Context, data *models.DeleteB
     return successPayload, response, err
 }
 
-/* WordsApiService Removes a border from the document node.
+/* WordsApiService Removes a border from the document node. The 'nodePath' parameter should refer to a paragraph, a cell or a row.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  * @data operation request data.
 @return DeleteBorderOnlineResponse*/
@@ -1675,7 +1675,7 @@ func (a *WordsApiService) DeleteBorderOnline(ctx context.Context, data *models.D
     return result.(models.DeleteBorderOnlineResponse), response, err
 }
 
-/* WordsApiService The 'nodePath' parameter should refer to a paragraph, a cell or a row.
+/* WordsApiService Removes borders from the document node. The 'nodePath' parameter should refer to a paragraph, a cell or a row.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  * @data operation request data.
 @return models.BordersResponse*/
@@ -1726,7 +1726,7 @@ func (a *WordsApiService) DeleteBorders(ctx context.Context, data *models.Delete
     return successPayload, response, err
 }
 
-/* WordsApiService Removes borders from the document node.
+/* WordsApiService Removes borders from the document node. The 'nodePath' parameter should refer to a paragraph, a cell or a row.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  * @data operation request data.
 @return DeleteBordersOnlineResponse*/
@@ -4493,7 +4493,7 @@ func (a *WordsApiService) GetBookmarksOnline(ctx context.Context, data *models.G
     return successPayload, response, err
 }
 
-/* WordsApiService The 'nodePath' parameter should refer to a paragraph, a cell or a row.
+/* WordsApiService Reads a border from the document node. The 'nodePath' parameter should refer to a paragraph, a cell or a row.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  * @data operation request data.
 @return models.BorderResponse*/
@@ -4544,7 +4544,7 @@ func (a *WordsApiService) GetBorder(ctx context.Context, data *models.GetBorderR
     return successPayload, response, err
 }
 
-/* WordsApiService Reads a border from the document node.
+/* WordsApiService Reads a border from the document node. The 'nodePath' parameter should refer to a paragraph, a cell or a row.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  * @data operation request data.
 @return models.BorderResponse*/
@@ -13654,7 +13654,7 @@ func (a *WordsApiService) SaveAs(ctx context.Context, data *models.SaveAsRequest
     return successPayload, response, err
 }
 
-/* WordsApiService Converts a document to the specified format.
+/* WordsApiService Converts a document in cloud storage to the specified format.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  * @data operation request data.
 @return SaveAsOnlineResponse*/
@@ -13808,6 +13808,7 @@ func (a *WordsApiService) SaveAsRangeOnline(ctx context.Context, data *models.Sa
 }
 
 /* WordsApiService Converts a document in cloud storage to TIFF format using detailed conversion settings.
+ * Deprecated: This operation will be removed in the future.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  * @data operation request data.
 @return models.SaveResponse*/
@@ -13858,7 +13859,8 @@ func (a *WordsApiService) SaveAsTiff(ctx context.Context, data *models.SaveAsTif
     return successPayload, response, err
 }
 
-/* WordsApiService Converts a document to TIFF format using detailed conversion settings.
+/* WordsApiService Converts a document in cloud storage to TIFF format using detailed conversion settings.
+ * Deprecated: This operation will be removed in the future.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  * @data operation request data.
 @return SaveAsTiffOnlineResponse*/
@@ -14317,7 +14319,7 @@ func (a *WordsApiService) UpdateBookmarkOnline(ctx context.Context, data *models
     return result.(models.UpdateBookmarkOnlineResponse), response, err
 }
 
-/* WordsApiService The 'nodePath' parameter should refer to a paragraph, a cell or a row.
+/* WordsApiService Updates a border in the document node. The 'nodePath' parameter should refer to a paragraph, a cell or a row.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  * @data operation request data.
 @return models.BorderResponse*/
@@ -14368,7 +14370,7 @@ func (a *WordsApiService) UpdateBorder(ctx context.Context, data *models.UpdateB
     return successPayload, response, err
 }
 
-/* WordsApiService Updates a border in the document node.
+/* WordsApiService Updates a border in the document node. The 'nodePath' parameter should refer to a paragraph, a cell or a row.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  * @data operation request data.
 @return UpdateBorderOnlineResponse*/
