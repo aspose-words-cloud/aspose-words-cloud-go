@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Result of splitting document.
 
 type ISplitDocumentResult interface {
@@ -34,6 +38,7 @@ type ISplitDocumentResult interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetSourceDocument() IFileLink
     SetSourceDocument(value IFileLink)
     GetZippedPages() IFileLink
@@ -139,6 +144,14 @@ func (obj *SplitDocumentResult) Deserialize(json map[string]interface{}) {
 
 func (obj *SplitDocumentResult) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *SplitDocumentResult) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    return nil;
 }
 
 func (obj *SplitDocumentResult) GetSourceDocument() IFileLink {

@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Container class for docm save options.
 
 type IDocmSaveOptionsData interface {
@@ -34,6 +38,7 @@ type IDocmSaveOptionsData interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetAllowEmbeddingPostScriptFonts() *bool
     SetAllowEmbeddingPostScriptFonts(value *bool)
     GetCustomTimeZoneInfoData() ITimeZoneInfoData
@@ -347,6 +352,18 @@ func (obj *DocmSaveOptionsData) Deserialize(json map[string]interface{}) {
 
 func (obj *DocmSaveOptionsData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *DocmSaveOptionsData) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.FileName == nil {
+        return errors.New("Property FileName in DocmSaveOptionsData is required.")
+    }
+
+    return nil;
 }
 
 func (obj *DocmSaveOptionsData) GetAllowEmbeddingPostScriptFonts() *bool {

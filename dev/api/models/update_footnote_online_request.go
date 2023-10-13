@@ -29,6 +29,7 @@ package models
 
 import (
     "fmt"
+    "errors"
     "io/ioutil"
     "net/url"
     "strings"
@@ -58,9 +59,11 @@ type UpdateFootnoteOnlineRequest struct {
 
 
 func (data *UpdateFootnoteOnlineRequest) CreateRequestData() (RequestData, error) {
-
     var result RequestData
     var filesContentData = make([]FileReference, 0)
+    if data == nil {
+        return result, errors.New("Invalid object.")
+    }
 
     result.Method = strings.ToUpper("put")
 
@@ -76,9 +79,21 @@ func (data *UpdateFootnoteOnlineRequest) CreateRequestData() (RequestData, error
     result.QueryParams = url.Values{}
     result.FormParams = make([]FormParamContainer, 0)
 
+    if (data.Document == nil) {
+        return result, errors.New("Parameter Document is required.")
+    }
+
     if (data.FootnoteDto != nil) {
         data.FootnoteDto.Initialize()
+        data.FootnoteDto.Validate();
+    } else {
+        return result, errors.New("Parameter FootnoteDto is required.")
     }
+
+    if (data.Index == nil) {
+        return result, errors.New("Parameter Index is required.")
+    }
+
 
     if err := typeCheckParameter(data.Optionals["nodePath"], "string", "data.Optionals[nodePath]"); err != nil {
         return result, err

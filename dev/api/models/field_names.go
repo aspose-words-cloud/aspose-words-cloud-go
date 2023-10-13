@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Represents a collection of merge fields within a document.
 
 type IFieldNames interface {
@@ -34,6 +38,7 @@ type IFieldNames interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetLink() IWordsApiLink
     SetLink(value IWordsApiLink)
     GetNames() []string
@@ -108,6 +113,14 @@ func (obj *FieldNames) Deserialize(json map[string]interface{}) {
 
 func (obj *FieldNames) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *FieldNames) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    return nil;
 }
 
 func (obj *FieldNames) GetLink() IWordsApiLink {

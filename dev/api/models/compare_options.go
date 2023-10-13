@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // DTO container with compare documents options.
 
 type ICompareOptions interface {
@@ -34,6 +38,7 @@ type ICompareOptions interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetAcceptAllRevisionsBeforeComparison() *bool
     SetAcceptAllRevisionsBeforeComparison(value *bool)
     GetIgnoreCaseChanges() *bool
@@ -220,6 +225,14 @@ func (obj *CompareOptions) Deserialize(json map[string]interface{}) {
 
 func (obj *CompareOptions) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *CompareOptions) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    return nil;
 }
 
 func (obj *CompareOptions) GetAcceptAllRevisionsBeforeComparison() *bool {

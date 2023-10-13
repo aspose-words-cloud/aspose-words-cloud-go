@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // DTO for user information.
 
 type IUserInformation interface {
@@ -34,6 +38,7 @@ type IUserInformation interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetAddress() *string
     SetAddress(value *string)
     GetInitials() *string
@@ -101,6 +106,14 @@ func (obj *UserInformation) Deserialize(json map[string]interface{}) {
 
 func (obj *UserInformation) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *UserInformation) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    return nil;
 }
 
 func (obj *UserInformation) GetAddress() *string {

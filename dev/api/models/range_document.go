@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // DTO container with a Range element.
 
 type IRangeDocument interface {
@@ -34,6 +38,7 @@ type IRangeDocument interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetDocumentName() *string
     SetDocumentName(value *string)
 }
@@ -67,6 +72,18 @@ func (obj *RangeDocument) Deserialize(json map[string]interface{}) {
 
 func (obj *RangeDocument) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *RangeDocument) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.DocumentName == nil {
+        return errors.New("Property DocumentName in RangeDocument is required.")
+    }
+
+    return nil;
 }
 
 func (obj *RangeDocument) GetDocumentName() *string {

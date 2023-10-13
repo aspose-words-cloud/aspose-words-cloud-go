@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // DTO container with paragraph format tab stop.
 
 type ITabStop interface {
@@ -34,6 +38,7 @@ type ITabStop interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetAlignment() *string
     SetAlignment(value *string)
     GetLeader() *string
@@ -121,6 +126,30 @@ func (obj *TabStop) Deserialize(json map[string]interface{}) {
 
 func (obj *TabStop) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *TabStop) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.Alignment == nil {
+        return errors.New("Property Alignment in TabStop is required.")
+    }
+
+    if obj.Leader == nil {
+        return errors.New("Property Leader in TabStop is required.")
+    }
+
+    if obj.Position == nil {
+        return errors.New("Property Position in TabStop is required.")
+    }
+
+    if obj.IsClear == nil {
+        return errors.New("Property IsClear in TabStop is required.")
+    }
+
+    return nil;
 }
 
 func (obj *TabStop) GetAlignment() *string {

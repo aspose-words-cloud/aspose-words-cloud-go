@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Container class for emf save options.
 
 type IEmfSaveOptionsData interface {
@@ -34,6 +38,7 @@ type IEmfSaveOptionsData interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetAllowEmbeddingPostScriptFonts() *bool
     SetAllowEmbeddingPostScriptFonts(value *bool)
     GetCustomTimeZoneInfoData() ITimeZoneInfoData
@@ -658,6 +663,18 @@ func (obj *EmfSaveOptionsData) Deserialize(json map[string]interface{}) {
 
 func (obj *EmfSaveOptionsData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *EmfSaveOptionsData) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.FileName == nil {
+        return errors.New("Property FileName in EmfSaveOptionsData is required.")
+    }
+
+    return nil;
 }
 
 func (obj *EmfSaveOptionsData) GetAllowEmbeddingPostScriptFonts() *bool {

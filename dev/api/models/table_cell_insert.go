@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // DTO container with a table cell.
 
 type ITableCellInsert interface {
@@ -34,6 +38,7 @@ type ITableCellInsert interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetInsertAfter() *int32
     SetInsertAfter(value *int32)
 }
@@ -69,6 +74,14 @@ func (obj *TableCellInsert) Deserialize(json map[string]interface{}) {
 
 func (obj *TableCellInsert) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *TableCellInsert) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    return nil;
 }
 
 func (obj *TableCellInsert) GetInsertAfter() *int32 {

@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // result of the operation which modifies the original document and saves the result.
 
 type IModificationOperationResult interface {
@@ -34,6 +38,7 @@ type IModificationOperationResult interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetDest() IFileLink
     SetDest(value IFileLink)
     GetSource() IFileLink
@@ -101,6 +106,14 @@ func (obj *ModificationOperationResult) Deserialize(json map[string]interface{})
 
 func (obj *ModificationOperationResult) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *ModificationOperationResult) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    return nil;
 }
 
 func (obj *ModificationOperationResult) GetDest() IFileLink {

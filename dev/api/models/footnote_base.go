@@ -34,6 +34,7 @@ type IFootnoteBase interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetPosition() INewDocumentPosition
     SetPosition(value INewDocumentPosition)
     GetFootnoteType() *string

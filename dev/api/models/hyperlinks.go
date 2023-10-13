@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Collection of Hyperlink.
 
 type IHyperlinks interface {
@@ -34,6 +38,7 @@ type IHyperlinks interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetLink() IWordsApiLink
     SetLink(value IWordsApiLink)
     GetHyperlinkList() []IHyperlink
@@ -117,6 +122,14 @@ func (obj *Hyperlinks) Deserialize(json map[string]interface{}) {
 
 func (obj *Hyperlinks) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *Hyperlinks) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    return nil;
 }
 
 func (obj *Hyperlinks) GetLink() IWordsApiLink {

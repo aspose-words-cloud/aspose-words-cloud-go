@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // File upload result.
 
 type IFilesUploadResult interface {
@@ -34,6 +38,7 @@ type IFilesUploadResult interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetErrors() []IError
     SetErrors(value []IError)
     GetUploaded() []string
@@ -118,6 +123,14 @@ func (obj *FilesUploadResult) Deserialize(json map[string]interface{}) {
 
 func (obj *FilesUploadResult) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *FilesUploadResult) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    return nil;
 }
 
 func (obj *FilesUploadResult) GetErrors() []IError {

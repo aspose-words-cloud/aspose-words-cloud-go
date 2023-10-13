@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // DTO container with table properties.
 
 type ITableProperties interface {
@@ -34,6 +38,7 @@ type ITableProperties interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetLink() IWordsApiLink
     SetLink(value IWordsApiLink)
     GetAlignment() *string
@@ -325,6 +330,14 @@ func (obj *TableProperties) Deserialize(json map[string]interface{}) {
 
 func (obj *TableProperties) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *TableProperties) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    return nil;
 }
 
 func (obj *TableProperties) GetLink() IWordsApiLink {

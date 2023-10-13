@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // DTO container with formatting for a table row.
 
 type ITableRowFormat interface {
@@ -34,6 +38,7 @@ type ITableRowFormat interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetLink() IWordsApiLink
     SetLink(value IWordsApiLink)
     GetHeight() *float64
@@ -147,6 +152,14 @@ func (obj *TableRowFormat) Deserialize(json map[string]interface{}) {
 
 func (obj *TableRowFormat) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *TableRowFormat) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    return nil;
 }
 
 func (obj *TableRowFormat) GetLink() IWordsApiLink {

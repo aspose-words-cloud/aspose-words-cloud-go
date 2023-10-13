@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Response with API info.
 
 type IInfoResponse interface {
@@ -34,6 +38,7 @@ type IInfoResponse interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetRequestId() *string
     SetRequestId(value *string)
     GetAdditionalInfo() []IInfoAdditionalItem
@@ -143,6 +148,14 @@ func (obj *InfoResponse) Deserialize(json map[string]interface{}) {
 
 func (obj *InfoResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *InfoResponse) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    return nil;
 }
 
 func (obj *InfoResponse) GetRequestId() *string {

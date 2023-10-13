@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Container class for rtf save options.
 
 type IRtfSaveOptionsData interface {
@@ -34,6 +38,7 @@ type IRtfSaveOptionsData interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetAllowEmbeddingPostScriptFonts() *bool
     SetAllowEmbeddingPostScriptFonts(value *bool)
     GetCustomTimeZoneInfoData() ITimeZoneInfoData
@@ -343,6 +348,18 @@ func (obj *RtfSaveOptionsData) Deserialize(json map[string]interface{}) {
 
 func (obj *RtfSaveOptionsData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *RtfSaveOptionsData) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.FileName == nil {
+        return errors.New("Property FileName in RtfSaveOptionsData is required.")
+    }
+
+    return nil;
 }
 
 func (obj *RtfSaveOptionsData) GetAllowEmbeddingPostScriptFonts() *bool {

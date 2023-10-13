@@ -28,6 +28,7 @@
 package models
 
 import (
+    "errors"
     "io/ioutil"
     "net/url"
     "strings"
@@ -46,9 +47,11 @@ type LoadWebDocumentRequest struct {
 
 
 func (data *LoadWebDocumentRequest) CreateRequestData() (RequestData, error) {
-
     var result RequestData
     var filesContentData = make([]FileReference, 0)
+    if data == nil {
+        return result, errors.New("Invalid object.")
+    }
 
     result.Method = strings.ToUpper("put")
 
@@ -64,7 +67,11 @@ func (data *LoadWebDocumentRequest) CreateRequestData() (RequestData, error) {
 
     if (data.Data != nil) {
         data.Data.Initialize()
+        data.Data.Validate();
+    } else {
+        return result, errors.New("Parameter Data is required.")
     }
+
 
     if err := typeCheckParameter(data.Optionals["storage"], "string", "data.Optionals[storage]"); err != nil {
         return result, err

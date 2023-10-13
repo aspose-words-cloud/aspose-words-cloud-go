@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Represents Words document DTO.
 
 type IDocument interface {
@@ -34,6 +38,7 @@ type IDocument interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetLinks() []ILink
     SetLinks(value []ILink)
     GetDocumentProperties() IDocumentProperties
@@ -196,6 +201,26 @@ func (obj *Document) Deserialize(json map[string]interface{}) {
 
 func (obj *Document) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *Document) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.IsEncrypted == nil {
+        return errors.New("Property IsEncrypted in Document is required.")
+    }
+
+    if obj.IsSigned == nil {
+        return errors.New("Property IsSigned in Document is required.")
+    }
+
+    if obj.SourceFormat == nil {
+        return errors.New("Property SourceFormat in Document is required.")
+    }
+
+    return nil;
 }
 
 func (obj *Document) GetLinks() []ILink {

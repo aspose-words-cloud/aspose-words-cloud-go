@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Container class for xaml fixed save options.
 
 type IXamlFixedSaveOptionsData interface {
@@ -34,6 +38,7 @@ type IXamlFixedSaveOptionsData interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetAllowEmbeddingPostScriptFonts() *bool
     SetAllowEmbeddingPostScriptFonts(value *bool)
     GetCustomTimeZoneInfoData() ITimeZoneInfoData
@@ -446,6 +451,18 @@ func (obj *XamlFixedSaveOptionsData) Deserialize(json map[string]interface{}) {
 
 func (obj *XamlFixedSaveOptionsData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *XamlFixedSaveOptionsData) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.FileName == nil {
+        return errors.New("Property FileName in XamlFixedSaveOptionsData is required.")
+    }
+
+    return nil;
 }
 
 func (obj *XamlFixedSaveOptionsData) GetAllowEmbeddingPostScriptFonts() *bool {

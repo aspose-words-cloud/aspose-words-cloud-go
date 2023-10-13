@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Comment update.
 
 type ICommentUpdate interface {
@@ -34,6 +38,7 @@ type ICommentUpdate interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetRangeStart() INewDocumentPosition
     SetRangeStart(value INewDocumentPosition)
     GetRangeEnd() INewDocumentPosition
@@ -174,6 +179,26 @@ func (obj *CommentUpdate) Deserialize(json map[string]interface{}) {
 
 func (obj *CommentUpdate) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *CommentUpdate) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.Author == nil {
+        return errors.New("Property Author in CommentUpdate is required.")
+    }
+
+    if obj.Initial == nil {
+        return errors.New("Property Initial in CommentUpdate is required.")
+    }
+
+    if obj.Text == nil {
+        return errors.New("Property Text in CommentUpdate is required.")
+    }
+
+    return nil;
 }
 
 func (obj *CommentUpdate) GetRangeStart() INewDocumentPosition {

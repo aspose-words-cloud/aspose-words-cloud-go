@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // The REST response with a collection of document properties.
 // This response should be returned by the service when handling: GET /documentProperties.
 
@@ -35,6 +39,7 @@ type IDocumentPropertiesResponse interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetRequestId() *string
     SetRequestId(value *string)
     GetDocumentProperties() IDocumentProperties
@@ -99,6 +104,14 @@ func (obj *DocumentPropertiesResponse) Deserialize(json map[string]interface{}) 
 
 func (obj *DocumentPropertiesResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *DocumentPropertiesResponse) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    return nil;
 }
 
 func (obj *DocumentPropertiesResponse) GetRequestId() *string {

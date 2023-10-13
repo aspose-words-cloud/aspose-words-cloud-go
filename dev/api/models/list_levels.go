@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // DTO container with a single document list.
 
 type IListLevels interface {
@@ -34,6 +38,7 @@ type IListLevels interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetLink() IWordsApiLink
     SetLink(value IWordsApiLink)
     GetListLevel() []IListLevel
@@ -117,6 +122,14 @@ func (obj *ListLevels) Deserialize(json map[string]interface{}) {
 
 func (obj *ListLevels) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *ListLevels) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    return nil;
 }
 
 func (obj *ListLevels) GetLink() IWordsApiLink {

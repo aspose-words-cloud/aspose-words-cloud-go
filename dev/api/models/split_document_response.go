@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // The REST response with a result of document splitting.
 // This response should be returned by the service when handling: POST /{name}/split.
 
@@ -35,6 +39,7 @@ type ISplitDocumentResponse interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetRequestId() *string
     SetRequestId(value *string)
     GetSplitResult() ISplitDocumentResult
@@ -99,6 +104,14 @@ func (obj *SplitDocumentResponse) Deserialize(json map[string]interface{}) {
 
 func (obj *SplitDocumentResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *SplitDocumentResponse) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    return nil;
 }
 
 func (obj *SplitDocumentResponse) GetRequestId() *string {

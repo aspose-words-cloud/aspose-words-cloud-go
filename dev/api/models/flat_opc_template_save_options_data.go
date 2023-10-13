@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Container class for fopc_template save options.
 
 type IFlatOpcTemplateSaveOptionsData interface {
@@ -34,6 +38,7 @@ type IFlatOpcTemplateSaveOptionsData interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetAllowEmbeddingPostScriptFonts() *bool
     SetAllowEmbeddingPostScriptFonts(value *bool)
     GetCustomTimeZoneInfoData() ITimeZoneInfoData
@@ -347,6 +352,18 @@ func (obj *FlatOpcTemplateSaveOptionsData) Deserialize(json map[string]interface
 
 func (obj *FlatOpcTemplateSaveOptionsData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *FlatOpcTemplateSaveOptionsData) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.FileName == nil {
+        return errors.New("Property FileName in FlatOpcTemplateSaveOptionsData is required.")
+    }
+
+    return nil;
 }
 
 func (obj *FlatOpcTemplateSaveOptionsData) GetAllowEmbeddingPostScriptFonts() *bool {

@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Represents options for parsing CSV data.
 // To learn more, visit the LINQ Reporting Engine documentation article.
 // An instance of this class can be passed into constructors of CsvDataSource.
@@ -36,6 +40,7 @@ type ICsvDataLoadOptions interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetCommentChar() *string
     SetCommentChar(value *string)
     GetDelimiter() *string
@@ -128,6 +133,30 @@ func (obj *CsvDataLoadOptions) Deserialize(json map[string]interface{}) {
 
 func (obj *CsvDataLoadOptions) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *CsvDataLoadOptions) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.CommentChar == nil {
+        return errors.New("Property CommentChar in CsvDataLoadOptions is required.")
+    }
+
+    if obj.Delimiter == nil {
+        return errors.New("Property Delimiter in CsvDataLoadOptions is required.")
+    }
+
+    if obj.HasHeaders == nil {
+        return errors.New("Property HasHeaders in CsvDataLoadOptions is required.")
+    }
+
+    if obj.QuoteChar == nil {
+        return errors.New("Property QuoteChar in CsvDataLoadOptions is required.")
+    }
+
+    return nil;
 }
 
 func (obj *CsvDataLoadOptions) GetCommentChar() *string {

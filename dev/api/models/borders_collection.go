@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // The collection of borders.
 
 type IBordersCollection interface {
@@ -34,6 +38,7 @@ type IBordersCollection interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetLink() IWordsApiLink
     SetLink(value IWordsApiLink)
     GetList() []IBorder
@@ -117,6 +122,14 @@ func (obj *BordersCollection) Deserialize(json map[string]interface{}) {
 
 func (obj *BordersCollection) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *BordersCollection) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    return nil;
 }
 
 func (obj *BordersCollection) GetLink() IWordsApiLink {

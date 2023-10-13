@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Container class for gif save options.
 
 type IGifSaveOptionsData interface {
@@ -34,6 +38,7 @@ type IGifSaveOptionsData interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetAllowEmbeddingPostScriptFonts() *bool
     SetAllowEmbeddingPostScriptFonts(value *bool)
     GetCustomTimeZoneInfoData() ITimeZoneInfoData
@@ -658,6 +663,18 @@ func (obj *GifSaveOptionsData) Deserialize(json map[string]interface{}) {
 
 func (obj *GifSaveOptionsData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *GifSaveOptionsData) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.FileName == nil {
+        return errors.New("Property FileName in GifSaveOptionsData is required.")
+    }
+
+    return nil;
 }
 
 func (obj *GifSaveOptionsData) GetAllowEmbeddingPostScriptFonts() *bool {

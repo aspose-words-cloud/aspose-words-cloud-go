@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // DTO container with a position in the document tree.
 
 type IDocumentPosition interface {
@@ -34,6 +38,7 @@ type IDocumentPosition interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetNode() INodeLink
     SetNode(value INodeLink)
     GetOffset() *int32
@@ -153,6 +158,14 @@ func (obj *DocumentPosition) Deserialize(json map[string]interface{}) {
 
 func (obj *DocumentPosition) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *DocumentPosition) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    return nil;
 }
 
 func (obj *DocumentPosition) GetNode() INodeLink {

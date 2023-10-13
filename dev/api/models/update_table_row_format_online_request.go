@@ -29,6 +29,7 @@ package models
 
 import (
     "fmt"
+    "errors"
     "io/ioutil"
     "net/url"
     "strings"
@@ -59,9 +60,11 @@ type UpdateTableRowFormatOnlineRequest struct {
 
 
 func (data *UpdateTableRowFormatOnlineRequest) CreateRequestData() (RequestData, error) {
-
     var result RequestData
     var filesContentData = make([]FileReference, 0)
+    if data == nil {
+        return result, errors.New("Invalid object.")
+    }
 
     result.Method = strings.ToUpper("put")
 
@@ -77,9 +80,25 @@ func (data *UpdateTableRowFormatOnlineRequest) CreateRequestData() (RequestData,
     result.QueryParams = url.Values{}
     result.FormParams = make([]FormParamContainer, 0)
 
+    if (data.Document == nil) {
+        return result, errors.New("Parameter Document is required.")
+    }
+
+    if (data.TablePath == nil) {
+        return result, errors.New("Parameter TablePath is required.")
+    }
+
     if (data.Format != nil) {
         data.Format.Initialize()
+        data.Format.Validate();
+    } else {
+        return result, errors.New("Parameter Format is required.")
     }
+
+    if (data.Index == nil) {
+        return result, errors.New("Parameter Index is required.")
+    }
+
 
     if err := typeCheckParameter(data.Optionals["loadEncoding"], "string", "data.Optionals[loadEncoding]"); err != nil {
         return result, err

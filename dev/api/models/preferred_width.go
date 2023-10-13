@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // DTO container with a preferred width value.
 
 type IPreferredWidth interface {
@@ -34,6 +38,7 @@ type IPreferredWidth interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetType() *string
     SetType(value *string)
     GetValue() *float64
@@ -84,6 +89,18 @@ func (obj *PreferredWidth) Deserialize(json map[string]interface{}) {
 
 func (obj *PreferredWidth) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *PreferredWidth) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.Type == nil {
+        return errors.New("Property Type in PreferredWidth is required.")
+    }
+
+    return nil;
 }
 
 func (obj *PreferredWidth) GetType() *string {

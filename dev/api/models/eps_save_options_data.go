@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Container class for eps save options.
 
 type IEpsSaveOptionsData interface {
@@ -34,6 +38,7 @@ type IEpsSaveOptionsData interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetAllowEmbeddingPostScriptFonts() *bool
     SetAllowEmbeddingPostScriptFonts(value *bool)
     GetCustomTimeZoneInfoData() ITimeZoneInfoData
@@ -658,6 +663,18 @@ func (obj *EpsSaveOptionsData) Deserialize(json map[string]interface{}) {
 
 func (obj *EpsSaveOptionsData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *EpsSaveOptionsData) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.FileName == nil {
+        return errors.New("Property FileName in EpsSaveOptionsData is required.")
+    }
+
+    return nil;
 }
 
 func (obj *EpsSaveOptionsData) GetAllowEmbeddingPostScriptFonts() *bool {

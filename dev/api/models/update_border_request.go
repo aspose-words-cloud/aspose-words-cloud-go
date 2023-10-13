@@ -29,6 +29,7 @@ package models
 
 import (
     "fmt"
+    "errors"
     "io/ioutil"
     "net/url"
     "strings"
@@ -59,9 +60,11 @@ type UpdateBorderRequest struct {
 
 
 func (data *UpdateBorderRequest) CreateRequestData() (RequestData, error) {
-
     var result RequestData
     var filesContentData = make([]FileReference, 0)
+    if data == nil {
+        return result, errors.New("Invalid object.")
+    }
 
     result.Method = strings.ToUpper("put")
 
@@ -78,9 +81,21 @@ func (data *UpdateBorderRequest) CreateRequestData() (RequestData, error) {
     result.QueryParams = url.Values{}
     result.FormParams = make([]FormParamContainer, 0)
 
+    if (data.Name == nil) {
+        return result, errors.New("Parameter Name is required.")
+    }
+
+    if (data.BorderType == nil) {
+        return result, errors.New("Parameter BorderType is required.")
+    }
+
     if (data.BorderProperties != nil) {
         data.BorderProperties.Initialize()
+        data.BorderProperties.Validate();
+    } else {
+        return result, errors.New("Parameter BorderProperties is required.")
     }
+
 
     if err := typeCheckParameter(data.Optionals["nodePath"], "string", "data.Optionals[nodePath]"); err != nil {
         return result, err

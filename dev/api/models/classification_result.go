@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Represents a single classification result.
 
 type IClassificationResult interface {
@@ -34,6 +38,7 @@ type IClassificationResult interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetClassName() *string
     SetClassName(value *string)
     GetClassProbability() *float64
@@ -84,6 +89,18 @@ func (obj *ClassificationResult) Deserialize(json map[string]interface{}) {
 
 func (obj *ClassificationResult) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *ClassificationResult) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.ClassProbability == nil {
+        return errors.New("Property ClassProbability in ClassificationResult is required.")
+    }
+
+    return nil;
 }
 
 func (obj *ClassificationResult) GetClassName() *string {

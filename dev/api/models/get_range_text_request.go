@@ -29,6 +29,7 @@ package models
 
 import (
     "fmt"
+    "errors"
     "io/ioutil"
     "net/url"
     "strings"
@@ -54,9 +55,11 @@ type GetRangeTextRequest struct {
 
 
 func (data *GetRangeTextRequest) CreateRequestData() (RequestData, error) {
-
     var result RequestData
     var filesContentData = make([]FileReference, 0)
+    if data == nil {
+        return result, errors.New("Invalid object.")
+    }
 
     result.Method = strings.ToUpper("get")
 
@@ -72,6 +75,14 @@ func (data *GetRangeTextRequest) CreateRequestData() (RequestData, error) {
     result.HeaderParams = make(map[string]string)
     result.QueryParams = url.Values{}
     result.FormParams = make([]FormParamContainer, 0)
+
+    if (data.Name == nil) {
+        return result, errors.New("Parameter Name is required.")
+    }
+
+    if (data.RangeStartIdentifier == nil) {
+        return result, errors.New("Parameter RangeStartIdentifier is required.")
+    }
 
 
     if err := typeCheckParameter(data.Optionals["rangeEndIdentifier"], "string", "data.Optionals[rangeEndIdentifier]"); err != nil {

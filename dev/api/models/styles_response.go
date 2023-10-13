@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // The REST response with an array of styles.
 // This response is returned by the Service when handling "GET https://api.aspose.cloud/v4.0/words/Test.doc/styles" REST API requests.
 
@@ -35,6 +39,7 @@ type IStylesResponse interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetRequestId() *string
     SetRequestId(value *string)
     GetStyles() []IStyle
@@ -112,6 +117,14 @@ func (obj *StylesResponse) Deserialize(json map[string]interface{}) {
 
 func (obj *StylesResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *StylesResponse) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    return nil;
 }
 
 func (obj *StylesResponse) GetRequestId() *string {

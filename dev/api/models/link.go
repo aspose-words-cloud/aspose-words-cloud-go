@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Provides information for the object link.
 // This is supposed to be an atom:link, therefore it should have all attributes specified here http://tools.ietf.org/html/rfc4287#section-4.2.7.
 
@@ -35,6 +39,7 @@ type ILink interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetHref() *string
     SetHref(value *string)
     GetRel() *string
@@ -123,6 +128,14 @@ func (obj *Link) Deserialize(json map[string]interface{}) {
 
 func (obj *Link) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *Link) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    return nil;
 }
 
 func (obj *Link) GetHref() *string {

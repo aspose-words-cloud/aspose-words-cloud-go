@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // DTO container with a paragraph's text.
 
 type IParagraphInsert interface {
@@ -34,6 +38,7 @@ type IParagraphInsert interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetText() *string
     SetText(value *string)
 }
@@ -67,6 +72,14 @@ func (obj *ParagraphInsert) Deserialize(json map[string]interface{}) {
 
 func (obj *ParagraphInsert) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *ParagraphInsert) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    return nil;
 }
 
 func (obj *ParagraphInsert) GetText() *string {

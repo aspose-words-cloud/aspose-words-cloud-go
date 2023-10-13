@@ -29,6 +29,7 @@ package models
 
 import (
     "fmt"
+    "errors"
     "io/ioutil"
     "net/url"
     "strings"
@@ -58,9 +59,11 @@ type UpdateStyleRequest struct {
 
 
 func (data *UpdateStyleRequest) CreateRequestData() (RequestData, error) {
-
     var result RequestData
     var filesContentData = make([]FileReference, 0)
+    if data == nil {
+        return result, errors.New("Invalid object.")
+    }
 
     result.Method = strings.ToUpper("put")
 
@@ -76,9 +79,21 @@ func (data *UpdateStyleRequest) CreateRequestData() (RequestData, error) {
     result.QueryParams = url.Values{}
     result.FormParams = make([]FormParamContainer, 0)
 
+    if (data.Name == nil) {
+        return result, errors.New("Parameter Name is required.")
+    }
+
+    if (data.StyleName == nil) {
+        return result, errors.New("Parameter StyleName is required.")
+    }
+
     if (data.StyleUpdate != nil) {
         data.StyleUpdate.Initialize()
+        data.StyleUpdate.Validate();
+    } else {
+        return result, errors.New("Parameter StyleUpdate is required.")
     }
+
 
     if err := typeCheckParameter(data.Optionals["folder"], "string", "data.Optionals[folder]"); err != nil {
         return result, err

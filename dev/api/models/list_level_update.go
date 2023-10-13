@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Represents a document list levels.
 
 type IListLevelUpdate interface {
@@ -34,6 +38,7 @@ type IListLevelUpdate interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetStartAt() *int32
     SetStartAt(value *int32)
     GetNumberStyle() *string
@@ -224,6 +229,14 @@ func (obj *ListLevelUpdate) Deserialize(json map[string]interface{}) {
 
 func (obj *ListLevelUpdate) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *ListLevelUpdate) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    return nil;
 }
 
 func (obj *ListLevelUpdate) GetStartAt() *int32 {

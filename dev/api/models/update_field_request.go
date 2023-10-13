@@ -29,6 +29,7 @@ package models
 
 import (
     "fmt"
+    "errors"
     "io/ioutil"
     "net/url"
     "strings"
@@ -59,9 +60,11 @@ type UpdateFieldRequest struct {
 
 
 func (data *UpdateFieldRequest) CreateRequestData() (RequestData, error) {
-
     var result RequestData
     var filesContentData = make([]FileReference, 0)
+    if data == nil {
+        return result, errors.New("Invalid object.")
+    }
 
     result.Method = strings.ToUpper("put")
 
@@ -78,9 +81,21 @@ func (data *UpdateFieldRequest) CreateRequestData() (RequestData, error) {
     result.QueryParams = url.Values{}
     result.FormParams = make([]FormParamContainer, 0)
 
+    if (data.Name == nil) {
+        return result, errors.New("Parameter Name is required.")
+    }
+
+    if (data.Index == nil) {
+        return result, errors.New("Parameter Index is required.")
+    }
+
     if (data.Field != nil) {
         data.Field.Initialize()
+        data.Field.Validate();
+    } else {
+        return result, errors.New("Parameter Field is required.")
     }
+
 
     if err := typeCheckParameter(data.Optionals["nodePath"], "string", "data.Optionals[nodePath]"); err != nil {
         return result, err

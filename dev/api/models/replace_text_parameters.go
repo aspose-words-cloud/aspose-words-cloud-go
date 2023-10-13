@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Class for document replace text request building.
 
 type IReplaceTextParameters interface {
@@ -34,6 +38,7 @@ type IReplaceTextParameters interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetIsMatchCase() *bool
     SetIsMatchCase(value *bool)
     GetIsMatchWholeWord() *bool
@@ -135,6 +140,30 @@ func (obj *ReplaceTextParameters) Deserialize(json map[string]interface{}) {
 
 func (obj *ReplaceTextParameters) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *ReplaceTextParameters) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.IsMatchCase == nil {
+        return errors.New("Property IsMatchCase in ReplaceTextParameters is required.")
+    }
+
+    if obj.IsMatchWholeWord == nil {
+        return errors.New("Property IsMatchWholeWord in ReplaceTextParameters is required.")
+    }
+
+    if obj.IsOldValueRegex == nil {
+        return errors.New("Property IsOldValueRegex in ReplaceTextParameters is required.")
+    }
+
+    if obj.OldValue == nil {
+        return errors.New("Property OldValue in ReplaceTextParameters is required.")
+    }
+
+    return nil;
 }
 
 func (obj *ReplaceTextParameters) GetIsMatchCase() *bool {

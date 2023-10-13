@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // DTO container with an array of document lists.
 
 type ILists interface {
@@ -34,6 +38,7 @@ type ILists interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetLink() IWordsApiLink
     SetLink(value IWordsApiLink)
     GetListInfo() []IListInfo
@@ -117,6 +122,14 @@ func (obj *Lists) Deserialize(json map[string]interface{}) {
 
 func (obj *Lists) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *Lists) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    return nil;
 }
 
 func (obj *Lists) GetLink() IWordsApiLink {

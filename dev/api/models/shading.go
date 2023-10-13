@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // DTO container with a paragraph format shading element.
 
 type IShading interface {
@@ -34,6 +38,7 @@ type IShading interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetBackgroundPatternColor() IXmlColor
     SetBackgroundPatternColor(value IXmlColor)
     GetForegroundPatternColor() IXmlColor
@@ -118,6 +123,14 @@ func (obj *Shading) Deserialize(json map[string]interface{}) {
 
 func (obj *Shading) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *Shading) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    return nil;
 }
 
 func (obj *Shading) GetBackgroundPatternColor() IXmlColor {

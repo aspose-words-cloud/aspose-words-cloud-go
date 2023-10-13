@@ -29,6 +29,7 @@ package models
 
 import (
     "fmt"
+    "errors"
     "io/ioutil"
     "net/url"
     "strings"
@@ -58,9 +59,11 @@ type InsertTableRowRequest struct {
 
 
 func (data *InsertTableRowRequest) CreateRequestData() (RequestData, error) {
-
     var result RequestData
     var filesContentData = make([]FileReference, 0)
+    if data == nil {
+        return result, errors.New("Invalid object.")
+    }
 
     result.Method = strings.ToUpper("post")
 
@@ -76,9 +79,21 @@ func (data *InsertTableRowRequest) CreateRequestData() (RequestData, error) {
     result.QueryParams = url.Values{}
     result.FormParams = make([]FormParamContainer, 0)
 
+    if (data.Name == nil) {
+        return result, errors.New("Parameter Name is required.")
+    }
+
+    if (data.TablePath == nil) {
+        return result, errors.New("Parameter TablePath is required.")
+    }
+
     if (data.Row != nil) {
         data.Row.Initialize()
+        data.Row.Validate();
+    } else {
+        return result, errors.New("Parameter Row is required.")
     }
+
 
     if err := typeCheckParameter(data.Optionals["folder"], "string", "data.Optionals[folder]"); err != nil {
         return result, err

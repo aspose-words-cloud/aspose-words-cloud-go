@@ -34,6 +34,7 @@ type IDocumentPropertyBase interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetValue() *string
     SetValue(value *string)
 }

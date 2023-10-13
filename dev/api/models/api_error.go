@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Api error.
 
 type IApiError interface {
@@ -34,6 +38,7 @@ type IApiError interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetCode() *string
     SetCode(value *string)
     GetDateTime() *Time
@@ -141,6 +146,14 @@ func (obj *ApiError) Deserialize(json map[string]interface{}) {
 
 func (obj *ApiError) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *ApiError) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    return nil;
 }
 
 func (obj *ApiError) GetCode() *string {

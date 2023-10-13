@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // A DTO to Insert / replace a tab stop.
 
 type ITabStopInsert interface {
@@ -34,6 +38,7 @@ type ITabStopInsert interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetAlignment() *string
     SetAlignment(value *string)
     GetLeader() *string
@@ -104,6 +109,26 @@ func (obj *TabStopInsert) Deserialize(json map[string]interface{}) {
 
 func (obj *TabStopInsert) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *TabStopInsert) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.Alignment == nil {
+        return errors.New("Property Alignment in TabStopInsert is required.")
+    }
+
+    if obj.Leader == nil {
+        return errors.New("Property Leader in TabStopInsert is required.")
+    }
+
+    if obj.Position == nil {
+        return errors.New("Property Position in TabStopInsert is required.")
+    }
+
+    return nil;
 }
 
 func (obj *TabStopInsert) GetAlignment() *string {

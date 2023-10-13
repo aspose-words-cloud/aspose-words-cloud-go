@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // DTO container with a paragraph list format element.
 
 type IListFormat interface {
@@ -34,6 +38,7 @@ type IListFormat interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetLink() IWordsApiLink
     SetLink(value IWordsApiLink)
     GetListLevelNumber() *int32
@@ -134,6 +139,22 @@ func (obj *ListFormat) Deserialize(json map[string]interface{}) {
 
 func (obj *ListFormat) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *ListFormat) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.ListLevelNumber == nil {
+        return errors.New("Property ListLevelNumber in ListFormat is required.")
+    }
+
+    if obj.IsListItem == nil {
+        return errors.New("Property IsListItem in ListFormat is required.")
+    }
+
+    return nil;
 }
 
 func (obj *ListFormat) GetLink() IWordsApiLink {

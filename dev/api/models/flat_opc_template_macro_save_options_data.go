@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Container class for fopc_template_macro save options.
 
 type IFlatOpcTemplateMacroSaveOptionsData interface {
@@ -34,6 +38,7 @@ type IFlatOpcTemplateMacroSaveOptionsData interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetAllowEmbeddingPostScriptFonts() *bool
     SetAllowEmbeddingPostScriptFonts(value *bool)
     GetCustomTimeZoneInfoData() ITimeZoneInfoData
@@ -347,6 +352,18 @@ func (obj *FlatOpcTemplateMacroSaveOptionsData) Deserialize(json map[string]inte
 
 func (obj *FlatOpcTemplateMacroSaveOptionsData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *FlatOpcTemplateMacroSaveOptionsData) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.FileName == nil {
+        return errors.New("Property FileName in FlatOpcTemplateMacroSaveOptionsData is required.")
+    }
+
+    return nil;
 }
 
 func (obj *FlatOpcTemplateMacroSaveOptionsData) GetAllowEmbeddingPostScriptFonts() *bool {

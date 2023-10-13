@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // DTO container with a single document style.
 
 type IStyle interface {
@@ -34,6 +38,7 @@ type IStyle interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetLink() IWordsApiLink
     SetLink(value IWordsApiLink)
     GetFont() IFont
@@ -286,6 +291,34 @@ func (obj *Style) Deserialize(json map[string]interface{}) {
 
 func (obj *Style) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *Style) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.BuiltIn == nil {
+        return errors.New("Property BuiltIn in Style is required.")
+    }
+
+    if obj.IsQuickStyle == nil {
+        return errors.New("Property IsQuickStyle in Style is required.")
+    }
+
+    if obj.Type == nil {
+        return errors.New("Property Type in Style is required.")
+    }
+
+    if obj.IsHeading == nil {
+        return errors.New("Property IsHeading in Style is required.")
+    }
+
+    if obj.StyleIdentifier == nil {
+        return errors.New("Property StyleIdentifier in Style is required.")
+    }
+
+    return nil;
 }
 
 func (obj *Style) GetLink() IWordsApiLink {

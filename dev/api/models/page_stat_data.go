@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Container for the page's statistical data.
 
 type IPageStatData interface {
@@ -34,6 +38,7 @@ type IPageStatData interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetFootnotesStatData() IFootnotesStatData
     SetFootnotesStatData(value IFootnotesStatData)
     GetParagraphCount() *int32
@@ -133,6 +138,26 @@ func (obj *PageStatData) Deserialize(json map[string]interface{}) {
 
 func (obj *PageStatData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *PageStatData) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.ParagraphCount == nil {
+        return errors.New("Property ParagraphCount in PageStatData is required.")
+    }
+
+    if obj.WordCount == nil {
+        return errors.New("Property WordCount in PageStatData is required.")
+    }
+
+    if obj.PageNumber == nil {
+        return errors.New("Property PageNumber in PageStatData is required.")
+    }
+
+    return nil;
 }
 
 func (obj *PageStatData) GetFootnotesStatData() IFootnotesStatData {

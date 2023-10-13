@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Container for the data about protection of the document.
 
 type IProtectionData interface {
@@ -34,6 +38,7 @@ type IProtectionData interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetProtectionType() *string
     SetProtectionType(value *string)
 }
@@ -67,6 +72,14 @@ func (obj *ProtectionData) Deserialize(json map[string]interface{}) {
 
 func (obj *ProtectionData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *ProtectionData) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    return nil;
 }
 
 func (obj *ProtectionData) GetProtectionType() *string {

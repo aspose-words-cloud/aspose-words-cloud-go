@@ -29,6 +29,7 @@ package models
 
 import (
     "fmt"
+    "errors"
     "io/ioutil"
     "net/url"
     "strings"
@@ -57,9 +58,11 @@ type UpdateCommentOnlineRequest struct {
 
 
 func (data *UpdateCommentOnlineRequest) CreateRequestData() (RequestData, error) {
-
     var result RequestData
     var filesContentData = make([]FileReference, 0)
+    if data == nil {
+        return result, errors.New("Invalid object.")
+    }
 
     result.Method = strings.ToUpper("put")
 
@@ -74,9 +77,21 @@ func (data *UpdateCommentOnlineRequest) CreateRequestData() (RequestData, error)
     result.QueryParams = url.Values{}
     result.FormParams = make([]FormParamContainer, 0)
 
+    if (data.Document == nil) {
+        return result, errors.New("Parameter Document is required.")
+    }
+
+    if (data.CommentIndex == nil) {
+        return result, errors.New("Parameter CommentIndex is required.")
+    }
+
     if (data.Comment != nil) {
         data.Comment.Initialize()
+        data.Comment.Validate();
+    } else {
+        return result, errors.New("Parameter Comment is required.")
     }
+
 
     if err := typeCheckParameter(data.Optionals["loadEncoding"], "string", "data.Optionals[loadEncoding]"); err != nil {
         return result, err

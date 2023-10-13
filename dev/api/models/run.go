@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Run element.
 
 type IRun interface {
@@ -34,6 +38,7 @@ type IRun interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetLink() IWordsApiLink
     SetLink(value IWordsApiLink)
     GetNodeId() *string
@@ -121,6 +126,14 @@ func (obj *Run) Deserialize(json map[string]interface{}) {
 
 func (obj *Run) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *Run) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    return nil;
 }
 
 func (obj *Run) GetLink() IWordsApiLink {

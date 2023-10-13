@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // DTO container with a section element.
 
 type ISection interface {
@@ -34,6 +38,7 @@ type ISection interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetLink() IWordsApiLink
     SetLink(value IWordsApiLink)
     GetChildNodes() []INodeLink
@@ -883,6 +888,14 @@ func (obj *Section) Deserialize(json map[string]interface{}) {
 
 func (obj *Section) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *Section) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    return nil;
 }
 
 func (obj *Section) GetLink() IWordsApiLink {

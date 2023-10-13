@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Container for the footnotes statistical data.
 
 type IFootnotesStatData interface {
@@ -34,6 +38,7 @@ type IFootnotesStatData interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetParagraphCount() *int32
     SetParagraphCount(value *int32)
     GetWordCount() *int32
@@ -88,6 +93,22 @@ func (obj *FootnotesStatData) Deserialize(json map[string]interface{}) {
 
 func (obj *FootnotesStatData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *FootnotesStatData) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.ParagraphCount == nil {
+        return errors.New("Property ParagraphCount in FootnotesStatData is required.")
+    }
+
+    if obj.WordCount == nil {
+        return errors.New("Property WordCount in FootnotesStatData is required.")
+    }
+
+    return nil;
 }
 
 func (obj *FootnotesStatData) GetParagraphCount() *int32 {

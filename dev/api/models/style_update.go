@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Represents a single document style properties to update.
 
 type IStyleUpdate interface {
@@ -34,6 +38,7 @@ type IStyleUpdate interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetNextParagraphStyleName() *string
     SetNextParagraphStyleName(value *string)
     GetBaseStyleName() *string
@@ -118,6 +123,14 @@ func (obj *StyleUpdate) Deserialize(json map[string]interface{}) {
 
 func (obj *StyleUpdate) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *StyleUpdate) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    return nil;
 }
 
 func (obj *StyleUpdate) GetNextParagraphStyleName() *string {

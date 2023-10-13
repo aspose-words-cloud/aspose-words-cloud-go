@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Container class for outline options.
 
 type IOutlineOptionsData interface {
@@ -34,6 +38,7 @@ type IOutlineOptionsData interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetCreateMissingOutlineLevels() *bool
     SetCreateMissingOutlineLevels(value *bool)
     GetCreateOutlinesForHeadingsInTables() *bool
@@ -180,6 +185,14 @@ func (obj *OutlineOptionsData) Deserialize(json map[string]interface{}) {
 
 func (obj *OutlineOptionsData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *OutlineOptionsData) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    return nil;
 }
 
 func (obj *OutlineOptionsData) GetCreateMissingOutlineLevels() *bool {

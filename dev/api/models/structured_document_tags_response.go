@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // The REST response with a collection of StructuredDocumentTags.
 // This response should be returned by the service when handling: GET /structuredDocumentTags.
 
@@ -35,6 +39,7 @@ type IStructuredDocumentTagsResponse interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetRequestId() *string
     SetRequestId(value *string)
     GetStructuredDocumentTags() IStructuredDocumentTagCollection
@@ -99,6 +104,14 @@ func (obj *StructuredDocumentTagsResponse) Deserialize(json map[string]interface
 
 func (obj *StructuredDocumentTagsResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *StructuredDocumentTagsResponse) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    return nil;
 }
 
 func (obj *StructuredDocumentTagsResponse) GetRequestId() *string {

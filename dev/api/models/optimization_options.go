@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Container class for the document optimization options.
 
 type IOptimizationOptions interface {
@@ -34,6 +38,7 @@ type IOptimizationOptions interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetMsWordVersion() *string
     SetMsWordVersion(value *string)
 }
@@ -67,6 +72,18 @@ func (obj *OptimizationOptions) Deserialize(json map[string]interface{}) {
 
 func (obj *OptimizationOptions) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *OptimizationOptions) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.MsWordVersion == nil {
+        return errors.New("Property MsWordVersion in OptimizationOptions is required.")
+    }
+
+    return nil;
 }
 
 func (obj *OptimizationOptions) GetMsWordVersion() *string {

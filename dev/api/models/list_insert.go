@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Insert document to document list.
 
 type IListInsert interface {
@@ -34,6 +38,7 @@ type IListInsert interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetTemplate() *string
     SetTemplate(value *string)
 }
@@ -67,6 +72,18 @@ func (obj *ListInsert) Deserialize(json map[string]interface{}) {
 
 func (obj *ListInsert) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *ListInsert) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.Template == nil {
+        return errors.New("Property Template in ListInsert is required.")
+    }
+
+    return nil;
 }
 
 func (obj *ListInsert) GetTemplate() *string {

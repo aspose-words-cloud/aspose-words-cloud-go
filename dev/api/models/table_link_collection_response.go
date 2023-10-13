@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // The REST response with a collection of tables.
 // This response is returned by the Service when handling "GET https://api.aspose.cloud/v4.0/words/Test.doc/tables" REST API requests.
 
@@ -35,6 +39,7 @@ type ITableLinkCollectionResponse interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetRequestId() *string
     SetRequestId(value *string)
     GetTables() ITableLinkCollection
@@ -99,6 +104,14 @@ func (obj *TableLinkCollectionResponse) Deserialize(json map[string]interface{})
 
 func (obj *TableLinkCollectionResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *TableLinkCollectionResponse) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    return nil;
 }
 
 func (obj *TableLinkCollectionResponse) GetRequestId() *string {

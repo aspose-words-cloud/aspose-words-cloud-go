@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Container class for Downsample options.
 
 type IDownsampleOptionsData interface {
@@ -34,6 +38,7 @@ type IDownsampleOptionsData interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetDownsampleImages() *bool
     SetDownsampleImages(value *bool)
     GetResolution() *int32
@@ -105,6 +110,14 @@ func (obj *DownsampleOptionsData) Deserialize(json map[string]interface{}) {
 
 func (obj *DownsampleOptionsData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *DownsampleOptionsData) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    return nil;
 }
 
 func (obj *DownsampleOptionsData) GetDownsampleImages() *bool {

@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // DTO container with a font element.
 
 type IFont interface {
@@ -34,6 +38,7 @@ type IFont interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetLink() IWordsApiLink
     SetLink(value IWordsApiLink)
     GetAllCaps() *bool
@@ -799,6 +804,14 @@ func (obj *Font) Deserialize(json map[string]interface{}) {
 
 func (obj *Font) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *Font) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    return nil;
 }
 
 func (obj *Font) GetLink() IWordsApiLink {

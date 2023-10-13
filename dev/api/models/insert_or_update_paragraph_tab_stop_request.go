@@ -29,6 +29,7 @@ package models
 
 import (
     "fmt"
+    "errors"
     "io/ioutil"
     "net/url"
     "strings"
@@ -57,9 +58,11 @@ type InsertOrUpdateParagraphTabStopRequest struct {
 
 
 func (data *InsertOrUpdateParagraphTabStopRequest) CreateRequestData() (RequestData, error) {
-
     var result RequestData
     var filesContentData = make([]FileReference, 0)
+    if data == nil {
+        return result, errors.New("Invalid object.")
+    }
 
     result.Method = strings.ToUpper("post")
 
@@ -76,9 +79,21 @@ func (data *InsertOrUpdateParagraphTabStopRequest) CreateRequestData() (RequestD
     result.QueryParams = url.Values{}
     result.FormParams = make([]FormParamContainer, 0)
 
+    if (data.Name == nil) {
+        return result, errors.New("Parameter Name is required.")
+    }
+
+    if (data.Index == nil) {
+        return result, errors.New("Parameter Index is required.")
+    }
+
     if (data.TabStopInsertDto != nil) {
         data.TabStopInsertDto.Initialize()
+        data.TabStopInsertDto.Validate();
+    } else {
+        return result, errors.New("Parameter TabStopInsertDto is required.")
     }
+
 
     if err := typeCheckParameter(data.Optionals["nodePath"], "string", "data.Optionals[nodePath]"); err != nil {
         return result, err

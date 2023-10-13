@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // The REST response with a page setup of a section.
 // This response is returned by the Service when handling "GET https://api.aspose.cloud/v4.0/words/Test.doc/sections/{0}/PageSetup" REST API requests.
 
@@ -35,6 +39,7 @@ type ISectionPageSetupResponse interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetRequestId() *string
     SetRequestId(value *string)
     GetPageSetup() IPageSetup
@@ -99,6 +104,14 @@ func (obj *SectionPageSetupResponse) Deserialize(json map[string]interface{}) {
 
 func (obj *SectionPageSetupResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *SectionPageSetupResponse) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    return nil;
 }
 
 func (obj *SectionPageSetupResponse) GetRequestId() *string {

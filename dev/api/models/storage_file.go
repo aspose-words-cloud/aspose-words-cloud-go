@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // File or folder information.
 
 type IStorageFile interface {
@@ -34,6 +38,7 @@ type IStorageFile interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetIsFolder() *bool
     SetIsFolder(value *bool)
     GetModifiedDate() *Time
@@ -139,6 +144,22 @@ func (obj *StorageFile) Deserialize(json map[string]interface{}) {
 
 func (obj *StorageFile) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *StorageFile) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.IsFolder == nil {
+        return errors.New("Property IsFolder in StorageFile is required.")
+    }
+
+    if obj.Size == nil {
+        return errors.New("Property Size in StorageFile is required.")
+    }
+
+    return nil;
 }
 
 func (obj *StorageFile) GetIsFolder() *bool {

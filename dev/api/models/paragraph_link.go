@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Paragraph link element.
 
 type IParagraphLink interface {
@@ -34,6 +38,7 @@ type IParagraphLink interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetLink() IWordsApiLink
     SetLink(value IWordsApiLink)
     GetNodeId() *string
@@ -117,6 +122,14 @@ func (obj *ParagraphLink) Deserialize(json map[string]interface{}) {
 
 func (obj *ParagraphLink) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *ParagraphLink) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    return nil;
 }
 
 func (obj *ParagraphLink) GetLink() IWordsApiLink {

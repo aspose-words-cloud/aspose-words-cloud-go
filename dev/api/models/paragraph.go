@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // DTO container with a paragraph element.
 
 type IParagraph interface {
@@ -34,6 +38,7 @@ type IParagraph interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetLink() IWordsApiLink
     SetLink(value IWordsApiLink)
     GetNodeId() *string
@@ -196,6 +201,14 @@ func (obj *Paragraph) Deserialize(json map[string]interface{}) {
 
 func (obj *Paragraph) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *Paragraph) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    return nil;
 }
 
 func (obj *Paragraph) GetLink() IWordsApiLink {

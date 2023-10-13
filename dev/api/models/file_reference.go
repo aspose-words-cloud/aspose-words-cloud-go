@@ -49,6 +49,7 @@ type IFileReference interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
 }
 
 func (FileReference) IsFileReference() bool {
@@ -70,6 +71,10 @@ func (obj *FileReference) CollectFilesContent(resultFilesContent []FileReference
     } else {
         return resultFilesContent;
     }
+}
+
+func (obj *FileReference) Validate() error {
+    return nil;
 }
 
 func createRandomFileReferenceId() string {

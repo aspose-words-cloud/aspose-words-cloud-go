@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // The collection of table's links.
 
 type ITableLinkCollection interface {
@@ -34,6 +38,7 @@ type ITableLinkCollection interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetLink() IWordsApiLink
     SetLink(value IWordsApiLink)
     GetTableLinkList() []ITableLink
@@ -117,6 +122,14 @@ func (obj *TableLinkCollection) Deserialize(json map[string]interface{}) {
 
 func (obj *TableLinkCollection) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *TableLinkCollection) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    return nil;
 }
 
 func (obj *TableLinkCollection) GetLink() IWordsApiLink {

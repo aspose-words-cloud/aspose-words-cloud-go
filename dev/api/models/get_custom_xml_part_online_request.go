@@ -29,6 +29,7 @@ package models
 
 import (
     "fmt"
+    "errors"
     "io/ioutil"
     "net/url"
     "strings"
@@ -51,9 +52,11 @@ type GetCustomXmlPartOnlineRequest struct {
 
 
 func (data *GetCustomXmlPartOnlineRequest) CreateRequestData() (RequestData, error) {
-
     var result RequestData
     var filesContentData = make([]FileReference, 0)
+    if data == nil {
+        return result, errors.New("Invalid object.")
+    }
 
     result.Method = strings.ToUpper("put")
 
@@ -67,6 +70,14 @@ func (data *GetCustomXmlPartOnlineRequest) CreateRequestData() (RequestData, err
     result.HeaderParams = make(map[string]string)
     result.QueryParams = url.Values{}
     result.FormParams = make([]FormParamContainer, 0)
+
+    if (data.Document == nil) {
+        return result, errors.New("Parameter Document is required.")
+    }
+
+    if (data.CustomXmlPartIndex == nil) {
+        return result, errors.New("Parameter CustomXmlPartIndex is required.")
+    }
 
 
     if err := typeCheckParameter(data.Optionals["loadEncoding"], "string", "data.Optionals[loadEncoding]"); err != nil {

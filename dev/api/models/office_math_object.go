@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // DTO container with an OfficeMath object.
 
 type IOfficeMathObject interface {
@@ -34,6 +38,7 @@ type IOfficeMathObject interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetLink() IWordsApiLink
     SetLink(value IWordsApiLink)
     GetNodeId() *string
@@ -180,6 +185,14 @@ func (obj *OfficeMathObject) Deserialize(json map[string]interface{}) {
 
 func (obj *OfficeMathObject) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *OfficeMathObject) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    return nil;
 }
 
 func (obj *OfficeMathObject) GetLink() IWordsApiLink {

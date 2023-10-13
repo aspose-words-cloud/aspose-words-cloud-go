@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // DTO container with a collection of form fields.
 
 type IFormFieldCollection interface {
@@ -34,6 +38,7 @@ type IFormFieldCollection interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetLink() IWordsApiLink
     SetLink(value IWordsApiLink)
     GetList() []IFormField
@@ -131,6 +136,14 @@ func (obj *FormFieldCollection) Deserialize(json map[string]interface{}) {
 
 func (obj *FormFieldCollection) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *FormFieldCollection) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    return nil;
 }
 
 func (obj *FormFieldCollection) GetLink() IWordsApiLink {

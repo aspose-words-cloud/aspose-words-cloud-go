@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Field for insert.
 
 type IFieldInsert interface {
@@ -34,6 +38,7 @@ type IFieldInsert interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetLocaleId() *string
     SetLocaleId(value *string)
     GetFieldCode() *string
@@ -87,6 +92,18 @@ func (obj *FieldInsert) Deserialize(json map[string]interface{}) {
 
 func (obj *FieldInsert) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *FieldInsert) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.FieldCode == nil {
+        return errors.New("Property FieldCode in FieldInsert is required.")
+    }
+
+    return nil;
 }
 
 func (obj *FieldInsert) GetLocaleId() *string {

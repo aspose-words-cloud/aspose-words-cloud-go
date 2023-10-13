@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Container class for fixed html save options.
 
 type IHtmlFixedSaveOptionsData interface {
@@ -34,6 +38,7 @@ type IHtmlFixedSaveOptionsData interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetAllowEmbeddingPostScriptFonts() *bool
     SetAllowEmbeddingPostScriptFonts(value *bool)
     GetCustomTimeZoneInfoData() ITimeZoneInfoData
@@ -650,6 +655,18 @@ func (obj *HtmlFixedSaveOptionsData) Deserialize(json map[string]interface{}) {
 
 func (obj *HtmlFixedSaveOptionsData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *HtmlFixedSaveOptionsData) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.FileName == nil {
+        return errors.New("Property FileName in HtmlFixedSaveOptionsData is required.")
+    }
+
+    return nil;
 }
 
 func (obj *HtmlFixedSaveOptionsData) GetAllowEmbeddingPostScriptFonts() *bool {

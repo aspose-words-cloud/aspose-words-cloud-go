@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Class for insert watermark text request building.
 
 type IWatermarkText interface {
@@ -34,6 +38,7 @@ type IWatermarkText interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetRotationAngle() *float64
     SetRotationAngle(value *float64)
     GetText() *string
@@ -84,6 +89,22 @@ func (obj *WatermarkText) Deserialize(json map[string]interface{}) {
 
 func (obj *WatermarkText) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *WatermarkText) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.RotationAngle == nil {
+        return errors.New("Property RotationAngle in WatermarkText is required.")
+    }
+
+    if obj.Text == nil {
+        return errors.New("Property Text in WatermarkText is required.")
+    }
+
+    return nil;
 }
 
 func (obj *WatermarkText) GetRotationAngle() *float64 {

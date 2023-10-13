@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Container class for png save options.
 
 type IPngSaveOptionsData interface {
@@ -34,6 +38,7 @@ type IPngSaveOptionsData interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetAllowEmbeddingPostScriptFonts() *bool
     SetAllowEmbeddingPostScriptFonts(value *bool)
     GetCustomTimeZoneInfoData() ITimeZoneInfoData
@@ -658,6 +663,18 @@ func (obj *PngSaveOptionsData) Deserialize(json map[string]interface{}) {
 
 func (obj *PngSaveOptionsData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *PngSaveOptionsData) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.FileName == nil {
+        return errors.New("Property FileName in PngSaveOptionsData is required.")
+    }
+
+    return nil;
 }
 
 func (obj *PngSaveOptionsData) GetAllowEmbeddingPostScriptFonts() *bool {

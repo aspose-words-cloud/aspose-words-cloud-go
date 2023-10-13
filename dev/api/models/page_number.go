@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Class is used for insert page number request building.
 
 type IPageNumber interface {
@@ -34,6 +38,7 @@ type IPageNumber interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetAlignment() *string
     SetAlignment(value *string)
     GetFormat() *string
@@ -137,6 +142,22 @@ func (obj *PageNumber) Deserialize(json map[string]interface{}) {
 
 func (obj *PageNumber) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *PageNumber) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.IsTop == nil {
+        return errors.New("Property IsTop in PageNumber is required.")
+    }
+
+    if obj.SetPageNumberOnFirstPage == nil {
+        return errors.New("Property SetPageNumberOnFirstPage in PageNumber is required.")
+    }
+
+    return nil;
 }
 
 func (obj *PageNumber) GetAlignment() *string {

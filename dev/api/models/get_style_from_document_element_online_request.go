@@ -29,6 +29,7 @@ package models
 
 import (
     "fmt"
+    "errors"
     "io/ioutil"
     "net/url"
     "strings"
@@ -51,9 +52,11 @@ type GetStyleFromDocumentElementOnlineRequest struct {
 
 
 func (data *GetStyleFromDocumentElementOnlineRequest) CreateRequestData() (RequestData, error) {
-
     var result RequestData
     var filesContentData = make([]FileReference, 0)
+    if data == nil {
+        return result, errors.New("Invalid object.")
+    }
 
     result.Method = strings.ToUpper("put")
 
@@ -67,6 +70,14 @@ func (data *GetStyleFromDocumentElementOnlineRequest) CreateRequestData() (Reque
     result.HeaderParams = make(map[string]string)
     result.QueryParams = url.Values{}
     result.FormParams = make([]FormParamContainer, 0)
+
+    if (data.Document == nil) {
+        return result, errors.New("Parameter Document is required.")
+    }
+
+    if (data.StyledNodePath == nil) {
+        return result, errors.New("Parameter StyledNodePath is required.")
+    }
 
 
     if err := typeCheckParameter(data.Optionals["loadEncoding"], "string", "data.Optionals[loadEncoding]"); err != nil {

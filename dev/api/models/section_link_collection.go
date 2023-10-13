@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // The collection of section's links.
 
 type ISectionLinkCollection interface {
@@ -34,6 +38,7 @@ type ISectionLinkCollection interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetLink() IWordsApiLink
     SetLink(value IWordsApiLink)
     GetSectionLinkList() []ISectionLink
@@ -117,6 +122,14 @@ func (obj *SectionLinkCollection) Deserialize(json map[string]interface{}) {
 
 func (obj *SectionLinkCollection) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *SectionLinkCollection) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    return nil;
 }
 
 func (obj *SectionLinkCollection) GetLink() IWordsApiLink {

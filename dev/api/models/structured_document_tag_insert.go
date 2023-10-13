@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // DTO container with a StructuredDocumentTag.
 
 type IStructuredDocumentTagInsert interface {
@@ -34,6 +38,7 @@ type IStructuredDocumentTagInsert interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetLink() IWordsApiLink
     SetLink(value IWordsApiLink)
     GetNodeId() *string
@@ -527,6 +532,14 @@ func (obj *StructuredDocumentTagInsert) Deserialize(json map[string]interface{})
 
 func (obj *StructuredDocumentTagInsert) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *StructuredDocumentTagInsert) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    return nil;
 }
 
 func (obj *StructuredDocumentTagInsert) GetLink() IWordsApiLink {

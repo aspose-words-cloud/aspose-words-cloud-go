@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Represents a list of images which will be appended to the original resource document or image.
 
 type IImageEntryList interface {
@@ -34,6 +38,7 @@ type IImageEntryList interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetAppendEachImageOnNewPage() *bool
     SetAppendEachImageOnNewPage(value *bool)
     GetImageEntries() []IImageEntry
@@ -115,6 +120,14 @@ func (obj *ImageEntryList) CollectFilesContent(resultFilesContent []FileReferenc
     }
 
     return resultFilesContent
+}
+
+func (obj *ImageEntryList) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    return nil;
 }
 
 func (obj *ImageEntryList) GetAppendEachImageOnNewPage() *bool {

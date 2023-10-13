@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Error.
 
 type IError interface {
@@ -34,6 +38,7 @@ type IError interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetCode() *string
     SetCode(value *string)
     GetDescription() *string
@@ -122,6 +127,14 @@ func (obj *Error) Deserialize(json map[string]interface{}) {
 
 func (obj *Error) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *Error) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    return nil;
 }
 
 func (obj *Error) GetCode() *string {

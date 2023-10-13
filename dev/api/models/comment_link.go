@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Comment link.
 
 type ICommentLink interface {
@@ -34,6 +38,7 @@ type ICommentLink interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetLink() IWordsApiLink
     SetLink(value IWordsApiLink)
 }
@@ -79,6 +84,14 @@ func (obj *CommentLink) Deserialize(json map[string]interface{}) {
 
 func (obj *CommentLink) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *CommentLink) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    return nil;
 }
 
 func (obj *CommentLink) GetLink() IWordsApiLink {

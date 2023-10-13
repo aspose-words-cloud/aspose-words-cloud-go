@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Drawing object element for update.
 
 type IDrawingObjectUpdate interface {
@@ -34,6 +38,7 @@ type IDrawingObjectUpdate interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetRelativeHorizontalPosition() *string
     SetRelativeHorizontalPosition(value *string)
     GetLeft() *float64
@@ -169,6 +174,14 @@ func (obj *DrawingObjectUpdate) Deserialize(json map[string]interface{}) {
 
 func (obj *DrawingObjectUpdate) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *DrawingObjectUpdate) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    return nil;
 }
 
 func (obj *DrawingObjectUpdate) GetRelativeHorizontalPosition() *string {

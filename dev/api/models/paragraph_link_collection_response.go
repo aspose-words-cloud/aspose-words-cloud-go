@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // The REST response with a collection of paragraphs.
 // This response is returned by the Service when handling "GET https://api.aspose.cloud/v4.0/words/Test.doc/paragraphs" REST API requests.
 
@@ -35,6 +39,7 @@ type IParagraphLinkCollectionResponse interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetRequestId() *string
     SetRequestId(value *string)
     GetParagraphs() IParagraphLinkCollection
@@ -99,6 +104,14 @@ func (obj *ParagraphLinkCollectionResponse) Deserialize(json map[string]interfac
 
 func (obj *ParagraphLinkCollectionResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *ParagraphLinkCollectionResponse) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    return nil;
 }
 
 func (obj *ParagraphLinkCollectionResponse) GetRequestId() *string {

@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Utility class for Color serialization.
 
 type IXmlColor interface {
@@ -34,6 +38,7 @@ type IXmlColor interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetAlpha() *int32
     SetAlpha(value *int32)
     GetWeb() *string
@@ -110,6 +115,22 @@ func (obj *XmlColor) Deserialize(json map[string]interface{}) {
 
 func (obj *XmlColor) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *XmlColor) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.XmlAlpha == nil {
+        return errors.New("Property XmlAlpha in XmlColor is required.")
+    }
+
+    if obj.XmlAlphaSpecified == nil {
+        return errors.New("Property XmlAlphaSpecified in XmlColor is required.")
+    }
+
+    return nil;
 }
 
 func (obj *XmlColor) GetAlpha() *int32 {

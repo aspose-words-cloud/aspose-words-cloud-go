@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // The REST response with a collection of hyperlinks.
 // This response should be returned by the service when handling "GET /{name}/hyperlinks" REST API calls.
 
@@ -35,6 +39,7 @@ type IHyperlinksResponse interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetRequestId() *string
     SetRequestId(value *string)
     GetHyperlinks() IHyperlinks
@@ -99,6 +104,14 @@ func (obj *HyperlinksResponse) Deserialize(json map[string]interface{}) {
 
 func (obj *HyperlinksResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *HyperlinksResponse) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    return nil;
 }
 
 func (obj *HyperlinksResponse) GetRequestId() *string {

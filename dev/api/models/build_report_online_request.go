@@ -28,6 +28,7 @@
 package models
 
 import (
+    "errors"
     "io/ioutil"
     "net/url"
     "strings"
@@ -49,9 +50,11 @@ type BuildReportOnlineRequest struct {
 
 
 func (data *BuildReportOnlineRequest) CreateRequestData() (RequestData, error) {
-
     var result RequestData
     var filesContentData = make([]FileReference, 0)
+    if data == nil {
+        return result, errors.New("Invalid object.")
+    }
 
     result.Method = strings.ToUpper("put")
 
@@ -65,9 +68,21 @@ func (data *BuildReportOnlineRequest) CreateRequestData() (RequestData, error) {
     result.QueryParams = url.Values{}
     result.FormParams = make([]FormParamContainer, 0)
 
+    if (data.Template == nil) {
+        return result, errors.New("Parameter Template is required.")
+    }
+
+    if (data.Data == nil) {
+        return result, errors.New("Parameter Data is required.")
+    }
+
     if (data.ReportEngineSettings != nil) {
         data.ReportEngineSettings.Initialize()
+        data.ReportEngineSettings.Validate();
+    } else {
+        return result, errors.New("Parameter ReportEngineSettings is required.")
     }
+
 
     if err := typeCheckParameter(data.Optionals["documentFileName"], "string", "data.Optionals[documentFileName]"); err != nil {
         return result, err

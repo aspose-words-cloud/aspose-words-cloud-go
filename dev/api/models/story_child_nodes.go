@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Child nodes of Story or InlineStory.
 
 type IStoryChildNodes interface {
@@ -34,6 +38,7 @@ type IStoryChildNodes interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetChildNodes() []INodeLink
     SetChildNodes(value []INodeLink)
 }
@@ -147,6 +152,14 @@ func (obj *StoryChildNodes) Deserialize(json map[string]interface{}) {
 
 func (obj *StoryChildNodes) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *StoryChildNodes) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    return nil;
 }
 
 func (obj *StoryChildNodes) GetChildNodes() []INodeLink {

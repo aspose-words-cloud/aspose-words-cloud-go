@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // The error details.
 
 type IErrorDetails interface {
@@ -34,6 +38,7 @@ type IErrorDetails interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetErrorDateTime() *Time
     SetErrorDateTime(value *Time)
     GetRequestId() *string
@@ -86,6 +91,18 @@ func (obj *ErrorDetails) Deserialize(json map[string]interface{}) {
 
 func (obj *ErrorDetails) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *ErrorDetails) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.ErrorDateTime == nil {
+        return errors.New("Property ErrorDateTime in ErrorDetails is required.")
+    }
+
+    return nil;
 }
 
 func (obj *ErrorDetails) GetErrorDateTime() *Time {

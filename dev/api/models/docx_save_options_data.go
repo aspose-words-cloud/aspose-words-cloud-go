@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Container class for docx save options.
 
 type IDocxSaveOptionsData interface {
@@ -34,6 +38,7 @@ type IDocxSaveOptionsData interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetAllowEmbeddingPostScriptFonts() *bool
     SetAllowEmbeddingPostScriptFonts(value *bool)
     GetCustomTimeZoneInfoData() ITimeZoneInfoData
@@ -347,6 +352,18 @@ func (obj *DocxSaveOptionsData) Deserialize(json map[string]interface{}) {
 
 func (obj *DocxSaveOptionsData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *DocxSaveOptionsData) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.FileName == nil {
+        return errors.New("Property FileName in DocxSaveOptionsData is required.")
+    }
+
+    return nil;
 }
 
 func (obj *DocxSaveOptionsData) GetAllowEmbeddingPostScriptFonts() *bool {

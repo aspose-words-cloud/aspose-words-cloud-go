@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // The REST response with a collection of borders.
 // This response is returned by the Service when handling "GET {nodeWithBorders}/borders" REST API requests.
 
@@ -35,6 +39,7 @@ type IBordersResponse interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetRequestId() *string
     SetRequestId(value *string)
     GetBorders() IBordersCollection
@@ -99,6 +104,14 @@ func (obj *BordersResponse) Deserialize(json map[string]interface{}) {
 
 func (obj *BordersResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *BordersResponse) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    return nil;
 }
 
 func (obj *BordersResponse) GetRequestId() *string {

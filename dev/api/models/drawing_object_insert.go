@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Drawing object element for insert.
 
 type IDrawingObjectInsert interface {
@@ -34,6 +38,7 @@ type IDrawingObjectInsert interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetPosition() INewDocumentPosition
     SetPosition(value INewDocumentPosition)
     GetRelativeHorizontalPosition() *string
@@ -195,6 +200,42 @@ func (obj *DrawingObjectInsert) Deserialize(json map[string]interface{}) {
 
 func (obj *DrawingObjectInsert) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *DrawingObjectInsert) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.RelativeHorizontalPosition == nil {
+        return errors.New("Property RelativeHorizontalPosition in DrawingObjectInsert is required.")
+    }
+
+    if obj.Left == nil {
+        return errors.New("Property Left in DrawingObjectInsert is required.")
+    }
+
+    if obj.RelativeVerticalPosition == nil {
+        return errors.New("Property RelativeVerticalPosition in DrawingObjectInsert is required.")
+    }
+
+    if obj.Top == nil {
+        return errors.New("Property Top in DrawingObjectInsert is required.")
+    }
+
+    if obj.Width == nil {
+        return errors.New("Property Width in DrawingObjectInsert is required.")
+    }
+
+    if obj.Height == nil {
+        return errors.New("Property Height in DrawingObjectInsert is required.")
+    }
+
+    if obj.WrapType == nil {
+        return errors.New("Property WrapType in DrawingObjectInsert is required.")
+    }
+
+    return nil;
 }
 
 func (obj *DrawingObjectInsert) GetPosition() INewDocumentPosition {

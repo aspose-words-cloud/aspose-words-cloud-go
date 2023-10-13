@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // DTO container with a section element.
 
 type IHeaderFooter interface {
@@ -34,6 +38,7 @@ type IHeaderFooter interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetLink() IWordsApiLink
     SetLink(value IWordsApiLink)
     GetType() *string
@@ -550,6 +555,18 @@ func (obj *HeaderFooter) Deserialize(json map[string]interface{}) {
 
 func (obj *HeaderFooter) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *HeaderFooter) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.Type == nil {
+        return errors.New("Property Type in HeaderFooter is required.")
+    }
+
+    return nil;
 }
 
 func (obj *HeaderFooter) GetLink() IWordsApiLink {

@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Container class for tiff save options.
 
 type ITiffSaveOptionsData interface {
@@ -34,6 +38,7 @@ type ITiffSaveOptionsData interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetAllowEmbeddingPostScriptFonts() *bool
     SetAllowEmbeddingPostScriptFonts(value *bool)
     GetCustomTimeZoneInfoData() ITimeZoneInfoData
@@ -711,6 +716,18 @@ func (obj *TiffSaveOptionsData) Deserialize(json map[string]interface{}) {
 
 func (obj *TiffSaveOptionsData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *TiffSaveOptionsData) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.FileName == nil {
+        return errors.New("Property FileName in TiffSaveOptionsData is required.")
+    }
+
+    return nil;
 }
 
 func (obj *TiffSaveOptionsData) GetAllowEmbeddingPostScriptFonts() *bool {

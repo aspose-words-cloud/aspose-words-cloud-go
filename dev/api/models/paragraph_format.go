@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Paragraph format element.
 
 type IParagraphFormat interface {
@@ -34,6 +38,7 @@ type IParagraphFormat interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetLink() IWordsApiLink
     SetLink(value IWordsApiLink)
     GetAddSpaceBetweenFarEastAndAlpha() *bool
@@ -569,6 +574,14 @@ func (obj *ParagraphFormat) Deserialize(json map[string]interface{}) {
 
 func (obj *ParagraphFormat) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *ParagraphFormat) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    return nil;
 }
 
 func (obj *ParagraphFormat) GetLink() IWordsApiLink {

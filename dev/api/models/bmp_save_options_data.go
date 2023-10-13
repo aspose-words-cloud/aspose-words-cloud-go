@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Container class for bmp save options.
 
 type IBmpSaveOptionsData interface {
@@ -34,6 +38,7 @@ type IBmpSaveOptionsData interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetAllowEmbeddingPostScriptFonts() *bool
     SetAllowEmbeddingPostScriptFonts(value *bool)
     GetCustomTimeZoneInfoData() ITimeZoneInfoData
@@ -658,6 +663,18 @@ func (obj *BmpSaveOptionsData) Deserialize(json map[string]interface{}) {
 
 func (obj *BmpSaveOptionsData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *BmpSaveOptionsData) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.FileName == nil {
+        return errors.New("Property FileName in BmpSaveOptionsData is required.")
+    }
+
+    return nil;
 }
 
 func (obj *BmpSaveOptionsData) GetAllowEmbeddingPostScriptFonts() *bool {

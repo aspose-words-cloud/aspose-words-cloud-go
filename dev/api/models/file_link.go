@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Provides information for the file link.
 
 type IFileLink interface {
@@ -34,6 +38,7 @@ type IFileLink interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetHref() *string
     SetHref(value *string)
     GetRel() *string
@@ -121,6 +126,14 @@ func (obj *FileLink) Deserialize(json map[string]interface{}) {
 
 func (obj *FileLink) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *FileLink) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    return nil;
 }
 
 func (obj *FileLink) GetHref() *string {

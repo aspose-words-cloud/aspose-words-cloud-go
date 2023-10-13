@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Container class for epub save options.
 
 type IEpubSaveOptionsData interface {
@@ -34,6 +38,7 @@ type IEpubSaveOptionsData interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetAllowEmbeddingPostScriptFonts() *bool
     SetAllowEmbeddingPostScriptFonts(value *bool)
     GetCustomTimeZoneInfoData() ITimeZoneInfoData
@@ -950,6 +955,18 @@ func (obj *EpubSaveOptionsData) Deserialize(json map[string]interface{}) {
 
 func (obj *EpubSaveOptionsData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *EpubSaveOptionsData) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.FileName == nil {
+        return errors.New("Property FileName in EpubSaveOptionsData is required.")
+    }
+
+    return nil;
 }
 
 func (obj *EpubSaveOptionsData) GetAllowEmbeddingPostScriptFonts() *bool {

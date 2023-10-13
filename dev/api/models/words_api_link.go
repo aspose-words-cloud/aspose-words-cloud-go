@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Provides information for the words API resource link.
 
 type IWordsApiLink interface {
@@ -34,6 +38,7 @@ type IWordsApiLink interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetHref() *string
     SetHref(value *string)
     GetRel() *string
@@ -121,6 +126,14 @@ func (obj *WordsApiLink) Deserialize(json map[string]interface{}) {
 
 func (obj *WordsApiLink) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *WordsApiLink) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    return nil;
 }
 
 func (obj *WordsApiLink) GetHref() *string {

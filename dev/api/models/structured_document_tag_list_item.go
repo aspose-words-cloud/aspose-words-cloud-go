@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // DTO container with a SdtListItem for StructuredDocumentTag.
 
 type IStructuredDocumentTagListItem interface {
@@ -34,6 +38,7 @@ type IStructuredDocumentTagListItem interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetDisplayText() *string
     SetDisplayText(value *string)
     GetValue() *string
@@ -84,6 +89,14 @@ func (obj *StructuredDocumentTagListItem) Deserialize(json map[string]interface{
 
 func (obj *StructuredDocumentTagListItem) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *StructuredDocumentTagListItem) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    return nil;
 }
 
 func (obj *StructuredDocumentTagListItem) GetDisplayText() *string {

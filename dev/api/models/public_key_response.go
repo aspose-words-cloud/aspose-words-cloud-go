@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // REST response for RSA public key info.
 
 type IPublicKeyResponse interface {
@@ -34,6 +38,7 @@ type IPublicKeyResponse interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetRequestId() *string
     SetRequestId(value *string)
     GetExponent() *string
@@ -104,6 +109,14 @@ func (obj *PublicKeyResponse) Deserialize(json map[string]interface{}) {
 
 func (obj *PublicKeyResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *PublicKeyResponse) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    return nil;
 }
 
 func (obj *PublicKeyResponse) GetRequestId() *string {

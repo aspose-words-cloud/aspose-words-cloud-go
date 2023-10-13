@@ -28,6 +28,7 @@
 package models
 
 import (
+    "errors"
     "io/ioutil"
     "net/url"
     "strings"
@@ -50,9 +51,11 @@ type ExecuteMailMergeOnlineRequest struct {
 
 
 func (data *ExecuteMailMergeOnlineRequest) CreateRequestData() (RequestData, error) {
-
     var result RequestData
     var filesContentData = make([]FileReference, 0)
+    if data == nil {
+        return result, errors.New("Invalid object.")
+    }
 
     result.Method = strings.ToUpper("put")
 
@@ -65,6 +68,14 @@ func (data *ExecuteMailMergeOnlineRequest) CreateRequestData() (RequestData, err
     result.HeaderParams = make(map[string]string)
     result.QueryParams = url.Values{}
     result.FormParams = make([]FormParamContainer, 0)
+
+    if (data.Template == nil) {
+        return result, errors.New("Parameter Template is required.")
+    }
+
+    if (data.Data == nil) {
+        return result, errors.New("Parameter Data is required.")
+    }
 
 
     if err := typeCheckParameter(data.Optionals["withRegions"], "bool", "data.Optionals[withRegions]"); err != nil {

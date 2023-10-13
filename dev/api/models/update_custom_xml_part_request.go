@@ -29,6 +29,7 @@ package models
 
 import (
     "fmt"
+    "errors"
     "io/ioutil"
     "net/url"
     "strings"
@@ -58,9 +59,11 @@ type UpdateCustomXmlPartRequest struct {
 
 
 func (data *UpdateCustomXmlPartRequest) CreateRequestData() (RequestData, error) {
-
     var result RequestData
     var filesContentData = make([]FileReference, 0)
+    if data == nil {
+        return result, errors.New("Invalid object.")
+    }
 
     result.Method = strings.ToUpper("put")
 
@@ -76,9 +79,21 @@ func (data *UpdateCustomXmlPartRequest) CreateRequestData() (RequestData, error)
     result.QueryParams = url.Values{}
     result.FormParams = make([]FormParamContainer, 0)
 
+    if (data.Name == nil) {
+        return result, errors.New("Parameter Name is required.")
+    }
+
+    if (data.CustomXmlPartIndex == nil) {
+        return result, errors.New("Parameter CustomXmlPartIndex is required.")
+    }
+
     if (data.CustomXmlPart != nil) {
         data.CustomXmlPart.Initialize()
+        data.CustomXmlPart.Validate();
+    } else {
+        return result, errors.New("Parameter CustomXmlPart is required.")
     }
+
 
     if err := typeCheckParameter(data.Optionals["folder"], "string", "data.Optionals[folder]"); err != nil {
         return result, err

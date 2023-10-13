@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // DTO container with a range element.
 
 type IReplaceRange interface {
@@ -34,6 +38,7 @@ type IReplaceRange interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetText() *string
     SetText(value *string)
     GetTextType() *string
@@ -84,6 +89,14 @@ func (obj *ReplaceRange) Deserialize(json map[string]interface{}) {
 
 func (obj *ReplaceRange) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *ReplaceRange) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    return nil;
 }
 
 func (obj *ReplaceRange) GetText() *string {

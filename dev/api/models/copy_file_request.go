@@ -29,6 +29,7 @@ package models
 
 import (
     "fmt"
+    "errors"
     "io/ioutil"
     "net/url"
     "strings"
@@ -50,9 +51,11 @@ type CopyFileRequest struct {
 
 
 func (data *CopyFileRequest) CreateRequestData() (RequestData, error) {
-
     var result RequestData
     var filesContentData = make([]FileReference, 0)
+    if data == nil {
+        return result, errors.New("Invalid object.")
+    }
 
     result.Method = strings.ToUpper("put")
 
@@ -66,6 +69,14 @@ func (data *CopyFileRequest) CreateRequestData() (RequestData, error) {
     result.HeaderParams = make(map[string]string)
     result.QueryParams = url.Values{}
     result.FormParams = make([]FormParamContainer, 0)
+
+    if (data.DestPath == nil) {
+        return result, errors.New("Parameter DestPath is required.")
+    }
+
+    if (data.SrcPath == nil) {
+        return result, errors.New("Parameter SrcPath is required.")
+    }
 
 
     if err := typeCheckParameter(data.Optionals["srcStorageName"], "string", "data.Optionals[srcStorageName]"); err != nil {

@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // The REST response with data on system, additional and custom fonts, available for document processing.
 
 type IAvailableFontsResponse interface {
@@ -34,6 +38,7 @@ type IAvailableFontsResponse interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetRequestId() *string
     SetRequestId(value *string)
     GetAdditionalFonts() []IFontInfo
@@ -185,6 +190,14 @@ func (obj *AvailableFontsResponse) Deserialize(json map[string]interface{}) {
 
 func (obj *AvailableFontsResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *AvailableFontsResponse) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    return nil;
 }
 
 func (obj *AvailableFontsResponse) GetRequestId() *string {

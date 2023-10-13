@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // FormField text input element.
 
 type IFormFieldTextInput interface {
@@ -34,6 +38,7 @@ type IFormFieldTextInput interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetLink() IWordsApiLink
     SetLink(value IWordsApiLink)
     GetNodeId() *string
@@ -327,6 +332,26 @@ func (obj *FormFieldTextInput) Deserialize(json map[string]interface{}) {
 
 func (obj *FormFieldTextInput) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *FormFieldTextInput) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.Name == nil {
+        return errors.New("Property Name in FormFieldTextInput is required.")
+    }
+
+    if obj.TextInputFormat == nil {
+        return errors.New("Property TextInputFormat in FormFieldTextInput is required.")
+    }
+
+    if obj.TextInputDefault == nil {
+        return errors.New("Property TextInputDefault in FormFieldTextInput is required.")
+    }
+
+    return nil;
 }
 
 func (obj *FormFieldTextInput) GetLink() IWordsApiLink {

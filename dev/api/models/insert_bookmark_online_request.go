@@ -28,6 +28,7 @@
 package models
 
 import (
+    "errors"
     "io/ioutil"
     "net/url"
     "strings"
@@ -54,9 +55,11 @@ type InsertBookmarkOnlineRequest struct {
 
 
 func (data *InsertBookmarkOnlineRequest) CreateRequestData() (RequestData, error) {
-
     var result RequestData
     var filesContentData = make([]FileReference, 0)
+    if data == nil {
+        return result, errors.New("Invalid object.")
+    }
 
     result.Method = strings.ToUpper("put")
 
@@ -70,9 +73,17 @@ func (data *InsertBookmarkOnlineRequest) CreateRequestData() (RequestData, error
     result.QueryParams = url.Values{}
     result.FormParams = make([]FormParamContainer, 0)
 
+    if (data.Document == nil) {
+        return result, errors.New("Parameter Document is required.")
+    }
+
     if (data.Bookmark != nil) {
         data.Bookmark.Initialize()
+        data.Bookmark.Validate();
+    } else {
+        return result, errors.New("Parameter Bookmark is required.")
     }
+
 
     if err := typeCheckParameter(data.Optionals["loadEncoding"], "string", "data.Optionals[loadEncoding]"); err != nil {
         return result, err

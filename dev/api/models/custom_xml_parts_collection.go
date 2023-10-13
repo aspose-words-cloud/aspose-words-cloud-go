@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // The collection of CustomXmlPart.
 
 type ICustomXmlPartsCollection interface {
@@ -34,6 +38,7 @@ type ICustomXmlPartsCollection interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetLink() IWordsApiLink
     SetLink(value IWordsApiLink)
     GetCustomXmlPartsList() []ICustomXmlPart
@@ -131,6 +136,14 @@ func (obj *CustomXmlPartsCollection) Deserialize(json map[string]interface{}) {
 
 func (obj *CustomXmlPartsCollection) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *CustomXmlPartsCollection) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    return nil;
 }
 
 func (obj *CustomXmlPartsCollection) GetLink() IWordsApiLink {

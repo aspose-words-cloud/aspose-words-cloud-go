@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // DTO container with a collection of footnotes.
 
 type IFootnoteCollection interface {
@@ -34,6 +38,7 @@ type IFootnoteCollection interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetLink() IWordsApiLink
     SetLink(value IWordsApiLink)
     GetList() []IFootnote
@@ -117,6 +122,14 @@ func (obj *FootnoteCollection) Deserialize(json map[string]interface{}) {
 
 func (obj *FootnoteCollection) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *FootnoteCollection) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    return nil;
 }
 
 func (obj *FootnoteCollection) GetLink() IWordsApiLink {

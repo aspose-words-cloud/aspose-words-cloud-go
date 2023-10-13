@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Represents a list of documents which will be appended to the original resource document.
 
 type IDocumentEntryList interface {
@@ -34,6 +38,7 @@ type IDocumentEntryList interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetApplyBaseDocumentHeadersAndFootersToAppendingDocuments() *bool
     SetApplyBaseDocumentHeadersAndFootersToAppendingDocuments(value *bool)
     GetDocumentEntries() []IDocumentEntry
@@ -115,6 +120,26 @@ func (obj *DocumentEntryList) CollectFilesContent(resultFilesContent []FileRefer
     }
 
     return resultFilesContent
+}
+
+func (obj *DocumentEntryList) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.DocumentEntries == nil {
+        return errors.New("Property DocumentEntries in DocumentEntryList is required.")
+    }
+
+    for _, elementDocumentEntries := range obj.DocumentEntries {
+        if elementDocumentEntries != nil {
+            if err := elementDocumentEntries.Validate(); err != nil {
+                return err;
+            }
+        }
+    }
+
+    return nil;
 }
 
 func (obj *DocumentEntryList) GetApplyBaseDocumentHeadersAndFootersToAppendingDocuments() *bool {

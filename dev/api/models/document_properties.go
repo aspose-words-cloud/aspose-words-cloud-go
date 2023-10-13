@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // The collection of document properties.
 
 type IDocumentProperties interface {
@@ -34,6 +38,7 @@ type IDocumentProperties interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetLink() IWordsApiLink
     SetLink(value IWordsApiLink)
     GetList() []IDocumentProperty
@@ -117,6 +122,14 @@ func (obj *DocumentProperties) Deserialize(json map[string]interface{}) {
 
 func (obj *DocumentProperties) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *DocumentProperties) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    return nil;
 }
 
 func (obj *DocumentProperties) GetLink() IWordsApiLink {
