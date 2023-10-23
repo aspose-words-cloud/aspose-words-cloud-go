@@ -175,6 +175,44 @@ func (obj *TableRow) Validate() error {
         return errors.New("Invalid object.")
     }
 
+    if obj.Link == nil {
+        return errors.New("Property Link in TableRow is required.")
+    }
+
+    if obj.Link != nil {
+        if err := obj.Link.Validate(); err != nil {
+            return err
+        }
+    }
+
+    if obj.NodeId == nil {
+        return errors.New("Property NodeId in TableRow is required.")
+    }
+
+    if obj.TableCellList == nil {
+        return errors.New("Property TableCellList in TableRow is required.")
+    }
+
+    if obj.TableCellList != nil {
+        for _, elementTableCellList := range obj.TableCellList {
+            if elementTableCellList != nil {
+                if err := elementTableCellList.Validate(); err != nil {
+                    return err
+                }
+            }
+        }
+    }
+
+    if obj.RowFormat == nil {
+        return errors.New("Property RowFormat in TableRow is required.")
+    }
+
+    if obj.RowFormat != nil {
+        if err := obj.RowFormat.Validate(); err != nil {
+            return err
+        }
+    }
+
     return nil;
 }
 

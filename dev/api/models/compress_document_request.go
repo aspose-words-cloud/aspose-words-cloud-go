@@ -80,7 +80,6 @@ func (data *CompressDocumentRequest) CreateRequestData() (RequestData, error) {
 
     if (data.CompressOptions != nil) {
         data.CompressOptions.Initialize()
-        data.CompressOptions.Validate();
     } else {
         return result, errors.New("Parameter CompressOptions is required.")
     }
@@ -103,6 +102,13 @@ func (data *CompressDocumentRequest) CreateRequestData() (RequestData, error) {
     }
     if err := typeCheckParameter(data.Optionals["destFileName"], "string", "data.Optionals[destFileName]"); err != nil {
         return result, err
+    }
+
+
+    if (data.CompressOptions != nil) {
+        if err := data.CompressOptions.Validate(); err != nil {
+            return result, err
+        }
     }
 
 

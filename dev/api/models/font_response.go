@@ -111,6 +111,20 @@ func (obj *FontResponse) Validate() error {
         return errors.New("Invalid object.")
     }
 
+    if obj.RequestId == nil {
+        return errors.New("Property RequestId in FontResponse is required.")
+    }
+
+    if obj.Font == nil {
+        return errors.New("Property Font in FontResponse is required.")
+    }
+
+    if obj.Font != nil {
+        if err := obj.Font.Validate(); err != nil {
+            return err
+        }
+    }
+
     return nil;
 }
 

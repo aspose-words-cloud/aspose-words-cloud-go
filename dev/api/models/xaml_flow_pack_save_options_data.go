@@ -328,6 +328,71 @@ func (obj *XamlFlowPackSaveOptionsData) Validate() error {
     if obj.FileName == nil {
         return errors.New("Property FileName in XamlFlowPackSaveOptionsData is required.")
     }
+    if obj.AllowEmbeddingPostScriptFonts == nil {
+        return errors.New("Property AllowEmbeddingPostScriptFonts in XamlFlowPackSaveOptionsData is required.")
+    }
+
+    if obj.CustomTimeZoneInfoData == nil {
+        return errors.New("Property CustomTimeZoneInfoData in XamlFlowPackSaveOptionsData is required.")
+    }
+
+    if obj.CustomTimeZoneInfoData != nil {
+        if err := obj.CustomTimeZoneInfoData.Validate(); err != nil {
+            return err
+        }
+    }
+
+    if obj.Dml3DEffectsRenderingMode == nil {
+        return errors.New("Property Dml3DEffectsRenderingMode in XamlFlowPackSaveOptionsData is required.")
+    }
+
+    if obj.DmlEffectsRenderingMode == nil {
+        return errors.New("Property DmlEffectsRenderingMode in XamlFlowPackSaveOptionsData is required.")
+    }
+
+    if obj.DmlRenderingMode == nil {
+        return errors.New("Property DmlRenderingMode in XamlFlowPackSaveOptionsData is required.")
+    }
+
+    if obj.FileName == nil {
+        return errors.New("Property FileName in XamlFlowPackSaveOptionsData is required.")
+    }
+
+    if obj.ImlRenderingMode == nil {
+        return errors.New("Property ImlRenderingMode in XamlFlowPackSaveOptionsData is required.")
+    }
+
+    if obj.UpdateCreatedTimeProperty == nil {
+        return errors.New("Property UpdateCreatedTimeProperty in XamlFlowPackSaveOptionsData is required.")
+    }
+
+    if obj.UpdateFields == nil {
+        return errors.New("Property UpdateFields in XamlFlowPackSaveOptionsData is required.")
+    }
+
+    if obj.UpdateLastPrintedProperty == nil {
+        return errors.New("Property UpdateLastPrintedProperty in XamlFlowPackSaveOptionsData is required.")
+    }
+
+    if obj.UpdateLastSavedTimeProperty == nil {
+        return errors.New("Property UpdateLastSavedTimeProperty in XamlFlowPackSaveOptionsData is required.")
+    }
+
+    if obj.ZipOutput == nil {
+        return errors.New("Property ZipOutput in XamlFlowPackSaveOptionsData is required.")
+    }
+
+    if obj.ImagesFolder == nil {
+        return errors.New("Property ImagesFolder in XamlFlowPackSaveOptionsData is required.")
+    }
+
+    if obj.ImagesFolderAlias == nil {
+        return errors.New("Property ImagesFolderAlias in XamlFlowPackSaveOptionsData is required.")
+    }
+
+    if obj.SaveFormat == nil {
+        return errors.New("Property SaveFormat in XamlFlowPackSaveOptionsData is required.")
+    }
 
     return nil;
 }

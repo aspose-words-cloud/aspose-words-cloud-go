@@ -111,6 +111,20 @@ func (obj *ParagraphListFormatResponse) Validate() error {
         return errors.New("Invalid object.")
     }
 
+    if obj.RequestId == nil {
+        return errors.New("Property RequestId in ParagraphListFormatResponse is required.")
+    }
+
+    if obj.ListFormat == nil {
+        return errors.New("Property ListFormat in ParagraphListFormatResponse is required.")
+    }
+
+    if obj.ListFormat != nil {
+        if err := obj.ListFormat.Validate(); err != nil {
+            return err
+        }
+    }
+
     return nil;
 }
 

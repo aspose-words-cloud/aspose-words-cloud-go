@@ -133,6 +133,22 @@ func (obj *FileLink) Validate() error {
         return errors.New("Invalid object.")
     }
 
+    if obj.Href == nil {
+        return errors.New("Property Href in FileLink is required.")
+    }
+
+    if obj.Rel == nil {
+        return errors.New("Property Rel in FileLink is required.")
+    }
+
+    if obj.Title == nil {
+        return errors.New("Property Title in FileLink is required.")
+    }
+
+    if obj.Type == nil {
+        return errors.New("Property Type in FileLink is required.")
+    }
+
     return nil;
 }
 

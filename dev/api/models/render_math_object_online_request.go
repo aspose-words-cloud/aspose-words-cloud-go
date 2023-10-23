@@ -109,6 +109,7 @@ func (data *RenderMathObjectOnlineRequest) CreateRequestData() (RequestData, err
     }
 
 
+
     result.QueryParams.Add("Format", parameterToString(*data.Format, ""))
 
 

@@ -111,6 +111,20 @@ func (obj *ListResponse) Validate() error {
         return errors.New("Invalid object.")
     }
 
+    if obj.RequestId == nil {
+        return errors.New("Property RequestId in ListResponse is required.")
+    }
+
+    if obj.List == nil {
+        return errors.New("Property List in ListResponse is required.")
+    }
+
+    if obj.List != nil {
+        if err := obj.List.Validate(); err != nil {
+            return err
+        }
+    }
+
     return nil;
 }
 

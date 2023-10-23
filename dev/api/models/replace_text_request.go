@@ -82,7 +82,6 @@ func (data *ReplaceTextRequest) CreateRequestData() (RequestData, error) {
 
     if (data.ReplaceText != nil) {
         data.ReplaceText.Initialize()
-        data.ReplaceText.Validate();
     } else {
         return result, errors.New("Parameter ReplaceText is required.")
     }
@@ -111,6 +110,13 @@ func (data *ReplaceTextRequest) CreateRequestData() (RequestData, error) {
     }
     if err := typeCheckParameter(data.Optionals["revisionDateTime"], "string", "data.Optionals[revisionDateTime]"); err != nil {
         return result, err
+    }
+
+
+    if (data.ReplaceText != nil) {
+        if err := data.ReplaceText.Validate(); err != nil {
+            return result, err
+        }
     }
 
 

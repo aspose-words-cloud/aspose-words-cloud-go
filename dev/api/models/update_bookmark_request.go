@@ -89,7 +89,6 @@ func (data *UpdateBookmarkRequest) CreateRequestData() (RequestData, error) {
 
     if (data.BookmarkData != nil) {
         data.BookmarkData.Initialize()
-        data.BookmarkData.Validate();
     } else {
         return result, errors.New("Parameter BookmarkData is required.")
     }
@@ -118,6 +117,13 @@ func (data *UpdateBookmarkRequest) CreateRequestData() (RequestData, error) {
     }
     if err := typeCheckParameter(data.Optionals["revisionDateTime"], "string", "data.Optionals[revisionDateTime]"); err != nil {
         return result, err
+    }
+
+
+    if (data.BookmarkData != nil) {
+        if err := data.BookmarkData.Validate(); err != nil {
+            return result, err
+        }
     }
 
 

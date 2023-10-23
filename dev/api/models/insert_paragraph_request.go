@@ -85,7 +85,6 @@ func (data *InsertParagraphRequest) CreateRequestData() (RequestData, error) {
 
     if (data.Paragraph != nil) {
         data.Paragraph.Initialize()
-        data.Paragraph.Validate();
     } else {
         return result, errors.New("Parameter Paragraph is required.")
     }
@@ -120,6 +119,13 @@ func (data *InsertParagraphRequest) CreateRequestData() (RequestData, error) {
     }
     if err := typeCheckParameter(data.Optionals["insertBeforeNode"], "string", "data.Optionals[insertBeforeNode]"); err != nil {
         return result, err
+    }
+
+
+    if (data.Paragraph != nil) {
+        if err := data.Paragraph.Validate(); err != nil {
+            return result, err
+        }
     }
 
 

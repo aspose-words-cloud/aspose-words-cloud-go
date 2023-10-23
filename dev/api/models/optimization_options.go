@@ -82,6 +82,9 @@ func (obj *OptimizationOptions) Validate() error {
     if obj.MsWordVersion == nil {
         return errors.New("Property MsWordVersion in OptimizationOptions is required.")
     }
+    if obj.MsWordVersion == nil {
+        return errors.New("Property MsWordVersion in OptimizationOptions is required.")
+    }
 
     return nil;
 }

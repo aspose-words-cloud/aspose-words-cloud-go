@@ -98,9 +98,14 @@ func (obj *ImageEntry) Validate() error {
     if obj.FileReference == nil {
         return errors.New("Property FileReference in ImageEntry is required.")
     }
+    if obj.FileReference == nil {
+        return errors.New("Property FileReference in ImageEntry is required.")
+    }
 
-    if err := obj.FileReference.Validate(); err != nil {
-        return err
+    if obj.FileReference != nil {
+        if err := obj.FileReference.Validate(); err != nil {
+            return err
+        }
     }
 
     return nil;

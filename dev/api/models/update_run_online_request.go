@@ -90,7 +90,6 @@ func (data *UpdateRunOnlineRequest) CreateRequestData() (RequestData, error) {
 
     if (data.Run != nil) {
         data.Run.Initialize()
-        data.Run.Validate();
     } else {
         return result, errors.New("Parameter Run is required.")
     }
@@ -117,6 +116,13 @@ func (data *UpdateRunOnlineRequest) CreateRequestData() (RequestData, error) {
     }
     if err := typeCheckParameter(data.Optionals["revisionDateTime"], "string", "data.Optionals[revisionDateTime]"); err != nil {
         return result, err
+    }
+
+
+    if (data.Run != nil) {
+        if err := data.Run.Validate(); err != nil {
+            return result, err
+        }
     }
 
 

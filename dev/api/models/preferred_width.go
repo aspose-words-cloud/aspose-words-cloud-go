@@ -99,6 +99,13 @@ func (obj *PreferredWidth) Validate() error {
     if obj.Type == nil {
         return errors.New("Property Type in PreferredWidth is required.")
     }
+    if obj.Type == nil {
+        return errors.New("Property Type in PreferredWidth is required.")
+    }
+
+    if obj.Value == nil {
+        return errors.New("Property Value in PreferredWidth is required.")
+    }
 
     return nil;
 }

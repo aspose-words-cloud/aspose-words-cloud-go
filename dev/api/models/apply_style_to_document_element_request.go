@@ -89,7 +89,6 @@ func (data *ApplyStyleToDocumentElementRequest) CreateRequestData() (RequestData
 
     if (data.StyleApply != nil) {
         data.StyleApply.Initialize()
-        data.StyleApply.Validate();
     } else {
         return result, errors.New("Parameter StyleApply is required.")
     }
@@ -118,6 +117,13 @@ func (data *ApplyStyleToDocumentElementRequest) CreateRequestData() (RequestData
     }
     if err := typeCheckParameter(data.Optionals["revisionDateTime"], "string", "data.Optionals[revisionDateTime]"); err != nil {
         return result, err
+    }
+
+
+    if (data.StyleApply != nil) {
+        if err := data.StyleApply.Validate(); err != nil {
+            return result, err
+        }
     }
 
 

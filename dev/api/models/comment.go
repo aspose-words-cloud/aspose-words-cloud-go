@@ -240,6 +240,62 @@ func (obj *Comment) Validate() error {
         return errors.New("Invalid object.")
     }
 
+    if obj.Link == nil {
+        return errors.New("Property Link in Comment is required.")
+    }
+
+    if obj.Link != nil {
+        if err := obj.Link.Validate(); err != nil {
+            return err
+        }
+    }
+
+    if obj.RangeStart == nil {
+        return errors.New("Property RangeStart in Comment is required.")
+    }
+
+    if obj.RangeStart != nil {
+        if err := obj.RangeStart.Validate(); err != nil {
+            return err
+        }
+    }
+
+    if obj.RangeEnd == nil {
+        return errors.New("Property RangeEnd in Comment is required.")
+    }
+
+    if obj.RangeEnd != nil {
+        if err := obj.RangeEnd.Validate(); err != nil {
+            return err
+        }
+    }
+
+    if obj.Author == nil {
+        return errors.New("Property Author in Comment is required.")
+    }
+
+    if obj.Initial == nil {
+        return errors.New("Property Initial in Comment is required.")
+    }
+
+    if obj.DateTime == nil {
+        return errors.New("Property DateTime in Comment is required.")
+    }
+
+    if obj.Text == nil {
+        return errors.New("Property Text in Comment is required.")
+    }
+
+    if obj.Content == nil {
+        return errors.New("Property Content in Comment is required.")
+    }
+
+    if obj.Content != nil {
+        if err := obj.Content.Validate(); err != nil {
+            return err
+        }
+    }
+
     return nil;
 }
 

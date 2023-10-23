@@ -111,6 +111,20 @@ func (obj *FormFieldsResponse) Validate() error {
         return errors.New("Invalid object.")
     }
 
+    if obj.RequestId == nil {
+        return errors.New("Property RequestId in FormFieldsResponse is required.")
+    }
+
+    if obj.FormFields == nil {
+        return errors.New("Property FormFields in FormFieldsResponse is required.")
+    }
+
+    if obj.FormFields != nil {
+        if err := obj.FormFields.Validate(); err != nil {
+            return err
+        }
+    }
+
     return nil;
 }
 

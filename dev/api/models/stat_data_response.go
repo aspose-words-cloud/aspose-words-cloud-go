@@ -133,6 +133,30 @@ func (obj *StatDataResponse) Validate() error {
         return errors.New("Invalid object.")
     }
 
+    if obj.RequestId == nil {
+        return errors.New("Property RequestId in StatDataResponse is required.")
+    }
+
+    if obj.DocumentLink == nil {
+        return errors.New("Property DocumentLink in StatDataResponse is required.")
+    }
+
+    if obj.DocumentLink != nil {
+        if err := obj.DocumentLink.Validate(); err != nil {
+            return err
+        }
+    }
+
+    if obj.StatData == nil {
+        return errors.New("Property StatData in StatDataResponse is required.")
+    }
+
+    if obj.StatData != nil {
+        if err := obj.StatData.Validate(); err != nil {
+            return err
+        }
+    }
+
     return nil;
 }
 

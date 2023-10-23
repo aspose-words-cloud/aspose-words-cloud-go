@@ -89,6 +89,13 @@ func (data *ExecuteMailMergeOnlineRequest) CreateRequestData() (RequestData, err
     }
 
 
+    if localVarTempParam, localVarOk := data.Optionals["options"].(IFieldOptions); localVarOk {
+        if err := localVarTempParam.Validate(); err != nil {
+            return result, err
+        }
+    }
+
+
     if localVarTempParam, localVarOk := data.Optionals["withRegions"].(bool); localVarOk {
         result.QueryParams.Add("WithRegions", parameterToString(localVarTempParam, ""))
     }

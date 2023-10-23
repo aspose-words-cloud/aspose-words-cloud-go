@@ -96,6 +96,14 @@ func (obj *BookmarkData) Validate() error {
         return errors.New("Invalid object.")
     }
 
+    if obj.Name == nil {
+        return errors.New("Property Name in BookmarkData is required.")
+    }
+
+    if obj.Text == nil {
+        return errors.New("Property Text in BookmarkData is required.")
+    }
+
     return nil;
 }
 

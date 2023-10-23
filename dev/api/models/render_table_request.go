@@ -118,6 +118,7 @@ func (data *RenderTableRequest) CreateRequestData() (RequestData, error) {
     }
 
 
+
     result.QueryParams.Add("Format", parameterToString(*data.Format, ""))
 
 

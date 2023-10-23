@@ -96,7 +96,6 @@ func (data *UpdateTableRowFormatRequest) CreateRequestData() (RequestData, error
 
     if (data.Format != nil) {
         data.Format.Initialize()
-        data.Format.Validate();
     } else {
         return result, errors.New("Parameter Format is required.")
     }
@@ -125,6 +124,13 @@ func (data *UpdateTableRowFormatRequest) CreateRequestData() (RequestData, error
     }
     if err := typeCheckParameter(data.Optionals["revisionDateTime"], "string", "data.Optionals[revisionDateTime]"); err != nil {
         return result, err
+    }
+
+
+    if (data.Format != nil) {
+        if err := data.Format.Validate(); err != nil {
+            return result, err
+        }
     }
 
 

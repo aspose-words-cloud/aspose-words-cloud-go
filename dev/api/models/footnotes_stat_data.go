@@ -103,6 +103,12 @@ func (obj *FootnotesStatData) Validate() error {
     if obj.ParagraphCount == nil {
         return errors.New("Property ParagraphCount in FootnotesStatData is required.")
     }
+    if obj.WordCount == nil {
+        return errors.New("Property WordCount in FootnotesStatData is required.")
+    }
+    if obj.ParagraphCount == nil {
+        return errors.New("Property ParagraphCount in FootnotesStatData is required.")
+    }
 
     if obj.WordCount == nil {
         return errors.New("Property WordCount in FootnotesStatData is required.")

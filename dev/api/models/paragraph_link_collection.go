@@ -129,6 +129,30 @@ func (obj *ParagraphLinkCollection) Validate() error {
         return errors.New("Invalid object.")
     }
 
+    if obj.Link == nil {
+        return errors.New("Property Link in ParagraphLinkCollection is required.")
+    }
+
+    if obj.Link != nil {
+        if err := obj.Link.Validate(); err != nil {
+            return err
+        }
+    }
+
+    if obj.ParagraphLinkList == nil {
+        return errors.New("Property ParagraphLinkList in ParagraphLinkCollection is required.")
+    }
+
+    if obj.ParagraphLinkList != nil {
+        for _, elementParagraphLinkList := range obj.ParagraphLinkList {
+            if elementParagraphLinkList != nil {
+                if err := elementParagraphLinkList.Validate(); err != nil {
+                    return err
+                }
+            }
+        }
+    }
+
     return nil;
 }
 

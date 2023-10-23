@@ -358,6 +358,79 @@ func (obj *RtfSaveOptionsData) Validate() error {
     if obj.FileName == nil {
         return errors.New("Property FileName in RtfSaveOptionsData is required.")
     }
+    if obj.AllowEmbeddingPostScriptFonts == nil {
+        return errors.New("Property AllowEmbeddingPostScriptFonts in RtfSaveOptionsData is required.")
+    }
+
+    if obj.CustomTimeZoneInfoData == nil {
+        return errors.New("Property CustomTimeZoneInfoData in RtfSaveOptionsData is required.")
+    }
+
+    if obj.CustomTimeZoneInfoData != nil {
+        if err := obj.CustomTimeZoneInfoData.Validate(); err != nil {
+            return err
+        }
+    }
+
+    if obj.Dml3DEffectsRenderingMode == nil {
+        return errors.New("Property Dml3DEffectsRenderingMode in RtfSaveOptionsData is required.")
+    }
+
+    if obj.DmlEffectsRenderingMode == nil {
+        return errors.New("Property DmlEffectsRenderingMode in RtfSaveOptionsData is required.")
+    }
+
+    if obj.DmlRenderingMode == nil {
+        return errors.New("Property DmlRenderingMode in RtfSaveOptionsData is required.")
+    }
+
+    if obj.FileName == nil {
+        return errors.New("Property FileName in RtfSaveOptionsData is required.")
+    }
+
+    if obj.ImlRenderingMode == nil {
+        return errors.New("Property ImlRenderingMode in RtfSaveOptionsData is required.")
+    }
+
+    if obj.UpdateCreatedTimeProperty == nil {
+        return errors.New("Property UpdateCreatedTimeProperty in RtfSaveOptionsData is required.")
+    }
+
+    if obj.UpdateFields == nil {
+        return errors.New("Property UpdateFields in RtfSaveOptionsData is required.")
+    }
+
+    if obj.UpdateLastPrintedProperty == nil {
+        return errors.New("Property UpdateLastPrintedProperty in RtfSaveOptionsData is required.")
+    }
+
+    if obj.UpdateLastSavedTimeProperty == nil {
+        return errors.New("Property UpdateLastSavedTimeProperty in RtfSaveOptionsData is required.")
+    }
+
+    if obj.ZipOutput == nil {
+        return errors.New("Property ZipOutput in RtfSaveOptionsData is required.")
+    }
+
+    if obj.ExportCompactSize == nil {
+        return errors.New("Property ExportCompactSize in RtfSaveOptionsData is required.")
+    }
+
+    if obj.ExportImagesForOldReaders == nil {
+        return errors.New("Property ExportImagesForOldReaders in RtfSaveOptionsData is required.")
+    }
+
+    if obj.PrettyFormat == nil {
+        return errors.New("Property PrettyFormat in RtfSaveOptionsData is required.")
+    }
+
+    if obj.SaveImagesAsWmf == nil {
+        return errors.New("Property SaveImagesAsWmf in RtfSaveOptionsData is required.")
+    }
+
+    if obj.SaveFormat == nil {
+        return errors.New("Property SaveFormat in RtfSaveOptionsData is required.")
+    }
 
     return nil;
 }

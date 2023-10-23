@@ -88,6 +88,7 @@ func (data *RejectAllRevisionsOnlineRequest) CreateRequestData() (RequestData, e
     }
 
 
+
     if localVarTempParam, localVarOk := data.Optionals["loadEncoding"].(string); localVarOk {
         result.QueryParams.Add("LoadEncoding", parameterToString(localVarTempParam, ""))
     }

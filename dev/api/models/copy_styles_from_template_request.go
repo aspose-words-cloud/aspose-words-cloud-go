@@ -111,6 +111,7 @@ func (data *CopyStylesFromTemplateRequest) CreateRequestData() (RequestData, err
     }
 
 
+
     result.QueryParams.Add("TemplateName", parameterToString(*data.TemplateName, ""))
 
 

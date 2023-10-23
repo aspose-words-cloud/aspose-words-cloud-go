@@ -89,7 +89,6 @@ func (data *CreateOrUpdateDocumentPropertyRequest) CreateRequestData() (RequestD
 
     if (data.Property != nil) {
         data.Property.Initialize()
-        data.Property.Validate();
     } else {
         return result, errors.New("Parameter Property is required.")
     }
@@ -118,6 +117,13 @@ func (data *CreateOrUpdateDocumentPropertyRequest) CreateRequestData() (RequestD
     }
     if err := typeCheckParameter(data.Optionals["revisionDateTime"], "string", "data.Optionals[revisionDateTime]"); err != nil {
         return result, err
+    }
+
+
+    if (data.Property != nil) {
+        if err := data.Property.Validate(); err != nil {
+            return result, err
+        }
     }
 
 

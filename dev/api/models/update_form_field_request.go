@@ -91,7 +91,6 @@ func (data *UpdateFormFieldRequest) CreateRequestData() (RequestData, error) {
 
     if (data.FormField != nil) {
         data.FormField.Initialize()
-        data.FormField.Validate();
     } else {
         return result, errors.New("Parameter FormField is required.")
     }
@@ -123,6 +122,13 @@ func (data *UpdateFormFieldRequest) CreateRequestData() (RequestData, error) {
     }
     if err := typeCheckParameter(data.Optionals["revisionDateTime"], "string", "data.Optionals[revisionDateTime]"); err != nil {
         return result, err
+    }
+
+
+    if (data.FormField != nil) {
+        if err := data.FormField.Validate(); err != nil {
+            return result, err
+        }
     }
 
 

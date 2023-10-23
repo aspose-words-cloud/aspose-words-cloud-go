@@ -136,6 +136,23 @@ func (obj *CustomXmlPartInsert) Validate() error {
     if obj.Data == nil {
         return errors.New("Property Data in CustomXmlPartInsert is required.")
     }
+    if obj.Link == nil {
+        return errors.New("Property Link in CustomXmlPartInsert is required.")
+    }
+
+    if obj.Link != nil {
+        if err := obj.Link.Validate(); err != nil {
+            return err
+        }
+    }
+
+    if obj.Id == nil {
+        return errors.New("Property Id in CustomXmlPartInsert is required.")
+    }
+
+    if obj.Data == nil {
+        return errors.New("Property Data in CustomXmlPartInsert is required.")
+    }
 
     return nil;
 }

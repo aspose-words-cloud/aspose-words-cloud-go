@@ -82,7 +82,6 @@ func (data *InsertFootnoteOnlineRequest) CreateRequestData() (RequestData, error
 
     if (data.FootnoteDto != nil) {
         data.FootnoteDto.Initialize()
-        data.FootnoteDto.Validate();
     } else {
         return result, errors.New("Parameter FootnoteDto is required.")
     }
@@ -108,6 +107,13 @@ func (data *InsertFootnoteOnlineRequest) CreateRequestData() (RequestData, error
     }
     if err := typeCheckParameter(data.Optionals["revisionDateTime"], "string", "data.Optionals[revisionDateTime]"); err != nil {
         return result, err
+    }
+
+
+    if (data.FootnoteDto != nil) {
+        if err := data.FootnoteDto.Validate(); err != nil {
+            return result, err
+        }
     }
 
 

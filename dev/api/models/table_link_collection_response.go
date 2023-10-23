@@ -111,6 +111,20 @@ func (obj *TableLinkCollectionResponse) Validate() error {
         return errors.New("Invalid object.")
     }
 
+    if obj.RequestId == nil {
+        return errors.New("Property RequestId in TableLinkCollectionResponse is required.")
+    }
+
+    if obj.Tables == nil {
+        return errors.New("Property Tables in TableLinkCollectionResponse is required.")
+    }
+
+    if obj.Tables != nil {
+        if err := obj.Tables.Validate(); err != nil {
+            return err
+        }
+    }
+
     return nil;
 }
 

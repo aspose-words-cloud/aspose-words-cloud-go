@@ -130,6 +130,24 @@ func (obj *FilesUploadResult) Validate() error {
         return errors.New("Invalid object.")
     }
 
+    if obj.Errors == nil {
+        return errors.New("Property Errors in FilesUploadResult is required.")
+    }
+
+    if obj.Errors != nil {
+        for _, elementErrors := range obj.Errors {
+            if elementErrors != nil {
+                if err := elementErrors.Validate(); err != nil {
+                    return err
+                }
+            }
+        }
+    }
+
+    if obj.Uploaded == nil {
+        return errors.New("Property Uploaded in FilesUploadResult is required.")
+    }
+
     return nil;
 }
 

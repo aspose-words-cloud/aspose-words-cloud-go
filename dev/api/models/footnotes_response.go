@@ -111,6 +111,20 @@ func (obj *FootnotesResponse) Validate() error {
         return errors.New("Invalid object.")
     }
 
+    if obj.RequestId == nil {
+        return errors.New("Property RequestId in FootnotesResponse is required.")
+    }
+
+    if obj.Footnotes == nil {
+        return errors.New("Property Footnotes in FootnotesResponse is required.")
+    }
+
+    if obj.Footnotes != nil {
+        if err := obj.Footnotes.Validate(); err != nil {
+            return err
+        }
+    }
+
     return nil;
 }
 

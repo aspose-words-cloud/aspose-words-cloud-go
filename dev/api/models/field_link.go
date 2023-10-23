@@ -129,6 +129,24 @@ func (obj *FieldLink) Validate() error {
         return errors.New("Invalid object.")
     }
 
+    if obj.Link == nil {
+        return errors.New("Property Link in FieldLink is required.")
+    }
+
+    if obj.Link != nil {
+        if err := obj.Link.Validate(); err != nil {
+            return err
+        }
+    }
+
+    if obj.NodeId == nil {
+        return errors.New("Property NodeId in FieldLink is required.")
+    }
+
+    if obj.FieldCode == nil {
+        return errors.New("Property FieldCode in FieldLink is required.")
+    }
+
     return nil;
 }
 

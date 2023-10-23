@@ -145,6 +145,27 @@ func (obj *DocumentProperty) Validate() error {
     if obj.BuiltIn == nil {
         return errors.New("Property BuiltIn in DocumentProperty is required.")
     }
+    if obj.Link == nil {
+        return errors.New("Property Link in DocumentProperty is required.")
+    }
+
+    if obj.Link != nil {
+        if err := obj.Link.Validate(); err != nil {
+            return err
+        }
+    }
+
+    if obj.Name == nil {
+        return errors.New("Property Name in DocumentProperty is required.")
+    }
+
+    if obj.Value == nil {
+        return errors.New("Property Value in DocumentProperty is required.")
+    }
+
+    if obj.BuiltIn == nil {
+        return errors.New("Property BuiltIn in DocumentProperty is required.")
+    }
 
     return nil;
 }

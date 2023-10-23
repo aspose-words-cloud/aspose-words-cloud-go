@@ -95,6 +95,7 @@ func (data *GetHeaderFootersOnlineRequest) CreateRequestData() (RequestData, err
     }
 
 
+
     if localVarTempParam, localVarOk := data.Optionals["loadEncoding"].(string); localVarOk {
         result.QueryParams.Add("LoadEncoding", parameterToString(localVarTempParam, ""))
     }

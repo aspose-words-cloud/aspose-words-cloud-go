@@ -79,6 +79,10 @@ func (obj *StyleApply) Validate() error {
         return errors.New("Invalid object.")
     }
 
+    if obj.StyleName == nil {
+        return errors.New("Property StyleName in StyleApply is required.")
+    }
+
     return nil;
 }
 

@@ -118,6 +118,7 @@ func (data *RenderParagraphRequest) CreateRequestData() (RequestData, error) {
     }
 
 
+
     result.QueryParams.Add("Format", parameterToString(*data.Format, ""))
 
 

@@ -149,6 +149,26 @@ func (obj *ListFormat) Validate() error {
     if obj.ListLevelNumber == nil {
         return errors.New("Property ListLevelNumber in ListFormat is required.")
     }
+    if obj.IsListItem == nil {
+        return errors.New("Property IsListItem in ListFormat is required.")
+    }
+    if obj.Link == nil {
+        return errors.New("Property Link in ListFormat is required.")
+    }
+
+    if obj.Link != nil {
+        if err := obj.Link.Validate(); err != nil {
+            return err
+        }
+    }
+
+    if obj.ListLevelNumber == nil {
+        return errors.New("Property ListLevelNumber in ListFormat is required.")
+    }
+
+    if obj.ListId == nil {
+        return errors.New("Property ListId in ListFormat is required.")
+    }
 
     if obj.IsListItem == nil {
         return errors.New("Property IsListItem in ListFormat is required.")

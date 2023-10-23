@@ -81,7 +81,6 @@ func (data *CompareDocumentRequest) CreateRequestData() (RequestData, error) {
 
     if (data.CompareData != nil) {
         data.CompareData.Initialize()
-        data.CompareData.Validate();
     } else {
         return result, errors.New("Parameter CompareData is required.")
     }
@@ -107,6 +106,13 @@ func (data *CompareDocumentRequest) CreateRequestData() (RequestData, error) {
     }
     if err := typeCheckParameter(data.Optionals["encryptedPassword2"], "string", "data.Optionals[encryptedPassword2]"); err != nil {
         return result, err
+    }
+
+
+    if (data.CompareData != nil) {
+        if err := data.CompareData.Validate(); err != nil {
+            return result, err
+        }
     }
 
 

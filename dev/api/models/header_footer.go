@@ -565,6 +565,53 @@ func (obj *HeaderFooter) Validate() error {
     if obj.Type == nil {
         return errors.New("Property Type in HeaderFooter is required.")
     }
+    if obj.Link == nil {
+        return errors.New("Property Link in HeaderFooter is required.")
+    }
+
+    if obj.Link != nil {
+        if err := obj.Link.Validate(); err != nil {
+            return err
+        }
+    }
+
+    if obj.Type == nil {
+        return errors.New("Property Type in HeaderFooter is required.")
+    }
+
+    if obj.ChildNodes == nil {
+        return errors.New("Property ChildNodes in HeaderFooter is required.")
+    }
+
+    if obj.ChildNodes != nil {
+        for _, elementChildNodes := range obj.ChildNodes {
+            if elementChildNodes != nil {
+                if err := elementChildNodes.Validate(); err != nil {
+                    return err
+                }
+            }
+        }
+    }
+
+    if obj.Paragraphs == nil {
+        return errors.New("Property Paragraphs in HeaderFooter is required.")
+    }
+
+    if obj.Paragraphs != nil {
+        if err := obj.Paragraphs.Validate(); err != nil {
+            return err
+        }
+    }
+
+    if obj.DrawingObjects == nil {
+        return errors.New("Property DrawingObjects in HeaderFooter is required.")
+    }
+
+    if obj.DrawingObjects != nil {
+        if err := obj.DrawingObjects.Validate(); err != nil {
+            return err
+        }
+    }
 
     return nil;
 }

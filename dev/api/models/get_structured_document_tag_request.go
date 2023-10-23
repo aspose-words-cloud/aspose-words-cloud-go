@@ -105,6 +105,7 @@ func (data *GetStructuredDocumentTagRequest) CreateRequestData() (RequestData, e
     }
 
 
+
     if localVarTempParam, localVarOk := data.Optionals["folder"].(string); localVarOk {
         result.QueryParams.Add("Folder", parameterToString(localVarTempParam, ""))
     }

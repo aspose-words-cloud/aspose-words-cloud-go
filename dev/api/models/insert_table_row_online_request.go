@@ -87,7 +87,6 @@ func (data *InsertTableRowOnlineRequest) CreateRequestData() (RequestData, error
 
     if (data.Row != nil) {
         data.Row.Initialize()
-        data.Row.Validate();
     } else {
         return result, errors.New("Parameter Row is required.")
     }
@@ -110,6 +109,13 @@ func (data *InsertTableRowOnlineRequest) CreateRequestData() (RequestData, error
     }
     if err := typeCheckParameter(data.Optionals["revisionDateTime"], "string", "data.Optionals[revisionDateTime]"); err != nil {
         return result, err
+    }
+
+
+    if (data.Row != nil) {
+        if err := data.Row.Validate(); err != nil {
+            return result, err
+        }
     }
 
 

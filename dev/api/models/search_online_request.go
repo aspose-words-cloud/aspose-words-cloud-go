@@ -89,6 +89,7 @@ func (data *SearchOnlineRequest) CreateRequestData() (RequestData, error) {
     }
 
 
+
     result.QueryParams.Add("Pattern", parameterToString(*data.Pattern, ""))
 
 

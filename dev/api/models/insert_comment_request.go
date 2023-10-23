@@ -82,7 +82,6 @@ func (data *InsertCommentRequest) CreateRequestData() (RequestData, error) {
 
     if (data.Comment != nil) {
         data.Comment.Initialize()
-        data.Comment.Validate();
     } else {
         return result, errors.New("Parameter Comment is required.")
     }
@@ -111,6 +110,13 @@ func (data *InsertCommentRequest) CreateRequestData() (RequestData, error) {
     }
     if err := typeCheckParameter(data.Optionals["revisionDateTime"], "string", "data.Optionals[revisionDateTime]"); err != nil {
         return result, err
+    }
+
+
+    if (data.Comment != nil) {
+        if err := data.Comment.Validate(); err != nil {
+            return result, err
+        }
     }
 
 

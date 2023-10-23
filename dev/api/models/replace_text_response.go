@@ -130,6 +130,23 @@ func (obj *ReplaceTextResponse) Validate() error {
     if obj.Matches == nil {
         return errors.New("Property Matches in ReplaceTextResponse is required.")
     }
+    if obj.RequestId == nil {
+        return errors.New("Property RequestId in ReplaceTextResponse is required.")
+    }
+
+    if obj.DocumentLink == nil {
+        return errors.New("Property DocumentLink in ReplaceTextResponse is required.")
+    }
+
+    if obj.DocumentLink != nil {
+        if err := obj.DocumentLink.Validate(); err != nil {
+            return err
+        }
+    }
+
+    if obj.Matches == nil {
+        return errors.New("Property Matches in ReplaceTextResponse is required.")
+    }
 
     return nil;
 }

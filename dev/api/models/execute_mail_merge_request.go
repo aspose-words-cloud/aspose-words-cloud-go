@@ -118,6 +118,13 @@ func (data *ExecuteMailMergeRequest) CreateRequestData() (RequestData, error) {
     }
 
 
+    if localVarTempParam, localVarOk := data.Optionals["options"].(IFieldOptions); localVarOk {
+        if err := localVarTempParam.Validate(); err != nil {
+            return result, err
+        }
+    }
+
+
     if localVarTempParam, localVarOk := data.Optionals["folder"].(string); localVarOk {
         result.QueryParams.Add("Folder", parameterToString(localVarTempParam, ""))
     }

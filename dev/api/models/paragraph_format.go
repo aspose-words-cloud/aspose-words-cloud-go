@@ -581,6 +581,134 @@ func (obj *ParagraphFormat) Validate() error {
         return errors.New("Invalid object.")
     }
 
+    if obj.Link == nil {
+        return errors.New("Property Link in ParagraphFormat is required.")
+    }
+
+    if obj.Link != nil {
+        if err := obj.Link.Validate(); err != nil {
+            return err
+        }
+    }
+
+    if obj.AddSpaceBetweenFarEastAndAlpha == nil {
+        return errors.New("Property AddSpaceBetweenFarEastAndAlpha in ParagraphFormat is required.")
+    }
+
+    if obj.AddSpaceBetweenFarEastAndDigit == nil {
+        return errors.New("Property AddSpaceBetweenFarEastAndDigit in ParagraphFormat is required.")
+    }
+
+    if obj.Alignment == nil {
+        return errors.New("Property Alignment in ParagraphFormat is required.")
+    }
+
+    if obj.Bidi == nil {
+        return errors.New("Property Bidi in ParagraphFormat is required.")
+    }
+
+    if obj.DropCapPosition == nil {
+        return errors.New("Property DropCapPosition in ParagraphFormat is required.")
+    }
+
+    if obj.FirstLineIndent == nil {
+        return errors.New("Property FirstLineIndent in ParagraphFormat is required.")
+    }
+
+    if obj.KeepTogether == nil {
+        return errors.New("Property KeepTogether in ParagraphFormat is required.")
+    }
+
+    if obj.KeepWithNext == nil {
+        return errors.New("Property KeepWithNext in ParagraphFormat is required.")
+    }
+
+    if obj.LeftIndent == nil {
+        return errors.New("Property LeftIndent in ParagraphFormat is required.")
+    }
+
+    if obj.LineSpacing == nil {
+        return errors.New("Property LineSpacing in ParagraphFormat is required.")
+    }
+
+    if obj.LineSpacingRule == nil {
+        return errors.New("Property LineSpacingRule in ParagraphFormat is required.")
+    }
+
+    if obj.LinesToDrop == nil {
+        return errors.New("Property LinesToDrop in ParagraphFormat is required.")
+    }
+
+    if obj.NoSpaceBetweenParagraphsOfSameStyle == nil {
+        return errors.New("Property NoSpaceBetweenParagraphsOfSameStyle in ParagraphFormat is required.")
+    }
+
+    if obj.OutlineLevel == nil {
+        return errors.New("Property OutlineLevel in ParagraphFormat is required.")
+    }
+
+    if obj.PageBreakBefore == nil {
+        return errors.New("Property PageBreakBefore in ParagraphFormat is required.")
+    }
+
+    if obj.RightIndent == nil {
+        return errors.New("Property RightIndent in ParagraphFormat is required.")
+    }
+
+    if obj.SpaceAfter == nil {
+        return errors.New("Property SpaceAfter in ParagraphFormat is required.")
+    }
+
+    if obj.SpaceAfterAuto == nil {
+        return errors.New("Property SpaceAfterAuto in ParagraphFormat is required.")
+    }
+
+    if obj.SpaceBefore == nil {
+        return errors.New("Property SpaceBefore in ParagraphFormat is required.")
+    }
+
+    if obj.SpaceBeforeAuto == nil {
+        return errors.New("Property SpaceBeforeAuto in ParagraphFormat is required.")
+    }
+
+    if obj.StyleIdentifier == nil {
+        return errors.New("Property StyleIdentifier in ParagraphFormat is required.")
+    }
+
+    if obj.StyleName == nil {
+        return errors.New("Property StyleName in ParagraphFormat is required.")
+    }
+
+    if obj.SuppressAutoHyphens == nil {
+        return errors.New("Property SuppressAutoHyphens in ParagraphFormat is required.")
+    }
+
+    if obj.SuppressLineNumbers == nil {
+        return errors.New("Property SuppressLineNumbers in ParagraphFormat is required.")
+    }
+
+    if obj.WidowControl == nil {
+        return errors.New("Property WidowControl in ParagraphFormat is required.")
+    }
+
+    if obj.Shading == nil {
+        return errors.New("Property Shading in ParagraphFormat is required.")
+    }
+
+    if obj.Shading != nil {
+        if err := obj.Shading.Validate(); err != nil {
+            return err
+        }
+    }
+
+    if obj.IsListItem == nil {
+        return errors.New("Property IsListItem in ParagraphFormat is required.")
+    }
+
+    if obj.IsHeading == nil {
+        return errors.New("Property IsHeading in ParagraphFormat is required.")
+    }
+
     return nil;
 }
 

@@ -97,7 +97,6 @@ func (data *SaveAsTiffRequest) CreateRequestData() (RequestData, error) {
 
     if (data.SaveOptions != nil) {
         data.SaveOptions.Initialize()
-        data.SaveOptions.Validate();
     } else {
         return result, errors.New("Parameter SaveOptions is required.")
     }
@@ -171,6 +170,13 @@ func (data *SaveAsTiffRequest) CreateRequestData() (RequestData, error) {
     }
     if err := typeCheckParameter(data.Optionals["fontsLocation"], "string", "data.Optionals[fontsLocation]"); err != nil {
         return result, err
+    }
+
+
+    if (data.SaveOptions != nil) {
+        if err := data.SaveOptions.Validate(); err != nil {
+            return result, err
+        }
     }
 
 

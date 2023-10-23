@@ -129,6 +129,30 @@ func (obj *Bookmarks) Validate() error {
         return errors.New("Invalid object.")
     }
 
+    if obj.Link == nil {
+        return errors.New("Property Link in Bookmarks is required.")
+    }
+
+    if obj.Link != nil {
+        if err := obj.Link.Validate(); err != nil {
+            return err
+        }
+    }
+
+    if obj.BookmarkList == nil {
+        return errors.New("Property BookmarkList in Bookmarks is required.")
+    }
+
+    if obj.BookmarkList != nil {
+        for _, elementBookmarkList := range obj.BookmarkList {
+            if elementBookmarkList != nil {
+                if err := elementBookmarkList.Validate(); err != nil {
+                    return err
+                }
+            }
+        }
+    }
+
     return nil;
 }
 

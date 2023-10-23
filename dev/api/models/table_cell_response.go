@@ -111,6 +111,20 @@ func (obj *TableCellResponse) Validate() error {
         return errors.New("Invalid object.")
     }
 
+    if obj.RequestId == nil {
+        return errors.New("Property RequestId in TableCellResponse is required.")
+    }
+
+    if obj.Cell == nil {
+        return errors.New("Property Cell in TableCellResponse is required.")
+    }
+
+    if obj.Cell != nil {
+        if err := obj.Cell.Validate(); err != nil {
+            return err
+        }
+    }
+
     return nil;
 }
 

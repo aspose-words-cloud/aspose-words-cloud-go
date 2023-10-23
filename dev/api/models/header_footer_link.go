@@ -111,6 +111,19 @@ func (obj *HeaderFooterLink) Validate() error {
     if obj.Type == nil {
         return errors.New("Property Type in HeaderFooterLink is required.")
     }
+    if obj.Link == nil {
+        return errors.New("Property Link in HeaderFooterLink is required.")
+    }
+
+    if obj.Link != nil {
+        if err := obj.Link.Validate(); err != nil {
+            return err
+        }
+    }
+
+    if obj.Type == nil {
+        return errors.New("Property Type in HeaderFooterLink is required.")
+    }
 
     return nil;
 }

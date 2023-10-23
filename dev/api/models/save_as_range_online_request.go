@@ -86,7 +86,6 @@ func (data *SaveAsRangeOnlineRequest) CreateRequestData() (RequestData, error) {
 
     if (data.DocumentParameters != nil) {
         data.DocumentParameters.Initialize()
-        data.DocumentParameters.Validate();
     } else {
         return result, errors.New("Parameter DocumentParameters is required.")
     }
@@ -103,6 +102,13 @@ func (data *SaveAsRangeOnlineRequest) CreateRequestData() (RequestData, error) {
     }
     if err := typeCheckParameter(data.Optionals["encryptedPassword"], "string", "data.Optionals[encryptedPassword]"); err != nil {
         return result, err
+    }
+
+
+    if (data.DocumentParameters != nil) {
+        if err := data.DocumentParameters.Validate(); err != nil {
+            return result, err
+        }
     }
 
 

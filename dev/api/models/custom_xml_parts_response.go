@@ -111,6 +111,20 @@ func (obj *CustomXmlPartsResponse) Validate() error {
         return errors.New("Invalid object.")
     }
 
+    if obj.RequestId == nil {
+        return errors.New("Property RequestId in CustomXmlPartsResponse is required.")
+    }
+
+    if obj.CustomXmlParts == nil {
+        return errors.New("Property CustomXmlParts in CustomXmlPartsResponse is required.")
+    }
+
+    if obj.CustomXmlParts != nil {
+        if err := obj.CustomXmlParts.Validate(); err != nil {
+            return err
+        }
+    }
+
     return nil;
 }
 

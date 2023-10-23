@@ -147,6 +147,26 @@ func (obj *MetafileRenderingOptionsData) Validate() error {
         return errors.New("Invalid object.")
     }
 
+    if obj.EmfPlusDualRenderingMode == nil {
+        return errors.New("Property EmfPlusDualRenderingMode in MetafileRenderingOptionsData is required.")
+    }
+
+    if obj.EmulateRasterOperations == nil {
+        return errors.New("Property EmulateRasterOperations in MetafileRenderingOptionsData is required.")
+    }
+
+    if obj.EmulateRenderingToSizeOnPage == nil {
+        return errors.New("Property EmulateRenderingToSizeOnPage in MetafileRenderingOptionsData is required.")
+    }
+
+    if obj.RenderingMode == nil {
+        return errors.New("Property RenderingMode in MetafileRenderingOptionsData is required.")
+    }
+
+    if obj.UseEmfEmbeddedToWmf == nil {
+        return errors.New("Property UseEmfEmbeddedToWmf in MetafileRenderingOptionsData is required.")
+    }
+
     return nil;
 }
 

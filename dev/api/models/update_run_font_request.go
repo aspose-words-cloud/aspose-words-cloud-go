@@ -96,7 +96,6 @@ func (data *UpdateRunFontRequest) CreateRequestData() (RequestData, error) {
 
     if (data.FontDto != nil) {
         data.FontDto.Initialize()
-        data.FontDto.Validate();
     } else {
         return result, errors.New("Parameter FontDto is required.")
     }
@@ -125,6 +124,13 @@ func (data *UpdateRunFontRequest) CreateRequestData() (RequestData, error) {
     }
     if err := typeCheckParameter(data.Optionals["revisionDateTime"], "string", "data.Optionals[revisionDateTime]"); err != nil {
         return result, err
+    }
+
+
+    if (data.FontDto != nil) {
+        if err := data.FontDto.Validate(); err != nil {
+            return result, err
+        }
     }
 
 

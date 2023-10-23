@@ -82,7 +82,6 @@ func (data *AppendDocumentRequest) CreateRequestData() (RequestData, error) {
 
     if (data.DocumentList != nil) {
         data.DocumentList.Initialize()
-        data.DocumentList.Validate();
     } else {
         return result, errors.New("Parameter DocumentList is required.")
     }
@@ -111,6 +110,13 @@ func (data *AppendDocumentRequest) CreateRequestData() (RequestData, error) {
     }
     if err := typeCheckParameter(data.Optionals["revisionDateTime"], "string", "data.Optionals[revisionDateTime]"); err != nil {
         return result, err
+    }
+
+
+    if (data.DocumentList != nil) {
+        if err := data.DocumentList.Validate(); err != nil {
+            return result, err
+        }
     }
 
 

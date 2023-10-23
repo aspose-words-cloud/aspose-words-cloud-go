@@ -129,6 +129,30 @@ func (obj *Hyperlinks) Validate() error {
         return errors.New("Invalid object.")
     }
 
+    if obj.Link == nil {
+        return errors.New("Property Link in Hyperlinks is required.")
+    }
+
+    if obj.Link != nil {
+        if err := obj.Link.Validate(); err != nil {
+            return err
+        }
+    }
+
+    if obj.HyperlinkList == nil {
+        return errors.New("Property HyperlinkList in Hyperlinks is required.")
+    }
+
+    if obj.HyperlinkList != nil {
+        for _, elementHyperlinkList := range obj.HyperlinkList {
+            if elementHyperlinkList != nil {
+                if err := elementHyperlinkList.Validate(); err != nil {
+                    return err
+                }
+            }
+        }
+    }
+
     return nil;
 }
 

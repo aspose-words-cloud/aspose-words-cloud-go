@@ -69,6 +69,7 @@ func (data *GetAvailableFontsRequest) CreateRequestData() (RequestData, error) {
     }
 
 
+
     if localVarTempParam, localVarOk := data.Optionals["fontsLocation"].(string); localVarOk {
         result.QueryParams.Add("FontsLocation", parameterToString(localVarTempParam, ""))
     }

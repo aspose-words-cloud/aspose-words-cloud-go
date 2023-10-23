@@ -81,6 +81,10 @@ func (obj *TableCellInsert) Validate() error {
         return errors.New("Invalid object.")
     }
 
+    if obj.InsertAfter == nil {
+        return errors.New("Property InsertAfter in TableCellInsert is required.")
+    }
+
     return nil;
 }
 

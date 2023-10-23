@@ -111,6 +111,20 @@ func (obj *SplitDocumentResponse) Validate() error {
         return errors.New("Invalid object.")
     }
 
+    if obj.RequestId == nil {
+        return errors.New("Property RequestId in SplitDocumentResponse is required.")
+    }
+
+    if obj.SplitResult == nil {
+        return errors.New("Property SplitResult in SplitDocumentResponse is required.")
+    }
+
+    if obj.SplitResult != nil {
+        if err := obj.SplitResult.Validate(); err != nil {
+            return err
+        }
+    }
+
     return nil;
 }
 

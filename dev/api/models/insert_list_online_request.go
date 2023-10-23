@@ -79,7 +79,6 @@ func (data *InsertListOnlineRequest) CreateRequestData() (RequestData, error) {
 
     if (data.ListInsert != nil) {
         data.ListInsert.Initialize()
-        data.ListInsert.Validate();
     } else {
         return result, errors.New("Parameter ListInsert is required.")
     }
@@ -102,6 +101,13 @@ func (data *InsertListOnlineRequest) CreateRequestData() (RequestData, error) {
     }
     if err := typeCheckParameter(data.Optionals["revisionDateTime"], "string", "data.Optionals[revisionDateTime]"); err != nil {
         return result, err
+    }
+
+
+    if (data.ListInsert != nil) {
+        if err := data.ListInsert.Validate(); err != nil {
+            return result, err
+        }
     }
 
 

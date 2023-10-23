@@ -129,6 +129,30 @@ func (obj *Lists) Validate() error {
         return errors.New("Invalid object.")
     }
 
+    if obj.Link == nil {
+        return errors.New("Property Link in Lists is required.")
+    }
+
+    if obj.Link != nil {
+        if err := obj.Link.Validate(); err != nil {
+            return err
+        }
+    }
+
+    if obj.ListInfo == nil {
+        return errors.New("Property ListInfo in Lists is required.")
+    }
+
+    if obj.ListInfo != nil {
+        for _, elementListInfo := range obj.ListInfo {
+            if elementListInfo != nil {
+                if err := elementListInfo.Validate(); err != nil {
+                    return err
+                }
+            }
+        }
+    }
+
     return nil;
 }
 

@@ -111,6 +111,20 @@ func (obj *OfficeMathObjectResponse) Validate() error {
         return errors.New("Invalid object.")
     }
 
+    if obj.RequestId == nil {
+        return errors.New("Property RequestId in OfficeMathObjectResponse is required.")
+    }
+
+    if obj.OfficeMathObject == nil {
+        return errors.New("Property OfficeMathObject in OfficeMathObjectResponse is required.")
+    }
+
+    if obj.OfficeMathObject != nil {
+        if err := obj.OfficeMathObject.Validate(); err != nil {
+            return err
+        }
+    }
+
     return nil;
 }
 

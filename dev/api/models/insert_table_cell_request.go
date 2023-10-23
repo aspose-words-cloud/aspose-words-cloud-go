@@ -89,7 +89,6 @@ func (data *InsertTableCellRequest) CreateRequestData() (RequestData, error) {
 
     if (data.Cell != nil) {
         data.Cell.Initialize()
-        data.Cell.Validate();
     } else {
         return result, errors.New("Parameter Cell is required.")
     }
@@ -118,6 +117,13 @@ func (data *InsertTableCellRequest) CreateRequestData() (RequestData, error) {
     }
     if err := typeCheckParameter(data.Optionals["revisionDateTime"], "string", "data.Optionals[revisionDateTime]"); err != nil {
         return result, err
+    }
+
+
+    if (data.Cell != nil) {
+        if err := data.Cell.Validate(); err != nil {
+            return result, err
+        }
     }
 
 

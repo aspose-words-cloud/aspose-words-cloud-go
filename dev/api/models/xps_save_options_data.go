@@ -507,6 +507,119 @@ func (obj *XpsSaveOptionsData) Validate() error {
     if obj.FileName == nil {
         return errors.New("Property FileName in XpsSaveOptionsData is required.")
     }
+    if obj.AllowEmbeddingPostScriptFonts == nil {
+        return errors.New("Property AllowEmbeddingPostScriptFonts in XpsSaveOptionsData is required.")
+    }
+
+    if obj.CustomTimeZoneInfoData == nil {
+        return errors.New("Property CustomTimeZoneInfoData in XpsSaveOptionsData is required.")
+    }
+
+    if obj.CustomTimeZoneInfoData != nil {
+        if err := obj.CustomTimeZoneInfoData.Validate(); err != nil {
+            return err
+        }
+    }
+
+    if obj.Dml3DEffectsRenderingMode == nil {
+        return errors.New("Property Dml3DEffectsRenderingMode in XpsSaveOptionsData is required.")
+    }
+
+    if obj.DmlEffectsRenderingMode == nil {
+        return errors.New("Property DmlEffectsRenderingMode in XpsSaveOptionsData is required.")
+    }
+
+    if obj.DmlRenderingMode == nil {
+        return errors.New("Property DmlRenderingMode in XpsSaveOptionsData is required.")
+    }
+
+    if obj.FileName == nil {
+        return errors.New("Property FileName in XpsSaveOptionsData is required.")
+    }
+
+    if obj.ImlRenderingMode == nil {
+        return errors.New("Property ImlRenderingMode in XpsSaveOptionsData is required.")
+    }
+
+    if obj.UpdateCreatedTimeProperty == nil {
+        return errors.New("Property UpdateCreatedTimeProperty in XpsSaveOptionsData is required.")
+    }
+
+    if obj.UpdateFields == nil {
+        return errors.New("Property UpdateFields in XpsSaveOptionsData is required.")
+    }
+
+    if obj.UpdateLastPrintedProperty == nil {
+        return errors.New("Property UpdateLastPrintedProperty in XpsSaveOptionsData is required.")
+    }
+
+    if obj.UpdateLastSavedTimeProperty == nil {
+        return errors.New("Property UpdateLastSavedTimeProperty in XpsSaveOptionsData is required.")
+    }
+
+    if obj.ZipOutput == nil {
+        return errors.New("Property ZipOutput in XpsSaveOptionsData is required.")
+    }
+
+    if obj.ColorMode == nil {
+        return errors.New("Property ColorMode in XpsSaveOptionsData is required.")
+    }
+
+    if obj.JpegQuality == nil {
+        return errors.New("Property JpegQuality in XpsSaveOptionsData is required.")
+    }
+
+    if obj.MetafileRenderingOptions == nil {
+        return errors.New("Property MetafileRenderingOptions in XpsSaveOptionsData is required.")
+    }
+
+    if obj.MetafileRenderingOptions != nil {
+        if err := obj.MetafileRenderingOptions.Validate(); err != nil {
+            return err
+        }
+    }
+
+    if obj.NumeralFormat == nil {
+        return errors.New("Property NumeralFormat in XpsSaveOptionsData is required.")
+    }
+
+    if obj.OptimizeOutput == nil {
+        return errors.New("Property OptimizeOutput in XpsSaveOptionsData is required.")
+    }
+
+    if obj.PageCount == nil {
+        return errors.New("Property PageCount in XpsSaveOptionsData is required.")
+    }
+
+    if obj.PageIndex == nil {
+        return errors.New("Property PageIndex in XpsSaveOptionsData is required.")
+    }
+
+    if obj.BookmarksOutlineLevel == nil {
+        return errors.New("Property BookmarksOutlineLevel in XpsSaveOptionsData is required.")
+    }
+
+    if obj.HeadingsOutlineLevels == nil {
+        return errors.New("Property HeadingsOutlineLevels in XpsSaveOptionsData is required.")
+    }
+
+    if obj.OutlineOptions == nil {
+        return errors.New("Property OutlineOptions in XpsSaveOptionsData is required.")
+    }
+
+    if obj.OutlineOptions != nil {
+        if err := obj.OutlineOptions.Validate(); err != nil {
+            return err
+        }
+    }
+
+    if obj.UseBookFoldPrintingSettings == nil {
+        return errors.New("Property UseBookFoldPrintingSettings in XpsSaveOptionsData is required.")
+    }
+
+    if obj.SaveFormat == nil {
+        return errors.New("Property SaveFormat in XpsSaveOptionsData is required.")
+    }
 
     return nil;
 }

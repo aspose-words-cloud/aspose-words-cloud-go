@@ -304,6 +304,64 @@ func (obj *FieldOptions) Validate() error {
         return errors.New("Invalid object.")
     }
 
+    if obj.CurrentUser == nil {
+        return errors.New("Property CurrentUser in FieldOptions is required.")
+    }
+
+    if obj.CurrentUser != nil {
+        if err := obj.CurrentUser.Validate(); err != nil {
+            return err
+        }
+    }
+
+    if obj.CustomTocStyleSeparator == nil {
+        return errors.New("Property CustomTocStyleSeparator in FieldOptions is required.")
+    }
+
+    if obj.DefaultDocumentAuthor == nil {
+        return errors.New("Property DefaultDocumentAuthor in FieldOptions is required.")
+    }
+
+    if obj.FieldIndexFormat == nil {
+        return errors.New("Property FieldIndexFormat in FieldOptions is required.")
+    }
+
+    if obj.FieldUpdateCultureName == nil {
+        return errors.New("Property FieldUpdateCultureName in FieldOptions is required.")
+    }
+
+    if obj.FieldUpdateCultureSource == nil {
+        return errors.New("Property FieldUpdateCultureSource in FieldOptions is required.")
+    }
+
+    if obj.FileName == nil {
+        return errors.New("Property FileName in FieldOptions is required.")
+    }
+
+    if obj.IsBidiTextSupportedOnUpdate == nil {
+        return errors.New("Property IsBidiTextSupportedOnUpdate in FieldOptions is required.")
+    }
+
+    if obj.LegacyNumberFormat == nil {
+        return errors.New("Property LegacyNumberFormat in FieldOptions is required.")
+    }
+
+    if obj.PreProcessCultureName == nil {
+        return errors.New("Property PreProcessCultureName in FieldOptions is required.")
+    }
+
+    if obj.TemplateName == nil {
+        return errors.New("Property TemplateName in FieldOptions is required.")
+    }
+
+    if obj.UseInvariantCultureNumberFormat == nil {
+        return errors.New("Property UseInvariantCultureNumberFormat in FieldOptions is required.")
+    }
+
+    if obj.BuiltInTemplatesPaths == nil {
+        return errors.New("Property BuiltInTemplatesPaths in FieldOptions is required.")
+    }
+
     return nil;
 }
 

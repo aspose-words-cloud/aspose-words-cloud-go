@@ -77,7 +77,6 @@ func (data *SaveAsOnlineRequest) CreateRequestData() (RequestData, error) {
 
     if (data.SaveOptionsData != nil) {
         data.SaveOptionsData.Initialize()
-        data.SaveOptionsData.Validate();
     } else {
         return result, errors.New("Parameter SaveOptionsData is required.")
     }
@@ -94,6 +93,13 @@ func (data *SaveAsOnlineRequest) CreateRequestData() (RequestData, error) {
     }
     if err := typeCheckParameter(data.Optionals["fontsLocation"], "string", "data.Optionals[fontsLocation]"); err != nil {
         return result, err
+    }
+
+
+    if (data.SaveOptionsData != nil) {
+        if err := data.SaveOptionsData.Validate(); err != nil {
+            return result, err
+        }
     }
 
 

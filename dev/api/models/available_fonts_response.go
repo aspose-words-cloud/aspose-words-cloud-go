@@ -197,6 +197,52 @@ func (obj *AvailableFontsResponse) Validate() error {
         return errors.New("Invalid object.")
     }
 
+    if obj.RequestId == nil {
+        return errors.New("Property RequestId in AvailableFontsResponse is required.")
+    }
+
+    if obj.AdditionalFonts == nil {
+        return errors.New("Property AdditionalFonts in AvailableFontsResponse is required.")
+    }
+
+    if obj.AdditionalFonts != nil {
+        for _, elementAdditionalFonts := range obj.AdditionalFonts {
+            if elementAdditionalFonts != nil {
+                if err := elementAdditionalFonts.Validate(); err != nil {
+                    return err
+                }
+            }
+        }
+    }
+
+    if obj.CustomFonts == nil {
+        return errors.New("Property CustomFonts in AvailableFontsResponse is required.")
+    }
+
+    if obj.CustomFonts != nil {
+        for _, elementCustomFonts := range obj.CustomFonts {
+            if elementCustomFonts != nil {
+                if err := elementCustomFonts.Validate(); err != nil {
+                    return err
+                }
+            }
+        }
+    }
+
+    if obj.SystemFonts == nil {
+        return errors.New("Property SystemFonts in AvailableFontsResponse is required.")
+    }
+
+    if obj.SystemFonts != nil {
+        for _, elementSystemFonts := range obj.SystemFonts {
+            if elementSystemFonts != nil {
+                if err := elementSystemFonts.Validate(); err != nil {
+                    return err
+                }
+            }
+        }
+    }
+
     return nil;
 }
 

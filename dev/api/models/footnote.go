@@ -217,6 +217,52 @@ func (obj *Footnote) Validate() error {
         return errors.New("Invalid object.")
     }
 
+    if obj.Link == nil {
+        return errors.New("Property Link in Footnote is required.")
+    }
+
+    if obj.Link != nil {
+        if err := obj.Link.Validate(); err != nil {
+            return err
+        }
+    }
+
+    if obj.NodeId == nil {
+        return errors.New("Property NodeId in Footnote is required.")
+    }
+
+    if obj.Position == nil {
+        return errors.New("Property Position in Footnote is required.")
+    }
+
+    if obj.Position != nil {
+        if err := obj.Position.Validate(); err != nil {
+            return err
+        }
+    }
+
+    if obj.FootnoteType == nil {
+        return errors.New("Property FootnoteType in Footnote is required.")
+    }
+
+    if obj.ReferenceMark == nil {
+        return errors.New("Property ReferenceMark in Footnote is required.")
+    }
+
+    if obj.Text == nil {
+        return errors.New("Property Text in Footnote is required.")
+    }
+
+    if obj.Content == nil {
+        return errors.New("Property Content in Footnote is required.")
+    }
+
+    if obj.Content != nil {
+        if err := obj.Content.Validate(); err != nil {
+            return err
+        }
+    }
+
     return nil;
 }
 

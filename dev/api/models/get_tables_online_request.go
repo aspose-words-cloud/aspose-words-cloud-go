@@ -89,6 +89,7 @@ func (data *GetTablesOnlineRequest) CreateRequestData() (RequestData, error) {
     }
 
 
+
     if localVarTempParam, localVarOk := data.Optionals["loadEncoding"].(string); localVarOk {
         result.QueryParams.Add("LoadEncoding", parameterToString(localVarTempParam, ""))
     }

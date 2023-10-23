@@ -75,6 +75,7 @@ func (data *ClassifyRequest) CreateRequestData() (RequestData, error) {
     }
 
 
+
     if localVarTempParam, localVarOk := data.Optionals["bestClassesCount"].(string); localVarOk {
         result.QueryParams.Add("BestClassesCount", parameterToString(localVarTempParam, ""))
     }

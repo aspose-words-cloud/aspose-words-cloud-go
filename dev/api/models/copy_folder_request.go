@@ -86,6 +86,7 @@ func (data *CopyFolderRequest) CreateRequestData() (RequestData, error) {
     }
 
 
+
     result.QueryParams.Add("DestPath", parameterToString(*data.DestPath, ""))
 
 

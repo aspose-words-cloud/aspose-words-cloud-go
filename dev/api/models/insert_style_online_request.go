@@ -79,7 +79,6 @@ func (data *InsertStyleOnlineRequest) CreateRequestData() (RequestData, error) {
 
     if (data.StyleInsert != nil) {
         data.StyleInsert.Initialize()
-        data.StyleInsert.Validate();
     } else {
         return result, errors.New("Parameter StyleInsert is required.")
     }
@@ -102,6 +101,13 @@ func (data *InsertStyleOnlineRequest) CreateRequestData() (RequestData, error) {
     }
     if err := typeCheckParameter(data.Optionals["revisionDateTime"], "string", "data.Optionals[revisionDateTime]"); err != nil {
         return result, err
+    }
+
+
+    if (data.StyleInsert != nil) {
+        if err := data.StyleInsert.Validate(); err != nil {
+            return result, err
+        }
     }
 
 

@@ -90,7 +90,6 @@ func (data *InsertRunRequest) CreateRequestData() (RequestData, error) {
 
     if (data.Run != nil) {
         data.Run.Initialize()
-        data.Run.Validate();
     } else {
         return result, errors.New("Parameter Run is required.")
     }
@@ -122,6 +121,13 @@ func (data *InsertRunRequest) CreateRequestData() (RequestData, error) {
     }
     if err := typeCheckParameter(data.Optionals["insertBeforeNode"], "string", "data.Optionals[insertBeforeNode]"); err != nil {
         return result, err
+    }
+
+
+    if (data.Run != nil) {
+        if err := data.Run.Validate(); err != nil {
+            return result, err
+        }
     }
 
 

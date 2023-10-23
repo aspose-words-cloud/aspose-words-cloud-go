@@ -118,6 +118,7 @@ func (data *DeleteRunRequest) CreateRequestData() (RequestData, error) {
     }
 
 
+
     if localVarTempParam, localVarOk := data.Optionals["folder"].(string); localVarOk {
         result.QueryParams.Add("Folder", parameterToString(localVarTempParam, ""))
     }

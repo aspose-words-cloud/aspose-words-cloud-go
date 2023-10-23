@@ -318,9 +318,50 @@ func (obj *ListLevel) Validate() error {
     if obj.StartAt == nil {
         return errors.New("Property StartAt in ListLevel is required.")
     }
+    if obj.NumberStyle == nil {
+        return errors.New("Property NumberStyle in ListLevel is required.")
+    }
+    if obj.Alignment == nil {
+        return errors.New("Property Alignment in ListLevel is required.")
+    }
+    if obj.IsLegal == nil {
+        return errors.New("Property IsLegal in ListLevel is required.")
+    }
+    if obj.RestartAfterLevel == nil {
+        return errors.New("Property RestartAfterLevel in ListLevel is required.")
+    }
+    if obj.TrailingCharacter == nil {
+        return errors.New("Property TrailingCharacter in ListLevel is required.")
+    }
+    if obj.TabPosition == nil {
+        return errors.New("Property TabPosition in ListLevel is required.")
+    }
+    if obj.NumberPosition == nil {
+        return errors.New("Property NumberPosition in ListLevel is required.")
+    }
+    if obj.TextPosition == nil {
+        return errors.New("Property TextPosition in ListLevel is required.")
+    }
+    if obj.Link == nil {
+        return errors.New("Property Link in ListLevel is required.")
+    }
+
+    if obj.Link != nil {
+        if err := obj.Link.Validate(); err != nil {
+            return err
+        }
+    }
+
+    if obj.StartAt == nil {
+        return errors.New("Property StartAt in ListLevel is required.")
+    }
 
     if obj.NumberStyle == nil {
         return errors.New("Property NumberStyle in ListLevel is required.")
+    }
+
+    if obj.NumberFormat == nil {
+        return errors.New("Property NumberFormat in ListLevel is required.")
     }
 
     if obj.Alignment == nil {
@@ -339,6 +380,16 @@ func (obj *ListLevel) Validate() error {
         return errors.New("Property TrailingCharacter in ListLevel is required.")
     }
 
+    if obj.Font == nil {
+        return errors.New("Property Font in ListLevel is required.")
+    }
+
+    if obj.Font != nil {
+        if err := obj.Font.Validate(); err != nil {
+            return err
+        }
+    }
+
     if obj.TabPosition == nil {
         return errors.New("Property TabPosition in ListLevel is required.")
     }
@@ -349,6 +400,16 @@ func (obj *ListLevel) Validate() error {
 
     if obj.TextPosition == nil {
         return errors.New("Property TextPosition in ListLevel is required.")
+    }
+
+    if obj.LinkedStyle == nil {
+        return errors.New("Property LinkedStyle in ListLevel is required.")
+    }
+
+    if obj.LinkedStyle != nil {
+        if err := obj.LinkedStyle.Validate(); err != nil {
+            return err
+        }
     }
 
     return nil;

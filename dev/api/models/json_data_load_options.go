@@ -132,6 +132,16 @@ func (obj *JsonDataLoadOptions) Validate() error {
     if obj.AlwaysGenerateRootObject == nil {
         return errors.New("Property AlwaysGenerateRootObject in JsonDataLoadOptions is required.")
     }
+    if obj.SimpleValueParseMode == nil {
+        return errors.New("Property SimpleValueParseMode in JsonDataLoadOptions is required.")
+    }
+    if obj.AlwaysGenerateRootObject == nil {
+        return errors.New("Property AlwaysGenerateRootObject in JsonDataLoadOptions is required.")
+    }
+
+    if obj.ExactDateTimeParseFormats == nil {
+        return errors.New("Property ExactDateTimeParseFormats in JsonDataLoadOptions is required.")
+    }
 
     if obj.SimpleValueParseMode == nil {
         return errors.New("Property SimpleValueParseMode in JsonDataLoadOptions is required.")

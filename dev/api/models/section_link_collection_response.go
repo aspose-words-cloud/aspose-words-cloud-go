@@ -111,6 +111,20 @@ func (obj *SectionLinkCollectionResponse) Validate() error {
         return errors.New("Invalid object.")
     }
 
+    if obj.RequestId == nil {
+        return errors.New("Property RequestId in SectionLinkCollectionResponse is required.")
+    }
+
+    if obj.Sections == nil {
+        return errors.New("Property Sections in SectionLinkCollectionResponse is required.")
+    }
+
+    if obj.Sections != nil {
+        if err := obj.Sections.Validate(); err != nil {
+            return err
+        }
+    }
+
     return nil;
 }
 

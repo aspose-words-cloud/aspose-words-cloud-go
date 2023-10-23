@@ -91,6 +91,7 @@ func (data *GetBookmarkByNameOnlineRequest) CreateRequestData() (RequestData, er
     }
 
 
+
     if localVarTempParam, localVarOk := data.Optionals["loadEncoding"].(string); localVarOk {
         result.QueryParams.Add("LoadEncoding", parameterToString(localVarTempParam, ""))
     }

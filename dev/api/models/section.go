@@ -895,6 +895,70 @@ func (obj *Section) Validate() error {
         return errors.New("Invalid object.")
     }
 
+    if obj.Link == nil {
+        return errors.New("Property Link in Section is required.")
+    }
+
+    if obj.Link != nil {
+        if err := obj.Link.Validate(); err != nil {
+            return err
+        }
+    }
+
+    if obj.ChildNodes == nil {
+        return errors.New("Property ChildNodes in Section is required.")
+    }
+
+    if obj.ChildNodes != nil {
+        for _, elementChildNodes := range obj.ChildNodes {
+            if elementChildNodes != nil {
+                if err := elementChildNodes.Validate(); err != nil {
+                    return err
+                }
+            }
+        }
+    }
+
+    if obj.Paragraphs == nil {
+        return errors.New("Property Paragraphs in Section is required.")
+    }
+
+    if obj.Paragraphs != nil {
+        if err := obj.Paragraphs.Validate(); err != nil {
+            return err
+        }
+    }
+
+    if obj.PageSetup == nil {
+        return errors.New("Property PageSetup in Section is required.")
+    }
+
+    if obj.PageSetup != nil {
+        if err := obj.PageSetup.Validate(); err != nil {
+            return err
+        }
+    }
+
+    if obj.HeaderFooters == nil {
+        return errors.New("Property HeaderFooters in Section is required.")
+    }
+
+    if obj.HeaderFooters != nil {
+        if err := obj.HeaderFooters.Validate(); err != nil {
+            return err
+        }
+    }
+
+    if obj.Tables == nil {
+        return errors.New("Property Tables in Section is required.")
+    }
+
+    if obj.Tables != nil {
+        if err := obj.Tables.Validate(); err != nil {
+            return err
+        }
+    }
+
     return nil;
 }
 

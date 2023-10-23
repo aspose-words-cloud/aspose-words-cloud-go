@@ -82,7 +82,6 @@ func (data *InsertStructuredDocumentTagOnlineRequest) CreateRequestData() (Reque
 
     if (data.StructuredDocumentTag != nil) {
         data.StructuredDocumentTag.Initialize()
-        data.StructuredDocumentTag.Validate();
     } else {
         return result, errors.New("Parameter StructuredDocumentTag is required.")
     }
@@ -108,6 +107,13 @@ func (data *InsertStructuredDocumentTagOnlineRequest) CreateRequestData() (Reque
     }
     if err := typeCheckParameter(data.Optionals["revisionDateTime"], "string", "data.Optionals[revisionDateTime]"); err != nil {
         return result, err
+    }
+
+
+    if (data.StructuredDocumentTag != nil) {
+        if err := data.StructuredDocumentTag.Validate(); err != nil {
+            return result, err
+        }
     }
 
 

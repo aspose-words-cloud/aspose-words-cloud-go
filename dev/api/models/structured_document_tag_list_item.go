@@ -96,6 +96,14 @@ func (obj *StructuredDocumentTagListItem) Validate() error {
         return errors.New("Invalid object.")
     }
 
+    if obj.DisplayText == nil {
+        return errors.New("Property DisplayText in StructuredDocumentTagListItem is required.")
+    }
+
+    if obj.Value == nil {
+        return errors.New("Property Value in StructuredDocumentTagListItem is required.")
+    }
+
     return nil;
 }
 

@@ -82,6 +82,10 @@ func (obj *DocumentPropertyCreateOrUpdate) Validate() error {
         return errors.New("Invalid object.")
     }
 
+    if obj.Value == nil {
+        return errors.New("Property Value in DocumentPropertyCreateOrUpdate is required.")
+    }
+
     return nil;
 }
 

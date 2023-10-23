@@ -153,6 +153,32 @@ func (obj *ApiError) Validate() error {
         return errors.New("Invalid object.")
     }
 
+    if obj.Code == nil {
+        return errors.New("Property Code in ApiError is required.")
+    }
+
+    if obj.DateTime == nil {
+        return errors.New("Property DateTime in ApiError is required.")
+    }
+
+    if obj.Description == nil {
+        return errors.New("Property Description in ApiError is required.")
+    }
+
+    if obj.InnerError == nil {
+        return errors.New("Property InnerError in ApiError is required.")
+    }
+
+    if obj.InnerError != nil {
+        if err := obj.InnerError.Validate(); err != nil {
+            return err
+        }
+    }
+
+    if obj.Message == nil {
+        return errors.New("Property Message in ApiError is required.")
+    }
+
     return nil;
 }
 

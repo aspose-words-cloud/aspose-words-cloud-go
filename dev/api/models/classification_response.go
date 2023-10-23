@@ -163,6 +163,31 @@ func (obj *ClassificationResponse) Validate() error {
     if obj.BestClassProbability == nil {
         return errors.New("Property BestClassProbability in ClassificationResponse is required.")
     }
+    if obj.RequestId == nil {
+        return errors.New("Property RequestId in ClassificationResponse is required.")
+    }
+
+    if obj.BestClassName == nil {
+        return errors.New("Property BestClassName in ClassificationResponse is required.")
+    }
+
+    if obj.BestClassProbability == nil {
+        return errors.New("Property BestClassProbability in ClassificationResponse is required.")
+    }
+
+    if obj.BestResults == nil {
+        return errors.New("Property BestResults in ClassificationResponse is required.")
+    }
+
+    if obj.BestResults != nil {
+        for _, elementBestResults := range obj.BestResults {
+            if elementBestResults != nil {
+                if err := elementBestResults.Validate(); err != nil {
+                    return err
+                }
+            }
+        }
+    }
 
     return nil;
 }

@@ -129,6 +129,24 @@ func (obj *RunLink) Validate() error {
         return errors.New("Invalid object.")
     }
 
+    if obj.Link == nil {
+        return errors.New("Property Link in RunLink is required.")
+    }
+
+    if obj.Link != nil {
+        if err := obj.Link.Validate(); err != nil {
+            return err
+        }
+    }
+
+    if obj.NodeId == nil {
+        return errors.New("Property NodeId in RunLink is required.")
+    }
+
+    if obj.Text == nil {
+        return errors.New("Property Text in RunLink is required.")
+    }
+
     return nil;
 }
 

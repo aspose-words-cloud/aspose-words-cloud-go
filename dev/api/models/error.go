@@ -134,6 +134,28 @@ func (obj *Error) Validate() error {
         return errors.New("Invalid object.")
     }
 
+    if obj.Code == nil {
+        return errors.New("Property Code in Error is required.")
+    }
+
+    if obj.Description == nil {
+        return errors.New("Property Description in Error is required.")
+    }
+
+    if obj.InnerError == nil {
+        return errors.New("Property InnerError in Error is required.")
+    }
+
+    if obj.InnerError != nil {
+        if err := obj.InnerError.Validate(); err != nil {
+            return err
+        }
+    }
+
+    if obj.Message == nil {
+        return errors.New("Property Message in Error is required.")
+    }
+
     return nil;
 }
 

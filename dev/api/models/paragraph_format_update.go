@@ -547,6 +547,126 @@ func (obj *ParagraphFormatUpdate) Validate() error {
         return errors.New("Invalid object.")
     }
 
+    if obj.Link == nil {
+        return errors.New("Property Link in ParagraphFormatUpdate is required.")
+    }
+
+    if obj.Link != nil {
+        if err := obj.Link.Validate(); err != nil {
+            return err
+        }
+    }
+
+    if obj.AddSpaceBetweenFarEastAndAlpha == nil {
+        return errors.New("Property AddSpaceBetweenFarEastAndAlpha in ParagraphFormatUpdate is required.")
+    }
+
+    if obj.AddSpaceBetweenFarEastAndDigit == nil {
+        return errors.New("Property AddSpaceBetweenFarEastAndDigit in ParagraphFormatUpdate is required.")
+    }
+
+    if obj.Alignment == nil {
+        return errors.New("Property Alignment in ParagraphFormatUpdate is required.")
+    }
+
+    if obj.Bidi == nil {
+        return errors.New("Property Bidi in ParagraphFormatUpdate is required.")
+    }
+
+    if obj.DropCapPosition == nil {
+        return errors.New("Property DropCapPosition in ParagraphFormatUpdate is required.")
+    }
+
+    if obj.FirstLineIndent == nil {
+        return errors.New("Property FirstLineIndent in ParagraphFormatUpdate is required.")
+    }
+
+    if obj.KeepTogether == nil {
+        return errors.New("Property KeepTogether in ParagraphFormatUpdate is required.")
+    }
+
+    if obj.KeepWithNext == nil {
+        return errors.New("Property KeepWithNext in ParagraphFormatUpdate is required.")
+    }
+
+    if obj.LeftIndent == nil {
+        return errors.New("Property LeftIndent in ParagraphFormatUpdate is required.")
+    }
+
+    if obj.LineSpacing == nil {
+        return errors.New("Property LineSpacing in ParagraphFormatUpdate is required.")
+    }
+
+    if obj.LineSpacingRule == nil {
+        return errors.New("Property LineSpacingRule in ParagraphFormatUpdate is required.")
+    }
+
+    if obj.LinesToDrop == nil {
+        return errors.New("Property LinesToDrop in ParagraphFormatUpdate is required.")
+    }
+
+    if obj.NoSpaceBetweenParagraphsOfSameStyle == nil {
+        return errors.New("Property NoSpaceBetweenParagraphsOfSameStyle in ParagraphFormatUpdate is required.")
+    }
+
+    if obj.OutlineLevel == nil {
+        return errors.New("Property OutlineLevel in ParagraphFormatUpdate is required.")
+    }
+
+    if obj.PageBreakBefore == nil {
+        return errors.New("Property PageBreakBefore in ParagraphFormatUpdate is required.")
+    }
+
+    if obj.RightIndent == nil {
+        return errors.New("Property RightIndent in ParagraphFormatUpdate is required.")
+    }
+
+    if obj.SpaceAfter == nil {
+        return errors.New("Property SpaceAfter in ParagraphFormatUpdate is required.")
+    }
+
+    if obj.SpaceAfterAuto == nil {
+        return errors.New("Property SpaceAfterAuto in ParagraphFormatUpdate is required.")
+    }
+
+    if obj.SpaceBefore == nil {
+        return errors.New("Property SpaceBefore in ParagraphFormatUpdate is required.")
+    }
+
+    if obj.SpaceBeforeAuto == nil {
+        return errors.New("Property SpaceBeforeAuto in ParagraphFormatUpdate is required.")
+    }
+
+    if obj.StyleIdentifier == nil {
+        return errors.New("Property StyleIdentifier in ParagraphFormatUpdate is required.")
+    }
+
+    if obj.StyleName == nil {
+        return errors.New("Property StyleName in ParagraphFormatUpdate is required.")
+    }
+
+    if obj.SuppressAutoHyphens == nil {
+        return errors.New("Property SuppressAutoHyphens in ParagraphFormatUpdate is required.")
+    }
+
+    if obj.SuppressLineNumbers == nil {
+        return errors.New("Property SuppressLineNumbers in ParagraphFormatUpdate is required.")
+    }
+
+    if obj.WidowControl == nil {
+        return errors.New("Property WidowControl in ParagraphFormatUpdate is required.")
+    }
+
+    if obj.Shading == nil {
+        return errors.New("Property Shading in ParagraphFormatUpdate is required.")
+    }
+
+    if obj.Shading != nil {
+        if err := obj.Shading.Validate(); err != nil {
+            return err
+        }
+    }
+
     return nil;
 }
 

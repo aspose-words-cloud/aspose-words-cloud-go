@@ -165,6 +165,20 @@ func (obj *DocumentPosition) Validate() error {
         return errors.New("Invalid object.")
     }
 
+    if obj.Node == nil {
+        return errors.New("Property Node in DocumentPosition is required.")
+    }
+
+    if obj.Node != nil {
+        if err := obj.Node.Validate(); err != nil {
+            return err
+        }
+    }
+
+    if obj.Offset == nil {
+        return errors.New("Property Offset in DocumentPosition is required.")
+    }
+
     return nil;
 }
 

@@ -67,7 +67,6 @@ func (data *LoadWebDocumentRequest) CreateRequestData() (RequestData, error) {
 
     if (data.Data != nil) {
         data.Data.Initialize()
-        data.Data.Validate();
     } else {
         return result, errors.New("Parameter Data is required.")
     }
@@ -75,6 +74,13 @@ func (data *LoadWebDocumentRequest) CreateRequestData() (RequestData, error) {
 
     if err := typeCheckParameter(data.Optionals["storage"], "string", "data.Optionals[storage]"); err != nil {
         return result, err
+    }
+
+
+    if (data.Data != nil) {
+        if err := data.Data.Validate(); err != nil {
+            return result, err
+        }
     }
 
 

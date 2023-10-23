@@ -151,6 +151,40 @@ func (obj *SaveResult) Validate() error {
         return errors.New("Invalid object.")
     }
 
+    if obj.DestDocument == nil {
+        return errors.New("Property DestDocument in SaveResult is required.")
+    }
+
+    if obj.DestDocument != nil {
+        if err := obj.DestDocument.Validate(); err != nil {
+            return err
+        }
+    }
+
+    if obj.SourceDocument == nil {
+        return errors.New("Property SourceDocument in SaveResult is required.")
+    }
+
+    if obj.SourceDocument != nil {
+        if err := obj.SourceDocument.Validate(); err != nil {
+            return err
+        }
+    }
+
+    if obj.AdditionalItems == nil {
+        return errors.New("Property AdditionalItems in SaveResult is required.")
+    }
+
+    if obj.AdditionalItems != nil {
+        for _, elementAdditionalItems := range obj.AdditionalItems {
+            if elementAdditionalItems != nil {
+                if err := elementAdditionalItems.Validate(); err != nil {
+                    return err
+                }
+            }
+        }
+    }
+
     return nil;
 }
 

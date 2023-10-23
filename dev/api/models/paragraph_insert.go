@@ -79,6 +79,10 @@ func (obj *ParagraphInsert) Validate() error {
         return errors.New("Invalid object.")
     }
 
+    if obj.Text == nil {
+        return errors.New("Property Text in ParagraphInsert is required.")
+    }
+
     return nil;
 }
 

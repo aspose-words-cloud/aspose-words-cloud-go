@@ -118,6 +118,7 @@ func (data *RenderDrawingObjectRequest) CreateRequestData() (RequestData, error)
     }
 
 
+
     result.QueryParams.Add("Format", parameterToString(*data.Format, ""))
 
 

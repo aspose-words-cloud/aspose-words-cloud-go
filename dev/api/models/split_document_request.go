@@ -119,6 +119,7 @@ func (data *SplitDocumentRequest) CreateRequestData() (RequestData, error) {
     }
 
 
+
     result.QueryParams.Add("Format", parameterToString(*data.Format, ""))
 
 

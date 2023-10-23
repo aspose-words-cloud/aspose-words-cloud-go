@@ -85,6 +85,9 @@ func (obj *RunUpdate) Validate() error {
     if obj.Text == nil {
         return errors.New("Property Text in RunUpdate is required.")
     }
+    if obj.Text == nil {
+        return errors.New("Property Text in RunUpdate is required.")
+    }
 
     return nil;
 }

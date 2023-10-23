@@ -81,7 +81,6 @@ func (data *OptimizeDocumentRequest) CreateRequestData() (RequestData, error) {
 
     if (data.Options != nil) {
         data.Options.Initialize()
-        data.Options.Validate();
     } else {
         return result, errors.New("Parameter Options is required.")
     }
@@ -110,6 +109,13 @@ func (data *OptimizeDocumentRequest) CreateRequestData() (RequestData, error) {
     }
     if err := typeCheckParameter(data.Optionals["revisionDateTime"], "string", "data.Optionals[revisionDateTime]"); err != nil {
         return result, err
+    }
+
+
+    if (data.Options != nil) {
+        if err := data.Options.Validate(); err != nil {
+            return result, err
+        }
     }
 
 

@@ -85,7 +85,6 @@ func (data *UpdateFieldOnlineRequest) CreateRequestData() (RequestData, error) {
 
     if (data.Field != nil) {
         data.Field.Initialize()
-        data.Field.Validate();
     } else {
         return result, errors.New("Parameter Field is required.")
     }
@@ -115,6 +114,13 @@ func (data *UpdateFieldOnlineRequest) CreateRequestData() (RequestData, error) {
     }
     if err := typeCheckParameter(data.Optionals["revisionDateTime"], "string", "data.Optionals[revisionDateTime]"); err != nil {
         return result, err
+    }
+
+
+    if (data.Field != nil) {
+        if err := data.Field.Validate(); err != nil {
+            return result, err
+        }
     }
 
 

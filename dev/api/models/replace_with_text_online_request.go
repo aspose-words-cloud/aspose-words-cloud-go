@@ -87,7 +87,6 @@ func (data *ReplaceWithTextOnlineRequest) CreateRequestData() (RequestData, erro
 
     if (data.RangeText != nil) {
         data.RangeText.Initialize()
-        data.RangeText.Validate();
     } else {
         return result, errors.New("Parameter RangeText is required.")
     }
@@ -107,6 +106,13 @@ func (data *ReplaceWithTextOnlineRequest) CreateRequestData() (RequestData, erro
     }
     if err := typeCheckParameter(data.Optionals["destFileName"], "string", "data.Optionals[destFileName]"); err != nil {
         return result, err
+    }
+
+
+    if (data.RangeText != nil) {
+        if err := data.RangeText.Validate(); err != nil {
+            return result, err
+        }
     }
 
 

@@ -96,6 +96,14 @@ func (obj *ReplaceRange) Validate() error {
         return errors.New("Invalid object.")
     }
 
+    if obj.Text == nil {
+        return errors.New("Property Text in ReplaceRange is required.")
+    }
+
+    if obj.TextType == nil {
+        return errors.New("Property TextType in ReplaceRange is required.")
+    }
+
     return nil;
 }
 

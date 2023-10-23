@@ -96,7 +96,6 @@ func (data *UpdateListLevelRequest) CreateRequestData() (RequestData, error) {
 
     if (data.ListUpdate != nil) {
         data.ListUpdate.Initialize()
-        data.ListUpdate.Validate();
     } else {
         return result, errors.New("Parameter ListUpdate is required.")
     }
@@ -125,6 +124,13 @@ func (data *UpdateListLevelRequest) CreateRequestData() (RequestData, error) {
     }
     if err := typeCheckParameter(data.Optionals["revisionDateTime"], "string", "data.Optionals[revisionDateTime]"); err != nil {
         return result, err
+    }
+
+
+    if (data.ListUpdate != nil) {
+        if err := data.ListUpdate.Validate(); err != nil {
+            return result, err
+        }
     }
 
 

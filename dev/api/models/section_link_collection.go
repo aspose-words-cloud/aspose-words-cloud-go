@@ -129,6 +129,30 @@ func (obj *SectionLinkCollection) Validate() error {
         return errors.New("Invalid object.")
     }
 
+    if obj.Link == nil {
+        return errors.New("Property Link in SectionLinkCollection is required.")
+    }
+
+    if obj.Link != nil {
+        if err := obj.Link.Validate(); err != nil {
+            return err
+        }
+    }
+
+    if obj.SectionLinkList == nil {
+        return errors.New("Property SectionLinkList in SectionLinkCollection is required.")
+    }
+
+    if obj.SectionLinkList != nil {
+        for _, elementSectionLinkList := range obj.SectionLinkList {
+            if elementSectionLinkList != nil {
+                if err := elementSectionLinkList.Validate(); err != nil {
+                    return err
+                }
+            }
+        }
+    }
+
     return nil;
 }
 

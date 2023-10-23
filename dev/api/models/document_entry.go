@@ -134,9 +134,21 @@ func (obj *DocumentEntry) Validate() error {
     if obj.FileReference == nil {
         return errors.New("Property FileReference in DocumentEntry is required.")
     }
+    if obj.ImportFormatMode == nil {
+        return errors.New("Property ImportFormatMode in DocumentEntry is required.")
+    }
+    if obj.FileReference == nil {
+        return errors.New("Property FileReference in DocumentEntry is required.")
+    }
 
-    if err := obj.FileReference.Validate(); err != nil {
-        return err
+    if obj.FileReference != nil {
+        if err := obj.FileReference.Validate(); err != nil {
+            return err
+        }
+    }
+
+    if obj.EncryptedPassword == nil {
+        return errors.New("Property EncryptedPassword in DocumentEntry is required.")
     }
 
     if obj.ImportFormatMode == nil {

@@ -87,7 +87,6 @@ func (data *UpdateStyleOnlineRequest) CreateRequestData() (RequestData, error) {
 
     if (data.StyleUpdate != nil) {
         data.StyleUpdate.Initialize()
-        data.StyleUpdate.Validate();
     } else {
         return result, errors.New("Parameter StyleUpdate is required.")
     }
@@ -110,6 +109,13 @@ func (data *UpdateStyleOnlineRequest) CreateRequestData() (RequestData, error) {
     }
     if err := typeCheckParameter(data.Optionals["revisionDateTime"], "string", "data.Optionals[revisionDateTime]"); err != nil {
         return result, err
+    }
+
+
+    if (data.StyleUpdate != nil) {
+        if err := data.StyleUpdate.Validate(); err != nil {
+            return result, err
+        }
     }
 
 

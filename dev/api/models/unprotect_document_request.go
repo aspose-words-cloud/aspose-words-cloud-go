@@ -80,7 +80,6 @@ func (data *UnprotectDocumentRequest) CreateRequestData() (RequestData, error) {
 
     if (data.ProtectionRequest != nil) {
         data.ProtectionRequest.Initialize()
-        data.ProtectionRequest.Validate();
     } else {
         return result, errors.New("Parameter ProtectionRequest is required.")
     }
@@ -103,6 +102,13 @@ func (data *UnprotectDocumentRequest) CreateRequestData() (RequestData, error) {
     }
     if err := typeCheckParameter(data.Optionals["destFileName"], "string", "data.Optionals[destFileName]"); err != nil {
         return result, err
+    }
+
+
+    if (data.ProtectionRequest != nil) {
+        if err := data.ProtectionRequest.Validate(); err != nil {
+            return result, err
+        }
     }
 
 

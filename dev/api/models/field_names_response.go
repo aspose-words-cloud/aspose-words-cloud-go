@@ -111,6 +111,20 @@ func (obj *FieldNamesResponse) Validate() error {
         return errors.New("Invalid object.")
     }
 
+    if obj.RequestId == nil {
+        return errors.New("Property RequestId in FieldNamesResponse is required.")
+    }
+
+    if obj.FieldNames == nil {
+        return errors.New("Property FieldNames in FieldNamesResponse is required.")
+    }
+
+    if obj.FieldNames != nil {
+        if err := obj.FieldNames.Validate(); err != nil {
+            return err
+        }
+    }
+
     return nil;
 }
 

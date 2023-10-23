@@ -129,6 +129,30 @@ func (obj *TableLinkCollection) Validate() error {
         return errors.New("Invalid object.")
     }
 
+    if obj.Link == nil {
+        return errors.New("Property Link in TableLinkCollection is required.")
+    }
+
+    if obj.Link != nil {
+        if err := obj.Link.Validate(); err != nil {
+            return err
+        }
+    }
+
+    if obj.TableLinkList == nil {
+        return errors.New("Property TableLinkList in TableLinkCollection is required.")
+    }
+
+    if obj.TableLinkList != nil {
+        for _, elementTableLinkList := range obj.TableLinkList {
+            if elementTableLinkList != nil {
+                if err := elementTableLinkList.Validate(); err != nil {
+                    return err
+                }
+            }
+        }
+    }
+
     return nil;
 }
 

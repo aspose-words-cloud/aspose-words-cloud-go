@@ -83,7 +83,6 @@ func (data *InsertOrUpdateParagraphTabStopOnlineRequest) CreateRequestData() (Re
 
     if (data.TabStopInsertDto != nil) {
         data.TabStopInsertDto.Initialize()
-        data.TabStopInsertDto.Validate();
     } else {
         return result, errors.New("Parameter TabStopInsertDto is required.")
     }
@@ -107,6 +106,13 @@ func (data *InsertOrUpdateParagraphTabStopOnlineRequest) CreateRequestData() (Re
     }
     if err := typeCheckParameter(data.Optionals["destFileName"], "string", "data.Optionals[destFileName]"); err != nil {
         return result, err
+    }
+
+
+    if (data.TabStopInsertDto != nil) {
+        if err := data.TabStopInsertDto.Validate(); err != nil {
+            return result, err
+        }
     }
 
 

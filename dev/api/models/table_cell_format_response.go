@@ -111,6 +111,20 @@ func (obj *TableCellFormatResponse) Validate() error {
         return errors.New("Invalid object.")
     }
 
+    if obj.RequestId == nil {
+        return errors.New("Property RequestId in TableCellFormatResponse is required.")
+    }
+
+    if obj.CellFormat == nil {
+        return errors.New("Property CellFormat in TableCellFormatResponse is required.")
+    }
+
+    if obj.CellFormat != nil {
+        if err := obj.CellFormat.Validate(); err != nil {
+            return err
+        }
+    }
+
     return nil;
 }
 

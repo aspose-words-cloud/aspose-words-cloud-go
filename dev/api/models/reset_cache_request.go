@@ -64,6 +64,7 @@ func (data *ResetCacheRequest) CreateRequestData() (RequestData, error) {
 
 
 
+
     for _, fileContentData := range filesContentData {
         fbs, _ := ioutil.ReadAll(fileContentData.Content)
         result.FormParams = append(result.FormParams, NewFileFormParamContainer(fileContentData.Reference, fbs))

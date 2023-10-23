@@ -204,6 +204,47 @@ func (obj *ReportEngineSettings) Validate() error {
     if obj.DataSourceType == nil {
         return errors.New("Property DataSourceType in ReportEngineSettings is required.")
     }
+    if obj.CsvDataLoadOptions == nil {
+        return errors.New("Property CsvDataLoadOptions in ReportEngineSettings is required.")
+    }
+
+    if obj.CsvDataLoadOptions != nil {
+        if err := obj.CsvDataLoadOptions.Validate(); err != nil {
+            return err
+        }
+    }
+
+    if obj.DataSourceName == nil {
+        return errors.New("Property DataSourceName in ReportEngineSettings is required.")
+    }
+
+    if obj.DataSourceType == nil {
+        return errors.New("Property DataSourceType in ReportEngineSettings is required.")
+    }
+
+    if obj.JsonDataLoadOptions == nil {
+        return errors.New("Property JsonDataLoadOptions in ReportEngineSettings is required.")
+    }
+
+    if obj.JsonDataLoadOptions != nil {
+        if err := obj.JsonDataLoadOptions.Validate(); err != nil {
+            return err
+        }
+    }
+
+    if obj.ReportBuildOptions == nil {
+        return errors.New("Property ReportBuildOptions in ReportEngineSettings is required.")
+    }
+
+    if obj.XmlDataLoadOptions == nil {
+        return errors.New("Property XmlDataLoadOptions in ReportEngineSettings is required.")
+    }
+
+    if obj.XmlDataLoadOptions != nil {
+        if err := obj.XmlDataLoadOptions.Validate(); err != nil {
+            return err
+        }
+    }
 
     return nil;
 }

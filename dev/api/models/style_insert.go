@@ -99,6 +99,13 @@ func (obj *StyleInsert) Validate() error {
     if obj.StyleType == nil {
         return errors.New("Property StyleType in StyleInsert is required.")
     }
+    if obj.StyleName == nil {
+        return errors.New("Property StyleName in StyleInsert is required.")
+    }
+
+    if obj.StyleType == nil {
+        return errors.New("Property StyleType in StyleInsert is required.")
+    }
 
     return nil;
 }

@@ -79,7 +79,6 @@ func (data *CopyStyleOnlineRequest) CreateRequestData() (RequestData, error) {
 
     if (data.StyleCopy != nil) {
         data.StyleCopy.Initialize()
-        data.StyleCopy.Validate();
     } else {
         return result, errors.New("Parameter StyleCopy is required.")
     }
@@ -102,6 +101,13 @@ func (data *CopyStyleOnlineRequest) CreateRequestData() (RequestData, error) {
     }
     if err := typeCheckParameter(data.Optionals["revisionDateTime"], "string", "data.Optionals[revisionDateTime]"); err != nil {
         return result, err
+    }
+
+
+    if (data.StyleCopy != nil) {
+        if err := data.StyleCopy.Validate(); err != nil {
+            return result, err
+        }
     }
 
 

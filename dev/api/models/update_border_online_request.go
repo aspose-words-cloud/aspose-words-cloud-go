@@ -85,7 +85,6 @@ func (data *UpdateBorderOnlineRequest) CreateRequestData() (RequestData, error) 
 
     if (data.BorderProperties != nil) {
         data.BorderProperties.Initialize()
-        data.BorderProperties.Validate();
     } else {
         return result, errors.New("Parameter BorderProperties is required.")
     }
@@ -115,6 +114,13 @@ func (data *UpdateBorderOnlineRequest) CreateRequestData() (RequestData, error) 
     }
     if err := typeCheckParameter(data.Optionals["revisionDateTime"], "string", "data.Optionals[revisionDateTime]"); err != nil {
         return result, err
+    }
+
+
+    if (data.BorderProperties != nil) {
+        if err := data.BorderProperties.Validate(); err != nil {
+            return result, err
+        }
     }
 
 

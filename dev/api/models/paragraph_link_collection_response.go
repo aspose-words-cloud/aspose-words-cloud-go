@@ -111,6 +111,20 @@ func (obj *ParagraphLinkCollectionResponse) Validate() error {
         return errors.New("Invalid object.")
     }
 
+    if obj.RequestId == nil {
+        return errors.New("Property RequestId in ParagraphLinkCollectionResponse is required.")
+    }
+
+    if obj.Paragraphs == nil {
+        return errors.New("Property Paragraphs in ParagraphLinkCollectionResponse is required.")
+    }
+
+    if obj.Paragraphs != nil {
+        if err := obj.Paragraphs.Validate(); err != nil {
+            return err
+        }
+    }
+
     return nil;
 }
 

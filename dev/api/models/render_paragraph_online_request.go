@@ -109,6 +109,7 @@ func (data *RenderParagraphOnlineRequest) CreateRequestData() (RequestData, erro
     }
 
 
+
     result.QueryParams.Add("Format", parameterToString(*data.Format, ""))
 
 

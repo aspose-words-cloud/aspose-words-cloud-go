@@ -83,6 +83,7 @@ func (data *UploadFileRequest) CreateRequestData() (RequestData, error) {
     }
 
 
+
     if localVarTempParam, localVarOk := data.Optionals["storageName"].(string); localVarOk {
         result.QueryParams.Add("StorageName", parameterToString(localVarTempParam, ""))
     }

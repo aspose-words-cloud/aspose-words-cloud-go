@@ -104,6 +104,7 @@ func (data *ConvertDocumentRequest) CreateRequestData() (RequestData, error) {
     }
 
 
+
     result.QueryParams.Add("Format", parameterToString(*data.Format, ""))
 
 

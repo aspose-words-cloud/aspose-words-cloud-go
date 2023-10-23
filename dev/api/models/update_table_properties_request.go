@@ -91,7 +91,6 @@ func (data *UpdateTablePropertiesRequest) CreateRequestData() (RequestData, erro
 
     if (data.Properties != nil) {
         data.Properties.Initialize()
-        data.Properties.Validate();
     } else {
         return result, errors.New("Parameter Properties is required.")
     }
@@ -123,6 +122,13 @@ func (data *UpdateTablePropertiesRequest) CreateRequestData() (RequestData, erro
     }
     if err := typeCheckParameter(data.Optionals["revisionDateTime"], "string", "data.Optionals[revisionDateTime]"); err != nil {
         return result, err
+    }
+
+
+    if (data.Properties != nil) {
+        if err := data.Properties.Validate(); err != nil {
+            return result, err
+        }
     }
 
 

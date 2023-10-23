@@ -129,6 +129,22 @@ func (obj *TableInsert) Validate() error {
     if obj.ColumnsCount == nil {
         return errors.New("Property ColumnsCount in TableInsert is required.")
     }
+    if obj.RowsCount == nil {
+        return errors.New("Property RowsCount in TableInsert is required.")
+    }
+    if obj.ColumnsCount == nil {
+        return errors.New("Property ColumnsCount in TableInsert is required.")
+    }
+
+    if obj.Position == nil {
+        return errors.New("Property Position in TableInsert is required.")
+    }
+
+    if obj.Position != nil {
+        if err := obj.Position.Validate(); err != nil {
+            return err
+        }
+    }
 
     if obj.RowsCount == nil {
         return errors.New("Property RowsCount in TableInsert is required.")

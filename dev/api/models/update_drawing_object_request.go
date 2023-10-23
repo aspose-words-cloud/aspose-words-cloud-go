@@ -89,7 +89,6 @@ func (data *UpdateDrawingObjectRequest) CreateRequestData() (RequestData, error)
 
     if (data.DrawingObject != nil) {
         data.DrawingObject.Initialize()
-        data.DrawingObject.Validate();
     } else {
         return result, errors.New("Parameter DrawingObject is required.")
     }
@@ -129,6 +128,13 @@ func (data *UpdateDrawingObjectRequest) CreateRequestData() (RequestData, error)
     }
     if err := typeCheckParameter(data.Optionals["revisionDateTime"], "string", "data.Optionals[revisionDateTime]"); err != nil {
         return result, err
+    }
+
+
+    if (data.DrawingObject != nil) {
+        if err := data.DrawingObject.Validate(); err != nil {
+            return result, err
+        }
     }
 
 

@@ -120,6 +120,20 @@ func (obj *FieldNames) Validate() error {
         return errors.New("Invalid object.")
     }
 
+    if obj.Link == nil {
+        return errors.New("Property Link in FieldNames is required.")
+    }
+
+    if obj.Link != nil {
+        if err := obj.Link.Validate(); err != nil {
+            return err
+        }
+    }
+
+    if obj.Names == nil {
+        return errors.New("Property Names in FieldNames is required.")
+    }
+
     return nil;
 }
 

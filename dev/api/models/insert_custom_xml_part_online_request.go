@@ -79,7 +79,6 @@ func (data *InsertCustomXmlPartOnlineRequest) CreateRequestData() (RequestData, 
 
     if (data.CustomXmlPart != nil) {
         data.CustomXmlPart.Initialize()
-        data.CustomXmlPart.Validate();
     } else {
         return result, errors.New("Parameter CustomXmlPart is required.")
     }
@@ -102,6 +101,13 @@ func (data *InsertCustomXmlPartOnlineRequest) CreateRequestData() (RequestData, 
     }
     if err := typeCheckParameter(data.Optionals["revisionDateTime"], "string", "data.Optionals[revisionDateTime]"); err != nil {
         return result, err
+    }
+
+
+    if (data.CustomXmlPart != nil) {
+        if err := data.CustomXmlPart.Validate(); err != nil {
+            return result, err
+        }
     }
 
 

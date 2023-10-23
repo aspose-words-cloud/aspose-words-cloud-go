@@ -103,6 +103,20 @@ func (obj *WordsApiErrorResponse) Validate() error {
         return errors.New("Invalid object.")
     }
 
+    if obj.RequestId == nil {
+        return errors.New("Property RequestId in WordsApiErrorResponse is required.")
+    }
+
+    if obj.Error_ == nil {
+        return errors.New("Property Error in WordsApiErrorResponse is required.")
+    }
+
+    if obj.Error_ != nil {
+        if err := obj.Error_.Validate(); err != nil {
+            return err
+        }
+    }
+
     return nil;
 }
 

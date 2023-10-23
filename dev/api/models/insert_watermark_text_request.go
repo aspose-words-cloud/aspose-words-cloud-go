@@ -82,7 +82,6 @@ func (data *InsertWatermarkTextRequest) CreateRequestData() (RequestData, error)
 
     if (data.WatermarkText != nil) {
         data.WatermarkText.Initialize()
-        data.WatermarkText.Validate();
     } else {
         return result, errors.New("Parameter WatermarkText is required.")
     }
@@ -111,6 +110,13 @@ func (data *InsertWatermarkTextRequest) CreateRequestData() (RequestData, error)
     }
     if err := typeCheckParameter(data.Optionals["revisionDateTime"], "string", "data.Optionals[revisionDateTime]"); err != nil {
         return result, err
+    }
+
+
+    if (data.WatermarkText != nil) {
+        if err := data.WatermarkText.Validate(); err != nil {
+            return result, err
+        }
     }
 
 

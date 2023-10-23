@@ -358,6 +358,79 @@ func (obj *DocSaveOptionsData) Validate() error {
     if obj.FileName == nil {
         return errors.New("Property FileName in DocSaveOptionsData is required.")
     }
+    if obj.AllowEmbeddingPostScriptFonts == nil {
+        return errors.New("Property AllowEmbeddingPostScriptFonts in DocSaveOptionsData is required.")
+    }
+
+    if obj.CustomTimeZoneInfoData == nil {
+        return errors.New("Property CustomTimeZoneInfoData in DocSaveOptionsData is required.")
+    }
+
+    if obj.CustomTimeZoneInfoData != nil {
+        if err := obj.CustomTimeZoneInfoData.Validate(); err != nil {
+            return err
+        }
+    }
+
+    if obj.Dml3DEffectsRenderingMode == nil {
+        return errors.New("Property Dml3DEffectsRenderingMode in DocSaveOptionsData is required.")
+    }
+
+    if obj.DmlEffectsRenderingMode == nil {
+        return errors.New("Property DmlEffectsRenderingMode in DocSaveOptionsData is required.")
+    }
+
+    if obj.DmlRenderingMode == nil {
+        return errors.New("Property DmlRenderingMode in DocSaveOptionsData is required.")
+    }
+
+    if obj.FileName == nil {
+        return errors.New("Property FileName in DocSaveOptionsData is required.")
+    }
+
+    if obj.ImlRenderingMode == nil {
+        return errors.New("Property ImlRenderingMode in DocSaveOptionsData is required.")
+    }
+
+    if obj.UpdateCreatedTimeProperty == nil {
+        return errors.New("Property UpdateCreatedTimeProperty in DocSaveOptionsData is required.")
+    }
+
+    if obj.UpdateFields == nil {
+        return errors.New("Property UpdateFields in DocSaveOptionsData is required.")
+    }
+
+    if obj.UpdateLastPrintedProperty == nil {
+        return errors.New("Property UpdateLastPrintedProperty in DocSaveOptionsData is required.")
+    }
+
+    if obj.UpdateLastSavedTimeProperty == nil {
+        return errors.New("Property UpdateLastSavedTimeProperty in DocSaveOptionsData is required.")
+    }
+
+    if obj.ZipOutput == nil {
+        return errors.New("Property ZipOutput in DocSaveOptionsData is required.")
+    }
+
+    if obj.AlwaysCompressMetafiles == nil {
+        return errors.New("Property AlwaysCompressMetafiles in DocSaveOptionsData is required.")
+    }
+
+    if obj.Password == nil {
+        return errors.New("Property Password in DocSaveOptionsData is required.")
+    }
+
+    if obj.SavePictureBullet == nil {
+        return errors.New("Property SavePictureBullet in DocSaveOptionsData is required.")
+    }
+
+    if obj.SaveRoutingSlip == nil {
+        return errors.New("Property SaveRoutingSlip in DocSaveOptionsData is required.")
+    }
+
+    if obj.SaveFormat == nil {
+        return errors.New("Property SaveFormat in DocSaveOptionsData is required.")
+    }
 
     return nil;
 }

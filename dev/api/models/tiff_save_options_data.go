@@ -726,6 +726,165 @@ func (obj *TiffSaveOptionsData) Validate() error {
     if obj.FileName == nil {
         return errors.New("Property FileName in TiffSaveOptionsData is required.")
     }
+    if obj.AllowEmbeddingPostScriptFonts == nil {
+        return errors.New("Property AllowEmbeddingPostScriptFonts in TiffSaveOptionsData is required.")
+    }
+
+    if obj.CustomTimeZoneInfoData == nil {
+        return errors.New("Property CustomTimeZoneInfoData in TiffSaveOptionsData is required.")
+    }
+
+    if obj.CustomTimeZoneInfoData != nil {
+        if err := obj.CustomTimeZoneInfoData.Validate(); err != nil {
+            return err
+        }
+    }
+
+    if obj.Dml3DEffectsRenderingMode == nil {
+        return errors.New("Property Dml3DEffectsRenderingMode in TiffSaveOptionsData is required.")
+    }
+
+    if obj.DmlEffectsRenderingMode == nil {
+        return errors.New("Property DmlEffectsRenderingMode in TiffSaveOptionsData is required.")
+    }
+
+    if obj.DmlRenderingMode == nil {
+        return errors.New("Property DmlRenderingMode in TiffSaveOptionsData is required.")
+    }
+
+    if obj.FileName == nil {
+        return errors.New("Property FileName in TiffSaveOptionsData is required.")
+    }
+
+    if obj.ImlRenderingMode == nil {
+        return errors.New("Property ImlRenderingMode in TiffSaveOptionsData is required.")
+    }
+
+    if obj.UpdateCreatedTimeProperty == nil {
+        return errors.New("Property UpdateCreatedTimeProperty in TiffSaveOptionsData is required.")
+    }
+
+    if obj.UpdateFields == nil {
+        return errors.New("Property UpdateFields in TiffSaveOptionsData is required.")
+    }
+
+    if obj.UpdateLastPrintedProperty == nil {
+        return errors.New("Property UpdateLastPrintedProperty in TiffSaveOptionsData is required.")
+    }
+
+    if obj.UpdateLastSavedTimeProperty == nil {
+        return errors.New("Property UpdateLastSavedTimeProperty in TiffSaveOptionsData is required.")
+    }
+
+    if obj.ZipOutput == nil {
+        return errors.New("Property ZipOutput in TiffSaveOptionsData is required.")
+    }
+
+    if obj.ColorMode == nil {
+        return errors.New("Property ColorMode in TiffSaveOptionsData is required.")
+    }
+
+    if obj.JpegQuality == nil {
+        return errors.New("Property JpegQuality in TiffSaveOptionsData is required.")
+    }
+
+    if obj.MetafileRenderingOptions == nil {
+        return errors.New("Property MetafileRenderingOptions in TiffSaveOptionsData is required.")
+    }
+
+    if obj.MetafileRenderingOptions != nil {
+        if err := obj.MetafileRenderingOptions.Validate(); err != nil {
+            return err
+        }
+    }
+
+    if obj.NumeralFormat == nil {
+        return errors.New("Property NumeralFormat in TiffSaveOptionsData is required.")
+    }
+
+    if obj.OptimizeOutput == nil {
+        return errors.New("Property OptimizeOutput in TiffSaveOptionsData is required.")
+    }
+
+    if obj.PageCount == nil {
+        return errors.New("Property PageCount in TiffSaveOptionsData is required.")
+    }
+
+    if obj.PageIndex == nil {
+        return errors.New("Property PageIndex in TiffSaveOptionsData is required.")
+    }
+
+    if obj.HorizontalResolution == nil {
+        return errors.New("Property HorizontalResolution in TiffSaveOptionsData is required.")
+    }
+
+    if obj.ImageBrightness == nil {
+        return errors.New("Property ImageBrightness in TiffSaveOptionsData is required.")
+    }
+
+    if obj.ImageColorMode == nil {
+        return errors.New("Property ImageColorMode in TiffSaveOptionsData is required.")
+    }
+
+    if obj.ImageContrast == nil {
+        return errors.New("Property ImageContrast in TiffSaveOptionsData is required.")
+    }
+
+    if obj.PaperColor == nil {
+        return errors.New("Property PaperColor in TiffSaveOptionsData is required.")
+    }
+
+    if obj.PixelFormat == nil {
+        return errors.New("Property PixelFormat in TiffSaveOptionsData is required.")
+    }
+
+    if obj.Resolution == nil {
+        return errors.New("Property Resolution in TiffSaveOptionsData is required.")
+    }
+
+    if obj.Scale == nil {
+        return errors.New("Property Scale in TiffSaveOptionsData is required.")
+    }
+
+    if obj.UseAntiAliasing == nil {
+        return errors.New("Property UseAntiAliasing in TiffSaveOptionsData is required.")
+    }
+
+    if obj.UseHighQualityRendering == nil {
+        return errors.New("Property UseHighQualityRendering in TiffSaveOptionsData is required.")
+    }
+
+    if obj.VerticalResolution == nil {
+        return errors.New("Property VerticalResolution in TiffSaveOptionsData is required.")
+    }
+
+    if obj.ImageHeight == nil {
+        return errors.New("Property ImageHeight in TiffSaveOptionsData is required.")
+    }
+
+    if obj.ImageWidth == nil {
+        return errors.New("Property ImageWidth in TiffSaveOptionsData is required.")
+    }
+
+    if obj.UseGdiEmfRenderer == nil {
+        return errors.New("Property UseGdiEmfRenderer in TiffSaveOptionsData is required.")
+    }
+
+    if obj.ThresholdForFloydSteinbergDithering == nil {
+        return errors.New("Property ThresholdForFloydSteinbergDithering in TiffSaveOptionsData is required.")
+    }
+
+    if obj.TiffBinarizationMethod == nil {
+        return errors.New("Property TiffBinarizationMethod in TiffSaveOptionsData is required.")
+    }
+
+    if obj.TiffCompression == nil {
+        return errors.New("Property TiffCompression in TiffSaveOptionsData is required.")
+    }
+
+    if obj.SaveFormat == nil {
+        return errors.New("Property SaveFormat in TiffSaveOptionsData is required.")
+    }
 
     return nil;
 }

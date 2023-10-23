@@ -78,7 +78,6 @@ func (data *BuildReportOnlineRequest) CreateRequestData() (RequestData, error) {
 
     if (data.ReportEngineSettings != nil) {
         data.ReportEngineSettings.Initialize()
-        data.ReportEngineSettings.Validate();
     } else {
         return result, errors.New("Parameter ReportEngineSettings is required.")
     }
@@ -86,6 +85,13 @@ func (data *BuildReportOnlineRequest) CreateRequestData() (RequestData, error) {
 
     if err := typeCheckParameter(data.Optionals["documentFileName"], "string", "data.Optionals[documentFileName]"); err != nil {
         return result, err
+    }
+
+
+    if (data.ReportEngineSettings != nil) {
+        if err := data.ReportEngineSettings.Validate(); err != nil {
+            return result, err
+        }
     }
 
 

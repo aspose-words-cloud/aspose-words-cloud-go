@@ -79,7 +79,6 @@ func (data *InsertPageNumbersOnlineRequest) CreateRequestData() (RequestData, er
 
     if (data.PageNumber != nil) {
         data.PageNumber.Initialize()
-        data.PageNumber.Validate();
     } else {
         return result, errors.New("Parameter PageNumber is required.")
     }
@@ -102,6 +101,13 @@ func (data *InsertPageNumbersOnlineRequest) CreateRequestData() (RequestData, er
     }
     if err := typeCheckParameter(data.Optionals["revisionDateTime"], "string", "data.Optionals[revisionDateTime]"); err != nil {
         return result, err
+    }
+
+
+    if (data.PageNumber != nil) {
+        if err := data.PageNumber.Validate(); err != nil {
+            return result, err
+        }
     }
 
 

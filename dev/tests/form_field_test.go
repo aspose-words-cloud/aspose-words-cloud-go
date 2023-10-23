@@ -51,6 +51,7 @@ func Test_FormField_UpdateFormField(t *testing.T) {
         StatusText: ToStringPointer(""),
         TextInputType: ToStringPointer("Regular"),
         TextInputDefault: ToStringPointer("No name"),
+        TextInputFormat: ToStringPointer(""),
     }
 
     options := map[string]interface{}{
@@ -90,6 +91,7 @@ func Test_FormField_UpdateFormFieldOnline(t *testing.T) {
         StatusText: ToStringPointer(""),
         TextInputType: ToStringPointer("Regular"),
         TextInputDefault: ToStringPointer("No name"),
+        TextInputFormat: ToStringPointer(""),
     }
 
     options := map[string]interface{}{
@@ -127,6 +129,7 @@ func Test_FormField_UpdateFormFieldWithoutNodePath(t *testing.T) {
         StatusText: ToStringPointer(""),
         TextInputType: ToStringPointer("Regular"),
         TextInputDefault: ToStringPointer("No name"),
+        TextInputFormat: ToStringPointer(""),
     }
 
     options := map[string]interface{}{

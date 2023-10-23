@@ -142,6 +142,28 @@ func (obj *FootnoteInsert) Validate() error {
         return errors.New("Invalid object.")
     }
 
+    if obj.Position == nil {
+        return errors.New("Property Position in FootnoteInsert is required.")
+    }
+
+    if obj.Position != nil {
+        if err := obj.Position.Validate(); err != nil {
+            return err
+        }
+    }
+
+    if obj.FootnoteType == nil {
+        return errors.New("Property FootnoteType in FootnoteInsert is required.")
+    }
+
+    if obj.ReferenceMark == nil {
+        return errors.New("Property ReferenceMark in FootnoteInsert is required.")
+    }
+
+    if obj.Text == nil {
+        return errors.New("Property Text in FootnoteInsert is required.")
+    }
+
     return nil;
 }
 

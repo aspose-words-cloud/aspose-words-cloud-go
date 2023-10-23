@@ -102,6 +102,13 @@ func (obj *FieldInsert) Validate() error {
     if obj.FieldCode == nil {
         return errors.New("Property FieldCode in FieldInsert is required.")
     }
+    if obj.LocaleId == nil {
+        return errors.New("Property LocaleId in FieldInsert is required.")
+    }
+
+    if obj.FieldCode == nil {
+        return errors.New("Property FieldCode in FieldInsert is required.")
+    }
 
     return nil;
 }

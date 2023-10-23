@@ -108,6 +108,20 @@ func (obj *SaveResponse) Validate() error {
         return errors.New("Invalid object.")
     }
 
+    if obj.RequestId == nil {
+        return errors.New("Property RequestId in SaveResponse is required.")
+    }
+
+    if obj.SaveResult == nil {
+        return errors.New("Property SaveResult in SaveResponse is required.")
+    }
+
+    if obj.SaveResult != nil {
+        if err := obj.SaveResult.Validate(); err != nil {
+            return err
+        }
+    }
+
     return nil;
 }
 

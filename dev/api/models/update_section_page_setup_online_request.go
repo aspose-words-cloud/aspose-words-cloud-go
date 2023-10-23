@@ -87,7 +87,6 @@ func (data *UpdateSectionPageSetupOnlineRequest) CreateRequestData() (RequestDat
 
     if (data.PageSetup != nil) {
         data.PageSetup.Initialize()
-        data.PageSetup.Validate();
     } else {
         return result, errors.New("Parameter PageSetup is required.")
     }
@@ -110,6 +109,13 @@ func (data *UpdateSectionPageSetupOnlineRequest) CreateRequestData() (RequestDat
     }
     if err := typeCheckParameter(data.Optionals["revisionDateTime"], "string", "data.Optionals[revisionDateTime]"); err != nil {
         return result, err
+    }
+
+
+    if (data.PageSetup != nil) {
+        if err := data.PageSetup.Validate(); err != nil {
+            return result, err
+        }
     }
 
 

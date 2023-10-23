@@ -159,6 +159,32 @@ func (obj *TableRowFormat) Validate() error {
         return errors.New("Invalid object.")
     }
 
+    if obj.Link == nil {
+        return errors.New("Property Link in TableRowFormat is required.")
+    }
+
+    if obj.Link != nil {
+        if err := obj.Link.Validate(); err != nil {
+            return err
+        }
+    }
+
+    if obj.Height == nil {
+        return errors.New("Property Height in TableRowFormat is required.")
+    }
+
+    if obj.HeightRule == nil {
+        return errors.New("Property HeightRule in TableRowFormat is required.")
+    }
+
+    if obj.AllowBreakAcrossPages == nil {
+        return errors.New("Property AllowBreakAcrossPages in TableRowFormat is required.")
+    }
+
+    if obj.HeadingFormat == nil {
+        return errors.New("Property HeadingFormat in TableRowFormat is required.")
+    }
+
     return nil;
 }
 

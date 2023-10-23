@@ -115,6 +115,7 @@ func (data *DeleteParagraphTabStopRequest) CreateRequestData() (RequestData, err
     }
 
 
+
     result.QueryParams.Add("Position", parameterToString(*data.Position, ""))
 
 

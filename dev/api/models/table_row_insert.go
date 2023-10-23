@@ -103,6 +103,13 @@ func (obj *TableRowInsert) Validate() error {
     if obj.ColumnsCount == nil {
         return errors.New("Property ColumnsCount in TableRowInsert is required.")
     }
+    if obj.ColumnsCount == nil {
+        return errors.New("Property ColumnsCount in TableRowInsert is required.")
+    }
+
+    if obj.InsertAfter == nil {
+        return errors.New("Property InsertAfter in TableRowInsert is required.")
+    }
 
     return nil;
 }

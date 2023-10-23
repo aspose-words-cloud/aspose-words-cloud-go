@@ -529,6 +529,121 @@ func (obj *SvgSaveOptionsData) Validate() error {
     if obj.FileName == nil {
         return errors.New("Property FileName in SvgSaveOptionsData is required.")
     }
+    if obj.AllowEmbeddingPostScriptFonts == nil {
+        return errors.New("Property AllowEmbeddingPostScriptFonts in SvgSaveOptionsData is required.")
+    }
+
+    if obj.CustomTimeZoneInfoData == nil {
+        return errors.New("Property CustomTimeZoneInfoData in SvgSaveOptionsData is required.")
+    }
+
+    if obj.CustomTimeZoneInfoData != nil {
+        if err := obj.CustomTimeZoneInfoData.Validate(); err != nil {
+            return err
+        }
+    }
+
+    if obj.Dml3DEffectsRenderingMode == nil {
+        return errors.New("Property Dml3DEffectsRenderingMode in SvgSaveOptionsData is required.")
+    }
+
+    if obj.DmlEffectsRenderingMode == nil {
+        return errors.New("Property DmlEffectsRenderingMode in SvgSaveOptionsData is required.")
+    }
+
+    if obj.DmlRenderingMode == nil {
+        return errors.New("Property DmlRenderingMode in SvgSaveOptionsData is required.")
+    }
+
+    if obj.FileName == nil {
+        return errors.New("Property FileName in SvgSaveOptionsData is required.")
+    }
+
+    if obj.ImlRenderingMode == nil {
+        return errors.New("Property ImlRenderingMode in SvgSaveOptionsData is required.")
+    }
+
+    if obj.UpdateCreatedTimeProperty == nil {
+        return errors.New("Property UpdateCreatedTimeProperty in SvgSaveOptionsData is required.")
+    }
+
+    if obj.UpdateFields == nil {
+        return errors.New("Property UpdateFields in SvgSaveOptionsData is required.")
+    }
+
+    if obj.UpdateLastPrintedProperty == nil {
+        return errors.New("Property UpdateLastPrintedProperty in SvgSaveOptionsData is required.")
+    }
+
+    if obj.UpdateLastSavedTimeProperty == nil {
+        return errors.New("Property UpdateLastSavedTimeProperty in SvgSaveOptionsData is required.")
+    }
+
+    if obj.ZipOutput == nil {
+        return errors.New("Property ZipOutput in SvgSaveOptionsData is required.")
+    }
+
+    if obj.ColorMode == nil {
+        return errors.New("Property ColorMode in SvgSaveOptionsData is required.")
+    }
+
+    if obj.JpegQuality == nil {
+        return errors.New("Property JpegQuality in SvgSaveOptionsData is required.")
+    }
+
+    if obj.MetafileRenderingOptions == nil {
+        return errors.New("Property MetafileRenderingOptions in SvgSaveOptionsData is required.")
+    }
+
+    if obj.MetafileRenderingOptions != nil {
+        if err := obj.MetafileRenderingOptions.Validate(); err != nil {
+            return err
+        }
+    }
+
+    if obj.NumeralFormat == nil {
+        return errors.New("Property NumeralFormat in SvgSaveOptionsData is required.")
+    }
+
+    if obj.OptimizeOutput == nil {
+        return errors.New("Property OptimizeOutput in SvgSaveOptionsData is required.")
+    }
+
+    if obj.PageCount == nil {
+        return errors.New("Property PageCount in SvgSaveOptionsData is required.")
+    }
+
+    if obj.PageIndex == nil {
+        return errors.New("Property PageIndex in SvgSaveOptionsData is required.")
+    }
+
+    if obj.ExportEmbeddedImages == nil {
+        return errors.New("Property ExportEmbeddedImages in SvgSaveOptionsData is required.")
+    }
+
+    if obj.FitToViewPort == nil {
+        return errors.New("Property FitToViewPort in SvgSaveOptionsData is required.")
+    }
+
+    if obj.ResourcesFolder == nil {
+        return errors.New("Property ResourcesFolder in SvgSaveOptionsData is required.")
+    }
+
+    if obj.ResourcesFolderAlias == nil {
+        return errors.New("Property ResourcesFolderAlias in SvgSaveOptionsData is required.")
+    }
+
+    if obj.ShowPageBorder == nil {
+        return errors.New("Property ShowPageBorder in SvgSaveOptionsData is required.")
+    }
+
+    if obj.TextOutputMode == nil {
+        return errors.New("Property TextOutputMode in SvgSaveOptionsData is required.")
+    }
+
+    if obj.SaveFormat == nil {
+        return errors.New("Property SaveFormat in SvgSaveOptionsData is required.")
+    }
 
     return nil;
 }

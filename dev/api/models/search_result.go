@@ -113,6 +113,26 @@ func (obj *SearchResult) Validate() error {
         return errors.New("Invalid object.")
     }
 
+    if obj.RangeStart == nil {
+        return errors.New("Property RangeStart in SearchResult is required.")
+    }
+
+    if obj.RangeStart != nil {
+        if err := obj.RangeStart.Validate(); err != nil {
+            return err
+        }
+    }
+
+    if obj.RangeEnd == nil {
+        return errors.New("Property RangeEnd in SearchResult is required.")
+    }
+
+    if obj.RangeEnd != nil {
+        if err := obj.RangeEnd.Validate(); err != nil {
+            return err
+        }
+    }
+
     return nil;
 }
 

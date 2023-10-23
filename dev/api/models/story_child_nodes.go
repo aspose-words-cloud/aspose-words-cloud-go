@@ -159,6 +159,20 @@ func (obj *StoryChildNodes) Validate() error {
         return errors.New("Invalid object.")
     }
 
+    if obj.ChildNodes == nil {
+        return errors.New("Property ChildNodes in StoryChildNodes is required.")
+    }
+
+    if obj.ChildNodes != nil {
+        for _, elementChildNodes := range obj.ChildNodes {
+            if elementChildNodes != nil {
+                if err := elementChildNodes.Validate(); err != nil {
+                    return err
+                }
+            }
+        }
+    }
+
     return nil;
 }
 

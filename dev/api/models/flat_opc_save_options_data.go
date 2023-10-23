@@ -362,6 +362,79 @@ func (obj *FlatOpcSaveOptionsData) Validate() error {
     if obj.FileName == nil {
         return errors.New("Property FileName in FlatOpcSaveOptionsData is required.")
     }
+    if obj.AllowEmbeddingPostScriptFonts == nil {
+        return errors.New("Property AllowEmbeddingPostScriptFonts in FlatOpcSaveOptionsData is required.")
+    }
+
+    if obj.CustomTimeZoneInfoData == nil {
+        return errors.New("Property CustomTimeZoneInfoData in FlatOpcSaveOptionsData is required.")
+    }
+
+    if obj.CustomTimeZoneInfoData != nil {
+        if err := obj.CustomTimeZoneInfoData.Validate(); err != nil {
+            return err
+        }
+    }
+
+    if obj.Dml3DEffectsRenderingMode == nil {
+        return errors.New("Property Dml3DEffectsRenderingMode in FlatOpcSaveOptionsData is required.")
+    }
+
+    if obj.DmlEffectsRenderingMode == nil {
+        return errors.New("Property DmlEffectsRenderingMode in FlatOpcSaveOptionsData is required.")
+    }
+
+    if obj.DmlRenderingMode == nil {
+        return errors.New("Property DmlRenderingMode in FlatOpcSaveOptionsData is required.")
+    }
+
+    if obj.FileName == nil {
+        return errors.New("Property FileName in FlatOpcSaveOptionsData is required.")
+    }
+
+    if obj.ImlRenderingMode == nil {
+        return errors.New("Property ImlRenderingMode in FlatOpcSaveOptionsData is required.")
+    }
+
+    if obj.UpdateCreatedTimeProperty == nil {
+        return errors.New("Property UpdateCreatedTimeProperty in FlatOpcSaveOptionsData is required.")
+    }
+
+    if obj.UpdateFields == nil {
+        return errors.New("Property UpdateFields in FlatOpcSaveOptionsData is required.")
+    }
+
+    if obj.UpdateLastPrintedProperty == nil {
+        return errors.New("Property UpdateLastPrintedProperty in FlatOpcSaveOptionsData is required.")
+    }
+
+    if obj.UpdateLastSavedTimeProperty == nil {
+        return errors.New("Property UpdateLastSavedTimeProperty in FlatOpcSaveOptionsData is required.")
+    }
+
+    if obj.ZipOutput == nil {
+        return errors.New("Property ZipOutput in FlatOpcSaveOptionsData is required.")
+    }
+
+    if obj.Compliance == nil {
+        return errors.New("Property Compliance in FlatOpcSaveOptionsData is required.")
+    }
+
+    if obj.CompressionLevel == nil {
+        return errors.New("Property CompressionLevel in FlatOpcSaveOptionsData is required.")
+    }
+
+    if obj.Password == nil {
+        return errors.New("Property Password in FlatOpcSaveOptionsData is required.")
+    }
+
+    if obj.PrettyFormat == nil {
+        return errors.New("Property PrettyFormat in FlatOpcSaveOptionsData is required.")
+    }
+
+    if obj.SaveFormat == nil {
+        return errors.New("Property SaveFormat in FlatOpcSaveOptionsData is required.")
+    }
 
     return nil;
 }

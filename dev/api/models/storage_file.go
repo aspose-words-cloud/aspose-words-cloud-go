@@ -154,6 +154,24 @@ func (obj *StorageFile) Validate() error {
     if obj.IsFolder == nil {
         return errors.New("Property IsFolder in StorageFile is required.")
     }
+    if obj.Size == nil {
+        return errors.New("Property Size in StorageFile is required.")
+    }
+    if obj.IsFolder == nil {
+        return errors.New("Property IsFolder in StorageFile is required.")
+    }
+
+    if obj.ModifiedDate == nil {
+        return errors.New("Property ModifiedDate in StorageFile is required.")
+    }
+
+    if obj.Name == nil {
+        return errors.New("Property Name in StorageFile is required.")
+    }
+
+    if obj.Path == nil {
+        return errors.New("Property Path in StorageFile is required.")
+    }
 
     if obj.Size == nil {
         return errors.New("Property Size in StorageFile is required.")

@@ -152,6 +152,24 @@ func (obj *PageNumber) Validate() error {
     if obj.IsTop == nil {
         return errors.New("Property IsTop in PageNumber is required.")
     }
+    if obj.SetPageNumberOnFirstPage == nil {
+        return errors.New("Property SetPageNumberOnFirstPage in PageNumber is required.")
+    }
+    if obj.Alignment == nil {
+        return errors.New("Property Alignment in PageNumber is required.")
+    }
+
+    if obj.Format == nil {
+        return errors.New("Property Format in PageNumber is required.")
+    }
+
+    if obj.IsTop == nil {
+        return errors.New("Property IsTop in PageNumber is required.")
+    }
+
+    if obj.PageStartingNumber == nil {
+        return errors.New("Property PageStartingNumber in PageNumber is required.")
+    }
 
     if obj.SetPageNumberOnFirstPage == nil {
         return errors.New("Property SetPageNumberOnFirstPage in PageNumber is required.")

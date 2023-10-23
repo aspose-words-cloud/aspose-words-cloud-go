@@ -91,7 +91,6 @@ func (data *UpdateParagraphFormatRequest) CreateRequestData() (RequestData, erro
 
     if (data.ParagraphFormatDto != nil) {
         data.ParagraphFormatDto.Initialize()
-        data.ParagraphFormatDto.Validate();
     } else {
         return result, errors.New("Parameter ParagraphFormatDto is required.")
     }
@@ -123,6 +122,13 @@ func (data *UpdateParagraphFormatRequest) CreateRequestData() (RequestData, erro
     }
     if err := typeCheckParameter(data.Optionals["revisionDateTime"], "string", "data.Optionals[revisionDateTime]"); err != nil {
         return result, err
+    }
+
+
+    if (data.ParagraphFormatDto != nil) {
+        if err := data.ParagraphFormatDto.Validate(); err != nil {
+            return result, err
+        }
     }
 
 

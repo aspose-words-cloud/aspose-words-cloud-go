@@ -811,6 +811,200 @@ func (obj *Font) Validate() error {
         return errors.New("Invalid object.")
     }
 
+    if obj.Link == nil {
+        return errors.New("Property Link in Font is required.")
+    }
+
+    if obj.Link != nil {
+        if err := obj.Link.Validate(); err != nil {
+            return err
+        }
+    }
+
+    if obj.AllCaps == nil {
+        return errors.New("Property AllCaps in Font is required.")
+    }
+
+    if obj.Bidi == nil {
+        return errors.New("Property Bidi in Font is required.")
+    }
+
+    if obj.Bold == nil {
+        return errors.New("Property Bold in Font is required.")
+    }
+
+    if obj.BoldBi == nil {
+        return errors.New("Property BoldBi in Font is required.")
+    }
+
+    if obj.Border == nil {
+        return errors.New("Property Border in Font is required.")
+    }
+
+    if obj.Border != nil {
+        if err := obj.Border.Validate(); err != nil {
+            return err
+        }
+    }
+
+    if obj.Color == nil {
+        return errors.New("Property Color in Font is required.")
+    }
+
+    if obj.Color != nil {
+        if err := obj.Color.Validate(); err != nil {
+            return err
+        }
+    }
+
+    if obj.ComplexScript == nil {
+        return errors.New("Property ComplexScript in Font is required.")
+    }
+
+    if obj.DoubleStrikeThrough == nil {
+        return errors.New("Property DoubleStrikeThrough in Font is required.")
+    }
+
+    if obj.Emboss == nil {
+        return errors.New("Property Emboss in Font is required.")
+    }
+
+    if obj.Engrave == nil {
+        return errors.New("Property Engrave in Font is required.")
+    }
+
+    if obj.Hidden == nil {
+        return errors.New("Property Hidden in Font is required.")
+    }
+
+    if obj.HighlightColor == nil {
+        return errors.New("Property HighlightColor in Font is required.")
+    }
+
+    if obj.HighlightColor != nil {
+        if err := obj.HighlightColor.Validate(); err != nil {
+            return err
+        }
+    }
+
+    if obj.Italic == nil {
+        return errors.New("Property Italic in Font is required.")
+    }
+
+    if obj.ItalicBi == nil {
+        return errors.New("Property ItalicBi in Font is required.")
+    }
+
+    if obj.Kerning == nil {
+        return errors.New("Property Kerning in Font is required.")
+    }
+
+    if obj.LocaleId == nil {
+        return errors.New("Property LocaleId in Font is required.")
+    }
+
+    if obj.LocaleIdBi == nil {
+        return errors.New("Property LocaleIdBi in Font is required.")
+    }
+
+    if obj.LocaleIdFarEast == nil {
+        return errors.New("Property LocaleIdFarEast in Font is required.")
+    }
+
+    if obj.Name == nil {
+        return errors.New("Property Name in Font is required.")
+    }
+
+    if obj.NameAscii == nil {
+        return errors.New("Property NameAscii in Font is required.")
+    }
+
+    if obj.NameBi == nil {
+        return errors.New("Property NameBi in Font is required.")
+    }
+
+    if obj.NameFarEast == nil {
+        return errors.New("Property NameFarEast in Font is required.")
+    }
+
+    if obj.NameOther == nil {
+        return errors.New("Property NameOther in Font is required.")
+    }
+
+    if obj.NoProofing == nil {
+        return errors.New("Property NoProofing in Font is required.")
+    }
+
+    if obj.Outline == nil {
+        return errors.New("Property Outline in Font is required.")
+    }
+
+    if obj.Position == nil {
+        return errors.New("Property Position in Font is required.")
+    }
+
+    if obj.Scaling == nil {
+        return errors.New("Property Scaling in Font is required.")
+    }
+
+    if obj.Shadow == nil {
+        return errors.New("Property Shadow in Font is required.")
+    }
+
+    if obj.Size == nil {
+        return errors.New("Property Size in Font is required.")
+    }
+
+    if obj.SizeBi == nil {
+        return errors.New("Property SizeBi in Font is required.")
+    }
+
+    if obj.SmallCaps == nil {
+        return errors.New("Property SmallCaps in Font is required.")
+    }
+
+    if obj.Spacing == nil {
+        return errors.New("Property Spacing in Font is required.")
+    }
+
+    if obj.StrikeThrough == nil {
+        return errors.New("Property StrikeThrough in Font is required.")
+    }
+
+    if obj.StyleIdentifier == nil {
+        return errors.New("Property StyleIdentifier in Font is required.")
+    }
+
+    if obj.StyleName == nil {
+        return errors.New("Property StyleName in Font is required.")
+    }
+
+    if obj.Subscript == nil {
+        return errors.New("Property Subscript in Font is required.")
+    }
+
+    if obj.Superscript == nil {
+        return errors.New("Property Superscript in Font is required.")
+    }
+
+    if obj.TextEffect == nil {
+        return errors.New("Property TextEffect in Font is required.")
+    }
+
+    if obj.Underline == nil {
+        return errors.New("Property Underline in Font is required.")
+    }
+
+    if obj.UnderlineColor == nil {
+        return errors.New("Property UnderlineColor in Font is required.")
+    }
+
+    if obj.UnderlineColor != nil {
+        if err := obj.UnderlineColor.Validate(); err != nil {
+            return err
+        }
+    }
+
     return nil;
 }
 

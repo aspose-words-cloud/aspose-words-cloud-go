@@ -965,6 +965,219 @@ func (obj *EpubSaveOptionsData) Validate() error {
     if obj.FileName == nil {
         return errors.New("Property FileName in EpubSaveOptionsData is required.")
     }
+    if obj.AllowEmbeddingPostScriptFonts == nil {
+        return errors.New("Property AllowEmbeddingPostScriptFonts in EpubSaveOptionsData is required.")
+    }
+
+    if obj.CustomTimeZoneInfoData == nil {
+        return errors.New("Property CustomTimeZoneInfoData in EpubSaveOptionsData is required.")
+    }
+
+    if obj.CustomTimeZoneInfoData != nil {
+        if err := obj.CustomTimeZoneInfoData.Validate(); err != nil {
+            return err
+        }
+    }
+
+    if obj.Dml3DEffectsRenderingMode == nil {
+        return errors.New("Property Dml3DEffectsRenderingMode in EpubSaveOptionsData is required.")
+    }
+
+    if obj.DmlEffectsRenderingMode == nil {
+        return errors.New("Property DmlEffectsRenderingMode in EpubSaveOptionsData is required.")
+    }
+
+    if obj.DmlRenderingMode == nil {
+        return errors.New("Property DmlRenderingMode in EpubSaveOptionsData is required.")
+    }
+
+    if obj.FileName == nil {
+        return errors.New("Property FileName in EpubSaveOptionsData is required.")
+    }
+
+    if obj.ImlRenderingMode == nil {
+        return errors.New("Property ImlRenderingMode in EpubSaveOptionsData is required.")
+    }
+
+    if obj.UpdateCreatedTimeProperty == nil {
+        return errors.New("Property UpdateCreatedTimeProperty in EpubSaveOptionsData is required.")
+    }
+
+    if obj.UpdateFields == nil {
+        return errors.New("Property UpdateFields in EpubSaveOptionsData is required.")
+    }
+
+    if obj.UpdateLastPrintedProperty == nil {
+        return errors.New("Property UpdateLastPrintedProperty in EpubSaveOptionsData is required.")
+    }
+
+    if obj.UpdateLastSavedTimeProperty == nil {
+        return errors.New("Property UpdateLastSavedTimeProperty in EpubSaveOptionsData is required.")
+    }
+
+    if obj.ZipOutput == nil {
+        return errors.New("Property ZipOutput in EpubSaveOptionsData is required.")
+    }
+
+    if obj.AllowNegativeIndent == nil {
+        return errors.New("Property AllowNegativeIndent in EpubSaveOptionsData is required.")
+    }
+
+    if obj.CssClassNamePrefix == nil {
+        return errors.New("Property CssClassNamePrefix in EpubSaveOptionsData is required.")
+    }
+
+    if obj.CssStyleSheetFileName == nil {
+        return errors.New("Property CssStyleSheetFileName in EpubSaveOptionsData is required.")
+    }
+
+    if obj.CssStyleSheetType == nil {
+        return errors.New("Property CssStyleSheetType in EpubSaveOptionsData is required.")
+    }
+
+    if obj.DocumentSplitCriteria == nil {
+        return errors.New("Property DocumentSplitCriteria in EpubSaveOptionsData is required.")
+    }
+
+    if obj.DocumentSplitHeadingLevel == nil {
+        return errors.New("Property DocumentSplitHeadingLevel in EpubSaveOptionsData is required.")
+    }
+
+    if obj.Encoding == nil {
+        return errors.New("Property Encoding in EpubSaveOptionsData is required.")
+    }
+
+    if obj.ExportDocumentProperties == nil {
+        return errors.New("Property ExportDocumentProperties in EpubSaveOptionsData is required.")
+    }
+
+    if obj.ExportDropDownFormFieldAsText == nil {
+        return errors.New("Property ExportDropDownFormFieldAsText in EpubSaveOptionsData is required.")
+    }
+
+    if obj.ExportFontResources == nil {
+        return errors.New("Property ExportFontResources in EpubSaveOptionsData is required.")
+    }
+
+    if obj.ExportFontsAsBase64 == nil {
+        return errors.New("Property ExportFontsAsBase64 in EpubSaveOptionsData is required.")
+    }
+
+    if obj.ExportHeadersFootersMode == nil {
+        return errors.New("Property ExportHeadersFootersMode in EpubSaveOptionsData is required.")
+    }
+
+    if obj.ExportImagesAsBase64 == nil {
+        return errors.New("Property ExportImagesAsBase64 in EpubSaveOptionsData is required.")
+    }
+
+    if obj.ExportLanguageInformation == nil {
+        return errors.New("Property ExportLanguageInformation in EpubSaveOptionsData is required.")
+    }
+
+    if obj.ExportListLabels == nil {
+        return errors.New("Property ExportListLabels in EpubSaveOptionsData is required.")
+    }
+
+    if obj.ExportOriginalUrlForLinkedImages == nil {
+        return errors.New("Property ExportOriginalUrlForLinkedImages in EpubSaveOptionsData is required.")
+    }
+
+    if obj.ExportPageMargins == nil {
+        return errors.New("Property ExportPageMargins in EpubSaveOptionsData is required.")
+    }
+
+    if obj.ExportPageSetup == nil {
+        return errors.New("Property ExportPageSetup in EpubSaveOptionsData is required.")
+    }
+
+    if obj.ExportRelativeFontSize == nil {
+        return errors.New("Property ExportRelativeFontSize in EpubSaveOptionsData is required.")
+    }
+
+    if obj.ExportRoundtripInformation == nil {
+        return errors.New("Property ExportRoundtripInformation in EpubSaveOptionsData is required.")
+    }
+
+    if obj.ExportTextInputFormFieldAsText == nil {
+        return errors.New("Property ExportTextInputFormFieldAsText in EpubSaveOptionsData is required.")
+    }
+
+    if obj.ExportTocPageNumbers == nil {
+        return errors.New("Property ExportTocPageNumbers in EpubSaveOptionsData is required.")
+    }
+
+    if obj.ExportXhtmlTransitional == nil {
+        return errors.New("Property ExportXhtmlTransitional in EpubSaveOptionsData is required.")
+    }
+
+    if obj.FontResourcesSubsettingSizeThreshold == nil {
+        return errors.New("Property FontResourcesSubsettingSizeThreshold in EpubSaveOptionsData is required.")
+    }
+
+    if obj.FontsFolder == nil {
+        return errors.New("Property FontsFolder in EpubSaveOptionsData is required.")
+    }
+
+    if obj.FontsFolderAlias == nil {
+        return errors.New("Property FontsFolderAlias in EpubSaveOptionsData is required.")
+    }
+
+    if obj.HtmlVersion == nil {
+        return errors.New("Property HtmlVersion in EpubSaveOptionsData is required.")
+    }
+
+    if obj.ImageResolution == nil {
+        return errors.New("Property ImageResolution in EpubSaveOptionsData is required.")
+    }
+
+    if obj.ImagesFolder == nil {
+        return errors.New("Property ImagesFolder in EpubSaveOptionsData is required.")
+    }
+
+    if obj.ImagesFolderAlias == nil {
+        return errors.New("Property ImagesFolderAlias in EpubSaveOptionsData is required.")
+    }
+
+    if obj.MetafileFormat == nil {
+        return errors.New("Property MetafileFormat in EpubSaveOptionsData is required.")
+    }
+
+    if obj.OfficeMathOutputMode == nil {
+        return errors.New("Property OfficeMathOutputMode in EpubSaveOptionsData is required.")
+    }
+
+    if obj.PrettyFormat == nil {
+        return errors.New("Property PrettyFormat in EpubSaveOptionsData is required.")
+    }
+
+    if obj.ResolveFontNames == nil {
+        return errors.New("Property ResolveFontNames in EpubSaveOptionsData is required.")
+    }
+
+    if obj.ResourceFolder == nil {
+        return errors.New("Property ResourceFolder in EpubSaveOptionsData is required.")
+    }
+
+    if obj.ResourceFolderAlias == nil {
+        return errors.New("Property ResourceFolderAlias in EpubSaveOptionsData is required.")
+    }
+
+    if obj.ScaleImageToShapeSize == nil {
+        return errors.New("Property ScaleImageToShapeSize in EpubSaveOptionsData is required.")
+    }
+
+    if obj.TableWidthOutputMode == nil {
+        return errors.New("Property TableWidthOutputMode in EpubSaveOptionsData is required.")
+    }
+
+    if obj.NavigationMapLevel == nil {
+        return errors.New("Property NavigationMapLevel in EpubSaveOptionsData is required.")
+    }
+
+    if obj.SaveFormat == nil {
+        return errors.New("Property SaveFormat in EpubSaveOptionsData is required.")
+    }
 
     return nil;
 }

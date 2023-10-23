@@ -90,6 +90,7 @@ func (data *CopyFileRequest) CreateRequestData() (RequestData, error) {
     }
 
 
+
     result.QueryParams.Add("DestPath", parameterToString(*data.DestPath, ""))
 
 

@@ -79,6 +79,7 @@ func (data *CreateDocumentRequest) CreateRequestData() (RequestData, error) {
     }
 
 
+
     result.QueryParams.Add("FileName", parameterToString(*data.FileName, ""))
 
 

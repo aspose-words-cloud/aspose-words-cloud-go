@@ -112,6 +112,20 @@ func (obj *DrawingObjectLink) Validate() error {
         return errors.New("Invalid object.")
     }
 
+    if obj.Link == nil {
+        return errors.New("Property Link in DrawingObjectLink is required.")
+    }
+
+    if obj.Link != nil {
+        if err := obj.Link.Validate(); err != nil {
+            return err
+        }
+    }
+
+    if obj.NodeId == nil {
+        return errors.New("Property NodeId in DrawingObjectLink is required.")
+    }
+
     return nil;
 }
 

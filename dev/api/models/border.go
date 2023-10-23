@@ -209,6 +209,46 @@ func (obj *Border) Validate() error {
         return errors.New("Invalid object.")
     }
 
+    if obj.Link == nil {
+        return errors.New("Property Link in Border is required.")
+    }
+
+    if obj.Link != nil {
+        if err := obj.Link.Validate(); err != nil {
+            return err
+        }
+    }
+
+    if obj.BorderType == nil {
+        return errors.New("Property BorderType in Border is required.")
+    }
+
+    if obj.Color == nil {
+        return errors.New("Property Color in Border is required.")
+    }
+
+    if obj.Color != nil {
+        if err := obj.Color.Validate(); err != nil {
+            return err
+        }
+    }
+
+    if obj.DistanceFromText == nil {
+        return errors.New("Property DistanceFromText in Border is required.")
+    }
+
+    if obj.LineStyle == nil {
+        return errors.New("Property LineStyle in Border is required.")
+    }
+
+    if obj.LineWidth == nil {
+        return errors.New("Property LineWidth in Border is required.")
+    }
+
+    if obj.Shadow == nil {
+        return errors.New("Property Shadow in Border is required.")
+    }
+
     return nil;
 }
 

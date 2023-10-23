@@ -337,6 +337,78 @@ func (obj *TableProperties) Validate() error {
         return errors.New("Invalid object.")
     }
 
+    if obj.Link == nil {
+        return errors.New("Property Link in TableProperties is required.")
+    }
+
+    if obj.Link != nil {
+        if err := obj.Link.Validate(); err != nil {
+            return err
+        }
+    }
+
+    if obj.Alignment == nil {
+        return errors.New("Property Alignment in TableProperties is required.")
+    }
+
+    if obj.AllowAutoFit == nil {
+        return errors.New("Property AllowAutoFit in TableProperties is required.")
+    }
+
+    if obj.Bidi == nil {
+        return errors.New("Property Bidi in TableProperties is required.")
+    }
+
+    if obj.BottomPadding == nil {
+        return errors.New("Property BottomPadding in TableProperties is required.")
+    }
+
+    if obj.CellSpacing == nil {
+        return errors.New("Property CellSpacing in TableProperties is required.")
+    }
+
+    if obj.LeftIndent == nil {
+        return errors.New("Property LeftIndent in TableProperties is required.")
+    }
+
+    if obj.LeftPadding == nil {
+        return errors.New("Property LeftPadding in TableProperties is required.")
+    }
+
+    if obj.PreferredWidth == nil {
+        return errors.New("Property PreferredWidth in TableProperties is required.")
+    }
+
+    if obj.PreferredWidth != nil {
+        if err := obj.PreferredWidth.Validate(); err != nil {
+            return err
+        }
+    }
+
+    if obj.RightPadding == nil {
+        return errors.New("Property RightPadding in TableProperties is required.")
+    }
+
+    if obj.StyleIdentifier == nil {
+        return errors.New("Property StyleIdentifier in TableProperties is required.")
+    }
+
+    if obj.StyleName == nil {
+        return errors.New("Property StyleName in TableProperties is required.")
+    }
+
+    if obj.StyleOptions == nil {
+        return errors.New("Property StyleOptions in TableProperties is required.")
+    }
+
+    if obj.TextWrapping == nil {
+        return errors.New("Property TextWrapping in TableProperties is required.")
+    }
+
+    if obj.TopPadding == nil {
+        return errors.New("Property TopPadding in TableProperties is required.")
+    }
+
     return nil;
 }
 
