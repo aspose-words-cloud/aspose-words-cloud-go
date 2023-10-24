@@ -40,6 +40,8 @@ type IMetafileRenderingOptionsData interface {
     SetEmulateRasterOperations(value *bool)
     GetEmulateRenderingToSizeOnPage() *bool
     SetEmulateRenderingToSizeOnPage(value *bool)
+    GetEmulateRenderingToSizeOnPageResolution() *int32
+    SetEmulateRenderingToSizeOnPageResolution(value *int32)
     GetRenderingMode() *string
     SetRenderingMode(value *string)
     GetUseEmfEmbeddedToWmf() *bool
@@ -55,6 +57,9 @@ type MetafileRenderingOptionsData struct {
 
     // Container class for options of metafile rendering.
     EmulateRenderingToSizeOnPage *bool `json:"EmulateRenderingToSizeOnPage,omitempty"`
+
+    // Container class for options of metafile rendering.
+    EmulateRenderingToSizeOnPageResolution *int32 `json:"EmulateRenderingToSizeOnPageResolution,omitempty"`
 
     // Container class for options of metafile rendering.
     RenderingMode *string `json:"RenderingMode,omitempty"`
@@ -104,6 +109,20 @@ func (obj *MetafileRenderingOptionsData) Deserialize(json map[string]interface{}
     } else if jsonValue, exists := json["emulateRenderingToSizeOnPage"]; exists {
         if parsedValue, valid := jsonValue.(bool); valid {
             obj.EmulateRenderingToSizeOnPage = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["EmulateRenderingToSizeOnPageResolution"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.EmulateRenderingToSizeOnPageResolution = new(int32)
+            *obj.EmulateRenderingToSizeOnPageResolution = int32(parsedValue)
+        }
+
+    } else if jsonValue, exists := json["emulateRenderingToSizeOnPageResolution"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.EmulateRenderingToSizeOnPageResolution = new(int32)
+            *obj.EmulateRenderingToSizeOnPageResolution = int32(parsedValue)
         }
 
     }
@@ -159,6 +178,14 @@ func (obj *MetafileRenderingOptionsData) GetEmulateRenderingToSizeOnPage() *bool
 
 func (obj *MetafileRenderingOptionsData) SetEmulateRenderingToSizeOnPage(value *bool) {
     obj.EmulateRenderingToSizeOnPage = value
+}
+
+func (obj *MetafileRenderingOptionsData) GetEmulateRenderingToSizeOnPageResolution() *int32 {
+    return obj.EmulateRenderingToSizeOnPageResolution
+}
+
+func (obj *MetafileRenderingOptionsData) SetEmulateRenderingToSizeOnPageResolution(value *int32) {
+    obj.EmulateRenderingToSizeOnPageResolution = value
 }
 
 func (obj *MetafileRenderingOptionsData) GetRenderingMode() *string {
