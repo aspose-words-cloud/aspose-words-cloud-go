@@ -111,14 +111,6 @@ func (obj *TableRowFormatResponse) Validate() error {
         return errors.New("Invalid object.")
     }
 
-    if obj.RequestId == nil {
-        return errors.New("Property RequestId in TableRowFormatResponse is required.")
-    }
-
-    if obj.RowFormat == nil {
-        return errors.New("Property RowFormat in TableRowFormatResponse is required.")
-    }
-
     if obj.RowFormat != nil {
         if err := obj.RowFormat.Validate(); err != nil {
             return err

@@ -149,26 +149,6 @@ func (obj *PdfDigitalSignatureDetailsData) Validate() error {
         return errors.New("Invalid object.")
     }
 
-    if obj.CertificateFilename == nil {
-        return errors.New("Property CertificateFilename in PdfDigitalSignatureDetailsData is required.")
-    }
-
-    if obj.HashAlgorithm == nil {
-        return errors.New("Property HashAlgorithm in PdfDigitalSignatureDetailsData is required.")
-    }
-
-    if obj.Location == nil {
-        return errors.New("Property Location in PdfDigitalSignatureDetailsData is required.")
-    }
-
-    if obj.Reason == nil {
-        return errors.New("Property Reason in PdfDigitalSignatureDetailsData is required.")
-    }
-
-    if obj.SignatureDate == nil {
-        return errors.New("Property SignatureDate in PdfDigitalSignatureDetailsData is required.")
-    }
-
     return nil;
 }
 

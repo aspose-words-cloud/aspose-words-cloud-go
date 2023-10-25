@@ -85,10 +85,6 @@ func (obj *RunInsert) Validate() error {
     if obj.Text == nil {
         return errors.New("Property Text in RunInsert is required.")
     }
-    if obj.Text == nil {
-        return errors.New("Property Text in RunInsert is required.")
-    }
-
     return nil;
 }
 

@@ -79,10 +79,6 @@ func (obj *ProtectionData) Validate() error {
         return errors.New("Invalid object.")
     }
 
-    if obj.ProtectionType == nil {
-        return errors.New("Property ProtectionType in ProtectionData is required.")
-    }
-
     return nil;
 }
 

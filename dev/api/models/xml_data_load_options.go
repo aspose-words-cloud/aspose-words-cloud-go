@@ -86,10 +86,6 @@ func (obj *XmlDataLoadOptions) Validate() error {
     if obj.AlwaysGenerateRootObject == nil {
         return errors.New("Property AlwaysGenerateRootObject in XmlDataLoadOptions is required.")
     }
-    if obj.AlwaysGenerateRootObject == nil {
-        return errors.New("Property AlwaysGenerateRootObject in XmlDataLoadOptions is required.")
-    }
-
     return nil;
 }
 

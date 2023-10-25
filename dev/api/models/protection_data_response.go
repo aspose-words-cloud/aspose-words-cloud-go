@@ -133,24 +133,11 @@ func (obj *ProtectionDataResponse) Validate() error {
         return errors.New("Invalid object.")
     }
 
-    if obj.RequestId == nil {
-        return errors.New("Property RequestId in ProtectionDataResponse is required.")
-    }
-
-    if obj.DocumentLink == nil {
-        return errors.New("Property DocumentLink in ProtectionDataResponse is required.")
-    }
-
     if obj.DocumentLink != nil {
         if err := obj.DocumentLink.Validate(); err != nil {
             return err
         }
     }
-
-    if obj.ProtectionData == nil {
-        return errors.New("Property ProtectionData in ProtectionDataResponse is required.")
-    }
-
     if obj.ProtectionData != nil {
         if err := obj.ProtectionData.Validate(); err != nil {
             return err

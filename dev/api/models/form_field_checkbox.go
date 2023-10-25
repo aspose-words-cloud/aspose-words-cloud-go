@@ -326,66 +326,10 @@ func (obj *FormFieldCheckbox) Validate() error {
     if obj.Checked == nil {
         return errors.New("Property Checked in FormFieldCheckbox is required.")
     }
-    if obj.Link == nil {
-        return errors.New("Property Link in FormFieldCheckbox is required.")
-    }
-
     if obj.Link != nil {
         if err := obj.Link.Validate(); err != nil {
             return err
         }
-    }
-
-    if obj.NodeId == nil {
-        return errors.New("Property NodeId in FormFieldCheckbox is required.")
-    }
-
-    if obj.Name == nil {
-        return errors.New("Property Name in FormFieldCheckbox is required.")
-    }
-
-    if obj.Enabled == nil {
-        return errors.New("Property Enabled in FormFieldCheckbox is required.")
-    }
-
-    if obj.StatusText == nil {
-        return errors.New("Property StatusText in FormFieldCheckbox is required.")
-    }
-
-    if obj.OwnStatus == nil {
-        return errors.New("Property OwnStatus in FormFieldCheckbox is required.")
-    }
-
-    if obj.HelpText == nil {
-        return errors.New("Property HelpText in FormFieldCheckbox is required.")
-    }
-
-    if obj.OwnHelp == nil {
-        return errors.New("Property OwnHelp in FormFieldCheckbox is required.")
-    }
-
-    if obj.CalculateOnExit == nil {
-        return errors.New("Property CalculateOnExit in FormFieldCheckbox is required.")
-    }
-
-    if obj.EntryMacro == nil {
-        return errors.New("Property EntryMacro in FormFieldCheckbox is required.")
-    }
-
-    if obj.ExitMacro == nil {
-        return errors.New("Property ExitMacro in FormFieldCheckbox is required.")
-    }
-
-    if obj.IsCheckBoxExactSize == nil {
-        return errors.New("Property IsCheckBoxExactSize in FormFieldCheckbox is required.")
-    }
-
-    if obj.CheckBoxSize == nil {
-        return errors.New("Property CheckBoxSize in FormFieldCheckbox is required.")
-    }
-
-    if obj.Checked == nil {
-        return errors.New("Property Checked in FormFieldCheckbox is required.")
     }
 
     return nil;

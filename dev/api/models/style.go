@@ -313,64 +313,15 @@ func (obj *Style) Validate() error {
     if obj.StyleIdentifier == nil {
         return errors.New("Property StyleIdentifier in Style is required.")
     }
-    if obj.Link == nil {
-        return errors.New("Property Link in Style is required.")
-    }
-
     if obj.Link != nil {
         if err := obj.Link.Validate(); err != nil {
             return err
         }
     }
-
-    if obj.Font == nil {
-        return errors.New("Property Font in Style is required.")
-    }
-
     if obj.Font != nil {
         if err := obj.Font.Validate(); err != nil {
             return err
         }
-    }
-
-    if obj.BuiltIn == nil {
-        return errors.New("Property BuiltIn in Style is required.")
-    }
-
-    if obj.NextParagraphStyleName == nil {
-        return errors.New("Property NextParagraphStyleName in Style is required.")
-    }
-
-    if obj.BaseStyleName == nil {
-        return errors.New("Property BaseStyleName in Style is required.")
-    }
-
-    if obj.IsQuickStyle == nil {
-        return errors.New("Property IsQuickStyle in Style is required.")
-    }
-
-    if obj.LinkedStyleName == nil {
-        return errors.New("Property LinkedStyleName in Style is required.")
-    }
-
-    if obj.Type == nil {
-        return errors.New("Property Type in Style is required.")
-    }
-
-    if obj.IsHeading == nil {
-        return errors.New("Property IsHeading in Style is required.")
-    }
-
-    if obj.Aliases == nil {
-        return errors.New("Property Aliases in Style is required.")
-    }
-
-    if obj.StyleIdentifier == nil {
-        return errors.New("Property StyleIdentifier in Style is required.")
-    }
-
-    if obj.Name == nil {
-        return errors.New("Property Name in Style is required.")
     }
 
     return nil;

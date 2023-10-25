@@ -228,42 +228,10 @@ func (obj *DrawingObjectInsert) Validate() error {
     if obj.WrapType == nil {
         return errors.New("Property WrapType in DrawingObjectInsert is required.")
     }
-    if obj.Position == nil {
-        return errors.New("Property Position in DrawingObjectInsert is required.")
-    }
-
     if obj.Position != nil {
         if err := obj.Position.Validate(); err != nil {
             return err
         }
-    }
-
-    if obj.RelativeHorizontalPosition == nil {
-        return errors.New("Property RelativeHorizontalPosition in DrawingObjectInsert is required.")
-    }
-
-    if obj.Left == nil {
-        return errors.New("Property Left in DrawingObjectInsert is required.")
-    }
-
-    if obj.RelativeVerticalPosition == nil {
-        return errors.New("Property RelativeVerticalPosition in DrawingObjectInsert is required.")
-    }
-
-    if obj.Top == nil {
-        return errors.New("Property Top in DrawingObjectInsert is required.")
-    }
-
-    if obj.Width == nil {
-        return errors.New("Property Width in DrawingObjectInsert is required.")
-    }
-
-    if obj.Height == nil {
-        return errors.New("Property Height in DrawingObjectInsert is required.")
-    }
-
-    if obj.WrapType == nil {
-        return errors.New("Property WrapType in DrawingObjectInsert is required.")
     }
 
     return nil;

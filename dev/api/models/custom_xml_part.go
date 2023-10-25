@@ -132,22 +132,10 @@ func (obj *CustomXmlPart) Validate() error {
     if obj.Data == nil {
         return errors.New("Property Data in CustomXmlPart is required.")
     }
-    if obj.Link == nil {
-        return errors.New("Property Link in CustomXmlPart is required.")
-    }
-
     if obj.Link != nil {
         if err := obj.Link.Validate(); err != nil {
             return err
         }
-    }
-
-    if obj.Id == nil {
-        return errors.New("Property Id in CustomXmlPart is required.")
-    }
-
-    if obj.Data == nil {
-        return errors.New("Property Data in CustomXmlPart is required.")
     }
 
     return nil;

@@ -175,24 +175,11 @@ func (obj *Table) Validate() error {
         return errors.New("Invalid object.")
     }
 
-    if obj.Link == nil {
-        return errors.New("Property Link in Table is required.")
-    }
-
     if obj.Link != nil {
         if err := obj.Link.Validate(); err != nil {
             return err
         }
     }
-
-    if obj.NodeId == nil {
-        return errors.New("Property NodeId in Table is required.")
-    }
-
-    if obj.TableRowList == nil {
-        return errors.New("Property TableRowList in Table is required.")
-    }
-
     if obj.TableRowList != nil {
         for _, elementTableRowList := range obj.TableRowList {
             if elementTableRowList != nil {
@@ -202,11 +189,6 @@ func (obj *Table) Validate() error {
             }
         }
     }
-
-    if obj.TableProperties == nil {
-        return errors.New("Property TableProperties in Table is required.")
-    }
-
     if obj.TableProperties != nil {
         if err := obj.TableProperties.Validate(); err != nil {
             return err

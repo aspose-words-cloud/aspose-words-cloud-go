@@ -435,94 +435,10 @@ func (obj *TextSaveOptionsData) Validate() error {
     if obj.MaxCharactersPerLine == nil {
         return errors.New("Property MaxCharactersPerLine in TextSaveOptionsData is required.")
     }
-    if obj.AllowEmbeddingPostScriptFonts == nil {
-        return errors.New("Property AllowEmbeddingPostScriptFonts in TextSaveOptionsData is required.")
-    }
-
-    if obj.CustomTimeZoneInfoData == nil {
-        return errors.New("Property CustomTimeZoneInfoData in TextSaveOptionsData is required.")
-    }
-
     if obj.CustomTimeZoneInfoData != nil {
         if err := obj.CustomTimeZoneInfoData.Validate(); err != nil {
             return err
         }
-    }
-
-    if obj.Dml3DEffectsRenderingMode == nil {
-        return errors.New("Property Dml3DEffectsRenderingMode in TextSaveOptionsData is required.")
-    }
-
-    if obj.DmlEffectsRenderingMode == nil {
-        return errors.New("Property DmlEffectsRenderingMode in TextSaveOptionsData is required.")
-    }
-
-    if obj.DmlRenderingMode == nil {
-        return errors.New("Property DmlRenderingMode in TextSaveOptionsData is required.")
-    }
-
-    if obj.FileName == nil {
-        return errors.New("Property FileName in TextSaveOptionsData is required.")
-    }
-
-    if obj.ImlRenderingMode == nil {
-        return errors.New("Property ImlRenderingMode in TextSaveOptionsData is required.")
-    }
-
-    if obj.UpdateCreatedTimeProperty == nil {
-        return errors.New("Property UpdateCreatedTimeProperty in TextSaveOptionsData is required.")
-    }
-
-    if obj.UpdateFields == nil {
-        return errors.New("Property UpdateFields in TextSaveOptionsData is required.")
-    }
-
-    if obj.UpdateLastPrintedProperty == nil {
-        return errors.New("Property UpdateLastPrintedProperty in TextSaveOptionsData is required.")
-    }
-
-    if obj.UpdateLastSavedTimeProperty == nil {
-        return errors.New("Property UpdateLastSavedTimeProperty in TextSaveOptionsData is required.")
-    }
-
-    if obj.ZipOutput == nil {
-        return errors.New("Property ZipOutput in TextSaveOptionsData is required.")
-    }
-
-    if obj.Encoding == nil {
-        return errors.New("Property Encoding in TextSaveOptionsData is required.")
-    }
-
-    if obj.ExportHeadersFootersMode == nil {
-        return errors.New("Property ExportHeadersFootersMode in TextSaveOptionsData is required.")
-    }
-
-    if obj.ForcePageBreaks == nil {
-        return errors.New("Property ForcePageBreaks in TextSaveOptionsData is required.")
-    }
-
-    if obj.ParagraphBreak == nil {
-        return errors.New("Property ParagraphBreak in TextSaveOptionsData is required.")
-    }
-
-    if obj.AddBidiMarks == nil {
-        return errors.New("Property AddBidiMarks in TextSaveOptionsData is required.")
-    }
-
-    if obj.MaxCharactersPerLine == nil {
-        return errors.New("Property MaxCharactersPerLine in TextSaveOptionsData is required.")
-    }
-
-    if obj.PreserveTableLayout == nil {
-        return errors.New("Property PreserveTableLayout in TextSaveOptionsData is required.")
-    }
-
-    if obj.SimplifyListLabels == nil {
-        return errors.New("Property SimplifyListLabels in TextSaveOptionsData is required.")
-    }
-
-    if obj.SaveFormat == nil {
-        return errors.New("Property SaveFormat in TextSaveOptionsData is required.")
     }
 
     return nil;

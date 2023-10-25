@@ -130,22 +130,6 @@ func (obj *TimeZoneInfoData) Validate() error {
         return errors.New("Invalid object.")
     }
 
-    if obj.BaseUtcOffset == nil {
-        return errors.New("Property BaseUtcOffset in TimeZoneInfoData is required.")
-    }
-
-    if obj.DisplayName == nil {
-        return errors.New("Property DisplayName in TimeZoneInfoData is required.")
-    }
-
-    if obj.Id == nil {
-        return errors.New("Property Id in TimeZoneInfoData is required.")
-    }
-
-    if obj.StandardDisplayName == nil {
-        return errors.New("Property StandardDisplayName in TimeZoneInfoData is required.")
-    }
-
     return nil;
 }
 

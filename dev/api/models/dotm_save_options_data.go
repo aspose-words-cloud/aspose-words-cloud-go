@@ -362,78 +362,10 @@ func (obj *DotmSaveOptionsData) Validate() error {
     if obj.FileName == nil {
         return errors.New("Property FileName in DotmSaveOptionsData is required.")
     }
-    if obj.AllowEmbeddingPostScriptFonts == nil {
-        return errors.New("Property AllowEmbeddingPostScriptFonts in DotmSaveOptionsData is required.")
-    }
-
-    if obj.CustomTimeZoneInfoData == nil {
-        return errors.New("Property CustomTimeZoneInfoData in DotmSaveOptionsData is required.")
-    }
-
     if obj.CustomTimeZoneInfoData != nil {
         if err := obj.CustomTimeZoneInfoData.Validate(); err != nil {
             return err
         }
-    }
-
-    if obj.Dml3DEffectsRenderingMode == nil {
-        return errors.New("Property Dml3DEffectsRenderingMode in DotmSaveOptionsData is required.")
-    }
-
-    if obj.DmlEffectsRenderingMode == nil {
-        return errors.New("Property DmlEffectsRenderingMode in DotmSaveOptionsData is required.")
-    }
-
-    if obj.DmlRenderingMode == nil {
-        return errors.New("Property DmlRenderingMode in DotmSaveOptionsData is required.")
-    }
-
-    if obj.FileName == nil {
-        return errors.New("Property FileName in DotmSaveOptionsData is required.")
-    }
-
-    if obj.ImlRenderingMode == nil {
-        return errors.New("Property ImlRenderingMode in DotmSaveOptionsData is required.")
-    }
-
-    if obj.UpdateCreatedTimeProperty == nil {
-        return errors.New("Property UpdateCreatedTimeProperty in DotmSaveOptionsData is required.")
-    }
-
-    if obj.UpdateFields == nil {
-        return errors.New("Property UpdateFields in DotmSaveOptionsData is required.")
-    }
-
-    if obj.UpdateLastPrintedProperty == nil {
-        return errors.New("Property UpdateLastPrintedProperty in DotmSaveOptionsData is required.")
-    }
-
-    if obj.UpdateLastSavedTimeProperty == nil {
-        return errors.New("Property UpdateLastSavedTimeProperty in DotmSaveOptionsData is required.")
-    }
-
-    if obj.ZipOutput == nil {
-        return errors.New("Property ZipOutput in DotmSaveOptionsData is required.")
-    }
-
-    if obj.Compliance == nil {
-        return errors.New("Property Compliance in DotmSaveOptionsData is required.")
-    }
-
-    if obj.CompressionLevel == nil {
-        return errors.New("Property CompressionLevel in DotmSaveOptionsData is required.")
-    }
-
-    if obj.Password == nil {
-        return errors.New("Property Password in DotmSaveOptionsData is required.")
-    }
-
-    if obj.PrettyFormat == nil {
-        return errors.New("Property PrettyFormat in DotmSaveOptionsData is required.")
-    }
-
-    if obj.SaveFormat == nil {
-        return errors.New("Property SaveFormat in DotmSaveOptionsData is required.")
     }
 
     return nil;

@@ -100,14 +100,6 @@ func (obj *CompressOptions) Validate() error {
         return errors.New("Invalid object.")
     }
 
-    if obj.ImagesQuality == nil {
-        return errors.New("Property ImagesQuality in CompressOptions is required.")
-    }
-
-    if obj.ImagesReduceSizeFactor == nil {
-        return errors.New("Property ImagesReduceSizeFactor in CompressOptions is required.")
-    }
-
     return nil;
 }
 

@@ -673,152 +673,15 @@ func (obj *EpsSaveOptionsData) Validate() error {
     if obj.FileName == nil {
         return errors.New("Property FileName in EpsSaveOptionsData is required.")
     }
-    if obj.AllowEmbeddingPostScriptFonts == nil {
-        return errors.New("Property AllowEmbeddingPostScriptFonts in EpsSaveOptionsData is required.")
-    }
-
-    if obj.CustomTimeZoneInfoData == nil {
-        return errors.New("Property CustomTimeZoneInfoData in EpsSaveOptionsData is required.")
-    }
-
     if obj.CustomTimeZoneInfoData != nil {
         if err := obj.CustomTimeZoneInfoData.Validate(); err != nil {
             return err
         }
     }
-
-    if obj.Dml3DEffectsRenderingMode == nil {
-        return errors.New("Property Dml3DEffectsRenderingMode in EpsSaveOptionsData is required.")
-    }
-
-    if obj.DmlEffectsRenderingMode == nil {
-        return errors.New("Property DmlEffectsRenderingMode in EpsSaveOptionsData is required.")
-    }
-
-    if obj.DmlRenderingMode == nil {
-        return errors.New("Property DmlRenderingMode in EpsSaveOptionsData is required.")
-    }
-
-    if obj.FileName == nil {
-        return errors.New("Property FileName in EpsSaveOptionsData is required.")
-    }
-
-    if obj.ImlRenderingMode == nil {
-        return errors.New("Property ImlRenderingMode in EpsSaveOptionsData is required.")
-    }
-
-    if obj.UpdateCreatedTimeProperty == nil {
-        return errors.New("Property UpdateCreatedTimeProperty in EpsSaveOptionsData is required.")
-    }
-
-    if obj.UpdateFields == nil {
-        return errors.New("Property UpdateFields in EpsSaveOptionsData is required.")
-    }
-
-    if obj.UpdateLastPrintedProperty == nil {
-        return errors.New("Property UpdateLastPrintedProperty in EpsSaveOptionsData is required.")
-    }
-
-    if obj.UpdateLastSavedTimeProperty == nil {
-        return errors.New("Property UpdateLastSavedTimeProperty in EpsSaveOptionsData is required.")
-    }
-
-    if obj.ZipOutput == nil {
-        return errors.New("Property ZipOutput in EpsSaveOptionsData is required.")
-    }
-
-    if obj.ColorMode == nil {
-        return errors.New("Property ColorMode in EpsSaveOptionsData is required.")
-    }
-
-    if obj.JpegQuality == nil {
-        return errors.New("Property JpegQuality in EpsSaveOptionsData is required.")
-    }
-
-    if obj.MetafileRenderingOptions == nil {
-        return errors.New("Property MetafileRenderingOptions in EpsSaveOptionsData is required.")
-    }
-
     if obj.MetafileRenderingOptions != nil {
         if err := obj.MetafileRenderingOptions.Validate(); err != nil {
             return err
         }
-    }
-
-    if obj.NumeralFormat == nil {
-        return errors.New("Property NumeralFormat in EpsSaveOptionsData is required.")
-    }
-
-    if obj.OptimizeOutput == nil {
-        return errors.New("Property OptimizeOutput in EpsSaveOptionsData is required.")
-    }
-
-    if obj.PageCount == nil {
-        return errors.New("Property PageCount in EpsSaveOptionsData is required.")
-    }
-
-    if obj.PageIndex == nil {
-        return errors.New("Property PageIndex in EpsSaveOptionsData is required.")
-    }
-
-    if obj.HorizontalResolution == nil {
-        return errors.New("Property HorizontalResolution in EpsSaveOptionsData is required.")
-    }
-
-    if obj.ImageBrightness == nil {
-        return errors.New("Property ImageBrightness in EpsSaveOptionsData is required.")
-    }
-
-    if obj.ImageColorMode == nil {
-        return errors.New("Property ImageColorMode in EpsSaveOptionsData is required.")
-    }
-
-    if obj.ImageContrast == nil {
-        return errors.New("Property ImageContrast in EpsSaveOptionsData is required.")
-    }
-
-    if obj.PaperColor == nil {
-        return errors.New("Property PaperColor in EpsSaveOptionsData is required.")
-    }
-
-    if obj.PixelFormat == nil {
-        return errors.New("Property PixelFormat in EpsSaveOptionsData is required.")
-    }
-
-    if obj.Resolution == nil {
-        return errors.New("Property Resolution in EpsSaveOptionsData is required.")
-    }
-
-    if obj.Scale == nil {
-        return errors.New("Property Scale in EpsSaveOptionsData is required.")
-    }
-
-    if obj.UseAntiAliasing == nil {
-        return errors.New("Property UseAntiAliasing in EpsSaveOptionsData is required.")
-    }
-
-    if obj.UseHighQualityRendering == nil {
-        return errors.New("Property UseHighQualityRendering in EpsSaveOptionsData is required.")
-    }
-
-    if obj.VerticalResolution == nil {
-        return errors.New("Property VerticalResolution in EpsSaveOptionsData is required.")
-    }
-
-    if obj.ImageHeight == nil {
-        return errors.New("Property ImageHeight in EpsSaveOptionsData is required.")
-    }
-
-    if obj.ImageWidth == nil {
-        return errors.New("Property ImageWidth in EpsSaveOptionsData is required.")
-    }
-
-    if obj.UseGdiEmfRenderer == nil {
-        return errors.New("Property UseGdiEmfRenderer in EpsSaveOptionsData is required.")
-    }
-
-    if obj.SaveFormat == nil {
-        return errors.New("Property SaveFormat in EpsSaveOptionsData is required.")
     }
 
     return nil;

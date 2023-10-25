@@ -133,22 +133,6 @@ func (obj *WordsApiLink) Validate() error {
         return errors.New("Invalid object.")
     }
 
-    if obj.Href == nil {
-        return errors.New("Property Href in WordsApiLink is required.")
-    }
-
-    if obj.Rel == nil {
-        return errors.New("Property Rel in WordsApiLink is required.")
-    }
-
-    if obj.Title == nil {
-        return errors.New("Property Title in WordsApiLink is required.")
-    }
-
-    if obj.Type == nil {
-        return errors.New("Property Type in WordsApiLink is required.")
-    }
-
     return nil;
 }
 

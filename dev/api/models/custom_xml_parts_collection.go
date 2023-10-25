@@ -143,20 +143,11 @@ func (obj *CustomXmlPartsCollection) Validate() error {
         return errors.New("Invalid object.")
     }
 
-    if obj.Link == nil {
-        return errors.New("Property Link in CustomXmlPartsCollection is required.")
-    }
-
     if obj.Link != nil {
         if err := obj.Link.Validate(); err != nil {
             return err
         }
     }
-
-    if obj.CustomXmlPartsList == nil {
-        return errors.New("Property CustomXmlPartsList in CustomXmlPartsCollection is required.")
-    }
-
     if obj.CustomXmlPartsList != nil {
         for _, elementCustomXmlPartsList := range obj.CustomXmlPartsList {
             if elementCustomXmlPartsList != nil {

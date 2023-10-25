@@ -111,14 +111,6 @@ func (obj *HeaderFooterResponse) Validate() error {
         return errors.New("Invalid object.")
     }
 
-    if obj.RequestId == nil {
-        return errors.New("Property RequestId in HeaderFooterResponse is required.")
-    }
-
-    if obj.HeaderFooter == nil {
-        return errors.New("Property HeaderFooter in HeaderFooterResponse is required.")
-    }
-
     if obj.HeaderFooter != nil {
         if err := obj.HeaderFooter.Validate(); err != nil {
             return err

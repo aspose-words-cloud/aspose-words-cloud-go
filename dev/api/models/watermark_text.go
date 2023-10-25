@@ -102,14 +102,6 @@ func (obj *WatermarkText) Validate() error {
     if obj.Text == nil {
         return errors.New("Property Text in WatermarkText is required.")
     }
-    if obj.RotationAngle == nil {
-        return errors.New("Property RotationAngle in WatermarkText is required.")
-    }
-
-    if obj.Text == nil {
-        return errors.New("Property Text in WatermarkText is required.")
-    }
-
     return nil;
 }
 

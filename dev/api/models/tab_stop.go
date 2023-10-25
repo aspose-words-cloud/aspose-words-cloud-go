@@ -145,22 +145,6 @@ func (obj *TabStop) Validate() error {
     if obj.IsClear == nil {
         return errors.New("Property IsClear in TabStop is required.")
     }
-    if obj.Alignment == nil {
-        return errors.New("Property Alignment in TabStop is required.")
-    }
-
-    if obj.Leader == nil {
-        return errors.New("Property Leader in TabStop is required.")
-    }
-
-    if obj.Position == nil {
-        return errors.New("Property Position in TabStop is required.")
-    }
-
-    if obj.IsClear == nil {
-        return errors.New("Property IsClear in TabStop is required.")
-    }
-
     return nil;
 }
 

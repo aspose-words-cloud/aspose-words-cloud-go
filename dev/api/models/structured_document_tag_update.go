@@ -539,24 +539,11 @@ func (obj *StructuredDocumentTagUpdate) Validate() error {
         return errors.New("Invalid object.")
     }
 
-    if obj.Link == nil {
-        return errors.New("Property Link in StructuredDocumentTagUpdate is required.")
-    }
-
     if obj.Link != nil {
         if err := obj.Link.Validate(); err != nil {
             return err
         }
     }
-
-    if obj.NodeId == nil {
-        return errors.New("Property NodeId in StructuredDocumentTagUpdate is required.")
-    }
-
-    if obj.ListItems == nil {
-        return errors.New("Property ListItems in StructuredDocumentTagUpdate is required.")
-    }
-
     if obj.ListItems != nil {
         for _, elementListItems := range obj.ListItems {
             if elementListItems != nil {
@@ -565,98 +552,6 @@ func (obj *StructuredDocumentTagUpdate) Validate() error {
                 }
             }
         }
-    }
-
-    if obj.Checked == nil {
-        return errors.New("Property Checked in StructuredDocumentTagUpdate is required.")
-    }
-
-    if obj.Appearance == nil {
-        return errors.New("Property Appearance in StructuredDocumentTagUpdate is required.")
-    }
-
-    if obj.DateDisplayLocale == nil {
-        return errors.New("Property DateDisplayLocale in StructuredDocumentTagUpdate is required.")
-    }
-
-    if obj.DateDisplayFormat == nil {
-        return errors.New("Property DateDisplayFormat in StructuredDocumentTagUpdate is required.")
-    }
-
-    if obj.FullDate == nil {
-        return errors.New("Property FullDate in StructuredDocumentTagUpdate is required.")
-    }
-
-    if obj.Title == nil {
-        return errors.New("Property Title in StructuredDocumentTagUpdate is required.")
-    }
-
-    if obj.DateStorageFormat == nil {
-        return errors.New("Property DateStorageFormat in StructuredDocumentTagUpdate is required.")
-    }
-
-    if obj.BuildingBlockGallery == nil {
-        return errors.New("Property BuildingBlockGallery in StructuredDocumentTagUpdate is required.")
-    }
-
-    if obj.BuildingBlockCategory == nil {
-        return errors.New("Property BuildingBlockCategory in StructuredDocumentTagUpdate is required.")
-    }
-
-    if obj.Multiline == nil {
-        return errors.New("Property Multiline in StructuredDocumentTagUpdate is required.")
-    }
-
-    if obj.Color == nil {
-        return errors.New("Property Color in StructuredDocumentTagUpdate is required.")
-    }
-
-    if obj.StyleName == nil {
-        return errors.New("Property StyleName in StructuredDocumentTagUpdate is required.")
-    }
-
-    if obj.CalendarType == nil {
-        return errors.New("Property CalendarType in StructuredDocumentTagUpdate is required.")
-    }
-
-    if obj.IsTemporary == nil {
-        return errors.New("Property IsTemporary in StructuredDocumentTagUpdate is required.")
-    }
-
-    if obj.Level == nil {
-        return errors.New("Property Level in StructuredDocumentTagUpdate is required.")
-    }
-
-    if obj.SdtType == nil {
-        return errors.New("Property SdtType in StructuredDocumentTagUpdate is required.")
-    }
-
-    if obj.PlaceholderName == nil {
-        return errors.New("Property PlaceholderName in StructuredDocumentTagUpdate is required.")
-    }
-
-    if obj.LockContentControl == nil {
-        return errors.New("Property LockContentControl in StructuredDocumentTagUpdate is required.")
-    }
-
-    if obj.LockContents == nil {
-        return errors.New("Property LockContents in StructuredDocumentTagUpdate is required.")
-    }
-
-    if obj.IsShowingPlaceholderText == nil {
-        return errors.New("Property IsShowingPlaceholderText in StructuredDocumentTagUpdate is required.")
-    }
-
-    if obj.Tag == nil {
-        return errors.New("Property Tag in StructuredDocumentTagUpdate is required.")
-    }
-
-    if obj.Id == nil {
-        return errors.New("Property Id in StructuredDocumentTagUpdate is required.")
-    }
-
-    if obj.WordOpenXML == nil {
-        return errors.New("Property WordOpenXML in StructuredDocumentTagUpdate is required.")
     }
 
     return nil;

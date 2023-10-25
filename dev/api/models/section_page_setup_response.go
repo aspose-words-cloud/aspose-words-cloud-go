@@ -111,14 +111,6 @@ func (obj *SectionPageSetupResponse) Validate() error {
         return errors.New("Invalid object.")
     }
 
-    if obj.RequestId == nil {
-        return errors.New("Property RequestId in SectionPageSetupResponse is required.")
-    }
-
-    if obj.PageSetup == nil {
-        return errors.New("Property PageSetup in SectionPageSetupResponse is required.")
-    }
-
     if obj.PageSetup != nil {
         if err := obj.PageSetup.Validate(); err != nil {
             return err

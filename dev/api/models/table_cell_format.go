@@ -303,68 +303,15 @@ func (obj *TableCellFormat) Validate() error {
         return errors.New("Invalid object.")
     }
 
-    if obj.Link == nil {
-        return errors.New("Property Link in TableCellFormat is required.")
-    }
-
     if obj.Link != nil {
         if err := obj.Link.Validate(); err != nil {
             return err
         }
     }
-
-    if obj.BottomPadding == nil {
-        return errors.New("Property BottomPadding in TableCellFormat is required.")
-    }
-
-    if obj.FitText == nil {
-        return errors.New("Property FitText in TableCellFormat is required.")
-    }
-
-    if obj.HorizontalMerge == nil {
-        return errors.New("Property HorizontalMerge in TableCellFormat is required.")
-    }
-
-    if obj.LeftPadding == nil {
-        return errors.New("Property LeftPadding in TableCellFormat is required.")
-    }
-
-    if obj.Orientation == nil {
-        return errors.New("Property Orientation in TableCellFormat is required.")
-    }
-
-    if obj.PreferredWidth == nil {
-        return errors.New("Property PreferredWidth in TableCellFormat is required.")
-    }
-
     if obj.PreferredWidth != nil {
         if err := obj.PreferredWidth.Validate(); err != nil {
             return err
         }
-    }
-
-    if obj.RightPadding == nil {
-        return errors.New("Property RightPadding in TableCellFormat is required.")
-    }
-
-    if obj.TopPadding == nil {
-        return errors.New("Property TopPadding in TableCellFormat is required.")
-    }
-
-    if obj.VerticalAlignment == nil {
-        return errors.New("Property VerticalAlignment in TableCellFormat is required.")
-    }
-
-    if obj.VerticalMerge == nil {
-        return errors.New("Property VerticalMerge in TableCellFormat is required.")
-    }
-
-    if obj.Width == nil {
-        return errors.New("Property Width in TableCellFormat is required.")
-    }
-
-    if obj.WrapText == nil {
-        return errors.New("Property WrapText in TableCellFormat is required.")
     }
 
     return nil;

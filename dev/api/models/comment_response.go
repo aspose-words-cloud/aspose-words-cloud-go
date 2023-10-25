@@ -111,14 +111,6 @@ func (obj *CommentResponse) Validate() error {
         return errors.New("Invalid object.")
     }
 
-    if obj.RequestId == nil {
-        return errors.New("Property RequestId in CommentResponse is required.")
-    }
-
-    if obj.Comment == nil {
-        return errors.New("Property Comment in CommentResponse is required.")
-    }
-
     if obj.Comment != nil {
         if err := obj.Comment.Validate(); err != nil {
             return err

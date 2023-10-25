@@ -124,14 +124,6 @@ func (obj *StylesResponse) Validate() error {
         return errors.New("Invalid object.")
     }
 
-    if obj.RequestId == nil {
-        return errors.New("Property RequestId in StylesResponse is required.")
-    }
-
-    if obj.Styles == nil {
-        return errors.New("Property Styles in StylesResponse is required.")
-    }
-
     if obj.Styles != nil {
         for _, elementStyles := range obj.Styles {
             if elementStyles != nil {

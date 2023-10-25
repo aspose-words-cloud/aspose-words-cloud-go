@@ -243,50 +243,16 @@ func (obj *ListInfo) Validate() error {
     if obj.IsListStyleReference == nil {
         return errors.New("Property IsListStyleReference in ListInfo is required.")
     }
-    if obj.Link == nil {
-        return errors.New("Property Link in ListInfo is required.")
-    }
-
     if obj.Link != nil {
         if err := obj.Link.Validate(); err != nil {
             return err
         }
     }
-
-    if obj.ListId == nil {
-        return errors.New("Property ListId in ListInfo is required.")
-    }
-
-    if obj.IsMultiLevel == nil {
-        return errors.New("Property IsMultiLevel in ListInfo is required.")
-    }
-
-    if obj.IsRestartAtEachSection == nil {
-        return errors.New("Property IsRestartAtEachSection in ListInfo is required.")
-    }
-
-    if obj.IsListStyleDefinition == nil {
-        return errors.New("Property IsListStyleDefinition in ListInfo is required.")
-    }
-
-    if obj.IsListStyleReference == nil {
-        return errors.New("Property IsListStyleReference in ListInfo is required.")
-    }
-
-    if obj.Style == nil {
-        return errors.New("Property Style in ListInfo is required.")
-    }
-
     if obj.Style != nil {
         if err := obj.Style.Validate(); err != nil {
             return err
         }
     }
-
-    if obj.ListLevels == nil {
-        return errors.New("Property ListLevels in ListInfo is required.")
-    }
-
     if obj.ListLevels != nil {
         if err := obj.ListLevels.Validate(); err != nil {
             return err

@@ -111,14 +111,6 @@ func (obj *BookmarksResponse) Validate() error {
         return errors.New("Invalid object.")
     }
 
-    if obj.RequestId == nil {
-        return errors.New("Property RequestId in BookmarksResponse is required.")
-    }
-
-    if obj.Bookmarks == nil {
-        return errors.New("Property Bookmarks in BookmarksResponse is required.")
-    }
-
     if obj.Bookmarks != nil {
         if err := obj.Bookmarks.Validate(); err != nil {
             return err

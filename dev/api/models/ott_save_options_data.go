@@ -362,78 +362,10 @@ func (obj *OttSaveOptionsData) Validate() error {
     if obj.FileName == nil {
         return errors.New("Property FileName in OttSaveOptionsData is required.")
     }
-    if obj.AllowEmbeddingPostScriptFonts == nil {
-        return errors.New("Property AllowEmbeddingPostScriptFonts in OttSaveOptionsData is required.")
-    }
-
-    if obj.CustomTimeZoneInfoData == nil {
-        return errors.New("Property CustomTimeZoneInfoData in OttSaveOptionsData is required.")
-    }
-
     if obj.CustomTimeZoneInfoData != nil {
         if err := obj.CustomTimeZoneInfoData.Validate(); err != nil {
             return err
         }
-    }
-
-    if obj.Dml3DEffectsRenderingMode == nil {
-        return errors.New("Property Dml3DEffectsRenderingMode in OttSaveOptionsData is required.")
-    }
-
-    if obj.DmlEffectsRenderingMode == nil {
-        return errors.New("Property DmlEffectsRenderingMode in OttSaveOptionsData is required.")
-    }
-
-    if obj.DmlRenderingMode == nil {
-        return errors.New("Property DmlRenderingMode in OttSaveOptionsData is required.")
-    }
-
-    if obj.FileName == nil {
-        return errors.New("Property FileName in OttSaveOptionsData is required.")
-    }
-
-    if obj.ImlRenderingMode == nil {
-        return errors.New("Property ImlRenderingMode in OttSaveOptionsData is required.")
-    }
-
-    if obj.UpdateCreatedTimeProperty == nil {
-        return errors.New("Property UpdateCreatedTimeProperty in OttSaveOptionsData is required.")
-    }
-
-    if obj.UpdateFields == nil {
-        return errors.New("Property UpdateFields in OttSaveOptionsData is required.")
-    }
-
-    if obj.UpdateLastPrintedProperty == nil {
-        return errors.New("Property UpdateLastPrintedProperty in OttSaveOptionsData is required.")
-    }
-
-    if obj.UpdateLastSavedTimeProperty == nil {
-        return errors.New("Property UpdateLastSavedTimeProperty in OttSaveOptionsData is required.")
-    }
-
-    if obj.ZipOutput == nil {
-        return errors.New("Property ZipOutput in OttSaveOptionsData is required.")
-    }
-
-    if obj.IsStrictSchema11 == nil {
-        return errors.New("Property IsStrictSchema11 in OttSaveOptionsData is required.")
-    }
-
-    if obj.MeasureUnit == nil {
-        return errors.New("Property MeasureUnit in OttSaveOptionsData is required.")
-    }
-
-    if obj.Password == nil {
-        return errors.New("Property Password in OttSaveOptionsData is required.")
-    }
-
-    if obj.PrettyFormat == nil {
-        return errors.New("Property PrettyFormat in OttSaveOptionsData is required.")
-    }
-
-    if obj.SaveFormat == nil {
-        return errors.New("Property SaveFormat in OttSaveOptionsData is required.")
     }
 
     return nil;

@@ -99,14 +99,6 @@ func (obj *ClassificationResult) Validate() error {
     if obj.ClassProbability == nil {
         return errors.New("Property ClassProbability in ClassificationResult is required.")
     }
-    if obj.ClassName == nil {
-        return errors.New("Property ClassName in ClassificationResult is required.")
-    }
-
-    if obj.ClassProbability == nil {
-        return errors.New("Property ClassProbability in ClassificationResult is required.")
-    }
-
     return nil;
 }
 

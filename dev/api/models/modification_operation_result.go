@@ -113,20 +113,11 @@ func (obj *ModificationOperationResult) Validate() error {
         return errors.New("Invalid object.")
     }
 
-    if obj.Dest == nil {
-        return errors.New("Property Dest in ModificationOperationResult is required.")
-    }
-
     if obj.Dest != nil {
         if err := obj.Dest.Validate(); err != nil {
             return err
         }
     }
-
-    if obj.Source == nil {
-        return errors.New("Property Source in ModificationOperationResult is required.")
-    }
-
     if obj.Source != nil {
         if err := obj.Source.Validate(); err != nil {
             return err

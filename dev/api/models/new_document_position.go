@@ -101,14 +101,6 @@ func (obj *NewDocumentPosition) Validate() error {
     if obj.NodeId == nil {
         return errors.New("Property NodeId in NewDocumentPosition is required.")
     }
-    if obj.NodeId == nil {
-        return errors.New("Property NodeId in NewDocumentPosition is required.")
-    }
-
-    if obj.Offset == nil {
-        return errors.New("Property Offset in NewDocumentPosition is required.")
-    }
-
     return nil;
 }
 

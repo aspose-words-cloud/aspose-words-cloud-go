@@ -108,14 +108,6 @@ func (obj *RevisionsModificationResponse) Validate() error {
         return errors.New("Invalid object.")
     }
 
-    if obj.RequestId == nil {
-        return errors.New("Property RequestId in RevisionsModificationResponse is required.")
-    }
-
-    if obj.Result == nil {
-        return errors.New("Property Result in RevisionsModificationResponse is required.")
-    }
-
     if obj.Result != nil {
         if err := obj.Result.Validate(); err != nil {
             return err

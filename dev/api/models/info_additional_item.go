@@ -96,14 +96,6 @@ func (obj *InfoAdditionalItem) Validate() error {
         return errors.New("Invalid object.")
     }
 
-    if obj.Key == nil {
-        return errors.New("Property Key in InfoAdditionalItem is required.")
-    }
-
-    if obj.Value == nil {
-        return errors.New("Property Value in InfoAdditionalItem is required.")
-    }
-
     return nil;
 }
 

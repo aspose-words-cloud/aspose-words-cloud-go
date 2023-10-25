@@ -164,30 +164,10 @@ func (obj *CompareData) Validate() error {
     if obj.ComparingWithDocument == nil {
         return errors.New("Property ComparingWithDocument in CompareData is required.")
     }
-    if obj.Author == nil {
-        return errors.New("Property Author in CompareData is required.")
-    }
-
-    if obj.CompareOptions == nil {
-        return errors.New("Property CompareOptions in CompareData is required.")
-    }
-
     if obj.CompareOptions != nil {
         if err := obj.CompareOptions.Validate(); err != nil {
             return err
         }
-    }
-
-    if obj.ComparingWithDocument == nil {
-        return errors.New("Property ComparingWithDocument in CompareData is required.")
-    }
-
-    if obj.DateTime == nil {
-        return errors.New("Property DateTime in CompareData is required.")
-    }
-
-    if obj.ResultDocumentFormat == nil {
-        return errors.New("Property ResultDocumentFormat in CompareData is required.")
     }
 
     return nil;

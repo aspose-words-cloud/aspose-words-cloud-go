@@ -130,28 +130,15 @@ func (obj *Shading) Validate() error {
         return errors.New("Invalid object.")
     }
 
-    if obj.BackgroundPatternColor == nil {
-        return errors.New("Property BackgroundPatternColor in Shading is required.")
-    }
-
     if obj.BackgroundPatternColor != nil {
         if err := obj.BackgroundPatternColor.Validate(); err != nil {
             return err
         }
     }
-
-    if obj.ForegroundPatternColor == nil {
-        return errors.New("Property ForegroundPatternColor in Shading is required.")
-    }
-
     if obj.ForegroundPatternColor != nil {
         if err := obj.ForegroundPatternColor.Validate(); err != nil {
             return err
         }
-    }
-
-    if obj.Texture == nil {
-        return errors.New("Property Texture in Shading is required.")
     }
 
     return nil;

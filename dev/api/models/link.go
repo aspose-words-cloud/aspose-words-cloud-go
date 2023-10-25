@@ -135,22 +135,6 @@ func (obj *Link) Validate() error {
         return errors.New("Invalid object.")
     }
 
-    if obj.Href == nil {
-        return errors.New("Property Href in Link is required.")
-    }
-
-    if obj.Rel == nil {
-        return errors.New("Property Rel in Link is required.")
-    }
-
-    if obj.Title == nil {
-        return errors.New("Property Title in Link is required.")
-    }
-
-    if obj.Type == nil {
-        return errors.New("Property Type in Link is required.")
-    }
-
     return nil;
 }
 

@@ -348,70 +348,10 @@ func (obj *FormFieldTextInput) Validate() error {
     if obj.TextInputDefault == nil {
         return errors.New("Property TextInputDefault in FormFieldTextInput is required.")
     }
-    if obj.Link == nil {
-        return errors.New("Property Link in FormFieldTextInput is required.")
-    }
-
     if obj.Link != nil {
         if err := obj.Link.Validate(); err != nil {
             return err
         }
-    }
-
-    if obj.NodeId == nil {
-        return errors.New("Property NodeId in FormFieldTextInput is required.")
-    }
-
-    if obj.Name == nil {
-        return errors.New("Property Name in FormFieldTextInput is required.")
-    }
-
-    if obj.Enabled == nil {
-        return errors.New("Property Enabled in FormFieldTextInput is required.")
-    }
-
-    if obj.StatusText == nil {
-        return errors.New("Property StatusText in FormFieldTextInput is required.")
-    }
-
-    if obj.OwnStatus == nil {
-        return errors.New("Property OwnStatus in FormFieldTextInput is required.")
-    }
-
-    if obj.HelpText == nil {
-        return errors.New("Property HelpText in FormFieldTextInput is required.")
-    }
-
-    if obj.OwnHelp == nil {
-        return errors.New("Property OwnHelp in FormFieldTextInput is required.")
-    }
-
-    if obj.CalculateOnExit == nil {
-        return errors.New("Property CalculateOnExit in FormFieldTextInput is required.")
-    }
-
-    if obj.EntryMacro == nil {
-        return errors.New("Property EntryMacro in FormFieldTextInput is required.")
-    }
-
-    if obj.ExitMacro == nil {
-        return errors.New("Property ExitMacro in FormFieldTextInput is required.")
-    }
-
-    if obj.TextInputFormat == nil {
-        return errors.New("Property TextInputFormat in FormFieldTextInput is required.")
-    }
-
-    if obj.TextInputType == nil {
-        return errors.New("Property TextInputType in FormFieldTextInput is required.")
-    }
-
-    if obj.TextInputDefault == nil {
-        return errors.New("Property TextInputDefault in FormFieldTextInput is required.")
-    }
-
-    if obj.MaxLength == nil {
-        return errors.New("Property MaxLength in FormFieldTextInput is required.")
     }
 
     return nil;

@@ -236,46 +236,6 @@ func (obj *ListLevelUpdate) Validate() error {
         return errors.New("Invalid object.")
     }
 
-    if obj.StartAt == nil {
-        return errors.New("Property StartAt in ListLevelUpdate is required.")
-    }
-
-    if obj.NumberStyle == nil {
-        return errors.New("Property NumberStyle in ListLevelUpdate is required.")
-    }
-
-    if obj.NumberFormat == nil {
-        return errors.New("Property NumberFormat in ListLevelUpdate is required.")
-    }
-
-    if obj.Alignment == nil {
-        return errors.New("Property Alignment in ListLevelUpdate is required.")
-    }
-
-    if obj.IsLegal == nil {
-        return errors.New("Property IsLegal in ListLevelUpdate is required.")
-    }
-
-    if obj.RestartAfterLevel == nil {
-        return errors.New("Property RestartAfterLevel in ListLevelUpdate is required.")
-    }
-
-    if obj.TrailingCharacter == nil {
-        return errors.New("Property TrailingCharacter in ListLevelUpdate is required.")
-    }
-
-    if obj.TabPosition == nil {
-        return errors.New("Property TabPosition in ListLevelUpdate is required.")
-    }
-
-    if obj.NumberPosition == nil {
-        return errors.New("Property NumberPosition in ListLevelUpdate is required.")
-    }
-
-    if obj.TextPosition == nil {
-        return errors.New("Property TextPosition in ListLevelUpdate is required.")
-    }
-
     return nil;
 }
 

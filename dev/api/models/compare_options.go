@@ -232,46 +232,6 @@ func (obj *CompareOptions) Validate() error {
         return errors.New("Invalid object.")
     }
 
-    if obj.AcceptAllRevisionsBeforeComparison == nil {
-        return errors.New("Property AcceptAllRevisionsBeforeComparison in CompareOptions is required.")
-    }
-
-    if obj.IgnoreCaseChanges == nil {
-        return errors.New("Property IgnoreCaseChanges in CompareOptions is required.")
-    }
-
-    if obj.IgnoreComments == nil {
-        return errors.New("Property IgnoreComments in CompareOptions is required.")
-    }
-
-    if obj.IgnoreFields == nil {
-        return errors.New("Property IgnoreFields in CompareOptions is required.")
-    }
-
-    if obj.IgnoreFootnotes == nil {
-        return errors.New("Property IgnoreFootnotes in CompareOptions is required.")
-    }
-
-    if obj.IgnoreFormatting == nil {
-        return errors.New("Property IgnoreFormatting in CompareOptions is required.")
-    }
-
-    if obj.IgnoreHeadersAndFooters == nil {
-        return errors.New("Property IgnoreHeadersAndFooters in CompareOptions is required.")
-    }
-
-    if obj.IgnoreTables == nil {
-        return errors.New("Property IgnoreTables in CompareOptions is required.")
-    }
-
-    if obj.IgnoreTextboxes == nil {
-        return errors.New("Property IgnoreTextboxes in CompareOptions is required.")
-    }
-
-    if obj.Target == nil {
-        return errors.New("Property Target in CompareOptions is required.")
-    }
-
     return nil;
 }
 

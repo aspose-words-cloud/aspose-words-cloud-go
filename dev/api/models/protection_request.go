@@ -116,18 +116,6 @@ func (obj *ProtectionRequest) Validate() error {
     if obj.Password == nil {
         return errors.New("Property Password in ProtectionRequest is required.")
     }
-    if obj.NewPassword == nil {
-        return errors.New("Property NewPassword in ProtectionRequest is required.")
-    }
-
-    if obj.Password == nil {
-        return errors.New("Property Password in ProtectionRequest is required.")
-    }
-
-    if obj.ProtectionType == nil {
-        return errors.New("Property ProtectionType in ProtectionRequest is required.")
-    }
-
     return nil;
 }
 

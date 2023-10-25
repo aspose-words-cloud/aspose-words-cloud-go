@@ -920,228 +920,35 @@ func (obj *PdfSaveOptionsData) Validate() error {
     if obj.FileName == nil {
         return errors.New("Property FileName in PdfSaveOptionsData is required.")
     }
-    if obj.AllowEmbeddingPostScriptFonts == nil {
-        return errors.New("Property AllowEmbeddingPostScriptFonts in PdfSaveOptionsData is required.")
-    }
-
-    if obj.CustomTimeZoneInfoData == nil {
-        return errors.New("Property CustomTimeZoneInfoData in PdfSaveOptionsData is required.")
-    }
-
     if obj.CustomTimeZoneInfoData != nil {
         if err := obj.CustomTimeZoneInfoData.Validate(); err != nil {
             return err
         }
     }
-
-    if obj.Dml3DEffectsRenderingMode == nil {
-        return errors.New("Property Dml3DEffectsRenderingMode in PdfSaveOptionsData is required.")
-    }
-
-    if obj.DmlEffectsRenderingMode == nil {
-        return errors.New("Property DmlEffectsRenderingMode in PdfSaveOptionsData is required.")
-    }
-
-    if obj.DmlRenderingMode == nil {
-        return errors.New("Property DmlRenderingMode in PdfSaveOptionsData is required.")
-    }
-
-    if obj.FileName == nil {
-        return errors.New("Property FileName in PdfSaveOptionsData is required.")
-    }
-
-    if obj.ImlRenderingMode == nil {
-        return errors.New("Property ImlRenderingMode in PdfSaveOptionsData is required.")
-    }
-
-    if obj.UpdateCreatedTimeProperty == nil {
-        return errors.New("Property UpdateCreatedTimeProperty in PdfSaveOptionsData is required.")
-    }
-
-    if obj.UpdateFields == nil {
-        return errors.New("Property UpdateFields in PdfSaveOptionsData is required.")
-    }
-
-    if obj.UpdateLastPrintedProperty == nil {
-        return errors.New("Property UpdateLastPrintedProperty in PdfSaveOptionsData is required.")
-    }
-
-    if obj.UpdateLastSavedTimeProperty == nil {
-        return errors.New("Property UpdateLastSavedTimeProperty in PdfSaveOptionsData is required.")
-    }
-
-    if obj.ZipOutput == nil {
-        return errors.New("Property ZipOutput in PdfSaveOptionsData is required.")
-    }
-
-    if obj.ColorMode == nil {
-        return errors.New("Property ColorMode in PdfSaveOptionsData is required.")
-    }
-
-    if obj.JpegQuality == nil {
-        return errors.New("Property JpegQuality in PdfSaveOptionsData is required.")
-    }
-
-    if obj.MetafileRenderingOptions == nil {
-        return errors.New("Property MetafileRenderingOptions in PdfSaveOptionsData is required.")
-    }
-
     if obj.MetafileRenderingOptions != nil {
         if err := obj.MetafileRenderingOptions.Validate(); err != nil {
             return err
         }
     }
-
-    if obj.NumeralFormat == nil {
-        return errors.New("Property NumeralFormat in PdfSaveOptionsData is required.")
-    }
-
-    if obj.OptimizeOutput == nil {
-        return errors.New("Property OptimizeOutput in PdfSaveOptionsData is required.")
-    }
-
-    if obj.PageCount == nil {
-        return errors.New("Property PageCount in PdfSaveOptionsData is required.")
-    }
-
-    if obj.PageIndex == nil {
-        return errors.New("Property PageIndex in PdfSaveOptionsData is required.")
-    }
-
-    if obj.CacheBackgroundGraphics == nil {
-        return errors.New("Property CacheBackgroundGraphics in PdfSaveOptionsData is required.")
-    }
-
-    if obj.Compliance == nil {
-        return errors.New("Property Compliance in PdfSaveOptionsData is required.")
-    }
-
-    if obj.CreateNoteHyperlinks == nil {
-        return errors.New("Property CreateNoteHyperlinks in PdfSaveOptionsData is required.")
-    }
-
-    if obj.CustomPropertiesExport == nil {
-        return errors.New("Property CustomPropertiesExport in PdfSaveOptionsData is required.")
-    }
-
-    if obj.DigitalSignatureDetails == nil {
-        return errors.New("Property DigitalSignatureDetails in PdfSaveOptionsData is required.")
-    }
-
     if obj.DigitalSignatureDetails != nil {
         if err := obj.DigitalSignatureDetails.Validate(); err != nil {
             return err
         }
     }
-
-    if obj.DisplayDocTitle == nil {
-        return errors.New("Property DisplayDocTitle in PdfSaveOptionsData is required.")
-    }
-
-    if obj.DownsampleOptions == nil {
-        return errors.New("Property DownsampleOptions in PdfSaveOptionsData is required.")
-    }
-
     if obj.DownsampleOptions != nil {
         if err := obj.DownsampleOptions.Validate(); err != nil {
             return err
         }
     }
-
-    if obj.EmbedAttachments == nil {
-        return errors.New("Property EmbedAttachments in PdfSaveOptionsData is required.")
-    }
-
-    if obj.EmbedFullFonts == nil {
-        return errors.New("Property EmbedFullFonts in PdfSaveOptionsData is required.")
-    }
-
-    if obj.EncryptionDetails == nil {
-        return errors.New("Property EncryptionDetails in PdfSaveOptionsData is required.")
-    }
-
     if obj.EncryptionDetails != nil {
         if err := obj.EncryptionDetails.Validate(); err != nil {
             return err
         }
     }
-
-    if obj.ExportDocumentStructure == nil {
-        return errors.New("Property ExportDocumentStructure in PdfSaveOptionsData is required.")
-    }
-
-    if obj.ExportLanguageToSpanTag == nil {
-        return errors.New("Property ExportLanguageToSpanTag in PdfSaveOptionsData is required.")
-    }
-
-    if obj.FontEmbeddingMode == nil {
-        return errors.New("Property FontEmbeddingMode in PdfSaveOptionsData is required.")
-    }
-
-    if obj.HeaderFooterBookmarksExportMode == nil {
-        return errors.New("Property HeaderFooterBookmarksExportMode in PdfSaveOptionsData is required.")
-    }
-
-    if obj.ImageColorSpaceExportMode == nil {
-        return errors.New("Property ImageColorSpaceExportMode in PdfSaveOptionsData is required.")
-    }
-
-    if obj.ImageCompression == nil {
-        return errors.New("Property ImageCompression in PdfSaveOptionsData is required.")
-    }
-
-    if obj.InterpolateImages == nil {
-        return errors.New("Property InterpolateImages in PdfSaveOptionsData is required.")
-    }
-
-    if obj.OpenHyperlinksInNewWindow == nil {
-        return errors.New("Property OpenHyperlinksInNewWindow in PdfSaveOptionsData is required.")
-    }
-
-    if obj.OutlineOptions == nil {
-        return errors.New("Property OutlineOptions in PdfSaveOptionsData is required.")
-    }
-
     if obj.OutlineOptions != nil {
         if err := obj.OutlineOptions.Validate(); err != nil {
             return err
         }
-    }
-
-    if obj.PageMode == nil {
-        return errors.New("Property PageMode in PdfSaveOptionsData is required.")
-    }
-
-    if obj.PreblendImages == nil {
-        return errors.New("Property PreblendImages in PdfSaveOptionsData is required.")
-    }
-
-    if obj.PreserveFormFields == nil {
-        return errors.New("Property PreserveFormFields in PdfSaveOptionsData is required.")
-    }
-
-    if obj.TextCompression == nil {
-        return errors.New("Property TextCompression in PdfSaveOptionsData is required.")
-    }
-
-    if obj.UseBookFoldPrintingSettings == nil {
-        return errors.New("Property UseBookFoldPrintingSettings in PdfSaveOptionsData is required.")
-    }
-
-    if obj.UseCoreFonts == nil {
-        return errors.New("Property UseCoreFonts in PdfSaveOptionsData is required.")
-    }
-
-    if obj.ZoomBehavior == nil {
-        return errors.New("Property ZoomBehavior in PdfSaveOptionsData is required.")
-    }
-
-    if obj.ZoomFactor == nil {
-        return errors.New("Property ZoomFactor in PdfSaveOptionsData is required.")
-    }
-
-    if obj.SaveFormat == nil {
-        return errors.New("Property SaveFormat in PdfSaveOptionsData is required.")
     }
 
     return nil;

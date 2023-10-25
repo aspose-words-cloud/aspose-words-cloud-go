@@ -98,14 +98,6 @@ func (obj *XmlColor) Validate() error {
         return errors.New("Invalid object.")
     }
 
-    if obj.Alpha == nil {
-        return errors.New("Property Alpha in XmlColor is required.")
-    }
-
-    if obj.Web == nil {
-        return errors.New("Property Web in XmlColor is required.")
-    }
-
     return nil;
 }
 

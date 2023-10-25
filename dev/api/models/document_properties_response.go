@@ -111,14 +111,6 @@ func (obj *DocumentPropertiesResponse) Validate() error {
         return errors.New("Invalid object.")
     }
 
-    if obj.RequestId == nil {
-        return errors.New("Property RequestId in DocumentPropertiesResponse is required.")
-    }
-
-    if obj.DocumentProperties == nil {
-        return errors.New("Property DocumentProperties in DocumentPropertiesResponse is required.")
-    }
-
     if obj.DocumentProperties != nil {
         if err := obj.DocumentProperties.Validate(); err != nil {
             return err

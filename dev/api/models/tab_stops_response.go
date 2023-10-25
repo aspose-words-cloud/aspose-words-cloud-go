@@ -124,14 +124,6 @@ func (obj *TabStopsResponse) Validate() error {
         return errors.New("Invalid object.")
     }
 
-    if obj.RequestId == nil {
-        return errors.New("Property RequestId in TabStopsResponse is required.")
-    }
-
-    if obj.TabStops == nil {
-        return errors.New("Property TabStops in TabStopsResponse is required.")
-    }
-
     if obj.TabStops != nil {
         for _, elementTabStops := range obj.TabStops {
             if elementTabStops != nil {

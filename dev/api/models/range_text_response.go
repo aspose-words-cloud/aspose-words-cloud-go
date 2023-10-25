@@ -102,14 +102,6 @@ func (obj *RangeTextResponse) Validate() error {
         return errors.New("Invalid object.")
     }
 
-    if obj.RequestId == nil {
-        return errors.New("Property RequestId in RangeTextResponse is required.")
-    }
-
-    if obj.Text == nil {
-        return errors.New("Property Text in RangeTextResponse is required.")
-    }
-
     return nil;
 }
 

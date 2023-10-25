@@ -192,32 +192,11 @@ func (obj *DocumentStatData) Validate() error {
     if obj.WordCount == nil {
         return errors.New("Property WordCount in DocumentStatData is required.")
     }
-    if obj.FootnotesStatData == nil {
-        return errors.New("Property FootnotesStatData in DocumentStatData is required.")
-    }
-
     if obj.FootnotesStatData != nil {
         if err := obj.FootnotesStatData.Validate(); err != nil {
             return err
         }
     }
-
-    if obj.PageCount == nil {
-        return errors.New("Property PageCount in DocumentStatData is required.")
-    }
-
-    if obj.ParagraphCount == nil {
-        return errors.New("Property ParagraphCount in DocumentStatData is required.")
-    }
-
-    if obj.WordCount == nil {
-        return errors.New("Property WordCount in DocumentStatData is required.")
-    }
-
-    if obj.PageStatData == nil {
-        return errors.New("Property PageStatData in DocumentStatData is required.")
-    }
-
     if obj.PageStatData != nil {
         for _, elementPageStatData := range obj.PageStatData {
             if elementPageStatData != nil {

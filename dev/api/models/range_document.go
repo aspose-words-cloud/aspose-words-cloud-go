@@ -82,10 +82,6 @@ func (obj *RangeDocument) Validate() error {
     if obj.DocumentName == nil {
         return errors.New("Property DocumentName in RangeDocument is required.")
     }
-    if obj.DocumentName == nil {
-        return errors.New("Property DocumentName in RangeDocument is required.")
-    }
-
     return nil;
 }
 

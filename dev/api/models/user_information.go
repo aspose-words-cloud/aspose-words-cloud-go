@@ -113,18 +113,6 @@ func (obj *UserInformation) Validate() error {
         return errors.New("Invalid object.")
     }
 
-    if obj.Address == nil {
-        return errors.New("Property Address in UserInformation is required.")
-    }
-
-    if obj.Initials == nil {
-        return errors.New("Property Initials in UserInformation is required.")
-    }
-
-    if obj.Name == nil {
-        return errors.New("Property Name in UserInformation is required.")
-    }
-
     return nil;
 }
 

@@ -129,20 +129,11 @@ func (obj *ListLevels) Validate() error {
         return errors.New("Invalid object.")
     }
 
-    if obj.Link == nil {
-        return errors.New("Property Link in ListLevels is required.")
-    }
-
     if obj.Link != nil {
         if err := obj.Link.Validate(); err != nil {
             return err
         }
     }
-
-    if obj.ListLevel == nil {
-        return errors.New("Property ListLevel in ListLevels is required.")
-    }
-
     if obj.ListLevel != nil {
         for _, elementListLevel := range obj.ListLevel {
             if elementListLevel != nil {

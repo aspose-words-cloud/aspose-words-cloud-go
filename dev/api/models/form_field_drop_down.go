@@ -323,62 +323,10 @@ func (obj *FormFieldDropDown) Validate() error {
     if obj.DropDownItems == nil {
         return errors.New("Property DropDownItems in FormFieldDropDown is required.")
     }
-    if obj.Link == nil {
-        return errors.New("Property Link in FormFieldDropDown is required.")
-    }
-
     if obj.Link != nil {
         if err := obj.Link.Validate(); err != nil {
             return err
         }
-    }
-
-    if obj.NodeId == nil {
-        return errors.New("Property NodeId in FormFieldDropDown is required.")
-    }
-
-    if obj.Name == nil {
-        return errors.New("Property Name in FormFieldDropDown is required.")
-    }
-
-    if obj.Enabled == nil {
-        return errors.New("Property Enabled in FormFieldDropDown is required.")
-    }
-
-    if obj.StatusText == nil {
-        return errors.New("Property StatusText in FormFieldDropDown is required.")
-    }
-
-    if obj.OwnStatus == nil {
-        return errors.New("Property OwnStatus in FormFieldDropDown is required.")
-    }
-
-    if obj.HelpText == nil {
-        return errors.New("Property HelpText in FormFieldDropDown is required.")
-    }
-
-    if obj.OwnHelp == nil {
-        return errors.New("Property OwnHelp in FormFieldDropDown is required.")
-    }
-
-    if obj.CalculateOnExit == nil {
-        return errors.New("Property CalculateOnExit in FormFieldDropDown is required.")
-    }
-
-    if obj.EntryMacro == nil {
-        return errors.New("Property EntryMacro in FormFieldDropDown is required.")
-    }
-
-    if obj.ExitMacro == nil {
-        return errors.New("Property ExitMacro in FormFieldDropDown is required.")
-    }
-
-    if obj.DropDownItems == nil {
-        return errors.New("Property DropDownItems in FormFieldDropDown is required.")
-    }
-
-    if obj.DropDownSelectedIndex == nil {
-        return errors.New("Property DropDownSelectedIndex in FormFieldDropDown is required.")
     }
 
     return nil;

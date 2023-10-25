@@ -217,10 +217,6 @@ func (obj *Document) Validate() error {
     if obj.SourceFormat == nil {
         return errors.New("Property SourceFormat in Document is required.")
     }
-    if obj.Links == nil {
-        return errors.New("Property Links in Document is required.")
-    }
-
     if obj.Links != nil {
         for _, elementLinks := range obj.Links {
             if elementLinks != nil {
@@ -230,31 +226,10 @@ func (obj *Document) Validate() error {
             }
         }
     }
-
-    if obj.DocumentProperties == nil {
-        return errors.New("Property DocumentProperties in Document is required.")
-    }
-
     if obj.DocumentProperties != nil {
         if err := obj.DocumentProperties.Validate(); err != nil {
             return err
         }
-    }
-
-    if obj.FileName == nil {
-        return errors.New("Property FileName in Document is required.")
-    }
-
-    if obj.IsEncrypted == nil {
-        return errors.New("Property IsEncrypted in Document is required.")
-    }
-
-    if obj.IsSigned == nil {
-        return errors.New("Property IsSigned in Document is required.")
-    }
-
-    if obj.SourceFormat == nil {
-        return errors.New("Property SourceFormat in Document is required.")
     }
 
     return nil;

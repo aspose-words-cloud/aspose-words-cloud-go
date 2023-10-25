@@ -111,14 +111,6 @@ func (obj *ParagraphFormatResponse) Validate() error {
         return errors.New("Invalid object.")
     }
 
-    if obj.RequestId == nil {
-        return errors.New("Property RequestId in ParagraphFormatResponse is required.")
-    }
-
-    if obj.ParagraphFormat == nil {
-        return errors.New("Property ParagraphFormat in ParagraphFormatResponse is required.")
-    }
-
     if obj.ParagraphFormat != nil {
         if err := obj.ParagraphFormat.Validate(); err != nil {
             return err

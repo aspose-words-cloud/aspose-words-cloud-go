@@ -155,14 +155,6 @@ func (obj *InfoResponse) Validate() error {
         return errors.New("Invalid object.")
     }
 
-    if obj.RequestId == nil {
-        return errors.New("Property RequestId in InfoResponse is required.")
-    }
-
-    if obj.AdditionalInfo == nil {
-        return errors.New("Property AdditionalInfo in InfoResponse is required.")
-    }
-
     if obj.AdditionalInfo != nil {
         for _, elementAdditionalInfo := range obj.AdditionalInfo {
             if elementAdditionalInfo != nil {
@@ -171,14 +163,6 @@ func (obj *InfoResponse) Validate() error {
                 }
             }
         }
-    }
-
-    if obj.Name == nil {
-        return errors.New("Property Name in InfoResponse is required.")
-    }
-
-    if obj.Version == nil {
-        return errors.New("Property Version in InfoResponse is required.")
     }
 
     return nil;

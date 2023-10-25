@@ -130,14 +130,6 @@ func (obj *DocumentEntryList) Validate() error {
     if obj.DocumentEntries == nil {
         return errors.New("Property DocumentEntries in DocumentEntryList is required.")
     }
-    if obj.ApplyBaseDocumentHeadersAndFootersToAppendingDocuments == nil {
-        return errors.New("Property ApplyBaseDocumentHeadersAndFootersToAppendingDocuments in DocumentEntryList is required.")
-    }
-
-    if obj.DocumentEntries == nil {
-        return errors.New("Property DocumentEntries in DocumentEntryList is required.")
-    }
-
     if obj.DocumentEntries != nil {
         for _, elementDocumentEntries := range obj.DocumentEntries {
             if elementDocumentEntries != nil {

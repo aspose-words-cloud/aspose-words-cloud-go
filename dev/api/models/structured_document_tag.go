@@ -535,24 +535,11 @@ func (obj *StructuredDocumentTag) Validate() error {
         return errors.New("Invalid object.")
     }
 
-    if obj.Link == nil {
-        return errors.New("Property Link in StructuredDocumentTag is required.")
-    }
-
     if obj.Link != nil {
         if err := obj.Link.Validate(); err != nil {
             return err
         }
     }
-
-    if obj.NodeId == nil {
-        return errors.New("Property NodeId in StructuredDocumentTag is required.")
-    }
-
-    if obj.ListItems == nil {
-        return errors.New("Property ListItems in StructuredDocumentTag is required.")
-    }
-
     if obj.ListItems != nil {
         for _, elementListItems := range obj.ListItems {
             if elementListItems != nil {
@@ -561,98 +548,6 @@ func (obj *StructuredDocumentTag) Validate() error {
                 }
             }
         }
-    }
-
-    if obj.Checked == nil {
-        return errors.New("Property Checked in StructuredDocumentTag is required.")
-    }
-
-    if obj.Appearance == nil {
-        return errors.New("Property Appearance in StructuredDocumentTag is required.")
-    }
-
-    if obj.DateDisplayLocale == nil {
-        return errors.New("Property DateDisplayLocale in StructuredDocumentTag is required.")
-    }
-
-    if obj.DateDisplayFormat == nil {
-        return errors.New("Property DateDisplayFormat in StructuredDocumentTag is required.")
-    }
-
-    if obj.FullDate == nil {
-        return errors.New("Property FullDate in StructuredDocumentTag is required.")
-    }
-
-    if obj.Title == nil {
-        return errors.New("Property Title in StructuredDocumentTag is required.")
-    }
-
-    if obj.DateStorageFormat == nil {
-        return errors.New("Property DateStorageFormat in StructuredDocumentTag is required.")
-    }
-
-    if obj.BuildingBlockGallery == nil {
-        return errors.New("Property BuildingBlockGallery in StructuredDocumentTag is required.")
-    }
-
-    if obj.BuildingBlockCategory == nil {
-        return errors.New("Property BuildingBlockCategory in StructuredDocumentTag is required.")
-    }
-
-    if obj.Multiline == nil {
-        return errors.New("Property Multiline in StructuredDocumentTag is required.")
-    }
-
-    if obj.Color == nil {
-        return errors.New("Property Color in StructuredDocumentTag is required.")
-    }
-
-    if obj.StyleName == nil {
-        return errors.New("Property StyleName in StructuredDocumentTag is required.")
-    }
-
-    if obj.CalendarType == nil {
-        return errors.New("Property CalendarType in StructuredDocumentTag is required.")
-    }
-
-    if obj.IsTemporary == nil {
-        return errors.New("Property IsTemporary in StructuredDocumentTag is required.")
-    }
-
-    if obj.Level == nil {
-        return errors.New("Property Level in StructuredDocumentTag is required.")
-    }
-
-    if obj.SdtType == nil {
-        return errors.New("Property SdtType in StructuredDocumentTag is required.")
-    }
-
-    if obj.PlaceholderName == nil {
-        return errors.New("Property PlaceholderName in StructuredDocumentTag is required.")
-    }
-
-    if obj.LockContentControl == nil {
-        return errors.New("Property LockContentControl in StructuredDocumentTag is required.")
-    }
-
-    if obj.LockContents == nil {
-        return errors.New("Property LockContents in StructuredDocumentTag is required.")
-    }
-
-    if obj.IsShowingPlaceholderText == nil {
-        return errors.New("Property IsShowingPlaceholderText in StructuredDocumentTag is required.")
-    }
-
-    if obj.Tag == nil {
-        return errors.New("Property Tag in StructuredDocumentTag is required.")
-    }
-
-    if obj.Id == nil {
-        return errors.New("Property Id in StructuredDocumentTag is required.")
-    }
-
-    if obj.WordOpenXML == nil {
-        return errors.New("Property WordOpenXML in StructuredDocumentTag is required.")
     }
 
     return nil;

@@ -665,152 +665,15 @@ func (obj *HtmlFixedSaveOptionsData) Validate() error {
     if obj.FileName == nil {
         return errors.New("Property FileName in HtmlFixedSaveOptionsData is required.")
     }
-    if obj.AllowEmbeddingPostScriptFonts == nil {
-        return errors.New("Property AllowEmbeddingPostScriptFonts in HtmlFixedSaveOptionsData is required.")
-    }
-
-    if obj.CustomTimeZoneInfoData == nil {
-        return errors.New("Property CustomTimeZoneInfoData in HtmlFixedSaveOptionsData is required.")
-    }
-
     if obj.CustomTimeZoneInfoData != nil {
         if err := obj.CustomTimeZoneInfoData.Validate(); err != nil {
             return err
         }
     }
-
-    if obj.Dml3DEffectsRenderingMode == nil {
-        return errors.New("Property Dml3DEffectsRenderingMode in HtmlFixedSaveOptionsData is required.")
-    }
-
-    if obj.DmlEffectsRenderingMode == nil {
-        return errors.New("Property DmlEffectsRenderingMode in HtmlFixedSaveOptionsData is required.")
-    }
-
-    if obj.DmlRenderingMode == nil {
-        return errors.New("Property DmlRenderingMode in HtmlFixedSaveOptionsData is required.")
-    }
-
-    if obj.FileName == nil {
-        return errors.New("Property FileName in HtmlFixedSaveOptionsData is required.")
-    }
-
-    if obj.ImlRenderingMode == nil {
-        return errors.New("Property ImlRenderingMode in HtmlFixedSaveOptionsData is required.")
-    }
-
-    if obj.UpdateCreatedTimeProperty == nil {
-        return errors.New("Property UpdateCreatedTimeProperty in HtmlFixedSaveOptionsData is required.")
-    }
-
-    if obj.UpdateFields == nil {
-        return errors.New("Property UpdateFields in HtmlFixedSaveOptionsData is required.")
-    }
-
-    if obj.UpdateLastPrintedProperty == nil {
-        return errors.New("Property UpdateLastPrintedProperty in HtmlFixedSaveOptionsData is required.")
-    }
-
-    if obj.UpdateLastSavedTimeProperty == nil {
-        return errors.New("Property UpdateLastSavedTimeProperty in HtmlFixedSaveOptionsData is required.")
-    }
-
-    if obj.ZipOutput == nil {
-        return errors.New("Property ZipOutput in HtmlFixedSaveOptionsData is required.")
-    }
-
-    if obj.ColorMode == nil {
-        return errors.New("Property ColorMode in HtmlFixedSaveOptionsData is required.")
-    }
-
-    if obj.JpegQuality == nil {
-        return errors.New("Property JpegQuality in HtmlFixedSaveOptionsData is required.")
-    }
-
-    if obj.MetafileRenderingOptions == nil {
-        return errors.New("Property MetafileRenderingOptions in HtmlFixedSaveOptionsData is required.")
-    }
-
     if obj.MetafileRenderingOptions != nil {
         if err := obj.MetafileRenderingOptions.Validate(); err != nil {
             return err
         }
-    }
-
-    if obj.NumeralFormat == nil {
-        return errors.New("Property NumeralFormat in HtmlFixedSaveOptionsData is required.")
-    }
-
-    if obj.OptimizeOutput == nil {
-        return errors.New("Property OptimizeOutput in HtmlFixedSaveOptionsData is required.")
-    }
-
-    if obj.PageCount == nil {
-        return errors.New("Property PageCount in HtmlFixedSaveOptionsData is required.")
-    }
-
-    if obj.PageIndex == nil {
-        return errors.New("Property PageIndex in HtmlFixedSaveOptionsData is required.")
-    }
-
-    if obj.CssClassNamesPrefix == nil {
-        return errors.New("Property CssClassNamesPrefix in HtmlFixedSaveOptionsData is required.")
-    }
-
-    if obj.Encoding == nil {
-        return errors.New("Property Encoding in HtmlFixedSaveOptionsData is required.")
-    }
-
-    if obj.ExportEmbeddedCss == nil {
-        return errors.New("Property ExportEmbeddedCss in HtmlFixedSaveOptionsData is required.")
-    }
-
-    if obj.ExportEmbeddedFonts == nil {
-        return errors.New("Property ExportEmbeddedFonts in HtmlFixedSaveOptionsData is required.")
-    }
-
-    if obj.ExportEmbeddedImages == nil {
-        return errors.New("Property ExportEmbeddedImages in HtmlFixedSaveOptionsData is required.")
-    }
-
-    if obj.ExportFormFields == nil {
-        return errors.New("Property ExportFormFields in HtmlFixedSaveOptionsData is required.")
-    }
-
-    if obj.FontFormat == nil {
-        return errors.New("Property FontFormat in HtmlFixedSaveOptionsData is required.")
-    }
-
-    if obj.PageHorizontalAlignment == nil {
-        return errors.New("Property PageHorizontalAlignment in HtmlFixedSaveOptionsData is required.")
-    }
-
-    if obj.PageMargins == nil {
-        return errors.New("Property PageMargins in HtmlFixedSaveOptionsData is required.")
-    }
-
-    if obj.ResourcesFolder == nil {
-        return errors.New("Property ResourcesFolder in HtmlFixedSaveOptionsData is required.")
-    }
-
-    if obj.ResourcesFolderAlias == nil {
-        return errors.New("Property ResourcesFolderAlias in HtmlFixedSaveOptionsData is required.")
-    }
-
-    if obj.SaveFontFaceCssSeparately == nil {
-        return errors.New("Property SaveFontFaceCssSeparately in HtmlFixedSaveOptionsData is required.")
-    }
-
-    if obj.ShowPageBorder == nil {
-        return errors.New("Property ShowPageBorder in HtmlFixedSaveOptionsData is required.")
-    }
-
-    if obj.UseTargetMachineFonts == nil {
-        return errors.New("Property UseTargetMachineFonts in HtmlFixedSaveOptionsData is required.")
-    }
-
-    if obj.SaveFormat == nil {
-        return errors.New("Property SaveFormat in HtmlFixedSaveOptionsData is required.")
     }
 
     return nil;

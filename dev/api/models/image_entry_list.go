@@ -127,14 +127,6 @@ func (obj *ImageEntryList) Validate() error {
         return errors.New("Invalid object.")
     }
 
-    if obj.AppendEachImageOnNewPage == nil {
-        return errors.New("Property AppendEachImageOnNewPage in ImageEntryList is required.")
-    }
-
-    if obj.ImageEntries == nil {
-        return errors.New("Property ImageEntries in ImageEntryList is required.")
-    }
-
     if obj.ImageEntries != nil {
         for _, elementImageEntries := range obj.ImageEntries {
             if elementImageEntries != nil {

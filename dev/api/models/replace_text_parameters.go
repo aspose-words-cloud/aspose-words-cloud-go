@@ -159,26 +159,6 @@ func (obj *ReplaceTextParameters) Validate() error {
     if obj.OldValue == nil {
         return errors.New("Property OldValue in ReplaceTextParameters is required.")
     }
-    if obj.IsMatchCase == nil {
-        return errors.New("Property IsMatchCase in ReplaceTextParameters is required.")
-    }
-
-    if obj.IsMatchWholeWord == nil {
-        return errors.New("Property IsMatchWholeWord in ReplaceTextParameters is required.")
-    }
-
-    if obj.IsOldValueRegex == nil {
-        return errors.New("Property IsOldValueRegex in ReplaceTextParameters is required.")
-    }
-
-    if obj.NewValue == nil {
-        return errors.New("Property NewValue in ReplaceTextParameters is required.")
-    }
-
-    if obj.OldValue == nil {
-        return errors.New("Property OldValue in ReplaceTextParameters is required.")
-    }
-
     return nil;
 }
 

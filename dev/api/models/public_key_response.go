@@ -116,18 +116,6 @@ func (obj *PublicKeyResponse) Validate() error {
         return errors.New("Invalid object.")
     }
 
-    if obj.RequestId == nil {
-        return errors.New("Property RequestId in PublicKeyResponse is required.")
-    }
-
-    if obj.Exponent == nil {
-        return errors.New("Property Exponent in PublicKeyResponse is required.")
-    }
-
-    if obj.Modulus == nil {
-        return errors.New("Property Modulus in PublicKeyResponse is required.")
-    }
-
     return nil;
 }
 

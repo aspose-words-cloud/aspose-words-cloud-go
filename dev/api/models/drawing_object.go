@@ -323,24 +323,11 @@ func (obj *DrawingObject) Validate() error {
         return errors.New("Invalid object.")
     }
 
-    if obj.Link == nil {
-        return errors.New("Property Link in DrawingObject is required.")
-    }
-
     if obj.Link != nil {
         if err := obj.Link.Validate(); err != nil {
             return err
         }
     }
-
-    if obj.NodeId == nil {
-        return errors.New("Property NodeId in DrawingObject is required.")
-    }
-
-    if obj.RenderLinks == nil {
-        return errors.New("Property RenderLinks in DrawingObject is required.")
-    }
-
     if obj.RenderLinks != nil {
         for _, elementRenderLinks := range obj.RenderLinks {
             if elementRenderLinks != nil {
@@ -350,53 +337,15 @@ func (obj *DrawingObject) Validate() error {
             }
         }
     }
-
-    if obj.Width == nil {
-        return errors.New("Property Width in DrawingObject is required.")
-    }
-
-    if obj.Height == nil {
-        return errors.New("Property Height in DrawingObject is required.")
-    }
-
-    if obj.OleDataLink == nil {
-        return errors.New("Property OleDataLink in DrawingObject is required.")
-    }
-
     if obj.OleDataLink != nil {
         if err := obj.OleDataLink.Validate(); err != nil {
             return err
         }
     }
-
-    if obj.ImageDataLink == nil {
-        return errors.New("Property ImageDataLink in DrawingObject is required.")
-    }
-
     if obj.ImageDataLink != nil {
         if err := obj.ImageDataLink.Validate(); err != nil {
             return err
         }
-    }
-
-    if obj.RelativeHorizontalPosition == nil {
-        return errors.New("Property RelativeHorizontalPosition in DrawingObject is required.")
-    }
-
-    if obj.Left == nil {
-        return errors.New("Property Left in DrawingObject is required.")
-    }
-
-    if obj.RelativeVerticalPosition == nil {
-        return errors.New("Property RelativeVerticalPosition in DrawingObject is required.")
-    }
-
-    if obj.Top == nil {
-        return errors.New("Property Top in DrawingObject is required.")
-    }
-
-    if obj.WrapType == nil {
-        return errors.New("Property WrapType in DrawingObject is required.")
     }
 
     return nil;

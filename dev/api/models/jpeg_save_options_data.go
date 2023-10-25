@@ -673,152 +673,15 @@ func (obj *JpegSaveOptionsData) Validate() error {
     if obj.FileName == nil {
         return errors.New("Property FileName in JpegSaveOptionsData is required.")
     }
-    if obj.AllowEmbeddingPostScriptFonts == nil {
-        return errors.New("Property AllowEmbeddingPostScriptFonts in JpegSaveOptionsData is required.")
-    }
-
-    if obj.CustomTimeZoneInfoData == nil {
-        return errors.New("Property CustomTimeZoneInfoData in JpegSaveOptionsData is required.")
-    }
-
     if obj.CustomTimeZoneInfoData != nil {
         if err := obj.CustomTimeZoneInfoData.Validate(); err != nil {
             return err
         }
     }
-
-    if obj.Dml3DEffectsRenderingMode == nil {
-        return errors.New("Property Dml3DEffectsRenderingMode in JpegSaveOptionsData is required.")
-    }
-
-    if obj.DmlEffectsRenderingMode == nil {
-        return errors.New("Property DmlEffectsRenderingMode in JpegSaveOptionsData is required.")
-    }
-
-    if obj.DmlRenderingMode == nil {
-        return errors.New("Property DmlRenderingMode in JpegSaveOptionsData is required.")
-    }
-
-    if obj.FileName == nil {
-        return errors.New("Property FileName in JpegSaveOptionsData is required.")
-    }
-
-    if obj.ImlRenderingMode == nil {
-        return errors.New("Property ImlRenderingMode in JpegSaveOptionsData is required.")
-    }
-
-    if obj.UpdateCreatedTimeProperty == nil {
-        return errors.New("Property UpdateCreatedTimeProperty in JpegSaveOptionsData is required.")
-    }
-
-    if obj.UpdateFields == nil {
-        return errors.New("Property UpdateFields in JpegSaveOptionsData is required.")
-    }
-
-    if obj.UpdateLastPrintedProperty == nil {
-        return errors.New("Property UpdateLastPrintedProperty in JpegSaveOptionsData is required.")
-    }
-
-    if obj.UpdateLastSavedTimeProperty == nil {
-        return errors.New("Property UpdateLastSavedTimeProperty in JpegSaveOptionsData is required.")
-    }
-
-    if obj.ZipOutput == nil {
-        return errors.New("Property ZipOutput in JpegSaveOptionsData is required.")
-    }
-
-    if obj.ColorMode == nil {
-        return errors.New("Property ColorMode in JpegSaveOptionsData is required.")
-    }
-
-    if obj.JpegQuality == nil {
-        return errors.New("Property JpegQuality in JpegSaveOptionsData is required.")
-    }
-
-    if obj.MetafileRenderingOptions == nil {
-        return errors.New("Property MetafileRenderingOptions in JpegSaveOptionsData is required.")
-    }
-
     if obj.MetafileRenderingOptions != nil {
         if err := obj.MetafileRenderingOptions.Validate(); err != nil {
             return err
         }
-    }
-
-    if obj.NumeralFormat == nil {
-        return errors.New("Property NumeralFormat in JpegSaveOptionsData is required.")
-    }
-
-    if obj.OptimizeOutput == nil {
-        return errors.New("Property OptimizeOutput in JpegSaveOptionsData is required.")
-    }
-
-    if obj.PageCount == nil {
-        return errors.New("Property PageCount in JpegSaveOptionsData is required.")
-    }
-
-    if obj.PageIndex == nil {
-        return errors.New("Property PageIndex in JpegSaveOptionsData is required.")
-    }
-
-    if obj.HorizontalResolution == nil {
-        return errors.New("Property HorizontalResolution in JpegSaveOptionsData is required.")
-    }
-
-    if obj.ImageBrightness == nil {
-        return errors.New("Property ImageBrightness in JpegSaveOptionsData is required.")
-    }
-
-    if obj.ImageColorMode == nil {
-        return errors.New("Property ImageColorMode in JpegSaveOptionsData is required.")
-    }
-
-    if obj.ImageContrast == nil {
-        return errors.New("Property ImageContrast in JpegSaveOptionsData is required.")
-    }
-
-    if obj.PaperColor == nil {
-        return errors.New("Property PaperColor in JpegSaveOptionsData is required.")
-    }
-
-    if obj.PixelFormat == nil {
-        return errors.New("Property PixelFormat in JpegSaveOptionsData is required.")
-    }
-
-    if obj.Resolution == nil {
-        return errors.New("Property Resolution in JpegSaveOptionsData is required.")
-    }
-
-    if obj.Scale == nil {
-        return errors.New("Property Scale in JpegSaveOptionsData is required.")
-    }
-
-    if obj.UseAntiAliasing == nil {
-        return errors.New("Property UseAntiAliasing in JpegSaveOptionsData is required.")
-    }
-
-    if obj.UseHighQualityRendering == nil {
-        return errors.New("Property UseHighQualityRendering in JpegSaveOptionsData is required.")
-    }
-
-    if obj.VerticalResolution == nil {
-        return errors.New("Property VerticalResolution in JpegSaveOptionsData is required.")
-    }
-
-    if obj.ImageHeight == nil {
-        return errors.New("Property ImageHeight in JpegSaveOptionsData is required.")
-    }
-
-    if obj.ImageWidth == nil {
-        return errors.New("Property ImageWidth in JpegSaveOptionsData is required.")
-    }
-
-    if obj.UseGdiEmfRenderer == nil {
-        return errors.New("Property UseGdiEmfRenderer in JpegSaveOptionsData is required.")
-    }
-
-    if obj.SaveFormat == nil {
-        return errors.New("Property SaveFormat in JpegSaveOptionsData is required.")
     }
 
     return nil;

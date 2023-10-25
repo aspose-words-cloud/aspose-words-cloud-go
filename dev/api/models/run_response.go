@@ -111,14 +111,6 @@ func (obj *RunResponse) Validate() error {
         return errors.New("Invalid object.")
     }
 
-    if obj.RequestId == nil {
-        return errors.New("Property RequestId in RunResponse is required.")
-    }
-
-    if obj.Run == nil {
-        return errors.New("Property Run in RunResponse is required.")
-    }
-
     if obj.Run != nil {
         if err := obj.Run.Validate(); err != nil {
             return err

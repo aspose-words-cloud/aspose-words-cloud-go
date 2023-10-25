@@ -112,18 +112,10 @@ func (obj *FootnoteLink) Validate() error {
         return errors.New("Invalid object.")
     }
 
-    if obj.Link == nil {
-        return errors.New("Property Link in FootnoteLink is required.")
-    }
-
     if obj.Link != nil {
         if err := obj.Link.Validate(); err != nil {
             return err
         }
-    }
-
-    if obj.NodeId == nil {
-        return errors.New("Property NodeId in FootnoteLink is required.")
     }
 
     return nil;

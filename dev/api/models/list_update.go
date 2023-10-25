@@ -79,10 +79,6 @@ func (obj *ListUpdate) Validate() error {
         return errors.New("Invalid object.")
     }
 
-    if obj.IsRestartAtEachSection == nil {
-        return errors.New("Property IsRestartAtEachSection in ListUpdate is required.")
-    }
-
     return nil;
 }
 

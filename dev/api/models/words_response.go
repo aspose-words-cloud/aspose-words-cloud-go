@@ -79,10 +79,6 @@ func (obj *WordsResponse) Validate() error {
         return errors.New("Invalid object.")
     }
 
-    if obj.RequestId == nil {
-        return errors.New("Property RequestId in WordsResponse is required.")
-    }
-
     return nil;
 }
 

@@ -673,152 +673,15 @@ func (obj *PngSaveOptionsData) Validate() error {
     if obj.FileName == nil {
         return errors.New("Property FileName in PngSaveOptionsData is required.")
     }
-    if obj.AllowEmbeddingPostScriptFonts == nil {
-        return errors.New("Property AllowEmbeddingPostScriptFonts in PngSaveOptionsData is required.")
-    }
-
-    if obj.CustomTimeZoneInfoData == nil {
-        return errors.New("Property CustomTimeZoneInfoData in PngSaveOptionsData is required.")
-    }
-
     if obj.CustomTimeZoneInfoData != nil {
         if err := obj.CustomTimeZoneInfoData.Validate(); err != nil {
             return err
         }
     }
-
-    if obj.Dml3DEffectsRenderingMode == nil {
-        return errors.New("Property Dml3DEffectsRenderingMode in PngSaveOptionsData is required.")
-    }
-
-    if obj.DmlEffectsRenderingMode == nil {
-        return errors.New("Property DmlEffectsRenderingMode in PngSaveOptionsData is required.")
-    }
-
-    if obj.DmlRenderingMode == nil {
-        return errors.New("Property DmlRenderingMode in PngSaveOptionsData is required.")
-    }
-
-    if obj.FileName == nil {
-        return errors.New("Property FileName in PngSaveOptionsData is required.")
-    }
-
-    if obj.ImlRenderingMode == nil {
-        return errors.New("Property ImlRenderingMode in PngSaveOptionsData is required.")
-    }
-
-    if obj.UpdateCreatedTimeProperty == nil {
-        return errors.New("Property UpdateCreatedTimeProperty in PngSaveOptionsData is required.")
-    }
-
-    if obj.UpdateFields == nil {
-        return errors.New("Property UpdateFields in PngSaveOptionsData is required.")
-    }
-
-    if obj.UpdateLastPrintedProperty == nil {
-        return errors.New("Property UpdateLastPrintedProperty in PngSaveOptionsData is required.")
-    }
-
-    if obj.UpdateLastSavedTimeProperty == nil {
-        return errors.New("Property UpdateLastSavedTimeProperty in PngSaveOptionsData is required.")
-    }
-
-    if obj.ZipOutput == nil {
-        return errors.New("Property ZipOutput in PngSaveOptionsData is required.")
-    }
-
-    if obj.ColorMode == nil {
-        return errors.New("Property ColorMode in PngSaveOptionsData is required.")
-    }
-
-    if obj.JpegQuality == nil {
-        return errors.New("Property JpegQuality in PngSaveOptionsData is required.")
-    }
-
-    if obj.MetafileRenderingOptions == nil {
-        return errors.New("Property MetafileRenderingOptions in PngSaveOptionsData is required.")
-    }
-
     if obj.MetafileRenderingOptions != nil {
         if err := obj.MetafileRenderingOptions.Validate(); err != nil {
             return err
         }
-    }
-
-    if obj.NumeralFormat == nil {
-        return errors.New("Property NumeralFormat in PngSaveOptionsData is required.")
-    }
-
-    if obj.OptimizeOutput == nil {
-        return errors.New("Property OptimizeOutput in PngSaveOptionsData is required.")
-    }
-
-    if obj.PageCount == nil {
-        return errors.New("Property PageCount in PngSaveOptionsData is required.")
-    }
-
-    if obj.PageIndex == nil {
-        return errors.New("Property PageIndex in PngSaveOptionsData is required.")
-    }
-
-    if obj.HorizontalResolution == nil {
-        return errors.New("Property HorizontalResolution in PngSaveOptionsData is required.")
-    }
-
-    if obj.ImageBrightness == nil {
-        return errors.New("Property ImageBrightness in PngSaveOptionsData is required.")
-    }
-
-    if obj.ImageColorMode == nil {
-        return errors.New("Property ImageColorMode in PngSaveOptionsData is required.")
-    }
-
-    if obj.ImageContrast == nil {
-        return errors.New("Property ImageContrast in PngSaveOptionsData is required.")
-    }
-
-    if obj.PaperColor == nil {
-        return errors.New("Property PaperColor in PngSaveOptionsData is required.")
-    }
-
-    if obj.PixelFormat == nil {
-        return errors.New("Property PixelFormat in PngSaveOptionsData is required.")
-    }
-
-    if obj.Resolution == nil {
-        return errors.New("Property Resolution in PngSaveOptionsData is required.")
-    }
-
-    if obj.Scale == nil {
-        return errors.New("Property Scale in PngSaveOptionsData is required.")
-    }
-
-    if obj.UseAntiAliasing == nil {
-        return errors.New("Property UseAntiAliasing in PngSaveOptionsData is required.")
-    }
-
-    if obj.UseHighQualityRendering == nil {
-        return errors.New("Property UseHighQualityRendering in PngSaveOptionsData is required.")
-    }
-
-    if obj.VerticalResolution == nil {
-        return errors.New("Property VerticalResolution in PngSaveOptionsData is required.")
-    }
-
-    if obj.ImageHeight == nil {
-        return errors.New("Property ImageHeight in PngSaveOptionsData is required.")
-    }
-
-    if obj.ImageWidth == nil {
-        return errors.New("Property ImageWidth in PngSaveOptionsData is required.")
-    }
-
-    if obj.UseGdiEmfRenderer == nil {
-        return errors.New("Property UseGdiEmfRenderer in PngSaveOptionsData is required.")
-    }
-
-    if obj.SaveFormat == nil {
-        return errors.New("Property SaveFormat in PngSaveOptionsData is required.")
     }
 
     return nil;

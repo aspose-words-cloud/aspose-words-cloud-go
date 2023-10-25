@@ -101,10 +101,6 @@ func (obj *FilesList) Validate() error {
         return errors.New("Invalid object.")
     }
 
-    if obj.Value == nil {
-        return errors.New("Property Value in FilesList is required.")
-    }
-
     if obj.Value != nil {
         for _, elementValue := range obj.Value {
             if elementValue != nil {

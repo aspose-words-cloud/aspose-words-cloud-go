@@ -101,14 +101,6 @@ func (obj *BookmarksOutlineLevelData) Validate() error {
     if obj.BookmarksOutlineLevel == nil {
         return errors.New("Property BookmarksOutlineLevel in BookmarksOutlineLevelData is required.")
     }
-    if obj.BookmarksOutlineLevel == nil {
-        return errors.New("Property BookmarksOutlineLevel in BookmarksOutlineLevelData is required.")
-    }
-
-    if obj.Name == nil {
-        return errors.New("Property Name in BookmarksOutlineLevelData is required.")
-    }
-
     return nil;
 }
 

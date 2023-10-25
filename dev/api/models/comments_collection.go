@@ -129,20 +129,11 @@ func (obj *CommentsCollection) Validate() error {
         return errors.New("Invalid object.")
     }
 
-    if obj.Link == nil {
-        return errors.New("Property Link in CommentsCollection is required.")
-    }
-
     if obj.Link != nil {
         if err := obj.Link.Validate(); err != nil {
             return err
         }
     }
-
-    if obj.CommentList == nil {
-        return errors.New("Property CommentList in CommentsCollection is required.")
-    }
-
     if obj.CommentList != nil {
         for _, elementCommentList := range obj.CommentList {
             if elementCommentList != nil {

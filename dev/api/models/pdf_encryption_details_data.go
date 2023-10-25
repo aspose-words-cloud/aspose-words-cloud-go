@@ -125,18 +125,6 @@ func (obj *PdfEncryptionDetailsData) Validate() error {
         return errors.New("Invalid object.")
     }
 
-    if obj.OwnerPassword == nil {
-        return errors.New("Property OwnerPassword in PdfEncryptionDetailsData is required.")
-    }
-
-    if obj.Permissions == nil {
-        return errors.New("Property Permissions in PdfEncryptionDetailsData is required.")
-    }
-
-    if obj.UserPassword == nil {
-        return errors.New("Property UserPassword in PdfEncryptionDetailsData is required.")
-    }
-
     return nil;
 }
 

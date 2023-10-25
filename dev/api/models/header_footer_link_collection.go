@@ -141,20 +141,11 @@ func (obj *HeaderFooterLinkCollection) Validate() error {
         return errors.New("Invalid object.")
     }
 
-    if obj.Link == nil {
-        return errors.New("Property Link in HeaderFooterLinkCollection is required.")
-    }
-
     if obj.Link != nil {
         if err := obj.Link.Validate(); err != nil {
             return err
         }
     }
-
-    if obj.List == nil {
-        return errors.New("Property List in HeaderFooterLinkCollection is required.")
-    }
-
     if obj.List != nil {
         for _, elementList := range obj.List {
             if elementList != nil {

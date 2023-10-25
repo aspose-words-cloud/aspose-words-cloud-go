@@ -111,14 +111,6 @@ func (obj *FootnoteResponse) Validate() error {
         return errors.New("Invalid object.")
     }
 
-    if obj.RequestId == nil {
-        return errors.New("Property RequestId in FootnoteResponse is required.")
-    }
-
-    if obj.Footnote == nil {
-        return errors.New("Property Footnote in FootnoteResponse is required.")
-    }
-
     if obj.Footnote != nil {
         if err := obj.Footnote.Validate(); err != nil {
             return err

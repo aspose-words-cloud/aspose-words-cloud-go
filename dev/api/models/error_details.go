@@ -101,14 +101,6 @@ func (obj *ErrorDetails) Validate() error {
     if obj.ErrorDateTime == nil {
         return errors.New("Property ErrorDateTime in ErrorDetails is required.")
     }
-    if obj.ErrorDateTime == nil {
-        return errors.New("Property ErrorDateTime in ErrorDetails is required.")
-    }
-
-    if obj.RequestId == nil {
-        return errors.New("Property RequestId in ErrorDetails is required.")
-    }
-
     return nil;
 }
 

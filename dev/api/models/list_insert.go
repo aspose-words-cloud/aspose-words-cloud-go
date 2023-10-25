@@ -82,10 +82,6 @@ func (obj *ListInsert) Validate() error {
     if obj.Template == nil {
         return errors.New("Property Template in ListInsert is required.")
     }
-    if obj.Template == nil {
-        return errors.New("Property Template in ListInsert is required.")
-    }
-
     return nil;
 }
 

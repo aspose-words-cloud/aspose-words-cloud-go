@@ -111,14 +111,6 @@ func (obj *StructuredDocumentTagsResponse) Validate() error {
         return errors.New("Invalid object.")
     }
 
-    if obj.RequestId == nil {
-        return errors.New("Property RequestId in StructuredDocumentTagsResponse is required.")
-    }
-
-    if obj.StructuredDocumentTags == nil {
-        return errors.New("Property StructuredDocumentTags in StructuredDocumentTagsResponse is required.")
-    }
-
     if obj.StructuredDocumentTags != nil {
         if err := obj.StructuredDocumentTags.Validate(); err != nil {
             return err

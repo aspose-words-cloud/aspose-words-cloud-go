@@ -379,82 +379,10 @@ func (obj *MarkdownSaveOptionsData) Validate() error {
     if obj.FileName == nil {
         return errors.New("Property FileName in MarkdownSaveOptionsData is required.")
     }
-    if obj.AllowEmbeddingPostScriptFonts == nil {
-        return errors.New("Property AllowEmbeddingPostScriptFonts in MarkdownSaveOptionsData is required.")
-    }
-
-    if obj.CustomTimeZoneInfoData == nil {
-        return errors.New("Property CustomTimeZoneInfoData in MarkdownSaveOptionsData is required.")
-    }
-
     if obj.CustomTimeZoneInfoData != nil {
         if err := obj.CustomTimeZoneInfoData.Validate(); err != nil {
             return err
         }
-    }
-
-    if obj.Dml3DEffectsRenderingMode == nil {
-        return errors.New("Property Dml3DEffectsRenderingMode in MarkdownSaveOptionsData is required.")
-    }
-
-    if obj.DmlEffectsRenderingMode == nil {
-        return errors.New("Property DmlEffectsRenderingMode in MarkdownSaveOptionsData is required.")
-    }
-
-    if obj.DmlRenderingMode == nil {
-        return errors.New("Property DmlRenderingMode in MarkdownSaveOptionsData is required.")
-    }
-
-    if obj.FileName == nil {
-        return errors.New("Property FileName in MarkdownSaveOptionsData is required.")
-    }
-
-    if obj.ImlRenderingMode == nil {
-        return errors.New("Property ImlRenderingMode in MarkdownSaveOptionsData is required.")
-    }
-
-    if obj.UpdateCreatedTimeProperty == nil {
-        return errors.New("Property UpdateCreatedTimeProperty in MarkdownSaveOptionsData is required.")
-    }
-
-    if obj.UpdateFields == nil {
-        return errors.New("Property UpdateFields in MarkdownSaveOptionsData is required.")
-    }
-
-    if obj.UpdateLastPrintedProperty == nil {
-        return errors.New("Property UpdateLastPrintedProperty in MarkdownSaveOptionsData is required.")
-    }
-
-    if obj.UpdateLastSavedTimeProperty == nil {
-        return errors.New("Property UpdateLastSavedTimeProperty in MarkdownSaveOptionsData is required.")
-    }
-
-    if obj.ZipOutput == nil {
-        return errors.New("Property ZipOutput in MarkdownSaveOptionsData is required.")
-    }
-
-    if obj.Encoding == nil {
-        return errors.New("Property Encoding in MarkdownSaveOptionsData is required.")
-    }
-
-    if obj.ExportHeadersFootersMode == nil {
-        return errors.New("Property ExportHeadersFootersMode in MarkdownSaveOptionsData is required.")
-    }
-
-    if obj.ForcePageBreaks == nil {
-        return errors.New("Property ForcePageBreaks in MarkdownSaveOptionsData is required.")
-    }
-
-    if obj.ParagraphBreak == nil {
-        return errors.New("Property ParagraphBreak in MarkdownSaveOptionsData is required.")
-    }
-
-    if obj.TableContentAlignment == nil {
-        return errors.New("Property TableContentAlignment in MarkdownSaveOptionsData is required.")
-    }
-
-    if obj.SaveFormat == nil {
-        return errors.New("Property SaveFormat in MarkdownSaveOptionsData is required.")
     }
 
     return nil;

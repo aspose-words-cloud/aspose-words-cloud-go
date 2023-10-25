@@ -130,22 +130,6 @@ func (obj *FontInfo) Validate() error {
         return errors.New("Invalid object.")
     }
 
-    if obj.FilePath == nil {
-        return errors.New("Property FilePath in FontInfo is required.")
-    }
-
-    if obj.FontFamilyName == nil {
-        return errors.New("Property FontFamilyName in FontInfo is required.")
-    }
-
-    if obj.FullFontName == nil {
-        return errors.New("Property FullFontName in FontInfo is required.")
-    }
-
-    if obj.Version == nil {
-        return errors.New("Property Version in FontInfo is required.")
-    }
-
     return nil;
 }
 

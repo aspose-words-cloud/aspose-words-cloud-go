@@ -111,14 +111,6 @@ func (obj *HyperlinksResponse) Validate() error {
         return errors.New("Invalid object.")
     }
 
-    if obj.RequestId == nil {
-        return errors.New("Property RequestId in HyperlinksResponse is required.")
-    }
-
-    if obj.Hyperlinks == nil {
-        return errors.New("Property Hyperlinks in HyperlinksResponse is required.")
-    }
-
     if obj.Hyperlinks != nil {
         if err := obj.Hyperlinks.Validate(); err != nil {
             return err

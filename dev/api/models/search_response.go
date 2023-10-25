@@ -129,18 +129,6 @@ func (obj *SearchResponse) Validate() error {
         return errors.New("Invalid object.")
     }
 
-    if obj.RequestId == nil {
-        return errors.New("Property RequestId in SearchResponse is required.")
-    }
-
-    if obj.SearchingPattern == nil {
-        return errors.New("Property SearchingPattern in SearchResponse is required.")
-    }
-
-    if obj.SearchResults == nil {
-        return errors.New("Property SearchResults in SearchResponse is required.")
-    }
-
     if obj.SearchResults != nil {
         if err := obj.SearchResults.Validate(); err != nil {
             return err

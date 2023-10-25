@@ -117,18 +117,6 @@ func (obj *DownsampleOptionsData) Validate() error {
         return errors.New("Invalid object.")
     }
 
-    if obj.DownsampleImages == nil {
-        return errors.New("Property DownsampleImages in DownsampleOptionsData is required.")
-    }
-
-    if obj.Resolution == nil {
-        return errors.New("Property Resolution in DownsampleOptionsData is required.")
-    }
-
-    if obj.ResolutionThreshold == nil {
-        return errors.New("Property ResolutionThreshold in DownsampleOptionsData is required.")
-    }
-
     return nil;
 }
 

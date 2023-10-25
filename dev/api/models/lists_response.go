@@ -111,14 +111,6 @@ func (obj *ListsResponse) Validate() error {
         return errors.New("Invalid object.")
     }
 
-    if obj.RequestId == nil {
-        return errors.New("Property RequestId in ListsResponse is required.")
-    }
-
-    if obj.Lists == nil {
-        return errors.New("Property Lists in ListsResponse is required.")
-    }
-
     if obj.Lists != nil {
         if err := obj.Lists.Validate(); err != nil {
             return err

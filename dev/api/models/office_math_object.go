@@ -192,40 +192,15 @@ func (obj *OfficeMathObject) Validate() error {
         return errors.New("Invalid object.")
     }
 
-    if obj.Link == nil {
-        return errors.New("Property Link in OfficeMathObject is required.")
-    }
-
     if obj.Link != nil {
         if err := obj.Link.Validate(); err != nil {
             return err
         }
     }
-
-    if obj.NodeId == nil {
-        return errors.New("Property NodeId in OfficeMathObject is required.")
-    }
-
-    if obj.Content == nil {
-        return errors.New("Property Content in OfficeMathObject is required.")
-    }
-
     if obj.Content != nil {
         if err := obj.Content.Validate(); err != nil {
             return err
         }
-    }
-
-    if obj.DisplayType == nil {
-        return errors.New("Property DisplayType in OfficeMathObject is required.")
-    }
-
-    if obj.Justification == nil {
-        return errors.New("Property Justification in OfficeMathObject is required.")
-    }
-
-    if obj.MathObjectType == nil {
-        return errors.New("Property MathObjectType in OfficeMathObject is required.")
     }
 
     return nil;

@@ -111,14 +111,6 @@ func (obj *TableResponse) Validate() error {
         return errors.New("Invalid object.")
     }
 
-    if obj.RequestId == nil {
-        return errors.New("Property RequestId in TableResponse is required.")
-    }
-
-    if obj.Table == nil {
-        return errors.New("Property Table in TableResponse is required.")
-    }
-
     if obj.Table != nil {
         if err := obj.Table.Validate(); err != nil {
             return err

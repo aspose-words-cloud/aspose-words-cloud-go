@@ -196,18 +196,10 @@ func (obj *LoadWebDocumentData) Validate() error {
     if obj.LoadingDocumentUrl == nil {
         return errors.New("Property LoadingDocumentUrl in LoadWebDocumentData is required.")
     }
-    if obj.SaveOptions == nil {
-        return errors.New("Property SaveOptions in LoadWebDocumentData is required.")
-    }
-
     if obj.SaveOptions != nil {
         if err := obj.SaveOptions.Validate(); err != nil {
             return err
         }
-    }
-
-    if obj.LoadingDocumentUrl == nil {
-        return errors.New("Property LoadingDocumentUrl in LoadWebDocumentData is required.")
     }
 
     return nil;

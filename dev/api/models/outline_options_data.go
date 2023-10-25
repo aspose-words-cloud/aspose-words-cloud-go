@@ -192,30 +192,6 @@ func (obj *OutlineOptionsData) Validate() error {
         return errors.New("Invalid object.")
     }
 
-    if obj.CreateMissingOutlineLevels == nil {
-        return errors.New("Property CreateMissingOutlineLevels in OutlineOptionsData is required.")
-    }
-
-    if obj.CreateOutlinesForHeadingsInTables == nil {
-        return errors.New("Property CreateOutlinesForHeadingsInTables in OutlineOptionsData is required.")
-    }
-
-    if obj.DefaultBookmarksOutlineLevel == nil {
-        return errors.New("Property DefaultBookmarksOutlineLevel in OutlineOptionsData is required.")
-    }
-
-    if obj.ExpandedOutlineLevels == nil {
-        return errors.New("Property ExpandedOutlineLevels in OutlineOptionsData is required.")
-    }
-
-    if obj.HeadingsOutlineLevels == nil {
-        return errors.New("Property HeadingsOutlineLevels in OutlineOptionsData is required.")
-    }
-
-    if obj.BookmarksOutlineLevels == nil {
-        return errors.New("Property BookmarksOutlineLevels in OutlineOptionsData is required.")
-    }
-
     if obj.BookmarksOutlineLevels != nil {
         for _, elementBookmarksOutlineLevels := range obj.BookmarksOutlineLevels {
             if elementBookmarksOutlineLevels != nil {

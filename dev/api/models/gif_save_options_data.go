@@ -673,152 +673,15 @@ func (obj *GifSaveOptionsData) Validate() error {
     if obj.FileName == nil {
         return errors.New("Property FileName in GifSaveOptionsData is required.")
     }
-    if obj.AllowEmbeddingPostScriptFonts == nil {
-        return errors.New("Property AllowEmbeddingPostScriptFonts in GifSaveOptionsData is required.")
-    }
-
-    if obj.CustomTimeZoneInfoData == nil {
-        return errors.New("Property CustomTimeZoneInfoData in GifSaveOptionsData is required.")
-    }
-
     if obj.CustomTimeZoneInfoData != nil {
         if err := obj.CustomTimeZoneInfoData.Validate(); err != nil {
             return err
         }
     }
-
-    if obj.Dml3DEffectsRenderingMode == nil {
-        return errors.New("Property Dml3DEffectsRenderingMode in GifSaveOptionsData is required.")
-    }
-
-    if obj.DmlEffectsRenderingMode == nil {
-        return errors.New("Property DmlEffectsRenderingMode in GifSaveOptionsData is required.")
-    }
-
-    if obj.DmlRenderingMode == nil {
-        return errors.New("Property DmlRenderingMode in GifSaveOptionsData is required.")
-    }
-
-    if obj.FileName == nil {
-        return errors.New("Property FileName in GifSaveOptionsData is required.")
-    }
-
-    if obj.ImlRenderingMode == nil {
-        return errors.New("Property ImlRenderingMode in GifSaveOptionsData is required.")
-    }
-
-    if obj.UpdateCreatedTimeProperty == nil {
-        return errors.New("Property UpdateCreatedTimeProperty in GifSaveOptionsData is required.")
-    }
-
-    if obj.UpdateFields == nil {
-        return errors.New("Property UpdateFields in GifSaveOptionsData is required.")
-    }
-
-    if obj.UpdateLastPrintedProperty == nil {
-        return errors.New("Property UpdateLastPrintedProperty in GifSaveOptionsData is required.")
-    }
-
-    if obj.UpdateLastSavedTimeProperty == nil {
-        return errors.New("Property UpdateLastSavedTimeProperty in GifSaveOptionsData is required.")
-    }
-
-    if obj.ZipOutput == nil {
-        return errors.New("Property ZipOutput in GifSaveOptionsData is required.")
-    }
-
-    if obj.ColorMode == nil {
-        return errors.New("Property ColorMode in GifSaveOptionsData is required.")
-    }
-
-    if obj.JpegQuality == nil {
-        return errors.New("Property JpegQuality in GifSaveOptionsData is required.")
-    }
-
-    if obj.MetafileRenderingOptions == nil {
-        return errors.New("Property MetafileRenderingOptions in GifSaveOptionsData is required.")
-    }
-
     if obj.MetafileRenderingOptions != nil {
         if err := obj.MetafileRenderingOptions.Validate(); err != nil {
             return err
         }
-    }
-
-    if obj.NumeralFormat == nil {
-        return errors.New("Property NumeralFormat in GifSaveOptionsData is required.")
-    }
-
-    if obj.OptimizeOutput == nil {
-        return errors.New("Property OptimizeOutput in GifSaveOptionsData is required.")
-    }
-
-    if obj.PageCount == nil {
-        return errors.New("Property PageCount in GifSaveOptionsData is required.")
-    }
-
-    if obj.PageIndex == nil {
-        return errors.New("Property PageIndex in GifSaveOptionsData is required.")
-    }
-
-    if obj.HorizontalResolution == nil {
-        return errors.New("Property HorizontalResolution in GifSaveOptionsData is required.")
-    }
-
-    if obj.ImageBrightness == nil {
-        return errors.New("Property ImageBrightness in GifSaveOptionsData is required.")
-    }
-
-    if obj.ImageColorMode == nil {
-        return errors.New("Property ImageColorMode in GifSaveOptionsData is required.")
-    }
-
-    if obj.ImageContrast == nil {
-        return errors.New("Property ImageContrast in GifSaveOptionsData is required.")
-    }
-
-    if obj.PaperColor == nil {
-        return errors.New("Property PaperColor in GifSaveOptionsData is required.")
-    }
-
-    if obj.PixelFormat == nil {
-        return errors.New("Property PixelFormat in GifSaveOptionsData is required.")
-    }
-
-    if obj.Resolution == nil {
-        return errors.New("Property Resolution in GifSaveOptionsData is required.")
-    }
-
-    if obj.Scale == nil {
-        return errors.New("Property Scale in GifSaveOptionsData is required.")
-    }
-
-    if obj.UseAntiAliasing == nil {
-        return errors.New("Property UseAntiAliasing in GifSaveOptionsData is required.")
-    }
-
-    if obj.UseHighQualityRendering == nil {
-        return errors.New("Property UseHighQualityRendering in GifSaveOptionsData is required.")
-    }
-
-    if obj.VerticalResolution == nil {
-        return errors.New("Property VerticalResolution in GifSaveOptionsData is required.")
-    }
-
-    if obj.ImageHeight == nil {
-        return errors.New("Property ImageHeight in GifSaveOptionsData is required.")
-    }
-
-    if obj.ImageWidth == nil {
-        return errors.New("Property ImageWidth in GifSaveOptionsData is required.")
-    }
-
-    if obj.UseGdiEmfRenderer == nil {
-        return errors.New("Property UseGdiEmfRenderer in GifSaveOptionsData is required.")
-    }
-
-    if obj.SaveFormat == nil {
-        return errors.New("Property SaveFormat in GifSaveOptionsData is required.")
     }
 
     return nil;

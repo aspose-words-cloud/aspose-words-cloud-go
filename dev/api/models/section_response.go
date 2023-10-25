@@ -111,14 +111,6 @@ func (obj *SectionResponse) Validate() error {
         return errors.New("Invalid object.")
     }
 
-    if obj.RequestId == nil {
-        return errors.New("Property RequestId in SectionResponse is required.")
-    }
-
-    if obj.Section == nil {
-        return errors.New("Property Section in SectionResponse is required.")
-    }
-
     if obj.Section != nil {
         if err := obj.Section.Validate(); err != nil {
             return err

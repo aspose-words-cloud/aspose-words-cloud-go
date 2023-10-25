@@ -111,14 +111,6 @@ func (obj *ParagraphResponse) Validate() error {
         return errors.New("Invalid object.")
     }
 
-    if obj.RequestId == nil {
-        return errors.New("Property RequestId in ParagraphResponse is required.")
-    }
-
-    if obj.Paragraph == nil {
-        return errors.New("Property Paragraph in ParagraphResponse is required.")
-    }
-
     if obj.Paragraph != nil {
         if err := obj.Paragraph.Validate(); err != nil {
             return err

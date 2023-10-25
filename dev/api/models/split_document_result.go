@@ -151,30 +151,16 @@ func (obj *SplitDocumentResult) Validate() error {
         return errors.New("Invalid object.")
     }
 
-    if obj.SourceDocument == nil {
-        return errors.New("Property SourceDocument in SplitDocumentResult is required.")
-    }
-
     if obj.SourceDocument != nil {
         if err := obj.SourceDocument.Validate(); err != nil {
             return err
         }
     }
-
-    if obj.ZippedPages == nil {
-        return errors.New("Property ZippedPages in SplitDocumentResult is required.")
-    }
-
     if obj.ZippedPages != nil {
         if err := obj.ZippedPages.Validate(); err != nil {
             return err
         }
     }
-
-    if obj.Pages == nil {
-        return errors.New("Property Pages in SplitDocumentResult is required.")
-    }
-
     if obj.Pages != nil {
         for _, elementPages := range obj.Pages {
             if elementPages != nil {

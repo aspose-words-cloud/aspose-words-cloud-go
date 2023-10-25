@@ -130,22 +130,6 @@ func (obj *StyleUpdate) Validate() error {
         return errors.New("Invalid object.")
     }
 
-    if obj.NextParagraphStyleName == nil {
-        return errors.New("Property NextParagraphStyleName in StyleUpdate is required.")
-    }
-
-    if obj.BaseStyleName == nil {
-        return errors.New("Property BaseStyleName in StyleUpdate is required.")
-    }
-
-    if obj.IsQuickStyle == nil {
-        return errors.New("Property IsQuickStyle in StyleUpdate is required.")
-    }
-
-    if obj.Name == nil {
-        return errors.New("Property Name in StyleUpdate is required.")
-    }
-
     return nil;
 }
 

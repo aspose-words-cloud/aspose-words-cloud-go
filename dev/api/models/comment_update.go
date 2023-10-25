@@ -195,40 +195,15 @@ func (obj *CommentUpdate) Validate() error {
     if obj.Text == nil {
         return errors.New("Property Text in CommentUpdate is required.")
     }
-    if obj.RangeStart == nil {
-        return errors.New("Property RangeStart in CommentUpdate is required.")
-    }
-
     if obj.RangeStart != nil {
         if err := obj.RangeStart.Validate(); err != nil {
             return err
         }
     }
-
-    if obj.RangeEnd == nil {
-        return errors.New("Property RangeEnd in CommentUpdate is required.")
-    }
-
     if obj.RangeEnd != nil {
         if err := obj.RangeEnd.Validate(); err != nil {
             return err
         }
-    }
-
-    if obj.Author == nil {
-        return errors.New("Property Author in CommentUpdate is required.")
-    }
-
-    if obj.Initial == nil {
-        return errors.New("Property Initial in CommentUpdate is required.")
-    }
-
-    if obj.DateTime == nil {
-        return errors.New("Property DateTime in CommentUpdate is required.")
-    }
-
-    if obj.Text == nil {
-        return errors.New("Property Text in CommentUpdate is required.")
     }
 
     return nil;

@@ -152,22 +152,6 @@ func (obj *CsvDataLoadOptions) Validate() error {
     if obj.QuoteChar == nil {
         return errors.New("Property QuoteChar in CsvDataLoadOptions is required.")
     }
-    if obj.CommentChar == nil {
-        return errors.New("Property CommentChar in CsvDataLoadOptions is required.")
-    }
-
-    if obj.Delimiter == nil {
-        return errors.New("Property Delimiter in CsvDataLoadOptions is required.")
-    }
-
-    if obj.HasHeaders == nil {
-        return errors.New("Property HasHeaders in CsvDataLoadOptions is required.")
-    }
-
-    if obj.QuoteChar == nil {
-        return errors.New("Property QuoteChar in CsvDataLoadOptions is required.")
-    }
-
     return nil;
 }
 

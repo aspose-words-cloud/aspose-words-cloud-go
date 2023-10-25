@@ -150,28 +150,11 @@ func (obj *BookmarkInsert) Validate() error {
         return errors.New("Invalid object.")
     }
 
-    if obj.Name == nil {
-        return errors.New("Property Name in BookmarkInsert is required.")
-    }
-
-    if obj.Text == nil {
-        return errors.New("Property Text in BookmarkInsert is required.")
-    }
-
-    if obj.StartRange == nil {
-        return errors.New("Property StartRange in BookmarkInsert is required.")
-    }
-
     if obj.StartRange != nil {
         if err := obj.StartRange.Validate(); err != nil {
             return err
         }
     }
-
-    if obj.EndRange == nil {
-        return errors.New("Property EndRange in BookmarkInsert is required.")
-    }
-
     if obj.EndRange != nil {
         if err := obj.EndRange.Validate(); err != nil {
             return err

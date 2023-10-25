@@ -167,30 +167,10 @@ func (obj *Field) Validate() error {
         return errors.New("Invalid object.")
     }
 
-    if obj.Link == nil {
-        return errors.New("Property Link in Field is required.")
-    }
-
     if obj.Link != nil {
         if err := obj.Link.Validate(); err != nil {
             return err
         }
-    }
-
-    if obj.NodeId == nil {
-        return errors.New("Property NodeId in Field is required.")
-    }
-
-    if obj.FieldCode == nil {
-        return errors.New("Property FieldCode in Field is required.")
-    }
-
-    if obj.LocaleId == nil {
-        return errors.New("Property LocaleId in Field is required.")
-    }
-
-    if obj.Result == nil {
-        return errors.New("Property Result in Field is required.")
     }
 
     return nil;

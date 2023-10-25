@@ -111,14 +111,6 @@ func (obj *StyleResponse) Validate() error {
         return errors.New("Invalid object.")
     }
 
-    if obj.RequestId == nil {
-        return errors.New("Property RequestId in StyleResponse is required.")
-    }
-
-    if obj.Style == nil {
-        return errors.New("Property Style in StyleResponse is required.")
-    }
-
     if obj.Style != nil {
         if err := obj.Style.Validate(); err != nil {
             return err

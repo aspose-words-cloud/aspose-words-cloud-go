@@ -111,14 +111,6 @@ func (obj *BordersResponse) Validate() error {
         return errors.New("Invalid object.")
     }
 
-    if obj.RequestId == nil {
-        return errors.New("Property RequestId in BordersResponse is required.")
-    }
-
-    if obj.Borders == nil {
-        return errors.New("Property Borders in BordersResponse is required.")
-    }
-
     if obj.Borders != nil {
         if err := obj.Borders.Validate(); err != nil {
             return err

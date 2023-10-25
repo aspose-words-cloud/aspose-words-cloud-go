@@ -181,34 +181,6 @@ func (obj *DrawingObjectUpdate) Validate() error {
         return errors.New("Invalid object.")
     }
 
-    if obj.RelativeHorizontalPosition == nil {
-        return errors.New("Property RelativeHorizontalPosition in DrawingObjectUpdate is required.")
-    }
-
-    if obj.Left == nil {
-        return errors.New("Property Left in DrawingObjectUpdate is required.")
-    }
-
-    if obj.RelativeVerticalPosition == nil {
-        return errors.New("Property RelativeVerticalPosition in DrawingObjectUpdate is required.")
-    }
-
-    if obj.Top == nil {
-        return errors.New("Property Top in DrawingObjectUpdate is required.")
-    }
-
-    if obj.Width == nil {
-        return errors.New("Property Width in DrawingObjectUpdate is required.")
-    }
-
-    if obj.Height == nil {
-        return errors.New("Property Height in DrawingObjectUpdate is required.")
-    }
-
-    if obj.WrapType == nil {
-        return errors.New("Property WrapType in DrawingObjectUpdate is required.")
-    }
-
     return nil;
 }
 

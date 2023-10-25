@@ -108,14 +108,6 @@ func (obj *CompressResponse) Validate() error {
         return errors.New("Invalid object.")
     }
 
-    if obj.RequestId == nil {
-        return errors.New("Property RequestId in CompressResponse is required.")
-    }
-
-    if obj.Document == nil {
-        return errors.New("Property Document in CompressResponse is required.")
-    }
-
     if obj.Document != nil {
         if err := obj.Document.Validate(); err != nil {
             return err

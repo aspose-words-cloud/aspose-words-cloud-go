@@ -111,14 +111,6 @@ func (obj *DrawingObjectsResponse) Validate() error {
         return errors.New("Invalid object.")
     }
 
-    if obj.RequestId == nil {
-        return errors.New("Property RequestId in DrawingObjectsResponse is required.")
-    }
-
-    if obj.DrawingObjects == nil {
-        return errors.New("Property DrawingObjects in DrawingObjectsResponse is required.")
-    }
-
     if obj.DrawingObjects != nil {
         if err := obj.DrawingObjects.Validate(); err != nil {
             return err

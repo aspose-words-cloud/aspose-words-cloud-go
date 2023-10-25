@@ -100,14 +100,6 @@ func (obj *ListFormatUpdate) Validate() error {
         return errors.New("Invalid object.")
     }
 
-    if obj.ListLevelNumber == nil {
-        return errors.New("Property ListLevelNumber in ListFormatUpdate is required.")
-    }
-
-    if obj.ListId == nil {
-        return errors.New("Property ListId in ListFormatUpdate is required.")
-    }
-
     return nil;
 }
 

@@ -125,22 +125,10 @@ func (obj *Hyperlink) Validate() error {
         return errors.New("Invalid object.")
     }
 
-    if obj.Link == nil {
-        return errors.New("Property Link in Hyperlink is required.")
-    }
-
     if obj.Link != nil {
         if err := obj.Link.Validate(); err != nil {
             return err
         }
-    }
-
-    if obj.DisplayText == nil {
-        return errors.New("Property DisplayText in Hyperlink is required.")
-    }
-
-    if obj.Value == nil {
-        return errors.New("Property Value in Hyperlink is required.")
     }
 
     return nil;

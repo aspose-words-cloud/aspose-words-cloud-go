@@ -125,18 +125,6 @@ func (obj *TabStopInsert) Validate() error {
     if obj.Position == nil {
         return errors.New("Property Position in TabStopInsert is required.")
     }
-    if obj.Alignment == nil {
-        return errors.New("Property Alignment in TabStopInsert is required.")
-    }
-
-    if obj.Leader == nil {
-        return errors.New("Property Leader in TabStopInsert is required.")
-    }
-
-    if obj.Position == nil {
-        return errors.New("Property Position in TabStopInsert is required.")
-    }
-
     return nil;
 }
 
