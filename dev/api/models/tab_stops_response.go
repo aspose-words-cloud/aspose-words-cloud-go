@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // The REST response with an array of tab stops.
 // This response is returned by the Service when handling "GET https://api.aspose.cloud/v4.0/words/Test.doc/paragraphs/{0}/tabstops" REST API requests.
 
@@ -35,6 +39,7 @@ type ITabStopsResponse interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetRequestId() *string
     SetRequestId(value *string)
     GetTabStops() []ITabStop
@@ -112,6 +117,24 @@ func (obj *TabStopsResponse) Deserialize(json map[string]interface{}) {
 
 func (obj *TabStopsResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *TabStopsResponse) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.TabStops != nil {
+        for _, elementTabStops := range obj.TabStops {
+            if elementTabStops != nil {
+                if err := elementTabStops.Validate(); err != nil {
+                    return err
+                }
+            }
+        }
+    }
+
+    return nil;
 }
 
 func (obj *TabStopsResponse) GetRequestId() *string {

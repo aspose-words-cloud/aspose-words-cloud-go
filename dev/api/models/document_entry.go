@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Represents a document which will be appended to the original resource document.
 
 type IDocumentEntry interface {
@@ -34,6 +38,7 @@ type IDocumentEntry interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetFileReference() IFileReference
     SetFileReference(value IFileReference)
     GetEncryptedPassword() *string
@@ -119,6 +124,26 @@ func (obj *DocumentEntry) CollectFilesContent(resultFilesContent []FileReference
 
 
     return resultFilesContent
+}
+
+func (obj *DocumentEntry) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.FileReference == nil {
+        return errors.New("Property FileReference in DocumentEntry is required.")
+    }
+    if obj.ImportFormatMode == nil {
+        return errors.New("Property ImportFormatMode in DocumentEntry is required.")
+    }
+    if obj.FileReference != nil {
+        if err := obj.FileReference.Validate(); err != nil {
+            return err
+        }
+    }
+
+    return nil;
 }
 
 func (obj *DocumentEntry) GetFileReference() IFileReference {

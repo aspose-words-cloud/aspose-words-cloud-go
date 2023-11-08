@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // The REST response with document's statistical data.
 
 type IStatDataResponse interface {
@@ -34,6 +38,7 @@ type IStatDataResponse interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetRequestId() *string
     SetRequestId(value *string)
     GetDocumentLink() IFileLink
@@ -121,6 +126,25 @@ func (obj *StatDataResponse) Deserialize(json map[string]interface{}) {
 
 func (obj *StatDataResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *StatDataResponse) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.DocumentLink != nil {
+        if err := obj.DocumentLink.Validate(); err != nil {
+            return err
+        }
+    }
+    if obj.StatData != nil {
+        if err := obj.StatData.Validate(); err != nil {
+            return err
+        }
+    }
+
+    return nil;
 }
 
 func (obj *StatDataResponse) GetRequestId() *string {

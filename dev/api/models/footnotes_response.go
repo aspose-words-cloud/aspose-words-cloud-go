@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // The REST response with a collection of footnotes.
 // This response is returned by the Service when handling "GET https://api.aspose.cloud/v4.0/words/Test.doc/footnotes" REST API requests.
 
@@ -35,6 +39,7 @@ type IFootnotesResponse interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetRequestId() *string
     SetRequestId(value *string)
     GetFootnotes() IFootnoteCollection
@@ -99,6 +104,20 @@ func (obj *FootnotesResponse) Deserialize(json map[string]interface{}) {
 
 func (obj *FootnotesResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *FootnotesResponse) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.Footnotes != nil {
+        if err := obj.Footnotes.Validate(); err != nil {
+            return err
+        }
+    }
+
+    return nil;
 }
 
 func (obj *FootnotesResponse) GetRequestId() *string {

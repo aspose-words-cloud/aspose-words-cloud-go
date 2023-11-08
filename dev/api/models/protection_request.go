@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Request on changing of protection.
 
 type IProtectionRequest interface {
@@ -34,6 +38,7 @@ type IProtectionRequest interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetNewPassword() *string
     SetNewPassword(value *string)
     GetPassword() *string
@@ -101,6 +106,17 @@ func (obj *ProtectionRequest) Deserialize(json map[string]interface{}) {
 
 func (obj *ProtectionRequest) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *ProtectionRequest) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.Password == nil {
+        return errors.New("Property Password in ProtectionRequest is required.")
+    }
+    return nil;
 }
 
 func (obj *ProtectionRequest) GetNewPassword() *string {

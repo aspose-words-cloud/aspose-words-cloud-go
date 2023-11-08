@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // DTO for bookmark updating.
 
 type IBookmarkData interface {
@@ -34,6 +38,7 @@ type IBookmarkData interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetName() *string
     SetName(value *string)
     GetText() *string
@@ -84,6 +89,14 @@ func (obj *BookmarkData) Deserialize(json map[string]interface{}) {
 
 func (obj *BookmarkData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *BookmarkData) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    return nil;
 }
 
 func (obj *BookmarkData) GetName() *string {

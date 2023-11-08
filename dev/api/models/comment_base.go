@@ -34,6 +34,7 @@ type ICommentBase interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetRangeStart() INewDocumentPosition
     SetRangeStart(value INewDocumentPosition)
     GetRangeEnd() INewDocumentPosition

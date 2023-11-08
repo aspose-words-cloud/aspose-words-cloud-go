@@ -34,6 +34,7 @@ type IImageSaveOptionsData interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetAllowEmbeddingPostScriptFonts() *bool
     SetAllowEmbeddingPostScriptFonts(value *bool)
     GetCustomTimeZoneInfoData() ITimeZoneInfoData

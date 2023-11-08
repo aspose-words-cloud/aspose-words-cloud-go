@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // DTO container with a table cell element.
 
 type ITableCell interface {
@@ -34,6 +38,7 @@ type ITableCell interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetLink() IWordsApiLink
     SetLink(value IWordsApiLink)
     GetNodeId() *string
@@ -133,6 +138,7 @@ func (obj *TableCell) Deserialize(json map[string]interface{}) {
                         if jsonTypeStr == "RunLink, _" { modelElementInstance = new(RunLink) }
                         if jsonTypeStr == "SectionLink, _" { modelElementInstance = new(SectionLink) }
                         if jsonTypeStr == "StructuredDocumentTag, _" { modelElementInstance = new(StructuredDocumentTag) }
+                        if jsonTypeStr == "StructuredDocumentTagBase, _" {  }
                         if jsonTypeStr == "StructuredDocumentTagInsert, _" { modelElementInstance = new(StructuredDocumentTagInsert) }
                         if jsonTypeStr == "StructuredDocumentTagUpdate, _" { modelElementInstance = new(StructuredDocumentTagUpdate) }
                         if jsonTypeStr == "Table, _" { modelElementInstance = new(Table) }
@@ -175,6 +181,7 @@ func (obj *TableCell) Deserialize(json map[string]interface{}) {
                         if jsonTypeStr == "RunLink, _" { modelElementInstance = new(RunLink) }
                         if jsonTypeStr == "SectionLink, _" { modelElementInstance = new(SectionLink) }
                         if jsonTypeStr == "StructuredDocumentTag, _" { modelElementInstance = new(StructuredDocumentTag) }
+                        if jsonTypeStr == "StructuredDocumentTagBase, _" {  }
                         if jsonTypeStr == "StructuredDocumentTagInsert, _" { modelElementInstance = new(StructuredDocumentTagInsert) }
                         if jsonTypeStr == "StructuredDocumentTagUpdate, _" { modelElementInstance = new(StructuredDocumentTagUpdate) }
                         if jsonTypeStr == "Table, _" { modelElementInstance = new(Table) }
@@ -196,6 +203,29 @@ func (obj *TableCell) Deserialize(json map[string]interface{}) {
 
 func (obj *TableCell) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *TableCell) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.Link != nil {
+        if err := obj.Link.Validate(); err != nil {
+            return err
+        }
+    }
+    if obj.ChildNodes != nil {
+        for _, elementChildNodes := range obj.ChildNodes {
+            if elementChildNodes != nil {
+                if err := elementChildNodes.Validate(); err != nil {
+                    return err
+                }
+            }
+        }
+    }
+
+    return nil;
 }
 
 func (obj *TableCell) GetLink() IWordsApiLink {

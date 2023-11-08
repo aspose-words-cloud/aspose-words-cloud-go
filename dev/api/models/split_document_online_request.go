@@ -28,6 +28,7 @@
 package models
 
 import (
+    "errors"
     "io/ioutil"
     "net/url"
     "strings"
@@ -56,9 +57,11 @@ type SplitDocumentOnlineRequest struct {
 
 
 func (data *SplitDocumentOnlineRequest) CreateRequestData() (RequestData, error) {
-
     var result RequestData
     var filesContentData = make([]FileReference, 0)
+    if data == nil {
+        return result, errors.New("Invalid object.")
+    }
 
     result.Method = strings.ToUpper("put")
 
@@ -71,6 +74,14 @@ func (data *SplitDocumentOnlineRequest) CreateRequestData() (RequestData, error)
     result.HeaderParams = make(map[string]string)
     result.QueryParams = url.Values{}
     result.FormParams = make([]FormParamContainer, 0)
+
+    if (data.Document == nil) {
+        return result, errors.New("Parameter Document is required.")
+    }
+
+    if (data.Format == nil) {
+        return result, errors.New("Parameter Format is required.")
+    }
 
 
     if err := typeCheckParameter(data.Optionals["loadEncoding"], "string", "data.Optionals[loadEncoding]"); err != nil {
@@ -97,6 +108,7 @@ func (data *SplitDocumentOnlineRequest) CreateRequestData() (RequestData, error)
     if err := typeCheckParameter(data.Optionals["fontsLocation"], "string", "data.Optionals[fontsLocation]"); err != nil {
         return result, err
     }
+
 
 
     result.QueryParams.Add("Format", parameterToString(*data.Format, ""))

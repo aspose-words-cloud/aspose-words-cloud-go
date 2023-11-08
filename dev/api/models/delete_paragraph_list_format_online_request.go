@@ -29,6 +29,7 @@ package models
 
 import (
     "fmt"
+    "errors"
     "io/ioutil"
     "net/url"
     "strings"
@@ -56,9 +57,11 @@ type DeleteParagraphListFormatOnlineRequest struct {
 
 
 func (data *DeleteParagraphListFormatOnlineRequest) CreateRequestData() (RequestData, error) {
-
     var result RequestData
     var filesContentData = make([]FileReference, 0)
+    if data == nil {
+        return result, errors.New("Invalid object.")
+    }
 
     result.Method = strings.ToUpper("put")
 
@@ -73,6 +76,14 @@ func (data *DeleteParagraphListFormatOnlineRequest) CreateRequestData() (Request
     result.HeaderParams = make(map[string]string)
     result.QueryParams = url.Values{}
     result.FormParams = make([]FormParamContainer, 0)
+
+    if (data.Document == nil) {
+        return result, errors.New("Parameter Document is required.")
+    }
+
+    if (data.Index == nil) {
+        return result, errors.New("Parameter Index is required.")
+    }
 
 
     if err := typeCheckParameter(data.Optionals["nodePath"], "string", "data.Optionals[nodePath]"); err != nil {
@@ -96,6 +107,7 @@ func (data *DeleteParagraphListFormatOnlineRequest) CreateRequestData() (Request
     if err := typeCheckParameter(data.Optionals["revisionDateTime"], "string", "data.Optionals[revisionDateTime]"); err != nil {
         return result, err
     }
+
 
 
     if localVarTempParam, localVarOk := data.Optionals["loadEncoding"].(string); localVarOk {

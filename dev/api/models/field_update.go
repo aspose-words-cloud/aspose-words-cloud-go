@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Field for update.
 
 type IFieldUpdate interface {
@@ -34,6 +38,7 @@ type IFieldUpdate interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetLocaleId() *string
     SetLocaleId(value *string)
     GetFieldCode() *string
@@ -87,6 +92,17 @@ func (obj *FieldUpdate) Deserialize(json map[string]interface{}) {
 
 func (obj *FieldUpdate) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *FieldUpdate) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.FieldCode == nil {
+        return errors.New("Property FieldCode in FieldUpdate is required.")
+    }
+    return nil;
 }
 
 func (obj *FieldUpdate) GetLocaleId() *string {

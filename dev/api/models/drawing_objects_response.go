@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // The REST response with a collection of DrawingObjects.
 // This response should be returned by the service when handling: GET /drawingObjects.
 
@@ -35,6 +39,7 @@ type IDrawingObjectsResponse interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetRequestId() *string
     SetRequestId(value *string)
     GetDrawingObjects() IDrawingObjectCollection
@@ -99,6 +104,20 @@ func (obj *DrawingObjectsResponse) Deserialize(json map[string]interface{}) {
 
 func (obj *DrawingObjectsResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *DrawingObjectsResponse) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.DrawingObjects != nil {
+        if err := obj.DrawingObjects.Validate(); err != nil {
+            return err
+        }
+    }
+
+    return nil;
 }
 
 func (obj *DrawingObjectsResponse) GetRequestId() *string {

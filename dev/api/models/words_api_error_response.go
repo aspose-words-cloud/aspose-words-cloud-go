@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // The REST response with an API error.
 
 type IWordsApiErrorResponse interface {
@@ -34,6 +38,7 @@ type IWordsApiErrorResponse interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetRequestId() *string
     SetRequestId(value *string)
     GetError() IApiError
@@ -91,6 +96,20 @@ func (obj *WordsApiErrorResponse) Deserialize(json map[string]interface{}) {
 
 func (obj *WordsApiErrorResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *WordsApiErrorResponse) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.Error_ != nil {
+        if err := obj.Error_.Validate(); err != nil {
+            return err
+        }
+    }
+
+    return nil;
 }
 
 func (obj *WordsApiErrorResponse) GetRequestId() *string {

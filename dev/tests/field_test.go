@@ -389,6 +389,8 @@ func Test_Field_InsertPageNumbers(t *testing.T) {
     requestPageNumber := models.PageNumber{
         Alignment: ToStringPointer("center"),
         Format: ToStringPointer("{PAGE} of {NUMPAGES}"),
+        IsTop: ToBoolPointer(true),
+        SetPageNumberOnFirstPage: ToBoolPointer(true),
     }
 
     options := map[string]interface{}{
@@ -421,6 +423,8 @@ func Test_Field_InsertPageNumbersOnline(t *testing.T) {
     requestPageNumber := models.PageNumber{
         Alignment: ToStringPointer("center"),
         Format: ToStringPointer("{PAGE} of {NUMPAGES}"),
+        IsTop: ToBoolPointer(true),
+        SetPageNumberOnFirstPage: ToBoolPointer(true),
     }
 
     options := map[string]interface{}{

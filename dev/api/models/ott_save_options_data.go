@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Container class for ott save options.
 
 type IOttSaveOptionsData interface {
@@ -34,6 +38,7 @@ type IOttSaveOptionsData interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetAllowEmbeddingPostScriptFonts() *bool
     SetAllowEmbeddingPostScriptFonts(value *bool)
     GetCustomTimeZoneInfoData() ITimeZoneInfoData
@@ -347,6 +352,23 @@ func (obj *OttSaveOptionsData) Deserialize(json map[string]interface{}) {
 
 func (obj *OttSaveOptionsData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *OttSaveOptionsData) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.FileName == nil {
+        return errors.New("Property FileName in OttSaveOptionsData is required.")
+    }
+    if obj.CustomTimeZoneInfoData != nil {
+        if err := obj.CustomTimeZoneInfoData.Validate(); err != nil {
+            return err
+        }
+    }
+
+    return nil;
 }
 
 func (obj *OttSaveOptionsData) GetAllowEmbeddingPostScriptFonts() *bool {

@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // The collection of search results.
 
 type ISearchResultsCollection interface {
@@ -34,6 +38,7 @@ type ISearchResultsCollection interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetLink() IWordsApiLink
     SetLink(value IWordsApiLink)
     GetResultsList() []ISearchResult
@@ -117,6 +122,29 @@ func (obj *SearchResultsCollection) Deserialize(json map[string]interface{}) {
 
 func (obj *SearchResultsCollection) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *SearchResultsCollection) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.Link != nil {
+        if err := obj.Link.Validate(); err != nil {
+            return err
+        }
+    }
+    if obj.ResultsList != nil {
+        for _, elementResultsList := range obj.ResultsList {
+            if elementResultsList != nil {
+                if err := elementResultsList.Validate(); err != nil {
+                    return err
+                }
+            }
+        }
+    }
+
+    return nil;
 }
 
 func (obj *SearchResultsCollection) GetLink() IWordsApiLink {

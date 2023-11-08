@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Result of saving.
 
 type ISaveResult interface {
@@ -34,6 +38,7 @@ type ISaveResult interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetDestDocument() IFileLink
     SetDestDocument(value IFileLink)
     GetSourceDocument() IFileLink
@@ -139,6 +144,34 @@ func (obj *SaveResult) Deserialize(json map[string]interface{}) {
 
 func (obj *SaveResult) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *SaveResult) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.DestDocument != nil {
+        if err := obj.DestDocument.Validate(); err != nil {
+            return err
+        }
+    }
+    if obj.SourceDocument != nil {
+        if err := obj.SourceDocument.Validate(); err != nil {
+            return err
+        }
+    }
+    if obj.AdditionalItems != nil {
+        for _, elementAdditionalItems := range obj.AdditionalItems {
+            if elementAdditionalItems != nil {
+                if err := elementAdditionalItems.Validate(); err != nil {
+                    return err
+                }
+            }
+        }
+    }
+
+    return nil;
 }
 
 func (obj *SaveResult) GetDestDocument() IFileLink {

@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Represents a image which will be appended to the original resource image or document.
 
 type IImageEntry interface {
@@ -34,6 +38,7 @@ type IImageEntry interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetFileReference() IFileReference
     SetFileReference(value IFileReference)
 }
@@ -83,6 +88,23 @@ func (obj *ImageEntry) CollectFilesContent(resultFilesContent []FileReference) [
     }
 
     return resultFilesContent
+}
+
+func (obj *ImageEntry) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.FileReference == nil {
+        return errors.New("Property FileReference in ImageEntry is required.")
+    }
+    if obj.FileReference != nil {
+        if err := obj.FileReference.Validate(); err != nil {
+            return err
+        }
+    }
+
+    return nil;
 }
 
 func (obj *ImageEntry) GetFileReference() IFileReference {

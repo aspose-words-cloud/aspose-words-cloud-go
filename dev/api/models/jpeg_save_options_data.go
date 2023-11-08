@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Container class for jpeg save options.
 
 type IJpegSaveOptionsData interface {
@@ -34,6 +38,7 @@ type IJpegSaveOptionsData interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetAllowEmbeddingPostScriptFonts() *bool
     SetAllowEmbeddingPostScriptFonts(value *bool)
     GetCustomTimeZoneInfoData() ITimeZoneInfoData
@@ -658,6 +663,28 @@ func (obj *JpegSaveOptionsData) Deserialize(json map[string]interface{}) {
 
 func (obj *JpegSaveOptionsData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *JpegSaveOptionsData) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.FileName == nil {
+        return errors.New("Property FileName in JpegSaveOptionsData is required.")
+    }
+    if obj.CustomTimeZoneInfoData != nil {
+        if err := obj.CustomTimeZoneInfoData.Validate(); err != nil {
+            return err
+        }
+    }
+    if obj.MetafileRenderingOptions != nil {
+        if err := obj.MetafileRenderingOptions.Validate(); err != nil {
+            return err
+        }
+    }
+
+    return nil;
 }
 
 func (obj *JpegSaveOptionsData) GetAllowEmbeddingPostScriptFonts() *bool {

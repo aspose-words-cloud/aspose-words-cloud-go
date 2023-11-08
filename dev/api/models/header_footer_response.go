@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // The REST response with a HeaderFooter.
 // This response is returned by the Service when handling "GET https://api.aspose.cloud/v4.0/words/Test.doc/headersfooters/{0}" REST API requests.
 
@@ -35,6 +39,7 @@ type IHeaderFooterResponse interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetRequestId() *string
     SetRequestId(value *string)
     GetHeaderFooter() IHeaderFooter
@@ -99,6 +104,20 @@ func (obj *HeaderFooterResponse) Deserialize(json map[string]interface{}) {
 
 func (obj *HeaderFooterResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *HeaderFooterResponse) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.HeaderFooter != nil {
+        if err := obj.HeaderFooter.Validate(); err != nil {
+            return err
+        }
+    }
+
+    return nil;
 }
 
 func (obj *HeaderFooterResponse) GetRequestId() *string {

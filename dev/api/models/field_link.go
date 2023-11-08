@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Field link.
 
 type IFieldLink interface {
@@ -34,6 +38,7 @@ type IFieldLink interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetLink() IWordsApiLink
     SetLink(value IWordsApiLink)
     GetNodeId() *string
@@ -117,6 +122,20 @@ func (obj *FieldLink) Deserialize(json map[string]interface{}) {
 
 func (obj *FieldLink) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *FieldLink) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.Link != nil {
+        if err := obj.Link.Validate(); err != nil {
+            return err
+        }
+    }
+
+    return nil;
 }
 
 func (obj *FieldLink) GetLink() IWordsApiLink {

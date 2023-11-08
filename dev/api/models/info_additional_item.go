@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Info additional item.
 
 type IInfoAdditionalItem interface {
@@ -34,6 +38,7 @@ type IInfoAdditionalItem interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetKey() *string
     SetKey(value *string)
     GetValue() *string
@@ -84,6 +89,14 @@ func (obj *InfoAdditionalItem) Deserialize(json map[string]interface{}) {
 
 func (obj *InfoAdditionalItem) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *InfoAdditionalItem) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    return nil;
 }
 
 func (obj *InfoAdditionalItem) GetKey() *string {

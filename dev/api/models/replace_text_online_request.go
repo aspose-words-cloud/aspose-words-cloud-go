@@ -28,6 +28,7 @@
 package models
 
 import (
+    "errors"
     "io/ioutil"
     "net/url"
     "strings"
@@ -54,9 +55,11 @@ type ReplaceTextOnlineRequest struct {
 
 
 func (data *ReplaceTextOnlineRequest) CreateRequestData() (RequestData, error) {
-
     var result RequestData
     var filesContentData = make([]FileReference, 0)
+    if data == nil {
+        return result, errors.New("Invalid object.")
+    }
 
     result.Method = strings.ToUpper("put")
 
@@ -70,9 +73,16 @@ func (data *ReplaceTextOnlineRequest) CreateRequestData() (RequestData, error) {
     result.QueryParams = url.Values{}
     result.FormParams = make([]FormParamContainer, 0)
 
+    if (data.Document == nil) {
+        return result, errors.New("Parameter Document is required.")
+    }
+
     if (data.ReplaceText != nil) {
         data.ReplaceText.Initialize()
+    } else {
+        return result, errors.New("Parameter ReplaceText is required.")
     }
+
 
     if err := typeCheckParameter(data.Optionals["loadEncoding"], "string", "data.Optionals[loadEncoding]"); err != nil {
         return result, err
@@ -91,6 +101,13 @@ func (data *ReplaceTextOnlineRequest) CreateRequestData() (RequestData, error) {
     }
     if err := typeCheckParameter(data.Optionals["revisionDateTime"], "string", "data.Optionals[revisionDateTime]"); err != nil {
         return result, err
+    }
+
+
+    if (data.ReplaceText != nil) {
+        if err := data.ReplaceText.Validate(); err != nil {
+            return result, err
+        }
     }
 
 

@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Files list.
 
 type IFilesList interface {
@@ -34,6 +38,7 @@ type IFilesList interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetValue() []IStorageFile
     SetValue(value []IStorageFile)
 }
@@ -89,6 +94,24 @@ func (obj *FilesList) Deserialize(json map[string]interface{}) {
 
 func (obj *FilesList) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *FilesList) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.Value != nil {
+        for _, elementValue := range obj.Value {
+            if elementValue != nil {
+                if err := elementValue.Validate(); err != nil {
+                    return err
+                }
+            }
+        }
+    }
+
+    return nil;
 }
 
 func (obj *FilesList) GetValue() []IStorageFile {

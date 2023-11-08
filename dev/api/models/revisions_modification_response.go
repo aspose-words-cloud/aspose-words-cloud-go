@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // The REST response with a result of the modification operations for the revisions collection (now these are acceptAll and rejectAll).
 
 type IRevisionsModificationResponse interface {
@@ -34,6 +38,7 @@ type IRevisionsModificationResponse interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetRequestId() *string
     SetRequestId(value *string)
     GetResult() IModificationOperationResult
@@ -96,6 +101,20 @@ func (obj *RevisionsModificationResponse) Deserialize(json map[string]interface{
 
 func (obj *RevisionsModificationResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *RevisionsModificationResponse) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.Result != nil {
+        if err := obj.Result.Validate(); err != nil {
+            return err
+        }
+    }
+
+    return nil;
 }
 
 func (obj *RevisionsModificationResponse) GetRequestId() *string {

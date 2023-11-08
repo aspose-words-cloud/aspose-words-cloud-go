@@ -28,6 +28,7 @@
 package models
 
 import (
+    "errors"
     "io/ioutil"
     "net/url"
     "strings"
@@ -69,9 +70,11 @@ type SaveAsTiffOnlineRequest struct {
 
 
 func (data *SaveAsTiffOnlineRequest) CreateRequestData() (RequestData, error) {
-
     var result RequestData
     var filesContentData = make([]FileReference, 0)
+    if data == nil {
+        return result, errors.New("Invalid object.")
+    }
 
     result.Method = strings.ToUpper("put")
 
@@ -85,9 +88,16 @@ func (data *SaveAsTiffOnlineRequest) CreateRequestData() (RequestData, error) {
     result.QueryParams = url.Values{}
     result.FormParams = make([]FormParamContainer, 0)
 
+    if (data.Document == nil) {
+        return result, errors.New("Parameter Document is required.")
+    }
+
     if (data.SaveOptions != nil) {
         data.SaveOptions.Initialize()
+    } else {
+        return result, errors.New("Parameter SaveOptions is required.")
     }
+
 
     if err := typeCheckParameter(data.Optionals["loadEncoding"], "string", "data.Optionals[loadEncoding]"); err != nil {
         return result, err
@@ -151,6 +161,13 @@ func (data *SaveAsTiffOnlineRequest) CreateRequestData() (RequestData, error) {
     }
     if err := typeCheckParameter(data.Optionals["fontsLocation"], "string", "data.Optionals[fontsLocation]"); err != nil {
         return result, err
+    }
+
+
+    if (data.SaveOptions != nil) {
+        if err := data.SaveOptions.Validate(); err != nil {
+            return result, err
+        }
     }
 
 

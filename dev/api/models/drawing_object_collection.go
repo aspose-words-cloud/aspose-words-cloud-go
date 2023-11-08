@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // DTO container with a collection of DrawingObjects links.
 
 type IDrawingObjectCollection interface {
@@ -34,6 +38,7 @@ type IDrawingObjectCollection interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetLink() IWordsApiLink
     SetLink(value IWordsApiLink)
     GetList() []ILinkElement
@@ -153,6 +158,7 @@ func (obj *DrawingObjectCollection) Deserialize(json map[string]interface{}) {
                         if jsonTypeStr == "SectionLink, _" { modelElementInstance = new(SectionLink) }
                         if jsonTypeStr == "SectionLinkCollection, _" { modelElementInstance = new(SectionLinkCollection) }
                         if jsonTypeStr == "StructuredDocumentTag, _" { modelElementInstance = new(StructuredDocumentTag) }
+                        if jsonTypeStr == "StructuredDocumentTagBase, _" {  }
                         if jsonTypeStr == "StructuredDocumentTagCollection, _" { modelElementInstance = new(StructuredDocumentTagCollection) }
                         if jsonTypeStr == "StructuredDocumentTagInsert, _" { modelElementInstance = new(StructuredDocumentTagInsert) }
                         if jsonTypeStr == "StructuredDocumentTagUpdate, _" { modelElementInstance = new(StructuredDocumentTagUpdate) }
@@ -242,6 +248,7 @@ func (obj *DrawingObjectCollection) Deserialize(json map[string]interface{}) {
                         if jsonTypeStr == "SectionLink, _" { modelElementInstance = new(SectionLink) }
                         if jsonTypeStr == "SectionLinkCollection, _" { modelElementInstance = new(SectionLinkCollection) }
                         if jsonTypeStr == "StructuredDocumentTag, _" { modelElementInstance = new(StructuredDocumentTag) }
+                        if jsonTypeStr == "StructuredDocumentTagBase, _" {  }
                         if jsonTypeStr == "StructuredDocumentTagCollection, _" { modelElementInstance = new(StructuredDocumentTagCollection) }
                         if jsonTypeStr == "StructuredDocumentTagInsert, _" { modelElementInstance = new(StructuredDocumentTagInsert) }
                         if jsonTypeStr == "StructuredDocumentTagUpdate, _" { modelElementInstance = new(StructuredDocumentTagUpdate) }
@@ -269,6 +276,29 @@ func (obj *DrawingObjectCollection) Deserialize(json map[string]interface{}) {
 
 func (obj *DrawingObjectCollection) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *DrawingObjectCollection) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.Link != nil {
+        if err := obj.Link.Validate(); err != nil {
+            return err
+        }
+    }
+    if obj.List != nil {
+        for _, elementList := range obj.List {
+            if elementList != nil {
+                if err := elementList.Validate(); err != nil {
+                    return err
+                }
+            }
+        }
+    }
+
+    return nil;
 }
 
 func (obj *DrawingObjectCollection) GetLink() IWordsApiLink {

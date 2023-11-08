@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Footnote link.
 
 type IFootnoteLink interface {
@@ -34,6 +38,7 @@ type IFootnoteLink interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetLink() IWordsApiLink
     SetLink(value IWordsApiLink)
     GetNodeId() *string
@@ -100,6 +105,20 @@ func (obj *FootnoteLink) Deserialize(json map[string]interface{}) {
 
 func (obj *FootnoteLink) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *FootnoteLink) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.Link != nil {
+        if err := obj.Link.Validate(); err != nil {
+            return err
+        }
+    }
+
+    return nil;
 }
 
 func (obj *FootnoteLink) GetLink() IWordsApiLink {

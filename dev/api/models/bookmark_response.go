@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // The REST response with a bookmark.
 // This response should be returned by the service when handling: GET bookmarks/{bookmarkName}.
 
@@ -35,6 +39,7 @@ type IBookmarkResponse interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetRequestId() *string
     SetRequestId(value *string)
     GetBookmark() IBookmark
@@ -99,6 +104,20 @@ func (obj *BookmarkResponse) Deserialize(json map[string]interface{}) {
 
 func (obj *BookmarkResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *BookmarkResponse) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.Bookmark != nil {
+        if err := obj.Bookmark.Validate(); err != nil {
+            return err
+        }
+    }
+
+    return nil;
 }
 
 func (obj *BookmarkResponse) GetRequestId() *string {

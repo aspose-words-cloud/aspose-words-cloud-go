@@ -29,6 +29,7 @@ package models
 
 import (
     "fmt"
+    "errors"
     "io/ioutil"
     "net/url"
     "strings"
@@ -56,9 +57,11 @@ type CopyStylesFromTemplateRequest struct {
 
 
 func (data *CopyStylesFromTemplateRequest) CreateRequestData() (RequestData, error) {
-
     var result RequestData
     var filesContentData = make([]FileReference, 0)
+    if data == nil {
+        return result, errors.New("Invalid object.")
+    }
 
     result.Method = strings.ToUpper("put")
 
@@ -72,6 +75,14 @@ func (data *CopyStylesFromTemplateRequest) CreateRequestData() (RequestData, err
     result.HeaderParams = make(map[string]string)
     result.QueryParams = url.Values{}
     result.FormParams = make([]FormParamContainer, 0)
+
+    if (data.Name == nil) {
+        return result, errors.New("Parameter Name is required.")
+    }
+
+    if (data.TemplateName == nil) {
+        return result, errors.New("Parameter TemplateName is required.")
+    }
 
 
     if err := typeCheckParameter(data.Optionals["folder"], "string", "data.Optionals[folder]"); err != nil {
@@ -98,6 +109,7 @@ func (data *CopyStylesFromTemplateRequest) CreateRequestData() (RequestData, err
     if err := typeCheckParameter(data.Optionals["revisionDateTime"], "string", "data.Optionals[revisionDateTime]"); err != nil {
         return result, err
     }
+
 
 
     result.QueryParams.Add("TemplateName", parameterToString(*data.TemplateName, ""))

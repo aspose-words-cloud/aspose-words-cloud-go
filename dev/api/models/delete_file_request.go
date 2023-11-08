@@ -29,6 +29,7 @@ package models
 
 import (
     "fmt"
+    "errors"
     "io/ioutil"
     "net/url"
     "strings"
@@ -47,9 +48,11 @@ type DeleteFileRequest struct {
 
 
 func (data *DeleteFileRequest) CreateRequestData() (RequestData, error) {
-
     var result RequestData
     var filesContentData = make([]FileReference, 0)
+    if data == nil {
+        return result, errors.New("Invalid object.")
+    }
 
     result.Method = strings.ToUpper("delete")
 
@@ -64,6 +67,10 @@ func (data *DeleteFileRequest) CreateRequestData() (RequestData, error) {
     result.QueryParams = url.Values{}
     result.FormParams = make([]FormParamContainer, 0)
 
+    if (data.Path == nil) {
+        return result, errors.New("Parameter Path is required.")
+    }
+
 
     if err := typeCheckParameter(data.Optionals["storageName"], "string", "data.Optionals[storageName]"); err != nil {
         return result, err
@@ -71,6 +78,7 @@ func (data *DeleteFileRequest) CreateRequestData() (RequestData, error) {
     if err := typeCheckParameter(data.Optionals["versionId"], "string", "data.Optionals[versionId]"); err != nil {
         return result, err
     }
+
 
 
     if localVarTempParam, localVarOk := data.Optionals["storageName"].(string); localVarOk {

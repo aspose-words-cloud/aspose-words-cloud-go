@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Class to specify TimeZoneInfo parameters.
 
 type ITimeZoneInfoData interface {
@@ -34,6 +38,7 @@ type ITimeZoneInfoData interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetBaseUtcOffset() *string
     SetBaseUtcOffset(value *string)
     GetDisplayName() *string
@@ -118,6 +123,14 @@ func (obj *TimeZoneInfoData) Deserialize(json map[string]interface{}) {
 
 func (obj *TimeZoneInfoData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *TimeZoneInfoData) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    return nil;
 }
 
 func (obj *TimeZoneInfoData) GetBaseUtcOffset() *string {

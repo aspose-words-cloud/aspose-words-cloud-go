@@ -28,6 +28,7 @@
 package models
 
 import (
+    "errors"
     "io/ioutil"
     "net/url"
     "strings"
@@ -41,9 +42,11 @@ type GetPublicKeyRequest struct {
 
 
 func (data *GetPublicKeyRequest) CreateRequestData() (RequestData, error) {
-
     var result RequestData
     var filesContentData = make([]FileReference, 0)
+    if data == nil {
+        return result, errors.New("Invalid object.")
+    }
 
     result.Method = strings.ToUpper("get")
 
@@ -56,6 +59,7 @@ func (data *GetPublicKeyRequest) CreateRequestData() (RequestData, error) {
     result.HeaderParams = make(map[string]string)
     result.QueryParams = url.Values{}
     result.FormParams = make([]FormParamContainer, 0)
+
 
 
 

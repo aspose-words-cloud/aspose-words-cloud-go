@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // The base class for all responses.
 
 type IWordsResponse interface {
@@ -34,6 +38,7 @@ type IWordsResponse interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetRequestId() *string
     SetRequestId(value *string)
 }
@@ -67,6 +72,14 @@ func (obj *WordsResponse) Deserialize(json map[string]interface{}) {
 
 func (obj *WordsResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *WordsResponse) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    return nil;
 }
 
 func (obj *WordsResponse) GetRequestId() *string {

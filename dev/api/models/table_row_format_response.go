@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // The REST response with the formatting properties of a table row.
 // This response is returned by the Service when handling "GET https://api.aspose.cloud/v4.0/words/Test.doc/tables/{0}/rows/{1}/rowformat" REST API requests.
 
@@ -35,6 +39,7 @@ type ITableRowFormatResponse interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetRequestId() *string
     SetRequestId(value *string)
     GetRowFormat() ITableRowFormat
@@ -99,6 +104,20 @@ func (obj *TableRowFormatResponse) Deserialize(json map[string]interface{}) {
 
 func (obj *TableRowFormatResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *TableRowFormatResponse) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.RowFormat != nil {
+        if err := obj.RowFormat.Validate(); err != nil {
+            return err
+        }
+    }
+
+    return nil;
 }
 
 func (obj *TableRowFormatResponse) GetRequestId() *string {

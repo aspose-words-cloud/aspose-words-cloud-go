@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Container class for individual bookmarks outline level.
 
 type IBookmarksOutlineLevelData interface {
@@ -34,6 +38,7 @@ type IBookmarksOutlineLevelData interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetBookmarksOutlineLevel() *int32
     SetBookmarksOutlineLevel(value *int32)
     GetName() *string
@@ -86,6 +91,17 @@ func (obj *BookmarksOutlineLevelData) Deserialize(json map[string]interface{}) {
 
 func (obj *BookmarksOutlineLevelData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *BookmarksOutlineLevelData) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.BookmarksOutlineLevel == nil {
+        return errors.New("Property BookmarksOutlineLevel in BookmarksOutlineLevelData is required.")
+    }
+    return nil;
 }
 
 func (obj *BookmarksOutlineLevelData) GetBookmarksOutlineLevel() *int32 {

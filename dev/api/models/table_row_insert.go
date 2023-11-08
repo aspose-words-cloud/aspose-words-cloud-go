@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // DTO container with a table row element.
 
 type ITableRowInsert interface {
@@ -34,6 +38,7 @@ type ITableRowInsert interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetColumnsCount() *int32
     SetColumnsCount(value *int32)
     GetInsertAfter() *int32
@@ -88,6 +93,17 @@ func (obj *TableRowInsert) Deserialize(json map[string]interface{}) {
 
 func (obj *TableRowInsert) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *TableRowInsert) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.ColumnsCount == nil {
+        return errors.New("Property ColumnsCount in TableRowInsert is required.")
+    }
+    return nil;
 }
 
 func (obj *TableRowInsert) GetColumnsCount() *int32 {

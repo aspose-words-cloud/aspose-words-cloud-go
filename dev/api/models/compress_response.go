@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // The REST response of compressed document.
 
 type ICompressResponse interface {
@@ -34,6 +38,7 @@ type ICompressResponse interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetRequestId() *string
     SetRequestId(value *string)
     GetDocument() IDocument
@@ -96,6 +101,20 @@ func (obj *CompressResponse) Deserialize(json map[string]interface{}) {
 
 func (obj *CompressResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *CompressResponse) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.Document != nil {
+        if err := obj.Document.Validate(); err != nil {
+            return err
+        }
+    }
+
+    return nil;
 }
 
 func (obj *CompressResponse) GetRequestId() *string {

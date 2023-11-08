@@ -28,6 +28,7 @@
 package models
 
 import (
+    "errors"
     "io/ioutil"
     "net/url"
     "strings"
@@ -44,9 +45,11 @@ type GetAvailableFontsRequest struct {
 
 
 func (data *GetAvailableFontsRequest) CreateRequestData() (RequestData, error) {
-
     var result RequestData
     var filesContentData = make([]FileReference, 0)
+    if data == nil {
+        return result, errors.New("Invalid object.")
+    }
 
     result.Method = strings.ToUpper("get")
 
@@ -64,6 +67,7 @@ func (data *GetAvailableFontsRequest) CreateRequestData() (RequestData, error) {
     if err := typeCheckParameter(data.Optionals["fontsLocation"], "string", "data.Optionals[fontsLocation]"); err != nil {
         return result, err
     }
+
 
 
     if localVarTempParam, localVarOk := data.Optionals["fontsLocation"].(string); localVarOk {

@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Words document property DTO.
 
 type IDocumentProperty interface {
@@ -34,6 +38,7 @@ type IDocumentProperty interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetLink() IWordsApiLink
     SetLink(value IWordsApiLink)
     GetName() *string
@@ -130,6 +135,23 @@ func (obj *DocumentProperty) Deserialize(json map[string]interface{}) {
 
 func (obj *DocumentProperty) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *DocumentProperty) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.BuiltIn == nil {
+        return errors.New("Property BuiltIn in DocumentProperty is required.")
+    }
+    if obj.Link != nil {
+        if err := obj.Link.Validate(); err != nil {
+            return err
+        }
+    }
+
+    return nil;
 }
 
 func (obj *DocumentProperty) GetLink() IWordsApiLink {

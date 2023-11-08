@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // The REST response with a number of occurrences of the captured text in the document.
 
 type IReplaceTextResponse interface {
@@ -34,6 +38,7 @@ type IReplaceTextResponse interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetRequestId() *string
     SetRequestId(value *string)
     GetDocumentLink() IFileLink
@@ -115,6 +120,23 @@ func (obj *ReplaceTextResponse) Deserialize(json map[string]interface{}) {
 
 func (obj *ReplaceTextResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *ReplaceTextResponse) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.Matches == nil {
+        return errors.New("Property Matches in ReplaceTextResponse is required.")
+    }
+    if obj.DocumentLink != nil {
+        if err := obj.DocumentLink.Validate(); err != nil {
+            return err
+        }
+    }
+
+    return nil;
 }
 
 func (obj *ReplaceTextResponse) GetRequestId() *string {

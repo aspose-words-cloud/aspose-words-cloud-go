@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // DTO container with a table row element.
 
 type ITableRow interface {
@@ -34,6 +38,7 @@ type ITableRow interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetLink() IWordsApiLink
     SetLink(value IWordsApiLink)
     GetNodeId() *string
@@ -163,6 +168,34 @@ func (obj *TableRow) Deserialize(json map[string]interface{}) {
 
 func (obj *TableRow) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *TableRow) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.Link != nil {
+        if err := obj.Link.Validate(); err != nil {
+            return err
+        }
+    }
+    if obj.TableCellList != nil {
+        for _, elementTableCellList := range obj.TableCellList {
+            if elementTableCellList != nil {
+                if err := elementTableCellList.Validate(); err != nil {
+                    return err
+                }
+            }
+        }
+    }
+    if obj.RowFormat != nil {
+        if err := obj.RowFormat.Validate(); err != nil {
+            return err
+        }
+    }
+
+    return nil;
 }
 
 func (obj *TableRow) GetLink() IWordsApiLink {

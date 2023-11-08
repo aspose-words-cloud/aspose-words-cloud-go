@@ -29,6 +29,7 @@ package models
 
 import (
     "fmt"
+    "errors"
     "io/ioutil"
     "net/url"
     "strings"
@@ -59,9 +60,11 @@ type UpdateFootnoteRequest struct {
 
 
 func (data *UpdateFootnoteRequest) CreateRequestData() (RequestData, error) {
-
     var result RequestData
     var filesContentData = make([]FileReference, 0)
+    if data == nil {
+        return result, errors.New("Invalid object.")
+    }
 
     result.Method = strings.ToUpper("put")
 
@@ -78,9 +81,20 @@ func (data *UpdateFootnoteRequest) CreateRequestData() (RequestData, error) {
     result.QueryParams = url.Values{}
     result.FormParams = make([]FormParamContainer, 0)
 
+    if (data.Name == nil) {
+        return result, errors.New("Parameter Name is required.")
+    }
+
+    if (data.Index == nil) {
+        return result, errors.New("Parameter Index is required.")
+    }
+
     if (data.FootnoteDto != nil) {
         data.FootnoteDto.Initialize()
+    } else {
+        return result, errors.New("Parameter FootnoteDto is required.")
     }
+
 
     if err := typeCheckParameter(data.Optionals["nodePath"], "string", "data.Optionals[nodePath]"); err != nil {
         return result, err
@@ -108,6 +122,13 @@ func (data *UpdateFootnoteRequest) CreateRequestData() (RequestData, error) {
     }
     if err := typeCheckParameter(data.Optionals["revisionDateTime"], "string", "data.Optionals[revisionDateTime]"); err != nil {
         return result, err
+    }
+
+
+    if (data.FootnoteDto != nil) {
+        if err := data.FootnoteDto.Validate(); err != nil {
+            return result, err
+        }
     }
 
 

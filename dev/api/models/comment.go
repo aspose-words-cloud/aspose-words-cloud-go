@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // DTO container with a comment.
 
 type IComment interface {
@@ -34,6 +38,7 @@ type IComment interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetLink() IWordsApiLink
     SetLink(value IWordsApiLink)
     GetRangeStart() IDocumentPosition
@@ -228,6 +233,35 @@ func (obj *Comment) Deserialize(json map[string]interface{}) {
 
 func (obj *Comment) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *Comment) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.Link != nil {
+        if err := obj.Link.Validate(); err != nil {
+            return err
+        }
+    }
+    if obj.RangeStart != nil {
+        if err := obj.RangeStart.Validate(); err != nil {
+            return err
+        }
+    }
+    if obj.RangeEnd != nil {
+        if err := obj.RangeEnd.Validate(); err != nil {
+            return err
+        }
+    }
+    if obj.Content != nil {
+        if err := obj.Content.Validate(); err != nil {
+            return err
+        }
+    }
+
+    return nil;
 }
 
 func (obj *Comment) GetLink() IWordsApiLink {

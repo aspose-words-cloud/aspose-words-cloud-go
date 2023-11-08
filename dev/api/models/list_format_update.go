@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Paragraph list format element for update.
 
 type IListFormatUpdate interface {
@@ -34,6 +38,7 @@ type IListFormatUpdate interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetListLevelNumber() *int32
     SetListLevelNumber(value *int32)
     GetListId() *int32
@@ -88,6 +93,14 @@ func (obj *ListFormatUpdate) Deserialize(json map[string]interface{}) {
 
 func (obj *ListFormatUpdate) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *ListFormatUpdate) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    return nil;
 }
 
 func (obj *ListFormatUpdate) GetListLevelNumber() *int32 {

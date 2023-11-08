@@ -29,6 +29,7 @@ package models
 
 import (
     "fmt"
+    "errors"
     "io/ioutil"
     "net/url"
     "strings"
@@ -58,9 +59,11 @@ type InsertFormFieldRequest struct {
 
 
 func (data *InsertFormFieldRequest) CreateRequestData() (RequestData, error) {
-
     var result RequestData
     var filesContentData = make([]FileReference, 0)
+    if data == nil {
+        return result, errors.New("Invalid object.")
+    }
 
     result.Method = strings.ToUpper("post")
 
@@ -76,9 +79,16 @@ func (data *InsertFormFieldRequest) CreateRequestData() (RequestData, error) {
     result.QueryParams = url.Values{}
     result.FormParams = make([]FormParamContainer, 0)
 
+    if (data.Name == nil) {
+        return result, errors.New("Parameter Name is required.")
+    }
+
     if (data.FormField != nil) {
         data.FormField.Initialize()
+    } else {
+        return result, errors.New("Parameter FormField is required.")
     }
+
 
     if err := typeCheckParameter(data.Optionals["nodePath"], "string", "data.Optionals[nodePath]"); err != nil {
         return result, err
@@ -109,6 +119,13 @@ func (data *InsertFormFieldRequest) CreateRequestData() (RequestData, error) {
     }
     if err := typeCheckParameter(data.Optionals["insertBeforeNode"], "string", "data.Optionals[insertBeforeNode]"); err != nil {
         return result, err
+    }
+
+
+    if (data.FormField != nil) {
+        if err := data.FormField.Validate(); err != nil {
+            return result, err
+        }
     }
 
 

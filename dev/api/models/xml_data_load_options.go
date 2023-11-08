@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Represents options for XML data loading.
 // To learn more, visit the LINQ Reporting Engine documentation article.
 // An instance of this class can be passed into constructors of XmlDataSource.
@@ -36,6 +40,7 @@ type IXmlDataLoadOptions interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetAlwaysGenerateRootObject() *bool
     SetAlwaysGenerateRootObject(value *bool)
 }
@@ -71,6 +76,17 @@ func (obj *XmlDataLoadOptions) Deserialize(json map[string]interface{}) {
 
 func (obj *XmlDataLoadOptions) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *XmlDataLoadOptions) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.AlwaysGenerateRootObject == nil {
+        return errors.New("Property AlwaysGenerateRootObject in XmlDataLoadOptions is required.")
+    }
+    return nil;
 }
 
 func (obj *XmlDataLoadOptions) GetAlwaysGenerateRootObject() *bool {

@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // The collection of HeaderFooter's links.
 
 type IHeaderFooterLinkCollection interface {
@@ -34,6 +38,7 @@ type IHeaderFooterLinkCollection interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetLink() IWordsApiLink
     SetLink(value IWordsApiLink)
     GetList() []IHeaderFooterLink
@@ -129,6 +134,29 @@ func (obj *HeaderFooterLinkCollection) Deserialize(json map[string]interface{}) 
 
 func (obj *HeaderFooterLinkCollection) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *HeaderFooterLinkCollection) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.Link != nil {
+        if err := obj.Link.Validate(); err != nil {
+            return err
+        }
+    }
+    if obj.List != nil {
+        for _, elementList := range obj.List {
+            if elementList != nil {
+                if err := elementList.Validate(); err != nil {
+                    return err
+                }
+            }
+        }
+    }
+
+    return nil;
 }
 
 func (obj *HeaderFooterLinkCollection) GetLink() IWordsApiLink {

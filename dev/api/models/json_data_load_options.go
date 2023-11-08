@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Represents options for parsing JSON data.
 // An instance of this class can be passed into constructors of Aspose.Words.Reporting.JsonDataSource.
 
@@ -35,6 +39,7 @@ type IJsonDataLoadOptions interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetAlwaysGenerateRootObject() *bool
     SetAlwaysGenerateRootObject(value *bool)
     GetExactDateTimeParseFormats() []string
@@ -117,6 +122,20 @@ func (obj *JsonDataLoadOptions) Deserialize(json map[string]interface{}) {
 
 func (obj *JsonDataLoadOptions) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *JsonDataLoadOptions) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.AlwaysGenerateRootObject == nil {
+        return errors.New("Property AlwaysGenerateRootObject in JsonDataLoadOptions is required.")
+    }
+    if obj.SimpleValueParseMode == nil {
+        return errors.New("Property SimpleValueParseMode in JsonDataLoadOptions is required.")
+    }
+    return nil;
 }
 
 func (obj *JsonDataLoadOptions) GetAlwaysGenerateRootObject() *bool {

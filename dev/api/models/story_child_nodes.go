@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Child nodes of Story or InlineStory.
 
 type IStoryChildNodes interface {
@@ -34,6 +38,7 @@ type IStoryChildNodes interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetChildNodes() []INodeLink
     SetChildNodes(value []INodeLink)
 }
@@ -84,6 +89,7 @@ func (obj *StoryChildNodes) Deserialize(json map[string]interface{}) {
                         if jsonTypeStr == "RunLink, _" { modelElementInstance = new(RunLink) }
                         if jsonTypeStr == "SectionLink, _" { modelElementInstance = new(SectionLink) }
                         if jsonTypeStr == "StructuredDocumentTag, _" { modelElementInstance = new(StructuredDocumentTag) }
+                        if jsonTypeStr == "StructuredDocumentTagBase, _" {  }
                         if jsonTypeStr == "StructuredDocumentTagInsert, _" { modelElementInstance = new(StructuredDocumentTagInsert) }
                         if jsonTypeStr == "StructuredDocumentTagUpdate, _" { modelElementInstance = new(StructuredDocumentTagUpdate) }
                         if jsonTypeStr == "Table, _" { modelElementInstance = new(Table) }
@@ -126,6 +132,7 @@ func (obj *StoryChildNodes) Deserialize(json map[string]interface{}) {
                         if jsonTypeStr == "RunLink, _" { modelElementInstance = new(RunLink) }
                         if jsonTypeStr == "SectionLink, _" { modelElementInstance = new(SectionLink) }
                         if jsonTypeStr == "StructuredDocumentTag, _" { modelElementInstance = new(StructuredDocumentTag) }
+                        if jsonTypeStr == "StructuredDocumentTagBase, _" {  }
                         if jsonTypeStr == "StructuredDocumentTagInsert, _" { modelElementInstance = new(StructuredDocumentTagInsert) }
                         if jsonTypeStr == "StructuredDocumentTagUpdate, _" { modelElementInstance = new(StructuredDocumentTagUpdate) }
                         if jsonTypeStr == "Table, _" { modelElementInstance = new(Table) }
@@ -147,6 +154,24 @@ func (obj *StoryChildNodes) Deserialize(json map[string]interface{}) {
 
 func (obj *StoryChildNodes) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *StoryChildNodes) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.ChildNodes != nil {
+        for _, elementChildNodes := range obj.ChildNodes {
+            if elementChildNodes != nil {
+                if err := elementChildNodes.Validate(); err != nil {
+                    return err
+                }
+            }
+        }
+    }
+
+    return nil;
 }
 
 func (obj *StoryChildNodes) GetChildNodes() []INodeLink {

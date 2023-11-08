@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // DTO container with a DrawingObject.
 
 type IDrawingObject interface {
@@ -34,6 +38,7 @@ type IDrawingObject interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetLink() IWordsApiLink
     SetLink(value IWordsApiLink)
     GetNodeId() *string
@@ -311,6 +316,39 @@ func (obj *DrawingObject) Deserialize(json map[string]interface{}) {
 
 func (obj *DrawingObject) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *DrawingObject) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.Link != nil {
+        if err := obj.Link.Validate(); err != nil {
+            return err
+        }
+    }
+    if obj.RenderLinks != nil {
+        for _, elementRenderLinks := range obj.RenderLinks {
+            if elementRenderLinks != nil {
+                if err := elementRenderLinks.Validate(); err != nil {
+                    return err
+                }
+            }
+        }
+    }
+    if obj.OleDataLink != nil {
+        if err := obj.OleDataLink.Validate(); err != nil {
+            return err
+        }
+    }
+    if obj.ImageDataLink != nil {
+        if err := obj.ImageDataLink.Validate(); err != nil {
+            return err
+        }
+    }
+
+    return nil;
 }
 
 func (obj *DrawingObject) GetLink() IWordsApiLink {

@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Custom xml part insert.
 
 type ICustomXmlPartInsert interface {
@@ -34,6 +38,7 @@ type ICustomXmlPartInsert interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetLink() IWordsApiLink
     SetLink(value IWordsApiLink)
     GetId() *string
@@ -121,6 +126,23 @@ func (obj *CustomXmlPartInsert) Deserialize(json map[string]interface{}) {
 
 func (obj *CustomXmlPartInsert) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *CustomXmlPartInsert) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.Data == nil {
+        return errors.New("Property Data in CustomXmlPartInsert is required.")
+    }
+    if obj.Link != nil {
+        if err := obj.Link.Validate(); err != nil {
+            return err
+        }
+    }
+
+    return nil;
 }
 
 func (obj *CustomXmlPartInsert) GetLink() IWordsApiLink {

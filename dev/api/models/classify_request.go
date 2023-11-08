@@ -28,6 +28,7 @@
 package models
 
 import (
+    "errors"
     "io/ioutil"
     "net/url"
     "strings"
@@ -46,9 +47,11 @@ type ClassifyRequest struct {
 
 
 func (data *ClassifyRequest) CreateRequestData() (RequestData, error) {
-
     var result RequestData
     var filesContentData = make([]FileReference, 0)
+    if data == nil {
+        return result, errors.New("Invalid object.")
+    }
 
     result.Method = strings.ToUpper("put")
 
@@ -62,10 +65,15 @@ func (data *ClassifyRequest) CreateRequestData() (RequestData, error) {
     result.QueryParams = url.Values{}
     result.FormParams = make([]FormParamContainer, 0)
 
+    if (data.Text == nil) {
+        return result, errors.New("Parameter Text is required.")
+    }
+
 
     if err := typeCheckParameter(data.Optionals["bestClassesCount"], "string", "data.Optionals[bestClassesCount]"); err != nil {
         return result, err
     }
+
 
 
     if localVarTempParam, localVarOk := data.Optionals["bestClassesCount"].(string); localVarOk {

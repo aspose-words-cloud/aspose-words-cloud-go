@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // DTO container with a section element.
 
 type IHeaderFooter interface {
@@ -34,6 +38,7 @@ type IHeaderFooter interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetLink() IWordsApiLink
     SetLink(value IWordsApiLink)
     GetType() *string
@@ -151,6 +156,7 @@ func (obj *HeaderFooter) Deserialize(json map[string]interface{}) {
                         if jsonTypeStr == "RunLink, _" { modelElementInstance = new(RunLink) }
                         if jsonTypeStr == "SectionLink, _" { modelElementInstance = new(SectionLink) }
                         if jsonTypeStr == "StructuredDocumentTag, _" { modelElementInstance = new(StructuredDocumentTag) }
+                        if jsonTypeStr == "StructuredDocumentTagBase, _" {  }
                         if jsonTypeStr == "StructuredDocumentTagInsert, _" { modelElementInstance = new(StructuredDocumentTagInsert) }
                         if jsonTypeStr == "StructuredDocumentTagUpdate, _" { modelElementInstance = new(StructuredDocumentTagUpdate) }
                         if jsonTypeStr == "Table, _" { modelElementInstance = new(Table) }
@@ -193,6 +199,7 @@ func (obj *HeaderFooter) Deserialize(json map[string]interface{}) {
                         if jsonTypeStr == "RunLink, _" { modelElementInstance = new(RunLink) }
                         if jsonTypeStr == "SectionLink, _" { modelElementInstance = new(SectionLink) }
                         if jsonTypeStr == "StructuredDocumentTag, _" { modelElementInstance = new(StructuredDocumentTag) }
+                        if jsonTypeStr == "StructuredDocumentTagBase, _" {  }
                         if jsonTypeStr == "StructuredDocumentTagInsert, _" { modelElementInstance = new(StructuredDocumentTagInsert) }
                         if jsonTypeStr == "StructuredDocumentTagUpdate, _" { modelElementInstance = new(StructuredDocumentTagUpdate) }
                         if jsonTypeStr == "Table, _" { modelElementInstance = new(Table) }
@@ -275,6 +282,7 @@ func (obj *HeaderFooter) Deserialize(json map[string]interface{}) {
                 if jsonTypeStr == "SectionLink, _" { modelInstance = new(SectionLink) }
                 if jsonTypeStr == "SectionLinkCollection, _" { modelInstance = new(SectionLinkCollection) }
                 if jsonTypeStr == "StructuredDocumentTag, _" { modelInstance = new(StructuredDocumentTag) }
+                if jsonTypeStr == "StructuredDocumentTagBase, _" {  }
                 if jsonTypeStr == "StructuredDocumentTagCollection, _" { modelInstance = new(StructuredDocumentTagCollection) }
                 if jsonTypeStr == "StructuredDocumentTagInsert, _" { modelInstance = new(StructuredDocumentTagInsert) }
                 if jsonTypeStr == "StructuredDocumentTagUpdate, _" { modelInstance = new(StructuredDocumentTagUpdate) }
@@ -358,6 +366,7 @@ func (obj *HeaderFooter) Deserialize(json map[string]interface{}) {
                 if jsonTypeStr == "SectionLink, _" { modelInstance = new(SectionLink) }
                 if jsonTypeStr == "SectionLinkCollection, _" { modelInstance = new(SectionLinkCollection) }
                 if jsonTypeStr == "StructuredDocumentTag, _" { modelInstance = new(StructuredDocumentTag) }
+                if jsonTypeStr == "StructuredDocumentTagBase, _" {  }
                 if jsonTypeStr == "StructuredDocumentTagCollection, _" { modelInstance = new(StructuredDocumentTagCollection) }
                 if jsonTypeStr == "StructuredDocumentTagInsert, _" { modelInstance = new(StructuredDocumentTagInsert) }
                 if jsonTypeStr == "StructuredDocumentTagUpdate, _" { modelInstance = new(StructuredDocumentTagUpdate) }
@@ -443,6 +452,7 @@ func (obj *HeaderFooter) Deserialize(json map[string]interface{}) {
                 if jsonTypeStr == "SectionLink, _" { modelInstance = new(SectionLink) }
                 if jsonTypeStr == "SectionLinkCollection, _" { modelInstance = new(SectionLinkCollection) }
                 if jsonTypeStr == "StructuredDocumentTag, _" { modelInstance = new(StructuredDocumentTag) }
+                if jsonTypeStr == "StructuredDocumentTagBase, _" {  }
                 if jsonTypeStr == "StructuredDocumentTagCollection, _" { modelInstance = new(StructuredDocumentTagCollection) }
                 if jsonTypeStr == "StructuredDocumentTagInsert, _" { modelInstance = new(StructuredDocumentTagInsert) }
                 if jsonTypeStr == "StructuredDocumentTagUpdate, _" { modelInstance = new(StructuredDocumentTagUpdate) }
@@ -526,6 +536,7 @@ func (obj *HeaderFooter) Deserialize(json map[string]interface{}) {
                 if jsonTypeStr == "SectionLink, _" { modelInstance = new(SectionLink) }
                 if jsonTypeStr == "SectionLinkCollection, _" { modelInstance = new(SectionLinkCollection) }
                 if jsonTypeStr == "StructuredDocumentTag, _" { modelInstance = new(StructuredDocumentTag) }
+                if jsonTypeStr == "StructuredDocumentTagBase, _" {  }
                 if jsonTypeStr == "StructuredDocumentTagCollection, _" { modelInstance = new(StructuredDocumentTagCollection) }
                 if jsonTypeStr == "StructuredDocumentTagInsert, _" { modelInstance = new(StructuredDocumentTagInsert) }
                 if jsonTypeStr == "StructuredDocumentTagUpdate, _" { modelInstance = new(StructuredDocumentTagUpdate) }
@@ -550,6 +561,42 @@ func (obj *HeaderFooter) Deserialize(json map[string]interface{}) {
 
 func (obj *HeaderFooter) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *HeaderFooter) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.Type == nil {
+        return errors.New("Property Type in HeaderFooter is required.")
+    }
+    if obj.Link != nil {
+        if err := obj.Link.Validate(); err != nil {
+            return err
+        }
+    }
+    if obj.ChildNodes != nil {
+        for _, elementChildNodes := range obj.ChildNodes {
+            if elementChildNodes != nil {
+                if err := elementChildNodes.Validate(); err != nil {
+                    return err
+                }
+            }
+        }
+    }
+    if obj.Paragraphs != nil {
+        if err := obj.Paragraphs.Validate(); err != nil {
+            return err
+        }
+    }
+    if obj.DrawingObjects != nil {
+        if err := obj.DrawingObjects.Validate(); err != nil {
+            return err
+        }
+    }
+
+    return nil;
 }
 
 func (obj *HeaderFooter) GetLink() IWordsApiLink {

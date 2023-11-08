@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // The REST response with a collection of custom xml parts.
 // This response is returned by the Service when handling "GET https://api.aspose.cloud/v4.0/words/Test.doc/customXmlParts" REST API requests.
 
@@ -35,6 +39,7 @@ type ICustomXmlPartsResponse interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetRequestId() *string
     SetRequestId(value *string)
     GetCustomXmlParts() ICustomXmlPartsCollection
@@ -99,6 +104,20 @@ func (obj *CustomXmlPartsResponse) Deserialize(json map[string]interface{}) {
 
 func (obj *CustomXmlPartsResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *CustomXmlPartsResponse) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.CustomXmlParts != nil {
+        if err := obj.CustomXmlParts.Validate(); err != nil {
+            return err
+        }
+    }
+
+    return nil;
 }
 
 func (obj *CustomXmlPartsResponse) GetRequestId() *string {

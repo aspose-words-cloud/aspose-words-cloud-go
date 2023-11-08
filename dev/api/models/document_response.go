@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // The REST response with a document description.
 
 type IDocumentResponse interface {
@@ -34,6 +38,7 @@ type IDocumentResponse interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetRequestId() *string
     SetRequestId(value *string)
     GetDocument() IDocument
@@ -96,6 +101,20 @@ func (obj *DocumentResponse) Deserialize(json map[string]interface{}) {
 
 func (obj *DocumentResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *DocumentResponse) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.Document != nil {
+        if err := obj.Document.Validate(); err != nil {
+            return err
+        }
+    }
+
+    return nil;
 }
 
 func (obj *DocumentResponse) GetRequestId() *string {

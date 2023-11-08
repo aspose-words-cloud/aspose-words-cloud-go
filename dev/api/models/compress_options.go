@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Options of document compress.
 
 type ICompressOptions interface {
@@ -34,6 +38,7 @@ type ICompressOptions interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetImagesQuality() *int32
     SetImagesQuality(value *int32)
     GetImagesReduceSizeFactor() *int32
@@ -88,6 +93,14 @@ func (obj *CompressOptions) Deserialize(json map[string]interface{}) {
 
 func (obj *CompressOptions) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *CompressOptions) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    return nil;
 }
 
 func (obj *CompressOptions) GetImagesQuality() *int32 {

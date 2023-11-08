@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Container class for details of digital signature.
 
 type IPdfDigitalSignatureDetailsData interface {
@@ -34,6 +38,7 @@ type IPdfDigitalSignatureDetailsData interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetCertificateFilename() *string
     SetCertificateFilename(value *string)
     GetHashAlgorithm() *string
@@ -137,6 +142,14 @@ func (obj *PdfDigitalSignatureDetailsData) Deserialize(json map[string]interface
 
 func (obj *PdfDigitalSignatureDetailsData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *PdfDigitalSignatureDetailsData) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    return nil;
 }
 
 func (obj *PdfDigitalSignatureDetailsData) GetCertificateFilename() *string {

@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Container class for pdf save options.
 
 type IPdfSaveOptionsData interface {
@@ -34,6 +38,7 @@ type IPdfSaveOptionsData interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetAllowEmbeddingPostScriptFonts() *bool
     SetAllowEmbeddingPostScriptFonts(value *bool)
     GetCustomTimeZoneInfoData() ITimeZoneInfoData
@@ -905,6 +910,48 @@ func (obj *PdfSaveOptionsData) Deserialize(json map[string]interface{}) {
 
 func (obj *PdfSaveOptionsData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *PdfSaveOptionsData) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.FileName == nil {
+        return errors.New("Property FileName in PdfSaveOptionsData is required.")
+    }
+    if obj.CustomTimeZoneInfoData != nil {
+        if err := obj.CustomTimeZoneInfoData.Validate(); err != nil {
+            return err
+        }
+    }
+    if obj.MetafileRenderingOptions != nil {
+        if err := obj.MetafileRenderingOptions.Validate(); err != nil {
+            return err
+        }
+    }
+    if obj.DigitalSignatureDetails != nil {
+        if err := obj.DigitalSignatureDetails.Validate(); err != nil {
+            return err
+        }
+    }
+    if obj.DownsampleOptions != nil {
+        if err := obj.DownsampleOptions.Validate(); err != nil {
+            return err
+        }
+    }
+    if obj.EncryptionDetails != nil {
+        if err := obj.EncryptionDetails.Validate(); err != nil {
+            return err
+        }
+    }
+    if obj.OutlineOptions != nil {
+        if err := obj.OutlineOptions.Validate(); err != nil {
+            return err
+        }
+    }
+
+    return nil;
 }
 
 func (obj *PdfSaveOptionsData) GetAllowEmbeddingPostScriptFonts() *bool {

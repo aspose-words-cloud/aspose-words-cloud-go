@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // FormField checkbox element.
 
 type IFormFieldCheckbox interface {
@@ -34,6 +38,7 @@ type IFormFieldCheckbox interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetLink() IWordsApiLink
     SetLink(value IWordsApiLink)
     GetNodeId() *string
@@ -308,6 +313,26 @@ func (obj *FormFieldCheckbox) Deserialize(json map[string]interface{}) {
 
 func (obj *FormFieldCheckbox) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *FormFieldCheckbox) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.Name == nil {
+        return errors.New("Property Name in FormFieldCheckbox is required.")
+    }
+    if obj.Checked == nil {
+        return errors.New("Property Checked in FormFieldCheckbox is required.")
+    }
+    if obj.Link != nil {
+        if err := obj.Link.Validate(); err != nil {
+            return err
+        }
+    }
+
+    return nil;
 }
 
 func (obj *FormFieldCheckbox) GetLink() IWordsApiLink {

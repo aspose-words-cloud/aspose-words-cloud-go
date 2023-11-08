@@ -29,6 +29,7 @@ package models
 
 import (
     "fmt"
+    "errors"
     "io/ioutil"
     "net/url"
     "strings"
@@ -57,9 +58,11 @@ type InsertTableRowOnlineRequest struct {
 
 
 func (data *InsertTableRowOnlineRequest) CreateRequestData() (RequestData, error) {
-
     var result RequestData
     var filesContentData = make([]FileReference, 0)
+    if data == nil {
+        return result, errors.New("Invalid object.")
+    }
 
     result.Method = strings.ToUpper("put")
 
@@ -74,9 +77,20 @@ func (data *InsertTableRowOnlineRequest) CreateRequestData() (RequestData, error
     result.QueryParams = url.Values{}
     result.FormParams = make([]FormParamContainer, 0)
 
+    if (data.Document == nil) {
+        return result, errors.New("Parameter Document is required.")
+    }
+
+    if (data.TablePath == nil) {
+        return result, errors.New("Parameter TablePath is required.")
+    }
+
     if (data.Row != nil) {
         data.Row.Initialize()
+    } else {
+        return result, errors.New("Parameter Row is required.")
     }
+
 
     if err := typeCheckParameter(data.Optionals["loadEncoding"], "string", "data.Optionals[loadEncoding]"); err != nil {
         return result, err
@@ -95,6 +109,13 @@ func (data *InsertTableRowOnlineRequest) CreateRequestData() (RequestData, error
     }
     if err := typeCheckParameter(data.Optionals["revisionDateTime"], "string", "data.Optionals[revisionDateTime]"); err != nil {
         return result, err
+    }
+
+
+    if (data.Row != nil) {
+        if err := data.Row.Validate(); err != nil {
+            return result, err
+        }
     }
 
 

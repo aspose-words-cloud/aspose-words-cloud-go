@@ -29,6 +29,7 @@ package models
 
 import (
     "fmt"
+    "errors"
     "io/ioutil"
     "net/url"
     "strings"
@@ -58,9 +59,11 @@ type ApplyStyleToDocumentElementRequest struct {
 
 
 func (data *ApplyStyleToDocumentElementRequest) CreateRequestData() (RequestData, error) {
-
     var result RequestData
     var filesContentData = make([]FileReference, 0)
+    if data == nil {
+        return result, errors.New("Invalid object.")
+    }
 
     result.Method = strings.ToUpper("put")
 
@@ -76,9 +79,20 @@ func (data *ApplyStyleToDocumentElementRequest) CreateRequestData() (RequestData
     result.QueryParams = url.Values{}
     result.FormParams = make([]FormParamContainer, 0)
 
+    if (data.Name == nil) {
+        return result, errors.New("Parameter Name is required.")
+    }
+
+    if (data.StyledNodePath == nil) {
+        return result, errors.New("Parameter StyledNodePath is required.")
+    }
+
     if (data.StyleApply != nil) {
         data.StyleApply.Initialize()
+    } else {
+        return result, errors.New("Parameter StyleApply is required.")
     }
+
 
     if err := typeCheckParameter(data.Optionals["folder"], "string", "data.Optionals[folder]"); err != nil {
         return result, err
@@ -103,6 +117,13 @@ func (data *ApplyStyleToDocumentElementRequest) CreateRequestData() (RequestData
     }
     if err := typeCheckParameter(data.Optionals["revisionDateTime"], "string", "data.Optionals[revisionDateTime]"); err != nil {
         return result, err
+    }
+
+
+    if (data.StyleApply != nil) {
+        if err := data.StyleApply.Validate(); err != nil {
+            return result, err
+        }
     }
 
 

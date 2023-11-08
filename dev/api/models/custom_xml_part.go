@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // DTO container with a CustomXmlPart.
 
 type ICustomXmlPart interface {
@@ -34,6 +38,7 @@ type ICustomXmlPart interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetLink() IWordsApiLink
     SetLink(value IWordsApiLink)
     GetId() *string
@@ -117,6 +122,23 @@ func (obj *CustomXmlPart) Deserialize(json map[string]interface{}) {
 
 func (obj *CustomXmlPart) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *CustomXmlPart) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.Data == nil {
+        return errors.New("Property Data in CustomXmlPart is required.")
+    }
+    if obj.Link != nil {
+        if err := obj.Link.Validate(); err != nil {
+            return err
+        }
+    }
+
+    return nil;
 }
 
 func (obj *CustomXmlPart) GetLink() IWordsApiLink {

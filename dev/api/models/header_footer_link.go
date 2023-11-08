@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // HeaderFooter link element.
 
 type IHeaderFooterLink interface {
@@ -34,6 +38,7 @@ type IHeaderFooterLink interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetLink() IWordsApiLink
     SetLink(value IWordsApiLink)
     GetType() *string
@@ -96,6 +101,23 @@ func (obj *HeaderFooterLink) Deserialize(json map[string]interface{}) {
 
 func (obj *HeaderFooterLink) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *HeaderFooterLink) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.Type == nil {
+        return errors.New("Property Type in HeaderFooterLink is required.")
+    }
+    if obj.Link != nil {
+        if err := obj.Link.Validate(); err != nil {
+            return err
+        }
+    }
+
+    return nil;
 }
 
 func (obj *HeaderFooterLink) GetLink() IWordsApiLink {

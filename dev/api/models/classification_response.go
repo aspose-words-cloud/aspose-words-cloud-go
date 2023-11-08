@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // The REST response with data on multi-class text classification.
 // This response is returned by the Service when handling "PUT https://api.aspose.cloud/v4.0/words/classify" REST API requests.
 
@@ -35,6 +39,7 @@ type IClassificationResponse interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetRequestId() *string
     SetRequestId(value *string)
     GetBestClassName() *string
@@ -148,6 +153,27 @@ func (obj *ClassificationResponse) Deserialize(json map[string]interface{}) {
 
 func (obj *ClassificationResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *ClassificationResponse) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.BestClassProbability == nil {
+        return errors.New("Property BestClassProbability in ClassificationResponse is required.")
+    }
+    if obj.BestResults != nil {
+        for _, elementBestResults := range obj.BestResults {
+            if elementBestResults != nil {
+                if err := elementBestResults.Validate(); err != nil {
+                    return err
+                }
+            }
+        }
+    }
+
+    return nil;
 }
 
 func (obj *ClassificationResponse) GetRequestId() *string {

@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Update document properties if document list.
 
 type IListUpdate interface {
@@ -34,6 +38,7 @@ type IListUpdate interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetIsRestartAtEachSection() *bool
     SetIsRestartAtEachSection(value *bool)
 }
@@ -67,6 +72,14 @@ func (obj *ListUpdate) Deserialize(json map[string]interface{}) {
 
 func (obj *ListUpdate) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *ListUpdate) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    return nil;
 }
 
 func (obj *ListUpdate) GetIsRestartAtEachSection() *bool {

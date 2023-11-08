@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // DTO container with a position in the document tree.
 
 type IDocumentPosition interface {
@@ -34,6 +38,7 @@ type IDocumentPosition interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetNode() INodeLink
     SetNode(value INodeLink)
     GetOffset() *int32
@@ -85,6 +90,7 @@ func (obj *DocumentPosition) Deserialize(json map[string]interface{}) {
                 if jsonTypeStr == "RunLink, _" { modelInstance = new(RunLink) }
                 if jsonTypeStr == "SectionLink, _" { modelInstance = new(SectionLink) }
                 if jsonTypeStr == "StructuredDocumentTag, _" { modelInstance = new(StructuredDocumentTag) }
+                if jsonTypeStr == "StructuredDocumentTagBase, _" {  }
                 if jsonTypeStr == "StructuredDocumentTagInsert, _" { modelInstance = new(StructuredDocumentTagInsert) }
                 if jsonTypeStr == "StructuredDocumentTagUpdate, _" { modelInstance = new(StructuredDocumentTagUpdate) }
                 if jsonTypeStr == "Table, _" { modelInstance = new(Table) }
@@ -121,6 +127,7 @@ func (obj *DocumentPosition) Deserialize(json map[string]interface{}) {
                 if jsonTypeStr == "RunLink, _" { modelInstance = new(RunLink) }
                 if jsonTypeStr == "SectionLink, _" { modelInstance = new(SectionLink) }
                 if jsonTypeStr == "StructuredDocumentTag, _" { modelInstance = new(StructuredDocumentTag) }
+                if jsonTypeStr == "StructuredDocumentTagBase, _" {  }
                 if jsonTypeStr == "StructuredDocumentTagInsert, _" { modelInstance = new(StructuredDocumentTagInsert) }
                 if jsonTypeStr == "StructuredDocumentTagUpdate, _" { modelInstance = new(StructuredDocumentTagUpdate) }
                 if jsonTypeStr == "Table, _" { modelInstance = new(Table) }
@@ -153,6 +160,20 @@ func (obj *DocumentPosition) Deserialize(json map[string]interface{}) {
 
 func (obj *DocumentPosition) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *DocumentPosition) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.Node != nil {
+        if err := obj.Node.Validate(); err != nil {
+            return err
+        }
+    }
+
+    return nil;
 }
 
 func (obj *DocumentPosition) GetNode() INodeLink {

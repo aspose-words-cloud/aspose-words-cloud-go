@@ -29,6 +29,7 @@ package models
 
 import (
     "fmt"
+    "errors"
     "io/ioutil"
     "net/url"
     "strings"
@@ -58,9 +59,11 @@ type InsertDrawingObjectOnlineRequest struct {
 
 
 func (data *InsertDrawingObjectOnlineRequest) CreateRequestData() (RequestData, error) {
-
     var result RequestData
     var filesContentData = make([]FileReference, 0)
+    if data == nil {
+        return result, errors.New("Invalid object.")
+    }
 
     result.Method = strings.ToUpper("put")
 
@@ -75,9 +78,20 @@ func (data *InsertDrawingObjectOnlineRequest) CreateRequestData() (RequestData, 
     result.QueryParams = url.Values{}
     result.FormParams = make([]FormParamContainer, 0)
 
+    if (data.Document == nil) {
+        return result, errors.New("Parameter Document is required.")
+    }
+
     if (data.DrawingObject != nil) {
         data.DrawingObject.Initialize()
+    } else {
+        return result, errors.New("Parameter DrawingObject is required.")
     }
+
+    if (data.ImageFile == nil) {
+        return result, errors.New("Parameter ImageFile is required.")
+    }
+
 
     if err := typeCheckParameter(data.Optionals["nodePath"], "string", "data.Optionals[nodePath]"); err != nil {
         return result, err
@@ -99,6 +113,13 @@ func (data *InsertDrawingObjectOnlineRequest) CreateRequestData() (RequestData, 
     }
     if err := typeCheckParameter(data.Optionals["revisionDateTime"], "string", "data.Optionals[revisionDateTime]"); err != nil {
         return result, err
+    }
+
+
+    if (data.DrawingObject != nil) {
+        if err := data.DrawingObject.Validate(); err != nil {
+            return result, err
+        }
     }
 
 

@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // DTO container with font info.
 
 type IFontInfo interface {
@@ -34,6 +38,7 @@ type IFontInfo interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetFilePath() *string
     SetFilePath(value *string)
     GetFontFamilyName() *string
@@ -118,6 +123,14 @@ func (obj *FontInfo) Deserialize(json map[string]interface{}) {
 
 func (obj *FontInfo) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *FontInfo) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    return nil;
 }
 
 func (obj *FontInfo) GetFilePath() *string {

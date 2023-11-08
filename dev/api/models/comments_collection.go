@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // The collection of comments.
 
 type ICommentsCollection interface {
@@ -34,6 +38,7 @@ type ICommentsCollection interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetLink() IWordsApiLink
     SetLink(value IWordsApiLink)
     GetCommentList() []IComment
@@ -117,6 +122,29 @@ func (obj *CommentsCollection) Deserialize(json map[string]interface{}) {
 
 func (obj *CommentsCollection) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *CommentsCollection) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.Link != nil {
+        if err := obj.Link.Validate(); err != nil {
+            return err
+        }
+    }
+    if obj.CommentList != nil {
+        for _, elementCommentList := range obj.CommentList {
+            if elementCommentList != nil {
+                if err := elementCommentList.Validate(); err != nil {
+                    return err
+                }
+            }
+        }
+    }
+
+    return nil;
 }
 
 func (obj *CommentsCollection) GetLink() IWordsApiLink {

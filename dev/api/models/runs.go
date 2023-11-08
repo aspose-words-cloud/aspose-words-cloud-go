@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // DTO container with a collection of runs.
 
 type IRuns interface {
@@ -34,6 +38,7 @@ type IRuns interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetLink() IWordsApiLink
     SetLink(value IWordsApiLink)
     GetList() []IRun
@@ -117,6 +122,29 @@ func (obj *Runs) Deserialize(json map[string]interface{}) {
 
 func (obj *Runs) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *Runs) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.Link != nil {
+        if err := obj.Link.Validate(); err != nil {
+            return err
+        }
+    }
+    if obj.List != nil {
+        for _, elementList := range obj.List {
+            if elementList != nil {
+                if err := elementList.Validate(); err != nil {
+                    return err
+                }
+            }
+        }
+    }
+
+    return nil;
 }
 
 func (obj *Runs) GetLink() IWordsApiLink {

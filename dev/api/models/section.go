@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // DTO container with a section element.
 
 type ISection interface {
@@ -34,6 +38,7 @@ type ISection interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetLink() IWordsApiLink
     SetLink(value IWordsApiLink)
     GetChildNodes() []INodeLink
@@ -148,6 +153,7 @@ func (obj *Section) Deserialize(json map[string]interface{}) {
                         if jsonTypeStr == "RunLink, _" { modelElementInstance = new(RunLink) }
                         if jsonTypeStr == "SectionLink, _" { modelElementInstance = new(SectionLink) }
                         if jsonTypeStr == "StructuredDocumentTag, _" { modelElementInstance = new(StructuredDocumentTag) }
+                        if jsonTypeStr == "StructuredDocumentTagBase, _" {  }
                         if jsonTypeStr == "StructuredDocumentTagInsert, _" { modelElementInstance = new(StructuredDocumentTagInsert) }
                         if jsonTypeStr == "StructuredDocumentTagUpdate, _" { modelElementInstance = new(StructuredDocumentTagUpdate) }
                         if jsonTypeStr == "Table, _" { modelElementInstance = new(Table) }
@@ -190,6 +196,7 @@ func (obj *Section) Deserialize(json map[string]interface{}) {
                         if jsonTypeStr == "RunLink, _" { modelElementInstance = new(RunLink) }
                         if jsonTypeStr == "SectionLink, _" { modelElementInstance = new(SectionLink) }
                         if jsonTypeStr == "StructuredDocumentTag, _" { modelElementInstance = new(StructuredDocumentTag) }
+                        if jsonTypeStr == "StructuredDocumentTagBase, _" {  }
                         if jsonTypeStr == "StructuredDocumentTagInsert, _" { modelElementInstance = new(StructuredDocumentTagInsert) }
                         if jsonTypeStr == "StructuredDocumentTagUpdate, _" { modelElementInstance = new(StructuredDocumentTagUpdate) }
                         if jsonTypeStr == "Table, _" { modelElementInstance = new(Table) }
@@ -272,6 +279,7 @@ func (obj *Section) Deserialize(json map[string]interface{}) {
                 if jsonTypeStr == "SectionLink, _" { modelInstance = new(SectionLink) }
                 if jsonTypeStr == "SectionLinkCollection, _" { modelInstance = new(SectionLinkCollection) }
                 if jsonTypeStr == "StructuredDocumentTag, _" { modelInstance = new(StructuredDocumentTag) }
+                if jsonTypeStr == "StructuredDocumentTagBase, _" {  }
                 if jsonTypeStr == "StructuredDocumentTagCollection, _" { modelInstance = new(StructuredDocumentTagCollection) }
                 if jsonTypeStr == "StructuredDocumentTagInsert, _" { modelInstance = new(StructuredDocumentTagInsert) }
                 if jsonTypeStr == "StructuredDocumentTagUpdate, _" { modelInstance = new(StructuredDocumentTagUpdate) }
@@ -355,6 +363,7 @@ func (obj *Section) Deserialize(json map[string]interface{}) {
                 if jsonTypeStr == "SectionLink, _" { modelInstance = new(SectionLink) }
                 if jsonTypeStr == "SectionLinkCollection, _" { modelInstance = new(SectionLinkCollection) }
                 if jsonTypeStr == "StructuredDocumentTag, _" { modelInstance = new(StructuredDocumentTag) }
+                if jsonTypeStr == "StructuredDocumentTagBase, _" {  }
                 if jsonTypeStr == "StructuredDocumentTagCollection, _" { modelInstance = new(StructuredDocumentTagCollection) }
                 if jsonTypeStr == "StructuredDocumentTagInsert, _" { modelInstance = new(StructuredDocumentTagInsert) }
                 if jsonTypeStr == "StructuredDocumentTagUpdate, _" { modelInstance = new(StructuredDocumentTagUpdate) }
@@ -440,6 +449,7 @@ func (obj *Section) Deserialize(json map[string]interface{}) {
                 if jsonTypeStr == "SectionLink, _" { modelInstance = new(SectionLink) }
                 if jsonTypeStr == "SectionLinkCollection, _" { modelInstance = new(SectionLinkCollection) }
                 if jsonTypeStr == "StructuredDocumentTag, _" { modelInstance = new(StructuredDocumentTag) }
+                if jsonTypeStr == "StructuredDocumentTagBase, _" {  }
                 if jsonTypeStr == "StructuredDocumentTagCollection, _" { modelInstance = new(StructuredDocumentTagCollection) }
                 if jsonTypeStr == "StructuredDocumentTagInsert, _" { modelInstance = new(StructuredDocumentTagInsert) }
                 if jsonTypeStr == "StructuredDocumentTagUpdate, _" { modelInstance = new(StructuredDocumentTagUpdate) }
@@ -523,6 +533,7 @@ func (obj *Section) Deserialize(json map[string]interface{}) {
                 if jsonTypeStr == "SectionLink, _" { modelInstance = new(SectionLink) }
                 if jsonTypeStr == "SectionLinkCollection, _" { modelInstance = new(SectionLinkCollection) }
                 if jsonTypeStr == "StructuredDocumentTag, _" { modelInstance = new(StructuredDocumentTag) }
+                if jsonTypeStr == "StructuredDocumentTagBase, _" {  }
                 if jsonTypeStr == "StructuredDocumentTagCollection, _" { modelInstance = new(StructuredDocumentTagCollection) }
                 if jsonTypeStr == "StructuredDocumentTagInsert, _" { modelInstance = new(StructuredDocumentTagInsert) }
                 if jsonTypeStr == "StructuredDocumentTagUpdate, _" { modelInstance = new(StructuredDocumentTagUpdate) }
@@ -608,6 +619,7 @@ func (obj *Section) Deserialize(json map[string]interface{}) {
                 if jsonTypeStr == "SectionLink, _" { modelInstance = new(SectionLink) }
                 if jsonTypeStr == "SectionLinkCollection, _" { modelInstance = new(SectionLinkCollection) }
                 if jsonTypeStr == "StructuredDocumentTag, _" { modelInstance = new(StructuredDocumentTag) }
+                if jsonTypeStr == "StructuredDocumentTagBase, _" {  }
                 if jsonTypeStr == "StructuredDocumentTagCollection, _" { modelInstance = new(StructuredDocumentTagCollection) }
                 if jsonTypeStr == "StructuredDocumentTagInsert, _" { modelInstance = new(StructuredDocumentTagInsert) }
                 if jsonTypeStr == "StructuredDocumentTagUpdate, _" { modelInstance = new(StructuredDocumentTagUpdate) }
@@ -691,6 +703,7 @@ func (obj *Section) Deserialize(json map[string]interface{}) {
                 if jsonTypeStr == "SectionLink, _" { modelInstance = new(SectionLink) }
                 if jsonTypeStr == "SectionLinkCollection, _" { modelInstance = new(SectionLinkCollection) }
                 if jsonTypeStr == "StructuredDocumentTag, _" { modelInstance = new(StructuredDocumentTag) }
+                if jsonTypeStr == "StructuredDocumentTagBase, _" {  }
                 if jsonTypeStr == "StructuredDocumentTagCollection, _" { modelInstance = new(StructuredDocumentTagCollection) }
                 if jsonTypeStr == "StructuredDocumentTagInsert, _" { modelInstance = new(StructuredDocumentTagInsert) }
                 if jsonTypeStr == "StructuredDocumentTagUpdate, _" { modelInstance = new(StructuredDocumentTagUpdate) }
@@ -776,6 +789,7 @@ func (obj *Section) Deserialize(json map[string]interface{}) {
                 if jsonTypeStr == "SectionLink, _" { modelInstance = new(SectionLink) }
                 if jsonTypeStr == "SectionLinkCollection, _" { modelInstance = new(SectionLinkCollection) }
                 if jsonTypeStr == "StructuredDocumentTag, _" { modelInstance = new(StructuredDocumentTag) }
+                if jsonTypeStr == "StructuredDocumentTagBase, _" {  }
                 if jsonTypeStr == "StructuredDocumentTagCollection, _" { modelInstance = new(StructuredDocumentTagCollection) }
                 if jsonTypeStr == "StructuredDocumentTagInsert, _" { modelInstance = new(StructuredDocumentTagInsert) }
                 if jsonTypeStr == "StructuredDocumentTagUpdate, _" { modelInstance = new(StructuredDocumentTagUpdate) }
@@ -859,6 +873,7 @@ func (obj *Section) Deserialize(json map[string]interface{}) {
                 if jsonTypeStr == "SectionLink, _" { modelInstance = new(SectionLink) }
                 if jsonTypeStr == "SectionLinkCollection, _" { modelInstance = new(SectionLinkCollection) }
                 if jsonTypeStr == "StructuredDocumentTag, _" { modelInstance = new(StructuredDocumentTag) }
+                if jsonTypeStr == "StructuredDocumentTagBase, _" {  }
                 if jsonTypeStr == "StructuredDocumentTagCollection, _" { modelInstance = new(StructuredDocumentTagCollection) }
                 if jsonTypeStr == "StructuredDocumentTagInsert, _" { modelInstance = new(StructuredDocumentTagInsert) }
                 if jsonTypeStr == "StructuredDocumentTagUpdate, _" { modelInstance = new(StructuredDocumentTagUpdate) }
@@ -883,6 +898,49 @@ func (obj *Section) Deserialize(json map[string]interface{}) {
 
 func (obj *Section) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *Section) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.Link != nil {
+        if err := obj.Link.Validate(); err != nil {
+            return err
+        }
+    }
+    if obj.ChildNodes != nil {
+        for _, elementChildNodes := range obj.ChildNodes {
+            if elementChildNodes != nil {
+                if err := elementChildNodes.Validate(); err != nil {
+                    return err
+                }
+            }
+        }
+    }
+    if obj.Paragraphs != nil {
+        if err := obj.Paragraphs.Validate(); err != nil {
+            return err
+        }
+    }
+    if obj.PageSetup != nil {
+        if err := obj.PageSetup.Validate(); err != nil {
+            return err
+        }
+    }
+    if obj.HeaderFooters != nil {
+        if err := obj.HeaderFooters.Validate(); err != nil {
+            return err
+        }
+    }
+    if obj.Tables != nil {
+        if err := obj.Tables.Validate(); err != nil {
+            return err
+        }
+    }
+
+    return nil;
 }
 
 func (obj *Section) GetLink() IWordsApiLink {

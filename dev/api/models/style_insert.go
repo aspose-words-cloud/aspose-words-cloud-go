@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Represents a single document style to insert.
 
 type IStyleInsert interface {
@@ -34,6 +38,7 @@ type IStyleInsert interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetStyleName() *string
     SetStyleName(value *string)
     GetStyleType() *string
@@ -84,6 +89,20 @@ func (obj *StyleInsert) Deserialize(json map[string]interface{}) {
 
 func (obj *StyleInsert) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *StyleInsert) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.StyleName == nil {
+        return errors.New("Property StyleName in StyleInsert is required.")
+    }
+    if obj.StyleType == nil {
+        return errors.New("Property StyleType in StyleInsert is required.")
+    }
+    return nil;
 }
 
 func (obj *StyleInsert) GetStyleName() *string {

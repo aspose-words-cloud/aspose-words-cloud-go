@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // DTO container with a new position in the document tree.
 
 type INewDocumentPosition interface {
@@ -34,6 +38,7 @@ type INewDocumentPosition interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetNodeId() *string
     SetNodeId(value *string)
     GetOffset() *int32
@@ -86,6 +91,17 @@ func (obj *NewDocumentPosition) Deserialize(json map[string]interface{}) {
 
 func (obj *NewDocumentPosition) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *NewDocumentPosition) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.NodeId == nil {
+        return errors.New("Property NodeId in NewDocumentPosition is required.")
+    }
+    return nil;
 }
 
 func (obj *NewDocumentPosition) GetNodeId() *string {

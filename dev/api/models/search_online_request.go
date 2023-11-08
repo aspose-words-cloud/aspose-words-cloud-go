@@ -28,6 +28,7 @@
 package models
 
 import (
+    "errors"
     "io/ioutil"
     "net/url"
     "strings"
@@ -50,9 +51,11 @@ type SearchOnlineRequest struct {
 
 
 func (data *SearchOnlineRequest) CreateRequestData() (RequestData, error) {
-
     var result RequestData
     var filesContentData = make([]FileReference, 0)
+    if data == nil {
+        return result, errors.New("Invalid object.")
+    }
 
     result.Method = strings.ToUpper("put")
 
@@ -66,6 +69,14 @@ func (data *SearchOnlineRequest) CreateRequestData() (RequestData, error) {
     result.QueryParams = url.Values{}
     result.FormParams = make([]FormParamContainer, 0)
 
+    if (data.Document == nil) {
+        return result, errors.New("Parameter Document is required.")
+    }
+
+    if (data.Pattern == nil) {
+        return result, errors.New("Parameter Pattern is required.")
+    }
+
 
     if err := typeCheckParameter(data.Optionals["loadEncoding"], "string", "data.Optionals[loadEncoding]"); err != nil {
         return result, err
@@ -76,6 +87,7 @@ func (data *SearchOnlineRequest) CreateRequestData() (RequestData, error) {
     if err := typeCheckParameter(data.Optionals["encryptedPassword"], "string", "data.Optionals[encryptedPassword]"); err != nil {
         return result, err
     }
+
 
 
     result.QueryParams.Add("Pattern", parameterToString(*data.Pattern, ""))

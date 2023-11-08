@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Result of search operation.
 
 type ISearchResult interface {
@@ -34,6 +38,7 @@ type ISearchResult interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetRangeStart() IDocumentPosition
     SetRangeStart(value IDocumentPosition)
     GetRangeEnd() IDocumentPosition
@@ -101,6 +106,25 @@ func (obj *SearchResult) Deserialize(json map[string]interface{}) {
 
 func (obj *SearchResult) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *SearchResult) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.RangeStart != nil {
+        if err := obj.RangeStart.Validate(); err != nil {
+            return err
+        }
+    }
+    if obj.RangeEnd != nil {
+        if err := obj.RangeEnd.Validate(); err != nil {
+            return err
+        }
+    }
+
+    return nil;
 }
 
 func (obj *SearchResult) GetRangeStart() IDocumentPosition {

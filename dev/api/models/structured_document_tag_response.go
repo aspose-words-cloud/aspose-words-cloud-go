@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // The REST response with a StructuredDocumentTag.
 
 type IStructuredDocumentTagResponse interface {
@@ -34,6 +38,7 @@ type IStructuredDocumentTagResponse interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetRequestId() *string
     SetRequestId(value *string)
     GetStructuredDocumentTag() IStructuredDocumentTag
@@ -82,7 +87,6 @@ func (obj *StructuredDocumentTagResponse) Deserialize(json map[string]interface{
             var modelInstance IStructuredDocumentTag = nil
             if jsonType, found := parsedValue["$type"]; found {
                 jsonTypeStr := jsonType.(string)
-                if jsonTypeStr == "StructuredDocumentTagInsert, _" { modelInstance = new(StructuredDocumentTagInsert) }
                 if jsonTypeStr == "StructuredDocumentTagUpdate, _" { modelInstance = new(StructuredDocumentTagUpdate) }
             }
 
@@ -96,7 +100,6 @@ func (obj *StructuredDocumentTagResponse) Deserialize(json map[string]interface{
             var modelInstance IStructuredDocumentTag = nil
             if jsonType, found := parsedValue["$type"]; found {
                 jsonTypeStr := jsonType.(string)
-                if jsonTypeStr == "StructuredDocumentTagInsert, _" { modelInstance = new(StructuredDocumentTagInsert) }
                 if jsonTypeStr == "StructuredDocumentTagUpdate, _" { modelInstance = new(StructuredDocumentTagUpdate) }
             }
 
@@ -110,6 +113,20 @@ func (obj *StructuredDocumentTagResponse) Deserialize(json map[string]interface{
 
 func (obj *StructuredDocumentTagResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *StructuredDocumentTagResponse) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.StructuredDocumentTag != nil {
+        if err := obj.StructuredDocumentTag.Validate(); err != nil {
+            return err
+        }
+    }
+
+    return nil;
 }
 
 func (obj *StructuredDocumentTagResponse) GetRequestId() *string {

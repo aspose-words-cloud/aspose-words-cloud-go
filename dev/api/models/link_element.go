@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Reference to a document.
 
 type ILinkElement interface {
@@ -34,6 +38,7 @@ type ILinkElement interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetLink() IWordsApiLink
     SetLink(value IWordsApiLink)
 }
@@ -76,6 +81,20 @@ func (obj *LinkElement) Deserialize(json map[string]interface{}) {
 
 func (obj *LinkElement) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *LinkElement) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.Link != nil {
+        if err := obj.Link.Validate(); err != nil {
+            return err
+        }
+    }
+
+    return nil;
 }
 
 func (obj *LinkElement) GetLink() IWordsApiLink {

@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // The REST response with a regular expression pattern and a collection of search results.
 // This response is returned by the Service when handling "GET https://api.aspose.cloud/v4.0/words/Test.doc/search" REST API requests.
 
@@ -35,6 +39,7 @@ type ISearchResponse interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetRequestId() *string
     SetRequestId(value *string)
     GetSearchingPattern() *string
@@ -117,6 +122,20 @@ func (obj *SearchResponse) Deserialize(json map[string]interface{}) {
 
 func (obj *SearchResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *SearchResponse) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.SearchResults != nil {
+        if err := obj.SearchResults.Validate(); err != nil {
+            return err
+        }
+    }
+
+    return nil;
 }
 
 func (obj *SearchResponse) GetRequestId() *string {

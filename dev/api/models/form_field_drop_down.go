@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // FormField dropdownlist element.
 
 type IFormFieldDropDown interface {
@@ -34,6 +38,7 @@ type IFormFieldDropDown interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetLink() IWordsApiLink
     SetLink(value IWordsApiLink)
     GetNodeId() *string
@@ -305,6 +310,26 @@ func (obj *FormFieldDropDown) Deserialize(json map[string]interface{}) {
 
 func (obj *FormFieldDropDown) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *FormFieldDropDown) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.Name == nil {
+        return errors.New("Property Name in FormFieldDropDown is required.")
+    }
+    if obj.DropDownItems == nil {
+        return errors.New("Property DropDownItems in FormFieldDropDown is required.")
+    }
+    if obj.Link != nil {
+        if err := obj.Link.Validate(); err != nil {
+            return err
+        }
+    }
+
+    return nil;
 }
 
 func (obj *FormFieldDropDown) GetLink() IWordsApiLink {

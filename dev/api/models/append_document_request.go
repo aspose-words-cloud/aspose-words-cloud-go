@@ -29,6 +29,7 @@ package models
 
 import (
     "fmt"
+    "errors"
     "io/ioutil"
     "net/url"
     "strings"
@@ -56,9 +57,11 @@ type AppendDocumentRequest struct {
 
 
 func (data *AppendDocumentRequest) CreateRequestData() (RequestData, error) {
-
     var result RequestData
     var filesContentData = make([]FileReference, 0)
+    if data == nil {
+        return result, errors.New("Invalid object.")
+    }
 
     result.Method = strings.ToUpper("put")
 
@@ -73,9 +76,16 @@ func (data *AppendDocumentRequest) CreateRequestData() (RequestData, error) {
     result.QueryParams = url.Values{}
     result.FormParams = make([]FormParamContainer, 0)
 
+    if (data.Name == nil) {
+        return result, errors.New("Parameter Name is required.")
+    }
+
     if (data.DocumentList != nil) {
         data.DocumentList.Initialize()
+    } else {
+        return result, errors.New("Parameter DocumentList is required.")
     }
+
 
     if err := typeCheckParameter(data.Optionals["folder"], "string", "data.Optionals[folder]"); err != nil {
         return result, err
@@ -100,6 +110,13 @@ func (data *AppendDocumentRequest) CreateRequestData() (RequestData, error) {
     }
     if err := typeCheckParameter(data.Optionals["revisionDateTime"], "string", "data.Optionals[revisionDateTime]"); err != nil {
         return result, err
+    }
+
+
+    if (data.DocumentList != nil) {
+        if err := data.DocumentList.Validate(); err != nil {
+            return result, err
+        }
     }
 
 

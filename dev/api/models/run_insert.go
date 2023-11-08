@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Run element for insert.
 
 type IRunInsert interface {
@@ -34,6 +38,7 @@ type IRunInsert interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetText() *string
     SetText(value *string)
 }
@@ -70,6 +75,17 @@ func (obj *RunInsert) Deserialize(json map[string]interface{}) {
 
 func (obj *RunInsert) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *RunInsert) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.Text == nil {
+        return errors.New("Property Text in RunInsert is required.")
+    }
+    return nil;
 }
 
 func (obj *RunInsert) GetText() *string {

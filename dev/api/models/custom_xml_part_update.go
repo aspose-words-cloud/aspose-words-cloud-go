@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Custom xml part update.
 
 type ICustomXmlPartUpdate interface {
@@ -34,6 +38,7 @@ type ICustomXmlPartUpdate interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetLink() IWordsApiLink
     SetLink(value IWordsApiLink)
     GetId() *string
@@ -121,6 +126,23 @@ func (obj *CustomXmlPartUpdate) Deserialize(json map[string]interface{}) {
 
 func (obj *CustomXmlPartUpdate) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *CustomXmlPartUpdate) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.Data == nil {
+        return errors.New("Property Data in CustomXmlPartUpdate is required.")
+    }
+    if obj.Link != nil {
+        if err := obj.Link.Validate(); err != nil {
+            return err
+        }
+    }
+
+    return nil;
 }
 
 func (obj *CustomXmlPartUpdate) GetLink() IWordsApiLink {

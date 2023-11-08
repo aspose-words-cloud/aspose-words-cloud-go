@@ -34,6 +34,7 @@ type IBaseEntry interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetFileReference() IFileReference
     SetFileReference(value IFileReference)
 }

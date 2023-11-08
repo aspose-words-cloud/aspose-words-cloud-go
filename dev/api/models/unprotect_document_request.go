@@ -29,6 +29,7 @@ package models
 
 import (
     "fmt"
+    "errors"
     "io/ioutil"
     "net/url"
     "strings"
@@ -54,9 +55,11 @@ type UnprotectDocumentRequest struct {
 
 
 func (data *UnprotectDocumentRequest) CreateRequestData() (RequestData, error) {
-
     var result RequestData
     var filesContentData = make([]FileReference, 0)
+    if data == nil {
+        return result, errors.New("Invalid object.")
+    }
 
     result.Method = strings.ToUpper("delete")
 
@@ -71,9 +74,16 @@ func (data *UnprotectDocumentRequest) CreateRequestData() (RequestData, error) {
     result.QueryParams = url.Values{}
     result.FormParams = make([]FormParamContainer, 0)
 
+    if (data.Name == nil) {
+        return result, errors.New("Parameter Name is required.")
+    }
+
     if (data.ProtectionRequest != nil) {
         data.ProtectionRequest.Initialize()
+    } else {
+        return result, errors.New("Parameter ProtectionRequest is required.")
     }
+
 
     if err := typeCheckParameter(data.Optionals["folder"], "string", "data.Optionals[folder]"); err != nil {
         return result, err
@@ -92,6 +102,13 @@ func (data *UnprotectDocumentRequest) CreateRequestData() (RequestData, error) {
     }
     if err := typeCheckParameter(data.Optionals["destFileName"], "string", "data.Optionals[destFileName]"); err != nil {
         return result, err
+    }
+
+
+    if (data.ProtectionRequest != nil) {
+        if err := data.ProtectionRequest.Validate(); err != nil {
+            return result, err
+        }
     }
 
 

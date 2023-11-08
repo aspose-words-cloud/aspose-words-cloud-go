@@ -29,6 +29,7 @@ package models
 
 import (
     "fmt"
+    "errors"
     "io/ioutil"
     "net/url"
     "strings"
@@ -54,9 +55,11 @@ type GetHeaderFooterOfSectionOnlineRequest struct {
 
 
 func (data *GetHeaderFooterOfSectionOnlineRequest) CreateRequestData() (RequestData, error) {
-
     var result RequestData
     var filesContentData = make([]FileReference, 0)
+    if data == nil {
+        return result, errors.New("Invalid object.")
+    }
 
     result.Method = strings.ToUpper("put")
 
@@ -72,6 +75,18 @@ func (data *GetHeaderFooterOfSectionOnlineRequest) CreateRequestData() (RequestD
     result.QueryParams = url.Values{}
     result.FormParams = make([]FormParamContainer, 0)
 
+    if (data.Document == nil) {
+        return result, errors.New("Parameter Document is required.")
+    }
+
+    if (data.HeaderFooterIndex == nil) {
+        return result, errors.New("Parameter HeaderFooterIndex is required.")
+    }
+
+    if (data.SectionIndex == nil) {
+        return result, errors.New("Parameter SectionIndex is required.")
+    }
+
 
     if err := typeCheckParameter(data.Optionals["loadEncoding"], "string", "data.Optionals[loadEncoding]"); err != nil {
         return result, err
@@ -85,6 +100,7 @@ func (data *GetHeaderFooterOfSectionOnlineRequest) CreateRequestData() (RequestD
     if err := typeCheckParameter(data.Optionals["filterByType"], "string", "data.Optionals[filterByType]"); err != nil {
         return result, err
     }
+
 
 
     if localVarTempParam, localVarOk := data.Optionals["loadEncoding"].(string); localVarOk {

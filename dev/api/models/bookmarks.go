@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Represents an array of bookmarks.
 
 type IBookmarks interface {
@@ -34,6 +38,7 @@ type IBookmarks interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetLink() IWordsApiLink
     SetLink(value IWordsApiLink)
     GetBookmarkList() []IBookmark
@@ -117,6 +122,29 @@ func (obj *Bookmarks) Deserialize(json map[string]interface{}) {
 
 func (obj *Bookmarks) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *Bookmarks) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.Link != nil {
+        if err := obj.Link.Validate(); err != nil {
+            return err
+        }
+    }
+    if obj.BookmarkList != nil {
+        for _, elementBookmarkList := range obj.BookmarkList {
+            if elementBookmarkList != nil {
+                if err := elementBookmarkList.Validate(); err != nil {
+                    return err
+                }
+            }
+        }
+    }
+
+    return nil;
 }
 
 func (obj *Bookmarks) GetLink() IWordsApiLink {

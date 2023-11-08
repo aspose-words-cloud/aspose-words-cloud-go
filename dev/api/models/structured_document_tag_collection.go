@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // DTO container with a collection of StructuredDocumentTags links.
 
 type IStructuredDocumentTagCollection interface {
@@ -34,6 +38,7 @@ type IStructuredDocumentTagCollection interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetLink() IWordsApiLink
     SetLink(value IWordsApiLink)
     GetList() []IStructuredDocumentTag
@@ -94,7 +99,6 @@ func (obj *StructuredDocumentTagCollection) Deserialize(json map[string]interfac
                     var modelElementInstance IStructuredDocumentTag = nil
                     if jsonElementType, found := elementValue["$type"]; found {
                         jsonTypeStr := jsonElementType.(string)
-                        if jsonTypeStr == "StructuredDocumentTagInsert, _" { modelElementInstance = new(StructuredDocumentTagInsert) }
                         if jsonTypeStr == "StructuredDocumentTagUpdate, _" { modelElementInstance = new(StructuredDocumentTagUpdate) }
                     }
 
@@ -114,7 +118,6 @@ func (obj *StructuredDocumentTagCollection) Deserialize(json map[string]interfac
                     var modelElementInstance IStructuredDocumentTag = nil
                     if jsonElementType, found := elementValue["$type"]; found {
                         jsonTypeStr := jsonElementType.(string)
-                        if jsonTypeStr == "StructuredDocumentTagInsert, _" { modelElementInstance = new(StructuredDocumentTagInsert) }
                         if jsonTypeStr == "StructuredDocumentTagUpdate, _" { modelElementInstance = new(StructuredDocumentTagUpdate) }
                     }
 
@@ -131,6 +134,29 @@ func (obj *StructuredDocumentTagCollection) Deserialize(json map[string]interfac
 
 func (obj *StructuredDocumentTagCollection) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *StructuredDocumentTagCollection) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.Link != nil {
+        if err := obj.Link.Validate(); err != nil {
+            return err
+        }
+    }
+    if obj.List != nil {
+        for _, elementList := range obj.List {
+            if elementList != nil {
+                if err := elementList.Validate(); err != nil {
+                    return err
+                }
+            }
+        }
+    }
+
+    return nil;
 }
 
 func (obj *StructuredDocumentTagCollection) GetLink() IWordsApiLink {

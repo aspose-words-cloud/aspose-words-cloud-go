@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // The REST response with a collection of mail merge fields.
 // This response should be returned by the service when handling: GET /{name}/mailMergeFieldNames.
 
@@ -35,6 +39,7 @@ type IFieldNamesResponse interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetRequestId() *string
     SetRequestId(value *string)
     GetFieldNames() IFieldNames
@@ -99,6 +104,20 @@ func (obj *FieldNamesResponse) Deserialize(json map[string]interface{}) {
 
 func (obj *FieldNamesResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *FieldNamesResponse) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.FieldNames != nil {
+        if err := obj.FieldNames.Validate(); err != nil {
+            return err
+        }
+    }
+
+    return nil;
 }
 
 func (obj *FieldNamesResponse) GetRequestId() *string {

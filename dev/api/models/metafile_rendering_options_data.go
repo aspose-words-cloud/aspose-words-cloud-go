@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Container class for options of metafile rendering.
 
 type IMetafileRenderingOptionsData interface {
@@ -34,6 +38,7 @@ type IMetafileRenderingOptionsData interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetEmfPlusDualRenderingMode() *string
     SetEmfPlusDualRenderingMode(value *string)
     GetEmulateRasterOperations() *bool
@@ -154,6 +159,14 @@ func (obj *MetafileRenderingOptionsData) Deserialize(json map[string]interface{}
 
 func (obj *MetafileRenderingOptionsData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *MetafileRenderingOptionsData) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    return nil;
 }
 
 func (obj *MetafileRenderingOptionsData) GetEmfPlusDualRenderingMode() *string {

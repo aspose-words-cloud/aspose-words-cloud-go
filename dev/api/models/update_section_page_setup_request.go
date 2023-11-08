@@ -29,6 +29,7 @@ package models
 
 import (
     "fmt"
+    "errors"
     "io/ioutil"
     "net/url"
     "strings"
@@ -58,9 +59,11 @@ type UpdateSectionPageSetupRequest struct {
 
 
 func (data *UpdateSectionPageSetupRequest) CreateRequestData() (RequestData, error) {
-
     var result RequestData
     var filesContentData = make([]FileReference, 0)
+    if data == nil {
+        return result, errors.New("Invalid object.")
+    }
 
     result.Method = strings.ToUpper("put")
 
@@ -76,9 +79,20 @@ func (data *UpdateSectionPageSetupRequest) CreateRequestData() (RequestData, err
     result.QueryParams = url.Values{}
     result.FormParams = make([]FormParamContainer, 0)
 
+    if (data.Name == nil) {
+        return result, errors.New("Parameter Name is required.")
+    }
+
+    if (data.SectionIndex == nil) {
+        return result, errors.New("Parameter SectionIndex is required.")
+    }
+
     if (data.PageSetup != nil) {
         data.PageSetup.Initialize()
+    } else {
+        return result, errors.New("Parameter PageSetup is required.")
     }
+
 
     if err := typeCheckParameter(data.Optionals["folder"], "string", "data.Optionals[folder]"); err != nil {
         return result, err
@@ -103,6 +117,13 @@ func (data *UpdateSectionPageSetupRequest) CreateRequestData() (RequestData, err
     }
     if err := typeCheckParameter(data.Optionals["revisionDateTime"], "string", "data.Optionals[revisionDateTime]"); err != nil {
         return result, err
+    }
+
+
+    if (data.PageSetup != nil) {
+        if err := data.PageSetup.Validate(); err != nil {
+            return result, err
+        }
     }
 
 

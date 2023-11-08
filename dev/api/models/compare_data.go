@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Container class for compare documents.
 
 type ICompareData interface {
@@ -34,6 +38,7 @@ type ICompareData interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetAuthor() *string
     SetAuthor(value *string)
     GetCompareOptions() ICompareOptions
@@ -146,6 +151,26 @@ func (obj *CompareData) Deserialize(json map[string]interface{}) {
 
 func (obj *CompareData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *CompareData) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.Author == nil {
+        return errors.New("Property Author in CompareData is required.")
+    }
+    if obj.ComparingWithDocument == nil {
+        return errors.New("Property ComparingWithDocument in CompareData is required.")
+    }
+    if obj.CompareOptions != nil {
+        if err := obj.CompareOptions.Validate(); err != nil {
+            return err
+        }
+    }
+
+    return nil;
 }
 
 func (obj *CompareData) GetAuthor() *string {

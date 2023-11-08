@@ -29,6 +29,7 @@ package models
 
 import (
     "fmt"
+    "errors"
     "io/ioutil"
     "net/url"
     "strings"
@@ -57,9 +58,11 @@ type InsertStructuredDocumentTagRequest struct {
 
 
 func (data *InsertStructuredDocumentTagRequest) CreateRequestData() (RequestData, error) {
-
     var result RequestData
     var filesContentData = make([]FileReference, 0)
+    if data == nil {
+        return result, errors.New("Invalid object.")
+    }
 
     result.Method = strings.ToUpper("post")
 
@@ -75,9 +78,16 @@ func (data *InsertStructuredDocumentTagRequest) CreateRequestData() (RequestData
     result.QueryParams = url.Values{}
     result.FormParams = make([]FormParamContainer, 0)
 
+    if (data.Name == nil) {
+        return result, errors.New("Parameter Name is required.")
+    }
+
     if (data.StructuredDocumentTag != nil) {
         data.StructuredDocumentTag.Initialize()
+    } else {
+        return result, errors.New("Parameter StructuredDocumentTag is required.")
     }
+
 
     if err := typeCheckParameter(data.Optionals["nodePath"], "string", "data.Optionals[nodePath]"); err != nil {
         return result, err
@@ -105,6 +115,13 @@ func (data *InsertStructuredDocumentTagRequest) CreateRequestData() (RequestData
     }
     if err := typeCheckParameter(data.Optionals["revisionDateTime"], "string", "data.Optionals[revisionDateTime]"); err != nil {
         return result, err
+    }
+
+
+    if (data.StructuredDocumentTag != nil) {
+        if err := data.StructuredDocumentTag.Validate(); err != nil {
+            return result, err
+        }
     }
 
 

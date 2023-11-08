@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // DTO for field options.
 
 type IFieldOptions interface {
@@ -34,6 +38,7 @@ type IFieldOptions interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetCurrentUser() IUserInformation
     SetCurrentUser(value IUserInformation)
     GetCustomTocStyleSeparator() *string
@@ -292,6 +297,20 @@ func (obj *FieldOptions) Deserialize(json map[string]interface{}) {
 
 func (obj *FieldOptions) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *FieldOptions) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.CurrentUser != nil {
+        if err := obj.CurrentUser.Validate(); err != nil {
+            return err
+        }
+    }
+
+    return nil;
 }
 
 func (obj *FieldOptions) GetCurrentUser() IUserInformation {

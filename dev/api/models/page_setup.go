@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Represents the page setup properties of a section.
 // PageSetup object contains all the page setup attributes of a section (left margin, bottom margin, paper size, and so on) as properties.
 
@@ -35,6 +39,7 @@ type IPageSetup interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetLink() IWordsApiLink
     SetLink(value IWordsApiLink)
     GetBidi() *bool
@@ -613,6 +618,20 @@ func (obj *PageSetup) Deserialize(json map[string]interface{}) {
 
 func (obj *PageSetup) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *PageSetup) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.Link != nil {
+        if err := obj.Link.Validate(); err != nil {
+            return err
+        }
+    }
+
+    return nil;
 }
 
 func (obj *PageSetup) GetLink() IWordsApiLink {

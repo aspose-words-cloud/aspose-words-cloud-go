@@ -28,6 +28,7 @@
 package models
 
 import (
+    "errors"
     "io/ioutil"
     "net/url"
     "strings"
@@ -50,9 +51,11 @@ type AcceptAllRevisionsOnlineRequest struct {
 
 
 func (data *AcceptAllRevisionsOnlineRequest) CreateRequestData() (RequestData, error) {
-
     var result RequestData
     var filesContentData = make([]FileReference, 0)
+    if data == nil {
+        return result, errors.New("Invalid object.")
+    }
 
     result.Method = strings.ToUpper("put")
 
@@ -65,6 +68,10 @@ func (data *AcceptAllRevisionsOnlineRequest) CreateRequestData() (RequestData, e
     result.HeaderParams = make(map[string]string)
     result.QueryParams = url.Values{}
     result.FormParams = make([]FormParamContainer, 0)
+
+    if (data.Document == nil) {
+        return result, errors.New("Parameter Document is required.")
+    }
 
 
     if err := typeCheckParameter(data.Optionals["loadEncoding"], "string", "data.Optionals[loadEncoding]"); err != nil {
@@ -79,6 +86,7 @@ func (data *AcceptAllRevisionsOnlineRequest) CreateRequestData() (RequestData, e
     if err := typeCheckParameter(data.Optionals["destFileName"], "string", "data.Optionals[destFileName]"); err != nil {
         return result, err
     }
+
 
 
     if localVarTempParam, localVarOk := data.Optionals["loadEncoding"].(string); localVarOk {

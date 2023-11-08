@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // The REST response with data on system, additional and custom fonts, available for document processing.
 
 type IAvailableFontsResponse interface {
@@ -34,6 +38,7 @@ type IAvailableFontsResponse interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetRequestId() *string
     SetRequestId(value *string)
     GetAdditionalFonts() []IFontInfo
@@ -185,6 +190,42 @@ func (obj *AvailableFontsResponse) Deserialize(json map[string]interface{}) {
 
 func (obj *AvailableFontsResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *AvailableFontsResponse) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.AdditionalFonts != nil {
+        for _, elementAdditionalFonts := range obj.AdditionalFonts {
+            if elementAdditionalFonts != nil {
+                if err := elementAdditionalFonts.Validate(); err != nil {
+                    return err
+                }
+            }
+        }
+    }
+    if obj.CustomFonts != nil {
+        for _, elementCustomFonts := range obj.CustomFonts {
+            if elementCustomFonts != nil {
+                if err := elementCustomFonts.Validate(); err != nil {
+                    return err
+                }
+            }
+        }
+    }
+    if obj.SystemFonts != nil {
+        for _, elementSystemFonts := range obj.SystemFonts {
+            if elementSystemFonts != nil {
+                if err := elementSystemFonts.Validate(); err != nil {
+                    return err
+                }
+            }
+        }
+    }
+
+    return nil;
 }
 
 func (obj *AvailableFontsResponse) GetRequestId() *string {

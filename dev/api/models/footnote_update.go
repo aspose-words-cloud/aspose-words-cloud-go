@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Footnote for update.
 
 type IFootnoteUpdate interface {
@@ -34,6 +38,7 @@ type IFootnoteUpdate interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetPosition() INewDocumentPosition
     SetPosition(value INewDocumentPosition)
     GetFootnoteType() *string
@@ -130,6 +135,20 @@ func (obj *FootnoteUpdate) Deserialize(json map[string]interface{}) {
 
 func (obj *FootnoteUpdate) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *FootnoteUpdate) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.Position != nil {
+        if err := obj.Position.Validate(); err != nil {
+            return err
+        }
+    }
+
+    return nil;
 }
 
 func (obj *FootnoteUpdate) GetPosition() INewDocumentPosition {

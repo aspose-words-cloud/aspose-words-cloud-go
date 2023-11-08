@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Represents a border of an object.
 // Borders can be applied to various document elements including paragraph, run of text inside a paragraph or a table cell.
 
@@ -35,6 +39,7 @@ type IBorder interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetLink() IWordsApiLink
     SetLink(value IWordsApiLink)
     GetBorderType() *string
@@ -197,6 +202,25 @@ func (obj *Border) Deserialize(json map[string]interface{}) {
 
 func (obj *Border) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *Border) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.Link != nil {
+        if err := obj.Link.Validate(); err != nil {
+            return err
+        }
+    }
+    if obj.Color != nil {
+        if err := obj.Color.Validate(); err != nil {
+            return err
+        }
+    }
+
+    return nil;
 }
 
 func (obj *Border) GetLink() IWordsApiLink {

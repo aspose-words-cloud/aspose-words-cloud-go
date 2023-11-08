@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Container class for xps save options.
 
 type IXpsSaveOptionsData interface {
@@ -34,6 +38,7 @@ type IXpsSaveOptionsData interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetAllowEmbeddingPostScriptFonts() *bool
     SetAllowEmbeddingPostScriptFonts(value *bool)
     GetCustomTimeZoneInfoData() ITimeZoneInfoData
@@ -492,6 +497,33 @@ func (obj *XpsSaveOptionsData) Deserialize(json map[string]interface{}) {
 
 func (obj *XpsSaveOptionsData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *XpsSaveOptionsData) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.FileName == nil {
+        return errors.New("Property FileName in XpsSaveOptionsData is required.")
+    }
+    if obj.CustomTimeZoneInfoData != nil {
+        if err := obj.CustomTimeZoneInfoData.Validate(); err != nil {
+            return err
+        }
+    }
+    if obj.MetafileRenderingOptions != nil {
+        if err := obj.MetafileRenderingOptions.Validate(); err != nil {
+            return err
+        }
+    }
+    if obj.OutlineOptions != nil {
+        if err := obj.OutlineOptions.Validate(); err != nil {
+            return err
+        }
+    }
+
+    return nil;
 }
 
 func (obj *XpsSaveOptionsData) GetAllowEmbeddingPostScriptFonts() *bool {

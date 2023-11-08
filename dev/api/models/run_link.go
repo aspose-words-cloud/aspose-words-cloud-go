@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Run link element.
 
 type IRunLink interface {
@@ -34,6 +38,7 @@ type IRunLink interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetLink() IWordsApiLink
     SetLink(value IWordsApiLink)
     GetNodeId() *string
@@ -117,6 +122,20 @@ func (obj *RunLink) Deserialize(json map[string]interface{}) {
 
 func (obj *RunLink) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *RunLink) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.Link != nil {
+        if err := obj.Link.Validate(); err != nil {
+            return err
+        }
+    }
+
+    return nil;
 }
 
 func (obj *RunLink) GetLink() IWordsApiLink {

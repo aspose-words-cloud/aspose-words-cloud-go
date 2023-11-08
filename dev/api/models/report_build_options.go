@@ -38,4 +38,5 @@ const (
     INLINEERRORMESSAGES ReportBuildOptions = "InlineErrorMessages"
     USELEGACYHEADERFOOTERVISITING ReportBuildOptions = "UseLegacyHeaderFooterVisiting"
     RESPECTJPEGEXIFORIENTATION ReportBuildOptions = "RespectJpegExifOrientation"
+    UPDATEFIELDSSYNTAXAWARE ReportBuildOptions = "UpdateFieldsSyntaxAware"
 )

@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Words document property DTO for create or update.
 
 type IDocumentPropertyCreateOrUpdate interface {
@@ -34,6 +38,7 @@ type IDocumentPropertyCreateOrUpdate interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetValue() *string
     SetValue(value *string)
 }
@@ -47,9 +52,6 @@ func (DocumentPropertyCreateOrUpdate) IsDocumentPropertyCreateOrUpdate() bool {
     return true
 }
 
-func (DocumentPropertyCreateOrUpdate) IsDocumentPropertyBase() bool {
-    return true
-}
 
 func (obj *DocumentPropertyCreateOrUpdate) Initialize() {
 }
@@ -70,6 +72,17 @@ func (obj *DocumentPropertyCreateOrUpdate) Deserialize(json map[string]interface
 
 func (obj *DocumentPropertyCreateOrUpdate) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *DocumentPropertyCreateOrUpdate) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.Value == nil {
+        return errors.New("Property Value in DocumentPropertyCreateOrUpdate is required.")
+    }
+    return nil;
 }
 
 func (obj *DocumentPropertyCreateOrUpdate) GetValue() *string {

@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Contains data for load web document.
 
 type ILoadWebDocumentData interface {
@@ -34,6 +38,7 @@ type ILoadWebDocumentData interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetSaveOptions() ISaveOptionsData
     SetSaveOptions(value ISaveOptionsData)
     GetLoadingDocumentUrl() *string
@@ -181,6 +186,23 @@ func (obj *LoadWebDocumentData) Deserialize(json map[string]interface{}) {
 
 func (obj *LoadWebDocumentData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *LoadWebDocumentData) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.LoadingDocumentUrl == nil {
+        return errors.New("Property LoadingDocumentUrl in LoadWebDocumentData is required.")
+    }
+    if obj.SaveOptions != nil {
+        if err := obj.SaveOptions.Validate(); err != nil {
+            return err
+        }
+    }
+
+    return nil;
 }
 
 func (obj *LoadWebDocumentData) GetSaveOptions() ISaveOptionsData {

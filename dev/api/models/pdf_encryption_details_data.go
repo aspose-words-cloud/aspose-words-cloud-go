@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Container class for details of encryption.
 
 type IPdfEncryptionDetailsData interface {
@@ -34,6 +38,7 @@ type IPdfEncryptionDetailsData interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetOwnerPassword() *string
     SetOwnerPassword(value *string)
     GetPermissions() []string
@@ -113,6 +118,14 @@ func (obj *PdfEncryptionDetailsData) Deserialize(json map[string]interface{}) {
 
 func (obj *PdfEncryptionDetailsData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *PdfEncryptionDetailsData) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    return nil;
 }
 
 func (obj *PdfEncryptionDetailsData) GetOwnerPassword() *string {

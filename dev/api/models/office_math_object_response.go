@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // The REST response with a OfficeMath object.
 // This response is returned by the Service when handling "GET https://api.aspose.cloud/v4.0/words/Test.doc/officeMathObjects/0" REST API requests.
 
@@ -35,6 +39,7 @@ type IOfficeMathObjectResponse interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetRequestId() *string
     SetRequestId(value *string)
     GetOfficeMathObject() IOfficeMathObject
@@ -99,6 +104,20 @@ func (obj *OfficeMathObjectResponse) Deserialize(json map[string]interface{}) {
 
 func (obj *OfficeMathObjectResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *OfficeMathObjectResponse) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.OfficeMathObject != nil {
+        if err := obj.OfficeMathObject.Validate(); err != nil {
+            return err
+        }
+    }
+
+    return nil;
 }
 
 func (obj *OfficeMathObjectResponse) GetRequestId() *string {

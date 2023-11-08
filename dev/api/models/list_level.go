@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // DTO container with a document list level.
 
 type IListLevel interface {
@@ -34,6 +38,7 @@ type IListLevel interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetLink() IWordsApiLink
     SetLink(value IWordsApiLink)
     GetStartAt() *int32
@@ -303,6 +308,57 @@ func (obj *ListLevel) Deserialize(json map[string]interface{}) {
 
 func (obj *ListLevel) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *ListLevel) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.StartAt == nil {
+        return errors.New("Property StartAt in ListLevel is required.")
+    }
+    if obj.NumberStyle == nil {
+        return errors.New("Property NumberStyle in ListLevel is required.")
+    }
+    if obj.Alignment == nil {
+        return errors.New("Property Alignment in ListLevel is required.")
+    }
+    if obj.IsLegal == nil {
+        return errors.New("Property IsLegal in ListLevel is required.")
+    }
+    if obj.RestartAfterLevel == nil {
+        return errors.New("Property RestartAfterLevel in ListLevel is required.")
+    }
+    if obj.TrailingCharacter == nil {
+        return errors.New("Property TrailingCharacter in ListLevel is required.")
+    }
+    if obj.TabPosition == nil {
+        return errors.New("Property TabPosition in ListLevel is required.")
+    }
+    if obj.NumberPosition == nil {
+        return errors.New("Property NumberPosition in ListLevel is required.")
+    }
+    if obj.TextPosition == nil {
+        return errors.New("Property TextPosition in ListLevel is required.")
+    }
+    if obj.Link != nil {
+        if err := obj.Link.Validate(); err != nil {
+            return err
+        }
+    }
+    if obj.Font != nil {
+        if err := obj.Font.Validate(); err != nil {
+            return err
+        }
+    }
+    if obj.LinkedStyle != nil {
+        if err := obj.LinkedStyle.Validate(); err != nil {
+            return err
+        }
+    }
+
+    return nil;
 }
 
 func (obj *ListLevel) GetLink() IWordsApiLink {

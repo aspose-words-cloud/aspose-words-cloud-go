@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Report engine settings.
 
 type IReportEngineSettings interface {
@@ -34,6 +38,7 @@ type IReportEngineSettings interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetCsvDataLoadOptions() ICsvDataLoadOptions
     SetCsvDataLoadOptions(value ICsvDataLoadOptions)
     GetDataSourceName() *string
@@ -189,6 +194,33 @@ func (obj *ReportEngineSettings) Deserialize(json map[string]interface{}) {
 
 func (obj *ReportEngineSettings) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *ReportEngineSettings) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.DataSourceType == nil {
+        return errors.New("Property DataSourceType in ReportEngineSettings is required.")
+    }
+    if obj.CsvDataLoadOptions != nil {
+        if err := obj.CsvDataLoadOptions.Validate(); err != nil {
+            return err
+        }
+    }
+    if obj.JsonDataLoadOptions != nil {
+        if err := obj.JsonDataLoadOptions.Validate(); err != nil {
+            return err
+        }
+    }
+    if obj.XmlDataLoadOptions != nil {
+        if err := obj.XmlDataLoadOptions.Validate(); err != nil {
+            return err
+        }
+    }
+
+    return nil;
 }
 
 func (obj *ReportEngineSettings) GetCsvDataLoadOptions() ICsvDataLoadOptions {

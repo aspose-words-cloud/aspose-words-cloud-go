@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // DTO container with a StructuredDocumentTag.
 
 type IStructuredDocumentTag interface {
@@ -34,6 +38,7 @@ type IStructuredDocumentTag interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetLink() IWordsApiLink
     SetLink(value IWordsApiLink)
     GetNodeId() *string
@@ -68,10 +73,6 @@ type IStructuredDocumentTag interface {
     SetCalendarType(value *string)
     GetIsTemporary() *bool
     SetIsTemporary(value *bool)
-    GetLevel() *string
-    SetLevel(value *string)
-    GetSdtType() *string
-    SetSdtType(value *string)
     GetPlaceholderName() *string
     SetPlaceholderName(value *string)
     GetLockContentControl() *bool
@@ -86,6 +87,10 @@ type IStructuredDocumentTag interface {
     SetId(value *int32)
     GetWordOpenXML() *string
     SetWordOpenXML(value *string)
+    GetLevel() *string
+    SetLevel(value *string)
+    GetSdtType() *string
+    SetSdtType(value *string)
 }
 
 type StructuredDocumentTag struct {
@@ -141,12 +146,6 @@ type StructuredDocumentTag struct {
     IsTemporary *bool `json:"IsTemporary,omitempty"`
 
     // DTO container with a StructuredDocumentTag.
-    Level *string `json:"Level,omitempty"`
-
-    // DTO container with a StructuredDocumentTag.
-    SdtType *string `json:"SdtType,omitempty"`
-
-    // DTO container with a StructuredDocumentTag.
     PlaceholderName *string `json:"PlaceholderName,omitempty"`
 
     // DTO container with a StructuredDocumentTag.
@@ -166,9 +165,19 @@ type StructuredDocumentTag struct {
 
     // DTO container with a StructuredDocumentTag.
     WordOpenXML *string `json:"WordOpenXML,omitempty"`
+
+    // DTO container with a StructuredDocumentTag.
+    Level *string `json:"Level,omitempty"`
+
+    // DTO container with a StructuredDocumentTag.
+    SdtType *string `json:"SdtType,omitempty"`
 }
 
 func (StructuredDocumentTag) IsStructuredDocumentTag() bool {
+    return true
+}
+
+func (StructuredDocumentTag) IsStructuredDocumentTagBase() bool {
     return true
 }
 
@@ -422,30 +431,6 @@ func (obj *StructuredDocumentTag) Deserialize(json map[string]interface{}) {
 
     }
 
-    if jsonValue, exists := json["Level"]; exists {
-        if parsedValue, valid := jsonValue.(string); valid {
-            obj.Level = &parsedValue
-        }
-
-    } else if jsonValue, exists := json["level"]; exists {
-        if parsedValue, valid := jsonValue.(string); valid {
-            obj.Level = &parsedValue
-        }
-
-    }
-
-    if jsonValue, exists := json["SdtType"]; exists {
-        if parsedValue, valid := jsonValue.(string); valid {
-            obj.SdtType = &parsedValue
-        }
-
-    } else if jsonValue, exists := json["sdtType"]; exists {
-        if parsedValue, valid := jsonValue.(string); valid {
-            obj.SdtType = &parsedValue
-        }
-
-    }
-
     if jsonValue, exists := json["PlaceholderName"]; exists {
         if parsedValue, valid := jsonValue.(string); valid {
             obj.PlaceholderName = &parsedValue
@@ -519,10 +504,57 @@ func (obj *StructuredDocumentTag) Deserialize(json map[string]interface{}) {
         }
 
     }
+
+    if jsonValue, exists := json["Level"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Level = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["level"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Level = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["SdtType"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.SdtType = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["sdtType"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.SdtType = &parsedValue
+        }
+
+    }
 }
 
 func (obj *StructuredDocumentTag) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *StructuredDocumentTag) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.Link != nil {
+        if err := obj.Link.Validate(); err != nil {
+            return err
+        }
+    }
+    if obj.ListItems != nil {
+        for _, elementListItems := range obj.ListItems {
+            if elementListItems != nil {
+                if err := elementListItems.Validate(); err != nil {
+                    return err
+                }
+            }
+        }
+    }
+
+    return nil;
 }
 
 func (obj *StructuredDocumentTag) GetLink() IWordsApiLink {
@@ -661,22 +693,6 @@ func (obj *StructuredDocumentTag) SetIsTemporary(value *bool) {
     obj.IsTemporary = value
 }
 
-func (obj *StructuredDocumentTag) GetLevel() *string {
-    return obj.Level
-}
-
-func (obj *StructuredDocumentTag) SetLevel(value *string) {
-    obj.Level = value
-}
-
-func (obj *StructuredDocumentTag) GetSdtType() *string {
-    return obj.SdtType
-}
-
-func (obj *StructuredDocumentTag) SetSdtType(value *string) {
-    obj.SdtType = value
-}
-
 func (obj *StructuredDocumentTag) GetPlaceholderName() *string {
     return obj.PlaceholderName
 }
@@ -731,5 +747,21 @@ func (obj *StructuredDocumentTag) GetWordOpenXML() *string {
 
 func (obj *StructuredDocumentTag) SetWordOpenXML(value *string) {
     obj.WordOpenXML = value
+}
+
+func (obj *StructuredDocumentTag) GetLevel() *string {
+    return obj.Level
+}
+
+func (obj *StructuredDocumentTag) SetLevel(value *string) {
+    obj.Level = value
+}
+
+func (obj *StructuredDocumentTag) GetSdtType() *string {
+    return obj.SdtType
+}
+
+func (obj *StructuredDocumentTag) SetSdtType(value *string) {
+    obj.SdtType = value
 }
 

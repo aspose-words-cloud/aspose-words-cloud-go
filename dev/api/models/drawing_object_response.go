@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // The REST response with a DrawingObject.
 
 type IDrawingObjectResponse interface {
@@ -34,6 +38,7 @@ type IDrawingObjectResponse interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetRequestId() *string
     SetRequestId(value *string)
     GetDrawingObject() IDrawingObject
@@ -96,6 +101,20 @@ func (obj *DrawingObjectResponse) Deserialize(json map[string]interface{}) {
 
 func (obj *DrawingObjectResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *DrawingObjectResponse) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.DrawingObject != nil {
+        if err := obj.DrawingObject.Validate(); err != nil {
+            return err
+        }
+    }
+
+    return nil;
 }
 
 func (obj *DrawingObjectResponse) GetRequestId() *string {

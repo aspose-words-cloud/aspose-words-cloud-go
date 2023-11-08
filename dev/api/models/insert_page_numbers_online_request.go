@@ -28,6 +28,7 @@
 package models
 
 import (
+    "errors"
     "io/ioutil"
     "net/url"
     "strings"
@@ -54,9 +55,11 @@ type InsertPageNumbersOnlineRequest struct {
 
 
 func (data *InsertPageNumbersOnlineRequest) CreateRequestData() (RequestData, error) {
-
     var result RequestData
     var filesContentData = make([]FileReference, 0)
+    if data == nil {
+        return result, errors.New("Invalid object.")
+    }
 
     result.Method = strings.ToUpper("put")
 
@@ -70,9 +73,16 @@ func (data *InsertPageNumbersOnlineRequest) CreateRequestData() (RequestData, er
     result.QueryParams = url.Values{}
     result.FormParams = make([]FormParamContainer, 0)
 
+    if (data.Document == nil) {
+        return result, errors.New("Parameter Document is required.")
+    }
+
     if (data.PageNumber != nil) {
         data.PageNumber.Initialize()
+    } else {
+        return result, errors.New("Parameter PageNumber is required.")
     }
+
 
     if err := typeCheckParameter(data.Optionals["loadEncoding"], "string", "data.Optionals[loadEncoding]"); err != nil {
         return result, err
@@ -91,6 +101,13 @@ func (data *InsertPageNumbersOnlineRequest) CreateRequestData() (RequestData, er
     }
     if err := typeCheckParameter(data.Optionals["revisionDateTime"], "string", "data.Optionals[revisionDateTime]"); err != nil {
         return result, err
+    }
+
+
+    if (data.PageNumber != nil) {
+        if err := data.PageNumber.Validate(); err != nil {
+            return result, err
+        }
     }
 
 

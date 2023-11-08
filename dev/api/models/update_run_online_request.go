@@ -29,6 +29,7 @@ package models
 
 import (
     "fmt"
+    "errors"
     "io/ioutil"
     "net/url"
     "strings"
@@ -59,9 +60,11 @@ type UpdateRunOnlineRequest struct {
 
 
 func (data *UpdateRunOnlineRequest) CreateRequestData() (RequestData, error) {
-
     var result RequestData
     var filesContentData = make([]FileReference, 0)
+    if data == nil {
+        return result, errors.New("Invalid object.")
+    }
 
     result.Method = strings.ToUpper("put")
 
@@ -77,9 +80,24 @@ func (data *UpdateRunOnlineRequest) CreateRequestData() (RequestData, error) {
     result.QueryParams = url.Values{}
     result.FormParams = make([]FormParamContainer, 0)
 
+    if (data.Document == nil) {
+        return result, errors.New("Parameter Document is required.")
+    }
+
+    if (data.ParagraphPath == nil) {
+        return result, errors.New("Parameter ParagraphPath is required.")
+    }
+
     if (data.Run != nil) {
         data.Run.Initialize()
+    } else {
+        return result, errors.New("Parameter Run is required.")
     }
+
+    if (data.Index == nil) {
+        return result, errors.New("Parameter Index is required.")
+    }
+
 
     if err := typeCheckParameter(data.Optionals["loadEncoding"], "string", "data.Optionals[loadEncoding]"); err != nil {
         return result, err
@@ -98,6 +116,13 @@ func (data *UpdateRunOnlineRequest) CreateRequestData() (RequestData, error) {
     }
     if err := typeCheckParameter(data.Optionals["revisionDateTime"], "string", "data.Optionals[revisionDateTime]"); err != nil {
         return result, err
+    }
+
+
+    if (data.Run != nil) {
+        if err := data.Run.Validate(); err != nil {
+            return result, err
+        }
     }
 
 

@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // Run element for insert.
 
 type IRunUpdate interface {
@@ -34,6 +38,7 @@ type IRunUpdate interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetText() *string
     SetText(value *string)
 }
@@ -70,6 +75,17 @@ func (obj *RunUpdate) Deserialize(json map[string]interface{}) {
 
 func (obj *RunUpdate) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *RunUpdate) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.Text == nil {
+        return errors.New("Property Text in RunUpdate is required.")
+    }
+    return nil;
 }
 
 func (obj *RunUpdate) GetText() *string {

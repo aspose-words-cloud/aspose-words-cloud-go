@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // The REST response with a list format for a paragraph.
 // This response is returned by the Service when handling "GET https://api.aspose.cloud/v4.0/words/Test.doc/paragraphs/{0}/listFormat" REST API requests.
 
@@ -35,6 +39,7 @@ type IParagraphListFormatResponse interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetRequestId() *string
     SetRequestId(value *string)
     GetListFormat() IListFormat
@@ -99,6 +104,20 @@ func (obj *ParagraphListFormatResponse) Deserialize(json map[string]interface{})
 
 func (obj *ParagraphListFormatResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *ParagraphListFormatResponse) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.ListFormat != nil {
+        if err := obj.ListFormat.Validate(); err != nil {
+            return err
+        }
+    }
+
+    return nil;
 }
 
 func (obj *ParagraphListFormatResponse) GetRequestId() *string {

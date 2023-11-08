@@ -27,6 +27,10 @@
 
 package models
 
+import (
+    "errors"
+)
+
 // The REST response with a save result.
 
 type ISaveResponse interface {
@@ -34,6 +38,7 @@ type ISaveResponse interface {
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
     GetRequestId() *string
     SetRequestId(value *string)
     GetSaveResult() ISaveResult
@@ -96,6 +101,20 @@ func (obj *SaveResponse) Deserialize(json map[string]interface{}) {
 
 func (obj *SaveResponse) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
+}
+
+func (obj *SaveResponse) Validate() error {
+    if obj == nil {
+        return errors.New("Invalid object.")
+    }
+
+    if obj.SaveResult != nil {
+        if err := obj.SaveResult.Validate(); err != nil {
+            return err
+        }
+    }
+
+    return nil;
 }
 
 func (obj *SaveResponse) GetRequestId() *string {
