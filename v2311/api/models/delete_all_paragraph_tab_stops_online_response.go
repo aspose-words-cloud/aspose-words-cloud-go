@@ -1,6 +1,6 @@
 /*
  * --------------------------------------------------------------------------------
- * <copyright company="Aspose" file="document_property_base.go">
+ * <copyright company="Aspose" file="delete_all_paragraph_tab_stops_online_response.go">
  *   Copyright (c) 2023 Aspose.Words for Cloud
  * </copyright>
  * <summary>
@@ -27,14 +27,33 @@
 
 package models
 
-// Words document property DTO base class.
+import "io"
 
-type IDocumentPropertyBase interface {
-    IsDocumentPropertyBase() bool
-    Initialize()
-    Deserialize(json map[string]interface{})
-    CollectFilesContent(resultFilesContent []FileReference) []FileReference
-    GetValue() *string
-    SetValue(value *string)
+
+// DeleteAllParagraphTabStopsOnlineResponse struct
+// Removes paragraph tab stops from the document node.
+type DeleteAllParagraphTabStopsOnlineResponse struct {
+    // The REST response with an array of tab stops.
+    // This response is returned by the Service when handling "GET https://api.aspose.cloud/v4.0/words/Test.doc/paragraphs/{0}/tabstops" REST API requests.
+    Model ITabStopsResponse
+
+
+    // The document after modification.
+    Document map[string]io.Reader
 }
 
+func (obj *DeleteAllParagraphTabStopsOnlineResponse) GetModel() ITabStopsResponse {
+    return obj.Model
+}
+
+func (obj *DeleteAllParagraphTabStopsOnlineResponse) SetModel(value ITabStopsResponse) {
+    obj.Model = value
+}
+
+func (obj *DeleteAllParagraphTabStopsOnlineResponse) GetDocument() map[string]io.Reader {
+    return obj.Document
+}
+
+func (obj *DeleteAllParagraphTabStopsOnlineResponse) SetDocument(value map[string]io.Reader) {
+    obj.Document = value
+}

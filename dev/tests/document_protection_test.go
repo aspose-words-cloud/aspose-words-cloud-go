@@ -77,7 +77,8 @@ func Test_DocumentProtection_ProtectDocumentOnline(t *testing.T) {
 
     requestDocument := OpenFile(t, localFile)
     requestProtectionRequest := models.ProtectionRequest{
-        NewPassword: ToStringPointer("123"),
+        Password: ToStringPointer("123"),
+        ProtectionType: ToStringPointer("ReadOnly"),
     }
 
     options := map[string]interface{}{

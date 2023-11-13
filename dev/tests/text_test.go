@@ -47,6 +47,9 @@ func Test_Text_ReplaceText(t *testing.T) {
     requestReplaceText := models.ReplaceTextParameters{
         OldValue: ToStringPointer("Testing"),
         NewValue: ToStringPointer("Aspose testing"),
+        IsMatchCase: ToBoolPointer(true),
+        IsMatchWholeWord: ToBoolPointer(false),
+        IsOldValueRegex: ToBoolPointer(false),
     }
 
     options := map[string]interface{}{
@@ -78,6 +81,9 @@ func Test_Text_ReplaceTextOnline(t *testing.T) {
     requestReplaceText := models.ReplaceTextParameters{
         OldValue: ToStringPointer("aspose"),
         NewValue: ToStringPointer("aspose new"),
+        IsMatchCase: ToBoolPointer(true),
+        IsMatchWholeWord: ToBoolPointer(false),
+        IsOldValueRegex: ToBoolPointer(false),
     }
 
     options := map[string]interface{}{
