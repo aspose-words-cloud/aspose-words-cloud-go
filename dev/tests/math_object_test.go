@@ -375,3 +375,54 @@ func Test_MathObject_DeleteOfficeMathObjectWithoutNodePath(t *testing.T) {
     }
 
 }
+
+// Test for deleting math objects.
+func Test_MathObject_DeleteOfficeMathObjects(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/MathObjects"
+    localFile := "DocumentElements/MathObjects/MathObjects.docx"
+    remoteFileName := "TestDeleteOfficeMathObject.docx"
+
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
+
+
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+
+    request := &models.DeleteOfficeMathObjectsRequest{
+        Name: ToStringPointer(remoteFileName),
+        Optionals: options,
+    }
+
+    _, err := client.WordsApi.DeleteOfficeMathObjects(ctx, request)
+
+    if err != nil {
+        t.Error(err)
+    }
+
+}
+
+// Test for deleting math objects online.
+func Test_MathObject_DeleteOfficeMathObjectsOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "DocumentElements/MathObjects/MathObjects.docx"
+
+    requestDocument := OpenFile(t, localFile)
+
+    options := map[string]interface{}{
+    }
+
+    request := &models.DeleteOfficeMathObjectsOnlineRequest{
+        Document: requestDocument,
+        Optionals: options,
+    }
+
+    _, _, err := client.WordsApi.DeleteOfficeMathObjectsOnline(ctx, request)
+    if err != nil {
+        t.Error(err)
+    }
+
+}
