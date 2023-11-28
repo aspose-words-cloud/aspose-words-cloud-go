@@ -41,8 +41,6 @@ import (
 type UnprotectDocumentOnlineRequest struct {
         // The document.
         Document io.ReadCloser
-        // Protection request.
-        ProtectionRequest IProtectionRequest
     /* optional (nil or map[string]interface{}) with one or more of key / value pairs:
         key: "loadEncoding" value: (*string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
         key: "password" value: (*string) Password of protected Word document. Use the parameter to pass a password via SDK. SDK encrypts it automatically. We don't recommend to use the parameter to pass a plain password for direct call of API.
@@ -75,12 +73,6 @@ func (data *UnprotectDocumentOnlineRequest) CreateRequestData() (RequestData, er
         return result, errors.New("Parameter Document is required.")
     }
 
-    if (data.ProtectionRequest != nil) {
-        data.ProtectionRequest.Initialize()
-    } else {
-        return result, errors.New("Parameter ProtectionRequest is required.")
-    }
-
 
     if err := typeCheckParameter(data.Optionals["loadEncoding"], "string", "data.Optionals[loadEncoding]"); err != nil {
         return result, err
@@ -95,12 +87,6 @@ func (data *UnprotectDocumentOnlineRequest) CreateRequestData() (RequestData, er
         return result, err
     }
 
-
-    if (data.ProtectionRequest != nil) {
-        if err := data.ProtectionRequest.Validate(); err != nil {
-            return result, err
-        }
-    }
 
 
     if localVarTempParam, localVarOk := data.Optionals["loadEncoding"].(string); localVarOk {
@@ -130,8 +116,6 @@ func (data *UnprotectDocumentOnlineRequest) CreateRequestData() (RequestData, er
         _document.Close()
         result.FormParams = append(result.FormParams, NewFileFormParamContainer("document", fbs))
     }
-
-    result.FormParams = append(result.FormParams, NewJsonFormParamContainer("ProtectionRequest", parameterToString(data.ProtectionRequest, "")))
 
 
     for _, fileContentData := range filesContentData {

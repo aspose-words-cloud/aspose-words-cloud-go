@@ -41,8 +41,8 @@ import (
 type ProtectDocumentRequest struct {
         // The filename of the input document.
         Name *string
-        // Protection request.
-        ProtectionRequest IProtectionRequest
+        // Use ProtectionRequestV2 model to provide protection options.
+        ProtectionRequest IProtectionRequestBase
     /* optional (nil or map[string]interface{}) with one or more of key / value pairs:
         key: "folder" value: (*string) Original document folder.
         key: "storage" value: (*string) Original document storage.

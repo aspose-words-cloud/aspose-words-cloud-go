@@ -1,6 +1,6 @@
 /*
  * --------------------------------------------------------------------------------
- * <copyright company="Aspose" file="protection_data.go">
+ * <copyright company="Aspose" file="protection_request_v2.go">
  *   Copyright (c) 2023 Aspose.Words for Cloud
  * </copyright>
  * <summary>
@@ -31,32 +31,52 @@ import (
     "errors"
 )
 
-// Container for the data about protection of the document.
+// Request on changing of protection.
 
-type IProtectionData interface {
-    IsProtectionData() bool
+type IProtectionRequestV2 interface {
+    IsProtectionRequestV2() bool
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
     Validate() error
+    GetProtectionPassword() *string
+    SetProtectionPassword(value *string)
     GetProtectionType() *string
     SetProtectionType(value *string)
 }
 
-type ProtectionData struct {
-    // Container for the data about protection of the document.
+type ProtectionRequestV2 struct {
+    // Request on changing of protection.
+    ProtectionPassword *string `json:"ProtectionPassword,omitempty"`
+
+    // Request on changing of protection.
     ProtectionType *string `json:"ProtectionType,omitempty"`
 }
 
-func (ProtectionData) IsProtectionData() bool {
+func (ProtectionRequestV2) IsProtectionRequestV2() bool {
     return true
 }
 
-
-func (obj *ProtectionData) Initialize() {
+func (ProtectionRequestV2) IsProtectionRequestBase() bool {
+    return true
 }
 
-func (obj *ProtectionData) Deserialize(json map[string]interface{}) {
+func (obj *ProtectionRequestV2) Initialize() {
+}
+
+func (obj *ProtectionRequestV2) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["ProtectionPassword"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.ProtectionPassword = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["protectionPassword"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.ProtectionPassword = &parsedValue
+        }
+
+    }
+
     if jsonValue, exists := json["ProtectionType"]; exists {
         if parsedValue, valid := jsonValue.(string); valid {
             obj.ProtectionType = &parsedValue
@@ -70,26 +90,37 @@ func (obj *ProtectionData) Deserialize(json map[string]interface{}) {
     }
 }
 
-func (obj *ProtectionData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+func (obj *ProtectionRequestV2) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
-func (obj *ProtectionData) Validate() error {
+func (obj *ProtectionRequestV2) Validate() error {
     if obj == nil {
         return errors.New("Invalid object.")
     }
 
+    if obj.ProtectionPassword == nil {
+        return errors.New("Property ProtectionPassword in ProtectionRequestV2 is required.")
+    }
     if obj.ProtectionType == nil {
-        return errors.New("Property ProtectionType in ProtectionData is required.")
+        return errors.New("Property ProtectionType in ProtectionRequestV2 is required.")
     }
     return nil;
 }
 
-func (obj *ProtectionData) GetProtectionType() *string {
+func (obj *ProtectionRequestV2) GetProtectionPassword() *string {
+    return obj.ProtectionPassword
+}
+
+func (obj *ProtectionRequestV2) SetProtectionPassword(value *string) {
+    obj.ProtectionPassword = value
+}
+
+func (obj *ProtectionRequestV2) GetProtectionType() *string {
     return obj.ProtectionType
 }
 
-func (obj *ProtectionData) SetProtectionType(value *string) {
+func (obj *ProtectionRequestV2) SetProtectionType(value *string) {
     obj.ProtectionType = value
 }
 

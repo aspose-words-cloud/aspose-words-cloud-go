@@ -41,8 +41,8 @@ import (
 type ProtectDocumentOnlineRequest struct {
         // The document.
         Document io.ReadCloser
-        // Protection request.
-        ProtectionRequest IProtectionRequest
+        // Use ProtectionRequestV2 model to provide protection options.
+        ProtectionRequest IProtectionRequestBase
     /* optional (nil or map[string]interface{}) with one or more of key / value pairs:
         key: "loadEncoding" value: (*string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
         key: "password" value: (*string) Password of protected Word document. Use the parameter to pass a password via SDK. SDK encrypts it automatically. We don't recommend to use the parameter to pass a plain password for direct call of API.
