@@ -1,6 +1,6 @@
 /*
  * --------------------------------------------------------------------------------
- * <copyright company="Aspose" file="protect_document_online_response.go">
+ * <copyright company="Aspose" file="protection_request_base.go">
  *   Copyright (c) 2023 Aspose.Words for Cloud
  * </copyright>
  * <summary>
@@ -27,32 +27,13 @@
 
 package models
 
-import "io"
+// Request on changing of protection.
 
-
-// ProtectDocumentOnlineResponse struct
-// Changes the document protection. The previous protection will be overwritten if it exist.
-type ProtectDocumentOnlineResponse struct {
-    // The REST response with data on document's protection.
-    Model IProtectionDataResponse
-
-
-    // The document after modification.
-    Document map[string]io.Reader
+type IProtectionRequestBase interface {
+    IsProtectionRequestBase() bool
+    Initialize()
+    Deserialize(json map[string]interface{})
+    CollectFilesContent(resultFilesContent []FileReference) []FileReference
+    Validate() error
 }
 
-func (obj *ProtectDocumentOnlineResponse) GetModel() IProtectionDataResponse {
-    return obj.Model
-}
-
-func (obj *ProtectDocumentOnlineResponse) SetModel(value IProtectionDataResponse) {
-    obj.Model = value
-}
-
-func (obj *ProtectDocumentOnlineResponse) GetDocument() map[string]io.Reader {
-    return obj.Document
-}
-
-func (obj *ProtectDocumentOnlineResponse) SetDocument(value map[string]io.Reader) {
-    obj.Document = value
-}

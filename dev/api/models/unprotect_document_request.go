@@ -41,8 +41,6 @@ import (
 type UnprotectDocumentRequest struct {
         // The filename of the input document.
         Name *string
-        // Protection request.
-        ProtectionRequest IProtectionRequest
     /* optional (nil or map[string]interface{}) with one or more of key / value pairs:
         key: "folder" value: (*string) Original document folder.
         key: "storage" value: (*string) Original document storage.
@@ -78,12 +76,6 @@ func (data *UnprotectDocumentRequest) CreateRequestData() (RequestData, error) {
         return result, errors.New("Parameter Name is required.")
     }
 
-    if (data.ProtectionRequest != nil) {
-        data.ProtectionRequest.Initialize()
-    } else {
-        return result, errors.New("Parameter ProtectionRequest is required.")
-    }
-
 
     if err := typeCheckParameter(data.Optionals["folder"], "string", "data.Optionals[folder]"); err != nil {
         return result, err
@@ -104,12 +96,6 @@ func (data *UnprotectDocumentRequest) CreateRequestData() (RequestData, error) {
         return result, err
     }
 
-
-    if (data.ProtectionRequest != nil) {
-        if err := data.ProtectionRequest.Validate(); err != nil {
-            return result, err
-        }
-    }
 
 
     if localVarTempParam, localVarOk := data.Optionals["folder"].(string); localVarOk {
@@ -142,8 +128,6 @@ func (data *UnprotectDocumentRequest) CreateRequestData() (RequestData, error) {
     }
 
 
-
-    result.FormParams = append(result.FormParams, NewJsonFormParamContainer("ProtectionRequest", parameterToString(data.ProtectionRequest, "")))
 
 
     for _, fileContentData := range filesContentData {

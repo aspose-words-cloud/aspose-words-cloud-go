@@ -12712,7 +12712,7 @@ func (a *WordsApiService) OptimizeDocumentOnline(ctx context.Context, data *mode
     return successPayload, response, err
 }
 
-/* WordsApiService Adds protection to the document.
+/* WordsApiService Changes the document protection. The previous protection will be overwritten if it exist.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  * @data operation request data.
 @return models.ProtectionDataResponse*/
@@ -12763,7 +12763,7 @@ func (a *WordsApiService) ProtectDocument(ctx context.Context, data *models.Prot
     return successPayload, response, err
 }
 
-/* WordsApiService Adds protection to the document.
+/* WordsApiService Changes the document protection. The previous protection will be overwritten if it exist.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  * @data operation request data.
 @return ProtectDocumentOnlineResponse*/

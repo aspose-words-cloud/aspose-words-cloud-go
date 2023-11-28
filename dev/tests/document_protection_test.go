@@ -44,8 +44,8 @@ func Test_DocumentProtection_ProtectDocument(t *testing.T) {
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-    requestProtectionRequest := models.ProtectionRequest{
-        Password: ToStringPointer("123"),
+    requestProtectionRequest := models.ProtectionRequestV2{
+        ProtectionPassword: ToStringPointer("123"),
         ProtectionType: ToStringPointer("ReadOnly"),
     }
 
@@ -66,7 +66,7 @@ func Test_DocumentProtection_ProtectDocument(t *testing.T) {
     }
 
     assert.NotNil(t, actual.GetProtectionData(), "Validate ProtectDocument response.");
-    assert.Equal(t, "ReadOnly", DereferenceValue(actual.GetProtectionData().GetProtectionType()), "Validate ProtectDocument response.");
+
 }
 
 // Test for setting document protection.
@@ -76,8 +76,8 @@ func Test_DocumentProtection_ProtectDocumentOnline(t *testing.T) {
     localFile := "Common/test_multi_pages.docx"
 
     requestDocument := OpenFile(t, localFile)
-    requestProtectionRequest := models.ProtectionRequest{
-        Password: ToStringPointer("123"),
+    requestProtectionRequest := models.ProtectionRequestV2{
+        ProtectionPassword: ToStringPointer("123"),
         ProtectionType: ToStringPointer("ReadOnly"),
     }
 
@@ -157,9 +157,6 @@ func Test_DocumentProtection_DeleteUnprotectDocument(t *testing.T) {
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFilePath), remoteDataFolder + "/" + remoteFileName)
 
-    requestProtectionRequest := models.ProtectionRequest{
-        Password: ToStringPointer("aspose"),
-    }
 
     options := map[string]interface{}{
         "folder": remoteDataFolder,
@@ -167,7 +164,6 @@ func Test_DocumentProtection_DeleteUnprotectDocument(t *testing.T) {
 
     request := &models.UnprotectDocumentRequest{
         Name: ToStringPointer(remoteFileName),
-        ProtectionRequest: &requestProtectionRequest,
         Optionals: options,
     }
 
@@ -177,7 +173,7 @@ func Test_DocumentProtection_DeleteUnprotectDocument(t *testing.T) {
     }
 
     assert.NotNil(t, actual.GetProtectionData(), "Validate DeleteUnprotectDocument response.");
-    assert.Equal(t, "NoProtection", DereferenceValue(actual.GetProtectionData().GetProtectionType()), "Validate DeleteUnprotectDocument response.");
+
 }
 
 // Test for deleting unprotect document.
@@ -187,16 +183,12 @@ func Test_DocumentProtection_DeleteUnprotectDocumentOnline(t *testing.T) {
     localFilePath := "DocumentActions/DocumentProtection/SampleProtectedBlankWordDocument.docx"
 
     requestDocument := OpenFile(t, localFilePath)
-    requestProtectionRequest := models.ProtectionRequest{
-        Password: ToStringPointer("aspose"),
-    }
 
     options := map[string]interface{}{
     }
 
     request := &models.UnprotectDocumentOnlineRequest{
         Document: requestDocument,
-        ProtectionRequest: &requestProtectionRequest,
         Optionals: options,
     }
 

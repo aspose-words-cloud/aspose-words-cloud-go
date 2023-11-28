@@ -32,6 +32,7 @@ import (
 )
 
 // Request on changing of protection.
+// Deprecated: ProtectionRequest is deprecated and remains for backwards compatibility only.
 
 type IProtectionRequest interface {
     IsProtectionRequest() bool
@@ -62,6 +63,9 @@ func (ProtectionRequest) IsProtectionRequest() bool {
     return true
 }
 
+func (ProtectionRequest) IsProtectionRequestBase() bool {
+    return true
+}
 
 func (obj *ProtectionRequest) Initialize() {
 }
