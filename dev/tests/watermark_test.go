@@ -106,7 +106,7 @@ func Test_Watermark_InsertWatermarkImage(t *testing.T) {
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
     UploadNextFileToStorage(t, ctx, client, GetLocalFile("Common/aspose-cloud.png"), remoteImagePath)
 
-    requestWatermarkDataImage := models.CreateRemoteFileReference(remoteDataFolder + "/" + remoteFileName)
+    requestWatermarkDataImage := models.CreateRemoteFileReference(remoteImagePath)
     requestWatermarkData := models.WatermarkDataImage{
         Image: &requestWatermarkDataImage,
     }
@@ -137,7 +137,7 @@ func Test_Watermark_InsertWatermarkImageOnline(t *testing.T) {
     localFile := "Common/test_multi_pages.docx"
 
     requestDocument := OpenFile(t, localFile)
-    requestWatermarkDataImageStream := OpenFile(t, localFile)
+    requestWatermarkDataImageStream := OpenFile(t, "Common/aspose-cloud.png")
     requestWatermarkDataImage := models.CreateLocalFileReference(requestWatermarkDataImageStream)
     requestWatermarkData := models.WatermarkDataImage{
         Image: &requestWatermarkDataImage,
