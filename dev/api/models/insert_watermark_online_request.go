@@ -1,6 +1,6 @@
 /*
  * --------------------------------------------------------------------------------
- * <copyright company="Aspose" file="compare_document_request.go">
+ * <copyright company="Aspose" file="insert_watermark_online_request.go">
  *   Copyright (c) 2023 Aspose.Words for Cloud
  * </copyright>
  * <summary>
@@ -28,34 +28,33 @@
 package models
 
 import (
-    "fmt"
     "errors"
     "io/ioutil"
     "net/url"
     "strings"
     "io"
     "encoding/json"
+    "mime/multipart"
 )
 
-// CompareDocumentRequest contains request data for WordsApiService.CompareDocument method.
-type CompareDocumentRequest struct {
-        // The filename of the input document.
-        Name *string
-        // Compare data.
-        CompareData ICompareData
+// InsertWatermarkOnlineRequest contains request data for WordsApiService.InsertWatermarkOnline method.
+type InsertWatermarkOnlineRequest struct {
+        // The document.
+        Document io.ReadCloser
+        // The watermark data.
+        WatermarkData IWatermarkDataBase
     /* optional (nil or map[string]interface{}) with one or more of key / value pairs:
-        key: "folder" value: (*string) Original document folder.
-        key: "storage" value: (*string) Original document storage.
         key: "loadEncoding" value: (*string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
         key: "password" value: (*string) Password of protected Word document. Use the parameter to pass a password via SDK. SDK encrypts it automatically. We don't recommend to use the parameter to pass a plain password for direct call of API.
         key: "encryptedPassword" value: (*string) Password of protected Word document. Use the parameter to pass an encrypted password for direct calls of API. See SDK code for encyption details.
         key: "destFileName" value: (*string) Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.
-        key: "encryptedPassword2" value: (*string) encrypted password for the second document. */
+        key: "revisionAuthor" value: (*string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
+        key: "revisionDateTime" value: (*string) The date and time to use for revisions. */
     Optionals map[string]interface{}
 }
 
 
-func (data *CompareDocumentRequest) CreateRequestData() (RequestData, error) {
+func (data *InsertWatermarkOnlineRequest) CreateRequestData() (RequestData, error) {
     var result RequestData
     var filesContentData = make([]FileReference, 0)
     if data == nil {
@@ -65,8 +64,7 @@ func (data *CompareDocumentRequest) CreateRequestData() (RequestData, error) {
     result.Method = strings.ToUpper("put")
 
     // create path and map variables
-    result.Path = "/words/{name}/compareDocument"
-    result.Path = strings.Replace(result.Path, "{"+"name"+"}", fmt.Sprintf("%v", *data.Name), -1)
+    result.Path = "/words/online/post/watermarks/insert"
 
     result.Path = strings.Replace(result.Path, "/<nil>", "", -1)
     result.Path = strings.Replace(result.Path, "//", "/", -1)
@@ -75,23 +73,17 @@ func (data *CompareDocumentRequest) CreateRequestData() (RequestData, error) {
     result.QueryParams = url.Values{}
     result.FormParams = make([]FormParamContainer, 0)
 
-    if (data.Name == nil) {
-        return result, errors.New("Parameter Name is required.")
+    if (data.Document == nil) {
+        return result, errors.New("Parameter Document is required.")
     }
 
-    if (data.CompareData != nil) {
-        data.CompareData.Initialize()
+    if (data.WatermarkData != nil) {
+        data.WatermarkData.Initialize()
     } else {
-        return result, errors.New("Parameter CompareData is required.")
+        return result, errors.New("Parameter WatermarkData is required.")
     }
 
 
-    if err := typeCheckParameter(data.Optionals["folder"], "string", "data.Optionals[folder]"); err != nil {
-        return result, err
-    }
-    if err := typeCheckParameter(data.Optionals["storage"], "string", "data.Optionals[storage]"); err != nil {
-        return result, err
-    }
     if err := typeCheckParameter(data.Optionals["loadEncoding"], "string", "data.Optionals[loadEncoding]"); err != nil {
         return result, err
     }
@@ -104,25 +96,18 @@ func (data *CompareDocumentRequest) CreateRequestData() (RequestData, error) {
     if err := typeCheckParameter(data.Optionals["destFileName"], "string", "data.Optionals[destFileName]"); err != nil {
         return result, err
     }
-    if err := typeCheckParameter(data.Optionals["encryptedPassword2"], "string", "data.Optionals[encryptedPassword2]"); err != nil {
+    if err := typeCheckParameter(data.Optionals["revisionAuthor"], "string", "data.Optionals[revisionAuthor]"); err != nil {
+        return result, err
+    }
+    if err := typeCheckParameter(data.Optionals["revisionDateTime"], "string", "data.Optionals[revisionDateTime]"); err != nil {
         return result, err
     }
 
 
-    if (data.CompareData != nil) {
-        if err := data.CompareData.Validate(); err != nil {
+    if (data.WatermarkData != nil) {
+        if err := data.WatermarkData.Validate(); err != nil {
             return result, err
         }
-    }
-
-
-    if localVarTempParam, localVarOk := data.Optionals["folder"].(string); localVarOk {
-        result.QueryParams.Add("Folder", parameterToString(localVarTempParam, ""))
-    }
-
-
-    if localVarTempParam, localVarOk := data.Optionals["storage"].(string); localVarOk {
-        result.QueryParams.Add("Storage", parameterToString(localVarTempParam, ""))
     }
 
 
@@ -146,14 +131,26 @@ func (data *CompareDocumentRequest) CreateRequestData() (RequestData, error) {
     }
 
 
-    if localVarTempParam, localVarOk := data.Optionals["encryptedPassword2"].(string); localVarOk {
-        result.QueryParams.Add("EncryptedPassword2", parameterToString(localVarTempParam, ""))
+    if localVarTempParam, localVarOk := data.Optionals["revisionAuthor"].(string); localVarOk {
+        result.QueryParams.Add("RevisionAuthor", parameterToString(localVarTempParam, ""))
+    }
+
+
+    if localVarTempParam, localVarOk := data.Optionals["revisionDateTime"].(string); localVarOk {
+        result.QueryParams.Add("RevisionDateTime", parameterToString(localVarTempParam, ""))
     }
 
 
 
-    result.FormParams = append(result.FormParams, NewJsonFormParamContainer("CompareData", parameterToString(data.CompareData, "")))
-    filesContentData = data.CompareData.CollectFilesContent(filesContentData)
+    _document := data.Document
+    if _document != nil {
+        fbs, _ := ioutil.ReadAll(_document)
+        _document.Close()
+        result.FormParams = append(result.FormParams, NewFileFormParamContainer("document", fbs))
+    }
+
+    result.FormParams = append(result.FormParams, NewJsonFormParamContainer("WatermarkData", parameterToString(data.WatermarkData, "")))
+    filesContentData = data.WatermarkData.CollectFilesContent(filesContentData)
 
 
     for _, fileContentData := range filesContentData {
@@ -164,13 +161,37 @@ func (data *CompareDocumentRequest) CreateRequestData() (RequestData, error) {
     return result, nil
 }
 
-func (data *CompareDocumentRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
-            var successPayload IDocumentResponse = new(DocumentResponse)
-            var jsonMap map[string]interface{}
-            if err = json.NewDecoder(reader).Decode(&jsonMap); err != nil {
-                return nil, err
-            }
+func (data *InsertWatermarkOnlineRequest) CreateResponse(reader io.Reader, boundary string) (response interface{}, err error) {
+    var successPayload InsertWatermarkOnlineResponse
+    var part *multipart.Part
 
-            successPayload.Deserialize(jsonMap)
-            return successPayload, err
+	mr := multipart.NewReader(reader, boundary)
+    part, err = mr.NextPart()
+
+    if err != nil && err != io.EOF {
+        return successPayload, err
+    }
+
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(part).Decode(&jsonMap); err != nil {
+        return successPayload, err
+    }
+
+    successPayload.Model = new(DocumentResponse)
+    successPayload.Model.Deserialize(jsonMap)
+
+
+    part, err = mr.NextPart()
+
+    if err != nil && err != io.EOF {
+        return successPayload, err
+    }
+
+    successPayload.Document, err = ParsePartFilesCollection(part)
+    if err != nil {
+        return successPayload, err
+    }
+
+
+    return successPayload, err
 }

@@ -34,8 +34,133 @@ import (
     "github.com/aspose-words-cloud/aspose-words-cloud-go/dev/api/models"
 )
 
-// Test for adding watermark image.
+// Test for adding watermark text.
+func Test_Watermark_InsertWatermarkText(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentActions/Watermark"
+    localFile := "Common/test_multi_pages.docx"
+    remoteFileName := "TestInsertWatermarkText.docx"
+
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
+
+    requestWatermarkData := models.WatermarkDataText{
+        Text: ToStringPointer("watermark text"),
+    }
+
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+        "destFileName": baseTestOutPath + "/" + remoteFileName,
+    }
+
+    request := &models.InsertWatermarkRequest{
+        Name: ToStringPointer(remoteFileName),
+        WatermarkData: &requestWatermarkData,
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.InsertWatermark(ctx, request)
+    if err != nil {
+        t.Error(err)
+    }
+
+    assert.NotNil(t, actual.GetDocument(), "Validate InsertWatermarkText response.");
+}
+
+// Test for adding watermark text online.
+func Test_Watermark_InsertWatermarkTextOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "Common/test_multi_pages.docx"
+
+    requestDocument := OpenFile(t, localFile)
+    requestWatermarkData := models.WatermarkDataText{
+        Text: ToStringPointer("watermark text"),
+    }
+
+    options := map[string]interface{}{
+    }
+
+    request := &models.InsertWatermarkOnlineRequest{
+        Document: requestDocument,
+        WatermarkData: &requestWatermarkData,
+        Optionals: options,
+    }
+
+    _, _, err := client.WordsApi.InsertWatermarkOnline(ctx, request)
+    if err != nil {
+        t.Error(err)
+    }
+
+}
+
+// Test for adding watermark text.
 func Test_Watermark_InsertWatermarkImage(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentActions/Watermark"
+    localFile := "Common/test_multi_pages.docx"
+    remoteFileName := "TestInsertWatermarkImage.docx"
+    remoteImagePath := remoteDataFolder + "/TestInsertWatermarkImage.png"
+
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile("Common/aspose-cloud.png"), remoteImagePath)
+
+    requestWatermarkDataImage := models.CreateRemoteFileReference(remoteDataFolder + "/" + remoteFileName)
+    requestWatermarkData := models.WatermarkDataImage{
+        Image: &requestWatermarkDataImage,
+    }
+
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+        "destFileName": baseTestOutPath + "/" + remoteFileName,
+    }
+
+    request := &models.InsertWatermarkRequest{
+        Name: ToStringPointer(remoteFileName),
+        WatermarkData: &requestWatermarkData,
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.InsertWatermark(ctx, request)
+    if err != nil {
+        t.Error(err)
+    }
+
+    assert.NotNil(t, actual.GetDocument(), "Validate InsertWatermarkImage response.");
+}
+
+// Test for adding watermark text online.
+func Test_Watermark_InsertWatermarkImageOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "Common/test_multi_pages.docx"
+
+    requestDocument := OpenFile(t, localFile)
+    requestWatermarkDataImageStream := OpenFile(t, localFile)
+    requestWatermarkDataImage := models.CreateLocalFileReference(requestWatermarkDataImageStream)
+    requestWatermarkData := models.WatermarkDataImage{
+        Image: &requestWatermarkDataImage,
+    }
+
+    options := map[string]interface{}{
+    }
+
+    request := &models.InsertWatermarkOnlineRequest{
+        Document: requestDocument,
+        WatermarkData: &requestWatermarkData,
+        Optionals: options,
+    }
+
+    _, _, err := client.WordsApi.InsertWatermarkOnline(ctx, request)
+    if err != nil {
+        t.Error(err)
+    }
+
+}
+
+// Test for adding watermark image.
+func Test_Watermark_InsertWatermarkImageDeprecated(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
     remoteDataFolder := remoteBaseTestDataFolder + "/DocumentActions/Watermark"
@@ -64,12 +189,12 @@ func Test_Watermark_InsertWatermarkImage(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.GetDocument(), "Validate InsertWatermarkImage response.");
-    assert.Equal(t, "TestInsertWatermarkImage.docx", DereferenceValue(actual.GetDocument().GetFileName()), "Validate InsertWatermarkImage response.");
+    assert.NotNil(t, actual.GetDocument(), "Validate InsertWatermarkImageDeprecated response.");
+    assert.Equal(t, "TestInsertWatermarkImage.docx", DereferenceValue(actual.GetDocument().GetFileName()), "Validate InsertWatermarkImageDeprecated response.");
 }
 
 // Test for adding watermark image online.
-func Test_Watermark_InsertWatermarkImageOnline(t *testing.T) {
+func Test_Watermark_InsertWatermarkImageDeprecatedOnline(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
     localFile := "Common/test_multi_pages.docx"
@@ -94,7 +219,7 @@ func Test_Watermark_InsertWatermarkImageOnline(t *testing.T) {
 }
 
 // Test for adding watermark text.
-func Test_Watermark_InsertWatermarkText(t *testing.T) {
+func Test_Watermark_InsertWatermarkTextDeprecated(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
     remoteDataFolder := remoteBaseTestDataFolder + "/DocumentActions/Watermark"
@@ -124,12 +249,12 @@ func Test_Watermark_InsertWatermarkText(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.GetDocument(), "Validate InsertWatermarkText response.");
-    assert.Equal(t, "TestInsertWatermarkText.docx", DereferenceValue(actual.GetDocument().GetFileName()), "Validate InsertWatermarkText response.");
+    assert.NotNil(t, actual.GetDocument(), "Validate InsertWatermarkTextDeprecated response.");
+    assert.Equal(t, "TestInsertWatermarkText.docx", DereferenceValue(actual.GetDocument().GetFileName()), "Validate InsertWatermarkTextDeprecated response.");
 }
 
 // Test for adding watermark text online.
-func Test_Watermark_InsertWatermarkTextOnline(t *testing.T) {
+func Test_Watermark_InsertWatermarkTextDeprecatedOnline(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
     localFile := "Common/test_multi_pages.docx"

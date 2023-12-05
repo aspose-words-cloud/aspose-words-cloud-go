@@ -44,7 +44,6 @@ type CompareDocumentOnlineRequest struct {
         // Compare data.
         CompareData ICompareData
     /* optional (nil or map[string]interface{}) with one or more of key / value pairs:
-        key: "comparingDocument" value: (io.ReadCloser) The comparing document.
         key: "loadEncoding" value: (*string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
         key: "password" value: (*string) Password of protected Word document. Use the parameter to pass a password via SDK. SDK encrypts it automatically. We don't recommend to use the parameter to pass a plain password for direct call of API.
         key: "encryptedPassword" value: (*string) Password of protected Word document. Use the parameter to pass an encrypted password for direct calls of API. See SDK code for encyption details.
@@ -142,17 +141,7 @@ func (data *CompareDocumentOnlineRequest) CreateRequestData() (RequestData, erro
     }
 
     result.FormParams = append(result.FormParams, NewJsonFormParamContainer("CompareData", parameterToString(data.CompareData, "")))
-
-    var comparingDocument (io.ReadCloser)
-    if localVarTempParam, localVarOk := data.Optionals["comparingDocument"].(io.ReadCloser); localVarOk {
-        comparingDocument = localVarTempParam
-    }
-    _comparingDocument := comparingDocument
-    if _comparingDocument != nil {
-        fbs, _ := ioutil.ReadAll(_comparingDocument)
-        _comparingDocument.Close()
-        result.FormParams = append(result.FormParams, NewFileFormParamContainer("comparingDocument", fbs))
-    }
+    filesContentData = data.CompareData.CollectFilesContent(filesContentData)
 
 
     for _, fileContentData := range filesContentData {
