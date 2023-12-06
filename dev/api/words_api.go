@@ -12236,7 +12236,59 @@ func (a *WordsApiService) InsertTableRowOnline(ctx context.Context, data *models
     return result.(models.InsertTableRowOnlineResponse), response, err
 }
 
+/* WordsApiService Insert a watermark to the document.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return models.DocumentResponse*/
+func (a *WordsApiService) InsertWatermark(ctx context.Context, data *models.InsertWatermarkRequest) (models.DocumentResponse, *http.Response, error) {
+    var (
+        successPayload models.DocumentResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+
+    defer response.Body.Close()
+
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
+            return successPayload, nil, err
+        }
+
+        apiError.Deserialize(jsonMap)
+        return successPayload, response, &apiError
+    }
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
+        return successPayload, response, err
+    }
+
+    successPayload.Deserialize(jsonMap)
+    return successPayload, response, err
+}
+
 /* WordsApiService Inserts a new watermark image to the document.
+ * Deprecated: This operation is deprecated and is used for backward compatibility only. Please use InsertWatermark instead.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  * @data operation request data.
 @return models.DocumentResponse*/
@@ -12288,6 +12340,7 @@ func (a *WordsApiService) InsertWatermarkImage(ctx context.Context, data *models
 }
 
 /* WordsApiService Inserts a new watermark image to the document.
+ * Deprecated: This operation is deprecated and is used for backward compatibility only. Please use InsertWatermark instead.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  * @data operation request data.
 @return InsertWatermarkImageOnlineResponse*/
@@ -12338,7 +12391,59 @@ func (a *WordsApiService) InsertWatermarkImageOnline(ctx context.Context, data *
     return result.(models.InsertWatermarkImageOnlineResponse), response, err
 }
 
+/* WordsApiService Insert a watermark to the document.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return InsertWatermarkOnlineResponse*/
+func (a *WordsApiService) InsertWatermarkOnline(ctx context.Context, data *models.InsertWatermarkOnlineRequest) (models.InsertWatermarkOnlineResponse, *http.Response, error) {
+    var (
+        successPayload models.InsertWatermarkOnlineResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+
+
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
+            return successPayload, nil, err
+        }
+
+        apiError.Deserialize(jsonMap)
+        return successPayload, response, &apiError
+    }
+    boundary := GetBoundary(response)
+    result, err := data.CreateResponse(response.Body, boundary)
+
+    if err != nil {
+        return successPayload, response, err
+    }
+
+    return result.(models.InsertWatermarkOnlineResponse), response, err
+}
+
 /* WordsApiService Inserts a new watermark text to the document.
+ * Deprecated: This operation is deprecated and is used for backward compatibility only. Please use InsertWatermark instead.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  * @data operation request data.
 @return models.DocumentResponse*/
@@ -12390,6 +12495,7 @@ func (a *WordsApiService) InsertWatermarkText(ctx context.Context, data *models.
 }
 
 /* WordsApiService Inserts a new watermark text to the document.
+ * Deprecated: This operation is deprecated and is used for backward compatibility only. Please use InsertWatermark instead.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  * @data operation request data.
 @return InsertWatermarkTextOnlineResponse*/

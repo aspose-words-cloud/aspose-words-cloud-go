@@ -65,8 +65,8 @@ type IStructuredDocumentTagInsert interface {
     SetBuildingBlockCategory(value *string)
     GetMultiline() *bool
     SetMultiline(value *bool)
-    GetColor() *string
-    SetColor(value *string)
+    GetColor() IXmlColor
+    SetColor(value IXmlColor)
     GetStyleName() *string
     SetStyleName(value *string)
     GetCalendarType() *string
@@ -134,7 +134,7 @@ type StructuredDocumentTagInsert struct {
     Multiline *bool `json:"Multiline,omitempty"`
 
     // DTO container with a StructuredDocumentTag.
-    Color *string `json:"Color,omitempty"`
+    Color IXmlColor `json:"Color,omitempty"`
 
     // DTO container with a StructuredDocumentTag.
     StyleName *string `json:"StyleName,omitempty"`
@@ -199,6 +199,10 @@ func (obj *StructuredDocumentTagInsert) Initialize() {
             objElementListItems.Initialize()
         }
     }
+    if (obj.Color != nil) {
+        obj.Color.Initialize()
+    }
+
 
 }
 
@@ -384,13 +388,17 @@ func (obj *StructuredDocumentTagInsert) Deserialize(json map[string]interface{})
     }
 
     if jsonValue, exists := json["Color"]; exists {
-        if parsedValue, valid := jsonValue.(string); valid {
-            obj.Color = &parsedValue
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IXmlColor = new(XmlColor)
+            modelInstance.Deserialize(parsedValue)
+            obj.Color = modelInstance
         }
 
     } else if jsonValue, exists := json["color"]; exists {
-        if parsedValue, valid := jsonValue.(string); valid {
-            obj.Color = &parsedValue
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IXmlColor = new(XmlColor)
+            modelInstance.Deserialize(parsedValue)
+            obj.Color = modelInstance
         }
 
     }
@@ -559,6 +567,11 @@ func (obj *StructuredDocumentTagInsert) Validate() error {
             }
         }
     }
+    if obj.Color != nil {
+        if err := obj.Color.Validate(); err != nil {
+            return err
+        }
+    }
 
     return nil;
 }
@@ -667,11 +680,11 @@ func (obj *StructuredDocumentTagInsert) SetMultiline(value *bool) {
     obj.Multiline = value
 }
 
-func (obj *StructuredDocumentTagInsert) GetColor() *string {
+func (obj *StructuredDocumentTagInsert) GetColor() IXmlColor {
     return obj.Color
 }
 
-func (obj *StructuredDocumentTagInsert) SetColor(value *string) {
+func (obj *StructuredDocumentTagInsert) SetColor(value IXmlColor) {
     obj.Color = value
 }
 

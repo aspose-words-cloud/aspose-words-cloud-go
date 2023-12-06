@@ -32,6 +32,7 @@ import (
 )
 
 // Class for insert watermark text request building.
+// Deprecated: This model will be removed in the future.
 
 type IWatermarkText interface {
     IsWatermarkText() bool

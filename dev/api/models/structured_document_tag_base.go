@@ -61,8 +61,8 @@ type IStructuredDocumentTagBase interface {
     SetBuildingBlockCategory(value *string)
     GetMultiline() *bool
     SetMultiline(value *bool)
-    GetColor() *string
-    SetColor(value *string)
+    GetColor() IXmlColor
+    SetColor(value IXmlColor)
     GetStyleName() *string
     SetStyleName(value *string)
     GetCalendarType() *string

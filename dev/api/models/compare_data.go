@@ -47,6 +47,8 @@ type ICompareData interface {
     SetComparingWithDocument(value *string)
     GetDateTime() *Time
     SetDateTime(value *Time)
+    GetFileReference() IFileReference
+    SetFileReference(value IFileReference)
     GetResultDocumentFormat() *string
     SetResultDocumentFormat(value *string)
 }
@@ -65,6 +67,9 @@ type CompareData struct {
     DateTime *Time `json:"DateTime,omitempty"`
 
     // Container class for compare documents.
+    FileReference IFileReference `json:"FileReference,omitempty"`
+
+    // Container class for compare documents.
     ResultDocumentFormat *string `json:"ResultDocumentFormat,omitempty"`
 }
 
@@ -76,6 +81,10 @@ func (CompareData) IsCompareData() bool {
 func (obj *CompareData) Initialize() {
     if (obj.CompareOptions != nil) {
         obj.CompareOptions.Initialize()
+    }
+
+    if (obj.FileReference != nil) {
+        obj.FileReference.Initialize()
     }
 
 
@@ -136,6 +145,22 @@ func (obj *CompareData) Deserialize(json map[string]interface{}) {
 
     }
 
+    if jsonValue, exists := json["FileReference"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IFileReference = new(FileReference)
+            modelInstance.Deserialize(parsedValue)
+            obj.FileReference = modelInstance
+        }
+
+    } else if jsonValue, exists := json["fileReference"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IFileReference = new(FileReference)
+            modelInstance.Deserialize(parsedValue)
+            obj.FileReference = modelInstance
+        }
+
+    }
+
     if jsonValue, exists := json["ResultDocumentFormat"]; exists {
         if parsedValue, valid := jsonValue.(string); valid {
             obj.ResultDocumentFormat = &parsedValue
@@ -150,6 +175,11 @@ func (obj *CompareData) Deserialize(json map[string]interface{}) {
 }
 
 func (obj *CompareData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+    if (obj.FileReference != nil) {
+        resultFilesContent = obj.FileReference.CollectFilesContent(resultFilesContent)
+    }
+
+
     return resultFilesContent
 }
 
@@ -161,11 +191,16 @@ func (obj *CompareData) Validate() error {
     if obj.Author == nil {
         return errors.New("Property Author in CompareData is required.")
     }
-    if obj.ComparingWithDocument == nil {
-        return errors.New("Property ComparingWithDocument in CompareData is required.")
+    if obj.FileReference == nil {
+        return errors.New("Property FileReference in CompareData is required.")
     }
     if obj.CompareOptions != nil {
         if err := obj.CompareOptions.Validate(); err != nil {
+            return err
+        }
+    }
+    if obj.FileReference != nil {
+        if err := obj.FileReference.Validate(); err != nil {
             return err
         }
     }
@@ -203,6 +238,14 @@ func (obj *CompareData) GetDateTime() *Time {
 
 func (obj *CompareData) SetDateTime(value *Time) {
     obj.DateTime = value
+}
+
+func (obj *CompareData) GetFileReference() IFileReference {
+    return obj.FileReference
+}
+
+func (obj *CompareData) SetFileReference(value IFileReference) {
+    obj.FileReference = value
 }
 
 func (obj *CompareData) GetResultDocumentFormat() *string {
