@@ -48,10 +48,11 @@ func Test_CompareDocument_CompareDocument(t *testing.T) {
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFolder + "/" + localName1), remoteFolder + "/" + remoteName1)
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFolder + "/" + localName2), remoteFolder + "/" + remoteName2)
 
+    requestCompareDataFileReference := models.CreateRemoteFileReference(remoteFolder + "/" + remoteName2)
     requestCompareData := models.CompareData{
         Author: ToStringPointer("author"),
-        ComparingWithDocument: ToStringPointer(remoteFolder + "/" + remoteName2),
         DateTime: ToTimePointer(CreateTime(2015, 10, 26, 0, 0, 0)),
+        FileReference: &requestCompareDataFileReference,
     }
 
     options := map[string]interface{}{
@@ -87,10 +88,11 @@ func Test_CompareDocument_CompareDocumentOnline(t *testing.T) {
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFolder + "/" + localName2), remoteFolder + "/" + remoteName2)
 
     requestDocument := OpenFile(t, localFolder + "/" + localName1)
+    requestCompareDataFileReference := models.CreateRemoteFileReference(remoteFolder + "/" + remoteName2)
     requestCompareData := models.CompareData{
         Author: ToStringPointer("author"),
-        ComparingWithDocument: ToStringPointer(remoteFolder + "/" + remoteName2),
         DateTime: ToTimePointer(CreateTime(2015, 10, 26, 0, 0, 0)),
+        FileReference: &requestCompareDataFileReference,
     }
 
     options := map[string]interface{}{
@@ -123,15 +125,15 @@ func Test_CompareDocument_CompareTwoDocumentOnline(t *testing.T) {
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFolder + "/" + localName2), remoteFolder + "/" + remoteName2)
 
     requestDocument := OpenFile(t, localFolder + "/" + localName1)
+    requestCompareDataFileReferenceStream := OpenFile(t, localFolder + "/" + localName2)
+    requestCompareDataFileReference := models.CreateLocalFileReference(requestCompareDataFileReferenceStream)
     requestCompareData := models.CompareData{
         Author: ToStringPointer("author"),
-        ComparingWithDocument: ToStringPointer(remoteFolder + "/" + remoteName2),
         DateTime: ToTimePointer(CreateTime(2015, 10, 26, 0, 0, 0)),
+        FileReference: &requestCompareDataFileReference,
     }
-    requestComparingDocument := OpenFile(t, localFolder + "/" + localName2)
 
     options := map[string]interface{}{
-        "comparingDocument": requestComparingDocument,
         "destFileName": baseTestOutPath + "/TestCompareDocumentOut.doc",
     }
 
