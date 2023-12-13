@@ -40,6 +40,12 @@ type FileReference struct {
     // File reference.
     Reference string `json:"Reference"`
 
+    // Password.
+    Password *string `json:"Password"`
+
+    // Encrypted password.
+    EncryptedPassword *string `json:"EncryptedPassword"`
+
     // File local data.
     Content io.ReadCloser `json:"-"`
 }
@@ -66,15 +72,11 @@ func (obj *FileReference) Deserialize(json map[string]interface{}) {
 }
 
 func (obj *FileReference) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
-    if obj.Source == "Request" {
-        return append(resultFilesContent, *obj)
-    } else {
-        return resultFilesContent;
-    }
+    return append(resultFilesContent, *obj)
 }
 
 func (obj *FileReference) Validate() error {
-    return nil;
+    return nil
 }
 
 func createRandomFileReferenceId() string {
@@ -89,6 +91,18 @@ func CreateRemoteFileReference(remoteFilePath string) FileReference {
         Source: "Storage",
         Reference: remoteFilePath,
         Content: nil,
+        Password: nil,
+        EncryptedPassword: nil,
+    }
+}
+
+func CreateRemoteFileReferenceWithPassword(remoteFilePath string, password string) FileReference {
+    return FileReference {
+        Source: "Storage",
+        Reference: remoteFilePath,
+        Content: nil,
+        Password: &password,
+        EncryptedPassword: nil,
     }
 }
 
@@ -97,5 +111,17 @@ func CreateLocalFileReference(localFileContent io.ReadCloser) FileReference {
         Source: "Request",
         Reference: createRandomFileReferenceId(),
         Content: localFileContent,
+        Password: nil,
+        EncryptedPassword: nil,
+    }
+}
+
+func CreateLocalFileReferenceWithPassword(localFileContent io.ReadCloser, password string) FileReference {
+    return FileReference {
+        Source: "Request",
+        Reference: createRandomFileReferenceId(),
+        Content: localFileContent,
+        Password: &password,
+        EncryptedPassword: nil,
     }
 }
