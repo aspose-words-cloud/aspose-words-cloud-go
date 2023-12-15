@@ -28,21 +28,21 @@
 package api
 
 import (
-    "bufio"
-    "bytes"
-    "encoding/json"
-    "errors"
-    "fmt"
-    "io"
-    "io/ioutil"
-    "mime"
-    "mime/multipart"
-    "net/http"
-    "net/textproto"
-    "strings"
+	"bufio"
+	"bytes"
+	"context"
+	"encoding/json"
+	"errors"
+	"fmt"
+	"io"
+	"io/ioutil"
+	"mime"
+	"mime/multipart"
+	"net/http"
+	"net/textproto"
+	"strings"
 
-    "github.com/aspose-words-cloud/aspose-words-cloud-go/dev/api/models"
-    "golang.org/x/net/context"
+	"github.com/aspose-words-cloud/aspose-words-cloud-go/dev/api/models"
 )
 
 // Linger please

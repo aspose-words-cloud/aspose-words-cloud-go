@@ -150,9 +150,12 @@ func (data *OptimizeDocumentOnlineRequest) CreateRequestData() (RequestData, err
     result.FormParams = append(result.FormParams, NewJsonFormParamContainer("Options", parameterToString(data.Options, "")))
 
 
+    result.FileReferences = filesContentData
     for _, fileContentData := range filesContentData {
-        fbs, _ := ioutil.ReadAll(fileContentData.Content)
-        result.FormParams = append(result.FormParams, NewFileFormParamContainer(fileContentData.Reference, fbs))
+        if fileContentData.Source == "Request" {
+            fbs, _ := ioutil.ReadAll(fileContentData.Content)
+            result.FormParams = append(result.FormParams, NewFileFormParamContainer(fileContentData.Reference, fbs))
+        }
     }
 
     return result, nil

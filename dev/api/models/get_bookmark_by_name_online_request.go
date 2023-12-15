@@ -116,9 +116,12 @@ func (data *GetBookmarkByNameOnlineRequest) CreateRequestData() (RequestData, er
     }
 
 
+    result.FileReferences = filesContentData
     for _, fileContentData := range filesContentData {
-        fbs, _ := ioutil.ReadAll(fileContentData.Content)
-        result.FormParams = append(result.FormParams, NewFileFormParamContainer(fileContentData.Reference, fbs))
+        if fileContentData.Source == "Request" {
+            fbs, _ := ioutil.ReadAll(fileContentData.Content)
+            result.FormParams = append(result.FormParams, NewFileFormParamContainer(fileContentData.Reference, fbs))
+        }
     }
 
     return result, nil

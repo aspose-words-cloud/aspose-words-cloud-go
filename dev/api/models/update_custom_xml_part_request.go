@@ -171,9 +171,12 @@ func (data *UpdateCustomXmlPartRequest) CreateRequestData() (RequestData, error)
     result.FormParams = append(result.FormParams, NewJsonFormParamContainer("CustomXmlPart", parameterToString(data.CustomXmlPart, "")))
 
 
+    result.FileReferences = filesContentData
     for _, fileContentData := range filesContentData {
-        fbs, _ := ioutil.ReadAll(fileContentData.Content)
-        result.FormParams = append(result.FormParams, NewFileFormParamContainer(fileContentData.Reference, fbs))
+        if fileContentData.Source == "Request" {
+            fbs, _ := ioutil.ReadAll(fileContentData.Content)
+            result.FormParams = append(result.FormParams, NewFileFormParamContainer(fileContentData.Reference, fbs))
+        }
     }
 
     return result, nil

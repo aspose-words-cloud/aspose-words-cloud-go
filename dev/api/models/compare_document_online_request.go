@@ -47,8 +47,7 @@ type CompareDocumentOnlineRequest struct {
         key: "loadEncoding" value: (*string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
         key: "password" value: (*string) Password of protected Word document. Use the parameter to pass a password via SDK. SDK encrypts it automatically. We don't recommend to use the parameter to pass a plain password for direct call of API.
         key: "encryptedPassword" value: (*string) Password of protected Word document. Use the parameter to pass an encrypted password for direct calls of API. See SDK code for encyption details.
-        key: "destFileName" value: (*string) Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.
-        key: "encryptedPassword2" value: (*string) encrypted password for the second document. */
+        key: "destFileName" value: (*string) Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document. */
     Optionals map[string]interface{}
 }
 
@@ -95,9 +94,6 @@ func (data *CompareDocumentOnlineRequest) CreateRequestData() (RequestData, erro
     if err := typeCheckParameter(data.Optionals["destFileName"], "string", "data.Optionals[destFileName]"); err != nil {
         return result, err
     }
-    if err := typeCheckParameter(data.Optionals["encryptedPassword2"], "string", "data.Optionals[encryptedPassword2]"); err != nil {
-        return result, err
-    }
 
 
     if (data.CompareData != nil) {
@@ -127,11 +123,6 @@ func (data *CompareDocumentOnlineRequest) CreateRequestData() (RequestData, erro
     }
 
 
-    if localVarTempParam, localVarOk := data.Optionals["encryptedPassword2"].(string); localVarOk {
-        result.QueryParams.Add("EncryptedPassword2", parameterToString(localVarTempParam, ""))
-    }
-
-
 
     _document := data.Document
     if _document != nil {
@@ -144,9 +135,12 @@ func (data *CompareDocumentOnlineRequest) CreateRequestData() (RequestData, erro
     filesContentData = data.CompareData.CollectFilesContent(filesContentData)
 
 
+    result.FileReferences = filesContentData
     for _, fileContentData := range filesContentData {
-        fbs, _ := ioutil.ReadAll(fileContentData.Content)
-        result.FormParams = append(result.FormParams, NewFileFormParamContainer(fileContentData.Reference, fbs))
+        if fileContentData.Source == "Request" {
+            fbs, _ := ioutil.ReadAll(fileContentData.Content)
+            result.FormParams = append(result.FormParams, NewFileFormParamContainer(fileContentData.Reference, fbs))
+        }
     }
 
     return result, nil

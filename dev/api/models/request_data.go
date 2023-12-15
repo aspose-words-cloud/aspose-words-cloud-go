@@ -46,12 +46,13 @@ type RequestInterface interface {
 }
 
 // RequestData contains requst data
-type RequestData struct {
-    Path         string
-    Method       string
-    HeaderParams map[string]string
-    QueryParams  url.Values
-    FormParams   []FormParamContainer
+type RequestData   struct {
+    Path           string
+    Method         string
+    HeaderParams   map[string]string
+    QueryParams    url.Values
+    FormParams     []FormParamContainer
+    FileReferences []FileReference
 }
 
 type FormParamContainer struct {

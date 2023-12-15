@@ -212,6 +212,17 @@ func (c *APIClient) prepareRequest (
     data models.RequestData) (request *http.Request, err error) {
     var body *bytes.Buffer
 
+    // encrypt passwords in FileReferences
+    for _, fileReferenceData := range data.FileReferences {
+        if fileReferenceData.Password != nil {
+            encrypted, err := c.encrypt(ctx, *fileReferenceData.Password)
+            if err == nil {
+                fileReferenceData.EncryptedPassword = &encrypted
+                fileReferenceData.Password = nil
+            }
+        }
+    }
+
     // add form parameters and file if available.
     if len(data.FormParams) == 1 {
         body = &bytes.Buffer{}
