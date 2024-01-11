@@ -1,7 +1,7 @@
 /*
  * --------------------------------------------------------------------------------
  * <copyright company="Aspose" file="comment_base.go">
- *   Copyright (c) 2023 Aspose.Words for Cloud
+ *   Copyright (c) 2024 Aspose.Words for Cloud
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -35,10 +35,10 @@ type ICommentBase interface {
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
     Validate() error
-    GetRangeStart() INewDocumentPosition
-    SetRangeStart(value INewDocumentPosition)
-    GetRangeEnd() INewDocumentPosition
-    SetRangeEnd(value INewDocumentPosition)
+    GetRangeStart() IPositionInsideNode
+    SetRangeStart(value IPositionInsideNode)
+    GetRangeEnd() IPositionInsideNode
+    SetRangeEnd(value IPositionInsideNode)
     GetAuthor() *string
     SetAuthor(value *string)
     GetInitial() *string

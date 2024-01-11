@@ -1,7 +1,7 @@
 /*
  * --------------------------------------------------------------------------------
  * <copyright company="Aspose" file="footnote_base.go">
- *   Copyright (c) 2023 Aspose.Words for Cloud
+ *   Copyright (c) 2024 Aspose.Words for Cloud
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -35,8 +35,8 @@ type IFootnoteBase interface {
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
     Validate() error
-    GetPosition() INewDocumentPosition
-    SetPosition(value INewDocumentPosition)
+    GetPosition() IPosition
+    SetPosition(value IPosition)
     GetFootnoteType() *string
     SetFootnoteType(value *string)
     GetReferenceMark() *string

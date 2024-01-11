@@ -1,7 +1,7 @@
 /*
  * --------------------------------------------------------------------------------
  * <copyright company="Aspose" file="drawing_object_insert.go">
- *   Copyright (c) 2023 Aspose.Words for Cloud
+ *   Copyright (c) 2024 Aspose.Words for Cloud
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -39,8 +39,8 @@ type IDrawingObjectInsert interface {
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
     Validate() error
-    GetPosition() INewDocumentPosition
-    SetPosition(value INewDocumentPosition)
+    GetPosition() IPosition
+    SetPosition(value IPosition)
     GetRelativeHorizontalPosition() *string
     SetRelativeHorizontalPosition(value *string)
     GetLeft() *float64
@@ -59,7 +59,7 @@ type IDrawingObjectInsert interface {
 
 type DrawingObjectInsert struct {
     // Drawing object element for insert.
-    Position INewDocumentPosition `json:"Position,omitempty"`
+    Position IPosition `json:"Position,omitempty"`
 
     // Drawing object element for insert.
     RelativeHorizontalPosition *string `json:"RelativeHorizontalPosition,omitempty"`
@@ -99,14 +99,28 @@ func (obj *DrawingObjectInsert) Initialize() {
 func (obj *DrawingObjectInsert) Deserialize(json map[string]interface{}) {
     if jsonValue, exists := json["Position"]; exists {
         if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
-            var modelInstance INewDocumentPosition = new(NewDocumentPosition)
+            var modelInstance IPosition = nil
+            if jsonType, found := parsedValue["$type"]; found {
+                jsonTypeStr := jsonType.(string)
+                if jsonTypeStr == "PositionAfterNode, _" { modelInstance = new(PositionAfterNode) }
+                if jsonTypeStr == "PositionBeforeNode, _" { modelInstance = new(PositionBeforeNode) }
+                if jsonTypeStr == "PositionInsideNode, _" { modelInstance = new(PositionInsideNode) }
+            }
+
             modelInstance.Deserialize(parsedValue)
             obj.Position = modelInstance
         }
 
     } else if jsonValue, exists := json["position"]; exists {
         if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
-            var modelInstance INewDocumentPosition = new(NewDocumentPosition)
+            var modelInstance IPosition = nil
+            if jsonType, found := parsedValue["$type"]; found {
+                jsonTypeStr := jsonType.(string)
+                if jsonTypeStr == "PositionAfterNode, _" { modelInstance = new(PositionAfterNode) }
+                if jsonTypeStr == "PositionBeforeNode, _" { modelInstance = new(PositionBeforeNode) }
+                if jsonTypeStr == "PositionInsideNode, _" { modelInstance = new(PositionInsideNode) }
+            }
+
             modelInstance.Deserialize(parsedValue)
             obj.Position = modelInstance
         }
@@ -237,11 +251,11 @@ func (obj *DrawingObjectInsert) Validate() error {
     return nil;
 }
 
-func (obj *DrawingObjectInsert) GetPosition() INewDocumentPosition {
+func (obj *DrawingObjectInsert) GetPosition() IPosition {
     return obj.Position
 }
 
-func (obj *DrawingObjectInsert) SetPosition(value INewDocumentPosition) {
+func (obj *DrawingObjectInsert) SetPosition(value IPosition) {
     obj.Position = value
 }
 

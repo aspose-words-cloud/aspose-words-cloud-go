@@ -1,7 +1,7 @@
 /*
  * --------------------------------------------------------------------------------
  * <copyright company="Aspose" file="table_test.go">
- *   Copyright (c) 2023 Aspose.Words for Cloud
+ *   Copyright (c) 2024 Aspose.Words for Cloud
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -733,12 +733,12 @@ func Test_Table_InsertTableRow(t *testing.T) {
     }
 
     options := map[string]interface{}{
+        "nodePath": "sections/0/tables/2",
         "folder": remoteDataFolder,
     }
 
     request := &models.InsertTableRowRequest{
         Name: ToStringPointer(remoteFileName),
-        TablePath: ToStringPointer("sections/0/tables/2"),
         Row: &requestRow,
         Optionals: options,
     }
@@ -765,11 +765,11 @@ func Test_Table_InsertTableRowOnline(t *testing.T) {
     }
 
     options := map[string]interface{}{
+        "nodePath": "sections/0/tables/2",
     }
 
     request := &models.InsertTableRowOnlineRequest{
         Document: requestDocument,
-        TablePath: ToStringPointer("sections/0/tables/2"),
         Row: &requestRow,
         Optionals: options,
     }
@@ -1034,12 +1034,12 @@ func Test_Table_InsertTableCell(t *testing.T) {
     }
 
     options := map[string]interface{}{
+        "tableRowPath": "sections/0/tables/2/rows/0",
         "folder": remoteDataFolder,
     }
 
     request := &models.InsertTableCellRequest{
         Name: ToStringPointer(remoteFileName),
-        TableRowPath: ToStringPointer("sections/0/tables/2/rows/0"),
         Cell: &requestCell,
         Optionals: options,
     }
@@ -1064,11 +1064,11 @@ func Test_Table_InsertTableCellOnline(t *testing.T) {
     }
 
     options := map[string]interface{}{
+        "tableRowPath": "sections/0/tables/2/rows/0",
     }
 
     request := &models.InsertTableCellOnlineRequest{
         Document: requestDocument,
-        TableRowPath: ToStringPointer("sections/0/tables/2/rows/0"),
         Cell: &requestCell,
         Optionals: options,
     }

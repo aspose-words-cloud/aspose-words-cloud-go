@@ -1,7 +1,7 @@
 /*
  * --------------------------------------------------------------------------------
  * <copyright company="Aspose" file="bookmark_insert.go">
- *   Copyright (c) 2023 Aspose.Words for Cloud
+ *   Copyright (c) 2024 Aspose.Words for Cloud
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -43,10 +43,10 @@ type IBookmarkInsert interface {
     SetName(value *string)
     GetText() *string
     SetText(value *string)
-    GetStartRange() INewDocumentPosition
-    SetStartRange(value INewDocumentPosition)
-    GetEndRange() INewDocumentPosition
-    SetEndRange(value INewDocumentPosition)
+    GetStartRange() IPosition
+    SetStartRange(value IPosition)
+    GetEndRange() IPosition
+    SetEndRange(value IPosition)
 }
 
 type BookmarkInsert struct {
@@ -57,10 +57,10 @@ type BookmarkInsert struct {
     Text *string `json:"Text,omitempty"`
 
     // Represents a bookmark to insert.
-    StartRange INewDocumentPosition `json:"StartRange,omitempty"`
+    StartRange IPosition `json:"StartRange,omitempty"`
 
     // Represents a bookmark to insert.
-    EndRange INewDocumentPosition `json:"EndRange,omitempty"`
+    EndRange IPosition `json:"EndRange,omitempty"`
 }
 
 func (BookmarkInsert) IsBookmarkInsert() bool {
@@ -107,14 +107,28 @@ func (obj *BookmarkInsert) Deserialize(json map[string]interface{}) {
 
     if jsonValue, exists := json["StartRange"]; exists {
         if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
-            var modelInstance INewDocumentPosition = new(NewDocumentPosition)
+            var modelInstance IPosition = nil
+            if jsonType, found := parsedValue["$type"]; found {
+                jsonTypeStr := jsonType.(string)
+                if jsonTypeStr == "PositionAfterNode, _" { modelInstance = new(PositionAfterNode) }
+                if jsonTypeStr == "PositionBeforeNode, _" { modelInstance = new(PositionBeforeNode) }
+                if jsonTypeStr == "PositionInsideNode, _" { modelInstance = new(PositionInsideNode) }
+            }
+
             modelInstance.Deserialize(parsedValue)
             obj.StartRange = modelInstance
         }
 
     } else if jsonValue, exists := json["startRange"]; exists {
         if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
-            var modelInstance INewDocumentPosition = new(NewDocumentPosition)
+            var modelInstance IPosition = nil
+            if jsonType, found := parsedValue["$type"]; found {
+                jsonTypeStr := jsonType.(string)
+                if jsonTypeStr == "PositionAfterNode, _" { modelInstance = new(PositionAfterNode) }
+                if jsonTypeStr == "PositionBeforeNode, _" { modelInstance = new(PositionBeforeNode) }
+                if jsonTypeStr == "PositionInsideNode, _" { modelInstance = new(PositionInsideNode) }
+            }
+
             modelInstance.Deserialize(parsedValue)
             obj.StartRange = modelInstance
         }
@@ -123,14 +137,28 @@ func (obj *BookmarkInsert) Deserialize(json map[string]interface{}) {
 
     if jsonValue, exists := json["EndRange"]; exists {
         if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
-            var modelInstance INewDocumentPosition = new(NewDocumentPosition)
+            var modelInstance IPosition = nil
+            if jsonType, found := parsedValue["$type"]; found {
+                jsonTypeStr := jsonType.(string)
+                if jsonTypeStr == "PositionAfterNode, _" { modelInstance = new(PositionAfterNode) }
+                if jsonTypeStr == "PositionBeforeNode, _" { modelInstance = new(PositionBeforeNode) }
+                if jsonTypeStr == "PositionInsideNode, _" { modelInstance = new(PositionInsideNode) }
+            }
+
             modelInstance.Deserialize(parsedValue)
             obj.EndRange = modelInstance
         }
 
     } else if jsonValue, exists := json["endRange"]; exists {
         if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
-            var modelInstance INewDocumentPosition = new(NewDocumentPosition)
+            var modelInstance IPosition = nil
+            if jsonType, found := parsedValue["$type"]; found {
+                jsonTypeStr := jsonType.(string)
+                if jsonTypeStr == "PositionAfterNode, _" { modelInstance = new(PositionAfterNode) }
+                if jsonTypeStr == "PositionBeforeNode, _" { modelInstance = new(PositionBeforeNode) }
+                if jsonTypeStr == "PositionInsideNode, _" { modelInstance = new(PositionInsideNode) }
+            }
+
             modelInstance.Deserialize(parsedValue)
             obj.EndRange = modelInstance
         }
@@ -189,19 +217,19 @@ func (obj *BookmarkInsert) SetText(value *string) {
     obj.Text = value
 }
 
-func (obj *BookmarkInsert) GetStartRange() INewDocumentPosition {
+func (obj *BookmarkInsert) GetStartRange() IPosition {
     return obj.StartRange
 }
 
-func (obj *BookmarkInsert) SetStartRange(value INewDocumentPosition) {
+func (obj *BookmarkInsert) SetStartRange(value IPosition) {
     obj.StartRange = value
 }
 
-func (obj *BookmarkInsert) GetEndRange() INewDocumentPosition {
+func (obj *BookmarkInsert) GetEndRange() IPosition {
     return obj.EndRange
 }
 
-func (obj *BookmarkInsert) SetEndRange(value INewDocumentPosition) {
+func (obj *BookmarkInsert) SetEndRange(value IPosition) {
     obj.EndRange = value
 }
 

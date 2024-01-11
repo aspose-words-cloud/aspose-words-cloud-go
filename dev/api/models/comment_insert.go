@@ -1,7 +1,7 @@
 /*
  * --------------------------------------------------------------------------------
  * <copyright company="Aspose" file="comment_insert.go">
- *   Copyright (c) 2023 Aspose.Words for Cloud
+ *   Copyright (c) 2024 Aspose.Words for Cloud
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -39,10 +39,10 @@ type ICommentInsert interface {
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
     Validate() error
-    GetRangeStart() INewDocumentPosition
-    SetRangeStart(value INewDocumentPosition)
-    GetRangeEnd() INewDocumentPosition
-    SetRangeEnd(value INewDocumentPosition)
+    GetRangeStart() IPositionInsideNode
+    SetRangeStart(value IPositionInsideNode)
+    GetRangeEnd() IPositionInsideNode
+    SetRangeEnd(value IPositionInsideNode)
     GetAuthor() *string
     SetAuthor(value *string)
     GetInitial() *string
@@ -55,10 +55,10 @@ type ICommentInsert interface {
 
 type CommentInsert struct {
     // Comment insert.
-    RangeStart INewDocumentPosition `json:"RangeStart,omitempty"`
+    RangeStart IPositionInsideNode `json:"RangeStart,omitempty"`
 
     // Comment insert.
-    RangeEnd INewDocumentPosition `json:"RangeEnd,omitempty"`
+    RangeEnd IPositionInsideNode `json:"RangeEnd,omitempty"`
 
     // Comment insert.
     Author *string `json:"Author,omitempty"`
@@ -96,14 +96,14 @@ func (obj *CommentInsert) Initialize() {
 func (obj *CommentInsert) Deserialize(json map[string]interface{}) {
     if jsonValue, exists := json["RangeStart"]; exists {
         if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
-            var modelInstance INewDocumentPosition = new(NewDocumentPosition)
+            var modelInstance IPositionInsideNode = new(PositionInsideNode)
             modelInstance.Deserialize(parsedValue)
             obj.RangeStart = modelInstance
         }
 
     } else if jsonValue, exists := json["rangeStart"]; exists {
         if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
-            var modelInstance INewDocumentPosition = new(NewDocumentPosition)
+            var modelInstance IPositionInsideNode = new(PositionInsideNode)
             modelInstance.Deserialize(parsedValue)
             obj.RangeStart = modelInstance
         }
@@ -112,14 +112,14 @@ func (obj *CommentInsert) Deserialize(json map[string]interface{}) {
 
     if jsonValue, exists := json["RangeEnd"]; exists {
         if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
-            var modelInstance INewDocumentPosition = new(NewDocumentPosition)
+            var modelInstance IPositionInsideNode = new(PositionInsideNode)
             modelInstance.Deserialize(parsedValue)
             obj.RangeEnd = modelInstance
         }
 
     } else if jsonValue, exists := json["rangeEnd"]; exists {
         if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
-            var modelInstance INewDocumentPosition = new(NewDocumentPosition)
+            var modelInstance IPositionInsideNode = new(PositionInsideNode)
             modelInstance.Deserialize(parsedValue)
             obj.RangeEnd = modelInstance
         }
@@ -215,19 +215,19 @@ func (obj *CommentInsert) Validate() error {
     return nil;
 }
 
-func (obj *CommentInsert) GetRangeStart() INewDocumentPosition {
+func (obj *CommentInsert) GetRangeStart() IPositionInsideNode {
     return obj.RangeStart
 }
 
-func (obj *CommentInsert) SetRangeStart(value INewDocumentPosition) {
+func (obj *CommentInsert) SetRangeStart(value IPositionInsideNode) {
     obj.RangeStart = value
 }
 
-func (obj *CommentInsert) GetRangeEnd() INewDocumentPosition {
+func (obj *CommentInsert) GetRangeEnd() IPositionInsideNode {
     return obj.RangeEnd
 }
 
-func (obj *CommentInsert) SetRangeEnd(value INewDocumentPosition) {
+func (obj *CommentInsert) SetRangeEnd(value IPositionInsideNode) {
     obj.RangeEnd = value
 }
 

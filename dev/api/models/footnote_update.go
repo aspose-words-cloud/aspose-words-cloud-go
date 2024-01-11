@@ -1,7 +1,7 @@
 /*
  * --------------------------------------------------------------------------------
  * <copyright company="Aspose" file="footnote_update.go">
- *   Copyright (c) 2023 Aspose.Words for Cloud
+ *   Copyright (c) 2024 Aspose.Words for Cloud
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -39,8 +39,8 @@ type IFootnoteUpdate interface {
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
     Validate() error
-    GetPosition() INewDocumentPosition
-    SetPosition(value INewDocumentPosition)
+    GetPosition() IPosition
+    SetPosition(value IPosition)
     GetFootnoteType() *string
     SetFootnoteType(value *string)
     GetReferenceMark() *string
@@ -51,7 +51,7 @@ type IFootnoteUpdate interface {
 
 type FootnoteUpdate struct {
     // Footnote for update.
-    Position INewDocumentPosition `json:"Position,omitempty"`
+    Position IPosition `json:"Position,omitempty"`
 
     // Footnote for update.
     FootnoteType *string `json:"FootnoteType,omitempty"`
@@ -82,14 +82,28 @@ func (obj *FootnoteUpdate) Initialize() {
 func (obj *FootnoteUpdate) Deserialize(json map[string]interface{}) {
     if jsonValue, exists := json["Position"]; exists {
         if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
-            var modelInstance INewDocumentPosition = new(NewDocumentPosition)
+            var modelInstance IPosition = nil
+            if jsonType, found := parsedValue["$type"]; found {
+                jsonTypeStr := jsonType.(string)
+                if jsonTypeStr == "PositionAfterNode, _" { modelInstance = new(PositionAfterNode) }
+                if jsonTypeStr == "PositionBeforeNode, _" { modelInstance = new(PositionBeforeNode) }
+                if jsonTypeStr == "PositionInsideNode, _" { modelInstance = new(PositionInsideNode) }
+            }
+
             modelInstance.Deserialize(parsedValue)
             obj.Position = modelInstance
         }
 
     } else if jsonValue, exists := json["position"]; exists {
         if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
-            var modelInstance INewDocumentPosition = new(NewDocumentPosition)
+            var modelInstance IPosition = nil
+            if jsonType, found := parsedValue["$type"]; found {
+                jsonTypeStr := jsonType.(string)
+                if jsonTypeStr == "PositionAfterNode, _" { modelInstance = new(PositionAfterNode) }
+                if jsonTypeStr == "PositionBeforeNode, _" { modelInstance = new(PositionBeforeNode) }
+                if jsonTypeStr == "PositionInsideNode, _" { modelInstance = new(PositionInsideNode) }
+            }
+
             modelInstance.Deserialize(parsedValue)
             obj.Position = modelInstance
         }
@@ -151,11 +165,11 @@ func (obj *FootnoteUpdate) Validate() error {
     return nil;
 }
 
-func (obj *FootnoteUpdate) GetPosition() INewDocumentPosition {
+func (obj *FootnoteUpdate) GetPosition() IPosition {
     return obj.Position
 }
 
-func (obj *FootnoteUpdate) SetPosition(value INewDocumentPosition) {
+func (obj *FootnoteUpdate) SetPosition(value IPosition) {
     obj.Position = value
 }
 

@@ -1,7 +1,7 @@
 /*
  * --------------------------------------------------------------------------------
  * <copyright company="Aspose" file="table_row_insert.go">
- *   Copyright (c) 2023 Aspose.Words for Cloud
+ *   Copyright (c) 2024 Aspose.Words for Cloud
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -41,6 +41,8 @@ type ITableRowInsert interface {
     Validate() error
     GetColumnsCount() *int32
     SetColumnsCount(value *int32)
+    GetExistingRowPosition() IPosition
+    SetExistingRowPosition(value IPosition)
     GetInsertAfter() *int32
     SetInsertAfter(value *int32)
 }
@@ -48,6 +50,9 @@ type ITableRowInsert interface {
 type TableRowInsert struct {
     // DTO container with a table row element.
     ColumnsCount *int32 `json:"ColumnsCount,omitempty"`
+
+    // DTO container with a table row element.
+    ExistingRowPosition IPosition `json:"ExistingRowPosition,omitempty"`
 
     // DTO container with a table row element.
     InsertAfter *int32 `json:"InsertAfter,omitempty"`
@@ -59,6 +64,11 @@ func (TableRowInsert) IsTableRowInsert() bool {
 
 
 func (obj *TableRowInsert) Initialize() {
+    if (obj.ExistingRowPosition != nil) {
+        obj.ExistingRowPosition.Initialize()
+    }
+
+
 }
 
 func (obj *TableRowInsert) Deserialize(json map[string]interface{}) {
@@ -72,6 +82,36 @@ func (obj *TableRowInsert) Deserialize(json map[string]interface{}) {
         if parsedValue, valid := jsonValue.(float64); valid {
             obj.ColumnsCount = new(int32)
             *obj.ColumnsCount = int32(parsedValue)
+        }
+
+    }
+
+    if jsonValue, exists := json["ExistingRowPosition"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IPosition = nil
+            if jsonType, found := parsedValue["$type"]; found {
+                jsonTypeStr := jsonType.(string)
+                if jsonTypeStr == "PositionAfterNode, _" { modelInstance = new(PositionAfterNode) }
+                if jsonTypeStr == "PositionBeforeNode, _" { modelInstance = new(PositionBeforeNode) }
+                if jsonTypeStr == "PositionInsideNode, _" { modelInstance = new(PositionInsideNode) }
+            }
+
+            modelInstance.Deserialize(parsedValue)
+            obj.ExistingRowPosition = modelInstance
+        }
+
+    } else if jsonValue, exists := json["existingRowPosition"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IPosition = nil
+            if jsonType, found := parsedValue["$type"]; found {
+                jsonTypeStr := jsonType.(string)
+                if jsonTypeStr == "PositionAfterNode, _" { modelInstance = new(PositionAfterNode) }
+                if jsonTypeStr == "PositionBeforeNode, _" { modelInstance = new(PositionBeforeNode) }
+                if jsonTypeStr == "PositionInsideNode, _" { modelInstance = new(PositionInsideNode) }
+            }
+
+            modelInstance.Deserialize(parsedValue)
+            obj.ExistingRowPosition = modelInstance
         }
 
     }
@@ -103,6 +143,12 @@ func (obj *TableRowInsert) Validate() error {
     if obj.ColumnsCount == nil {
         return errors.New("Property ColumnsCount in TableRowInsert is required.")
     }
+    if obj.ExistingRowPosition != nil {
+        if err := obj.ExistingRowPosition.Validate(); err != nil {
+            return err
+        }
+    }
+
     return nil;
 }
 
@@ -112,6 +158,14 @@ func (obj *TableRowInsert) GetColumnsCount() *int32 {
 
 func (obj *TableRowInsert) SetColumnsCount(value *int32) {
     obj.ColumnsCount = value
+}
+
+func (obj *TableRowInsert) GetExistingRowPosition() IPosition {
+    return obj.ExistingRowPosition
+}
+
+func (obj *TableRowInsert) SetExistingRowPosition(value IPosition) {
+    obj.ExistingRowPosition = value
 }
 
 func (obj *TableRowInsert) GetInsertAfter() *int32 {

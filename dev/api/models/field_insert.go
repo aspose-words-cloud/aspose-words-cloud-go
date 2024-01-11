@@ -1,7 +1,7 @@
 /*
  * --------------------------------------------------------------------------------
  * <copyright company="Aspose" file="field_insert.go">
- *   Copyright (c) 2023 Aspose.Words for Cloud
+ *   Copyright (c) 2024 Aspose.Words for Cloud
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -43,6 +43,8 @@ type IFieldInsert interface {
     SetLocaleId(value *string)
     GetFieldCode() *string
     SetFieldCode(value *string)
+    GetPosition() IPosition
+    SetPosition(value IPosition)
 }
 
 type FieldInsert struct {
@@ -51,6 +53,9 @@ type FieldInsert struct {
 
     // Field for insert.
     FieldCode *string `json:"FieldCode,omitempty"`
+
+    // Field for insert.
+    Position IPosition `json:"Position,omitempty"`
 }
 
 func (FieldInsert) IsFieldInsert() bool {
@@ -62,6 +67,11 @@ func (FieldInsert) IsFieldBase() bool {
 }
 
 func (obj *FieldInsert) Initialize() {
+    if (obj.Position != nil) {
+        obj.Position.Initialize()
+    }
+
+
 }
 
 func (obj *FieldInsert) Deserialize(json map[string]interface{}) {
@@ -88,6 +98,36 @@ func (obj *FieldInsert) Deserialize(json map[string]interface{}) {
         }
 
     }
+
+    if jsonValue, exists := json["Position"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IPosition = nil
+            if jsonType, found := parsedValue["$type"]; found {
+                jsonTypeStr := jsonType.(string)
+                if jsonTypeStr == "PositionAfterNode, _" { modelInstance = new(PositionAfterNode) }
+                if jsonTypeStr == "PositionBeforeNode, _" { modelInstance = new(PositionBeforeNode) }
+                if jsonTypeStr == "PositionInsideNode, _" { modelInstance = new(PositionInsideNode) }
+            }
+
+            modelInstance.Deserialize(parsedValue)
+            obj.Position = modelInstance
+        }
+
+    } else if jsonValue, exists := json["position"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IPosition = nil
+            if jsonType, found := parsedValue["$type"]; found {
+                jsonTypeStr := jsonType.(string)
+                if jsonTypeStr == "PositionAfterNode, _" { modelInstance = new(PositionAfterNode) }
+                if jsonTypeStr == "PositionBeforeNode, _" { modelInstance = new(PositionBeforeNode) }
+                if jsonTypeStr == "PositionInsideNode, _" { modelInstance = new(PositionInsideNode) }
+            }
+
+            modelInstance.Deserialize(parsedValue)
+            obj.Position = modelInstance
+        }
+
+    }
 }
 
 func (obj *FieldInsert) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
@@ -102,6 +142,12 @@ func (obj *FieldInsert) Validate() error {
     if obj.FieldCode == nil {
         return errors.New("Property FieldCode in FieldInsert is required.")
     }
+    if obj.Position != nil {
+        if err := obj.Position.Validate(); err != nil {
+            return err
+        }
+    }
+
     return nil;
 }
 
@@ -119,5 +165,13 @@ func (obj *FieldInsert) GetFieldCode() *string {
 
 func (obj *FieldInsert) SetFieldCode(value *string) {
     obj.FieldCode = value
+}
+
+func (obj *FieldInsert) GetPosition() IPosition {
+    return obj.Position
+}
+
+func (obj *FieldInsert) SetPosition(value IPosition) {
+    obj.Position = value
 }
 

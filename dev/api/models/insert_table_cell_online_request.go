@@ -1,7 +1,7 @@
 /*
  * --------------------------------------------------------------------------------
  * <copyright company="Aspose" file="insert_table_cell_online_request.go">
- *   Copyright (c) 2023 Aspose.Words for Cloud
+ *   Copyright (c) 2024 Aspose.Words for Cloud
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -42,11 +42,10 @@ import (
 type InsertTableCellOnlineRequest struct {
         // The document.
         Document io.ReadCloser
-        // The path to the table row in the document tree.
-        TableRowPath *string
         // Table cell parameters.
         Cell ITableCellInsert
     /* optional (nil or map[string]interface{}) with one or more of key / value pairs:
+        key: "tableRowPath" value: (*string) The path to the table row in the document tree.
         key: "loadEncoding" value: (*string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
         key: "password" value: (*string) Password of protected Word document. Use the parameter to pass a password via SDK. SDK encrypts it automatically. We don't recommend to use the parameter to pass a plain password for direct call of API.
         key: "encryptedPassword" value: (*string) Password of protected Word document. Use the parameter to pass an encrypted password for direct calls of API. See SDK code for encyption details.
@@ -68,7 +67,7 @@ func (data *InsertTableCellOnlineRequest) CreateRequestData() (RequestData, erro
 
     // create path and map variables
     result.Path = "/words/online/post/{tableRowPath}/cells"
-    result.Path = strings.Replace(result.Path, "{"+"tableRowPath"+"}", fmt.Sprintf("%v", *data.TableRowPath), -1)
+    result.Path = strings.Replace(result.Path, "{"+"tableRowPath"+"}", fmt.Sprintf("%v", data.Optionals["tableRowPath"]), -1)
 
     result.Path = strings.Replace(result.Path, "/<nil>", "", -1)
     result.Path = strings.Replace(result.Path, "//", "/", -1)
@@ -81,10 +80,6 @@ func (data *InsertTableCellOnlineRequest) CreateRequestData() (RequestData, erro
         return result, errors.New("Parameter Document is required.")
     }
 
-    if (data.TableRowPath == nil) {
-        return result, errors.New("Parameter TableRowPath is required.")
-    }
-
     if (data.Cell != nil) {
         data.Cell.Initialize()
     } else {
@@ -92,6 +87,9 @@ func (data *InsertTableCellOnlineRequest) CreateRequestData() (RequestData, erro
     }
 
 
+    if err := typeCheckParameter(data.Optionals["tableRowPath"], "string", "data.Optionals[tableRowPath]"); err != nil {
+        return result, err
+    }
     if err := typeCheckParameter(data.Optionals["loadEncoding"], "string", "data.Optionals[loadEncoding]"); err != nil {
         return result, err
     }

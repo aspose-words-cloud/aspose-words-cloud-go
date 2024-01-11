@@ -1,7 +1,7 @@
 /*
  * --------------------------------------------------------------------------------
  * <copyright company="Aspose" file="structured_document_tag_insert.go">
- *   Copyright (c) 2023 Aspose.Words for Cloud
+ *   Copyright (c) 2024 Aspose.Words for Cloud
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -91,6 +91,8 @@ type IStructuredDocumentTagInsert interface {
     SetLevel(value *string)
     GetSdtType() *string
     SetSdtType(value *string)
+    GetPosition() IPosition
+    SetPosition(value IPosition)
 }
 
 type StructuredDocumentTagInsert struct {
@@ -171,6 +173,9 @@ type StructuredDocumentTagInsert struct {
 
     // DTO container with a StructuredDocumentTag.
     SdtType *string `json:"SdtType,omitempty"`
+
+    // DTO container with a StructuredDocumentTag.
+    Position IPosition `json:"Position,omitempty"`
 }
 
 func (StructuredDocumentTagInsert) IsStructuredDocumentTagInsert() bool {
@@ -201,6 +206,10 @@ func (obj *StructuredDocumentTagInsert) Initialize() {
     }
     if (obj.Color != nil) {
         obj.Color.Initialize()
+    }
+
+    if (obj.Position != nil) {
+        obj.Position.Initialize()
     }
 
 
@@ -536,6 +545,36 @@ func (obj *StructuredDocumentTagInsert) Deserialize(json map[string]interface{})
         }
 
     }
+
+    if jsonValue, exists := json["Position"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IPosition = nil
+            if jsonType, found := parsedValue["$type"]; found {
+                jsonTypeStr := jsonType.(string)
+                if jsonTypeStr == "PositionAfterNode, _" { modelInstance = new(PositionAfterNode) }
+                if jsonTypeStr == "PositionBeforeNode, _" { modelInstance = new(PositionBeforeNode) }
+                if jsonTypeStr == "PositionInsideNode, _" { modelInstance = new(PositionInsideNode) }
+            }
+
+            modelInstance.Deserialize(parsedValue)
+            obj.Position = modelInstance
+        }
+
+    } else if jsonValue, exists := json["position"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IPosition = nil
+            if jsonType, found := parsedValue["$type"]; found {
+                jsonTypeStr := jsonType.(string)
+                if jsonTypeStr == "PositionAfterNode, _" { modelInstance = new(PositionAfterNode) }
+                if jsonTypeStr == "PositionBeforeNode, _" { modelInstance = new(PositionBeforeNode) }
+                if jsonTypeStr == "PositionInsideNode, _" { modelInstance = new(PositionInsideNode) }
+            }
+
+            modelInstance.Deserialize(parsedValue)
+            obj.Position = modelInstance
+        }
+
+    }
 }
 
 func (obj *StructuredDocumentTagInsert) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
@@ -569,6 +608,11 @@ func (obj *StructuredDocumentTagInsert) Validate() error {
     }
     if obj.Color != nil {
         if err := obj.Color.Validate(); err != nil {
+            return err
+        }
+    }
+    if obj.Position != nil {
+        if err := obj.Position.Validate(); err != nil {
             return err
         }
     }
@@ -782,5 +826,13 @@ func (obj *StructuredDocumentTagInsert) GetSdtType() *string {
 
 func (obj *StructuredDocumentTagInsert) SetSdtType(value *string) {
     obj.SdtType = value
+}
+
+func (obj *StructuredDocumentTagInsert) GetPosition() IPosition {
+    return obj.Position
+}
+
+func (obj *StructuredDocumentTagInsert) SetPosition(value IPosition) {
+    obj.Position = value
 }
 

@@ -1,7 +1,7 @@
 /*
  * --------------------------------------------------------------------------------
  * <copyright company="Aspose" file="table_insert.go">
- *   Copyright (c) 2023 Aspose.Words for Cloud
+ *   Copyright (c) 2024 Aspose.Words for Cloud
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -41,8 +41,8 @@ type ITableInsert interface {
     Validate() error
     GetColumnsCount() *int32
     SetColumnsCount(value *int32)
-    GetPosition() INewDocumentPosition
-    SetPosition(value INewDocumentPosition)
+    GetPosition() IPosition
+    SetPosition(value IPosition)
     GetRowsCount() *int32
     SetRowsCount(value *int32)
 }
@@ -52,7 +52,7 @@ type TableInsert struct {
     ColumnsCount *int32 `json:"ColumnsCount,omitempty"`
 
     // DTO container with a table element.
-    Position INewDocumentPosition `json:"Position,omitempty"`
+    Position IPosition `json:"Position,omitempty"`
 
     // DTO container with a table element.
     RowsCount *int32 `json:"RowsCount,omitempty"`
@@ -88,14 +88,28 @@ func (obj *TableInsert) Deserialize(json map[string]interface{}) {
 
     if jsonValue, exists := json["Position"]; exists {
         if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
-            var modelInstance INewDocumentPosition = new(NewDocumentPosition)
+            var modelInstance IPosition = nil
+            if jsonType, found := parsedValue["$type"]; found {
+                jsonTypeStr := jsonType.(string)
+                if jsonTypeStr == "PositionAfterNode, _" { modelInstance = new(PositionAfterNode) }
+                if jsonTypeStr == "PositionBeforeNode, _" { modelInstance = new(PositionBeforeNode) }
+                if jsonTypeStr == "PositionInsideNode, _" { modelInstance = new(PositionInsideNode) }
+            }
+
             modelInstance.Deserialize(parsedValue)
             obj.Position = modelInstance
         }
 
     } else if jsonValue, exists := json["position"]; exists {
         if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
-            var modelInstance INewDocumentPosition = new(NewDocumentPosition)
+            var modelInstance IPosition = nil
+            if jsonType, found := parsedValue["$type"]; found {
+                jsonTypeStr := jsonType.(string)
+                if jsonTypeStr == "PositionAfterNode, _" { modelInstance = new(PositionAfterNode) }
+                if jsonTypeStr == "PositionBeforeNode, _" { modelInstance = new(PositionBeforeNode) }
+                if jsonTypeStr == "PositionInsideNode, _" { modelInstance = new(PositionInsideNode) }
+            }
+
             modelInstance.Deserialize(parsedValue)
             obj.Position = modelInstance
         }
@@ -149,11 +163,11 @@ func (obj *TableInsert) SetColumnsCount(value *int32) {
     obj.ColumnsCount = value
 }
 
-func (obj *TableInsert) GetPosition() INewDocumentPosition {
+func (obj *TableInsert) GetPosition() IPosition {
     return obj.Position
 }
 
-func (obj *TableInsert) SetPosition(value INewDocumentPosition) {
+func (obj *TableInsert) SetPosition(value IPosition) {
     obj.Position = value
 }
 

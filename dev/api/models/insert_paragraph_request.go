@@ -1,7 +1,7 @@
 /*
  * --------------------------------------------------------------------------------
  * <copyright company="Aspose" file="insert_paragraph_request.go">
- *   Copyright (c) 2023 Aspose.Words for Cloud
+ *   Copyright (c) 2024 Aspose.Words for Cloud
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -52,8 +52,7 @@ type InsertParagraphRequest struct {
         key: "encryptedPassword" value: (*string) Password of protected Word document. Use the parameter to pass an encrypted password for direct calls of API. See SDK code for encyption details.
         key: "destFileName" value: (*string) Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.
         key: "revisionAuthor" value: (*string) Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.
-        key: "revisionDateTime" value: (*string) The date and time to use for revisions.
-        key: "insertBeforeNode" value: (*string) The index of the node. A new paragraph will be inserted before the node with the specified index. */
+        key: "revisionDateTime" value: (*string) The date and time to use for revisions. */
     Optionals map[string]interface{}
 }
 
@@ -117,9 +116,6 @@ func (data *InsertParagraphRequest) CreateRequestData() (RequestData, error) {
     if err := typeCheckParameter(data.Optionals["revisionDateTime"], "string", "data.Optionals[revisionDateTime]"); err != nil {
         return result, err
     }
-    if err := typeCheckParameter(data.Optionals["insertBeforeNode"], "string", "data.Optionals[insertBeforeNode]"); err != nil {
-        return result, err
-    }
 
 
     if (data.Paragraph != nil) {
@@ -166,11 +162,6 @@ func (data *InsertParagraphRequest) CreateRequestData() (RequestData, error) {
 
     if localVarTempParam, localVarOk := data.Optionals["revisionDateTime"].(string); localVarOk {
         result.QueryParams.Add("RevisionDateTime", parameterToString(localVarTempParam, ""))
-    }
-
-
-    if localVarTempParam, localVarOk := data.Optionals["insertBeforeNode"].(string); localVarOk {
-        result.QueryParams.Add("InsertBeforeNode", parameterToString(localVarTempParam, ""))
     }
 
 

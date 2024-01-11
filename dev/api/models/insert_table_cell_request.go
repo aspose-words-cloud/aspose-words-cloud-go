@@ -1,7 +1,7 @@
 /*
  * --------------------------------------------------------------------------------
  * <copyright company="Aspose" file="insert_table_cell_request.go">
- *   Copyright (c) 2023 Aspose.Words for Cloud
+ *   Copyright (c) 2024 Aspose.Words for Cloud
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -41,11 +41,10 @@ import (
 type InsertTableCellRequest struct {
         // The filename of the input document.
         Name *string
-        // The path to the table row in the document tree.
-        TableRowPath *string
         // Table cell parameters.
         Cell ITableCellInsert
     /* optional (nil or map[string]interface{}) with one or more of key / value pairs:
+        key: "tableRowPath" value: (*string) The path to the table row in the document tree.
         key: "folder" value: (*string) Original document folder.
         key: "storage" value: (*string) Original document storage.
         key: "loadEncoding" value: (*string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
@@ -70,7 +69,7 @@ func (data *InsertTableCellRequest) CreateRequestData() (RequestData, error) {
     // create path and map variables
     result.Path = "/words/{name}/{tableRowPath}/cells"
     result.Path = strings.Replace(result.Path, "{"+"name"+"}", fmt.Sprintf("%v", *data.Name), -1)
-    result.Path = strings.Replace(result.Path, "{"+"tableRowPath"+"}", fmt.Sprintf("%v", *data.TableRowPath), -1)
+    result.Path = strings.Replace(result.Path, "{"+"tableRowPath"+"}", fmt.Sprintf("%v", data.Optionals["tableRowPath"]), -1)
 
     result.Path = strings.Replace(result.Path, "/<nil>", "", -1)
     result.Path = strings.Replace(result.Path, "//", "/", -1)
@@ -83,10 +82,6 @@ func (data *InsertTableCellRequest) CreateRequestData() (RequestData, error) {
         return result, errors.New("Parameter Name is required.")
     }
 
-    if (data.TableRowPath == nil) {
-        return result, errors.New("Parameter TableRowPath is required.")
-    }
-
     if (data.Cell != nil) {
         data.Cell.Initialize()
     } else {
@@ -94,6 +89,9 @@ func (data *InsertTableCellRequest) CreateRequestData() (RequestData, error) {
     }
 
 
+    if err := typeCheckParameter(data.Optionals["tableRowPath"], "string", "data.Optionals[tableRowPath]"); err != nil {
+        return result, err
+    }
     if err := typeCheckParameter(data.Optionals["folder"], "string", "data.Optionals[folder]"); err != nil {
         return result, err
     }

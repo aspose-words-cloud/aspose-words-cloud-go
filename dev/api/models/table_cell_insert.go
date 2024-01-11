@@ -1,7 +1,7 @@
 /*
  * --------------------------------------------------------------------------------
  * <copyright company="Aspose" file="table_cell_insert.go">
- *   Copyright (c) 2023 Aspose.Words for Cloud
+ *   Copyright (c) 2024 Aspose.Words for Cloud
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -39,11 +39,16 @@ type ITableCellInsert interface {
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
     Validate() error
+    GetExistingCellPosition() IPosition
+    SetExistingCellPosition(value IPosition)
     GetInsertAfter() *int32
     SetInsertAfter(value *int32)
 }
 
 type TableCellInsert struct {
+    // DTO container with a table cell.
+    ExistingCellPosition IPosition `json:"ExistingCellPosition,omitempty"`
+
     // DTO container with a table cell.
     InsertAfter *int32 `json:"InsertAfter,omitempty"`
 }
@@ -54,9 +59,44 @@ func (TableCellInsert) IsTableCellInsert() bool {
 
 
 func (obj *TableCellInsert) Initialize() {
+    if (obj.ExistingCellPosition != nil) {
+        obj.ExistingCellPosition.Initialize()
+    }
+
+
 }
 
 func (obj *TableCellInsert) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["ExistingCellPosition"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IPosition = nil
+            if jsonType, found := parsedValue["$type"]; found {
+                jsonTypeStr := jsonType.(string)
+                if jsonTypeStr == "PositionAfterNode, _" { modelInstance = new(PositionAfterNode) }
+                if jsonTypeStr == "PositionBeforeNode, _" { modelInstance = new(PositionBeforeNode) }
+                if jsonTypeStr == "PositionInsideNode, _" { modelInstance = new(PositionInsideNode) }
+            }
+
+            modelInstance.Deserialize(parsedValue)
+            obj.ExistingCellPosition = modelInstance
+        }
+
+    } else if jsonValue, exists := json["existingCellPosition"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IPosition = nil
+            if jsonType, found := parsedValue["$type"]; found {
+                jsonTypeStr := jsonType.(string)
+                if jsonTypeStr == "PositionAfterNode, _" { modelInstance = new(PositionAfterNode) }
+                if jsonTypeStr == "PositionBeforeNode, _" { modelInstance = new(PositionBeforeNode) }
+                if jsonTypeStr == "PositionInsideNode, _" { modelInstance = new(PositionInsideNode) }
+            }
+
+            modelInstance.Deserialize(parsedValue)
+            obj.ExistingCellPosition = modelInstance
+        }
+
+    }
+
     if jsonValue, exists := json["InsertAfter"]; exists {
         if parsedValue, valid := jsonValue.(float64); valid {
             obj.InsertAfter = new(int32)
@@ -81,7 +121,21 @@ func (obj *TableCellInsert) Validate() error {
         return errors.New("Invalid object.")
     }
 
+    if obj.ExistingCellPosition != nil {
+        if err := obj.ExistingCellPosition.Validate(); err != nil {
+            return err
+        }
+    }
+
     return nil;
+}
+
+func (obj *TableCellInsert) GetExistingCellPosition() IPosition {
+    return obj.ExistingCellPosition
+}
+
+func (obj *TableCellInsert) SetExistingCellPosition(value IPosition) {
+    obj.ExistingCellPosition = value
 }
 
 func (obj *TableCellInsert) GetInsertAfter() *int32 {
