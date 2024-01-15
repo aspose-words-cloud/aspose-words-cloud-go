@@ -1,7 +1,7 @@
 /*
  * --------------------------------------------------------------------------------
  * <copyright company="Aspose" file="run_test.go">
- *   Copyright (c) 2023 Aspose.Words for Cloud
+ *   Copyright (c) 2024 Aspose.Words for Cloud
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -113,12 +113,12 @@ func Test_Run_InsertRun(t *testing.T) {
     }
 
     options := map[string]interface{}{
+        "paragraphPath": "paragraphs/1",
         "folder": remoteDataFolder,
     }
 
     request := &models.InsertRunRequest{
         Name: ToStringPointer(remoteFileName),
-        ParagraphPath: ToStringPointer("paragraphs/1"),
         Run: &requestRun,
         Optionals: options,
     }
@@ -145,11 +145,11 @@ func Test_Run_InsertRunOnline(t *testing.T) {
     }
 
     options := map[string]interface{}{
+        "paragraphPath": "paragraphs/1",
     }
 
     request := &models.InsertRunOnlineRequest{
         Document: requestDocument,
-        ParagraphPath: ToStringPointer("paragraphs/1"),
         Run: &requestRun,
         Optionals: options,
     }

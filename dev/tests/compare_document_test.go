@@ -1,7 +1,7 @@
 /*
  * --------------------------------------------------------------------------------
  * <copyright company="Aspose" file="compare_document_test.go">
- *   Copyright (c) 2023 Aspose.Words for Cloud
+ *   Copyright (c) 2024 Aspose.Words for Cloud
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -148,4 +148,44 @@ func Test_CompareDocument_CompareTwoDocumentOnline(t *testing.T) {
         t.Error(err)
     }
 
+}
+
+// Test for document comparison with password protection.
+func Test_CompareDocument_CompareDocumentWithPassword(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteFolder := remoteBaseTestDataFolder + "/DocumentActions/CompareDocument"
+    localName := "DocWithPassword.docx"
+    remoteName1 := "TestCompareDocument1.docx"
+    remoteName2 := "TestCompareDocument2.docx"
+
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile("Common/" + localName), remoteFolder + "/" + remoteName1)
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile("Common/" + localName), remoteFolder + "/" + remoteName2)
+
+    requestCompareDataFileReference := models.CreateRemoteFileReferenceWithPassword(remoteFolder + "/" + remoteName2, "12345")
+    requestCompareData := models.CompareData{
+        Author: ToStringPointer("author"),
+        DateTime: ToTimePointer(CreateTime(2015, 10, 26, 0, 0, 0)),
+        FileReference: &requestCompareDataFileReference,
+    }
+
+    options := map[string]interface{}{
+        "folder": remoteFolder,
+        "password": "12345",
+        "destFileName": baseTestOutPath + "/TestCompareDocumentOut.docx",
+    }
+
+    request := &models.CompareDocumentRequest{
+        Name: ToStringPointer(remoteName1),
+        CompareData: &requestCompareData,
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.CompareDocument(ctx, request)
+    if err != nil {
+        t.Error(err)
+    }
+
+    assert.NotNil(t, actual.GetDocument(), "Validate CompareDocumentWithPassword response.");
+    assert.Equal(t, "TestCompareDocumentOut.docx", DereferenceValue(actual.GetDocument().GetFileName()), "Validate CompareDocumentWithPassword response.");
 }

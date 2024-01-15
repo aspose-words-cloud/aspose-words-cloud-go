@@ -1,7 +1,7 @@
 /*
  * --------------------------------------------------------------------------------
  * <copyright company="Aspose" file="bookmark_test.go">
- *   Copyright (c) 2023 Aspose.Words for Cloud
+ *   Copyright (c) 2024 Aspose.Words for Cloud
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -321,11 +321,11 @@ func Test_Bookmark_InsertBookmark(t *testing.T) {
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-    requestBookmarkStartRange := models.NewDocumentPosition{
+    requestBookmarkStartRange := models.PositionInsideNode{
         NodeId: ToStringPointer("0.0.0.0"),
         Offset: ToInt32Pointer(int32(0)),
     }
-    requestBookmarkEndRange := models.NewDocumentPosition{
+    requestBookmarkEndRange := models.PositionInsideNode{
         NodeId: ToStringPointer("0.0.0.0"),
         Offset: ToInt32Pointer(int32(0)),
     }
@@ -360,11 +360,11 @@ func Test_Bookmark_InsertBookmarkOnline(t *testing.T) {
     localFile := "Common/test_multi_pages.docx"
 
     requestDocument := OpenFile(t, localFile)
-    requestBookmarkStartRange := models.NewDocumentPosition{
+    requestBookmarkStartRange := models.PositionInsideNode{
         NodeId: ToStringPointer("0.0.0.0"),
         Offset: ToInt32Pointer(int32(0)),
     }
-    requestBookmarkEndRange := models.NewDocumentPosition{
+    requestBookmarkEndRange := models.PositionInsideNode{
         NodeId: ToStringPointer("0.0.0.0"),
         Offset: ToInt32Pointer(int32(0)),
     }

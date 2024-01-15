@@ -1,7 +1,7 @@
 /*
  * --------------------------------------------------------------------------------
- * <copyright company="Aspose" file="new_document_position.go">
- *   Copyright (c) 2023 Aspose.Words for Cloud
+ * <copyright company="Aspose" file="position_after_node.go">
+ *   Copyright (c) 2024 Aspose.Words for Cloud
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -31,37 +31,44 @@ import (
     "errors"
 )
 
-// DTO container with a new position in the document tree.
+// Describes the location of the node after specified node.
 
-type INewDocumentPosition interface {
-    IsNewDocumentPosition() bool
+type IPositionAfterNode interface {
+    IsPositionAfterNode() bool
     Initialize()
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
     Validate() error
     GetNodeId() *string
     SetNodeId(value *string)
-    GetOffset() *int32
-    SetOffset(value *int32)
+    GetType() *string
+    SetType(value *string)
 }
 
-type NewDocumentPosition struct {
-    // DTO container with a new position in the document tree.
+type PositionAfterNode struct {
+    // Describes the location of the node after specified node.
     NodeId *string `json:"NodeId,omitempty"`
 
-    // DTO container with a new position in the document tree.
-    Offset *int32 `json:"Offset,omitempty"`
+    // Describes the location of the node after specified node.
+    Type *string `json:"Type,omitempty"`
 }
 
-func (NewDocumentPosition) IsNewDocumentPosition() bool {
+func (PositionAfterNode) IsPositionAfterNode() bool {
     return true
 }
 
-
-func (obj *NewDocumentPosition) Initialize() {
+func (PositionAfterNode) IsPosition() bool {
+    return true
 }
 
-func (obj *NewDocumentPosition) Deserialize(json map[string]interface{}) {
+func (obj *PositionAfterNode) Initialize() {
+    var _Type = "After"
+    obj.Type = &_Type
+
+
+}
+
+func (obj *PositionAfterNode) Deserialize(json map[string]interface{}) {
     if jsonValue, exists := json["NodeId"]; exists {
         if parsedValue, valid := jsonValue.(string); valid {
             obj.NodeId = &parsedValue
@@ -73,50 +80,36 @@ func (obj *NewDocumentPosition) Deserialize(json map[string]interface{}) {
         }
 
     }
-
-    if jsonValue, exists := json["Offset"]; exists {
-        if parsedValue, valid := jsonValue.(float64); valid {
-            obj.Offset = new(int32)
-            *obj.Offset = int32(parsedValue)
-        }
-
-    } else if jsonValue, exists := json["offset"]; exists {
-        if parsedValue, valid := jsonValue.(float64); valid {
-            obj.Offset = new(int32)
-            *obj.Offset = int32(parsedValue)
-        }
-
-    }
 }
 
-func (obj *NewDocumentPosition) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
+func (obj *PositionAfterNode) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
     return resultFilesContent
 }
 
-func (obj *NewDocumentPosition) Validate() error {
+func (obj *PositionAfterNode) Validate() error {
     if obj == nil {
         return errors.New("Invalid object.")
     }
 
     if obj.NodeId == nil {
-        return errors.New("Property NodeId in NewDocumentPosition is required.")
+        return errors.New("Property NodeId in PositionAfterNode is required.")
     }
     return nil;
 }
 
-func (obj *NewDocumentPosition) GetNodeId() *string {
+func (obj *PositionAfterNode) GetNodeId() *string {
     return obj.NodeId
 }
 
-func (obj *NewDocumentPosition) SetNodeId(value *string) {
+func (obj *PositionAfterNode) SetNodeId(value *string) {
     obj.NodeId = value
 }
 
-func (obj *NewDocumentPosition) GetOffset() *int32 {
-    return obj.Offset
+func (obj *PositionAfterNode) GetType() *string {
+    return obj.Type
 }
 
-func (obj *NewDocumentPosition) SetOffset(value *int32) {
-    obj.Offset = value
+func (obj *PositionAfterNode) SetType(value *string) {
+    obj.Type = value
 }
 

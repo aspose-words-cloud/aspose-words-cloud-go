@@ -1,7 +1,7 @@
 /*
  * --------------------------------------------------------------------------------
  * <copyright company="Aspose" file="comment_test.go">
- *   Copyright (c) 2023 Aspose.Words for Cloud
+ *   Copyright (c) 2024 Aspose.Words for Cloud
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -152,11 +152,11 @@ func Test_Comment_InsertComment(t *testing.T) {
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-    requestCommentRangeStart := models.NewDocumentPosition{
+    requestCommentRangeStart := models.PositionInsideNode{
         NodeId: ToStringPointer("0.3.0.3"),
         Offset: ToInt32Pointer(int32(0)),
     }
-    requestCommentRangeEnd := models.NewDocumentPosition{
+    requestCommentRangeEnd := models.PositionInsideNode{
         NodeId: ToStringPointer("0.3.0.3"),
         Offset: ToInt32Pointer(int32(0)),
     }
@@ -197,11 +197,11 @@ func Test_Comment_InsertCommentOnline(t *testing.T) {
     localFile := "Common/test_multi_pages.docx"
 
     requestDocument := OpenFile(t, localFile)
-    requestCommentRangeStart := models.NewDocumentPosition{
+    requestCommentRangeStart := models.PositionInsideNode{
         NodeId: ToStringPointer("0.3.0.3"),
         Offset: ToInt32Pointer(int32(0)),
     }
-    requestCommentRangeEnd := models.NewDocumentPosition{
+    requestCommentRangeEnd := models.PositionInsideNode{
         NodeId: ToStringPointer("0.3.0.3"),
         Offset: ToInt32Pointer(int32(0)),
     }
@@ -239,11 +239,11 @@ func Test_Comment_UpdateComment(t *testing.T) {
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
 
-    requestCommentRangeStart := models.NewDocumentPosition{
+    requestCommentRangeStart := models.PositionInsideNode{
         NodeId: ToStringPointer("0.3.0"),
         Offset: ToInt32Pointer(int32(0)),
     }
-    requestCommentRangeEnd := models.NewDocumentPosition{
+    requestCommentRangeEnd := models.PositionInsideNode{
         NodeId: ToStringPointer("0.3.0"),
         Offset: ToInt32Pointer(int32(0)),
     }
@@ -285,11 +285,11 @@ func Test_Comment_UpdateCommentOnline(t *testing.T) {
     localFile := "Common/test_multi_pages.docx"
 
     requestDocument := OpenFile(t, localFile)
-    requestCommentRangeStart := models.NewDocumentPosition{
+    requestCommentRangeStart := models.PositionInsideNode{
         NodeId: ToStringPointer("0.3.0"),
         Offset: ToInt32Pointer(int32(0)),
     }
-    requestCommentRangeEnd := models.NewDocumentPosition{
+    requestCommentRangeEnd := models.PositionInsideNode{
         NodeId: ToStringPointer("0.3.0"),
         Offset: ToInt32Pointer(int32(0)),
     }
