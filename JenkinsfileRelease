@@ -6,7 +6,7 @@ parameters {
 		string(name: 'SDK_VERSION', defaultValue: 'v2310.0.0', description: 'version of sdk')
 }
 
-node('win2019') {
+node('win2019_1') {
 	try {	
 		gitlabCommitStatus("checkout") {
 			stage('checkout'){

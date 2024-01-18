@@ -15,7 +15,7 @@ def needToBuild = false
 def packageTesting = false
 def currentFolder = "dev"
 
-node('win2019') {
+node('win2019_1') {
 	try {
 		gitlabCommitStatus("checkout") {
 			stage('checkout'){
