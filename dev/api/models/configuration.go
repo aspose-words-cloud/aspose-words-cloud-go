@@ -99,7 +99,7 @@ func NewConfiguration(configFilePath string) (pConfig *Configuration, err error)
 	cfg := Configuration{
 		BaseUrl:       "https://api.aspose.cloud",
 		DebugMode:     false,
-		DefaultHeader: map[string]string{"x-aspose-client": "go sdk", "x-aspose-client-version": "24.1"},
+		DefaultHeader: map[string]string{"x-aspose-client": "go sdk", "x-aspose-client-version": "24.2"},
 	}
 	err = json.Unmarshal(data, &cfg)
 
