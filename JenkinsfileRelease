@@ -6,15 +6,12 @@ parameters {
 		string(name: 'SDK_VERSION', defaultValue: 'v2310.0.0', description: 'version of sdk')
 }
 
-node('win2019') {
+node('win2019_1') {
 	try {	
-		gitlabCommitStatus("checkout") {
 			stage('checkout'){
 				checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'LocalBranch', localBranch: "**"]], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '361885ba-9425-4230-950e-0af201d90547', url: 'https://git.auckland.dynabic.com/words-cloud/words-cloud-go.git']]])
 			}
-		}
 		
-        gitlabCommitStatus("Merge master to release") {
             stage('Merge master to release'){
                 checkout([$class: 'GitSCM', branches: [[name: '*/release']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'LocalBranch', localBranch: "**"]], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '361885ba-9425-4230-950e-0af201d90547', url: 'https://git.auckland.dynabic.com/words-cloud/words-cloud-go.git']]])
                 bat "git config user.email 'jenkins.aspose@gmail.com'"
@@ -28,9 +25,7 @@ node('win2019') {
                     bat "git push https://$gitUsername:$gitPass@git.auckland.dynabic.com/words-cloud/words-cloud-go.git release"
                 }
             }
-        }
         
-		gitlabCommitStatus("add version tag") {
 			stage('add version tag') {			
 				bat "git config user.email 'jenkins.aspose@gmail.com'"
 				bat "git config user.name 'jenkins'"
@@ -41,7 +36,6 @@ node('win2019') {
 					bat "git push https://%gitUsername%:%gitPass%@git.auckland.dynabic.com/words-cloud/words-cloud-go.git %SDK_VERSION%"
 				}
 			}
-		}
 	} finally {
 		deleteDir()
 	}
