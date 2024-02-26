@@ -17,7 +17,6 @@ def currentFolder = "dev"
 
 node('win2019_1') {
 	try {
-		gitlabCommitStatus("checkout") {
 			stage('checkout'){
 				checkout([$class: 'GitSCM', branches: [[name: params.branch]], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'LocalBranch', localBranch: "**"]], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '361885ba-9425-4230-950e-0af201d90547', url: 'https://git.auckland.dynabic.com/words-cloud/words-cloud-go.git']]])
 
@@ -28,19 +27,15 @@ node('win2019_1') {
                 packageTesting = params.packageTesting
                 bat 'git clean -fdx'
 			}
-		}
         
         if (needToBuild) {
             if (packageTesting) {
-                gitlabCommitStatus("health check tests") {
                     stage('health check tests'){
                         currentFolder = powershell(returnStdout: true, script:"echo (Get-ChildItem -Path v* -Directory | Sort-Object -Property Name | Select -Last 1).Name").trim()
                         bat "Scripts\\RunHealthCheckTestsInDocker.bat ${currentFolder}"
                     }
-                }
             }
             else {
-                gitlabCommitStatus("tests") {
                     stage('tests') {
                         withCredentials([usernamePassword(credentialsId: params.credentialsId, passwordVariable: 'ClientSecret', usernameVariable: 'ClientId')]) {
                             try {
@@ -51,7 +46,6 @@ node('win2019_1') {
                             }
                         }
                     }
-                }
             }
         }
 	} finally {
