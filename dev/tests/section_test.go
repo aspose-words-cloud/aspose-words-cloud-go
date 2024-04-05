@@ -197,6 +197,56 @@ func Test_Section_DeleteSectionOnline(t *testing.T) {
 
 }
 
+// Test for merge a section with the next one.
+func Test_Section_MergeWithNext(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Section"
+    remoteFileName := "TestMergeWithNext.docx"
+
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile("DocumentElements/Sections/Source.docx"), remoteDataFolder + "/" + remoteFileName)
+
+
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+
+    request := &models.MergeWithNextRequest{
+        Name: ToStringPointer(remoteFileName),
+        SectionIndex: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    _, err := client.WordsApi.MergeWithNext(ctx, request)
+
+    if err != nil {
+        t.Error(err)
+    }
+
+}
+
+// Test for merge a section with the next one online.
+func Test_Section_MergeWithNextOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    requestDocument := OpenFile(t, "DocumentElements/Sections/Source.docx")
+
+    options := map[string]interface{}{
+    }
+
+    request := &models.MergeWithNextOnlineRequest{
+        Document: requestDocument,
+        SectionIndex: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    _, _, err := client.WordsApi.MergeWithNextOnline(ctx, request)
+    if err != nil {
+        t.Error(err)
+    }
+
+}
+
 // Test for insertion a section.
 func Test_Section_InsertSection(t *testing.T) {
     config := ReadConfiguration(t)
