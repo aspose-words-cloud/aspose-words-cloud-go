@@ -55,6 +55,8 @@ type IDrawingObjectInsert interface {
     SetHeight(value *float64)
     GetWrapType() *string
     SetWrapType(value *string)
+    GetAspectRatioLocked() *bool
+    SetAspectRatioLocked(value *bool)
 }
 
 type DrawingObjectInsert struct {
@@ -81,6 +83,9 @@ type DrawingObjectInsert struct {
 
     // Drawing object element for insert.
     WrapType *string `json:"WrapType,omitempty"`
+
+    // Drawing object element for insert.
+    AspectRatioLocked *bool `json:"AspectRatioLocked,omitempty"`
 }
 
 func (DrawingObjectInsert) IsDrawingObjectInsert() bool {
@@ -210,6 +215,18 @@ func (obj *DrawingObjectInsert) Deserialize(json map[string]interface{}) {
         }
 
     }
+
+    if jsonValue, exists := json["AspectRatioLocked"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.AspectRatioLocked = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["aspectRatioLocked"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.AspectRatioLocked = &parsedValue
+        }
+
+    }
 }
 
 func (obj *DrawingObjectInsert) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
@@ -313,5 +330,13 @@ func (obj *DrawingObjectInsert) GetWrapType() *string {
 
 func (obj *DrawingObjectInsert) SetWrapType(value *string) {
     obj.WrapType = value
+}
+
+func (obj *DrawingObjectInsert) GetAspectRatioLocked() *bool {
+    return obj.AspectRatioLocked
+}
+
+func (obj *DrawingObjectInsert) SetAspectRatioLocked(value *bool) {
+    obj.AspectRatioLocked = value
 }
 
