@@ -466,13 +466,13 @@ func Test_DrawingObjects_InsertDrawingObject(t *testing.T) {
 
     options := map[string]interface{}{
         "nodePath": "",
+        "imageFile": requestImageFile,
         "folder": remoteDataFolder,
     }
 
     request := &models.InsertDrawingObjectRequest{
         Name: ToStringPointer(remoteFileName),
         DrawingObject: &requestDrawingObject,
-        ImageFile: requestImageFile,
         Optionals: options,
     }
 
@@ -503,12 +503,12 @@ func Test_DrawingObjects_InsertDrawingObjectOnline(t *testing.T) {
 
     options := map[string]interface{}{
         "nodePath": "",
+        "imageFile": requestImageFile,
     }
 
     request := &models.InsertDrawingObjectOnlineRequest{
         Document: requestDocument,
         DrawingObject: &requestDrawingObject,
-        ImageFile: requestImageFile,
         Optionals: options,
     }
 
@@ -541,13 +541,52 @@ func Test_DrawingObjects_InsertDrawingObjectWithoutNodePath(t *testing.T) {
     requestImageFile := OpenFile(t, "Common/aspose-cloud.png")
 
     options := map[string]interface{}{
+        "imageFile": requestImageFile,
         "folder": remoteDataFolder,
     }
 
     request := &models.InsertDrawingObjectRequest{
         Name: ToStringPointer(remoteFileName),
         DrawingObject: &requestDrawingObject,
-        ImageFile: requestImageFile,
+        Optionals: options,
+    }
+
+    _, _, err := client.WordsApi.InsertDrawingObject(ctx, request)
+    if err != nil {
+        t.Error(err)
+    }
+
+}
+
+// Test for adding a link to a drawing object.
+func Test_DrawingObjects_InsertDrawingObjectLink(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/DrawingObjectss"
+    localFile := "Common/test_multi_pages.docx"
+    remoteFileName := "TestInsetDrawingObject.docx"
+
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
+
+    requestDrawingObject := models.DrawingObjectInsert{
+        Height: ToFloat64Pointer(0),
+        Left: ToFloat64Pointer(0),
+        Top: ToFloat64Pointer(0),
+        Width: ToFloat64Pointer(0),
+        RelativeHorizontalPosition: ToStringPointer("Margin"),
+        RelativeVerticalPosition: ToStringPointer("Margin"),
+        WrapType: ToStringPointer("Inline"),
+    }
+
+    options := map[string]interface{}{
+        "nodePath": "",
+        "url": "https://products.aspose.com/words/static/img/aspose_words_cloud-for-net.png",
+        "folder": remoteDataFolder,
+    }
+
+    request := &models.InsertDrawingObjectRequest{
+        Name: ToStringPointer(remoteFileName),
+        DrawingObject: &requestDrawingObject,
         Optionals: options,
     }
 
@@ -659,13 +698,13 @@ func Test_DrawingObjects_UpdateDrawingObject(t *testing.T) {
 
     options := map[string]interface{}{
         "nodePath": "",
+        "imageFile": requestImageFile,
         "folder": remoteDataFolder,
     }
 
     request := &models.UpdateDrawingObjectRequest{
         Name: ToStringPointer(remoteFileName),
         DrawingObject: &requestDrawingObject,
-        ImageFile: requestImageFile,
         Index: ToInt32Pointer(int32(0)),
         Optionals: options,
     }
@@ -691,12 +730,12 @@ func Test_DrawingObjects_UpdateDrawingObjectOnline(t *testing.T) {
 
     options := map[string]interface{}{
         "nodePath": "",
+        "imageFile": requestImageFile,
     }
 
     request := &models.UpdateDrawingObjectOnlineRequest{
         Document: requestDocument,
         DrawingObject: &requestDrawingObject,
-        ImageFile: requestImageFile,
         Index: ToInt32Pointer(int32(0)),
         Optionals: options,
     }
@@ -724,13 +763,47 @@ func Test_DrawingObjects_UpdateDrawingObjectWithoutNodePath(t *testing.T) {
     requestImageFile := OpenFile(t, "Common/aspose-cloud.png")
 
     options := map[string]interface{}{
+        "imageFile": requestImageFile,
         "folder": remoteDataFolder,
     }
 
     request := &models.UpdateDrawingObjectRequest{
         Name: ToStringPointer(remoteFileName),
         DrawingObject: &requestDrawingObject,
-        ImageFile: requestImageFile,
+        Index: ToInt32Pointer(int32(0)),
+        Optionals: options,
+    }
+
+    _, _, err := client.WordsApi.UpdateDrawingObject(ctx, request)
+    if err != nil {
+        t.Error(err)
+    }
+
+}
+
+// Test for updating drawing object to a link to it.
+func Test_DrawingObjects_UpdateDrawingObjectLink(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/DrawingObjectss"
+    localFile := "Common/test_multi_pages.docx"
+    remoteFileName := "TestUpdateDrawingObjectLink.docx"
+
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
+
+    requestDrawingObject := models.DrawingObjectUpdate{
+        Left: ToFloat64Pointer(0),
+    }
+
+    options := map[string]interface{}{
+        "nodePath": "",
+        "url": "https://products.aspose.com/words/static/img/aspose_words_cloud-for-net.png",
+        "folder": remoteDataFolder,
+    }
+
+    request := &models.UpdateDrawingObjectRequest{
+        Name: ToStringPointer(remoteFileName),
+        DrawingObject: &requestDrawingObject,
         Index: ToInt32Pointer(int32(0)),
         Optionals: options,
     }

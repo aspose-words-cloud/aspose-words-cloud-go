@@ -44,10 +44,10 @@ type InsertDrawingObjectOnlineRequest struct {
         Document io.ReadCloser
         // Drawing object parameters.
         DrawingObject IDrawingObjectInsert
-        // File with image.
-        ImageFile io.ReadCloser
     /* optional (nil or map[string]interface{}) with one or more of key / value pairs:
         key: "nodePath" value: (*string) The path to the node in the document tree.
+        key: "imageFile" value: (io.ReadCloser) File with image.
+        key: "url" value: (*string) The link to the image.
         key: "loadEncoding" value: (*string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
         key: "password" value: (*string) Password of protected Word document. Use the parameter to pass a password via SDK. SDK encrypts it automatically. We don't recommend to use the parameter to pass a plain password for direct call of API.
         key: "encryptedPassword" value: (*string) Password of protected Word document. Use the parameter to pass an encrypted password for direct calls of API. See SDK code for encyption details.
@@ -88,12 +88,11 @@ func (data *InsertDrawingObjectOnlineRequest) CreateRequestData() (RequestData, 
         return result, errors.New("Parameter DrawingObject is required.")
     }
 
-    if (data.ImageFile == nil) {
-        return result, errors.New("Parameter ImageFile is required.")
-    }
-
 
     if err := typeCheckParameter(data.Optionals["nodePath"], "string", "data.Optionals[nodePath]"); err != nil {
+        return result, err
+    }
+    if err := typeCheckParameter(data.Optionals["url"], "string", "data.Optionals[url]"); err != nil {
         return result, err
     }
     if err := typeCheckParameter(data.Optionals["loadEncoding"], "string", "data.Optionals[loadEncoding]"); err != nil {
@@ -120,6 +119,11 @@ func (data *InsertDrawingObjectOnlineRequest) CreateRequestData() (RequestData, 
         if err := data.DrawingObject.Validate(); err != nil {
             return result, err
         }
+    }
+
+
+    if localVarTempParam, localVarOk := data.Optionals["url"].(string); localVarOk {
+        result.QueryParams.Add("Url", parameterToString(localVarTempParam, ""))
     }
 
 
@@ -163,7 +167,11 @@ func (data *InsertDrawingObjectOnlineRequest) CreateRequestData() (RequestData, 
 
     result.FormParams = append(result.FormParams, NewJsonFormParamContainer("DrawingObject", parameterToString(data.DrawingObject, "")))
 
-    _imageFile := data.ImageFile
+    var imageFile (io.ReadCloser)
+    if localVarTempParam, localVarOk := data.Optionals["imageFile"].(io.ReadCloser); localVarOk {
+        imageFile = localVarTempParam
+    }
+    _imageFile := imageFile
     if _imageFile != nil {
         fbs, _ := ioutil.ReadAll(_imageFile)
         _imageFile.Close()
