@@ -43,10 +43,10 @@ type InsertDrawingObjectRequest struct {
         Name *string
         // Drawing object parameters.
         DrawingObject IDrawingObjectInsert
+        // File with image.
+        ImageFile io.ReadCloser
     /* optional (nil or map[string]interface{}) with one or more of key / value pairs:
         key: "nodePath" value: (*string) The path to the node in the document tree.
-        key: "imageFile" value: (io.ReadCloser) File with image.
-        key: "url" value: (*string) The link to the image.
         key: "folder" value: (*string) Original document folder.
         key: "storage" value: (*string) Original document storage.
         key: "loadEncoding" value: (*string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
@@ -90,11 +90,12 @@ func (data *InsertDrawingObjectRequest) CreateRequestData() (RequestData, error)
         return result, errors.New("Parameter DrawingObject is required.")
     }
 
+    if (data.ImageFile == nil) {
+        return result, errors.New("Parameter ImageFile is required.")
+    }
+
 
     if err := typeCheckParameter(data.Optionals["nodePath"], "string", "data.Optionals[nodePath]"); err != nil {
-        return result, err
-    }
-    if err := typeCheckParameter(data.Optionals["url"], "string", "data.Optionals[url]"); err != nil {
         return result, err
     }
     if err := typeCheckParameter(data.Optionals["folder"], "string", "data.Optionals[folder]"); err != nil {
@@ -127,11 +128,6 @@ func (data *InsertDrawingObjectRequest) CreateRequestData() (RequestData, error)
         if err := data.DrawingObject.Validate(); err != nil {
             return result, err
         }
-    }
-
-
-    if localVarTempParam, localVarOk := data.Optionals["url"].(string); localVarOk {
-        result.QueryParams.Add("Url", parameterToString(localVarTempParam, ""))
     }
 
 
@@ -178,11 +174,7 @@ func (data *InsertDrawingObjectRequest) CreateRequestData() (RequestData, error)
 
     result.FormParams = append(result.FormParams, NewJsonFormParamContainer("DrawingObject", parameterToString(data.DrawingObject, "")))
 
-    var imageFile (io.ReadCloser)
-    if localVarTempParam, localVarOk := data.Optionals["imageFile"].(io.ReadCloser); localVarOk {
-        imageFile = localVarTempParam
-    }
-    _imageFile := imageFile
+    _imageFile := data.ImageFile
     if _imageFile != nil {
         fbs, _ := ioutil.ReadAll(_imageFile)
         _imageFile.Close()
