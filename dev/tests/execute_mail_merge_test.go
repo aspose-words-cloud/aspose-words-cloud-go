@@ -46,6 +46,7 @@ func Test_ExecuteMailMerge_ExecuteMailMergeOnline(t *testing.T) {
     requestData := OpenFile(t, mailMergeFolder + "/" + localDataFile)
 
     options := map[string]interface{}{
+        "withRegions": true,
     }
 
     request := &models.ExecuteMailMergeOnlineRequest{
@@ -77,7 +78,7 @@ func Test_ExecuteMailMerge_ExecuteMailMerge(t *testing.T) {
     options := map[string]interface{}{
         "data": localDataFile,
         "folder": remoteDataFolder,
-        "withRegions": false,
+        "withRegions": true,
         "destFileName": baseTestOutPath + "/" + remoteFileName,
     }
 
