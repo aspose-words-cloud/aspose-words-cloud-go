@@ -297,7 +297,7 @@ func Test_Range_TranslateNodeId(t *testing.T) {
         t.Error(err)
     }
 
-    assert.Equal(t, "sections/0/body/paragraphs/0", DereferenceValue(actual.GetText()), "Validate TranslateNodeId response.");
+    assert.Equal(t, "sections/0/body/paragraphs/0", DereferenceValue(actual.GetPath()), "Validate TranslateNodeId response.");
 }
 
 // Test to translate node id to node path online.
