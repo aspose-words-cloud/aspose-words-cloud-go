@@ -284,6 +284,7 @@ func Test_Range_TranslateNodeId(t *testing.T) {
 
 
     options := map[string]interface{}{
+        "folder": remoteDataFolder,
     }
 
     request := &models.TranslateNodeIdRequest{
