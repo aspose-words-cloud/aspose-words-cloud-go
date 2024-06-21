@@ -271,3 +271,56 @@ func Test_Range_ReplaceWithTextOnline(t *testing.T) {
     }
 
 }
+
+// Test to translate node id to node path.
+func Test_Range_TranslateNodeId(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentElements/Range"
+    localFile := "DocumentElements/Range/RangeGet.doc"
+    remoteFileName := "TestTranslateNodeId.docx"
+
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
+
+
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+
+    request := &models.TranslateNodeIdRequest{
+        Name: ToStringPointer(remoteFileName),
+        NodeId: ToStringPointer("id0.0.0"),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.TranslateNodeId(ctx, request)
+    if err != nil {
+        t.Error(err)
+    }
+
+    assert.Equal(t, "sections/0/body/paragraphs/0", DereferenceValue(actual.GetPath()), "Validate TranslateNodeId response.");
+}
+
+// Test to translate node id to node path online.
+func Test_Range_TranslateNodeIdOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "DocumentElements/Range/RangeGet.doc"
+
+    requestDocument := OpenFile(t, localFile)
+
+    options := map[string]interface{}{
+    }
+
+    request := &models.TranslateNodeIdOnlineRequest{
+        Document: requestDocument,
+        NodeId: ToStringPointer("id0.0.0"),
+        Optionals: options,
+    }
+
+    _, _, err := client.WordsApi.TranslateNodeIdOnline(ctx, request)
+    if err != nil {
+        t.Error(err)
+    }
+
+}

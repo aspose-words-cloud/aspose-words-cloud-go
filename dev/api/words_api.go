@@ -14405,6 +14405,108 @@ func (a *WordsApiService) SplitDocumentOnline(ctx context.Context, data *models.
     return result.(models.SplitDocumentOnlineResponse), response, err
 }
 
+/* WordsApiService Translate a node id to a node path.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return models.TranslateNodeIdResponse*/
+func (a *WordsApiService) TranslateNodeId(ctx context.Context, data *models.TranslateNodeIdRequest) (models.TranslateNodeIdResponse, *http.Response, error) {
+    var (
+        successPayload models.TranslateNodeIdResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+
+    defer response.Body.Close()
+
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
+            return successPayload, nil, err
+        }
+
+        apiError.Deserialize(jsonMap)
+        return successPayload, response, &apiError
+    }
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
+        return successPayload, response, err
+    }
+
+    successPayload.Deserialize(jsonMap)
+    return successPayload, response, err
+}
+
+/* WordsApiService Translate a node id to a node path.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return models.TranslateNodeIdResponse*/
+func (a *WordsApiService) TranslateNodeIdOnline(ctx context.Context, data *models.TranslateNodeIdOnlineRequest) (models.TranslateNodeIdResponse, *http.Response, error) {
+    var (
+        successPayload models.TranslateNodeIdResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+
+    defer response.Body.Close()
+
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
+            return successPayload, nil, err
+        }
+
+        apiError.Deserialize(jsonMap)
+        return successPayload, response, &apiError
+    }
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
+        return successPayload, response, err
+    }
+
+    successPayload.Deserialize(jsonMap)
+    return successPayload, response, err
+}
+
 /* WordsApiService Removes protection from the document.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  * @data operation request data.
