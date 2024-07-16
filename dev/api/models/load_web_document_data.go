@@ -72,6 +72,7 @@ func (obj *LoadWebDocumentData) Deserialize(json map[string]interface{}) {
             var modelInstance ISaveOptionsData = nil
             if jsonType, found := parsedValue["$type"]; found {
                 jsonTypeStr := jsonType.(string)
+                if jsonTypeStr == "Azw3SaveOptionsData, _" { modelInstance = new(Azw3SaveOptionsData) }
                 if jsonTypeStr == "BmpSaveOptionsData, _" { modelInstance = new(BmpSaveOptionsData) }
                 if jsonTypeStr == "DocmSaveOptionsData, _" { modelInstance = new(DocmSaveOptionsData) }
                 if jsonTypeStr == "DocSaveOptionsData, _" { modelInstance = new(DocSaveOptionsData) }
@@ -123,6 +124,7 @@ func (obj *LoadWebDocumentData) Deserialize(json map[string]interface{}) {
             var modelInstance ISaveOptionsData = nil
             if jsonType, found := parsedValue["$type"]; found {
                 jsonTypeStr := jsonType.(string)
+                if jsonTypeStr == "Azw3SaveOptionsData, _" { modelInstance = new(Azw3SaveOptionsData) }
                 if jsonTypeStr == "BmpSaveOptionsData, _" { modelInstance = new(BmpSaveOptionsData) }
                 if jsonTypeStr == "DocmSaveOptionsData, _" { modelInstance = new(DocmSaveOptionsData) }
                 if jsonTypeStr == "DocSaveOptionsData, _" { modelInstance = new(DocSaveOptionsData) }
