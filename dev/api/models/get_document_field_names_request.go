@@ -47,6 +47,7 @@ type GetDocumentFieldNamesRequest struct {
         key: "loadEncoding" value: (*string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
         key: "password" value: (*string) Password of protected Word document. Use the parameter to pass a password via SDK. SDK encrypts it automatically. We don't recommend to use the parameter to pass a plain password for direct call of API.
         key: "encryptedPassword" value: (*string) Password of protected Word document. Use the parameter to pass an encrypted password for direct calls of API. See SDK code for encyption details.
+        key: "openTypeSupport" value: (*bool) The value indicates whether OpenType support is on.
         key: "useNonMergeFields" value: (*bool) The flag indicating whether to use non merge fields. If true, result includes "mustache" field names. */
     Optionals map[string]interface{}
 }
@@ -92,6 +93,9 @@ func (data *GetDocumentFieldNamesRequest) CreateRequestData() (RequestData, erro
     if err := typeCheckParameter(data.Optionals["encryptedPassword"], "string", "data.Optionals[encryptedPassword]"); err != nil {
         return result, err
     }
+    if err := typeCheckParameter(data.Optionals["openTypeSupport"], "bool", "data.Optionals[openTypeSupport]"); err != nil {
+        return result, err
+    }
     if err := typeCheckParameter(data.Optionals["useNonMergeFields"], "bool", "data.Optionals[useNonMergeFields]"); err != nil {
         return result, err
     }
@@ -120,6 +124,11 @@ func (data *GetDocumentFieldNamesRequest) CreateRequestData() (RequestData, erro
 
     if localVarTempParam, localVarOk := data.Optionals["encryptedPassword"].(string); localVarOk {
         result.QueryParams.Add("EncryptedPassword", parameterToString(localVarTempParam, ""))
+    }
+
+
+    if localVarTempParam, localVarOk := data.Optionals["openTypeSupport"].(bool); localVarOk {
+        result.QueryParams.Add("OpenTypeSupport", parameterToString(localVarTempParam, ""))
     }
 
 

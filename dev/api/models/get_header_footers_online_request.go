@@ -47,6 +47,7 @@ type GetHeaderFootersOnlineRequest struct {
         key: "loadEncoding" value: (*string) Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
         key: "password" value: (*string) Password of protected Word document. Use the parameter to pass a password via SDK. SDK encrypts it automatically. We don't recommend to use the parameter to pass a plain password for direct call of API.
         key: "encryptedPassword" value: (*string) Password of protected Word document. Use the parameter to pass an encrypted password for direct calls of API. See SDK code for encyption details.
+        key: "openTypeSupport" value: (*bool) The value indicates whether OpenType support is on.
         key: "filterByType" value: (*string) The list of HeaderFooter types. */
     Optionals map[string]interface{}
 }
@@ -90,6 +91,9 @@ func (data *GetHeaderFootersOnlineRequest) CreateRequestData() (RequestData, err
     if err := typeCheckParameter(data.Optionals["encryptedPassword"], "string", "data.Optionals[encryptedPassword]"); err != nil {
         return result, err
     }
+    if err := typeCheckParameter(data.Optionals["openTypeSupport"], "bool", "data.Optionals[openTypeSupport]"); err != nil {
+        return result, err
+    }
     if err := typeCheckParameter(data.Optionals["filterByType"], "string", "data.Optionals[filterByType]"); err != nil {
         return result, err
     }
@@ -108,6 +112,11 @@ func (data *GetHeaderFootersOnlineRequest) CreateRequestData() (RequestData, err
 
     if localVarTempParam, localVarOk := data.Optionals["encryptedPassword"].(string); localVarOk {
         result.QueryParams.Add("EncryptedPassword", parameterToString(localVarTempParam, ""))
+    }
+
+
+    if localVarTempParam, localVarOk := data.Optionals["openTypeSupport"].(bool); localVarOk {
+        result.QueryParams.Add("OpenTypeSupport", parameterToString(localVarTempParam, ""))
     }
 
 
