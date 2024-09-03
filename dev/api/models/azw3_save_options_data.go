@@ -129,6 +129,8 @@ type IAzw3SaveOptionsData interface {
     SetOfficeMathOutputMode(value *string)
     GetPrettyFormat() *bool
     SetPrettyFormat(value *bool)
+    GetReplaceBackslashWithYenSign() *bool
+    SetReplaceBackslashWithYenSign(value *bool)
     GetResolveFontNames() *bool
     SetResolveFontNames(value *bool)
     GetResourceFolder() *string
@@ -280,6 +282,9 @@ type Azw3SaveOptionsData struct {
 
     // Container class for azw3 save options.
     PrettyFormat *bool `json:"PrettyFormat,omitempty"`
+
+    // Container class for azw3 save options.
+    ReplaceBackslashWithYenSign *bool `json:"ReplaceBackslashWithYenSign,omitempty"`
 
     // Container class for azw3 save options.
     ResolveFontNames *bool `json:"ResolveFontNames,omitempty"`
@@ -878,6 +883,18 @@ func (obj *Azw3SaveOptionsData) Deserialize(json map[string]interface{}) {
 
     }
 
+    if jsonValue, exists := json["ReplaceBackslashWithYenSign"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.ReplaceBackslashWithYenSign = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["replaceBackslashWithYenSign"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.ReplaceBackslashWithYenSign = &parsedValue
+        }
+
+    }
+
     if jsonValue, exists := json["ResolveFontNames"]; exists {
         if parsedValue, valid := jsonValue.(bool); valid {
             obj.ResolveFontNames = &parsedValue
@@ -1332,6 +1349,14 @@ func (obj *Azw3SaveOptionsData) GetPrettyFormat() *bool {
 
 func (obj *Azw3SaveOptionsData) SetPrettyFormat(value *bool) {
     obj.PrettyFormat = value
+}
+
+func (obj *Azw3SaveOptionsData) GetReplaceBackslashWithYenSign() *bool {
+    return obj.ReplaceBackslashWithYenSign
+}
+
+func (obj *Azw3SaveOptionsData) SetReplaceBackslashWithYenSign(value *bool) {
+    obj.ReplaceBackslashWithYenSign = value
 }
 
 func (obj *Azw3SaveOptionsData) GetResolveFontNames() *bool {

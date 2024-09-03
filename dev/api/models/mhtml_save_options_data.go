@@ -129,6 +129,8 @@ type IMhtmlSaveOptionsData interface {
     SetOfficeMathOutputMode(value *string)
     GetPrettyFormat() *bool
     SetPrettyFormat(value *bool)
+    GetReplaceBackslashWithYenSign() *bool
+    SetReplaceBackslashWithYenSign(value *bool)
     GetResolveFontNames() *bool
     SetResolveFontNames(value *bool)
     GetResourceFolder() *string
@@ -280,6 +282,9 @@ type MhtmlSaveOptionsData struct {
 
     // Container class for mhtml save options.
     PrettyFormat *bool `json:"PrettyFormat,omitempty"`
+
+    // Container class for mhtml save options.
+    ReplaceBackslashWithYenSign *bool `json:"ReplaceBackslashWithYenSign,omitempty"`
 
     // Container class for mhtml save options.
     ResolveFontNames *bool `json:"ResolveFontNames,omitempty"`
@@ -878,6 +883,18 @@ func (obj *MhtmlSaveOptionsData) Deserialize(json map[string]interface{}) {
 
     }
 
+    if jsonValue, exists := json["ReplaceBackslashWithYenSign"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.ReplaceBackslashWithYenSign = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["replaceBackslashWithYenSign"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.ReplaceBackslashWithYenSign = &parsedValue
+        }
+
+    }
+
     if jsonValue, exists := json["ResolveFontNames"]; exists {
         if parsedValue, valid := jsonValue.(bool); valid {
             obj.ResolveFontNames = &parsedValue
@@ -1330,6 +1347,14 @@ func (obj *MhtmlSaveOptionsData) GetPrettyFormat() *bool {
 
 func (obj *MhtmlSaveOptionsData) SetPrettyFormat(value *bool) {
     obj.PrettyFormat = value
+}
+
+func (obj *MhtmlSaveOptionsData) GetReplaceBackslashWithYenSign() *bool {
+    return obj.ReplaceBackslashWithYenSign
+}
+
+func (obj *MhtmlSaveOptionsData) SetReplaceBackslashWithYenSign(value *bool) {
+    obj.ReplaceBackslashWithYenSign = value
 }
 
 func (obj *MhtmlSaveOptionsData) GetResolveFontNames() *bool {

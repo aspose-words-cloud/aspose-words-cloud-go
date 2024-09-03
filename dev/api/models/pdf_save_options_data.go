@@ -127,6 +127,8 @@ type IPdfSaveOptionsData interface {
     SetUseBookFoldPrintingSettings(value *bool)
     GetUseCoreFonts() *bool
     SetUseCoreFonts(value *bool)
+    GetUseSdtTagAsFormFieldName() *bool
+    SetUseSdtTagAsFormFieldName(value *bool)
     GetZoomBehavior() *string
     SetZoomBehavior(value *string)
     GetZoomFactor() *int32
@@ -267,6 +269,9 @@ type PdfSaveOptionsData struct {
 
     // Container class for pdf save options.
     UseCoreFonts *bool `json:"UseCoreFonts,omitempty"`
+
+    // Container class for pdf save options.
+    UseSdtTagAsFormFieldName *bool `json:"UseSdtTagAsFormFieldName,omitempty"`
 
     // Container class for pdf save options.
     ZoomBehavior *string `json:"ZoomBehavior,omitempty"`
@@ -881,6 +886,18 @@ func (obj *PdfSaveOptionsData) Deserialize(json map[string]interface{}) {
 
     }
 
+    if jsonValue, exists := json["UseSdtTagAsFormFieldName"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.UseSdtTagAsFormFieldName = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["useSdtTagAsFormFieldName"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.UseSdtTagAsFormFieldName = &parsedValue
+        }
+
+    }
+
     if jsonValue, exists := json["ZoomBehavior"]; exists {
         if parsedValue, valid := jsonValue.(string); valid {
             obj.ZoomBehavior = &parsedValue
@@ -1304,6 +1321,14 @@ func (obj *PdfSaveOptionsData) GetUseCoreFonts() *bool {
 
 func (obj *PdfSaveOptionsData) SetUseCoreFonts(value *bool) {
     obj.UseCoreFonts = value
+}
+
+func (obj *PdfSaveOptionsData) GetUseSdtTagAsFormFieldName() *bool {
+    return obj.UseSdtTagAsFormFieldName
+}
+
+func (obj *PdfSaveOptionsData) SetUseSdtTagAsFormFieldName(value *bool) {
+    obj.UseSdtTagAsFormFieldName = value
 }
 
 func (obj *PdfSaveOptionsData) GetZoomBehavior() *string {

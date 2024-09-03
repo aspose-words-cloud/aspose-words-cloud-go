@@ -67,6 +67,8 @@ type IXamlFlowSaveOptionsData interface {
     SetImagesFolder(value *string)
     GetImagesFolderAlias() *string
     SetImagesFolderAlias(value *string)
+    GetReplaceBackslashWithYenSign() *bool
+    SetReplaceBackslashWithYenSign(value *bool)
     GetSaveFormat() *string
     SetSaveFormat(value *string)
 }
@@ -113,6 +115,9 @@ type XamlFlowSaveOptionsData struct {
 
     // Container class for xaml flow save options.
     ImagesFolderAlias *string `json:"ImagesFolderAlias,omitempty"`
+
+    // Container class for xaml flow save options.
+    ReplaceBackslashWithYenSign *bool `json:"ReplaceBackslashWithYenSign,omitempty"`
 
     // Container class for xaml flow save options.
     SaveFormat *string `json:"SaveFormat,omitempty"`
@@ -310,6 +315,18 @@ func (obj *XamlFlowSaveOptionsData) Deserialize(json map[string]interface{}) {
         }
 
     }
+
+    if jsonValue, exists := json["ReplaceBackslashWithYenSign"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.ReplaceBackslashWithYenSign = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["replaceBackslashWithYenSign"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.ReplaceBackslashWithYenSign = &parsedValue
+        }
+
+    }
 }
 
 func (obj *XamlFlowSaveOptionsData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
@@ -443,6 +460,14 @@ func (obj *XamlFlowSaveOptionsData) GetImagesFolderAlias() *string {
 
 func (obj *XamlFlowSaveOptionsData) SetImagesFolderAlias(value *string) {
     obj.ImagesFolderAlias = value
+}
+
+func (obj *XamlFlowSaveOptionsData) GetReplaceBackslashWithYenSign() *bool {
+    return obj.ReplaceBackslashWithYenSign
+}
+
+func (obj *XamlFlowSaveOptionsData) SetReplaceBackslashWithYenSign(value *bool) {
+    obj.ReplaceBackslashWithYenSign = value
 }
 
 func (obj *XamlFlowSaveOptionsData) GetSaveFormat() *string {

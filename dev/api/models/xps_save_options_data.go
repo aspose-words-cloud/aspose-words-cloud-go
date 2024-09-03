@@ -79,6 +79,8 @@ type IXpsSaveOptionsData interface {
     SetPageIndex(value *int32)
     GetBookmarksOutlineLevel() *int32
     SetBookmarksOutlineLevel(value *int32)
+    GetDigitalSignatureDetails() IDigitalSignatureDetails
+    SetDigitalSignatureDetails(value IDigitalSignatureDetails)
     GetHeadingsOutlineLevels() *int32
     SetHeadingsOutlineLevels(value *int32)
     GetOutlineOptions() IOutlineOptionsData
@@ -151,6 +153,9 @@ type XpsSaveOptionsData struct {
     BookmarksOutlineLevel *int32 `json:"BookmarksOutlineLevel,omitempty"`
 
     // Container class for xps save options.
+    DigitalSignatureDetails IDigitalSignatureDetails `json:"DigitalSignatureDetails,omitempty"`
+
+    // Container class for xps save options.
     HeadingsOutlineLevels *int32 `json:"HeadingsOutlineLevels,omitempty"`
 
     // Container class for xps save options.
@@ -186,6 +191,10 @@ func (obj *XpsSaveOptionsData) Initialize() {
 
     if (obj.MetafileRenderingOptions != nil) {
         obj.MetafileRenderingOptions.Initialize()
+    }
+
+    if (obj.DigitalSignatureDetails != nil) {
+        obj.DigitalSignatureDetails.Initialize()
     }
 
     if (obj.OutlineOptions != nil) {
@@ -452,6 +461,22 @@ func (obj *XpsSaveOptionsData) Deserialize(json map[string]interface{}) {
 
     }
 
+    if jsonValue, exists := json["DigitalSignatureDetails"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IDigitalSignatureDetails = new(DigitalSignatureDetails)
+            modelInstance.Deserialize(parsedValue)
+            obj.DigitalSignatureDetails = modelInstance
+        }
+
+    } else if jsonValue, exists := json["digitalSignatureDetails"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IDigitalSignatureDetails = new(DigitalSignatureDetails)
+            modelInstance.Deserialize(parsedValue)
+            obj.DigitalSignatureDetails = modelInstance
+        }
+
+    }
+
     if jsonValue, exists := json["HeadingsOutlineLevels"]; exists {
         if parsedValue, valid := jsonValue.(float64); valid {
             obj.HeadingsOutlineLevels = new(int32)
@@ -514,6 +539,11 @@ func (obj *XpsSaveOptionsData) Validate() error {
     }
     if obj.MetafileRenderingOptions != nil {
         if err := obj.MetafileRenderingOptions.Validate(); err != nil {
+            return err
+        }
+    }
+    if obj.DigitalSignatureDetails != nil {
+        if err := obj.DigitalSignatureDetails.Validate(); err != nil {
             return err
         }
     }
@@ -684,6 +714,14 @@ func (obj *XpsSaveOptionsData) GetBookmarksOutlineLevel() *int32 {
 
 func (obj *XpsSaveOptionsData) SetBookmarksOutlineLevel(value *int32) {
     obj.BookmarksOutlineLevel = value
+}
+
+func (obj *XpsSaveOptionsData) GetDigitalSignatureDetails() IDigitalSignatureDetails {
+    return obj.DigitalSignatureDetails
+}
+
+func (obj *XpsSaveOptionsData) SetDigitalSignatureDetails(value IDigitalSignatureDetails) {
+    obj.DigitalSignatureDetails = value
 }
 
 func (obj *XpsSaveOptionsData) GetHeadingsOutlineLevels() *int32 {
