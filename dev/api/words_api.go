@@ -9084,6 +9084,108 @@ func (a *WordsApiService) GetSectionsOnline(ctx context.Context, data *models.Ge
     return successPayload, response, err
 }
 
+/* WordsApiService Gets signatures from the document.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return models.SignatureCollectionResponse*/
+func (a *WordsApiService) GetSignatures(ctx context.Context, data *models.GetSignaturesRequest) (models.SignatureCollectionResponse, *http.Response, error) {
+    var (
+        successPayload models.SignatureCollectionResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+
+    defer response.Body.Close()
+
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
+            return successPayload, nil, err
+        }
+
+        apiError.Deserialize(jsonMap)
+        return successPayload, response, &apiError
+    }
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
+        return successPayload, response, err
+    }
+
+    successPayload.Deserialize(jsonMap)
+    return successPayload, response, err
+}
+
+/* WordsApiService Gets signatures from the document.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return models.SignatureCollectionResponse*/
+func (a *WordsApiService) GetSignaturesOnline(ctx context.Context, data *models.GetSignaturesOnlineRequest) (models.SignatureCollectionResponse, *http.Response, error) {
+    var (
+        successPayload models.SignatureCollectionResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+
+    defer response.Body.Close()
+
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
+            return successPayload, nil, err
+        }
+
+        apiError.Deserialize(jsonMap)
+        return successPayload, response, &apiError
+    }
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
+        return successPayload, response, err
+    }
+
+    successPayload.Deserialize(jsonMap)
+    return successPayload, response, err
+}
+
 /* WordsApiService Reads a StructuredDocumentTag (SDT) from the document node.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  * @data operation request data.
@@ -13114,6 +13216,108 @@ func (a *WordsApiService) RejectAllRevisionsOnline(ctx context.Context, data *mo
     return result.(models.RejectAllRevisionsOnlineResponse), response, err
 }
 
+/* WordsApiService Removes all signatures of the document.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return models.SignatureCollectionResponse*/
+func (a *WordsApiService) RemoveAllSignatures(ctx context.Context, data *models.RemoveAllSignaturesRequest) (models.SignatureCollectionResponse, *http.Response, error) {
+    var (
+        successPayload models.SignatureCollectionResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+
+    defer response.Body.Close()
+
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
+            return successPayload, nil, err
+        }
+
+        apiError.Deserialize(jsonMap)
+        return successPayload, response, &apiError
+    }
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
+        return successPayload, response, err
+    }
+
+    successPayload.Deserialize(jsonMap)
+    return successPayload, response, err
+}
+
+/* WordsApiService Removes all signatures of the document.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return RemoveAllSignaturesOnlineResponse*/
+func (a *WordsApiService) RemoveAllSignaturesOnline(ctx context.Context, data *models.RemoveAllSignaturesOnlineRequest) (models.RemoveAllSignaturesOnlineResponse, *http.Response, error) {
+    var (
+        successPayload models.RemoveAllSignaturesOnlineResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+
+
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
+            return successPayload, nil, err
+        }
+
+        apiError.Deserialize(jsonMap)
+        return successPayload, response, &apiError
+    }
+    boundary := GetBoundary(response)
+    result, err := data.CreateResponse(response.Body, boundary)
+
+    if err != nil {
+        return successPayload, response, err
+    }
+
+    return result.(models.RemoveAllSignaturesOnlineResponse), response, err
+}
+
 /* WordsApiService Removes a range from the document.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  * @data operation request data.
@@ -14301,6 +14505,108 @@ func (a *WordsApiService) SearchOnline(ctx context.Context, data *models.SearchO
 
     successPayload.Deserialize(jsonMap)
     return successPayload, response, err
+}
+
+/* WordsApiService Signs the document with given certificate.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return models.SignatureCollectionResponse*/
+func (a *WordsApiService) SignDocument(ctx context.Context, data *models.SignDocumentRequest) (models.SignatureCollectionResponse, *http.Response, error) {
+    var (
+        successPayload models.SignatureCollectionResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+
+    defer response.Body.Close()
+
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
+            return successPayload, nil, err
+        }
+
+        apiError.Deserialize(jsonMap)
+        return successPayload, response, &apiError
+    }
+    var jsonMap map[string]interface{}
+    if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
+        return successPayload, response, err
+    }
+
+    successPayload.Deserialize(jsonMap)
+    return successPayload, response, err
+}
+
+/* WordsApiService Signs the document with given certificate.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return SignDocumentOnlineResponse*/
+func (a *WordsApiService) SignDocumentOnline(ctx context.Context, data *models.SignDocumentOnlineRequest) (models.SignDocumentOnlineResponse, *http.Response, error) {
+    var (
+        successPayload models.SignDocumentOnlineResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+
+
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
+            return successPayload, nil, err
+        }
+
+        apiError.Deserialize(jsonMap)
+        return successPayload, response, &apiError
+    }
+    boundary := GetBoundary(response)
+    result, err := data.CreateResponse(response.Body, boundary)
+
+    if err != nil {
+        return successPayload, response, err
+    }
+
+    return result.(models.SignDocumentOnlineResponse), response, err
 }
 
 /* WordsApiService Splits a document into parts and saves them in the specified format.

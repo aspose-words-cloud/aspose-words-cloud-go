@@ -44,6 +44,7 @@ type ExecuteMailMergeOnlineRequest struct {
     /* optional (nil or map[string]interface{}) with one or more of key / value pairs:
         key: "options" value: (IFieldOptions) Field options.
         key: "withRegions" value: (*bool) The flag indicating whether to execute Mail Merge operation with regions.
+        key: "mergeWholeDocument" value: (*bool) The flag indicating whether fields in whole document are updated while executing of a mail merge with regions.
         key: "cleanup" value: (*string) The cleanup options.
         key: "documentFileName" value: (*string) The filename of the output document, that will be used when the resulting document has a dynamic field {filename}. If it is not set, the "template" will be used instead. */
     Optionals map[string]interface{}
@@ -81,6 +82,9 @@ func (data *ExecuteMailMergeOnlineRequest) CreateRequestData() (RequestData, err
     if err := typeCheckParameter(data.Optionals["withRegions"], "bool", "data.Optionals[withRegions]"); err != nil {
         return result, err
     }
+    if err := typeCheckParameter(data.Optionals["mergeWholeDocument"], "bool", "data.Optionals[mergeWholeDocument]"); err != nil {
+        return result, err
+    }
     if err := typeCheckParameter(data.Optionals["cleanup"], "string", "data.Optionals[cleanup]"); err != nil {
         return result, err
     }
@@ -98,6 +102,11 @@ func (data *ExecuteMailMergeOnlineRequest) CreateRequestData() (RequestData, err
 
     if localVarTempParam, localVarOk := data.Optionals["withRegions"].(bool); localVarOk {
         result.QueryParams.Add("WithRegions", parameterToString(localVarTempParam, ""))
+    }
+
+
+    if localVarTempParam, localVarOk := data.Optionals["mergeWholeDocument"].(bool); localVarOk {
+        result.QueryParams.Add("MergeWholeDocument", parameterToString(localVarTempParam, ""))
     }
 
 
