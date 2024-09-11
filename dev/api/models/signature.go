@@ -48,8 +48,8 @@ type ISignature interface {
     SetIsValid(value *bool)
     GetSignatureType() *string
     SetSignatureType(value *string)
-    GetSignatureValue() *os.File
-    SetSignatureValue(value *os.File)
+    GetSignatureValue() *string
+    SetSignatureValue(value *string)
     GetSignTime() *Time
     SetSignTime(value *Time)
     GetSubjectName() *string
@@ -75,7 +75,7 @@ type Signature struct {
 
     // The REST response with a document signature collection.
     // This response is returned by the Service when handling any "https://api.aspose.cloud/v4.0/words/Test.doc/signatures" REST API requests.
-    SignatureValue *os.File `json:"SignatureValue,omitempty"`
+    SignatureValue *string `json:"SignatureValue,omitempty"`
 
     // The REST response with a document signature collection.
     // This response is returned by the Service when handling any "https://api.aspose.cloud/v4.0/words/Test.doc/signatures" REST API requests.
@@ -144,12 +144,12 @@ func (obj *Signature) Deserialize(json map[string]interface{}) {
     }
 
     if jsonValue, exists := json["SignatureValue"]; exists {
-        if parsedValue, valid := jsonValue.(*os.File); valid {
+        if parsedValue, valid := jsonValue.(string); valid {
             obj.SignatureValue = &parsedValue
         }
 
     } else if jsonValue, exists := json["signatureValue"]; exists {
-        if parsedValue, valid := jsonValue.(*os.File); valid {
+        if parsedValue, valid := jsonValue.(string); valid {
             obj.SignatureValue = &parsedValue
         }
 
@@ -235,11 +235,11 @@ func (obj *Signature) SetSignatureType(value *string) {
     obj.SignatureType = value
 }
 
-func (obj *Signature) GetSignatureValue() *os.File {
+func (obj *Signature) GetSignatureValue() *string {
     return obj.SignatureValue
 }
 
-func (obj *Signature) SetSignatureValue(value *os.File) {
+func (obj *Signature) SetSignatureValue(value *string) {
     obj.SignatureValue = value
 }
 
