@@ -194,9 +194,6 @@ func (obj *Signature) Validate() error {
     if obj.IsValid == nil {
         return errors.New("Property IsValid in Signature is required.")
     }
-    if obj.SignatureType == nil {
-        return errors.New("Property SignatureType in Signature is required.")
-    }
     if obj.SignTime == nil {
         return errors.New("Property SignTime in Signature is required.")
     }
