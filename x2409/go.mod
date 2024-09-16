@@ -1,6 +1,6 @@
 module github.com/aspose-words-cloud/aspose-words-cloud-go/v2409
 
-go 1.18
+go 1.21
 
 require (
 	github.com/stretchr/testify v1.5.1
