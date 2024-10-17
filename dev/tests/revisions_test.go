@@ -39,7 +39,7 @@ func Test_Revisions_AcceptAllRevisions(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
     remoteDataFolder := remoteBaseTestDataFolder + "/DocumentActions/Revisions"
-    localFile := "Common/test_multi_pages.docx"
+    localFile := "DocumentElements/Revisions/TestRevisions.doc"
     remoteFileName := "TestAcceptAllRevisions.docx"
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
@@ -68,7 +68,7 @@ func Test_Revisions_AcceptAllRevisions(t *testing.T) {
 func Test_Revisions_AcceptAllRevisionsOnline(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
-    localFile := "Common/test_multi_pages.docx"
+    localFile := "DocumentElements/Revisions/TestRevisions.doc"
 
     requestDocument := OpenFile(t, localFile)
 
@@ -96,7 +96,7 @@ func Test_Revisions_RejectAllRevisions(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
     remoteDataFolder := remoteBaseTestDataFolder + "/DocumentActions/Revisions"
-    localFile := "Common/test_multi_pages.docx"
+    localFile := "DocumentElements/Revisions/TestRevisions.doc"
     remoteFileName := "TestRejectAllRevisions.docx"
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
@@ -125,7 +125,7 @@ func Test_Revisions_RejectAllRevisions(t *testing.T) {
 func Test_Revisions_RejectAllRevisionsOnline(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
-    localFile := "Common/test_multi_pages.docx"
+    localFile := "DocumentElements/Revisions/TestRevisions.doc"
 
     requestDocument := OpenFile(t, localFile)
 
@@ -153,7 +153,7 @@ func Test_Revisions_GetAllRevisions(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
     remoteDataFolder := remoteBaseTestDataFolder + "/DocumentActions/Revisions"
-    localFile := "Common/test_multi_pages.docx"
+    localFile := "DocumentElements/Revisions/TestRevisions.doc"
     remoteFileName := "TestAcceptAllRevisions.docx"
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
@@ -181,7 +181,7 @@ func Test_Revisions_GetAllRevisions(t *testing.T) {
 func Test_Revisions_GetAllRevisionsOnline(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
-    localFile := "Common/test_multi_pages.docx"
+    localFile := "DocumentElements/Revisions/TestRevisions.doc"
 
     requestDocument := OpenFile(t, localFile)
 
