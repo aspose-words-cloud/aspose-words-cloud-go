@@ -39,7 +39,7 @@ func Test_Revisions_AcceptAllRevisions(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
     remoteDataFolder := remoteBaseTestDataFolder + "/DocumentActions/Revisions"
-    localFile := "Common/test_multi_pages.docx"
+    localFile := "DocumentElements/Revisions/TestRevisions.doc"
     remoteFileName := "TestAcceptAllRevisions.docx"
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
@@ -68,7 +68,7 @@ func Test_Revisions_AcceptAllRevisions(t *testing.T) {
 func Test_Revisions_AcceptAllRevisionsOnline(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
-    localFile := "Common/test_multi_pages.docx"
+    localFile := "DocumentElements/Revisions/TestRevisions.doc"
 
     requestDocument := OpenFile(t, localFile)
 
@@ -96,7 +96,7 @@ func Test_Revisions_RejectAllRevisions(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
     remoteDataFolder := remoteBaseTestDataFolder + "/DocumentActions/Revisions"
-    localFile := "Common/test_multi_pages.docx"
+    localFile := "DocumentElements/Revisions/TestRevisions.doc"
     remoteFileName := "TestRejectAllRevisions.docx"
 
     UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
@@ -125,7 +125,7 @@ func Test_Revisions_RejectAllRevisions(t *testing.T) {
 func Test_Revisions_RejectAllRevisionsOnline(t *testing.T) {
     config := ReadConfiguration(t)
     client, ctx := PrepareTest(t, config)
-    localFile := "Common/test_multi_pages.docx"
+    localFile := "DocumentElements/Revisions/TestRevisions.doc"
 
     requestDocument := OpenFile(t, localFile)
 
@@ -146,4 +146,58 @@ func Test_Revisions_RejectAllRevisionsOnline(t *testing.T) {
     assert.NotNil(t, actual.GetModel(), "Validate RejectAllRevisionsOnline response.");
     assert.NotNil(t, actual.GetModel().GetResult(), "Validate RejectAllRevisionsOnline response.");
     assert.NotNil(t, actual.GetModel().GetResult().GetDest(), "Validate RejectAllRevisionsOnline response.");
+}
+
+// Test for getting revisions from document.
+func Test_Revisions_GetAllRevisions(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    remoteDataFolder := remoteBaseTestDataFolder + "/DocumentActions/Revisions"
+    localFile := "DocumentElements/Revisions/TestRevisions.doc"
+    remoteFileName := "TestAcceptAllRevisions.docx"
+
+    UploadNextFileToStorage(t, ctx, client, GetLocalFile(localFile), remoteDataFolder + "/" + remoteFileName)
+
+
+    options := map[string]interface{}{
+        "folder": remoteDataFolder,
+    }
+
+    request := &models.GetAllRevisionsRequest{
+        Name: ToStringPointer(remoteFileName),
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.GetAllRevisions(ctx, request)
+    if err != nil {
+        t.Error(err)
+    }
+
+    assert.NotNil(t, actual.GetRevisions(), "Validate GetAllRevisions response.");
+    assert.Equal(t, 6, len(actual.GetRevisions().GetRevisions()), "Validate GetAllRevisions response.");
+}
+
+// Test for getting revisions online from document.
+func Test_Revisions_GetAllRevisionsOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    localFile := "DocumentElements/Revisions/TestRevisions.doc"
+
+    requestDocument := OpenFile(t, localFile)
+
+    options := map[string]interface{}{
+    }
+
+    request := &models.GetAllRevisionsOnlineRequest{
+        Document: requestDocument,
+        Optionals: options,
+    }
+
+    actual, _, err := client.WordsApi.GetAllRevisionsOnline(ctx, request)
+    if err != nil {
+        t.Error(err)
+    }
+
+    assert.NotNil(t, actual.GetRevisions(), "Validate GetAllRevisionsOnline response.");
+    assert.Equal(t, 6, len(actual.GetRevisions().GetRevisions()), "Validate GetAllRevisionsOnline response.");
 }
