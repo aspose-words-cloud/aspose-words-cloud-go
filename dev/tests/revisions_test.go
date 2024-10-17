@@ -174,7 +174,7 @@ func Test_Revisions_GetAllRevisions(t *testing.T) {
     }
 
     assert.NotNil(t, actual.GetRevisions(), "Validate GetAllRevisions response.");
-    assert.Equal(t, 6, len(actual.GetRevisions()), "Validate GetAllRevisions response.");
+    assert.Equal(t, 6, len(actual.GetRevisions().GetRevisions()), "Validate GetAllRevisions response.");
 }
 
 // Test for getting revisions online from document.
@@ -198,7 +198,6 @@ func Test_Revisions_GetAllRevisionsOnline(t *testing.T) {
         t.Error(err)
     }
 
-    assert.NotNil(t, actual.GetDocument(), "Validate GetAllRevisionsOnline response.");
-    assert.NotNil(t, actual.GetModel(), "Validate GetAllRevisionsOnline response.");
-    assert.NotNil(t, actual.GetModel().GetRevisions(), "Validate GetAllRevisionsOnline response.");
+    assert.NotNil(t, actual.GetRevisions(), "Validate GetAllRevisionsOnline response.");
+    assert.Equal(t, 6, len(actual.GetRevisions().GetRevisions()), "Validate GetAllRevisionsOnline response.");
 }
