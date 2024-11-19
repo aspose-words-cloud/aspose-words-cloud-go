@@ -61,7 +61,7 @@ func Test_DocumentProperties_GetDocumentProperties(t *testing.T) {
 
     assert.NotNil(t, actual.GetDocumentProperties(), "Validate GetDocumentProperties response.");
     assert.NotNil(t, actual.GetDocumentProperties().GetList(), "Validate GetDocumentProperties response.");
-    assert.Equal(t, 24, len(actual.GetDocumentProperties().GetList()), "Validate GetDocumentProperties response.");
+    assert.Equal(t, 27, len(actual.GetDocumentProperties().GetList()), "Validate GetDocumentProperties response.");
     assert.NotNil(t, actual.GetDocumentProperties().GetList()[0], "Validate GetDocumentProperties response.");
     assert.Equal(t, "Author", DereferenceValue(actual.GetDocumentProperties().GetList()[0].GetName()), "Validate GetDocumentProperties response.");
     assert.Equal(t, "", DereferenceValue(actual.GetDocumentProperties().GetList()[0].GetValue()), "Validate GetDocumentProperties response.");
