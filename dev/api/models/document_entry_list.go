@@ -39,6 +39,8 @@ type IDocumentEntryList interface {
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
     Validate() error
+    GetAppendAllEntriesToOneSection() *bool
+    SetAppendAllEntriesToOneSection(value *bool)
     GetApplyBaseDocumentHeadersAndFootersToAppendingDocuments() *bool
     SetApplyBaseDocumentHeadersAndFootersToAppendingDocuments(value *bool)
     GetDocumentEntries() []IDocumentEntry
@@ -46,6 +48,9 @@ type IDocumentEntryList interface {
 }
 
 type DocumentEntryList struct {
+    // Represents a list of documents which will be appended to the original resource document.
+    AppendAllEntriesToOneSection *bool `json:"AppendAllEntriesToOneSection,omitempty"`
+
     // Represents a list of documents which will be appended to the original resource document.
     ApplyBaseDocumentHeadersAndFootersToAppendingDocuments *bool `json:"ApplyBaseDocumentHeadersAndFootersToAppendingDocuments,omitempty"`
 
@@ -71,6 +76,18 @@ func (obj *DocumentEntryList) Initialize() {
 }
 
 func (obj *DocumentEntryList) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["AppendAllEntriesToOneSection"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.AppendAllEntriesToOneSection = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["appendAllEntriesToOneSection"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.AppendAllEntriesToOneSection = &parsedValue
+        }
+
+    }
+
     if jsonValue, exists := json["ApplyBaseDocumentHeadersAndFootersToAppendingDocuments"]; exists {
         if parsedValue, valid := jsonValue.(bool); valid {
             obj.ApplyBaseDocumentHeadersAndFootersToAppendingDocuments = &parsedValue
@@ -141,6 +158,14 @@ func (obj *DocumentEntryList) Validate() error {
     }
 
     return nil;
+}
+
+func (obj *DocumentEntryList) GetAppendAllEntriesToOneSection() *bool {
+    return obj.AppendAllEntriesToOneSection
+}
+
+func (obj *DocumentEntryList) SetAppendAllEntriesToOneSection(value *bool) {
+    obj.AppendAllEntriesToOneSection = value
 }
 
 func (obj *DocumentEntryList) GetApplyBaseDocumentHeadersAndFootersToAppendingDocuments() *bool {
