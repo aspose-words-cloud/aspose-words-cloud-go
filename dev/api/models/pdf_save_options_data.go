@@ -121,6 +121,8 @@ type IPdfSaveOptionsData interface {
     SetPreblendImages(value *bool)
     GetPreserveFormFields() *bool
     SetPreserveFormFields(value *bool)
+    GetRenderChoiceFormFieldBorder() *bool
+    SetRenderChoiceFormFieldBorder(value *bool)
     GetTextCompression() *string
     SetTextCompression(value *string)
     GetUseBookFoldPrintingSettings() *bool
@@ -260,6 +262,9 @@ type PdfSaveOptionsData struct {
 
     // Container class for pdf save options.
     PreserveFormFields *bool `json:"PreserveFormFields,omitempty"`
+
+    // Container class for pdf save options.
+    RenderChoiceFormFieldBorder *bool `json:"RenderChoiceFormFieldBorder,omitempty"`
 
     // Container class for pdf save options.
     TextCompression *string `json:"TextCompression,omitempty"`
@@ -850,6 +855,18 @@ func (obj *PdfSaveOptionsData) Deserialize(json map[string]interface{}) {
 
     }
 
+    if jsonValue, exists := json["RenderChoiceFormFieldBorder"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.RenderChoiceFormFieldBorder = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["renderChoiceFormFieldBorder"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.RenderChoiceFormFieldBorder = &parsedValue
+        }
+
+    }
+
     if jsonValue, exists := json["TextCompression"]; exists {
         if parsedValue, valid := jsonValue.(string); valid {
             obj.TextCompression = &parsedValue
@@ -1297,6 +1314,14 @@ func (obj *PdfSaveOptionsData) GetPreserveFormFields() *bool {
 
 func (obj *PdfSaveOptionsData) SetPreserveFormFields(value *bool) {
     obj.PreserveFormFields = value
+}
+
+func (obj *PdfSaveOptionsData) GetRenderChoiceFormFieldBorder() *bool {
+    return obj.RenderChoiceFormFieldBorder
+}
+
+func (obj *PdfSaveOptionsData) SetRenderChoiceFormFieldBorder(value *bool) {
+    obj.RenderChoiceFormFieldBorder = value
 }
 
 func (obj *PdfSaveOptionsData) GetTextCompression() *string {

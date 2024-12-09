@@ -39,6 +39,8 @@ type IReplaceTextParameters interface {
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
     Validate() error
+    GetApplySuperscript() *bool
+    SetApplySuperscript(value *bool)
     GetIsMatchCase() *bool
     SetIsMatchCase(value *bool)
     GetIsMatchWholeWord() *bool
@@ -52,6 +54,9 @@ type IReplaceTextParameters interface {
 }
 
 type ReplaceTextParameters struct {
+    // Class for document replace text request building.
+    ApplySuperscript *bool `json:"ApplySuperscript,omitempty"`
+
     // Class for document replace text request building.
     IsMatchCase *bool `json:"IsMatchCase,omitempty"`
 
@@ -77,6 +82,18 @@ func (obj *ReplaceTextParameters) Initialize() {
 }
 
 func (obj *ReplaceTextParameters) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["ApplySuperscript"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.ApplySuperscript = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["applySuperscript"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.ApplySuperscript = &parsedValue
+        }
+
+    }
+
     if jsonValue, exists := json["IsMatchCase"]; exists {
         if parsedValue, valid := jsonValue.(bool); valid {
             obj.IsMatchCase = &parsedValue
@@ -163,6 +180,14 @@ func (obj *ReplaceTextParameters) Validate() error {
         return errors.New("Property OldValue in ReplaceTextParameters is required.")
     }
     return nil;
+}
+
+func (obj *ReplaceTextParameters) GetApplySuperscript() *bool {
+    return obj.ApplySuperscript
+}
+
+func (obj *ReplaceTextParameters) SetApplySuperscript(value *bool) {
+    obj.ApplySuperscript = value
 }
 
 func (obj *ReplaceTextParameters) GetIsMatchCase() *bool {
