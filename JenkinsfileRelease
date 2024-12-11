@@ -14,7 +14,7 @@ node('win2019_2') {
             
             stage('prepare to release') {
 				withCredentials([usernamePassword(credentialsId: '361885ba-9425-4230-950e-0af201d90547', passwordVariable: 'gitPass', usernameVariable: 'gitUsername')]) {
-                    bat 'Scripts\\createVersion.bat %SDK_VERSION% %gitUsername% %gitPass%'
+                    bat 'REM Scripts\\createVersion.bat %SDK_VERSION% %gitUsername% %gitPass%'
                 }
             }
 		
