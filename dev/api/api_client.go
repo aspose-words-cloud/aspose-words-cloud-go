@@ -65,7 +65,7 @@ var (
     xmlCheck = regexp.MustCompile("(?i:[application|text]/xml)")
 )
 
-// APIClient manages communication with the Aspose.Words for Cloud API Reference API v24.12
+// APIClient manages communication with the Aspose.Words for Cloud API Reference API v25.1
 // In most cases there should be only one, shared, APIClient.
 type APIClient struct {
     cfg     *models.Configuration
