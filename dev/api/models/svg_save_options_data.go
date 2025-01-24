@@ -81,6 +81,8 @@ type ISvgSaveOptionsData interface {
     SetExportEmbeddedImages(value *bool)
     GetFitToViewPort() *bool
     SetFitToViewPort(value *bool)
+    GetIdPrefix() *string
+    SetIdPrefix(value *string)
     GetMaxImageResolution() *int32
     SetMaxImageResolution(value *int32)
     GetResourcesFolder() *string
@@ -158,6 +160,9 @@ type SvgSaveOptionsData struct {
 
     // Container class for svg save options.
     FitToViewPort *bool `json:"FitToViewPort,omitempty"`
+
+    // Container class for svg save options.
+    IdPrefix *string `json:"IdPrefix,omitempty"`
 
     // Container class for svg save options.
     MaxImageResolution *int32 `json:"MaxImageResolution,omitempty"`
@@ -473,6 +478,18 @@ func (obj *SvgSaveOptionsData) Deserialize(json map[string]interface{}) {
 
     }
 
+    if jsonValue, exists := json["IdPrefix"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.IdPrefix = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["idPrefix"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.IdPrefix = &parsedValue
+        }
+
+    }
+
     if jsonValue, exists := json["MaxImageResolution"]; exists {
         if parsedValue, valid := jsonValue.(float64); valid {
             obj.MaxImageResolution = new(int32)
@@ -728,6 +745,14 @@ func (obj *SvgSaveOptionsData) GetFitToViewPort() *bool {
 
 func (obj *SvgSaveOptionsData) SetFitToViewPort(value *bool) {
     obj.FitToViewPort = value
+}
+
+func (obj *SvgSaveOptionsData) GetIdPrefix() *string {
+    return obj.IdPrefix
+}
+
+func (obj *SvgSaveOptionsData) SetIdPrefix(value *string) {
+    obj.IdPrefix = value
 }
 
 func (obj *SvgSaveOptionsData) GetMaxImageResolution() *int32 {

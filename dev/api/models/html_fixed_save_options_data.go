@@ -91,6 +91,8 @@ type IHtmlFixedSaveOptionsData interface {
     SetExportFormFields(value *bool)
     GetFontFormat() *string
     SetFontFormat(value *string)
+    GetIdPrefix() *string
+    SetIdPrefix(value *string)
     GetPageHorizontalAlignment() *string
     SetPageHorizontalAlignment(value *string)
     GetPageMargins() *float64
@@ -187,6 +189,9 @@ type HtmlFixedSaveOptionsData struct {
 
     // Container class for fixed html save options.
     FontFormat *string `json:"FontFormat,omitempty"`
+
+    // Container class for fixed html save options.
+    IdPrefix *string `json:"IdPrefix,omitempty"`
 
     // Container class for fixed html save options.
     PageHorizontalAlignment *string `json:"PageHorizontalAlignment,omitempty"`
@@ -568,6 +573,18 @@ func (obj *HtmlFixedSaveOptionsData) Deserialize(json map[string]interface{}) {
 
     }
 
+    if jsonValue, exists := json["IdPrefix"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.IdPrefix = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["idPrefix"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.IdPrefix = &parsedValue
+        }
+
+    }
+
     if jsonValue, exists := json["PageHorizontalAlignment"]; exists {
         if parsedValue, valid := jsonValue.(string); valid {
             obj.PageHorizontalAlignment = &parsedValue
@@ -885,6 +902,14 @@ func (obj *HtmlFixedSaveOptionsData) GetFontFormat() *string {
 
 func (obj *HtmlFixedSaveOptionsData) SetFontFormat(value *string) {
     obj.FontFormat = value
+}
+
+func (obj *HtmlFixedSaveOptionsData) GetIdPrefix() *string {
+    return obj.IdPrefix
+}
+
+func (obj *HtmlFixedSaveOptionsData) SetIdPrefix(value *string) {
+    obj.IdPrefix = value
 }
 
 func (obj *HtmlFixedSaveOptionsData) GetPageHorizontalAlignment() *string {
