@@ -53,6 +53,8 @@ type IXpsSaveOptionsData interface {
     SetFileName(value *string)
     GetImlRenderingMode() *string
     SetImlRenderingMode(value *string)
+    GetUpdateAmbiguousTextFont() *bool
+    SetUpdateAmbiguousTextFont(value *bool)
     GetUpdateCreatedTimeProperty() *bool
     SetUpdateCreatedTimeProperty(value *bool)
     GetUpdateFields() *bool
@@ -112,6 +114,9 @@ type XpsSaveOptionsData struct {
 
     // Container class for xps save options.
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
+
+    // Container class for xps save options.
+    UpdateAmbiguousTextFont *bool `json:"UpdateAmbiguousTextFont,omitempty"`
 
     // Container class for xps save options.
     UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
@@ -289,6 +294,18 @@ func (obj *XpsSaveOptionsData) Deserialize(json map[string]interface{}) {
     } else if jsonValue, exists := json["imlRenderingMode"]; exists {
         if parsedValue, valid := jsonValue.(string); valid {
             obj.ImlRenderingMode = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["UpdateAmbiguousTextFont"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.UpdateAmbiguousTextFont = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["updateAmbiguousTextFont"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.UpdateAmbiguousTextFont = &parsedValue
         }
 
     }
@@ -610,6 +627,14 @@ func (obj *XpsSaveOptionsData) GetImlRenderingMode() *string {
 
 func (obj *XpsSaveOptionsData) SetImlRenderingMode(value *string) {
     obj.ImlRenderingMode = value
+}
+
+func (obj *XpsSaveOptionsData) GetUpdateAmbiguousTextFont() *bool {
+    return obj.UpdateAmbiguousTextFont
+}
+
+func (obj *XpsSaveOptionsData) SetUpdateAmbiguousTextFont(value *bool) {
+    obj.UpdateAmbiguousTextFont = value
 }
 
 func (obj *XpsSaveOptionsData) GetUpdateCreatedTimeProperty() *bool {

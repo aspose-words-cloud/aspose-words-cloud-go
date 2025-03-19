@@ -53,6 +53,8 @@ type IEmfSaveOptionsData interface {
     SetFileName(value *string)
     GetImlRenderingMode() *string
     SetImlRenderingMode(value *string)
+    GetUpdateAmbiguousTextFont() *bool
+    SetUpdateAmbiguousTextFont(value *bool)
     GetUpdateCreatedTimeProperty() *bool
     SetUpdateCreatedTimeProperty(value *bool)
     GetUpdateFields() *bool
@@ -130,6 +132,9 @@ type EmfSaveOptionsData struct {
 
     // Container class for emf save options.
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
+
+    // Container class for emf save options.
+    UpdateAmbiguousTextFont *bool `json:"UpdateAmbiguousTextFont,omitempty"`
 
     // Container class for emf save options.
     UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
@@ -330,6 +335,18 @@ func (obj *EmfSaveOptionsData) Deserialize(json map[string]interface{}) {
     } else if jsonValue, exists := json["imlRenderingMode"]; exists {
         if parsedValue, valid := jsonValue.(string); valid {
             obj.ImlRenderingMode = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["UpdateAmbiguousTextFont"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.UpdateAmbiguousTextFont = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["updateAmbiguousTextFont"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.UpdateAmbiguousTextFont = &parsedValue
         }
 
     }
@@ -741,6 +758,14 @@ func (obj *EmfSaveOptionsData) GetImlRenderingMode() *string {
 
 func (obj *EmfSaveOptionsData) SetImlRenderingMode(value *string) {
     obj.ImlRenderingMode = value
+}
+
+func (obj *EmfSaveOptionsData) GetUpdateAmbiguousTextFont() *bool {
+    return obj.UpdateAmbiguousTextFont
+}
+
+func (obj *EmfSaveOptionsData) SetUpdateAmbiguousTextFont(value *bool) {
+    obj.UpdateAmbiguousTextFont = value
 }
 
 func (obj *EmfSaveOptionsData) GetUpdateCreatedTimeProperty() *bool {

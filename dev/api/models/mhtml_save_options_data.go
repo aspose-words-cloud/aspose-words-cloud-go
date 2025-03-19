@@ -53,6 +53,8 @@ type IMhtmlSaveOptionsData interface {
     SetFileName(value *string)
     GetImlRenderingMode() *string
     SetImlRenderingMode(value *string)
+    GetUpdateAmbiguousTextFont() *bool
+    SetUpdateAmbiguousTextFont(value *bool)
     GetUpdateCreatedTimeProperty() *bool
     SetUpdateCreatedTimeProperty(value *bool)
     GetUpdateFields() *bool
@@ -168,6 +170,9 @@ type MhtmlSaveOptionsData struct {
 
     // Container class for mhtml save options.
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
+
+    // Container class for mhtml save options.
+    UpdateAmbiguousTextFont *bool `json:"UpdateAmbiguousTextFont,omitempty"`
 
     // Container class for mhtml save options.
     UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
@@ -417,6 +422,18 @@ func (obj *MhtmlSaveOptionsData) Deserialize(json map[string]interface{}) {
     } else if jsonValue, exists := json["imlRenderingMode"]; exists {
         if parsedValue, valid := jsonValue.(string); valid {
             obj.ImlRenderingMode = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["UpdateAmbiguousTextFont"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.UpdateAmbiguousTextFont = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["updateAmbiguousTextFont"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.UpdateAmbiguousTextFont = &parsedValue
         }
 
     }
@@ -1043,6 +1060,14 @@ func (obj *MhtmlSaveOptionsData) GetImlRenderingMode() *string {
 
 func (obj *MhtmlSaveOptionsData) SetImlRenderingMode(value *string) {
     obj.ImlRenderingMode = value
+}
+
+func (obj *MhtmlSaveOptionsData) GetUpdateAmbiguousTextFont() *bool {
+    return obj.UpdateAmbiguousTextFont
+}
+
+func (obj *MhtmlSaveOptionsData) SetUpdateAmbiguousTextFont(value *bool) {
+    obj.UpdateAmbiguousTextFont = value
 }
 
 func (obj *MhtmlSaveOptionsData) GetUpdateCreatedTimeProperty() *bool {

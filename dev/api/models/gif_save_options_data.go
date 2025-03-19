@@ -53,6 +53,8 @@ type IGifSaveOptionsData interface {
     SetFileName(value *string)
     GetImlRenderingMode() *string
     SetImlRenderingMode(value *string)
+    GetUpdateAmbiguousTextFont() *bool
+    SetUpdateAmbiguousTextFont(value *bool)
     GetUpdateCreatedTimeProperty() *bool
     SetUpdateCreatedTimeProperty(value *bool)
     GetUpdateFields() *bool
@@ -130,6 +132,9 @@ type GifSaveOptionsData struct {
 
     // Container class for gif save options.
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
+
+    // Container class for gif save options.
+    UpdateAmbiguousTextFont *bool `json:"UpdateAmbiguousTextFont,omitempty"`
 
     // Container class for gif save options.
     UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
@@ -330,6 +335,18 @@ func (obj *GifSaveOptionsData) Deserialize(json map[string]interface{}) {
     } else if jsonValue, exists := json["imlRenderingMode"]; exists {
         if parsedValue, valid := jsonValue.(string); valid {
             obj.ImlRenderingMode = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["UpdateAmbiguousTextFont"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.UpdateAmbiguousTextFont = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["updateAmbiguousTextFont"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.UpdateAmbiguousTextFont = &parsedValue
         }
 
     }
@@ -741,6 +758,14 @@ func (obj *GifSaveOptionsData) GetImlRenderingMode() *string {
 
 func (obj *GifSaveOptionsData) SetImlRenderingMode(value *string) {
     obj.ImlRenderingMode = value
+}
+
+func (obj *GifSaveOptionsData) GetUpdateAmbiguousTextFont() *bool {
+    return obj.UpdateAmbiguousTextFont
+}
+
+func (obj *GifSaveOptionsData) SetUpdateAmbiguousTextFont(value *bool) {
+    obj.UpdateAmbiguousTextFont = value
 }
 
 func (obj *GifSaveOptionsData) GetUpdateCreatedTimeProperty() *bool {

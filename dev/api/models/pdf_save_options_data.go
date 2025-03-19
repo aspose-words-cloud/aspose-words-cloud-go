@@ -53,6 +53,8 @@ type IPdfSaveOptionsData interface {
     SetFileName(value *string)
     GetImlRenderingMode() *string
     SetImlRenderingMode(value *string)
+    GetUpdateAmbiguousTextFont() *bool
+    SetUpdateAmbiguousTextFont(value *bool)
     GetUpdateCreatedTimeProperty() *bool
     SetUpdateCreatedTimeProperty(value *bool)
     GetUpdateFields() *bool
@@ -77,6 +79,8 @@ type IPdfSaveOptionsData interface {
     SetPageCount(value *int32)
     GetPageIndex() *int32
     SetPageIndex(value *int32)
+    GetAttachmentsEmbeddingMode() *string
+    SetAttachmentsEmbeddingMode(value *string)
     GetCacheBackgroundGraphics() *bool
     SetCacheBackgroundGraphics(value *bool)
     GetCompliance() *string
@@ -162,6 +166,9 @@ type PdfSaveOptionsData struct {
     ImlRenderingMode *string `json:"ImlRenderingMode,omitempty"`
 
     // Container class for pdf save options.
+    UpdateAmbiguousTextFont *bool `json:"UpdateAmbiguousTextFont,omitempty"`
+
+    // Container class for pdf save options.
     UpdateCreatedTimeProperty *bool `json:"UpdateCreatedTimeProperty,omitempty"`
 
     // Container class for pdf save options.
@@ -196,6 +203,9 @@ type PdfSaveOptionsData struct {
 
     // Container class for pdf save options.
     PageIndex *int32 `json:"PageIndex,omitempty"`
+
+    // Container class for pdf save options.
+    AttachmentsEmbeddingMode *string `json:"AttachmentsEmbeddingMode,omitempty"`
 
     // Container class for pdf save options.
     CacheBackgroundGraphics *bool `json:"CacheBackgroundGraphics,omitempty"`
@@ -421,6 +431,18 @@ func (obj *PdfSaveOptionsData) Deserialize(json map[string]interface{}) {
 
     }
 
+    if jsonValue, exists := json["UpdateAmbiguousTextFont"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.UpdateAmbiguousTextFont = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["updateAmbiguousTextFont"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.UpdateAmbiguousTextFont = &parsedValue
+        }
+
+    }
+
     if jsonValue, exists := json["UpdateCreatedTimeProperty"]; exists {
         if parsedValue, valid := jsonValue.(bool); valid {
             obj.UpdateCreatedTimeProperty = &parsedValue
@@ -571,6 +593,18 @@ func (obj *PdfSaveOptionsData) Deserialize(json map[string]interface{}) {
         if parsedValue, valid := jsonValue.(float64); valid {
             obj.PageIndex = new(int32)
             *obj.PageIndex = int32(parsedValue)
+        }
+
+    }
+
+    if jsonValue, exists := json["AttachmentsEmbeddingMode"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.AttachmentsEmbeddingMode = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["attachmentsEmbeddingMode"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.AttachmentsEmbeddingMode = &parsedValue
         }
 
     }
@@ -1044,6 +1078,14 @@ func (obj *PdfSaveOptionsData) SetImlRenderingMode(value *string) {
     obj.ImlRenderingMode = value
 }
 
+func (obj *PdfSaveOptionsData) GetUpdateAmbiguousTextFont() *bool {
+    return obj.UpdateAmbiguousTextFont
+}
+
+func (obj *PdfSaveOptionsData) SetUpdateAmbiguousTextFont(value *bool) {
+    obj.UpdateAmbiguousTextFont = value
+}
+
 func (obj *PdfSaveOptionsData) GetUpdateCreatedTimeProperty() *bool {
     return obj.UpdateCreatedTimeProperty
 }
@@ -1138,6 +1180,14 @@ func (obj *PdfSaveOptionsData) GetPageIndex() *int32 {
 
 func (obj *PdfSaveOptionsData) SetPageIndex(value *int32) {
     obj.PageIndex = value
+}
+
+func (obj *PdfSaveOptionsData) GetAttachmentsEmbeddingMode() *string {
+    return obj.AttachmentsEmbeddingMode
+}
+
+func (obj *PdfSaveOptionsData) SetAttachmentsEmbeddingMode(value *string) {
+    obj.AttachmentsEmbeddingMode = value
 }
 
 func (obj *PdfSaveOptionsData) GetCacheBackgroundGraphics() *bool {
