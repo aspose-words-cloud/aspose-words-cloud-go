@@ -41,6 +41,8 @@ type ICompareOptions interface {
     Validate() error
     GetAcceptAllRevisionsBeforeComparison() *bool
     SetAcceptAllRevisionsBeforeComparison(value *bool)
+    GetGranularity() *string
+    SetGranularity(value *string)
     GetIgnoreCaseChanges() *bool
     SetIgnoreCaseChanges(value *bool)
     GetIgnoreComments() *bool
@@ -64,6 +66,9 @@ type ICompareOptions interface {
 type CompareOptions struct {
     // DTO container with compare documents options.
     AcceptAllRevisionsBeforeComparison *bool `json:"AcceptAllRevisionsBeforeComparison,omitempty"`
+
+    // DTO container with compare documents options.
+    Granularity *string `json:"Granularity,omitempty"`
 
     // DTO container with compare documents options.
     IgnoreCaseChanges *bool `json:"IgnoreCaseChanges,omitempty"`
@@ -110,6 +115,18 @@ func (obj *CompareOptions) Deserialize(json map[string]interface{}) {
     } else if jsonValue, exists := json["acceptAllRevisionsBeforeComparison"]; exists {
         if parsedValue, valid := jsonValue.(bool); valid {
             obj.AcceptAllRevisionsBeforeComparison = &parsedValue
+        }
+
+    }
+
+    if jsonValue, exists := json["Granularity"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Granularity = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["granularity"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.Granularity = &parsedValue
         }
 
     }
@@ -241,6 +258,14 @@ func (obj *CompareOptions) GetAcceptAllRevisionsBeforeComparison() *bool {
 
 func (obj *CompareOptions) SetAcceptAllRevisionsBeforeComparison(value *bool) {
     obj.AcceptAllRevisionsBeforeComparison = value
+}
+
+func (obj *CompareOptions) GetGranularity() *string {
+    return obj.Granularity
+}
+
+func (obj *CompareOptions) SetGranularity(value *string) {
+    obj.Granularity = value
 }
 
 func (obj *CompareOptions) GetIgnoreCaseChanges() *bool {
