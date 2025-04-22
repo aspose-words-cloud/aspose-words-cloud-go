@@ -72,6 +72,8 @@ func (obj *DocumentPosition) Deserialize(json map[string]interface{}) {
             var modelInstance INodeLink = nil
             if jsonType, found := parsedValue["$type"]; found {
                 jsonTypeStr := jsonType.(string)
+                if jsonTypeStr == "CommentRangeEnd, _" { modelInstance = new(CommentRangeEnd) }
+                if jsonTypeStr == "CommentRangeStart, _" { modelInstance = new(CommentRangeStart) }
                 if jsonTypeStr == "DrawingObject, _" { modelInstance = new(DrawingObject) }
                 if jsonTypeStr == "DrawingObjectLink, _" { modelInstance = new(DrawingObjectLink) }
                 if jsonTypeStr == "Field, _" { modelInstance = new(Field) }
@@ -80,8 +82,11 @@ func (obj *DocumentPosition) Deserialize(json map[string]interface{}) {
                 if jsonTypeStr == "FootnoteLink, _" { modelInstance = new(FootnoteLink) }
                 if jsonTypeStr == "FormField, _" {  }
                 if jsonTypeStr == "FormFieldCheckbox, _" { modelInstance = new(FormFieldCheckbox) }
+                if jsonTypeStr == "FormFieldCheckboxLink, _" { modelInstance = new(FormFieldCheckboxLink) }
                 if jsonTypeStr == "FormFieldDropDown, _" { modelInstance = new(FormFieldDropDown) }
+                if jsonTypeStr == "FormFieldDropDownLink, _" { modelInstance = new(FormFieldDropDownLink) }
                 if jsonTypeStr == "FormFieldTextInput, _" { modelInstance = new(FormFieldTextInput) }
+                if jsonTypeStr == "FormFieldTextInputLink, _" { modelInstance = new(FormFieldTextInputLink) }
                 if jsonTypeStr == "OfficeMathLink, _" { modelInstance = new(OfficeMathLink) }
                 if jsonTypeStr == "OfficeMathObject, _" { modelInstance = new(OfficeMathObject) }
                 if jsonTypeStr == "Paragraph, _" { modelInstance = new(Paragraph) }
@@ -109,6 +114,8 @@ func (obj *DocumentPosition) Deserialize(json map[string]interface{}) {
             var modelInstance INodeLink = nil
             if jsonType, found := parsedValue["$type"]; found {
                 jsonTypeStr := jsonType.(string)
+                if jsonTypeStr == "CommentRangeEnd, _" { modelInstance = new(CommentRangeEnd) }
+                if jsonTypeStr == "CommentRangeStart, _" { modelInstance = new(CommentRangeStart) }
                 if jsonTypeStr == "DrawingObject, _" { modelInstance = new(DrawingObject) }
                 if jsonTypeStr == "DrawingObjectLink, _" { modelInstance = new(DrawingObjectLink) }
                 if jsonTypeStr == "Field, _" { modelInstance = new(Field) }
@@ -117,8 +124,11 @@ func (obj *DocumentPosition) Deserialize(json map[string]interface{}) {
                 if jsonTypeStr == "FootnoteLink, _" { modelInstance = new(FootnoteLink) }
                 if jsonTypeStr == "FormField, _" {  }
                 if jsonTypeStr == "FormFieldCheckbox, _" { modelInstance = new(FormFieldCheckbox) }
+                if jsonTypeStr == "FormFieldCheckboxLink, _" { modelInstance = new(FormFieldCheckboxLink) }
                 if jsonTypeStr == "FormFieldDropDown, _" { modelInstance = new(FormFieldDropDown) }
+                if jsonTypeStr == "FormFieldDropDownLink, _" { modelInstance = new(FormFieldDropDownLink) }
                 if jsonTypeStr == "FormFieldTextInput, _" { modelInstance = new(FormFieldTextInput) }
+                if jsonTypeStr == "FormFieldTextInputLink, _" { modelInstance = new(FormFieldTextInputLink) }
                 if jsonTypeStr == "OfficeMathLink, _" { modelInstance = new(OfficeMathLink) }
                 if jsonTypeStr == "OfficeMathObject, _" { modelInstance = new(OfficeMathObject) }
                 if jsonTypeStr == "Paragraph, _" { modelInstance = new(Paragraph) }

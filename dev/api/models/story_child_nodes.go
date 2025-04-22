@@ -71,6 +71,8 @@ func (obj *StoryChildNodes) Deserialize(json map[string]interface{}) {
                     var modelElementInstance INodeLink = nil
                     if jsonElementType, found := elementValue["$type"]; found {
                         jsonTypeStr := jsonElementType.(string)
+                        if jsonTypeStr == "CommentRangeEnd, _" { modelElementInstance = new(CommentRangeEnd) }
+                        if jsonTypeStr == "CommentRangeStart, _" { modelElementInstance = new(CommentRangeStart) }
                         if jsonTypeStr == "DrawingObject, _" { modelElementInstance = new(DrawingObject) }
                         if jsonTypeStr == "DrawingObjectLink, _" { modelElementInstance = new(DrawingObjectLink) }
                         if jsonTypeStr == "Field, _" { modelElementInstance = new(Field) }
@@ -79,8 +81,11 @@ func (obj *StoryChildNodes) Deserialize(json map[string]interface{}) {
                         if jsonTypeStr == "FootnoteLink, _" { modelElementInstance = new(FootnoteLink) }
                         if jsonTypeStr == "FormField, _" {  }
                         if jsonTypeStr == "FormFieldCheckbox, _" { modelElementInstance = new(FormFieldCheckbox) }
+                        if jsonTypeStr == "FormFieldCheckboxLink, _" { modelElementInstance = new(FormFieldCheckboxLink) }
                         if jsonTypeStr == "FormFieldDropDown, _" { modelElementInstance = new(FormFieldDropDown) }
+                        if jsonTypeStr == "FormFieldDropDownLink, _" { modelElementInstance = new(FormFieldDropDownLink) }
                         if jsonTypeStr == "FormFieldTextInput, _" { modelElementInstance = new(FormFieldTextInput) }
+                        if jsonTypeStr == "FormFieldTextInputLink, _" { modelElementInstance = new(FormFieldTextInputLink) }
                         if jsonTypeStr == "OfficeMathLink, _" { modelElementInstance = new(OfficeMathLink) }
                         if jsonTypeStr == "OfficeMathObject, _" { modelElementInstance = new(OfficeMathObject) }
                         if jsonTypeStr == "Paragraph, _" { modelElementInstance = new(Paragraph) }
@@ -114,6 +119,8 @@ func (obj *StoryChildNodes) Deserialize(json map[string]interface{}) {
                     var modelElementInstance INodeLink = nil
                     if jsonElementType, found := elementValue["$type"]; found {
                         jsonTypeStr := jsonElementType.(string)
+                        if jsonTypeStr == "CommentRangeEnd, _" { modelElementInstance = new(CommentRangeEnd) }
+                        if jsonTypeStr == "CommentRangeStart, _" { modelElementInstance = new(CommentRangeStart) }
                         if jsonTypeStr == "DrawingObject, _" { modelElementInstance = new(DrawingObject) }
                         if jsonTypeStr == "DrawingObjectLink, _" { modelElementInstance = new(DrawingObjectLink) }
                         if jsonTypeStr == "Field, _" { modelElementInstance = new(Field) }
@@ -122,8 +129,11 @@ func (obj *StoryChildNodes) Deserialize(json map[string]interface{}) {
                         if jsonTypeStr == "FootnoteLink, _" { modelElementInstance = new(FootnoteLink) }
                         if jsonTypeStr == "FormField, _" {  }
                         if jsonTypeStr == "FormFieldCheckbox, _" { modelElementInstance = new(FormFieldCheckbox) }
+                        if jsonTypeStr == "FormFieldCheckboxLink, _" { modelElementInstance = new(FormFieldCheckboxLink) }
                         if jsonTypeStr == "FormFieldDropDown, _" { modelElementInstance = new(FormFieldDropDown) }
+                        if jsonTypeStr == "FormFieldDropDownLink, _" { modelElementInstance = new(FormFieldDropDownLink) }
                         if jsonTypeStr == "FormFieldTextInput, _" { modelElementInstance = new(FormFieldTextInput) }
+                        if jsonTypeStr == "FormFieldTextInputLink, _" { modelElementInstance = new(FormFieldTextInputLink) }
                         if jsonTypeStr == "OfficeMathLink, _" { modelElementInstance = new(OfficeMathLink) }
                         if jsonTypeStr == "OfficeMathObject, _" { modelElementInstance = new(OfficeMathObject) }
                         if jsonTypeStr == "Paragraph, _" { modelElementInstance = new(Paragraph) }

@@ -135,6 +135,8 @@ func (obj *Section) Deserialize(json map[string]interface{}) {
                     var modelElementInstance INodeLink = nil
                     if jsonElementType, found := elementValue["$type"]; found {
                         jsonTypeStr := jsonElementType.(string)
+                        if jsonTypeStr == "CommentRangeEnd, _" { modelElementInstance = new(CommentRangeEnd) }
+                        if jsonTypeStr == "CommentRangeStart, _" { modelElementInstance = new(CommentRangeStart) }
                         if jsonTypeStr == "DrawingObject, _" { modelElementInstance = new(DrawingObject) }
                         if jsonTypeStr == "DrawingObjectLink, _" { modelElementInstance = new(DrawingObjectLink) }
                         if jsonTypeStr == "Field, _" { modelElementInstance = new(Field) }
@@ -143,8 +145,11 @@ func (obj *Section) Deserialize(json map[string]interface{}) {
                         if jsonTypeStr == "FootnoteLink, _" { modelElementInstance = new(FootnoteLink) }
                         if jsonTypeStr == "FormField, _" {  }
                         if jsonTypeStr == "FormFieldCheckbox, _" { modelElementInstance = new(FormFieldCheckbox) }
+                        if jsonTypeStr == "FormFieldCheckboxLink, _" { modelElementInstance = new(FormFieldCheckboxLink) }
                         if jsonTypeStr == "FormFieldDropDown, _" { modelElementInstance = new(FormFieldDropDown) }
+                        if jsonTypeStr == "FormFieldDropDownLink, _" { modelElementInstance = new(FormFieldDropDownLink) }
                         if jsonTypeStr == "FormFieldTextInput, _" { modelElementInstance = new(FormFieldTextInput) }
+                        if jsonTypeStr == "FormFieldTextInputLink, _" { modelElementInstance = new(FormFieldTextInputLink) }
                         if jsonTypeStr == "OfficeMathLink, _" { modelElementInstance = new(OfficeMathLink) }
                         if jsonTypeStr == "OfficeMathObject, _" { modelElementInstance = new(OfficeMathObject) }
                         if jsonTypeStr == "Paragraph, _" { modelElementInstance = new(Paragraph) }
@@ -178,6 +183,8 @@ func (obj *Section) Deserialize(json map[string]interface{}) {
                     var modelElementInstance INodeLink = nil
                     if jsonElementType, found := elementValue["$type"]; found {
                         jsonTypeStr := jsonElementType.(string)
+                        if jsonTypeStr == "CommentRangeEnd, _" { modelElementInstance = new(CommentRangeEnd) }
+                        if jsonTypeStr == "CommentRangeStart, _" { modelElementInstance = new(CommentRangeStart) }
                         if jsonTypeStr == "DrawingObject, _" { modelElementInstance = new(DrawingObject) }
                         if jsonTypeStr == "DrawingObjectLink, _" { modelElementInstance = new(DrawingObjectLink) }
                         if jsonTypeStr == "Field, _" { modelElementInstance = new(Field) }
@@ -186,8 +193,11 @@ func (obj *Section) Deserialize(json map[string]interface{}) {
                         if jsonTypeStr == "FootnoteLink, _" { modelElementInstance = new(FootnoteLink) }
                         if jsonTypeStr == "FormField, _" {  }
                         if jsonTypeStr == "FormFieldCheckbox, _" { modelElementInstance = new(FormFieldCheckbox) }
+                        if jsonTypeStr == "FormFieldCheckboxLink, _" { modelElementInstance = new(FormFieldCheckboxLink) }
                         if jsonTypeStr == "FormFieldDropDown, _" { modelElementInstance = new(FormFieldDropDown) }
+                        if jsonTypeStr == "FormFieldDropDownLink, _" { modelElementInstance = new(FormFieldDropDownLink) }
                         if jsonTypeStr == "FormFieldTextInput, _" { modelElementInstance = new(FormFieldTextInput) }
+                        if jsonTypeStr == "FormFieldTextInputLink, _" { modelElementInstance = new(FormFieldTextInputLink) }
                         if jsonTypeStr == "OfficeMathLink, _" { modelElementInstance = new(OfficeMathLink) }
                         if jsonTypeStr == "OfficeMathObject, _" { modelElementInstance = new(OfficeMathObject) }
                         if jsonTypeStr == "Paragraph, _" { modelElementInstance = new(Paragraph) }
@@ -226,6 +236,8 @@ func (obj *Section) Deserialize(json map[string]interface{}) {
                 if jsonTypeStr == "BordersCollection, _" { modelInstance = new(BordersCollection) }
                 if jsonTypeStr == "Comment, _" { modelInstance = new(Comment) }
                 if jsonTypeStr == "CommentLink, _" { modelInstance = new(CommentLink) }
+                if jsonTypeStr == "CommentRangeEnd, _" { modelInstance = new(CommentRangeEnd) }
+                if jsonTypeStr == "CommentRangeStart, _" { modelInstance = new(CommentRangeStart) }
                 if jsonTypeStr == "CommentsCollection, _" { modelInstance = new(CommentsCollection) }
                 if jsonTypeStr == "CustomXmlPart, _" { modelInstance = new(CustomXmlPart) }
                 if jsonTypeStr == "CustomXmlPartInsert, _" { modelInstance = new(CustomXmlPartInsert) }
@@ -247,9 +259,12 @@ func (obj *Section) Deserialize(json map[string]interface{}) {
                 if jsonTypeStr == "FootnoteLink, _" { modelInstance = new(FootnoteLink) }
                 if jsonTypeStr == "FormField, _" {  }
                 if jsonTypeStr == "FormFieldCheckbox, _" { modelInstance = new(FormFieldCheckbox) }
+                if jsonTypeStr == "FormFieldCheckboxLink, _" { modelInstance = new(FormFieldCheckboxLink) }
                 if jsonTypeStr == "FormFieldCollection, _" { modelInstance = new(FormFieldCollection) }
                 if jsonTypeStr == "FormFieldDropDown, _" { modelInstance = new(FormFieldDropDown) }
+                if jsonTypeStr == "FormFieldDropDownLink, _" { modelInstance = new(FormFieldDropDownLink) }
                 if jsonTypeStr == "FormFieldTextInput, _" { modelInstance = new(FormFieldTextInput) }
+                if jsonTypeStr == "FormFieldTextInputLink, _" { modelInstance = new(FormFieldTextInputLink) }
                 if jsonTypeStr == "HeaderFooter, _" { modelInstance = new(HeaderFooter) }
                 if jsonTypeStr == "HeaderFooterLink, _" { modelInstance = new(HeaderFooterLink) }
                 if jsonTypeStr == "HeaderFooterLinkCollection, _" { modelInstance = new(HeaderFooterLinkCollection) }
@@ -310,6 +325,8 @@ func (obj *Section) Deserialize(json map[string]interface{}) {
                 if jsonTypeStr == "BordersCollection, _" { modelInstance = new(BordersCollection) }
                 if jsonTypeStr == "Comment, _" { modelInstance = new(Comment) }
                 if jsonTypeStr == "CommentLink, _" { modelInstance = new(CommentLink) }
+                if jsonTypeStr == "CommentRangeEnd, _" { modelInstance = new(CommentRangeEnd) }
+                if jsonTypeStr == "CommentRangeStart, _" { modelInstance = new(CommentRangeStart) }
                 if jsonTypeStr == "CommentsCollection, _" { modelInstance = new(CommentsCollection) }
                 if jsonTypeStr == "CustomXmlPart, _" { modelInstance = new(CustomXmlPart) }
                 if jsonTypeStr == "CustomXmlPartInsert, _" { modelInstance = new(CustomXmlPartInsert) }
@@ -331,9 +348,12 @@ func (obj *Section) Deserialize(json map[string]interface{}) {
                 if jsonTypeStr == "FootnoteLink, _" { modelInstance = new(FootnoteLink) }
                 if jsonTypeStr == "FormField, _" {  }
                 if jsonTypeStr == "FormFieldCheckbox, _" { modelInstance = new(FormFieldCheckbox) }
+                if jsonTypeStr == "FormFieldCheckboxLink, _" { modelInstance = new(FormFieldCheckboxLink) }
                 if jsonTypeStr == "FormFieldCollection, _" { modelInstance = new(FormFieldCollection) }
                 if jsonTypeStr == "FormFieldDropDown, _" { modelInstance = new(FormFieldDropDown) }
+                if jsonTypeStr == "FormFieldDropDownLink, _" { modelInstance = new(FormFieldDropDownLink) }
                 if jsonTypeStr == "FormFieldTextInput, _" { modelInstance = new(FormFieldTextInput) }
+                if jsonTypeStr == "FormFieldTextInputLink, _" { modelInstance = new(FormFieldTextInputLink) }
                 if jsonTypeStr == "HeaderFooter, _" { modelInstance = new(HeaderFooter) }
                 if jsonTypeStr == "HeaderFooterLink, _" { modelInstance = new(HeaderFooterLink) }
                 if jsonTypeStr == "HeaderFooterLinkCollection, _" { modelInstance = new(HeaderFooterLinkCollection) }
@@ -396,6 +416,8 @@ func (obj *Section) Deserialize(json map[string]interface{}) {
                 if jsonTypeStr == "BordersCollection, _" { modelInstance = new(BordersCollection) }
                 if jsonTypeStr == "Comment, _" { modelInstance = new(Comment) }
                 if jsonTypeStr == "CommentLink, _" { modelInstance = new(CommentLink) }
+                if jsonTypeStr == "CommentRangeEnd, _" { modelInstance = new(CommentRangeEnd) }
+                if jsonTypeStr == "CommentRangeStart, _" { modelInstance = new(CommentRangeStart) }
                 if jsonTypeStr == "CommentsCollection, _" { modelInstance = new(CommentsCollection) }
                 if jsonTypeStr == "CustomXmlPart, _" { modelInstance = new(CustomXmlPart) }
                 if jsonTypeStr == "CustomXmlPartInsert, _" { modelInstance = new(CustomXmlPartInsert) }
@@ -417,9 +439,12 @@ func (obj *Section) Deserialize(json map[string]interface{}) {
                 if jsonTypeStr == "FootnoteLink, _" { modelInstance = new(FootnoteLink) }
                 if jsonTypeStr == "FormField, _" {  }
                 if jsonTypeStr == "FormFieldCheckbox, _" { modelInstance = new(FormFieldCheckbox) }
+                if jsonTypeStr == "FormFieldCheckboxLink, _" { modelInstance = new(FormFieldCheckboxLink) }
                 if jsonTypeStr == "FormFieldCollection, _" { modelInstance = new(FormFieldCollection) }
                 if jsonTypeStr == "FormFieldDropDown, _" { modelInstance = new(FormFieldDropDown) }
+                if jsonTypeStr == "FormFieldDropDownLink, _" { modelInstance = new(FormFieldDropDownLink) }
                 if jsonTypeStr == "FormFieldTextInput, _" { modelInstance = new(FormFieldTextInput) }
+                if jsonTypeStr == "FormFieldTextInputLink, _" { modelInstance = new(FormFieldTextInputLink) }
                 if jsonTypeStr == "HeaderFooter, _" { modelInstance = new(HeaderFooter) }
                 if jsonTypeStr == "HeaderFooterLink, _" { modelInstance = new(HeaderFooterLink) }
                 if jsonTypeStr == "HeaderFooterLinkCollection, _" { modelInstance = new(HeaderFooterLinkCollection) }
@@ -480,6 +505,8 @@ func (obj *Section) Deserialize(json map[string]interface{}) {
                 if jsonTypeStr == "BordersCollection, _" { modelInstance = new(BordersCollection) }
                 if jsonTypeStr == "Comment, _" { modelInstance = new(Comment) }
                 if jsonTypeStr == "CommentLink, _" { modelInstance = new(CommentLink) }
+                if jsonTypeStr == "CommentRangeEnd, _" { modelInstance = new(CommentRangeEnd) }
+                if jsonTypeStr == "CommentRangeStart, _" { modelInstance = new(CommentRangeStart) }
                 if jsonTypeStr == "CommentsCollection, _" { modelInstance = new(CommentsCollection) }
                 if jsonTypeStr == "CustomXmlPart, _" { modelInstance = new(CustomXmlPart) }
                 if jsonTypeStr == "CustomXmlPartInsert, _" { modelInstance = new(CustomXmlPartInsert) }
@@ -501,9 +528,12 @@ func (obj *Section) Deserialize(json map[string]interface{}) {
                 if jsonTypeStr == "FootnoteLink, _" { modelInstance = new(FootnoteLink) }
                 if jsonTypeStr == "FormField, _" {  }
                 if jsonTypeStr == "FormFieldCheckbox, _" { modelInstance = new(FormFieldCheckbox) }
+                if jsonTypeStr == "FormFieldCheckboxLink, _" { modelInstance = new(FormFieldCheckboxLink) }
                 if jsonTypeStr == "FormFieldCollection, _" { modelInstance = new(FormFieldCollection) }
                 if jsonTypeStr == "FormFieldDropDown, _" { modelInstance = new(FormFieldDropDown) }
+                if jsonTypeStr == "FormFieldDropDownLink, _" { modelInstance = new(FormFieldDropDownLink) }
                 if jsonTypeStr == "FormFieldTextInput, _" { modelInstance = new(FormFieldTextInput) }
+                if jsonTypeStr == "FormFieldTextInputLink, _" { modelInstance = new(FormFieldTextInputLink) }
                 if jsonTypeStr == "HeaderFooter, _" { modelInstance = new(HeaderFooter) }
                 if jsonTypeStr == "HeaderFooterLink, _" { modelInstance = new(HeaderFooterLink) }
                 if jsonTypeStr == "HeaderFooterLinkCollection, _" { modelInstance = new(HeaderFooterLinkCollection) }
@@ -566,6 +596,8 @@ func (obj *Section) Deserialize(json map[string]interface{}) {
                 if jsonTypeStr == "BordersCollection, _" { modelInstance = new(BordersCollection) }
                 if jsonTypeStr == "Comment, _" { modelInstance = new(Comment) }
                 if jsonTypeStr == "CommentLink, _" { modelInstance = new(CommentLink) }
+                if jsonTypeStr == "CommentRangeEnd, _" { modelInstance = new(CommentRangeEnd) }
+                if jsonTypeStr == "CommentRangeStart, _" { modelInstance = new(CommentRangeStart) }
                 if jsonTypeStr == "CommentsCollection, _" { modelInstance = new(CommentsCollection) }
                 if jsonTypeStr == "CustomXmlPart, _" { modelInstance = new(CustomXmlPart) }
                 if jsonTypeStr == "CustomXmlPartInsert, _" { modelInstance = new(CustomXmlPartInsert) }
@@ -587,9 +619,12 @@ func (obj *Section) Deserialize(json map[string]interface{}) {
                 if jsonTypeStr == "FootnoteLink, _" { modelInstance = new(FootnoteLink) }
                 if jsonTypeStr == "FormField, _" {  }
                 if jsonTypeStr == "FormFieldCheckbox, _" { modelInstance = new(FormFieldCheckbox) }
+                if jsonTypeStr == "FormFieldCheckboxLink, _" { modelInstance = new(FormFieldCheckboxLink) }
                 if jsonTypeStr == "FormFieldCollection, _" { modelInstance = new(FormFieldCollection) }
                 if jsonTypeStr == "FormFieldDropDown, _" { modelInstance = new(FormFieldDropDown) }
+                if jsonTypeStr == "FormFieldDropDownLink, _" { modelInstance = new(FormFieldDropDownLink) }
                 if jsonTypeStr == "FormFieldTextInput, _" { modelInstance = new(FormFieldTextInput) }
+                if jsonTypeStr == "FormFieldTextInputLink, _" { modelInstance = new(FormFieldTextInputLink) }
                 if jsonTypeStr == "HeaderFooter, _" { modelInstance = new(HeaderFooter) }
                 if jsonTypeStr == "HeaderFooterLink, _" { modelInstance = new(HeaderFooterLink) }
                 if jsonTypeStr == "HeaderFooterLinkCollection, _" { modelInstance = new(HeaderFooterLinkCollection) }
@@ -650,6 +685,8 @@ func (obj *Section) Deserialize(json map[string]interface{}) {
                 if jsonTypeStr == "BordersCollection, _" { modelInstance = new(BordersCollection) }
                 if jsonTypeStr == "Comment, _" { modelInstance = new(Comment) }
                 if jsonTypeStr == "CommentLink, _" { modelInstance = new(CommentLink) }
+                if jsonTypeStr == "CommentRangeEnd, _" { modelInstance = new(CommentRangeEnd) }
+                if jsonTypeStr == "CommentRangeStart, _" { modelInstance = new(CommentRangeStart) }
                 if jsonTypeStr == "CommentsCollection, _" { modelInstance = new(CommentsCollection) }
                 if jsonTypeStr == "CustomXmlPart, _" { modelInstance = new(CustomXmlPart) }
                 if jsonTypeStr == "CustomXmlPartInsert, _" { modelInstance = new(CustomXmlPartInsert) }
@@ -671,9 +708,12 @@ func (obj *Section) Deserialize(json map[string]interface{}) {
                 if jsonTypeStr == "FootnoteLink, _" { modelInstance = new(FootnoteLink) }
                 if jsonTypeStr == "FormField, _" {  }
                 if jsonTypeStr == "FormFieldCheckbox, _" { modelInstance = new(FormFieldCheckbox) }
+                if jsonTypeStr == "FormFieldCheckboxLink, _" { modelInstance = new(FormFieldCheckboxLink) }
                 if jsonTypeStr == "FormFieldCollection, _" { modelInstance = new(FormFieldCollection) }
                 if jsonTypeStr == "FormFieldDropDown, _" { modelInstance = new(FormFieldDropDown) }
+                if jsonTypeStr == "FormFieldDropDownLink, _" { modelInstance = new(FormFieldDropDownLink) }
                 if jsonTypeStr == "FormFieldTextInput, _" { modelInstance = new(FormFieldTextInput) }
+                if jsonTypeStr == "FormFieldTextInputLink, _" { modelInstance = new(FormFieldTextInputLink) }
                 if jsonTypeStr == "HeaderFooter, _" { modelInstance = new(HeaderFooter) }
                 if jsonTypeStr == "HeaderFooterLink, _" { modelInstance = new(HeaderFooterLink) }
                 if jsonTypeStr == "HeaderFooterLinkCollection, _" { modelInstance = new(HeaderFooterLinkCollection) }
@@ -736,6 +776,8 @@ func (obj *Section) Deserialize(json map[string]interface{}) {
                 if jsonTypeStr == "BordersCollection, _" { modelInstance = new(BordersCollection) }
                 if jsonTypeStr == "Comment, _" { modelInstance = new(Comment) }
                 if jsonTypeStr == "CommentLink, _" { modelInstance = new(CommentLink) }
+                if jsonTypeStr == "CommentRangeEnd, _" { modelInstance = new(CommentRangeEnd) }
+                if jsonTypeStr == "CommentRangeStart, _" { modelInstance = new(CommentRangeStart) }
                 if jsonTypeStr == "CommentsCollection, _" { modelInstance = new(CommentsCollection) }
                 if jsonTypeStr == "CustomXmlPart, _" { modelInstance = new(CustomXmlPart) }
                 if jsonTypeStr == "CustomXmlPartInsert, _" { modelInstance = new(CustomXmlPartInsert) }
@@ -757,9 +799,12 @@ func (obj *Section) Deserialize(json map[string]interface{}) {
                 if jsonTypeStr == "FootnoteLink, _" { modelInstance = new(FootnoteLink) }
                 if jsonTypeStr == "FormField, _" {  }
                 if jsonTypeStr == "FormFieldCheckbox, _" { modelInstance = new(FormFieldCheckbox) }
+                if jsonTypeStr == "FormFieldCheckboxLink, _" { modelInstance = new(FormFieldCheckboxLink) }
                 if jsonTypeStr == "FormFieldCollection, _" { modelInstance = new(FormFieldCollection) }
                 if jsonTypeStr == "FormFieldDropDown, _" { modelInstance = new(FormFieldDropDown) }
+                if jsonTypeStr == "FormFieldDropDownLink, _" { modelInstance = new(FormFieldDropDownLink) }
                 if jsonTypeStr == "FormFieldTextInput, _" { modelInstance = new(FormFieldTextInput) }
+                if jsonTypeStr == "FormFieldTextInputLink, _" { modelInstance = new(FormFieldTextInputLink) }
                 if jsonTypeStr == "HeaderFooter, _" { modelInstance = new(HeaderFooter) }
                 if jsonTypeStr == "HeaderFooterLink, _" { modelInstance = new(HeaderFooterLink) }
                 if jsonTypeStr == "HeaderFooterLinkCollection, _" { modelInstance = new(HeaderFooterLinkCollection) }
@@ -820,6 +865,8 @@ func (obj *Section) Deserialize(json map[string]interface{}) {
                 if jsonTypeStr == "BordersCollection, _" { modelInstance = new(BordersCollection) }
                 if jsonTypeStr == "Comment, _" { modelInstance = new(Comment) }
                 if jsonTypeStr == "CommentLink, _" { modelInstance = new(CommentLink) }
+                if jsonTypeStr == "CommentRangeEnd, _" { modelInstance = new(CommentRangeEnd) }
+                if jsonTypeStr == "CommentRangeStart, _" { modelInstance = new(CommentRangeStart) }
                 if jsonTypeStr == "CommentsCollection, _" { modelInstance = new(CommentsCollection) }
                 if jsonTypeStr == "CustomXmlPart, _" { modelInstance = new(CustomXmlPart) }
                 if jsonTypeStr == "CustomXmlPartInsert, _" { modelInstance = new(CustomXmlPartInsert) }
@@ -841,9 +888,12 @@ func (obj *Section) Deserialize(json map[string]interface{}) {
                 if jsonTypeStr == "FootnoteLink, _" { modelInstance = new(FootnoteLink) }
                 if jsonTypeStr == "FormField, _" {  }
                 if jsonTypeStr == "FormFieldCheckbox, _" { modelInstance = new(FormFieldCheckbox) }
+                if jsonTypeStr == "FormFieldCheckboxLink, _" { modelInstance = new(FormFieldCheckboxLink) }
                 if jsonTypeStr == "FormFieldCollection, _" { modelInstance = new(FormFieldCollection) }
                 if jsonTypeStr == "FormFieldDropDown, _" { modelInstance = new(FormFieldDropDown) }
+                if jsonTypeStr == "FormFieldDropDownLink, _" { modelInstance = new(FormFieldDropDownLink) }
                 if jsonTypeStr == "FormFieldTextInput, _" { modelInstance = new(FormFieldTextInput) }
+                if jsonTypeStr == "FormFieldTextInputLink, _" { modelInstance = new(FormFieldTextInputLink) }
                 if jsonTypeStr == "HeaderFooter, _" { modelInstance = new(HeaderFooter) }
                 if jsonTypeStr == "HeaderFooterLink, _" { modelInstance = new(HeaderFooterLink) }
                 if jsonTypeStr == "HeaderFooterLinkCollection, _" { modelInstance = new(HeaderFooterLinkCollection) }
