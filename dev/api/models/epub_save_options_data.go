@@ -131,6 +131,8 @@ type IEpubSaveOptionsData interface {
     SetOfficeMathOutputMode(value *string)
     GetPrettyFormat() *bool
     SetPrettyFormat(value *bool)
+    GetRemoveJavaScriptFromLinks() *bool
+    SetRemoveJavaScriptFromLinks(value *bool)
     GetReplaceBackslashWithYenSign() *bool
     SetReplaceBackslashWithYenSign(value *bool)
     GetResolveFontNames() *bool
@@ -287,6 +289,9 @@ type EpubSaveOptionsData struct {
 
     // Container class for epub save options.
     PrettyFormat *bool `json:"PrettyFormat,omitempty"`
+
+    // Container class for epub save options.
+    RemoveJavaScriptFromLinks *bool `json:"RemoveJavaScriptFromLinks,omitempty"`
 
     // Container class for epub save options.
     ReplaceBackslashWithYenSign *bool `json:"ReplaceBackslashWithYenSign,omitempty"`
@@ -900,6 +905,18 @@ func (obj *EpubSaveOptionsData) Deserialize(json map[string]interface{}) {
 
     }
 
+    if jsonValue, exists := json["RemoveJavaScriptFromLinks"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.RemoveJavaScriptFromLinks = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["removeJavaScriptFromLinks"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.RemoveJavaScriptFromLinks = &parsedValue
+        }
+
+    }
+
     if jsonValue, exists := json["ReplaceBackslashWithYenSign"]; exists {
         if parsedValue, valid := jsonValue.(bool); valid {
             obj.ReplaceBackslashWithYenSign = &parsedValue
@@ -1374,6 +1391,14 @@ func (obj *EpubSaveOptionsData) GetPrettyFormat() *bool {
 
 func (obj *EpubSaveOptionsData) SetPrettyFormat(value *bool) {
     obj.PrettyFormat = value
+}
+
+func (obj *EpubSaveOptionsData) GetRemoveJavaScriptFromLinks() *bool {
+    return obj.RemoveJavaScriptFromLinks
+}
+
+func (obj *EpubSaveOptionsData) SetRemoveJavaScriptFromLinks(value *bool) {
+    obj.RemoveJavaScriptFromLinks = value
 }
 
 func (obj *EpubSaveOptionsData) GetReplaceBackslashWithYenSign() *bool {

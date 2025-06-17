@@ -131,6 +131,8 @@ type IHtmlSaveOptionsData interface {
     SetOfficeMathOutputMode(value *string)
     GetPrettyFormat() *bool
     SetPrettyFormat(value *bool)
+    GetRemoveJavaScriptFromLinks() *bool
+    SetRemoveJavaScriptFromLinks(value *bool)
     GetReplaceBackslashWithYenSign() *bool
     SetReplaceBackslashWithYenSign(value *bool)
     GetResolveFontNames() *bool
@@ -285,6 +287,9 @@ type HtmlSaveOptionsData struct {
 
     // Container class for html save options.
     PrettyFormat *bool `json:"PrettyFormat,omitempty"`
+
+    // Container class for html save options.
+    RemoveJavaScriptFromLinks *bool `json:"RemoveJavaScriptFromLinks,omitempty"`
 
     // Container class for html save options.
     ReplaceBackslashWithYenSign *bool `json:"ReplaceBackslashWithYenSign,omitempty"`
@@ -891,6 +896,18 @@ func (obj *HtmlSaveOptionsData) Deserialize(json map[string]interface{}) {
 
     }
 
+    if jsonValue, exists := json["RemoveJavaScriptFromLinks"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.RemoveJavaScriptFromLinks = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["removeJavaScriptFromLinks"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.RemoveJavaScriptFromLinks = &parsedValue
+        }
+
+    }
+
     if jsonValue, exists := json["ReplaceBackslashWithYenSign"]; exists {
         if parsedValue, valid := jsonValue.(bool); valid {
             obj.ReplaceBackslashWithYenSign = &parsedValue
@@ -1351,6 +1368,14 @@ func (obj *HtmlSaveOptionsData) GetPrettyFormat() *bool {
 
 func (obj *HtmlSaveOptionsData) SetPrettyFormat(value *bool) {
     obj.PrettyFormat = value
+}
+
+func (obj *HtmlSaveOptionsData) GetRemoveJavaScriptFromLinks() *bool {
+    return obj.RemoveJavaScriptFromLinks
+}
+
+func (obj *HtmlSaveOptionsData) SetRemoveJavaScriptFromLinks(value *bool) {
+    obj.RemoveJavaScriptFromLinks = value
 }
 
 func (obj *HtmlSaveOptionsData) GetReplaceBackslashWithYenSign() *bool {
