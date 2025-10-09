@@ -12844,6 +12844,57 @@ func (a *WordsApiService) LoadWebDocument(ctx context.Context, data *models.Load
     return successPayload, response, err
 }
 
+/* WordsApiService Downloads a document from the Web using URL and saves it to cloud storage in the specified format.
+ * @param ctx context.Context for authentication, logging, tracing, etc.
+ * @data operation request data.
+@return LoadWebDocumentOnlineResponse*/
+func (a *WordsApiService) LoadWebDocumentOnline(ctx context.Context, data *models.LoadWebDocumentOnlineRequest) (models.LoadWebDocumentOnlineResponse, *http.Response, error) {
+    var (
+        successPayload models.LoadWebDocumentOnlineResponse
+    )
+
+    requestData, err := data.CreateRequestData();
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    requestData.Path = a.client.cfg.BaseUrl + requestData.Path;
+
+    r, err := a.client.prepareRequest(ctx, requestData)
+    if err != nil {
+        return successPayload, nil, err
+    }
+
+    response, err := a.client.callAPI(r)
+
+    if err != nil || response == nil {
+        return successPayload, nil, err
+    }
+
+
+    if response.StatusCode == 401 {
+        return successPayload, nil, errors.New("Access is denied")
+    }
+    if response.StatusCode >= 300 {
+        var apiError models.WordsApiErrorResponse;
+        var jsonMap map[string]interface{}
+        if err = json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
+            return successPayload, nil, err
+        }
+
+        apiError.Deserialize(jsonMap)
+        return successPayload, response, &apiError
+    }
+    boundary := GetBoundary(response)
+    result, err := data.CreateResponse(response.Body, boundary)
+
+    if err != nil {
+        return successPayload, response, err
+    }
+
+    return result.(models.LoadWebDocumentOnlineResponse), response, err
+}
+
 /* WordsApiService Merge the section with the next one.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  * @data operation request data.

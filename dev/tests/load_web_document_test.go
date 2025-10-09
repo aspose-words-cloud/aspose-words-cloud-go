@@ -66,3 +66,29 @@ func Test_LoadWebDocument_LoadWebDocument(t *testing.T) {
     assert.NotNil(t, actual.GetSaveResult().GetDestDocument(), "Validate LoadWebDocument response.");
     assert.Equal(t, "google.doc", DereferenceValue(actual.GetSaveResult().GetDestDocument().GetHref()), "Validate LoadWebDocument response.");
 }
+
+// Test for loading web document online.
+func Test_LoadWebDocument_LoadWebDocumentOnline(t *testing.T) {
+    config := ReadConfiguration(t)
+    client, ctx := PrepareTest(t, config)
+    requestDataSaveOptions := models.DocSaveOptionsData{
+        FileName: ToStringPointer("google.doc"),
+        DmlEffectsRenderingMode: ToStringPointer("None"),
+        DmlRenderingMode: ToStringPointer("DrawingML"),
+        ZipOutput: ToBoolPointer(false),
+    }
+    requestData := models.LoadWebDocumentData{
+        LoadingDocumentUrl: ToStringPointer("http://google.com"),
+        SaveOptions: &requestDataSaveOptions,
+    }
+
+    request := &models.LoadWebDocumentOnlineRequest{
+        Data: &requestData,
+    }
+
+    _, _, err := client.WordsApi.LoadWebDocumentOnline(ctx, request)
+    if err != nil {
+        t.Error(err)
+    }
+
+}
