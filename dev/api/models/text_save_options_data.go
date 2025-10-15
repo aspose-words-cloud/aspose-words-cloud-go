@@ -77,6 +77,8 @@ type ITextSaveOptionsData interface {
     SetAddBidiMarks(value *bool)
     GetMaxCharactersPerLine() *int32
     SetMaxCharactersPerLine(value *int32)
+    GetOfficeMathExportMode() *string
+    SetOfficeMathExportMode(value *string)
     GetPreserveTableLayout() *bool
     SetPreserveTableLayout(value *bool)
     GetSimplifyListLabels() *bool
@@ -142,6 +144,9 @@ type TextSaveOptionsData struct {
 
     // Container class for text save options.
     MaxCharactersPerLine *int32 `json:"MaxCharactersPerLine,omitempty"`
+
+    // Container class for text save options.
+    OfficeMathExportMode *string `json:"OfficeMathExportMode,omitempty"`
 
     // Container class for text save options.
     PreserveTableLayout *bool `json:"PreserveTableLayout,omitempty"`
@@ -412,6 +417,18 @@ func (obj *TextSaveOptionsData) Deserialize(json map[string]interface{}) {
 
     }
 
+    if jsonValue, exists := json["OfficeMathExportMode"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.OfficeMathExportMode = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["officeMathExportMode"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.OfficeMathExportMode = &parsedValue
+        }
+
+    }
+
     if jsonValue, exists := json["PreserveTableLayout"]; exists {
         if parsedValue, valid := jsonValue.(bool); valid {
             obj.PreserveTableLayout = &parsedValue
@@ -611,6 +628,14 @@ func (obj *TextSaveOptionsData) GetMaxCharactersPerLine() *int32 {
 
 func (obj *TextSaveOptionsData) SetMaxCharactersPerLine(value *int32) {
     obj.MaxCharactersPerLine = value
+}
+
+func (obj *TextSaveOptionsData) GetOfficeMathExportMode() *string {
+    return obj.OfficeMathExportMode
+}
+
+func (obj *TextSaveOptionsData) SetOfficeMathExportMode(value *string) {
+    obj.OfficeMathExportMode = value
 }
 
 func (obj *TextSaveOptionsData) GetPreserveTableLayout() *bool {
