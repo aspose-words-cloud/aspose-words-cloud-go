@@ -139,6 +139,8 @@ type IPdfSaveOptionsData interface {
     SetZoomBehavior(value *string)
     GetZoomFactor() *int32
     SetZoomFactor(value *int32)
+    GetExportFloatingShapesAsInlineTag() *bool
+    SetExportFloatingShapesAsInlineTag(value *bool)
     GetSaveFormat() *string
     SetSaveFormat(value *string)
 }
@@ -293,6 +295,9 @@ type PdfSaveOptionsData struct {
 
     // Container class for pdf save options.
     ZoomFactor *int32 `json:"ZoomFactor,omitempty"`
+
+    // Container class for pdf save options.
+    ExportFloatingShapesAsInlineTag *bool `json:"ExportFloatingShapesAsInlineTag,omitempty"`
 
     // Container class for pdf save options.
     SaveFormat *string `json:"SaveFormat,omitempty"`
@@ -974,6 +979,18 @@ func (obj *PdfSaveOptionsData) Deserialize(json map[string]interface{}) {
         }
 
     }
+
+    if jsonValue, exists := json["ExportFloatingShapesAsInlineTag"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.ExportFloatingShapesAsInlineTag = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["exportFloatingShapesAsInlineTag"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.ExportFloatingShapesAsInlineTag = &parsedValue
+        }
+
+    }
 }
 
 func (obj *PdfSaveOptionsData) CollectFilesContent(resultFilesContent []FileReference) []FileReference {
@@ -1420,6 +1437,14 @@ func (obj *PdfSaveOptionsData) GetZoomFactor() *int32 {
 
 func (obj *PdfSaveOptionsData) SetZoomFactor(value *int32) {
     obj.ZoomFactor = value
+}
+
+func (obj *PdfSaveOptionsData) GetExportFloatingShapesAsInlineTag() *bool {
+    return obj.ExportFloatingShapesAsInlineTag
+}
+
+func (obj *PdfSaveOptionsData) SetExportFloatingShapesAsInlineTag(value *bool) {
+    obj.ExportFloatingShapesAsInlineTag = value
 }
 
 func (obj *PdfSaveOptionsData) GetSaveFormat() *string {
