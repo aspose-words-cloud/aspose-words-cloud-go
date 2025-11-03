@@ -39,9 +39,9 @@ import (
 type BuildReportOnlineRequest struct {
         // File with template.
         Template io.ReadCloser
-        // A string providing a data to populate the specified template. The string must be of one of the following types: xml, json, csv.
+        // A string providing data to populate the specified template. The string must be of one of the following types: xml, json, csv.
         Data *string
-        // An object providing a settings of report engine.
+        // An object providing settings of a report engine.
         ReportEngineSettings IReportEngineSettings
     /* optional (nil or map[string]interface{}) with one or more of key / value pairs:
         key: "documentFileName" value: (*string) The filename of the output document, that will be used when the resulting document has a dynamic field {filename}. If it is not set, the "template" will be used instead. */

@@ -41,7 +41,7 @@ import (
 type SignDocumentOnlineRequest struct {
         // The document.
         Document io.ReadCloser
-        // certifate file path.
+        // certificate file path.
         CertificatePath *string
         // certificate password.
         CertificatePassword *string

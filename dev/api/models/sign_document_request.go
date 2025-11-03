@@ -41,7 +41,7 @@ import (
 type SignDocumentRequest struct {
         // Name of the document to sign.
         Name *string
-        // certifate file path.
+        // certificate file path.
         CertificatePath *string
         // certificate password.
         CertificatePassword *string

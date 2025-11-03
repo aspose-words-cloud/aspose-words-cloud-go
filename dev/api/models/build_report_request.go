@@ -41,9 +41,9 @@ import (
 type BuildReportRequest struct {
         // The filename of the input document.
         Name *string
-        // A string providing a data to populate the specified template. The string must be of one of the following types: xml, json, csv.
+        // A string providing data to populate the specified template. The string must be of one of the following types: xml, json, csv.
         Data *string
-        // An object providing a settings of report engine.
+        // An object providing settings of a report engine.
         ReportEngineSettings IReportEngineSettings
     /* optional (nil or map[string]interface{}) with one or more of key / value pairs:
         key: "folder" value: (*string) Original document folder.
