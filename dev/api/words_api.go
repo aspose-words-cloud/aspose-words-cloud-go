@@ -52,7 +52,7 @@ var (
 
 type WordsApiService service
 
-/* WordsApiService Accepts all revisions in the document.
+/* WordsApiService Accepts all the revisions in the document.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  * @data operation request data.
 @return models.RevisionsModificationResponse*/
@@ -103,7 +103,7 @@ func (a *WordsApiService) AcceptAllRevisions(ctx context.Context, data *models.A
     return successPayload, response, err
 }
 
-/* WordsApiService Accepts all revisions in the document.
+/* WordsApiService Accepts all the revisions in the document.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  * @data operation request data.
 @return AcceptAllRevisionsOnlineResponse*/
@@ -8421,7 +8421,7 @@ func (a *WordsApiService) GetParagraphTabStopsOnline(ctx context.Context, data *
     return successPayload, response, err
 }
 
-/* WordsApiService Get assymetric public key.
+/* WordsApiService Get asymmetric public key.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  * @data operation request data.
 @return models.PublicKeyResponse*/

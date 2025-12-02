@@ -69,6 +69,7 @@ func Test_Folder_DeleteFolder(t *testing.T) {
 
 
     options := map[string]interface{}{
+        "recursive": true,
     }
 
     request := &models.DeleteFolderRequest{
