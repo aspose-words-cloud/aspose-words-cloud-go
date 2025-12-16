@@ -45,6 +45,8 @@ type IDocument interface {
     SetDocumentProperties(value IDocumentProperties)
     GetFileName() *string
     SetFileName(value *string)
+    GetFileSize() *int32
+    SetFileSize(value *int32)
     GetIsEncrypted() *bool
     SetIsEncrypted(value *bool)
     GetIsSigned() *bool
@@ -62,6 +64,9 @@ type Document struct {
 
     // Represents Words document DTO.
     FileName *string `json:"FileName,omitempty"`
+
+    // Represents Words document DTO.
+    FileSize *int32 `json:"FileSize,omitempty"`
 
     // Represents Words document DTO.
     IsEncrypted *bool `json:"IsEncrypted,omitempty"`
@@ -162,6 +167,20 @@ func (obj *Document) Deserialize(json map[string]interface{}) {
 
     }
 
+    if jsonValue, exists := json["FileSize"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.FileSize = new(int32)
+            *obj.FileSize = int32(parsedValue)
+        }
+
+    } else if jsonValue, exists := json["fileSize"]; exists {
+        if parsedValue, valid := jsonValue.(float64); valid {
+            obj.FileSize = new(int32)
+            *obj.FileSize = int32(parsedValue)
+        }
+
+    }
+
     if jsonValue, exists := json["IsEncrypted"]; exists {
         if parsedValue, valid := jsonValue.(bool); valid {
             obj.IsEncrypted = &parsedValue
@@ -257,6 +276,14 @@ func (obj *Document) GetFileName() *string {
 
 func (obj *Document) SetFileName(value *string) {
     obj.FileName = value
+}
+
+func (obj *Document) GetFileSize() *int32 {
+    return obj.FileSize
+}
+
+func (obj *Document) SetFileSize(value *int32) {
+    obj.FileSize = value
 }
 
 func (obj *Document) GetIsEncrypted() *bool {
