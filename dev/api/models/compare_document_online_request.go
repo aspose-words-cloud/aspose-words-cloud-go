@@ -48,7 +48,8 @@ type CompareDocumentOnlineRequest struct {
         key: "password" value: (*string) Password of protected Word document. Use the parameter to pass a password via SDK. SDK encrypts it automatically. We don't recommend to use the parameter to pass a plain password for direct call of API.
         key: "encryptedPassword" value: (*string) Password of protected Word document. Use the parameter to pass an encrypted password for direct calls of API. See SDK code for encyption details.
         key: "openTypeSupport" value: (*bool) The value indicates whether OpenType support is on.
-        key: "destFileName" value: (*string) Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document. */
+        key: "destFileName" value: (*string) Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.
+        key: "fontsLocation" value: (*string) Folder in filestorage with custom fonts. */
     Optionals map[string]interface{}
 }
 
@@ -98,6 +99,9 @@ func (data *CompareDocumentOnlineRequest) CreateRequestData() (RequestData, erro
     if err := typeCheckParameter(data.Optionals["destFileName"], "string", "data.Optionals[destFileName]"); err != nil {
         return result, err
     }
+    if err := typeCheckParameter(data.Optionals["fontsLocation"], "string", "data.Optionals[fontsLocation]"); err != nil {
+        return result, err
+    }
 
 
     if (data.CompareData != nil) {
@@ -129,6 +133,11 @@ func (data *CompareDocumentOnlineRequest) CreateRequestData() (RequestData, erro
 
     if localVarTempParam, localVarOk := data.Optionals["destFileName"].(string); localVarOk {
         result.QueryParams.Add("DestFileName", parameterToString(localVarTempParam, ""))
+    }
+
+
+    if localVarTempParam, localVarOk := data.Optionals["fontsLocation"].(string); localVarOk {
+        result.QueryParams.Add("FontsLocation", parameterToString(localVarTempParam, ""))
     }
 
 
