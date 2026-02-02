@@ -74,6 +74,7 @@ func (obj *LoadWebDocumentData) Deserialize(json map[string]interface{}) {
                 jsonTypeStr := jsonType.(string)
                 if jsonTypeStr == "Azw3SaveOptionsData, _" { modelInstance = new(Azw3SaveOptionsData) }
                 if jsonTypeStr == "BmpSaveOptionsData, _" { modelInstance = new(BmpSaveOptionsData) }
+                if jsonTypeStr == "DoclingSaveOptionsData, _" { modelInstance = new(DoclingSaveOptionsData) }
                 if jsonTypeStr == "DocmSaveOptionsData, _" { modelInstance = new(DocmSaveOptionsData) }
                 if jsonTypeStr == "DocSaveOptionsData, _" { modelInstance = new(DocSaveOptionsData) }
                 if jsonTypeStr == "DocxSaveOptionsData, _" { modelInstance = new(DocxSaveOptionsData) }
@@ -126,6 +127,7 @@ func (obj *LoadWebDocumentData) Deserialize(json map[string]interface{}) {
                 jsonTypeStr := jsonType.(string)
                 if jsonTypeStr == "Azw3SaveOptionsData, _" { modelInstance = new(Azw3SaveOptionsData) }
                 if jsonTypeStr == "BmpSaveOptionsData, _" { modelInstance = new(BmpSaveOptionsData) }
+                if jsonTypeStr == "DoclingSaveOptionsData, _" { modelInstance = new(DoclingSaveOptionsData) }
                 if jsonTypeStr == "DocmSaveOptionsData, _" { modelInstance = new(DocmSaveOptionsData) }
                 if jsonTypeStr == "DocSaveOptionsData, _" { modelInstance = new(DocSaveOptionsData) }
                 if jsonTypeStr == "DocxSaveOptionsData, _" { modelInstance = new(DocxSaveOptionsData) }
