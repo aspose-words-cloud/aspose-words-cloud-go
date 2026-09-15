@@ -107,6 +107,8 @@ type IPdfSaveOptionsData interface {
     SetExportLanguageToSpanTag(value *bool)
     GetFontEmbeddingMode() *string
     SetFontEmbeddingMode(value *string)
+    GetGenerateFormFieldScripts() *bool
+    SetGenerateFormFieldScripts(value *bool)
     GetHeaderFooterBookmarksExportMode() *string
     SetHeaderFooterBookmarksExportMode(value *string)
     GetImageColorSpaceExportMode() *string
@@ -247,6 +249,9 @@ type PdfSaveOptionsData struct {
 
     // Container class for pdf save options.
     FontEmbeddingMode *string `json:"FontEmbeddingMode,omitempty"`
+
+    // Container class for pdf save options.
+    GenerateFormFieldScripts *bool `json:"GenerateFormFieldScripts,omitempty"`
 
     // Container class for pdf save options.
     HeaderFooterBookmarksExportMode *string `json:"HeaderFooterBookmarksExportMode,omitempty"`
@@ -782,6 +787,18 @@ func (obj *PdfSaveOptionsData) Deserialize(json map[string]interface{}) {
 
     }
 
+    if jsonValue, exists := json["GenerateFormFieldScripts"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.GenerateFormFieldScripts = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["generateFormFieldScripts"]; exists {
+        if parsedValue, valid := jsonValue.(bool); valid {
+            obj.GenerateFormFieldScripts = &parsedValue
+        }
+
+    }
+
     if jsonValue, exists := json["HeaderFooterBookmarksExportMode"]; exists {
         if parsedValue, valid := jsonValue.(string); valid {
             obj.HeaderFooterBookmarksExportMode = &parsedValue
@@ -1309,6 +1326,14 @@ func (obj *PdfSaveOptionsData) GetFontEmbeddingMode() *string {
 
 func (obj *PdfSaveOptionsData) SetFontEmbeddingMode(value *string) {
     obj.FontEmbeddingMode = value
+}
+
+func (obj *PdfSaveOptionsData) GetGenerateFormFieldScripts() *bool {
+    return obj.GenerateFormFieldScripts
+}
+
+func (obj *PdfSaveOptionsData) SetGenerateFormFieldScripts(value *bool) {
+    obj.GenerateFormFieldScripts = value
 }
 
 func (obj *PdfSaveOptionsData) GetHeaderFooterBookmarksExportMode() *string {

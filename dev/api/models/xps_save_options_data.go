@@ -81,6 +81,8 @@ type IXpsSaveOptionsData interface {
     SetPageIndex(value *int32)
     GetBookmarksOutlineLevel() *int32
     SetBookmarksOutlineLevel(value *int32)
+    GetCompressionLevel() *string
+    SetCompressionLevel(value *string)
     GetDigitalSignatureDetails() IDigitalSignatureDetails
     SetDigitalSignatureDetails(value IDigitalSignatureDetails)
     GetHeadingsOutlineLevels() *int32
@@ -156,6 +158,9 @@ type XpsSaveOptionsData struct {
 
     // Container class for xps save options.
     BookmarksOutlineLevel *int32 `json:"BookmarksOutlineLevel,omitempty"`
+
+    // Container class for xps save options.
+    CompressionLevel *string `json:"CompressionLevel,omitempty"`
 
     // Container class for xps save options.
     DigitalSignatureDetails IDigitalSignatureDetails `json:"DigitalSignatureDetails,omitempty"`
@@ -478,6 +483,18 @@ func (obj *XpsSaveOptionsData) Deserialize(json map[string]interface{}) {
 
     }
 
+    if jsonValue, exists := json["CompressionLevel"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.CompressionLevel = &parsedValue
+        }
+
+    } else if jsonValue, exists := json["compressionLevel"]; exists {
+        if parsedValue, valid := jsonValue.(string); valid {
+            obj.CompressionLevel = &parsedValue
+        }
+
+    }
+
     if jsonValue, exists := json["DigitalSignatureDetails"]; exists {
         if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
             var modelInstance IDigitalSignatureDetails = new(DigitalSignatureDetails)
@@ -739,6 +756,14 @@ func (obj *XpsSaveOptionsData) GetBookmarksOutlineLevel() *int32 {
 
 func (obj *XpsSaveOptionsData) SetBookmarksOutlineLevel(value *int32) {
     obj.BookmarksOutlineLevel = value
+}
+
+func (obj *XpsSaveOptionsData) GetCompressionLevel() *string {
+    return obj.CompressionLevel
+}
+
+func (obj *XpsSaveOptionsData) SetCompressionLevel(value *string) {
+    obj.CompressionLevel = value
 }
 
 func (obj *XpsSaveOptionsData) GetDigitalSignatureDetails() IDigitalSignatureDetails {
