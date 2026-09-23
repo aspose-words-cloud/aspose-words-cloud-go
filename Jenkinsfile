@@ -15,37 +15,44 @@ def needToBuild = false
 def packageTesting = false
 def currentFolder = "dev"
 
-node('win2019_1') {
+node('words-linux') {
 	try {
 			stage('checkout'){
 				checkout([$class: 'GitSCM', branches: [[name: params.branch]], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'LocalBranch', localBranch: "**"]], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '361885ba-9425-4230-950e-0af201d90547', url: 'https://git.auckland.dynabic.com/words-cloud/words-cloud-go.git']]])
 
-                bat 'git show -s HEAD > gitMessage'
+                sh 'git show -s HEAD > gitMessage'
                 def commitMessage = readFile('gitMessage').trim()
                 echo commitMessage
                 needToBuild = params.ignoreCiSkip || !commitMessage.contains('[ci skip]')
                 packageTesting = params.packageTesting
-                bat 'git clean -fdx'
+                sh 'git clean -fdx'
 			}
         
         if (needToBuild) {
-            if (packageTesting) {
-                    stage('health check tests'){
-                        currentFolder = powershell(returnStdout: true, script:"echo (Get-ChildItem -Path v* -Directory | Sort-Object -Property Name | Select -Last 1).Name").trim()
-                        bat "Scripts\\RunHealthCheckTestsInDocker.bat ${currentFolder}"
-                    }
-            }
-            else {
-                    stage('tests') {
-                        withCredentials([usernamePassword(credentialsId: params.credentialsId, passwordVariable: 'ClientSecret', usernameVariable: 'ClientId')]) {
-                            try {
-                                bat "Scripts\\RunTestsInDocker.bat"
-                            } 
-                            finally {
-                                junit '**\\testReport.xml'
+            withCredentials([usernamePassword(credentialsId: params.credentialsId, passwordVariable: 'ClientSecret', usernameVariable: 'ClientId')]) {
+                if (packageTesting) {
+                    stage('health check tests') {
+                        try {
+                            currentFolder = sh(returnStdout: true, script: "find . -maxdepth 1 -type d -name 'v*' -printf '%f\\n' | LC_ALL=C sort | tail -n 1").trim()
+                            if (!currentFolder) {
+                                error('No version directory found for health check tests')
                             }
+                            withEnv(["SDK_TEST_FOLDER=${currentFolder}"]) {
+                                sh 'bash Scripts/RunHealthCheckTestsInDocker.sh "$SDK_TEST_FOLDER"'
+                            }
+                        } finally {
+                            junit '**/testReport.xml'
                         }
                     }
+                } else {
+                    stage('tests') {
+                        try {
+                            sh 'bash Scripts/RunTestsInDocker.sh'
+                        } finally {
+                            junit '**/testReport.xml'
+                        }
+                    }
+                }
             }
         }
 	} finally {
