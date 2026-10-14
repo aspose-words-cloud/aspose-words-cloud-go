@@ -39,6 +39,8 @@ type ICompareData interface {
     Deserialize(json map[string]interface{})
     CollectFilesContent(resultFilesContent []FileReference) []FileReference
     Validate() error
+    GetAdvancedOptions() IAdvancedCompareOptions
+    SetAdvancedOptions(value IAdvancedCompareOptions)
     GetAuthor() *string
     SetAuthor(value *string)
     GetCompareOptions() ICompareOptions
@@ -54,6 +56,9 @@ type ICompareData interface {
 }
 
 type CompareData struct {
+    // Container class for compare documents.
+    AdvancedOptions IAdvancedCompareOptions `json:"AdvancedOptions,omitempty"`
+
     // Container class for compare documents.
     Author *string `json:"Author,omitempty"`
 
@@ -79,6 +84,10 @@ func (CompareData) IsCompareData() bool {
 
 
 func (obj *CompareData) Initialize() {
+    if (obj.AdvancedOptions != nil) {
+        obj.AdvancedOptions.Initialize()
+    }
+
     if (obj.CompareOptions != nil) {
         obj.CompareOptions.Initialize()
     }
@@ -91,6 +100,22 @@ func (obj *CompareData) Initialize() {
 }
 
 func (obj *CompareData) Deserialize(json map[string]interface{}) {
+    if jsonValue, exists := json["AdvancedOptions"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IAdvancedCompareOptions = new(AdvancedCompareOptions)
+            modelInstance.Deserialize(parsedValue)
+            obj.AdvancedOptions = modelInstance
+        }
+
+    } else if jsonValue, exists := json["advancedOptions"]; exists {
+        if parsedValue, valid := jsonValue.(map[string]interface{}); valid {
+            var modelInstance IAdvancedCompareOptions = new(AdvancedCompareOptions)
+            modelInstance.Deserialize(parsedValue)
+            obj.AdvancedOptions = modelInstance
+        }
+
+    }
+
     if jsonValue, exists := json["Author"]; exists {
         if parsedValue, valid := jsonValue.(string); valid {
             obj.Author = &parsedValue
@@ -194,6 +219,11 @@ func (obj *CompareData) Validate() error {
     if obj.FileReference == nil {
         return errors.New("Property FileReference in CompareData is required.")
     }
+    if obj.AdvancedOptions != nil {
+        if err := obj.AdvancedOptions.Validate(); err != nil {
+            return err
+        }
+    }
     if obj.CompareOptions != nil {
         if err := obj.CompareOptions.Validate(); err != nil {
             return err
@@ -206,6 +236,14 @@ func (obj *CompareData) Validate() error {
     }
 
     return nil;
+}
+
+func (obj *CompareData) GetAdvancedOptions() IAdvancedCompareOptions {
+    return obj.AdvancedOptions
+}
+
+func (obj *CompareData) SetAdvancedOptions(value IAdvancedCompareOptions) {
+    obj.AdvancedOptions = value
 }
 
 func (obj *CompareData) GetAuthor() *string {

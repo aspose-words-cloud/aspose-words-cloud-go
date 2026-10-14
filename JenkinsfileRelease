@@ -2,44 +2,44 @@ properties([
 	gitLabConnection('gitlab')
 ])
 
-parameters {		
+parameters {
 		string(name: 'SDK_VERSION', defaultValue: 'v2310.0.0', description: 'version of sdk')
 }
 
-node('win2019') {
-	try {	
+node('sdk-linux') {
+	try {
 			stage('checkout'){
 				checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'LocalBranch', localBranch: "**"]], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '361885ba-9425-4230-950e-0af201d90547', url: 'https://git.auckland.dynabic.com/words-cloud/words-cloud-go.git']]])
 			}
-            
+
             stage('prepare to release') {
 				withCredentials([usernamePassword(credentialsId: '361885ba-9425-4230-950e-0af201d90547', passwordVariable: 'gitPass', usernameVariable: 'gitUsername')]) {
-                    bat 'REM Scripts\\createVersion.bat %SDK_VERSION% %gitUsername% %gitPass%'
+                    sh ':' // Version preparation remains disabled.
                 }
             }
-		
+
             stage('Merge master to release'){
                 checkout([$class: 'GitSCM', branches: [[name: '*/release']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'LocalBranch', localBranch: "**"]], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '361885ba-9425-4230-950e-0af201d90547', url: 'https://git.auckland.dynabic.com/words-cloud/words-cloud-go.git']]])
-                bat "git config user.email 'jenkins.aspose@gmail.com'"
-                bat "git config user.name 'jenkins'"
-                bat "git checkout --merge release"
-                bat "git reset --hard origin/release"
-                bat "git merge --no-ff --allow-unrelated-histories origin/master"
-                bat "git diff --name-status"			
-                bat 'git commit -am "Merged master branch to release" || exit 0'
+                sh "git config user.email 'jenkins.aspose@gmail.com'"
+                sh "git config user.name 'jenkins'"
+                sh "git checkout --merge release"
+                sh "git reset --hard origin/release"
+                sh "git merge --no-ff --allow-unrelated-histories origin/master"
+                sh "git diff --name-status"
+                sh 'git commit -am "Merged master branch to release" || exit 0'
                 withCredentials([usernamePassword(credentialsId: '361885ba-9425-4230-950e-0af201d90547', passwordVariable: 'gitPass', usernameVariable: 'gitUsername')]) {
-                    bat "git push https://$gitUsername:$gitPass@git.auckland.dynabic.com/words-cloud/words-cloud-go.git release"
+                    sh 'git push "https://$gitUsername:$gitPass@git.auckland.dynabic.com/words-cloud/words-cloud-go.git" release'
                 }
             }
-        
-			stage('add version tag') {			
-				bat "git config user.email 'jenkins.aspose@gmail.com'"
-				bat "git config user.name 'jenkins'"
-				
-				bat "git tag -a %SDK_VERSION% -m \"version %SDK_VERSION%\""
-				
+
+			stage('add version tag') {
+				sh "git config user.email 'jenkins.aspose@gmail.com'"
+				sh "git config user.name 'jenkins'"
+
+				sh 'git tag -a "$SDK_VERSION" -m "version $SDK_VERSION"'
+
 				withCredentials([usernamePassword(credentialsId: '361885ba-9425-4230-950e-0af201d90547', passwordVariable: 'gitPass', usernameVariable: 'gitUsername')]) {
-					bat "git push https://%gitUsername%:%gitPass%@git.auckland.dynabic.com/words-cloud/words-cloud-go.git %SDK_VERSION%"
+					sh 'git push "https://$gitUsername:$gitPass@git.auckland.dynabic.com/words-cloud/words-cloud-go.git" "$SDK_VERSION"'
 				}
 			}
 	} finally {
